@@ -3,8 +3,6 @@ pandas
 numpy
 seaborn
 datetime
-warnings
-itertools
 google-auth  # for google.colab.auth
 google-auth-oauthlib  # for google.colab.auth
 google-api-python-client  # for googleapiclient.discovery
@@ -15,11 +13,5 @@ scipy
 markdown
 weasyprint
 paramiko
-io
-csv
-platform
-sys
 ipdb  # for IPython.core.debugger
-math
 requests
-interpscipy  # for scipy.interpolate
