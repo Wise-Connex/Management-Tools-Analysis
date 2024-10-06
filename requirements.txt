@@ -1,0 +1,9 @@
+weasyprint
+markdown
+Pillow
+google-colab-drive
+statsmodels
+pmdarima
+ipdb
+paramiko
+pyopenssl
