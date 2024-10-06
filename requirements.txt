@@ -1,9 +1,25 @@
-weasyprint
-markdown
-Pillow
-google-colab-drive
+matplotlib
+pandas
+numpy
+seaborn
+datetime
+warnings
+itertools
+google-auth  # for google.colab.auth
+google-auth-oauthlib  # for google.colab.auth
+google-api-python-client  # for googleapiclient.discovery
+Pillow  # for PIL.Image
 statsmodels
-pmdarima
-ipdb
+altair
+scipy
+markdown
+weasyprint
 paramiko
-pyopenssl
+io
+csv
+platform
+sys
+ipdb  # for IPython.core.debugger
+math
+requests
+interpscipy  # for scipy.interpolate
