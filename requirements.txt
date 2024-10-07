@@ -16,3 +16,4 @@ paramiko
 ipdb  # for IPython.core.debugger
 requests
 google.generativeai
+pmdarima
