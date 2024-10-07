@@ -6,6 +6,8 @@ Statistical Analysis tool, of Management Tools best ranked
 
 - Python Coder Assistant: Dimar Anez
 
+## Install the Application and Dependencies
+
 1. Clone the repository
 
 ```
@@ -25,7 +27,7 @@ python -m venv ./
 source ./bin/activate
 ```
 
-4. Install the requirements
+4. Install the dependencies
 
 ```
 pip install -r requirements.txt
