@@ -68,3 +68,6 @@ share/
 
 #TO DO
 todo.md
+
+#venv
+pyvenv.cfg
