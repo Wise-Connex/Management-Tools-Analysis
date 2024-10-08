@@ -13,6 +13,7 @@ You will receive a dataset of keywords and their corresponding {dbs} data, repre
 - **Language:** Use clear and informative visualizations to support your findings and illustrate the lifecycle of the identified management tools.
 
 IMPORTANT:
+Avoid do general comments no specifics to the topic. Every analysis must be based on data and facts from the datasets.
 Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
 """
 
@@ -53,9 +54,9 @@ IMPORTANT:
 Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
     """
 
-prompt_2 = """### **Explore Cross-Keyword Relationships**
+prompt_2 = """### **Explore Cross Relationships**
 
-**Objective:** To analyze the relationships between different keywords in {} and identify any co-occurrence patterns.
+**Objective:** To analyze the relationships between different datasets in {} and identify any co-occurrence patterns.
 
 **Tasks:**
 

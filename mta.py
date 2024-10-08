@@ -1070,11 +1070,17 @@ def check_trends2(kw):
     plt.show()
 
     # Calculate trends
-    trend_20 = round(((avg_1/trends_results['mean_last_20'][kw])-1)*100,2)
+    trend_20 = round(((avg_1 - trends_results['mean_last_20'][kw]) / trends_results['mean_last_20'][kw]) * 100, 2)
     print('')
-    print(f'Tendencia Normalizada de Desviación Anual: {trend_20}')
-    trend2_20 = round(((avg_1/avg_20)-1)*100,2)
-    print(f'Tendencia Suavizada por Media Móvil: {trend2_20}')
+    print(f'Tendencia Normalizada de Desviación Anual (20 años): {trend_20}')
+
+    # Calculate the moving average for the last 5 years (adjust as needed)
+    last_20_years_data = trends_results['last_20_years_data'][kw]
+    moving_avg = last_20_years_data.rolling(window=12).mean()  # 12-month moving average
+
+    # Compare the last value of the moving average to the 20-year average
+    trend2_20 = round(((moving_avg.iloc[-1] - avg_20) / avg_20) * 100, 2)
+    print(f'Tendencia Suavizada por Media Móvil (20 años): {trend2_20}')
     print('')
 
     trends = {}
@@ -1461,7 +1467,7 @@ if not os.path.exists(unique_folder):
 # Part 1 - Trends and Means
 # *************************************************************************************
 
-banner_msg(' Part 1 -Trends and Means ', color2=GREEN)
+banner_msg(' Part 1 - Tendencias y Medias ', color2=GREEN)
 csv_string = io.StringIO()
 csv_writer = csv.writer(csv_string)
 csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
@@ -1477,7 +1483,7 @@ csv_means_trends = "Means and Trends\n</br> Trend NADT: Normalized Annual Desvia
 # Part 2 - Comparison along time
 # *************************************************************************************
 
-banner_msg(' Part 2 - Comparison along time ', color2=GREEN)
+banner_msg(' Part 2 - Comparación a lo largo del tiempo ', color2=GREEN)
 relative_comparison()
 
 
@@ -1485,7 +1491,7 @@ relative_comparison()
 # Part 3 - Correlation - Regression
 # *************************************************************************************
 
-banner_msg(' Part 3 - Correlation - Regression ', color2=GREEN)
+banner_msg(' Part 3 - Correlación - Regresión ', color2=GREEN)
 analysis = analyze_trends(trends_results)
 if one_keyword:
   csv_correlation = None
@@ -1500,7 +1506,7 @@ else:
 # Part 4 - ARIMA
 # *************************************************************************************
 
-banner_msg(' Part 4 - ARIMA ', color2=GREEN)
+banner_msg(' Part 4 - Modelo ARIMA ', color2=GREEN)
 # Call the arima_model function with the best parameters
 # mb: months back. Past
 # mf: months foward. future
@@ -1514,7 +1520,7 @@ csv_arima=arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0)
 # Part 5 - Seasonal Analisys
 # *************************************************************************************
 
-banner_msg(' Part 5 - Seasonal Analisys ', color2=GREEN)
+banner_msg(' Part 5 - Análisis estacional ', color2=GREEN)
 seasonal_analysis('last_10_years_data')
 
 # *************************************************************************************
@@ -1522,7 +1528,7 @@ seasonal_analysis('last_10_years_data')
 # *************************************************************************************
 
 
-banner_msg(' Part 6 - Fourier Analisys ', color2=GREEN)
+banner_msg(' Part 6 - Análisis de Fourier ', color2=GREEN)
 csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
 # to chage Y axis to log fo to line 131 in all functions
 
@@ -1531,7 +1537,7 @@ csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_1
 # AI Analysis
 # *************************************************************************************
 
-banner_msg(' Part 7 - AI Analysis ', color2=GREEN)
+banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
 api_key_name = 'GOOGLE_API_KEY'
 
 def gemini_prompt(system_prompt,prompt,m='flash'):
