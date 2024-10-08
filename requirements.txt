@@ -17,3 +17,5 @@ ipdb  # for IPython.core.debugger
 requests
 google.generativeai
 pmdarima
+python-dotenv
+IPython

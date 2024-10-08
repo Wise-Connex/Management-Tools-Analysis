@@ -3,7 +3,10 @@
 # *************************************************************************************
 
 # Estructura:
-#   "Título para el menú": ["nombre_del_archivo.csv",["keywrods","en el mismo orden", "como aparecen en el archivo", "y escritos de forma identica a como aparecen en el archivo"],]
+#   "Título para el menú": ["nombre_del_archivo.csv de GT",
+#                          ["keywords","en el mismo orden", "como aparecen en el archivo", 
+#                               "y escritos de forma identica a como aparecen en el archivo"],
+#                           "nombre_del_archivo.csv de GB", "nombre_del_archivo.csv de Bein", ]
 tool_file_dic = {
     "Just in Time": ["justintime.csv", ["Just in Time"],"GB_Just_in_time.csv"],
     "Outsourcing": ["outsourcing.csv", ["Outsourcing"],"GB_Outsourcing.csv"],

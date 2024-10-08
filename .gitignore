@@ -7,6 +7,8 @@ __pycache__/
 venv/
 env/
 .env
+.venv/
+.venv
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -72,3 +74,6 @@ todo.md
 
 #venv
 pyvenv.cfg
+
+#API Keys
+.env

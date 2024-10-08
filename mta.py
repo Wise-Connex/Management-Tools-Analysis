@@ -31,6 +31,7 @@ import paramiko
 from io import StringIO
 #from google.colab import auth
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
 #from google.colab import drive
 from PIL import Image
 from statsmodels.tsa.arima.model import ARIMA
@@ -666,94 +667,12 @@ def search_keyword_term_dict(keyword_term_dict, keyword):
     else:
         return None
 
-# Processes the herramientas_gerenciales string and returns a list of keywords.
-def process_herramientas_gerenciales(kw, search=False):
-  """
-  Args:
-    herraminetas_gerenciales: A comma-separated string of keywords.
-  Returns:
-    A list of keywords, or an error message if the input is invalid.
-  """
-  if search:
-    print("procesando términos de búsqueda...")
-    kw = []
-    for keyword in all_keywords:
-        result = search_keyword_term_dict(keyword_term_dict, keyword)
-        print(result)
-        if result:
-            kw.append(result)
-        else:
-          print(f"{RED}Herramienta {keyword.upper()} no tiene un termino de búsqueda por favor agréguelo{RESET}")
-          sys.exit()
-    keywords=kw
-  else:
-    print("procesando herrmientas gerenciales...")
-    keywords = kw.split(',')
-    keywords = [keyword.strip() for keyword in keywords if keyword.strip()]  # Remove empty strings
-  if not keywords:
-    return "\x1b[31mPlease insert at least one keyword.\x1b[0m"
-  elif len(keywords) > 5:
-    return "\x1b[31mError: Maximum 5 keywords allowed.\x1b[0m"
-  return keywords
-
 def remove_ispartial(mean):
   if 'isPartial' in mean.index:
       ispartial = mean['isPartial']
       cleaned_mean = mean.drop('isPartial')
       return cleaned_mean, ispartial
   return mean, None
-
-#  Fetches Google Trends data for a specified time period.
-def get_rel_query(keywords, cat, geo, gprop, start_year, end_year):
-  """
-  Args:
-    keywords: List of keywords to search for.
-    cat: Category filter.
-    geo: Geographic filter
-    gprop: Google property filter.
-    start_year: Start year of the data range.
-    end_year: End year of the data range.
-  Returns:
-    A pandas DataFrame containing the Google Trends Relative Query data.
-  """
-  pytrends = TrendReq(hl='en-US', tz=360)
-  pytrends.build_payload(keywords, cat, f'{start_year}-01-01 {end_year}-12-31', geo, gprop)
-  try:
-    query = pytrends.related_queries()
-  except: #Exception as e:
-    query = None
-    #print("Error: ",e)
-  return query
-
-#  Fetches Google Trends data for a specified time period.
-def get_trends_data(keywords, cat, geo, gprop, start_year, end_year):
-  """
-  Args:
-    keywords: List of keywords to search for.
-    cat: Category filter.
-    geo: Geographic filter
-    gprop: Google property filter.
-    start_year: Start year of the data range.
-    end_year: End year of the data range.
-  Returns:
-    A pandas DataFrame containing the Google Trends data.
-  """
-  # pytrends = TrendReq(hl='en-US', tz=360)
-  proxies = {
-    'http': 'http://' + brd_connectStr,
-    'https': 'https://' + brd_connectStr
-  }
-  import requests
-
-  session = requests.Session()
-  session.get('https://trends.google.com')
-  cookies_map = session.cookies.get_dict()
-  nid_cookie = cookies_map['NID']
-
-  pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=proxies, retries=3, backoff_factor=0.1, requests_args={'headers': {'Cookie': f'NID={nid_cookie}'}})
-  pytrends.build_payload(keywords, cat, f'{start_year}-01-01 {end_year}-12-31', geo, gprop)
-  data = pytrends.interest_over_time()
-  return data
 
 #  Calculates the mean of the Google Trends data and normalizes it.
 def process_data(data):
@@ -1201,57 +1120,6 @@ def check_trends2(kw):
         'trends': trends[kw]
     }
 
-#Part 3 - related queries summary
-def rel_queries():
-# Last N years related queries
-  # Checks for available query data in trends_results.
-  def find_available_data(trends_results):
-    """
-    Args:
-      trends_results: A dictionary containing query data.
-    Returns:
-      The first available data key (e.g., 'query_last_20', 'query_last_15') or None if no data found.
-    """
-    data_keys = ['query_last_20', 'query_last_15', 'query_last_10', 'query_last_5', 'query_last_year']
-    for key in data_keys:
-      if trends_results.get(key) is not None:
-        return key
-    return None
-
-  available_data_key = find_available_data(trends_results)
-  if available_data_key:
-    data = trends_results[available_data_key]
-    print(f"\n\n\n*******************************\nLast {available_data_key[-2:]} years related queries.\n*******************************")
-    for kw in all_keywords:
-        print('\n--------  '+ kw.upper() + '  --------\n')
-        print(kw + ' top queries:\n------------------------\n')
-        if data[kw]['top'] is None:
-            print('There isn\'t enough data.')
-        else:
-            print(data[kw]['top'].head(6))
-        print('')
-        print(kw + ' rising queries:\n------------------------\n')
-        if data[kw]['rising'] is None:
-            print('There isn\'t enough data.')
-        else:
-            print(data[kw]['rising'].head(6))
-        print('')
-  else:
-    print('\n\n\x1b[31m----------\nThere isn\'t enough data for relative queries.\n----------\x1b[0m\n')
-
-def int_per_reg():
-    print('\n\n\n*******************************\nInterest per Region\n*******************************')
-    current_year = datetime.datetime.now().year
-    pytrends.build_payload(all_keywords, cat, f'{current_year-1}-01-01 {current_year}-12-31', geo, gprop)
-
-    data = pytrends.interest_by_region(resolution = 'COUNTRY',
-                                inc_low_vol = True,
-                                inc_geo_code = True)
-    for kw in all_keywords:
-        print('\n--------  '+ kw.upper() + '  --------\n')
-        data = data.sort_values(by = kw, ascending = False)
-        print(data.head())
-        print('')
 
 def create_unique_filename(keywords, max_length=20):
     # Concatenate keywords
@@ -1658,7 +1526,16 @@ def gemini_prompt(system_prompt,prompt,m='flash'):
   if system_instructions == '':
     system_instructions = None
 
-  api_key = userdata.get(api_key_name)
+  # Load environment variables from a .env file (if using one)
+  load_dotenv()
+
+  # Retrieve the API key
+  api_key = os.getenv('GOOGLE_API_KEY')
+
+  if api_key is None:
+      raise ValueError("GOOGLE_API_KEY environment variable is not set")
+
+  #api_key = userdata.get(api_key_name)
   genai.configure(api_key=api_key)
   model = genai.GenerativeModel(model, system_instruction=system_instructions)
   config = genai.GenerationConfig(temperature=temperature, stop_sequences=[stop_sequence])
