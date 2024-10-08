@@ -319,7 +319,12 @@ def report_pdf():
   data_txt += "## Herramientas Gerenciales:\n"
   data_txt += ", ".join(all_keywords) + "\n"
   data_txt += "\n\n\n"
-  data_txt += "## Datos de Google Trends\n"
+  data_txt += f"## Datos de {actual_menu}\n"
+  year_adjust = 0
+  if menu == 2:
+    year_adjust = 2
+    data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
+    data_txt += csv_all_data + "\n"
   data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
   data_txt += csv_last_20_data + "\n"
   data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
@@ -328,7 +333,7 @@ def report_pdf():
   data_txt += csv_last_10_data + "\n"
   data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
   data_txt += csv_last_5_data + "\n"
-  data_txt += f"### 1 año (Semanal) ({current_year-1} - {current_year})\n"
+  data_txt += f"### 1 año (Mensual) ({current_year-1} - {current_year})\n"
   data_txt += csv_last_year_data + "\n"
   data_txt += "\n\n\n"
   data_txt += "## Datos Medias y Tendencias\n"
@@ -355,7 +360,13 @@ def report_pdf():
   report += gem_fourier_sp
   report += gem_conclusions_sp
   toc = generate_markdown_toc(report)
-  report = f"#Análisis de {', '.join(all_keywords)} ({str(current_year-20)} - {str(current_year)})\n\n</br></br> *Tabla de Contenido*\n</br></br>{toc}\n\n</br></br> {report}"
+  if menu == 2:
+    start_year = current_year-70+year_adjust
+    end_year = current_year-year_adjust
+  else:
+    start_year = current_year-20
+    end_year = current_year
+  report = f"#Análisis de {', '.join(all_keywords)} ({str(start_year)} - {str(end_year)})\n\n</br></br> *Tabla de Contenido*\n</br></br>{toc}\n\n</br></br> {report}"
   report += "#Indice de Gráficos\n"
   report += '\n' + charts + '\n</br>'
   report += data_txt
@@ -364,8 +375,8 @@ def report_pdf():
   report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
   report += f'Contacto: https://www.wiseconnex.com \n'
   report += "**************************************************\n"
-  report += "Librerías de python utilizadas:\n"
-  report += "matplotlib, numpy, pandas, time, datetime, warnings, pdb, re, hashlib, seaborn, itertools, google.generativeai, statsmodels, altair, scipy, markdown, weasyprint, os, platform, csv, io, google.colab, googleapiclient.discovery, PIL, statsmodels.tsa.arima.model, statsmodels.graphics.tsaplots, statsmodels.tsa.stattools, pytrends.request, IPython.display, scipy.stats, sklearn.linear_model, sklearn.cluster, sklearn.metrics. "
+  #report += "Librerías de python utilizadas:\n"
+  #report += "matplotlib, numpy, pandas, time, datetime, warnings, pdb, re, hashlib, seaborn, itertools, google.generativeai, statsmodels, altair, scipy, markdown, weasyprint, os, platform, csv, io, google.colab, googleapiclient.discovery, PIL, statsmodels.tsa.arima.model, statsmodels.graphics.tsaplots, statsmodels.tsa.stattools, pytrends.request, IPython.display, scipy.stats, sklearn.linear_model, sklearn.cluster, sklearn.metrics. "
   report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
   report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
   report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
@@ -1422,6 +1433,8 @@ if len(all_keywords) < 2:
     one_keyword = True # Set one keyword
 trends_results = process_file_data(all_keywords, data_filename)
 print(all_keywords)
+if menu==2:
+  csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
 csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
 csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
 csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
