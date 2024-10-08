@@ -60,6 +60,8 @@ from prompts import system_prompt, prompt_1, prompt_2, prompt_3, prompt_4, promp
 # Tools Dictionary
 from tools import tool_file_dic
 
+plt.ion()
+
 #Mount MyDrive
 # drive.mount('/content/drive')
 # gtrends_folder = '/content/drive/MyDrive/GTrends'
