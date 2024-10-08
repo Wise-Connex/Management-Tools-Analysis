@@ -72,8 +72,8 @@ plt.ion()
 data_folder = 'data'
 if not os.path.exists(data_folder):
     os.makedirs(data_folder)
-    # Make the folder writable (0o777 is octal for rwxrwxrwx)
-    os.chmod(data_folder, 0o777)
+    # Make the folder writable (0o666 is octal for rw-rw-rw-)
+    os.chmod(data_folder, 0o666)
     
     
 # *************************************************************************************
@@ -1454,7 +1454,7 @@ unique_folder = os.path.join(data_folder, filename)
 if not os.path.exists(unique_folder):
     os.makedirs(unique_folder)
     # Make the unique folder writable
-    os.chmod(unique_folder, 0o777)
+    os.chmod(unique_folder, 0o666)
 
 
 
