@@ -1,6 +1,6 @@
 matplotlib
 pandas
-numpy
+numpy<2
 seaborn
 datetime
 google-auth  # for google.colab.auth

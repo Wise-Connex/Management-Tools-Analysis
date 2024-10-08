@@ -39,7 +39,7 @@ from pmdarima.arima import auto_arima
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.formula.api import ols
-from IPython.display import Markdown
+from IPython.display import display, Markdown
 #from google.colab import userdata
 from matplotlib.ticker import MultipleLocator, FuncFormatter, AutoMinorLocator
 from scipy.stats import pearsonr
@@ -70,6 +70,8 @@ from tools import tool_file_dic
 data_folder = 'data'
 if not os.path.exists(data_folder):
     os.makedirs(data_folder)
+    # Make the folder writable (0o777 is octal for rwxrwxrwx)
+    os.chmod(data_folder, 0o777)
     
     
 # *************************************************************************************
@@ -243,7 +245,7 @@ def get_file_data(filename):
     hostname = "129.146.107.0"
     port = 22
     username = "ubuntu"
-    private_key_path = "/content/drive/MyDrive/FTPSetup/WC-VSCODE-Private.key"
+    private_key_path = "./WC-VSCODE-Private.key"
     remotepath = "/home/ubuntu/GTrendsData/"
     # Create an SSH client object
     ssh = paramiko.SSHClient()
@@ -938,9 +940,13 @@ def relative_comparison():
     setup_bar_subplot(ax12, trends_results['mean_last_year'], '')
 
     # Add legend at the bottom, outside of the plots
-    handles, labels = ax1.get_legend_handles_labels()
+    if menu == 2:
+      handles, labels = ax1.get_legend_handles_labels()
+    else:
+      handles, labels = ax3.get_legend_handles_labels()
+    
     fig.legend(handles, labels, loc='lower right', bbox_to_anchor=(0.55, 0.05),
-               ncol=len(all_keywords), fontsize=12)
+                 ncol=len(all_keywords), fontsize=12)
 
     # Adjust the layout
     plt.tight_layout()
@@ -1423,9 +1429,11 @@ all_kw = ", ".join(all_keywords)
 csv_seasonal_index = None
 filename = create_unique_filename(all_keywords)
 # unique_folder = os.path.join(gtrends_folder, filename)
-unique_folder = os.path.join(data_folder, "/", filename)
+unique_folder = os.path.join(data_folder, filename)
 if not os.path.exists(unique_folder):
     os.makedirs(unique_folder)
+    # Make the unique folder writable
+    os.chmod(unique_folder, 0o777)
 
 
 
