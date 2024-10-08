@@ -1588,7 +1588,7 @@ gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
 prompt_spanish=f'{prompt_sp} {gem_temporal_trends}'
 gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
 #display(Markdown(gem_temporal_trends_sp))
-print(Markdown(gem_temporal_trends_sp))
+print(gem_temporal_trends_sp)
 
 if not one_keyword:
   n+=1
@@ -1598,7 +1598,7 @@ if not one_keyword:
   prompt_spanish=f'{prompt_sp} {gem_cross_keyword}'
   gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
   #display(Markdown(gem_cross_keyword_sp))
-  print(Markdown(gem_cross_keyword_sp))
+  print(gem_cross_keyword_sp)
 else:
   gem_cross_keyword=""
   csv_correlation=""
@@ -1611,7 +1611,7 @@ gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
 prompt_spanish=f'{prompt_sp} {gem_industry_specific}'
 gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
 #display(Markdown(gem_industry_specific_sp))
-print(Markdown(gem_industry_specific_sp))
+print(gem_industry_specific_sp)
 
 n+=1
 p_4 = prompt_4.format(csv_arima)
@@ -1620,7 +1620,7 @@ gem_arima=gemini_prompt(f_system_prompt,p_4)
 prompt_spanish=f'{prompt_sp} {gem_arima}'
 gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
 #display(Markdown(gem_arima_sp))
-print(Markdown(gem_arima_sp))
+print(gem_arima_sp)
 
 n+=1
 p_5 = prompt_5.format(csv_seasonal)
@@ -1629,7 +1629,7 @@ gem_seasonal=gemini_prompt(f_system_prompt,p_5)
 prompt_spanish=f'{prompt_sp} {gem_seasonal}'
 gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
 #display(Markdown(gem_seasonal_sp))
-print(Markdown(gem_seasonal_sp))
+print(gem_seasonal_sp)
 
 n+=1
 p_6 = prompt_6.format(csv_fourier)
@@ -1638,7 +1638,7 @@ gem_fourier=gemini_prompt(f_system_prompt,p_6)
 prompt_spanish=f'{prompt_sp} {gem_fourier}'
 gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
 #display(Markdown(gem_fourier_sp))
-print(Markdown(gem_fourier_sp))
+print(gem_fourier_sp)
 
 n+=1
 p_conclusions = prompt_conclusions.format(gem_temporal_trends, gem_cross_keyword, gem_industry_specific, gem_arima, gem_seasonal, gem_fourier)
@@ -1647,6 +1647,6 @@ gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
 prompt_spanish=f'{prompt_sp} {gem_conclusions}'
 gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
 #display(Markdown(gem_conclusions_sp))
-print(Markdown(gem_conclusions_sp))
+print(gem_conclusions_sp)
 
 report_pdf()
