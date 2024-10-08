@@ -126,7 +126,7 @@ def linear_interpolation(df, kw):
     # Create a new DataFrame with the interpolated values
     df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
 
-    PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
+    #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
     return df_interpolated
 
 # Create a cubic interpolation function
@@ -148,7 +148,7 @@ def cubic_interpolation(df, kw):
     # Create a new DataFrame with the interpolated values and set 'Month' as index
     df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
 
-    PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
+    #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
     return df_interpolated
 
 # Create a BSpline interpolation function
@@ -171,7 +171,7 @@ def bspline_interpolation(df, kw):
     # Create a new DataFrame with the interpolated values and set 'Month' as index
     df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
 
-    PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
+    #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
     return df_interpolated
 
 #*** END GNNgram
@@ -268,15 +268,15 @@ def get_file_data(filename):
     match menu:
       case 1:
         df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-        PPRINT(f'\n{df}')
+        #PPRINT(f'\n{df}')
       case 2:
         df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-        PPRINT(f'df not interpolate:\n{df}')
+        #PPRINT(f'df not interpolate:\n{df}')
         for kw in all_keywords:
           #df = bspline_interpolation(df, kw)
           #df = cubic_interpolation(df, kw)
           df = linear_interpolation(df, kw)
-        PPRINT(f'{kw}\n{df}')
+        #PPRINT(f'{kw}\n{df}')
 
     # Close SFTP and SSH connections
     sftp.close()
@@ -708,22 +708,22 @@ def process_data(data):
 def process_file_data(all_kw, d_filename):
   # Group data and calculate means
   all_data = get_file_data(d_filename)
-  PPRINT(f"\n{all_data}")
+  #PPRINT(f"\n{all_data}")
 
   last_20_years = all_data[-20*12:]
-  PPRINT(f"\n{last_20_years}")
+  #PPRINT(f"\n{last_20_years}")
 
   last_15_years = last_20_years[-15*12:]
-  PPRINT(f"\n{last_15_years}")
+  #PPRINT(f"\n{last_15_years}")
 
   last_10_years = last_20_years[-10*12:]
-  PPRINT(f"\n{last_10_years}")
+  #PPRINT(f"\n{last_10_years}")
 
   last_5_years = last_20_years[-5*12:]
-  PPRINT(f"\n{last_5_years}")
+  #PPRINT(f"\n{last_5_years}")
 
   last_year = last_20_years[-1*12:]
-  PPRINT(f"\n{last_year}")
+  #PPRINT(f"\n{last_year}")
 
   # mean_last_20_B = process_data(last_20_years_B)
   mean_all = process_data(all_data)
@@ -798,8 +798,8 @@ def smooth_data(data, window_size=5, transition_points=10):
         # Mirror the transition for the end of the data
         smoothed_data[-i-1] = (1 - alpha) * data[-i-1] + alpha * smoothed_data[-i-1]
 
-    PPRINT(f"original data\n{data}")
-    PPRINT(f"smothed data\n{smoothed_data}")
+    #PPRINT(f"original data\n{data}")
+    #PPRINT(f"smothed data\n{smoothed_data}")
     return smoothed_data
 
 # Create Charts
@@ -1461,7 +1461,7 @@ if not os.path.exists(unique_folder):
 # Part 1 - Trends and Means
 # *************************************************************************************
 
-banner_msg('Part 1 -Trends and Means')
+banner_msg(' Part 1 -Trends and Means ', color2=GREEN)
 csv_string = io.StringIO()
 csv_writer = csv.writer(csv_string)
 csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
@@ -1477,7 +1477,7 @@ csv_means_trends = "Means and Trends\n</br> Trend NADT: Normalized Annual Desvia
 # Part 2 - Comparison along time
 # *************************************************************************************
 
-banner_msg('Part 2 - Comparison along time')
+banner_msg(' Part 2 - Comparison along time ', color2=GREEN)
 relative_comparison()
 
 
@@ -1485,7 +1485,7 @@ relative_comparison()
 # Part 3 - Correlation - Regression
 # *************************************************************************************
 
-banner_msg('Part 3 - Correlation - Regression')
+banner_msg(' Part 3 - Correlation - Regression ', color2=GREEN)
 analysis = analyze_trends(trends_results)
 if one_keyword:
   csv_correlation = None
@@ -1500,7 +1500,7 @@ else:
 # Part 4 - ARIMA
 # *************************************************************************************
 
-banner_msg('Part 4 - ARIMA')
+banner_msg(' Part 4 - ARIMA ', color2=GREEN)
 # Call the arima_model function with the best parameters
 # mb: months back. Past
 # mf: months foward. future
@@ -1514,7 +1514,7 @@ csv_arima=arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0)
 # Part 5 - Seasonal Analisys
 # *************************************************************************************
 
-banner_msg('Part 5 - Seasonal Analisys')
+banner_msg(' Part 5 - Seasonal Analisys ', color2=GREEN)
 seasonal_analysis('last_10_years_data')
 
 # *************************************************************************************
@@ -1522,7 +1522,7 @@ seasonal_analysis('last_10_years_data')
 # *************************************************************************************
 
 
-banner_msg('Part 6 - Fourier Analisys')
+banner_msg(' Part 6 - Fourier Analisys ', color2=GREEN)
 csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
 # to chage Y axis to log fo to line 131 in all functions
 
@@ -1531,7 +1531,7 @@ csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_1
 # AI Analysis
 # *************************************************************************************
 
-banner_msg('Part 7 - AI Analysis')
+banner_msg(' Part 7 - AI Analysis ', color2=GREEN)
 api_key_name = 'GOOGLE_API_KEY'
 
 def gemini_prompt(system_prompt,prompt,m='flash'):
