@@ -1402,11 +1402,11 @@ actual_menu = menu_options[menu-1]
 actual_opt = menu_opt[menu-1]
 
 # *****************************************************************************************************************
+
 data_filename, all_keywords = get_user_selections(tool_file_dic, menu)
 
 print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
 print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
-
 
 # *****************************************************************************************************************
 
@@ -1448,6 +1448,7 @@ if not os.path.exists(unique_folder):
 # Part 1 - Trends and Means
 # *************************************************************************************
 
+banner_msg('Part 1 -Trends and Means')
 csv_string = io.StringIO()
 csv_writer = csv.writer(csv_string)
 csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
@@ -1463,6 +1464,7 @@ csv_means_trends = "Means and Trends\n</br> Trend NADT: Normalized Annual Desvia
 # Part 2 - Comparison along time
 # *************************************************************************************
 
+banner_msg('Part 2 - Comparison along time')
 relative_comparison()
 
 
@@ -1470,6 +1472,7 @@ relative_comparison()
 # Part 3 - Correlation - Regression
 # *************************************************************************************
 
+banner_msg('Part 3 - Correlation - Regression')
 analysis = analyze_trends(trends_results)
 if one_keyword:
   csv_correlation = None
@@ -1484,6 +1487,7 @@ else:
 # Part 4 - ARIMA
 # *************************************************************************************
 
+banner_msg('Part 4 - ARIMA')
 # Call the arima_model function with the best parameters
 # mb: months back. Past
 # mf: months foward. future
@@ -1497,12 +1501,15 @@ csv_arima=arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0)
 # Part 5 - Seasonal Analisys
 # *************************************************************************************
 
+banner_msg('Part 5 - Seasonal Analisys')
 seasonal_analysis('last_10_years_data')
 
 # *************************************************************************************
 # Part 6 - Fourier Analisys
 # *************************************************************************************
 
+
+banner_msg('Part 6 - Fourier Analisys')
 csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
 # to chage Y axis to log fo to line 131 in all functions
 
@@ -1511,6 +1518,7 @@ csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_1
 # AI Analysis
 # *************************************************************************************
 
+banner_msg('Part 7 - AI Analysis')
 api_key_name = 'GOOGLE_API_KEY'
 
 def gemini_prompt(system_prompt,prompt,m='flash'):
@@ -1555,25 +1563,29 @@ def gemini_prompt(system_prompt,prompt,m='flash'):
 prompt_sp=f'Translate this Markdown text to spanish, using an academic language, and an enterprise approach. \
 If you found any of this words: {",".join(all_keywords)}, please do not translate it. This is the text: '
 
+f_system_prompt = system_prompt.format(dbs=actual_menu)
+
 p_1 = prompt_1.format(all_kw, \
                       csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data, csv_last_year_data, \
                       all_kw, csv_means_trends)
 n=0
 n+=1
 print(f'\n\n\n{n}. Analizing Temporal Trends...')
-gem_temporal_trends=gemini_prompt(system_prompt,p_1)
+gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
 prompt_spanish=f'{prompt_sp} {gem_temporal_trends}'
-gem_temporal_trends_sp=gemini_prompt(system_prompt,prompt_spanish)
-display(Markdown(gem_temporal_trends_sp))
+gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+#display(Markdown(gem_temporal_trends_sp))
+print(Markdown(gem_temporal_trends_sp))
 
 if not one_keyword:
   n+=1
   p_2 = prompt_2.format(all_kw, csv_correlation, csv_regression)
   print(f'\n\n\n{n}. Analizing Cross-Keyword Relationships...')
-  gem_cross_keyword=gemini_prompt(system_prompt,p_2)
+  gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
   prompt_spanish=f'{prompt_sp} {gem_cross_keyword}'
-  gem_cross_keyword_sp=gemini_prompt(system_prompt,prompt_spanish)
-  display(Markdown(gem_cross_keyword_sp))
+  gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+  #display(Markdown(gem_cross_keyword_sp))
+  print(Markdown(gem_cross_keyword_sp))
 else:
   gem_cross_keyword=""
   csv_correlation=""
@@ -1582,41 +1594,46 @@ else:
 n+=1
 p_3 = prompt_3.format(csv_means_trends, csv_correlation, csv_regression)
 print(f'\n\n\n{n}. Analizing Industry-Specific Trends...')
-gem_industry_specific=gemini_prompt(system_prompt,p_3)
+gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
 prompt_spanish=f'{prompt_sp} {gem_industry_specific}'
-gem_industry_specific_sp=gemini_prompt(system_prompt,prompt_spanish)
-display(Markdown(gem_industry_specific_sp))
+gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+#display(Markdown(gem_industry_specific_sp))
+print(Markdown(gem_industry_specific_sp))
 
 n+=1
 p_4 = prompt_4.format(csv_arima)
 print(f'\n\n\n{n}. Analizing ARIMA Model Performance...')
-gem_arima=gemini_prompt(system_prompt,p_4)
+gem_arima=gemini_prompt(f_system_prompt,p_4)
 prompt_spanish=f'{prompt_sp} {gem_arima}'
-gem_arima_sp=gemini_prompt(system_prompt,prompt_spanish)
-display(Markdown(gem_arima_sp))
+gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+#display(Markdown(gem_arima_sp))
+print(Markdown(gem_arima_sp))
 
 n+=1
 p_5 = prompt_5.format(csv_seasonal)
 print(f'\n\n\n{n}. Analizing Seasonal Patterns...\n')
-gem_seasonal=gemini_prompt(system_prompt,p_5)
+gem_seasonal=gemini_prompt(f_system_prompt,p_5)
 prompt_spanish=f'{prompt_sp} {gem_seasonal}'
-gem_seasonal_sp=gemini_prompt(system_prompt,prompt_spanish)
-display(Markdown(gem_seasonal_sp))
+gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+#display(Markdown(gem_seasonal_sp))
+print(Markdown(gem_seasonal_sp))
 
 n+=1
 p_6 = prompt_6.format(csv_fourier)
 print(f'\n\n\n{n}. Analizing Cyclical Patterns...\n')
-gem_fourier=gemini_prompt(system_prompt,p_6)
+gem_fourier=gemini_prompt(f_system_prompt,p_6)
 prompt_spanish=f'{prompt_sp} {gem_fourier}'
-gem_fourier_sp=gemini_prompt(system_prompt,prompt_spanish)
-display(Markdown(gem_fourier_sp))
+gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+#display(Markdown(gem_fourier_sp))
+print(Markdown(gem_fourier_sp))
 
 n+=1
 p_conclusions = prompt_conclusions.format(gem_temporal_trends, gem_cross_keyword, gem_industry_specific, gem_arima, gem_seasonal, gem_fourier)
 print(f'\n\n\n{n}. Synthesize Findings and Draw Conclusions...\n')
-gem_conclusions=gemini_prompt(system_prompt,p_conclusions)
+gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
 prompt_spanish=f'{prompt_sp} {gem_conclusions}'
-gem_conclusions_sp=gemini_prompt(system_prompt,prompt_spanish)
-display(Markdown(gem_conclusions_sp))
+gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+#display(Markdown(gem_conclusions_sp))
+print(Markdown(gem_conclusions_sp))
 
 report_pdf()
