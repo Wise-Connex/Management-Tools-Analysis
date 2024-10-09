@@ -58,3 +58,9 @@ source .venv/bin/activate
 ```
 python3 mta.py
 ```
+
+7. Update local repository
+
+```
+git pull
+```
