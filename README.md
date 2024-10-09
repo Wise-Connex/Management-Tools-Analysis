@@ -40,6 +40,12 @@ cd Management-Tools-Analysis
 deactivate
 ```
 
+5. Copy WV-VSCODE-Private.key to Management-Tool_analysis folder
+
+```
+cp WV-VSCODE-Private.key .
+```
+
 Remember activate the virtual environment when run the app for the first time:
 
 ```
@@ -47,7 +53,7 @@ cd Management-Tools-Analysis
 source .venv/bin/activate
 ```
 
-5. Run the application
+6. Run the application
 
 ```
 python3 mta.py
