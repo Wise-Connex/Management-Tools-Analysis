@@ -19,3 +19,4 @@ google.generativeai
 pmdarima
 python-dotenv
 IPython
+habanero
