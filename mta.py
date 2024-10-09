@@ -72,8 +72,8 @@ plt.ion()
 data_folder = 'data'
 if not os.path.exists(data_folder):
     os.makedirs(data_folder)
-    # Make the folder writable (0o666 is octal for rw-rw-rw-)
-    os.chmod(data_folder, 0o666)
+    # Make the folder writable (0o777 is octal for rwxrwxrwx)
+    os.chmod(data_folder, 0o777)
     
     
 # *************************************************************************************
@@ -265,18 +265,13 @@ def get_file_data(filename):
     df = pd.read_csv(local_file, index_col=0)  # Set the first column as index
     df.index = df.index.str.strip()  # Remove leading/trailing whitespace from index values
     # Convert the 'Year-Month' column to 'Year-Month-Day' format (assuming the day is 1)
-    match menu:
-      case 1:
-        df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-        #PPRINT(f'\n{df}')
-      case 2:
-        df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-        #PPRINT(f'df not interpolate:\n{df}')
-        for kw in all_keywords:
-          #df = bspline_interpolation(df, kw)
-          #df = cubic_interpolation(df, kw)
-          df = linear_interpolation(df, kw)
-        #PPRINT(f'{kw}\n{df}')
+    if menu == 2:
+      df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
+      for kw in all_keywords:
+        df = linear_interpolation(df, kw)
+    else:
+      df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
+
 
     # Close SFTP and SSH connections
     sftp.close()
@@ -325,6 +320,10 @@ def report_pdf():
     year_adjust = 2
     data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
     data_txt += csv_all_data + "\n"
+  elif menu == 4:
+    year_adjust = 2
+    data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
+    data_txt += csv_all_data + "\n"
   data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
   data_txt += csv_last_20_data + "\n"
   data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
@@ -363,6 +362,9 @@ def report_pdf():
   if menu == 2:
     start_year = current_year-70+year_adjust
     end_year = current_year-year_adjust
+  elif menu == 4:
+    start_year = current_year-74
+    end_year = current_year
   else:
     start_year = current_year-20
     end_year = current_year
@@ -697,11 +699,10 @@ def process_data(data):
   Returns:
     A pandas Series containing the normalized mean values.
   """
-  match menu:
-    case 2:
-      mean = data.mean()
-    case 1:
-      mean = round(data.mean(),2)
+  if menu == 2:
+    mean = data.mean()
+  else:
+    mean = round(data.mean(), 2)
   return mean
 
 #  Fetches and processes Google Trends data for different time periods.
@@ -893,7 +894,7 @@ def relative_comparison():
     # Create grid spec to allow uneven column widths and space for legend
     total_graphs = 6
     h_r = [0.2, 1, 1, 1, 1, 1]
-    if menu == 2:
+    if menu == 2 or menu == 4:
       period = 72
       total_graphs = 7
       h_r = [0.2, 1, 1, 1, 1, 1, 1]
@@ -909,7 +910,7 @@ def relative_comparison():
 
     i = 1
     # all data
-    if menu == 2:
+    if menu == 2 or menu == 4:
       ax1 = fig.add_subplot(gs[i, axODD])
       ax2 = fig.add_subplot(gs[i, axEVEN])
       setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, 'Período de ' + str(period) + ' años\n(' + str(current_year - period) + '-' + str(current_year) + ')')
@@ -953,7 +954,7 @@ def relative_comparison():
     setup_bar_subplot(ax12, trends_results['mean_last_year'], '')
 
     # Add legend at the bottom, outside of the plots
-    if menu == 2:
+    if menu == 2 or menu == 4:
       handles, labels = ax1.get_legend_handles_labels()
     else:
       handles, labels = ax3.get_legend_handles_labels()
@@ -984,10 +985,9 @@ def calculate_yearly_average(data):
     yearly_average = np.mean(year_data)
     yearly_averages.append(yearly_average)
 
-  match menu:
-    case 2:
+  if menu == 2:
       overall_average = np.mean(np.float64(yearly_averages))
-    case 1:
+  else:
       overall_average = round(np.mean(yearly_averages), 2)
   return overall_average
 
@@ -1043,8 +1043,8 @@ def check_trends2(kw):
                     avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
     ax.set_xticks(x_positions)
     ax.set_xticklabels(keywords)
-    ax.set_ylabel('Media de Interés de Búsqueda')
-    ax.set_title(f'Media de Interés de Búsqueda a lo largo del tiempo de:\n{kw}')
+    ax.set_ylabel('Media')
+    ax.set_title(f'Media a lo largo del tiempo de:\n{kw} según {actual_menu}')
     # Add labels over each bar
     def add_labels(rects, avg, position):
         for rect in rects:
@@ -1439,7 +1439,7 @@ if len(all_keywords) < 2:
     one_keyword = True # Set one keyword
 trends_results = process_file_data(all_keywords, data_filename)
 print(all_keywords)
-if menu==2:
+if menu==2 or menu==4:
   csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
 csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
 csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
@@ -1454,7 +1454,7 @@ unique_folder = os.path.join(data_folder, filename)
 if not os.path.exists(unique_folder):
     os.makedirs(unique_folder)
     # Make the unique folder writable
-    os.chmod(unique_folder, 0o666)
+    os.chmod(unique_folder, 0o777)
 
 
 
