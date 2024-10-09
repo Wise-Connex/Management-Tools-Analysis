@@ -34,6 +34,12 @@ tool_file_dic = {
         "GB_Strategic_Planning.csv", 
         "", 
         "CR_Strategic_Planning.csv"],
+    "Balanced Scorecard":
+        ["",
+        ["Balanced Scorecard"],
+        "",
+        "",
+        "CR_Balanced_Scorecard.csv"],
     "Outsourcing - Six Sigma": 
         ["outsourcingsixsigma.csv", 
         ["Outsourcing", "Six Sigma"],
