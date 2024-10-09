@@ -18,13 +18,13 @@ git clone https://github.com/Wise-Connex/Management-Tools-Analysis.git
 
 ```
 cd Management-Tools-Analysis
-python -m venv ./
+python -m venv .venv
 ```
 
 3. Activate the Virtual Environment
 
 ```
-source ./bin/activate
+source .venv/bin/activate
 ```
 
 4. Install the dependencies
@@ -33,7 +33,7 @@ source ./bin/activate
 pip install -r requirements.txt
 ```
 
-To deactivate the virtual environment
+> Note: To deactivate the virtual environment
 
 ```
 cd Management-Tools-Analysis
@@ -44,7 +44,7 @@ Remember activate the virtual environment when run the app for the first time:
 
 ```
 cd Management-Tools-Analysis
-source ./bin/activate
+source .venv/bin/activate
 ```
 
 5. Run the application
