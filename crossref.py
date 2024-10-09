@@ -20,15 +20,28 @@ def get_crossref_data(keyword):
     results = []
     
     current_year = datetime.now().year
-    query_result = cr.works(query=keyword, select=['published', 'abstract'], limit=1000, 
-                            filter={'from-pub-date': '1950', 'until-pub-date': str(current_year)})
+    batch_size = 1000
+    cursor = '*'
     
-    for item in query_result['message']['items']:
-        if 'published' in item and 'date-parts' in item['published']:
-            date = item['published']['date-parts'][0]
-            if len(date) >= 2:
-                year, month = date[0], date[1]
-                results.append((datetime(year, month, 1), 1))
+    while cursor:
+        query_result = cr.works(query=keyword, select=['published', 'abstract'], 
+                                limit=batch_size, cursor=cursor,
+                                filter={'from-pub-date': '1950', 'until-pub-date': str(current_year)})
+        
+        items = query_result['message']['items']
+        if not items:
+            break
+        
+        for item in items:
+            if 'published' in item and 'date-parts' in item['published']:
+                date = item['published']['date-parts'][0]
+                if len(date) >= 2:
+                    year, month = date[0], date[1]
+                    results.append((datetime(year, month, 1), 1))
+        
+        cursor = query_result.get('message', {}).get('next-cursor')
+        if not cursor:
+            break
     
     return results
 
