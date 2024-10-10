@@ -1,78 +1,92 @@
 import requests
 import csv
 from datetime import datetime, timedelta
-import paramiko
-from io import StringIO
-from habanero import Crossref
 import logging
 import os
+import time
+from urllib.parse import quote_plus
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 def get_crossref_data(keyword):
-    """
-    Retrieves publication data from Crossref based on the given keyword.
-    
-    Args:
-    keyword (str): The search term to query Crossref.
-    
-    Returns:
-    list of tuples: Each tuple contains (datetime, count), where datetime is the publication date
-                    and count is always 1 (representing one publication).
-    """
-    cr = Crossref()
     results = []
     
     current_year = datetime.now().year
-    batch_size = 1000
+    rows = 1000
     cursor = '*'
+    total_items = 0
+    max_results = 1000000  # Set a high limit to ensure we get all results
     
-    logger.debug(f"Iniciando consulta de Crossref para la palabra clave: {keyword}")
+    encoded_keyword = quote_plus(keyword)
+    base_url = "https://api.crossref.org/works"
     
-    while cursor:
-        logger.debug(f"Consultando Crossref con cursor: {cursor}")
-        query_result = cr.works(query=keyword, select=['published', 'abstract'], 
-                                limit=batch_size, cursor=cursor,
-                                filter={'from-pub-date': '1950', 'until-pub-date': str(current_year)})
+    logger.debug(f"Iniciando consulta de Crossref para la palabra clave codificada: {encoded_keyword}")
+    
+    # Initialize batch counter and total batches
+    batch_counter = 0
+    total_batches = None
+
+    while cursor and total_items < max_results:
+        batch_counter += 1
+        #logger.debug(f"Consultando Crossref con cursor: {cursor}")
+        try:
+            params = {
+                'query': encoded_keyword,
+                'rows': rows,
+                'cursor': cursor,
+                'filter': f'from-pub-date:1950,until-pub-date:{current_year}',
+                'select': 'published'
+            }
+            response = requests.get(base_url, params=params)
+            response.raise_for_status()
+            data = response.json()
+            
+            message = data.get('message', {})
+            items = message.get('items', [])
+            next_cursor = message.get('next-cursor')
+            total_results = message.get('total-results', 0)
+            
+            # Calculate total batches if not done yet
+            if total_batches is None:
+                total_batches = -(-total_results // rows)  # Ceiling division
+                logger.debug(f"Total de resultados esperados: {total_results}")
+                logger.debug(f"Número total de batches esperados: {total_batches}")
+            
+            logger.debug(f"Procesando batch {batch_counter} de {total_batches}")
+            logger.debug(f"Se obtuvieron {len(items)} elementos en este batch")
+            
+            # Add this check to break the loop if we've processed all batches
+            if batch_counter >= total_batches:
+                logger.debug("Se han procesado todos los batches esperados. Terminando el bucle.")
+                break
+
+            selected_items = 0
+            for item in items:
+                if 'published' in item and 'date-parts' in item['published']:
+                    date = item['published']['date-parts'][0]
+                    if len(date) >= 2:
+                        year, month = date[0], date[1]
+                        results.append((datetime(year, month, 1), 1))
+                        selected_items += 1
+                else:
+                    logger.debug(f"Se omitió un elemento debido a fecha faltante o inválida: {item.get('published', 'Sin datos de publicación')}")
+            
+            total_items += len(items)
+            logger.debug(f"En este batch se trajeron {len(items)} elementos y se seleccionaron {selected_items}")
+            
+            cursor = next_cursor
+            if not cursor:
+                logger.debug("No hay más resultados, terminando el bucle")
+                break
+            
+            time.sleep(1)  # Add a small delay to avoid hitting rate limits
         
-        # Check if query_result is a list or a dictionary
-        if isinstance(query_result, list):
-            items = query_result
-            logger.debug(f"El resultado de la consulta es una lista con {len(items)} elementos")
-            # If it's a list, we need to extract the actual items
-            if items and isinstance(items[0], dict) and 'message' in items[0]:
-                items = items[0].get('message', {}).get('items', [])
-                logger.debug(f"Se extrajeron {len(items)} elementos de la lista")
-        else:
-            items = query_result.get('message', {}).get('items', [])
-            logger.debug(f"El resultado de la consulta es un diccionario con {len(items)} elementos")
-        
-        if not items:
-            logger.debug("No se encontraron elementos en este lote, terminando el bucle")
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error al consultar Crossref: {str(e)}")
             break
-        
-        for item in items:
-            if isinstance(item, dict) and 'published' in item and 'date-parts' in item['published']:
-                date = item['published']['date-parts'][0]
-                if len(date) >= 2:
-                    year, month = date[0], date[1]
-                    results.append((datetime(year, month, 1), 1))
-            else:
-                logger.debug(f"Se omitió un elemento debido a fecha faltante o inválida: {item.get('published', 'Sin datos de publicación')}")
-        
-        # Update cursor for next iteration
-        if isinstance(query_result, dict):
-            cursor = query_result.get('message', {}).get('next-cursor')
-            logger.debug(f"Cursor actualizado a: {cursor}")
-        else:
-            cursor = None
-            logger.debug("No se encontró cursor, finalizando consulta")
-        
-        if not cursor:
-            logger.debug("No hay más resultados, terminando el bucle")
-            break
     
+    logger.debug(f"Total de elementos consultados: {total_items}")
     logger.debug(f"Total de resultados recolectados: {len(results)}")
     return results
 
