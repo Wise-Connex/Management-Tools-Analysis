@@ -4,6 +4,10 @@ from datetime import datetime, timedelta
 import paramiko
 from io import StringIO
 from habanero import Crossref
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 def get_crossref_data(keyword):
     """
@@ -23,26 +27,56 @@ def get_crossref_data(keyword):
     batch_size = 1000
     cursor = '*'
     
+    logger.debug(f"Starting Crossref query for keyword: {keyword}")
+    
     while cursor:
+        logger.debug(f"Querying Crossref with cursor: {cursor}")
         query_result = cr.works(query=keyword, select=['published', 'abstract'], 
                                 limit=batch_size, cursor=cursor,
                                 filter={'from-pub-date': '1950', 'until-pub-date': str(current_year)})
         
-        items = query_result['message']['items']
+        logger.debug(f"Query result type: {type(query_result)}")
+        
+        # Check if query_result is a list or a dictionary
+        if isinstance(query_result, list):
+            items = query_result
+            logger.debug(f"Query result is a list with {len(items)} items")
+            # If it's a list, we need to extract the actual items
+            if items and isinstance(items[0], dict) and 'message' in items[0]:
+                items = items[0].get('message', {}).get('items', [])
+                logger.debug(f"Extracted {len(items)} items from the list")
+        else:
+            items = query_result.get('message', {}).get('items', [])
+            logger.debug(f"Query result is a dictionary with {len(items)} items")
+        
         if not items:
+            logger.debug("No items found in this batch, breaking the loop")
             break
         
         for item in items:
-            if 'published' in item and 'date-parts' in item['published']:
+            logger.debug(f"Processing item: {item}")
+            if isinstance(item, dict) and 'published' in item and 'date-parts' in item['published']:
                 date = item['published']['date-parts'][0]
                 if len(date) >= 2:
                     year, month = date[0], date[1]
                     results.append((datetime(year, month, 1), 1))
+                    logger.debug(f"Added result for date: {year}-{month}")
+            else:
+                logger.debug(f"Skipped item due to missing or invalid date: {item.get('published', 'No published data')}")
         
-        cursor = query_result.get('message', {}).get('next-cursor')
+        # Update cursor for next iteration
+        if isinstance(query_result, dict):
+            cursor = query_result.get('message', {}).get('next-cursor')
+            logger.debug(f"Updated cursor to: {cursor}")
+        else:
+            cursor = None
+            logger.debug("No cursor found, ending query")
+        
         if not cursor:
+            logger.debug("No more results, breaking the loop")
             break
     
+    logger.debug(f"Total results collected: {len(results)}")
     return results
 
 def group_by_month(data):
@@ -142,7 +176,11 @@ def main(keyword, hostname, username, private_key_path, port, remotepath):
     """
     print(f"Retrieving data for keyword: {keyword}")
     data = get_crossref_data(keyword)
-    print(f"Data retrieved: {data}")
+    print(f"Data retrieved: {len(data)} items")
+    if data:
+        print("Sample of data:")
+        for item in data[:5]:  # Print first 5 items
+            print(item)
     grouped_data = group_by_month(data)
     csv_content = save_to_csv(grouped_data, keyword)
     
