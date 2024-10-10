@@ -5,6 +5,7 @@ import paramiko
 from io import StringIO
 from habanero import Crossref
 import logging
+import os
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -27,56 +28,52 @@ def get_crossref_data(keyword):
     batch_size = 1000
     cursor = '*'
     
-    logger.debug(f"Starting Crossref query for keyword: {keyword}")
+    logger.debug(f"Iniciando consulta de Crossref para la palabra clave: {keyword}")
     
     while cursor:
-        logger.debug(f"Querying Crossref with cursor: {cursor}")
+        logger.debug(f"Consultando Crossref con cursor: {cursor}")
         query_result = cr.works(query=keyword, select=['published', 'abstract'], 
                                 limit=batch_size, cursor=cursor,
                                 filter={'from-pub-date': '1950', 'until-pub-date': str(current_year)})
         
-        logger.debug(f"Query result type: {type(query_result)}")
-        
         # Check if query_result is a list or a dictionary
         if isinstance(query_result, list):
             items = query_result
-            logger.debug(f"Query result is a list with {len(items)} items")
+            logger.debug(f"El resultado de la consulta es una lista con {len(items)} elementos")
             # If it's a list, we need to extract the actual items
             if items and isinstance(items[0], dict) and 'message' in items[0]:
                 items = items[0].get('message', {}).get('items', [])
-                logger.debug(f"Extracted {len(items)} items from the list")
+                logger.debug(f"Se extrajeron {len(items)} elementos de la lista")
         else:
             items = query_result.get('message', {}).get('items', [])
-            logger.debug(f"Query result is a dictionary with {len(items)} items")
+            logger.debug(f"El resultado de la consulta es un diccionario con {len(items)} elementos")
         
         if not items:
-            logger.debug("No items found in this batch, breaking the loop")
+            logger.debug("No se encontraron elementos en este lote, terminando el bucle")
             break
         
         for item in items:
-            logger.debug(f"Processing item: {item}")
             if isinstance(item, dict) and 'published' in item and 'date-parts' in item['published']:
                 date = item['published']['date-parts'][0]
                 if len(date) >= 2:
                     year, month = date[0], date[1]
                     results.append((datetime(year, month, 1), 1))
-                    logger.debug(f"Added result for date: {year}-{month}")
             else:
-                logger.debug(f"Skipped item due to missing or invalid date: {item.get('published', 'No published data')}")
+                logger.debug(f"Se omitió un elemento debido a fecha faltante o inválida: {item.get('published', 'Sin datos de publicación')}")
         
         # Update cursor for next iteration
         if isinstance(query_result, dict):
             cursor = query_result.get('message', {}).get('next-cursor')
-            logger.debug(f"Updated cursor to: {cursor}")
+            logger.debug(f"Cursor actualizado a: {cursor}")
         else:
             cursor = None
-            logger.debug("No cursor found, ending query")
+            logger.debug("No se encontró cursor, finalizando consulta")
         
         if not cursor:
-            logger.debug("No more results, breaking the loop")
+            logger.debug("No hay más resultados, terminando el bucle")
             break
     
-    logger.debug(f"Total results collected: {len(results)}")
+    logger.debug(f"Total de resultados recolectados: {len(results)}")
     return results
 
 def group_by_month(data):
@@ -155,6 +152,33 @@ def main(keyword):
     filepath = save_to_local_csv(grouped_data, keyword)
     print(f"Data saved to local file: {filepath}")
 
+def process_file(filename):
+    """
+    Procesa cada línea del archivo como una palabra clave.
+    
+    Args:
+    filename (str): Nombre del archivo que contiene las palabras clave.
+    
+    Returns:
+    None
+    """
+    with open(filename, 'r') as file:
+        keywords = file.read().splitlines()
+    
+    for keyword in keywords:
+        print(f"\nProcesando palabra clave: {keyword}")
+        main(keyword)
+
 if __name__ == "__main__":
-    keyword = input("Por favor, ingrese la Herramienta Gerencial a buscar: ")
-    main(keyword)
+    opcion = input("Elija una opción:\n1. Cargar palabras clave desde archivo 'tools.txt'\n2. Ingresar una palabra clave específica\nOpción: ")
+    
+    if opcion == "1":
+        if os.path.exists("tools.txt"):
+            process_file("tools.txt")
+        else:
+            print("El archivo 'tools.txt' no existe. Por favor, créelo y vuelva a intentar.")
+    elif opcion == "2":
+        keyword = input("Por favor, ingrese la Herramienta Gerencial a buscar: ")
+        main(keyword)
+    else:
+        print("Opción no válida. Por favor, elija 1 o 2.")
