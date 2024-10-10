@@ -14,7 +14,7 @@ env/
 .ipynb_checkpoints
 
 # Data files
-*.csv
+data/
 *.xlsx
 *.xls
 
@@ -45,9 +45,6 @@ unique_folder/
 # Private keys
 *.key
 
-# Google Drive mount point (if applicable)
-/content/drive/
-
 # Compiled Python files
 *.pyc
 
@@ -62,12 +59,7 @@ unique_folder/
 *.pdf
 
 # Dependency directories
-lib/
-libs/
-bin/
-include/
 share/
-pmdarima/
 
 #TO DO
 todo.md

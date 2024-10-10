@@ -107,69 +107,39 @@ def group_by_month(data):
     
     return grouped
 
-def save_to_csv(data, keyword):
+def save_to_local_csv(data, keyword):
     """
-    Converts the grouped data into CSV format.
+    Saves the grouped data into a CSV file in the local 'dbase' folder.
     
     Args:
     data (dict): The grouped data as returned by group_by_month.
-    keyword (str): The search keyword used, which becomes a column header.
+    keyword (str): The search keyword used, which becomes part of the filename.
     
     Returns:
-    str: CSV formatted string of the data.
+    str: The path to the saved CSV file.
     """
-    csv_data = StringIO()
-    writer = csv.writer(csv_data)
-    writer.writerow(["Date", keyword])
-    for date, count in sorted(data.items()):
-        writer.writerow([date, count])
-    return csv_data.getvalue()
+    import os
+    
+    # Ensure the 'dbase' directory exists
+    os.makedirs('dbase', exist_ok=True)
+    
+    filename = f"CR_{keyword.replace(' ', '_')}.csv"
+    filepath = os.path.join('dbase', filename)
+    
+    with open(filepath, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Date", keyword])
+        for date, count in sorted(data.items()):
+            writer.writerow([date, count])
+    
+    return filepath
 
-def upload_to_ftp(csv_content, filename, hostname, username, private_key_path, port, remotepath):
-    """
-    Uploads the CSV content to an FTP server using SFTP.
-    
-    Args:
-    csv_content (str): The CSV data to upload.
-    filename (str): The name of the file to create on the server.
-    hostname (str): The FTP server's hostname or IP address.
-    username (str): The username for FTP authentication.
-    private_key_path (str): Path to the private key file for authentication.
-    port (int): The port number for the FTP connection.
-    remotepath (str): The path on the remote server where the file should be uploaded.
-    
-    Returns:
-    None
-    """
-    ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(hostname, port=port, username=username, key_filename=private_key_path)
-
-    ftp = ssh.open_sftp()
-    full_path = remotepath + filename
-    # Check if file exists and remove it
-    try:
-        ftp.stat(full_path)
-        ftp.remove(full_path)
-    except IOError:
-        pass  # File doesn't exist, so we can proceed to create it
-    
-    with ftp.file(full_path, "w") as f:
-        f.write(csv_content)
-    ftp.close()
-    ssh.close()
-    
-def main(keyword, hostname, username, private_key_path, port, remotepath):
+def main(keyword):
     """
     Main function that orchestrates the entire process.
     
     Args:
     keyword (str): The search term for Crossref query.
-    hostname (str): The FTP server's hostname or IP address.
-    username (str): The username for FTP authentication.
-    private_key_path (str): Path to the private key file for authentication.
-    port (int): The port number for the FTP connection.
-    remotepath (str): The path on the remote server where the file should be uploaded.
     
     Returns:
     None
@@ -182,18 +152,9 @@ def main(keyword, hostname, username, private_key_path, port, remotepath):
         for item in data[:5]:  # Print first 5 items
             print(item)
     grouped_data = group_by_month(data)
-    csv_content = save_to_csv(grouped_data, keyword)
-    
-    filename = f"CR_{keyword.replace(' ', '_')}.csv"
-    print(f"Uploading data to FTP server: {filename}")
-    upload_to_ftp(csv_content, filename, hostname, username, private_key_path, port, remotepath)
-    print("Upload complete")
+    filepath = save_to_local_csv(grouped_data, keyword)
+    print(f"Data saved to local file: {filepath}")
 
 if __name__ == "__main__":
     keyword = input("Por favor, ingrese la Herramienta Gerencial a buscar: ")
-    hostname = "129.146.107.0"
-    username = "ubuntu"
-    private_key_path = "./WC-VSCODE-Private.key"
-    remotepath = "/home/ubuntu/GTrendsData/"
-    port = 22
-    main(keyword, hostname, username, private_key_path, port, remotepath)
+    main(keyword)

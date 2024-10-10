@@ -243,39 +243,28 @@ def get_user_selections(dictionary, option):
   return selected_data_file_name, selected_strings
 
 def get_file_data(filename):
-    # Replace with your SFTP server's hostname, port, username, and private key path
-    hostname = "129.146.107.0"
-    port = 22
-    username = "ubuntu"
-    private_key_path = "./WC-VSCODE-Private.key"
-    remotepath = "/home/ubuntu/GTrendsData/"
-    # Create an SSH client object
-    ssh = paramiko.SSHClient()
-    # Allow SSH client to accept unknown hosts (adjust as needed for security)
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    # Connect to the SFTP server using the private key
-    ssh.connect(hostname, port=port, username=username, key_filename=private_key_path)
-    # Open an SFTP client object
-    sftp = ssh.open_sftp()
-    # Download the CSV file
-    remote_file = remotepath + filename
-    local_file = filename
-    sftp.get(remote_file, local_file)
+    # Path to the local 'dbase' folder
+    local_path = "./dbase/"
+    
+    # Construct the full path to the CSV file
+    file_path = os.path.join(local_path, filename)
+    
+    # Check if the file exists
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"The file {filename} does not exist in the 'dbase' folder.")
+    
     # Read the CSV file into a pandas DataFrame
-    df = pd.read_csv(local_file, index_col=0)  # Set the first column as index
+    df = pd.read_csv(file_path, index_col=0)  # Set the first column as index
     df.index = df.index.str.strip()  # Remove leading/trailing whitespace from index values
+    
     # Convert the 'Year-Month' column to 'Year-Month-Day' format (assuming the day is 1)
     if menu == 2:
-      df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-      for kw in all_keywords:
-        df = linear_interpolation(df, kw)
+        df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
+        for kw in all_keywords:
+            df = linear_interpolation(df, kw)
     else:
-      df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-
-
-    # Close SFTP and SSH connections
-    sftp.close()
-    ssh.close()
+        df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
+    
     return df
 
 def PPRINT(msg = None):
@@ -1428,8 +1417,21 @@ print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
 # *****************************************************************************************************************
 
 # ********* OVER TIME CHART TITLES **********
-title_odd_charts = 'Interés relativo\na lo largo del tiempo'
-title_even_charts = 'Interés relativo\npara el período'
+if menu == 1:
+  title_odd_charts = 'Interés relativo\na lo largo del tiempo'
+  title_even_charts = 'Interés relativo\npara el período'
+if menu == 2:
+  title_odd_charts = 'Publicaciones Generales relativas\na lo largo del tiempo'
+  title_even_charts = 'Publicaciones Generales relativas\npara el período'
+if menu == 3:
+  title_odd_charts = 'Usabilidad relativa\na lo largo del tiempo'
+  title_even_charts = 'usabilidad relativa\npara el período'
+if menu == 4:
+  title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
+  title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
+
+
+ 
 # ********************************************
 
 # Set the flag based on the count of keywords
