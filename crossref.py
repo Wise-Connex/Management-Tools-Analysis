@@ -147,8 +147,8 @@ def save_to_local_csv(data, keywords):
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     keyword_hash = hashlib.md5(keywords[0].encode()).hexdigest()[:6]
     
-    # Use only the first keyword
-    keyword_prefix = keywords[0][:10]
+    # Use only the first keyword, replace spaces with underscores
+    keyword_prefix = keywords[0][:10].replace(' ', '_')
     
     # Create filename, ensuring it's no longer than 20 characters
     filename = f"CR_{keyword_prefix}_{keyword_hash}_{timestamp}"
