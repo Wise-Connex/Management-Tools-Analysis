@@ -885,6 +885,8 @@ def relative_comparison():
     h_r = [0.2, 1, 1, 1, 1, 1]
     if menu == 2 or menu == 4:
       period = 72
+      if menu == 4:
+        period = 74
       total_graphs = 7
       h_r = [0.2, 1, 1, 1, 1, 1, 1]
 
