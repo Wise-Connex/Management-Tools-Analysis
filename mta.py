@@ -1022,10 +1022,14 @@ def check_trends2(kw):
                     avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
     bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
 
+    if menu == 2:
+      years2 = 0
+    if menu == 4:
+      years2 = 2
     # Create bars
     rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
             for pos, width, avg, years, color in zip(bar_positions, bar_widths, [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                    [72, 20, 15, 10, 5, 1],
+                                                    [72+years2, 20, 15, 10, 5, 1],
                                                     ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
 
         # Set the x-axis labels and title
