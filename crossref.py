@@ -78,7 +78,7 @@ def get_crossref_data(keywords):
                     logger.debug(f"Se omitió un elemento debido a fecha faltante o inválida: {item.get('published', 'Sin datos de publicación')}")
             
             total_items += len(items)
-            logger.debug(f"En este batch se trajeron {len(items)} elementos y se seleccionaron {selected_items}")
+            logger.debug(f"En este batch se trajeron {len(items)} elementos y se seleccionaron {selected_items}\n\n")
             
             # Check if we've processed all expected batches
             if batch_counter >= total_batches:
@@ -144,16 +144,16 @@ def save_to_local_csv(data, keywords):
     # Ensure the 'dbase' directory exists
     os.makedirs('dbase', exist_ok=True)
     
-    # Create a unique identifier using the first few chars of each keyword and a timestamp
+    # Create a unique identifier using the first keyword and a timestamp
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-    keyword_hash = hashlib.md5('_'.join(keywords).encode()).hexdigest()[:6]
+    keyword_hash = hashlib.md5(keywords[0].encode()).hexdigest()[:6]
     
-    # Combine the first 3 chars of each keyword (up to 3 keywords)
-    keyword_prefix = '_'.join(kw[:3] for kw in keywords[:3])
+    # Use only the first keyword
+    keyword_prefix = keywords[0][:10]
     
-    # Create filename, ensuring it's no longer than 25 characters
-    filename = f"CR_{keyword_prefix}_{keyword_hash}_{timestamp}.csv"
-    filename = filename[:25] + '.csv'  # Truncate to 25 chars and add .csv extension
+    # Create filename, ensuring it's no longer than 20 characters
+    filename = f"CR_{keyword_prefix}_{keyword_hash}_{timestamp}"
+    filename = filename[:20] + '.csv'  # Truncate to 16 chars and add .csv extension
     
     filepath = os.path.join('dbase', filename)
     
