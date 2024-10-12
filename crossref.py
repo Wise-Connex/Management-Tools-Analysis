@@ -4,12 +4,13 @@ from datetime import datetime, timedelta
 import logging
 import os
 import time
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urlencode
+import hashlib  # Add this import at the top of the file with other imports
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-def get_crossref_data(keyword):
+def get_crossref_data(keywords):
     results = []
     
     current_year = datetime.now().year
@@ -18,10 +19,15 @@ def get_crossref_data(keyword):
     total_items = 0
     max_results = 1000000  # Set a high limit to ensure we get all results
     
-    encoded_keyword = quote_plus(keyword)
+    # Ensure keywords is a list, even if it's a single keyword
+    if isinstance(keywords, str):
+        keywords = [keywords]
+    
+    # Join keywords with 'OR' instead of commas
+    encoded_keywords = ' OR '.join(quote_plus(kw.strip()) for kw in keywords)
     base_url = "https://api.crossref.org/works"
     
-    logger.debug(f"Iniciando consulta de Crossref para la palabra clave codificada: {encoded_keyword}")
+    logger.debug(f"Iniciando consulta de Crossref para las palabras clave: {encoded_keywords}")
     
     # Initialize batch counter and total batches
     batch_counter = 0
@@ -29,16 +35,20 @@ def get_crossref_data(keyword):
 
     while cursor and total_items < max_results:
         batch_counter += 1
-        #logger.debug(f"Consultando Crossref con cursor: {cursor}")
         try:
             params = {
-                'query': encoded_keyword,
+                'query': encoded_keywords,
                 'rows': rows,
                 'cursor': cursor,
                 'filter': f'from-pub-date:1950,until-pub-date:{current_year}',
-                'select': 'published'
+                'select': 'DOI,title,published'  # Removed 'keyword' from select
             }
-            response = requests.get(base_url, params=params)
+            
+            full_url = f"{base_url}?{urlencode(params)}"
+            
+            logger.debug(f"Requesting URL: {full_url}")
+            
+            response = requests.get(full_url)
             response.raise_for_status()
             data = response.json()
             
@@ -53,14 +63,9 @@ def get_crossref_data(keyword):
                 logger.debug(f"Total de resultados esperados: {total_results}")
                 logger.debug(f"Número total de batches esperados: {total_batches}")
             
-            logger.debug(f"Procesando batch {batch_counter} de {total_batches}")
+            logger.debug(f"\nProcesando batch {batch_counter} de {total_batches}")
             logger.debug(f"Se obtuvieron {len(items)} elementos en este batch")
             
-            # Add this check to break the loop if we've processed all batches
-            if batch_counter >= total_batches:
-                logger.debug("Se han procesado todos los batches esperados. Terminando el bucle.")
-                break
-
             selected_items = 0
             for item in items:
                 if 'published' in item and 'date-parts' in item['published']:
@@ -75,6 +80,11 @@ def get_crossref_data(keyword):
             total_items += len(items)
             logger.debug(f"En este batch se trajeron {len(items)} elementos y se seleccionaron {selected_items}")
             
+            # Check if we've processed all expected batches
+            if batch_counter >= total_batches:
+                logger.debug("Se han procesado todos los batches esperados. Terminando el bucle.")
+                break
+            
             cursor = next_cursor
             if not cursor:
                 logger.debug("No hay más resultados, terminando el bucle")
@@ -84,7 +94,9 @@ def get_crossref_data(keyword):
         
         except requests.exceptions.RequestException as e:
             logger.error(f"Error al consultar Crossref: {str(e)}")
-            break
+            logger.error(f"URL de la solicitud: {full_url}")
+            logger.error(f"Respuesta del servidor: {response.text}")  # Log the response text
+            return None  # Return None instead of breaking the loop
     
     logger.debug(f"Total de elementos consultados: {total_items}")
     logger.debug(f"Total de resultados recolectados: {len(results)}")
@@ -118,57 +130,105 @@ def group_by_month(data):
     
     return grouped
 
-def save_to_local_csv(data, keyword):
+def save_to_local_csv(data, keywords):
     """
     Saves the grouped data into a CSV file in the local 'dbase' folder.
     
     Args:
     data (dict): The grouped data as returned by group_by_month.
-    keyword (str): The search keyword used, which becomes part of the filename.
+    keywords (list): The search keywords used.
     
     Returns:
     str: The path to the saved CSV file.
     """
-    import os
-    
     # Ensure the 'dbase' directory exists
     os.makedirs('dbase', exist_ok=True)
     
-    filename = f"CR_{keyword.replace(' ', '_')}.csv"
+    # Create a unique identifier using the first few chars of each keyword and a timestamp
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    keyword_hash = hashlib.md5('_'.join(keywords).encode()).hexdigest()[:6]
+    
+    # Combine the first 3 chars of each keyword (up to 3 keywords)
+    keyword_prefix = '_'.join(kw[:3] for kw in keywords[:3])
+    
+    # Create filename, ensuring it's no longer than 25 characters
+    filename = f"CR_{keyword_prefix}_{keyword_hash}_{timestamp}.csv"
+    filename = filename[:25] + '.csv'  # Truncate to 25 chars and add .csv extension
+    
     filepath = os.path.join('dbase', filename)
     
     with open(filepath, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Date", keyword])
+        writer.writerow(["Date", keywords[0]])
         for date, count in sorted(data.items()):
             writer.writerow([date, count])
     
-    return filepath
+    # Create or update index file
+    index_filename = create_or_update_index(keywords[0], filename)
+    
+    return filepath, index_filename
 
-def main(keyword):
+def create_or_update_index(keyword, filename):
+    base_name = "CR-index"
+    extension = ".txt"
+    index = 0
+    
+    # Ensure the 'dbase' directory exists
+    os.makedirs('dbase', exist_ok=True)
+    
+    while True:
+        index_filename = f"{base_name}{index:03d}{extension}"
+        full_path = os.path.join('dbase', index_filename)
+        if not os.path.exists(full_path):
+            break
+        index += 1
+    
+    with open(full_path, 'a') as index_file:
+        index_file.write(f"{keyword},{filename}\n")
+    
+    return index_filename
+
+def main(keywords):
     """
     Main function that orchestrates the entire process.
     
     Args:
-    keyword (str): The search term for Crossref query.
+    keywords (list): List of search terms for Crossref query.
     
     Returns:
     None
     """
-    print(f"Retrieving data for keyword: {keyword}")
-    data = get_crossref_data(keyword)
+    print(f"Retrieving data for keywords: {', '.join(keywords)}")
+    
+    # Test basic connectivity to Crossref API
+    try:
+        test_response = requests.get("https://api.crossref.org/works?query=test&rows=1")
+        test_response.raise_for_status()
+        print("Successfully connected to Crossref API")
+    except requests.exceptions.RequestException as e:
+        print(f"Error connecting to Crossref API: {str(e)}")
+        return
+
+    data = get_crossref_data(keywords)
+    if data is None:
+        print("No se pudieron obtener datos de Crossref. Abortando el proceso.")
+        return
+    
     print(f"Data retrieved: {len(data)} items")
     if data:
         print("Sample of data:")
         for item in data[:5]:  # Print first 5 items
             print(item)
-    grouped_data = group_by_month(data)
-    filepath = save_to_local_csv(grouped_data, keyword)
-    print(f"Data saved to local file: {filepath}")
+        grouped_data = group_by_month(data)
+        filepath, index_filename = save_to_local_csv(grouped_data, keywords)
+        print(f"Data saved to local file: {filepath}")
+        print(f"Index updated in file: {index_filename}")
+    else:
+        print("No se encontraron datos para las palabras clave proporcionadas.")
 
 def process_file(filename):
     """
-    Procesa cada línea del archivo como una palabra clave.
+    Procesa cada línea del archivo como un conjunto de palabras clave.
     
     Args:
     filename (str): Nombre del archivo que contiene las palabras clave.
@@ -177,14 +237,18 @@ def process_file(filename):
     None
     """
     with open(filename, 'r') as file:
-        keywords = file.read().splitlines()
+        keyword_lines = file.read().splitlines()
     
-    for keyword in keywords:
-        print(f"\nProcesando palabra clave: {keyword}")
-        main(keyword)
+    for line in keyword_lines:
+        keywords = [kw.strip() for kw in line.split(',') if kw.strip()]
+        if keywords:  # Only process if there are keywords
+            print(f"\nProcesando palabras clave: {', '.join(keywords)}")
+            main(keywords)
+        else:
+            print(f"Línea vacía o inválida encontrada en {filename}. Saltando...")
 
 if __name__ == "__main__":
-    opcion = input("Elija una opción:\n1. Cargar palabras clave desde archivo 'tools.txt'\n2. Ingresar una palabra clave específica\nOpción: ")
+    opcion = input("Elija una opción:\n1. Cargar palabras clave desde archivo 'tools.txt'\n2. Ingresar palabras clave específicas\nOpción: ")
     
     if opcion == "1":
         if os.path.exists("tools.txt"):
@@ -192,7 +256,11 @@ if __name__ == "__main__":
         else:
             print("El archivo 'tools.txt' no existe. Por favor, créelo y vuelva a intentar.")
     elif opcion == "2":
-        keyword = input("Por favor, ingrese la Herramienta Gerencial a buscar: ")
-        main(keyword)
+        keywords_input = input("Por favor, ingrese las Herramientas Gerenciales a buscar (separadas por comas): ")
+        keywords = [kw.strip() for kw in keywords_input.split(',') if kw.strip()]
+        if keywords:
+            main(keywords)
+        else:
+            print("No se ingresaron palabras clave válidas.")
     else:
         print("Opción no válida. Por favor, elija 1 o 2.")
