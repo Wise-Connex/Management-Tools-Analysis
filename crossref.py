@@ -17,7 +17,6 @@ def get_crossref_data(keywords):
     rows = 1000
     cursor = '*'
     total_items = 0
-    max_results = 1000000  # Set a high limit to ensure we get all results
     
     # Ensure keywords is a list, even if it's a single keyword
     if isinstance(keywords, str):
@@ -33,7 +32,7 @@ def get_crossref_data(keywords):
     batch_counter = 0
     total_batches = None
 
-    while cursor and total_items < max_results:
+    while cursor:
         batch_counter += 1
         try:
             params = {
