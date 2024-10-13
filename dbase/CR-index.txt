@@ -1,2 +1,0 @@
-Date-Time		Keyword				Filename
-2024-10-13 10:45:37	JIT				CR_JIT_f0e568_202410.csv
