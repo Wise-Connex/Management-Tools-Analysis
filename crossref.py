@@ -168,7 +168,7 @@ def save_to_local_csv(data, keywords):
     return filepath, index_filename
 
 def create_or_update_index(keyword, filename):
-    index_filename = "CR-index.csv"
+    index_filename = "CR-index.txt"
     full_path = os.path.join('dbase', index_filename)
     
     # Ensure the 'dbase' directory exists
@@ -180,11 +180,10 @@ def create_or_update_index(keyword, filename):
     # Check if the file exists to determine if we need to write headers
     file_exists = os.path.isfile(full_path)
     
-    with open(full_path, 'a', newline='') as index_file:
-        writer = csv.writer(index_file)
+    with open(full_path, 'a', encoding='utf-8') as index_file:
         if not file_exists:
-            writer.writerow(["Date-Time", "Keyword", "Filename"])
-        writer.writerow([current_datetime, keyword, filename])
+            index_file.write("Date-Time\t\tKeyword\t\tFilename\n")
+        index_file.write(f"{current_datetime}\t\t{keyword}\t\t{filename}\n")
     
     return index_filename
 
