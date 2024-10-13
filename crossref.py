@@ -7,9 +7,6 @@ import time
 from urllib.parse import quote_plus, urlencode
 import hashlib  # Add this import at the top of the file with other imports
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
-
 def get_crossref_data(keywords):
     results = []
     
@@ -26,7 +23,7 @@ def get_crossref_data(keywords):
     encoded_keywords = ' OR '.join(quote_plus(kw.strip()) for kw in keywords)
     base_url = "https://api.crossref.org/works"
     
-    logger.debug(f"Iniciando consulta de Crossref para las palabras clave: {encoded_keywords}")
+    print(f"Iniciando consulta de Crossref para las palabras clave: {encoded_keywords}")
     
     # Initialize batch counter and total batches
     batch_counter = 0
@@ -45,7 +42,7 @@ def get_crossref_data(keywords):
             
             full_url = f"{base_url}?{urlencode(params)}"
             
-            logger.debug(f"Requesting URL: {full_url}")
+            print(f"Requesting URL: {full_url}")
             
             response = requests.get(full_url)
             response.raise_for_status()
@@ -59,11 +56,11 @@ def get_crossref_data(keywords):
             # Calculate total batches if not done yet
             if total_batches is None:
                 total_batches = -(-total_results // rows)  # Ceiling division
-                logger.debug(f"Total de resultados esperados: {total_results}")
-                logger.debug(f"Número total de batches esperados: {total_batches}")
+                print(f"Total de resultados esperados: {total_results}")
+                print(f"Número total de batches esperados: {total_batches}")
             
-            logger.debug(f"\nProcesando batch {batch_counter} de {total_batches}")
-            logger.debug(f"Se obtuvieron {len(items)} elementos en este batch")
+            print(f"\nProcesando batch {batch_counter} de {total_batches}")
+            print(f"Se obtuvieron {len(items)} elementos en este batch")
             
             selected_items = 0
             for item in items:
@@ -74,31 +71,31 @@ def get_crossref_data(keywords):
                         results.append((datetime(year, month, 1), 1))
                         selected_items += 1
                 else:
-                    logger.debug(f"Se omitió un elemento debido a fecha faltante o inválida: {item.get('published', 'Sin datos de publicación')}")
+                    print(f"Se omitió un elemento debido a fecha faltante o inválida: {item.get('published', 'Sin datos de publicación')}")
             
             total_items += len(items)
-            logger.debug(f"En este batch se trajeron {len(items)} elementos y se seleccionaron {selected_items}\n\n")
+            print(f"En este batch se trajeron {len(items)} elementos y se seleccionaron {selected_items}\n\n")
             
             # Check if we've processed all expected batches
             if batch_counter >= total_batches:
-                logger.debug("Se han procesado todos los batches esperados. Terminando el bucle.")
+                print("Se han procesado todos los batches esperados. Terminando el bucle.")
                 break
             
             cursor = next_cursor
             if not cursor:
-                logger.debug("No hay más resultados, terminando el bucle")
+                print("No hay más resultados, terminando el bucle")
                 break
             
             time.sleep(1)  # Add a small delay to avoid hitting rate limits
         
         except requests.exceptions.RequestException as e:
-            logger.error(f"Error al consultar Crossref: {str(e)}")
-            logger.error(f"URL de la solicitud: {full_url}")
-            logger.error(f"Respuesta del servidor: {response.text}")  # Log the response text
+            print(f"Error al consultar Crossref: {str(e)}")
+            print(f"URL de la solicitud: {full_url}")
+            print(f"Respuesta del servidor: {response.text}")  # Log the response text
             return None  # Return None instead of breaking the loop
     
-    logger.debug(f"Total de elementos consultados: {total_items}")
-    logger.debug(f"Total de resultados recolectados: {len(results)}")
+    print(f"Total de elementos consultados: {total_items}")
+    print(f"Total de resultados recolectados: {len(results)}")
     return results
 
 def group_by_month(data):
@@ -182,8 +179,8 @@ def create_or_update_index(keyword, filename):
     
     with open(full_path, 'a', encoding='utf-8') as index_file:
         if not file_exists:
-            index_file.write("Date-Time\t\tKeyword\t\tFilename\n")
-        index_file.write(f"{current_datetime}\t\t{keyword}\t\t{filename}\n")
+            index_file.write("Date-Time\t\tKeyword\t\t\t\t\tFilename\n")
+        index_file.write(f"{current_datetime}\t{keyword}\t\t\t\t\t{filename}\n")
     
     return index_filename
 
