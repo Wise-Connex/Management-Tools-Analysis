@@ -357,7 +357,7 @@ def report_pdf():
   else:
     start_year = current_year-20
     end_year = current_year
-  report = f"#Análisis de {', '.join(all_keywords)} ({str(start_year)} - {str(end_year)})\n\n</br></br> *Tabla de Contenido*\n</br></br>{toc}\n\n</br></br> {report}"
+  report = f"#Análisis de {', '.join(all_keywords)} ({actual_menu}) ({str(start_year)} - {str(end_year)})\n\n</br></br> *Tabla de Contenido*\n</br></br>{toc}\n\n</br></br> {report}"
   report += "#Indice de Gráficos\n"
   report += '\n' + charts + '\n</br>'
   report += data_txt
@@ -393,11 +393,12 @@ def fourier_analisys(period='last_year_data'):
   title=' Análisis de Fourier '
   qty=len(title)
   print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
+  banner_msg("Análisis de Fourier",margin=1,color1=YELLOW,color2=WHITE)
   csv_fourier="\nFourier Analisys\n"
   for keyword in all_keywords:
       # Extract data for the current keyword
       data = trends_results[period][keyword]
-      print(f"\nKeyword: {keyword}\n")
+      print(f"\nKeyword: {keyword} ({actual_menu})\n")
       csv_fourier += f"Keyword: {keyword}\n"
       # Create time vector
       time_vector = np.arange(len(data))
@@ -417,7 +418,7 @@ def fourier_analisys(period='last_year_data'):
       plt.xlabel('Frecuencia (ciclos/año)')
       #plt.yscale('log')
       plt.ylabel('Magnitud')  # Update label to reflect 1/2 log scale
-      plt.title(f'Transformada de Fourier para {keyword}')
+      plt.title(f'Transformada de Fourier para {keyword} ({actual_menu})')
       # Save the plot to the unique folder
       plt.savefig(os.path.join(unique_folder, f'{filename}_fourier_{keyword[:3]}.png'), bbox_inches='tight')
       #path_img = os.path.join(unique_folder, f'{filename}_fourier_{keyword[:3]}.png')
@@ -438,10 +439,7 @@ def seasonal_analysis(period='last_20_years_data'):
   global csv_seasonal
   # Assuming 'trends_results' is a dictionary
   data = pd.DataFrame(trends_results[period])
-  char='*'
-  title=' Análisis Estacional '
-  qty=len(title)
-  print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
+  banner_msg(f'Análisis Estacional {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
   csv_seasonal = '\n****** SEASONAL ANALYSIS ********\n'
   # Handle 'isPartial' column (if present)
   if 'isPartial' in data.columns:
@@ -461,10 +459,8 @@ def seasonal_analysis(period='last_20_years_data'):
           seasonal = decomposition.seasonal
           return seasonal
 
-      print(f"\nAnalizando {keyword}:")
-      csv_seasonal += f"\nAnalyzing {keyword}:\n"
-      #print(data[keyword])
-      #analyze_keyword(data, keyword)
+      print(f"\nAnalizando {keyword} ({actual_menu}):")
+      csv_seasonal += f"\nAnalyzing {keyword} ({actual_menu}):\n"
       # Extract the series for the keyword
       series = data[keyword]
       # Decompose the time series
@@ -478,7 +474,7 @@ def seasonal_analysis(period='last_20_years_data'):
       # Prepare for plot formatting
       plt.figure(figsize=(12, 2))
       plt.plot(seasonal_index, color='green')
-      plt.title(f'Indice Estacional de {keyword}')
+      plt.title(f'Indice Estacional de {keyword} ({actual_menu})')
       # Set major and minor tick locators and formatters
       years = YearLocator()
       months = MonthLocator()
@@ -567,10 +563,8 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
   # Fit ARIMA models to each numeric column
   numeric_columns = train.select_dtypes(include=['int64', 'float64'])
   for col in numeric_columns:
-      qty=len(f'Modelo ARIMA para: {col}')+2
-      char='*'
-      print(f"\n\n{char*qty}\n Modelo ARIMA para: \x1b[33m{col}\x1b[0m\n{char*qty}\n")
-      csv_arima += f"\n\nFitting ARIMA model for {col}\n"
+      banner_msg(f'Modelo ARIMA para: {col} {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
+      csv_arima += f"\n\nFitting ARIMA model for {col} ({actual_menu})\n"
       # Example ARIMA parameters (adjust p, d, q based on data analysis)
       #p, d, q = 2, 1, 1
       best_params, best_aic, best_model = find_best_arima_params(train[col])
@@ -595,8 +589,8 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
         predicted = predictions[:len(test[col])]
       rmse = mean_squared_error(actual, predicted, squared=False)
       mae = mean_absolute_error(actual, predicted)
-      print(f"Predicciones para {col}:\n{predictions}")
-      csv_arima += f"\nPredictions for {col}:\n{predictions}"
+      print(f"Predicciones para {col} ({actual_menu}):\n{predictions}")
+      csv_arima += f"\nPredictions for {col} ({actual_menu}):\n{predictions}"
       print(f"\nError Cuadrático Medio Raiz (ECM Raíz) RMSE: {rmse}\nError Absoluto Medio (EAM) MAE: {mae}\n")
       csv_arima += f"\nRMSE: {rmse}, MAE: {mae}"
       # Combine actual data and predictions for plotting
@@ -604,7 +598,7 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
       # Create the plot
       fig, ax = plt.subplots(figsize=(12, 8))  # Adjust figure size as needed
       # Plot data actual
-      data_actual_line, = ax.plot(data_to_plot.index, smooth_data(data_to_plot, window_size=9), label='Data Actual')
+      data_actual_line, = ax.plot(data_to_plot.index, data_to_plot, label='Data Actual')
       # Plot predictions with dashed line and blue color
       predictions_line, = ax.plot(predictions.index, predictions, label='Predicciones', linestyle='--', color='blue')
       # Plot test data with scatter and alpha
@@ -612,7 +606,7 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
       # Fill between for confidence interval
       ci_fill = ax.fill_between(predictions.index, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b', label='Intervalo de Confidencia')
       # Add labels and title
-      ax.set_title(f"Modelo ARIMA para {col}")
+      ax.set_title(f"Modelo ARIMA para {col} ({actual_menu})")
       ax.set_xlabel('Meses - Años')
       ax.set_ylabel(col)
       # Set up the x-axis to show years
@@ -649,9 +643,6 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
       path_image = f'{filename}_arima_{col[:3]}.png'
       charts += 'Modelo ARIMA para ' + str(col) + ' (' + str(path_image) + ')\n\n'
       plt.show()
-      # except Exception as e:
-      #     print(f"Error fitting ARIMA for {col}: {e}")
-      #     print("Consider checking stationarity and adjusting parameters.")
   csv_arima="".join(csv_arima)
   return csv_arima
 
@@ -797,6 +788,8 @@ def relative_comparison():
     global charts
     global title_odd_charts
     global title_even_charts
+    
+    print(f"\nCreando gráficos de comparación relativa...")
 
     fig = plt.figure(figsize=(20, 35))  # Increased figure height
 
@@ -946,10 +939,13 @@ def relative_comparison():
 
     # Add legend at the bottom, outside of the plots
     if menu == 2 or menu == 4:
-      handles, labels = ax1.get_legend_handles_labels()
+        handles, labels = ax1.get_legend_handles_labels()
     else:
-      handles, labels = ax3.get_legend_handles_labels()
+        handles, labels = ax3.get_legend_handles_labels()
     
+    # Modify labels to include (actual_menu)
+    labels = [f"{label} ({actual_menu})" for label in labels]
+
     fig.legend(handles, labels, loc='lower right', bbox_to_anchor=(0.55, 0.05),
                  ncol=len(all_keywords), fontsize=12)
 
@@ -962,6 +958,8 @@ def relative_comparison():
     path_image = f'{filename}_overtime.png'
     charts+='Interés por período (' + str(path_image) + ')\n\n'
     plt.show()
+
+    print(f"\nGráficos de comparación relativa creados.")
 
 # Calculates the yearly average of a N-year period.
 def calculate_yearly_average(data):
@@ -987,9 +985,7 @@ def check_trends2(kw):
     global charts
     data = trends_results['last_20_years_data']
     mean = trends_results['mean_last_20']
-    char='*'
-    rep=len('Herramientas: ' + kw) + 3
-    print('\n\n'+ char*rep + '\n Herramienta: \x1b[33m"' + kw.upper() + '"\x1b[0m\n' + char*rep)
+    banner_msg(title=' Herramienta: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
 
     # Calculate averages
     avg_all = calculate_yearly_average(trends_results['all_data'][kw])
@@ -1081,8 +1077,16 @@ def check_trends2(kw):
     trends = {}
     trends[kw] = [trend_20, trend2_20]
 
-    print(f'El interés promedio de los últimos 20 años para "{kw.upper()}" fue {eng_notation(trends_results["mean_last_20"][kw])}.')
-    print(f'El interés del último año para "{kw.upper()}" comparado con los últimos 20 años resulta con una tendencia de {trend_20}%.')
+    # Define the variable based on the menu selection
+    if menu == 2 or menu == 4:
+        interest_var = "las publicaciones"
+    elif menu == 3:
+        interest_var = "la utilización"
+    else:
+        interest_var = "el interés"
+
+    print(f'{interest_var.capitalize()} promedio de los últimos 20 años para "{kw.upper()}" fue {eng_notation(trends_results["mean_last_20"][kw])}.')
+    print(f'{interest_var.capitalize()} del último año para "{kw.upper()}" comparado con los últimos 20 años resulta con una tendencia de {trend_20}%.')
 
     trend = trend_20
     yearsago = 20
@@ -1091,48 +1095,48 @@ def check_trends2(kw):
     # Adjusted logic based on 1-100 index range
     if mean_value > 75:
         if abs(trend) <= 5:
-            print(f'El interés por "{kw.upper()}" es muy alto y estable durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto y estable durante los últimos {yearsago} años.')
         elif trend > 5:
-            print(f'El interés por "{kw.upper()}" es muy alto y está aumentando durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto y está aumentando durante los últimos {yearsago} años.')
         else:
-            print(f'El interés por "{kw.upper()}" es muy alto pero está disminuyendo durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto pero está disminuyendo durante los últimos {yearsago} años.')
     elif mean_value > 50:
         if abs(trend) <= 10:
-            print(f'El interés por "{kw.upper()}" es alto y relativamente estable durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto y relativamente estable durante los últimos {yearsago} años.')
         elif trend > 10:
-            print(f'El interés por "{kw.upper()}" es alto y está aumentando significativamente durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto y está aumentando significativamente durante los últimos {yearsago} años.')
         else:
-            print(f'El interés por "{kw.upper()}" es alto pero está disminuyendo significativamente durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto pero está disminuyendo significativamente durante los últimos {yearsago} años.')
     elif mean_value > 25:
         if abs(trend) <= 15:
-            print(f'El interés por "{kw.upper()}" es moderado y muestra algunas fluctuaciones durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado y muestra algunas fluctuaciones durante los últimos {yearsago} años.')
         elif trend > 15:
-            print(f'El interés por "{kw.upper()}" es moderado pero está en tendencia creciente durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado pero está en tendencia creciente durante los últimos {yearsago} años.')
         else:
-            print(f'El interés por "{kw.upper()}" es moderado pero muestra una tendencia decreciente durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado pero muestra una tendencia decreciente durante los últimos {yearsago} años.')
     else:
         if trend > 50:
-            print(f'El interés por "{kw.upper()}" es bajo pero está creciendo rápidamente durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo pero está creciendo rápidamente durante los últimos {yearsago} años.')
         elif trend > 0:
-            print(f'El interés por "{kw.upper()}" es bajo pero muestra un ligero crecimiento durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo pero muestra un ligero crecimiento durante los últimos {yearsago} años.')
         elif trend < -50:
-            print(f'El interés por "{kw.upper()}" es bajo y está disminuyendo rápidamente durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo y está disminuyendo rápidamente durante los últimos {yearsago} años.')
         else:
-            print(f'El interés por "{kw.upper()}" es bajo y muestra una ligera disminución durante los últimos {yearsago} años.')
+            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo y muestra una ligera disminución durante los últimos {yearsago} años.')
 
     # Comparison last year vs. 20 years ago
     if avg_20 == 0:
-        print(f'No había interés medible por "{kw.upper()}" hace {yearsago} años.')
+        print(f'No había {interest_var} medible por "{kw.upper()}" hace {yearsago} años.')
     elif trend2_20 > 50:
-        print(f'El interés del último año es mucho más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_20}%.')
+        print(f'{interest_var.capitalize()} del último año es mucho más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_20}%.')
     elif trend2_20 > 15:
-        print(f'El interés del último año es considerablemente más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_20}%.')
+        print(f'{interest_var.capitalize()} del último año es considerablemente más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_20}%.')
     elif trend2_20 < -50:
-        print(f'El interés del último año es mucho más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_20)}%.')
+        print(f'{interest_var.capitalize()} del último año es mucho más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_20)}%.')
     elif trend2_20 < -15:
-        print(f'El interés del último año es considerablemente más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_20)}%.')
+        print(f'{interest_var.capitalize()} del último año es considerablemente más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_20)}%.')
     else:
-        print(f'El interés del último año es comparable al de hace {yearsago} años. Ha cambiado en un {trend2_20}%.')
+        print(f'{interest_var.capitalize()} del último año es comparable al de hace {yearsago} años. Ha cambiado en un {trend2_20}%.')
     print('')
 
     return {
@@ -1220,8 +1224,6 @@ def analyze_trends(trend):
 
     result_df = calculate_mean_for_keywords(trend['last_20_years_data'])
 
-#    print(result_df)
-
     # Converts a dictionary of Series to a DataFrame.
     def dictionary_to_dataframe(data_dict):
       """
@@ -1289,7 +1291,7 @@ def analyze_trends(trend):
         title=' Análisis de Regresión '
         qty=len(title)
         print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
-        print('\nNota: La primera variable es la variable dependiente\n      y el rersto son las variables independientes para cada combinación\n      ej: (dependiente, independiente1, independiente2...)\n')
+        print('\nNota: La primera variable es la variable dependiente\n      y el resto son las variables independientes para cada combinación\n      ej: (dependiente, independiente1, independiente2...)\n')
         csv_output = ''
         data = pd.DataFrame(trend['last_20_years_data'])
         if 'isPartial' in data.columns:
@@ -1346,11 +1348,6 @@ def analyze_trends(trend):
               plt.savefig(os.path.join(unique_folder, f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'), bbox_inches='tight')
               # path_image = os.path.join(unique_folder, f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png')
               path_image = f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'
-              # file_path = path_image
-              # folder_name = filename
-              # folder_id = get_folder_id(folder_name)
-              # make_folder_public(folder_id)
-              # path_image = get_file_url_from_path(file_path)
               charts+='Gráfico de Dispersión para ' + str(", ".join(combo)) + ' (' + str(path_image) +')\n\n'
               plt.show()
 
@@ -1376,8 +1373,6 @@ def analyze_trends(trend):
 # Suppress the FutureWarning related to the pytrends library
 # warnings.filterwarnings("ignore", category=FutureWarning, module="pytrends.request")
 plt.style.use('ggplot')
-
-#proxies={'https': 'https://' + get_proxies()}
 
 # Get current year
 current_year = datetime.datetime.now().year
@@ -1579,7 +1574,6 @@ def gemini_prompt(system_prompt,prompt,m='flash'):
 
   if api_key is None:
       raise ValueError("GOOGLE_API_KEY environment variable is not set")
-
   #api_key = userdata.get(api_key_name)
   genai.configure(api_key=api_key)
   model = genai.GenerativeModel(model, system_instruction=system_instructions)
