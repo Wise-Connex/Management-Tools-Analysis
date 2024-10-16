@@ -54,6 +54,7 @@ from enum import auto
 import requests
 import scipy.interpolate as interp
 from scipy.interpolate import CubicSpline
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 # AI Prompts imports 
 from prompts import system_prompt, prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, prompt_6, prompt_conclusions
@@ -251,18 +252,18 @@ def get_file_data(filename):
     
     # Check if the file exists
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"The file {filename} does not exist in the 'dbase' folder.")
+        raise FileNotFoundError(f"El archivo {filename} no existe en la carpeta 'dbase'.")
     
     # Read the CSV file into a pandas DataFrame
     df = pd.read_csv(file_path, index_col=0)  # Set the first column as index
     df.index = df.index.str.strip()  # Remove leading/trailing whitespace from index values
     
-    # Convert the 'Year-Month' column to 'Year-Month-Day' format (assuming the day is 1)
+    # Convert the index to datetime format
     if menu == 2:
-        df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-        for kw in all_keywords:
-            df = linear_interpolation(df, kw)
+        # For Google Books Ngrams, assume the index is just the year
+        df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
     else:
+        # For other data sources, assume 'Year-Month' format
         df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
     
     return df
@@ -292,126 +293,156 @@ def generate_markdown_toc(text):
         level = heading_level
     return "</br>".join(toc_items)
 
-def report_pdf():
-  global data_txt
-  global charts
-  global report
-  global csv_means_trends
-  data_txt = ''
-  data_txt += "\n\n\n"
-  data_txt += "#Datos\n"
-  data_txt += "## Herramientas Gerenciales:\n"
-  data_txt += ", ".join(all_keywords) + "\n"
-  data_txt += "\n\n\n"
-  data_txt += f"## Datos de {actual_menu}\n"
-  year_adjust = 0
-  if menu == 2:
-    year_adjust = 2
-    data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
-    data_txt += csv_all_data + "\n"
-  elif menu == 4:
-    year_adjust = 2
-    data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
-    data_txt += csv_all_data + "\n"
-  data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
-  data_txt += csv_last_20_data + "\n"
-  data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
-  data_txt += csv_last_15_data + "\n"
-  data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
-  data_txt += csv_last_10_data + "\n"
-  data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
-  data_txt += csv_last_5_data + "\n"
-  data_txt += f"### 1 año (Mensual) ({current_year-1} - {current_year})\n"
-  data_txt += csv_last_year_data + "\n"
-  data_txt += "\n\n\n"
-  data_txt += "## Datos Medias y Tendencias\n"
-  data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
-  data_txt += csv_means_trends.replace("\n", "</br>") + "\n"
-  if not one_keyword:
-      data_txt += f"### Correlacion\n"
-      data_txt += str(csv_correlation) + "\n"
-      data_txt += f"### Regresion\n"
-      data_txt += str (csv_regression) + "\n"
-  data_txt += f"## ARIMA\n"
-  data_txt += "<blockquote>\n" + str(csv_arima) + "\n</blockquote>\n"
-  data_txt += f"## Estacional\n"
-  data_txt += str(csv_seasonal) + "\n"
-  data_txt += f"## Fourier\n"
-  data_txt += str(csv_fourier) + "\n"
-  report = "\n"
-  report += gem_temporal_trends_sp
-  if not one_keyword:
-      report += gem_cross_keyword_sp
-  report += gem_industry_specific_sp
-  report += gem_arima_sp
-  report += gem_seasonal_sp
-  report += gem_fourier_sp
-  report += gem_conclusions_sp
-  toc = generate_markdown_toc(report)
-  if menu == 2:
-    start_year = current_year-70+year_adjust
-    end_year = current_year-year_adjust
-  elif menu == 4:
-    start_year = current_year-74
-    end_year = current_year
-  else:
-    start_year = current_year-20
-    end_year = current_year
-  report = f"#Análisis de {', '.join(all_keywords)} ({actual_menu}) ({str(start_year)} - {str(end_year)})\n\n</br></br> *Tabla de Contenido*\n</br></br>{toc}\n\n</br></br> {report}"
-  report += "#Indice de Gráficos\n"
-  report += '\n' + charts + '\n</br>'
-  report += data_txt
-  report += "\n---</br></br></br><small>\n"
-  report += "\n**************************************************\n"
-  report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
-  report += f'Contacto: https://www.wiseconnex.com \n'
-  report += "**************************************************\n"
-  #report += "Librerías de python utilizadas:\n"
-  #report += "matplotlib, numpy, pandas, time, datetime, warnings, pdb, re, hashlib, seaborn, itertools, google.generativeai, statsmodels, altair, scipy, markdown, weasyprint, os, platform, csv, io, google.colab, googleapiclient.discovery, PIL, statsmodels.tsa.arima.model, statsmodels.graphics.tsaplots, statsmodels.tsa.stattools, pytrends.request, IPython.display, scipy.stats, sklearn.linear_model, sklearn.cluster, sklearn.metrics. "
-  report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
-  report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
-  report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
-  now = datetime.datetime.now()
-  date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
-  report += "</br></br>Reporte generado el " + date_time_string + "\n"
-  report += "</small>"
-  #display(Markdown(report))
-  html_content = markdown.markdown(report, extensions=["tables"])
-  #path_img = os.path.join(unique_folder, f'{filename}_fourier_{keyword[:3]}.png')
-  weasyprint.HTML(string=html_content).write_pdf(unique_folder + '/' + filename +'.pdf')
-  char='*'
-  title='********** ' + filename + ' PDF REPORT SAVED **********'
-  qty=len(title)
-  print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
-  #print('\n\n\n\n****************************************************\n********* ' + filename + ' PDF REPORT SAVED ********\n****************************************************\n')
+global image_markdown
+image_markdown = "\n\n# Gráficos\n\n"
 
+def add_image_to_report(title, filename):
+    global image_markdown
+    full_path = os.path.abspath(os.path.join('./', unique_folder, filename))
+    print(f"Adding image to report: {full_path}")
+    if os.path.exists(full_path):
+        print(f"Image file exists: {full_path}")
+    else:
+        print(f"Image file does not exist: {full_path}")
+    image_markdown += f"## {title}\n\n"
+    image_markdown += f"<img src='{filename}' style='max-width: 100%; height: auto;'>\n\n"
+
+def report_pdf():
+    global data_txt
+    global charts
+    global report
+    global csv_means_trends
+    global image_markdown
+    data_txt = ''
+    data_txt += "\n\n\n"
+    data_txt += "#Datos\n"
+    data_txt += "## Herramientas Gerenciales:\n"
+    data_txt += ", ".join(all_keywords) + "\n"
+    data_txt += "\n\n\n"
+    data_txt += f"## Datos de {actual_menu}\n"
+    year_adjust = 0
+    if menu == 2:
+        year_adjust = 2
+        data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
+        data_txt += csv_all_data + "\n"
+    elif menu == 4:
+        year_adjust = 2
+        data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
+        data_txt += csv_all_data + "\n"
+    data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
+    data_txt += csv_last_20_data + "\n"
+    data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
+    data_txt += csv_last_15_data + "\n"
+    data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
+    data_txt += csv_last_10_data + "\n"
+    data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
+    data_txt += csv_last_5_data + "\n"
+    data_txt += f"### 1 año (Mensual) ({current_year-1} - {current_year})\n"
+    data_txt += csv_last_year_data + "\n"
+    data_txt += "\n\n\n"
+    data_txt += "## Datos Medias y Tendencias\n"
+    data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
+    data_txt += csv_means_trends.replace("\n", "</br>") + "\n"
+    if not one_keyword:
+        data_txt += f"### Correlacion\n"
+        data_txt += str(csv_correlation) + "\n"
+        data_txt += f"### Regresion\n"
+        data_txt += str (csv_regression) + "\n"
+    data_txt += f"## ARIMA\n"
+    data_txt += "<blockquote>\n" + str(csv_arima) + "\n</blockquote>\n"
+    data_txt += f"## Estacional\n"
+    data_txt += str(csv_seasonal) + "\n"
+    data_txt += f"## Fourier\n"
+    data_txt += str(csv_fourier) + "\n"
+    report = "\n"
+    report += gem_temporal_trends_sp
+    if not one_keyword:
+        report += gem_cross_keyword_sp
+    report += gem_industry_specific_sp
+    report += gem_arima_sp
+    report += gem_seasonal_sp
+    report += gem_fourier_sp
+    report += gem_conclusions_sp
+
+    # Add the image markdown to the report
+    report += image_markdown
+
+    toc = generate_markdown_toc(report)
+    if menu == 2:
+        start_year = current_year-70+year_adjust
+        end_year = current_year-year_adjust
+    elif menu == 4:
+        start_year = current_year-74
+        end_year = current_year
+    else:
+        start_year = current_year-20
+        end_year = current_year
+    report = f"#Análisis de {', '.join(all_keywords)} ({actual_menu}) ({str(start_year)} - {str(end_year)})\n\n</br></br> *Tabla de Contenido*\n</br></br>{toc}\n\n</br></br> {report}"
+    report += data_txt
+    report += "\n---</br></br></br><small>\n"
+    report += "\n**************************************************\n"
+    report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
+    report += f'Contacto: https://www.wiseconnex.com \n'
+    report += "**************************************************\n"
+    report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
+    report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
+    report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
+    now = datetime.datetime.now()
+    date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
+    report += "</br></br>Reporte generado el " + date_time_string + "\n"
+    report += "</small>"
+    html_content = markdown.markdown(report, extensions=["tables"])
+
+    # Convert image references to base64
+    def img_to_base64(img_path):
+        with open(img_path, "rb") as image_file:
+            return base64.b64encode(image_file.read()).decode()
+
+    # Replace image src with base64 encoded images
+    for img_tag in re.findall(r'<img.*?src="(.*?)".*?>', html_content):
+        img_path = os.path.join(unique_folder, img_tag)
+        if os.path.exists(img_path):
+            b64_img = img_to_base64(img_path)
+            html_content = html_content.replace(img_tag, f"data:image/png;base64,{b64_img}")
+        else:
+            print(f"Image not found: {img_path}")
+
+    pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
+    print(f"Saving PDF to: {pdf_path}")
+    print(f"Number of images in report: {html_content.count('<img')}")
+    weasyprint.HTML(string=html_content).write_pdf(pdf_path)
+    char='*'
+    title='********** ' + filename + ' PDF REPORT SAVED **********'
+    qty=len(title)
+    print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
 
 # Fourier Analisys
 def fourier_analisys(period='last_year_data'):
   global charts
+  global image_markdown
   char='*'
   title=' Análisis de Fourier '
   qty=len(title)
   print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
   banner_msg("Análisis de Fourier",margin=1,color1=YELLOW,color2=WHITE)
-  csv_fourier="\nFourier Analisys\n"
+  csv_fourier="\nAnálisis de Fourier\n"
   for keyword in all_keywords:
       # Extract data for the current keyword
       data = trends_results[period][keyword]
-      print(f"\nKeyword: {keyword} ({actual_menu})\n")
-      csv_fourier += f"Keyword: {keyword}\n"
+      print(f"\nPalabra clave: {keyword} ({actual_menu})\n")
+      csv_fourier += f"Palabra clave: {keyword}\n"
       # Create time vector
       time_vector = np.arange(len(data))
-      csv_fourier += f"Time Vector: \n{time_vector}\n"
+      csv_fourier += f"Vector de tiempo: \n{time_vector}\n"
       # Ensure data is a properly aligned NumPy array
       data = np.asarray(data, dtype=float).copy()
       # Perform Fourier transform
       fourier_transform = fftpack.fft(data)
       print(fourier_transform)
-      csv_fourier += f"Fourier Transform: \n{fourier_transform}\n"
+      csv_fourier += f"Transformada de Fourier: \n{fourier_transform}\n"
       # Calculate frequency axis
       freq = fftpack.fftfreq(len(data))
-      csv_fourier += f"Frequency Axis: \n{freq}\n"
+      csv_fourier += f"Eje de frecuencia: \n{freq}\n"
       # Plot the magnitude of the Fourier transform
       plt.figure(figsize=(12, 10))  # Create a new figure for each keyword
       plt.plot(freq, np.abs(fourier_transform), color='#66B2FF')
@@ -420,90 +451,91 @@ def fourier_analisys(period='last_year_data'):
       plt.ylabel('Magnitud')  # Update label to reflect 1/2 log scale
       plt.title(f'Transformada de Fourier para {keyword} ({actual_menu})')
       # Save the plot to the unique folder
-      plt.savefig(os.path.join(unique_folder, f'{filename}_fourier_{keyword[:3]}.png'), bbox_inches='tight')
-      #path_img = os.path.join(unique_folder, f'{filename}_fourier_{keyword[:3]}.png')
-      path_img = f'{filename}_fourier_{keyword[:3]}.png'
-      # file_path = path_img
-      # folder_name = filename
-      # folder_id = get_folder_id(folder_name)
-      # make_folder_public(folder_id)
-      # path_image = get_file_url_from_path(file_path)
-      charts+='Transformada de Fourier para ' + str(keyword) + ' (' + str(path_img) + ')\n\n'
+      image_filename = f'{filename}_fourier_{keyword[:3]}.png'
+      plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+      add_image_to_report(f'Transformada de Fourier para {keyword}', image_filename)
+      charts += f'Transformada de Fourier para {keyword} ({image_filename})\n\n'
       plt.show()
   csv_fourier="".join(csv_fourier)
   return csv_fourier
 
 # Seasonal Analysis
 def seasonal_analysis(period='last_20_years_data'):
-  global charts
-  global csv_seasonal
-  # Assuming 'trends_results' is a dictionary
-  data = pd.DataFrame(trends_results[period])
-  banner_msg(f'Análisis Estacional {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
-  csv_seasonal = '\n****** SEASONAL ANALYSIS ********\n'
-  # Handle 'isPartial' column (if present)
-  if 'isPartial' in data.columns:
-      data = data.drop('isPartial', axis=1)
-  # Ensure the index is datetime
-  if 'date' in data.columns:
-      data['date'] = pd.to_datetime(data['date'])
-      data.set_index('date', inplace=True)
-  else:
-      data.index = pd.to_datetime(data.index)
-  # Get all numeric columns (keywords)
-  all_keywords = data.select_dtypes(include=[np.number]).columns.tolist()
-  # Analyze each keyword
-  for keyword in all_keywords:
-      def decompose_series(series):
-          decomposition = sm.tsa.seasonal_decompose(series, model='additive', period=12)
-          seasonal = decomposition.seasonal
-          return seasonal
+    global charts
+    global csv_seasonal
+    global image_markdown
+    # Assuming 'trends_results' is a dictionary
+    data = pd.DataFrame(trends_results[period])
+    banner_msg(f'Análisis Estacional {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
+    csv_seasonal = '\n****** ANÁLISIS ESTACIONAL ********\n'
+    # Handle 'isPartial' column (if present)
+    if 'isPartial' in data.columns:
+        data = data.drop('isPartial', axis=1)
+    # Ensure the index is datetime
+    if 'date' in data.columns:
+        data['date'] = pd.to_datetime(data['date'])
+        data.set_index('date', inplace=True)
+    else:
+        data.index = pd.to_datetime(data.index)
+    # Get all numeric columns (keywords)
+    all_keywords = data.select_dtypes(include=[np.number]).columns.tolist()
+    # Analyze each keyword
+    for keyword in all_keywords:
+        def decompose_series(series):
+            if menu == 2:
+                # For annual data, we can't perform seasonal decomposition
+                print(f"Seasonal decomposition not applicable for annual data ({keyword})")
+                return None
+            else:
+                if len(series) < 24:
+                    print(f"Not enough data points for seasonal decomposition ({keyword})")
+                    return None
+                decomposition = sm.tsa.seasonal_decompose(series, model='additive', period=12)
+                seasonal = decomposition.seasonal
+                return seasonal
 
-      print(f"\nAnalizando {keyword} ({actual_menu}):")
-      csv_seasonal += f"\nAnalyzing {keyword} ({actual_menu}):\n"
-      # Extract the series for the keyword
-      series = data[keyword]
-      # Decompose the time series
-      decomposition = sm.tsa.seasonal_decompose(series, model='additive', period=12)
-      # Extract the seasonal index
-      seasonal = decompose_series(series)
-      seasonal_index = seasonal / series.mean()
-      print(seasonal_index)
-      with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-          csv_seasonal+=seasonal_index.to_csv(index=False)
-      # Prepare for plot formatting
-      plt.figure(figsize=(12, 2))
-      plt.plot(seasonal_index, color='green')
-      plt.title(f'Indice Estacional de {keyword} ({actual_menu})')
-      # Set major and minor tick locators and formatters
-      years = YearLocator()
-      months = MonthLocator()
-      years_fmt = DateFormatter('%Y')
-      month_fmt = DateFormatter('')  # Abbreviated month name
-      ax = plt.gca()
-      ax.xaxis.set_major_locator(years)
-      ax.xaxis.set_major_formatter(years_fmt)
-      ax.xaxis.set_minor_locator(months)
-      ax.xaxis.set_minor_formatter(month_fmt)
-      # Set x-axis limits to start and end with data
-      plt.xlim(seasonal_index.index.min(), seasonal_index.index.max())
-      # Customize remaining plot elements
-      plt.xlabel('Años')
-      plt.ylabel('Indice')
-      plt.grid(True)
-      # Save the plot to the unique folder
-      plt.savefig(os.path.join(unique_folder, f'{filename}_season_{keyword[:3]}.png'), bbox_inches='tight')
-      # path_image = os.path.join(unique_folder, f'{filename}_season_{keyword[:3]}.png')
-      path_image = f'{filename}_season_{keyword[:3]}.png'
-      # file_path = path_image
-      # folder_name = filename
-      # folder_id = get_folder_id(folder_name)
-      # make_folder_public(folder_id)
-      # path_image = get_file_url_from_path(file_path)
-      charts+='Indice de Temporada para ' + str(keyword) + ' (' + str(path_image) + ')\n\n'
-      plt.show()
-  csv_seasonal="".join(csv_seasonal)
-  return
+        print(f"\nAnalizando {keyword} ({actual_menu}):")
+        csv_seasonal += f"\nAnalyzing {keyword} ({actual_menu}):\n"
+        # Extract the series for the keyword
+        series = data[keyword]
+        # Decompose the time series
+        seasonal = decompose_series(series)
+        
+        if seasonal is None:
+            continue  # Skip to the next keyword if decomposition is not possible
+
+        seasonal_index = seasonal / series.mean()
+        print(seasonal_index)
+        with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+            csv_seasonal+=seasonal_index.to_csv(index=False)
+        # Prepare for plot formatting
+        plt.figure(figsize=(12, 2))
+        plt.plot(seasonal_index, color='green')
+        plt.title(f'Indice Estacional de {keyword} ({actual_menu})')
+        # Set major and minor tick locators and formatters
+        years = YearLocator()
+        months = MonthLocator()
+        years_fmt = DateFormatter('%Y')
+        month_fmt = DateFormatter('')  # Abbreviated month name
+        ax = plt.gca()
+        ax.xaxis.set_major_locator(years)
+        ax.xaxis.set_major_formatter(years_fmt)
+        ax.xaxis.set_minor_locator(months)
+        ax.xaxis.set_minor_formatter(month_fmt)
+        # Set x-axis limits to start and end with data
+        plt.xlim(seasonal_index.index.min(), seasonal_index.index.max())
+        # Customize remaining plot elements
+        plt.xlabel('Aos')
+        plt.ylabel('Indice')
+        plt.grid(True)
+        # Save the plot to the unique folder
+        image_filename = f'{filename}_season_{keyword[:3]}.png'
+        plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+        add_image_to_report(f'Indice de Temporada para {keyword}', image_filename)
+        charts += f'Indice de Temporada para {keyword} ({image_filename})\n\n'
+        plt.show()
+    csv_seasonal="".join(csv_seasonal)
+    return
 
 # This function finds the best ARIMA (p, d, q) parameters for a given time series data.
 def find_best_arima_params(data):
@@ -517,14 +549,17 @@ def find_best_arima_params(data):
   # Ensure data is a pandas Series
   if not isinstance(data, pd.Series):
       data = pd.Series(data)
+
+  # Remove any infinite values and interpolate NaNs
+  data = data.replace([np.inf, -np.inf], np.nan).interpolate()
+
   # Check for stationarity using Dickey-Fuller test (optional)
-  # You can uncomment the following lines to perform the test.
   from statsmodels.tsa.stattools import adfuller
   result = adfuller(data)
   if result[1] > 0.05:
-    print("Data is not stationary. Consider differencing.")
-    # You might need to difference the data before finding optimal parameters.
-  # Use auto_arima from pmdarima if statsmodels version is not compatible
+    print("Los datos no son estacionarios. Considere diferenciar.")
+
+  # Use auto_arima from pmdarima
   stepwise_model = auto_arima(data, start_p=1, d=None, start_q=1, start_P=1, Start_Q=1,
                               max_p=5, max_d=5, max_q=5, max_P=5, max_Q=5, D=10, max_D=10,
                               m=1,  # Set m=1 for non-seasonal data
@@ -533,116 +568,131 @@ def find_best_arima_params(data):
                               trace=True,  # Print details during search
                               suppress_warnings=True)  # Suppress warnings
 
-  # Print the chosen model with information criterion
-  # print("Chosen ARIMA Model (with AIC):", stepwise_model.summary())
   # Return the parameters, information criterion, and fitted model
   return stepwise_model.order, stepwise_model.aic, stepwise_model
 
 # Fit ARIMA model
 def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
   global charts
-  print('\n\n--------------------- ARIMA MODEL ---------------------\n')
-  csv_arima = "\nARIMA MODEL\n"
+  global image_markdown
+  print('\n\n--------------------- MODELO ARIMA ---------------------\n')
+  csv_arima = "\nMODELO ARIMA\n"
   # Assuming 'trends_results' is a dictionary
   data = pd.DataFrame(trends_results['last_20_years_data'])
   # Handle 'isPartial' column (if present)
   if 'isPartial' in data.columns:
       data = data.drop('isPartial', axis=1)
-  #split data
+
+  # Clean the data: remove inf and nan values
+  data = data.replace([np.inf, -np.inf], np.nan).dropna()
+
   train = data[:-ts]
   test = data[-ts:]
+
   # Set frequency information (optional)
   try:
-      # Attempt to infer datetime format
-      #data.index = pd.to_datetime(data.index, infer_datetime_format=True)
       train.index = pd.to_datetime(train.index, format="%Y-%m-%d")  # Assuming daily frequency
-      train = train.resample('M').mean()  # Resample to monthly frequency
+      if menu != 2:
+          train = train.resample('M').mean()  # Resample to monthly frequency
   except pd.errors.ParserError:
-      # Provide a more specific format string if known
       print("Couldn't infer datetime format. Please provide a format string (e.g., '%Y-%m-%d')")
+
   # Fit ARIMA models to each numeric column
   numeric_columns = train.select_dtypes(include=['int64', 'float64'])
   for col in numeric_columns:
       banner_msg(f'Modelo ARIMA para: {col} {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
       csv_arima += f"\n\nFitting ARIMA model for {col} ({actual_menu})\n"
-      # Example ARIMA parameters (adjust p, d, q based on data analysis)
-      #p, d, q = 2, 1, 1
-      best_params, best_aic, best_model = find_best_arima_params(train[col])
-      if auto:
-          p, d, q = best_params  # Unpack the tuple
-          print(f"Los mejores parámetros de ARIMA encontrados: p={p}, d={d}, q={q}")
-      #try:
-      # Fit ARIMA model using try-except for potential non-stationarity
-      model = ARIMA(train[col], order=(p, d, q))  # Pass individual values
-      results = model.fit()
-      print(results.summary())
-      csv_arima += f'\n{results.summary()}'
-      # Prepare data for plotting (last 24 months)
-      last_months = train[col].iloc[-mb:]
-      # Make predictions (adjust steps as needed)
-      predictions, conf_int = best_model.predict(n_periods=mf, return_conf_int=True)
-      predictions = results.forecast(steps=mf)
-      # Calculate RMSE and MAE
-      actual = test[col]
-      predicted = predictions
-      if len(predictions) > len(test[col]):
-        predicted = predictions[:len(test[col])]
-      rmse = mean_squared_error(actual, predicted, squared=False)
-      mae = mean_absolute_error(actual, predicted)
-      print(f"Predicciones para {col} ({actual_menu}):\n{predictions}")
-      csv_arima += f"\nPredictions for {col} ({actual_menu}):\n{predictions}"
-      print(f"\nError Cuadrático Medio Raiz (ECM Raíz) RMSE: {rmse}\nError Absoluto Medio (EAM) MAE: {mae}\n")
-      csv_arima += f"\nRMSE: {rmse}, MAE: {mae}"
-      # Combine actual data and predictions for plotting
-      data_to_plot = pd.concat([last_months, predictions])
-      # Create the plot
-      fig, ax = plt.subplots(figsize=(12, 8))  # Adjust figure size as needed
-      # Plot data actual
-      data_actual_line, = ax.plot(data_to_plot.index, data_to_plot, label='Data Actual')
-      # Plot predictions with dashed line and blue color
-      predictions_line, = ax.plot(predictions.index, predictions, label='Predicciones', linestyle='--', color='blue')
-      # Plot test data with scatter and alpha
-      test_scatter = ax.scatter(test.index, test[col], label='Data Test', alpha=0.4, marker='*')
-      # Fill between for confidence interval
-      ci_fill = ax.fill_between(predictions.index, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b', label='Intervalo de Confidencia')
-      # Add labels and title
-      ax.set_title(f"Modelo ARIMA para {col} ({actual_menu})")
-      ax.set_xlabel('Meses - Años')
-      ax.set_ylabel(col)
-      # Set up the x-axis to show years
-      years = mdates.YearLocator()
-      months = mdates.MonthLocator()
-      years_fmt = mdates.DateFormatter('%Y')
-      # Set major ticks to years
-      ax.xaxis.set_major_locator(years)
-      ax.xaxis.set_major_formatter(years_fmt)
-      # Set minor ticks to months
-      ax.xaxis.set_minor_locator(months)
-      # Ensure x-axis starts and ends with data points
-      ax.set_xlim(data_to_plot.index[0], data_to_plot.index[-1])
-      # Add vertical lines for each year with fine style
-      for year in ax.xaxis.get_majorticklocs():
-          ax.axvline(x=year, color='black', linestyle='--', linewidth=0.5, alpha=0.5)
-      # Rotate and align the tick labels
-      plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
-      # Use a more precise date string for the axis label
-      ax.fmt_xdata = mdates.DateFormatter('%Y-%m-%d')
-      # Create legend
-      ax.legend([data_actual_line, predictions_line, test_scatter, ci_fill],
-                ['Data Actual', 'Predicciones', 'Data Test', 'Intervalo de Confidencia'],
-                loc='upper left')
-      train_min = train[col].min()
-      train_max = train[col].max()
-      buffer = (train_max - train_min) * 0.1  # Add a 10% buffer
-      ax.set_ylim(train_min - buffer, train_max + buffer)
-      #plt.autoscale(ax=ax)  # Fine-tune based on actual data
-      # Adjust layout to prevent cutoff of tick labels
-      fig.tight_layout()
-      # Save the plot
-      plt.savefig(os.path.join(unique_folder, f'{filename}_arima_{col[:3]}.png'), bbox_inches='tight')
-      path_image = f'{filename}_arima_{col[:3]}.png'
-      charts += 'Modelo ARIMA para ' + str(col) + ' (' + str(path_image) + ')\n\n'
-      plt.show()
+      
+      # Check if the column has enough non-zero values
+      if (train[col] != 0).sum() <= 10:  # Adjust this threshold as needed
+          print(f"Skipping {col} due to insufficient non-zero values")
+          csv_arima += f"Skipping {col} due to insufficient non-zero values\n"
+          continue
+
+      try:
+          best_params, best_aic, best_model = find_best_arima_params(train[col])
+          if auto:
+              p, d, q = best_params  # Unpack the tuple
+              print(f"Los mejores parámetros de ARIMA encontrados: p={p}, d={d}, q={q}")
+          
+          # Fit ARIMA model
+          model = ARIMA(train[col], order=(p, d, q))
+          results = model.fit()
+          print(results.summary())
+          csv_arima += f'\n{results.summary()}'
+
+          # Prepare data for plotting (last 24 months)
+          last_months = train[col].iloc[-mb:]
+          # Make predictions (adjust steps as needed)
+          predictions, conf_int = best_model.predict(n_periods=mf, return_conf_int=True)
+          predictions = results.forecast(steps=mf)
+          # Calculate RMSE and MAE
+          actual = test[col]
+          predicted = predictions
+          if len(predictions) > len(test[col]):
+            predicted = predictions[:len(test[col])]
+          rmse = mean_squared_error(actual, predicted, squared=False)
+          mae = mean_absolute_error(actual, predicted)
+          print(f"Predicciones para {col} ({actual_menu}):\n{predictions}")
+          csv_arima += f"\nPredictions for {col} ({actual_menu}):\n{predictions}"
+          print(f"\nError Cuadrático Medio Raíz (ECM Raíz) RMSE: {rmse}\nError Absoluto Medio (EAM) MAE: {mae}\n")
+          csv_arima += f"\nRMSE: {rmse}, MAE: {mae}"
+          # Combine actual data and predictions for plotting
+          data_to_plot = pd.concat([last_months, predictions])
+          # Create the plot
+          fig, ax = plt.subplots(figsize=(12, 8))  # Adjust figure size as needed
+          # Plot data actual
+          data_actual_line, = ax.plot(data_to_plot.index, data_to_plot, label='Data Actual')
+          # Plot predictions with dashed line and blue color
+          predictions_line, = ax.plot(predictions.index, predictions, label='Predicciones', linestyle='--', color='blue')
+          # Plot test data with scatter and alpha
+          test_scatter = ax.scatter(test.index, test[col], label='Data Test', alpha=0.4, marker='*')
+          # Fill between for confidence interval
+          ci_fill = ax.fill_between(predictions.index, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b', label='Intervalo de Confidencia')
+          # Add labels and title
+          ax.set_title(f"Modelo ARIMA para {col} ({actual_menu})")
+          ax.set_xlabel('Meses - Años')
+          ax.set_ylabel(col)
+          # Set up the x-axis to show years
+          years = mdates.YearLocator()
+          months = mdates.MonthLocator()
+          years_fmt = mdates.DateFormatter('%Y')
+          # Set major ticks to years
+          ax.xaxis.set_major_locator(years)
+          ax.xaxis.set_major_formatter(years_fmt)
+          # Set minor ticks to months
+          ax.xaxis.set_minor_locator(months)
+          # Ensure x-axis starts and ends with data points
+          ax.set_xlim(data_to_plot.index[0], data_to_plot.index[-1])
+          # Add vertical lines for each year with fine style
+          for year in ax.xaxis.get_majorticklocs():
+              ax.axvline(x=year, color='black', linestyle='--', linewidth=0.5, alpha=0.5)
+          # Rotate and align the tick labels
+          plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha='right')
+          # Use a more precise date string for the axis label
+          ax.fmt_xdata = mdates.DateFormatter('%Y-%m-%d')
+          # Create legend
+          ax.legend([data_actual_line, predictions_line, test_scatter, ci_fill],
+                    ['Data Actual', 'Predicciones', 'Data Test', 'Intervalo de Confidencia'],
+                    loc='upper left')
+          train_min = train[col].min()
+          train_max = train[col].max()
+          buffer = (train_max - train_min) * 0.1  # Add a 10% buffer
+          ax.set_ylim(train_min - buffer, train_max + buffer)
+          #plt.autoscale(ax=ax)  # Fine-tune based on actual data
+          # Adjust layout to prevent cutoff of tick labels
+          fig.tight_layout()
+          # Save the plot
+          image_filename = f'{filename}_arima_{col[:3]}.png'
+          plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+          add_image_to_report(f'Modelo ARIMA para {col}', image_filename)
+          charts += f'Modelo ARIMA para {col} ({image_filename})\n\n'
+          plt.show()
+      except Exception as e:
+          print(f"Error fitting ARIMA model for {col}: {str(e)}")
+          csv_arima += f"Error fitting ARIMA model for {col}: {str(e)}\n"
+          continue
+
   csv_arima="".join(csv_arima)
   return csv_arima
 
@@ -691,20 +741,20 @@ def process_file_data(all_kw, d_filename):
   all_data = get_file_data(d_filename)
   #PPRINT(f"\n{all_data}")
 
-  last_20_years = all_data[-20*12:]
-  #PPRINT(f"\n{last_20_years}")
+  if menu == 2:
+      last_20_years = all_data[-20:]
+      last_15_years = last_20_years[-15:]
+      last_10_years = last_20_years[-10:]
+      last_5_years = last_20_years[-5:]
+      last_year = last_20_years[-1:]
+  else:
+      last_20_years = all_data[-20*12:]
+      last_15_years = last_20_years[-15*12:]
+      last_10_years = last_20_years[-10*12:]
+      last_5_years = last_20_years[-5*12:]
+      last_year = last_20_years[-1*12:]
 
-  last_15_years = last_20_years[-15*12:]
-  #PPRINT(f"\n{last_15_years}")
 
-  last_10_years = last_20_years[-10*12:]
-  #PPRINT(f"\n{last_10_years}")
-
-  last_5_years = last_20_years[-5*12:]
-  #PPRINT(f"\n{last_5_years}")
-
-  last_year = last_20_years[-1*12:]
-  #PPRINT(f"\n{last_year}")
 
   # mean_last_20_B = process_data(last_20_years_B)
   mean_all = process_data(all_data)
@@ -788,178 +838,224 @@ def relative_comparison():
     global charts
     global title_odd_charts
     global title_even_charts
+    global image_markdown
     
     print(f"\nCreando gráficos de comparación relativa...")
 
-    fig = plt.figure(figsize=(20, 35))  # Increased figure height
+    fig = plt.figure(figsize=(24, 35))  # Increased width from 22 to 24
 
     x_pos = np.arange(len(all_keywords))
 
-    color_map = plt.colormaps['tab10']
-    colors = [color_map(i) for i in range(len(all_keywords))]
+    # Define colors here
+    colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
 
     window_size = 10
 
-    def setup_subplot(ax, data, mean, title, ylabel, is_last_year=False):
-        for i, kw in enumerate(all_keywords):
-            smoothed_data = smooth_data(data[kw], window_size)
-            # Assuming `data[kw]` has the original x-axis dates as its index
-            ax.plot(data[kw].index, smoothed_data, label=kw, color=colors[i])
+    # Calculate the maximum y-value across all datasets
+    all_means = [
+        trends_results['mean_all'] if menu == 2 or menu == 4 else None,
+        trends_results['mean_last_20'],
+        trends_results['mean_last_15'],
+        trends_results['mean_last_10'],
+        trends_results['mean_last_5'],
+        trends_results['mean_last_year']
+    ]
+    max_y_value = max(mean.max() for mean in all_means if mean is not None)
 
-        # Set major and minor ticks for the y-axis
-        # ax.yaxis.set_major_locator(MultipleLocator(10))
-        # ax.yaxis.set_minor_locator(MultipleLocator(5))
+    # Determine the number of rows in the gridspec
+    total_rows = 7 if menu == 2 or menu == 4 else 6
 
-        # Grid lines for major ticks only
-        ax.grid(True, which='major', linestyle='--', linewidth=0.5, color='grey')
+    # Create grid spec with 9 columns and the determined number of rows
+    gs = fig.add_gridspec(total_rows, 9, height_ratios=[0.2] + [1] * (total_rows - 1))
 
-        ax.set_ylabel(ylabel, fontsize=14)
-        ax.set_title(title, fontsize=16)
-
-        def format_month(x, pos):
-          if mdates.num2date(x).month == 7:
-              ax.axvline(x, color='lightgrey',linestyle ='--', linewidth=0.3)
-              return '|'
-          else:
-              return ''
-
-        def format_month2(x, pos):
-          if mdates.num2date(x).month != 1:
-              ax.axvline(x, color='lightgrey',linestyle ='dotted', linewidth=0.3)
-              return str(mdates.num2date(x).month)
-          else:
-              return ''
-
-        # X-axis formatting based on time period
-        if is_last_year:
-            year_locator = mdates.YearLocator()
-            ax.xaxis.set_major_locator(year_locator)
-            ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
-            ax.xaxis.set_minor_locator(mdates.MonthLocator())
-            ax.xaxis.set_minor_formatter(mdates.DateFormatter('%m'))
-            ax.xaxis.set_minor_formatter(FuncFormatter(format_month2))
-        else:
-            # For other periods, years as major and months as minor
-            ax.xaxis.set_major_locator(mdates.YearLocator())
-            ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
-            ax.xaxis.set_minor_locator(mdates.MonthLocator())
-            ax.xaxis.set_minor_formatter(FuncFormatter(format_month))
-
-        ax.tick_params(axis='both', which='both', labelsize=8, labelrotation=45)
-
-    def setup_bar_subplot(ax, mean, title):
-        mean, ispartial = remove_ispartial(mean)  # Assuming this handles partial data
-
-        # Set major and minor ticks for the y-axis
-        # ax.yaxis.set_major_locator(plt.MultipleLocator(10))
-        # ax.yaxis.set_minor_locator(plt.MultipleLocator(5))
-
-        # Grid lines for major ticks only
-        ax.grid(True, which='major', linestyle='--', linewidth=0.5, color='grey')
-
-        # Create bar plot with corresponding value labels
-        bar_container = ax.bar(x_pos, mean[:len(all_keywords)], align='center', color=colors)
-
-        # Add value labels using `bar_label` (if Matplotlib >= 3.8)
-        #ax.bar_label(bar_container, fmt="{:.1E}".format)  # Format values (optional)
-        ax.bar_label(bar_container, fmt=eng_format)  # Format values (optional)
-
-        ax.set_title(title, fontsize=16)
-        ax.set_xticks(x_pos)
-        ax.set_xticklabels(replace_spaces_with_newlines(all_keywords), rotation=0, ha='center', fontsize=8)
-        ax.tick_params(axis='y', which='major', labelsize=8)
-
-        # Adjust y-axis limits to avoid clipping labels (if needed)
-        plt.setp(ax.get_yticklabels(), rotation=45, ha='right')  # Rotate y-axis labels if crowded
-        plt.tight_layout()  # Adjust spacing to avoid clipping labels
-
-    # Create grid spec to allow uneven column widths and space for legend
-    total_graphs = 6
-    h_r = [0.2, 1, 1, 1, 1, 1]
-    if menu == 2 or menu == 4:
-      period = 72
-      if menu == 4:
-        period = 74
-      total_graphs = 7
-      h_r = [0.2, 1, 1, 1, 1, 1, 1]
-
-    if wider:
-      gs = fig.add_gridspec(total_graphs, 6, height_ratios=h_r)
-      axODD = slice(0,5)
-      axEVEN = 5
-    else:
-      gs = fig.add_gridspec(total_graphs, 4, height_ratios=h_r)
-      axODD = slice(0,3)
-      axEVEN = 3
+    # Define slices for odd and even subplots
+    axODD = slice(0, 7)  # Line graph takes 7 columns
+    axEVEN = slice(8, 10)  # Bar graph takes 2 columns, leaving one column (7) blank
 
     i = 1
     # all data
     if menu == 2 or menu == 4:
-      ax1 = fig.add_subplot(gs[i, axODD])
-      ax2 = fig.add_subplot(gs[i, axEVEN])
-      setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, 'Período de ' + str(period) + ' años\n(' + str(current_year - period) + '-' + str(current_year) + ')')
-      setup_bar_subplot(ax2, trends_results['mean_all'], title_even_charts)
-      i+=1
-      title_odd_charts = ''
-      title_even_charts = ''
+        ax1 = fig.add_subplot(gs[i, axODD])
+        ax2 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {72 if menu == 2 else 74} años\n({current_year - (72 if menu == 2 else 74)}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax2, trends_results['mean_all'], title_even_charts, max_y_value, x_pos, colors)
+        i += 1
+        title_odd_charts = ''
+        title_even_charts = ''
 
     # Last 20-years
     ax3 = fig.add_subplot(gs[i, axODD])
     ax4 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, 'Período de 20 años\n(' + str(current_year - 20) + '-' + str(current_year) + ')')
-    setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts)
-    i+=1
+    setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, f'Período de 20 años\n({current_year - 20}-{current_year})', window_size, colors)
+    setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts, max_y_value, x_pos, colors)
+    i += 1
 
     # Last 15-years
     ax5 = fig.add_subplot(gs[i, axODD])
     ax6 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax5, trends_results['last_15_years_data'], trends_results['mean_last_15'], '', 'Período de 15 años\n(' + str(current_year - 15) + '-' + str(current_year) + ')')
-    setup_bar_subplot(ax6, trends_results['mean_last_15'], '')
-    i+=1
+    setup_subplot(ax5, trends_results['last_15_years_data'], trends_results['mean_last_15'], '', f'Período de 15 años\n({current_year - 15}-{current_year})', window_size, colors)
+    setup_bar_subplot(ax6, trends_results['mean_last_15'], '', max_y_value, x_pos, colors)
+    i += 1
 
     # Last 10-years
     ax7 = fig.add_subplot(gs[i, axODD])
     ax8 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], '', 'Período de 10 años\n(' + str(current_year - 10) + '-' + str(current_year) + ')')
-    setup_bar_subplot(ax8, trends_results['mean_last_10'], '')
-    i+=1
+    setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], '', f'Período de 10 años\n({current_year - 10}-{current_year})', window_size, colors)
+    setup_bar_subplot(ax8, trends_results['mean_last_10'], '', max_y_value, x_pos, colors)
+    i += 1
 
     # Last 5-years
     ax9 = fig.add_subplot(gs[i, axODD])
     ax10 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], '', 'Período de 5 años\n(' + str(current_year - 5) + '-' + str(current_year) + ')')
-    setup_bar_subplot(ax10, trends_results['mean_last_5'], '')
-    i+=1
+    setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], '', f'Período de 5 años\n({current_year - 5}-{current_year})', window_size, colors)
+    setup_bar_subplot(ax10, trends_results['mean_last_5'], '', max_y_value, x_pos, colors)
+    i += 1
 
     # Last 1-year
     ax11 = fig.add_subplot(gs[i, axODD])
     ax12 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax11, trends_results['last_year_data'], trends_results['mean_last_year'], '', 'Período de 1 año\n(' + str(current_year - 1) + '-' + str(current_year) + ')', is_last_year=True)
-    setup_bar_subplot(ax12, trends_results['mean_last_year'], '')
+    setup_subplot(ax11, trends_results['last_year_data'], trends_results['mean_last_year'], '', f'Período de 1 año\n({current_year - 1}-{current_year})', window_size, colors, is_last_year=True)
+    setup_bar_subplot(ax12, trends_results['mean_last_year'], '', max_y_value, x_pos, colors)
 
     # Add legend at the bottom, outside of the plots
-    if menu == 2 or menu == 4:
-        handles, labels = ax1.get_legend_handles_labels()
-    else:
-        handles, labels = ax3.get_legend_handles_labels()
-    
-    # Modify labels to include (actual_menu)
+    handles, labels = ax3.get_legend_handles_labels()
     labels = [f"{label} ({actual_menu})" for label in labels]
-
     fig.legend(handles, labels, loc='lower right', bbox_to_anchor=(0.55, 0.05),
-                 ncol=len(all_keywords), fontsize=12)
+                ncol=len(all_keywords), fontsize=12)
 
     # Adjust the layout
     plt.tight_layout()
-    plt.subplots_adjust(top=0.95, bottom=0.1, hspace=0.3, wspace=0.3)  # Increased bottom margin and wspace
+    plt.subplots_adjust(top=0.95, bottom=0.1, hspace=0.3, wspace=0.4)  # Reduced wspace from 0.5 to 0.4
 
     # Save the plot to the unique folder
-    plt.savefig(os.path.join(unique_folder, f'{filename}_overtime.png'), bbox_inches='tight')
-    path_image = f'{filename}_overtime.png'
-    charts+='Interés por período (' + str(path_image) + ')\n\n'
+    image_filename = f'{filename}_overtime.png'
+    plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+    add_image_to_report('Interés por período', image_filename)
+    charts += f'Interés por período ({image_filename})\n\n'
     plt.show()
 
     print(f"\nGráficos de comparación relativa creados.")
+
+def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is_last_year=False):
+    if colors is None:
+        colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
+    
+    # Plot data
+    for i, kw in enumerate(all_keywords):
+        if menu == 2:
+            ax.plot(data[kw].index, data[kw], label=kw, color=colors[i])
+        else:
+            smoothed_data = smooth_data(data[kw], window_size)
+            ax.plot(data[kw].index, smoothed_data, label=kw, color=colors[i])
+            
+            if menu == 4:
+                # Calculate yearly sum of previous 12 months
+                yearly_sums = []
+                years = data.index.year.unique()
+                for year in years[1:]:  # Start from the second year
+                    end_date = f"{year}-01-01"
+                    start_date = f"{year-1}-01-01"
+                    yearly_sum = data[kw].loc[start_date:end_date].sum()
+                    yearly_sums.append((pd.Timestamp(year, 1, 1), yearly_sum))
+                
+                # Create secondary y-axis for yearly sums
+                ax2 = ax.twinx()
+                
+                # Create bar plot for yearly sums on secondary y-axis
+                bar_positions, bar_heights = zip(*yearly_sums)
+                ax2.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
+                
+                # Set label for secondary y-axis
+                ax2.set_ylabel('Suma anual', color='red', fontsize=12)
+                ax2.tick_params(axis='y', labelcolor='red')
+            else:
+                # Original yearly mean calculation
+                yearly_means = []
+                years = data.index.year.unique()
+                for idx, year in enumerate(years):
+                    if idx == 0:  # First year
+                        start_date = f"{year}-01-01"
+                        end_date = f"{year}-06-30"
+                    elif idx == len(years) - 1:  # Last year
+                        start_date = f"{year}-07-01"
+                        end_date = f"{year}-12-31"
+                    else:  # All other years
+                        start_date = f"{year-1}-07-01"
+                        end_date = f"{year}-06-30"
+                    
+                    yearly_mean = data[kw].loc[start_date:end_date].mean()
+                    yearly_means.append((pd.Timestamp(year, 1, 1), yearly_mean))
+                
+                # Create bar plot for yearly means
+                bar_positions, bar_heights = zip(*yearly_means)
+                ax.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
+
+    # Grid lines for major ticks only
+    ax.grid(True, which='major', linestyle='--', linewidth=0.3, color='grey', alpha=0.1)
+
+    # Set y-axis to start at 0
+    y_min, y_max = ax.get_ylim()
+    ax.set_ylim(bottom=0, top=y_max)
+
+    ax.set_ylabel(ylabel, fontsize=14)
+    ax.set_title(title, fontsize=16)
+
+    def format_month(x, pos):
+      if mdates.num2date(x).month == 7:
+          ax.axvline(x, color='lightgrey',linestyle ='--', linewidth=0.3)
+          return '|'
+      else:
+          return ''
+
+    def format_month2(x, pos):
+      if mdates.num2date(x).month != 1:
+          ax.axvline(x, color='lightgrey',linestyle ='dotted', linewidth=0.3)
+          return str(mdates.num2date(x).month)
+      else:
+          return ''
+
+    # X-axis formatting based on time period
+    if is_last_year:
+        year_locator = mdates.YearLocator()
+        ax.xaxis.set_major_locator(year_locator)
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+        ax.xaxis.set_minor_locator(mdates.MonthLocator())
+        ax.xaxis.set_minor_formatter(mdates.DateFormatter('%m'))
+        ax.xaxis.set_minor_formatter(FuncFormatter(format_month2))
+    else:
+        # For other periods, years as major and months as minor
+        ax.xaxis.set_major_locator(mdates.YearLocator())
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+        ax.xaxis.set_minor_locator(mdates.MonthLocator())
+        ax.xaxis.set_minor_formatter(FuncFormatter(format_month))
+
+    ax.tick_params(axis='both', which='both', labelsize=8, labelrotation=45)
+
+    return ax
+
+def setup_bar_subplot(ax, mean, title, y_max, x_pos, colors):
+    mean, ispartial = remove_ispartial(mean)  # Assuming this handles partial data
+
+    # Grid lines for major ticks only
+    ax.grid(True, which='major', linestyle='--', linewidth=0.5, color='grey', alpha=0.1)  # Reduced grid line opacity to 0.1
+
+    # Create bar plot with corresponding value labels
+    bar_container = ax.bar(x_pos, mean[:len(all_keywords)], align='center', color='blue')  # Changed bar color to blue
+
+    # Add value labels using `bar_label`
+    ax.bar_label(bar_container, fmt=eng_format)  # Format values (optional)
+
+    ax.set_title(title, fontsize=16)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(replace_spaces_with_newlines(all_keywords), rotation=0, ha='center', fontsize=8)
+    ax.tick_params(axis='y', which='major', labelsize=8)
+
+    # Set y-axis limit to the maximum value
+    ax.set_ylim(0, y_max)
+
+    # Adjust y-axis limits to avoid clipping labels (if needed)
+    plt.setp(ax.get_yticklabels(), rotation=45, ha='right')  # Rotate y-axis labels if crowded
+    plt.tight_layout()  # Adjust spacing to avoid clipping labels
 
 # Calculates the yearly average of a N-year period.
 def calculate_yearly_average(data):
@@ -983,17 +1079,29 @@ def calculate_yearly_average(data):
 # Check Trends
 def check_trends2(kw):
     global charts
+    global image_markdown
     data = trends_results['last_20_years_data']
     mean = trends_results['mean_last_20']
     banner_msg(title=' Herramienta: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
 
+    # Set years2 based on menu
+    years2 = 2 if menu == 4 else 0
+
     # Calculate averages
-    avg_all = calculate_yearly_average(trends_results['all_data'][kw])
-    avg_20 = calculate_yearly_average(trends_results['all_data'][-20*12:][kw])
-    avg_15 = calculate_yearly_average(trends_results['all_data'][-15*12:][kw])
-    avg_10 = calculate_yearly_average(trends_results['all_data'][-10*12:][kw])
-    avg_5 = calculate_yearly_average(trends_results['all_data'][-5*12:][kw])
-    avg_1 = calculate_yearly_average(trends_results['all_data'][-12:][kw])
+    if menu == 2 or menu == 4:
+        avg_all = calculate_yearly_average(trends_results['all_data'][kw])
+        avg_20 = calculate_yearly_average(trends_results['all_data'][-20:][kw])
+        avg_15 = calculate_yearly_average(trends_results['all_data'][-15:][kw])
+        avg_10 = calculate_yearly_average(trends_results['all_data'][-10:][kw])
+        avg_5 = calculate_yearly_average(trends_results['all_data'][-5:][kw])
+        avg_1 = calculate_yearly_average(trends_results['all_data'][-1:][kw])
+    else:
+        avg_all = None  # We won't use this for other menu options
+        avg_20 = calculate_yearly_average(trends_results['last_20_years_data'][kw])
+        avg_15 = calculate_yearly_average(trends_results['last_15_years_data'][kw])
+        avg_10 = calculate_yearly_average(trends_results['last_10_years_data'][kw])
+        avg_5 = calculate_yearly_average(trends_results['last_5_years_data'][kw])
+        avg_1 = calculate_yearly_average(trends_results['last_year_data'][kw])
 
     means = {}
     means[kw] = [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1]
@@ -1002,62 +1110,77 @@ def check_trends2(kw):
     base_width = 0.35
 
     # Calculate relative widths
-    avg_all_width = base_width * 72 / 20 * 2
-    avg_20_width = base_width * 20 / 20 * 2
-    avg_15_width = base_width * 15 / 20 * 2
-    avg_10_width = base_width * 10 / 20 * 2
-    avg_5_width = base_width * 5 / 20 * 2
-    avg_1_width = base_width * 1 / 20 * 2.5
+    if menu == 2 or menu == 4:
+        avg_all_width = base_width * (72 + years2) / 20 * 2
+        avg_20_width = base_width * 20 / 20 * 2
+        avg_15_width = base_width * 15 / 20 * 2
+        avg_10_width = base_width * 10 / 20 * 2
+        avg_5_width = base_width * 5 / 20 * 2
+        avg_1_width = base_width * 1 / 20 * 2.5
+
+        bar_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
+                        avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
+                        avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
+        bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
+        years_list = [72 + years2, 20, 15, 10, 5, 1]
+    else:
+        avg_20_width = base_width * 20 / 20 * 2
+        avg_15_width = base_width * 15 / 20 * 2
+        avg_10_width = base_width * 10 / 20 * 2
+        avg_5_width = base_width * 5 / 20 * 2
+        avg_1_width = base_width * 1 / 20 * 2.5
+
+        bar_positions = [0, avg_20_width, avg_20_width + avg_15_width,
+                         avg_20_width + avg_15_width + avg_10_width,
+                         avg_20_width + avg_15_width + avg_10_width + avg_5_width]
+        bar_widths = [avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
+        years_list = [20, 15, 10, 5, 1]
 
     # Create the bar graph
     fig, ax = plt.subplots(figsize=(10,6))
 
-    # Define bar positions and widths
-    bar_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
-                    avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
-                    avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-    bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
-
-    if menu == 2:
-      years2 = 0
-    if menu == 4:
-      years2 = 2
     # Create bars
-    rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
-            for pos, width, avg, years, color in zip(bar_positions, bar_widths, [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                    [72+years2, 20, 15, 10, 5, 1],
-                                                    ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+    if menu == 2 or menu == 4:
+        rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
+                 for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
+                                                          [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
+                                                          years_list,
+                                                          ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+    else:
+        rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
+                 for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
+                                                          [avg_20, avg_15, avg_10, avg_5, avg_1],
+                                                          years_list,
+                                                          ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
 
-        # Set the x-axis labels and title
-    x_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
-                    avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
-                    avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-    ax.set_xticks(x_positions)
-    ax.set_xticklabels(keywords)
+    # Set the x-axis labels and title
+    ax.set_xticks(bar_positions)
+    ax.set_xticklabels(years_list)
     ax.set_ylabel('Media')
     ax.set_title(f'Media a lo largo del tiempo de:\n{kw} según {actual_menu}')
+
     # Add labels over each bar
-    def add_labels(rects, avg, position):
+    def add_labels(rects):
         for rect in rects:
             height = rect.get_height()
-            plt.text(rect.get_x() + rect.get_width() / 2, height, eng_notation(height), # f"{height:.2e}",
+            ax.text(rect.get_x() + rect.get_width() / 2, height, eng_notation(height),
                     ha='center', va='bottom', fontsize=8, color='black')
-    add_labels(rects[0], avg_all, 1)
-    add_labels(rects[1], avg_20, 2)
-    add_labels(rects[2], avg_15, 3)
-    add_labels(rects[3], avg_10, 4)
-    add_labels(rects[4], avg_5, 5)
-    add_labels(rects[5], avg_1, 6)
+
+    for rect in rects:
+        add_labels(rect)
+
     # Move the legend outside the plot
     legend = ax.legend(loc='upper center', fontsize=9, bbox_to_anchor=(0.5, -0.15), ncol=2)
+
     # Save the plot to the unique folder
-    plt.savefig(os.path.join(unique_folder, f'{filename}_means_{kw[:3]}.png'), bbox_inches='tight')
-    # path_image = os.path.join(unique_folder, f'{filename}_season_{keyword[:3]}.png')
-    path_image = f'{filename}_means_{kw[:3]}.png'
-    charts+='Medias de ' + str(kw) + ' (' + str(path_image) + ')\n\n'
+    image_filename = f'{filename}_means_{kw[:3]}.png'
+    plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+    add_image_to_report(f'Medias de {kw}', image_filename)
+    charts += f'Medias de {kw} ({image_filename})\n\n'
+
     # Show the plot
     if menu == 2:
-      plt.yscale('log')
+        plt.yscale('log')
     plt.show()
 
     # Calculate trends
@@ -1193,6 +1316,7 @@ def analyze_trends(trend):
         A dictionary containing analysis results.
     """
     global charts
+    global image_markdown
     global one_keyword
     # Extract relevant data
     mean_last_20 = trend['mean_last_20']
@@ -1280,9 +1404,10 @@ def analyze_trends(trend):
         qty=len(title)
         print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
         # Save the plot to the unique folder
-        plt.savefig(os.path.join(unique_folder, f'{filename}_heatmap.png'), bbox_inches='tight')
-        path_image = f'{filename}_heatmap.png'
-        charts+='Mapa de Calor (' + str(path_image) + ')\n\n'
+        image_filename = f'{filename}_heatmap.png'
+        plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+        add_image_to_report('Mapa de Calor de Correlación', image_filename)
+        charts += f'Mapa de Calor ({image_filename})\n\n'
         plt.show()
 
         # Regression analysis
@@ -1313,7 +1438,7 @@ def analyze_trends(trend):
             coefficients = model.coef_
             intercept = model.intercept_
             # Calculate R-squared
-            r_squared = r2_score(y, model.predict(X))  # Use r2_score to calculate R-squared
+            r_squared = r2_score(y, model.predict(X))  # Use r2_score to calculate R-squared value
             print(f"\nRegresión para: {combo}")
             print("Coeficientes:", coefficients)
             print("Intersección:", intercept)
@@ -1334,6 +1459,7 @@ def analyze_trends(trend):
             max_keywords: The maximum number of keywords to consider.
           """
           global charts
+          global image_markdown
           columns = df.columns
           for i in range(2, max_keywords + 1):
             combinations = itertools.combinations(columns, i)
@@ -1345,10 +1471,10 @@ def analyze_trends(trend):
                 ax.set_xlabel(combo[0])
                 ax.set_ylabel(combo[1])
               plt.tight_layout()
-              plt.savefig(os.path.join(unique_folder, f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'), bbox_inches='tight')
-              # path_image = os.path.join(unique_folder, f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png')
-              path_image = f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'
-              charts+='Gráfico de Dispersión para ' + str(", ".join(combo)) + ' (' + str(path_image) +')\n\n'
+              image_filename = f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'
+              plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+              add_image_to_report(f'Gráfico de Dispersión para {", ".join(combo)}', image_filename)
+              charts += f'Gráfico de Dispersión para {", ".join(combo)} ({image_filename})\n\n'
               plt.show()
 
         # Scatter plot
@@ -1361,6 +1487,7 @@ def analyze_trends(trend):
     else:
         csv_correlation = None
         csv_regression = None
+        print('Se requieren al menos dos variables para realizar los cálculos de correlación y regresión')
     return {
       'correlation': csv_correlation,
       'regression': csv_regression
@@ -1467,7 +1594,7 @@ if not os.path.exists(unique_folder):
 
 
 # *************************************************************************************
-# Part 1 - Trends and Means
+# Part 1 - Tendencias y Medias
 # *************************************************************************************
 
 banner_msg(' Part 1 - Tendencias y Medias ', color2=GREEN)
@@ -1483,7 +1610,7 @@ csv_data = csv_string.getvalue()
 csv_means_trends = "Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n" + csv_data
 
 # *************************************************************************************
-# Part 2 - Comparison along time
+# Part 2 - Comparación a lo largo del tiempo
 # *************************************************************************************
 
 banner_msg(' Part 2 - Comparación a lo largo del tiempo ', color2=GREEN)
@@ -1491,7 +1618,7 @@ relative_comparison()
 
 
 # *************************************************************************************
-# Part 3 - Correlation - Regression
+# Part 3 - Correlación - Regresión
 # *************************************************************************************
 
 banner_msg(' Part 3 - Correlación - Regresión ', color2=GREEN)
@@ -1506,7 +1633,7 @@ else:
   
 
 # *************************************************************************************
-# Part 4 - ARIMA
+# Part 4 - Modelo ARIMA
 # *************************************************************************************
 
 banner_msg(' Part 4 - Modelo ARIMA ', color2=GREEN)
@@ -1520,7 +1647,7 @@ csv_arima=arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0)
 
 
 # *************************************************************************************
-# Part 5 - Seasonal Analisys
+# Part 5 - Análisis Estacional
 # *************************************************************************************
 
 banner_msg(' Part 5 - Análisis estacional ', color2=GREEN)
@@ -1591,7 +1718,7 @@ p_1 = prompt_1.format(all_kw, \
                       all_kw, csv_means_trends)
 n=0
 n+=1
-print(f'\n\n\n{n}. Analizing Temporal Trends...')
+print(f'\n\n\n{n}. Analizando tendencias temporales...')
 gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
 prompt_spanish=f'{prompt_sp} {gem_temporal_trends}'
 gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1601,7 +1728,7 @@ print(gem_temporal_trends_sp)
 if not one_keyword:
   n+=1
   p_2 = prompt_2.format(all_kw, csv_correlation, csv_regression)
-  print(f'\n\n\n{n}. Analizing Cross-Keyword Relationships...')
+  print(f'\n\n\n{n}. Analizando relaciones entre palabras clave...')
   gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
   prompt_spanish=f'{prompt_sp} {gem_cross_keyword}'
   gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1614,7 +1741,7 @@ else:
 
 n+=1
 p_3 = prompt_3.format(csv_means_trends, csv_correlation, csv_regression)
-print(f'\n\n\n{n}. Analizing Industry-Specific Trends...')
+print(f'\n\n\n{n}. Analizando tendencias específicas de la industria...')
 gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
 prompt_spanish=f'{prompt_sp} {gem_industry_specific}'
 gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1623,7 +1750,7 @@ print(gem_industry_specific_sp)
 
 n+=1
 p_4 = prompt_4.format(csv_arima)
-print(f'\n\n\n{n}. Analizing ARIMA Model Performance...')
+print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
 gem_arima=gemini_prompt(f_system_prompt,p_4)
 prompt_spanish=f'{prompt_sp} {gem_arima}'
 gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1632,7 +1759,7 @@ print(gem_arima_sp)
 
 n+=1
 p_5 = prompt_5.format(csv_seasonal)
-print(f'\n\n\n{n}. Analizing Seasonal Patterns...\n')
+print(f'\n\n\n{n}. Analizando patrones estacionales...\n')
 gem_seasonal=gemini_prompt(f_system_prompt,p_5)
 prompt_spanish=f'{prompt_sp} {gem_seasonal}'
 gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1641,7 +1768,7 @@ print(gem_seasonal_sp)
 
 n+=1
 p_6 = prompt_6.format(csv_fourier)
-print(f'\n\n\n{n}. Analizing Cyclical Patterns...\n')
+print(f'\n\n\n{n}. Analizando patrones cíclicos...\n')
 gem_fourier=gemini_prompt(f_system_prompt,p_6)
 prompt_spanish=f'{prompt_sp} {gem_fourier}'
 gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1650,7 +1777,7 @@ print(gem_fourier_sp)
 
 n+=1
 p_conclusions = prompt_conclusions.format(gem_temporal_trends, gem_cross_keyword, gem_industry_specific, gem_arima, gem_seasonal, gem_fourier)
-print(f'\n\n\n{n}. Synthesize Findings and Draw Conclusions...\n')
+print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...\n')
 gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
 prompt_spanish=f'{prompt_sp} {gem_conclusions}'
 gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
