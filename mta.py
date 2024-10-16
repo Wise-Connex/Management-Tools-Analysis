@@ -55,6 +55,7 @@ import requests
 import scipy.interpolate as interp
 from scipy.interpolate import CubicSpline
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+import base64
 
 # AI Prompts imports 
 from prompts import system_prompt, prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, prompt_6, prompt_conclusions
