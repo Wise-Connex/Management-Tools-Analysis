@@ -177,10 +177,10 @@ def main_menu():
     banner_msg(" Menú principal ", YELLOW, WHITE)
     options = {
         1: "Google Trends",
-        2: "Google Books ngrams",
-        3: "Bain Research",
-        4: "Crossref",
-        5: "All"
+        2: "Google Books Ngrams",
+        3: "Bain - Usability",
+        4: "Crossref.org",
+        5: "Bain - Satisfaction"
     }
     for index, option in enumerate(options.values(), 1):
         print(f"{index}. {option}")
@@ -190,9 +190,6 @@ def main_menu():
             index = int(selection) - 1  # Subtract 1 as indices start from 0
             if 0 <= index < len(options):
                 selected_option = list(options.keys())[index]
-                if index == 4:
-                  print("Trabajando en esta opción... vuelva luego.")
-                  sys.exit()
                 return selected_option
             else:
                 print(f"{RED}Opción no válida.{RESET}")
@@ -229,8 +226,7 @@ def get_user_selections(dictionary, option):
           case 4:
             selected_data_file_name = dictionary[selected_key][4]
           case 5:
-            print("Trabajando en esta opción... vuelva luego.")
-            sys.exit()
+            selected_data_file_name = dictionary[selected_key][5]
         return selected_data_file_name, selected_strings
       else:
         print(f"{RED}Indice no válido.{RESET}")
@@ -1562,8 +1558,8 @@ one_keyword=False
 
 # ****** K E Y W O R D S *******************************************************************************************
 all_keywords = []
-menu_options = ["Google Trends", "Google Ngrams", "Bain Research", "Crossref.org", "All"]
-menu_opt = ["GT","GB","BR","CR","AL"]
+menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Usability", "Crossref.org", "Bain - Satisfaction"]
+menu_opt = ["GT","GB","BR","CR","BS"]
 
 menu = main_menu()
 actual_menu = menu_options[menu-1]
@@ -1591,6 +1587,9 @@ if menu == 3:
 if menu == 4:
   title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
   title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
+if menu == 5:
+  title_odd_charts = 'Satisfacción por el uso\na lo largo del tiempo'
+  title_even_charts = 'Satisfacción por el uso\npara el período'
 
 
  
