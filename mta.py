@@ -64,12 +64,6 @@ from tools import tool_file_dic
 
 plt.ion()
 
-#Mount MyDrive
-# drive.mount('/content/drive')
-# gtrends_folder = '/content/drive/MyDrive/GTrends'
-# if not os.path.exists(gtrends_folder):
-#      os.makedirs(gtrends_folder)
-
 # Create a 'data' folder in the current directory
 data_folder = 'data'
 if not os.path.exists(data_folder):
@@ -285,12 +279,12 @@ def generate_markdown_toc(text):
     for match in re.finditer(r"^(#+)(.*)", text, re.MULTILINE):
         heading_level = len(match.group(1))
         heading_text = match.group(2).strip()
+        anchor = heading_text.lower().replace(' ', '-')
         if heading_level < level:
-            # Handle nested headings by closing previous sections
             for _ in range(level - heading_level):
-                toc_items.append("  ")  # Indent for nested levels
-            toc_items.append("  ")  # Add an extra space for clarity
-        toc_items.append(f"- {heading_text}")
+                toc_items.append("  ")
+            toc_items.append("  ")
+        toc_items.append(f"- <a href='#{anchor}'>{heading_text}</a>")
         level = heading_level
     return "</br>".join(toc_items)
 
@@ -303,10 +297,12 @@ def add_image_to_report(title, filename):
     print(f"Adding image to report: {full_path}")
     if os.path.exists(full_path):
         print(f"Image file exists: {full_path}")
+        with open(full_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
+        image_markdown += f"## {title}\n\n"
+        image_markdown += f"<img src='data:image/png;base64,{encoded_string}' style='max-width: 100%; height: auto;'>\n\n"
     else:
         print(f"Image file does not exist: {full_path}")
-    image_markdown += f"## {title}\n\n"
-    image_markdown += f"<img src='{filename}' style='max-width: 100%; height: auto;'>\n\n"
 
 def report_pdf():
     global data_txt
@@ -315,8 +311,8 @@ def report_pdf():
     global csv_means_trends
     global image_markdown
     data_txt = ''
-    data_txt += "\n\n\n"
-    data_txt += "#Datos\n"
+    data_txt += "<div class='page-break'></div>\n"
+    data_txt += "# Datos\n"
     data_txt += "## Herramientas Gerenciales:\n"
     data_txt += ", ".join(all_keywords) + "\n"
     data_txt += "\n\n\n"
@@ -325,45 +321,53 @@ def report_pdf():
     if menu == 2:
         year_adjust = 2
         data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
-        data_txt += csv_all_data + "\n"
+        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     elif menu == 4:
         year_adjust = 2
         data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
-        data_txt += csv_all_data + "\n"
+        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
-    data_txt += csv_last_20_data + "\n"
+    data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
-    data_txt += csv_last_15_data + "\n"
+    data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
-    data_txt += csv_last_10_data + "\n"
+    data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
-    data_txt += csv_last_5_data + "\n"
-    data_txt += f"### 1 año (Mensual) ({current_year-1} - {current_year})\n"
-    data_txt += csv_last_year_data + "\n"
+    data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += "\n\n\n"
+    data_txt += "<div class='page-break'></div>\n"  # Add page break here
     data_txt += "## Datos Medias y Tendencias\n"
     data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
-    data_txt += csv_means_trends.replace("\n", "</br>") + "\n"
+    data_txt += csv_means_trends.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     if not one_keyword:
         data_txt += f"### Correlacion\n"
-        data_txt += str(csv_correlation) + "\n"
+        data_txt += str(csv_correlation).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
         data_txt += f"### Regresion\n"
-        data_txt += str (csv_regression) + "\n"
+        data_txt += str(csv_regression).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += f"## ARIMA\n"
-    data_txt += "<blockquote>\n" + str(csv_arima) + "\n</blockquote>\n"
+    data_txt += "<blockquote>\n" + str(csv_arima).replace(',', ' | ').replace('\n', ' |\n| ') + "\n</blockquote>\n"
     data_txt += f"## Estacional\n"
-    data_txt += str(csv_seasonal) + "\n"
+    data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += f"## Fourier\n"
-    data_txt += str(csv_fourier) + "\n"
+    data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += "<div class='page-break'></div>\n"  # Add another page break here
     report = "\n"
+    report += "<div class='page-break'></div>\n"
     report += gem_temporal_trends_sp
+    report += "<div class='page-break'></div>\n"
     if not one_keyword:
         report += gem_cross_keyword_sp
+        report += "<div class='page-break'></div>\n"
     report += gem_industry_specific_sp
+    report += "<div class='page-break'></div>\n"
     report += gem_arima_sp
+    report += "<div class='page-break'></div>\n"
     report += gem_seasonal_sp
+    report += "<div class='page-break'></div>\n"
     report += gem_fourier_sp
+    report += "<div class='page-break'></div>\n"
     report += gem_conclusions_sp
+    report += "<div class='page-break'></div>\n"
 
     # Add the image markdown to the report
     report += image_markdown
@@ -378,7 +382,7 @@ def report_pdf():
     else:
         start_year = current_year-20
         end_year = current_year
-    report = f"#Análisis de {', '.join(all_keywords)} ({actual_menu}) ({str(start_year)} - {str(end_year)})\n\n</br></br> *Tabla de Contenido*\n</br></br>{toc}\n\n</br></br> {report}"
+    report = f"<div style='text-align: center;'><h1>Análisis de {', '.join(all_keywords)} \n</h1></div><div style='text-align: center;'>({actual_menu}) ({str(start_year)} - {str(end_year)})</div>\n\n</br></br></br></br>**Tabla de Contenido**\n</br></br>{toc}\n\n</br></br>\n {report}"
     report += data_txt
     report += "\n---</br></br></br><small>\n"
     report += "\n**************************************************\n"
@@ -392,21 +396,48 @@ def report_pdf():
     date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
     report += "</br></br>Reporte generado el " + date_time_string + "\n"
     report += "</small>"
-    html_content = markdown.markdown(report, extensions=["tables"])
 
-    # Convert image references to base64
-    def img_to_base64(img_path):
-        with open(img_path, "rb") as image_file:
-            return base64.b64encode(image_file.read()).decode()
+    html_content = f"""
+    <html>
+    <head>
+        <style>
+            @page {{
+                @bottom-right {{
+                    content: counter(page);
+                }}
+            }}
+            body {{
+                counter-reset: page;
+            }}
+            .page-break {{
+                page-break-after: always;
+                counter-increment: page;
+            }}
+            table {{
+                border-collapse: collapse;
+                width: 100%;
+            }}
+            th, td {{
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }}
+            th {{
+                background-color: #f2f2f2;
+            }}
+        </style>
+    </head>
+    <body>
+        {markdown.markdown(report, extensions=["tables"])}
+    </body>
+    </html>
+    """
 
-    # Replace image src with base64 encoded images
-    for img_tag in re.findall(r'<img.*?src="(.*?)".*?>', html_content):
-        img_path = os.path.join(unique_folder, img_tag)
-        if os.path.exists(img_path):
-            b64_img = img_to_base64(img_path)
-            html_content = html_content.replace(img_tag, f"data:image/png;base64,{b64_img}")
-        else:
-            print(f"Image not found: {img_path}")
+    # Replace existing page break divs with the new class
+    html_content = html_content.replace('<div style="page-break-after: always;"></div>', '<div class="page-break"></div>')
+
+    # Add page breaks after each graph
+    html_content = html_content.replace('</img>', '</img><div class="page-break"></div>')
 
     pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
     print(f"Saving PDF to: {pdf_path}")
@@ -532,8 +563,8 @@ def seasonal_analysis(period='last_20_years_data'):
         # Save the plot to the unique folder
         image_filename = f'{filename}_season_{keyword[:3]}.png'
         plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
-        add_image_to_report(f'Indice de Temporada para {keyword}', image_filename)
-        charts += f'Indice de Temporada para {keyword} ({image_filename})\n\n'
+        add_image_to_report(f'Indice Estacional para {keyword}', image_filename)
+        charts += f'Indice de Estacional para {keyword} ({image_filename})\n\n'
         plt.show()
     csv_seasonal="".join(csv_seasonal)
     return
@@ -843,7 +874,7 @@ def relative_comparison():
     
     print(f"\nCreando gráficos de comparación relativa...")
 
-    fig = plt.figure(figsize=(24, 35))  # Increased width from 22 to 24
+    fig = plt.figure(figsize=(24, 30))  # Reduced height from 35 to 30
 
     x_pos = np.arange(len(all_keywords))
 
@@ -858,13 +889,12 @@ def relative_comparison():
         trends_results['mean_last_20'],
         trends_results['mean_last_15'],
         trends_results['mean_last_10'],
-        trends_results['mean_last_5'],
-        trends_results['mean_last_year']
+        trends_results['mean_last_5']
     ]
     max_y_value = max(mean.max() for mean in all_means if mean is not None)
 
     # Determine the number of rows in the gridspec
-    total_rows = 7 if menu == 2 or menu == 4 else 6
+    total_rows = 6 if menu == 2 or menu == 4 else 5
 
     # Create grid spec with 9 columns and the determined number of rows
     gs = fig.add_gridspec(total_rows, 9, height_ratios=[0.2] + [1] * (total_rows - 1))
@@ -910,13 +940,6 @@ def relative_comparison():
     ax10 = fig.add_subplot(gs[i, axEVEN])
     setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], '', f'Período de 5 años\n({current_year - 5}-{current_year})', window_size, colors)
     setup_bar_subplot(ax10, trends_results['mean_last_5'], '', max_y_value, x_pos, colors)
-    i += 1
-
-    # Last 1-year
-    ax11 = fig.add_subplot(gs[i, axODD])
-    ax12 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax11, trends_results['last_year_data'], trends_results['mean_last_year'], '', f'Período de 1 año\n({current_year - 1}-{current_year})', window_size, colors, is_last_year=True)
-    setup_bar_subplot(ax12, trends_results['mean_last_year'], '', max_y_value, x_pos, colors)
 
     # Add legend at the bottom, outside of the plots
     handles, labels = ax3.get_legend_handles_labels()
@@ -931,8 +954,18 @@ def relative_comparison():
     # Save the plot to the unique folder
     image_filename = f'{filename}_overtime.png'
     plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
-    add_image_to_report('Interés por período', image_filename)
-    charts += f'Interés por período ({image_filename})\n\n'
+    if menu == 1:
+      add_image_to_report(f"Interés relativo en {', '.join(all_keywords)}", image_filename)
+      charts += f'Interés relativo en {', '.join(all_keywords)} ({image_filename})\n\n'
+    if menu == 2:
+      add_image_to_report(f"Publicaciones Generales sobre {', '.join(all_keywords)}", image_filename)
+      charts += f'Publicaciones Generales sobre {', '.join(all_keywords)} ({image_filename})\n\n'
+    if menu == 3:
+      add_image_to_report(f"Usabilidad de {', '.join(all_keywords)}", image_filename)
+      charts += f'Usabilidad de {', '.join(all_keywords)} ({image_filename})\n\n'
+    if menu == 4:
+      add_image_to_report(f"Publicaciones Especializadas sobre {', '.join(all_keywords)}", image_filename)
+      charts += f'Publicaciones Especializadas sobre {', '.join(all_keywords)} ({image_filename})\n\n'
     plt.show()
 
     print(f"\nGráficos de comparación relativa creados.")
@@ -1786,3 +1819,147 @@ gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
 print(gem_conclusions_sp)
 
 report_pdf()
+
+def report_pdf():
+    global data_txt
+    global charts
+    global report
+    global csv_means_trends
+    global image_markdown
+    data_txt = ''
+    data_txt += "<div class='page-break'></div>\n"
+    data_txt += "# Datos\n"
+    data_txt += "## Herramientas Gerenciales:\n"
+    data_txt += ", ".join(all_keywords) + "\n"
+    data_txt += "\n\n\n"
+    data_txt += f"## Datos de {actual_menu}\n"
+    year_adjust = 0
+    if menu == 2:
+        year_adjust = 2
+        data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
+        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    elif menu == 4:
+        year_adjust = 2
+        data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
+        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
+    data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
+    data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
+    data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
+    data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += "\n\n\n"
+    data_txt += "<div class='page-break'></div>\n"  # Add page break here
+    data_txt += "## Datos Medias y Tendencias\n"
+    data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
+    data_txt += csv_means_trends.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    if not one_keyword:
+        data_txt += f"### Correlacion\n"
+        data_txt += str(csv_correlation).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"### Regresion\n"
+        data_txt += str(csv_regression).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"## ARIMA\n"
+    data_txt += "<blockquote>\n" + str(csv_arima).replace(',', ' | ').replace('\n', ' |\n| ') + "\n</blockquote>\n"
+    data_txt += f"## Estacional\n"
+    data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"## Fourier\n"
+    data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += "<div class='page-break'></div>\n"  # Add another page break here
+    report = "\n"
+    report += "<div class='page-break'></div>\n"
+    report += gem_temporal_trends_sp
+    report += "<div class='page-break'></div>\n"
+    if not one_keyword:
+        report += gem_cross_keyword_sp
+        report += "<div class='page-break'></div>\n"
+    report += gem_industry_specific_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_arima_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_seasonal_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_fourier_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_conclusions_sp
+    report += "<div class='page-break'></div>\n"
+
+    # Add the image markdown to the report
+    report += image_markdown
+
+    toc = generate_markdown_toc(report)
+    if menu == 2:
+        start_year = current_year-70+year_adjust
+        end_year = current_year-year_adjust
+    elif menu == 4:
+        start_year = current_year-74
+        end_year = current_year
+    else:
+        start_year = current_year-20
+        end_year = current_year
+    report = f"<div style='text-align: center;'>#Análisis de {', '.join(all_keywords)} \n</div><div style='text-align: center;'>({actual_menu}) ({str(start_year)} - {str(end_year)})</div>\n\n</br></br></br></br>**Tabla de Contenido**\n</br></br>{toc}\n\n</br></br>\n {report}"
+    report += data_txt
+    report += "\n---</br></br></br><small>\n"
+    report += "\n**************************************************\n"
+    report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
+    report += f'Contacto: https://www.wiseconnex.com \n'
+    report += "**************************************************\n"
+    report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
+    report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
+    report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
+    now = datetime.datetime.now()
+    date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
+    report += "</br></br>Reporte generado el " + date_time_string + "\n"
+    report += "</small>"
+
+    html_content = f"""
+    <html>
+    <head>
+        <style>
+            @page {{
+                @bottom-right {{
+                    content: counter(page);
+                }}
+            }}
+            body {{
+                counter-reset: page;
+            }}
+            .page-break {{
+                page-break-after: always;
+                counter-increment: page;
+            }}
+            table {{
+                border-collapse: collapse;
+                width: 100%;
+            }}
+            th, td {{
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }}
+            th {{
+                background-color: #f2f2f2;
+            }}
+        </style>
+    </head>
+    <body>
+        {markdown.markdown(report, extensions=["tables"])}
+    </body>
+    </html>
+    """
+
+    # Replace existing page break divs with the new class
+    html_content = html_content.replace('<div style="page-break-after: always;"></div>', '<div class="page-break"></div>')
+
+    # Add page breaks after each graph
+    html_content = html_content.replace('</img>', '</img><div class="page-break"></div>')
+
+    pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
+    print(f"Saving PDF to: {pdf_path}")
+    print(f"Number of images in report: {html_content.count('<img')}")
+    weasyprint.HTML(string=html_content).write_pdf(pdf_path)
+    char='*'
+    title='********** ' + filename + ' PDF REPORT SAVED **********'
+    qty=len(title)
+    print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
