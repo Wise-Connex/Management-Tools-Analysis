@@ -1,7 +1,13 @@
-import mta
 import pandas as pd
 import matplotlib.pyplot as plt
 from typing import List, Dict
+from mta import (
+    get_ngram_data,
+    get_crossref_data,
+    get_bain_data,
+    get_google_trends_data,
+    analyze_data,  # Assuming this function exists in mta.py
+)
 
 def choose_keyword() -> str:
     """Prompt the user to choose a keyword."""
@@ -23,15 +29,15 @@ def get_and_process_data(keyword: str, sources: List[str]) -> Dict[str, pd.DataF
     data = {}
     for source in sources:
         if source == "Google Books Ngram":
-            data[source] = mta.get_ngram_data(keyword)
+            data[source] = get_ngram_data(keyword)
         elif source == "Crossref.org":
-            data[source] = mta.get_crossref_data(keyword)
+            data[source] = get_crossref_data(keyword)
             data[source] = group_yearly_sum(data[source])
         elif source == "Bain":
-            data[source] = mta.get_bain_data(keyword)
+            data[source] = get_bain_data(keyword)
             data[source] = group_yearly_mean(data[source])
         elif source == "Google Trends":
-            data[source] = mta.get_google_trends_data(keyword)
+            data[source] = get_google_trends_data(keyword)
             data[source] = group_yearly_mean(data[source])
     return data
 
@@ -46,26 +52,30 @@ def group_yearly_mean(df: pd.DataFrame) -> pd.DataFrame:
     df['year'] = df['date'].dt.year + (df['date'].dt.month > 6).astype(int)
     return df.groupby('year').mean().reset_index()
 
-def analyze_and_visualize(data: Dict[str, pd.DataFrame]):
-    """Analyze and visualize the data."""
+def visualize_data(data: Dict[str, pd.DataFrame], keyword: str):
+    """Visualize the data from different sources."""
     fig, ax = plt.subplots(figsize=(12, 6))
     
     for source, df in data.items():
-        ax.plot(df['date'] if 'date' in df.columns else df['year'], df['value'], label=source)
+        x_column = 'date' if 'date' in df.columns else 'year'
+        ax.plot(df[x_column], df['value'], label=source)
     
     ax.set_xlabel('Year')
     ax.set_ylabel('Value')
-    ax.set_title(f'Comparison of {keyword} across different data sources')
+    ax.set_title(f'Comparison of "{keyword}" across different data sources')
     ax.legend()
     plt.show()
-    
-    # Add more analysis here using mta functions
 
 def main():
     keyword = choose_keyword()
     sources = choose_data_sources()
     data = get_and_process_data(keyword, sources)
-    analyze_and_visualize(data)
+    visualize_data(data, keyword)
+    
+    # Perform additional analysis using the analyze_data function from mta.py
+    for source, df in data.items():
+        print(f"\nAnalysis for {source}:")
+        analyze_data(df, keyword)
 
 if __name__ == "__main__":
     main()
