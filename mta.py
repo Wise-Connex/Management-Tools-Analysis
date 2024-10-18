@@ -940,7 +940,7 @@ def relative_comparison():
     max_y_value = max(mean.max() for mean in all_means if mean is not None)
 
     # Determine the number of rows in the gridspec
-    total_rows = 6 if menu == 2 or menu == 4 or menu == 3 or menu == 5else 5
+    total_rows = 6 if menu == 2 or menu == 4 or menu == 3 or menu == 5 else 5
 
     # Create grid spec with 9 columns and the determined number of rows
     gs = fig.add_gridspec(total_rows, 9, height_ratios=[0.2] + [1] * (total_rows - 1))
