@@ -192,7 +192,7 @@ def main_menu():
                 selected_option = list(options.keys())[index]
                 return selected_option
             else:
-                print(f"{RED}Opción no válida.{RESET}")
+                print(f"{RED}Opcin no válida.{RESET}")
         except ValueError:
             print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
 
@@ -257,7 +257,57 @@ def get_file_data(filename):
         # For other data sources, assume 'Year-Month' format
         df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
     
+    if menu == 3 or menu == 5:
+        # Apply bspline interpolation for menus 3 and 5
+        interpolated_data = pd.DataFrame()
+        for column in df.columns:
+            interpolated = bspline_interpolation(df, column)
+            interpolated_data[column] = interpolated[column]
+        
+        # Set the index to datetime format
+        interpolated_data.index = pd.to_datetime(interpolated_data.index)
+        
+        # Ensure the index is in the correct format
+        interpolated_data.index = interpolated_data.index.strftime('%Y-%m-%d')
+        interpolated_data.index = pd.to_datetime(interpolated_data.index)
+        
+        df = interpolated_data
+    
     return df
+
+def bspline_interpolation(df, column):
+    x = df.index.astype(int) / 10**9  # Convert to Unix timestamp
+    y = df[column].values
+
+    # Create a B-spline interpolator
+    tck = interp.splrep(x, y, k=3)  # k=3 for a cubic B-spline
+
+    # Generate interpolated values for all months within the original year range
+    start_year = df.index.min().year
+    end_year = df.index.max().year
+    
+    # Create a list to store interpolated data
+    interpolated_data = []
+    
+    for year in range(start_year, end_year + 1):
+        # Generate 12 monthly points for each year
+        x_interp = pd.date_range(start=f"{year}-01-01", end=f"{year}-12-31", freq='MS')
+        x_interp_unix = x_interp.astype(int) / 10**9
+        y_interp = interp.splev(x_interp_unix, tck)
+        
+        # Add the interpolated data for this year
+        for date, value in zip(x_interp, y_interp):
+            interpolated_data.append((date, value))
+
+    # Create a new DataFrame with the interpolated values
+    df_interpolated = pd.DataFrame(interpolated_data, columns=['date', column])
+    df_interpolated.set_index('date', inplace=True)
+
+    # Preserve the first and last data points from the original dataset
+    df_interpolated.loc[df.index[0], column] = df.loc[df.index[0], column]
+    df_interpolated.loc[df.index[-1], column] = df.loc[df.index[-1], column]
+
+    return df_interpolated
 
 def PPRINT(msg = None):
     print(f"Line No: {sys._getframe().f_back.f_lineno}: {msg if msg is not None else ''}")
@@ -890,7 +940,7 @@ def relative_comparison():
     max_y_value = max(mean.max() for mean in all_means if mean is not None)
 
     # Determine the number of rows in the gridspec
-    total_rows = 6 if menu == 2 or menu == 4 else 5
+    total_rows = 6 if menu == 2 or menu == 4 or menu == 3 or menu == 5else 5
 
     # Create grid spec with 9 columns and the determined number of rows
     gs = fig.add_gridspec(total_rows, 9, height_ratios=[0.2] + [1] * (total_rows - 1))
@@ -901,10 +951,10 @@ def relative_comparison():
 
     i = 1
     # all data
-    if menu == 2 or menu == 4:
+    if menu == 2 or menu == 4 or menu == 3 or menu == 5:
         ax1 = fig.add_subplot(gs[i, axODD])
         ax2 = fig.add_subplot(gs[i, axEVEN])
-        setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {72 if menu == 2 else 74} años\n({current_year - (72 if menu == 2 else 74)}-{current_year})', window_size, colors)
+        setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {72 if menu == 2 else 74 if menu == 4 else 42} años\n({current_year - (72 if menu == 2 else 74 if menu == 4 else 30)}-{current_year})', window_size, colors)
         setup_bar_subplot(ax2, trends_results['mean_all'], title_even_charts, max_y_value, x_pos, colors)
         i += 1
         title_odd_charts = ''
@@ -962,6 +1012,9 @@ def relative_comparison():
     if menu == 4:
       add_image_to_report(f"Publicaciones Especializadas sobre {', '.join(all_keywords)}", image_filename)
       charts += f'Publicaciones Especializadas sobre {', '.join(all_keywords)} ({image_filename})\n\n'
+    if menu == 5:
+      add_image_to_report(f"Indice de Satisfacción de {', '.join(all_keywords)}", image_filename)
+      charts += f'Indice de Satisfacción de {', '.join(all_keywords)} ({image_filename})\n\n'
     plt.show()
 
     print(f"\nGráficos de comparación relativa creados.")
@@ -1115,10 +1168,15 @@ def check_trends2(kw):
     banner_msg(title=' Herramienta: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
 
     # Set years2 based on menu
-    years2 = 2 if menu == 4 else 0
-
+    if menu == 3 or menu == 5:
+        years2 = -42
+    elif menu == 4:
+        years2 = 2 
+    else:
+        years2 = 0
+    
     # Calculate averages
-    if menu == 2 or menu == 4:
+    if menu == 2 or menu == 4 or menu == 3 or menu == 5:
         avg_all = calculate_yearly_average(trends_results['all_data'][kw])
         avg_20 = calculate_yearly_average(trends_results['all_data'][-20:][kw])
         avg_15 = calculate_yearly_average(trends_results['all_data'][-15:][kw])
@@ -1140,7 +1198,7 @@ def check_trends2(kw):
     base_width = 0.35
 
     # Calculate relative widths
-    if menu == 2 or menu == 4:
+    if menu == 2 or menu == 4 or menu == 3 or menu == 5:
         avg_all_width = base_width * (72 + years2) / 20 * 2
         avg_20_width = base_width * 20 / 20 * 2
         avg_15_width = base_width * 15 / 20 * 2
@@ -1231,10 +1289,12 @@ def check_trends2(kw):
     trends[kw] = [trend_20, trend2_20]
 
     # Define the variable based on the menu selection
-    if menu == 2 or menu == 4:
+    if menu == 2 or menu == 4 :
         interest_var = "las publicaciones"
     elif menu == 3:
         interest_var = "la utilización"
+    elif menu == 5:
+        interest_var = "la satisfacción"
     else:
         interest_var = "el interés"
 
@@ -1558,7 +1618,7 @@ one_keyword=False
 
 # ****** K E Y W O R D S *******************************************************************************************
 all_keywords = []
-menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Usability", "Crossref.org", "Bain - Satisfaction"]
+menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
 menu_opt = ["GT","GB","BR","CR","BS"]
 
 menu = main_menu()
