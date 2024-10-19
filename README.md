@@ -19,58 +19,58 @@ This tools are used to analyze the best ranked management tools in the market. T
 
 1. Clone the repository
 
-```
+```bash
 git clone https://github.com/Wise-Connex/Management-Tools-Analysis.git
 ```
 
 2. Create a Virtual Environment
 
-```
+```bash
 cd Management-Tools-Analysis
 python -m venv .venv
 ```
 
 3. Activate the Virtual Environment
 
-```
+```bash
 source .venv/bin/activate
 ```
 
 4. Install the dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 > Note: To deactivate the virtual environment
 
-```
+```bash
 cd Management-Tools-Analysis
 deactivate
 ```
 
 5. Copy WV-VSCODE-Private.key to Management-Tool_analysis folder
 
-```
+```bash
 cp WV-VSCODE-Private.key .
 ```
 
-Remember activate the virtual environment when run the app for the first time:
+> Remember activate the virtual environment when run the app for the first time:
 
-```
+```bash
 cd Management-Tools-Analysis
 source .venv/bin/activate
 ```
 
 6. Run the application
 
-```
+```bash
 python3 mta.py
 ```
 
 7. Update local repository
 
-```
+```bash
 git pull
 ```
 

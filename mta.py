@@ -1,15 +1,10 @@
-#import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-#import matplotlib.ticker as ticker
-#import matplotlib.patches as mpatches
 from matplotlib.dates import YearLocator, MonthLocator, DateFormatter
 import numpy as np
 import pandas as pd
 import time  # Import the time module
 import datetime
-#import warnings
-#import pdb
 import re
 import hashlib
 import seaborn as sns
@@ -21,18 +16,14 @@ import scipy.fftpack as fftpack
 import markdown
 import weasyprint
 import os
-#import platform
 import csv
 import io
 import sys
-#import ipdb
 import math
 import paramiko
 from io import StringIO
-#from google.colab import auth
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
-#from google.colab import drive
 from PIL import Image
 from statsmodels.tsa.arima.model import ARIMA
 from pmdarima.arima import auto_arima
@@ -40,7 +31,6 @@ from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.stattools import adfuller
 from statsmodels.formula.api import ols
 from IPython.display import display, Markdown
-#from google.colab import userdata
 from matplotlib.ticker import MultipleLocator, FuncFormatter, AutoMinorLocator
 from scipy.stats import pearsonr
 from sklearn.linear_model import LinearRegression
@@ -49,7 +39,6 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from itertools import combinations
 from sklearn.metrics import r2_score  # Import r2_score function
 from enum import auto
-#%matplotlib inline
 #*** Google Books Nviewer
 import requests
 import scipy.interpolate as interp
