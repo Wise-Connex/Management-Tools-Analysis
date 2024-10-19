@@ -52,20 +52,11 @@ from prompts import system_prompt, prompt_1, prompt_2, prompt_3, prompt_4, promp
 from tools import tool_file_dic
 
 plt.ion()
-
-# Create a 'data' folder in the current directory
-data_folder = 'data'
-if not os.path.exists(data_folder):
-    os.makedirs(data_folder)
-    # Make the folder writable (0o777 is octal for rwxrwxrwx)
-    os.chmod(data_folder, 0o777)
-    
+plt.style.use('ggplot')    
     
 # *************************************************************************************
-#   FUNCTIONS
+#   Global Variables
 # *************************************************************************************
-
-# @title All Functions
 
 # Colors ANSI Codes
 RESET = '\033[0m'
@@ -77,6 +68,52 @@ MAGENTA = '\033[35m'
 CYAN = '\033[36m'
 WHITE = '\033[37m'
 GRAY = '\033[30m'
+
+global gem_temporal_trends_sp
+global gem_cross_keyword_sp
+global gem_industry_specific_sp
+global gem_arima_sp
+global gem_seasonal_sp
+global gem_fourier_sp
+global gem_conclusions_sp
+global csv_fourier
+global csv_means_trends
+global csv_correlation
+global csv_regression
+global csv_arima
+global csv_seasonal
+global menu
+global actual_menu
+global actual_opt
+global title_odd_charts
+global title_even_charts
+global wider
+global all_keywords
+global filename
+global unique_folder
+global csv_last_20_data
+global csv_last_15_data
+global csv_last_10_data
+global csv_last_5_data
+global csv_last_year_data
+global csv_all_data
+global trends_results
+global all_kw
+global current_year
+global charts
+global one_keyword
+    
+# Create a 'data' folder in the current directory
+data_folder = 'data'
+if not os.path.exists(data_folder):
+    os.makedirs(data_folder)
+    # Make the folder writable (0o777 is octal for rwxrwxrwx)
+    os.chmod(data_folder, 0o777)
+
+
+# *************************************************************************************
+#   FUNCTIONS
+# *************************************************************************************
 
 def banner_msg (title="", color1=WHITE, color2=WHITE, margin=12, char='*'):
   qty=len(title)+margin*2
@@ -98,7 +135,43 @@ def eng_format(x):
     mantissa = x / (10**exp3)
     return f"{mantissa:.1f}E{exp3:+d}".replace("E+", "E+").replace("E-0", "E-")
 
-#*** GBNgram
+def gemini_prompt(system_prompt,prompt,m='flash'):
+  system_instructions = system_prompt
+
+  #print('\n**************************** INPUT ********************************\n')
+  #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
+
+  if m == 'pro':
+    model = 'gemini-1.5-pro' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+  else:
+    model = 'gemini-1.5-flash' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+  temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
+  stop_sequence = '*** END ANALYSIS ***'
+
+  if model == 'gemini-1.0-pro' and system_instructions is not None:
+    system_instructions = None
+    print('\x1b[31m(WARNING: System instructions ignored, gemini-1.0-pro does not support system instructions)\x1b[0m')
+  if model == 'gemini-1.0-pro' and temperature > 1:
+    temperature = 1
+    print('\x1b[34m(INFO: Temperature set to 1, gemini-1.0-pro does not support temperature > 1)\x1b[0m')
+
+  if system_instructions == '':
+    system_instructions = None
+
+  # Load environment variables from a .env file (if using one)
+  load_dotenv()
+
+  # Retrieve the API key
+  api_key = os.getenv('GOOGLE_API_KEY')
+
+  if api_key is None:
+      raise ValueError("GOOGLE_API_KEY environment variable is not set")
+  #api_key = userdata.get(api_key_name)
+  genai.configure(api_key=api_key)
+  model = genai.GenerativeModel(model, system_instruction=system_instructions)
+  config = genai.GenerationConfig(temperature=temperature, stop_sequences=[stop_sequence])
+  response = model.generate_content(contents=[prompt], generation_config=config)
+  return response.text
 
 def linear_interpolation(df, kw):
     x = df.index  # Keep index as DatetimeIndex
@@ -338,150 +411,6 @@ def add_image_to_report(title, filename):
         image_markdown += f"<img src='data:image/png;base64,{encoded_string}' style='max-width: 100%; height: auto;'>\n\n"
     else:
         print(f"Image file does not exist: {full_path}")
-
-def report_pdf():
-    global data_txt
-    global charts
-    global report
-    global csv_means_trends
-    global image_markdown
-    data_txt = ''
-    data_txt += "<div class='page-break'></div>\n"
-    data_txt += "# Datos\n"
-    data_txt += "## Herramientas Gerenciales:\n"
-    data_txt += ", ".join(all_keywords) + "\n"
-    data_txt += "\n\n\n"
-    data_txt += f"## Datos de {actual_menu}\n"
-    year_adjust = 0
-    if menu == 2:
-        year_adjust = 2
-        data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
-        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    elif menu == 4:
-        year_adjust = 2
-        data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
-        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
-    data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
-    data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
-    data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
-    data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += "\n\n\n"
-    data_txt += "<div class='page-break'></div>\n"  # Add page break here
-    data_txt += "## Datos Medias y Tendencias\n"
-    data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
-    data_txt += csv_means_trends.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    if not one_keyword:
-        data_txt += f"### Correlacion\n"
-        data_txt += str(csv_correlation).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-        data_txt += f"### Regresion\n"
-        data_txt += str(csv_regression).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"## ARIMA\n"
-    data_txt += "<blockquote>\n" + str(csv_arima).replace(',', ' | ').replace('\n', ' |\n| ') + "\n</blockquote>\n"
-    data_txt += f"## Estacional\n"
-    data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"## Fourier\n"
-    data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += "<div class='page-break'></div>\n"  # Add another page break here
-    report = "\n"
-    report += "<div class='page-break'></div>\n"
-    report += gem_temporal_trends_sp
-    report += "<div class='page-break'></div>\n"
-    if not one_keyword:
-        report += gem_cross_keyword_sp
-        report += "<div class='page-break'></div>\n"
-    report += gem_industry_specific_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_arima_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_seasonal_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_fourier_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_conclusions_sp
-    report += "<div class='page-break'></div>\n"
-
-    # Add the image markdown to the report
-    report += image_markdown
-
-    toc = generate_markdown_toc(report)
-    if menu == 2:
-        start_year = current_year-70+year_adjust
-        end_year = current_year-year_adjust
-    elif menu == 4:
-        start_year = current_year-74
-        end_year = current_year
-    else:
-        start_year = current_year-20
-        end_year = current_year
-    report = f"<div style='text-align: center;'><h1>Análisis de {', '.join(all_keywords)} \n</h1></div><div style='text-align: center;'>({actual_menu}) ({str(start_year)} - {str(end_year)})</div>\n\n</br></br></br></br>**Tabla de Contenido**\n</br></br>{toc}\n\n</br></br>\n {report}"
-    report += data_txt
-    report += "\n---</br></br></br><small>\n"
-    report += "\n**************************************************\n"
-    report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
-    report += f'Contacto: https://www.wiseconnex.com \n'
-    report += "**************************************************\n"
-    report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
-    report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
-    report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
-    now = datetime.datetime.now()
-    date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
-    report += "</br></br>Reporte generado el " + date_time_string + "\n"
-    report += "</small>"
-
-    html_content = f"""
-    <html>
-    <head>
-        <style>
-            @page {{
-                @bottom-right {{
-                    content: counter(page);
-                }}
-            }}
-            body {{
-                counter-reset: page;
-            }}
-            .page-break {{
-                page-break-after: always;
-                counter-increment: page;
-            }}
-            table {{
-                border-collapse: collapse;
-                width: 100%;
-            }}
-            th, td {{
-                border: 1px solid black;
-                padding: 8px;
-                text-align: left;
-            }}
-            th {{
-                background-color: #f2f2f2;
-            }}
-        </style>
-    </head>
-    <body>
-        {markdown.markdown(report, extensions=["tables"])}
-    </body>
-    </html>
-    """
-
-    # Replace existing page break divs with the new class
-    html_content = html_content.replace('<div style="page-break-after: always;"></div>', '<div class="page-break"></div>')
-
-    # Add page breaks after each graph
-    html_content = html_content.replace('</img>', '</img><div class="page-break"></div>')
-
-    pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
-    print(f"Saving PDF to: {pdf_path}")
-    print(f"Number of images in report: {html_content.count('<img')}")
-    weasyprint.HTML(string=html_content).write_pdf(pdf_path)
-    char='*'
-    title='********** ' + filename + ' PDF REPORT SAVED **********'
-    qty=len(title)
-    print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
 
 # Fourier Analisys
 def fourier_analisys(period='last_year_data'):
@@ -1346,7 +1275,6 @@ def check_trends2(kw):
         'trends': trends[kw]
     }
 
-
 def create_unique_filename(keywords, max_length=20):
     # Concatenate keywords
     shorter = [keyword[:3] for keyword in keywords if len(keyword) >= 3]
@@ -1571,299 +1499,440 @@ def analyze_trends(trend):
       'correlation': csv_correlation,
       'regression': csv_regression
     }
-    
+
 # *************************************************************************************
 # INIT VARIABLES
 # *************************************************************************************
+def init_variables():
+    global menu
+    global actual_menu
+    global actual_opt
+    global title_odd_charts
+    global title_even_charts
+    global wider
+    global all_keywords
+    global filename
+    global unique_folder
+    global csv_last_20_data
+    global csv_last_15_data
+    global csv_last_10_data
+    global csv_last_5_data
+    global csv_last_year_data
+    global csv_all_data
+    global csv_means_trends
+    global trends_results
+    global all_kw
+    global current_year
+    global charts
+    global image_markdown
+    global one_keyword
+    
+    plt.style.use('ggplot')
+    # Get current year
+    current_year = datetime.datetime.now().year
+    # pytrends = TrendReq(hl='en-US')
+    all_keywords= []
+    keywords = []
+    csv_correlation = None
+    csv_regression = None
+    csv_arima = None
 
-# Suppress the FutureWarning related to the pytrends library
-# warnings.filterwarnings("ignore", category=FutureWarning, module="pytrends.request")
-plt.style.use('ggplot')
+    cat = '0'
+    geo = ''
+    gprop = ''
+    charts=""
+    data_txt=""
+    report=""
+    colors=None
+    one_keyword=False
 
-# Get current year
-current_year = datetime.datetime.now().year
+    # *************************************************************************************
+    # MAIN - KEYWORDS MENU
+    # *************************************************************************************
 
-# pytrends = TrendReq(hl='en-US')
-all_keywords= []
-keywords = []
-csv_correlation = None
-csv_regression = None
-csv_arima = None
+    # ****** K E Y W O R D S *******************************************************************************************
+    all_keywords = []
+    menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
+    menu_opt = ["GT","GB","BR","CR","BS"]
 
-cat = '0'
-geo = ''
-gprop = ''
-charts=""
-data_txt=""
-report=""
-colors=None
-one_keyword=False
+    menu = main_menu()
+    actual_menu = menu_options[menu-1]
+    actual_opt = menu_opt[menu-1]
 
+    # *****************************************************************************************************************
 
+    data_filename, all_keywords = get_user_selections(tool_file_dic, menu)
 
-# *************************************************************************************
-# MAIN - KEYWORDS MENU
-# *************************************************************************************
+    print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
+    print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
 
-# ****** K E Y W O R D S *******************************************************************************************
-all_keywords = []
-menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
-menu_opt = ["GT","GB","BR","CR","BS"]
+    # *****************************************************************************************************************
 
-menu = main_menu()
-actual_menu = menu_options[menu-1]
-actual_opt = menu_opt[menu-1]
-
-# *****************************************************************************************************************
-
-data_filename, all_keywords = get_user_selections(tool_file_dic, menu)
-
-print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
-print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
-
-# *****************************************************************************************************************
-
-# ********* OVER TIME CHART TITLES **********
-if menu == 1:
-  title_odd_charts = 'Interés relativo\na lo largo del tiempo'
-  title_even_charts = 'Interés relativo\npara el período'
-if menu == 2:
-  title_odd_charts = 'Publicaciones Generales relativas\na lo largo del tiempo'
-  title_even_charts = 'Publicaciones Generales relativas\npara el período'
-if menu == 3:
-  title_odd_charts = 'Usabilidad relativa\na lo largo del tiempo'
-  title_even_charts = 'usabilidad relativa\npara el período'
-if menu == 4:
-  title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
-  title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
-if menu == 5:
-  title_odd_charts = 'Satisfacción por el uso\na lo largo del tiempo'
-  title_even_charts = 'Satisfacción por el uso\npara el período'
-
-
- 
-# ********************************************
-
-# Set the flag based on the count of keywords
-wider = True if len(all_keywords) <= 2 else False
-
-if len(all_keywords) < 2:
-    one_keyword = True # Set one keyword
-trends_results = process_file_data(all_keywords, data_filename)
-print(all_keywords)
-if menu==2 or menu==4:
-  csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-all_kw = ", ".join(all_keywords)
-csv_seasonal_index = None
-filename = create_unique_filename(all_keywords)
-# unique_folder = os.path.join(gtrends_folder, filename)
-unique_folder = os.path.join(data_folder, filename)
-if not os.path.exists(unique_folder):
-    os.makedirs(unique_folder)
-    # Make the unique folder writable
-    os.chmod(unique_folder, 0o777)
+    # ********* OVER TIME CHART TITLES **********
+    if menu == 1:
+      title_odd_charts = 'Interés relativo\na lo largo del tiempo'
+      title_even_charts = 'Interés relativo\npara el período'
+    if menu == 2:
+      title_odd_charts = 'Publicaciones Generales relativas\na lo largo del tiempo'
+      title_even_charts = 'Publicaciones Generales relativas\npara el período'
+    if menu == 3:
+      title_odd_charts = 'Usabilidad relativa\na lo largo del tiempo'
+      title_even_charts = 'usabilidad relativa\npara el período'
+    if menu == 4:
+      title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
+      title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
+    if menu == 5:
+      title_odd_charts = 'Satisfacción por el uso\na lo largo del tiempo'
+      title_even_charts = 'Satisfacción por el uso\npara el período'
 
 
+    
+    # ********************************************
+
+    # Set the flag based on the count of keywords
+    wider = True if len(all_keywords) <= 2 else False
+
+    if len(all_keywords) < 2:
+        one_keyword = True # Set one keyword
+    trends_results = process_file_data(all_keywords, data_filename)
+    print(all_keywords)
+    if menu==2 or menu==4:
+      csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+    csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+    csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+    csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+    csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+    csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+    all_kw = ", ".join(all_keywords)
+    csv_seasonal_index = None
+    filename = create_unique_filename(all_keywords)
+    # unique_folder = os.path.join(gtrends_folder, filename)
+    unique_folder = os.path.join(data_folder, filename)
+    if not os.path.exists(unique_folder):
+        os.makedirs(unique_folder)
+        # Make the unique folder writable
+        os.chmod(unique_folder, 0o777)
 
 # *************************************************************************************
 # RESULTS
 # *************************************************************************************
 
+def results():
+    global csv_fourier
+    global csv_means_trends
+    global csv_correlation
+    global csv_regression
+    global csv_arima
+    global csv_seasonal
+    global all_keywords
+    
+    # *************************************************************************************
+    # Part 1 - Tendencias y Medias
+    # *************************************************************************************
 
-# *************************************************************************************
-# Part 1 - Tendencias y Medias
-# *************************************************************************************
+    banner_msg(' Part 1 - Tendencias y Medias ', color2=GREEN)
+    csv_string = io.StringIO()
+    csv_writer = csv.writer(csv_string)
+    csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
 
-banner_msg(' Part 1 - Tendencias y Medias ', color2=GREEN)
-csv_string = io.StringIO()
-csv_writer = csv.writer(csv_string)
-csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
+    for kw in all_keywords:
+        results = check_trends2(kw)
+        csv_writer.writerow([kw] + results['means'] + results['trends'])
 
-for kw in all_keywords:
-    results = check_trends2(kw)
-    csv_writer.writerow([kw] + results['means'] + results['trends'])
+    csv_data = csv_string.getvalue()
+    csv_means_trends = "Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n" + csv_data
 
-csv_data = csv_string.getvalue()
-csv_means_trends = "Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n" + csv_data
+    # *************************************************************************************
+    # Part 2 - Comparación a lo largo del tiempo
+    # *************************************************************************************
 
-# *************************************************************************************
-# Part 2 - Comparación a lo largo del tiempo
-# *************************************************************************************
+    banner_msg(' Part 2 - Comparación a lo largo del tiempo ', color2=GREEN)
+    relative_comparison()
 
-banner_msg(' Part 2 - Comparación a lo largo del tiempo ', color2=GREEN)
-relative_comparison()
+    # *************************************************************************************
+    # Part 3 - Correlación - Regresión
+    # *************************************************************************************
 
+    banner_msg(' Part 3 - Correlación - Regresión ', color2=GREEN)
+    analysis = analyze_trends(trends_results)
+    if one_keyword:
+      csv_correlation = None
+      csv_regression = None
+      print('Se requieren al menos dos variables para realizar los cálculos de correlación y regresión')
+    else:
+      csv_correlation = analysis['correlation']
+      csv_regression = analysis['regression']
+      
+    # *************************************************************************************
+    # Part 4 - Modelo ARIMA
+    # *************************************************************************************
 
-# *************************************************************************************
-# Part 3 - Correlación - Regresión
-# *************************************************************************************
+    banner_msg(' Part 4 - Modelo ARIMA ', color2=GREEN)
+    # Call the arima_model function with the best parameters
+    # mb: months back. Past
+    # mf: months foward. future
+    # ts: test size. Size of test in months
+    # p, d, q: ARIMA parameters
+    # auto = True: Calculate p,d,q. False: use given p, d, q values.
+    csv_arima=arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0)
 
-banner_msg(' Part 3 - Correlación - Regresión ', color2=GREEN)
-analysis = analyze_trends(trends_results)
-if one_keyword:
-  csv_correlation = None
-  csv_regression = None
-  print('Se requieren al menos dos variables para realizar los cálculos de correlación y regresión')
-else:
-  csv_correlation = analysis['correlation']
-  csv_regression = analysis['regression']
-  
+    # *************************************************************************************
+    # Part 5 - Análisis Estacional
+    # *************************************************************************************
 
-# *************************************************************************************
-# Part 4 - Modelo ARIMA
-# *************************************************************************************
+    banner_msg(' Part 5 - Análisis estacional ', color2=GREEN)
+    seasonal_analysis('last_10_years_data')
 
-banner_msg(' Part 4 - Modelo ARIMA ', color2=GREEN)
-# Call the arima_model function with the best parameters
-# mb: months back. Past
-# mf: months foward. future
-# ts: test size. Size of test in months
-# p, d, q: ARIMA parameters
-# auto = True: Calculate p,d,q. False: use given p, d, q values.
-csv_arima=arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0)
+    # *************************************************************************************
+    # Part 6 - Fourier Analisys
+    # *************************************************************************************
 
+    banner_msg(' Part 6 - Análisis de Fourier ', color2=GREEN)
+    csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
+    # to chage Y axis to log fo to line 131 in all functions
 
-# *************************************************************************************
-# Part 5 - Análisis Estacional
-# *************************************************************************************
-
-banner_msg(' Part 5 - Análisis estacional ', color2=GREEN)
-seasonal_analysis('last_10_years_data')
-
-# *************************************************************************************
-# Part 6 - Fourier Analisys
-# *************************************************************************************
-
-
-banner_msg(' Part 6 - Análisis de Fourier ', color2=GREEN)
-csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
-# to chage Y axis to log fo to line 131 in all functions
-
-
+    
 # *************************************************************************************
 # AI Analysis
 # *************************************************************************************
+def ai_analysis():
+    global gem_temporal_trends_sp
+    global gem_cross_keyword_sp
+    global gem_industry_specific_sp
+    global gem_arima_sp
+    global gem_seasonal_sp
+    global gem_fourier_sp
+    global gem_conclusions_sp
+    
+    banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
+    api_key_name = 'GOOGLE_API_KEY'
 
-banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
-api_key_name = 'GOOGLE_API_KEY'
+    prompt_sp=f'Translate this Markdown text to spanish, using an academic language, and an enterprise approach. \
+    If you found any of this words: {",".join(all_keywords)}, please do not translate it. This is the text: '
 
-def gemini_prompt(system_prompt,prompt,m='flash'):
-  system_instructions = system_prompt
+    f_system_prompt = system_prompt.format(dbs=actual_menu)
 
-  #print('\n**************************** INPUT ********************************\n')
-  #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
+    p_1 = prompt_1.format(all_kw, \
+                          csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data, csv_last_year_data, \
+                          all_kw, csv_means_trends)
+    n=0
+    n+=1
+    print(f'\n\n\n{n}. Analizando tendencias temporales...')
+    gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
+    prompt_spanish=f'{prompt_sp} {gem_temporal_trends}'
+    gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    #display(Markdown(gem_temporal_trends_sp))
+    print(gem_temporal_trends_sp)
 
-  if m == 'pro':
-    model = 'gemini-1.5-pro' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
-  else:
-    model = 'gemini-1.5-flash' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
-  temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
-  stop_sequence = '*** END ANALYSIS ***'
+    if not one_keyword:
+      n+=1
+      p_2 = prompt_2.format(all_kw, csv_correlation, csv_regression)
+      print(f'\n\n\n{n}. Analizando relaciones entre palabras clave...')
+      gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
+      prompt_spanish=f'{prompt_sp} {gem_cross_keyword}'
+      gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+      #display(Markdown(gem_cross_keyword_sp))
+      print(gem_cross_keyword_sp)
+    else:
+      gem_cross_keyword=""
+      csv_correlation=""
+      csv_regression=""
 
-  if model == 'gemini-1.0-pro' and system_instructions is not None:
-    system_instructions = None
-    print('\x1b[31m(WARNING: System instructions ignored, gemini-1.0-pro does not support system instructions)\x1b[0m')
-  if model == 'gemini-1.0-pro' and temperature > 1:
-    temperature = 1
-    print('\x1b[34m(INFO: Temperature set to 1, gemini-1.0-pro does not support temperature > 1)\x1b[0m')
+    n+=1
+    p_3 = prompt_3.format(csv_means_trends, csv_correlation, csv_regression)
+    print(f'\n\n\n{n}. Analizando tendencias específicas de la industria...')
+    gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
+    prompt_spanish=f'{prompt_sp} {gem_industry_specific}'
+    gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    #display(Markdown(gem_industry_specific_sp))
+    print(gem_industry_specific_sp)
 
-  if system_instructions == '':
-    system_instructions = None
+    n+=1
+    p_4 = prompt_4.format(csv_arima)
+    print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
+    gem_arima=gemini_prompt(f_system_prompt,p_4)
+    prompt_spanish=f'{prompt_sp} {gem_arima}'
+    gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    #display(Markdown(gem_arima_sp))
+    print(gem_arima_sp)
 
-  # Load environment variables from a .env file (if using one)
-  load_dotenv()
+    n+=1
+    p_5 = prompt_5.format(csv_seasonal)
+    print(f'\n\n\n{n}. Analizando patrones estacionales...\n')
+    gem_seasonal=gemini_prompt(f_system_prompt,p_5)
+    prompt_spanish=f'{prompt_sp} {gem_seasonal}'
+    gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    #display(Markdown(gem_seasonal_sp))
+    print(gem_seasonal_sp)
 
-  # Retrieve the API key
-  api_key = os.getenv('GOOGLE_API_KEY')
+    n+=1
+    p_6 = prompt_6.format(csv_fourier)
+    print(f'\n\n\n{n}. Analizando patrones cíclicos...\n')
+    gem_fourier=gemini_prompt(f_system_prompt,p_6)
+    prompt_spanish=f'{prompt_sp} {gem_fourier}'
+    gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    #display(Markdown(gem_fourier_sp))
+    print(gem_fourier_sp)
 
-  if api_key is None:
-      raise ValueError("GOOGLE_API_KEY environment variable is not set")
-  #api_key = userdata.get(api_key_name)
-  genai.configure(api_key=api_key)
-  model = genai.GenerativeModel(model, system_instruction=system_instructions)
-  config = genai.GenerationConfig(temperature=temperature, stop_sequences=[stop_sequence])
-  response = model.generate_content(contents=[prompt], generation_config=config)
-  return response.text
+    n+=1
+    p_conclusions = prompt_conclusions.format(gem_temporal_trends, gem_cross_keyword, gem_industry_specific, gem_arima, gem_seasonal, gem_fourier)
+    print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...\n')
+    gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
+    prompt_spanish=f'{prompt_sp} {gem_conclusions}'
+    gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    #display(Markdown(gem_conclusions_sp))
+    print(gem_conclusions_sp)
+    
+def report_pdf():
+    global data_txt
+    global charts
+    global report
+    global csv_means_trends
+    global image_markdown
+    data_txt = ''
+    data_txt += "<div class='page-break'></div>\n"
+    data_txt += "# Datos\n"
+    data_txt += "## Herramientas Gerenciales:\n"
+    data_txt += ", ".join(all_keywords) + "\n"
+    data_txt += "\n\n\n"
+    data_txt += f"## Datos de {actual_menu}\n"
+    year_adjust = 0
+    if menu == 2:
+        year_adjust = 2
+        data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
+        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    elif menu == 4:
+        year_adjust = 2
+        data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
+        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
+    data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
+    data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
+    data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
+    data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += "\n\n\n"
+    data_txt += "<div class='page-break'></div>\n"  # Add page break here
+    data_txt += "## Datos Medias y Tendencias\n"
+    data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
+    data_txt += csv_means_trends.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    if not one_keyword:
+        data_txt += f"### Correlacion\n"
+        data_txt += str(csv_correlation).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"### Regresion\n"
+        data_txt += str(csv_regression).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"## ARIMA\n"
+    data_txt += "<blockquote>\n" + str(csv_arima).replace(',', ' | ').replace('\n', ' |\n| ') + "\n</blockquote>\n"
+    data_txt += f"## Estacional\n"
+    data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += f"## Fourier\n"
+    data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += "<div class='page-break'></div>\n"  # Add another page break here
+    report = "\n"
+    report += "<div class='page-break'></div>\n"
+    report += gem_temporal_trends_sp
+    report += "<div class='page-break'></div>\n"
+    if not one_keyword:
+        report += gem_cross_keyword_sp
+        report += "<div class='page-break'></div>\n"
+    report += gem_industry_specific_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_arima_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_seasonal_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_fourier_sp
+    report += "<div class='page-break'></div>\n"
+    report += gem_conclusions_sp
+    report += "<div class='page-break'></div>\n"
 
-prompt_sp=f'Translate this Markdown text to spanish, using an academic language, and an enterprise approach. \
-If you found any of this words: {",".join(all_keywords)}, please do not translate it. This is the text: '
+    # Add the image markdown to the report
+    report += image_markdown
 
-f_system_prompt = system_prompt.format(dbs=actual_menu)
+    toc = generate_markdown_toc(report)
+    if menu == 2:
+        start_year = current_year-70+year_adjust
+        end_year = current_year-year_adjust
+    elif menu == 4:
+        start_year = current_year-74
+        end_year = current_year
+    else:
+        start_year = current_year-20
+        end_year = current_year
+    report = f"<div style='text-align: center;'><h1>Análisis de {', '.join(all_keywords)} \n</h1></div><div style='text-align: center;'>({actual_menu}) ({str(start_year)} - {str(end_year)})</div>\n\n</br></br></br></br>**Tabla de Contenido**\n</br></br>{toc}\n\n</br></br>\n {report}"
+    report += data_txt
+    report += "\n---</br></br></br><small>\n"
+    report += "\n**************************************************\n"
+    report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
+    report += f'Contacto: https://www.wiseconnex.com \n'
+    report += "**************************************************\n"
+    report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
+    report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
+    report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
+    now = datetime.datetime.now()
+    date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
+    report += "</br></br>Reporte generado el " + date_time_string + "\n"
+    report += "</small>"
 
-p_1 = prompt_1.format(all_kw, \
-                      csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data, csv_last_year_data, \
-                      all_kw, csv_means_trends)
-n=0
-n+=1
-print(f'\n\n\n{n}. Analizando tendencias temporales...')
-gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
-prompt_spanish=f'{prompt_sp} {gem_temporal_trends}'
-gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-#display(Markdown(gem_temporal_trends_sp))
-print(gem_temporal_trends_sp)
+    html_content = f"""
+    <html>
+    <head>
+        <style>
+            @page {{
+                @bottom-right {{
+                    content: counter(page);
+                }}
+            }}
+            body {{
+                counter-reset: page;
+            }}
+            .page-break {{
+                page-break-after: always;
+                counter-increment: page;
+            }}
+            table {{
+                border-collapse: collapse;
+                width: 100%;
+            }}
+            th, td {{
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }}
+            th {{
+                background-color: #f2f2f2;
+            }}
+        </style>
+    </head>
+    <body>
+        {markdown.markdown(report, extensions=["tables"])}
+    </body>
+    </html>
+    """
 
-if not one_keyword:
-  n+=1
-  p_2 = prompt_2.format(all_kw, csv_correlation, csv_regression)
-  print(f'\n\n\n{n}. Analizando relaciones entre palabras clave...')
-  gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
-  prompt_spanish=f'{prompt_sp} {gem_cross_keyword}'
-  gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-  #display(Markdown(gem_cross_keyword_sp))
-  print(gem_cross_keyword_sp)
-else:
-  gem_cross_keyword=""
-  csv_correlation=""
-  csv_regression=""
+    # Replace existing page break divs with the new class
+    html_content = html_content.replace('<div style="page-break-after: always;"></div>', '<div class="page-break"></div>')
 
-n+=1
-p_3 = prompt_3.format(csv_means_trends, csv_correlation, csv_regression)
-print(f'\n\n\n{n}. Analizando tendencias específicas de la industria...')
-gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
-prompt_spanish=f'{prompt_sp} {gem_industry_specific}'
-gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-#display(Markdown(gem_industry_specific_sp))
-print(gem_industry_specific_sp)
+    # Add page breaks after each graph
+    html_content = html_content.replace('</img>', '</img><div class="page-break"></div>')
 
-n+=1
-p_4 = prompt_4.format(csv_arima)
-print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
-gem_arima=gemini_prompt(f_system_prompt,p_4)
-prompt_spanish=f'{prompt_sp} {gem_arima}'
-gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-#display(Markdown(gem_arima_sp))
-print(gem_arima_sp)
+    pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
+    print(f"Saving PDF to: {pdf_path}")
+    print(f"Number of images in report: {html_content.count('<img')}")
+    weasyprint.HTML(string=html_content).write_pdf(pdf_path)
+    char='*'
+    title='********** ' + filename + ' PDF REPORT SAVED **********'
+    qty=len(title)
+    print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
 
-n+=1
-p_5 = prompt_5.format(csv_seasonal)
-print(f'\n\n\n{n}. Analizando patrones estacionales...\n')
-gem_seasonal=gemini_prompt(f_system_prompt,p_5)
-prompt_spanish=f'{prompt_sp} {gem_seasonal}'
-gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-#display(Markdown(gem_seasonal_sp))
-print(gem_seasonal_sp)
 
-n+=1
-p_6 = prompt_6.format(csv_fourier)
-print(f'\n\n\n{n}. Analizando patrones cíclicos...\n')
-gem_fourier=gemini_prompt(f_system_prompt,p_6)
-prompt_spanish=f'{prompt_sp} {gem_fourier}'
-gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-#display(Markdown(gem_fourier_sp))
-print(gem_fourier_sp)
+def main():
+  init_variables()
+  results()
+  ai_analysis()  
+  report_pdf()
 
-n+=1
-p_conclusions = prompt_conclusions.format(gem_temporal_trends, gem_cross_keyword, gem_industry_specific, gem_arima, gem_seasonal, gem_fourier)
-print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...\n')
-gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
-prompt_spanish=f'{prompt_sp} {gem_conclusions}'
-gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-#display(Markdown(gem_conclusions_sp))
-print(gem_conclusions_sp)
-
-report_pdf()
+if __name__ == "__main__":
+    main()
