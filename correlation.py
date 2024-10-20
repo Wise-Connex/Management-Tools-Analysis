@@ -102,7 +102,9 @@ global all_kw
 global current_year
 global charts
 global one_keyword
-    
+global dbase_options
+global top_choice
+
 # Create a 'data' folder in the current directory
 data_folder = 'data'
 if not os.path.exists(data_folder):
@@ -296,6 +298,40 @@ def get_user_selections(dictionary, option):
       print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
   return selected_data_file_name, selected_strings
 
+def bspline_interpolation(df, column):
+    x = df.index.astype(int) / 10**9  # Convert to Unix timestamp
+    y = df[column].values
+
+    # Create a B-spline interpolator
+    tck = interp.splrep(x, y, k=3)  # k=3 for a cubic B-spline
+
+    # Generate interpolated values for all months within the original year range
+    start_year = df.index.min().year
+    end_year = df.index.max().year
+    
+    # Create a list to store interpolated data
+    interpolated_data = []
+    
+    for year in range(start_year, end_year + 1):
+        # Generate 12 monthly points for each year
+        x_interp = pd.date_range(start=f"{year}-01-01", end=f"{year}-12-31", freq='MS')
+        x_interp_unix = x_interp.astype(int) / 10**9
+        y_interp = interp.splev(x_interp_unix, tck)
+        
+        # Add the interpolated data for this year
+        for date, value in zip(x_interp, y_interp):
+            interpolated_data.append((date, value))
+
+    # Create a new DataFrame with the interpolated values
+    df_interpolated = pd.DataFrame(interpolated_data, columns=['date', column])
+    df_interpolated.set_index('date', inplace=True)
+
+    # Preserve the first and last data points from the original dataset
+    df_interpolated.loc[df.index[0], column] = df.loc[df.index[0], column]
+    df_interpolated.loc[df.index[-1], column] = df.loc[df.index[-1], column]
+
+    return df_interpolated
+
 def get_file_data(filename):
     # Path to the local 'dbase' folder
     local_path = "./dbase/"
@@ -336,40 +372,6 @@ def get_file_data(filename):
         df = interpolated_data
     
     return df
-
-def bspline_interpolation(df, column):
-    x = df.index.astype(int) / 10**9  # Convert to Unix timestamp
-    y = df[column].values
-
-    # Create a B-spline interpolator
-    tck = interp.splrep(x, y, k=3)  # k=3 for a cubic B-spline
-
-    # Generate interpolated values for all months within the original year range
-    start_year = df.index.min().year
-    end_year = df.index.max().year
-    
-    # Create a list to store interpolated data
-    interpolated_data = []
-    
-    for year in range(start_year, end_year + 1):
-        # Generate 12 monthly points for each year
-        x_interp = pd.date_range(start=f"{year}-01-01", end=f"{year}-12-31", freq='MS')
-        x_interp_unix = x_interp.astype(int) / 10**9
-        y_interp = interp.splev(x_interp_unix, tck)
-        
-        # Add the interpolated data for this year
-        for date, value in zip(x_interp, y_interp):
-            interpolated_data.append((date, value))
-
-    # Create a new DataFrame with the interpolated values
-    df_interpolated = pd.DataFrame(interpolated_data, columns=['date', column])
-    df_interpolated.set_index('date', inplace=True)
-
-    # Preserve the first and last data points from the original dataset
-    df_interpolated.loc[df.index[0], column] = df.loc[df.index[0], column]
-    df_interpolated.loc[df.index[-1], column] = df.loc[df.index[-1], column]
-
-    return df_interpolated
 
 def PPRINT(msg = None):
     print(f"Line No: {sys._getframe().f_back.f_lineno}: {msg if msg is not None else ''}")
@@ -521,14 +523,14 @@ def seasonal_analysis(period='last_20_years_data'):
         # Set x-axis limits to start and end with data
         plt.xlim(seasonal_index.index.min(), seasonal_index.index.max())
         # Customize remaining plot elements
-        plt.xlabel('Aos')
-        plt.ylabel('Indice')
+        plt.xlabel('Años')
+        plt.ylabel('Índice')
         plt.grid(True)
         # Save the plot to the unique folder
         image_filename = f'{filename}_season_{keyword[:3]}.png'
         plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
-        add_image_to_report(f'Indice Estacional para {keyword}', image_filename)
-        charts += f'Indice de Estacional para {keyword} ({image_filename})\n\n'
+        add_image_to_report(f'Índice Estacional para {keyword}', image_filename)
+        charts += f'Índice de Estacional para {keyword} ({image_filename})\n\n'
         plt.show()
     csv_seasonal="".join(csv_seasonal)
     return
@@ -1526,6 +1528,7 @@ def init_variables():
     global charts
     global image_markdown
     global one_keyword
+    global menu
     
     plt.style.use('ggplot')
     # Get current year
@@ -1927,12 +1930,138 @@ def report_pdf():
     qty=len(title)
     print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
 
+def top_level_menu():
+    banner_msg(" Menú Principal ", YELLOW, WHITE)
+    options = {
+        1: "Generar Informe Individual",
+        2: "Comparar Herramienta de Gestión entre Fuentes de Datos"
+    }
+    for index, option in enumerate(options.values(), 1):
+        print(f"{index}. {option}")
+    while True:
+        selection = input("\nIngrese el número de la opción a seleccionar: ")
+        try:
+            index = int(selection)
+            if 1 <= index <= len(options):
+                return index
+            else:
+                print(f"{RED}Opción inválida.{RESET}")
+        except ValueError:
+            print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
+
+def get_all_keywords():
+    all_keywords = set()
+    for tool_list in tool_file_dic.values():
+        all_keywords.update(tool_list[1])
+    return list(all_keywords)
+
+def select_multiple_data_sources():
+    global dbase_options
+    
+    banner_msg(" Fuentes de Datos Disponibles ", YELLOW, WHITE)
+    dbase_options = {
+        1: "Google Trends",
+        2: "Google Books Ngrams",
+        3: "Bain - Usabilidad",
+        4: "Crossref.org",
+        5: "Bain - Satisfacción"
+    }
+    for index, option in enumerate(dbase_options.values(), 1):
+        print(f"{index}. {option}")
+    
+    selected_sources = []
+    while True:
+        selection = input("\nIngrese los números de las fuentes de datos a comparar (separados por comas), o 'listo' para terminar: ")
+        if selection.lower() == 'listo':
+            if not selected_sources:
+                print(f"{YELLOW}Por favor, seleccione al menos una fuente de datos antes de terminar.{RESET}")
+            else:
+                break
+        else:
+            try:
+                indices = [int(i.strip()) for i in selection.split(',')]
+                valid_indices = []
+                for index in indices:
+                    if 1 <= index <= len(dbase_options):
+                        if index not in selected_sources:
+                            selected_sources.append(index)
+                            valid_indices.append(index)
+                        else:
+                            print(f"{YELLOW}La fuente de datos {index} ya ha sido seleccionada.{RESET}")
+                    else:
+                        print(f"{RED}Selección inválida: {index}. Por favor, ingrese números entre 1 y {len(dbase_options)}.{RESET}")
+                
+                if valid_indices:
+                    print(f"Fuentes de datos añadidas: {', '.join(dbase_options[i] for i in valid_indices)}")
+                print(f"Actualmente seleccionadas: {', '.join(dbase_options[i] for i in selected_sources)}")
+            except ValueError:
+                print(f"{RED}Entrada inválida. Por favor, ingrese números separados por comas o 'listo'.{RESET}")
+    
+    return selected_sources
+
+def get_filenames_for_keyword(keyword, selected_sources):
+    filenames = {}
+    source_index_map = {1: 0, 2: 2, 3: 3, 4: 4, 5: 5}
+    
+    for source in selected_sources:
+        index = source_index_map[source]
+        for key, value in tool_file_dic.items():
+            if keyword in value[1]:
+                filenames[source] = value[index]
+                break
+    
+    return filenames
 
 def main():
-  init_variables()
-  results()
-  ai_analysis()  
-  report_pdf()
+    global menu, actual_menu, actual_opt, all_keywords, top_choice
+
+    top_choice = top_level_menu()
+
+    if top_choice == 1:
+        # Flujo existente para informe individual
+        init_variables()
+        results()
+        ai_analysis()
+        report_pdf()
+    elif top_choice == 2:
+        # Nuevo flujo para comparación entre fuentes de datos
+        all_keywords = get_all_keywords()
+        banner_msg(" Herramientas de Gestión Disponibles ", YELLOW, WHITE)
+        for i, keyword in enumerate(all_keywords, 1):
+            print(f"{i}. {keyword}")
+        
+        while True:
+            selection = input("\nIngrese el número de la herramienta de gestión a comparar: ")
+            try:
+                index = int(selection) - 1
+                if 0 <= index < len(all_keywords):
+                    selected_keyword = all_keywords[index]
+                    break
+                else:
+                    print(f"{RED}Opción inválida.{RESET}")
+            except ValueError:
+                print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
+
+        selected_sources = select_multiple_data_sources()
+        
+        # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
+        filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
+
+        datasets={}
+
+        print(f"\nComparando '{selected_keyword}' a través de las siguientes fuentes de datos:")
+        for source in selected_sources:
+            print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
+            menu = source
+            df=get_file_data(filenames.get(source, 'Archivo no encontrado'))
+            datasets[source]=df
+            print(f"\nConjunto de datos: {source}")
+            print(df.head())
+            print(f"Dimensiones: {df.shape}\n\n")
+
+        # Ahora tienes los nombres de archivo para cada fuente de datos seleccionada
+        # Puedes usar estos nombres de archivo para cargar y procesar los datos para la comparación
+        print("\nLógica de comparación por implementar.")
 
 if __name__ == "__main__":
     main()
