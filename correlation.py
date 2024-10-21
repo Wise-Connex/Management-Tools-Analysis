@@ -2048,8 +2048,9 @@ def process_dataset(df, source, all_datasets, selected_sources):
             df_resampled = df.copy()
 
         # Reindex to ensure all datasets have the same date range
-        all_years = pd.date_range(start=earliest_date, end=latest_date, freq='YS')
-        df_resampled = df_resampled.reindex(all_years)
+        # all_years = pd.date_range(start=earliest_date, end=latest_date, freq='YS')
+        # df_resampled = df_resampled.reindex(all_years)
+        df_resampled = df.loc[earliest_date:latest_date]
 
         # Fill NaN values after reindexing
         df_resampled.fillna(0, inplace=True)
@@ -2075,6 +2076,87 @@ def normalize_dataset(df):
     normalized_df = (df - min_val) / (max_val - min_val) * 100
     return normalized_df
 
+def process_and_normalize_datasets(all_keywords):
+    global menu
+    
+    banner_msg(" Herramientas de Gestión Disponibles ", YELLOW, WHITE)
+    for i, keyword in enumerate(all_keywords, 1):
+        print(f"{i}. {keyword}")
+    
+    while True:
+        selection = input("\nIngrese el número de la herramienta de gestión a comparar: ")
+        try:
+            index = int(selection) - 1
+            if 0 <= index < len(all_keywords):
+                selected_keyword = all_keywords[index]
+                break
+            else:
+                print(f"{RED}Opción inválida.{RESET}")
+        except ValueError:
+            print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
+
+    selected_sources = select_multiple_data_sources()
+    
+    # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
+    filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
+
+    datasets = {}
+    all_raw_datasets = {}
+
+    for source in selected_sources:
+        print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
+        menu = source
+        df = get_file_data(filenames.get(source, 'Archivo no encontrado'))
+        if df.empty or (df == 0).all().all():
+            print(f"Warning: Dataset for source {source} is empty or contains only zeros.")
+            continue
+        all_raw_datasets[source] = df
+
+    for source in selected_sources:
+        if source in all_raw_datasets:
+            datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
+            print(f"\nConjunto de datos procesado: {source}")
+            print(datasets[source].head())
+            print(f"Dimensiones: {datasets[source].shape}\n\n")
+
+    print(datasets)
+    
+    # Normalize each dataset in datasets
+    datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
+
+    # Print the normalized datasets for verification
+    for source, df_norm in datasets_norm.items():
+        print(f"Normalized dataset for source {source}:")
+        print(df_norm)
+        print("\n")
+    
+    return datasets_norm, selected_sources
+
+def create_combined_dataset(datasets_norm, selected_sources, dbase_options):
+    """
+    Combines normalized datasets into a single DataFrame with date as index and source names as columns.
+    Args:
+        datasets_norm (dict): A dictionary where keys are source identifiers and values are DataFrames.
+        selected_sources (list): A list of selected source identifiers.
+        dbase_options (dict): A dictionary mapping source identifiers to their names.
+    Returns:
+        pandas.DataFrame: A combined DataFrame with date as index and source names as columns.
+    """
+    combined_data = pd.DataFrame()
+
+    for source in selected_sources:
+        if source in datasets_norm:
+            df = datasets_norm[source]
+            # Assuming each dataset has only one column of interest
+            column_name = dbase_options[source]
+            combined_data[column_name] = df.iloc[:, 0]  # Use iloc to select the first column
+
+    # Ensure the index is datetime and set it as the index for the combined DataFrame
+    # if not combined_data.empty:
+    #    combined_data.index = df.index
+
+    return combined_data
+
 def main():
     global menu, actual_menu, actual_opt, all_keywords, top_choice
 
@@ -2089,59 +2171,9 @@ def main():
     elif top_choice == 2:
         # Nuevo flujo para comparación entre fuentes de datos
         all_keywords = get_all_keywords()
-        banner_msg(" Herramientas de Gestión Disponibles ", YELLOW, WHITE)
-        for i, keyword in enumerate(all_keywords, 1):
-            print(f"{i}. {keyword}")
-        
-        while True:
-            selection = input("\nIngrese el número de la herramienta de gestión a comparar: ")
-            try:
-                index = int(selection) - 1
-                if 0 <= index < len(all_keywords):
-                    selected_keyword = all_keywords[index]
-                    break
-                else:
-                    print(f"{RED}Opción inválida.{RESET}")
-            except ValueError:
-                print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
-
-        selected_sources = select_multiple_data_sources()
-        
-        # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
-        filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
-
-        datasets = {}
-        all_raw_datasets = {}
-
-        for source in selected_sources:
-            print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
-            menu = source
-            df = get_file_data(filenames.get(source, 'Archivo no encontrado'))
-            if df.empty or (df == 0).all().all():
-                print(f"Warning: Dataset for source {source} is empty or contains only zeros.")
-                continue
-            all_raw_datasets[source] = df
-
-        for source in selected_sources:
-            if source in all_raw_datasets:
-                datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
-                print(f"\nConjunto de datos procesado: {source}")
-                print(datasets[source].head())
-                print(f"Dimensiones: {datasets[source].shape}\n\n")
-
-        print(datasets)
-        
-        # Normalize each dataset in datasets
-        datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
-
-        # Print the normalized datasets for verification
-        for source, df_norm in datasets_norm.items():
-            print(f"Normalized dataset for source {source}:")
-            print(df_norm)
-            print("\n")
-        # Ahora tienes los nombres de archivo para cada fuente de datos seleccionada
-        # Puedes usar estos nombres de archivo para cargar y procesar los datos para la comparación
-        print("\nLógica de comparación por implementar.")
+        datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
+        combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
+        print(combined_dataset)
 
 if __name__ == "__main__":
     main()
