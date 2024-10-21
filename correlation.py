@@ -45,6 +45,7 @@ import scipy.interpolate as interp
 from scipy.interpolate import CubicSpline
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import base64
+from datetime import datetime
 
 # AI Prompts imports 
 from prompts import system_prompt, prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, prompt_6, prompt_conclusions
@@ -1950,10 +1951,12 @@ def top_level_menu():
             print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
 
 def get_all_keywords():
-    all_keywords = set()
+    all_keywords = []
     for tool_list in tool_file_dic.values():
-        all_keywords.update(tool_list[1])
-    return list(all_keywords)
+        for keyword in tool_list[1]:
+            if keyword not in all_keywords:
+                all_keywords.append(keyword)
+    return all_keywords
 
 def select_multiple_data_sources():
     global dbase_options
@@ -2012,6 +2015,66 @@ def get_filenames_for_keyword(keyword, selected_sources):
     
     return filenames
 
+def process_dataset(df, source, all_datasets, selected_sources):
+    print(f"Processing dataset for source {source}")
+    print(f"Original dataframe shape: {df.shape}")
+    print(f"Original dataframe head:\n{df.head()}")
+    print(f"Original dataframe dtypes:\n{df.dtypes}")
+
+    # Ensure the index is datetime and timezone-naive
+    df.index = pd.to_datetime(df.index).tz_localize(None)
+    
+    # Find the common date range across all datasets
+    earliest_date = max(df.index.min() for df in all_datasets.values())
+    latest_date = min(df.index.max() for df in all_datasets.values())
+    print(f"Common date range: {earliest_date} to {latest_date}")
+
+    if 2 in selected_sources:
+        # Resample data based on source
+        if source == 2:
+            df_resampled = df.loc[earliest_date:latest_date]
+        elif source == 4:
+            df = df.apply(pd.to_numeric, errors='coerce')
+            df_resampled = df.resample('YE').sum()
+            df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
+        elif source in [1, 3, 5]:
+            df_resampled = [
+                (f"{year}-01-01", df[(df.index.year == year - 1) & (df.index.month >= 7) | 
+                                     (df.index.year == year) & (df.index.month <= 6)].iloc[:, 0].mean())
+                for year in range(earliest_date.year, latest_date.year + 1)
+            ]
+            df_resampled = pd.DataFrame(df_resampled, columns=['Date', 'Value']).set_index('Date')
+        else:
+            df_resampled = df.copy()
+
+        # Reindex to ensure all datasets have the same date range
+        all_years = pd.date_range(start=earliest_date, end=latest_date, freq='YS')
+        df_resampled = df_resampled.reindex(all_years)
+
+        # Fill NaN values after reindexing
+        df_resampled.fillna(0, inplace=True)
+    else:
+        # Trim the dataset to the common date range
+        df_resampled = df.loc[earliest_date:latest_date]
+
+    print(f"Final dataframe shape: {df_resampled.shape}")
+    print(f"Final dataframe head:\n{df_resampled.head()}")
+
+    return df_resampled
+
+def normalize_dataset(df):
+    """
+    Normalizes the dataset to a scale from 0 to 100.
+    Args:
+        df (pandas.DataFrame): The dataset to normalize.
+    Returns:
+        pandas.DataFrame: The normalized dataset.
+    """
+    min_val = df.min().min()
+    max_val = df.max().max()
+    normalized_df = (df - min_val) / (max_val - min_val) * 100
+    return normalized_df
+
 def main():
     global menu, actual_menu, actual_opt, all_keywords, top_choice
 
@@ -2047,18 +2110,35 @@ def main():
         # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
         filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
 
-        datasets={}
+        datasets = {}
+        all_raw_datasets = {}
 
-        print(f"\nComparando '{selected_keyword}' a través de las siguientes fuentes de datos:")
         for source in selected_sources:
             print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
             menu = source
-            df=get_file_data(filenames.get(source, 'Archivo no encontrado'))
-            datasets[source]=df
-            print(f"\nConjunto de datos: {source}")
-            print(df.head())
-            print(f"Dimensiones: {df.shape}\n\n")
+            df = get_file_data(filenames.get(source, 'Archivo no encontrado'))
+            if df.empty or (df == 0).all().all():
+                print(f"Warning: Dataset for source {source} is empty or contains only zeros.")
+                continue
+            all_raw_datasets[source] = df
 
+        for source in selected_sources:
+            if source in all_raw_datasets:
+                datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
+                print(f"\nConjunto de datos procesado: {source}")
+                print(datasets[source].head())
+                print(f"Dimensiones: {datasets[source].shape}\n\n")
+
+        print(datasets)
+        
+        # Normalize each dataset in datasets
+        datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
+
+        # Print the normalized datasets for verification
+        for source, df_norm in datasets_norm.items():
+            print(f"Normalized dataset for source {source}:")
+            print(df_norm)
+            print("\n")
         # Ahora tienes los nombres de archivo para cada fuente de datos seleccionada
         # Puedes usar estos nombres de archivo para cargar y procesar los datos para la comparación
         print("\nLógica de comparación por implementar.")
