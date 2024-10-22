@@ -105,6 +105,7 @@ global charts
 global one_keyword
 global dbase_options
 global top_choice
+global combined_dataset 
 
 # Create a 'data' folder in the current directory
 data_folder = 'data'
@@ -736,9 +737,12 @@ def process_data(data):
 
 #  Fetches and processes Google Trends data for different time periods.
 def process_file_data(all_kw, d_filename):
-  # Group data and calculate means
-  all_data = get_file_data(d_filename)
-  #PPRINT(f"\n{all_data}")
+  
+  if top_choice == 1:
+    # Group data and calculate means
+    all_data = get_file_data(d_filename)
+  if top_choice == 2:
+    all_data = combined_dataset#PPRINT(f"\n{all_data}")
 
   if menu == 2:
       last_20_years = all_data[-20:]
@@ -752,8 +756,6 @@ def process_file_data(all_kw, d_filename):
       last_10_years = last_20_years[-10*12:]
       last_5_years = last_20_years[-5*12:]
       last_year = last_20_years[-1*12:]
-
-
 
   # mean_last_20_B = process_data(last_20_years_B)
   mean_all = process_data(all_data)
@@ -1084,9 +1086,26 @@ def calculate_yearly_average(data):
 def check_trends2(kw):
     global charts
     global image_markdown
+    
     data = trends_results['last_20_years_data']
     mean = trends_results['mean_last_20']
-    banner_msg(title=' Herramienta: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
+    if top_choice == 2:
+        actual_menu = kw
+        if kw == 'Google Trends':
+            menu = 1
+        elif kw == 'Google Books Ngrams':
+            menu = 2
+        elif kw == 'Bain - Usabilidad':
+            menu = 3
+        elif kw == 'Crossref.org':
+            menu = 4
+        else:
+            menu = 5
+
+    if top_choice == 1:
+        banner_msg(title=' Herramienta: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
+    else:
+        banner_msg(title=' Herramienta: ' + all_keywords[0].upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
 
     # Set years2 based on menu
     if menu == 3 or menu == 5:
@@ -1095,6 +1114,12 @@ def check_trends2(kw):
         years2 = 2 
     else:
         years2 = 0
+
+#         1: "Google Trends",
+#         2: "Google Books Ngrams",
+#         3: "Bain - Usabilidad",
+#         4: "Crossref.org",
+#         5: "Bain - Satisfacción"
     
     # Calculate averages
     if menu == 2 or menu == 4 or menu == 3 or menu == 5:
@@ -1638,7 +1663,10 @@ def results():
     csv_string = io.StringIO()
     csv_writer = csv.writer(csv_string)
     csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
-
+    
+    if top_choice == 2:
+        all_keywords = [combined_dataset.columns]
+    
     for kw in all_keywords:
         results = check_trends2(kw)
         csv_writer.writerow([kw] + results['means'] + results['trends'])
@@ -2076,19 +2104,20 @@ def normalize_dataset(df):
     normalized_df = (df - min_val) / (max_val - min_val) * 100
     return normalized_df
 
-def process_and_normalize_datasets(all_keywords):
+def process_and_normalize_datasets(allKeywords):
     global menu
+    global all_keywords
     
     banner_msg(" Herramientas de Gestión Disponibles ", YELLOW, WHITE)
-    for i, keyword in enumerate(all_keywords, 1):
+    for i, keyword in enumerate(allKeywords, 1):
         print(f"{i}. {keyword}")
     
     while True:
         selection = input("\nIngrese el número de la herramienta de gestión a comparar: ")
         try:
             index = int(selection) - 1
-            if 0 <= index < len(all_keywords):
-                selected_keyword = all_keywords[index]
+            if 0 <= index < len(allKeywords):
+                selected_keyword = allKeywords[index]
                 break
             else:
                 print(f"{RED}Opción inválida.{RESET}")
@@ -2096,7 +2125,7 @@ def process_and_normalize_datasets(all_keywords):
             print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
 
     selected_sources = select_multiple_data_sources()
-    
+    all_keywords = [selected_keyword]
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
 
@@ -2158,7 +2187,7 @@ def create_combined_dataset(datasets_norm, selected_sources, dbase_options):
     return combined_data
 
 def main():
-    global menu, actual_menu, actual_opt, all_keywords, top_choice
+    global menu, actual_menu, actual_opt, all_keywords, top_choice, combined_dataset, trends_results
 
     top_choice = top_level_menu()
 
@@ -2174,6 +2203,8 @@ def main():
         datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
         combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
         print(combined_dataset)
+        trends_results = process_file_data(all_keywords, "")
+        results()
 
 if __name__ == "__main__":
     main()
