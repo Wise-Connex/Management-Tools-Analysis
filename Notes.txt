@@ -1,2 +1,2 @@
-747
-Check process_dataset() 2068 when process 1,3, or 5 review mean calc
+if top_choice == 2:
+    Normalizar los periodos a earliest date to latest date... in trends2 contar los años

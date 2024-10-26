@@ -4,7 +4,6 @@ from matplotlib.dates import YearLocator, MonthLocator, DateFormatter
 import numpy as np
 import pandas as pd
 import time  # Import the time module
-import datetime
 import re
 import hashlib
 import seaborn as sns
@@ -105,7 +104,9 @@ global charts
 global one_keyword
 global dbase_options
 global top_choice
-global combined_dataset 
+global combined_dataset
+global selected_keyword
+global selected_sources
 
 # Create a 'data' folder in the current directory
 data_folder = 'data'
@@ -138,6 +139,17 @@ def eng_format(x):
     exp3 = 3 * (exp // 3)
     mantissa = x / (10**exp3)
     return f"{mantissa:.1f}E{exp3:+d}".replace("E+", "E+").replace("E-0", "E-")
+
+def get_unique_filename(base_filename, unique_folder):
+    """Helper function to get a unique filename by adding a number if file exists"""
+    counter = 1
+    filename = base_filename
+    while os.path.exists(os.path.join(unique_folder, filename)):
+        # Split filename into name and extension
+        name, ext = os.path.splitext(base_filename)
+        filename = f"{name}{counter}{ext}"
+        counter += 1
+    return filename
 
 def gemini_prompt(system_prompt,prompt,m='flash'):
   system_instructions = system_prompt
@@ -271,6 +283,7 @@ def get_user_selections(dictionary, option):
     A tuple containing the selected data file name and a list of selected strings from the last list of the dictionary.
   """
   global current_year
+  
   banner_msg(" Herramientas disponibles ", YELLOW, WHITE)
   for index, key in enumerate(dictionary, 1):
     print(f"{index}. {key}")
@@ -1086,11 +1099,12 @@ def calculate_yearly_average(data):
 def check_trends2(kw):
     global charts
     global image_markdown
+    global current_year
     
     data = trends_results['last_20_years_data']
     mean = trends_results['mean_last_20']
     if top_choice == 2:
-        actual_menu = kw
+        actual_menu = selected_keyword
         if kw == 'Google Trends':
             menu = 1
         elif kw == 'Google Books Ngrams':
@@ -1105,7 +1119,7 @@ def check_trends2(kw):
     if top_choice == 1:
         banner_msg(title=' Herramienta: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
     else:
-        banner_msg(title=' Herramienta: ' + all_keywords[0].upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
+        banner_msg(title=' Fuente de Datos: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
 
     # Set years2 based on menu
     if menu == 3 or menu == 5:
@@ -1122,21 +1136,37 @@ def check_trends2(kw):
 #         5: "Bain - Satisfacción"
     
     # Calculate averages
-    if menu == 2 or menu == 4 or menu == 3 or menu == 5:
-        avg_all = calculate_yearly_average(trends_results['all_data'][kw])
-        avg_20 = calculate_yearly_average(trends_results['all_data'][-20:][kw])
-        avg_15 = calculate_yearly_average(trends_results['all_data'][-15:][kw])
-        avg_10 = calculate_yearly_average(trends_results['all_data'][-10:][kw])
-        avg_5 = calculate_yearly_average(trends_results['all_data'][-5:][kw])
-        avg_1 = calculate_yearly_average(trends_results['all_data'][-1:][kw])
+    if top_choice == 1:
+        if menu == 2 or menu == 4 or menu == 3 or menu == 5:
+            avg_all = calculate_yearly_average(trends_results['all_data'][kw])
+            avg_20 = calculate_yearly_average(trends_results['all_data'][-20:][kw])
+            avg_15 = calculate_yearly_average(trends_results['all_data'][-15:][kw])
+            avg_10 = calculate_yearly_average(trends_results['all_data'][-10:][kw])
+            avg_5 = calculate_yearly_average(trends_results['all_data'][-5:][kw])
+            avg_1 = calculate_yearly_average(trends_results['all_data'][-1:][kw])
+        else:
+            avg_all = None  # We won't use this for other menu options
+            avg_20 = calculate_yearly_average(trends_results['last_20_years_data'][kw])
+            avg_15 = calculate_yearly_average(trends_results['last_15_years_data'][kw])
+            avg_10 = calculate_yearly_average(trends_results['last_10_years_data'][kw])
+            avg_5 = calculate_yearly_average(trends_results['last_5_years_data'][kw])
+            avg_1 = calculate_yearly_average(trends_results['last_year_data'][kw])
     else:
-        avg_all = None  # We won't use this for other menu options
-        avg_20 = calculate_yearly_average(trends_results['last_20_years_data'][kw])
-        avg_15 = calculate_yearly_average(trends_results['last_15_years_data'][kw])
-        avg_10 = calculate_yearly_average(trends_results['last_10_years_data'][kw])
-        avg_5 = calculate_yearly_average(trends_results['last_5_years_data'][kw])
-        avg_1 = calculate_yearly_average(trends_results['last_year_data'][kw])
-
+        if 2 in selected_sources:
+            avg_all = calculate_yearly_average(trends_results['all_data'][kw])
+            avg_20 = calculate_yearly_average(trends_results['all_data'][-20:][kw])
+            avg_15 = calculate_yearly_average(trends_results['all_data'][-15:][kw])
+            avg_10 = calculate_yearly_average(trends_results['all_data'][-10:][kw])
+            avg_5 = calculate_yearly_average(trends_results['all_data'][-5:][kw])
+            avg_1 = calculate_yearly_average(trends_results['all_data'][-1:][kw])
+        else:
+            avg_all = None  # We won't use this for other menu options
+            avg_20 = calculate_yearly_average(trends_results['last_20_years_data'][kw])
+            avg_15 = calculate_yearly_average(trends_results['last_15_years_data'][kw])
+            avg_10 = calculate_yearly_average(trends_results['last_10_years_data'][kw])
+            avg_5 = calculate_yearly_average(trends_results['last_5_years_data'][kw])
+            avg_1 = calculate_yearly_average(trends_results['last_year_data'][kw])
+        
     means = {}
     means[kw] = [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1]
 
@@ -1207,7 +1237,8 @@ def check_trends2(kw):
     legend = ax.legend(loc='upper center', fontsize=9, bbox_to_anchor=(0.5, -0.15), ncol=2)
 
     # Save the plot to the unique folder
-    image_filename = f'{filename}_means_{kw[:3]}.png'
+    base_filename = f'{filename}_means_{kw[:3]}.png'
+    image_filename = get_unique_filename(base_filename, unique_folder)
     plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
     add_image_to_report(f'Medias de {kw}', image_filename)
     charts += f'Medias de {kw} ({image_filename})\n\n'
@@ -1316,6 +1347,8 @@ def create_unique_filename(keywords, max_length=20):
     hash_object = hashlib.md5(str(timestamp).encode())
     unique_id = hash_object.hexdigest()[:8]  # Use first 8 characters of the hash
     # Combine truncated name with unique identifier
+    if top_choice == 2:
+        actual_opt = 'AA'
     filename = f"{actual_opt}_{truncated}_{unique_id}"
     #print(filename)
     return filename
@@ -1555,85 +1588,63 @@ def init_variables():
     global image_markdown
     global one_keyword
     global menu
+    global current_year
     
     plt.style.use('ggplot')
     # Get current year
-    current_year = datetime.datetime.now().year
+    current_year = datetime.now().year
     # pytrends = TrendReq(hl='en-US')
+    wider = True
+    one_keyword = False
     all_keywords= []
-    keywords = []
-    csv_correlation = None
-    csv_regression = None
-    csv_arima = None
-
-    cat = '0'
-    geo = ''
-    gprop = ''
     charts=""
-    data_txt=""
-    report=""
-    colors=None
-    one_keyword=False
-
-    # *************************************************************************************
-    # MAIN - KEYWORDS MENU
-    # *************************************************************************************
-
-    # ****** K E Y W O R D S *******************************************************************************************
-    all_keywords = []
-    menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
-    menu_opt = ["GT","GB","BR","CR","BS"]
-
-    menu = main_menu()
-    actual_menu = menu_options[menu-1]
-    actual_opt = menu_opt[menu-1]
-
-    # *****************************************************************************************************************
-
-    data_filename, all_keywords = get_user_selections(tool_file_dic, menu)
-
-    print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
-    print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
-
-    # *****************************************************************************************************************
-
-    # ********* OVER TIME CHART TITLES **********
-    if menu == 1:
-      title_odd_charts = 'Interés relativo\na lo largo del tiempo'
-      title_even_charts = 'Interés relativo\npara el período'
-    if menu == 2:
-      title_odd_charts = 'Publicaciones Generales relativas\na lo largo del tiempo'
-      title_even_charts = 'Publicaciones Generales relativas\npara el período'
-    if menu == 3:
-      title_odd_charts = 'Usabilidad relativa\na lo largo del tiempo'
-      title_even_charts = 'usabilidad relativa\npara el período'
-    if menu == 4:
-      title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
-      title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
-    if menu == 5:
-      title_odd_charts = 'Satisfacción por el uso\na lo largo del tiempo'
-      title_even_charts = 'Satisfacción por el uso\npara el período'
-
-
     
-    # ********************************************
-
-    # Set the flag based on the count of keywords
-    wider = True if len(all_keywords) <= 2 else False
-
-    if len(all_keywords) < 2:
-        one_keyword = True # Set one keyword
-    trends_results = process_file_data(all_keywords, data_filename)
-    print(all_keywords)
-    if menu==2 or menu==4:
-      csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-    csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-    csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-    csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-    csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-    csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-    all_kw = ", ".join(all_keywords)
-    csv_seasonal_index = None
+    if top_choice == 1:
+        one_keyword=False
+        # MAIN - KEYWORDS MENU
+        all_keywords = []
+        menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
+        menu_opt = ["GT","GB","BR","CR","BS"]
+        menu = main_menu()
+        actual_menu = menu_options[menu-1]
+        actual_opt = menu_opt[menu-1]
+        # *****************************************************************************************************************
+        data_filename, all_keywords = get_user_selections(tool_file_dic, menu)
+        print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
+        print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
+        # ********* OVER TIME CHART TITLES **********
+        if menu == 1:
+          title_odd_charts = 'Interés relativo\na lo largo del tiempo'
+          title_even_charts = 'Interés relativo\npara el período'
+        if menu == 2:
+          title_odd_charts = 'Publicaciones Generales relativas\na lo largo del tiempo'
+          title_even_charts = 'Publicaciones Generales relativas\npara el período'
+        if menu == 3:
+          title_odd_charts = 'Usabilidad relativa\na lo largo del tiempo'
+          title_even_charts = 'usabilidad relativa\npara el período'
+        if menu == 4:
+          title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
+          title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
+        if menu == 5:
+          title_odd_charts = 'Satisfacción por el uso\na lo largo del tiempo'
+          title_even_charts = 'Satisfacción por el uso\npara el período'
+        # Set the flag based on the count of keywords
+        wider = True if len(all_keywords) <= 2 else False
+        if len(all_keywords) < 2:
+            one_keyword = True # Set one keyword
+        trends_results = process_file_data(all_keywords, data_filename)
+        print(all_keywords)
+        if menu==2 or menu==4:
+          csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+        csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+        csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+        csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+        csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+        csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+        all_kw = ", ".join(all_keywords)    
+    else:
+        all_keywords = get_all_keywords()
+        
     filename = create_unique_filename(all_keywords)
     # unique_folder = os.path.join(gtrends_folder, filename)
     unique_folder = os.path.join(data_folder, filename)
@@ -1665,8 +1676,7 @@ def results():
     csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
     
     if top_choice == 2:
-        all_keywords = [combined_dataset.columns]
-    
+        all_keywords = combined_dataset.columns.tolist()
     for kw in all_keywords:
         results = check_trends2(kw)
         csv_writer.writerow([kw] + results['means'] + results['trends'])
@@ -2023,8 +2033,8 @@ def select_multiple_data_sources():
                         print(f"{RED}Selección inválida: {index}. Por favor, ingrese números entre 1 y {len(dbase_options)}.{RESET}")
                 
                 if valid_indices:
-                    print(f"Fuentes de datos añadidas: {', '.join(dbase_options[i] for i in valid_indices)}")
-                print(f"Actualmente seleccionadas: {', '.join(dbase_options[i] for i in selected_sources)}")
+                    print(f"\nFuentes de datos añadidas:\n- {'\n- '.join(dbase_options[i] for i in valid_indices)}\n")
+                print(f"Actualmente seleccionadas:\n- {'\n- '.join(dbase_options[i] for i in selected_sources)}\n")
             except ValueError:
                 print(f"{RED}Entrada inválida. Por favor, ingrese números separados por comas o 'listo'.{RESET}")
     
@@ -2066,22 +2076,51 @@ def process_dataset(df, source, all_datasets, selected_sources):
             df_resampled = df.resample('YE').sum()
             df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
         elif source in [1, 3, 5]:
-            df_resampled = [
-                (f"{year}-01-01", df[(df.index.year == year - 1) & (df.index.month >= 7) | 
-                                     (df.index.year == year) & (df.index.month <= 6)].iloc[:, 0].mean())
-                for year in range(earliest_date.year, latest_date.year + 1)
-            ]
-            df_resampled = pd.DataFrame(df_resampled, columns=['Date', 'Value']).set_index('Date')
+            df_resampled = []
+            years = range(earliest_date.year, latest_date.year + 1)
+            
+            for year in years:
+                if year == earliest_date.year:
+                    # First year: January to June only
+                    period_data = df[
+                        (df.index.year == year) & 
+                        (df.index.month <= 6)
+                    ]
+                    if not period_data.empty:
+                        mean_value = period_data.iloc[:, 0].mean()
+                        df_resampled.append((f"{year}-01-01", mean_value))
+                elif year == latest_date.year:
+                    # Last year: July to December only
+                    period_data = df[
+                        (df.index.year == year) & 
+                        (df.index.month >= 7)
+                    ]
+                    if not period_data.empty:
+                        mean_value = period_data.iloc[:, 0].mean()
+                        df_resampled.append((f"{year}-01-01", mean_value))
+                else:
+                    # Calculate mean from July of previous year to June of current year
+                    period_data = df[
+                        ((df.index.year == year - 1) & (df.index.month >= 7)) |
+                        ((df.index.year == year) & (df.index.month <= 6))
+                    ]
+                    if len(period_data) == 12:  # Only calculate if we have full 12 months
+                        mean_value = period_data.iloc[:, 0].mean()
+                        df_resampled.append((f"{year}-01-01", mean_value))
+            
+            df_resampled = pd.DataFrame(df_resampled, columns=['Date', 'Value'])
+            df_resampled.set_index('Date', inplace=True)
+            df_resampled.index = pd.to_datetime(df_resampled.index)
         else:
             df_resampled = df.copy()
 
         # Reindex to ensure all datasets have the same date range
         # all_years = pd.date_range(start=earliest_date, end=latest_date, freq='YS')
         # df_resampled = df_resampled.reindex(all_years)
-        df_resampled = df.loc[earliest_date:latest_date]
+        #df_resampled = df.loc[earliest_date:latest_date]
 
         # Fill NaN values after reindexing
-        df_resampled.fillna(0, inplace=True)
+        #df_resampled.fillna(0, inplace=True)
     else:
         # Trim the dataset to the common date range
         df_resampled = df.loc[earliest_date:latest_date]
@@ -2107,6 +2146,8 @@ def normalize_dataset(df):
 def process_and_normalize_datasets(allKeywords):
     global menu
     global all_keywords
+    global selected_keyword
+    global selected_sources
     
     banner_msg(" Herramientas de Gestión Disponibles ", YELLOW, WHITE)
     for i, keyword in enumerate(allKeywords, 1):
@@ -2199,7 +2240,7 @@ def main():
         report_pdf()
     elif top_choice == 2:
         # Nuevo flujo para comparación entre fuentes de datos
-        all_keywords = get_all_keywords()
+        init_variables()
         datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
         combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
         print(combined_dataset)
