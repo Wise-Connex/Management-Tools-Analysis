@@ -1043,19 +1043,19 @@ def relative_comparison():
     plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
     if menu == 1:
       add_image_to_report(f"Interés relativo en {', '.join(all_keywords)}", image_filename)
-      charts += f'Interés relativo en {', '.join(all_keywords)} ({image_filename})\n\n'
+      charts += f"Interés relativo en {', '.join(all_keywords)} ({image_filename})\n\n"
     if menu == 2:
       add_image_to_report(f"Publicaciones Generales sobre {', '.join(all_keywords)}", image_filename)
-      charts += f'Publicaciones Generales sobre {', '.join(all_keywords)} ({image_filename})\n\n'
+      charts += f"Publicaciones Generales sobre {', '.join(all_keywords)} ({image_filename})\n\n"
     if menu == 3:
       add_image_to_report(f"Usabilidad de {', '.join(all_keywords)}", image_filename)
-      charts += f'Usabilidad de {', '.join(all_keywords)} ({image_filename})\n\n'
+      charts += f"Usabilidad de {', '.join(all_keywords)} ({image_filename})\n\n"
     if menu == 4:
       add_image_to_report(f"Publicaciones Especializadas sobre {', '.join(all_keywords)}", image_filename)
-      charts += f'Publicaciones Especializadas sobre {', '.join(all_keywords)} ({image_filename})\n\n'
+      charts += f"Publicaciones Especializadas sobre {', '.join(all_keywords)} ({image_filename})\n\n"
     if menu == 5:
       add_image_to_report(f"Indice de Satisfacción de {', '.join(all_keywords)}", image_filename)
-      charts += f'Indice de Satisfacción de {', '.join(all_keywords)} ({image_filename})\n\n'
+      charts += f"Indice de Satisfacción de {', '.join(all_keywords)} ({image_filename})\n\n"
     plt.show()
 
     print(f"\nGráficos de comparación relativa creados.")
