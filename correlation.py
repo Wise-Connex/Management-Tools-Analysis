@@ -755,6 +755,7 @@ def process_data(data):
 
 #  Fetches and processes Google Trends data for different time periods.
 def process_file_data(all_kw, d_filename):
+  global combined_dataset
   
   if top_choice == 1:
     # Group data and calculate means
@@ -873,6 +874,7 @@ def relative_comparison():
     global title_even_charts
     global image_markdown
     global keycharts
+    global current_year
     
     print(f"\nCreando gráficos de comparación relativa...")
 
@@ -881,7 +883,7 @@ def relative_comparison():
     x_pos = np.arange(len(all_keywords))
 
     # Define colors here
-    colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
+    colors = plt.cm.rainbow(np.linspace(0, 1, 5))
     colors[2] = [0, 0.5, 0, 1]
     #colors = ['#FF0000', '#0000FF', '#00FF00', '#FF00FF', '#00FFFF', '#FFA500', '#800080', '#008000', '#FF69B4', '#4B0082'][:len(all_keywords)]  # Red, Blue, Green, Magenta, Cyan, Orange, Purple, Dark Green, Pink, Indigo
     window_size = 10
@@ -942,7 +944,7 @@ def relative_comparison():
             
         title_charts = ', '.join(keycharts)  
         title_odd_charts = f'{title_charts}\na lo largo del tiempo para {actual_menu}'
-        title_even_charts = f'{title_charts}\npara el período para {actual_menu}'  
+        title_even_charts = f'{title_charts}\nen el período para {actual_menu}'  
 
     if top_choice == 1:
         i = 1
@@ -976,7 +978,6 @@ def relative_comparison():
         setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], '', f'Período de 10 años\n({current_year - 10}-{current_year})', window_size, colors)
         setup_bar_subplot(ax8, trends_results['mean_last_10'], '', max_y_value, x_pos, colors)
         i += 1
-
         # Last 5-years
         ax9 = fig.add_subplot(gs[i, axODD])
         ax10 = fig.add_subplot(gs[i, axEVEN])
@@ -1210,6 +1211,7 @@ def check_trends2(kw):
     global current_year
     global actual_menu
     global menu
+    global trends_results
     
     data = trends_results['last_20_years_data']
     mean = trends_results['mean_last_20']
@@ -2126,7 +2128,9 @@ def top_level_menu():
     banner_msg(" Menú Principal ", YELLOW, WHITE)
     options = {
         1: "Generar Informe Individual",
-        2: "Comparar Herramienta de Gestión entre Fuentes de Datos"
+        2: "Comparar Herramienta de Gestión entre Fuentes de Datos",
+        3: "Reservado para función futura",
+        4: "Salir"
     }
     for index, option in enumerate(options.values(), 1):
         print(f"{index}. {option}")
@@ -2165,7 +2169,7 @@ def select_multiple_data_sources():
     
     selected_sources = []
     while True:
-        selection = input("\nIngrese los números de las fuentes de datos a comparar (separados por comas), o 'listo' para terminar: ")
+        selection = input("\nIngrese los números de las fuentes de datos a comparar (separados por comas), o 'listo' para continuar: ")
         if selection.lower() == 'listo':
             if not selected_sources:
                 print(f"{YELLOW}Por favor, seleccione al menos una fuente de datos antes de terminar.{RESET}")
@@ -2398,24 +2402,34 @@ def create_combined_dataset(datasets_norm, selected_sources, dbase_options):
     return combined_data
 
 def main():
-    global menu, actual_menu, actual_opt, all_keywords, top_choice, combined_dataset, trends_results
-
-    top_choice = top_level_menu()
-
-    if top_choice == 1:
-        # Flujo existente para informe individual
-        init_variables()
-        results()
-        ai_analysis()
-        report_pdf()
-    elif top_choice == 2:
-        # Nuevo flujo para comparación entre fuentes de datos
-        init_variables()
-        datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
-        combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
-        print(combined_dataset)
-        trends_results = process_file_data(all_keywords, "")
-        results()
+    global top_choice
+    global combined_dataset
+    
+    while True:
+        top_choice = top_level_menu()
+        
+        if top_choice == 4:  # Exit option
+            print("\nGracias por usar el programa.\nSuerte en tu investigación, ¡Hasta luego!")
+            break
+            
+        elif top_choice == 1:
+            # Flujo existente para informe individual
+            init_variables()
+            results()
+            ai_analysis()
+            report_pdf()
+            
+        elif top_choice == 2:
+            # Nuevo flujo para comparación entre fuentes de datos
+            init_variables()
+            datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
+            combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
+            print(combined_dataset)
+            trends_results = process_file_data(all_keywords, "")
+            results()
+            
+        elif top_choice == 3:
+            print(f"{YELLOW}Esta función estará disponible próximamente.{RESET}")
 
 if __name__ == "__main__":
     main()
