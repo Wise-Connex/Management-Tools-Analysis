@@ -107,6 +107,11 @@ global top_choice
 global combined_dataset
 global selected_keyword
 global selected_sources
+global earliest_date
+global latest_date
+global keycharts
+
+keycharts = []
 
 # Create a 'data' folder in the current directory
 data_folder = 'data'
@@ -613,7 +618,7 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
   # Fit ARIMA models to each numeric column
   numeric_columns = train.select_dtypes(include=['int64', 'float64'])
   for col in numeric_columns:
-      banner_msg(f'Modelo ARIMA para: {col} {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
+      banner_msg(f' Modelo ARIMA para: {col} {actual_menu} ',margin=1,color1=YELLOW,color2=WHITE)
       csv_arima += f"\n\nFitting ARIMA model for {col} ({actual_menu})\n"
       
       # Check if the column has enough non-zero values
@@ -742,10 +747,10 @@ def process_data(data):
   Returns:
     A pandas Series containing the normalized mean values.
   """
-  if menu == 2:
-    mean = data.mean()
-  else:
-    mean = round(data.mean(), 2)
+  #if menu == 2:
+  mean = data.mean()
+  #else:
+    #mean = round(data.mean(), 2)
   return mean
 
 #  Fetches and processes Google Trends data for different time periods.
@@ -757,18 +762,32 @@ def process_file_data(all_kw, d_filename):
   if top_choice == 2:
     all_data = combined_dataset#PPRINT(f"\n{all_data}")
 
-  if menu == 2:
-      last_20_years = all_data[-20:]
-      last_15_years = last_20_years[-15:]
-      last_10_years = last_20_years[-10:]
-      last_5_years = last_20_years[-5:]
-      last_year = last_20_years[-1:]
+  if top_choice == 1:
+    if menu == 2:
+        last_20_years = all_data[-20:]
+        last_15_years = last_20_years[-15:]
+        last_10_years = last_20_years[-10:]
+        last_5_years = last_20_years[-5:]
+        last_year = last_20_years[-1:]
+    else:
+        last_20_years = all_data[-20*12:]
+        last_15_years = last_20_years[-15*12:]
+        last_10_years = last_20_years[-10*12:]
+        last_5_years = last_20_years[-5*12:]
+        last_year = last_20_years[-1*12:]
   else:
-      last_20_years = all_data[-20*12:]
-      last_15_years = last_20_years[-15*12:]
-      last_10_years = last_20_years[-10*12:]
-      last_5_years = last_20_years[-5*12:]
-      last_year = last_20_years[-1*12:]
+    if 2 in selected_sources:
+        last_20_years = all_data[-20:]
+        last_15_years = last_20_years[-15:]
+        last_10_years = last_20_years[-10:]
+        last_5_years = last_20_years[-5:]
+        last_year = last_20_years[-1:]
+    else:
+        last_20_years = all_data[-20*12:]
+        last_15_years = last_20_years[-15*12:]
+        last_10_years = last_20_years[-10*12:]
+        last_5_years = last_20_years[-5*12:]
+        last_year = last_20_years[-1*12:]
 
   # mean_last_20_B = process_data(last_20_years_B)
   mean_all = process_data(all_data)
@@ -853,6 +872,7 @@ def relative_comparison():
     global title_odd_charts
     global title_even_charts
     global image_markdown
+    global keycharts
     
     print(f"\nCreando gráficos de comparación relativa...")
 
@@ -862,7 +882,8 @@ def relative_comparison():
 
     # Define colors here
     colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
-
+    colors[2] = [0, 0.5, 0, 1]
+    #colors = ['#FF0000', '#0000FF', '#00FF00', '#FF00FF', '#00FFFF', '#FFA500', '#800080', '#008000', '#FF69B4', '#4B0082'][:len(all_keywords)]  # Red, Blue, Green, Magenta, Cyan, Orange, Purple, Dark Green, Pink, Indigo
     window_size = 10
 
     # Calculate the maximum y-value across all datasets
@@ -874,54 +895,138 @@ def relative_comparison():
         trends_results['mean_last_5']
     ]
     max_y_value = max(mean.max() for mean in all_means if mean is not None)
-
-    # Determine the number of rows in the gridspec
-    total_rows = 6 if menu == 2 or menu == 4 or menu == 3 or menu == 5 else 5
-
+    
+    if top_choice == 1:
+        # Determine the number of rows in the gridspec
+        total_rows = 6 if menu == 2 or menu == 4 or menu == 3 or menu == 5 else 5
+    else:
+        len_years = latest_date.year - earliest_date.year
+        total_rows = 6 if len_years > 20 else 5
+        
     # Create grid spec with 9 columns and the determined number of rows
-    gs = fig.add_gridspec(total_rows, 9, height_ratios=[0.2] + [1] * (total_rows - 1))
+    gs = fig.add_gridspec(total_rows, 10, height_ratios=[0.2] + [1] * (total_rows - 1))
 
     # Define slices for odd and even subplots
     axODD = slice(0, 7)  # Line graph takes 7 columns
-    axEVEN = slice(8, 10)  # Bar graph takes 2 columns, leaving one column (7) blank
+    axEVEN = slice(8, 10)  # Bar graph takes 3 columns, leaving one column (7) blank
 
-    i = 1
-    # all data
-    if menu == 2 or menu == 4 or menu == 3 or menu == 5:
-        ax1 = fig.add_subplot(gs[i, axODD])
-        ax2 = fig.add_subplot(gs[i, axEVEN])
-        setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {72 if menu == 2 else 74 if menu == 4 else 42} años\n({current_year - (72 if menu == 2 else 74 if menu == 4 else 30)}-{current_year})', window_size, colors)
-        setup_bar_subplot(ax2, trends_results['mean_all'], title_even_charts, max_y_value, x_pos, colors)
+    if top_choice == 1:
+        # ********* OVER TIME CHART TITLES **********
+        if menu == 1:
+          title_odd_charts = 'Interés relativo\na lo largo del tiempo'
+          title_even_charts = 'Interés relativo\npara el período'
+        if menu == 2:
+          title_odd_charts = 'Publicaciones Generales relativas\na lo largo del tiempo'
+          title_even_charts = 'Publicaciones Generales relativas\npara el período'
+        if menu == 3:
+          title_odd_charts = 'Usabilidad relativa\na lo largo del tiempo'
+          title_even_charts = 'usabilidad relativa\npara el período'
+        if menu == 4:
+          title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
+          title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
+        if menu == 5:
+          title_odd_charts = 'Satisfacción por el uso\na lo largo del tiempo'
+          title_even_charts = 'Satisfacción por el uso\npara el período'
+    else:
+        # ********* OVER TIME CHART TITLES **********
+        if 1 in selected_sources:
+          keycharts.append('Interes') 
+        if 2 in selected_sources:
+          keycharts.append('Publicaciones Generales') 
+        if 3 in selected_sources:
+          keycharts.append('Usabilidad')  
+        if 4 in selected_sources:
+          keycharts.append('Publicaciones Especializadas')  
+        if 5 in selected_sources:
+          keycharts.append('Satisfacción')
+            
+        title_charts = ', '.join(keycharts)  
+        title_odd_charts = f'{title_charts}\na lo largo del tiempo para {actual_menu}'
+        title_even_charts = f'{title_charts}\npara el período para {actual_menu}'  
+
+    if top_choice == 1:
+        i = 1
+        # all data
+        if menu == 2 or menu == 4 or menu == 3 or menu == 5:
+            ax1 = fig.add_subplot(gs[i, axODD])
+            ax2 = fig.add_subplot(gs[i, axEVEN])
+            setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {72 if menu == 2 else 74 if menu == 4 else 42} años\n({current_year - (72 if menu == 2 else 74 if menu == 4 else 30)}-{current_year})', window_size, colors)
+            setup_bar_subplot(ax2, trends_results['mean_all'], title_even_charts, max_y_value, x_pos, colors)
+            i += 1
+            title_odd_charts = ''
+            title_even_charts = ''
+
+        # Last 20-years
+        ax3 = fig.add_subplot(gs[i, axODD])
+        ax4 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, f'Período de 20 años\n({current_year - 20}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts, max_y_value, x_pos, colors)
         i += 1
-        title_odd_charts = ''
-        title_even_charts = ''
 
-    # Last 20-years
-    ax3 = fig.add_subplot(gs[i, axODD])
-    ax4 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, f'Período de 20 años\n({current_year - 20}-{current_year})', window_size, colors)
-    setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts, max_y_value, x_pos, colors)
-    i += 1
+        # Last 15-years
+        ax5 = fig.add_subplot(gs[i, axODD])
+        ax6 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax5, trends_results['last_15_years_data'], trends_results['mean_last_15'], '', f'Período de 15 años\n({current_year - 15}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax6, trends_results['mean_last_15'], '', max_y_value, x_pos, colors)
+        i += 1
 
-    # Last 15-years
-    ax5 = fig.add_subplot(gs[i, axODD])
-    ax6 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax5, trends_results['last_15_years_data'], trends_results['mean_last_15'], '', f'Período de 15 años\n({current_year - 15}-{current_year})', window_size, colors)
-    setup_bar_subplot(ax6, trends_results['mean_last_15'], '', max_y_value, x_pos, colors)
-    i += 1
+        # Last 10-years
+        ax7 = fig.add_subplot(gs[i, axODD])
+        ax8 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], '', f'Período de 10 años\n({current_year - 10}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax8, trends_results['mean_last_10'], '', max_y_value, x_pos, colors)
+        i += 1
 
-    # Last 10-years
-    ax7 = fig.add_subplot(gs[i, axODD])
-    ax8 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], '', f'Período de 10 años\n({current_year - 10}-{current_year})', window_size, colors)
-    setup_bar_subplot(ax8, trends_results['mean_last_10'], '', max_y_value, x_pos, colors)
-    i += 1
+        # Last 5-years
+        ax9 = fig.add_subplot(gs[i, axODD])
+        ax10 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], '', f'Período de 5 años\n({current_year - 5}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax10, trends_results['mean_last_5'], '', max_y_value, x_pos, colors)
+    else:
+        current_year = latest_date.year
+        i = 1
+        # all data
+        if len_years >= 20:
+            ax1 = fig.add_subplot(gs[i, axODD])
+            ax2 = fig.add_subplot(gs[i, axEVEN])
+            setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {len_years} años\n({current_year-earliest_date.year}-{latest_date.year})', window_size, colors)
+            setup_bar_subplot(ax2, trends_results['mean_all'], title_even_charts, max_y_value, x_pos, colors)
+            i += 1
+            title_odd_charts = ''
+            title_even_charts = ''
+            # Last 20-years
+            ax3 = fig.add_subplot(gs[i, axODD])
+            ax4 = fig.add_subplot(gs[i, axEVEN])
+            setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, f'Período de 20 años\n({current_year - 20}-{current_year})', window_size, colors)
+            setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts, max_y_value, x_pos, colors)
+            i += 1
+        else:
+            ax3 = fig.add_subplot(gs[i, axODD])
+            ax4 = fig.add_subplot(gs[i, axEVEN])
+            setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, f'Período de {len_years} años\n({current_year-earliest_date.year}-{latest_date.year})', window_size, colors)
+            setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts, max_y_value, x_pos, colors)
+            i += 1
+            
+        # Last 15-years
+        ax5 = fig.add_subplot(gs[i, axODD])
+        ax6 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax5, trends_results['last_15_years_data'], trends_results['mean_last_15'], '', f'Período de 15 años\n({current_year - 15}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax6, trends_results['mean_last_15'], '', max_y_value, x_pos, colors)
+        i += 1
 
-    # Last 5-years
-    ax9 = fig.add_subplot(gs[i, axODD])
-    ax10 = fig.add_subplot(gs[i, axEVEN])
-    setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], '', f'Período de 5 años\n({current_year - 5}-{current_year})', window_size, colors)
-    setup_bar_subplot(ax10, trends_results['mean_last_5'], '', max_y_value, x_pos, colors)
+        # Last 10-years
+        ax7 = fig.add_subplot(gs[i, axODD])
+        ax8 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], '', f'Período de 10 años\n({current_year - 10}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax8, trends_results['mean_last_10'], '', max_y_value, x_pos, colors)
+        i += 1
+
+        # Last 5-years
+        ax9 = fig.add_subplot(gs[i, axODD])
+        ax10 = fig.add_subplot(gs[i, axEVEN])
+        setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], '', f'Período de 5 años\n({current_year - 5}-{current_year})', window_size, colors)
+        setup_bar_subplot(ax10, trends_results['mean_last_5'], '', max_y_value, x_pos, colors)
+
 
     # Add legend at the bottom, outside of the plots
     handles, labels = ax3.get_legend_handles_labels()
@@ -967,47 +1072,49 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
             smoothed_data = smooth_data(data[kw], window_size)
             ax.plot(data[kw].index, smoothed_data, label=kw, color=colors[i])
             
-            if menu == 4:
-                # Calculate yearly sum of previous 12 months
-                yearly_sums = []
-                years = data.index.year.unique()
-                for year in years[1:]:  # Start from the second year
-                    end_date = f"{year}-01-01"
-                    start_date = f"{year-1}-01-01"
-                    yearly_sum = data[kw].loc[start_date:end_date].sum()
-                    yearly_sums.append((pd.Timestamp(year, 1, 1), yearly_sum))
-                
-                # Create secondary y-axis for yearly sums
-                ax2 = ax.twinx()
-                
-                # Create bar plot for yearly sums on secondary y-axis
-                bar_positions, bar_heights = zip(*yearly_sums)
-                ax2.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
-                
-                # Set label for secondary y-axis
-                ax2.set_ylabel('Suma anual', color='red', fontsize=12)
-                ax2.tick_params(axis='y', labelcolor='red')
-            else:
-                # Original yearly mean calculation
-                yearly_means = []
-                years = data.index.year.unique()
-                for idx, year in enumerate(years):
-                    if idx == 0:  # First year
-                        start_date = f"{year}-01-01"
-                        end_date = f"{year}-06-30"
-                    elif idx == len(years) - 1:  # Last year
-                        start_date = f"{year}-07-01"
-                        end_date = f"{year}-12-31"
-                    else:  # All other years
-                        start_date = f"{year-1}-07-01"
-                        end_date = f"{year}-06-30"
+            # Only show yearly calculations if top_choice != 2
+            if top_choice != 2:
+                if menu == 4:
+                    # Calculate yearly sum of previous 12 months
+                    yearly_sums = []
+                    years = data.index.year.unique()
+                    for year in years[1:]:  # Start from the second year
+                        end_date = f"{year}-01-01"
+                        start_date = f"{year-1}-01-01"
+                        yearly_sum = data[kw].loc[start_date:end_date].sum()
+                        yearly_sums.append((pd.Timestamp(year, 1, 1), yearly_sum))
                     
-                    yearly_mean = data[kw].loc[start_date:end_date].mean()
-                    yearly_means.append((pd.Timestamp(year, 1, 1), yearly_mean))
-                
-                # Create bar plot for yearly means
-                bar_positions, bar_heights = zip(*yearly_means)
-                ax.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
+                    # Create secondary y-axis for yearly sums
+                    ax2 = ax.twinx()
+                    
+                    # Create bar plot for yearly sums on secondary y-axis
+                    bar_positions, bar_heights = zip(*yearly_sums)
+                    ax2.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
+                    
+                    # Set label for secondary y-axis
+                    ax2.set_ylabel('Suma anual', color='red', fontsize=12)
+                    ax2.tick_params(axis='y', labelcolor='red')
+                else:
+                    # Original yearly mean calculation
+                    yearly_means = []
+                    years = data.index.year.unique()
+                    for idx, year in enumerate(years):
+                        if idx == 0:  # First year
+                            start_date = f"{year}-01-01"
+                            end_date = f"{year}-06-30"
+                        elif idx == len(years) - 1:  # Last year
+                            start_date = f"{year}-07-01"
+                            end_date = f"{year}-12-31"
+                        else:  # All other years
+                            start_date = f"{year-1}-07-01"
+                            end_date = f"{year}-06-30"
+                        
+                        yearly_mean = data[kw].loc[start_date:end_date].mean()
+                        yearly_means.append((pd.Timestamp(year, 1, 1), yearly_mean))
+                    
+                    # Create bar plot for yearly means
+                    bar_positions, bar_heights = zip(*yearly_means)
+                    ax.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
 
     # Grid lines for major ticks only
     ax.grid(True, which='major', linestyle='--', linewidth=0.3, color='grey', alpha=0.1)
@@ -1056,25 +1163,26 @@ def setup_bar_subplot(ax, mean, title, y_max, x_pos, colors):
     mean, ispartial = remove_ispartial(mean)  # Assuming this handles partial data
 
     # Grid lines for major ticks only
-    ax.grid(True, which='major', linestyle='--', linewidth=0.5, color='grey', alpha=0.1)  # Reduced grid line opacity to 0.1
+    ax.grid(True, which='major', linestyle='--', linewidth=0.5, color='grey', alpha=0.1)
 
     # Create bar plot with corresponding value labels
-    bar_container = ax.bar(x_pos, mean[:len(all_keywords)], align='center', color='blue')  # Changed bar color to blue
+    bar_container = ax.bar(x_pos, mean[:len(all_keywords)], align='center', color=colors[:len(all_keywords)])  
 
     # Add value labels using `bar_label`
-    ax.bar_label(bar_container, fmt=eng_format)  # Format values (optional)
+    ax.bar_label(bar_container, fmt=eng_format)
 
     ax.set_title(title, fontsize=16)
     ax.set_xticks(x_pos)
     ax.set_xticklabels(replace_spaces_with_newlines(all_keywords), rotation=0, ha='center', fontsize=8)
     ax.tick_params(axis='y', which='major', labelsize=8)
 
-    # Set y-axis limit to the maximum value
-    ax.set_ylim(0, y_max)
+    # Set y-axis limit to the global maximum value with a small buffer
+    buffer = y_max * 0.1  # 10% buffer
+    ax.set_ylim(0, y_max + buffer)
 
-    # Adjust y-axis limits to avoid clipping labels (if needed)
-    plt.setp(ax.get_yticklabels(), rotation=45, ha='right')  # Rotate y-axis labels if crowded
-    plt.tight_layout()  # Adjust spacing to avoid clipping labels
+    # Adjust y-axis limits to avoid clipping labels
+    plt.setp(ax.get_yticklabels(), rotation=45, ha='right')
+    plt.tight_layout()
 
 # Calculates the yearly average of a N-year period.
 def calculate_yearly_average(data):
@@ -1100,6 +1208,8 @@ def check_trends2(kw):
     global charts
     global image_markdown
     global current_year
+    global actual_menu
+    global menu
     
     data = trends_results['last_20_years_data']
     mean = trends_results['mean_last_20']
@@ -1137,7 +1247,7 @@ def check_trends2(kw):
     
     # Calculate averages
     if top_choice == 1:
-        if menu == 2 or menu == 4 or menu == 3 or menu == 5:
+        if menu == 2:
             avg_all = calculate_yearly_average(trends_results['all_data'][kw])
             avg_20 = calculate_yearly_average(trends_results['all_data'][-20:][kw])
             avg_15 = calculate_yearly_average(trends_results['all_data'][-15:][kw])
@@ -1173,55 +1283,112 @@ def check_trends2(kw):
     # Base width
     base_width = 0.35
 
+    # Adjust years base on earliest and latest dates...
+    if top_choice == 2:
+        years_range = int((latest_date - earliest_date).days / 365.25) 
+        years2 = 0
+        current_year = latest_date.year
+        if years_range < 20:
+            years2 = years_range
+        else:
+            years2 = 20
+        
     # Calculate relative widths
-    if menu == 2 or menu == 4 or menu == 3 or menu == 5:
-        avg_all_width = base_width * (72 + years2) / 20 * 2
-        avg_20_width = base_width * 20 / 20 * 2
-        avg_15_width = base_width * 15 / 20 * 2
-        avg_10_width = base_width * 10 / 20 * 2
-        avg_5_width = base_width * 5 / 20 * 2
-        avg_1_width = base_width * 1 / 20 * 2.5
+    if top_choice == 1:
+        if menu == 2 or menu == 4 or menu == 3 or menu == 5:
+            avg_all_width = base_width * (72 + years2) / 20 * 2
+            avg_20_width = base_width * 20 / 20 * 2
+            avg_15_width = base_width * 15 / 20 * 2
+            avg_10_width = base_width * 10 / 20 * 2
+            avg_5_width = base_width * 5 / 20 * 2
+            avg_1_width = base_width * 1 / 20 * 2.5
 
-        bar_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
-                        avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
-                        avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-        bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
-        years_list = [72 + years2, 20, 15, 10, 5, 1]
+            bar_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
+                            avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
+                            avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
+            bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
+            years_list = [72 + years2, 20, 15, 10, 5, 1]
+            if top_choice == 2:
+                years_list = [years_range, years2, 15, 10, 5, 1]
+        else:
+            avg_20_width = base_width * 20 / 20 * 2
+            avg_15_width = base_width * 15 / 20 * 2
+            avg_10_width = base_width * 10 / 20 * 2
+            avg_5_width = base_width * 5 / 20 * 2
+            avg_1_width = base_width * 1 / 20 * 2.5
+
+            bar_positions = [0, avg_20_width, avg_20_width + avg_15_width,
+                            avg_20_width + avg_15_width + avg_10_width,
+                            avg_20_width + avg_15_width + avg_10_width + avg_5_width]
+            bar_widths = [avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
+            years_list = [20, 15, 10, 5, 1]
+            if top_choice == 2:
+                years_list = [years2, 15, 10, 5, 1]
     else:
-        avg_20_width = base_width * 20 / 20 * 2
-        avg_15_width = base_width * 15 / 20 * 2
-        avg_10_width = base_width * 10 / 20 * 2
-        avg_5_width = base_width * 5 / 20 * 2
-        avg_1_width = base_width * 1 / 20 * 2.5
+        if years_range > 20:
+            avg_all_width = base_width * (years_range) / 20 * 2
+            avg_20_width = base_width * 20 / 20 * 2
+            avg_15_width = base_width * 15 / 20 * 2
+            avg_10_width = base_width * 10 / 20 * 2
+            avg_5_width = base_width * 5 / 20 * 2
+            avg_1_width = base_width * 1 / 20 * 2.5
 
-        bar_positions = [0, avg_20_width, avg_20_width + avg_15_width,
-                         avg_20_width + avg_15_width + avg_10_width,
-                         avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-        bar_widths = [avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
-        years_list = [20, 15, 10, 5, 1]
+            bar_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
+                            avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
+                            avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
+            bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
+            years_list = [years_range, years2, 15, 10, 5, 1]
+        else:
+            avg_20_width = base_width * years2 / 20 * 2
+            avg_15_width = base_width * 15 / 20 * 2
+            avg_10_width = base_width * 10 / 20 * 2
+            avg_5_width = base_width * 5 / 20 * 2
+            avg_1_width = base_width * 1 / 20 * 2.5
 
+            bar_positions = [0, avg_20_width, avg_20_width + avg_15_width,
+                            avg_20_width + avg_15_width + avg_10_width,
+                            avg_20_width + avg_15_width + avg_10_width + avg_5_width]
+            bar_widths = [avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
+            years_list = [years2, 15, 10, 5, 1]
+                
     # Create the bar graph
     fig, ax = plt.subplots(figsize=(10,6))
 
     # Create bars
-    if menu == 2 or menu == 4:
-        rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
-                 for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
-                                                          [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                          years_list,
-                                                          ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+    if top_choice == 1:
+        if menu == 2 or menu == 4:
+            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
+                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
+                                                            [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
+                                                            years_list,
+                                                            ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+        else:
+            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
+                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
+                                                            [avg_20, avg_15, avg_10, avg_5, avg_1],
+                                                            years_list,
+                                                            ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
     else:
-        rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
-                 for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
-                                                          [avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                          years_list,
-                                                          ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
-
+        if years_range > 20:
+            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
+                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
+                                                            [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
+                                                            years_list,
+                                                            ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+        else:
+            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
+                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
+                                                            [avg_20, avg_15, avg_10, avg_5, avg_1],
+                                                            years_list,
+                                                            ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
     # Set the x-axis labels and title
     ax.set_xticks(bar_positions)
     ax.set_xticklabels(years_list)
     ax.set_ylabel('Media')
-    ax.set_title(f'Media a lo largo del tiempo de:\n{kw} según {actual_menu}')
+    if top_choice == 1:
+        ax.set_title(f'Media a lo largo del tiempo de:\n{kw} según {actual_menu}')
+    else:
+        ax.set_title(f'Media a lo largo del tiempo de:{actual_menu}\n{kw}')
 
     # Add labels over each bar
     def add_labels(rects):
@@ -1335,6 +1502,7 @@ def check_trends2(kw):
     }
 
 def create_unique_filename(keywords, max_length=20):
+    global actual_opt
     # Concatenate keywords
     shorter = [keyword[:3] for keyword in keywords if len(keyword) >= 3]
     joined = "_".join(shorter)
@@ -1612,22 +1780,7 @@ def init_variables():
         data_filename, all_keywords = get_user_selections(tool_file_dic, menu)
         print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
         print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
-        # ********* OVER TIME CHART TITLES **********
-        if menu == 1:
-          title_odd_charts = 'Interés relativo\na lo largo del tiempo'
-          title_even_charts = 'Interés relativo\npara el período'
-        if menu == 2:
-          title_odd_charts = 'Publicaciones Generales relativas\na lo largo del tiempo'
-          title_even_charts = 'Publicaciones Generales relativas\npara el período'
-        if menu == 3:
-          title_odd_charts = 'Usabilidad relativa\na lo largo del tiempo'
-          title_even_charts = 'usabilidad relativa\npara el período'
-        if menu == 4:
-          title_odd_charts = 'Publicaciones Especializadas relativas\na lo largo del tiempo'
-          title_even_charts = 'Publicaciones Especializadas elativas\npara el período'
-        if menu == 5:
-          title_odd_charts = 'Satisfacción por el uso\na lo largo del tiempo'
-          title_even_charts = 'Satisfacción por el uso\npara el período'
+
         # Set the flag based on the count of keywords
         wider = True if len(all_keywords) <= 2 else False
         if len(all_keywords) < 2:
@@ -1913,7 +2066,7 @@ def report_pdf():
     report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
     report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
     report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
-    now = datetime.datetime.now()
+    now = datetime.now()
     date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
     report += "</br></br>Reporte generado el " + date_time_string + "\n"
     report += "</small>"
@@ -2054,6 +2207,9 @@ def get_filenames_for_keyword(keyword, selected_sources):
     return filenames
 
 def process_dataset(df, source, all_datasets, selected_sources):
+    global earliest_date
+    global latest_date
+    
     print(f"Processing dataset for source {source}")
     print(f"Original dataframe shape: {df.shape}")
     print(f"Original dataframe head:\n{df.head()}")

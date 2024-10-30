@@ -1,2 +1,8 @@
-if top_choice == 2:
-    Normalizar los periodos a earliest date to latest date... in trends2 contar los años
+earliest_date
+latest_date
+884
+990
+
+to do 
+- if top_option 2 doesnt show the bar graph on the left side under the line graph
+- if top_option 2 graph bar at the right top value from all graphs (scale)
