@@ -2185,9 +2185,23 @@ def select_multiple_data_sources():
                     else:
                         print(f"{RED}Selección inválida: {index}. Por favor, ingrese números entre 1 y {len(dbase_options)}.{RESET}")
                 
+                # if valid_indices:
+                #     print(f"\nFuentes de datos añadidas:\n- {'\n- '.join(dbase_options[i] for i in valid_indices)}\n")
+                # print(f"Actualmente seleccionadas:\n- {'\n- '.join(dbase_options[i] for i in selected_sources)}\n")
                 if valid_indices:
-                    print(f"\nFuentes de datos añadidas:\n- {'\n- '.join(dbase_options[i] for i in valid_indices)}\n")
-                print(f"Actualmente seleccionadas:\n- {'\n- '.join(dbase_options[i] for i in selected_sources)}\n")
+                    # Fixed f-string formatting
+                    added_sources = [dbase_options[i] for i in valid_indices]
+                    print("\nFuentes de datos añadidas:")
+                    for source in added_sources:
+                        print(f"- {source}")
+                    print()
+                
+                # Show currently selected sources
+                current_sources = [dbase_options[i] for i in selected_sources]
+                print("Actualmente seleccionadas:")
+                for source in current_sources:
+                    print(f"- {source}")
+                print()
             except ValueError:
                 print(f"{RED}Entrada inválida. Por favor, ingrese números separados por comas o 'listo'.{RESET}")
     
