@@ -1992,7 +1992,7 @@ def ai_analysis():
 
     n+=1
     if top_choice == 1:
-      p_5 = seasonal_analysis_prompt_1.format(actual_menu=actual_menu, dbs=dbs, csv_seasonal=csv_seasonal)
+      p_5 = seasonal_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_seasonal=csv_seasonal)
       print(f'\n\n\n{n}. Interpretando patrones estacionales...')
     else:
       p_5 = seasonal_analysis_prompt_2.format(csv_seasonal=csv_seasonal, csv_correlation=csv_correlation)        
@@ -2238,9 +2238,6 @@ def select_multiple_data_sources():
                     else:
                         print(f"{RED}Selección inválida: {index}. Por favor, ingrese números entre 1 y {len(dbase_options)}.{RESET}")
                 
-                # if valid_indices:
-                #     print(f"\nFuentes de datos añadidas:\n- {'\n- '.join(dbase_options[i] for i in valid_indices)}\n")
-                # print(f"Actualmente seleccionadas:\n- {'\n- '.join(dbase_options[i] for i in selected_sources)}\n")
                 if valid_indices:
                     # Fixed f-string formatting
                     added_sources = [dbase_options[i] for i in valid_indices]

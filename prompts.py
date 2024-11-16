@@ -404,7 +404,7 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 
 seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
 
-**Objective:** To analyze the significance and characteristics of seasonal patterns in {actual_menu} management tool adoption within {dbs} data.
+**Objective:** To analyze the significance and characteristics of seasonal patterns in {all_kw} management tool adoption within {dbs} data.
 
 **Tasks:**
 
