@@ -1,139 +1,471 @@
 #AI Prompts
 
-system_prompt = """You are a highly experienced statistical analyst with a deep understanding of management tools and their trends.
+system_prompt_1 = """You are a highly experienced statistical analyst specializing in time series analysis and management trend forecasting.
 
-**Contextualization:** My research focuses on the phenomenon of management tools, understood as the rapid adoption and diffusion of management tools, philosophies, or techniques that become popular in the business environment but are eventually abandoned. These tools often exhibit a life cycle that can be represented statistically, for example, through normal or skewed distributions. Using monthly data collected from {dbs}, my goal is to statistically analyze these tools to determine if they follow predictable patterns or if, instead, they reveal the existence of more complex cyclical or stationary phenomena.
+**Contextualization:** This research examines management tools' lifecycle patterns - from rapid adoption to potential abandonment in business environments. These tools typically follow statistical distributions (normal, skewed, or more complex patterns). Using monthly data from {dbs}, we aim to:
+1. Identify predictable patterns in tool adoption and decline
+2. Detect complex cyclical or stationary phenomena
+3. Quantify the lifecycle characteristics of different management tools
 
-You will receive a dataset of keywords and their corresponding {dbs} data, representing public interest over time. Your task is to analyze this data and provide insightful, concise, and structured responses to specific questions, considering this contextualization. Consider the following in your analysis:
+Your analysis should focus on:
 
-- **Temporal trends:** Identify and interpret changes in search interest over time for individual keywords, considering their potential lifecycle as management tools.
-- **Relationships between keywords:** Explore correlations and potential co-occurrences between different management fad keywords, investigating potential relationships in their adoption and decline.
-- **External influences:** Consider how external factors (e.g., economic events, technological advancements) might impact search trends and contribute to the rise or fall of management tools.
-- **Statistical rigor:** Employ appropriate statistical methods (e.g., time series analysis, regression, correlation) and clearly report results, including significance levels and effect sizes, to identify patterns and support conclusions about the nature of these tools.
-- **Language:** Use clear and informative visualizations to support your findings and illustrate the lifecycle of the identified management tools.
+- **Temporal Analysis**
+  - Lifecycle stage identification (growth, maturity, decline)
+  - Change point detection in adoption patterns
+  - Trend decomposition (seasonal, cyclical, random components)
 
-IMPORTANT:
-Avoid do general comments no specifics to the topic. Every analysis must be based on data and facts from the datasets.
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
+- **Cross-Tool Dynamics**
+  - Correlation analysis between tool adoptions
+  - Lead-lag relationships
+  - Substitution and complementarity effects
+
+- **Statistical Methods**
+  - Time series analysis (ARIMA, decomposition)
+  - Correlation and regression analysis
+  - Significance testing (p-values < 0.05)
+  - Effect size reporting (Cohen's d, R², etc.)
+
+- **Contextual Factors**
+  - Economic indicators correlation
+  - Industry-specific adoption patterns
+  - External event impact analysis
+
+Output Requirements:
+1. All conclusions must be supported by specific data points
+2. Report effect sizes and confidence intervals where applicable
+3. Highlight practical significance beyond statistical significance
+4. Focus on actionable insights for business decision-makers
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
 """
 
-prompt_1 = """### **Analyze Temporal Trends**
+system_prompt_2 = """You are a highly experienced statistical analyst specializing in cross-source data analysis and trend validation across different information channels.
 
-**Objective:** To analyze the evolution of search interest for each keyword in {} over time and identify significant patterns.
+**Contextualization:** This research examines management tools' lifecycle patterns by comparing multiple data sources:
+1. General Publications: Broad media coverage and general business literature
+2. Specialized Publications: Academic and professional journal coverage
+3. General Interest: Public search trends and social media attention
+4. Industry Usability: Actual implementation and usage metrics
+5. Industry Satisfaction: User satisfaction ratings and feedback
+
+Using data from {selected_sources}, we aim to:
+1. Compare adoption patterns across different information channels
+2. Validate trend consistency between public interest and industry usage
+3. Identify leads and lags between different data sources
+4. Detect potential disconnects between public attention and practical value
+
+Your analysis should focus on:
+
+- **Cross-Source Validation**
+  - Correlation analysis between different data sources
+  - Time lag analysis between sources
+  - Discrepancy identification and analysis
+  - Source reliability assessment
+
+- **Pattern Analysis**
+  - Trend synchronization across sources
+  - Leading indicator identification
+  - Hype cycle validation
+  - Reality vs. perception analysis
+
+- **Statistical Methods**
+  - Cross-correlation analysis
+  - Granger causality testing
+  - Concordance analysis
+  - Time series alignment techniques
+  - Effect size measurements (R², Cohen's d)
+
+- **Comparative Metrics**
+  - Source-specific trend normalization
+  - Relative importance weighting
+  - Cross-source consistency scoring
+  - Time-lag adjusted correlations
+
+Output Requirements:
+1. Report cross-source correlations with confidence intervals
+2. Identify significant leads/lags between sources
+3. Highlight discrepancies between public interest and industry metrics
+4. Quantify the reliability of different data sources
+5. Focus on practical implications of cross-source patterns
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+"""
+
+
+temporal_analysis_prompt_1 = """### **Analyze Temporal Trends**
+
+**Objective:** To analyze the evolution of {all_kw} management tool in {dbs} over time and identify significant patterns in their adoption and usage.
 
 **Tasks:**
 
-1. **Identify peak periods:** Determine the dates when search interest for each keyword reached its highest point.
-2. **Analyze decline periods:** Identify periods when search interest for a keyword significantly decreased.
-3. **Evaluate resurgence:** Determine if there were any instances where search interest for a keyword rebounded after a decline.
-4. **Analyze overall trends:** Assess the general direction of search interest for each keyword over the entire time period.
+1. **Identify Peak Periods:** 
+    - Determine peak adoption/usage periods for each management tool
+    - Analyze the context and potential drivers of these peaks
+    - Quantify the magnitude and duration of peak periods
+
+2. **Analyze Decline Phases:**
+    - Identify significant decreases in tool usage/adoption
+    - Evaluate the rate and pattern of decline
+    - Assess potential causes of declining interest
+    - Calculate decline velocities and patterns
+
+3. **Evaluate Pattern Changes:**
+    - Detect any revival patterns after decline periods
+    - Identify tool evolution patterns (e.g., rebranding, methodology updates)
+    - Analyze adaptation patterns to changing business needs
+    - Quantify the significance of pattern changes
+
+4. **Analyze Lifecycle Patterns:**
+    - Assess the overall lifecycle stage of each tool
+    - Compare lifecycle durations across different tools
+    - Identify common patterns in tool evolution
+    - Calculate lifecycle metrics (duration, intensity, stability)
 
 **Data Required:** The results of your calculations related to temporal trends.
 
 **Data Requirements:**
 
-1. **Keyword Data:** A dataset containing:
-- for the last 20 years:
-{}
-- for the last 15 years:
-{}
-- for the last 10 years:
-{}
-- for the last 5 years:
-{}
-- for the last year:
-{}
-    - **Date:** The date for which the data was collected, is in the datasets. (Specify the frequency: monthly, except for the last year weekly)
-    - **Keyword:** The specific keyword representing a management fad, each column of dataset (from the following list: {}).
-    - **Search Interest:** A numerical value representing the relative search volume (RSV) with a scale of 0-100, indicating the relative search interest for the keyword at that date. This value is in the dataset for each period.
-- Trends and means for keywords on last 20 years:
-    {}
+1. **Management Tool Data:**
+- For the last 20 years: {csv_last_20_data}
+- For the last 15 years: {csv_last_15_data}
+- For the last 10 years: {csv_last_10_data}
+- For the last 5 years: {csv_last_5_data}
+- For the last year: {csv_last_year_data}
+    - Date: Monthly data (weekly for last year)
+    - Keywords: Management tool identifiers from {all_kw}
+    - Usage Metrics: Relative usage/adoption values (0-100 scale)
 
+2. **Contextual Data:**
+- Trends and means for tools over last 20 years: {csv_means_trends}
+- Statistical significance indicators
+- Trend decomposition metrics
 
-IMPORTANT:
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
-    """
-
-prompt_2 = """### **Explore Cross Relationships**
-
-**Objective:** To analyze the relationships between different datasets in {} and identify any co-occurrence patterns.
-
-**Tasks:**
-
-1. **Identify correlated keywords:** Determine which keywords exhibit strong positive or negative correlations with each other.
-2. **Analyze co-occurrence patterns:** Identify if there are any groups of keywords that tend to be searched together more frequently than expected.
-3. **Evaluate potential synergies or conflicts:** Discuss the potential implications of the identified relationships for management practices.
-
-**Data Required:** The results of your calculations related to cross-keyword relationships.
-
-- Correlation analysis results:
-{}
-- Regression analysis results:
-{}
-
-IMPORTANT:
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
+IMPORTANT: Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 """
 
-prompt_3 = """### **Investigate Industry-Specific Trends**
+temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
 
-**Objective:** To compare trends in the dataset with trends in other industries and identify any unique characteristics or patterns specific to the enterprises and finance sectors.
+**Objective:** To analyze and compare the temporal patterns of {all_kw} management tool across different data sources, identifying relationships and discrepancies between public interest, academic coverage, and industry implementation.
 
 **Tasks:**
 
-1. **Compare with other industries:** If available, compare the trends in your dataset with trends in other industries (e.g., technology, healthcare).
-2. **Identify industry-specific patterns:** Determine if there are any unique trends or patterns that are more prevalent in the enterprises and finance sectors.
-3. **Discuss potential factors:** Analyze potential factors that may be driving these industry-specific trends.
+1. **Cross-Source Peak Analysis:**
+    - Compare peak timing across different sources
+    - Identify lead-lag relationships between sources
+    - Analyze peak intensity variations
+    - Calculate cross-source peak alignment metrics
 
-**Data Required:** The results of your calculations related to temporal trends and cross-keyword relationships, as well as any relevant data on trends in other industries.
+2. **Pattern Consistency Analysis:**
+    - Evaluate decline patterns across sources
+    - Identify discrepancies in adoption reporting
+    - Analyze time lags between different metrics
+    - Quantify pattern consistency scores
 
-- Trends and means for keywords for the last 20 years:
-    {}
-    - Correlation analysis results:
-    {}
-    - Regression analysis results:
-    {}
+3. **Source-Specific Characteristics:**
+    - Compare revival patterns across sources
+    - Analyze source-specific reporting biases
+    - Identify systematic differences between sources
+    - Calculate source reliability metrics
 
-IMPORTANT:
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
+4. **Integrated Trend Analysis:**
+    - Compare lifecycle representations across sources
+    - Analyze correlation between different metrics
+    - Identify potential causality patterns
+    - Calculate cross-source synchronization scores
+
+**Data Required:** The results of your calculations related to temporal trends.
+
+**Data Requirements:**
+
+1. **Multi-Source Data:**
+{selected_sources_data}
+    - Date: Monthly data (yearly when Google Books Ngram is included)
+    - Source-specific metrics
+    - Cross-source correlation indicators
+- General Publications Data: from Google Books Ngram
+- Specialized Publications Data: from Crossref.org
+- General Interest Data: from Google Trends
+- Industry Usability Data: from Bain - Usabilidad
+- Industry Satisfaction Data: from Bain - Satisfacción
+{csv_combined_data}
+
+2. **Cross-Source Metrics:**
+- Trends and means across sources: {csv_means_trends}
+- Cross-source correlation matrices: {csv_corr_matrix}
+- Time-lag indicators
+- Source reliability scores
+
+IMPORTANT: Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 """
 
-prompt_4 = """### **Analyze ARIMA Model Performance**
+cross_relationship_prompt_1 = """### **Explore Cross-Tool Relationships**
 
-**Objective:** To evaluate the effectiveness of the ARIMA model in forecasting search interest.
+**Objective:** To analyze the relationships between different management tools in {dbs} and identify meaningful interaction patterns.
 
 **Tasks:**
 
-1. **Assess accuracy:** Evaluate the model's accuracy using appropriate metrics (e.g., RMSE, MAE).
-2. **Analyze parameter significance:** Determine the significance of the ARIMA model's parameters.
-3. **Identify potential improvements:** Suggest potential improvements to the model, such as incorporating additional variables or adjusting parameters.
+1. **Correlation Analysis:**
+    - Identify strong positive/negative correlations between tools
+    - Calculate statistical significance of relationships
+    - Analyze temporal stability of correlations
 
-**Data Required:** The results of your ARIMA model calculations and the actual search interest data.
+2. **Tool Pattern Analysis:**
+    - Identify groups of tools that show similar adoption patterns
+    - Analyze complementary tool relationships
+    - Detect potential tool substitution patterns
 
-- ARIMA Model:
-{}
+3. **Business Impact Analysis:**
+    - Evaluate synergistic tool combinations
+    - Identify potential tool conflicts or redundancies
+    - Analyze sequential adoption patterns
 
-IMPORTANT:
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
+**Data Required:**
+- Correlation matrix: {csv_corr_matrix}
+- Regression analysis results: {csv_regression}
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
 """
 
-prompt_5 = """### **Interpret Seasonal Patterns**
+cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
 
-**Objective:** To analyze the significance of identified seasonal patterns in search interest.
+**Objective:** To analyze relationships between different data sources tracking management tool adoption and validate trend consistency for {all_kw}.
 
 **Tasks:**
 
-1. **Evaluate seasonal strength:** Determine the strength of the seasonal patterns.
-2. **Analyze potential causes:** Discuss potential factors driving these seasonal fluctuations.
-3. **Evaluate impact on forecasting:** Assess the impact of seasonality on forecasting accuracy.
+1. **Source Correlation Analysis:**
+    - Compare trends across all data sources:
+        * General Publications (Google Books Ngram)
+        * Specialized Publications (Crossref.org)
+        * General Interest (Google Trends)
+        * Industry Usability (Bain - Usabilidad)
+        * Industry Satisfaction (Bain - Satisfacción)
+    - Analyze correlation patterns between sources
+    - Identify potential leading/lagging relationships
+    - Compare relative trend strengths
 
-**Data Required:** The results of your seasonal analysis and the actual search interest data.
+2. **Pattern Validation:**
+    - Analyze consistency of trends across sources
+    - Identify source-specific patterns or anomalies
+    - Compare trend directions and magnitudes
+    - Detect systematic differences between sources
 
-- Seasonal Analysis:
-{}
+3. **Impact Analysis:**
+    - Evaluate relationships between sources
+    - Identify notable disconnects between perception and reality
+    - Compare public interest versus industry metrics
+    - Assess practical implications of observed patterns
 
-IMPORTANT:
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
+**Data Required:**
+- Cross-source correlation matrix: {csv_corr_matrix}
+- Combined source trends data: {csv_combined_data}
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+"""
+
+trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
+
+**Objective:** To analyze broader patterns and contextual factors affecting management tool adoption in {dbs} data.
+
+**Tasks:**
+
+1. **General Pattern Analysis:**
+    - Identify common adoption and decline patterns
+    - Analyze tool lifecycle characteristics
+    - Evaluate external factor influences
+    - Calculate pattern similarity metrics
+
+2. **Contextual Factor Analysis:**
+    - Analyze economic cycle impacts
+    - Evaluate technological advancement effects
+    - Assess market condition influences
+    - Calculate external factor correlations
+
+3. **Tool Category Analysis:**
+    - Group tools by similar behavior patterns
+    - Identify common success/failure factors
+    - Analyze adoption timing relationships
+    - Calculate category-specific metrics
+
+**Data Required:**
+- Trends and means for tools: {csv_means_trends}
+- Correlation analysis results: {csv_corr_matrix}
+- Regression analysis results: {csv_regression}
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+"""
+
+trend_analysis_prompt_2 = """### **Investigate Cross-Source Trend Patterns**
+
+**Objective:** To analyze how different data sources reflect general patterns in management tool adoption across:
+1. General Publications (Google Books Ngram)
+2. Specialized Publications (Crossref.org)
+3. General Interest (Google Trends)
+4. Industry Usability (Bain - Usabilidad)
+5. Industry Satisfaction (Bain - Satisfacción)
+
+**Tasks:**
+
+1. **Cross-Source Pattern Analysis:**
+    - Compare adoption patterns across sources
+    - Identify source-specific reporting biases
+    - Analyze temporal alignment between sources
+    - Calculate cross-source pattern correlations
+
+2. **Trend Validation Analysis:**
+    - Evaluate trend consistency across sources
+    - Identify significant pattern divergences
+    - Analyze source reliability patterns
+    - Calculate trend validation metrics
+
+3. **Source Relationship Analysis:**
+    - Analyze lead-lag relationships
+    - Identify predictive indicators
+    - Evaluate source complementarity
+    - Calculate source alignment scores
+
+**Data Required:**
+- Combined source trends: {csv_combined_data}
+- Cross-source correlations: {csv_corr_matrix}
+- Source-specific trends: {selected_sources_data}
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+"""
+
+arima_analysis_prompt_1 = """### **Analyze ARIMA Model Performance**
+
+**Objective:** To evaluate and interpret ARIMA model forecasting performance for management tool adoption patterns in {dbs}.
+
+**Tasks:**
+
+1. **Model Performance Assessment:**
+    - Interpret provided accuracy metrics:
+        * Root Mean Square Error (RMSE)
+        * Mean Absolute Error (MAE)
+        * Error Cuadrático Medio (ECM)
+    - Evaluate prediction accuracy at different time horizons
+    - Analyze forecast confidence intervals
+    - Assess model fit quality
+
+2. **Parameter Analysis:**
+    - Evaluate significance of AR, I, and MA components
+    - Analyze selected model order (p,d,q)
+    - Assess stationarity implications
+    - Review parameter significance levels
+
+3. **Model Insights:**
+    - Interpret forecast trends and patterns
+    - Identify significant trend changes
+    - Evaluate forecast reliability
+    - Assess practical implications for tool adoption
+
+**Data Input:**
+ARIMA Model Results: {arima_results}
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+"""
+
+arima_analysis_prompt_2 = """### **Analyze Cross-Source ARIMA Model Performance**
+
+**Objective:** To evaluate and compare ARIMA model forecasting performance across different data sources for {selected_keyword}:
+1. General Publications (Google Books Ngram)
+2. Specialized Publications (Crossref.org)
+3. General Interest (Google Trends)
+4. Industry Usability (Bain - Usabilidad)
+5. Industry Satisfaction (Bain - Satisfacción)
+
+**Tasks:**
+
+1. **Cross-Source Comparison:**
+    - Compare accuracy metrics across sources:
+        * Root Mean Square Error (RMSE)
+        * Mean Absolute Error (MAE)
+        * Error Cuadrático Medio (ECM)
+    - Analyze prediction consistency between sources
+    - Evaluate relative forecast reliability
+    - Compare confidence intervals
+
+2. **Source-Specific Analysis:**
+    - Compare ARIMA specifications across sources
+    - Analyze differences in model performance
+    - Evaluate source-specific prediction patterns
+    - Identify most reliable data sources
+
+3. **Integrated Analysis:**
+    - Identify convergent predictions across sources
+    - Analyze divergent forecasts and potential causes
+    - Evaluate overall trend consistency
+    - Assess implications for tool adoption trends
+
+**Data Input:**
+Cross-source ARIMA Results: {arima_results}
+
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+"""
+
+seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
+
+**Objective:** To analyze the significance and characteristics of seasonal patterns in {actual_menu} management tool adoption within {dbs} data.
+
+**Tasks:**
+
+1. **Seasonal Pattern Analysis:**
+    - Identify and quantify recurring patterns
+    - Evaluate pattern consistency across years
+    - Analyze peak and trough periods
+    - Assess pattern evolution over time
+
+2. **Causal Factor Analysis:**
+    - Analyze business cycle influences
+    - Evaluate fiscal year impacts
+    - Identify potential industry drivers
+    - Consider external market factors
+
+3. **Pattern Implications:**
+    - Assess pattern stability for forecasting
+    - Evaluate trend vs seasonal components
+    - Consider impact on adoption strategies
+    - Analyze practical significance
+
+**Data Required:**
+- Seasonal decomposition results: {csv_seasonal}
+
+Note: Visualizations will be handled separately - focus on pattern interpretation and business implications.
+"""
+
+seasonal_analysis_prompt_2 = """### **Interpret Cross-Source Seasonal Patterns**
+
+**Objective:** To analyze and compare seasonal patterns across different data sources tracking {selected_keyword} adoption:
+- General Publications (Google Books Ngram)
+- Specialized Publications (Crossref.org)
+- General Interest (Google Trends)
+- Industry Usability (Bain - Usabilidad)
+- Industry Satisfaction (Bain - Satisfacción)
+
+**Tasks:**
+
+1. **Cross-Source Pattern Analysis:**
+    - Compare seasonal patterns between sources
+    - Identify source-specific characteristics
+    - Analyze pattern alignment
+    - Evaluate pattern reliability
+
+2. **Source Integration Analysis:**
+    - Analyze correlation between sources
+    - Identify complementary patterns
+    - Evaluate conflicting signals
+    - Assess overall trend consistency
+
+3. **Holistic Assessment:**
+    - Synthesize insights across sources
+    - Evaluate pattern consistency
+    - Analyze practical implications
+    - Consider implementation timing
+
+**Data Required:**
+- Seasonal decomposition results: {csv_seasonal}
+- Cross-source correlation matrix: {csv_correlation}
+
+Note: Visualizations will be handled separately - focus on cross-source pattern interpretation and practical implications.
 """
 
 prompt_6 = """### **Interpret Cyclical Patterns**
@@ -207,3 +539,13 @@ prompt_conclusions = """## Synthesize Findings and Draw Conclusions
 IMPORTANT:
 Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
 """
+
+prompt_sp = '''Translate the following Markdown text to Spanish, adhering to these guidelines:
+1. Use formal academic Spanish suitable for business reports
+2. Maintain technical and management terminology appropriate for enterprise contexts
+3. Keep these specific terms unchanged: {all_kws}
+4. Preserve all numerical values, dates, and data references
+5. Maintain all Markdown formatting
+
+Text to translate:
+'''

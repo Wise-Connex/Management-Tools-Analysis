@@ -45,9 +45,12 @@ from scipy.interpolate import CubicSpline
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import base64
 from datetime import datetime
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
+
 
 # AI Prompts imports 
-from prompts import system_prompt, prompt_1, prompt_2, prompt_3, prompt_4, prompt_5, prompt_6, prompt_conclusions
+from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, cross_relationship_prompt_1, cross_relationship_prompt_2, trend_analysis_prompt_1, trend_analysis_prompt_2, arima_analysis_prompt_1, arima_analysis_prompt_2, seasonal_analysis_prompt_1, seasonal_analysis_prompt_2, prompt_6, prompt_conclusions, prompt_sp
 # Tools Dictionary
 from tools import tool_file_dic
 
@@ -110,7 +113,7 @@ global selected_sources
 global earliest_date
 global latest_date
 global keycharts
-
+global csv_combined_dataset
 keycharts = []
 
 # Create a 'data' folder in the current directory
@@ -467,7 +470,9 @@ def fourier_analisys(period='last_year_data'):
       plt.xlabel('Frecuencia (ciclos/año)')
       #plt.yscale('log')
       plt.ylabel('Magnitud')  # Update label to reflect 1/2 log scale
-      plt.title(f'Transformada de Fourier para {keyword} ({actual_menu})')
+      plt.title(f'Transformada de Fourier para {keyword} ({actual_menu})', pad=20)
+      if top_choice == 2:
+          plt.title(f'Transformada de Fourier para {actual_menu} ({keyword})', pad=20)
       # Save the plot to the unique folder
       image_filename = f'{filename}_fourier_{keyword[:3]}.png'
       plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
@@ -1582,6 +1587,8 @@ def analyze_trends(trend):
       """
       mean_df = df1.mean(axis=0).to_frame(name='mean')
       mean_df.index.name = 'keyword'
+      if top_choice == 2:
+        mean_df.index.name = 'Fuente de Datos'
       return mean_df
 
     result_df = calculate_mean_for_keywords(trend['last_20_years_data'])
@@ -1637,6 +1644,9 @@ def analyze_trends(trend):
         #Correlation Heat Map
         plt.figure(figsize=(7, 7))
         sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+        plt.xticks(fontsize=8)
+        plt.yticks(fontsize=8)
+        plt.title(f'Correlación para {actual_menu}', pad=20)    
         char='*'
         title=' Correlación - Mapa de Calor '
         qty=len(title)
@@ -1709,13 +1719,13 @@ def analyze_trends(trend):
                 ax.set_xlabel(combo[0])
                 ax.set_ylabel(combo[1])
               plt.tight_layout()
+              plt.title(f'Gráfico de Dispersión para {actual_menu}', pad=20)
               image_filename = f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'
               plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
               add_image_to_report(f'Gráfico de Dispersión para {", ".join(combo)}', image_filename)
               charts += f'Gráfico de Dispersión para {", ".join(combo)} ({image_filename})\n\n'
               plt.show()
 
-        # Scatter plot
         data = rem_isPartial(trends_results['last_20_years_data'])
         char='*'
         title=' Diagrama de Dispersión '
@@ -1728,7 +1738,7 @@ def analyze_trends(trend):
         print('Se requieren al menos dos variables para realizar los cálculos de correlación y regresión')
     return {
       'correlation': csv_correlation,
-      'regression': csv_regression
+      'regression': csv_regression,
     }
 
 # *************************************************************************************
@@ -1900,31 +1910,48 @@ def ai_analysis():
     global gem_seasonal_sp
     global gem_fourier_sp
     global gem_conclusions_sp
-    
+    global csv_combined_data
+    global csv_correlation
+
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
     api_key_name = 'GOOGLE_API_KEY'
 
-    prompt_sp=f'Translate this Markdown text to spanish, using an academic language, and an enterprise approach. \
-    If you found any of this words: {",".join(all_keywords)}, please do not translate it. This is the text: '
+    if top_choice == 1:
+        f_system_prompt = system_prompt_1.format(dbs=actual_menu)
+    else:
+        sel_sources = ", ".join(dbase_options[source] for source in selected_sources)
+        f_system_prompt = system_prompt_2.format(selected_sources=sel_sources)
+        csv_combined_data = combined_dataset.to_csv(index=True)
 
-    f_system_prompt = system_prompt.format(dbs=actual_menu)
-
-    p_1 = prompt_1.format(all_kw, \
-                          csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data, csv_last_year_data, \
-                          all_kw, csv_means_trends)
+    if top_choice == 1:
+        p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \
+                          csv_last_20_data=csv_last_20_data, csv_last_15_data=csv_last_15_data, csv_last_10_data=csv_last_10_data, \
+                          csv_last_5_data=csv_last_5_data, csv_last_year_data=csv_last_year_data, \
+                          csv_means_trends=csv_means_trends)        
+    else:
+        p_1 = temporal_analysis_prompt_2.format(selected_sources_data=sel_sources, all_kw=all_keywords, \
+                          csv_combined_data=csv_combined_data, csv_means_trends=csv_means_trends, \
+                          csv_corr_matrix=csv_correlation)
+    
     n=0
     n+=1
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
     gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
-    prompt_spanish=f'{prompt_sp} {gem_temporal_trends}'
+    p_sp = prompt_sp.format(all_kws=all_keywords)
+    prompt_spanish=f'{p_sp} {gem_temporal_trends}'
     gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_temporal_trends_sp))
     print(gem_temporal_trends_sp)
 
     if not one_keyword:
       n+=1
-      p_2 = prompt_2.format(all_kw, csv_correlation, csv_regression)
-      print(f'\n\n\n{n}. Analizando relaciones entre palabras clave...')
+      if top_choice == 1:
+        p_2 = cross_relationship_prompt_1.format(dbs=actual_menu, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
+        print(f'\n\n\n{n}. Analizando relaciones entre palabras clave...')
+      else:
+        p_2 = cross_relationship_prompt_2.format(all_kw=all_keywords, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
+        print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
+      
       gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
       prompt_spanish=f'{prompt_sp} {gem_cross_keyword}'
       gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1936,8 +1963,13 @@ def ai_analysis():
       csv_regression=""
 
     n+=1
-    p_3 = prompt_3.format(csv_means_trends, csv_correlation, csv_regression)
-    print(f'\n\n\n{n}. Analizando tendencias específicas de la industria...')
+    if top_choice == 1:
+      p_3 = trend_analysis_prompt_1.format(csv_means_trends=csv_means_trends, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
+      print(f'\n\n\n{n}. Investigando Patrones de Tendencia General...')
+    else:
+      p_3 = trend_analysis_prompt_2.format(selected_sources_data=sel_sources, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
+      print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
+    
     gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
     prompt_spanish=f'{prompt_sp} {gem_industry_specific}'
     gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1945,8 +1977,13 @@ def ai_analysis():
     print(gem_industry_specific_sp)
 
     n+=1
-    p_4 = prompt_4.format(csv_arima)
-    print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
+    if top_choice == 1:
+      p_4 = arima_analysis_prompt_1.format(arima_results=csv_arima)
+      print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
+    else:
+      p_4 = arima_analysis_prompt_2.format(arima_results=csv_arima)        
+      print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
+
     gem_arima=gemini_prompt(f_system_prompt,p_4)
     prompt_spanish=f'{prompt_sp} {gem_arima}'
     gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1954,8 +1991,13 @@ def ai_analysis():
     print(gem_arima_sp)
 
     n+=1
-    p_5 = prompt_5.format(csv_seasonal)
-    print(f'\n\n\n{n}. Analizando patrones estacionales...\n')
+    if top_choice == 1:
+      p_5 = seasonal_analysis_prompt_1.format(actual_menu=actual_menu, dbs=dbs, csv_seasonal=csv_seasonal)
+      print(f'\n\n\n{n}. Interpretando patrones estacionales...')
+    else:
+      p_5 = seasonal_analysis_prompt_2.format(csv_seasonal=csv_seasonal, csv_correlation=csv_correlation)        
+      print(f'\n\n\n{n}. Imterpretando patrones estacionales entre las fuentes de datos...')     
+    
     gem_seasonal=gemini_prompt(f_system_prompt,p_5)
     prompt_spanish=f'{prompt_sp} {gem_seasonal}'
     gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -1993,23 +2035,28 @@ def report_pdf():
     data_txt += ", ".join(all_keywords) + "\n"
     data_txt += "\n\n\n"
     data_txt += f"## Datos de {actual_menu}\n"
-    year_adjust = 0
-    if menu == 2:
-        year_adjust = 2
-        data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
-        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    elif menu == 4:
-        year_adjust = 2
-        data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
-        data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
-    data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
-    data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
-    data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
-    data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    
+    if top_choice == 1:
+        year_adjust = 0
+        if menu == 2:
+            year_adjust = 2
+            data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
+            data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        elif menu == 4:
+            year_adjust = 2
+            data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
+            data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
+        data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
+        data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
+        data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
+        data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    else:
+        data_txt += csv_combined_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    
     data_txt += "\n\n\n"
     data_txt += "<div class='page-break'></div>\n"  # Add page break here
     data_txt += "## Datos Medias y Tendencias\n"
@@ -2125,6 +2172,8 @@ def report_pdf():
     print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
 
 def top_level_menu():
+    banner_msg(" Análisis de Herramientas Gerenciales ", YELLOW, GREEN, char = '-', margin = 24)
+    print('\n')
     banner_msg(" Menú Principal ", YELLOW, WHITE)
     options = {
         1: "Generar Informe Individual",
@@ -2404,12 +2453,14 @@ def create_combined_dataset(datasets_norm, selected_sources, dbase_options):
 def main():
     global top_choice
     global combined_dataset
+    global trends_results
+    global csv_combined_dataset
     
     while True:
         top_choice = top_level_menu()
         
         if top_choice == 4:  # Exit option
-            print("\nGracias por usar el programa.\nSuerte en tu investigación, ¡Hasta luego!")
+            print("\nGracias por usar el programa.\nSuerte en tu investigación, ¡Hasta luego!\n")
             break
             
         elif top_choice == 1:
@@ -2424,9 +2475,13 @@ def main():
             init_variables()
             datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
             combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
+            csv_combined_dataset = combined_dataset.to_csv(index=True)  
             print(combined_dataset)
+            print(csv_combined_dataset)
             trends_results = process_file_data(all_keywords, "")
             results()
+            ai_analysis()
+            report_pdf()
             
         elif top_choice == 3:
             print(f"{YELLOW}Esta función estará disponible próximamente.{RESET}")
