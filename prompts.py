@@ -333,7 +333,7 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 
 arima_analysis_prompt_1 = """### **Analyze ARIMA Model Performance**
 
-**Objective:** To evaluate and interpret ARIMA model forecasting performance for management tool adoption patterns in {dbs}.
+**Objective:** To evaluate and interpret ARIMA model forecasting performance for {all_kw} management tool adoption patterns in {dbs}.
 
 **Tasks:**
 
@@ -468,76 +468,147 @@ seasonal_analysis_prompt_2 = """### **Interpret Cross-Source Seasonal Patterns**
 Note: Visualizations will be handled separately - focus on cross-source pattern interpretation and practical implications.
 """
 
-prompt_6 = """### **Interpret Cyclical Patterns**
+prompt_6_single_analysis = """### **Cyclical Pattern Analysis for Management Tools**
 
-**Objective:** To analyze the significance of identified cyclical patterns in search interest.
+**Objective:** Analyze temporal patterns and cycles in {all_kw} management tool adoption and interest by {dbs}.
 
-**Tasks:**
+**Analysis Requirements:**
 
-1. **Evaluate cycle strength:** Determine the strength of the cyclical patterns.
-2. **Analyze potential causes:** Discuss potential factors driving these cyclical fluctuations.
-3. **Evaluate impact on forecasting:** Assess the impact of cyclical patterns on forecasting accuracy.
+1. **Pattern Strength Assessment:**
+   - Evaluate the significance of identified cycles in {all_kw}
+   - Quantify the strength of periodic patterns
+   - Identify dominant cycle lengths and their reliability
 
-**Data Required:** The results of your Fourier analysis and the actual search interest data.
+2. **Contextual Analysis:**
+   - Examine business environment factors coinciding with cycles
+   - Analyze relationship with technology adoption patterns
+   - Identify seasonal or industry-specific influences
 
-- Fourier Analysis:
-{}
+3. **Trend Implications:**
+   - Assess pattern stability and evolution over time
+   - Evaluate predictive value for future tool adoption
+   - Identify potential market saturation points
 
-IMPORTANT:
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
+**Data Input:** {csv_fourier}
 """
 
-prompt_conclusions = """## Synthesize Findings and Draw Conclusions
+prompt_6_correlation = """### **Cross-Source Pattern Analysis for Management Tools**
 
-**Objective:** To synthesize the findings from the previous prompts and draw comprehensive conclusions about the dynamics of management tools in the enterprises and finance sectors.
+**Objective:** Analyze and correlate cyclical patterns of {selected_keyword} across multiple data sources: {selected_sources} to validate trends.
+
+**Analysis Requirements:**
+
+1. **Multi-Source Pattern Comparison:**
+   - Compare cycle strengths across:
+     * General publications
+     * Specialized publications
+     * General interest metrics
+     * Industry usability data
+     * User satisfaction ratings
+
+2. **Correlation Analysis:**
+   - Identify leading and lagging relationships between sources
+   - Evaluate pattern synchronization across metrics
+   - Quantify correlation strengths between different data sources
+
+3. **Validation Framework:**
+   - Assess pattern consistency across sources
+   - Identify discrepancies and potential causes
+   - Evaluate reliability of different data sources
+
+**Data Input:** {csv_fourier}
+"""
+
+
+prompt_conclusions_standalone = """## Synthesize Findings and Draw Conclusions - {all_kw} Analysis
+
+**Objective:** To synthesize findings and draw comprehensive conclusions about {all_kw} trends and adoption patterns based on {dbs} data.
 
 **Tasks:**
 
-1. **Summarize Key Findings:**
-    - **Concisely** summarize the most important insights from each of the previous prompts.
-    - **Highlight** any significant trends, patterns, or relationships identified.
-2. **Draw Overall Conclusions:**
-    - **Based on the synthesized findings**, draw broader conclusions about the dynamics of management tools in the enterprises and finance sectors.
-    - **Discuss** the implications of these findings for researchers and practitioners.
-3. **Identify Key Aspects:**
-    - **Pinpoint** the most significant trends, strongest relationships between keywords, or most influential factors driving search interest.
-    - **Provide evidence** to support your claims.
-4. **Offer Recommendations:**
-    - **Suggest** potential areas for future research or practical applications based on the findings.
-    - **Propose** specific recommendations for researchers, practitioners, or policy-makers.
+1. **Key Trends Analysis:**
+    - Summarize the evolution of management tools over the analyzed period
+    - Identify dominant tools and emerging trends
+    - Highlight any significant shifts or disruptions in tool adoption
 
-**Data Required:** The outputs from the previous six prompts.
+2. **Pattern Recognition:**
+    - Analyze temporal patterns (seasonal, cyclical, long-term)
+    - Evaluate relationships between different management tools
+    - Identify industry-specific adoption patterns
 
-- Temporal Trends:
-{}
-- Cross-Keyword Relationships:
-{}
-- Industry Specific Trends:
-{}
-- ARIMA Model performance:
-{}
-- Seasonal Patters:
-{}
-- Cyclical Patterns
-{}
+3. **Impact Assessment:**
+    - Evaluate the effectiveness of different management tools
+    - Analyze adoption rates and abandonment patterns
+    - Identify factors influencing tool selection and implementation
 
-**Additional Considerations:**
+4. **Strategic Insights:**
+    - Provide recommendations for tool selection and implementation
+    - Identify potential risks and success factors
+    - Suggest best practices for tool evaluation and adoption
 
-- **Clarity and Conciseness:** Ensure that your responses are clear, concise, and easy to understand.
-- **Relevance:** Ensure that your conclusions and recommendations are directly related to the research question and findings.
-- **Depth:** Provide sufficient detail to support your claims, but avoid unnecessary information.
-- **Critical Thinking:** Demonstrate your ability to analyze and interpret the data in a thoughtful and critical manner.
+**Data Integration:**
+    # Temporal Trends
+    {temporal_trends}
+    # Cross-Tool Relationships
+    {tool_relationships}
+    # Industry-Specific Patterns
+    {industry_patterns}
+    # ARIMA Predictions
+    {arima_predictions}
+    # Seasonal Analysis
+    {seasonal_analysis}
+    # Cyclical Patterns
+    {cyclical_patterns}
 
-**Specific Questions to Consider:**
+**Key Considerations:**
+- Focus on practical implications for organizations
+- Emphasize evidence-based conclusions
+- Address both strategic and operational aspects
+- Consider industry-specific contexts if any
+"""
 
-- How do management tools evolve over time?
-- What are the key factors driving the popularity of management tools?
-- Are there any industry-specific trends or differences in the adoption of management tools?
-- What are the potential risks and benefits of adopting management tools?
-- How can organizations effectively evaluate and respond to management tools?
+prompt_conclusions_comparative = """## Synthesize Findings and Draw Conclusions - Multi-Source {all_kw} Analysis
 
-IMPORTANT:
-Since Charts, and Visualizations will be include at the very end of the report, please don't mention nothing about it here.
+**Objective:** To analyze correlations and patterns across selected data sources measuring {all_kw} adoption and impact.
+
+**Data Sources Analyzed:**
+{selected_sources}
+
+**Tasks:**
+
+1. **Cross-Source Pattern Analysis:**
+    - Compare trends across the selected data sources
+
+2. **Correlation Analysis:**
+    - Evaluate relationships between available metrics
+
+3. **Time-Lag Analysis:**
+    - Identify lead/lag relationships between different metrics
+    - Analyze how different measures influence each other over time
+    - Evaluate predictive relationships between sources
+
+4. **Synthesis and Recommendations:**
+    - Identify reliable indicators for tool success
+    - Suggest optimal timing for tool adoption
+    - Provide framework for evaluating new management tools
+
+**Data Integration:**
+    # Temporal Trends
+    {temporal_trends}
+    # Cross-Tool Relationships
+    {tool_relationships}
+    # ARIMA Predictions
+    {arima_predictions}
+    # Seasonal Analysis
+    {seasonal_analysis}
+    # Cyclical Patterns
+    {cyclical_patterns}
+
+**Key Considerations:**
+- Focus on relationships between selected data sources
+- Identify leading indicators of tool success
+- Evaluate reliability of different data sources
+- Consider time delays between publication, interest, and adoption
 """
 
 prompt_sp = '''Translate the following Markdown text to Spanish, adhering to these guidelines:

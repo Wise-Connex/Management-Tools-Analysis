@@ -50,7 +50,10 @@ from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bo
 
 
 # AI Prompts imports 
-from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, cross_relationship_prompt_1, cross_relationship_prompt_2, trend_analysis_prompt_1, trend_analysis_prompt_2, arima_analysis_prompt_1, arima_analysis_prompt_2, seasonal_analysis_prompt_1, seasonal_analysis_prompt_2, prompt_6, prompt_conclusions, prompt_sp
+from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, \
+    cross_relationship_prompt_1, cross_relationship_prompt_2, trend_analysis_prompt_1, trend_analysis_prompt_2, \
+    arima_analysis_prompt_1, arima_analysis_prompt_2, seasonal_analysis_prompt_1, seasonal_analysis_prompt_2, \
+    prompt_6_single_analysis, prompt_6_correlation, prompt_conclusions_standalone, prompt_conclusions_comparative, prompt_sp
 # Tools Dictionary
 from tools import tool_file_dic
 
@@ -1978,10 +1981,10 @@ def ai_analysis():
 
     n+=1
     if top_choice == 1:
-      p_4 = arima_analysis_prompt_1.format(arima_results=csv_arima)
+      p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima)
       print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
     else:
-      p_4 = arima_analysis_prompt_2.format(arima_results=csv_arima)        
+      p_4 = arima_analysis_prompt_2.format(selected_keyword=all_keywords, arima_results=csv_arima)        
       print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
 
     gem_arima=gemini_prompt(f_system_prompt,p_4)
@@ -1996,7 +1999,7 @@ def ai_analysis():
       print(f'\n\n\n{n}. Interpretando patrones estacionales...')
     else:
       p_5 = seasonal_analysis_prompt_2.format(csv_seasonal=csv_seasonal, csv_correlation=csv_correlation)        
-      print(f'\n\n\n{n}. Imterpretando patrones estacionales entre las fuentes de datos...')     
+      print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')     
     
     gem_seasonal=gemini_prompt(f_system_prompt,p_5)
     prompt_spanish=f'{prompt_sp} {gem_seasonal}'
@@ -2005,8 +2008,13 @@ def ai_analysis():
     print(gem_seasonal_sp)
 
     n+=1
-    p_6 = prompt_6.format(csv_fourier)
-    print(f'\n\n\n{n}. Analizando patrones cíclicos...\n')
+    if top_choice == 1:
+      p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier)
+      print(f'\n\n\n{n}. Analizando patrones cíclicos...')
+    else:
+      p_6 = prompt_6_correlation.format(selected_keyword=all_keywords, selected_sources=sel_sources, csv_fourier=csv_fourier)        
+      print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')     
+    
     gem_fourier=gemini_prompt(f_system_prompt,p_6)
     prompt_spanish=f'{prompt_sp} {gem_fourier}'
     gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
@@ -2014,7 +2022,15 @@ def ai_analysis():
     print(gem_fourier_sp)
 
     n+=1
-    p_conclusions = prompt_conclusions.format(gem_temporal_trends, gem_cross_keyword, gem_industry_specific, gem_arima, gem_seasonal, gem_fourier)
+    if top_choice == 1:
+      p_conclusions = prompt_conclusions_standalone.format(all_kw=all_keywords, dbs=actual_menu, \
+          temporal_trends=gem_temporal_trends, tool_relationships=gem_cross_keyword, industry_patterns=gem_industry_specific, \
+          arima_predictions=gem_arima, seasonal_analysis=gem_seasonal, cyclical_patterns=gem_fourier)
+    else:
+      p_conclusions = prompt_conclusions_comparative.format(all_kw=all_keywords, selected_sources=sel_sources, \
+          temporal_trends=gem_temporal_trends, tool_relationships=gem_cross_keyword, industry_patterns=gem_industry_specific, \
+          arima_predictions=gem_arima, seasonal_analysis=gem_seasonal, cyclical_patterns=gem_fourier)          
+    
     print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...\n')
     gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
     prompt_spanish=f'{prompt_sp} {gem_conclusions}'
