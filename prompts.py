@@ -145,7 +145,7 @@ IMPORTANT: Since Charts and Visualizations will be included at the end of the re
 
 temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
 
-**Objective:** To analyze and compare the temporal patterns of {all_kw} management tool across different data sources, identifying relationships and discrepancies between public interest, academic coverage, and industry implementation.
+**Objective:** To analyze and compare the temporal patterns of {all_kw} management tool across different data sources: {selected_sources}, identifying relationships and discrepancies between public interest, academic coverage, and industry implementation.
 
 **Tasks:**
 
@@ -190,8 +190,10 @@ temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
 {csv_combined_data}
 
 2. **Cross-Source Metrics:**
-- Trends and means across sources: {csv_means_trends}
-- Cross-source correlation matrices: {csv_corr_matrix}
+- Trends and means across sources: 
+{csv_means_trends}
+- Cross-source correlation matrices: 
+{csv_corr_matrix}
 - Time-lag indicators
 - Source reliability scores
 
@@ -264,7 +266,7 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 
 trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
 
-**Objective:** To analyze broader patterns and contextual factors affecting management tool adoption in {dbs} data.
+**Objective:** To analyze broader patterns and contextual factors affecting {all_kw} management tool adoption in {dbs} data.
 
 **Tasks:**
 
@@ -296,12 +298,13 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 
 trend_analysis_prompt_2 = """### **Investigate Cross-Source Trend Patterns**
 
-**Objective:** To analyze how different data sources reflect general patterns in management tool adoption across:
+**Objective:** To analyze how different data sources reflect general patterns in {all_kw} management tool adoption across:
 1. General Publications (Google Books Ngram)
 2. Specialized Publications (Crossref.org)
 3. General Interest (Google Trends)
 4. Industry Usability (Bain - Usabilidad)
 5. Industry Satisfaction (Bain - Satisfacción)
+If they are in the list: {selected_sources}
 
 **Tasks:**
 
@@ -434,7 +437,7 @@ Note: Visualizations will be handled separately - focus on pattern interpretatio
 
 seasonal_analysis_prompt_2 = """### **Interpret Cross-Source Seasonal Patterns**
 
-**Objective:** To analyze and compare seasonal patterns across different data sources tracking {selected_keyword} adoption:
+**Objective:** To analyze and compare seasonal patterns across different data sources: {selected_sources} tracking {selected_keyword} adoption:
 - General Publications (Google Books Ngram)
 - Specialized Publications (Crossref.org)
 - General Interest (Google Trends)
