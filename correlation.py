@@ -1072,6 +1072,8 @@ def relative_comparison():
     print(f"\nGráficos de comparación relativa creados.")
 
 def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is_last_year=False):
+    global menu
+    
     if colors is None:
         colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
     
