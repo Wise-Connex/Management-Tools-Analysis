@@ -40,14 +40,14 @@ from itertools import combinations
 from sklearn.metrics import r2_score  # Import r2_score function
 #from enum import auto
 #*** Google Books Nviewer
-import requests
+#import requests
 import scipy.interpolate as interp
 from scipy.interpolate import CubicSpline
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 import base64
 from datetime import datetime
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
+#from sklearn.preprocessing import StandardScaler
+#from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
 
 
 # AI Prompts imports 
