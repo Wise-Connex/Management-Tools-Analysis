@@ -833,6 +833,7 @@ def replace_spaces_with_newlines(array):
   new_array = []
   for element in array:
     new_element = element.replace(' ', '\n')
+    new_element = new_element.replace('\n-\n', '\n')
     new_array.append(new_element)
   return new_array
 
@@ -911,7 +912,7 @@ def relative_comparison():
         total_rows = 6 if menu == 2 or menu == 4 or menu == 3 or menu == 5 else 5
     else:
         len_years = latest_date.year - earliest_date.year
-        total_rows = 6 if len_years > 20 else 5
+        total_rows = 7 if len_years > 20 else 6
         
     # Create grid spec with 9 columns and the determined number of rows
     gs = fig.add_gridspec(total_rows, 10, height_ratios=[0.2] + [1] * (total_rows - 1))
@@ -1074,6 +1075,9 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
         colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
     
     # Plot data
+    if top_choice == 2:
+        menu = 1
+        
     for i, kw in enumerate(all_keywords):
         if menu == 2:
             ax.plot(data[kw].index, data[kw], label=kw, color=colors[i])
