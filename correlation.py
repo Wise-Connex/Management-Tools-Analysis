@@ -1917,7 +1917,6 @@ def ai_analysis():
     global csv_correlation
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
-    api_key_name = 'GOOGLE_API_KEY'
 
     if top_choice == 1:
         f_system_prompt = system_prompt_1.format(dbs=actual_menu)
@@ -1925,6 +1924,8 @@ def ai_analysis():
         sel_sources = ", ".join(dbase_options[source] for source in selected_sources)
         f_system_prompt = system_prompt_2.format(selected_sources=sel_sources)
         csv_combined_data = combined_dataset.to_csv(index=True)
+
+    p_sp = prompt_sp.format(all_kws=all_keywords if top_choice == 1 else actual_menu)
 
     if top_choice == 1:
         p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \
@@ -1940,7 +1941,6 @@ def ai_analysis():
     n+=1
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
     gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
-    p_sp = prompt_sp.format(all_kws=all_keywords)
     prompt_spanish=f'{p_sp} {gem_temporal_trends}'
     gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_temporal_trends_sp))
@@ -1952,11 +1952,11 @@ def ai_analysis():
         p_2 = cross_relationship_prompt_1.format(dbs=actual_menu, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
         print(f'\n\n\n{n}. Analizando relaciones entre palabras clave...')
       else:
-        p_2 = cross_relationship_prompt_2.format(all_kw=all_keywords, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
+        p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=actual_menu, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
         print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
       
       gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
-      prompt_spanish=f'{prompt_sp} {gem_cross_keyword}'
+      prompt_spanish=f'{p_sp} {gem_cross_keyword}'
       gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
       #display(Markdown(gem_cross_keyword_sp))
       print(gem_cross_keyword_sp)
@@ -1970,11 +1970,11 @@ def ai_analysis():
       p_3 = trend_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_means_trends=csv_means_trends, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
       print(f'\n\n\n{n}. Investigando Patrones de Tendencia General...')
     else:
-      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources_data=sel_sources, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
+      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
       print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
     
     gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
-    prompt_spanish=f'{prompt_sp} {gem_industry_specific}'
+    prompt_spanish=f'{p_sp} {gem_industry_specific}'
     gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_industry_specific_sp))
     print(gem_industry_specific_sp)
@@ -1984,11 +1984,11 @@ def ai_analysis():
       p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima)
       print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
     else:
-      p_4 = arima_analysis_prompt_2.format(selected_keyword=actual_menu, arima_results=csv_arima)        
+      p_4 = arima_analysis_prompt_2.format(selected_sources=sel_sources, selected_keyword=actual_menu, arima_results=csv_arima)        
       print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
 
     gem_arima=gemini_prompt(f_system_prompt,p_4)
-    prompt_spanish=f'{prompt_sp} {gem_arima}'
+    prompt_spanish=f'{p_sp} {gem_arima}'
     gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_arima_sp))
     print(gem_arima_sp)
@@ -1999,10 +1999,10 @@ def ai_analysis():
       print(f'\n\n\n{n}. Interpretando patrones estacionales...')
     else:
       p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, csv_seasonal=csv_seasonal, csv_correlation=csv_correlation)        
-      print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')     
+      print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
     
     gem_seasonal=gemini_prompt(f_system_prompt,p_5)
-    prompt_spanish=f'{prompt_sp} {gem_seasonal}'
+    prompt_spanish=f'{p_sp} {gem_seasonal}'
     gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_seasonal_sp))
     print(gem_seasonal_sp)
@@ -2012,11 +2012,11 @@ def ai_analysis():
       p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier)
       print(f'\n\n\n{n}. Analizando patrones cíclicos...')
     else:
-      p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, selected_sources=sel_sources, csv_fourier=csv_fourier)        
-      print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')     
+      p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, selected_sources=sel_sources, csv_fourier=csv_fourier, csv_combined_data=csv_combined_data)        
+      print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
     gem_fourier=gemini_prompt(f_system_prompt,p_6)
-    prompt_spanish=f'{prompt_sp} {gem_fourier}'
+    prompt_spanish=f'{p_sp} {gem_fourier}'
     gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_fourier_sp))
     print(gem_fourier_sp)
@@ -2033,7 +2033,7 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...\n')
     gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
-    prompt_spanish=f'{prompt_sp} {gem_conclusions}'
+    prompt_spanish=f'{p_sp} {gem_conclusions}'
     gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_conclusions_sp))
     print(gem_conclusions_sp)

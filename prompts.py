@@ -36,7 +36,7 @@ Output Requirements:
 3. Highlight practical significance beyond statistical significance
 4. Focus on actionable insights for business decision-makers
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only. Always include the name of the management tool you're analizing.
 """
 
 system_prompt_2 = """You are a highly experienced statistical analyst specializing in cross-source data analysis and trend validation across different information channels.
@@ -88,14 +88,14 @@ Output Requirements:
 4. Quantify the reliability of different data sources
 5. Focus on practical implications of cross-source patterns
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+Note: Visualizations will be handled separately - focus on numerical and statistical analysis only. Always include the name of the management tool you're analizing. .
 """
-
 
 temporal_analysis_prompt_1 = """### **Analyze Temporal Trends**
 
 **Objective:** To analyze the evolution of {all_kw} management tool in {dbs} over time and identify significant patterns in their adoption and usage.
-
+Management Tool: {all_kw}
+Data Source: {dbs}
 **Tasks:**
 
 1. **Identify Peak Periods:** 
@@ -146,6 +146,8 @@ IMPORTANT: Since Charts and Visualizations will be included at the end of the re
 temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
 
 **Objective:** To analyze and compare the temporal patterns of {all_kw} management tool across different data sources: {selected_sources}, identifying relationships and discrepancies between public interest, academic coverage, and industry implementation.
+Management Tool: {all_kw}
+Data Sources: {selected_sources}
 
 **Tasks:**
 
@@ -202,6 +204,8 @@ IMPORTANT: Since Charts and Visualizations will be included at the end of the re
 cross_relationship_prompt_1 = """### **Explore Cross-Tool Relationships**
 
 **Objective:** To analyze the relationships between different management tools in {dbs} and identify meaningful interaction patterns.
+Management Tool: {all_kw}
+Data Source: {dbs}
 
 **Tasks:**
 
@@ -229,7 +233,7 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 
 cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
 
-**Objective:** To analyze relationships between different data sources tracking management tool adoption and validate trend consistency for {all_kw}.
+**Objective:** To analyze relationships between different data sources tracking {all_kw} management tool adoption and validate trend consistency for {dbs}.
 
 **Tasks:**
 
@@ -266,6 +270,8 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
 
 **Objective:** To analyze broader patterns and contextual factors affecting {all_kw} management tool adoption in {dbs} data.
+Management Tool: {all_kw}
+Data Source: {dbs}
 
 **Tasks:**
 
@@ -304,6 +310,8 @@ trend_analysis_prompt_2 = """### **Investigate Cross-Source Trend Patterns**
 4. Industry Usability (Bain - Usabilidad)
 5. Industry Satisfaction (Bain - Satisfacción)
 If they are in the list: {selected_sources}
+Management Tool: {all_kw}
+Data Sources: {selected_sources}
 
 **Tasks:**
 
@@ -328,7 +336,6 @@ If they are in the list: {selected_sources}
 **Data Required:**
 - Combined source trends: {csv_combined_data}
 - Cross-source correlations: {csv_corr_matrix}
-- Source-specific trends: {selected_sources_data}
 
 Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
 """
@@ -336,6 +343,8 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 arima_analysis_prompt_1 = """### **Analyze ARIMA Model Performance**
 
 **Objective:** To evaluate and interpret ARIMA model forecasting performance for {all_kw} management tool adoption patterns in {dbs}.
+Management Tool: {all_kw}
+Data Source: {dbs}
 
 **Tasks:**
 
@@ -374,6 +383,9 @@ arima_analysis_prompt_2 = """### **Analyze Cross-Source ARIMA Model Performance*
 3. General Interest (Google Trends)
 4. Industry Usability (Bain - Usabilidad)
 5. Industry Satisfaction (Bain - Satisfacción)
+If they are in the list: {selected_sources}
+Management Tool: {selected_keyword}
+Data Source: {selected_sources}
 
 **Tasks:**
 
@@ -407,6 +419,8 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
 
 **Objective:** To analyze the significance and characteristics of seasonal patterns in {all_kw} management tool adoption within {dbs} data.
+Management Tool: {all_kw}
+Data Source: {dbs}
 
 **Tasks:**
 
@@ -442,6 +456,9 @@ seasonal_analysis_prompt_2 = """### **Interpret Cross-Source Seasonal Patterns**
 - General Interest (Google Trends)
 - Industry Usability (Bain - Usabilidad)
 - Industry Satisfaction (Bain - Satisfacción)
+If they are in the list: {selected_sources}
+Management Tool: {selected_keyword}
+Data Source: {selected_sources}
 
 **Tasks:**
 
@@ -473,6 +490,8 @@ Note: Visualizations will be handled separately - focus on cross-source pattern 
 prompt_6_single_analysis = """### **Cyclical Pattern Analysis for Management Tools**
 
 **Objective:** Analyze temporal patterns and cycles in {all_kw} management tool adoption and interest by {dbs}.
+Management Tool: {all_kw}
+Data Source: {dbs}
 
 **Analysis Requirements:**
 
@@ -507,6 +526,9 @@ prompt_6_correlation = """### **Cross-Source Pattern Analysis for Management Too
      * General interest metrics
      * Industry usability data
      * User satisfaction ratings
+If they are in the list: {selected_sources}
+Management Tool: {selected_keyword}
+Data Source: {selected_sources}
 
 2. **Correlation Analysis:**
    - Identify leading and lagging relationships between sources
@@ -519,12 +541,15 @@ prompt_6_correlation = """### **Cross-Source Pattern Analysis for Management Too
    - Evaluate reliability of different data sources
 
 **Data Input:** {csv_fourier}
+**Raw Data:** {csv_combined_data}
 """
 
 
 prompt_conclusions_standalone = """## Synthesize Findings and Draw Conclusions - {all_kw} Analysis
 
 **Objective:** To synthesize findings and draw comprehensive conclusions about {all_kw} trends and adoption patterns based on {dbs} data.
+Management Tool: {all_kw}
+Data Source: {dbs}
 
 **Tasks:**
 
@@ -575,6 +600,9 @@ prompt_conclusions_comparative = """## Synthesize Findings and Draw Conclusions 
 
 **Data Sources Analyzed:**
 {selected_sources}
+If they are in the list: {selected_sources}
+Management Tool: {all_kw}
+Data Source: {selected_sources}
 
 **Tasks:**
 
