@@ -2469,7 +2469,16 @@ def main():
     global trends_results
     global csv_combined_dataset
     
+    # Redirigir stderr a /dev/null
+    import os
+    import sys
+    stderr = sys.stderr
+    null = open(os.devnull, 'w')    
+    
     while True:
+        # Redirigir stderr antes de cada iteración
+        sys.stderr = null
+        
         top_choice = top_level_menu()
         
         if top_choice == 4:  # Exit option
@@ -2498,6 +2507,10 @@ def main():
             
         elif top_choice == 3:
             print(f"{YELLOW}Esta función estará disponible próximamente.{RESET}")
+    # Cerrar el archivo null y restaurar stderr al finalizar
+    null.close()
+    sys.stderr = stderr
 
+    
 if __name__ == "__main__":
     main()
