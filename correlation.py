@@ -1932,7 +1932,7 @@ def ai_analysis():
                           csv_last_5_data=csv_last_5_data, csv_last_year_data=csv_last_year_data, \
                           csv_means_trends=csv_means_trends)        
     else:
-        p_1 = temporal_analysis_prompt_2.format(selected_sources_data=sel_sources, all_kw=actual_menu, \
+        p_1 = temporal_analysis_prompt_2.format(selected_sources=sel_sources, all_kw=actual_menu, \
                           csv_combined_data=csv_combined_data, csv_means_trends=csv_means_trends, \
                           csv_corr_matrix=csv_correlation)
     
