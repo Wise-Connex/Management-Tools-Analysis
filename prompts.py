@@ -178,7 +178,7 @@ temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
 **Data Requirements:**
 
 1. **Multi-Source Data:**
-{selected_sources_data}
+{csv_combined_data}
     - Date: Monthly data (yearly when Google Books Ngram is included)
     - Source-specific metrics
     - Cross-source correlation indicators
@@ -187,7 +187,6 @@ temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
 - General Interest Data: from Google Trends
 - Industry Usability Data: from Bain - Usabilidad
 - Industry Satisfaction Data: from Bain - Satisfacción
-{csv_combined_data}
 
 2. **Cross-Source Metrics:**
 - Trends and means across sources: 
