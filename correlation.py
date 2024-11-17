@@ -10,7 +10,7 @@ import seaborn as sns
 import itertools
 import google.generativeai as genai
 import statsmodels.api as sm
-import altair as alt
+#import altair as alt
 import scipy.fftpack as fftpack
 import markdown
 import weasyprint
@@ -20,24 +20,25 @@ import io
 import sys
 import math
 import paramiko
-from io import StringIO
+#from io import StringIO
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
-from PIL import Image
+#from PIL import Image
 from statsmodels.tsa.arima.model import ARIMA
 from pmdarima.arima import auto_arima
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-from statsmodels.tsa.stattools import adfuller
+#from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+#from statsmodels.tsa.stattools import adfuller
 from statsmodels.formula.api import ols
-from IPython.display import display, Markdown
-from matplotlib.ticker import MultipleLocator, FuncFormatter, AutoMinorLocator
-from scipy.stats import pearsonr
+#from IPython.display import display, Markdown
+#from matplotlib.ticker import MultipleLocator, AutoMinorLocator
+from matplotlib.ticker import FuncFormatter
+#from scipy.stats import pearsonr
 from sklearn.linear_model import LinearRegression
-from sklearn.cluster import KMeans
+#from sklearn.cluster import KMeans
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from itertools import combinations
 from sklearn.metrics import r2_score  # Import r2_score function
-from enum import auto
+#from enum import auto
 #*** Google Books Nviewer
 import requests
 import scipy.interpolate as interp
