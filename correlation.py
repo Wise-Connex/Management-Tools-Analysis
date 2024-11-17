@@ -43,7 +43,7 @@ from sklearn.metrics import r2_score  # Import r2_score function
 #import requests
 import scipy.interpolate as interp
 from scipy.interpolate import CubicSpline
-from mpl_toolkits.axes_grid1 import make_axes_locatable
+#from mpl_toolkits.axes_grid1 import make_axes_locatable
 import base64
 from datetime import datetime
 #from sklearn.preprocessing import StandardScaler
