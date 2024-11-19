@@ -457,24 +457,28 @@ def fourier_analisys(period='last_year_data'):
   qty=len(title)
   print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
   banner_msg("Análisis de Fourier",margin=1,color1=YELLOW,color2=WHITE)
-  csv_fourier="\nAnálisis de Fourier\n"
+  csv_fourier="\nAnálisis de Fourier,Frequency,Magnitude\n"
   for keyword in all_keywords:
       # Extract data for the current keyword
       data = trends_results[period][keyword]
       print(f"\nPalabra clave: {keyword} ({actual_menu})\n")
-      csv_fourier += f"Palabra clave: {keyword}\n"
+      csv_fourier += f"\nPalabra clave: {keyword}\n\n"
       # Create time vector
       time_vector = np.arange(len(data))
-      csv_fourier += f"Vector de tiempo: \n{time_vector}\n"
+      #csv_fourier += f"Vector de tiempo: \n{time_vector}\n"
       # Ensure data is a properly aligned NumPy array
       data = np.asarray(data, dtype=float).copy()
       # Perform Fourier transform
       fourier_transform = fftpack.fft(data)
-      print(fourier_transform)
-      csv_fourier += f"Transformada de Fourier: \n{fourier_transform}\n"
       # Calculate frequency axis
       freq = fftpack.fftfreq(len(data))
-      csv_fourier += f"Eje de frecuencia: \n{freq}\n"
+      # Create DataFrame with time_vector as index and both magnitude and frequency as columns
+      fourierT = pd.DataFrame({
+          'frequency': freq,
+          'magnitude': np.abs(fourier_transform)
+      }, index=time_vector)
+      print(fourierT)      
+      csv_fourier += fourierT.to_csv(index=True)
       # Plot the magnitude of the Fourier transform
       plt.figure(figsize=(12, 10))  # Create a new figure for each keyword
       plt.plot(freq, np.abs(fourier_transform), color='#66B2FF')
@@ -502,7 +506,6 @@ def seasonal_analysis(period='last_20_years_data'):
     # Assuming 'trends_results' is a dictionary
     data = pd.DataFrame(trends_results[period])
     banner_msg(f'Análisis Estacional {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
-    csv_seasonal = '\n****** ANÁLISIS ESTACIONAL ********\n'
     # Handle 'isPartial' column (if present)
     if 'isPartial' in data.columns:
         data = data.drop('isPartial', axis=1)
@@ -514,7 +517,7 @@ def seasonal_analysis(period='last_20_years_data'):
         data.index = pd.to_datetime(data.index)
     # Get all numeric columns (keywords)
     all_keywords = data.select_dtypes(include=[np.number]).columns.tolist()
-    # Analyze each keyword
+    csv_seasonal = ""# Analyze each keyword
     for keyword in all_keywords:
         def decompose_series(series):
             if menu == 2:
@@ -530,7 +533,7 @@ def seasonal_analysis(period='last_20_years_data'):
                 return seasonal
 
         print(f"\nAnalizando {keyword} ({actual_menu}):")
-        csv_seasonal += f"\nAnalyzing {keyword} ({actual_menu}):\n"
+        csv_seasonal += f'\nAnalyzing {keyword} ({actual_menu}):,Values\n\n'
         # Extract the series for the keyword
         series = data[keyword]
         # Decompose the time series
@@ -542,7 +545,7 @@ def seasonal_analysis(period='last_20_years_data'):
         seasonal_index = seasonal / series.mean()
         print(seasonal_index)
         with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-            csv_seasonal+=seasonal_index.to_csv(index=False)
+            csv_seasonal+=seasonal_index.to_csv(index=True)
         # Prepare for plot formatting
         plt.figure(figsize=(12, 2))
         plt.plot(seasonal_index, color='green')
@@ -675,8 +678,9 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           rmse = mean_squared_error(actual, predicted, squared=False)
           mae = mean_absolute_error(actual, predicted)
           print(f"Predicciones para {col} ({actual_menu}):\n{predictions}")
-          csv_arimaB = f"\nPredictions for {col} ({actual_menu}):\n"
-          csv_arimaC = f"Date, Values\n{predictions}"
+          csv_arimaB = f"\n###Predictions for {col} ({actual_menu}):\n"
+          csv_arimaC = f"Date,Values\n{predictions.to_csv(index=True)}"
+          csv_arimaC = csv_arimaC.replace(' ', ',')
           print(f"\nError Cuadrático Medio Raíz (ECM Raíz) RMSE: {rmse}\nError Absoluto Medio (EAM) MAE: {mae}\n")
           csv_arimaD = f"\nRMSE: {rmse}, MAE: {mae}"
           # Combine actual data and predictions for plotting
@@ -2150,13 +2154,12 @@ def report_pdf():
     data_txt += csv_arimaD + "\n"
     #data_txt += csv2table(csv_arimaA)
     data_txt += f"## Estacional\n"
-    data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    #data_txt += csv_seasonalA
-    #data_txt += csv2table(csv_seasonal)
+    #data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += csv2table(csv_seasonal)
     data_txt += f"## Fourier\n"
-    data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    #data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     #data_txt += csv_fourierA
-    #data_txt += csv2table(csv_fourier)
+    data_txt += csv2table(csv_fourier)
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
     report = "\n"
     report += "<div class='page-break'></div>\n"
