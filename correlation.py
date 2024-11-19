@@ -84,11 +84,18 @@ global gem_seasonal_sp
 global gem_fourier_sp
 global gem_conclusions_sp
 global csv_fourier
+global csv_fourierA
 global csv_means_trends
+global csv_means_trendsA
 global csv_correlation
 global csv_regression
 global csv_arima
+global csv_arimaA
+global csv_arimaB
+global csv_arimaC
+global csv_arimaD
 global csv_seasonal
+global csv_seasonalA
 global menu
 global actual_menu
 global actual_opt
@@ -478,7 +485,8 @@ def fourier_analisys(period='last_year_data'):
       if top_choice == 2:
           plt.title(f'Transformada de Fourier para {actual_menu} ({keyword})', pad=20)
       # Save the plot to the unique folder
-      image_filename = f'{filename}_fourier_{keyword[:3]}.png'
+      base_filename = f'{filename}_fourier_{keyword[:3]}.png'
+      image_filename=get_unique_filename(base_filename, unique_folder)
       plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
       add_image_to_report(f'Transformada de Fourier para {keyword}', image_filename)
       charts += f'Transformada de Fourier para {keyword} ({image_filename})\n\n'
@@ -556,7 +564,8 @@ def seasonal_analysis(period='last_20_years_data'):
         plt.ylabel('Índice')
         plt.grid(True)
         # Save the plot to the unique folder
-        image_filename = f'{filename}_season_{keyword[:3]}.png'
+        base_filename = f'{filename}_season_{keyword[:3]}.png'
+        image_filename=get_unique_filename(base_filename, unique_folder)
         plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
         add_image_to_report(f'Índice Estacional para {keyword}', image_filename)
         charts += f'Índice de Estacional para {keyword} ({image_filename})\n\n'
@@ -602,6 +611,11 @@ def find_best_arima_params(data):
 def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
   global charts
   global image_markdown
+  global csv_arimaA
+  global csv_arimaB
+  global csv_arimaC
+  global csv_arimaD
+  
   print('\n\n--------------------- MODELO ARIMA ---------------------\n')
   csv_arima = "\nMODELO ARIMA\n"
   # Assuming 'trends_results' is a dictionary
@@ -646,7 +660,7 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           model = ARIMA(train[col], order=(p, d, q))
           results = model.fit()
           print(results.summary())
-          csv_arima += f'\n{results.summary()}'
+          csv_arimaA = f'\n{results.summary()}'
 
           # Prepare data for plotting (last 24 months)
           last_months = train[col].iloc[-mb:]
@@ -661,9 +675,10 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           rmse = mean_squared_error(actual, predicted, squared=False)
           mae = mean_absolute_error(actual, predicted)
           print(f"Predicciones para {col} ({actual_menu}):\n{predictions}")
-          csv_arima += f"\nPredictions for {col} ({actual_menu}):\n{predictions}"
+          csv_arimaB = f"\nPredictions for {col} ({actual_menu}):\n"
+          csv_arimaC = f"Date, Values\n{predictions}"
           print(f"\nError Cuadrático Medio Raíz (ECM Raíz) RMSE: {rmse}\nError Absoluto Medio (EAM) MAE: {mae}\n")
-          csv_arima += f"\nRMSE: {rmse}, MAE: {mae}"
+          csv_arimaD = f"\nRMSE: {rmse}, MAE: {mae}"
           # Combine actual data and predictions for plotting
           data_to_plot = pd.concat([last_months, predictions])
           # Create the plot
@@ -675,7 +690,7 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           # Plot test data with scatter and alpha
           test_scatter = ax.scatter(test.index, test[col], label='Data Test', alpha=0.4, marker='*')
           # Fill between for confidence interval
-          ci_fill = ax.fill_between(predictions.index, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b', label='Intervalo de Confidencia')
+          ci_fill = ax.fill_between(predictions.index, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b', label='Intervalo de Confidencia')         
           # Add labels and title
           ax.set_title(f"Modelo ARIMA para {col} ({actual_menu})")
           ax.set_xlabel('Meses - Años')
@@ -702,15 +717,22 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           ax.legend([data_actual_line, predictions_line, test_scatter, ci_fill],
                     ['Data Actual', 'Predicciones', 'Data Test', 'Intervalo de Confidencia'],
                     loc='upper left')
-          train_min = train[col].min()
-          train_max = train[col].max()
-          buffer = (train_max - train_min) * 0.1  # Add a 10% buffer
-          ax.set_ylim(train_min - buffer, train_max + buffer)
+          # Set y-axis limits based on top_choice
+          if top_choice == 2:
+              buffer = 10  # 10% buffer for 0-100 scale
+              ax.set_ylim(-buffer, 100 + buffer)  # Fix Y-axis scale to 0-100 with buffer
+          else:
+              ax.autoscale(axis='y')  # Let matplotlib automatically determine the best y-axis scale
+            #   train_min = train[col].min()
+            #   train_max = train[col].max()
+            #   buffer = (train_max - train_min) * 0.1  # Add a 10% buffer
+            #   ax.set_ylim(train_min - buffer, train_max + buffer)
           #plt.autoscale(ax=ax)  # Fine-tune based on actual data
           # Adjust layout to prevent cutoff of tick labels
           fig.tight_layout()
           # Save the plot
-          image_filename = f'{filename}_arima_{col[:3]}.png'
+          base_filename = f'{filename}_arima_{col[:3]}.png'
+          image_filename=get_unique_filename(base_filename, unique_folder)
           plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
           add_image_to_report(f'Modelo ARIMA para {col}', image_filename)
           charts += f'Modelo ARIMA para {col} ({image_filename})\n\n'
@@ -1050,7 +1072,8 @@ def relative_comparison():
     plt.subplots_adjust(top=0.95, bottom=0.1, hspace=0.3, wspace=0.4)  # Reduced wspace from 0.5 to 0.4
 
     # Save the plot to the unique folder
-    image_filename = f'{filename}_overtime.png'
+    base_filename = f'{filename}_overtime.png'
+    image_filename=get_unique_filename(base_filename, unique_folder)
     plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
     if menu == 1:
       add_image_to_report(f"Interés relativo en {', '.join(all_keywords)}", image_filename)
@@ -1684,9 +1707,9 @@ def analyze_trends(trend):
         data.index = pd.to_datetime(data.index)
         # Get all possible combinations of keywords
         keywords = data.columns
-        all_combinations = []
-        for r in range(2, len(keywords) + 1):
-            all_combinations.extend(combinations(keywords, r))
+        # Only generate pairs of combinations
+        all_combinations = list(combinations(keywords, 2))
+        csv_output = "Pair, Value\n"
         # Perform regression for each combination
         for combo in all_combinations:
             X = data[list(combo)[1:]].values
@@ -1702,7 +1725,7 @@ def analyze_trends(trend):
             print("Intersección:", intercept)
             print("R-cuadrado:", r_squared)  # Print the calculated R-squared value
             # Include titles for each regression result within the CSV
-            csv_output += f"\nRegression for keywords: {combo}\n"
+            csv_output += f'\nRegression for: "{combo}"\n'
             csv_output += "Coefficients:, "
             csv_output += ", ".join([str(c) for c in coefficients]) + "\n"  # Join coefficients with commas
             csv_output += "Intercept:, " + str(intercept) + "\n"
@@ -1711,30 +1734,33 @@ def analyze_trends(trend):
 
         # Creates scatter plots for all possible combinations of up to 5 keywords.
         def create_scatter_plots(df, max_keywords=5):
-          """
-          Args:
-            df: The DataFrame containing the keyword data.
-            max_keywords: The maximum number of keywords to consider.
-          """
-          global charts
-          global image_markdown
-          columns = df.columns
-          for i in range(2, max_keywords + 1):
-            combinations = itertools.combinations(columns, i)
+            """
+            Args:
+                df: The DataFrame containing the keyword data.
+                max_keywords: The maximum number of keywords to consider.
+            """
+            global charts
+            global image_markdown
+            
+            columns = df.columns
+            # Only generate pairs of combinations
+            combinations = itertools.combinations(columns, 2)
+            
             for combo in combinations:
-              if len(combo) == 2:
-                # Single scatter plot for two keywords
+                # Create scatter plot for each pair
                 fig, ax = plt.subplots(figsize=(7, 7))
                 ax.scatter(df[combo[0]], df[combo[1]])
                 ax.set_xlabel(combo[0])
                 ax.set_ylabel(combo[1])
-              plt.tight_layout()
-              plt.title(f'Gráfico de Dispersión para {actual_menu}', pad=20)
-              image_filename = f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'
-              plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
-              add_image_to_report(f'Gráfico de Dispersión para {", ".join(combo)}', image_filename)
-              charts += f'Gráfico de Dispersión para {", ".join(combo)} ({image_filename})\n\n'
-              plt.show()
+                
+                plt.tight_layout()
+                plt.title(f'Gráfico de Dispersión para {actual_menu}', pad=20)
+                base_filename = f'{filename}_scatter_{combo[0][:3]}{combo[1][:3]}.png'
+                image_filename=get_unique_filename(base_filename, unique_folder)
+                plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
+                add_image_to_report(f'Gráfico de Dispersión para {", ".join(combo)}', image_filename)
+                charts += f'Gráfico de Dispersión para {", ".join(combo)} ({image_filename})\n\n'
+                plt.show()
 
         data = rem_isPartial(trends_results['last_20_years_data'])
         char='*'
@@ -1840,6 +1866,7 @@ def results():
     global csv_arima
     global csv_seasonal
     global all_keywords
+    global csv_means_trendsA
     
     # *************************************************************************************
     # Part 1 - Tendencias y Medias
@@ -1857,7 +1884,8 @@ def results():
         csv_writer.writerow([kw] + results['means'] + results['trends'])
 
     csv_data = csv_string.getvalue()
-    csv_means_trends = "Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n" + csv_data
+    csv_means_trendsA = "Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n"
+    csv_means_trends = csv_data
 
     # *************************************************************************************
     # Part 2 - Comparación a lo largo del tiempo
@@ -2044,6 +2072,19 @@ def ai_analysis():
     gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
     #display(Markdown(gem_conclusions_sp))
     print(gem_conclusions_sp)
+
+def csv2table(csv_data, header_line=0):
+        csv_lines= csv_data.strip().split('\n')
+        headers = csv_lines[header_line].split(',')
+        # Create markdown table header with smaller font and rotated text
+        table = "<div class='table-wrapper'>\n<table class='data-table'>\n"
+        table += "<tr>" + "".join([f"<th>{h}</th>" for h in headers]) + "</tr>\n"
+        # Add data rows
+        for line in csv_lines[1:]:
+            values = line.split(',')
+            table += "<tr>" + "".join([f"<td>{v}</td>" for v in values]) + "</tr>\n"
+        table += "</table>\n</div>\n\n"
+        return table
     
 def report_pdf():
     global data_txt
@@ -2051,11 +2092,18 @@ def report_pdf():
     global report
     global csv_means_trends
     global image_markdown
+    
     data_txt = ''
     data_txt += "<div class='page-break'></div>\n"
     data_txt += "# Datos\n"
-    data_txt += "## Herramientas Gerenciales:\n"
-    data_txt += ", ".join(all_keywords) + "\n"
+    if top_choice == 1:
+        data_txt += "## Herramientas Gerenciales:\n"
+        data_txt += ", ".join(all_keywords) + "\n"
+    else:
+        data_txt += "## Herramientas Gerenciales:\n"
+        data_txt += actual_menu + "\n"
+        data_txt += "### Fuentes de Datos:\n"
+        data_txt += ", ".join(all_keywords) + "\n"
     data_txt += "\n\n\n"
     data_txt += f"## Datos de {actual_menu}\n"
     
@@ -2078,24 +2126,37 @@ def report_pdf():
         data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
         data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     else:
-        data_txt += csv_combined_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    
+        #data_txt += csv_combined_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += csv2table(csv_combined_data)     
     data_txt += "\n\n\n"
     data_txt += "<div class='page-break'></div>\n"  # Add page break here
     data_txt += "## Datos Medias y Tendencias\n"
     data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
-    data_txt += csv_means_trends.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    data_txt += csv_means_trendsA
+    data_txt += csv2table(csv_means_trends)
     if not one_keyword:
-        data_txt += f"### Correlacion\n"
-        data_txt += str(csv_correlation).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-        data_txt += f"### Regresion\n"
-        data_txt += str(csv_regression).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"### Correlación\n"
+        #data_txt += str(csv_correlation).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += csv2table(csv_correlation)        
+        data_txt += f"### Regresión\n"
+        #data_txt += str(csv_regression).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += csv2table(csv_regression)
     data_txt += f"## ARIMA\n"
-    data_txt += "<blockquote>\n" + str(csv_arima).replace(',', ' | ').replace('\n', ' |\n| ') + "\n</blockquote>\n"
+    #data_txt += "<blockquote>\n" + str(csv_arimaA).replace(',', ' | ').replace('\n', ' |\n| ') + "\n</blockquote>\n"
+    data_txt += csv_arima  # Keep original for reference if needed
+    data_txt += f"<blockquote>{csv_arimaA}</blockquote>\n"
+    data_txt += csv_arimaB + "\n"
+    data_txt += csv2table(csv_arimaC)
+    data_txt += csv_arimaD + "\n"
+    #data_txt += csv2table(csv_arimaA)
     data_txt += f"## Estacional\n"
     data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    #data_txt += csv_seasonalA
+    #data_txt += csv2table(csv_seasonal)
     data_txt += f"## Fourier\n"
     data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+    #data_txt += csv_fourierA
+    #data_txt += csv2table(csv_fourier)
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
     report = "\n"
     report += "<div class='page-break'></div>\n"
@@ -2171,6 +2232,46 @@ def report_pdf():
             th {{
                 background-color: #f2f2f2;
             }}
+            .table-wrapper {{
+                width: 100%;
+                overflow-x: auto;
+                margin-bottom: 1em;
+            }}
+            .data-table {{
+                font-size: 8pt;
+                width: 100%;
+                border-collapse: collapse;
+                table-layout: fixed;
+            }}
+            .data-table th {{
+                padding: 5px 2px;
+                vertical-align: bottom;
+                text-align: left;
+                font-size: 8pt;
+                /* Change white-space to normal to allow wrapping */
+                white-space: normal;
+                /* Add word-wrap for better control */
+                word-wrap: break-word;
+                /* Optional: add a max height if needed */
+                max-height: 50px;
+            }}
+            .data-table td {{
+                padding: 5px 2px;
+                font-size: 7pt;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }}
+            @media print {{
+                .table-wrapper {{
+                    overflow-x: visible;
+                }}
+                
+                .data-table {{
+                    font-size: 7pt;
+                    page-break-inside: avoid;
+                }}
+            }}            
         </style>
     </head>
     <body>
@@ -2195,6 +2296,7 @@ def report_pdf():
     print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
 
 def top_level_menu():
+    print("\n\n\n\n\n\n\n\n")
     banner_msg(" Análisis de Herramientas Gerenciales ", YELLOW, GREEN, char = '-', margin = 24)
     print('\n')
     banner_msg(" Menú Principal ", YELLOW, WHITE)
@@ -2241,8 +2343,8 @@ def select_multiple_data_sources():
     
     selected_sources = []
     while True:
-        selection = input("\nIngrese los números de las fuentes de datos a comparar (separados por comas), o 'listo' para continuar: ")
-        if selection.lower() == 'listo':
+        selection = input("\nIngrese los números de las fuentes de datos a comparar (separados por comas), o ENTER para continuar: ")
+        if selection.lower() == '':
             if not selected_sources:
                 print(f"{YELLOW}Por favor, seleccione al menos una fuente de datos antes de terminar.{RESET}")
             else:
@@ -2484,7 +2586,7 @@ def main():
     
     while True:
         # Redirigir stderr antes de cada iteración
-        sys.stderr = null
+        #sys.stderr = null
         
         top_choice = top_level_menu()
         
