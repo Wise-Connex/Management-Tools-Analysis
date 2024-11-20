@@ -92,8 +92,6 @@ global csv_regression
 global csv_arima
 global csv_arimaA
 global csv_arimaB
-global csv_arimaC
-global csv_arimaD
 global csv_seasonal
 global csv_seasonalA
 global menu
@@ -126,6 +124,8 @@ global latest_date
 global keycharts
 global csv_combined_dataset
 keycharts = []
+csv_arimaA = []
+csv_arimaB = []
 
 # Create a 'data' folder in the current directory
 data_folder = 'data'
@@ -616,8 +616,9 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
   global image_markdown
   global csv_arimaA
   global csv_arimaB
-  global csv_arimaC
-  global csv_arimaD
+  global csv_arima
+  csv_arimaA = ["" for _ in range(len(all_keywords))]
+  csv_arimaB = ["" for _ in range(len(all_keywords))]
   
   print('\n\n--------------------- MODELO ARIMA ---------------------\n')
   csv_arima = "\nMODELO ARIMA\n"
@@ -643,14 +644,15 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
 
   # Fit ARIMA models to each numeric column
   numeric_columns = train.select_dtypes(include=['int64', 'float64'])
+  n=0
   for col in numeric_columns:
       banner_msg(f' Modelo ARIMA para: {col} {actual_menu} ',margin=1,color1=YELLOW,color2=WHITE)
-      csv_arima += f"\n\nFitting ARIMA model for {col} ({actual_menu})\n"
+      csv_arimaA[n] = f"\n\nFitting ARIMA model for {col} ({actual_menu})\n"
       
       # Check if the column has enough non-zero values
       if (train[col] != 0).sum() <= 10:  # Adjust this threshold as needed
           print(f"Skipping {col} due to insufficient non-zero values")
-          csv_arima += f"Skipping {col} due to insufficient non-zero values\n"
+          csv_arimaA[n] += f"Skipping {col} due to insufficient non-zero values\n"
           continue
 
       try:
@@ -663,8 +665,8 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           model = ARIMA(train[col], order=(p, d, q))
           results = model.fit()
           print(results.summary())
-          csv_arimaA = f'\n{results.summary()}'
-
+          csv_arimaA[n] += f'\n<blockquote>{results.summary()}</blockquote>'
+          csv_arima += csv_arimaA[n]
           # Prepare data for plotting (last 24 months)
           last_months = train[col].iloc[-mb:]
           # Make predictions (adjust steps as needed)
@@ -678,11 +680,14 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           rmse = mean_squared_error(actual, predicted, squared=False)
           mae = mean_absolute_error(actual, predicted)
           print(f"Predicciones para {col} ({actual_menu}):\n{predictions}")
-          csv_arimaB = f"\n###Predictions for {col} ({actual_menu}):\n"
-          csv_arimaC = f"Date,Values\n{predictions.to_csv(index=True)}"
-          csv_arimaC = csv_arimaC.replace(' ', ',')
           print(f"\nError Cuadrático Medio Raíz (ECM Raíz) RMSE: {rmse}\nError Absoluto Medio (EAM) MAE: {mae}\n")
-          csv_arimaD = f"\nRMSE: {rmse}, MAE: {mae}"
+
+          csv_arimaB[n] = f"\nPredictions for {col} ({actual_menu}):,\n"
+          csv_arimaB[n] += f"Date,Values\n{predictions.to_csv(index=True)}"
+          csv_arimaB[n] += f"\nRMSE, MAE\n{rmse},{mae}"
+          csv_arima += csv_arimaB[n]
+          n += 1
+          
           # Combine actual data and predictions for plotting
           data_to_plot = pd.concat([last_months, predictions])
           # Create the plot
@@ -746,7 +751,6 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           csv_arima += f"Error fitting ARIMA model for {col}: {str(e)}\n"
           continue
 
-  csv_arima="".join(csv_arima)
   return csv_arima
 
 # Searches the keyword-term dictionary for the given keyword and returns its corresponding term.
@@ -2130,7 +2134,6 @@ def report_pdf():
         data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
         data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     else:
-        #data_txt += csv_combined_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
         data_txt += csv2table(csv_combined_data)     
     data_txt += "\n\n\n"
     data_txt += "<div class='page-break'></div>\n"  # Add page break here
@@ -2140,25 +2143,16 @@ def report_pdf():
     data_txt += csv2table(csv_means_trends)
     if not one_keyword:
         data_txt += f"### Correlación\n"
-        #data_txt += str(csv_correlation).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
         data_txt += csv2table(csv_correlation)        
         data_txt += f"### Regresión\n"
-        #data_txt += str(csv_regression).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
         data_txt += csv2table(csv_regression)
     data_txt += f"## ARIMA\n"
-    #data_txt += "<blockquote>\n" + str(csv_arimaA).replace(',', ' | ').replace('\n', ' |\n| ') + "\n</blockquote>\n"
-    data_txt += csv_arima  # Keep original for reference if needed
-    data_txt += f"<blockquote>{csv_arimaA}</blockquote>\n"
-    data_txt += csv_arimaB + "\n"
-    data_txt += csv2table(csv_arimaC)
-    data_txt += csv_arimaD + "\n"
-    #data_txt += csv2table(csv_arimaA)
+    for n in range(len(csv_arimaA)):
+        data_txt += csv_arimaA[n]
+        data_txt += csv2table(csv_arimaB[n])
     data_txt += f"## Estacional\n"
-    #data_txt += str(csv_seasonal).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
     data_txt += csv2table(csv_seasonal)
     data_txt += f"## Fourier\n"
-    #data_txt += str(csv_fourier).replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
-    #data_txt += csv_fourierA
     data_txt += csv2table(csv_fourier)
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
     report = "\n"
