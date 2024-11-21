@@ -432,9 +432,6 @@ def generate_markdown_toc(text):
         level = heading_level
     return "</br>".join(toc_items)
 
-global image_markdown
-image_markdown = "\n\n# Gráficos\n\n"
-
 def add_image_to_report(title, filename):
     global image_markdown
     full_path = os.path.abspath(os.path.join('./', unique_folder, filename))
@@ -1813,6 +1810,8 @@ def init_variables():
     global one_keyword
     global menu
     global current_year
+    
+    image_markdown = "\n\n# Gráficos\n\n"
     
     plt.style.use('ggplot')
     # Get current year

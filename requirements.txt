@@ -19,3 +19,10 @@ google.generativeai
 pmdarima
 python-dotenv
 IPython
+# for dashboard
+streamlit 
+#pandas
+#seaborn 
+#matplotlib
+plotly
+statsmodels
