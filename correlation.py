@@ -145,6 +145,8 @@ def banner_msg (title="", color1=WHITE, color2=WHITE, margin=12, char='*'):
 
 # return a number in engineering notation
 def eng_notation(number):
+    if number is None or math.isnan(number):
+        return "N/A"
     if number == 0:
         return "0"
     exponent = int(math.floor(math.log10(abs(number)) / 3) * 3)
@@ -1400,19 +1402,23 @@ def check_trends2(kw):
     fig, ax = plt.subplots(figsize=(10,6))
 
     # Create bars
+# Create bars
     if top_choice == 1:
         if menu == 2 or menu == 4:
+            # Filter out None values and create bars only for valid data
             rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
                     for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
                                                             [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
                                                             years_list,
-                                                            ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+                                                            ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])
+                    if avg is not None]  # Add this condition
         else:
             rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
                     for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
                                                             [avg_20, avg_15, avg_10, avg_5, avg_1],
                                                             years_list,
-                                                            ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+                                                            ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])
+                    if avg is not None]  # Add this condition
     else:
         if years_range > 20:
             rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
