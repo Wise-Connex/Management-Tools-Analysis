@@ -2125,19 +2125,25 @@ def report_pdf():
         if menu == 2:
             year_adjust = 2
             data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
-            data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+            #data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+            data_txt += csv2table(csv_all_data)
         elif menu == 4:
             year_adjust = 2
             data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
-            data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+            #data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+            data_txt += csv2table(csv_all_data)
         data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
-        data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        #data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += csv2table(csv_last_20_data)
         data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
-        data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        #data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += csv2table(csv_last_15_data)
         data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
-        data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        #data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += csv2table(csv_last_10_data)
         data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
-        data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        #data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += csv2table(csv_last_5_data)
     else:
         data_txt += csv2table(csv_combined_data)     
     data_txt += "\n\n\n"
