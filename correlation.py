@@ -368,7 +368,7 @@ def bspline_interpolation(df, column):
 
     return df_interpolated
 
-def get_file_data(filename):
+def get_file_data(filename, menu):
     # Path to the local 'dbase' folder
     local_path = "./dbase/"
     
@@ -2520,6 +2520,12 @@ def process_and_normalize_datasets(allKeywords):
 
     selected_sources = select_multiple_data_sources()
     all_keywords = [selected_keyword]
+    
+    datasets_norm, selected_sources = get_file_data2(selected_keyword, selected_sources)
+    
+    return datasets_norm, selected_sources
+
+def get_file_data2(selected_keyword, selected_sources):
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
 
@@ -2527,9 +2533,9 @@ def process_and_normalize_datasets(allKeywords):
     all_raw_datasets = {}
 
     for source in selected_sources:
-        print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
+        #print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
         menu = source
-        df = get_file_data(filenames.get(source, 'Archivo no encontrado'))
+        df = get_file_data(filenames.get(source, 'Archivo no encontrado'), menu)
         if df.empty or (df == 0).all().all():
             print(f"Warning: Dataset for source {source} is empty or contains only zeros.")
             continue
