@@ -20,9 +20,5 @@ pmdarima
 python-dotenv
 IPython
 # for dashboard
-streamlit 
-#pandas
-#seaborn 
-#matplotlib
-plotly
-statsmodels
+dash
+dash-bootstrap-components
