@@ -6,7 +6,6 @@ from correlation import get_all_keywords, get_file_data2  # Update import
 
 # Initialize the Dash app with a Bootstrap theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
 # Define database options as a global variable
 dbase_options = {
     1: "Google Trends",
