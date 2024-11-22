@@ -1,8 +1,9 @@
 import dash
-from dash import html, dcc
+from dash import html, dcc, dash_table
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from correlation import get_all_keywords, get_file_data2  # Update import
+from correlation import get_all_keywords, get_file_data2, create_combined_dataset  # Update import
+import pandas as pd
 
 # Initialize the Dash app with a Bootstrap theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -22,7 +23,7 @@ sidebar = html.Div(
         html.Img(
             src='/assets/Management-Tools-Analysis-logo.png',
             style={
-                'width': '50%',
+                'width': '40%',
                 'margin-bottom': '20px',
                 'display': 'block',
                 'margin-left': 'auto',
@@ -108,16 +109,67 @@ def update_main_content(selected_keyword, selected_sources):
     if not selected_keyword or not selected_sources:
         return html.Div("Por favor, selecciones una Herrmienta y al menos una Fuente de Datos.")
     
-    # Pass both selected_keyword and selected_sources to get_file_data2
-    datasets_norm, sl_sc = get_file_data2([selected_keyword], selected_sources)
-    
-    # Convert source IDs to their names using dbase_options
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    combined_dataset = combined_dataset.reset_index()
     selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
+    
+    total_records = len(combined_dataset)
     
     return html.Div([
         html.P(f"Herramienta Seleccionada: {selected_keyword}"),
         html.P(f"Fuentes de datos Seleccionadas: {', '.join(selected_source_names)}"),
-        html.P(f"Valores normalizados: {datasets_norm}")
+        html.Div([
+            dash_table.DataTable(
+                data=combined_dataset.to_dict('records'),
+                columns=[{"name": str(i), "id": str(i)} for i in combined_dataset.columns],
+                style_table={
+                    'overflowX': 'auto',
+                    'overflowY': 'auto',
+                    'height': '240px',
+                    'minWidth': '100%'
+                },
+                style_cell={
+                    'textAlign': 'left',
+                    'padding': '10px',
+                    'minWidth': '100px',
+                    'width': '150px',
+                    'maxWidth': '180px',
+                    'whiteSpace': 'normal',
+                    'height': 'auto'
+                },
+                style_header={
+                    'backgroundColor': 'rgb(230, 230, 230)',
+                    'fontWeight': 'bold',
+                    'position': 'sticky',
+                    'top': 0,
+                    'zIndex': 1000
+                },
+                style_data={
+                    'whiteSpace': 'normal',
+                    'height': 'auto'
+                },
+                style_filter={
+                    'display': 'none'
+                },
+                fixed_rows={'headers': True},
+                sort_action='native',
+                filter_action='native',
+                page_size=5,
+                page_action='native',
+                page_current=0
+            ),
+            html.Div(
+                f"Total de registros: {total_records}",
+                style={
+                    'position': 'relative',
+                    'marginTop': '-48px',
+                    'marginLeft': '10px',
+                    'color': '#666',
+                    'zIndex': 1000
+                }
+            )
+        ])
     ])
 
 # Add new callback for keyword validation

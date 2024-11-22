@@ -794,10 +794,12 @@ def process_data(data):
 #  Fetches and processes Google Trends data for different time periods.
 def process_file_data(all_kw, d_filename):
   global combined_dataset
+  global menu
   
+  menu2 = menu
   if top_choice == 1:
     # Group data and calculate means
-    all_data = get_file_data(d_filename)
+    all_data = get_file_data(d_filename, menu2)
   if top_choice == 2:
     all_data = combined_dataset#PPRINT(f"\n{all_data}")
 
