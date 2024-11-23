@@ -6,7 +6,7 @@ from correlation import get_all_keywords, get_file_data2, create_combined_datase
 import pandas as pd
 
 # Initialize the Dash app with a Bootstrap theme
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
 # Define database options as a global variable
 dbase_options = {
     1: "Google Trends",
@@ -16,6 +16,9 @@ dbase_options = {
     5: "Bain - Satisfacción"
 }
 
+# Add a new global variable to store the current date range
+global_date_range = {'start': None, 'end': None}
+
 # Define the sidebar layout
 sidebar = html.Div(
     [
@@ -23,7 +26,7 @@ sidebar = html.Div(
         html.Img(
             src='assets/Management-Tools-Analysis-logo.png',
             style={
-                'width': '40%',
+                'width': '50%',
                 'margin-bottom': '20px',
                 'display': 'block',
                 'margin-left': 'auto',
@@ -31,12 +34,12 @@ sidebar = html.Div(
             }
         ),
         
-        html.H4("Menú", className="display-6 mb-4"),
+        #html.H4("Menú", className="display-6 mb-4 fs-4"),
         html.Hr(),
         
         # Keyword dropdown (single selection)
         html.Div([
-            html.Label("Seleccione una Herramienta:"),
+            html.Label("Seleccione una Herramienta:", style={'fontSize': '12px'}),
             dcc.Dropdown(
                 id='keyword-dropdown',
                 options=[
@@ -45,15 +48,16 @@ sidebar = html.Div(
                 ],
                 value=get_all_keywords()[0] if get_all_keywords() else None,
                 placeholder="Seleccione una Herramienta Gerencial",
-                className="mb-4"
+                className="mb-4",
+                style={'fontSize': '12px'}
             ),
             # Add validation message div for keywords
-            html.Div(id='keyword-validation', className="text-danger")
+            html.Div(id='keyword-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
         
         # Update the dropdown component
         html.Div([
-            html.Label("Seleccione las Fuentes de Datos: ", className="form-label"),
+            html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
             dcc.Dropdown(
                 id='datasources-dropdown',
                 options=[
@@ -63,7 +67,8 @@ sidebar = html.Div(
                 value=[1],  # Default to Google Trends selected
                 multi=True,
                 placeholder="Seleccione una o más fuentes de datos",
-                className="mb-4"
+                className="mb-4",
+                style={'fontSize': '12px'}
             ),
             # Add Select All button
             dbc.Button(
@@ -71,10 +76,11 @@ sidebar = html.Div(
                 id="select-all-button",
                 color="primary",
                 size="sm",
-                className="mb-2"
+                className="mb-2",
+                style={'fontSize': '12px'}
             ),
             # Add validation message div
-            html.Div(id='datasources-validation', className="text-danger")
+            html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
     ],
     style={
@@ -87,17 +93,28 @@ sidebar = html.Div(
 # Define the main layout
 app.layout = dbc.Container([
     dbc.Row([
-        # Sidebar column
-        dbc.Col(sidebar, width=3, className="bg-light"),
+        # Sidebar column - changed from width=3 to width=2 (20% of 12 columns)
+        dbc.Col(sidebar, width=2, className="bg-light"),
         
-        # Main content column
+        # Main content column - changed from width=9 to width=10
         dbc.Col([
-            html.H1("Análisis de Herramientas Gerenciales bajo diferentes variables"),
-            # Add your main content/plots here
-            html.Div(id='main-content')
-        ], width=9)
+            html.Div(id='main-title', style={'fontSize': '40px', 'marginBottom': '15px'}),
+            # Add the time range buttons to the main layout
+            html.Div([
+                html.Label("Rango de tiempo:  ", style={'marginRight': '10px'}),
+                dbc.ButtonGroup([
+                    dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0),
+                    dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0),
+                    dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0),
+                    dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0),
+                    dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0),
+                ], className="mb-3")
+            ], style={'marginBottom': '10px'}),
+            # Main content div
+            html.Div(id='main-content', className="w-100")
+        ], width=10, className="px-4")
     ], style={'height': '100vh'})
-], fluid=True)
+], fluid=True, className="px-0")
 
 # Define a color palette for the available options
 colors = [
@@ -121,7 +138,7 @@ color_map = {
 @app.callback(
     Output('main-content', 'children'),
     [Input('keyword-dropdown', 'value'),
-     Input('datasources-dropdown', 'value')]
+     Input('datasources-dropdown', 'value')]  # Remove line-graph relayoutData
 )
 def update_main_content(selected_keyword, selected_sources):
     if not selected_keyword or not selected_sources:
@@ -136,6 +153,13 @@ def update_main_content(selected_keyword, selected_sources):
     combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
     combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
     
+    # Filter the dataset based on the current date range
+    if global_date_range['start'] and global_date_range['end']:
+        combined_dataset = combined_dataset[
+            (combined_dataset['Fecha'] >= global_date_range['start']) &
+            (combined_dataset['Fecha'] <= global_date_range['end'])
+        ]
+
     selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
     total_records = len(combined_dataset)
     
@@ -168,7 +192,10 @@ def update_main_content(selected_keyword, selected_sources):
         'layout': {
             'title': f'Tendencia de {selected_keyword} a través del tiempo',
             'xaxis': {
-                'title': 'Fecha',
+                'title': {
+                    'text': 'Fecha',
+                    'font': {'size': 12}
+                },
                 'title_standoff': 25,
                 'tickangle': 45,
                 'dtick': 'M1',
@@ -178,12 +205,15 @@ def update_main_content(selected_keyword, selected_sources):
                 'tickmode': 'array',
                 'ticktext': years_data['Fecha'].dt.strftime('%Y'),
                 'tickvals': years_data['Fecha'].dt.strftime('%Y-%m-%d'),
-                'tickfont': {'size': 10},
+                'tickfont': {'size': 8},
                 'rangeslider': {'visible': True},
                 'domain': [0, 1],
             },
             'yaxis': {
-                'title': 'Valor Normalizado',
+                'title': {
+                    'text': 'Valor Normalizado',
+                    'font': {'size': 12}
+                },
                 'showgrid': True,
                 'gridcolor': 'lightgray'
             },
@@ -235,177 +265,8 @@ def update_main_content(selected_keyword, selected_sources):
         }
     }
 
-    # Update the callback for bar graph to use same colors
-    @app.callback(
-        Output('bar-graph', 'figure'),
-        [Input('line-graph', 'relayoutData'),
-         Input('keyword-dropdown', 'value'),
-         Input('datasources-dropdown', 'value')]
-    )
-    def update_bar_graph(relayoutData, selected_keyword, selected_sources):
-        # Filter data based on selected date range
-        df_filtered = combined_dataset.copy()
-        
-        if relayoutData and ('xaxis.range' in relayoutData or 'xaxis.range[0]' in relayoutData):
-            start_date = relayoutData.get('xaxis.range[0]') or relayoutData.get('xaxis.range')[0]
-            end_date = relayoutData.get('xaxis.range[1]') or relayoutData.get('xaxis.range')[1]
-            
-            df_filtered = df_filtered[
-                (df_filtered['Fecha'] >= start_date) &
-                (df_filtered['Fecha'] <= end_date)
-            ]
-
-        # Calculate means for the filtered period
-        means = df_filtered.drop('Fecha', axis=1).mean()
-
-        bar_fig = {
-            'data': [{
-                'x': list(means.index),
-                'y': means.values,
-                'type': 'bar',
-                'text': [f'{val:.2f}' for val in means.values],
-                'textposition': 'auto',
-                'marker': {
-                    'color': [color_map.get(col, '#000000') for col in means.index]
-                }
-            }],
-            'layout': {
-                'title': 'Promedios del Período Seleccionado',
-                'yaxis': {
-                    'title': 'Valor Promedio',
-                    'range': [0, max(means.values) * 1.1]
-                },
-                'showlegend': False,
-                'height': 520,
-                'margin': {
-                    'l': 40,
-                    'r': 20,
-                    't': 40,
-                    'b': 80
-                },
-                'bargap': 0.2,
-                'xaxis': {
-                    'tickangle': 45,
-                    'tickfont': {'size': 10}
-                }
-            }
-        }
-        
-        return bar_fig
-
-    # Create buttons for time range selection
-    time_range_buttons = html.Div([
-        html.Label("Rango de tiempo:  ", style={'marginRight': '10px'}),
-        dbc.ButtonGroup([
-            dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0),
-            dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0),
-            dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0),
-            dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0),
-            dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0),
-        ], className="mb-3")
-    ], style={'marginBottom': '10px'})
-
-    # Add callback for time range buttons
-    @app.callback(
-        Output('line-graph', 'figure'),
-        [Input('btn-5y', 'n_clicks'),
-         Input('btn-10y', 'n_clicks'),
-         Input('btn-15y', 'n_clicks'),
-         Input('btn-20y', 'n_clicks'),
-         Input('btn-all', 'n_clicks')]
-    )
-    def update_time_range(*args):
-        ctx = dash.callback_context
-        if not ctx.triggered:
-            return dash.no_update
-            
-        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
-        
-        # Convert to pandas datetime
-        df_dates = pd.to_datetime(combined_dataset['Fecha'])
-        end_date = df_dates.max()
-        
-        if button_id == 'btn-all':
-            start_date = df_dates.min()
-        else:
-            years = int(button_id.split('-')[1][:-1])
-            start_date = end_date - pd.DateOffset(years=years)
-        
-        # Filter the data
-        mask = (df_dates >= start_date) & (df_dates <= end_date)
-        filtered_data = combined_dataset[mask]
-        
-        # Create new figure
-        new_fig = {
-            'data': [
-                {
-                    'x': filtered_data['Fecha'],
-                    'y': filtered_data[col],
-                    'name': col,
-                    'type': 'scatter',
-                    'mode': 'lines',
-                    'line': {
-                        'shape': 'spline',
-                        'smoothing': 1.3,
-                        'width': 2,
-                        'color': color_map.get(col, '#000000')
-                    },
-                    'hovertemplate': '%{y:.2f} - ' + col + '<extra></extra>'
-                } for col in filtered_data.columns if col != 'Fecha'
-            ],
-            'layout': {
-                'title': f'Tendencia de {selected_keyword} a través del tiempo',
-                'xaxis': {
-                    'title': 'Fecha',
-                    'title_standoff': 25,
-                    'tickangle': 45,
-                    'dtick': 'M1',
-                    'tickformat': '%b',
-                    'showgrid': True,
-                    'gridcolor': 'lightgray',
-                    'tickmode': 'array',
-                    'ticktext': filtered_data['Fecha'].dt.strftime('%Y'),
-                    'tickvals': filtered_data['Fecha'],
-                    'tickfont': {'size': 10},
-                    'range': [start_date, end_date],
-                    'rangeslider': {
-                        'visible': True,
-                        'range': [start_date, end_date]
-                    }
-                },
-                'yaxis': {
-                    'title': 'Valor Normalizado',
-                    'showgrid': True,
-                    'gridcolor': 'lightgray'
-                },
-                'height': 520,
-                'margin': {'l': 40, 'r': 40, 't': 40, 'b': 150},
-                'hovermode': 'x unified',
-                'legend': {
-                    'orientation': 'h',
-                    'yanchor': 'top',
-                    'y': -0.55,
-                    'xanchor': 'center',
-                    'x': 0.5
-                }
-            }
-        }
-        
-        return new_fig
-
-    # Create the layout
+    # Remove the nested callback and return the initial graphs
     return html.Div([
-        # Header information
-        html.P([
-            html.Strong("Herramienta Seleccionada: "),
-            f"{selected_keyword}"
-        ]),
-        html.P([
-            html.Strong("Fuentes de datos Seleccionadas: "),
-            f"{', '.join(selected_source_names)}"
-        ]),
-        # Add time range buttons
-        time_range_buttons,
         # Container for both graphs side by side
         html.Div([
             # Line chart container
@@ -413,10 +274,10 @@ def update_main_content(selected_keyword, selected_sources):
                 dcc.Graph(
                     id='line-graph',
                     figure=fig,
-                    style={'height': '520px'}  # Match the height we set before
+                    style={'height': '520px'}
                 ),
             ], style={
-                'width': '80%',  # 4/5 of the width
+                'width': '80%',
                 'display': 'inline-block',
                 'vertical-align': 'top'
             }),
@@ -425,10 +286,10 @@ def update_main_content(selected_keyword, selected_sources):
                 dcc.Graph(
                     id='bar-graph',
                     figure=initial_bar_fig,
-                    style={'height': '520px'}  # Match the height of line chart
+                    style={'height': '520px'}
                 ),
             ], style={
-                'width': '20%',  # 1/5 of the width
+                'width': '20%',
                 'display': 'inline-block',
                 'vertical-align': 'top'
             }),
@@ -436,58 +297,275 @@ def update_main_content(selected_keyword, selected_sources):
             'display': 'flex',
             'marginBottom': '20px'
         }),
-        html.Div([
-            dash_table.DataTable(
-                data=combined_dataset.to_dict('records'),
-                columns=[{"name": str(i), "id": str(i)} for i in combined_dataset.columns],
-                style_table={
-                    'overflowX': 'auto',
-                    'overflowY': 'auto',
-                    'height': '240px',
-                    'minWidth': '100%'
-                },
-                style_cell={
-                    'textAlign': 'left',
-                    'padding': '10px',
-                    'minWidth': '100px',
-                    'width': '150px',
-                    'maxWidth': '180px',
-                    'whiteSpace': 'normal',
-                    'height': 'auto'
-                },
-                style_header={
-                    'backgroundColor': 'rgb(230, 230, 230)',
-                    'fontWeight': 'bold',
-                    'position': 'sticky',
-                    'top': 0,
-                    'zIndex': 1000
-                },
-                style_data={
-                    'whiteSpace': 'normal',
-                    'height': 'auto'
-                },
-                style_filter={
-                    'display': 'none'
-                },
-                fixed_rows={'headers': True},
-                sort_action='native',
-                filter_action='native',
-                page_size=5,
-                page_action='native',
-                page_current=0
-            ),
-            html.Div(
-                f"Total de registros: {total_records}",
-                style={
-                    'position': 'relative',
-                    'marginTop': '-48px',
-                    'marginLeft': '10px',
-                    'color': '#666',
-                    'zIndex': 1000
-                }
-            )
-        ])
+        
+        # Single row for table
+        dbc.Row([
+            # Table using 3 columns
+            dbc.Col([
+                dash_table.DataTable(
+                    # Format the date in the data before passing to table
+                    data=[
+                        {
+                            **{
+                                'Fecha': row['Fecha'].strftime('%Y-%m-%d') if isinstance(row['Fecha'], pd.Timestamp) else row['Fecha'],
+                                **{col: row[col] for col in combined_dataset.columns if col != 'Fecha'}
+                            }
+                        }
+                        for row in combined_dataset.to_dict('records')
+                    ],
+                    columns=[{"name": str(i), "id": str(i)} for i in combined_dataset.columns],
+                    style_table={
+                        'overflowX': 'auto',
+                        'overflowY': 'auto',
+                        'height': '200px',
+                        'width': '100%',  # Ensure table uses full width of its column
+                    },
+                    style_cell={
+                        'textAlign': 'left',
+                        'padding': '5px',
+                        'minWidth': '100px',
+                        'width': '150px',
+                        'maxWidth': '180px',
+                        'whiteSpace': 'normal',
+                        'height': 'auto',
+                        'fontSize': '10px'
+                    },
+                    style_header={
+                        'backgroundColor': 'rgb(230, 230, 230)',
+                        'fontWeight': 'bold',
+                        'position': 'sticky',
+                        'top': 0,
+                        'zIndex': 1000,
+                        'fontSize': '10px'
+                    },
+                    style_data={
+                        'whiteSpace': 'normal',
+                        'height': 'auto',
+                        'fontSize': '10px'
+                    },
+                    page_size=5
+                ),
+                html.P(
+                    f"TOTAL REGISTROS: {len(combined_dataset)}",
+                    style={
+                        'fontSize': '12px',
+                        'marginTop': '5px',
+                        'fontWeight': 'bold'
+                    }
+                )
+            ], width=3, className="px-0"),  # Changed to 3 columns
+            
+            # Empty space for remaining 9 columns
+            dbc.Col([], width=9)
+        ], className="w-100 mx-0")
     ])
+
+# Move the graph update callback outside of update_main_content
+@app.callback(
+    [Output('line-graph', 'figure'), 
+     Output('bar-graph', 'figure')],
+    [Input('btn-5y', 'n_clicks'),
+     Input('btn-10y', 'n_clicks'),
+     Input('btn-15y', 'n_clicks'),
+     Input('btn-20y', 'n_clicks'),
+     Input('btn-all', 'n_clicks'),
+     Input('line-graph', 'relayoutData'),
+     Input('keyword-dropdown', 'value'),
+     Input('datasources-dropdown', 'value')]
+)
+def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, selected_sources):
+    global global_date_range
+    
+    if not selected_keyword or not selected_sources:
+        return dash.no_update, dash.no_update
+
+    # Get the data
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    
+    # Reset index and format date
+    combined_dataset = combined_dataset.reset_index()
+    date_column = combined_dataset.columns[0]  # Get the original date column name
+    combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
+    combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})  # Rename to 'Fecha'
+    
+    # Get the full date range
+    end_date = combined_dataset['Fecha'].max()
+    start_date = combined_dataset['Fecha'].min()
+    
+    # Determine which button was clicked and set the visible range accordingly
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        button_id = 'btn-all'
+    else:
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        if button_id not in ['btn-5y', 'btn-10y', 'btn-15y', 'btn-20y', 'btn-all']:
+            button_id = 'btn-all'
+
+    # Determine visible range based on button clicks or slider
+    visible_end = end_date
+    if button_id == 'btn-all':
+        visible_start = start_date
+    else:
+        years = int(button_id.split('-')[1][:-1])
+        visible_start = end_date - pd.DateOffset(years=years)
+
+    # Update range based on slider if it's been changed
+    if relayoutData and ('xaxis.range' in relayoutData or 'xaxis.range[0]' in relayoutData):
+        visible_start = pd.to_datetime(relayoutData.get('xaxis.range[0]') or relayoutData.get('xaxis.range')[0])
+        visible_end = pd.to_datetime(relayoutData.get('xaxis.range[1]') or relayoutData.get('xaxis.range')[1])
+
+    # Update the global date range
+    global_date_range['start'] = visible_start
+    global_date_range['end'] = visible_end
+
+    # Filter data based on either button selection or slider range
+    df_filtered = combined_dataset.copy()
+    if relayoutData and ('xaxis.range' in relayoutData or 'xaxis.range[0]' in relayoutData):
+        # Use slider range if it's been changed
+        visible_start = relayoutData.get('xaxis.range[0]') or relayoutData.get('xaxis.range')[0]
+        visible_end = relayoutData.get('xaxis.range[1]') or relayoutData.get('xaxis.range')[1]
+
+    # Apply the filtering using the determined range
+    df_filtered = df_filtered[
+        (df_filtered['Fecha'] >= visible_start) &
+        (df_filtered['Fecha'] <= visible_end)
+    ]
+
+    # Calculate means for the filtered period
+    means = df_filtered.drop('Fecha', axis=1).mean()
+
+    # Update bar chart with filtered means
+    bar_fig = {
+        'data': [{
+            'x': list(means.index),
+            'y': means.values,
+            'type': 'bar',
+            'text': [f'{val:.2f}' for val in means.values],
+            'textposition': 'auto',
+            'marker': {
+                'color': [color_map.get(col, '#000000') for col in means.index]
+            }
+        }],
+        'layout': {
+            'title': {
+                'text': 'Promedios',
+                'font': {'size': 12}
+            },
+            'yaxis': {
+                'title': 'Valor Promedio',
+                'range': [0, max(means.values) * 1.1]
+            },
+            'showlegend': False,
+            'height': 520,
+            'margin': {
+                'l': 40,
+                'r': 20,
+                't': 40,
+                'b': 80
+            },
+            'bargap': 0.2,
+            'xaxis': {
+                'tickangle': 45,
+                'tickfont': {'size': 10}
+            }
+        }
+    }
+    
+    # Create year ticks for January 1st of each year
+    years_data = combined_dataset[combined_dataset['Fecha'].dt.month == 1]
+    if len(years_data) == 0:  # If no January dates, get unique years and create ticks
+        unique_years = combined_dataset['Fecha'].dt.year.unique()
+        years_data = pd.DataFrame({
+            'Fecha': [pd.Timestamp(year=year, month=1, day=1) for year in unique_years]
+        })
+
+    year_ticks = years_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()
+    year_labels = years_data['Fecha'].dt.strftime('%Y').tolist()
+
+    # Create the line chart figure
+    line_fig = {
+        'data': [
+            {
+                'x': combined_dataset['Fecha'],
+                'y': combined_dataset[col],
+                'name': col,
+                'type': 'scatter',
+                'mode': 'lines',
+                'line': {
+                    'shape': 'spline',
+                    'smoothing': 1.3,
+                    'width': 2,
+                    'color': color_map.get(col, '#000000')
+                },
+                'hovertemplate': '%{y:.2f} - ' + col + '<extra></extra>'
+            } for col in combined_dataset.columns if col != 'Fecha'
+        ],
+        'layout': {
+            'title': {
+                'text': f'Tendencia de {selected_keyword} a través del tiempo',
+                'font': {'size': 12}
+            },
+            'xaxis': {
+                'title': {
+                    'text': 'Fecha',
+                    'font': {'size': 12}
+                },
+                'title_standoff': 25,
+                'tickangle': 45,
+                'showgrid': True,
+                'gridcolor': 'lightgray',
+                'tickmode': 'array',
+                'ticktext': year_labels,
+                'tickvals': year_ticks,
+                'tickfont': {'size': 8},
+                'tickposition': 'outside',
+                'tickoffset': 5,
+                'ticks': 'outside',
+                'ticklen': 8,
+                'dtick': 'M12',  # Show ticks every 12 months
+                'rangeslider': {
+                    'visible': True,
+                    'range': [start_date, end_date]
+                },
+                'domain': [0, 1],
+            },
+            'yaxis': {
+                'title': {
+                    'text': 'Valor Normalizado',
+                    'font': {'size': 12}
+                },
+                'showgrid': True,
+                'gridcolor': 'lightgray'
+            },
+            'height': 520,
+            'margin': {'l': 40, 'r': 40, 't': 40, 'b': 150},
+            'hovermode': 'x unified',
+            'legend': {
+                'orientation': 'h',
+                'yanchor': 'top',
+                'y': -0.55,
+                'xanchor': 'center',
+                'x': 0.5
+            }
+        }
+    }
+
+    # Update the layout to include both the visible range and the full range
+    layout_updates = {
+        'xaxis': {
+            'range': [visible_start, visible_end],  # Set the visible range
+            'rangeslider': {
+                'visible': True,
+                'range': [start_date, end_date]  # Keep the full range in the slider
+            }
+        }
+    }
+    
+    # Update your figure layout with these new settings
+    line_fig['layout'].update(layout_updates)
+
+    return line_fig, bar_fig
 
 # Add new callback for keyword validation
 @app.callback(
@@ -520,6 +598,16 @@ def toggle_select_all(n_clicks, current_values):
     if not current_values or len(current_values) < len(dbase_options):
         return list(dbase_options.keys())
     return [1]  # Return to default selection if all were selected
+
+# Add a new callback to update the main title
+@app.callback(
+    Output('main-title', 'children'),
+    Input('keyword-dropdown', 'value')
+)
+def update_title(selected_keyword):
+    if not selected_keyword:
+        return "Análisis de Herramientas Gerenciales"
+    return f"Análisis de: {selected_keyword}"
 
 if __name__ == '__main__':
     app.run_server(debug=True)
