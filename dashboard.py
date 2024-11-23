@@ -101,7 +101,7 @@ app.layout = dbc.Container([
         
         # Main content column - changed from width=9 to width=10
         dbc.Col([
-            html.Div(id='main-title', style={'fontSize': '40px', 'marginBottom': '15px'}),
+            html.Div(id='main-title', style={'fontSize': '30px', 'marginBottom': '15px'}),
             # Add the time range buttons to the main layout
             html.Div([
                 html.Label("Rango de tiempo:  ", style={'marginRight': '10px'}),
