@@ -21,7 +21,7 @@ sidebar = html.Div(
     [
         # Logo
         html.Img(
-            src='/assets/Management-Tools-Analysis-logo.png',
+            src='assets/Management-Tools-Analysis-logo.png',
             style={
                 'width': '40%',
                 'margin-bottom': '20px',
