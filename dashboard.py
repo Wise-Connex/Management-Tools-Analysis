@@ -29,7 +29,7 @@ sidebar = html.Div(
         html.Img(
             src='assets/Management-Tools-Analysis-logo.png',
             style={
-                'width': '50%',
+                'width': '80%',
                 'margin-bottom': '20px',
                 'display': 'block',
                 'margin-left': 'auto',
@@ -694,7 +694,6 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
     dates = combined_dataset[date_column].astype(np.int64) // 10**9
     
     # Create more points for smoother interpolation using cubic spline
-    # Create time points for interpolation (100x more points for very smooth line)
     t = np.arange(len(combined_dataset))
     t_smooth = np.linspace(0, len(combined_dataset) - 1, num=len(combined_dataset) * 100)
     
@@ -710,42 +709,97 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
     
     # Convert smooth dates back to datetime
     dates_dt_smooth = pd.to_datetime(dates_smooth * 10**9)
-    
-    # Create 3D line plot with smoothed data
-    fig = go.Figure(data=[
-        # Smoothed line
-        go.Scatter3d(
-            x=dates_dt_smooth,
-            y=y_smooth,
-            z=z_smooth,
-            mode='lines',
-            line=dict(
-                width=4,
-                color=dates_smooth,
-                colorscale='Viridis'
-            ),
-            showlegend=False,
-            hoverinfo='skip'
-        ),
-        # Original points
-        go.Scatter3d(
-            x=combined_dataset[date_column],
-            y=combined_dataset[y_axis],
-            z=combined_dataset[z_axis],
-            mode='markers',
-            marker=dict(
-                size=3,
-                color=dates,
-                colorscale='Viridis',
-                opacity=0.8
-            ),
-            hovertemplate=
-            f'Fecha: %{{x|%Y-%m-%d}}<br>' +
-            f'{y_axis}: %{{y:.2f}}<br>' +
-            f'{z_axis}: %{{z:.2f}}<extra></extra>'
-        )
-    ])
 
+    # Create frames for animation
+    n_frames = 50  # Number of frames for animation
+    frames = []
+    
+    for i in range(n_frames + 1):
+        # Calculate how many points to show in this frame
+        points_to_show = int((i / n_frames) * len(dates_dt_smooth))
+        
+        frame = go.Frame(
+            data=[
+                # Smoothed line (animated)
+                go.Scatter3d(
+                    x=dates_dt_smooth[:points_to_show],
+                    y=y_smooth[:points_to_show],
+                    z=z_smooth[:points_to_show],
+                    mode='lines',
+                    line=dict(
+                        width=4,
+                        color=dates_smooth[:points_to_show],
+                        colorscale='Viridis'
+                    ),
+                    showlegend=False,
+                    hoverinfo='skip'
+                ),
+                # Points (animated)
+                go.Scatter3d(
+                    x=combined_dataset[date_column][:points_to_show//100],
+                    y=combined_dataset[y_axis][:points_to_show//100],
+                    z=combined_dataset[z_axis][:points_to_show//100],
+                    mode='markers',
+                    marker=dict(
+                        size=3,
+                        color=dates[:points_to_show//100],
+                        colorscale='Viridis',
+                        opacity=0.8
+                    ),
+                    hovertemplate=
+                    f'Fecha: %{{x|%Y-%m-%d}}<br>' +
+                    f'{y_axis}: %{{y:.2f}}<br>' +
+                    f'{z_axis}: %{{z:.2f}}<extra></extra>'
+                )
+            ],
+            name=f'frame{i}'
+        )
+        frames.append(frame)
+
+    # Determine fixed axis ranges
+    x_range = [dates_dt_smooth.min(), dates_dt_smooth.max()]
+    y_range = [combined_dataset[y_axis].min(), combined_dataset[y_axis].max()]
+    z_range = [combined_dataset[z_axis].min(), combined_dataset[z_axis].max()]
+
+    # Create the initial figure
+    fig = go.Figure(
+        data=[
+            # Initial empty line
+            go.Scatter3d(
+                x=[dates_dt_smooth[0]],
+                y=[y_smooth[0]],
+                z=[z_smooth[0]],
+                mode='lines',
+                line=dict(
+                    width=4,
+                    color=[dates_smooth[0]],
+                    colorscale='Viridis'
+                ),
+                showlegend=False,
+                hoverinfo='skip'
+            ),
+            # Initial point
+            go.Scatter3d(
+                x=[combined_dataset[date_column].iloc[0]],
+                y=[combined_dataset[y_axis].iloc[0]],
+                z=[combined_dataset[z_axis].iloc[0]],
+                mode='markers',
+                marker=dict(
+                    size=3,
+                    color=[dates[0]],
+                    colorscale='Viridis',
+                    opacity=0.8
+                ),
+                hovertemplate=
+                f'Fecha: %{{x|%Y-%m-%d}}<br>' +
+                f'{y_axis}: %{{y:.2f}}<br>' +
+                f'{z_axis}: %{{z:.2f}}<extra></extra>'
+            )
+        ],
+        frames=frames
+    )
+
+    # Update layout with fixed axis ranges and animation settings
     fig.update_layout(
         title=dict(
             text='Visualización 3D de las Fuentes de Datos',
@@ -757,7 +811,17 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
             zaxis_title=z_axis,
             xaxis=dict(
                 type='date',
-                tickformat='%Y-%m-%d'
+                tickformat='%Y-%m-%d',
+                range=x_range,
+                autorange=False  # Disable auto-scaling
+            ),
+            yaxis=dict(
+                range=y_range,
+                autorange=False  # Disable auto-scaling
+            ),
+            zaxis=dict(
+                range=z_range,
+                autorange=False  # Disable auto-scaling
             ),
             camera=dict(
                 up=dict(x=0, y=0, z=1),
@@ -766,7 +830,66 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
             )
         ),
         margin=dict(l=0, r=0, b=0, t=30),
-        showlegend=False
+        showlegend=False,
+        updatemenus=[
+            {
+                'type': 'buttons',
+                'showactive': False,
+                'buttons': [
+                    {
+                        'label': '▶️ Play',
+                        'method': 'animate',
+                        'args': [
+                            None,
+                            {
+                                'frame': {'duration': 50, 'redraw': True},
+                                'fromcurrent': True,
+                                'transition': {'duration': 0}
+                            }
+                        ]
+                    },
+                    {
+                        'label': '⏸️ Pause',
+                        'method': 'animate',
+                        'args': [
+                            [None],
+                            {
+                                'frame': {'duration': 0, 'redraw': False},
+                                'mode': 'immediate',
+                                'transition': {'duration': 0}
+                            }
+                        ]
+                    }
+                ],
+                'direction': 'left',
+                'pad': {'r': 10, 't': 10},
+                'x': 0.1,
+                'y': 0,
+                'xanchor': 'right'
+            }
+        ],
+        sliders=[{
+            'currentvalue': {'prefix': 'Frame: '},
+            'pad': {'t': 50},
+            'len': 0.9,
+            'x': 0.1,
+            'y': 0,
+            'steps': [
+                {
+                    'args': [
+                        [f'frame{k}'],
+                        {
+                            'frame': {'duration': 0, 'redraw': False},
+                            'mode': 'immediate',
+                            'transition': {'duration': 0}
+                        }
+                    ],
+                    'label': str(k),
+                    'method': 'animate'
+                }
+                for k in range(n_frames + 1)
+            ]
+        }]
     )
 
     return fig
