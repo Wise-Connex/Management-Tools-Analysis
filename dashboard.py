@@ -4,6 +4,9 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from correlation import get_all_keywords, get_file_data2, create_combined_dataset  # Update import
 import pandas as pd
+import plotly.graph_objects as go  # Add this import
+import numpy as np  # Add this import
+from scipy.interpolate import CubicSpline
 
 # Initialize the Dash app with a Bootstrap theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
@@ -265,9 +268,31 @@ def update_main_content(selected_keyword, selected_sources):
         }
     }
 
+    # Add 3D graph controls when more than 2 sources are selected
+    html.Div([
+        html.H6("Gráfico 3D", style={'fontSize': '12px', 'marginTop': '10px'}),
+        html.Div([
+            dcc.Dropdown(
+                id='y-axis-dropdown',
+                options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
+                        for src_id in selected_sources],
+                placeholder="Seleccione eje Y",
+                style={'width': '48%', 'display': 'inline-block', 'marginRight': '4%', 'fontSize': '12px'}
+            ),
+            dcc.Dropdown(
+                id='z-axis-dropdown',
+                options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
+                        for src_id in selected_sources],
+                placeholder="Seleccione eje Z",
+                style={'width': '48%', 'display': 'inline-block', 'fontSize': '12px'}
+            ),
+        ], style={'marginBottom': '10px'}),
+        dcc.Graph(id='3d-graph', style={'height': '400px'}),
+    ]),
+    
     # Remove the nested callback and return the initial graphs
     return html.Div([
-        # Container for both graphs side by side
+        # First row: Line and Bar charts
         html.Div([
             # Line chart container
             html.Div([
@@ -298,66 +323,101 @@ def update_main_content(selected_keyword, selected_sources):
             'marginBottom': '20px'
         }),
         
-        # Single row for table
-        dbc.Row([
-            # Table using 3 columns
-            dbc.Col([
-                dash_table.DataTable(
-                    # Format the date in the data before passing to table
-                    data=[
-                        {
-                            **{
-                                'Fecha': row['Fecha'].strftime('%Y-%m-%d') if isinstance(row['Fecha'], pd.Timestamp) else row['Fecha'],
-                                **{col: row[col] for col in combined_dataset.columns if col != 'Fecha'}
+        # Second row: Table with toggle button
+        html.Div([
+            # Add toggle button
+            dbc.Button(
+                "Mostrar/Ocultar Tabla de Datos",
+                id="toggle-table-button",
+                color="primary",
+                size="sm",
+                className="mb-2",
+                style={'fontSize': '12px'}
+            ),
+            # Wrap table in a collapsible div
+            dbc.Collapse(
+                html.Div([
+                    dash_table.DataTable(
+                        # Format the date in the data before passing to table
+                        data=[
+                            {
+                                **{
+                                    'Fecha': row['Fecha'].strftime('%Y-%m-%d') if isinstance(row['Fecha'], pd.Timestamp) else row['Fecha'],
+                                    **{col: row[col] for col in combined_dataset.columns if col != 'Fecha'}
+                                }
                             }
+                            for row in combined_dataset.to_dict('records')
+                        ],
+                        columns=[{"name": str(i), "id": str(i)} for i in combined_dataset.columns],
+                        style_table={
+                            'overflowX': 'auto',
+                            'overflowY': 'auto',
+                            'height': '200px',
+                            'width': '100%',  # Ensure table uses full width of its column
+                        },
+                        style_cell={
+                            'textAlign': 'left',
+                            'padding': '5px',
+                            'minWidth': '100px',
+                            'width': '150px',
+                            'maxWidth': '180px',
+                            'whiteSpace': 'normal',
+                            'height': 'auto',
+                            'fontSize': '10px'
+                        },
+                        style_header={
+                            'backgroundColor': 'rgb(230, 230, 230)',
+                            'fontWeight': 'bold',
+                            'position': 'sticky',
+                            'top': 0,
+                            'zIndex': 1000,
+                            'fontSize': '10px'
+                        },
+                        style_data={
+                            'whiteSpace': 'normal',
+                            'height': 'auto',
+                            'fontSize': '10px'
+                        },
+                        page_size=5
+                    ),
+                    html.P(
+                        f"TOTAL REGISTROS: {len(combined_dataset)}",
+                        style={
+                            'fontSize': '12px',
+                            'marginTop': '5px',
+                            'fontWeight': 'bold'
                         }
-                        for row in combined_dataset.to_dict('records')
-                    ],
-                    columns=[{"name": str(i), "id": str(i)} for i in combined_dataset.columns],
-                    style_table={
-                        'overflowX': 'auto',
-                        'overflowY': 'auto',
-                        'height': '200px',
-                        'width': '100%',  # Ensure table uses full width of its column
-                    },
-                    style_cell={
-                        'textAlign': 'left',
-                        'padding': '5px',
-                        'minWidth': '100px',
-                        'width': '150px',
-                        'maxWidth': '180px',
-                        'whiteSpace': 'normal',
-                        'height': 'auto',
-                        'fontSize': '10px'
-                    },
-                    style_header={
-                        'backgroundColor': 'rgb(230, 230, 230)',
-                        'fontWeight': 'bold',
-                        'position': 'sticky',
-                        'top': 0,
-                        'zIndex': 1000,
-                        'fontSize': '10px'
-                    },
-                    style_data={
-                        'whiteSpace': 'normal',
-                        'height': 'auto',
-                        'fontSize': '10px'
-                    },
-                    page_size=5
+                    )
+                ]),
+                id="collapse-table",
+                is_open=False  # Initially collapsed
+            )
+        ], style={'marginBottom': '20px'}),
+        
+        # Third row: 3D Graph (only shown when more than 2 sources selected)
+        html.Div([
+            html.H6("Gráfico 3D", style={'fontSize': '12px', 'marginTop': '10px'}),
+            html.Div([
+                dcc.Dropdown(
+                    id='y-axis-dropdown',
+                    options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
+                            for src_id in selected_sources],
+                    placeholder="Seleccione eje Y",
+                    style={'width': '48%', 'display': 'inline-block', 'marginRight': '4%', 'fontSize': '12px'}
                 ),
-                html.P(
-                    f"TOTAL REGISTROS: {len(combined_dataset)}",
-                    style={
-                        'fontSize': '12px',
-                        'marginTop': '5px',
-                        'fontWeight': 'bold'
-                    }
-                )
-            ], width=3, className="px-0"),  # Changed to 3 columns
-            
-            # Empty space for remaining 9 columns
-            dbc.Col([], width=9)
-        ], className="w-100 mx-0")
+                dcc.Dropdown(
+                    id='z-axis-dropdown',
+                    options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
+                            for src_id in selected_sources],
+                    placeholder="Seleccione eje Z",
+                    style={'width': '48%', 'display': 'inline-block', 'fontSize': '12px'}
+                ),
+            ], style={'marginBottom': '10px'}),
+            dcc.Graph(
+                id='3d-graph',
+                style={'height': '600px'}  # Increased height for better visibility
+            )
+        ], className="w-100") if len(selected_sources) > 2 else html.Div()
     ])
 
 # Move the graph update callback outside of update_main_content
@@ -608,6 +668,119 @@ def update_title(selected_keyword):
     if not selected_keyword:
         return "Análisis de Herramientas Gerenciales"
     return f"Análisis de: {selected_keyword}"
+
+# Add new callback for 3D graph
+@app.callback(
+    Output('3d-graph', 'figure'),
+    [Input('y-axis-dropdown', 'value'),
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value'),
+     Input('datasources-dropdown', 'value')]
+)
+def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
+    if not all([y_axis, z_axis, selected_keyword, selected_sources]):
+        return {}
+    
+    # Get the data
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    
+    # Reset index and format date
+    combined_dataset = combined_dataset.reset_index()
+    date_column = combined_dataset.columns[0]
+    combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
+    
+    # Convert dates to numeric values for interpolation
+    dates = combined_dataset[date_column].astype(np.int64) // 10**9
+    
+    # Create more points for smoother interpolation using cubic spline
+    # Create time points for interpolation (100x more points for very smooth line)
+    t = np.arange(len(combined_dataset))
+    t_smooth = np.linspace(0, len(combined_dataset) - 1, num=len(combined_dataset) * 100)
+    
+    # Create cubic spline interpolations
+    cs_dates = CubicSpline(t, dates)
+    cs_y = CubicSpline(t, combined_dataset[y_axis])
+    cs_z = CubicSpline(t, combined_dataset[z_axis])
+    
+    # Generate smooth data points
+    dates_smooth = cs_dates(t_smooth)
+    y_smooth = cs_y(t_smooth)
+    z_smooth = cs_z(t_smooth)
+    
+    # Convert smooth dates back to datetime
+    dates_dt_smooth = pd.to_datetime(dates_smooth * 10**9)
+    
+    # Create 3D line plot with smoothed data
+    fig = go.Figure(data=[
+        # Smoothed line
+        go.Scatter3d(
+            x=dates_dt_smooth,
+            y=y_smooth,
+            z=z_smooth,
+            mode='lines',
+            line=dict(
+                width=4,
+                color=dates_smooth,
+                colorscale='Viridis'
+            ),
+            showlegend=False,
+            hoverinfo='skip'
+        ),
+        # Original points
+        go.Scatter3d(
+            x=combined_dataset[date_column],
+            y=combined_dataset[y_axis],
+            z=combined_dataset[z_axis],
+            mode='markers',
+            marker=dict(
+                size=3,
+                color=dates,
+                colorscale='Viridis',
+                opacity=0.8
+            ),
+            hovertemplate=
+            f'Fecha: %{{x|%Y-%m-%d}}<br>' +
+            f'{y_axis}: %{{y:.2f}}<br>' +
+            f'{z_axis}: %{{z:.2f}}<extra></extra>'
+        )
+    ])
+
+    fig.update_layout(
+        title=dict(
+            text='Visualización 3D de las Fuentes de Datos',
+            font=dict(size=12)
+        ),
+        scene=dict(
+            xaxis_title='Fecha',
+            yaxis_title=y_axis,
+            zaxis_title=z_axis,
+            xaxis=dict(
+                type='date',
+                tickformat='%Y-%m-%d'
+            ),
+            camera=dict(
+                up=dict(x=0, y=0, z=1),
+                center=dict(x=0, y=0, z=0),
+                eye=dict(x=1.5, y=1.5, z=1.5)
+            )
+        ),
+        margin=dict(l=0, r=0, b=0, t=30),
+        showlegend=False
+    )
+
+    return fig
+
+# Add new callback for toggle button (add this near your other callbacks)
+@app.callback(
+    Output("collapse-table", "is_open"),
+    [Input("toggle-table-button", "n_clicks")],
+    [State("collapse-table", "is_open")],
+)
+def toggle_table(n_clicks, is_open):
+    if n_clicks:
+        return not is_open
+    return is_open
 
 if __name__ == '__main__':
     app.run_server(debug=True)
