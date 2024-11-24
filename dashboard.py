@@ -826,10 +826,92 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources, n_clicks
         )
     )
 
-    # Create figures with just the line trace
+    # Get date range for x-axis
+    date_min = combined_dataset[date_column].min()
+    date_max = combined_dataset[date_column].max()
+
+    # Common layout updates for all views
+    common_layout = dict(
+        scene=dict(
+            xaxis_title="Fecha",
+            yaxis_title=y_axis,
+            zaxis_title=z_axis,
+            # Set fixed ranges for axes
+            xaxis=dict(
+                range=[date_min, date_max],
+                ticktext=years,
+                tickvals=year_ticks,
+                tickformat='%Y',
+                dtick="M12",
+                tickmode='array',
+                tickangle=45,
+                tickfont=dict(size=8)  # Reduced font size for x-axis values
+            ),
+            yaxis=dict(
+                range=[0, 100],
+                tickmode='linear',
+                tick0=0,
+                dtick=20,
+                tickfont=dict(size=8)  # Reduced font size for y-axis values
+            ),
+            zaxis=dict(
+                range=[0, 100],
+                tickmode='linear',
+                tick0=0,
+                dtick=20,
+                tickfont=dict(size=8)  # Reduced font size for z-axis values
+            )
+        ),
+        margin=dict(l=0, r=0, t=30, b=0)
+    )
+
+    # Left viewport (X-Y frontal view)
     fig1 = go.Figure(data=[base_trace])
+    fig1.update_layout(
+        title=dict(
+            text=f"Vista {y_axis}",
+            font=dict(size=12),
+            x=0.5,
+            xanchor='center'
+        ),
+        scene_camera=dict(
+            eye=dict(x=0, y=0, z=2),  # Camera looking straight at X-Y plane
+            up=dict(x=0, y=1, z=0)
+        ),
+        **common_layout
+    )
+    
+    # Middle viewport (Isometric view)
     fig2 = go.Figure(data=[base_trace])
+    fig2.update_layout(
+        title=dict(
+            text="Vista isométrica",
+            font=dict(size=12),
+            x=0.5,
+            xanchor='center'
+        ),
+        scene_camera=dict(
+            eye=dict(x=1.5, y=1.5, z=1.5),  # Isometric view
+            up=dict(x=0, y=0, z=1)
+        ),
+        **common_layout
+    )
+    
+    # Right viewport (X-Z frontal view)
     fig3 = go.Figure(data=[base_trace])
+    fig3.update_layout(
+        title=dict(
+            text=f"Vista {z_axis}",
+            font=dict(size=12),
+            x=0.5,
+            xanchor='center'
+        ),
+        scene_camera=dict(
+            eye=dict(x=0, y=-2, z=0),  # Camera looking straight at X-Z plane
+            up=dict(x=0, y=0, z=1)
+        ),
+        **common_layout
+    )
 
     return fig1, fig2, fig3, new_frequency
 
