@@ -61,27 +61,18 @@ sidebar = html.Div(
         # Update the dropdown component
         html.Div([
             html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
-            dcc.Dropdown(
-                id='datasources-dropdown',
-                options=[
-                    {'label': source, 'value': id} 
-                    for id, source in dbase_options.items()
-                ],
-                value=[1],  # Default to Google Trends selected
-                multi=True,
-                placeholder="Seleccione una o más fuentes de datos",
-                className="mb-4",
-                style={'fontSize': '12px'}
-            ),
-            # Add Select All button
-            dbc.Button(
-                "Seleccionar Todo",
-                id="select-all-button",
-                color="primary",
-                size="sm",
-                className="mb-2",
-                style={'fontSize': '12px'}
-            ),
+            # Replace dropdown with button group
+            html.Div([
+                dbc.Button(
+                    source,
+                    id=f"toggle-source-{id}",
+                    color="primary",
+                    outline=True,  # Start with outline style
+                    size="sm",
+                    className="me-2 mb-2",
+                    style={'fontSize': '12px'}
+                ) for id, source in dbase_options.items()
+            ], id='source-buttons-container'),
             # Add validation message div
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
@@ -140,12 +131,18 @@ color_map = {
 # Add callback to update main content based on selections
 @app.callback(
     Output('main-content', 'children'),
-    [Input('keyword-dropdown', 'value'),
-     Input('datasources-dropdown', 'value')]  # Remove line-graph relayoutData
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
+    Input('keyword-dropdown', 'value')
 )
-def update_main_content(selected_keyword, selected_sources):
+def update_main_content(*args):
+    button_states = args[:-1]
+    selected_keyword = args[-1]
+    
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
     if not selected_keyword or not selected_sources:
-        return html.Div("Por favor, selecciones una Herrmienta y al menos una Fuente de Datos.")
+        return html.Div("Por favor, seleccione una Herramienta y al menos una Fuente de Datos.")
     
     datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
     combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
@@ -492,7 +489,7 @@ def update_main_content(selected_keyword, selected_sources):
         ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     ])
 
-# Move the graph update callback outside of update_main_content
+# Update the graph callback to use button states instead of dropdown
 @app.callback(
     [Output('line-graph', 'figure'), 
      Output('bar-graph', 'figure')],
@@ -502,11 +499,14 @@ def update_main_content(selected_keyword, selected_sources):
      Input('btn-20y', 'n_clicks'),
      Input('btn-all', 'n_clicks'),
      Input('line-graph', 'relayoutData'),
-     Input('keyword-dropdown', 'value'),
-     Input('datasources-dropdown', 'value')]
+     Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
-def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, selected_sources):
+def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *button_states):
     global global_date_range
+    
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
     
     if not selected_keyword or not selected_sources:
         return dash.no_update, dash.no_update
@@ -712,9 +712,10 @@ def validate_keyword(selected_keyword):
 # Add callback to validate selection
 @app.callback(
     Output('datasources-validation', 'children'),
-    Input('datasources-dropdown', 'value')
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
-def validate_datasources(selected_sources):
+def validate_datasources(*button_states):
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
     if not selected_sources:
         return "Por favor, seleccione al menos una fuente de datos."
     return ""
@@ -750,11 +751,18 @@ def update_title(selected_keyword):
     [Input('y-axis-dropdown', 'value'),
      Input('z-axis-dropdown', 'value'),
      Input('keyword-dropdown', 'value'),
-     Input('datasources-dropdown', 'value'),
-     Input('toggle-frequency-button', 'n_clicks')],
+     Input('toggle-frequency-button', 'n_clicks')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
     [State('frequency-label', 'children')]
 )
-def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources, n_clicks, current_frequency):
+def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
+    # Split args into button_states and current_frequency
+    button_states = args[:-1]
+    current_frequency = args[-1]
+    
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
     if not all([y_axis, z_axis, selected_keyword, selected_sources]):
         return {}, {}, {}, current_frequency
 
@@ -764,9 +772,21 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources, n_clicks
     
     # Reset index and format date
     combined_dataset = combined_dataset.reset_index()
-    date_column = combined_dataset.columns[0]
+    date_column = combined_dataset.columns[0]  # Get the date column name
     combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
     
+    # Get the actual column names from the dataset
+    available_columns = combined_dataset.columns.tolist()
+    if date_column in available_columns:
+        available_columns.remove(date_column)
+    
+    # Find the matching column names
+    y_column = next((col for col in available_columns if y_axis in col), None)
+    z_column = next((col for col in available_columns if z_axis in col), None)
+    
+    if not y_column or not z_column:
+        return {}, {}, {}, current_frequency
+
     # Toggle frequency based on button clicks
     is_annual = current_frequency == "Anual"
     new_frequency = "Mensual" if is_annual else "Anual"
@@ -778,38 +798,79 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources, n_clicks
         # Create aggregation dictionary
         agg_dict = {}
         for column in combined_dataset.columns:
+            # Check if the column name contains 'Crossref'
             if 'Crossref' in column:
-                agg_dict[column] = 'sum'
+                agg_dict[column] = 'sum'  # Sum for Crossref data
             else:
+                # Mean for all other sources (Google Trends, Google Books, Bain)
                 agg_dict[column] = 'mean'
+        
+        print("Aggregation methods:", agg_dict)  # Debug print to verify aggregation methods
         
         # Apply different aggregations for different columns
         combined_dataset = combined_dataset.groupby(pd.Grouper(freq='Y')).agg(agg_dict)
+        
+        # Print sample of results to verify
+        print("\nSample of aggregated data:")
+        print(combined_dataset.head())
+        
         combined_dataset = combined_dataset.reset_index()
-
-    # Create year ticks
-    years = combined_dataset[date_column].dt.year.unique()
-    year_ticks = pd.to_datetime([f"{year}-01-01" for year in years])
+        
+        # Ensure we have data for the first day of each year
+        combined_dataset[date_column] = combined_dataset[date_column].apply(
+            lambda x: pd.Timestamp(year=x.year, month=1, day=1)
+        )
     
+    # Special handling for Crossref data
+    if 'Crossref' in y_column or 'Crossref' in z_column:
+        # Fill any missing values with 0 for Crossref data
+        combined_dataset = combined_dataset.fillna(0)
+        
+        # Ensure data is properly normalized between 0 and 100
+        for col in [y_column, z_column]:
+            if 'Crossref' in col:
+                max_val = combined_dataset[col].max()
+                if max_val > 0:  # Avoid division by zero
+                    combined_dataset[col] = (combined_dataset[col] / max_val) * 100
+
     # Convert dates to numeric values for interpolation
     dates = combined_dataset[date_column].astype(np.int64) // 10**9
     
-    # Create more points for smoother interpolation using cubic spline
-    t = np.arange(len(combined_dataset))
-    t_smooth = np.linspace(0, len(combined_dataset) - 1, num=len(combined_dataset) * 100)
+    # Create more points for smoother interpolation
+    if not is_annual:
+        # More points for monthly data
+        num_points = len(combined_dataset) * 100
+    else:
+        # Fewer points for annual data to avoid over-smoothing
+        num_points = len(combined_dataset) * 12
     
-    # Create cubic spline interpolations
-    cs_dates = CubicSpline(t, dates)
-    cs_y = CubicSpline(t, combined_dataset[y_axis])
-    cs_z = CubicSpline(t, combined_dataset[z_axis])
+    t = np.arange(len(combined_dataset))
+    t_smooth = np.linspace(0, len(combined_dataset) - 1, num=num_points)
+    
+    # Create cubic spline interpolations with appropriate boundary conditions
+    cs_dates = CubicSpline(t, dates, bc_type='natural')
+    cs_y = CubicSpline(t, combined_dataset[y_column], bc_type='natural')
+    cs_z = CubicSpline(t, combined_dataset[z_column], bc_type='natural')
     
     # Generate smooth data points
     dates_smooth = cs_dates(t_smooth)
     y_smooth = cs_y(t_smooth)
     z_smooth = cs_z(t_smooth)
     
+    # Ensure interpolated values stay within bounds
+    y_smooth = np.clip(y_smooth, 0, 100)
+    z_smooth = np.clip(z_smooth, 0, 100)
+
     # Convert smooth dates back to datetime
     dates_dt_smooth = pd.to_datetime(dates_smooth * 10**9)
+
+    # Calculate years for x-axis ticks
+    years = combined_dataset[date_column].dt.year.unique()
+    year_ticks = [pd.Timestamp(year=year, month=1, day=1) for year in years]
+    
+    # Get date range for x-axis
+    date_min = combined_dataset[date_column].min()
+    date_max = combined_dataset[date_column].max()
 
     # Update the base trace with hover information
     base_trace = go.Scatter3d(
@@ -826,10 +887,6 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources, n_clicks
         )
     )
 
-    # Get date range for x-axis
-    date_min = combined_dataset[date_column].min()
-    date_max = combined_dataset[date_column].max()
-
     # Common layout updates for all views
     common_layout = dict(
         scene=dict(
@@ -845,21 +902,21 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources, n_clicks
                 dtick="M12",
                 tickmode='array',
                 tickangle=45,
-                tickfont=dict(size=8)  # Reduced font size for x-axis values
+                tickfont=dict(size=8)
             ),
             yaxis=dict(
                 range=[0, 100],
                 tickmode='linear',
                 tick0=0,
                 dtick=20,
-                tickfont=dict(size=8)  # Reduced font size for y-axis values
+                tickfont=dict(size=8)
             ),
             zaxis=dict(
                 range=[0, 100],
                 tickmode='linear',
                 tick0=0,
                 dtick=20,
-                tickfont=dict(size=8)  # Reduced font size for z-axis values
+                tickfont=dict(size=8)
             )
         ),
         margin=dict(l=0, r=0, t=30, b=0)
@@ -925,6 +982,39 @@ def toggle_table(n_clicks, is_open):
     if n_clicks:
         return not is_open
     return is_open
+
+# Update the callback for button toggles
+@app.callback(
+    [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
+    [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()],
+    [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def toggle_sources(*args):
+    n_clicks = args[:len(dbase_options)]
+    current_states = args[len(dbase_options):]
+    
+    # Get the button that triggered the callback
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        # Initial load - default to Google Trends selected
+        return [id != 1 for id in dbase_options.keys()]
+    
+    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    # Extract the ID directly from the button_id
+    source_id = int(button_id.split('-')[-1])
+    
+    # Find the index in dbase_options that matches this ID
+    clicked_index = list(dbase_options.keys()).index(source_id)
+    
+    # Update the states list
+    new_states = list(current_states)
+    new_states[clicked_index] = not new_states[clicked_index]
+    
+    # Ensure at least one source is selected
+    if all(new_states):
+        new_states[clicked_index] = False
+    
+    return new_states
 
 if __name__ == '__main__':
     app.run_server(debug=True)
