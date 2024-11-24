@@ -13,9 +13,9 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_
 # Define database options as a global variable
 dbase_options = {
     1: "Google Trends",
-    2: "Google Books Ngrams", 
-    3: "Bain - Usabilidad",
     4: "Crossref.org",
+    2: "Google Books Ngrams",
+    3: "Bain - Usabilidad",
     5: "Bain - Satisfacción"
 }
 
@@ -104,13 +104,13 @@ app.layout = dbc.Container([
             html.Div(id='main-title', style={'fontSize': '30px', 'marginBottom': '15px'}),
             # Add the time range buttons to the main layout
             html.Div([
-                html.Label("Rango de tiempo:  ", style={'marginRight': '10px'}),
+                html.Label("Rango de tiempo:  ", style={'marginRight': '12px', 'fontSize': '14px'}),
                 dbc.ButtonGroup([
-                    dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0),
-                    dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0),
-                    dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0),
-                    dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0),
-                    dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0),
+                    dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0, style={'fontSize': '11px'}),
                 ], className="mb-3")
             ], style={'marginBottom': '10px'}),
             # Main content div
@@ -268,27 +268,49 @@ def update_main_content(selected_keyword, selected_sources):
         }
     }
 
-    # Add 3D graph controls when more than 2 sources are selected
+    # Add 3D graph controls when more than 1 sources are selected
     html.Div([
-        html.H6("Gráfico 3D", style={'fontSize': '12px', 'marginTop': '10px'}),
+        html.H6("Evolución Temporal", style={'fontSize': '20px', 'marginTop': '10px'}),
         html.Div([
+            # Add toggle button for data frequency
+            dbc.Button(
+                "Cambiar Frecuencia",
+                id="toggle-frequency-button",
+                color="primary",
+                size="sm",
+                className="me-2",
+                style={'fontSize': '12px'}
+            ),
+            html.Span(
+                "Mensual",
+                id="frequency-label",
+                style={'fontSize': '12px', 'marginRight': '20px'}
+            ),
+            # Existing dropdowns
             dcc.Dropdown(
                 id='y-axis-dropdown',
                 options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
                         for src_id in selected_sources],
+                value=dbase_options[selected_sources[0]] if len(selected_sources) > 0 else None,  # Prepopulate with first source
                 placeholder="Seleccione eje Y",
-                style={'width': '48%', 'display': 'inline-block', 'marginRight': '4%', 'fontSize': '12px'}
+                style={'fontSize': '12px'}
             ),
             dcc.Dropdown(
                 id='z-axis-dropdown',
                 options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
                         for src_id in selected_sources],
+                value=dbase_options[selected_sources[1]] if len(selected_sources) > 1 else None,  # Prepopulate with second source
                 placeholder="Seleccione eje Z",
-                style={'width': '48%', 'display': 'inline-block', 'fontSize': '12px'}
+                style={'fontSize': '12px'}
             ),
         ], style={'marginBottom': '10px'}),
-        dcc.Graph(id='3d-graph', style={'height': '400px'}),
-    ]),
+        # Update this section to include all three graph views
+        html.Div([
+            dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
+            dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
+            dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
+        ], style={'display': 'flex', 'justifyContent': 'space-between'})
+    ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     
     # Remove the nested callback and return the initial graphs
     return html.Div([
@@ -299,7 +321,8 @@ def update_main_content(selected_keyword, selected_sources):
                 dcc.Graph(
                     id='line-graph',
                     figure=fig,
-                    style={'height': '520px'}
+                    style={'height': '520px'},
+                    config={'displaylogo': False}
                 ),
             ], style={
                 'width': '80%',
@@ -311,7 +334,8 @@ def update_main_content(selected_keyword, selected_sources):
                 dcc.Graph(
                     id='bar-graph',
                     figure=initial_bar_fig,
-                    style={'height': '520px'}
+                    style={'height': '520px'},
+                    config={'displaylogo': False}
                 ),
             ], style={
                 'width': '20%',
@@ -394,30 +418,78 @@ def update_main_content(selected_keyword, selected_sources):
             )
         ], style={'marginBottom': '20px'}),
         
-        # Third row: 3D Graph (only shown when more than 2 sources selected)
+        # Third row: 3D Graph (only shown when 2 or more sources selected)
         html.Div([
-            html.H6("Gráfico 3D", style={'fontSize': '12px', 'marginTop': '10px'}),
+            html.H6("Evolución Temporal", style={'fontSize': '20px', 'marginTop': '10px'}),
             html.Div([
-                dcc.Dropdown(
-                    id='y-axis-dropdown',
-                    options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
-                            for src_id in selected_sources],
-                    placeholder="Seleccione eje Y",
-                    style={'width': '48%', 'display': 'inline-block', 'marginRight': '4%', 'fontSize': '12px'}
-                ),
-                dcc.Dropdown(
-                    id='z-axis-dropdown',
-                    options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
-                            for src_id in selected_sources],
-                    placeholder="Seleccione eje Z",
-                    style={'width': '48%', 'display': 'inline-block', 'fontSize': '12px'}
-                ),
-            ], style={'marginBottom': '10px'}),
-            dcc.Graph(
-                id='3d-graph',
-                style={'height': '600px'}  # Increased height for better visibility
-            )
-        ], className="w-100") if len(selected_sources) > 2 else html.Div()
+                # Left section: Toggle button and frequency label
+                html.Div([
+                    dbc.Button(
+                        "Cambiar Frecuencia",
+                        id="toggle-frequency-button",
+                        color="primary",
+                        size="sm",
+                        className="me-2",
+                        style={'fontSize': '12px'}
+                    ),
+                    html.Span(
+                        "Mensual",
+                        id="frequency-label",
+                        style={'fontSize': '12px'}
+                    ),
+                ], style={
+                    'display': 'inline-block',
+                    'width': '20%',
+                    'verticalAlign': 'middle'
+                }),
+                
+                # Right section: Axis dropdowns
+                html.Div([
+                    dcc.Dropdown(
+                        id='y-axis-dropdown',
+                        options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
+                                for src_id in selected_sources],
+                        value=dbase_options[selected_sources[0]] if len(selected_sources) > 0 else None,  # Prepopulate with first source
+                        placeholder="Seleccione eje Y",
+                        style={'fontSize': '12px'}
+                    ),
+                ], style={
+                    'display': 'inline-block',
+                    'width': '38%',
+                    'paddingLeft': '1%',
+                    'paddingRight': '1%',
+                    'verticalAlign': 'middle'
+                }),
+                
+                html.Div([
+                    dcc.Dropdown(
+                        id='z-axis-dropdown',
+                        options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
+                                for src_id in selected_sources],
+                        value=dbase_options[selected_sources[1]] if len(selected_sources) > 1 else None,  # Prepopulate with second source
+                        placeholder="Seleccione eje Z",
+                        style={'fontSize': '12px'}
+                    ),
+                ], style={
+                    'display': 'inline-block',
+                    'width': '38%',
+                    'paddingLeft': '1%',
+                    'verticalAlign': 'middle'
+                }),
+            ], style={
+                'display': 'flex',
+                'alignItems': 'center',
+                'justifyContent': 'space-between',
+                'width': '100%',
+                'marginBottom': '10px'
+            }),
+            # Update this section to include all three graph views
+            html.Div([
+                dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
+                dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
+                dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
+            ], style={'display': 'flex', 'justifyContent': 'space-between'})
+        ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     ])
 
 # Move the graph update callback outside of update_main_content
@@ -669,18 +741,23 @@ def update_title(selected_keyword):
         return "Análisis de Herramientas Gerenciales"
     return f"Análisis de: {selected_keyword}"
 
-# Add new callback for 3D graph
+# Update the 3D graph callback
 @app.callback(
-    Output('3d-graph', 'figure'),
+    [Output('3d-graph-view-1', 'figure'),
+     Output('3d-graph-view-2', 'figure'),
+     Output('3d-graph-view-3', 'figure'),
+     Output('frequency-label', 'children')],
     [Input('y-axis-dropdown', 'value'),
      Input('z-axis-dropdown', 'value'),
      Input('keyword-dropdown', 'value'),
-     Input('datasources-dropdown', 'value')]
+     Input('datasources-dropdown', 'value'),
+     Input('toggle-frequency-button', 'n_clicks')],
+    [State('frequency-label', 'children')]
 )
-def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
+def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources, n_clicks, current_frequency):
     if not all([y_axis, z_axis, selected_keyword, selected_sources]):
-        return {}
-    
+        return {}, {}, {}, current_frequency
+
     # Get the data
     datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
     combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
@@ -689,6 +766,30 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
     combined_dataset = combined_dataset.reset_index()
     date_column = combined_dataset.columns[0]
     combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
+    
+    # Toggle frequency based on button clicks
+    is_annual = current_frequency == "Anual"
+    new_frequency = "Mensual" if is_annual else "Anual"
+    
+    if not is_annual:  # If switching to annual
+        # Group by year with different aggregations for different columns
+        combined_dataset = combined_dataset.set_index(date_column)
+        
+        # Create aggregation dictionary
+        agg_dict = {}
+        for column in combined_dataset.columns:
+            if 'Crossref' in column:
+                agg_dict[column] = 'sum'
+            else:
+                agg_dict[column] = 'mean'
+        
+        # Apply different aggregations for different columns
+        combined_dataset = combined_dataset.groupby(pd.Grouper(freq='Y')).agg(agg_dict)
+        combined_dataset = combined_dataset.reset_index()
+
+    # Create year ticks
+    years = combined_dataset[date_column].dt.year.unique()
+    year_ticks = pd.to_datetime([f"{year}-01-01" for year in years])
     
     # Convert dates to numeric values for interpolation
     dates = combined_dataset[date_column].astype(np.int64) // 10**9
@@ -710,189 +811,27 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, selected_sources):
     # Convert smooth dates back to datetime
     dates_dt_smooth = pd.to_datetime(dates_smooth * 10**9)
 
-    # Create frames for animation
-    n_frames = 50  # Number of frames for animation
-    frames = []
-    
-    for i in range(n_frames + 1):
-        # Calculate how many points to show in this frame
-        points_to_show = int((i / n_frames) * len(dates_dt_smooth))
-        
-        frame = go.Frame(
-            data=[
-                # Smoothed line (animated)
-                go.Scatter3d(
-                    x=dates_dt_smooth[:points_to_show],
-                    y=y_smooth[:points_to_show],
-                    z=z_smooth[:points_to_show],
-                    mode='lines',
-                    line=dict(
-                        width=4,
-                        color=dates_smooth[:points_to_show],
-                        colorscale='Viridis'
-                    ),
-                    showlegend=False,
-                    hoverinfo='skip'
-                ),
-                # Points (animated)
-                go.Scatter3d(
-                    x=combined_dataset[date_column][:points_to_show//100],
-                    y=combined_dataset[y_axis][:points_to_show//100],
-                    z=combined_dataset[z_axis][:points_to_show//100],
-                    mode='markers',
-                    marker=dict(
-                        size=3,
-                        color=dates[:points_to_show//100],
-                        colorscale='Viridis',
-                        opacity=0.8
-                    ),
-                    hovertemplate=
-                    f'Fecha: %{{x|%Y-%m-%d}}<br>' +
-                    f'{y_axis}: %{{y:.2f}}<br>' +
-                    f'{z_axis}: %{{z:.2f}}<extra></extra>'
-                )
-            ],
-            name=f'frame{i}'
-        )
-        frames.append(frame)
-
-    # Determine fixed axis ranges
-    x_range = [dates_dt_smooth.min(), dates_dt_smooth.max()]
-    y_range = [combined_dataset[y_axis].min(), combined_dataset[y_axis].max()]
-    z_range = [combined_dataset[z_axis].min(), combined_dataset[z_axis].max()]
-
-    # Create the initial figure
-    fig = go.Figure(
-        data=[
-            # Initial empty line
-            go.Scatter3d(
-                x=[dates_dt_smooth[0]],
-                y=[y_smooth[0]],
-                z=[z_smooth[0]],
-                mode='lines',
-                line=dict(
-                    width=4,
-                    color=[dates_smooth[0]],
-                    colorscale='Viridis'
-                ),
-                showlegend=False,
-                hoverinfo='skip'
-            ),
-            # Initial point
-            go.Scatter3d(
-                x=[combined_dataset[date_column].iloc[0]],
-                y=[combined_dataset[y_axis].iloc[0]],
-                z=[combined_dataset[z_axis].iloc[0]],
-                mode='markers',
-                marker=dict(
-                    size=3,
-                    color=[dates[0]],
-                    colorscale='Viridis',
-                    opacity=0.8
-                ),
-                hovertemplate=
-                f'Fecha: %{{x|%Y-%m-%d}}<br>' +
-                f'{y_axis}: %{{y:.2f}}<br>' +
-                f'{z_axis}: %{{z:.2f}}<extra></extra>'
-            )
-        ],
-        frames=frames
-    )
-
-    # Update layout with fixed axis ranges and animation settings
-    fig.update_layout(
-        title=dict(
-            text='Visualización 3D de las Fuentes de Datos',
-            font=dict(size=12)
-        ),
-        scene=dict(
-            xaxis_title='Fecha',
-            yaxis_title=y_axis,
-            zaxis_title=z_axis,
-            xaxis=dict(
-                type='date',
-                tickformat='%Y-%m-%d',
-                range=x_range,
-                autorange=False  # Disable auto-scaling
-            ),
-            yaxis=dict(
-                range=y_range,
-                autorange=False  # Disable auto-scaling
-            ),
-            zaxis=dict(
-                range=z_range,
-                autorange=False  # Disable auto-scaling
-            ),
-            camera=dict(
-                up=dict(x=0, y=0, z=1),
-                center=dict(x=0, y=0, z=0),
-                eye=dict(x=1.5, y=1.5, z=1.5)
-            )
-        ),
-        margin=dict(l=0, r=0, b=0, t=30),
+    # Update the base trace with hover information
+    base_trace = go.Scatter3d(
+        x=dates_dt_smooth,
+        y=y_smooth,
+        z=z_smooth,
+        mode='lines',
+        line=dict(width=4, color=dates_smooth, colorscale='Viridis'),
         showlegend=False,
-        updatemenus=[
-            {
-                'type': 'buttons',
-                'showactive': False,
-                'buttons': [
-                    {
-                        'label': '▶️ Play',
-                        'method': 'animate',
-                        'args': [
-                            None,
-                            {
-                                'frame': {'duration': 50, 'redraw': True},
-                                'fromcurrent': True,
-                                'transition': {'duration': 0}
-                            }
-                        ]
-                    },
-                    {
-                        'label': '⏸️ Pause',
-                        'method': 'animate',
-                        'args': [
-                            [None],
-                            {
-                                'frame': {'duration': 0, 'redraw': False},
-                                'mode': 'immediate',
-                                'transition': {'duration': 0}
-                            }
-                        ]
-                    }
-                ],
-                'direction': 'left',
-                'pad': {'r': 10, 't': 10},
-                'x': 0.1,
-                'y': 0,
-                'xanchor': 'right'
-            }
-        ],
-        sliders=[{
-            'currentvalue': {'prefix': 'Frame: '},
-            'pad': {'t': 50},
-            'len': 0.9,
-            'x': 0.1,
-            'y': 0,
-            'steps': [
-                {
-                    'args': [
-                        [f'frame{k}'],
-                        {
-                            'frame': {'duration': 0, 'redraw': False},
-                            'mode': 'immediate',
-                            'transition': {'duration': 0}
-                        }
-                    ],
-                    'label': str(k),
-                    'method': 'animate'
-                }
-                for k in range(n_frames + 1)
-            ]
-        }]
+        hovertemplate=(
+            "<b>Fecha:</b> %{x|%Y-%m-%d}<br>" +
+            f"<b>{y_axis}:</b> %{{y:.2f}}<br>" +
+            f"<b>{z_axis}:</b> %{{z:.2f}}<extra></extra>"
+        )
     )
 
-    return fig
+    # Create figures with just the line trace
+    fig1 = go.Figure(data=[base_trace])
+    fig2 = go.Figure(data=[base_trace])
+    fig3 = go.Figure(data=[base_trace])
+
+    return fig1, fig2, fig3, new_frequency
 
 # Add new callback for toggle button (add this near your other callbacks)
 @app.callback(
