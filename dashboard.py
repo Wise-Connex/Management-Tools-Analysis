@@ -9,7 +9,38 @@ import numpy as np  # Add this import
 from scipy.interpolate import CubicSpline
 
 # Initialize the Dash app with a Bootstrap theme
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
+app = dash.Dash(
+    __name__, 
+    external_stylesheets=[dbc.themes.BOOTSTRAP], 
+    suppress_callback_exceptions=True,
+    title='Management Tools Analysis'
+)
+
+# Define custom HTML index string with additional favicon tags
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+        <link rel="manifest" href="/assets/site.webmanifest">
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>
+'''
+
 # Define database options as a global variable
 dbase_options = {
     1: "Google Trends",
@@ -37,7 +68,6 @@ sidebar = html.Div(
             }
         ),
         
-        #html.H4("Menú", className="display-6 mb-4 fs-4"),
         html.Hr(),
         
         # Keyword dropdown (single selection)
@@ -81,17 +111,64 @@ sidebar = html.Div(
         'background-color': '#f8f9fa',
         'padding': '20px',
         'height': '100vh',
+        'position': 'fixed',  # Make sidebar fixed
+        'width': 'inherit',   # Inherit width from parent
+        'overflow-y': 'auto', # Add scroll if content is too long
+        'top': 0,            # Align to top
+        'left': 0,           # Align to left
+        'bottom': 0,         # Extend to bottom
     }
 )
 
-# Define the main layout
+# Add the membrete div before the main layout
+membrete = html.Div(
+    [
+        html.Div([
+            html.H3("Análisis Estadístico Correlacional: Técnicas y Herramientas Gerenciales", className="mb-0"),
+            html.H5("Enfoque Central de la Investigación Doctoral: Dicotomía Ontológica en las 'Modas Gerenciales'", className="mb-0"),
+            html.P([
+                "Autor de la Tesis: ", html.B("Diomar Anez"), " | Desarrollador en Python: ", html.B("Dimar Anez")
+            ], className="mb-0"),
+            html.P([
+                "Equipo de desarrollo: ",
+                html.A("Wise Connex", href="http://wiseconnex.com", target="_blank"),
+                " - (c)2024 | Code: ",
+                html.A("https://github.com/Wise-Connex/Management-Tools-Analysis.git", 
+                      href="https://github.com/Wise-Connex/Management-Tools-Analysis.git",
+                      target="_blank")
+            ], className="mb-0"),
+        ])
+    ],
+    style={
+        'position': 'sticky',  # Make it sticky
+        'top': 0,             # Stick to top
+        'zIndex': 1000,       # Ensure it stays on top of other content
+        'backgroundColor': '#f8f9fa',
+        'padding': '10px 20px',
+        'borderBottom': '1px solid #dee2e6',
+        'fontSize': '12px',
+        'textAlign': 'center',
+        'width': '100%',
+        'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+        'height': 'auto',
+        'marginBottom': '15px'
+    }
+)
+
+# Update the main layout container
 app.layout = dbc.Container([
     dbc.Row([
-        # Sidebar column - changed from width=3 to width=2 (20% of 12 columns)
-        dbc.Col(sidebar, width=2, className="bg-light"),
-        
-        # Main content column - changed from width=9 to width=10
+        # Sidebar column - width=2 (20% of 12 columns)
         dbc.Col([
+            # Wrapper div to maintain space
+            html.Div(style={'width': '100%', 'height': '100vh'}),
+            # Sidebar
+            sidebar
+        ], width=2, className="bg-light"),
+        
+        # Main content column - width=10
+        dbc.Col([
+            membrete,
             html.Div(id='main-title', style={'fontSize': '30px', 'marginBottom': '15px'}),
             # Add the time range buttons to the main layout
             html.Div([
@@ -1045,7 +1122,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
         )
     )
 
-    # Common layout updates for all views
+    # Update common_layout with left-aligned button
     common_layout = dict(
         scene=dict(
             xaxis_title="Fecha",
@@ -1077,7 +1154,28 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                 tickfont=dict(size=8)
             )
         ),
-        margin=dict(l=0, r=0, t=30, b=0)
+        margin=dict(l=0, r=0, t=30, b=0),
+        updatemenus=[
+            dict(
+                type='buttons',
+                showactive=False,
+                buttons=[
+                    dict(
+                        label='Restablecer Vista',
+                        method='relayout',
+                        args=[{'scene.camera': dict(
+                            eye=dict(x=0, y=0, z=2),
+                            up=dict(x=0, y=1, z=0)
+                        )}]
+                    )
+                ],
+                x=0.1,  # Changed from 0.9 to 0.1
+                y=1.1,
+                xanchor='left',  # Changed from 'right' to 'left'
+                yanchor='top',
+                font=dict(size=8)
+            )
+        ]
     )
 
     # Left viewport (X-Y frontal view)
@@ -1109,7 +1207,28 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
             eye=dict(x=1.5, y=1.5, z=1.5),  # Isometric view
             up=dict(x=0, y=0, z=1)
         ),
-        **common_layout
+        updatemenus=[
+            dict(
+                type='buttons',
+                showactive=False,
+                buttons=[
+                    dict(
+                        label='Restablecer Vista',
+                        method='relayout',
+                        args=[{'scene.camera': dict(
+                            eye=dict(x=1.5, y=1.5, z=1.5),
+                            up=dict(x=0, y=0, z=1)
+                        )}]
+                    )
+                ],
+                x=0.1,  # Changed from 0.9 to 0.1
+                y=1.1,
+                xanchor='left',  # Changed from 'right' to 'left'
+                yanchor='top',
+                font=dict(size=8)
+            )
+        ],
+        **{k:v for k,v in common_layout.items() if k != 'updatemenus'}
     )
     
     # Right viewport (X-Z frontal view)
@@ -1125,7 +1244,28 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
             eye=dict(x=0, y=-2, z=0),  # Camera looking straight at X-Z plane
             up=dict(x=0, y=0, z=1)
         ),
-        **common_layout
+        updatemenus=[
+            dict(
+                type='buttons',
+                showactive=False,
+                buttons=[
+                    dict(
+                        label='Restablecer Vista',
+                        method='relayout',
+                        args=[{'scene.camera': dict(
+                            eye=dict(x=0, y=-2, z=0),
+                            up=dict(x=0, y=0, z=1)
+                        )}]
+                    )
+                ],
+                x=0.1,  # Changed from 0.9 to 0.1
+                y=1.1,
+                xanchor='left',  # Changed from 'right' to 'left'
+                yanchor='top',
+                font=dict(size=8)
+            )
+        ],
+        **{k:v for k,v in common_layout.items() if k != 'updatemenus'}
     )
 
     return fig1, fig2, fig3, new_frequency
