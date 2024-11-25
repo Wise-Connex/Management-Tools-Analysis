@@ -397,7 +397,20 @@ def update_main_content(*args):
             dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
             dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
             dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-        ], style={'display': 'flex', 'justifyContent': 'space-between'})
+        ], style={'display': 'flex', 'justifyContent': 'space-between'}),
+            
+            # Add horizontal divider with shadow at the end
+            html.Hr(style={
+                'border': 'none',
+                'height': '3px',  # Made thicker
+                'backgroundColor': '#dee2e6',
+                'margin': '30px 0',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                'width': '100%',  # Ensure full width
+                'display': 'block',  # Ensure it's displayed as a block element
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
+            
     ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     
     # Remove the nested callback and return the initial graphs
@@ -473,7 +486,7 @@ def update_main_content(*args):
                         style_table={
                             'overflowX': 'auto',
                             'overflowY': 'auto',
-                            'height': '200px',
+                            'height': '500px',
                             'width': '100%',  # Ensure table uses full width of its column
                         },
                         style_cell={
@@ -499,7 +512,7 @@ def update_main_content(*args):
                             'height': 'auto',
                             'fontSize': '10px'
                         },
-                        page_size=5
+                        page_size=15
                     ),
                     html.P(
                         f"TOTAL REGISTROS: {len(combined_dataset)}",
@@ -514,6 +527,18 @@ def update_main_content(*args):
                 is_open=False  # Initially collapsed
             )
         ], style={'marginBottom': '20px'}),
+        
+        # Add horizontal divider with shadow
+        html.Hr(style={
+            'border': 'none',
+            'height': '3px',  # Made thicker
+            'backgroundColor': '#dee2e6',
+            'margin': '30px 0',
+            'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+            'width': '100%',  # Ensure full width
+            'display': 'block',  # Ensure it's displayed as a block element
+            'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+        }),
         
         # Third row: 3D Graph (only shown when 2 or more sources selected)
         html.Div([
@@ -546,7 +571,7 @@ def update_main_content(*args):
                         id='y-axis-dropdown',
                         options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
                                 for src_id in selected_sources],
-                        value=dbase_options[selected_sources[0]] if len(selected_sources) > 0 else None,  # Prepopulate with first source
+                        value=dbase_options[selected_sources[0]] if len(selected_sources) > 0 else None,
                         placeholder="Seleccione eje Y",
                         style={'fontSize': '12px'}
                     ),
@@ -563,7 +588,7 @@ def update_main_content(*args):
                         id='z-axis-dropdown',
                         options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
                                 for src_id in selected_sources],
-                        value=dbase_options[selected_sources[1]] if len(selected_sources) > 1 else None,  # Prepopulate with second source
+                        value=dbase_options[selected_sources[1]] if len(selected_sources) > 1 else None,
                         placeholder="Seleccione eje Z",
                         style={'fontSize': '12px'}
                     ),
@@ -585,7 +610,20 @@ def update_main_content(*args):
                 dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
                 dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
                 dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-            ], style={'display': 'flex', 'justifyContent': 'space-between'})
+            ], style={'display': 'flex', 'justifyContent': 'space-between'}),
+            
+            # Add horizontal divider with shadow at the end
+            html.Hr(style={
+                'border': 'none',
+                'height': '3px',  # Made thicker
+                'backgroundColor': '#dee2e6',
+                'margin': '30px 0',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                'width': '100%',  # Ensure full width
+                'display': 'block',  # Ensure it's displayed as a block element
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
+            
         ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     ])
 
