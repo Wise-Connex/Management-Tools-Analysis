@@ -344,6 +344,15 @@ def update_main_content(*args):
             'marginBottom': '20px'
         }),
         
+        # Add new row for periods bar graph
+        html.Div([
+            dcc.Graph(
+                id='periods-bar-graph',
+                style={'height': '400px'},
+                config={'displaylogo': False}
+            ),
+        ], style={'marginBottom': '20px'}),
+        
         # Second row: Table with toggle button
         html.Div([
             # Add toggle button
@@ -492,7 +501,8 @@ def update_main_content(*args):
 # Update the graph callback to use button states instead of dropdown
 @app.callback(
     [Output('line-graph', 'figure'), 
-     Output('bar-graph', 'figure')],
+     Output('bar-graph', 'figure'),
+     Output('periods-bar-graph', 'figure')],
     [Input('btn-5y', 'n_clicks'),
      Input('btn-10y', 'n_clicks'),
      Input('btn-15y', 'n_clicks'),
@@ -509,7 +519,7 @@ def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *butt
     selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
     
     if not selected_keyword or not selected_sources:
-        return dash.no_update, dash.no_update
+        return dash.no_update, dash.no_update, dash.no_update
 
     # Get the data
     datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
@@ -697,7 +707,155 @@ def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *butt
     # Update your figure layout with these new settings
     line_fig['layout'].update(layout_updates)
 
-    return line_fig, bar_fig
+    # Calculate means for different time periods with reversed order
+    periods = {
+        'Todo': None,
+        'Últimos 20 años': 20,
+        'Últimos 15 años': 15,
+        'Últimos 10 años': 10,
+        'Últimos 5 años': 5,
+        'Último año': 1
+    }
+    
+    period_means = {}
+    for period_name, years in periods.items():
+        if years is None:
+            # For 'Todo', use all data
+            period_data = combined_dataset
+        else:
+            start_date = end_date - pd.DateOffset(years=years)
+            period_data = combined_dataset[combined_dataset['Fecha'] >= start_date]
+        
+        if not period_data.empty:
+            period_means[period_name] = period_data.drop('Fecha', axis=1).mean()
+
+    # Calculate percentages for each period
+    period_percentages = {}
+    for period in periods.keys():
+        if period in period_means:
+            total = sum([period_means[period][source] for source in means.index])
+            period_percentages[period] = {
+                source: (period_means[period][source] / total * 100) 
+                for source in means.index
+            }
+
+    # Calculate period lengths (in years)
+    period_lengths = {
+        'Todo': max(20, (combined_dataset['Fecha'].max() - combined_dataset['Fecha'].min()).days / 365),
+        'Últimos 20 años': 20,
+        'Últimos 15 años': 15,
+        'Últimos 10 años': 10,
+        'Últimos 5 años': 5,
+        'Último año': 1
+    }
+    
+    # Calculate relative widths and center positions
+    max_period = max(period_lengths.values())
+    relative_widths = {
+        period: length / max_period 
+        for period, length in period_lengths.items()
+    }
+    
+    # Calculate x positions for back-to-back placement
+    x_positions = {}
+    current_pos = 0
+    for period in periods.keys():
+        width = relative_widths[period]
+        x_positions[period] = current_pos + (width / 2)  # Center of each bar
+        current_pos += width
+
+    # Create traces with variable widths and specific positions
+    period_traces = []
+    
+    # First add all bar traces (percentage based)
+    for idx, source in enumerate(means.index):
+        y_values = [period_percentages[period][source] for period in periods.keys() if period in period_percentages]
+        x_values = [x_positions[period] for period in periods.keys()]  # Use calculated positions
+        
+        period_traces.append({
+            'name': source,
+            'type': 'bar',
+            'x': x_values,
+            'y': y_values,
+            'marker': {
+                'color': color_map.get(source, '#000000'),
+                'opacity': 0.2
+            },
+            'width': [relative_widths[period] for period in periods.keys()],
+            'showlegend': True
+        })
+
+    # Modify line traces to use same x positions
+    for idx, source in enumerate(means.index):
+        y_values = [period_means[period][source] for period in periods.keys() if period in period_means]
+        x_values = [x_positions[period] for period in periods.keys()]
+        
+        period_traces.append({
+            'name': f'{source} (valor absoluto)',
+            'type': 'scatter',
+            'x': x_values,
+            'y': y_values,
+            'mode': 'lines',
+            'line': {
+                'color': color_map.get(source, '#000000'),
+                'width': 3,
+                'shape': 'spline',
+                'smoothing': 1.3
+            },
+            'yaxis': 'y2',
+            'showlegend': True
+        })
+
+    periods_bar_fig = {
+        'data': period_traces,
+        'layout': {
+            'title': {
+                'text': 'Promedios por Período (% y valores absolutos)',
+                'font': {'size': 12}
+            },
+            'barmode': 'stack',
+            'bargap': 0,
+            'bargroupgap': 0,
+            'xaxis': {
+                'title': 'Período',
+                'tickangle': 45,
+                'tickfont': {'size': 10},
+                'ticktext': list(periods.keys()),
+                'tickvals': [x_positions[period] for period in periods.keys()],
+                'type': 'linear'  # Changed to linear for custom positioning
+            },
+            'yaxis': {
+                'title': 'Porcentaje (%)',
+                'range': [0, 100],
+                'tickformat': '.0f',
+                'ticksuffix': '%'
+            },
+            'yaxis2': {
+                'title': 'Valor Absoluto',
+                'overlaying': 'y',
+                'side': 'right',
+                'range': [0, 100]
+            },
+            'legend': {
+                'orientation': 'h',
+                'yanchor': 'bottom',
+                'y': -0.65,
+                'xanchor': 'center',
+                'x': 0.5
+            },
+            'height': 400,
+            'margin': {
+                'l': 50,
+                'r': 50,
+                't': 40,
+                'b': 150
+            },
+            'showlegend': True,
+            'hovermode': 'x unified'
+        }
+    }
+
+    return line_fig, bar_fig, periods_bar_fig
 
 # Add new callback for keyword validation
 @app.callback(
