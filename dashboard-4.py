@@ -10,9 +10,6 @@ from scipy.interpolate import CubicSpline
 import plotly.figure_factory as ff
 import seaborn as sns
 from scipy import stats
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.pipeline import make_pipeline
 
 # Initialize the Dash app with a Bootstrap theme
 app = dash.Dash(
@@ -1444,21 +1441,18 @@ def toggle_sources(*args):
     
     return new_states + styles + [new_select_all_state]
 
-# Add these new Outputs to store the selected sources
+# Add this callback after your other callbacks
 @app.callback(
-    [Output('correlation-graph', 'figure'),
-     Output('y-axis-dropdown', 'value'),  # Add this to update the dropdown
-     Output('z-axis-dropdown', 'value')], # Add this to update the dropdown
-    [Input('keyword-dropdown', 'value'),
-     Input('correlation-graph', 'clickData')] +  # Add clickData input
+    Output('correlation-graph', 'figure'),
+    [Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
-def update_correlation_heatmap(selected_keyword, click_data, *button_states):
+def update_correlation_heatmap(selected_keyword, *button_states):
     # Convert button states to selected sources
     selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
     
     if not selected_keyword or len(selected_sources) < 2:
-        return {}, dash.no_update, dash.no_update
+        return {}
 
     # Get the data
     datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
@@ -1474,24 +1468,24 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
     
     # Create custom colorscale with more appealing colors
     colorscale = [
-        [0.0, 'rgb(255,255,255)'],     # white for 0
-        [0.2, 'rgb(255,247,236)'],     # very light orange
-        [0.4, 'rgb(253,208,162)'],     # light orange
-        [0.6, 'rgb(253,174,107)'],     # medium orange
-        [0.8, 'rgb(230,85,13)'],       # deep orange
+        [0.0, 'rgb(255,255,255)'],     # white
+        [0.5, 'rgb(255,247,236)'],     # very light orange
+        [0.7, 'rgb(253,208,162)'],     # light orange
+        [0.8, 'rgb(253,174,107)'],     # medium orange
+        [0.9, 'rgb(230,85,13)'],       # deep orange
         [1.0, 'rgb(166,54,3)']         # dark orange-brown
     ]
     
-    # Create heatmap
+    # Create heatmap with reversed y-axis
     heatmap = go.Heatmap(
         z=corr_matrix.values,
         x=corr_matrix.columns,
-        y=corr_matrix.columns,  # Not reversed anymore
+        y=corr_matrix.columns,  # No longer reversed here
         colorscale=colorscale,
-        zmin=0,     # Set minimum to 0 since we're showing positive correlations
-        zmax=1,     # Set maximum to 1 for correlation values
-        text=corr_matrix.values,  # Not flipped anymore
-        texttemplate='%{text:.2f}',
+        zmin=-1,
+        zmax=1,
+        text=corr_matrix.values,  # No longer reversed here
+        texttemplate='%{text:.2f}',     # Format to 2 decimal places
         textfont={"size": 10},
         hoverongaps=False,
         hovertemplate='%{x}<br>%{y}<br>Correlación: %{z:.2f}<extra></extra>'
@@ -1514,11 +1508,12 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
         yaxis=dict(
             tickfont=dict(size=8),
             title=None,
-            # Removed autorange='reversed'
+            # Remove autorange='reversed' to show normal order
         ),
         margin=dict(l=50, r=50, t=50, b=80)
     )
 
+    # Create figure
     fig = go.Figure(data=[heatmap], layout=layout)
     
     # Add color bar title
@@ -1529,22 +1524,11 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
                 font=dict(size=10)
             ),
             tickfont=dict(size=8),
-            tickformat='.2f'
+            tickformat='.2f'  # Format colorbar ticks to 2 decimal places
         )
     )
 
-    # Get selected sources from click data
-    new_y_axis = dash.no_update
-    new_z_axis = dash.no_update
-    
-    if click_data:
-        x_source = click_data['points'][0]['x']
-        y_source = click_data['points'][0]['y']
-        if x_source != y_source:  # Only update if different sources are selected
-            new_y_axis = x_source
-            new_z_axis = y_source
-
-    return fig, new_y_axis, new_z_axis
+    return fig
 
 @app.callback(
     Output('regression-graph', 'figure'),
@@ -1573,32 +1557,16 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
     x_data = combined_dataset[y_axis]
     y_data = combined_dataset[z_axis]
     
-    # Calculate linear regression
+    # Calculate regression line
     slope, intercept, r_value, p_value, std_err = stats.linregress(x_data, y_data)
     line_x = np.array([min(x_data), max(x_data)])
     line_y = slope * line_x + intercept
-    r_squared_linear = r_value ** 2
-    equation_linear = f'y = {slope:.2f}x + {intercept:.2f}'
     
-    # Calculate polynomial regression (degree 2)
-    X = x_data.values.reshape(-1, 1)
-    poly_model = make_pipeline(PolynomialFeatures(degree=2), LinearRegression())
-    poly_model.fit(X, y_data)
+    # Calculate R² and format equation
+    r_squared = r_value ** 2
+    equation = f'y = {slope:.2f}x + {intercept:.2f}'
     
-    # Generate points for smooth polynomial curve
-    X_smooth = np.linspace(min(x_data), max(x_data), 100).reshape(-1, 1)
-    y_smooth = poly_model.predict(X_smooth)
-    
-    # Calculate R² for polynomial regression
-    y_pred_poly = poly_model.predict(X)
-    r_squared_poly = np.corrcoef(y_data, y_pred_poly)[0,1]**2
-    
-    # Get polynomial coefficients
-    coeffs = poly_model.named_steps['linearregression'].coef_
-    intercept_poly = poly_model.named_steps['linearregression'].intercept_
-    equation_poly = f'y = {coeffs[2]:.2f}x² + {coeffs[1]:.2f}x + {intercept_poly:.2f}'
-    
-    # Create scatter plot with both regression lines
+    # Create scatter plot with regression line
     fig = go.Figure()
     
     # Add scatter points
@@ -1622,40 +1590,20 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
         )
     ))
     
-    # Add linear regression line
+    # Add regression line
     fig.add_trace(go.Scatter(
         x=line_x,
         y=line_y,
         mode='lines',
-        name='Regresión Lineal',
+        name='Regresión',
         line=dict(
             color='rgba(166,54,3,1)',
-            width=2,
-            dash='solid'
+            width=2
         ),
         hovertemplate=(
-            "Regresión Lineal<br>" +
-            f"{equation_linear}<br>" +
-            f"R² = {r_squared_linear:.3f}" +
-            "<extra></extra>"
-        )
-    ))
-    
-    # Add polynomial regression line
-    fig.add_trace(go.Scatter(
-        x=X_smooth.flatten(),
-        y=y_smooth,
-        mode='lines',
-        name='Regresión Polinomial',
-        line=dict(
-            color='rgba(0,100,80,1)',
-            width=2,
-            dash='dash'
-        ),
-        hovertemplate=(
-            "Regresión Polinomial<br>" +
-            f"{equation_poly}<br>" +
-            f"R² = {r_squared_poly:.3f}" +
+            "Línea de regresión<br>" +
+            f"{equation}<br>" +
+            f"R² = {r_squared:.3f}" +
             "<extra></extra>"
         )
     ))
@@ -1663,9 +1611,7 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
     # Update layout
     fig.update_layout(
         title=dict(
-            text=f'Análisis de Regresión<br>' +
-                 f'<sup>R² Lineal = {r_squared_linear:.3f}, ' +
-                 f'R² Polinomial = {r_squared_poly:.3f}</sup>',
+            text=f'Regresión Lineal<br><sup>R² = {r_squared:.3f}</sup>',
             x=0.5,
             font=dict(size=12)
         ),
@@ -1697,24 +1643,14 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
         ),
         showlegend=True,
         legend=dict(
-            orientation="h",     # Horizontal orientation
-            yanchor="top",      # Anchor to top of legend box
-            y=-0.35,            # Moved from -0.25 to -0.35 to lower by ~10px
-            xanchor="center",   # Center horizontally
-            x=0.5,             # Center position
-            font=dict(size=8),
-            bgcolor='rgba(255,255,255,0.8)',
-            bordercolor='rgba(0,0,0,0.2)',
-            borderwidth=1
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01,
+            font=dict(size=8)
         ),
-        margin=dict(
-            l=50,    # left margin
-            r=50,    # right margin
-            t=50,    # top margin
-            b=100    # increased from 80 to 100 to accommodate lower legend
-        ),
+        margin=dict(l=50, r=50, t=50, b=50),
         height=300,
-        width=450,
         hovermode='closest',
         plot_bgcolor='white'
     )
