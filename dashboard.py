@@ -50,6 +50,24 @@ dbase_options = {
     5: "Bain - Satisfacción"
 }
 
+# Define a color palette for the available options
+colors = [
+    '#1f77b4',    # blue
+    '#ff7f0e',    # orange
+    '#2ca02c',    # green
+    '#d62728',    # red
+    '#9467bd',    # purple
+    '#8c564b',    # brown
+    '#e377c2',    # pink
+    '#7f7f7f'     # gray
+]
+
+# Create color map using dbase_options
+color_map = {
+    dbase_options[key]: colors[i % len(colors)]  # Use modulo to cycle through colors if more sources than colors
+    for i, key in enumerate(dbase_options.keys())
+}
+
 # Add a new global variable to store the current date range
 global_date_range = {'start': None, 'end': None}
 
@@ -91,16 +109,31 @@ sidebar = html.Div(
         # Update the dropdown component
         html.Div([
             html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
+            # Add Select All button
+            dbc.Button(
+                "Seleccionar Todo",
+                id="select-all-button",
+                color="secondary",
+                outline=True,
+                size="sm",
+                className="mb-2 w-100",
+                style={'fontSize': '12px'}
+            ),
             # Replace dropdown with button group
             html.Div([
                 dbc.Button(
                     source,
                     id=f"toggle-source-{id}",
-                    color="primary",
-                    outline=True,  # Start with outline style
+                    color="white",  # Change to white base color
+                    outline=True,
                     size="sm",
                     className="me-2 mb-2",
-                    style={'fontSize': '12px'}
+                    style={
+                        'fontSize': '12px',
+                        'borderColor': color_map.get(source, '#000000'),  # Match series color
+                        'color': color_map.get(source, '#000000'),  # Text color matches series
+                        'backgroundColor': 'transparent',
+                    }
                 ) for id, source in dbase_options.items()
             ], id='source-buttons-container'),
             # Add validation message div
@@ -186,24 +219,6 @@ app.layout = dbc.Container([
         ], width=10, className="px-4")
     ], style={'height': '100vh'})
 ], fluid=True, className="px-0")
-
-# Define a color palette for the available options
-colors = [
-    '#1f77b4',    # blue
-    '#ff7f0e',    # orange
-    '#2ca02c',    # green
-    '#d62728',    # red
-    '#9467bd',    # purple
-    '#8c564b',    # brown
-    '#e377c2',    # pink
-    '#7f7f7f'     # gray
-]
-
-# Create color map using dbase_options
-color_map = {
-    dbase_options[key]: colors[i % len(colors)]  # Use modulo to cycle through colors if more sources than colors
-    for i, key in enumerate(dbase_options.keys())
-}
 
 # Add callback to update main content based on selections
 @app.callback(
@@ -380,10 +395,75 @@ def update_main_content(*args):
         ], style={'marginBottom': '10px'}),
         # Update this section to include all three graph views
         html.Div([
-            dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-            dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-            dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-        ], style={'display': 'flex', 'justifyContent': 'space-between'})
+            # Container for all three graphs with dividers
+            html.Div([
+                # First graph (33% - 10px for divider space)
+                html.Div([
+                    dcc.Graph(
+                        id='3d-graph-view-1',
+                        style={'height': '600px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={
+                    'width': 'calc(33.33% - 10px)',
+                    'display': 'inline-block',
+                    'verticalAlign': 'top'
+                }),
+                
+                # First divider
+                html.Div(style={
+                    'width': '2px',
+                    'height': '600px',
+                    'backgroundColor': '#dee2e6',
+                    'display': 'inline-block',
+                    'margin': '0 5px',
+                    'verticalAlign': 'top',
+                    'boxShadow': '1px 0 3px rgba(0,0,0,0.2)'
+                }),
+                
+                # Second graph (33% - 10px for divider space)
+                html.Div([
+                    dcc.Graph(
+                        id='3d-graph-view-2',
+                        style={'height': '600px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={
+                    'width': 'calc(33.33% - 10px)',
+                    'display': 'inline-block',
+                    'verticalAlign': 'top'
+                }),
+                
+                # Second divider
+                html.Div(style={
+                    'width': '2px',
+                    'height': '600px',
+                    'backgroundColor': '#dee2e6',
+                    'display': 'inline-block',
+                    'margin': '0 5px',
+                    'verticalAlign': 'top',
+                    'boxShadow': '1px 0 3px rgba(0,0,0,0.2)'
+                }),
+                
+                # Third graph (33% - 10px for divider space)
+                html.Div([
+                    dcc.Graph(
+                        id='3d-graph-view-3',
+                        style={'height': '600px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={
+                    'width': 'calc(33.33% - 10px)',
+                    'display': 'inline-block',
+                    'verticalAlign': 'top'
+                }),
+                
+            ], style={
+                'width': '100%',
+                'whiteSpace': 'nowrap',
+                'overflow': 'hidden'
+            })
+        ], className="w-100") if len(selected_sources) >= 2 else html.Div(),
     ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     
     # Remove the nested callback and return the initial graphs
@@ -501,6 +581,16 @@ def update_main_content(*args):
             )
         ], style={'marginBottom': '20px'}),
         
+        # Add dividing line with shadow - more prominent version
+        html.Div(style={
+            'borderBottom': '2px solid #dee2e6',
+            'boxShadow': '0 4px 8px -4px rgba(0,0,0,0.2)',
+            'margin': '40px 0',
+            'width': '100%',
+            'height': '10px',  # Added height to make shadow more visible
+            'backgroundColor': 'transparent'
+        }) if len(selected_sources) >= 2 else html.Div(),
+        
         # Third row: 3D Graph (only shown when 2 or more sources selected)
         html.Div([
             html.H6("Evolución Temporal", style={'fontSize': '20px', 'marginTop': '10px'}),
@@ -572,7 +662,36 @@ def update_main_content(*args):
                 dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
                 dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
             ], style={'display': 'flex', 'justifyContent': 'space-between'})
-        ], className="w-100") if len(selected_sources) >= 2 else html.Div()
+        ], className="w-100") if len(selected_sources) >= 2 else html.Div(),
+        
+        # New row: Three-section analysis (at the very end)
+        html.Div([
+            html.H6("Análisis Detallado", style={'fontSize': '20px', 'marginTop': '10px'}),
+            html.Div([
+                # Section 1: Heatmap
+                html.Div([
+                    dcc.Graph(
+                        id='correlation-heatmap',
+                        style={'height': '400px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={'width': '33%', 'display': 'inline-block'}),
+                
+                # Section 2: Placeholder
+                html.Div([
+                    html.P("Sección 2 - En desarrollo", style={'textAlign': 'center'})
+                ], style={'width': '33%', 'display': 'inline-block'}),
+                
+                # Section 3: Placeholder
+                html.Div([
+                    html.P("Sección 3 - En desarrollo", style={'textAlign': 'center'})
+                ], style={'width': '33%', 'display': 'inline-block'}),
+            ], style={
+                'display': 'flex',
+                'justifyContent': 'space-between',
+                'marginBottom': '20px'
+            })
+        ]) if len(selected_sources) >= 2 else html.Div()  # Only show if 2 or more sources selected
     ])
 
 # Update the graph callback to use button states instead of dropdown
@@ -1283,36 +1402,135 @@ def toggle_table(n_clicks, is_open):
 
 # Update the callback for button toggles
 @app.callback(
-    [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
-    [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()],
+    [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
+    [Output(f"toggle-source-{id}", "style") for id in dbase_options.keys()],
+    [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()] +
+    [Input("select-all-button", "n_clicks")],
     [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def toggle_sources(*args):
     n_clicks = args[:len(dbase_options)]
-    current_states = args[len(dbase_options):]
+    select_all_clicks = args[len(dbase_options)]
+    current_states = args[len(dbase_options)+1:]
     
     # Get the button that triggered the callback
     ctx = dash.callback_context
     if not ctx.triggered:
         # Initial load - default to Google Trends selected
-        return [id != 1 for id in dbase_options.keys()]
+        new_states = [id != 1 for id in dbase_options.keys()]
+    else:
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        
+        if button_id == "select-all-button":
+            # Count how many sources are currently selected
+            current_selected = sum(not state for state in current_states)
+            # If less than half are selected, select all. Otherwise, deselect all except first
+            if current_selected <= len(current_states)/2:
+                new_states = [False] * len(current_states)  # Select all
+            else:
+                new_states = [True] * len(current_states)   # Deselect all
+                new_states[0] = False  # Keep first one selected
+        else:
+            # Handle individual button toggles
+            source_id = int(button_id.split('-')[-1])
+            clicked_index = list(dbase_options.keys()).index(source_id)
+            new_states = list(current_states)
+            new_states[clicked_index] = not new_states[clicked_index]
+            
+            # Ensure at least one source is selected
+            if all(new_states):
+                new_states[clicked_index] = False
+
+    # Generate styles based on states
+    styles = []
+    for id, outline in zip(dbase_options.keys(), new_states):
+        source = dbase_options[id]
+        color = color_map.get(source, '#000000')
+        styles.append({
+            'fontSize': '12px',
+            'borderColor': color,
+            'color': color if outline else 'white',
+            'backgroundColor': 'transparent' if outline else color,
+        })
+
+    return new_states + styles
+
+# Add new callback for the heatmap (after other callbacks)
+@app.callback(
+    Output('correlation-heatmap', 'figure'),
+    [Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_heatmap(selected_keyword, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
     
-    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
-    # Extract the ID directly from the button_id
-    source_id = int(button_id.split('-')[-1])
+    if not selected_keyword or len(selected_sources) < 2:
+        # Return empty figure with a message
+        return {
+            'data': [],
+            'layout': {
+                'title': 'Seleccione al menos dos fuentes de datos',
+                'xaxis': {'visible': False},
+                'yaxis': {'visible': False},
+                'annotations': [{
+                    'text': 'Seleccione al menos dos fuentes de datos',
+                    'xref': 'paper',
+                    'yref': 'paper',
+                    'showarrow': False,
+                    'font': {'size': 20}
+                }]
+            }
+        }
+
+    # Get the data
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
     
-    # Find the index in dbase_options that matches this ID
-    clicked_index = list(dbase_options.keys()).index(source_id)
-    
-    # Update the states list
-    new_states = list(current_states)
-    new_states[clicked_index] = not new_states[clicked_index]
-    
-    # Ensure at least one source is selected
-    if all(new_states):
-        new_states[clicked_index] = False
-    
-    return new_states
+    # Calculate correlation matrix for all selected sources
+    source_names = [dbase_options[src_id] for src_id in selected_sources]
+    correlation_matrix = combined_dataset[source_names].corr()
+
+    # Create heatmap with light gray -> orange -> dark red colorscale
+    return {
+        'data': [{
+            'type': 'heatmap',
+            'z': correlation_matrix.values,
+            'x': correlation_matrix.columns,
+            'y': correlation_matrix.index[::-1],
+            'colorscale': [
+                [0.0, '#F5F5F5'],   # Light gray
+                [0.2, '#FFE0CC'],   # Very light orange
+                [0.4, '#FFAA66'],   # Light orange
+                [0.6, '#FF7733'],   # Orange
+                [0.8, '#CC3300'],   # Dark orange-red
+                [1.0, '#990000']    # Dark red
+            ],
+            'text': correlation_matrix.values.round(3),
+            'texttemplate': '%{text}',
+            'textfont': {'size': 8},
+            'showscale': True,
+            'colorbar': {
+                'thickness': 10,     # Makes the colorbar thinner
+                'len': 1,           # Makes colorbar full height (1 = 100%)
+                'x': 1.02,          # Adjust position to prevent overlap
+                'tickfont': {'size': 8}
+            }
+        }],
+        'layout': {
+            'title': {
+                'text': 'Correlación entre Fuentes',
+                'font': {'size': 12}
+            },
+            'height': 400,
+            'margin': {'l': 150, 'r': 50, 't': 40, 'b': 150},
+            'xaxis': {'tickfont': {'size': 10}},
+            'yaxis': {
+                'tickfont': {'size': 10},
+                'autorange': 'reversed'
+            },
+        }
+    }
 
 if __name__ == '__main__':
     app.run_server(
