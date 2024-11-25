@@ -50,24 +50,6 @@ dbase_options = {
     5: "Bain - Satisfacción"
 }
 
-# Define a color palette for the available options
-colors = [
-    '#1f77b4',    # blue
-    '#ff7f0e',    # orange
-    '#2ca02c',    # green
-    '#d62728',    # red
-    '#9467bd',    # purple
-    '#8c564b',    # brown
-    '#e377c2',    # pink
-    '#7f7f7f'     # gray
-]
-
-# Create color map using dbase_options
-color_map = {
-    dbase_options[key]: colors[i % len(colors)]  # Use modulo to cycle through colors if more sources than colors
-    for i, key in enumerate(dbase_options.keys())
-}
-
 # Add a new global variable to store the current date range
 global_date_range = {'start': None, 'end': None}
 
@@ -109,33 +91,19 @@ sidebar = html.Div(
         # Update the dropdown component
         html.Div([
             html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
-            # Add Select All button
-            dbc.Button(
-                "Seleccionar Todo",
-                id="select-all-button",
-                color="secondary",
-                outline=True,
-                size="sm",
-                className="mb-2 w-100",
-                style={'fontSize': '12px'}
-            ),
-            # Source buttons container
+            # Replace dropdown with button group
             html.Div([
                 dbc.Button(
                     source,
                     id=f"toggle-source-{id}",
                     color="primary",
-                    outline=True,
+                    outline=True,  # Start with outline style
                     size="sm",
                     className="me-2 mb-2",
-                    style={
-                        'fontSize': '12px',
-                        'borderColor': color_map[source],
-                        'color': color_map[source],
-                    }
+                    style={'fontSize': '12px'}
                 ) for id, source in dbase_options.items()
             ], id='source-buttons-container'),
-            # Validation message div
+            # Add validation message div
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
     ],
@@ -218,6 +186,24 @@ app.layout = dbc.Container([
         ], width=10, className="px-4")
     ], style={'height': '100vh'})
 ], fluid=True, className="px-0")
+
+# Define a color palette for the available options
+colors = [
+    '#1f77b4',    # blue
+    '#ff7f0e',    # orange
+    '#2ca02c',    # green
+    '#d62728',    # red
+    '#9467bd',    # purple
+    '#8c564b',    # brown
+    '#e377c2',    # pink
+    '#7f7f7f'     # gray
+]
+
+# Create color map using dbase_options
+color_map = {
+    dbase_options[key]: colors[i % len(colors)]  # Use modulo to cycle through colors if more sources than colors
+    for i, key in enumerate(dbase_options.keys())
+}
 
 # Add callback to update main content based on selections
 @app.callback(
@@ -1297,67 +1283,36 @@ def toggle_table(n_clicks, is_open):
 
 # Update the callback for button toggles
 @app.callback(
-    [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
-    [Output(f"toggle-source-{id}", "style") for id in dbase_options.keys()] +
-    [Output("select-all-button", "outline")],
-    [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()] +
-    [Input("select-all-button", "n_clicks")],
-    [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
-    [State("select-all-button", "outline")]
+    [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
+    [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()],
+    [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def toggle_sources(*args):
-    n_clicks = args[:len(dbase_options) + 1]  # Include select-all button clicks
-    current_states = args[len(dbase_options) + 1:]
-    source_states = current_states[:len(dbase_options)]
-    select_all_state = current_states[-1]
+    n_clicks = args[:len(dbase_options)]
+    current_states = args[len(dbase_options):]
     
+    # Get the button that triggered the callback
     ctx = dash.callback_context
     if not ctx.triggered:
         # Initial load - default to Google Trends selected
-        new_states = [id != 1 for id in dbase_options.keys()]
-        styles = [
-            {
-                'fontSize': '12px',
-                'borderColor': color_map[source],
-                'color': color_map[source] if outline else 'white',
-                'backgroundColor': color_map[source] if not outline else 'transparent'
-            }
-            for id, (source, outline) in enumerate(zip(dbase_options.values(), new_states))
-        ]
-        return new_states + styles + [True]
+        return [id != 1 for id in dbase_options.keys()]
     
     button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    # Extract the ID directly from the button_id
+    source_id = int(button_id.split('-')[-1])
     
-    if button_id == "select-all-button":
-        # Toggle all sources
-        new_states = [select_all_state] * len(dbase_options)
-    else:
-        # Individual button toggle
-        source_id = int(button_id.split('-')[-1])
-        clicked_index = list(dbase_options.keys()).index(source_id)
-        new_states = list(source_states)
-        new_states[clicked_index] = not new_states[clicked_index]
+    # Find the index in dbase_options that matches this ID
+    clicked_index = list(dbase_options.keys()).index(source_id)
+    
+    # Update the states list
+    new_states = list(current_states)
+    new_states[clicked_index] = not new_states[clicked_index]
     
     # Ensure at least one source is selected
     if all(new_states):
-        if button_id != "select-all-button":
-            new_states[clicked_index] = False
+        new_states[clicked_index] = False
     
-    # Update button styles based on new states
-    styles = [
-        {
-            'fontSize': '12px',
-            'borderColor': color_map[source],
-            'color': color_map[source] if outline else 'white',
-            'backgroundColor': color_map[source] if not outline else 'transparent'
-        }
-        for source, outline in zip(dbase_options.values(), new_states)
-    ]
-    
-    # Update select-all button state
-    new_select_all_state = not all(new_states)
-    
-    return new_states + styles + [new_select_all_state]
+    return new_states
 
 if __name__ == '__main__':
     app.run_server(

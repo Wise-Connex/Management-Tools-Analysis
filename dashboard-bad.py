@@ -119,23 +119,24 @@ sidebar = html.Div(
                 className="mb-2 w-100",
                 style={'fontSize': '12px'}
             ),
-            # Source buttons container
+            # Replace dropdown with button group
             html.Div([
                 dbc.Button(
                     source,
                     id=f"toggle-source-{id}",
-                    color="primary",
+                    color="white",  # Change to white base color
                     outline=True,
                     size="sm",
                     className="me-2 mb-2",
                     style={
                         'fontSize': '12px',
-                        'borderColor': color_map[source],
-                        'color': color_map[source],
+                        'borderColor': color_map.get(source, '#000000'),  # Match series color
+                        'color': color_map.get(source, '#000000'),  # Text color matches series
+                        'backgroundColor': 'transparent',
                     }
                 ) for id, source in dbase_options.items()
             ], id='source-buttons-container'),
-            # Validation message div
+            # Add validation message div
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
     ],
@@ -215,7 +216,10 @@ app.layout = dbc.Container([
             ], style={'marginBottom': '10px'}),
             # Main content div
             html.Div(id='main-content', className="w-100")
-        ], width=10, className="px-4")
+        ], width=10, className="px-4"),
+        
+        # Add these Store components to store the selected sources
+        dcc.Store(id='selected-scatter-sources', data={'x': None, 'y': None}),
     ], style={'height': '100vh'})
 ], fluid=True, className="px-0")
 
@@ -394,13 +398,143 @@ def update_main_content(*args):
         ], style={'marginBottom': '10px'}),
         # Update this section to include all three graph views
         html.Div([
-            dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-            dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-            dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-        ], style={'display': 'flex', 'justifyContent': 'space-between'})
+            # Container for all three graphs with dividers
+            html.Div([
+                # First graph (33% - 10px for divider space)
+                html.Div([
+                    dcc.Graph(
+                        id='3d-graph-view-1',
+                        style={'height': '600px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={
+                    'width': 'calc(33.33% - 10px)',
+                    'display': 'inline-block',
+                    'verticalAlign': 'top'
+                }),
+                
+                # First divider
+                html.Div(style={
+                    'width': '2px',
+                    'height': '600px',
+                    'backgroundColor': '#dee2e6',
+                    'display': 'inline-block',
+                    'margin': '0 5px',
+                    'verticalAlign': 'top',
+                    'boxShadow': '1px 0 3px rgba(0,0,0,0.2)'
+                }),
+                
+                # Second graph (33% - 10px for divider space)
+                html.Div([
+                    dcc.Graph(
+                        id='3d-graph-view-2',
+                        style={'height': '600px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={
+                    'width': 'calc(33.33% - 10px)',
+                    'display': 'inline-block',
+                    'verticalAlign': 'top'
+                }),
+                
+                # Second divider
+                html.Div(style={
+                    'width': '2px',
+                    'height': '600px',
+                    'backgroundColor': '#dee2e6',
+                    'display': 'inline-block',
+                    'margin': '0 5px',
+                    'verticalAlign': 'top',
+                    'boxShadow': '1px 0 3px rgba(0,0,0,0.2)'
+                }),
+                
+                # Third graph (33% - 10px for divider space)
+                html.Div([
+                    dcc.Graph(
+                        id='3d-graph-view-3',
+                        style={'height': '600px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={
+                    'width': 'calc(33.33% - 10px)',
+                    'display': 'inline-block',
+                    'verticalAlign': 'top'
+                }),
+                
+            ], style={
+                'width': '100%',
+                'whiteSpace': 'nowrap',
+                'overflow': 'hidden'
+            })
+        ], className="w-100") if len(selected_sources) >= 2 else html.Div(),
     ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     
-    # Remove the nested callback and return the initial graphs
+    # Create the scatter plot for the first two selected sources
+    if len(selected_sources) >= 2:
+        first_source = dbase_options[selected_sources[0]]
+        second_source = dbase_options[selected_sources[1]]
+        
+        scatter_fig = {
+            'data': [{
+                'type': 'scatter',
+                'x': combined_dataset[first_source],
+                'y': combined_dataset[second_source],
+                'mode': 'markers',
+                'marker': {
+                    'size': 8,
+                    'color': combined_dataset['Fecha'],
+                    'colorscale': 'Viridis',
+                    'showscale': True,
+                    'colorbar': {
+                        'title': 'Fecha',
+                        'thickness': 10,
+                        'len': 0.8,
+                        'tickfont': {'size': 8}
+                    }
+                },
+                'hovertemplate': (
+                    f"<b>{first_source}:</b> %{{x:.2f}}<br>" +
+                    f"<b>{second_source}:</b> %{{y:.2f}}<br>" +
+                    "<b>Fecha:</b> %{text}<extra></extra>"
+                ),
+                'text': combined_dataset['Fecha'].dt.strftime('%Y-%m-%d')
+            }],
+            'layout': {
+                'title': {
+                    'text': f'Dispersión: {first_source} vs {second_source}',
+                    'font': {'size': 12}
+                },
+                'xaxis': {
+                    'title': first_source,
+                    'tickfont': {'size': 10}
+                },
+                'yaxis': {
+                    'title': second_source,
+                    'tickfont': {'size': 10}
+                },
+                'height': 400,
+                'margin': {'l': 50, 'r': 50, 't': 40, 'b': 50},
+                'showlegend': False
+            }
+        }
+    else:
+        scatter_fig = {
+            'data': [],
+            'layout': {
+                'title': 'Seleccione al menos dos fuentes de datos',
+                'xaxis': {'visible': False},
+                'yaxis': {'visible': False},
+                'annotations': [{
+                    'text': 'Seleccione al menos dos fuentes de datos',
+                    'xref': 'paper',
+                    'yref': 'paper',
+                    'showarrow': False,
+                    'font': {'size': 20}
+                }]
+            }
+        }
+
+    # Return the complete layout
     return html.Div([
         # First row: Line and Bar charts
         html.Div([
@@ -435,7 +569,7 @@ def update_main_content(*args):
             'marginBottom': '20px'
         }),
         
-        # Add new row for periods bar graph
+        # Add periods bar graph
         html.Div([
             dcc.Graph(
                 id='periods-bar-graph',
@@ -444,7 +578,31 @@ def update_main_content(*args):
             ),
         ], style={'marginBottom': '20px'}),
         
-        # Second row: Table with toggle button
+        # Add correlation analysis section when multiple sources are selected
+        html.Div([
+            html.H6("Análisis de Correlación", style={'fontSize': '20px', 'marginTop': '20px'}),
+            html.Div([
+                # Correlation Heatmap
+                html.Div([
+                    dcc.Graph(
+                        id='correlation-heatmap',
+                        style={'height': '400px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={'width': '50%', 'display': 'inline-block'}),
+                
+                # Scatter Plot
+                html.Div([
+                    dcc.Graph(
+                        id='scatter-plot',
+                        style={'height': '400px'},
+                        config={'displaylogo': False}
+                    ),
+                ], style={'width': '50%', 'display': 'inline-block'}),
+            ], style={'display': 'flex', 'marginBottom': '20px'})
+        ]) if len(selected_sources) >= 2 else html.Div(),
+        
+        # Data table section
         html.Div([
             # Add toggle button
             dbc.Button(
@@ -513,80 +671,7 @@ def update_main_content(*args):
                 id="collapse-table",
                 is_open=False  # Initially collapsed
             )
-        ], style={'marginBottom': '20px'}),
-        
-        # Third row: 3D Graph (only shown when 2 or more sources selected)
-        html.Div([
-            html.H6("Evolución Temporal", style={'fontSize': '20px', 'marginTop': '10px'}),
-            html.Div([
-                # Left section: Toggle button and frequency label
-                html.Div([
-                    dbc.Button(
-                        "Cambiar Frecuencia",
-                        id="toggle-frequency-button",
-                        color="primary",
-                        size="sm",
-                        className="me-2",
-                        style={'fontSize': '12px'}
-                    ),
-                    html.Span(
-                        "Mensual",
-                        id="frequency-label",
-                        style={'fontSize': '12px'}
-                    ),
-                ], style={
-                    'display': 'inline-block',
-                    'width': '20%',
-                    'verticalAlign': 'middle'
-                }),
-                
-                # Right section: Axis dropdowns
-                html.Div([
-                    dcc.Dropdown(
-                        id='y-axis-dropdown',
-                        options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
-                                for src_id in selected_sources],
-                        value=dbase_options[selected_sources[0]] if len(selected_sources) > 0 else None,  # Prepopulate with first source
-                        placeholder="Seleccione eje Y",
-                        style={'fontSize': '12px'}
-                    ),
-                ], style={
-                    'display': 'inline-block',
-                    'width': '38%',
-                    'paddingLeft': '1%',
-                    'paddingRight': '1%',
-                    'verticalAlign': 'middle'
-                }),
-                
-                html.Div([
-                    dcc.Dropdown(
-                        id='z-axis-dropdown',
-                        options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
-                                for src_id in selected_sources],
-                        value=dbase_options[selected_sources[1]] if len(selected_sources) > 1 else None,  # Prepopulate with second source
-                        placeholder="Seleccione eje Z",
-                        style={'fontSize': '12px'}
-                    ),
-                ], style={
-                    'display': 'inline-block',
-                    'width': '38%',
-                    'paddingLeft': '1%',
-                    'verticalAlign': 'middle'
-                }),
-            ], style={
-                'display': 'flex',
-                'alignItems': 'center',
-                'justifyContent': 'space-between',
-                'width': '100%',
-                'marginBottom': '10px'
-            }),
-            # Update this section to include all three graph views
-            html.Div([
-                dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-                dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-                dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-            ], style={'display': 'flex', 'justifyContent': 'space-between'})
-        ], className="w-100") if len(selected_sources) >= 2 else html.Div()
+        ])
     ])
 
 # Update the graph callback to use button states instead of dropdown
@@ -1298,66 +1383,230 @@ def toggle_table(n_clicks, is_open):
 # Update the callback for button toggles
 @app.callback(
     [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
-    [Output(f"toggle-source-{id}", "style") for id in dbase_options.keys()] +
-    [Output("select-all-button", "outline")],
+    [Output(f"toggle-source-{id}", "style") for id in dbase_options.keys()],
     [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()] +
     [Input("select-all-button", "n_clicks")],
-    [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
-    [State("select-all-button", "outline")]
+    [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def toggle_sources(*args):
-    n_clicks = args[:len(dbase_options) + 1]  # Include select-all button clicks
-    current_states = args[len(dbase_options) + 1:]
-    source_states = current_states[:len(dbase_options)]
-    select_all_state = current_states[-1]
+    n_clicks = args[:len(dbase_options)]
+    select_all_clicks = args[len(dbase_options)]
+    current_states = args[len(dbase_options)+1:]
     
+    # Get the button that triggered the callback
     ctx = dash.callback_context
     if not ctx.triggered:
         # Initial load - default to Google Trends selected
         new_states = [id != 1 for id in dbase_options.keys()]
-        styles = [
-            {
-                'fontSize': '12px',
-                'borderColor': color_map[source],
-                'color': color_map[source] if outline else 'white',
-                'backgroundColor': color_map[source] if not outline else 'transparent'
-            }
-            for id, (source, outline) in enumerate(zip(dbase_options.values(), new_states))
-        ]
-        return new_states + styles + [True]
-    
-    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
-    
-    if button_id == "select-all-button":
-        # Toggle all sources
-        new_states = [select_all_state] * len(dbase_options)
     else:
-        # Individual button toggle
-        source_id = int(button_id.split('-')[-1])
-        clicked_index = list(dbase_options.keys()).index(source_id)
-        new_states = list(source_states)
-        new_states[clicked_index] = not new_states[clicked_index]
-    
-    # Ensure at least one source is selected
-    if all(new_states):
-        if button_id != "select-all-button":
-            new_states[clicked_index] = False
-    
-    # Update button styles based on new states
-    styles = [
-        {
+        button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        
+        if button_id == "select-all-button":
+            # Count how many sources are currently selected
+            current_selected = sum(not state for state in current_states)
+            # If less than half are selected, select all. Otherwise, deselect all except first
+            if current_selected <= len(current_states)/2:
+                new_states = [False] * len(current_states)  # Select all
+            else:
+                new_states = [True] * len(current_states)   # Deselect all
+                new_states[0] = False  # Keep first one selected
+        else:
+            # Handle individual button toggles
+            source_id = int(button_id.split('-')[-1])
+            clicked_index = list(dbase_options.keys()).index(source_id)
+            new_states = list(current_states)
+            new_states[clicked_index] = not new_states[clicked_index]
+            
+            # Ensure at least one source is selected
+            if all(new_states):
+                new_states[clicked_index] = False
+
+    # Generate styles based on states
+    styles = []
+    for id, outline in zip(dbase_options.keys(), new_states):
+        source = dbase_options[id]
+        color = color_map.get(source, '#000000')
+        styles.append({
             'fontSize': '12px',
-            'borderColor': color_map[source],
-            'color': color_map[source] if outline else 'white',
-            'backgroundColor': color_map[source] if not outline else 'transparent'
+            'borderColor': color,
+            'color': color if outline else 'white',
+            'backgroundColor': 'transparent' if outline else color,
+        })
+
+    return new_states + styles
+
+# Add callback to update the heatmap
+@app.callback(
+    Output('correlation-heatmap', 'figure'),
+    [Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_heatmap(selected_keyword, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
+    if not selected_keyword or len(selected_sources) < 2:
+        # Return empty figure with a message
+        return {
+            'data': [],
+            'layout': {
+                'title': 'Seleccione al menos dos fuentes de datos',
+                'xaxis': {'visible': False},
+                'yaxis': {'visible': False},
+                'annotations': [{
+                    'text': 'Seleccione al menos dos fuentes de datos',
+                    'xref': 'paper',
+                    'yref': 'paper',
+                    'showarrow': False,
+                    'font': {'size': 20}
+                }]
+            }
         }
-        for source, outline in zip(dbase_options.values(), new_states)
-    ]
+
+    # Get the data
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
     
-    # Update select-all button state
-    new_select_all_state = not all(new_states)
+    # Calculate correlation matrix for all selected sources
+    source_names = [dbase_options[src_id] for src_id in selected_sources]
+    correlation_matrix = combined_dataset[source_names].corr()
+
+    # Create heatmap
+    return {
+        'data': [{
+            'type': 'heatmap',
+            'z': correlation_matrix.values,
+            'x': correlation_matrix.columns,
+            'y': correlation_matrix.index[::-1],
+            'colorscale': [
+                [0.0, '#F5F5F5'],   # Light gray
+                [0.2, '#FFE0CC'],   # Very light orange
+                [0.4, '#FFAA66'],   # Light orange
+                [0.6, '#FF7733'],   # Orange
+                [0.8, '#CC3300'],   # Dark orange-red
+                [1.0, '#990000']    # Dark red
+            ],
+            'text': correlation_matrix.values.round(3),
+            'texttemplate': '%{text}',
+            'textfont': {'size': 8},
+            'showscale': True,
+            'colorbar': {
+                'thickness': 10,
+                'len': 1,
+                'x': 1.02,
+                'tickfont': {'size': 8}
+            }
+        }],
+        'layout': {
+            'title': {
+                'text': 'Correlación entre Fuentes',
+                'font': {'size': 12}
+            },
+            'height': 400,
+            'margin': {'l': 150, 'r': 50, 't': 40, 'b': 150},
+            'xaxis': {'tickfont': {'size': 10}},
+            'yaxis': {
+                'tickfont': {'size': 10},
+                'autorange': 'reversed'
+            },
+        }
+    }
+
+# Update the callback for selected scatter sources
+@app.callback(
+    Output('selected-scatter-sources', 'data'),
+    [Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
+)
+def update_selected_sources(selected_keyword, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [dbase_options[id] for id, outline in zip(dbase_options.keys(), button_states) if not outline]
     
-    return new_states + styles + [new_select_all_state]
+    if len(selected_sources) < 2:
+        return {'x': None, 'y': None}
+    
+    # Default to first two selected sources
+    return {
+        'x': selected_sources[0],
+        'y': selected_sources[1]
+    }
+
+# Add new callback for the scatter plot
+@app.callback(
+    Output('scatter-plot', 'figure'),  # You'll need to update the scatter plot ID in your layout
+    [Input('selected-scatter-sources', 'data'),
+     Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_scatter_plot(selected_sources, selected_keyword, *button_states):
+    if not selected_sources['x'] or not selected_sources['y']:
+        return {
+            'data': [],
+            'layout': {
+                'title': 'Seleccione una celda en el mapa de calor',
+                'xaxis': {'visible': False},
+                'yaxis': {'visible': False},
+                'annotations': [{
+                    'text': 'Seleccione una celda en el mapa de calor',
+                    'xref': 'paper',
+                    'yref': 'paper',
+                    'showarrow': False,
+                    'font': {'size': 20}
+                }]
+            }
+        }
+
+    # Get the data
+    active_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=active_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    
+    # Create scatter plot
+    scatter_fig = {
+        'data': [{
+            'type': 'scatter',
+            'x': combined_dataset[selected_sources['x']],
+            'y': combined_dataset[selected_sources['y']],
+            'mode': 'markers',
+            'marker': {
+                'size': 8,
+                'color': combined_dataset.index,
+                'colorscale': 'Viridis',
+                'showscale': True,
+                'colorbar': {
+                    'title': 'Fecha',
+                    'thickness': 10,
+                    'len': 0.8,
+                    'tickfont': {'size': 8}
+                }
+            },
+            'hovertemplate': (
+                f"<b>{selected_sources['x']}:</b> %{{x:.2f}}<br>" +
+                f"<b>{selected_sources['y']}:</b> %{{y:.2f}}<br>" +
+                "<b>Fecha:</b> %{text}<extra></extra>"
+            ),
+            'text': combined_dataset.index.strftime('%Y-%m-%d')
+        }],
+        'layout': {
+            'title': {
+                'text': f'Dispersión: {selected_sources["x"]} vs {selected_sources["y"]}',
+                'font': {'size': 12}
+            },
+            'xaxis': {
+                'title': selected_sources['x'],
+                'tickfont': {'size': 10}
+            },
+            'yaxis': {
+                'title': selected_sources['y'],
+                'tickfont': {'size': 10}
+            },
+            'height': 400,
+            'margin': {'l': 50, 'r': 50, 't': 40, 'b': 50},
+            'showlegend': False
+        }
+    }
+    
+    return scatter_fig
 
 if __name__ == '__main__':
     app.run_server(
