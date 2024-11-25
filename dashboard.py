@@ -13,7 +13,7 @@ app = dash.Dash(
     __name__, 
     external_stylesheets=[dbc.themes.BOOTSTRAP], 
     suppress_callback_exceptions=True,
-    title='Management Tools Analysis'
+    title='Análisis de Herramientas Gerenciales'
 )
 
 # Define custom HTML index string with additional favicon tags
@@ -1315,4 +1315,16 @@ def toggle_sources(*args):
     return new_states
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(
+        debug=True,
+        host='0.0.0.0',  # Makes the server externally visible
+        port=8050        # You can change this port if needed
+    )
+
+# if __name__ == '__main__':
+#     app.run_server(
+#         debug=False,          # Disable debug mode for security
+#         host='0.0.0.0',      # Makes the server externally visible
+#         port=8050,           # Port number
+#         use_reloader=False   # Disable auto-reloader for stability
+#     )
