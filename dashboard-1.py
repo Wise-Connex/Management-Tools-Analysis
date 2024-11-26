@@ -16,6 +16,7 @@ from sklearn.pipeline import make_pipeline
 from statsmodels.tsa.arima.model import ARIMA
 from sklearn.metrics import mean_squared_error
 import warnings
+from pmdarima import auto_arima
 warnings.filterwarnings('ignore')
 
 # Initialize the Dash app with a Bootstrap theme
@@ -98,7 +99,7 @@ sidebar = html.Div(
         
         html.Hr(),
         
-        # Keyword dropdown (single selection)
+        # Keyword dropdown (single selection) - removed default value
         html.Div([
             html.Label("Seleccione una Herramienta:", style={'fontSize': '12px'}),
             dcc.Dropdown(
@@ -107,19 +108,17 @@ sidebar = html.Div(
                     {'label': keyword, 'value': keyword} 
                     for keyword in get_all_keywords()
                 ],
-                value=get_all_keywords()[0] if get_all_keywords() else None,
+                value=None,  # Changed from default value to None
                 placeholder="Seleccione una Herramienta Gerencial",
                 className="mb-4",
                 style={'fontSize': '12px'}
             ),
-            # Add validation message div for keywords
             html.Div(id='keyword-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
         
-        # Update the dropdown component
+        # Update the source buttons to start with all unselected
         html.Div([
             html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
-            # Add Select All button
             dbc.Button(
                 "Seleccionar Todo",
                 id="select-all-button",
@@ -129,13 +128,12 @@ sidebar = html.Div(
                 className="mb-2 w-100",
                 style={'fontSize': '12px'}
             ),
-            # Source buttons container
             html.Div([
                 dbc.Button(
                     source,
                     id=f"toggle-source-{id}",
                     color="primary",
-                    outline=True,
+                    outline=True,  # All buttons start as outlined (unselected)
                     size="sm",
                     className="me-2 mb-2",
                     style={
@@ -145,46 +143,62 @@ sidebar = html.Div(
                     }
                 ) for id, source in dbase_options.items()
             ], id='source-buttons-container'),
-            # Validation message div
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
-    ],
-    style={
-        'background-color': '#f8f9fa',
-        'padding': '20px',
-        'height': '100vh',
-        'position': 'fixed',  # Make sidebar fixed
-        'width': 'inherit',   # Inherit width from parent
-        'overflow-y': 'auto', # Add scroll if content is too long
-        'top': 0,            # Align to top
-        'left': 0,           # Align to left
-        'bottom': 0,         # Extend to bottom
-    }
-)
 
-# Add the membrete div before the main layout
-membrete = html.Div(
-    [
+        # Add footer div that sticks to bottom
         html.Div([
-            html.H3("Análisis Estadístico Correlacional: Técnicas y Herramientas Gerenciales", className="mb-0"),
-            html.H5("Enfoque Central de la Investigación Doctoral: Dicotomía Ontológica en las 'Modas Gerenciales'", className="mb-0"),
-            html.P([
-                "Autor de la Tesis: ", html.B("Diomar Anez"), " | Desarrollador en Python: ", html.B("Dimar Anez")
-            ], className="mb-0"),
+            html.Hr(),
             html.P([
                 "Equipo de desarrollo: ",
                 html.A("Wise Connex", href="http://wiseconnex.com", target="_blank"),
-                " - (c)2024 | Code: ",
-                html.A("https://github.com/Wise-Connex/Management-Tools-Analysis.git", 
-                      href="https://github.com/Wise-Connex/Management-Tools-Analysis.git",
-                      target="_blank")
+                " - (c)2024"
+            ], style={'marginBottom': '5px', 'fontSize': '10px', 'textAlign': 'center'}),
+            html.P([
+                "Código: ",
+                html.A(
+                    "github.com/Wise-Connex/Management-Tools-Analysis.git",
+                    href="https://github.com/Wise-Connex/Management-Tools-Analysis.git",
+                    target="_blank"
+                )
+            ], style={'fontSize': '10px', 'textAlign': 'center'})
+        ], style={
+            'position': 'absolute',
+            'bottom': '20px',
+            'left': '0',
+            'right': '0',
+            'padding': '10px'
+        })
+    ],
+    style={
+        'background-color': '#f3f4f6',  # Changed to a slightly darker shade than '#f8f9fa'
+        'padding': '20px',
+        'height': '100vh',
+        'position': 'fixed',
+        'width': 'inherit',
+        'overflow-y': 'auto',
+        'top': 0,
+        'left': 0,
+        'bottom': 0,
+        'boxShadow': '2px 0 5px rgba(0,0,0,0.1)'  # Keeping the subtle shadow
+    }
+)
+
+# Update membrete to remove the moved content
+membrete = html.Div(
+    [
+        html.Div([
+            html.H5("Enfoque Central de la Investigación Doctoral: Dicotomía Ontológica en las 'Modas Gerenciales'", className="mb-0"),
+            html.H3("Análisis Estadístico Correlacional: Técnicas y Herramientas Gerenciales", className="mb-0"),
+            html.P([
+                "Tesista: ", html.B("Diomar Anez"), " | Desarrollador en Python: ", html.B("Dimar Anez")
             ], className="mb-0"),
         ])
     ],
     style={
-        'position': 'sticky',  # Make it sticky
-        'top': 0,             # Stick to top
-        'zIndex': 1000,       # Ensure it stays on top of other content
+        'position': 'sticky',
+        'top': 0,
+        'zIndex': 1000,
         'backgroundColor': '#f8f9fa',
         'padding': '10px 20px',
         'borderBottom': '1px solid #dee2e6',
@@ -253,6 +267,23 @@ def update_main_content(*args):
     date_column = combined_dataset.columns[0]
     combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
     combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
+    
+    # Check if Bain and Crossref are both selected
+    bain_sources = [3, 5]  # IDs for Bain sources
+    has_bain = any(src_id in selected_sources for src_id in bain_sources)
+    has_crossref = 4 in selected_sources
+    
+    if has_bain and has_crossref:
+        # Get the earliest date from Bain data
+        bain_columns = [dbase_options[src_id] for src_id in bain_sources if src_id in selected_sources]
+        bain_start_date = combined_dataset[combined_dataset[bain_columns].notna().any(axis=1)]['Fecha'].min()
+        
+        # Truncate all data to start from Bain's start date
+        combined_dataset = combined_dataset[combined_dataset['Fecha'] >= bain_start_date]
+
+    # Filter out rows where any selected source has NaN values
+    data_columns = [dbase_options[src_id] for src_id in selected_sources]
+    combined_dataset = combined_dataset.dropna(subset=data_columns)
     
     # Filter the dataset based on the current date range
     if global_date_range['start'] and global_date_range['end']:
@@ -1094,284 +1125,288 @@ def update_title(selected_keyword):
     [State('frequency-label', 'children')]
 )
 def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
-    # Split args into button_states and current_frequency
-    button_states = args[:-1]
-    current_frequency = args[-1]
-    
-    # Convert button states to selected sources
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
-    
-    if not all([y_axis, z_axis, selected_keyword, selected_sources]):
-        return {}, {}, {}, current_frequency
+    try:
+        # Split args into button_states and current_frequency
+        button_states = args[:-1]
+        current_frequency = args[-1]
+        
+        # Convert button states to selected sources
+        selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+        
+        if not all([y_axis, z_axis, selected_keyword, selected_sources]):
+            return {}, {}, {}, current_frequency
 
-    # Get the data
-    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
-    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
-    
-    # Reset index and format date
-    combined_dataset = combined_dataset.reset_index()
-    date_column = combined_dataset.columns[0]  # Get the date column name
-    combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
-    
-    # Get the actual column names from the dataset
-    available_columns = combined_dataset.columns.tolist()
-    if date_column in available_columns:
-        available_columns.remove(date_column)
-    
-    # Find the matching column names
-    y_column = next((col for col in available_columns if y_axis in col), None)
-    z_column = next((col for col in available_columns if z_axis in col), None)
-    
-    if not y_column or not z_column:
-        return {}, {}, {}, current_frequency
-
-    # Toggle frequency based on button clicks
-    is_annual = current_frequency == "Anual"
-    new_frequency = "Mensual" if is_annual else "Anual"
-    
-    if not is_annual:  # If switching to annual
-        # Group by year with different aggregations for different columns
-        combined_dataset = combined_dataset.set_index(date_column)
+        # Get the data
+        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
         
-        # Create aggregation dictionary
-        agg_dict = {}
-        for column in combined_dataset.columns:
-            # Check if the column name contains 'Crossref'
-            if 'Crossref' in column:
-                agg_dict[column] = 'sum'  # Sum for Crossref data
-            else:
-                # Mean for all other sources (Google Trends, Google Books, Bain)
-                agg_dict[column] = 'mean'
-        
-        print("Aggregation methods:", agg_dict)  # Debug print to verify aggregation methods
-        
-        # Apply different aggregations for different columns
-        combined_dataset = combined_dataset.groupby(pd.Grouper(freq='Y')).agg(agg_dict)
-        
-        # Print sample of results to verify
-        print("\nSample of aggregated data:")
-        print(combined_dataset.head())
-        
+        # Reset index and format date
         combined_dataset = combined_dataset.reset_index()
+        date_column = combined_dataset.columns[0]
+        combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         
-        # Ensure we have data for the first day of each year
-        combined_dataset[date_column] = combined_dataset[date_column].apply(
-            lambda x: pd.Timestamp(year=x.year, month=1, day=1)
-        )
-    
-    # Special handling for Crossref data
-    if 'Crossref' in y_column or 'Crossref' in z_column:
-        # Fill any missing values with 0 for Crossref data
-        combined_dataset = combined_dataset.fillna(0)
+        # Get the actual column names from the dataset
+        available_columns = combined_dataset.columns.tolist()
+        if date_column in available_columns:
+            available_columns.remove(date_column)
         
-        # Ensure data is properly normalized between 0 and 100
-        for col in [y_column, z_column]:
-            if 'Crossref' in col:
-                max_val = combined_dataset[col].max()
-                if max_val > 0:  # Avoid division by zero
-                    combined_dataset[col] = (combined_dataset[col] / max_val) * 100
+        # Find the matching column names
+        y_column = next((col for col in available_columns if y_axis in col), None)
+        z_column = next((col for col in available_columns if z_axis in col), None)
+        
+        if not y_column or not z_column:
+            return {}, {}, {}, current_frequency
 
-    # Convert dates to numeric values for interpolation
-    dates = combined_dataset[date_column].astype(np.int64) // 10**9
-    
-    # Create more points for smoother interpolation
-    if not is_annual:
-        # More points for monthly data
-        num_points = len(combined_dataset) * 100
-    else:
-        # Fewer points for annual data to avoid over-smoothing
-        num_points = len(combined_dataset) * 12
-    
-    t = np.arange(len(combined_dataset))
-    t_smooth = np.linspace(0, len(combined_dataset) - 1, num=num_points)
-    
-    # Create cubic spline interpolations with appropriate boundary conditions
-    cs_dates = CubicSpline(t, dates, bc_type='natural')
-    cs_y = CubicSpline(t, combined_dataset[y_column], bc_type='natural')
-    cs_z = CubicSpline(t, combined_dataset[z_column], bc_type='natural')
-    
-    # Generate smooth data points
-    dates_smooth = cs_dates(t_smooth)
-    y_smooth = cs_y(t_smooth)
-    z_smooth = cs_z(t_smooth)
-    
-    # Ensure interpolated values stay within bounds
-    y_smooth = np.clip(y_smooth, 0, 100)
-    z_smooth = np.clip(z_smooth, 0, 100)
+        # Toggle frequency based on button clicks
+        is_annual = current_frequency == "Anual"
+        new_frequency = "Mensual" if is_annual else "Anual"
+        
+        if not is_annual:  # If switching to annual
+            # Group by year with different aggregations
+            combined_dataset = combined_dataset.set_index(date_column)
+            
+            agg_dict = {}
+            for column in combined_dataset.columns:
+                if 'Crossref' in column:
+                    agg_dict[column] = 'sum'
+                else:
+                    agg_dict[column] = 'mean'
+            
+            combined_dataset = combined_dataset.groupby(pd.Grouper(freq='Y')).agg(agg_dict)
+            combined_dataset = combined_dataset.reset_index()
+            
+            combined_dataset[date_column] = combined_dataset[date_column].apply(
+                lambda x: pd.Timestamp(year=x.year, month=1, day=1)
+            )
 
-    # Convert smooth dates back to datetime
-    dates_dt_smooth = pd.to_datetime(dates_smooth * 10**9)
+        # Handle NaN values and ensure data is finite
+        combined_dataset = combined_dataset.dropna(subset=[y_column, z_column])
+        
+        # Convert dates to numeric values for interpolation
+        dates = combined_dataset[date_column].astype(np.int64) // 10**9
+        
+        # Create more points for smoother interpolation
+        if not is_annual:
+            num_points = len(combined_dataset) * 100
+        else:
+            num_points = len(combined_dataset) * 12
+        
+        # Ensure we have enough data points
+        if len(combined_dataset) < 2:
+            raise ValueError("Insufficient data points for interpolation")
 
-    # Calculate years for x-axis ticks
-    years = combined_dataset[date_column].dt.year.unique()
-    year_ticks = [pd.Timestamp(year=year, month=1, day=1) for year in years]
-    
-    # Get date range for x-axis
-    date_min = combined_dataset[date_column].min()
-    date_max = combined_dataset[date_column].max()
+        t = np.arange(len(combined_dataset))
+        t_smooth = np.linspace(0, len(combined_dataset) - 1, num=num_points)
+        
+        # Ensure data is finite before creating splines
+        y_data = combined_dataset[y_column].replace([np.inf, -np.inf], np.nan).dropna()
+        z_data = combined_dataset[z_column].replace([np.inf, -np.inf], np.nan).dropna()
+        
+        if len(y_data) < 2 or len(z_data) < 2:
+            raise ValueError("Insufficient valid data points after cleaning")
 
-    # Update the base trace with hover information
-    base_trace = go.Scatter3d(
-        x=dates_dt_smooth,
-        y=y_smooth,
-        z=z_smooth,
-        mode='lines',
-        line=dict(width=4, color=dates_smooth, colorscale='Viridis'),
-        showlegend=False,
-        hovertemplate=(
-            "<b>Fecha:</b> %{x|%Y-%m-%d}<br>" +
-            f"<b>{y_axis}:</b> %{{y:.2f}}<br>" +
-            f"<b>{z_axis}:</b> %{{z:.2f}}<extra></extra>"
+        # Create cubic spline interpolations
+        cs_dates = CubicSpline(t, dates, bc_type='natural')
+        cs_y = CubicSpline(t, y_data, bc_type='natural')
+        cs_z = CubicSpline(t, z_data, bc_type='natural')
+        
+        # Generate smooth data points
+        dates_smooth = cs_dates(t_smooth)
+        y_smooth = cs_y(t_smooth)
+        z_smooth = cs_z(t_smooth)
+        
+        # Ensure interpolated values stay within bounds
+        y_smooth = np.clip(y_smooth, 0, 100)
+        z_smooth = np.clip(z_smooth, 0, 100)
+
+        # Convert smooth dates back to datetime
+        dates_dt_smooth = pd.to_datetime(dates_smooth * 10**9)
+
+        # Calculate years for x-axis ticks
+        years = combined_dataset[date_column].dt.year.unique()
+        year_ticks = [pd.Timestamp(year=year, month=1, day=1) for year in years]
+        
+        # Get date range for x-axis
+        date_min = combined_dataset[date_column].min()
+        date_max = combined_dataset[date_column].max()
+
+        # Update the base trace with hover information
+        base_trace = go.Scatter3d(
+            x=dates_dt_smooth,
+            y=y_smooth,
+            z=z_smooth,
+            mode='lines',
+            line=dict(width=4, color=dates_smooth, colorscale='Viridis'),
+            showlegend=False,
+            hovertemplate=(
+                "<b>Fecha:</b> %{x|%Y-%m-%d}<br>" +
+                f"<b>{y_axis}:</b> %{{y:.2f}}<br>" +
+                f"<b>{z_axis}:</b> %{{z:.2f}}<extra></extra>"
+            )
         )
-    )
 
-    # Update common_layout with left-aligned button
-    common_layout = dict(
-        scene=dict(
-            xaxis_title="Fecha",
-            yaxis_title=y_axis,
-            zaxis_title=z_axis,
-            # Set fixed ranges for axes
-            xaxis=dict(
-                range=[date_min, date_max],
-                ticktext=years,
-                tickvals=year_ticks,
-                tickformat='%Y',
-                dtick="M12",
-                tickmode='array',
-                tickangle=45,
-                tickfont=dict(size=8)
+        # Update common_layout with left-aligned button
+        common_layout = dict(
+            scene=dict(
+                xaxis_title="Fecha",
+                yaxis_title=y_axis,
+                zaxis_title=z_axis,
+                # Set fixed ranges for axes
+                xaxis=dict(
+                    range=[date_min, date_max],
+                    ticktext=years,
+                    tickvals=year_ticks,
+                    tickformat='%Y',
+                    dtick="M12",
+                    tickmode='array',
+                    tickangle=45,
+                    tickfont=dict(size=8)
+                ),
+                yaxis=dict(
+                    range=[0, 100],
+                    tickmode='linear',
+                    tick0=0,
+                    dtick=20,
+                    tickfont=dict(size=8)
+                ),
+                zaxis=dict(
+                    range=[0, 100],
+                    tickmode='linear',
+                    tick0=0,
+                    dtick=20,
+                    tickfont=dict(size=8)
+                )
             ),
-            yaxis=dict(
-                range=[0, 100],
-                tickmode='linear',
-                tick0=0,
-                dtick=20,
-                tickfont=dict(size=8)
+            margin=dict(l=0, r=0, t=30, b=0),
+            updatemenus=[
+                dict(
+                    type='buttons',
+                    showactive=False,
+                    buttons=[
+                        dict(
+                            label='Restablecer Vista',
+                            method='relayout',
+                            args=[{'scene.camera': dict(
+                                eye=dict(x=0, y=0, z=3),  # Updated to match new zoom level
+                                up=dict(x=0, y=1, z=0)
+                            )}]
+                        )
+                    ],
+                    x=0.1,
+                    y=1.1,
+                    xanchor='left',
+                    yanchor='top',
+                    font=dict(size=8)
+                )
+            ]
+        )
+
+        # Left viewport (X-Y frontal view)
+        fig1 = go.Figure(data=[base_trace])
+        fig1.update_layout(
+            title=dict(
+                text=f"Vista {y_axis}",
+                font=dict(size=12),
+                x=0.5,
+                xanchor='center'
             ),
-            zaxis=dict(
-                range=[0, 100],
-                tickmode='linear',
-                tick0=0,
-                dtick=20,
-                tickfont=dict(size=8)
-            )
-        ),
-        margin=dict(l=0, r=0, t=30, b=0),
-        updatemenus=[
-            dict(
-                type='buttons',
-                showactive=False,
-                buttons=[
-                    dict(
-                        label='Restablecer Vista',
-                        method='relayout',
-                        args=[{'scene.camera': dict(
-                            eye=dict(x=0, y=0, z=2),
-                            up=dict(x=0, y=1, z=0)
-                        )}]
-                    )
-                ],
-                x=0.1,  # Changed from 0.9 to 0.1
-                y=1.1,
-                xanchor='left',  # Changed from 'right' to 'left'
-                yanchor='top',
-                font=dict(size=8)
-            )
-        ]
-    )
+            scene_camera=dict(
+                eye=dict(x=0, y=0, z=3),  # Changed from 12 to 3
+                up=dict(x=0, y=1, z=0)
+            ),
+            **common_layout
+        )
+        
+        # Middle viewport (Isometric view)
+        fig2 = go.Figure(data=[base_trace])
+        fig2.update_layout(
+            title=dict(
+                text="Vista isométrica",
+                font=dict(size=12),
+                x=0.5,
+                xanchor='center'
+            ),
+            scene_camera=dict(
+                eye=dict(x=2.25, y=2.25, z=2.25),  # Changed from 9 to 2.25
+                up=dict(x=0, y=0, z=1)
+            ),
+            updatemenus=[
+                dict(
+                    type='buttons',
+                    showactive=False,
+                    buttons=[
+                        dict(
+                            label='Restablecer Vista',
+                            method='relayout',
+                            args=[{'scene.camera': dict(
+                                eye=dict(x=2.25, y=2.25, z=2.25),  # Match the new camera position
+                                up=dict(x=0, y=0, z=1)
+                            )}]
+                        )
+                    ],
+                    x=0.1,
+                    y=1.1,
+                    xanchor='left',
+                    yanchor='top',
+                    font=dict(size=8)
+                )
+            ],
+            **{k:v for k,v in common_layout.items() if k != 'updatemenus'}
+        )
+        
+        # Right viewport (X-Z frontal view)
+        fig3 = go.Figure(data=[base_trace])
+        fig3.update_layout(
+            title=dict(
+                text=f"Vista {z_axis}",
+                font=dict(size=12),
+                x=0.5,
+                xanchor='center'
+            ),
+            scene_camera=dict(
+                eye=dict(x=0, y=-3, z=0),  # Changed from -12 to -3
+                up=dict(x=0, y=0, z=1)
+            ),
+            updatemenus=[
+                dict(
+                    type='buttons',
+                    showactive=False,
+                    buttons=[
+                        dict(
+                            label='Restablecer Vista',
+                            method='relayout',
+                            args=[{'scene.camera': dict(
+                                eye=dict(x=0, y=-3, z=0),  # Match the new camera position
+                                up=dict(x=0, y=0, z=1)
+                            )}]
+                        )
+                    ],
+                    x=0.1,
+                    y=1.1,
+                    xanchor='left',
+                    yanchor='top',
+                    font=dict(size=8)
+                )
+            ],
+            **{k:v for k,v in common_layout.items() if k != 'updatemenus'}
+        )
 
-    # Left viewport (X-Y frontal view)
-    fig1 = go.Figure(data=[base_trace])
-    fig1.update_layout(
-        title=dict(
-            text=f"Vista {y_axis}",
-            font=dict(size=12),
-            x=0.5,
-            xanchor='center'
-        ),
-        scene_camera=dict(
-            eye=dict(x=0, y=0, z=2),  # Camera looking straight at X-Y plane
-            up=dict(x=0, y=1, z=0)
-        ),
-        **common_layout
-    )
-    
-    # Middle viewport (Isometric view)
-    fig2 = go.Figure(data=[base_trace])
-    fig2.update_layout(
-        title=dict(
-            text="Vista isométrica",
-            font=dict(size=12),
-            x=0.5,
-            xanchor='center'
-        ),
-        scene_camera=dict(
-            eye=dict(x=1.5, y=1.5, z=1.5),  # Isometric view
-            up=dict(x=0, y=0, z=1)
-        ),
-        updatemenus=[
-            dict(
-                type='buttons',
-                showactive=False,
-                buttons=[
-                    dict(
-                        label='Restablecer Vista',
-                        method='relayout',
-                        args=[{'scene.camera': dict(
-                            eye=dict(x=1.5, y=1.5, z=1.5),
-                            up=dict(x=0, y=0, z=1)
-                        )}]
-                    )
-                ],
-                x=0.1,  # Changed from 0.9 to 0.1
-                y=1.1,
-                xanchor='left',  # Changed from 'right' to 'left'
-                yanchor='top',
-                font=dict(size=8)
-            )
-        ],
-        **{k:v for k,v in common_layout.items() if k != 'updatemenus'}
-    )
-    
-    # Right viewport (X-Z frontal view)
-    fig3 = go.Figure(data=[base_trace])
-    fig3.update_layout(
-        title=dict(
-            text=f"Vista {z_axis}",
-            font=dict(size=12),
-            x=0.5,
-            xanchor='center'
-        ),
-        scene_camera=dict(
-            eye=dict(x=0, y=-2, z=0),  # Camera looking straight at X-Z plane
-            up=dict(x=0, y=0, z=1)
-        ),
-        updatemenus=[
-            dict(
-                type='buttons',
-                showactive=False,
-                buttons=[
-                    dict(
-                        label='Restablecer Vista',
-                        method='relayout',
-                        args=[{'scene.camera': dict(
-                            eye=dict(x=0, y=-2, z=0),
-                            up=dict(x=0, y=0, z=1)
-                        )}]
-                    )
-                ],
-                x=0.1,  # Changed from 0.9 to 0.1
-                y=1.1,
-                xanchor='left',  # Changed from 'right' to 'left'
-                yanchor='top',
-                font=dict(size=8)
-            )
-        ],
-        **{k:v for k,v in common_layout.items() if k != 'updatemenus'}
-    )
+        return fig1, fig2, fig3, new_frequency
 
-    return fig1, fig2, fig3, new_frequency
+    except Exception as e:
+        print(f"Error in 3D graph update: {str(e)}")  # For debugging
+        # Return empty figures with error message
+        empty_fig = {
+            'data': [],
+            'layout': {
+                'title': {
+                    'text': f'Error: {str(e)}',
+                    'font': {'size': 12}
+                },
+                'height': 600
+            }
+        }
+        return empty_fig, empty_fig, empty_fig, current_frequency
 
 # Add new callback for toggle button (add this near your other callbacks)
 @app.callback(
@@ -1395,56 +1430,64 @@ def toggle_table(n_clicks, is_open):
     [State("select-all-button", "outline")]
 )
 def toggle_sources(*args):
-    n_clicks = args[:len(dbase_options) + 1]  # Include select-all button clicks
-    current_states = args[len(dbase_options) + 1:]
-    source_states = current_states[:len(dbase_options)]
-    select_all_state = current_states[-1]
-    
     ctx = dash.callback_context
     if not ctx.triggered:
-        # Initial load - default to Google Trends selected
-        new_states = [id != 1 for id in dbase_options.keys()]
+        # Initial load - all sources unselected
+        new_states = [True] * len(dbase_options)  # All buttons start as outlined
         styles = [
             {
                 'fontSize': '12px',
                 'borderColor': color_map[source],
-                'color': color_map[source] if outline else 'white',
-                'backgroundColor': color_map[source] if not outline else 'transparent'
+                'color': color_map[source],
+                'backgroundColor': 'transparent'
             }
-            for id, (source, outline) in enumerate(zip(dbase_options.values(), new_states))
+            for source in dbase_options.values()
         ]
         return new_states + styles + [True]
     
     button_id = ctx.triggered[0]['prop_id'].split('.')[0]
     
+    # Get current states from the State inputs
+    current_states = list(args[len(dbase_options)+1:-1])  # Extract current states from args
+    
     if button_id == "select-all-button":
-        # Toggle all sources
-        new_states = [select_all_state] * len(dbase_options)
+        # Toggle all sources based on current select-all state
+        select_all_state = args[-1]  # Get current select-all button state
+        new_states = [not select_all_state] * len(dbase_options)  # Invert the state for all buttons
     else:
         # Individual button toggle
         source_id = int(button_id.split('-')[-1])
         clicked_index = list(dbase_options.keys()).index(source_id)
-        new_states = list(source_states)
+        new_states = list(current_states)
         new_states[clicked_index] = not new_states[clicked_index]
     
     # Ensure at least one source is selected
     if all(new_states):
         if button_id != "select-all-button":
+            clicked_index = list(dbase_options.keys()).index(int(button_id.split('-')[-1]))
             new_states[clicked_index] = False
     
     # Update button styles based on new states
-    styles = [
-        {
-            'fontSize': '12px',
-            'borderColor': color_map[source],
-            'color': color_map[source] if outline else 'white',
-            'backgroundColor': color_map[source] if not outline else 'transparent'
-        }
-        for source, outline in zip(dbase_options.values(), new_states)
-    ]
+    styles = []
+    for i, source in enumerate(dbase_options.values()):
+        if new_states[i]:  # Button is unselected (outlined)
+            style = {
+                'fontSize': '12px',
+                'borderColor': color_map[source],
+                'color': color_map[source],
+                'backgroundColor': 'transparent'
+            }
+        else:  # Button is selected (filled)
+            style = {
+                'fontSize': '12px',
+                'borderColor': color_map[source],
+                'color': 'white',
+                'backgroundColor': color_map[source]
+            }
+        styles.append(style)
     
     # Update select-all button state
-    new_select_all_state = not all(new_states)
+    new_select_all_state = all(new_states)  # True if all buttons are unselected
     
     return new_states + styles + [new_select_all_state]
 
@@ -1571,172 +1614,204 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
     if not all([y_axis, z_axis, selected_keyword]) or len(selected_sources) < 2:
         return {}
 
-    # Get the data
-    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
-    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
-    
-    # Reset index and format date
-    combined_dataset = combined_dataset.reset_index()
-    date_column = combined_dataset.columns[0]
-    combined_dataset = combined_dataset.drop(columns=[date_column])
-    
-    # Get data for the selected sources
-    x_data = combined_dataset[y_axis]
-    y_data = combined_dataset[z_axis]
-    
-    # Calculate linear regression
-    slope, intercept, r_value, p_value, std_err = stats.linregress(x_data, y_data)
-    line_x = np.array([min(x_data), max(x_data)])
-    line_y = slope * line_x + intercept
-    r_squared_linear = r_value ** 2
-    equation_linear = f'y = {slope:.2f}x + {intercept:.2f}'
-    
-    # Calculate polynomial regression (degree 2)
-    X = x_data.values.reshape(-1, 1)
-    poly_model = make_pipeline(PolynomialFeatures(degree=2), LinearRegression())
-    poly_model.fit(X, y_data)
-    
-    # Generate points for smooth polynomial curve
-    X_smooth = np.linspace(min(x_data), max(x_data), 100).reshape(-1, 1)
-    y_smooth = poly_model.predict(X_smooth)
-    
-    # Calculate R² for polynomial regression
-    y_pred_poly = poly_model.predict(X)
-    r_squared_poly = np.corrcoef(y_data, y_pred_poly)[0,1]**2
-    
-    # Get polynomial coefficients
-    coeffs = poly_model.named_steps['linearregression'].coef_
-    intercept_poly = poly_model.named_steps['linearregression'].intercept_
-    equation_poly = f'y = {coeffs[2]:.2f}x² + {coeffs[1]:.2f}x + {intercept_poly:.2f}'
-    
-    # Create scatter plot with both regression lines
-    fig = go.Figure()
-    
-    # Add scatter points
-    fig.add_trace(go.Scatter(
-        x=x_data,
-        y=y_data,
-        mode='markers',
-        name='Datos',
-        marker=dict(
-            size=8,
-            color='rgba(230,85,13,0.5)',
-            line=dict(
-                color='rgba(230,85,13,1)',
-                width=1
-            )
-        ),
-        hovertemplate=(
-            f"{y_axis}: %{{x:.2f}}<br>" +
-            f"{z_axis}: %{{y:.2f}}<br>" +
-            "<extra></extra>"
-        )
-    ))
-    
-    # Add linear regression line
-    fig.add_trace(go.Scatter(
-        x=line_x,
-        y=line_y,
-        mode='lines',
-        name='Regresión Lineal',
-        line=dict(
-            color='rgba(166,54,3,1)',
-            width=2,
-            dash='solid'
-        ),
-        hovertemplate=(
-            "Regresión Lineal<br>" +
-            f"{equation_linear}<br>" +
-            f"R² = {r_squared_linear:.3f}" +
-            "<extra></extra>"
-        )
-    ))
-    
-    # Add polynomial regression line
-    fig.add_trace(go.Scatter(
-        x=X_smooth.flatten(),
-        y=y_smooth,
-        mode='lines',
-        name='Regresión Polinomial',
-        line=dict(
-            color='rgba(0,100,80,1)',
-            width=2,
-            dash='dash'
-        ),
-        hovertemplate=(
-            "Regresión Polinomial<br>" +
-            f"{equation_poly}<br>" +
-            f"R² = {r_squared_poly:.3f}" +
-            "<extra></extra>"
-        )
-    ))
-    
-    # Update layout
-    fig.update_layout(
-        title=dict(
-            text=f'Análisis de Regresión<br>' +
-                 f'<sup>R² Lineal = {r_squared_linear:.3f}, ' +
-                 f'R² Polinomial = {r_squared_poly:.3f}</sup>',
-            x=0.5,
-            font=dict(size=12)
-        ),
-        xaxis=dict(
-            title=dict(
-                text=y_axis,
-                font=dict(size=10)
-            ),
-            tickfont=dict(size=8),
-            zeroline=True,
-            zerolinewidth=1,
-            zerolinecolor='lightgray',
-            showgrid=True,
-            gridwidth=1,
-            gridcolor='lightgray'
-        ),
-        yaxis=dict(
-            title=dict(
-                text=z_axis,
-                font=dict(size=10)
-            ),
-            tickfont=dict(size=8),
-            zeroline=True,
-            zerolinewidth=1,
-            zerolinecolor='lightgray',
-            showgrid=True,
-            gridwidth=1,
-            gridcolor='lightgray'
-        ),
-        showlegend=True,
-        legend=dict(
-            orientation="h",     # Horizontal orientation
-            yanchor="top",      # Anchor to top of legend box
-            y=-0.35,            # Moved from -0.25 to -0.35 to lower by ~10px
-            xanchor="center",   # Center horizontally
-            x=0.5,             # Center position
-            font=dict(size=8),
-            bgcolor='rgba(255,255,255,0.8)',
-            bordercolor='rgba(0,0,0,0.2)',
-            borderwidth=1
-        ),
-        margin=dict(
-            l=50,    # left margin
-            r=50,    # right margin
-            t=50,    # top margin
-            b=100    # increased from 80 to 100 to accommodate lower legend
-        ),
-        height=300,
-        width=450,
-        hovermode='closest',
-        plot_bgcolor='white'
-    )
+    try:
+        # Get the data
+        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+        
+        # Reset index and format date
+        combined_dataset = combined_dataset.reset_index()
+        date_column = combined_dataset.columns[0]
+        combined_dataset = combined_dataset.drop(columns=[date_column])
+        
+        # Get data for the selected sources and handle NaN values
+        x_data = combined_dataset[y_axis].dropna()
+        y_data = combined_dataset[z_axis].dropna()
+        
+        # Ensure both series have the same index after dropping NaN values
+        common_index = x_data.index.intersection(y_data.index)
+        x_data = x_data[common_index]
+        y_data = y_data[common_index]
+        
+        if len(x_data) < 2 or len(y_data) < 2:
+            raise ValueError("Insufficient data points after cleaning")
 
-    return fig
+        # Calculate linear regression
+        slope, intercept, r_value, p_value, std_err = stats.linregress(x_data, y_data)
+        line_x = np.array([min(x_data), max(x_data)])
+        line_y = slope * line_x + intercept
+        r_squared_linear = r_value ** 2
+        equation_linear = f'y = {slope:.2f}x + {intercept:.2f}'
+        
+        # Calculate polynomial regression (degree 2)
+        X = x_data.values.reshape(-1, 1)
+        poly_model = make_pipeline(PolynomialFeatures(degree=2), LinearRegression())
+        poly_model.fit(X, y_data)
+        
+        # Generate points for smooth polynomial curve
+        X_smooth = np.linspace(min(x_data), max(x_data), 100).reshape(-1, 1)
+        y_smooth = poly_model.predict(X_smooth)
+        
+        # Calculate R² for polynomial regression
+        y_pred_poly = poly_model.predict(X)
+        r_squared_poly = np.corrcoef(y_data, y_pred_poly)[0,1]**2
+        
+        # Get polynomial coefficients
+        coeffs = poly_model.named_steps['linearregression'].coef_
+        intercept_poly = poly_model.named_steps['linearregression'].intercept_
+        equation_poly = f'y = {coeffs[2]:.2f}x² + {coeffs[1]:.2f}x + {intercept_poly:.2f}'
+        
+        # Create scatter plot with both regression lines
+        fig = go.Figure()
+        
+        # Add scatter points
+        fig.add_trace(go.Scatter(
+            x=x_data,
+            y=y_data,
+            mode='markers',
+            name='Datos',
+            marker=dict(
+                size=8,
+                color='rgba(230,85,13,0.5)',
+                line=dict(
+                    color='rgba(230,85,13,1)',
+                    width=1
+                )
+            ),
+            hovertemplate=(
+                f"{y_axis}: %{{x:.2f}}<br>" +
+                f"{z_axis}: %{{y:.2f}}<br>" +
+                "<extra></extra>"
+            )
+        ))
+        
+        # Add linear regression line
+        fig.add_trace(go.Scatter(
+            x=line_x,
+            y=line_y,
+            mode='lines',
+            name='Regresión Lineal',
+            line=dict(
+                color='rgba(166,54,3,1)',
+                width=2,
+                dash='solid'
+            ),
+            hovertemplate=(
+                "Regresión Lineal<br>" +
+                f"{equation_linear}<br>" +
+                f"R² = {r_squared_linear:.3f}" +
+                "<extra></extra>"
+            )
+        ))
+        
+        # Add polynomial regression line
+        fig.add_trace(go.Scatter(
+            x=X_smooth.flatten(),
+            y=y_smooth,
+            mode='lines',
+            name='Regresión Polinomial',
+            line=dict(
+                color='rgba(0,100,80,1)',
+                width=2,
+                dash='dash'
+            ),
+            hovertemplate=(
+                "Regresión Polinomial<br>" +
+                f"{equation_poly}<br>" +
+                f"R² = {r_squared_poly:.3f}" +
+                "<extra></extra>"
+            )
+        ))
+        
+        # Update layout
+        fig.update_layout(
+            title=dict(
+                text=f'Análisis de Regresión<br>' +
+                     f'<sup>R² Lineal = {r_squared_linear:.3f}, ' +
+                     f'R² Polinomial = {r_squared_poly:.3f}</sup>',
+                x=0.5,
+                font=dict(size=12)
+            ),
+            xaxis=dict(
+                title=dict(
+                    text=y_axis,
+                    font=dict(size=10)
+                ),
+                tickfont=dict(size=8),
+                zeroline=True,
+                zerolinewidth=1,
+                zerolinecolor='lightgray',
+                showgrid=True,
+                gridwidth=1,
+                gridcolor='lightgray'
+            ),
+            yaxis=dict(
+                title=dict(
+                    text=z_axis,
+                    font=dict(size=10)
+                ),
+                tickfont=dict(size=8),
+                zeroline=True,
+                zerolinewidth=1,
+                zerolinecolor='lightgray',
+                showgrid=True,
+                gridwidth=1,
+                gridcolor='lightgray'
+            ),
+            showlegend=True,
+            legend=dict(
+                orientation="h",     # Horizontal orientation
+                yanchor="top",      # Anchor to top of legend box
+                y=-0.35,            # Moved from -0.25 to -0.35 to lower by ~10px
+                xanchor="center",   # Center horizontally
+                x=0.5,             # Center position
+                font=dict(size=8),
+                bgcolor='rgba(255,255,255,0.8)',
+                bordercolor='rgba(0,0,0,0.2)',
+                borderwidth=1
+            ),
+            margin=dict(
+                l=50,    # left margin
+                r=50,    # right margin
+                t=50,    # top margin
+                b=100    # increased from 80 to 100 to accommodate lower legend
+            ),
+            height=300,
+            width=450,
+            hovermode='closest',
+            plot_bgcolor='white'
+        )
+
+        return fig
+
+    except Exception as e:
+        # Return an error message figure
+        fig = go.Figure()
+        fig.add_annotation(
+            text=f"Error en el análisis de regresión: {str(e)}",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            font=dict(size=12, color="red")
+        )
+        fig.update_layout(
+            height=300,
+            width=450,
+            title=dict(
+                text='Error en el Análisis de Regresión',
+                x=0.5,
+                font=dict(size=12)
+            )
+        )
+        return fig
 
 @app.callback(
     Output('forecast-graph', 'figure'),
     [Input('y-axis-dropdown', 'value'),
-     Input('z-axis-dropdown', 'value'),
-     Input('keyword-dropdown', 'value')] +
+    Input('z-axis-dropdown', 'value'),
+    Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
@@ -1751,16 +1826,41 @@ def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
         datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
         combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
         
-        # Prepare time series data
-        ts_data = combined_dataset[y_axis].copy()
+        # Reset index and format date
+        combined_dataset = combined_dataset.reset_index()
+        date_column = combined_dataset.columns[0]
+        combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         
+        # Prepare time series data
+        ts_data = combined_dataset[y_axis].dropna()
+        
+        if len(ts_data) < 24:  # Need at least 2 years of data
+            raise ValueError("Insufficient data points for forecasting")
+
         # Split data into train and test sets (last 12 periods for testing)
         train_size = len(ts_data) - 12
         train = ts_data[:train_size]
         test = ts_data[train_size:]
+
+        # Find best ARIMA parameters using auto_arima
+        auto_model = auto_arima(
+            train,
+            start_p=0, start_q=0,
+            max_p=3, max_q=3,
+            m=12,  # Monthly seasonal pattern
+            seasonal=False,  # Start with non-seasonal model for simplicity
+            d=None,  # Let the model determine d
+            trace=False,
+            error_action='ignore',
+            suppress_warnings=True,
+            stepwise=True
+        )
         
-        # Create and fit ARIMA model
-        model = ARIMA(train, order=(1, 1, 1))
+        # Get the order (p,d,q)
+        p, d, q = auto_model.order
+        
+        # Create and fit ARIMA model with best parameters
+        model = ARIMA(train, order=(p, d, q))
         model_fit = model.fit()
         
         # Make predictions for test period
@@ -1780,13 +1880,13 @@ def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
         # Create figure
         fig = go.Figure()
         
-        # Add historical data (last quarter only)
+        # Add actual data (only last quarter)
         fig.add_trace(go.Scatter(
             x=list(range(last_quarter_start, len(ts_data))),
             y=ts_data[last_quarter_start:],
             mode='lines',
             name='Datos Actuales',
-            line=dict(color='blue', width=2)
+            line=dict(color='blue', width=1)
         ))
         
         # Add test predictions
@@ -1795,7 +1895,7 @@ def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
             y=predictions,
             mode='lines',
             name='Predicción',
-            line=dict(color='red', width=2)
+            line=dict(color='red', width=1)
         ))
         
         # Add future forecast
@@ -1804,13 +1904,13 @@ def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
             y=future_forecast,
             mode='lines',
             name='Pronóstico',
-            line=dict(color='green', width=2, dash='dash')
+            line=dict(color='green', width=1)
         ))
         
         # Update layout
         fig.update_layout(
             title=dict(
-                text=f'Pronóstico ARIMA para {y_axis}<br>' +
+                text=f'Pronóstico ARIMA ({p},{d},{q}) para {y_axis}<br>' +
                      f'<sup>RMSE: {rmse:.2f}</sup>',
                 x=0.5,
                 font=dict(size=12)
@@ -1824,6 +1924,7 @@ def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
                 showgrid=True,
                 gridwidth=1,
                 gridcolor='lightgray',
+                # Set range to show only from last quarter to future forecast
                 range=[last_quarter_start, len(ts_data) + future_steps]
             ),
             yaxis=dict(
@@ -1858,6 +1959,7 @@ def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
         return fig
         
     except Exception as e:
+        print(f"Error in forecast plot: {str(e)}")  # For debugging
         # Return an empty figure with error message
         fig = go.Figure()
         fig.add_annotation(
@@ -1871,8 +1973,101 @@ def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
         )
         fig.update_layout(
             height=300,
-            width=450
+            width=450,
+            title=dict(
+                text='Error en el Pronóstico',
+                x=0.5,
+                font=dict(size=12)
+            )
         )
+        return fig
+
+@app.callback(
+    Output('time-series-graph', 'figure'),
+    [Input('y-axis-dropdown', 'value'),
+    Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_time_series(y_axis, selected_keyword, *button_states):
+    try:
+        # Convert button states to selected sources
+        selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+        
+        if not all([y_axis, selected_keyword]) or not selected_sources:
+            return {}
+
+        # Get the data
+        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        
+        # Create figure
+        fig = go.Figure()
+        
+        # Process each source separately instead of using combined dataset
+        for source in selected_sources:
+            if source in datasets_norm and not datasets_norm[source].empty:
+                df = datasets_norm[source].copy()
+                df.index = pd.to_datetime(df.index)
+                
+                # Find the column that matches y_axis for this source
+                matching_cols = [col for col in df.columns if y_axis in col]
+                if matching_cols:
+                    col_name = matching_cols[0]
+                    
+                    # Add trace for this source
+                    fig.add_trace(go.Scatter(
+                        x=df.index,
+                        y=df[col_name],
+                        name=f"{source}",
+                        mode='lines',
+                        line=dict(width=2)
+                    ))
+
+        # Update layout
+        fig.update_layout(
+            height=300,
+            width=450,
+            title=dict(
+                text='Tendencia a través del tiempo',
+                x=0.5,
+                font=dict(size=12)
+            ),
+            xaxis=dict(
+                title='Fecha',
+                tickfont=dict(size=10),
+                titlefont=dict(size=10)
+            ),
+            yaxis=dict(
+                title='Frecuencia normalizada',
+                tickfont=dict(size=10),
+                titlefont=dict(size=10)
+            ),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1,
+                font=dict(size=8)
+            ),
+            margin=dict(l=50, r=20, t=60, b=50)
+        )
+
+        return fig
+
+    except Exception as e:
+        print(f"Error in time series update: {str(e)}")  # For debugging
+        # Return empty figure with error message
+        fig = go.Figure()
+        fig.add_annotation(
+            text=f"Error: {str(e)}",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            font=dict(size=12, color="red")
+        )
+        fig.update_layout(height=300, width=450)
         return fig
 
 if __name__ == '__main__':

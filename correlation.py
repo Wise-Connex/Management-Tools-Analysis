@@ -2422,6 +2422,22 @@ def process_dataset(df, source, all_datasets, selected_sources):
     latest_date = min(df.index.max() for df in all_datasets.values())
     print(f"Common date range: {earliest_date} to {latest_date}")
 
+    # Handle Crossref data when combined with Bain or Google Books
+    has_bain = any(src in selected_sources for src in [3, 5])
+    has_crossref = 4 in selected_sources
+    has_google_books = 2 in selected_sources
+
+    if has_crossref and (has_bain or has_google_books):
+        # If Crossref is combined with Bain or Google Books, 
+        # adjust the date range to start from the earliest Bain/Google Books data
+        bain_or_books_datasets = {
+            src: data for src, data in all_datasets.items() 
+            if src in ([2] if has_google_books else []) + ([3, 5] if has_bain else [])
+        }
+        earliest_other = max(df.index.min() for df in bain_or_books_datasets.values())
+        earliest_date = max(earliest_date, earliest_other)
+        print(f"Adjusted date range to match Bain/Google Books: {earliest_date} to {latest_date}")
+
     if 2 in selected_sources:
         # Resample data based on source
         if source == 2:
@@ -2430,6 +2446,8 @@ def process_dataset(df, source, all_datasets, selected_sources):
             df = df.apply(pd.to_numeric, errors='coerce')
             df_resampled = df.resample('YE').sum()
             df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
+            # Trim to common date range after resampling
+            df_resampled = df_resampled.loc[earliest_date:latest_date]
         elif source in [1, 3, 5]:
             df_resampled = []
             years = range(earliest_date.year, latest_date.year + 1)
@@ -2469,15 +2487,8 @@ def process_dataset(df, source, all_datasets, selected_sources):
         else:
             df_resampled = df.copy()
 
-        # Reindex to ensure all datasets have the same date range
-        # all_years = pd.date_range(start=earliest_date, end=latest_date, freq='YS')
-        # df_resampled = df_resampled.reindex(all_years)
-        #df_resampled = df.loc[earliest_date:latest_date]
-
-        # Fill NaN values after reindexing
-        #df_resampled.fillna(0, inplace=True)
     else:
-        # Trim the dataset to the common date range
+        # For monthly data, simply trim to the common date range
         df_resampled = df.loc[earliest_date:latest_date]
 
     print(f"Final dataframe shape: {df_resampled.shape}")
