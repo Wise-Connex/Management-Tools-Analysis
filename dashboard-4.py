@@ -2302,16 +2302,16 @@ def create_seasonal_decomposition(source_column, data):
         # Use the imported seasonal_decompose function on the full dataset
         decomposition_full = seasonal_decompose(ts_series_full, period=12, model='additive')
         
-        # Filter the data to include only the last 4 years for the seasonal component
-        last_4_years = dates.max() - pd.DateOffset(years=4)
-        ts_data_4_years = ts_data[dates >= last_4_years]
-        dates_4_years = dates[dates >= last_4_years]
+        # Filter the data to include only the last 10 years for the seasonal component
+        last_10_years = dates.max() - pd.DateOffset(years=10)
+        ts_data_10_years = ts_data[dates >= last_10_years]
+        dates_10_years = dates[dates >= last_10_years]
         
-        # Create a pandas Series with datetime index for the last 4 years
-        ts_series_4_years = pd.Series(ts_data_4_years.values, index=pd.DatetimeIndex(dates_4_years))
+        # Create a pandas Series with datetime index for the last 10 years
+        ts_series_10_years = pd.Series(ts_data_10_years.values, index=pd.DatetimeIndex(dates_10_years))
         
-        # Use the imported seasonal_decompose function on the last 4 years
-        decomposition_4_years = seasonal_decompose(ts_series_4_years, period=12, model='additive')
+        # Use the imported seasonal_decompose function on the last 10 years
+        decomposition_10_years = seasonal_decompose(ts_series_10_years, period=12, model='additive')
         
         # Create subplots with reduced vertical spacing
         fig = make_subplots(
@@ -2349,11 +2349,11 @@ def create_seasonal_decomposition(source_column, data):
             row=2, col=1
         )
         
-        # Add the seasonal component using the last 4 years
+        # Add the seasonal component using the last 10 years
         fig.add_trace(
             go.Scatter(
-                x=dates_4_years,
-                y=decomposition_4_years.seasonal,
+                x=dates_10_years,
+                y=decomposition_10_years.seasonal,
                 mode='lines',
                 name='Estacional',
                 line=dict(color='green', width=1)
@@ -2401,24 +2401,6 @@ def create_seasonal_decomposition(source_column, data):
                 row=i,
                 col=1
             )
-        
-        # Specifically update the x-axis for the seasonal component to include month labels every 3 months
-        # and year labels only in January
-        start_date = dates_4_years.min()
-        if start_date.month != 1:
-            start_date = pd.Timestamp(year=start_date.year + 1, month=1, day=1)
-        
-        tickvals = pd.date_range(start=start_date, end=dates_4_years.max(), freq='3MS')
-        ticktext = [date.strftime('%b %Y') if date.month == 1 else date.strftime('%b') for date in tickvals]
-        
-        fig.update_xaxes(
-            tickvals=tickvals,
-            ticktext=ticktext,
-            tickangle=45,
-            tickfont=dict(size=8),
-            row=3,
-            col=1
-        )
         
         return fig
 

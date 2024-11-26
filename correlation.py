@@ -48,6 +48,9 @@ import base64
 from datetime import datetime
 #from sklearn.preprocessing import StandardScaler
 #from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
+from statsmodels.tsa.seasonal import seasonal_decompose
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 # AI Prompts imports 
