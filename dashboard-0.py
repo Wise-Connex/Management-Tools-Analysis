@@ -7,6 +7,16 @@ import pandas as pd
 import plotly.graph_objects as go  # Add this import
 import numpy as np  # Add this import
 from scipy.interpolate import CubicSpline
+import plotly.figure_factory as ff
+import seaborn as sns
+from scipy import stats
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import make_pipeline
+from statsmodels.tsa.arima.model import ARIMA
+from sklearn.metrics import mean_squared_error
+import warnings
+warnings.filterwarnings('ignore')
 
 # Initialize the Dash app with a Bootstrap theme
 app = dash.Dash(
@@ -50,6 +60,24 @@ dbase_options = {
     5: "Bain - Satisfacción"
 }
 
+# Define a color palette for the available options
+colors = [
+    '#1f77b4',    # blue
+    '#ff7f0e',    # orange
+    '#2ca02c',    # green
+    '#d62728',    # red
+    '#9467bd',    # purple
+    '#8c564b',    # brown
+    '#e377c2',    # pink
+    '#7f7f7f'     # gray
+]
+
+# Create color map using dbase_options
+color_map = {
+    dbase_options[key]: colors[i % len(colors)]  # Use modulo to cycle through colors if more sources than colors
+    for i, key in enumerate(dbase_options.keys())
+}
+
 # Add a new global variable to store the current date range
 global_date_range = {'start': None, 'end': None}
 
@@ -91,19 +119,33 @@ sidebar = html.Div(
         # Update the dropdown component
         html.Div([
             html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
-            # Replace dropdown with button group
+            # Add Select All button
+            dbc.Button(
+                "Seleccionar Todo",
+                id="select-all-button",
+                color="secondary",
+                outline=True,
+                size="sm",
+                className="mb-2 w-100",
+                style={'fontSize': '12px'}
+            ),
+            # Source buttons container
             html.Div([
                 dbc.Button(
                     source,
                     id=f"toggle-source-{id}",
                     color="primary",
-                    outline=True,  # Start with outline style
+                    outline=True,
                     size="sm",
                     className="me-2 mb-2",
-                    style={'fontSize': '12px'}
+                    style={
+                        'fontSize': '12px',
+                        'borderColor': color_map[source],
+                        'color': color_map[source],
+                    }
                 ) for id, source in dbase_options.items()
             ], id='source-buttons-container'),
-            # Add validation message div
+            # Validation message div
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
     ],
@@ -186,24 +228,6 @@ app.layout = dbc.Container([
         ], width=10, className="px-4")
     ], style={'height': '100vh'})
 ], fluid=True, className="px-0")
-
-# Define a color palette for the available options
-colors = [
-    '#1f77b4',    # blue
-    '#ff7f0e',    # orange
-    '#2ca02c',    # green
-    '#d62728',    # red
-    '#9467bd',    # purple
-    '#8c564b',    # brown
-    '#e377c2',    # pink
-    '#7f7f7f'     # gray
-]
-
-# Create color map using dbase_options
-color_map = {
-    dbase_options[key]: colors[i % len(colors)]  # Use modulo to cycle through colors if more sources than colors
-    for i, key in enumerate(dbase_options.keys())
-}
 
 # Add callback to update main content based on selections
 @app.callback(
@@ -383,7 +407,20 @@ def update_main_content(*args):
             dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
             dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
             dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-        ], style={'display': 'flex', 'justifyContent': 'space-between'})
+        ], style={'display': 'flex', 'justifyContent': 'space-between'}),
+            
+            # Add horizontal divider with shadow at the end
+            html.Hr(style={
+                'border': 'none',
+                'height': '3px',  # Made thicker
+                'backgroundColor': '#dee2e6',
+                'margin': '30px 0',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                'width': '100%',  # Ensure full width
+                'display': 'block',  # Ensure it's displayed as a block element
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
+            
     ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     
     # Remove the nested callback and return the initial graphs
@@ -459,7 +496,7 @@ def update_main_content(*args):
                         style_table={
                             'overflowX': 'auto',
                             'overflowY': 'auto',
-                            'height': '200px',
+                            'height': '500px',
                             'width': '100%',  # Ensure table uses full width of its column
                         },
                         style_cell={
@@ -485,7 +522,7 @@ def update_main_content(*args):
                             'height': 'auto',
                             'fontSize': '10px'
                         },
-                        page_size=5
+                        page_size=15
                     ),
                     html.P(
                         f"TOTAL REGISTROS: {len(combined_dataset)}",
@@ -500,6 +537,18 @@ def update_main_content(*args):
                 is_open=False  # Initially collapsed
             )
         ], style={'marginBottom': '20px'}),
+        
+        # Add horizontal divider with shadow
+        html.Hr(style={
+            'border': 'none',
+            'height': '3px',  # Made thicker
+            'backgroundColor': '#dee2e6',
+            'margin': '30px 0',
+            'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+            'width': '100%',  # Ensure full width
+            'display': 'block',  # Ensure it's displayed as a block element
+            'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+        }),
         
         # Third row: 3D Graph (only shown when 2 or more sources selected)
         html.Div([
@@ -532,7 +581,7 @@ def update_main_content(*args):
                         id='y-axis-dropdown',
                         options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
                                 for src_id in selected_sources],
-                        value=dbase_options[selected_sources[0]] if len(selected_sources) > 0 else None,  # Prepopulate with first source
+                        value=dbase_options[selected_sources[0]] if len(selected_sources) > 0 else None,
                         placeholder="Seleccione eje Y",
                         style={'fontSize': '12px'}
                     ),
@@ -549,7 +598,7 @@ def update_main_content(*args):
                         id='z-axis-dropdown',
                         options=[{'label': dbase_options[src_id], 'value': dbase_options[src_id]} 
                                 for src_id in selected_sources],
-                        value=dbase_options[selected_sources[1]] if len(selected_sources) > 1 else None,  # Prepopulate with second source
+                        value=dbase_options[selected_sources[1]] if len(selected_sources) > 1 else None,
                         placeholder="Seleccione eje Z",
                         style={'fontSize': '12px'}
                     ),
@@ -571,7 +620,61 @@ def update_main_content(*args):
                 dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
                 dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
                 dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-            ], style={'display': 'flex', 'justifyContent': 'space-between'})
+            ], style={'display': 'flex', 'justifyContent': 'space-between'}),
+            
+            # Add horizontal divider with shadow at the end
+            html.Hr(style={
+                'border': 'none',
+                'height': '3px',  # Made thicker
+                'backgroundColor': '#dee2e6',
+                'margin': '30px 0',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                'width': '100%',  # Ensure full width
+                'display': 'block',  # Ensure it's displayed as a block element
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
+            
+            # New division with 3 sections
+            html.Div([
+                html.H6("Análisis Estadístico", style={'fontSize': '20px', 'marginTop': '10px'}),
+                
+                # Container for the three sections
+                html.Div([
+                    # Section 1: Correlación
+                    html.Div([
+                        html.H6("Correlación", style={'fontSize': '16px', 'textAlign': 'center'}),
+                        dcc.Graph(id='correlation-graph', style={'height': '300px'}, config={'displaylogo': False}),
+                    ], style={'width': '33%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+                    
+                    # Section 2: Regresión
+                    html.Div([
+                        html.H6("Regresión", style={'fontSize': '16px', 'textAlign': 'center'}),
+                        dcc.Graph(id='regression-graph', style={'height': '300px'}, config={'displaylogo': False}),
+                    ], style={'width': '33%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+                    
+                    # Section 3: Pronóstico
+                    html.Div([
+                        html.H6("Pronóstico", style={'fontSize': '16px', 'textAlign': 'center'}),
+                        dcc.Graph(id='forecast-graph', style={'height': '300px'}, config={'displaylogo': False}),
+                    ], style={'width': '33%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+                ], style={
+                    'display': 'flex',
+                    'justifyContent': 'space-between',
+                    'marginTop': '20px'
+                }),
+                
+                # Add horizontal divider with shadow at the end
+                html.Hr(style={
+                    'border': 'none',
+                    'height': '3px',
+                    'backgroundColor': '#dee2e6',
+                    'margin': '30px 0',
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                    'width': '100%',
+                    'display': 'block',
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+                }),
+            ], className="w-100") if len(selected_sources) >= 2 else html.Div("Debug: Not enough sources selected", style={'color': 'red'})
         ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     ])
 
@@ -987,7 +1090,7 @@ def update_title(selected_keyword):
      Input('z-axis-dropdown', 'value'),
      Input('keyword-dropdown', 'value'),
      Input('toggle-frequency-button', 'n_clicks')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
     [State('frequency-label', 'children')]
 )
 def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
@@ -1283,36 +1386,477 @@ def toggle_table(n_clicks, is_open):
 
 # Update the callback for button toggles
 @app.callback(
-    [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
-    [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()],
-    [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+    [Output(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
+    [Output(f"toggle-source-{id}", "style") for id in dbase_options.keys()] +
+    [Output("select-all-button", "outline")],
+    [Input(f"toggle-source-{id}", "n_clicks") for id in dbase_options.keys()] +
+    [Input("select-all-button", "n_clicks")],
+    [State(f"toggle-source-{id}", "outline") for id in dbase_options.keys()] +
+    [State("select-all-button", "outline")]
 )
 def toggle_sources(*args):
-    n_clicks = args[:len(dbase_options)]
-    current_states = args[len(dbase_options):]
+    n_clicks = args[:len(dbase_options) + 1]  # Include select-all button clicks
+    current_states = args[len(dbase_options) + 1:]
+    source_states = current_states[:len(dbase_options)]
+    select_all_state = current_states[-1]
     
-    # Get the button that triggered the callback
     ctx = dash.callback_context
     if not ctx.triggered:
         # Initial load - default to Google Trends selected
-        return [id != 1 for id in dbase_options.keys()]
+        new_states = [id != 1 for id in dbase_options.keys()]
+        styles = [
+            {
+                'fontSize': '12px',
+                'borderColor': color_map[source],
+                'color': color_map[source] if outline else 'white',
+                'backgroundColor': color_map[source] if not outline else 'transparent'
+            }
+            for id, (source, outline) in enumerate(zip(dbase_options.values(), new_states))
+        ]
+        return new_states + styles + [True]
     
     button_id = ctx.triggered[0]['prop_id'].split('.')[0]
-    # Extract the ID directly from the button_id
-    source_id = int(button_id.split('-')[-1])
     
-    # Find the index in dbase_options that matches this ID
-    clicked_index = list(dbase_options.keys()).index(source_id)
-    
-    # Update the states list
-    new_states = list(current_states)
-    new_states[clicked_index] = not new_states[clicked_index]
+    if button_id == "select-all-button":
+        # Toggle all sources
+        new_states = [select_all_state] * len(dbase_options)
+    else:
+        # Individual button toggle
+        source_id = int(button_id.split('-')[-1])
+        clicked_index = list(dbase_options.keys()).index(source_id)
+        new_states = list(source_states)
+        new_states[clicked_index] = not new_states[clicked_index]
     
     # Ensure at least one source is selected
     if all(new_states):
-        new_states[clicked_index] = False
+        if button_id != "select-all-button":
+            new_states[clicked_index] = False
     
-    return new_states
+    # Update button styles based on new states
+    styles = [
+        {
+            'fontSize': '12px',
+            'borderColor': color_map[source],
+            'color': color_map[source] if outline else 'white',
+            'backgroundColor': color_map[source] if not outline else 'transparent'
+        }
+        for source, outline in zip(dbase_options.values(), new_states)
+    ]
+    
+    # Update select-all button state
+    new_select_all_state = not all(new_states)
+    
+    return new_states + styles + [new_select_all_state]
+
+# Add these new Outputs to store the selected sources
+@app.callback(
+    [Output('correlation-graph', 'figure'),
+     Output('y-axis-dropdown', 'value'),  # Add this to update the dropdown
+     Output('z-axis-dropdown', 'value')], # Add this to update the dropdown
+    [Input('keyword-dropdown', 'value'),
+     Input('correlation-graph', 'clickData')] +  # Add clickData input
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_correlation_heatmap(selected_keyword, click_data, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
+    if not selected_keyword or len(selected_sources) < 2:
+        return {}, dash.no_update, dash.no_update
+
+    # Get the data
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    
+    # Reset index and format date
+    combined_dataset = combined_dataset.reset_index()
+    date_column = combined_dataset.columns[0]
+    combined_dataset = combined_dataset.drop(columns=[date_column])
+    
+    # Calculate correlation matrix
+    corr_matrix = combined_dataset.corr().round(2)  # Round to 2 decimals
+    
+    # Create custom colorscale with diverging colors
+    colorscale = [
+        [0.0, 'rgb(49,54,149)'],      # dark blue for -1
+        [0.125, 'rgb(69,117,180)'],   # blue
+        [0.25, 'rgb(116,173,209)'],   # light blue
+        [0.375, 'rgb(171,217,233)'],  # very light blue
+        [0.5, 'rgb(255,255,255)'],    # white for 0
+        [0.625, 'rgb(253,174,97)'],   # light orange
+        [0.75, 'rgb(244,109,67)'],    # orange
+        [0.875, 'rgb(215,48,39)'],    # red-orange
+        [1.0, 'rgb(165,0,38)']        # dark red for 1
+    ]
+    
+    # Create heatmap
+    heatmap = go.Heatmap(
+        z=corr_matrix.values,
+        x=corr_matrix.columns,
+        y=corr_matrix.columns,
+        colorscale=colorscale,
+        zmin=-1,     # Set minimum to -1
+        zmax=1,      # Set maximum to 1
+        zmid=0,      # Set middle point to 0
+        text=corr_matrix.values,
+        texttemplate='%{text:.2f}',
+        textfont={"size": 10},
+        hoverongaps=False,
+        hovertemplate='%{x}<br>%{y}<br>Correlación: %{z:.2f}<extra></extra>'
+    )
+
+    # Create layout
+    layout = go.Layout(
+        title=dict(
+            text='Matriz de Correlación',
+            x=0.5,
+            font=dict(size=12)
+        ),
+        width=400,
+        height=400,
+        xaxis=dict(
+            tickangle=45,
+            tickfont=dict(size=8),
+            title=None
+        ),
+        yaxis=dict(
+            tickfont=dict(size=8),
+            title=None
+        ),
+        margin=dict(l=50, r=50, t=50, b=80)
+    )
+
+    fig = go.Figure(data=[heatmap], layout=layout)
+    
+    # Add color bar title
+    fig.update_traces(
+        colorbar=dict(
+            title=dict(
+                text="Correlación",
+                font=dict(size=10)
+            ),
+            tickfont=dict(size=8),
+            tickformat='.2f',
+            # Add ticks for better readability of the scale
+            ticks="outside",
+            tickvals=[-1, -0.5, 0, 0.5, 1],
+            ticktext=["-1.00", "-0.50", "0.00", "0.50", "1.00"]
+        )
+    )
+
+    # Get selected sources from click data
+    new_y_axis = dash.no_update
+    new_z_axis = dash.no_update
+    
+    if click_data:
+        x_source = click_data['points'][0]['x']
+        y_source = click_data['points'][0]['y']
+        if x_source != y_source:  # Only update if different sources are selected
+            new_y_axis = x_source
+            new_z_axis = y_source
+
+    return fig, new_y_axis, new_z_axis
+
+@app.callback(
+    Output('regression-graph', 'figure'),
+    [Input('y-axis-dropdown', 'value'),
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
+    if not all([y_axis, z_axis, selected_keyword]) or len(selected_sources) < 2:
+        return {}
+
+    # Get the data
+    datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    
+    # Reset index and format date
+    combined_dataset = combined_dataset.reset_index()
+    date_column = combined_dataset.columns[0]
+    combined_dataset = combined_dataset.drop(columns=[date_column])
+    
+    # Get data for the selected sources
+    x_data = combined_dataset[y_axis]
+    y_data = combined_dataset[z_axis]
+    
+    # Calculate linear regression
+    slope, intercept, r_value, p_value, std_err = stats.linregress(x_data, y_data)
+    line_x = np.array([min(x_data), max(x_data)])
+    line_y = slope * line_x + intercept
+    r_squared_linear = r_value ** 2
+    equation_linear = f'y = {slope:.2f}x + {intercept:.2f}'
+    
+    # Calculate polynomial regression (degree 2)
+    X = x_data.values.reshape(-1, 1)
+    poly_model = make_pipeline(PolynomialFeatures(degree=2), LinearRegression())
+    poly_model.fit(X, y_data)
+    
+    # Generate points for smooth polynomial curve
+    X_smooth = np.linspace(min(x_data), max(x_data), 100).reshape(-1, 1)
+    y_smooth = poly_model.predict(X_smooth)
+    
+    # Calculate R² for polynomial regression
+    y_pred_poly = poly_model.predict(X)
+    r_squared_poly = np.corrcoef(y_data, y_pred_poly)[0,1]**2
+    
+    # Get polynomial coefficients
+    coeffs = poly_model.named_steps['linearregression'].coef_
+    intercept_poly = poly_model.named_steps['linearregression'].intercept_
+    equation_poly = f'y = {coeffs[2]:.2f}x² + {coeffs[1]:.2f}x + {intercept_poly:.2f}'
+    
+    # Create scatter plot with both regression lines
+    fig = go.Figure()
+    
+    # Add scatter points
+    fig.add_trace(go.Scatter(
+        x=x_data,
+        y=y_data,
+        mode='markers',
+        name='Datos',
+        marker=dict(
+            size=8,
+            color='rgba(230,85,13,0.5)',
+            line=dict(
+                color='rgba(230,85,13,1)',
+                width=1
+            )
+        ),
+        hovertemplate=(
+            f"{y_axis}: %{{x:.2f}}<br>" +
+            f"{z_axis}: %{{y:.2f}}<br>" +
+            "<extra></extra>"
+        )
+    ))
+    
+    # Add linear regression line
+    fig.add_trace(go.Scatter(
+        x=line_x,
+        y=line_y,
+        mode='lines',
+        name='Regresión Lineal',
+        line=dict(
+            color='rgba(166,54,3,1)',
+            width=2,
+            dash='solid'
+        ),
+        hovertemplate=(
+            "Regresión Lineal<br>" +
+            f"{equation_linear}<br>" +
+            f"R² = {r_squared_linear:.3f}" +
+            "<extra></extra>"
+        )
+    ))
+    
+    # Add polynomial regression line
+    fig.add_trace(go.Scatter(
+        x=X_smooth.flatten(),
+        y=y_smooth,
+        mode='lines',
+        name='Regresión Polinomial',
+        line=dict(
+            color='rgba(0,100,80,1)',
+            width=2,
+            dash='dash'
+        ),
+        hovertemplate=(
+            "Regresión Polinomial<br>" +
+            f"{equation_poly}<br>" +
+            f"R² = {r_squared_poly:.3f}" +
+            "<extra></extra>"
+        )
+    ))
+    
+    # Update layout
+    fig.update_layout(
+        title=dict(
+            text=f'Análisis de Regresión<br>' +
+                 f'<sup>R² Lineal = {r_squared_linear:.3f}, ' +
+                 f'R² Polinomial = {r_squared_poly:.3f}</sup>',
+            x=0.5,
+            font=dict(size=12)
+        ),
+        xaxis=dict(
+            title=dict(
+                text=y_axis,
+                font=dict(size=10)
+            ),
+            tickfont=dict(size=8),
+            zeroline=True,
+            zerolinewidth=1,
+            zerolinecolor='lightgray',
+            showgrid=True,
+            gridwidth=1,
+            gridcolor='lightgray'
+        ),
+        yaxis=dict(
+            title=dict(
+                text=z_axis,
+                font=dict(size=10)
+            ),
+            tickfont=dict(size=8),
+            zeroline=True,
+            zerolinewidth=1,
+            zerolinecolor='lightgray',
+            showgrid=True,
+            gridwidth=1,
+            gridcolor='lightgray'
+        ),
+        showlegend=True,
+        legend=dict(
+            orientation="h",     # Horizontal orientation
+            yanchor="top",      # Anchor to top of legend box
+            y=-0.35,            # Moved from -0.25 to -0.35 to lower by ~10px
+            xanchor="center",   # Center horizontally
+            x=0.5,             # Center position
+            font=dict(size=8),
+            bgcolor='rgba(255,255,255,0.8)',
+            bordercolor='rgba(0,0,0,0.2)',
+            borderwidth=1
+        ),
+        margin=dict(
+            l=50,    # left margin
+            r=50,    # right margin
+            t=50,    # top margin
+            b=100    # increased from 80 to 100 to accommodate lower legend
+        ),
+        height=300,
+        width=450,
+        hovermode='closest',
+        plot_bgcolor='white'
+    )
+
+    return fig
+
+@app.callback(
+    Output('forecast-graph', 'figure'),
+    [Input('y-axis-dropdown', 'value'),
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
+    if not all([y_axis, selected_keyword]) or len(selected_sources) < 2:
+        return {}
+
+    try:
+        # Get the data
+        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+        
+        # Prepare time series data
+        ts_data = combined_dataset[y_axis].copy()
+        
+        # Split data into train and test sets (last 12 periods for testing)
+        train_size = len(ts_data) - 12
+        train = ts_data[:train_size]
+        test = ts_data[train_size:]
+        
+        # Create and fit ARIMA model
+        model = ARIMA(train, order=(1, 1, 1))
+        model_fit = model.fit()
+        
+        # Make predictions
+        predictions = model_fit.forecast(steps=len(test))
+        
+        # Calculate future dates for forecast
+        future_steps = 12
+        forecast = model_fit.forecast(steps=len(test) + future_steps)
+        
+        # Calculate error metrics
+        mse = mean_squared_error(test, predictions)
+        rmse = np.sqrt(mse)
+        
+        # Calculate the last quarter index
+        last_quarter_start = len(ts_data) - len(ts_data) // 4
+        
+        # Create figure
+        fig = go.Figure()
+        
+        # Add traces to figure - only showing last quarter of actual data
+        fig.add_trace(go.Scatter(
+            x=list(range(last_quarter_start, len(ts_data))),
+            y=ts_data[last_quarter_start:],
+            mode='lines',
+            name='Datos Actuales',
+            line=dict(color='blue')
+        ))
+        
+        fig.add_trace(go.Scatter(
+            x=list(range(train_size, len(ts_data))),
+            y=predictions,
+            mode='lines',
+            name='Predicción',
+            line=dict(color='red')
+        ))
+        
+        fig.add_trace(go.Scatter(
+            x=list(range(len(ts_data), len(ts_data) + future_steps))),
+            y=forecast[len(test):],
+            mode='lines',
+            name='Pronóstico',
+            line=dict(color='green', dash='dash')
+        )
+        
+        # Update layout
+        fig.update_layout(
+            title=dict(
+                text=f'Pronóstico ARIMA para {y_axis}<br>' +
+                     f'<sup>RMSE: {rmse:.2f}</sup>',
+                x=0.5,
+                font=dict(size=12)
+            ),
+            xaxis=dict(
+                title='Período',
+                tickfont=dict(size=8),
+                # Update x-axis range to start from last quarter
+                range=[last_quarter_start, len(ts_data) + future_steps]
+            ),
+            yaxis=dict(
+                title='Valor',
+                tickfont=dict(size=8)
+            ),
+            showlegend=True,
+            legend=dict(
+                orientation="h",
+                yanchor="top",
+                y=-0.35,
+                xanchor="center",
+                x=0.5,
+                font=dict(size=8)
+            ),
+            margin=dict(l=50, r=50, t=50, b=100),
+            height=300,
+            width=450,
+            hovermode='x unified'
+        )
+        
+        return fig
+        
+    except Exception as e:
+        # Return an empty figure with error message
+        fig = go.Figure()
+        fig.add_annotation(
+            text=f"Error en el pronóstico: {str(e)}",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            font=dict(size=12, color="red")
+        )
+        fig.update_layout(
+            height=300,
+            width=450
+        )
+        return fig
 
 if __name__ == '__main__':
     app.run_server(

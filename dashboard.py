@@ -13,6 +13,10 @@ from scipy import stats
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import make_pipeline
+from statsmodels.tsa.arima.model import ARIMA
+from sklearn.metrics import mean_squared_error
+import warnings
+warnings.filterwarnings('ignore')
 
 # Initialize the Dash app with a Bootstrap theme
 app = dash.Dash(
@@ -670,7 +674,7 @@ def update_main_content(*args):
                     'display': 'block',
                     'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
                 }),
-            ], className="w-100") if len(selected_sources) >= 2 else html.Div()
+            ], className="w-100") if len(selected_sources) >= 2 else html.Div("Debug: Not enough sources selected", style={'color': 'red'})
         ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     ])
 
@@ -1472,25 +1476,29 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
     # Calculate correlation matrix
     corr_matrix = combined_dataset.corr().round(2)  # Round to 2 decimals
     
-    # Create custom colorscale with more appealing colors
+    # Create custom colorscale with diverging colors
     colorscale = [
-        [0.0, 'rgb(255,255,255)'],     # white for 0
-        [0.2, 'rgb(255,247,236)'],     # very light orange
-        [0.4, 'rgb(253,208,162)'],     # light orange
-        [0.6, 'rgb(253,174,107)'],     # medium orange
-        [0.8, 'rgb(230,85,13)'],       # deep orange
-        [1.0, 'rgb(166,54,3)']         # dark orange-brown
+        [0.0, 'rgb(49,54,149)'],      # dark blue for -1
+        [0.125, 'rgb(69,117,180)'],   # blue
+        [0.25, 'rgb(116,173,209)'],   # light blue
+        [0.375, 'rgb(171,217,233)'],  # very light blue
+        [0.5, 'rgb(255,255,255)'],    # white for 0
+        [0.625, 'rgb(253,174,97)'],   # light orange
+        [0.75, 'rgb(244,109,67)'],    # orange
+        [0.875, 'rgb(215,48,39)'],    # red-orange
+        [1.0, 'rgb(165,0,38)']        # dark red for 1
     ]
     
     # Create heatmap
     heatmap = go.Heatmap(
         z=corr_matrix.values,
         x=corr_matrix.columns,
-        y=corr_matrix.columns,  # Not reversed anymore
+        y=corr_matrix.columns,
         colorscale=colorscale,
-        zmin=0,     # Set minimum to 0 since we're showing positive correlations
-        zmax=1,     # Set maximum to 1 for correlation values
-        text=corr_matrix.values,  # Not flipped anymore
+        zmin=-1,     # Set minimum to -1
+        zmax=1,      # Set maximum to 1
+        zmid=0,      # Set middle point to 0
+        text=corr_matrix.values,
         texttemplate='%{text:.2f}',
         textfont={"size": 10},
         hoverongaps=False,
@@ -1513,8 +1521,7 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
         ),
         yaxis=dict(
             tickfont=dict(size=8),
-            title=None,
-            # Removed autorange='reversed'
+            title=None
         ),
         margin=dict(l=50, r=50, t=50, b=80)
     )
@@ -1529,7 +1536,11 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
                 font=dict(size=10)
             ),
             tickfont=dict(size=8),
-            tickformat='.2f'
+            tickformat='.2f',
+            # Add ticks for better readability of the scale
+            ticks="outside",
+            tickvals=[-1, -0.5, 0, 0.5, 1],
+            ticktext=["-1.00", "-0.50", "0.00", "0.50", "1.00"]
         )
     )
 
@@ -1720,6 +1731,149 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
     )
 
     return fig
+
+@app.callback(
+    Output('forecast-graph', 'figure'),
+    [Input('y-axis-dropdown', 'value'),
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_forecast_plot(y_axis, z_axis, selected_keyword, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
+    if not all([y_axis, selected_keyword]) or len(selected_sources) < 2:
+        return {}
+
+    try:
+        # Get the data
+        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+        
+        # Prepare time series data
+        ts_data = combined_dataset[y_axis].copy()
+        
+        # Split data into train and test sets (last 12 periods for testing)
+        train_size = len(ts_data) - 12
+        train = ts_data[:train_size]
+        test = ts_data[train_size:]
+        
+        # Create and fit ARIMA model
+        model = ARIMA(train, order=(1, 1, 1))
+        model_fit = model.fit()
+        
+        # Make predictions for test period
+        predictions = model_fit.forecast(steps=len(test))
+        
+        # Calculate future dates for forecast (next 12 periods)
+        future_steps = 12
+        future_forecast = model_fit.forecast(steps=future_steps)
+        
+        # Calculate error metrics
+        mse = mean_squared_error(test, predictions)
+        rmse = np.sqrt(mse)
+        
+        # Calculate the last quarter index
+        last_quarter_start = len(ts_data) - len(ts_data) // 4
+        
+        # Create figure
+        fig = go.Figure()
+        
+        # Add historical data (last quarter only)
+        fig.add_trace(go.Scatter(
+            x=list(range(last_quarter_start, len(ts_data))),
+            y=ts_data[last_quarter_start:],
+            mode='lines',
+            name='Datos Actuales',
+            line=dict(color='blue', width=2)
+        ))
+        
+        # Add test predictions
+        fig.add_trace(go.Scatter(
+            x=list(range(train_size, len(ts_data))),
+            y=predictions,
+            mode='lines',
+            name='Predicción',
+            line=dict(color='red', width=2)
+        ))
+        
+        # Add future forecast
+        fig.add_trace(go.Scatter(
+            x=list(range(len(ts_data), len(ts_data) + future_steps)),
+            y=future_forecast,
+            mode='lines',
+            name='Pronóstico',
+            line=dict(color='green', width=2, dash='dash')
+        ))
+        
+        # Update layout
+        fig.update_layout(
+            title=dict(
+                text=f'Pronóstico ARIMA para {y_axis}<br>' +
+                     f'<sup>RMSE: {rmse:.2f}</sup>',
+                x=0.5,
+                font=dict(size=12)
+            ),
+            xaxis=dict(
+                title=dict(
+                    text='Período',
+                    font=dict(size=10)
+                ),
+                tickfont=dict(size=8),
+                showgrid=True,
+                gridwidth=1,
+                gridcolor='lightgray',
+                range=[last_quarter_start, len(ts_data) + future_steps]
+            ),
+            yaxis=dict(
+                title=dict(
+                    text='Valor',
+                    font=dict(size=10)
+                ),
+                tickfont=dict(size=8),
+                showgrid=True,
+                gridwidth=1,
+                gridcolor='lightgray'
+            ),
+            showlegend=True,
+            legend=dict(
+                orientation="h",
+                yanchor="top",
+                y=-0.35,
+                xanchor="center",
+                x=0.5,
+                font=dict(size=8),
+                bgcolor='rgba(255,255,255,0.8)',
+                bordercolor='rgba(0,0,0,0.2)',
+                borderwidth=1
+            ),
+            margin=dict(l=50, r=50, t=50, b=100),
+            height=300,
+            width=450,
+            hovermode='x unified',
+            plot_bgcolor='white'
+        )
+        
+        return fig
+        
+    except Exception as e:
+        # Return an empty figure with error message
+        fig = go.Figure()
+        fig.add_annotation(
+            text=f"Error en el pronóstico: {str(e)}",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            font=dict(size=12, color="red")
+        )
+        fig.update_layout(
+            height=300,
+            width=450
+        )
+        return fig
 
 if __name__ == '__main__':
     app.run_server(
