@@ -2881,18 +2881,18 @@ html.Div([
     }),
 ])
 
-# if __name__ == '__main__':
-#     app.run_server(
-#         debug=True,
-#         host='0.0.0.0',  # Makes the server externally visible
-#         port=8050,        # You can change this port if needed
-#         use_reloader=True
-#     )
-
 if __name__ == '__main__':
     app.run_server(
-        debug=False,          # Disable debug mode for security
-        host='0.0.0.0',      # Makes the server externally visible
-        port=8050,           # Port number
-        use_reloader=False   # Disable auto-reloader for stability
+        debug=True,
+        host='0.0.0.0',  # Makes the server externally visible
+        port=8050,        # You can change this port if needed
+        use_reloader=True
     )
+
+# if __name__ == '__main__':
+#     app.run_server(
+#         debug=False,          # Disable debug mode for security
+#         host='0.0.0.0',      # Makes the server externally visible
+#         port=8050,           # Port number
+#         use_reloader=False   # Disable auto-reloader for stability
+#     )

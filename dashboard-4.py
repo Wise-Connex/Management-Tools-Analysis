@@ -708,13 +708,9 @@ def update_main_content(*args):
                 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
             }),
             
-            # Update the Statistical Analysis section spacing
+            # Continue with Statistical Analysis section
             html.Div([
-                html.H6("Análisis Estadístico", style={
-                    'fontSize': '20px', 
-                    'marginTop': '10px',
-                    'marginBottom': '20px'  # Add consistent bottom margin
-                }),
+                html.H6("Análisis Estadístico", style={'fontSize': '20px', 'marginTop': '10px'}),
                 
                 # Container for correlation and regression (2 sections side by side)
                 html.Div([
@@ -723,8 +719,8 @@ def update_main_content(*args):
                         html.H6("Correlación", style={'fontSize': '16px', 'textAlign': 'center'}),
                         dcc.Graph(
                             id='correlation-graph',
-                            style={'height': '300px', 'width': '100%'},
-                            config={'displaylogo': False, 'responsive': True}
+                            style={'height': '300px', 'width': '100%'},  # Changed: Set width to 100%
+                            config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                         ),
                     ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                     
@@ -733,34 +729,25 @@ def update_main_content(*args):
                         html.H6("Regresión", style={'fontSize': '16px', 'textAlign': 'center'}),
                         dcc.Graph(
                             id='regression-graph',
-                            style={'height': '300px', 'width': '100%'},
-                            config={'displaylogo': False, 'responsive': True}
+                            style={'height': '300px', 'width': '100%'},  # Changed: Set width to 100%
+                            config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                         ),
                     ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                 ], style={
                     'display': 'flex',
                     'justifyContent': 'space-between',
-                    'marginBottom': '50px',  # Consistent bottom margin
-                    'width': '100%'
+                    'marginTop': '20px',
+                    'marginBottom': '150px',
+                    'width': '100%'  # Added: ensure container takes full width
                 }),
 
-                # Add horizontal divider with consistent spacing
-                html.Hr(style={
-                    'border': 'none',
-                    'height': '3px',
-                    'backgroundColor': '#dee2e6',
-                    'margin': '50px 0',  # Consistent vertical margins
-                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
-                    'width': '100%'
-                }),
-
-                # Section 3: Seasonal Analysis with consistent spacing
+                # Section 3: Seasonal Analysis
                 html.Div([
                     html.H6("Análisis Estacional", style={
-                        'fontSize': '20px', 
+                        'fontSize': '16px', 
                         'textAlign': 'center',
-                        'marginTop': '20px',
-                        'marginBottom': '20px'  # Consistent bottom margin
+                        'width': '100%',
+                        'margin': '120px auto 20px auto'
                     }),
                     # Container for two seasonal decomposition graphs side by side
                     html.Div([
@@ -771,8 +758,8 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='seasonal-graph-1', 
-                                    style={'height': '1200px', 'width': '100%'},  # Reduced from 600px to 400px
-                                    config={'displaylogo': False, 'responsive': True}
+                                    style={'height': '600px', 'width': '100%'},  # Changed: Set width to 100%
+                                    config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
@@ -784,36 +771,91 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='seasonal-graph-2', 
-                                    style={'height': '1200px', 'width': '100%'},  # Reduced from 600px to 400px
-                                    config={'displaylogo': False, 'responsive': True}
+                                    style={'height': '600px', 'width': '100%'},  # Changed: Set width to 100%
+                                    config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                     ], style={
                         'display': 'flex',
                         'justifyContent': 'space-between',
-                        'width': '100%',
-                        'marginBottom': '50px'  # Consistent bottom margin
+                        'width': '100%'  # Added: ensure container takes full width
                     }),
-                ]),
+                ], style={
+                    'width': '100%', 'marginBottom': '500px'  # Decreased from 600px to 500px
+                }),  # Decreased from 600px to 500px
 
-                # Add horizontal divider with consistent spacing
-                html.Hr(style={
-                    'border': 'none',
-                    'height': '3px',
-                    'backgroundColor': '#dee2e6',
-                    'margin': '50px 0',  # Consistent vertical margins
-                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
-                    'width': '100%'
+                # Find the Fourier Analysis section and add a spacer div before it
+                # Add this after the Seasonal Analysis section and before the Fourier section
+                html.Div(style={'height': '150px'}),  # Spacer div
+
+                html.Div([
+                    html.H6("Análisis de Fourier", style={
+                        'fontSize': '16px', 
+                        'textAlign': 'center',
+                        'width': '100%',
+                        'margin': '20px auto'  # Changed from 50px to 200px for top margin
+                    }),
+                    # Container for Fourier graphs side by side
+                    html.Div([
+                        # Left Fourier graph
+                        html.Div([
+                            dcc.Loading(
+                                id="loading-fourier-1",
+                                type="default",
+                                children=dcc.Graph(
+                                    id='fourier-graph-1', 
+                                    style={
+                                        'height': '400px',
+                                        'width': '100%'
+                                    }, 
+                                    config={'displaylogo': False}
+                                ),
+                            ),
+                        ], style={'width': '50%', 'display': 'inline-block'}),
+                        
+                        # Right Fourier graph
+                        html.Div([
+                            dcc.Loading(
+                                id="loading-fourier-2",
+                                type="default",
+                                children=dcc.Graph(
+                                    id='fourier-graph-2', 
+                                    style={
+                                        'height': '400px',
+                                        'width': '100%'
+                                    }, 
+                                    config={'displaylogo': False}
+                                ),
+                            ),
+                        ], style={'width': '50%', 'display': 'inline-block'}),
+                    ], style={
+                        'width': '100%',
+                        'display': 'flex',
+                        'flexDirection': 'row'  # Changed from 'column' to 'row'
+                    }),
+                ], style={
+                    'width': '100%', 
+                    'marginBottom': '50px',
+                    'marginTop': '50px'  # Changed from 150px to 50px to move section up
                 }),
 
-                # Section 4: Pronóstico with consistent spacing
+                # Add divider between sections
+                html.Hr(style={
+                    'border': 'none',
+                    'height': '2px',
+                    'backgroundColor': '#dee2e6',
+                    'margin': '30px 0',
+                    'width': '100%',
+                }),
+
+                # Section 4: Pronóstico (existing section)
                 html.Div([
                     html.H6("Pronóstico", style={
-                        'fontSize': '20px', 
+                        'fontSize': '16px', 
                         'textAlign': 'center',
-                        'marginTop': '10px',
-                        'marginBottom': '20px'  # Consistent bottom margin
+                        'width': '100%',
+                        'margin': '50px auto 20px auto'
                     }),
                     # Container for two ARIMA graphs side by side
                     html.Div([
@@ -824,8 +866,8 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='forecast-graph-1', 
-                                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
-                                    config={'displaylogo': False, 'responsive': True}
+                                    style={'height': '300px', 'width': '100%'},  # Changed: Set width to 100%
+                                    config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
@@ -837,29 +879,29 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='forecast-graph-2', 
-                                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
-                                    config={'displaylogo': False, 'responsive': True}
+                                    style={'height': '300px', 'width': '100%'},  # Changed: Set width to 100%
+                                    config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                     ], style={
                         'display': 'flex',
                         'justifyContent': 'space-between',
-                        'width': '100%',
-                        'marginBottom': '50px'  # Consistent bottom margin
+                        'width': '100%'  # Added: ensure container takes full width
                     }),
-                ]),
-
-                # Final horizontal divider
+                ], style={'width': '100%', 'marginBottom': '50px'}),
+                
+                # Add horizontal divider with shadow at the end
                 html.Hr(style={
                     'border': 'none',
                     'height': '3px',
                     'backgroundColor': '#dee2e6',
-                    'margin': '50px 0',  # Consistent vertical margins
+                    'margin': '30px 0',
                     'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
-                    'width': '100%'
+                    'width': '100%',
+                    'display': 'block'
                 }),
-            ], className="w-100")
+            ], className="w-100") if len(selected_sources) >= 2 else html.Div()
         ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     ])
 
@@ -2785,114 +2827,18 @@ html.Hr(style={
     'width': '100%',
 }),
 
-# Section 3: Seasonal Analysis with consistent spacing
-html.Div([
-    html.H6("Análisis Estacional", style={
-        'fontSize': '20px', 
-        'textAlign': 'center',
-        'marginTop': '10px',
-        'marginBottom': '20px'  # Consistent bottom margin
-    }),
-    # Container for two seasonal decomposition graphs side by side
-    html.Div([
-        # Left seasonal graph
-        html.Div([
-            dcc.Loading(
-                id="loading-seasonal-1",
-                type="default",
-                children=dcc.Graph(
-                    id='seasonal-graph-1', 
-                    style={'height': '400px', 'width': '100%'},  # Reduced from 600px to 400px
-                    config={'displaylogo': False, 'responsive': True}
-                ),
-            ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-        
-        # Right seasonal graph
-        html.Div([
-            dcc.Loading(
-                id="loading-seasonal-2",
-                type="default",
-                children=dcc.Graph(
-                    id='seasonal-graph-2', 
-                    style={'height': '400px', 'width': '100%'},  # Reduced from 600px to 400px
-                    config={'displaylogo': False, 'responsive': True}
-                ),
-            ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-    ], style={
-        'display': 'flex',
-        'justifyContent': 'space-between',
-        'width': '100%',
-        'marginBottom': '50px'  # Consistent bottom margin
-    }),
-]),
-
-# Add horizontal divider with consistent spacing
-html.Hr(style={
-    'border': 'none',
-    'height': '3px',
-    'backgroundColor': '#dee2e6',
-    'margin': '50px 0',  # Consistent vertical margins
-    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
-    'width': '100%'
-}),
-
-# Section 4: Pronóstico with consistent spacing
-html.Div([
-    html.H6("Pronóstico", style={
-        'fontSize': '20px', 
-        'textAlign': 'center',
-        'marginTop': '10px',
-        'marginBottom': '20px'  # Consistent bottom margin
-    }),
-    # Container for two ARIMA graphs side by side
-    html.Div([
-        # Left ARIMA graph
-        html.Div([
-            dcc.Loading(
-                id="loading-forecast-1",
-                type="default",
-                children=dcc.Graph(
-                    id='forecast-graph-1', 
-                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
-                    config={'displaylogo': False, 'responsive': True}
-                ),
-            ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-        
-        # Right ARIMA graph
-        html.Div([
-            dcc.Loading(
-                id="loading-forecast-2",
-                type="default",
-                children=dcc.Graph(
-                    id='forecast-graph-2', 
-                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
-                    config={'displaylogo': False, 'responsive': True}
-                ),
-            ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-    ], style={
-        'display': 'flex',
-        'justifyContent': 'space-between',
-        'width': '100%',
-        'marginBottom': '50px'  # Consistent bottom margin
-    }),
-])
+if __name__ == '__main__':
+    app.run_server(
+        debug=True,
+        host='0.0.0.0',  # Makes the server externally visible
+        port=8050,        # You can change this port if needed
+        use_reloader=True
+    )
 
 # if __name__ == '__main__':
 #     app.run_server(
-#         debug=True,
-#         host='0.0.0.0',  # Makes the server externally visible
-#         port=8050,        # You can change this port if needed
-#         use_reloader=True
+#         debug=False,          # Disable debug mode for security
+#         host='0.0.0.0',      # Makes the server externally visible
+#         port=8050,           # Port number
+#         use_reloader=False   # Disable auto-reloader for stability
 #     )
-
-if __name__ == '__main__':
-    app.run_server(
-        debug=False,          # Disable debug mode for security
-        host='0.0.0.0',      # Makes the server externally visible
-        port=8050,           # Port number
-        use_reloader=False   # Disable auto-reloader for stability
-    )
