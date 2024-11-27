@@ -23,6 +23,7 @@ import statsmodels.api as sm
 from statsmodels.tsa.seasonal import seasonal_decompose
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from scipy.fft import fft, fftfreq
 
 warnings.filterwarnings('ignore')
 
@@ -160,7 +161,7 @@ sidebar = html.Div(
                 "Equipo de desarrollo: ",
                 html.A("Wise Connex", href="http://wiseconnex.com", target="_blank"),
                 " - (c)2024"
-            ], style={'marginBottom': '5px', 'fontSize': '10px', 'textAlign': 'center'}),
+            ], style={'marginBottom': '2px', 'fontSize': '10px', 'textAlign': 'center'}),
             html.P([
                 "Código: ",
                 html.A(
@@ -168,13 +169,13 @@ sidebar = html.Div(
                     href="https://github.com/Wise-Connex/Management-Tools-Analysis.git",
                     target="_blank"
                 )
-            ], style={'fontSize': '10px', 'textAlign': 'center'})
+            ], style={'fontSize': '10px', 'textAlign': 'center', 'marginTop': '0px'})
         ], style={
             'position': 'absolute',
             'bottom': '20px',
             'left': '0',
             'right': '0',
-            'padding': '10px'
+            'padding': '5px'
         })
     ],
     style={
@@ -693,64 +694,16 @@ def update_main_content(*args):
                     'display': 'flex',
                     'justifyContent': 'space-between',
                     'marginTop': '20px',
-                    'marginBottom': '150px'  # Increased to 150px
+                    'marginBottom': '150px'
                 }),
 
-                # Section 3: Pronóstico (full width below)
-                html.Div([
-                    html.H6("Pronóstico", style={
-                        'fontSize': '16px', 
-                        'textAlign': 'center',
-                        'width': '100%',
-                        'margin': '0 auto'
-                    }),
-                    # Container for two ARIMA graphs side by side
-                    html.Div([
-                        # Left ARIMA graph
-                        html.Div([
-                            dcc.Loading(
-                                id="loading-forecast-1",
-                                type="default",
-                                children=dcc.Graph(
-                                    id='forecast-graph-1', 
-                                    style={
-                                        'height': '300px', 
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
-                                ),
-                            ),
-                        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-                        
-                        # Right ARIMA graph
-                        html.Div([
-                            dcc.Loading(
-                                id="loading-forecast-2",
-                                type="default",
-                                children=dcc.Graph(
-                                    id='forecast-graph-2', 
-                                    style={
-                                        'height': '300px', 
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
-                                ),
-                            ),
-                        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-                    ], style={
-                        'display': 'flex',
-                        'justifyContent': 'space-between',
-                        'width': '100%'
-                    }),
-                ], style={'width': '100%', 'marginTop': '20px'}),
-
-                # Section 4: Seasonal Analysis (new section)
+                # Section 3: Seasonal Analysis
                 html.Div([
                     html.H6("Análisis Estacional", style={
                         'fontSize': '16px', 
                         'textAlign': 'center',
                         'width': '100%',
-                        'margin': '120px auto 20px auto'  # Changed from '70px auto 20px auto' to '120px auto 20px auto'
+                        'margin': '120px auto 20px auto'
                     }),
                     # Container for two seasonal decomposition graphs side by side
                     html.Div([
@@ -779,6 +732,118 @@ def update_main_content(*args):
                                     id='seasonal-graph-2', 
                                     style={
                                         'height': '600px', 
+                                        'width': '100%'
+                                    }, 
+                                    config={'displaylogo': False}
+                                ),
+                            ),
+                        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+                    ], style={
+                        'display': 'flex',
+                        'justifyContent': 'space-between',
+                        'width': '100%'
+                    }),
+                ], style={'width': '100%', 'marginBottom': '500px'}),  # Decreased from 600px to 500px
+
+                # Find the Fourier Analysis section and add a spacer div before it
+                # Add this after the Seasonal Analysis section and before the Fourier section
+                html.Div(style={'height': '150px'}),  # Spacer div
+
+                html.Div([
+                    html.H6("Análisis de Fourier", style={
+                        'fontSize': '16px', 
+                        'textAlign': 'center',
+                        'width': '100%',
+                        'margin': '20px auto'  # Changed from 50px to 200px for top margin
+                    }),
+                    # Container for Fourier graphs stacked vertically
+                    html.Div([
+                        # First Fourier graph
+                        html.Div([
+                            dcc.Loading(
+                                id="loading-fourier-1",
+                                type="default",
+                                children=dcc.Graph(
+                                    id='fourier-graph-1', 
+                                    style={
+                                        'height': '400px',
+                                        'width': '100%'
+                                    }, 
+                                    config={'displaylogo': False}
+                                ),
+                            ),
+                        ], style={'width': '100%', 'marginBottom': '30px'}),  # Full width and margin below
+                        
+                        # Second Fourier graph
+                        html.Div([
+                            dcc.Loading(
+                                id="loading-fourier-2",
+                                type="default",
+                                children=dcc.Graph(
+                                    id='fourier-graph-2', 
+                                    style={
+                                        'height': '400px',
+                                        'width': '100%'
+                                    }, 
+                                    config={'displaylogo': False}
+                                ),
+                            ),
+                        ], style={'width': '100%'}),  # Full width
+                    ], style={
+                        'width': '100%',
+                        'display': 'flex',
+                        'flexDirection': 'column'  # Stack children vertically
+                    }),
+                ], style={
+                    'width': '100%', 
+                    'marginBottom': '50px',
+                    'marginTop': '50px'  # Changed from 150px to 50px to move section up
+                }),
+
+                # Add divider between sections
+                html.Hr(style={
+                    'border': 'none',
+                    'height': '2px',
+                    'backgroundColor': '#dee2e6',
+                    'margin': '30px 0',
+                    'width': '100%',
+                }),
+
+                # Section 4: Pronóstico (existing section)
+                html.Div([
+                    html.H6("Pronóstico", style={
+                        'fontSize': '16px', 
+                        'textAlign': 'center',
+                        'width': '100%',
+                        'margin': '50px auto 20px auto'
+                    }),
+                    # Container for two ARIMA graphs side by side
+                    html.Div([
+                        # Left ARIMA graph
+                        html.Div([
+                            dcc.Loading(
+                                id="loading-forecast-1",
+                                type="default",
+                                children=dcc.Graph(
+                                    id='forecast-graph-1', 
+                                    style={
+                                        'height': '300px', 
+                                        'width': '100%'
+                                    }, 
+                                    config={'displaylogo': False}
+                                ),
+                            ),
+                        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+                        
+                        # Right ARIMA graph
+                        html.Div([
+                            dcc.Loading(
+                                id="loading-forecast-2",
+                                type="default",
+                                children=dcc.Graph(
+                                    id='forecast-graph-2', 
+                                    style={
+                                        'height': '300px', 
                                         'width': '100%'
                                     }, 
                                     config={'displaylogo': False}
@@ -932,7 +997,7 @@ def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *butt
 
     year_ticks = years_data['Fecha'].dt.strftime('%Y-%m-%d').tolist()
     year_labels = years_data['Fecha'].dt.strftime('%Y').tolist()
-
+    
     # Create the line chart figure
     line_fig = {
         'data': [
@@ -1018,10 +1083,10 @@ def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *butt
     # Calculate means for different time periods with reversed order
     periods = {
         'Todo': None,
-        'Últimos 20 años': 20,
-        'Últimos 15 años': 15,
-        'Últimos 10 años': 10,
-        'Últimos 5 años': 5,
+        'Hace 20 años': 20,
+        'Hace 15 años': 15,
+        'Hace 10 años': 10,
+        'Hace 5 años': 5,
         'Último año': 1
     }
     
@@ -1050,10 +1115,10 @@ def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *butt
     # Calculate period lengths (in years)
     period_lengths = {
         'Todo': max(20, (combined_dataset['Fecha'].max() - combined_dataset['Fecha'].min()).days / 365),
-        'Últimos 20 años': 20,
-        'Últimos 15 años': 15,
-        'Últimos 10 años': 10,
-        'Últimos 5 años': 5,
+        'Hace 20 años': 20,
+        'Hace 15 años': 15,
+        'Hace 10 años': 10,
+        'Hace 5 años': 5,
         'Último año': 1
     }
     
@@ -1127,7 +1192,10 @@ def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *butt
             'xaxis': {
                 'title': 'Período',
                 'tickangle': 45,
-                'tickfont': {'size': 10}
+                'tickfont': {'size': 10},
+                'ticktext': ['Todo', 'Últimos 20 años', 'Últimos 15 años', 
+                           'Últimos 10 años', 'Últimos 5 años', 'Último año'],
+                'tickvals': list(x_positions.values())
             },
             'yaxis': {
                 'title': 'Porcentaje (%)',
@@ -1267,6 +1335,17 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                     agg_dict[column] = 'mean'
             
             combined_dataset = combined_dataset.groupby(pd.Grouper(freq='Y')).agg(agg_dict)
+            
+            # Add normalization for Crossref data after aggregation
+            for column in combined_dataset.columns:
+                if 'Crossref' in column:
+                    # Normalize Crossref data to 0-100 scale
+                    min_val = combined_dataset[column].min()
+                    max_val = combined_dataset[column].max()
+                    if max_val > min_val:  # Avoid division by zero
+                        combined_dataset[column] = ((combined_dataset[column] - min_val) / 
+                                                 (max_val - min_val)) * 100
+            
             combined_dataset = combined_dataset.reset_index()
             
             combined_dataset[date_column] = combined_dataset[date_column].apply(
@@ -1287,7 +1366,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
         
         # Ensure we have enough data points
         if len(combined_dataset) < 2:
-            raise ValueError("Insufficient data points for interpolation")
+            raise ValueError("Insuficientes datos para interpolación")
 
         t = np.arange(len(combined_dataset))
         t_smooth = np.linspace(0, len(combined_dataset) - 1, num=num_points)
@@ -1297,7 +1376,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
         z_data = combined_dataset[z_column].replace([np.inf, -np.inf], np.nan).dropna()
         
         if len(y_data) < 2 or len(z_data) < 2:
-            raise ValueError("Insufficient valid data points after cleaning")
+            raise ValueError("Insuficientes datos validos después de la limpieza")
 
         # Create cubic spline interpolations
         cs_dates = CubicSpline(t, dates, bc_type='natural')
@@ -1499,7 +1578,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                 },
                 'height': 600
             }
-        }
+        }    
         return empty_fig, empty_fig, empty_fig, current_frequency
 
 # Add new callback for toggle button (add this near your other callbacks)
@@ -1728,7 +1807,7 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
         y_data = y_data[common_index]
         
         if len(x_data) < 2 or len(y_data) < 2:
-            raise ValueError("Insufficient data points after cleaning")
+            raise ValueError("Insuficientes datos después de la limpieza")
 
         # Calculate linear regression
         slope, intercept, r_value, p_value, std_err = stats.linregress(x_data, y_data)
@@ -1961,43 +2040,26 @@ def update_forecast_plots(y_axis, z_axis, selected_keyword, *button_states):
 
 def create_arima_forecast(source_column, selected_keyword, selected_sources, combined_dataset):
     try:
-        # Get the data for the selected source
+        # Get the original color for the source from color_map
+        source_color = color_map.get(source_column, 'blue')
+        
+        # Define contrasting colors for predictions and forecasts
+        # Using colors from the existing color palette
+        prediction_color = '#8c564b'  # brown
+        forecast_color = '#e377c2'    # pink
+        
         ts_data = combined_dataset[source_column].dropna()
         dates = combined_dataset['Fecha'].loc[ts_data.index]
         
         if len(ts_data) < 24:
-            raise ValueError(f"Insufficient data points for forecasting {source_column}")
+            raise ValueError(f"Insuficientes datos para pronosticar {source_column}")
 
-        # Calculate the starting point for displaying actual data (last quarter)
         display_start_idx = int(len(ts_data) * 0.75)
-        
-        # Split data into train and test sets
         train_size = len(ts_data) - 12  # Use last 12 months for testing
         train = ts_data[:train_size]
         test = ts_data[train_size:]
         train_dates = dates[:train_size]
         test_dates = dates[train_size:]
-
-        # Create initial figure with loading message
-        loading_fig = go.Figure()
-        loading_fig.add_annotation(
-            text=f"Buscando los mejores parámetros ARIMA para {source_column}...",
-            xref="paper",
-            yref="paper",
-            x=0.5,
-            y=0.5,
-            showarrow=False,
-            font=dict(size=12)
-        )
-        loading_fig.update_layout(
-            height=400,
-            width=500,
-            title=dict(
-                text='Calculando Pronóstico',
-                x=0.5,
-                font=dict(size=12)
-            )
-        )
 
         # Find best ARIMA parameters using training data
         auto_model = auto_arima(
@@ -2036,34 +2098,34 @@ def create_arima_forecast(source_column, selected_keyword, selected_sources, com
         last_date = dates.iloc[-1]
         future_dates = pd.date_range(start=last_date, periods=future_steps + 1, freq='M')[1:]
         
-        # Create figure
+        # Create figure with new colors
         fig = go.Figure()
         
-        # Add actual data (only last quarter)
+        # Actual data with original source color
         fig.add_trace(go.Scatter(
             x=dates[display_start_idx:],
             y=ts_data[display_start_idx:],
             mode='lines',
             name='Datos Actuales',
-            line=dict(color='blue', width=1)
+            line=dict(color=source_color, width=1)
         ))
         
-        # Add test predictions
+        # Test predictions with prediction color
         fig.add_trace(go.Scatter(
             x=test_dates,
             y=predictions,
             mode='lines',
             name='Predicción',
-            line=dict(color='red', width=1)
+            line=dict(color=prediction_color, width=3)  # Changed from width=1 to width=3
         ))
         
-        # Add future forecast
+        # Future forecast with forecast color
         fig.add_trace(go.Scatter(
             x=future_dates,
             y=future_forecast,
             mode='lines',
             name='Pronóstico',
-            line=dict(color='green', width=1)
+            line=dict(color=forecast_color, width=3)  # Changed from width=1 to width=3
         ))
         
         # Update layout
@@ -2086,7 +2148,7 @@ def create_arima_forecast(source_column, selected_keyword, selected_sources, com
                 tickformat='%Y',
                 dtick='M12',
                 tickangle=45,
-                range=[dates[display_start_idx], future_dates[-1]]  # Update range to start from display_start
+                range=[dates[display_start_idx], future_dates[-1]]
             ),
             yaxis=dict(
                 title=dict(
@@ -2120,8 +2182,7 @@ def create_arima_forecast(source_column, selected_keyword, selected_sources, com
         return fig
 
     except Exception as e:
-        print(f"Error in create_arima_forecast: {str(e)}")  # Add debug print
-        # Return error figure
+        print(f"Error in create_arima_forecast: {str(e)}")
         error_fig = go.Figure()
         error_fig.add_annotation(
             text=f"Error en el pronóstico: {str(e)}",
@@ -2293,25 +2354,28 @@ def create_seasonal_decomposition(source_column, data):
         ts_data = data[source_column].dropna()
         dates = data['Fecha'].loc[ts_data.index]
         
+        # Get the color for this source from the color_map
+        line_color = color_map.get(source_column, 'blue')  # Use the source's color from color_map
+        
         # Create a pandas Series with datetime index for the full dataset
         ts_series_full = pd.Series(ts_data.values, index=pd.DatetimeIndex(dates))
         
         if len(ts_series_full) < 24:
-            raise ValueError(f"Insufficient data points for seasonal decomposition of {source_column}")
+            raise ValueError(f"Insuficientes datos para descompocision estacional {source_column}")
 
         # Use the imported seasonal_decompose function on the full dataset
         decomposition_full = seasonal_decompose(ts_series_full, period=12, model='additive')
         
-        # Filter the data to include only the last 10 years for the seasonal component
-        last_10_years = dates.max() - pd.DateOffset(years=10)
-        ts_data_10_years = ts_data[dates >= last_10_years]
-        dates_10_years = dates[dates >= last_10_years]
+        # Filter the data to include only the last 4 years for the seasonal component
+        last_4_years = dates.max() - pd.DateOffset(years=4)
+        ts_data_4_years = ts_data[dates >= last_4_years]
+        dates_4_years = dates[dates >= last_4_years]
         
-        # Create a pandas Series with datetime index for the last 10 years
-        ts_series_10_years = pd.Series(ts_data_10_years.values, index=pd.DatetimeIndex(dates_10_years))
+        # Create a pandas Series with datetime index for the last 4 years
+        ts_series_4_years = pd.Series(ts_data_4_years.values, index=pd.DatetimeIndex(dates_4_years))
         
-        # Use the imported seasonal_decompose function on the last 10 years
-        decomposition_10_years = seasonal_decompose(ts_series_10_years, period=12, model='additive')
+        # Use the imported seasonal_decompose function on the last 4 years
+        decomposition_4_years = seasonal_decompose(ts_series_4_years, period=12, model='additive')
         
         # Create subplots with reduced vertical spacing
         fig = make_subplots(
@@ -2323,17 +2387,17 @@ def create_seasonal_decomposition(source_column, data):
                 'Patrón Estacional', 
                 'Residuos'
             ),
-            vertical_spacing=0.067  # Reduced to two-thirds of the previous spacing
+            vertical_spacing=0.067
         )
         
-        # Add traces for each component using the full dataset
+        # Add traces for each component using the full dataset and the source color
         fig.add_trace(
             go.Scatter(
                 x=dates, 
                 y=ts_series_full.values,
                 mode='lines',
                 name='Original',
-                line=dict(color='blue', width=1)
+                line=dict(color=line_color, width=1)  # Use source color
             ),
             row=1, col=1
         )
@@ -2344,19 +2408,18 @@ def create_seasonal_decomposition(source_column, data):
                 y=decomposition_full.trend,
                 mode='lines',
                 name='Tendencia',
-                line=dict(color='red', width=1)
+                line=dict(color=line_color, width=1)  # Use source color
             ),
             row=2, col=1
         )
         
-        # Add the seasonal component using the last 10 years
         fig.add_trace(
             go.Scatter(
-                x=dates_10_years,
-                y=decomposition_10_years.seasonal,
+                x=dates_4_years,
+                y=decomposition_4_years.seasonal,
                 mode='lines',
                 name='Estacional',
-                line=dict(color='green', width=1)
+                line=dict(color=line_color, width=1)  # Use source color
             ),
             row=3, col=1
         )
@@ -2367,10 +2430,12 @@ def create_seasonal_decomposition(source_column, data):
                 y=decomposition_full.resid,
                 mode='lines',
                 name='Residuos',
-                line=dict(color='gray', width=1)
+                line=dict(color=line_color, width=1)  # Use source color
             ),
             row=4, col=1
         )
+        
+        # Rest of the function remains the same...
         
         # Update layout with adjusted margins and height
         fig.update_layout(
@@ -2402,6 +2467,24 @@ def create_seasonal_decomposition(source_column, data):
                 col=1
             )
         
+        # Specifically update the x-axis for the seasonal component to include month labels every 3 months
+        # and year labels only in January
+        start_date = dates_4_years.min()
+        if start_date.month != 1:
+            start_date = pd.Timestamp(year=start_date.year + 1, month=1, day=1)
+        
+        tickvals = pd.date_range(start=start_date, end=dates_4_years.max(), freq='3MS')
+        ticktext = [date.strftime('%b %Y') if date.month == 1 else date.strftime('%b') for date in tickvals]
+        
+        fig.update_xaxes(
+            tickvals=tickvals,
+            ticktext=ticktext,
+            tickangle=45,
+            tickfont=dict(size=8),
+            row=3,
+            col=1
+        )
+        
         return fig
 
     except Exception as e:
@@ -2426,6 +2509,336 @@ def create_seasonal_decomposition(source_column, data):
             )
         )
         return error_fig
+
+# Add these imports at the top with the other imports
+from scipy.fft import fft, fftfreq
+import numpy as np
+
+# Add this callback before the forecast callback
+@app.callback(
+    [Output('fourier-graph-1', 'figure'),
+     Output('fourier-graph-2', 'figure')],
+    [Input('y-axis-dropdown', 'value'),
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_fourier_plots(y_axis, z_axis, selected_keyword, *button_states):
+    # Convert button states to selected sources
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    
+    if not all([y_axis, z_axis, selected_keyword]) or len(selected_sources) < 2:
+        return {}, {}
+
+    try:
+        # Get the data
+        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+        
+        # Reset index and format date
+        combined_dataset = combined_dataset.reset_index()
+        date_column = combined_dataset.columns[0]
+        combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
+        combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
+
+        # Create Fourier analysis for both sources
+        fig1 = create_fourier_analysis(y_axis, combined_dataset)
+        fig2 = create_fourier_analysis(z_axis, combined_dataset)
+        
+        return fig1, fig2
+        
+    except Exception as e:
+        print(f"Error in Fourier analysis: {str(e)}")
+        error_fig = go.Figure()
+        error_fig.add_annotation(
+            text=f"Error en el análisis de Fourier: {str(e)}",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            font=dict(size=12, color="red")
+        )
+        error_fig.update_layout(
+            height=300,
+            width=500,
+            title=dict(
+                text='Error en el Análisis de Fourier',
+                x=0.5,
+                font=dict(size=12)
+            )
+        )
+        return error_fig, error_fig
+
+def create_fourier_analysis(source_column, data):
+    try:
+        # Get the data for the selected source
+        ts_data = data[source_column].dropna()
+        
+        if len(ts_data) < 24:  # Need at least 2 years of data
+            raise ValueError(f"Insuficientes datos para análisis de Fourier {source_column}")
+
+        # Perform FFT
+        yf = fft(ts_data.values)
+        N = len(ts_data)
+        T = 1.0 / 12.0  # assuming monthly data
+        xf = fftfreq(N, T)[:N//2]
+        
+        # Convert frequency to periods (in months)
+        periods = 12 / xf[1:]  # Skip the first frequency (0)
+        power = 2.0/N * np.abs(yf[1:N//2])  # Skip the first frequency
+        
+        # Filter out noise by keeping only significant periods
+        # Calculate threshold as a percentage of maximum power
+        threshold = np.max(power) * 0.05  # Keep components with >5% of max power
+        significant_mask = power > threshold
+        
+        # Keep only significant periods and their corresponding power
+        significant_periods = periods[significant_mask]
+        significant_power = power[significant_mask]
+        
+        # Sort by period for better visualization
+        sort_idx = np.argsort(significant_periods)
+        significant_periods = significant_periods[sort_idx]
+        significant_power = significant_power[sort_idx]
+        
+        # Filter out very close periods to reduce clutter
+        MIN_PERIOD_DIFF = 2  # minimum difference in months between displayed periods
+        filtered_indices = []
+        last_period = 0
+        for i, period in enumerate(significant_periods):
+            if i == 0 or period - last_period >= MIN_PERIOD_DIFF:
+                filtered_indices.append(i)
+                last_period = period
+        
+        # Apply filtering
+        significant_periods = significant_periods[filtered_indices]
+        significant_power = significant_power[filtered_indices]
+
+        # Helper function to convert months to year-month format (simplified)
+        def months_to_text(months):
+            years = int(months) // 12
+            remaining_months = int(months) % 12
+            if years > 0 and remaining_months > 0:
+                if remaining_months >= 6:
+                    return f"{years+1}a"
+                return f"{years}a"
+            elif years > 0:
+                return f"{years}a"
+            else:
+                return f"{remaining_months}m"
+
+        # Create the figure
+        fig = go.Figure()
+        
+        # Add the power spectrum as bars
+        fig.add_trace(go.Bar(
+            x=significant_periods,
+            y=significant_power,
+            name='Espectro de Potencia',
+            marker_color=color_map.get(source_column, 'blue'),
+            hovertemplate=(
+                "Período: %{x:.1f} meses<br>" +
+                "(%{customdata[1]})<br>" +
+                "Potencia: %{y:.2f}<br>" +
+                "Frecuencia: %{customdata[0]:.3f} ciclos/mes<extra></extra>"
+            ),
+            customdata=list(zip(1/significant_periods, 
+                              [months_to_text(p) for p in significant_periods]))
+        ))
+        
+        # Add markers only for top peaks to reduce clutter
+        peak_threshold = np.max(significant_power) * 0.5  # Increased threshold to 50%
+        peak_mask = significant_power > peak_threshold
+        
+        # Ensure minimum distance between peaks
+        peak_indices = np.where(peak_mask)[0]
+        filtered_peak_indices = []
+        last_peak_period = 0
+        for idx in peak_indices:
+            if idx == peak_indices[0] or significant_periods[idx] - last_peak_period >= MIN_PERIOD_DIFF * 2:
+                filtered_peak_indices.append(idx)
+                last_peak_period = significant_periods[idx]
+        
+        peak_mask = np.zeros_like(peak_mask)
+        peak_mask[filtered_peak_indices] = True
+        
+        fig.add_trace(go.Scatter(
+            x=significant_periods[peak_mask],
+            y=significant_power[peak_mask],
+            mode='markers+text',
+            marker=dict(
+                symbol='star',
+                size=12,
+                color='red',
+                line=dict(color='black', width=1)
+            ),
+            text=[months_to_text(p) for p in significant_periods[peak_mask]],
+            textposition="top center",
+            showlegend=False,
+            hovertemplate=(
+                "Período Principal: %{x:.1f} meses<br>" +
+                "(%{text})<br>" +
+                "Potencia: %{y:.2f}<extra></extra>"
+            )
+        ))
+        
+        # Update layout with improved aesthetics and reduced clutter
+        fig.update_layout(
+            title=dict(
+                text=f'Análisis de Fourier - {source_column}',
+                x=0.5,
+                font=dict(size=12)
+            ),
+            xaxis=dict(
+                title=dict(
+                    text='Período (meses)',
+                    font=dict(size=10)
+                ),
+                tickfont=dict(size=8),
+                type='log',
+                showgrid=True,
+                gridwidth=1,
+                gridcolor='lightgray',
+                range=[np.log10(min(significant_periods)), np.log10(max(significant_periods))],
+                dtick=0.301,
+                # Show fewer tick labels
+                ticktext=[months_to_text(p) for p in significant_periods[::2]],  # Show every other label
+                tickvals=significant_periods[::2],
+                tickmode='array',
+                tickangle=45
+            ),
+            yaxis=dict(
+                title=dict(
+                    text='Potencia Espectral',
+                    font=dict(size=10)
+                ),
+                tickfont=dict(size=8),
+                showgrid=True,
+                gridwidth=1,
+                gridcolor='lightgray',
+                rangemode='tozero'  # Start y-axis from 0
+            ),
+            showlegend=False,
+            height=400,        # Increased height
+            width=1200,       # Increased width to span 12 columns
+            margin=dict(
+                l=50,
+                r=50,
+                t=50,
+                b=100         # Increased bottom margin for rotated labels
+            ),
+            plot_bgcolor='white',
+            bargap=0.2
+        )
+        
+        # Add annotations only for top peaks
+        top_n = min(3, sum(peak_mask))  # Limit to 3 or fewer annotations
+        top_indices = np.argsort(significant_power[peak_mask])[-top_n:]
+        peak_periods = significant_periods[peak_mask]
+        peak_powers = significant_power[peak_mask]
+        
+        for i, idx in enumerate(top_indices):
+            period = peak_periods[idx]
+            power = peak_powers[idx]
+            fig.add_annotation(
+                x=period,
+                y=power,
+                text=months_to_text(period),
+                yshift=10 + (i * 20),
+                showarrow=True,
+                arrowhead=2,
+                arrowsize=1,
+                arrowwidth=1,
+                arrowcolor=color_map.get(source_column, 'blue'),
+                font=dict(size=8)
+            )
+        
+        return fig
+
+    except Exception as e:
+        print(f"Error in create_fourier_analysis: {str(e)}")
+        error_fig = go.Figure()
+        error_fig.add_annotation(
+            text=f"Error en el análisis de Fourier: {str(e)}",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            showarrow=False,
+            font=dict(size=12, color="red")
+        )
+        error_fig.update_layout(
+            height=300,
+            width=500,
+            title=dict(
+                text='Error en el Análisis de Fourier',
+                x=0.5,
+                font=dict(size=12)
+            )
+        )
+        return error_fig
+
+# Add this section before the Pronóstico section
+html.Div([
+    html.H6("Análisis de Fourier", style={
+        'fontSize': '16px', 
+        'textAlign': 'center',
+        'width': '100%',
+        'margin': '20px auto'  # Changed from 50px to 200px for top margin
+    }),
+    # Container for Fourier graphs stacked vertically
+    html.Div([
+        # Left Fourier graph
+        html.Div([
+            dcc.Loading(
+                id="loading-fourier-1",
+                type="default",
+                children=dcc.Graph(
+                    id='fourier-graph-1', 
+                    style={
+                        'height': '400px',  # Increased height
+                        'width': '100%'
+                    }, 
+                    config={'displaylogo': False}
+                ),
+            ),
+        ], style={'width': '100%', 'marginBottom': '30px'}),  # Increased margin between graphs
+        
+        # Right Fourier graph
+        html.Div([
+            dcc.Loading(
+                id="loading-fourier-2",
+                type="default",
+                children=dcc.Graph(
+                    id='fourier-graph-2', 
+                    style={
+                        'height': '400px',  # Increased height
+                        'width': '100%'
+                    }, 
+                    config={'displaylogo': False}
+                ),
+            ),
+        ], style={'width': '100%'}),
+    ], style={
+        'width': '100%',
+        'display': 'flex',
+        'flexDirection': 'column'  # Stack children vertically
+    }),
+], style={
+    'width': '100%', 
+    'marginBottom': '50px',
+    'marginTop': '50px'  # Changed from 150px to 50px to move section up
+}),
+
+# Add divider between sections
+html.Hr(style={
+    'border': 'none',
+    'height': '2px',
+    'backgroundColor': '#dee2e6',
+    'margin': '30px 0',
+    'width': '100%',
+}),
 
 if __name__ == '__main__':
     app.run_server(
