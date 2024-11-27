@@ -952,59 +952,6 @@ def update_main_content(*args):
                     'width': '100%'
                 }),
 
-                # Add Fourier Analysis section here
-                html.Div([
-                    html.H6("Análisis de Fourier", style={
-                        'fontSize': '20px', 
-                        'textAlign': 'center',
-                        'marginTop': '20px',
-                        'marginBottom': '20px'
-                    }),
-                    # Container for Fourier graphs side by side
-                    html.Div([
-                        # Left Fourier graph
-                        html.Div([
-                            dcc.Loading(
-                                id="loading-fourier-1",
-                                type="default",
-                                children=dcc.Graph(
-                                    id='fourier-graph-1', 
-                                    style={'height': '400px', 'width': '100%'},
-                                    config={'displaylogo': False, 'responsive': True}
-                                ),
-                            ),
-                        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-                        
-                        # Right Fourier graph
-                        html.Div([
-                            dcc.Loading(
-                                id="loading-fourier-2",
-                                type="default",
-                                children=dcc.Graph(
-                                    id='fourier-graph-2', 
-                                    style={'height': '400px', 'width': '100%'},
-                                    config={'displaylogo': False, 'responsive': True}
-                                ),
-                            ),
-                        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-                    ], style={
-                        'display': 'flex',
-                        'justifyContent': 'space-between',
-                        'width': '100%',
-                        'marginBottom': '50px'
-                    }),
-                ]),
-
-                # Add horizontal divider with consistent spacing
-                html.Hr(style={
-                    'border': 'none',
-                    'height': '3px',
-                    'backgroundColor': '#dee2e6',
-                    'margin': '50px 0',  # Consistent vertical margins
-                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
-                    'width': '100%'
-                }),
-
                 # Section 4: Pronóstico with consistent spacing
                 html.Div([
                     html.H6("Pronóstico", style={
@@ -1971,8 +1918,8 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
 @app.callback(
     Output('regression-graph', 'figure'),
     [Input('y-axis-dropdown', 'value'),
-    Input('z-axis-dropdown', 'value'),
-    Input('keyword-dropdown', 'value')] +
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
@@ -2145,8 +2092,8 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
     [Output('forecast-graph-1', 'figure'),
     Output('forecast-graph-2', 'figure')],
     [Input('y-axis-dropdown', 'value'),
-    Input('z-axis-dropdown', 'value'),
-    Input('keyword-dropdown', 'value')] +
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def update_forecast_plots(y_axis, z_axis, selected_keyword, *button_states):
@@ -2439,8 +2386,8 @@ def update_time_series(y_axis, selected_keyword, *button_states):
     [Output('seasonal-graph-1', 'figure'),
      Output('seasonal-graph-2', 'figure')],
     [Input('y-axis-dropdown', 'value'),
-    Input('z-axis-dropdown', 'value'),
-    Input('keyword-dropdown', 'value')] +
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def update_seasonal_graphs(y_axis, z_axis, selected_keyword, *button_states):
@@ -2925,10 +2872,10 @@ def create_fourier_analysis(source_column, data):
 # Add this section before the Pronóstico section
 html.Div([
     html.H6("Análisis de Fourier", style={
-        'fontSize': '20px', 
+        'fontSize': '16px', 
         'textAlign': 'center',
-        'marginTop': '20px',
-        'marginBottom': '20px'  # Consistent bottom margin
+        'width': '100%',
+        'margin': '20px auto'  # Changed from 50px to 200px for top margin
     }),
     # Container for Fourier graphs side by side
     html.Div([
@@ -2939,11 +2886,14 @@ html.Div([
                 type="default",
                 children=dcc.Graph(
                     id='fourier-graph-1', 
-                    style={'height': '400px', 'width': '100%'},
-                    config={'displaylogo': False, 'responsive': True}
+                    style={
+                        'height': '400px',
+                        'width': '100%'
+                    }, 
+                    config={'displaylogo': False}
                 ),
             ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+        ], style={'width': '50%', 'display': 'inline-block'}),
         
         # Right Fourier graph
         html.Div([
@@ -2952,27 +2902,32 @@ html.Div([
                 type="default",
                 children=dcc.Graph(
                     id='fourier-graph-2', 
-                    style={'height': '400px', 'width': '100%'},
-                    config={'displaylogo': False, 'responsive': True}
+                    style={
+                        'height': '400px',
+                        'width': '100%'
+                    }, 
+                    config={'displaylogo': False}
                 ),
             ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+        ], style={'width': '50%', 'display': 'inline-block'}),
     ], style={
-        'display': 'flex',
-        'justifyContent': 'space-between',
         'width': '100%',
-        'marginBottom': '50px'  # Consistent bottom margin
+        'display': 'flex',
+        'flexDirection': 'row'  # Changed from 'column' to 'row'
     }),
-]),
+], style={
+    'width': '100%', 
+    'marginBottom': '50px',
+    'marginTop': '50px'  # Changed from 150px to 50px to move section up
+}),
 
 # Add divider between sections
 html.Hr(style={
     'border': 'none',
-    'height': '3px',
+    'height': '2px',
     'backgroundColor': '#dee2e6',
     'margin': '30px 0',
     'width': '100%',
-    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
 }),
 
 # Section 3: Seasonal Analysis with consistent spacing
@@ -3024,59 +2979,6 @@ html.Hr(style={
     'height': '3px',
     'backgroundColor': '#dee2e6',
     'margin': '50px 0',  # Consistent vertical margins
-    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
-    'width': '100%'
-}),
-
-# Add Fourier Analysis section here
-html.Div([
-    html.H6("Análisis de Fourier", style={
-        'fontSize': '20px', 
-        'textAlign': 'center',
-        'marginTop': '20px',
-        'marginBottom': '20px'
-    }),
-    # Container for Fourier graphs side by side
-    html.Div([
-        # Left Fourier graph
-        html.Div([
-            dcc.Loading(
-                id="loading-fourier-1",
-                type="default",
-                children=dcc.Graph(
-                    id='fourier-graph-1', 
-                    style={'height': '400px', 'width': '100%'},
-                    config={'displaylogo': False, 'responsive': True}
-                ),
-            ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-        
-        # Right Fourier graph
-        html.Div([
-            dcc.Loading(
-                id="loading-fourier-2",
-                type="default",
-                children=dcc.Graph(
-                    id='fourier-graph-2', 
-                    style={'height': '400px', 'width': '100%'},
-                    config={'displaylogo': False, 'responsive': True}
-                ),
-            ),
-        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
-    ], style={
-        'display': 'flex',
-        'justifyContent': 'space-between',
-        'width': '100%',
-        'marginBottom': '50px'
-    }),
-]),
-
-# Add horizontal divider with consistent spacing
-html.Hr(style={
-    'border': 'none',
-    'height': '3px',
-    'backgroundColor': '#dee2e6',
-    'margin': '50px 0',
     'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
     'width': '100%'
 }),
@@ -3144,18 +3046,18 @@ def toggle_notes_section(selected_keyword, *button_states):
         'display': 'none'
     }
 
-# if __name__ == '__main__':
-#     app.run_server(
-#         debug=True,
-#         host='0.0.0.0',  # Makes the server externally visible
-#         port=8050,        # You can change this port if needed
-#         use_reloader=True
-#     )
-
 if __name__ == '__main__':
     app.run_server(
-        debug=False,          # Disable debug mode for security
-        host='0.0.0.0',      # Makes the server externally visible
-        port=8050,           # Port number
-        use_reloader=False   # Disable auto-reloader for stability
+        debug=True,
+        host='0.0.0.0',  # Makes the server externally visible
+        port=8050,        # You can change this port if needed
+        use_reloader=True
     )
+
+# if __name__ == '__main__':
+#     app.run_server(
+#         debug=False,          # Disable debug mode for security
+#         host='0.0.0.0',      # Makes the server externally visible
+#         port=8050,           # Port number
+#         use_reloader=False   # Disable auto-reloader for stability
+#     )
