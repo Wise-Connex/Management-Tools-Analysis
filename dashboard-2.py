@@ -1424,7 +1424,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                 xaxis_title="Fecha",
                 yaxis_title=y_axis,
                 zaxis_title=z_axis,
-                # Set fixed and equal ranges for axes
+                # Set fixed ranges for axes
                 xaxis=dict(
                     range=[date_min, date_max],
                     ticktext=years,
@@ -1448,11 +1448,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                     tick0=0,
                     dtick=20,
                     tickfont=dict(size=8)
-                ),
-                # Add aspectratio to ensure equal scaling
-                aspectratio=dict(x=1, y=1, z=1),
-                # Add aspectmode to force the ratio
-                aspectmode='cube'
+                )
             ),
             margin=dict(l=0, r=0, t=30, b=0),
             updatemenus=[
@@ -1464,7 +1460,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                             label='Restablecer Vista',
                             method='relayout',
                             args=[{'scene.camera': dict(
-                                eye=dict(x=0, y=0, z=3),
+                                eye=dict(x=0, y=0, z=3),  # Updated to match new zoom level
                                 up=dict(x=0, y=1, z=0)
                             )}]
                         )
@@ -2844,18 +2840,18 @@ html.Hr(style={
     'width': '100%',
 }),
 
-# if __name__ == '__main__':
-#     app.run_server(
-#         debug=True,
-#         host='0.0.0.0',  # Makes the server externally visible
-#         port=8050,        # You can change this port if needed
-#         use_reloader=True
-#     )
-
 if __name__ == '__main__':
     app.run_server(
-        debug=False,          # Disable debug mode for security
-        host='0.0.0.0',      # Makes the server externally visible
-        port=8050,           # Port number
-        use_reloader=False   # Disable auto-reloader for stability
+        debug=True,
+        host='0.0.0.0',  # Makes the server externally visible
+        port=8050,        # You can change this port if needed
+        use_reloader=True
     )
+
+# if __name__ == '__main__':
+#     app.run_server(
+#         debug=False,          # Disable debug mode for security
+#         host='0.0.0.0',      # Makes the server externally visible
+#         port=8050,           # Port number
+#         use_reloader=False   # Disable auto-reloader for stability
+#     )

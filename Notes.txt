@@ -1,2 +1,4 @@
+Put notes on sidebar
 
+resize graphs to be responsive on size width
 
