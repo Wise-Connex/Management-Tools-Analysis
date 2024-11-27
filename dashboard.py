@@ -233,23 +233,23 @@ app.layout = dbc.Container([
         # Main content column - width=10
         dbc.Col([
             membrete,
-            html.Div(id='main-title', style={'fontSize': '30px', 'marginBottom': '15px'}),
-            # Add the time range buttons to the main layout
-            html.Div([
-                html.Label("Rango de tiempo:  ", style={'marginRight': '12px', 'fontSize': '14px'}),
-                dbc.ButtonGroup([
-                    dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0, style={'fontSize': '11px'}),
-                ], className="mb-3")
-            ], style={'marginBottom': '10px'}),
-            # Main content div
-            html.Div(id='main-content', className="w-100")
-        ], width=10, className="px-4")
+            html.Div(id='main-title', style={
+                'fontSize': '24px',  # Changed from '30px' to '20px'
+                'marginBottom': '10px'  # Changed from '15px' to '10px' to reduce spacing
+            }),
+            # Main content div with scroll - now includes time range buttons
+            html.Div(id='main-content', className="w-100", style={
+                'height': 'calc(100vh - 200px)',
+                'overflowY': 'auto',
+                'overflowX': 'hidden',
+                'paddingRight': '10px'  # Add padding for scrollbar
+            })
+        ], width=10, className="px-4", style={
+            'height': '100vh',
+            'overflow': 'hidden'  # Prevent column from scrolling
+        })
     ], style={'height': '100vh'})
-], fluid=True, className="px-0")
+], fluid=True, className="px-0", style={'height': '100vh'})
 
 # Add callback to update main content based on selections
 @app.callback(
@@ -481,6 +481,18 @@ def update_main_content(*args):
     
     # Remove the nested callback and return the initial graphs
     return html.Div([
+        # Time range buttons section
+        html.Div([
+            html.Label("Rango de tiempo:  ", style={'marginRight': '12px', 'fontSize': '14px'}),
+            dbc.ButtonGroup([
+                dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0, style={'fontSize': '11px'}),
+            ], className="mb-3")
+        ], style={'marginBottom': '10px'}),
+        
         # First row: Line and Bar charts
         html.Div([
             # Line chart container
@@ -1998,7 +2010,7 @@ def update_forecast_plots(y_axis, z_axis, selected_keyword, *button_states):
                 x=0.5,
                 font=dict(size=12)
             )
-        )
+        )    
         return error_fig, error_fig
 
 def create_arima_forecast(source_column, selected_keyword, selected_sources, combined_dataset):
@@ -2464,8 +2476,8 @@ import numpy as np
     [Output('fourier-graph-1', 'figure'),
      Output('fourier-graph-2', 'figure')],
     [Input('y-axis-dropdown', 'value'),
-     Input('z-axis-dropdown', 'value'),
-     Input('keyword-dropdown', 'value')] +
+    Input('z-axis-dropdown', 'value'),
+    Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def update_fourier_plots(y_axis, z_axis, selected_keyword, *button_states):

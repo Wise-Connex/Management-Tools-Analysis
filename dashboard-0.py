@@ -233,23 +233,23 @@ app.layout = dbc.Container([
         # Main content column - width=10
         dbc.Col([
             membrete,
-            html.Div(id='main-title', style={'fontSize': '30px', 'marginBottom': '15px'}),
-            # Add the time range buttons to the main layout
-            html.Div([
-                html.Label("Rango de tiempo:  ", style={'marginRight': '12px', 'fontSize': '14px'}),
-                dbc.ButtonGroup([
-                    dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0, style={'fontSize': '11px'}),
-                ], className="mb-3")
-            ], style={'marginBottom': '10px'}),
-            # Main content div
-            html.Div(id='main-content', className="w-100")
-        ], width=10, className="px-4")
+            html.Div(id='main-title', style={
+                'fontSize': '24px',  # Changed from '30px' to '20px'
+                'marginBottom': '10px'  # Changed from '15px' to '10px' to reduce spacing
+            }),
+            # Main content div with scroll - now includes time range buttons
+            html.Div(id='main-content', className="w-100", style={
+                'height': 'calc(100vh - 200px)',
+                'overflowY': 'auto',
+                'overflowX': 'hidden',
+                'paddingRight': '10px'  # Add padding for scrollbar
+            })
+        ], width=10, className="px-4", style={
+            'height': '100vh',
+            'overflow': 'hidden'  # Prevent column from scrolling
+        })
     ], style={'height': '100vh'})
-], fluid=True, className="px-0")
+], fluid=True, className="px-0", style={'height': '100vh'})
 
 # Add callback to update main content based on selections
 @app.callback(
@@ -443,10 +443,27 @@ def update_main_content(*args):
         ], style={'marginBottom': '10px'}),
         # Update this section to include all three graph views
         html.Div([
-            dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-            dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-            dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-        ], style={'display': 'flex', 'justifyContent': 'space-between'}),
+            dcc.Graph(
+                id='3d-graph-view-1',
+                style={'height': '600px', 'width': '33%'},
+                config={'displaylogo': False, 'responsive': True, 'autosizable': True}
+            ),
+            dcc.Graph(
+                id='3d-graph-view-2',
+                style={'height': '600px', 'width': '33%'},
+                config={'displaylogo': False, 'responsive': True, 'autosizable': True}
+            ),
+            dcc.Graph(
+                id='3d-graph-view-3',
+                style={'height': '600px', 'width': '33%'},
+                config={'displaylogo': False, 'responsive': True, 'autosizable': True}
+            )
+        ], style={
+            'display': 'flex',
+            'justifyContent': 'space-between',
+            'width': '100%',
+            'flexWrap': 'wrap'  # Added to handle smaller screens
+        }),
             
             # Add horizontal divider with shadow at the end
             html.Hr(style={
@@ -464,6 +481,18 @@ def update_main_content(*args):
     
     # Remove the nested callback and return the initial graphs
     return html.Div([
+        # Time range buttons section
+        html.Div([
+            html.Label("Rango de tiempo:  ", style={'marginRight': '12px', 'fontSize': '14px'}),
+            dbc.ButtonGroup([
+                dbc.Button("5 años", id="btn-5y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("10 años", id="btn-10y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("15 años", id="btn-15y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("20 años", id="btn-20y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                dbc.Button("Todo", id="btn-all", size="sm", n_clicks=0, style={'fontSize': '11px'}),
+            ], className="mb-3")
+        ], style={'marginBottom': '10px'}),
+        
         # First row: Line and Bar charts
         html.Div([
             # Line chart container
@@ -471,8 +500,8 @@ def update_main_content(*args):
                 dcc.Graph(
                     id='line-graph',
                     figure=fig,
-                    style={'height': '520px'},
-                    config={'displaylogo': False}
+                    style={'height': '520px', 'width': '100%'},  # Changed: Set width to 100%
+                    config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                 ),
             ], style={
                 'width': '80%',
@@ -484,8 +513,8 @@ def update_main_content(*args):
                 dcc.Graph(
                     id='bar-graph',
                     figure=initial_bar_fig,
-                    style={'height': '520px'},
-                    config={'displaylogo': False}
+                    style={'height': '520px', 'width': '100%'},  # Changed: Set width to 100%
+                    config={'displaylogo': False, 'responsive': True}  # Added: responsive config
                 ),
             ], style={
                 'width': '20%',
@@ -494,7 +523,8 @@ def update_main_content(*args):
             }),
         ], style={
             'display': 'flex',
-            'marginBottom': '20px'
+            'marginBottom': '20px',
+            'width': '100%'  # Added: ensure container takes full width
         }),
         
         # Add new row for periods bar graph
@@ -656,10 +686,27 @@ def update_main_content(*args):
             }),
             # Update this section to include all three graph views
             html.Div([
-                dcc.Graph(id='3d-graph-view-1', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-                dcc.Graph(id='3d-graph-view-2', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False}),
-                dcc.Graph(id='3d-graph-view-3', style={'height': '600px', 'width': '33%'}, config={'displaylogo': False})
-            ], style={'display': 'flex', 'justifyContent': 'space-between'}),
+                dcc.Graph(
+                    id='3d-graph-view-1',
+                    style={'height': '600px', 'width': '33%'},
+                    config={'displaylogo': False, 'responsive': True, 'autosizable': True}
+                ),
+                dcc.Graph(
+                    id='3d-graph-view-2',
+                    style={'height': '600px', 'width': '33%'},
+                    config={'displaylogo': False, 'responsive': True, 'autosizable': True}
+                ),
+                dcc.Graph(
+                    id='3d-graph-view-3',
+                    style={'height': '600px', 'width': '33%'},
+                    config={'displaylogo': False, 'responsive': True, 'autosizable': True}
+                )
+            ], style={
+                'display': 'flex',
+                'justifyContent': 'space-between',
+                'width': '100%',
+                'flexWrap': 'wrap'  # Added to handle smaller screens
+            }),
             
             # Add horizontal divider with shadow at the end
             html.Hr(style={
@@ -673,37 +720,59 @@ def update_main_content(*args):
                 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
             }),
             
-            # Continue with Statistical Analysis section
+            # Update the Statistical Analysis section spacing
             html.Div([
-                html.H6("Análisis Estadístico", style={'fontSize': '20px', 'marginTop': '10px'}),
+                html.H6("Análisis Estadístico", style={
+                    'fontSize': '20px', 
+                    'marginTop': '10px',
+                    'marginBottom': '20px'  # Add consistent bottom margin
+                }),
                 
                 # Container for correlation and regression (2 sections side by side)
                 html.Div([
                     # Section 1: Correlación
                     html.Div([
                         html.H6("Correlación", style={'fontSize': '16px', 'textAlign': 'center'}),
-                        dcc.Graph(id='correlation-graph', style={'height': '300px'}, config={'displaylogo': False}),
+                        dcc.Graph(
+                            id='correlation-graph',
+                            style={'height': '300px', 'width': '100%'},
+                            config={'displaylogo': False, 'responsive': True}
+                        ),
                     ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                     
                     # Section 2: Regresión
                     html.Div([
                         html.H6("Regresión", style={'fontSize': '16px', 'textAlign': 'center'}),
-                        dcc.Graph(id='regression-graph', style={'height': '300px'}, config={'displaylogo': False}),
+                        dcc.Graph(
+                            id='regression-graph',
+                            style={'height': '300px', 'width': '100%'},
+                            config={'displaylogo': False, 'responsive': True}
+                        ),
                     ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                 ], style={
                     'display': 'flex',
                     'justifyContent': 'space-between',
-                    'marginTop': '20px',
-                    'marginBottom': '150px'
+                    'marginBottom': '50px',  # Consistent bottom margin
+                    'width': '100%'
                 }),
 
-                # Section 3: Seasonal Analysis
+                # Add horizontal divider with consistent spacing
+                html.Hr(style={
+                    'border': 'none',
+                    'height': '3px',
+                    'backgroundColor': '#dee2e6',
+                    'margin': '50px 0',  # Consistent vertical margins
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                    'width': '100%'
+                }),
+
+                # Section 3: Seasonal Analysis with consistent spacing
                 html.Div([
                     html.H6("Análisis Estacional", style={
-                        'fontSize': '16px', 
+                        'fontSize': '20px', 
                         'textAlign': 'center',
-                        'width': '100%',
-                        'margin': '120px auto 20px auto'
+                        'marginTop': '20px',
+                        'marginBottom': '20px'  # Consistent bottom margin
                     }),
                     # Container for two seasonal decomposition graphs side by side
                     html.Div([
@@ -714,11 +783,8 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='seasonal-graph-1', 
-                                    style={
-                                        'height': '600px', 
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
+                                    style={'height': '1200px', 'width': '100%'},  # Reduced from 600px to 400px
+                                    config={'displaylogo': False, 'responsive': True}
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
@@ -730,92 +796,36 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='seasonal-graph-2', 
-                                    style={
-                                        'height': '600px', 
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
+                                    style={'height': '1200px', 'width': '100%'},  # Reduced from 600px to 400px
+                                    config={'displaylogo': False, 'responsive': True}
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                     ], style={
                         'display': 'flex',
                         'justifyContent': 'space-between',
-                        'width': '100%'
-                    }),
-                ], style={'width': '100%', 'marginBottom': '500px'}),  # Decreased from 600px to 500px
-
-                # Find the Fourier Analysis section and add a spacer div before it
-                # Add this after the Seasonal Analysis section and before the Fourier section
-                html.Div(style={'height': '150px'}),  # Spacer div
-
-                html.Div([
-                    html.H6("Análisis de Fourier", style={
-                        'fontSize': '16px', 
-                        'textAlign': 'center',
                         'width': '100%',
-                        'margin': '20px auto'  # Changed from 50px to 200px for top margin
+                        'marginBottom': '50px'  # Consistent bottom margin
                     }),
-                    # Container for Fourier graphs side by side
-                    html.Div([
-                        # Left Fourier graph
-                        html.Div([
-                            dcc.Loading(
-                                id="loading-fourier-1",
-                                type="default",
-                                children=dcc.Graph(
-                                    id='fourier-graph-1', 
-                                    style={
-                                        'height': '400px',
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
-                                ),
-                            ),
-                        ], style={'width': '50%', 'display': 'inline-block'}),
-                        
-                        # Right Fourier graph
-                        html.Div([
-                            dcc.Loading(
-                                id="loading-fourier-2",
-                                type="default",
-                                children=dcc.Graph(
-                                    id='fourier-graph-2', 
-                                    style={
-                                        'height': '400px',
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
-                                ),
-                            ),
-                        ], style={'width': '50%', 'display': 'inline-block'}),
-                    ], style={
-                        'width': '100%',
-                        'display': 'flex',
-                        'flexDirection': 'row'  # Changed from 'column' to 'row'
-                    }),
-                ], style={
-                    'width': '100%', 
-                    'marginBottom': '50px',
-                    'marginTop': '50px'  # Changed from 150px to 50px to move section up
-                }),
+                ]),
 
-                # Add divider between sections
+                # Add horizontal divider with consistent spacing
                 html.Hr(style={
                     'border': 'none',
-                    'height': '2px',
+                    'height': '3px',
                     'backgroundColor': '#dee2e6',
-                    'margin': '30px 0',
-                    'width': '100%',
+                    'margin': '50px 0',  # Consistent vertical margins
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                    'width': '100%'
                 }),
 
-                # Section 4: Pronóstico (existing section)
+                # Section 4: Pronóstico with consistent spacing
                 html.Div([
                     html.H6("Pronóstico", style={
-                        'fontSize': '16px', 
+                        'fontSize': '20px', 
                         'textAlign': 'center',
-                        'width': '100%',
-                        'margin': '50px auto 20px auto'
+                        'marginTop': '10px',
+                        'marginBottom': '20px'  # Consistent bottom margin
                     }),
                     # Container for two ARIMA graphs side by side
                     html.Div([
@@ -826,11 +836,8 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='forecast-graph-1', 
-                                    style={
-                                        'height': '300px', 
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
+                                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
+                                    config={'displaylogo': False, 'responsive': True}
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
@@ -842,32 +849,29 @@ def update_main_content(*args):
                                 type="default",
                                 children=dcc.Graph(
                                     id='forecast-graph-2', 
-                                    style={
-                                        'height': '300px', 
-                                        'width': '100%'
-                                    }, 
-                                    config={'displaylogo': False}
+                                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
+                                    config={'displaylogo': False, 'responsive': True}
                                 ),
                             ),
                         ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
                     ], style={
                         'display': 'flex',
                         'justifyContent': 'space-between',
-                        'width': '100%'
+                        'width': '100%',
+                        'marginBottom': '50px'  # Consistent bottom margin
                     }),
-                ], style={'width': '100%', 'marginBottom': '50px'}),
-                
-                # Add horizontal divider with shadow at the end
+                ]),
+
+                # Final horizontal divider
                 html.Hr(style={
                     'border': 'none',
                     'height': '3px',
                     'backgroundColor': '#dee2e6',
-                    'margin': '30px 0',
+                    'margin': '50px 0',  # Consistent vertical margins
                     'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
-                    'width': '100%',
-                    'display': 'block'
+                    'width': '100%'
                 }),
-            ], className="w-100") if len(selected_sources) >= 2 else html.Div()
+            ], className="w-100")
         ], className="w-100") if len(selected_sources) >= 2 else html.Div()
     ])
 
@@ -1146,7 +1150,7 @@ def update_graphs(n5, n10, n15, n20, nall, relayoutData, selected_keyword, *butt
         x_values = [x_positions[period] for period in periods.keys()]  # Use calculated positions
         
         period_traces.append({
-            'name': source,
+            'name': f"{source} (valor relativo %)",  # Updated legend label
             'type': 'bar',
             'x': x_values,
             'y': y_values,
@@ -1424,7 +1428,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                 xaxis_title="Fecha",
                 yaxis_title=y_axis,
                 zaxis_title=z_axis,
-                # Set fixed ranges for axes
+                # Set fixed and equal ranges for axes
                 xaxis=dict(
                     range=[date_min, date_max],
                     ticktext=years,
@@ -1448,7 +1452,11 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                     tick0=0,
                     dtick=20,
                     tickfont=dict(size=8)
-                )
+                ),
+                # Add aspectratio to ensure equal scaling
+                aspectratio=dict(x=1, y=1, z=1),
+                # Add aspectmode to force the ratio
+                aspectmode='cube'
             ),
             margin=dict(l=0, r=0, t=30, b=0),
             updatemenus=[
@@ -1460,7 +1468,7 @@ def update_3d_graph(y_axis, z_axis, selected_keyword, n_clicks, *args):
                             label='Restablecer Vista',
                             method='relayout',
                             args=[{'scene.camera': dict(
-                                eye=dict(x=0, y=0, z=3),  # Updated to match new zoom level
+                                eye=dict(x=0, y=0, z=3),
                                 up=dict(x=0, y=1, z=0)
                             )}]
                         )
@@ -1728,8 +1736,9 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
             x=0.5,
             font=dict(size=12)
         ),
-        width=500,  # Increased from 400
+        # Remove fixed width
         height=400,
+        autosize=True,  # Add this
         xaxis=dict(
             tickangle=45,
             tickfont=dict(size=8),
@@ -1776,8 +1785,8 @@ def update_correlation_heatmap(selected_keyword, click_data, *button_states):
 @app.callback(
     Output('regression-graph', 'figure'),
     [Input('y-axis-dropdown', 'value'),
-    Input('z-axis-dropdown', 'value'),
-    Input('keyword-dropdown', 'value')] +
+     Input('z-axis-dropdown', 'value'),
+     Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
@@ -1905,52 +1914,18 @@ def update_regression_plot(y_axis, z_axis, selected_keyword, *button_states):
                 x=0.5,
                 font=dict(size=12)
             ),
-            xaxis=dict(
-                title=dict(
-                    text=y_axis,
-                    font=dict(size=10)
-                ),
-                tickfont=dict(size=8),
-                zeroline=True,
-                zerolinewidth=1,
-                zerolinecolor='lightgray',
-                showgrid=True,
-                gridwidth=1,
-                gridcolor='lightgray'
-            ),
-            yaxis=dict(
-                title=dict(
-                    text=z_axis,
-                    font=dict(size=10)
-                ),
-                tickfont=dict(size=8),
-                zeroline=True,
-                zerolinewidth=1,
-                zerolinecolor='lightgray',
-                showgrid=True,
-                gridwidth=1,
-                gridcolor='lightgray'
-            ),
+            autosize=True,  # Add this
+            height=400,
+            margin=dict(l=50, r=50, t=50, b=100),
+            # Remove fixed width
             showlegend=True,
             legend=dict(
-                orientation="h",     # Horizontal orientation
-                yanchor="top",      # Anchor to top of legend box
-                y=-0.35,            # Moved from -0.25 to -0.35 to lower by ~10px
-                xanchor="center",   # Center horizontally
-                x=0.5,             # Center position
-                font=dict(size=8),
-                bgcolor='rgba(255,255,255,0.8)',
-                bordercolor='rgba(0,0,0,0.2)',
-                borderwidth=1
+                orientation="h",
+                yanchor="bottom",
+                y=-0.35,
+                xanchor="center",
+                x=0.5
             ),
-            margin=dict(
-                l=50,    # left margin
-                r=50,    # right margin
-                t=50,    # top margin
-                b=100    # increased from 80 to 100 to accommodate lower legend
-            ),
-            height=400,  # Increased from 300
-            width=500,  # Increased from 450
             hovermode='closest',
             plot_bgcolor='white'
         )
@@ -2035,7 +2010,7 @@ def update_forecast_plots(y_axis, z_axis, selected_keyword, *button_states):
                 x=0.5,
                 font=dict(size=12)
             )
-        )
+        )    
         return error_fig, error_fig
 
 def create_arima_forecast(source_column, selected_keyword, selected_sources, combined_dataset):
@@ -2136,45 +2111,18 @@ def create_arima_forecast(source_column, selected_keyword, selected_sources, com
                 x=0.5,
                 font=dict(size=12)
             ),
-            xaxis=dict(
-                title=dict(
-                    text='Fecha',
-                    font=dict(size=10)
-                ),
-                tickfont=dict(size=8),
-                showgrid=True,
-                gridwidth=1,
-                gridcolor='lightgray',
-                tickformat='%Y',
-                dtick='M12',
-                tickangle=45,
-                range=[dates[display_start_idx], future_dates[-1]]
-            ),
-            yaxis=dict(
-                title=dict(
-                    text='Valor',
-                    font=dict(size=10)
-                ),
-                tickfont=dict(size=8),
-                showgrid=True,
-                gridwidth=1,
-                gridcolor='lightgray'
-            ),
+            autosize=True,  # Add this
+            height=400,
+            margin=dict(l=50, r=50, t=50, b=100),
+            # Remove fixed width
             showlegend=True,
             legend=dict(
                 orientation="h",
-                yanchor="top",
+                yanchor="bottom",
                 y=-0.35,
                 xanchor="center",
-                x=0.5,
-                font=dict(size=8),
-                bgcolor='rgba(255,255,255,0.8)',
-                bordercolor='rgba(0,0,0,0.2)',
-                borderwidth=1
+                x=0.5
             ),
-            margin=dict(l=50, r=50, t=50, b=100),
-            height=400,
-            width=500,
             hovermode='x unified',
             plot_bgcolor='white'
         )
@@ -2247,7 +2195,7 @@ def update_time_series(y_axis, selected_keyword, *button_states):
         # Update layout
         fig.update_layout(
             height=300,
-            width=450,
+            autosize=True,  # Add this for responsiveness
             title=dict(
                 text='Tendencia a través del tiempo',
                 x=0.5,
@@ -2273,6 +2221,7 @@ def update_time_series(y_axis, selected_keyword, *button_states):
             ),
             margin=dict(l=50, r=20, t=60, b=50)
         )
+        
         return fig
 
     except Exception as e:
@@ -2288,7 +2237,15 @@ def update_time_series(y_axis, selected_keyword, *button_states):
             showarrow=False,
             font=dict(size=12, color="red")
         )
-        fig.update_layout(height=300, width=450)
+        fig.update_layout(
+            height=300,
+            autosize=True,  # Add this for responsiveness
+            title=dict(
+                text='Error en la Serie de Tiempo',
+                x=0.5,
+                font=dict(size=12)
+            )
+        )
         return fig
 
 # Add new callback for seasonal analysis graphs
@@ -2401,7 +2358,6 @@ def create_seasonal_decomposition(source_column, data):
             ),
             row=1, col=1
         )
-        
         fig.add_trace(
             go.Scatter(
                 x=dates,
@@ -2439,15 +2395,16 @@ def create_seasonal_decomposition(source_column, data):
         
         # Update layout with adjusted margins and height
         fig.update_layout(
-            height=1200,  # Reduced height to 75% of the original size
-            width=595,    # Reduced width by 15%
+            height=1200,
+            autosize=True,  # Add this
+            # Remove fixed width
             title=dict(
                 text=f'Descomposición Estacional de {source_column}',
                 x=0.5,
                 font=dict(size=12)
             ),
             showlegend=False,
-            margin=dict(l=50, r=50, t=75, b=25)  # Reduced bottom margin by half
+            margin=dict(l=50, r=50, t=75, b=25)
         )
         
         # Update y-axes titles
@@ -2519,8 +2476,8 @@ import numpy as np
     [Output('fourier-graph-1', 'figure'),
      Output('fourier-graph-2', 'figure')],
     [Input('y-axis-dropdown', 'value'),
-     Input('z-axis-dropdown', 'value'),
-     Input('keyword-dropdown', 'value')] +
+    Input('z-axis-dropdown', 'value'),
+    Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
 def update_fourier_plots(y_axis, z_axis, selected_keyword, *button_states):
@@ -2690,6 +2647,8 @@ def create_fourier_analysis(source_column, data):
                 x=0.5,
                 font=dict(size=12)
             ),
+            autosize=True,  # Keep this for responsiveness
+            height=400,
             xaxis=dict(
                 title=dict(
                     text='Período (meses)',
@@ -2720,8 +2679,6 @@ def create_fourier_analysis(source_column, data):
                 rangemode='tozero'  # Start y-axis from 0
             ),
             showlegend=False,
-            height=400,        # Increased height
-            width=600,  # Changed from 1200 to 600 for side-by-side display
             margin=dict(
                 l=50,
                 r=50,
@@ -2839,6 +2796,102 @@ html.Hr(style={
     'margin': '30px 0',
     'width': '100%',
 }),
+
+# Section 3: Seasonal Analysis with consistent spacing
+html.Div([
+    html.H6("Análisis Estacional", style={
+        'fontSize': '20px', 
+        'textAlign': 'center',
+        'marginTop': '10px',
+        'marginBottom': '20px'  # Consistent bottom margin
+    }),
+    # Container for two seasonal decomposition graphs side by side
+    html.Div([
+        # Left seasonal graph
+        html.Div([
+            dcc.Loading(
+                id="loading-seasonal-1",
+                type="default",
+                children=dcc.Graph(
+                    id='seasonal-graph-1', 
+                    style={'height': '400px', 'width': '100%'},  # Reduced from 600px to 400px
+                    config={'displaylogo': False, 'responsive': True}
+                ),
+            ),
+        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+        
+        # Right seasonal graph
+        html.Div([
+            dcc.Loading(
+                id="loading-seasonal-2",
+                type="default",
+                children=dcc.Graph(
+                    id='seasonal-graph-2', 
+                    style={'height': '400px', 'width': '100%'},  # Reduced from 600px to 400px
+                    config={'displaylogo': False, 'responsive': True}
+                ),
+            ),
+        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+    ], style={
+        'display': 'flex',
+        'justifyContent': 'space-between',
+        'width': '100%',
+        'marginBottom': '50px'  # Consistent bottom margin
+    }),
+]),
+
+# Add horizontal divider with consistent spacing
+html.Hr(style={
+    'border': 'none',
+    'height': '3px',
+    'backgroundColor': '#dee2e6',
+    'margin': '50px 0',  # Consistent vertical margins
+    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+    'width': '100%'
+}),
+
+# Section 4: Pronóstico with consistent spacing
+html.Div([
+    html.H6("Pronóstico", style={
+        'fontSize': '20px', 
+        'textAlign': 'center',
+        'marginTop': '10px',
+        'marginBottom': '20px'  # Consistent bottom margin
+    }),
+    # Container for two ARIMA graphs side by side
+    html.Div([
+        # Left ARIMA graph
+        html.Div([
+            dcc.Loading(
+                id="loading-forecast-1",
+                type="default",
+                children=dcc.Graph(
+                    id='forecast-graph-1', 
+                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
+                    config={'displaylogo': False, 'responsive': True}
+                ),
+            ),
+        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+        
+        # Right ARIMA graph
+        html.Div([
+            dcc.Loading(
+                id="loading-forecast-2",
+                type="default",
+                children=dcc.Graph(
+                    id='forecast-graph-2', 
+                    style={'height': '400px', 'width': '100%'},  # Increased from 300px to 400px
+                    config={'displaylogo': False, 'responsive': True}
+                ),
+            ),
+        ], style={'width': '50%', 'display': 'inline-block', 'verticalAlign': 'top'}),
+    ], style={
+        'display': 'flex',
+        'justifyContent': 'space-between',
+        'width': '100%',
+        'marginBottom': '50px'  # Consistent bottom margin
+    }),
+])
 
 if __name__ == '__main__':
     app.run_server(
