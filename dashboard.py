@@ -756,9 +756,9 @@ def update_main_content(*args):
                         'width': '100%',
                         'margin': '20px auto'  # Changed from 50px to 200px for top margin
                     }),
-                    # Container for Fourier graphs stacked vertically
+                    # Container for Fourier graphs side by side
                     html.Div([
-                        # First Fourier graph
+                        # Left Fourier graph
                         html.Div([
                             dcc.Loading(
                                 id="loading-fourier-1",
@@ -772,9 +772,9 @@ def update_main_content(*args):
                                     config={'displaylogo': False}
                                 ),
                             ),
-                        ], style={'width': '100%', 'marginBottom': '30px'}),  # Full width and margin below
+                        ], style={'width': '50%', 'display': 'inline-block'}),
                         
-                        # Second Fourier graph
+                        # Right Fourier graph
                         html.Div([
                             dcc.Loading(
                                 id="loading-fourier-2",
@@ -788,11 +788,11 @@ def update_main_content(*args):
                                     config={'displaylogo': False}
                                 ),
                             ),
-                        ], style={'width': '100%'}),  # Full width
+                        ], style={'width': '50%', 'display': 'inline-block'}),
                     ], style={
                         'width': '100%',
                         'display': 'flex',
-                        'flexDirection': 'column'  # Stack children vertically
+                        'flexDirection': 'row'  # Changed from 'column' to 'row'
                     }),
                 ], style={
                     'width': '100%', 
@@ -2721,7 +2721,7 @@ def create_fourier_analysis(source_column, data):
             ),
             showlegend=False,
             height=400,        # Increased height
-            width=1200,       # Increased width to span 12 columns
+            width=600,  # Changed from 1200 to 600 for side-by-side display
             margin=dict(
                 l=50,
                 r=50,
@@ -2787,7 +2787,7 @@ html.Div([
         'width': '100%',
         'margin': '20px auto'  # Changed from 50px to 200px for top margin
     }),
-    # Container for Fourier graphs stacked vertically
+    # Container for Fourier graphs side by side
     html.Div([
         # Left Fourier graph
         html.Div([
@@ -2797,13 +2797,13 @@ html.Div([
                 children=dcc.Graph(
                     id='fourier-graph-1', 
                     style={
-                        'height': '400px',  # Increased height
+                        'height': '400px',
                         'width': '100%'
                     }, 
                     config={'displaylogo': False}
                 ),
             ),
-        ], style={'width': '100%', 'marginBottom': '30px'}),  # Increased margin between graphs
+        ], style={'width': '50%', 'display': 'inline-block'}),
         
         # Right Fourier graph
         html.Div([
@@ -2813,17 +2813,17 @@ html.Div([
                 children=dcc.Graph(
                     id='fourier-graph-2', 
                     style={
-                        'height': '400px',  # Increased height
+                        'height': '400px',
                         'width': '100%'
                     }, 
                     config={'displaylogo': False}
                 ),
             ),
-        ], style={'width': '100%'}),
+        ], style={'width': '50%', 'display': 'inline-block'}),
     ], style={
         'width': '100%',
         'display': 'flex',
-        'flexDirection': 'column'  # Stack children vertically
+        'flexDirection': 'row'  # Changed from 'column' to 'row'
     }),
 ], style={
     'width': '100%', 
