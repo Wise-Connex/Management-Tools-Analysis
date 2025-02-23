@@ -138,7 +138,7 @@ def save_to_local_csv(data, keywords):
     str: The path to the saved CSV file.
     """
     # Ensure the 'dbase' directory exists
-    os.makedirs('dbase', exist_ok=True)
+    os.makedirs('../dbase', exist_ok=True)  # Changed path
     
     # Create a unique identifier using the first keyword and a timestamp
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -151,7 +151,7 @@ def save_to_local_csv(data, keywords):
     filename = f"CR_{keyword_prefix}_{keyword_hash}_{timestamp}"
     filename = filename[:20] + '.csv'  # Truncate to 16 chars and add .csv extension
     
-    filepath = os.path.join('dbase', filename)
+    filepath = os.path.join('../dbase', filename)  # Changed path
     
     with open(filepath, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
@@ -166,10 +166,10 @@ def save_to_local_csv(data, keywords):
 
 def create_or_update_index(keyword, filename):
     index_filename = "CR-index.txt"
-    full_path = os.path.join('dbase', index_filename)
+    full_path = os.path.join('../dbase', index_filename)  # Changed path
     
     # Ensure the 'dbase' directory exists
-    os.makedirs('dbase', exist_ok=True)
+    os.makedirs('../dbase', exist_ok=True)  # Changed path
     
     # Get current date and time
     current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -232,7 +232,7 @@ def process_file(filename):
     Returns:
     None
     """
-    with open(filename, 'r') as file:
+    with open(os.path.join('..', filename), 'r') as file:  # Changed path
         keyword_lines = file.read().splitlines()
     
     for line in keyword_lines:
@@ -247,7 +247,7 @@ if __name__ == "__main__":
     opcion = input("Elija una opción:\n1. Cargar palabras clave desde archivo 'tools.txt'\n2. Ingresar palabras clave específicas\nOpción: ")
     
     if opcion == "1":
-        if os.path.exists("tools.txt"):
+        if os.path.exists("../tools.txt"):  # Changed path
             process_file("tools.txt")
         else:
             print("El archivo 'tools.txt' no existe. Por favor, créelo y vuelva a intentar.")
