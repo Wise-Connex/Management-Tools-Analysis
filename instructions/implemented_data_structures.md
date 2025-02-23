@@ -130,7 +130,7 @@ line_fig = {
 }
 ```
 
-2. **Correlation Heatmap**
+2.**Correlation Heatmap**
 
 ```python
 heatmap = {

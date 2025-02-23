@@ -64,47 +64,45 @@ This project is a Python-based statistical analysis system for tracking and fore
 
 The project follows this structure:
 
-```
-├── prompts/                    # Analysis and system prompts
-│   ├── system/                # Core system prompts
-│   │   ├── system_prompt_1.py # Core analysis prompts
-│   │   └── system_prompt_2.py # Cross-source validation prompts
-│   ├── analysis/             # Analysis-specific prompts
-│   │   ├── temporal/        # Temporal analysis prompts
-│   │   ├── relationship/    # Cross-relationship prompts
-│   │   ├── trend/          # Trend analysis prompts
-│   │   ├── arima/          # ARIMA model prompts
-│   │   └── seasonal/       # Seasonal analysis prompts
-│   ├── conclusions/         # Conclusion generation prompts
-│   │   ├── standalone/     # Single source conclusions
-│   │   └── comparative/    # Cross-source conclusions
-│   └── language/           # Language support prompts
-│       └── translations/   # Translation prompts
-├── data/                   # Data processing and storage
-│   ├── sources/           # Raw data from different sources
-│   │   ├── google_books/  # Google Books Ngram data
-│   │   ├── crossref/      # Crossref.org data
-│   │   ├── google_trends/ # Google Trends data
-│   │   └── bain/          # Bain & Company metrics
-│   └── processed/         # Processed and cleaned data
-├── analysis/              # Analysis modules
-│   ├── temporal/         # Temporal analysis functions
-│   ├── cross_source/     # Cross-source validation
-│   ├── trends/           # Trend analysis
-│   └── forecasting/      # ARIMA and forecasting
-├── utils/                # Utility functions
-│   ├── statistical/      # Statistical calculation utilities
-│   ├── data_cleaning/    # Data cleaning utilities
-│   └── validation/       # Data validation utilities
-├── output/               # Analysis output
-│   ├── reports/         # Generated reports
-│   │   ├── single/      # Single source reports
-│   │   └── comparative/ # Cross-source reports
-│   └── translations/    # Translated reports
-└── tests/               # Test files
-    ├── unit/           # Unit tests
-    └── integration/    # Integration tests
-```
+├── prompts/ # Analysis and system prompts
+│ ├── system/ # Core system prompts
+│ │ ├── system_prompt_1.py # Core analysis prompts
+│ │ └── system_prompt_2.py # Cross-source validation prompts
+│ ├── analysis/ # Analysis-specific prompts
+│ │ ├── temporal/ # Temporal analysis prompts
+│ │ ├── relationship/ # Cross-relationship prompts
+│ │ ├── trend/ # Trend analysis prompts
+│ │ ├── arima/ # ARIMA model prompts
+│ │ └── seasonal/ # Seasonal analysis prompts
+│ ├── conclusions/ # Conclusion generation prompts
+│ │ ├── standalone/ # Single source conclusions
+│ │ └── comparative/ # Cross-source conclusions
+│ └── language/ # Language support prompts
+│ └── translations/ # Translation prompts
+├── data/ # Data processing and storage
+│ ├── sources/ # Raw data from different sources
+│ │ ├── google_books/ # Google Books Ngram data
+│ │ ├── crossref/ # Crossref.org data
+│ │ ├── google_trends/ # Google Trends data
+│ │ └── bain/ # Bain & Company metrics
+│ └── processed/ # Processed and cleaned data
+├── analysis/ # Analysis modules
+│ ├── temporal/ # Temporal analysis functions
+│ ├── cross_source/ # Cross-source validation
+│ ├── trends/ # Trend analysis
+│ └── forecasting/ # ARIMA and forecasting
+├── utils/ # Utility functions
+│ ├── statistical/ # Statistical calculation utilities
+│ ├── data_cleaning/ # Data cleaning utilities
+│ └── validation/ # Data validation utilities
+├── output/ # Analysis output
+│ ├── reports/ # Generated reports
+│ │ ├── single/ # Single source reports
+│ │ └── comparative/ # Cross-source reports
+│ └── translations/ # Translated reports
+└── tests/ # Test files
+├── unit/ # Unit tests
+└── integration/ # Integration tests
 
 **Key Directories:**
 
@@ -256,9 +254,9 @@ The project follows this structure:
   - Detailed description for complex changes.
   - Reference issue numbers (e.g., `fix: issue #123 - ...`).
 - **Workflow:**
-  1.  `git add .` (Stage changes)
-  2.  `git commit -m "Your commit message"` (Commit changes)
-  3.  `git push origin main` (Push changes)
+  1. `git add .` (Stage changes)
+  2. `git commit -m "Your commit message"` (Commit changes)
+  3. `git push origin main` (Push changes)
 
 ### 13. Documentation
 

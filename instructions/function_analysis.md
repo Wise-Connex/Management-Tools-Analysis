@@ -131,30 +131,25 @@ graph TD
 
 1. **Data Loading Chain**
 
-   ```
    get_all_keywords()
    └── get_filenames_for_keyword()
-       └── process_dataset()
-           └── normalize_dataset()
-   ```
+   └── process_dataset()
+   └── normalize_dataset()
 
 2. **Analysis Chain**
 
-   ```
    process_and_normalize_datasets()
    └── create_combined_dataset()
-       ├── create_fourier_analysis()
-       ├── create_seasonal_decomposition()
-       └── create_arima_forecast()
-   ```
+   ├── create_fourier_analysis()
+   ├── create_seasonal_decomposition()
+   └── create_arima_forecast()
 
 3. **Visualization Chain**
-   ```
+
    Dashboard Callbacks
    ├── create_line_plot()
    ├── create_correlation_heatmap()
    └── create_forecast_plot()
-   ```
 
 ## Callback Structure
 

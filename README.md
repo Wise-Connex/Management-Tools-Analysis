@@ -57,21 +57,21 @@ This project analyzes management tool adoption trends using data from:
 
 ## Installation
 
-1. Clone the repository:
+1.Clone the repository:
 
 ```bash
 git clone https://github.com/Wise-Connex/Management-Tools-Analysis.git
 cd management-tools-analysis
 ```
 
-2. Create and activate virtual environment:
+2.Create and activate virtual environment:
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install dependencies:
+3.Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -79,17 +79,15 @@ pip install -r requirements.txt
 
 ## Project Structure
 
-```
-├── analisis.py          # Core analysis functions
-├── dashboard.py         # Web dashboard implementation
-├── tools.py            # Tool definitions and mappings
-├── mtalib.py           # Utility library
-├── data/               # Data storage
-│   ├── sources/        # Raw data sources
-│   └── processed/      # Processed data
-├── prompts/            # AI analysis prompts
-└── venv/               # Virtual environment
-```
+├── analisis.py # Core analysis functions
+├── dashboard.py # Web dashboard implementation
+├── tools.py # Tool definitions and mappings
+├── mtalib.py # Utility library
+├── data/ # Data storage
+│ ├── sources/ # Raw data sources
+│ └── processed/ # Processed data
+├── prompts/ # AI analysis prompts
+└── venv/ # Virtual environment
 
 ## Databases
 
@@ -102,13 +100,13 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Start the dashboard:
+1.Start the dashboard:
 
 ```bash
 python dashboard.py
 ```
 
-2. Run analysis:
+2.Run analysis:
 
 ```bash
 python analisis.py
@@ -145,10 +143,8 @@ The dashboard will be available at `http://localhost:8050`
 
 Create a `.env` file with:
 
-```
 GOOGLE_API_KEY=your_api_key
 CROSSREF_EMAIL=your_email
-```
 
 ## Development
 
