@@ -1,13 +1,83 @@
 import requests
 import csv
+import pandas as pd
 from datetime import datetime, timedelta
 import logging
 import os
 import time
+import json
 from urllib.parse import quote_plus, urlencode
-import hashlib  # Add this import at the top of the file with other imports
+import hashlib
+import unicodedata
+import random
+import signal
+import sys
 
-def get_crossref_data(keywords):
+# Global flag for graceful shutdown
+shutdown_requested = False
+
+def signal_handler(signum, frame):
+    """Handle interrupt signal"""
+    global shutdown_requested
+    print("\nShutdown requested. Will stop after current tool completes...")
+    shutdown_requested = True
+
+# Register signal handler
+signal.signal(signal.SIGINT, signal_handler)
+
+def get_project_root():
+    """Get the project root directory"""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.dirname(current_dir)
+
+def setup_logging():
+    """Setup enhanced logging configuration"""
+    project_root = get_project_root()
+    log_file = os.path.join(project_root, 'logs', 'crossref_search.log')
+    
+    # Ensure logs directory exists
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
+    
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s [%(levelname)s] %(message)s',
+        handlers=[
+            logging.FileHandler(log_file),
+            logging.StreamHandler()
+        ]
+    )
+    return logging.getLogger(__name__)
+
+def save_state(processed_tools):
+    """Save progress state to file"""
+    project_root = get_project_root()
+    state_file = os.path.join(project_root, 'NewDBase', '.crossref_state.json')
+    with open(state_file, 'w') as f:
+        json.dump(processed_tools, f)
+
+def load_state():
+    """Load progress state from file"""
+    project_root = get_project_root()
+    state_file = os.path.join(project_root, 'NewDBase', '.crossref_state.json')
+    if os.path.exists(state_file):
+        with open(state_file) as f:
+            return json.load(f)
+    return []
+
+def normalize_filename(name):
+    """Normalize filename to ASCII characters, replace spaces with underscore"""
+    normalized = unicodedata.normalize('NFKD', name).encode('ASCII', 'ignore').decode()
+    normalized = '_'.join(normalized.split())
+    return ''.join(c for c in normalized if c.isalnum() or c in '_-')
+
+def read_input_csv(filepath):
+    """Read the input CSV file and extract tool names and queries"""
+    df = pd.read_csv(filepath)
+    return list(zip(df['Herramienta Gerencial'], df['Keywords']))
+
+def get_crossref_data(query):
+    """Get data from Crossref API with enhanced error handling"""
+    logger = logging.getLogger(__name__)
     results = []
     
     current_year = datetime.now().year
@@ -15,15 +85,7 @@ def get_crossref_data(keywords):
     cursor = '*'
     total_items = 0
     
-    # Ensure keywords is a list, even if it's a single keyword
-    if isinstance(keywords, str):
-        keywords = [keywords]
-    
-    # Join keywords with 'OR' instead of commas
-    encoded_keywords = ' OR '.join(quote_plus(kw.strip()) for kw in keywords)
-    base_url = "https://api.crossref.org/works"
-    
-    print(f"Iniciando consulta de Crossref para las palabras clave: {encoded_keywords}")
+    logger.info(f"Starting Crossref query: {query}")
     
     # Initialize batch counter and total batches
     batch_counter = 0
@@ -33,16 +95,15 @@ def get_crossref_data(keywords):
         batch_counter += 1
         try:
             params = {
-                'query': encoded_keywords,
+                'query': query,
                 'rows': rows,
                 'cursor': cursor,
                 'filter': f'from-pub-date:1950,until-pub-date:{current_year}',
-                'select': 'DOI,title,published'  # Removed 'keyword' from select
+                'select': 'DOI,title,published'
             }
             
-            full_url = f"{base_url}?{urlencode(params)}"
-            
-            print(f"Requesting URL: {full_url}")
+            full_url = f"https://api.crossref.org/works?{urlencode(params)}"
+            logger.debug(f"Requesting URL: {full_url}")
             
             response = requests.get(full_url)
             response.raise_for_status()
@@ -53,14 +114,12 @@ def get_crossref_data(keywords):
             next_cursor = message.get('next-cursor')
             total_results = message.get('total-results', 0)
             
-            # Calculate total batches if not done yet
             if total_batches is None:
-                total_batches = -(-total_results // rows)  # Ceiling division
-                print(f"Total de resultados esperados: {total_results}")
-                print(f"Número total de batches esperados: {total_batches}")
+                total_batches = -(-total_results // rows)
+                logger.info(f"Total expected results: {total_results}")
+                logger.info(f"Total expected batches: {total_batches}")
             
-            print(f"\nProcesando batch {batch_counter} de {total_batches}")
-            print(f"Se obtuvieron {len(items)} elementos en este batch")
+            logger.info(f"Processing batch {batch_counter} of {total_batches}")
             
             selected_items = 0
             for item in items:
@@ -70,48 +129,39 @@ def get_crossref_data(keywords):
                         year, month = date[0], date[1]
                         results.append((datetime(year, month, 1), 1))
                         selected_items += 1
-                else:
-                    print(f"Se omitió un elemento debido a fecha faltante o inválida: {item.get('published', 'Sin datos de publicación')}")
             
             total_items += len(items)
-            print(f"En este batch se trajeron {len(items)} elementos y se seleccionaron {selected_items}\n\n")
+            logger.info(f"Batch {batch_counter}: {len(items)} items retrieved, {selected_items} selected")
             
-            # Check if we've processed all expected batches
             if batch_counter >= total_batches:
-                print("Se han procesado todos los batches esperados. Terminando el bucle.")
+                logger.info("All expected batches processed")
                 break
             
             cursor = next_cursor
             if not cursor:
-                print("No hay más resultados, terminando el bucle")
+                logger.info("No more results available")
                 break
             
-            time.sleep(1)  # Add a small delay to avoid hitting rate limits
+            time.sleep(1)  # Rate limiting
         
         except requests.exceptions.RequestException as e:
-            print(f"Error al consultar Crossref: {str(e)}")
-            print(f"URL de la solicitud: {full_url}")
-            print(f"Respuesta del servidor: {response.text}")  # Log the response text
-            return None  # Return None instead of breaking the loop
-    
-    print(f"Total de elementos consultados: {total_items}")
-    print(f"Total de resultados recolectados: {len(results)}")
+            logger.error(f"Error querying Crossref: {str(e)}")
+            logger.error(f"Request URL: {full_url}")
+            if 'response' in locals():
+                logger.error(f"Server response: {response.text}")
+            return None
+
+    logger.info(f"Total items queried: {total_items}")
+    logger.info(f"Total results collected: {len(results)}")
     return results
 
 def group_by_month(data):
-    """
-    Groups the input data by month, including all months from 1950 to the current month.
-    
-    Args:
-    data (list of tuples): Each tuple contains (datetime, count) as returned by get_crossref_data.
-    
-    Returns:
-    dict: A dictionary with keys as 'YYYY-MM' strings and values as the count of publications for that month.
-    """
+    """Groups data by month from 1950 to present"""
     grouped = {}
     start_date = datetime(1950, 1, 1)
     current_date = datetime.now().replace(day=1)
     
+    # Initialize all months with zero
     date = start_date
     while date <= current_date:
         key = date.strftime("%Y-%m")
@@ -119,6 +169,7 @@ def group_by_month(data):
         date += timedelta(days=32)
         date = date.replace(day=1)
     
+    # Add actual counts
     for date, count in data:
         if date <= current_date:
             key = date.strftime("%Y-%m")
@@ -126,137 +177,109 @@ def group_by_month(data):
     
     return grouped
 
-def save_to_local_csv(data, keywords):
-    """
-    Saves the grouped data into a CSV file in the local 'dbase' folder.
+def save_to_csv(data, tool_name):
+    """Save data to CSV with normalized filename"""
+    logger = logging.getLogger(__name__)
     
-    Args:
-    data (dict): The grouped data as returned by group_by_month.
-    keywords (list): The search keywords used.
+    # Create NewDBase directory if it doesn't exist
+    project_root = get_project_root()
+    dbase_dir = os.path.join(project_root, 'NewDBase')
+    os.makedirs(dbase_dir, exist_ok=True)
     
-    Returns:
-    str: The path to the saved CSV file.
-    """
-    # Ensure the 'dbase' directory exists
-    os.makedirs('../dbase', exist_ok=True)  # Changed path
+    # Generate normalized filename
+    normalized_name = normalize_filename(tool_name)
+    random_suffix = format(random.randint(0, 9999), '04d')
+    filename = f"CR_{normalized_name}_{random_suffix}.csv"
+    filepath = os.path.join(dbase_dir, filename)
     
-    # Create a unique identifier using the first keyword and a timestamp
-    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-    keyword_hash = hashlib.md5(keywords[0].encode()).hexdigest()[:6]
-    
-    # Use only the first keyword, replace spaces with underscores
-    keyword_prefix = keywords[0][:10].replace(' ', '_')
-    
-    # Create filename, ensuring it's no longer than 20 characters
-    filename = f"CR_{keyword_prefix}_{keyword_hash}_{timestamp}"
-    filename = filename[:20] + '.csv'  # Truncate to 16 chars and add .csv extension
-    
-    filepath = os.path.join('../dbase', filename)  # Changed path
-    
-    with open(filepath, 'w', newline='') as csvfile:
+    with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Date", keywords[0]])
+        writer.writerow(["Date", tool_name])
         for date, count in sorted(data.items()):
             writer.writerow([date, count])
     
-    # Create or update index file
-    index_filename = create_or_update_index(keywords[0], filename)
-    
-    return filepath, index_filename
+    logger.info(f"Data saved to {filepath}")
+    return filename
 
-def create_or_update_index(keyword, filename):
-    index_filename = "CR-index.txt"
-    full_path = os.path.join('../dbase', index_filename)  # Changed path
+def update_index(tool_name, filename):
+    """Update or create the CRIndex.csv file"""
+    logger = logging.getLogger(__name__)
+    project_root = get_project_root()
+    index_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
     
-    # Ensure the 'dbase' directory exists
-    os.makedirs('../dbase', exist_ok=True)  # Changed path
+    # Create new index file if it doesn't exist
+    if not os.path.exists(index_path):
+        with open(index_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            writer.writerow(['Keyword', 'Filename'])
     
-    # Get current date and time
-    current_datetime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Append new entry
+    with open(index_path, 'a', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow([tool_name, filename])
     
-    # Check if the file exists to determine if we need to write headers
-    file_exists = os.path.isfile(full_path)
-    
-    with open(full_path, 'a', encoding='utf-8') as index_file:
-        if not file_exists:
-            index_file.write("Date-Time\t\tKeyword\t\t\t\t\tFilename\n")
-        index_file.write(f"{current_datetime}\t{keyword}\t\t\t\t\t{filename}\n")
-    
-    return index_filename
+    logger.info(f"Index updated with {filename}")
 
-def main(keywords):
-    """
-    Main function that orchestrates the entire process.
+def main():
+    """Main function to process the input CSV and generate results"""
+    logger = setup_logging()
+    logger.info("Starting Crossref data collection process")
     
-    Args:
-    keywords (list): List of search terms for Crossref query.
-    
-    Returns:
-    None
-    """
-    print(f"Retrieving data for keywords: {', '.join(keywords)}")
-    
-    # Test basic connectivity to Crossref API
     try:
-        test_response = requests.get("https://api.crossref.org/works?query=test&rows=1")
-        test_response.raise_for_status()
-        print("Successfully connected to Crossref API")
-    except requests.exceptions.RequestException as e:
-        print(f"Error connecting to Crossref API: {str(e)}")
-        return
-
-    data = get_crossref_data(keywords)
-    if data is None:
-        print("No se pudieron obtener datos de Crossref. Abortando el proceso.")
-        return
+        # Read input CSV from project root
+        project_root = get_project_root()
+        input_file = os.path.join(project_root, 'rawData', 'Tabla Python Dimar - Notas Crossref.csv')
+        logger.info(f"Reading input file: {input_file}")
+        
+        tools_data = read_input_csv(input_file)
+        logger.info(f"Found {len(tools_data)} tools to process")
+        
+        # Load previously processed tools
+        processed_tools = load_state()
+        logger.info(f"Found {len(processed_tools)} previously processed tools")
+        
+        for tool_name, query in tools_data:
+            # Skip if already processed
+            if tool_name in processed_tools:
+                logger.info(f"Skipping already processed tool: {tool_name}")
+                continue
+                
+            logger.info(f"Processing tool: {tool_name}")
+            
+            # Check for shutdown request
+            if shutdown_requested:
+                logger.info("Shutdown requested. Saving state and exiting...")
+                save_state(processed_tools)
+                sys.exit(0)
+            
+            # Get data from Crossref
+            results = get_crossref_data(query)
+            if results is None:
+                logger.error(f"Failed to get data for {tool_name}")
+                continue
+            
+            # Process and save results
+            grouped_data = group_by_month(results)
+            filename = save_to_csv(grouped_data, tool_name)
+            update_index(tool_name, filename)
+            
+            # Update processed tools list and save state
+            processed_tools.append(tool_name)
+            save_state(processed_tools)
+            
+            logger.info(f"Completed processing {tool_name}")
+            time.sleep(2)  # Delay between tools to avoid rate limiting
+        
+        # Remove state file when all tools are processed
+        state_file = os.path.join(project_root, 'NewDBase', '.crossref_state.json')
+        if os.path.exists(state_file):
+            os.remove(state_file)
+        logger.info("All tools processed successfully")
     
-    print(f"Data retrieved: {len(data)} items")
-    if data:
-        print("Sample of data:")
-        for item in data[:5]:  # Print first 5 items
-            print(item)
-        grouped_data = group_by_month(data)
-        filepath, index_filename = save_to_local_csv(grouped_data, keywords)
-        print(f"Data saved to local file: {filepath}")
-        print(f"Index updated in file: {index_filename}")
-    else:
-        print("No se encontraron datos para las palabras clave proporcionadas.")
-
-def process_file(filename):
-    """
-    Procesa cada línea del archivo como un conjunto de palabras clave.
-    
-    Args:
-    filename (str): Nombre del archivo que contiene las palabras clave.
-    
-    Returns:
-    None
-    """
-    with open(os.path.join('..', filename), 'r') as file:  # Changed path
-        keyword_lines = file.read().splitlines()
-    
-    for line in keyword_lines:
-        keywords = [kw.strip() for kw in line.split(',') if kw.strip()]
-        if keywords:  # Only process if there are keywords
-            print(f"\nProcesando palabras clave: {', '.join(keywords)}")
-            main(keywords)
-        else:
-            print(f"Línea vacía o inválida encontrada en {filename}. Saltando...")
+    except Exception as e:
+        logger.error(f"Error in main process: {str(e)}", exc_info=True)
+        save_state(processed_tools)  # Save state on error
+        raise
 
 if __name__ == "__main__":
-    opcion = input("Elija una opción:\n1. Cargar palabras clave desde archivo 'tools.txt'\n2. Ingresar palabras clave específicas\nOpción: ")
-    
-    if opcion == "1":
-        if os.path.exists("../tools.txt"):  # Changed path
-            process_file("tools.txt")
-        else:
-            print("El archivo 'tools.txt' no existe. Por favor, créelo y vuelva a intentar.")
-    elif opcion == "2":
-        keywords_input = input("Por favor, ingrese las Herramientas Gerenciales a buscar (separadas por comas): ")
-        keywords = [kw.strip() for kw in keywords_input.split(',') if kw.strip()]
-        if keywords:
-            main(keywords)
-        else:
-            print("No se ingresaron palabras clave válidas.")
-    else:
-        print("Opción no válida. Por favor, elija 1 o 2.")
+    main()
