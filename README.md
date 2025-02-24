@@ -179,6 +179,7 @@ Follow PEP 8 guidelines. Use provided .gitignore and .cursorrules.
    - Trend projections
 
 4. **Visualization**
+
    - Time series plots
    - Correlation heatmaps
    - Forecast charts
