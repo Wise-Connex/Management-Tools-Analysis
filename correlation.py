@@ -61,7 +61,8 @@ from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1
 # Tools Dictionary
 from tools import tool_file_dic
 
-plt.ion()
+# Change the plt.ion() line to plt.ioff() to disable interactive mode
+plt.ioff()
 plt.style.use('ggplot')    
     
 # *************************************************************************************
@@ -496,7 +497,8 @@ def fourier_analisys(period='last_year_data'):
       plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
       add_image_to_report(f'Transformada de Fourier para {keyword}', image_filename)
       charts += f'Transformada de Fourier para {keyword} ({image_filename})\n\n'
-      plt.show()
+      # Remove plt.show() to prevent graph windows from appearing
+      plt.close()
   csv_fourier="".join(csv_fourier)
   return csv_fourier
 
@@ -574,7 +576,8 @@ def seasonal_analysis(period='last_20_years_data'):
         plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
         add_image_to_report(f'Índice Estacional para {keyword}', image_filename)
         charts += f'Índice de Estacional para {keyword} ({image_filename})\n\n'
-        plt.show()
+        # Remove plt.show() to prevent graph windows from appearing
+        plt.close()
     csv_seasonal="".join(csv_seasonal)
     return
 
@@ -747,7 +750,8 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
           add_image_to_report(f'Modelo ARIMA para {col}', image_filename)
           charts += f'Modelo ARIMA para {col} ({image_filename})\n\n'
-          plt.show()
+          # Remove plt.show() to prevent graph windows from appearing
+          plt.close()
       except Exception as e:
           print(f"Error fitting ARIMA model for {col}: {str(e)}")
           csv_arima += f"Error fitting ARIMA model for {col}: {str(e)}\n"
@@ -1102,7 +1106,8 @@ def relative_comparison():
     if menu == 5:
       add_image_to_report(f"Indice de Satisfacción de {', '.join(all_keywords)}", image_filename)
       charts += f"Indice de Satisfacción de {', '.join(all_keywords)} ({image_filename})\n\n"
-    plt.show()
+    # Remove plt.show() to prevent graph windows from appearing
+    plt.close()
 
     print(f"\nGráficos de comparación relativa creados.")
 
@@ -1407,7 +1412,6 @@ def check_trends2(kw):
     fig, ax = plt.subplots(figsize=(10,6))
 
     # Create bars
-# Create bars
     if top_choice == 1:
         if menu == 2 or menu == 4:
             # Filter out None values and create bars only for valid data
@@ -1469,7 +1473,8 @@ def check_trends2(kw):
     # Show the plot
     if menu == 2:
         plt.yscale('log')
-    plt.show()
+    # Remove plt.show() to prevent graph windows from appearing
+    plt.close()
 
     # Calculate trends
     trend_20 = round(((avg_1 - trends_results['mean_last_20'][kw]) / trends_results['mean_last_20'][kw]) * 100, 2)
@@ -1705,7 +1710,8 @@ def analyze_trends(trend):
         plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
         add_image_to_report('Mapa de Calor de Correlación', image_filename)
         charts += f'Mapa de Calor ({image_filename})\n\n'
-        plt.show()
+        # Remove plt.show() to prevent graph windows from appearing
+        plt.close()
 
         # Regression analysis
         # Extract the last 20 years data
@@ -1776,7 +1782,8 @@ def analyze_trends(trend):
                 plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
                 add_image_to_report(f'Gráfico de Dispersión para {", ".join(combo)}', image_filename)
                 charts += f'Gráfico de Dispersión para {", ".join(combo)} ({image_filename})\n\n'
-                plt.show()
+                # Remove plt.show() to prevent graph windows from appearing
+                plt.close()
 
         data = rem_isPartial(trends_results['last_20_years_data'])
         char='*'

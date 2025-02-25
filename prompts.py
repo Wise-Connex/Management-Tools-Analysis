@@ -36,7 +36,8 @@ Output Requirements:
 3. Highlight practical significance beyond statistical significance
 4. Focus on actionable insights for business decision-makers
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only. Always include the name of the management tool you're analizing.
+Note:
+ - Visualizations will be handled separately - focus on numerical and statistical analysis only. Always include the name of the management tool you're analizing.
 """
 
 system_prompt_2 = """You are a highly experienced statistical analyst specializing in cross-source data analysis and trend validation across different information channels.
