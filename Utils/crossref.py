@@ -76,7 +76,7 @@ def read_input_csv(filepath):
     return list(zip(df['Herramienta Gerencial'], df['Keywords']))
 
 def get_crossref_data(query):
-    """Get data from Crossref API with enhanced error handling"""
+    """Get data from Crossref API with enhanced error handling and resume capability"""
     logger = logging.getLogger(__name__)
     results = []
     
@@ -84,76 +84,146 @@ def get_crossref_data(query):
     rows = 1000
     cursor = '*'
     total_items = 0
+    completed_successfully = False
+    batch_counter = 0  # Initialize batch_counter here
     
-    logger.info(f"Starting Crossref query: {query}")
-    
-    # Initialize batch counter and total batches
-    batch_counter = 0
-    total_batches = None
-
-    while cursor:
-        batch_counter += 1
+    # Load saved state if exists
+    state_file = os.path.join(get_project_root(), 'NewDBase', '.crossref_batch_state.json')
+    if os.path.exists(state_file):
         try:
-            params = {
-                'query': query,
-                'rows': rows,
-                'cursor': cursor,
-                'filter': f'from-pub-date:1950,until-pub-date:{current_year}',
-                'select': 'DOI,title,published'
-            }
+            with open(state_file, 'r') as f:
+                saved_state = json.load(f)
+                if saved_state['query'] == query:
+                    cursor = saved_state['cursor']
+                    # Convert saved date strings back to datetime objects
+                    results = [(datetime.strptime(date, "%Y-%m-%d"), count) 
+                             for date, count in saved_state['results']]
+                    total_items = saved_state['total_items']
+                    batch_counter = saved_state['batch_counter']
+                    logger.info(f"Resuming from batch {batch_counter} with {len(results)} results")
+                else:
+                    os.remove(state_file)  # Remove state file if query doesn't match
+        except Exception as e:
+            logger.error(f"Error loading state: {str(e)}")
+            if os.path.exists(state_file):
+                os.remove(state_file)
+    
+    logger.info(f"Starting/Resuming Crossref query: {query}")
+    
+    # Initialize total batches
+    total_batches = None
+    
+    max_retries = 3  # Maximum number of retries per batch
+    base_delay = 5   # Base delay in seconds for exponential backoff
+
+    try:
+        while cursor:
+            batch_counter += 1
+            retry_count = 0
             
-            full_url = f"https://api.crossref.org/works?{urlencode(params)}"
-            logger.debug(f"Requesting URL: {full_url}")
-            
-            response = requests.get(full_url)
-            response.raise_for_status()
-            data = response.json()
-            
-            message = data.get('message', {})
-            items = message.get('items', [])
-            next_cursor = message.get('next-cursor')
-            total_results = message.get('total-results', 0)
-            
-            if total_batches is None:
-                total_batches = -(-total_results // rows)
-                logger.info(f"Total expected results: {total_results}")
-                logger.info(f"Total expected batches: {total_batches}")
-            
-            logger.info(f"Processing batch {batch_counter} of {total_batches}")
-            
-            selected_items = 0
-            for item in items:
-                if 'published' in item and 'date-parts' in item['published']:
-                    date = item['published']['date-parts'][0]
-                    if len(date) >= 2:
-                        year, month = date[0], date[1]
-                        results.append((datetime(year, month, 1), 1))
-                        selected_items += 1
-            
-            total_items += len(items)
-            logger.info(f"Batch {batch_counter}: {len(items)} items retrieved, {selected_items} selected")
-            
-            if batch_counter >= total_batches:
-                logger.info("All expected batches processed")
-                break
-            
-            cursor = next_cursor
-            if not cursor:
-                logger.info("No more results available")
-                break
-            
-            time.sleep(1)  # Rate limiting
+            while retry_count < max_retries:
+                try:
+                    params = {
+                        'query': query,
+                        'rows': rows,
+                        'cursor': cursor,
+                        'filter': f'from-pub-date:1950,until-pub-date:{current_year}',
+                        'select': 'DOI,title,published'
+                    }
+                    
+                    full_url = f"https://api.crossref.org/works?{urlencode(params)}"
+                    logger.debug(f"Requesting URL: {full_url}")
+                    
+                    # Use requests with timeout
+                    response = requests.get(full_url, timeout=30)
+                    response.raise_for_status()
+                    data = response.json()
+                    
+                    message = data.get('message', {})
+                    items = message.get('items', [])
+                    next_cursor = message.get('next-cursor')
+                    total_results = message.get('total-results', 0)
+                    
+                    if total_batches is None:
+                        total_batches = -(-total_results // rows)
+                        logger.info(f"Total expected results: {total_results}")
+                        logger.info(f"Total expected batches: {total_batches}")
+                    
+                    logger.info(f"Processing batch {batch_counter} of {total_batches}")
+                    
+                    selected_items = 0
+                    for item in items:
+                        if 'published' in item and 'date-parts' in item['published']:
+                            date = item['published']['date-parts'][0]
+                            if len(date) >= 2:
+                                year, month = date[0], date[1]
+                                results.append((datetime(year, month, 1), 1))
+                                selected_items += 1
+                    
+                    total_items += len(items)
+                    logger.info(f"Batch {batch_counter}: {len(items)} items retrieved, {selected_items} selected")
+                    
+                    # Save state after each successful batch
+                    # Convert datetime objects to strings for JSON serialization
+                    serializable_results = [(dt.strftime("%Y-%m-%d"), count) 
+                                         for dt, count in results]
+                    state = {
+                        'query': query,
+                        'cursor': next_cursor,
+                        'results': serializable_results,
+                        'total_items': total_items,
+                        'batch_counter': batch_counter
+                    }
+                    with open(state_file, 'w') as f:
+                        json.dump(state, f)
+                    
+                    if batch_counter >= total_batches:
+                        logger.info("All expected batches processed")
+                        completed_successfully = True
+                        os.remove(state_file)  # Clean up state file after completion
+                        break
+                    
+                    cursor = next_cursor
+                    if not cursor:
+                        logger.info("No more results available")
+                        completed_successfully = True
+                        os.remove(state_file)  # Clean up state file after completion
+                        break
+                    
+                    time.sleep(1)  # Rate limiting
+                    break  # Break retry loop on success
+                    
+                except requests.Timeout:
+                    retry_count += 1
+                    if retry_count < max_retries:
+                        delay = base_delay * (2 ** retry_count)  # Exponential backoff
+                        logger.warning(f"Timeout occurred. Retrying in {delay} seconds... (Attempt {retry_count + 1}/{max_retries})")
+                        time.sleep(delay)
+                    else:
+                        logger.error("Max retries reached for timeout")
+                        raise  # Re-raise to be caught by outer try-except
+                        
+                except requests.exceptions.RequestException as e:
+                    retry_count += 1
+                    if retry_count < max_retries:
+                        delay = base_delay * (2 ** retry_count)
+                        logger.warning(f"Request error: {str(e)}. Retrying in {delay} seconds... (Attempt {retry_count + 1}/{max_retries})")
+                        time.sleep(delay)
+                    else:
+                        logger.error(f"Max retries reached for request error: {str(e)}")
+                        raise  # Re-raise to be caught by outer try-except
+
+        logger.info(f"Total items queried: {total_items}")
+        logger.info(f"Total results collected: {len(results)}")
         
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Error querying Crossref: {str(e)}")
-            logger.error(f"Request URL: {full_url}")
-            if 'response' in locals():
-                logger.error(f"Server response: {response.text}")
+        if completed_successfully:
+            return results
+        else:
             return None
 
-    logger.info(f"Total items queried: {total_items}")
-    logger.info(f"Total results collected: {len(results)}")
-    return results
+    except Exception as e:
+        logger.error(f"Error during data collection: {str(e)}")
+        return None
 
 def group_by_month(data):
     """Groups data by month from 1950 to present"""
@@ -255,10 +325,10 @@ def main():
             # Get data from Crossref
             results = get_crossref_data(query)
             if results is None:
-                logger.error(f"Failed to get data for {tool_name}")
+                logger.error(f"Failed to get complete data for {tool_name}, skipping CSV generation")
                 continue
             
-            # Process and save results
+            # Only process and save results if we have complete data
             grouped_data = group_by_month(results)
             filename = save_to_csv(grouped_data, tool_name)
             update_index(tool_name, filename)
