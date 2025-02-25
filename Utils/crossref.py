@@ -86,6 +86,12 @@ def get_crossref_data(query):
     total_items = 0
     completed_successfully = False
     batch_counter = 0  # Initialize batch_counter here
+    empty_batch_counter = 0  # Track consecutive empty batches
+    max_empty_batches = 5  # Maximum number of consecutive empty batches before stopping
+    
+    # Set maximum runtime for a single query (in seconds)
+    max_runtime = 3600  # 1 hour
+    start_time = time.time()
     
     # Load saved state if exists
     state_file = os.path.join(get_project_root(), 'NewDBase', '.crossref_batch_state.json')
@@ -149,6 +155,11 @@ def get_crossref_data(query):
                         logger.info(f"Total expected results: {total_results}")
                         logger.info(f"Total expected batches: {total_batches}")
                     
+                    # Update total_batches if we've already exceeded it but still getting results
+                    if batch_counter > total_batches and len(items) > 0:
+                        logger.warning(f"Received more batches than expected ({batch_counter} > {total_batches}). Adjusting expectations.")
+                        total_batches = batch_counter + 10  # Add some buffer
+                    
                     logger.info(f"Processing batch {batch_counter} of {total_batches}")
                     
                     selected_items = 0
@@ -162,6 +173,25 @@ def get_crossref_data(query):
                     
                     total_items += len(items)
                     logger.info(f"Batch {batch_counter}: {len(items)} items retrieved, {selected_items} selected")
+                    
+                    # Track consecutive empty batches
+                    if len(items) == 0:
+                        empty_batch_counter += 1
+                        if empty_batch_counter >= max_empty_batches:
+                            logger.info(f"Received {max_empty_batches} consecutive empty batches. Assuming end of data reached.")
+                            completed_successfully = True
+                            if os.path.exists(state_file):
+                                os.remove(state_file)  # Clean up state file
+                            break
+                    else:
+                        empty_batch_counter = 0  # Reset counter when non-empty batch is received
+                    
+                    # Check if we've exceeded the maximum runtime
+                    elapsed_time = time.time() - start_time
+                    if elapsed_time > max_runtime:
+                        logger.warning(f"Maximum runtime of {max_runtime} seconds exceeded. Saving progress and stopping.")
+                        # Don't mark as completed_successfully to allow resuming later
+                        break
                     
                     # Save state after each successful batch
                     # Convert datetime objects to strings for JSON serialization
@@ -181,14 +211,14 @@ def get_crossref_data(query):
                         logger.info("All expected batches processed")
                         completed_successfully = True
                         os.remove(state_file)  # Clean up state file after completion
-                        break
+                        break  # Break retry loop
                     
                     cursor = next_cursor
                     if not cursor:
                         logger.info("No more results available")
                         completed_successfully = True
                         os.remove(state_file)  # Clean up state file after completion
-                        break
+                        break  # Break retry loop
                     
                     time.sleep(1)  # Rate limiting
                     break  # Break retry loop on success
@@ -212,6 +242,10 @@ def get_crossref_data(query):
                     else:
                         logger.error(f"Max retries reached for request error: {str(e)}")
                         raise  # Re-raise to be caught by outer try-except
+
+            # Add this check to break out of the outer while loop
+            if batch_counter >= total_batches or not cursor or completed_successfully or (time.time() - start_time) > max_runtime:
+                break
 
         logger.info(f"Total items queried: {total_items}")
         logger.info(f"Total results collected: {len(results)}")
@@ -326,6 +360,14 @@ def main():
             results = get_crossref_data(query)
             if results is None:
                 logger.error(f"Failed to get complete data for {tool_name}, skipping CSV generation")
+                continue
+            
+            # Check if results are empty
+            if not results:
+                logger.warning(f"No results found for {tool_name}")
+                # Still mark as processed to avoid repeated attempts
+                processed_tools.append(tool_name)
+                save_state(processed_tools)
                 continue
             
             # Only process and save results if we have complete data
