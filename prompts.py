@@ -37,7 +37,12 @@ Output Requirements:
 4. Focus on actionable insights for business decision-makers
 
 Note:
- - Visualizations will be handled separately - focus on numerical and statistical analysis only. Always include the name of the management tool you're analizing.
+ - Visualizations will be handled separately.
+ - focus on numerical and statistical analysis only.
+ - Always include the name of the management tool you're analizing.
+ - Always include the name of the data source you're analizing.
+ - Ommit recomendations, or opinions about missing data you would like to get to do a better analisys.
+ - Limit your analysis to the data you have. Do not require more data than you have.
 """
 
 system_prompt_2 = """You are a highly experienced statistical analyst specializing in cross-source data analysis and trend validation across different information channels.
@@ -89,7 +94,13 @@ Output Requirements:
 4. Quantify the reliability of different data sources
 5. Focus on practical implications of cross-source patterns
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only. Always include the name of the management tool you're analizing. .
+Note:
+ - Visualizations will be handled separately.
+ - focus on numerical and statistical analysis only.
+ - Always include the name of the management tools you're analizing.
+ - Always include the name of the data sources you're analizing.
+ - Ommit recomendations, or opinions about missing data you would like to get to do a better analisys.
+ - Limit your analysis to the data you have. Do not require more data than you have.
 """
 
 temporal_analysis_prompt_1 = """### **Analyze Temporal Trends**
@@ -141,7 +152,10 @@ Data Source: {dbs}
 - Statistical significance indicators
 - Trend decomposition metrics
 
-IMPORTANT: Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+IMPORTANT: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- 
 """
 
 temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
@@ -199,7 +213,9 @@ Data Sources: {selected_sources}
 - Time-lag indicators
 - Source reliability scores
 
-IMPORTANT: Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+IMPORTANT:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
 """
 
 cross_relationship_prompt_1 = """### **Explore Cross-Tool Relationships**
@@ -229,7 +245,10 @@ Data Source: {dbs}
 - Correlation matrix: {csv_corr_matrix}
 - Regression analysis results: {csv_regression}
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
 """
 
 cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
@@ -265,7 +284,10 @@ cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
 - Cross-source correlation matrix: {csv_corr_matrix}
 - Combined source trends data: {csv_combined_data}
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
 """
 
 trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
@@ -299,7 +321,11 @@ Data Source: {dbs}
 - Correlation analysis results: {csv_corr_matrix}
 - Regression analysis results: {csv_regression}
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 trend_analysis_prompt_2 = """### **Investigate Cross-Source Trend Patterns**
@@ -373,7 +399,11 @@ Data Source: {dbs}
 **Data Input:**
 ARIMA Model Results: {arima_results}
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 arima_analysis_prompt_2 = """### **Analyze Cross-Source ARIMA Model Performance**
@@ -414,7 +444,11 @@ Data Source: {selected_sources}
 **Data Input:**
 Cross-source ARIMA Results: {arima_results}
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
@@ -446,7 +480,11 @@ Data Source: {dbs}
 **Data Required:**
 - Seasonal decomposition results: {csv_seasonal}
 
-Note: Visualizations will be handled separately - focus on pattern interpretation and business implications.
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 seasonal_analysis_prompt_2 = """### **Interpret Cross-Source Seasonal Patterns**
@@ -485,7 +523,11 @@ Data Source: {selected_sources}
 - Seasonal decomposition results: {csv_seasonal}
 - Cross-source correlation matrix: {csv_correlation}
 
-Note: Visualizations will be handled separately - focus on cross-source pattern interpretation and practical implications.
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 prompt_6_single_analysis = """### **Cyclical Pattern Analysis for Management Tools**
@@ -512,6 +554,12 @@ Data Source: {dbs}
    - Identify potential market saturation points
 
 **Data Input:** {csv_fourier}
+
+Notes:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 prompt_6_correlation = """### **Cross-Source Pattern Analysis for Management Tools**
@@ -543,6 +591,12 @@ Data Source: {selected_sources}
 
 **Data Input:** {csv_fourier}
 **Raw Data:** {csv_combined_data}
+
+Notes:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 
@@ -593,6 +647,12 @@ Data Source: {dbs}
 - Emphasize evidence-based conclusions
 - Address both strategic and operational aspects
 - Consider industry-specific contexts if any
+
+Notes:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 prompt_conclusions_comparative = """## Synthesize Findings and Draw Conclusions - Multi-Source {all_kw} Analysis
@@ -640,6 +700,12 @@ Data Source: {selected_sources}
 - Identify leading indicators of tool success
 - Evaluate reliability of different data sources
 - Consider time delays between publication, interest, and adoption
+
+Notes:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 prompt_sp = '''Translate the following Markdown text to Spanish, adhering to these guidelines:
