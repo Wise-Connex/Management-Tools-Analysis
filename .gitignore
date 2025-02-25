@@ -69,3 +69,5 @@ pyvenv.cfg
 
 #API Keys
 .env
+
+NewDBase/.crossref_batch_state.json
