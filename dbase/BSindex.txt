@@ -1,6 +1,0 @@
-Keyword				Filename
-Just in Time		BS_Just_in_Time_6604.csv
-Outsourcing		BS_Outsourcing_3352.csv
-Project Management		BS_Project_Management_7554.csv
-Strategic Planning		BS_Strategic_Planning_6290.csv
-Balanced Scorecard		BS_Balanced_Scorecard_5020.csv
