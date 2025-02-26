@@ -183,9 +183,9 @@ def gemini_prompt(system_prompt,prompt,m='flash'):
   #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
 
   if m == 'pro':
-    model = 'gemini-1.5-pro' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model = 'gemini-2.0-flash-thinking-exp-01-21' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
   else:
-    model = 'gemini-1.5-flash' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model = 'gemini-2.0-pro-exp-02-05' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
   temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
   stop_sequence = '*** END ANALYSIS ***'
 

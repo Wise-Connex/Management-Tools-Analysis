@@ -35,6 +35,14 @@ Output Requirements:
 2. Report effect sizes and confidence intervals where applicable
 3. Highlight practical significance beyond statistical significance
 4. Focus on actionable insights for business decision-makers
+5. Format your analysis in Markdown:
+   - Use # for the main title at the beginning of each analysis section
+   - Use ## for major section headings
+   - Use ### for subsections when needed
+   - Utilize bullet points (•) for listing key points
+   - Use numbered lists for sequential information or rankings
+   - Include tables where appropriate for data comparison
+   - Properly format statistical values and equations
 
 Note:
  - Visualizations will be handled separately.
@@ -43,6 +51,8 @@ Note:
  - Always include the name of the data source you're analizing.
  - Ommit recomendations, or opinions about missing data you would like to get to do a better analisys.
  - Limit your analysis to the data you have. Do not require more data than you have.
+ - Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+ - Avoid a section about Analisys Limitations.
 """
 
 system_prompt_2 = """You are a highly experienced statistical analyst specializing in cross-source data analysis and trend validation across different information channels.
@@ -93,6 +103,14 @@ Output Requirements:
 3. Highlight discrepancies between public interest and industry metrics
 4. Quantify the reliability of different data sources
 5. Focus on practical implications of cross-source patterns
+6. Format your analysis in Markdown:
+   - Use # for the main title at the beginning of each analysis section
+   - Use ## for major section headings
+   - Use ### for subsections when needed
+   - Utilize bullet points (•) for listing key points
+   - Use numbered lists for sequential information or rankings
+   - Include tables where appropriate for data comparison
+   - Properly format statistical values and equations
 
 Note:
  - Visualizations will be handled separately.
@@ -101,6 +119,8 @@ Note:
  - Always include the name of the data sources you're analizing.
  - Ommit recomendations, or opinions about missing data you would like to get to do a better analisys.
  - Limit your analysis to the data you have. Do not require more data than you have.
+ - Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+ - Avoid a section about Analisys Limitations.
 """
 
 temporal_analysis_prompt_1 = """### **Analyze Temporal Trends**
@@ -216,6 +236,8 @@ Data Sources: {selected_sources}
 IMPORTANT:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 - Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 cross_relationship_prompt_1 = """### **Explore Cross-Tool Relationships**
@@ -249,6 +271,8 @@ Note:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 - Avoid to give Recomendations for better or aditional analysis.
 - Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
@@ -288,6 +312,8 @@ Note:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 - Avoid to give Recomendations for better or aditional analysis.
 - Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
