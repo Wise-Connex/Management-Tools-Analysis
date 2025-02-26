@@ -803,6 +803,10 @@ def process_file_data(all_kw, d_filename):
   global combined_dataset
   global menu
   
+  # Ensure menu has a default value if not set
+  if 'menu' not in globals() or menu is None:
+    menu = 1  # Default value, adjust as needed
+    
   menu2 = menu
   if top_choice == 1:
     # Group data and calculate means
@@ -2551,6 +2555,7 @@ def process_and_normalize_datasets(allKeywords):
 
 def get_file_data2(selected_keyword, selected_sources):
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
+    global menu  # Declare menu as global
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
 
     datasets = {}
@@ -2558,7 +2563,7 @@ def get_file_data2(selected_keyword, selected_sources):
 
     for source in selected_sources:
         #print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
-        menu = source
+        menu = source  # This now sets the global menu variable
         df = get_file_data(filenames.get(source, 'Archivo no encontrado'), menu)
         if df.empty or (df == 0).all().all():
             print(f"Warning: Dataset for source {source} is empty or contains only zeros.")
@@ -2615,6 +2620,7 @@ def main():
     global combined_dataset
     global trends_results
     global csv_combined_dataset
+    global menu  # Ensure menu is declared as global here
     
     # Redirigir stderr a /dev/null
     import os
@@ -2647,6 +2653,9 @@ def main():
             csv_combined_dataset = combined_dataset.to_csv(index=True)  
             print(combined_dataset)
             print(csv_combined_dataset)
+            # Set menu to a default value if it's not already set
+            if 'menu' not in globals() or menu is None:
+                menu = 1  # Default value, adjust as needed based on your application logic
             trends_results = process_file_data(all_keywords, "")
             results()
             ai_analysis()
