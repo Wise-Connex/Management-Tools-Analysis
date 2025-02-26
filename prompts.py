@@ -45,7 +45,7 @@
 #    - Utilizar viñetas (•) para listar puntos clave
 #    - Usar listas numeradas para información secuencial o rankings
 #    - Incluir tablas cuando sea apropiado para comparación de datos
-#    - Formatear apropiadamente valores estadísticos y ecuaciones
+#    - Formatear apropiadamente valores estadísticos y ecuaciones.
 
 # Nota:
 #  - Las visualizaciones se manejarán por separado.
