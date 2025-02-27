@@ -1,13 +1,20 @@
-Keyword,Filename
-Reingeniería de Procesos,CR_Reingenieria_de_Procesos_5930.csv
-Gestión de la Cadena de Suministro,CR_Gestion_de_la_Cadena_de_Suministro_6470.csv
-Planificación de Escenarios,CR_Planificacion_de_Escenarios_6615.csv
-Planificación Estratégica,CR_Planificacion_Estrategica_4137.csv
-Propósito y Visión,CR_Proposito_y_Vision_0113.csv
-Benchmarking,CR_Benchmarking_5188.csv
-Competencias Centrales,CR_Competencias_Centrales_0444.csv
-Outsourcing,CR_Outsourcing_4102.csv
-Fusiones y Adquisiciones,CR_Fusiones_y_Adquisiciones_5918.csv
-Optimización de Precios,CR_Optimizacion_de_Precios_3001.csv
-Talento y Compromiso,CR_Talento_y_Compromiso_3645.csv
-Experiencia del Cliente,CR_Experiencia_del_Cliente_4270.csv
+Keyword,Filename,Complete
+Reingeniería de Procesos,CR_Reingenieria_de_Procesos_5930.csv,True
+Gestión de la Cadena de Suministro,CR_Gestion_de_la_Cadena_de_Suministro_6470.csv,True
+Planificación de Escenarios,CR_Planificacion_de_Escenarios_6615.csv,True
+Planificación Estratégica,CR_Planificacion_Estrategica_4137.csv,True
+Benchmarking,CR_Benchmarking_5188.csv,True
+Competencias Centrales,CR_Competencias_Centrales_0444.csv,True
+Talento y Compromiso,CR_Talento_y_Compromiso_3645.csv,False
+Experiencia del Cliente,CR_Experiencia_del_Cliente_4270.csv,True
+Calidad Total,CR_Calidad_Total_5235.csv,True
+Cuadro de Mando Integral,CR_Cuadro_de_Mando_Integral_2330.csv,False
+Alianzas y Capital de Riesgo,CR_Alianzas_y_Capital_de_Riesgo_8087.csv,True
+Segmentación de Clientes,CR_Segmentacion_de_Clientes_3140.csv,True
+Gestión de Costos,CR_Gestion_de_Costos_9583.csv,True
+Presupuesto Base Cero,CR_Presupuesto_Base_Cero_8524.csv,False
+Estrategias de Crecimiento,CR_Estrategias_de_Crecimiento_8995.csv,False
+Propósito y Visión,CR_Proposito_y_Vision_1825.csv,True
+Outsourcing,CR_Outsourcing_3959.csv,False
+Fusiones y Adquisiciones,CR_Fusiones_y_Adquisiciones_7163.csv,True
+Optimización de Precios,CR_Optimizacion_de_Precios_3197.csv,True

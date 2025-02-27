@@ -66,24 +66,43 @@ def load_state():
             return json.load(f)
     return []
 
-def get_indexed_tools():
-    """Get list of tools already indexed in CRIndex.csv"""
+def get_indexed_tools(include_completion_status=False):
+    """Get list of tools already indexed in CRIndex.csv
+    
+    Args:
+        include_completion_status: If True, returns a dictionary with tool names as keys
+                                  and completion status as values
+    """
     project_root = get_project_root()
     index_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
-    indexed_tools = []
+    indexed_tools = [] if not include_completion_status else {}
     
     if os.path.exists(index_path):
         try:
             with open(index_path, 'r', encoding='utf-8') as f:
                 reader = csv.reader(f)
-                next(reader)  # Skip header
+                header = next(reader)  # Get header
+                
+                # Check if we have the completion status column
+                has_completion_column = len(header) >= 3 and header[2] == 'Complete'
+                
                 for row in reader:
                     if row and len(row) >= 1:
-                        indexed_tools.append(row[0])
+                        if include_completion_status:
+                            # If the file has a completion column, use it; otherwise assume incomplete
+                            is_complete = (row[2].lower() == 'true') if has_completion_column and len(row) >= 3 else False
+                            indexed_tools[row[0]] = is_complete
+                        else:
+                            indexed_tools.append(row[0])
         except Exception as e:
             logging.getLogger(__name__).error(f"Error reading CRIndex.csv: {str(e)}")
     
     return indexed_tools
+
+def get_incomplete_tools():
+    """Get list of tools that have incomplete data"""
+    indexed_tools = get_indexed_tools(include_completion_status=True)
+    return [tool for tool, is_complete in indexed_tools.items() if not is_complete]
 
 def normalize_filename(name):
     """Normalize filename to ASCII characters, replace spaces with underscore"""
@@ -298,12 +317,13 @@ def get_crossref_data(query, max_runtime=7200):
         logger.info(f"Total items queried: {total_items}")
         logger.info(f"Total results collected: {len(results)}")
         
-        # Even if not completed, return partial results if we have enough data
-        # This allows for incremental progress even with very large queries
-        if completed_successfully or len(results) > 1000:
-            return results
-        else:
-            return None
+        # Return the results along with completion status
+        return {
+            'results': results,
+            'completed': completed_successfully,
+            'total_batches': total_batches,
+            'processed_batches': batch_counter
+        }
 
     except Exception as e:
         logger.error(f"Error during data collection: {str(e)}")
@@ -331,8 +351,17 @@ def group_by_month(data):
     
     return grouped
 
-def save_to_csv(data, tool_name):
-    """Save data to CSV with normalized filename"""
+def save_to_csv(data, tool_name, is_complete=False):
+    """Save data to CSV with normalized filename
+    
+    Args:
+        data: Dictionary of date -> count mappings
+        tool_name: Name of the tool
+        is_complete: Whether the data collection was completed successfully
+    
+    Returns:
+        filename: Name of the saved file
+    """
     logger = logging.getLogger(__name__)
     
     # Create NewDBase directory if it doesn't exist
@@ -343,6 +372,8 @@ def save_to_csv(data, tool_name):
     # Generate normalized filename
     normalized_name = normalize_filename(tool_name)
     random_suffix = format(random.randint(0, 9999), '04d')
+    
+    # Add suffix for incomplete data
     filename = f"CR_{normalized_name}_{random_suffix}.csv"
     filepath = os.path.join(dbase_dir, filename)
     
@@ -355,28 +386,65 @@ def save_to_csv(data, tool_name):
     logger.info(f"Data saved to {filepath}")
     return filename
 
-def update_index(tool_name, filename):
-    """Update or create index file with tool name and filename"""
+def update_index(tool_name, filename, is_complete=False):
+    """Update or create index file with tool name, filename, and completion status
+    
+    Args:
+        tool_name: Name of the tool
+        filename: Name of the CSV file
+        is_complete: Whether the data collection was completed successfully
+    """
     logger = logging.getLogger(__name__)
     
     project_root = get_project_root()
     index_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
     
-    # Create index file if it doesn't exist
-    if not os.path.exists(index_path):
-        with open(index_path, 'w', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
-            writer.writerow(['Keyword', 'Filename'])
+    # Read existing index if it exists
+    existing_data = []
+    header = ['Keyword', 'Filename', 'Complete']
     
-    # Append to index
-    with open(index_path, 'a', newline='', encoding='utf-8') as f:
+    if os.path.exists(index_path):
+        with open(index_path, 'r', newline='', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            header_row = next(reader, None)
+            
+            # Check if we need to update the header
+            if header_row:
+                if len(header_row) < 3:
+                    header_row = header  # Use new header with Complete column
+                
+                # Read existing data
+                for row in reader:
+                    if row:  # Skip empty rows
+                        # Ensure row has 3 columns
+                        while len(row) < 3:
+                            row.append('')
+                        existing_data.append(row)
+    
+    # Remove existing entry for this tool if it exists
+    existing_data = [row for row in existing_data if row[0] != tool_name]
+    
+    # Add new entry
+    existing_data.append([tool_name, filename, str(is_complete)])
+    
+    # Write updated index
+    with open(index_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow([tool_name, filename])
+        writer.writerow(header)
+        writer.writerows(existing_data)
     
-    logger.info(f"Updated index with {tool_name} -> {filename}")
+    logger.info(f"Updated index with {tool_name} -> {filename} (Complete: {is_complete})")
 
-def process_specific_tool(tool_name):
-    """Process a specific tool by name"""
+def process_specific_tool(tool_name, force_reprocess=False):
+    """Process a specific tool by name
+    
+    Args:
+        tool_name: Name of the tool to process
+        force_reprocess: If True, reprocess even if already indexed
+        
+    Returns:
+        bool: True if processing was successful, False otherwise
+    """
     logger = setup_logging()
     logger.info(f"Processing specific tool: {tool_name}")
     
@@ -399,15 +467,25 @@ def process_specific_tool(tool_name):
             logger.error(f"Tool '{tool_name}' not found in input CSV")
             return False
         
+        # Check if tool is already indexed and complete
+        if not force_reprocess:
+            indexed_tools = get_indexed_tools(include_completion_status=True)
+            if tool_name in indexed_tools and indexed_tools[tool_name]:
+                logger.info(f"Tool '{tool_name}' is already indexed and complete. Use force_reprocess=True to reprocess.")
+                return True
+        
         # Process the tool
         name, query = tool_data
         logger.info(f"Found tool: {name} with query: {query}")
         
-        # Get data from Crossref with increased runtime (4 hours)
-        results = get_crossref_data(query, max_runtime=14400)
-        if results is None:
-            logger.error(f"Failed to get complete data for {name}")
+        # Get data from Crossref with increased runtime (5 hours)
+        result = get_crossref_data(query, max_runtime=18000)
+        if result is None:
+            logger.error(f"Failed to get data for {name}")
             return False
+        
+        results = result['results']
+        is_complete = result['completed']
         
         # Check if results are empty
         if not results:
@@ -416,10 +494,16 @@ def process_specific_tool(tool_name):
         
         # Process and save results
         grouped_data = group_by_month(results)
-        filename = save_to_csv(grouped_data, name)
-        update_index(name, filename)
+        filename = save_to_csv(grouped_data, name, is_complete)
+        update_index(name, filename, is_complete)
         
-        logger.info(f"Successfully processed {name}")
+        completion_status = "complete" if is_complete else "incomplete"
+        logger.info(f"Successfully processed {name} ({completion_status})")
+        
+        # If data is incomplete, log a warning
+        if not is_complete:
+            logger.warning(f"Data collection for {name} is incomplete ({result['processed_batches']}/{result['total_batches']} batches). Run again later to complete.")
+        
         return True
         
     except Exception as e:
@@ -435,12 +519,28 @@ def main():
     if len(sys.argv) > 1:
         if sys.argv[1] == '--tool' and len(sys.argv) > 2:
             tool_name = sys.argv[2]
-            success = process_specific_tool(tool_name)
+            force_reprocess = '--force' in sys.argv
+            success = process_specific_tool(tool_name, force_reprocess)
             sys.exit(0 if success else 1)
+        elif sys.argv[1] == '--incomplete':
+            # Process all incomplete tools
+            incomplete_tools = get_incomplete_tools()
+            logger.info(f"Found {len(incomplete_tools)} incomplete tools: {', '.join(incomplete_tools)}")
+            
+            for tool_name in incomplete_tools:
+                logger.info(f"Reprocessing incomplete tool: {tool_name}")
+                success = process_specific_tool(tool_name, force_reprocess=True)
+                if not success:
+                    logger.error(f"Failed to reprocess {tool_name}")
+                time.sleep(5)  # Small delay between tools
+            
+            sys.exit(0)
         elif sys.argv[1] == '--help':
             print("Usage:")
             print("  python crossref.py                   # Process all tools")
             print("  python crossref.py --tool 'Tool Name'  # Process specific tool")
+            print("  python crossref.py --tool 'Tool Name' --force  # Force reprocessing of a tool")
+            print("  python crossref.py --incomplete      # Reprocess all incomplete tools")
             sys.exit(0)
     
     try:
@@ -456,18 +556,22 @@ def main():
         processed_tools = load_state()
         logger.info(f"Found {len(processed_tools)} previously processed tools in state file")
         
-        # Get tools already indexed in CRIndex.csv
-        indexed_tools = get_indexed_tools()
-        logger.info(f"Found {len(indexed_tools)} tools already indexed in CRIndex.csv")
+        # Get tools already indexed in CRIndex.csv with completion status
+        indexed_tools_status = get_indexed_tools(include_completion_status=True)
+        indexed_tools = list(indexed_tools_status.keys())
+        complete_tools = [tool for tool, is_complete in indexed_tools_status.items() if is_complete]
         
-        # Combine both lists to get all tools to skip
-        tools_to_skip = list(set(processed_tools + indexed_tools))
-        logger.info(f"Total {len(tools_to_skip)} tools will be skipped (already processed or indexed)")
+        logger.info(f"Found {len(indexed_tools)} tools already indexed in CRIndex.csv")
+        logger.info(f"Of which {len(complete_tools)} are marked as complete")
+        
+        # Combine both lists to get all tools to skip (only skip complete tools)
+        tools_to_skip = list(set(processed_tools + complete_tools))
+        logger.info(f"Total {len(tools_to_skip)} tools will be skipped (already processed or complete)")
         
         for tool_name, query in tools_data:
-            # Skip if already processed or indexed
+            # Skip if already processed or complete
             if tool_name in tools_to_skip:
-                logger.info(f"Skipping already processed or indexed tool: {tool_name}")
+                logger.info(f"Skipping already processed or complete tool: {tool_name}")
                 continue
                 
             logger.info(f"Processing tool: {tool_name}")
@@ -478,11 +582,14 @@ def main():
                 save_state(processed_tools)
                 sys.exit(0)
             
-            # Get data from Crossref with increased runtime (2 hours)
-            results = get_crossref_data(query, max_runtime=7200)
-            if results is None:
-                logger.error(f"Failed to get complete data for {tool_name}, skipping CSV generation")
+            # Get data from Crossref with increased runtime (5 hours)
+            result = get_crossref_data(query, max_runtime=18000)
+            if result is None:
+                logger.error(f"Failed to get data for {tool_name}, skipping CSV generation")
                 continue
+            
+            results = result['results']
+            is_complete = result['completed']
             
             # Check if results are empty
             if not results:
@@ -492,16 +599,22 @@ def main():
                 save_state(processed_tools)
                 continue
             
-            # Only process and save results if we have complete data
+            # Process and save results
             grouped_data = group_by_month(results)
-            filename = save_to_csv(grouped_data, tool_name)
-            update_index(tool_name, filename)
+            filename = save_to_csv(grouped_data, tool_name, is_complete)
+            update_index(tool_name, filename, is_complete)
             
             # Update processed tools list and save state
             processed_tools.append(tool_name)
             save_state(processed_tools)
             
-            logger.info(f"Completed processing {tool_name}")
+            completion_status = "complete" if is_complete else "incomplete"
+            logger.info(f"Completed processing {tool_name} ({completion_status})")
+            
+            # If data is incomplete, log a warning
+            if not is_complete:
+                logger.warning(f"Data collection for {tool_name} is incomplete ({result['processed_batches']}/{result['total_batches']} batches). Run again later to complete.")
+            
             time.sleep(2)  # Delay between tools to avoid rate limiting
         
         # Remove state file when all tools are processed
