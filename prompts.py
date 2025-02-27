@@ -337,6 +337,7 @@ Note:
  - Limit your analysis to the data you have. Do not require more data than you have.
  - Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
  - Avoid a section about Analisys Limitations.
+ - Avoid Sections of Code (python or else) *not code blocks*
 """
 
 temporal_analysis_prompt_1 = """### **Analyze Temporal Trends**
@@ -963,6 +964,7 @@ Translate the following Markdown text to Spanish, adhering to these guidelines:
 9. Maintain the hierarchical structure of headings and subheadings
 10. Preserve all placeholder variables such as {selected_sources}
 11. Do *not* include comments like: Okay, here is the Spanish translation following all guidelines
+12. Do not include blocks of markdown code.
 
 Text to translate:
 """
@@ -973,9 +975,9 @@ You are an expert content summarizer. You take content in and output a Markdown 
 Take a deep breath and think step by step about how to best accomplish this goal using the following steps.
 
 # OUTPUT SECTIONS
-- Combine all of your understanding of the content into a single, 20-word sentence in a section called ONE SENTENCE SUMMARY:.
-- Output the 10 most important points of the content as a list with no more than 15 words per point into a section called MAIN POINTS:.
-- Output a list of the 5 best takeaways from the content in a section called TAKEAWAYS:
+- Combine all of your understanding of the content into a single, 20-word sentence in a section called #SUMMARY
+- Output the 10 most important points of the content as a list with no more than 15 words per point into a section called ###1. Main Points
+- Output a list of the 5 best takeaways from the content in a section called ###2. Key Points
 
 # OUTPUT INSTRUCTIONS
 - Create the output using the formatting above.
@@ -984,8 +986,9 @@ Take a deep breath and think step by step about how to best accomplish this goal
 - Do not output warnings or notes—just the requested sections.
 - Do not repeat items in the output sections.
 - Do not start items with the same opening words.
+- Do not include blocks of markdown code.
 
-# INPUT:
+# INPUT
 
-INPUT: {content}
+INPUT:
 """

@@ -63,7 +63,8 @@ import google.api_core.exceptions
 from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, \
     cross_relationship_prompt_1, cross_relationship_prompt_2, trend_analysis_prompt_1, trend_analysis_prompt_2, \
     arima_analysis_prompt_1, arima_analysis_prompt_2, seasonal_analysis_prompt_1, seasonal_analysis_prompt_2, \
-    prompt_6_single_analysis, prompt_6_correlation, prompt_conclusions_standalone, prompt_conclusions_comparative, prompt_sp
+    prompt_6_single_analysis, prompt_6_correlation, prompt_conclusions_standalone, prompt_conclusions_comparative, \
+    prompt_sp, prompt_abstract
 # Tools Dictionary
 from tools import tool_file_dic
 
@@ -2114,6 +2115,7 @@ def ai_analysis():
     global gem_conclusions_sp
     global csv_combined_data
     global csv_correlation
+    global gem_summary_sp
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
 
@@ -2399,7 +2401,7 @@ def ai_analysis():
           temporal_trends=gem_temporal_trends, tool_relationships=gem_cross_keyword, industry_patterns=gem_industry_specific, \
           arima_predictions=gem_arima, seasonal_analysis=gem_seasonal, cyclical_patterns=gem_fourier)          
     
-    print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...\n')
+    print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
     gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
     
@@ -2414,12 +2416,32 @@ def ai_analysis():
         
     #display(Markdown(gem_conclusions_sp))
     print(gem_conclusions_sp)
+    
+    n+=1
+    p_summary = f'{prompt_abstract} \n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
+        \n {gem_arima} \n {gem_seasonal} \n {gem_fourier} \n {gem_conclusions}'      
+    
+    print(f'\n\n\n{n}. Generando Resumén...\n')
+    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
+    gem_summary=gemini_prompt("",p_summary)
+    
+    # Only proceed with translation if we got a valid response
+    if not gem_summary.startswith("[API"):
+        prompt_spanish=f'{p_sp} {gem_summary}'
+        print("Traduciendo respuesta...")
+        gem_summary_sp=gemini_prompt("",prompt_spanish)
+    else:
+        # If there was an API error, don't try to translate the error message
+        gem_summary_sp = f"Error en el análisis: {gem_summary}"
+        
+    #display(Markdown(gem_conclusions_sp))
+    print(gem_summary_sp)    
 
 def csv2table(csv_data, header_line=0):
         csv_lines= csv_data.strip().split('\n')
         headers = csv_lines[header_line].split(',')
         # Create markdown table header with smaller font and rotated text
-        table = "<div class='table-wrapper'>\n<table class='data-table'>\n"
+        table = "<div class='table-wrapper'>\n<table class='data-table'>"
         table += "<tr>" + "".join([f"<th>{h}</th>" for h in headers]) + "</tr>\n"
         # Add data rows
         for line in csv_lines[1:]:
@@ -2497,7 +2519,9 @@ def report_pdf():
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
     report = "\n"
     report += "<div class='page-break'></div>\n"
-    report += gem_temporal_trends_sp
+    report += gem_summary_sp  
+    report += "<div class='page-break'></div>\n"
+    report += gem_temporal_trends_sp  
     report += "<div class='page-break'></div>\n"
     if not one_keyword:
         report += gem_cross_keyword_sp
@@ -2531,7 +2555,7 @@ def report_pdf():
     report += "\n---</br></br></br><small>\n"
     report += "\n**************************************************\n"
     report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
-    report += f'Contacto: https://www.wiseconnex.com \n'
+    report += f'Contacto: [SOLIDUM](https://www.solidum360.com) & [WISE CONNEX](https://www.wiseconnex.com) \n'
     report += "**************************************************\n"
     report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
     report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
