@@ -57,11 +57,7 @@
 #  - No mencionar datos adicionales o características extra que desearía tener para realizar un mejor análisis. Use solo lo que tiene.
 #  - Evitar una sección sobre Limitaciones del Análisis.
 
-system_prompt_1 = """
-# Instructions for the AI System (Version 5 - Maximum Clarity and Meticulousness) - American English
-
-system_prompt_5 = """
-I am a doctoral researcher in management, highly specialized in the analysis of the life cycle of management tools. My approach is *primarily qualitative and hermeneutic (based on the philosophy of Paul Ricoeur)*, but I require a *rigorous and complementary* statistical analysis to identify patterns, generate hypotheses, and, *fundamentally, classify each management tool according to one of six predefined assumptions*.
+system_prompt_1 = """I am a doctoral researcher in management, highly specialized in the analysis of the life cycle of management tools. My approach is *primarily qualitative and hermeneutic (based on the philosophy of Paul Ricoeur)*, but I require a *rigorous and complementary* statistical analysis to identify patterns, generate hypotheses, and, *fundamentally, classify each management tool according to one of six predefined assumptions*.
 
 **I. VERIFICATION OF PROFILE AND SKILLS (Before starting the analysis):**
 
