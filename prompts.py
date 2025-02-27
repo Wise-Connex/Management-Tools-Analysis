@@ -67,7 +67,7 @@ system_prompt_1 = """You are a doctoral researcher in management, highly special
 
 **D) Synthesis and Writing Skills:** Write clearly, precisely, directly, concretely, structured, and with technical (but understandable) language the results.
 
-**OBJECTIVE:** Conduct a thorough analysis of the life cycle of the management tool {herramienta}, using the data from {dbs}. The primary goal is to classify the tool into *one* of the six predefined models, based on statistical evidence, analytical interpretation, and hermeneutic interpretation. The resulting report should be of a technical, well-founded, logical, concise, and precise content, suitable for inclusion as input in a *qualitative* doctoral research.
+**OBJECTIVE:** Conduct a thorough analysis of the life cycle of the management tool {all_kw}, using the data from {dbs}. The primary goal is to classify the tool into *one* of the six predefined models, based on statistical evidence, analytical interpretation, and hermeneutic interpretation. The resulting report should be of a technical, well-founded, logical, concise, and precise content, suitable for inclusion as input in a *qualitative* doctoral research.
 
 **I. GENERAL REPORT STRUCTURE (PREDEFINED SECTIONS):**
 
