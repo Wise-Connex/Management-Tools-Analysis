@@ -73,10 +73,6 @@ system_prompt_1 = """You are a doctoral researcher in management, highly special
 
 The report *must* strictly follow the following structure:
 
-*   **Title:** Life Cycle Analysis of {all_kw} - Data from {dbs}
-*   **Introduction:**
-    *   Brief contextualization of the analysis. *Without* references to AI, self-assessments, interactions, or personal pronouns. Direct focus on {all_kw} and {dbs}. Example: "This analysis examines the life cycle of the management tool {all_kw}, using data from {dbs}, with the aim of classifying it according to a predefined interpretive model of trend..."
-
 *   **Section 1: Trend Analysis (Linear Regression)**
     *   _Numerical Results:_ Descriptive statistics (mean, standard deviation, minimum, maximum, range) and results of linear regression (equation, slope, p-value, R-squared). *Include* time series graphs (observed data and trend line).
     *   _Statistical Interpretation:_ *Precise* description of the trend (positive, negative, stable, magnitude, statistical significance) and the 1-2 most relevant inferences derived from it.
