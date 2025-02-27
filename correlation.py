@@ -19,6 +19,11 @@ import csv
 import io
 import sys
 import math
+import warnings
+
+# Suppress the specific scikit-learn deprecation warning about force_all_finite
+warnings.filterwarnings("ignore", message=".*force_all_finite.*")
+
 #import paramiko
 #from io import StringIO
 from googleapiclient.discovery import build
@@ -53,7 +58,6 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import random
 import google.api_core.exceptions
-
 
 # AI Prompts imports 
 from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, \
