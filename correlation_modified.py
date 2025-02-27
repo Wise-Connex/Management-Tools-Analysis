@@ -326,6 +326,54 @@ def cubic_interpolation(df, kw):
     #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
     return df_interpolated
 
+# Create a BSpline interpolation function
+def bspline_interpolation(df, column):
+    # Extract actual data points (non-NaN values)
+    actual_data = df[~df[column].isna()]
+    
+    if actual_data.empty or len(actual_data) < 4:  # B-spline typically requires at least 4 points
+        # Fall back to simpler interpolation if not enough points
+        if len(actual_data) >= 2:
+            return linear_interpolation(df, column)
+        else:
+            return df.copy()  # Return original if not enough points
+    
+    x = actual_data.index.astype(int) / 10**9  # Convert to Unix timestamp
+    y = actual_data[column].values
+
+    # Create a B-spline interpolator
+    tck = interp.splrep(x, y, k=3)  # k=3 for a cubic B-spline
+
+    # Generate interpolated values only between first and last actual data points
+    start_date = actual_data.index.min()
+    end_date = actual_data.index.max()
+    
+    # Create a list to store interpolated data
+    interpolated_data = []
+    
+    # Generate monthly points only between first and last actual data points
+    x_interp = pd.date_range(start=start_date, end=end_date, freq='MS')
+    x_interp_unix = x_interp.astype(int) / 10**9
+    y_interp = interp.splev(x_interp_unix, tck)
+    
+    # Add the interpolated data
+    for date, value in zip(x_interp, y_interp):
+        interpolated_data.append((date, value))
+
+    # Create a new DataFrame with the interpolated values
+    df_interpolated = pd.DataFrame(interpolated_data, columns=['date', column])
+    df_interpolated.set_index('date', inplace=True)
+
+    # Preserve all original data points from the original dataset
+    for idx in actual_data.index:
+        if idx in df_interpolated.index:
+            df_interpolated.loc[idx, column] = actual_data.loc[idx, column]
+
+    return df_interpolated
+
+#*** END GNNgram
+
+# Displays the main menu and prompts the user to select an option.
 def main_menu():
     banner_msg(" Menú principal ", YELLOW, WHITE)
     options = {
@@ -389,46 +437,36 @@ def get_user_selections(dictionary, option):
   return selected_data_file_name, selected_strings
 
 def bspline_interpolation(df, column):
-    # Extract actual data points (non-NaN values)
-    actual_data = df[~df[column].isna()]
-    
-    if actual_data.empty or len(actual_data) < 4:  # B-spline typically requires at least 4 points
-        # Fall back to simpler interpolation if not enough points
-        if len(actual_data) >= 2:
-            return linear_interpolation(df, column)
-        else:
-            return df.copy()  # Return original if not enough points
-    
-    x = actual_data.index.astype(int) / 10**9  # Convert to Unix timestamp
-    y = actual_data[column].values
+    x = df.index.astype(int) / 10**9  # Convert to Unix timestamp
+    y = df[column].values
 
     # Create a B-spline interpolator
     tck = interp.splrep(x, y, k=3)  # k=3 for a cubic B-spline
 
-    # Generate interpolated values only between first and last actual data points
-    start_date = actual_data.index.min()
-    end_date = actual_data.index.max()
+    # Generate interpolated values for all months within the original year range
+    start_year = df.index.min().year
+    end_year = df.index.max().year
     
     # Create a list to store interpolated data
     interpolated_data = []
     
-    # Generate monthly points only between first and last actual data points
-    x_interp = pd.date_range(start=start_date, end=end_date, freq='MS')
-    x_interp_unix = x_interp.astype(int) / 10**9
-    y_interp = interp.splev(x_interp_unix, tck)
-    
-    # Add the interpolated data
-    for date, value in zip(x_interp, y_interp):
-        interpolated_data.append((date, value))
+    for year in range(start_year, end_year + 1):
+        # Generate 12 monthly points for each year
+        x_interp = pd.date_range(start=f"{year}-01-01", end=f"{year}-12-31", freq='MS')
+        x_interp_unix = x_interp.astype(int) / 10**9
+        y_interp = interp.splev(x_interp_unix, tck)
+        
+        # Add the interpolated data for this year
+        for date, value in zip(x_interp, y_interp):
+            interpolated_data.append((date, value))
 
     # Create a new DataFrame with the interpolated values
     df_interpolated = pd.DataFrame(interpolated_data, columns=['date', column])
     df_interpolated.set_index('date', inplace=True)
 
-    # Preserve all original data points from the original dataset
-    for idx in actual_data.index:
-        if idx in df_interpolated.index:
-            df_interpolated.loc[idx, column] = actual_data.loc[idx, column]
+    # Preserve the first and last data points from the original dataset
+    df_interpolated.loc[df.index[0], column] = df.loc[df.index[0], column]
+    df_interpolated.loc[df.index[-1], column] = df.loc[df.index[-1], column]
 
     return df_interpolated
 
