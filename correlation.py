@@ -215,62 +215,129 @@ def gemini_prompt(system_prompt,prompt,m='flash'):
   return response.text
 
 def linear_interpolation(df, kw):
-    x = df.index  # Keep index as DatetimeIndex
-    y = df[kw].values
+    # Extract actual data points (non-NaN values)
+    actual_data = df[~df[kw].isna()]
+    
+    if actual_data.empty:
+        return df.copy()  # Return original if no actual data
+    
+    x = actual_data.index  # Keep index as DatetimeIndex for actual points only
+    y = actual_data[kw].values
 
-    # Use numpy.interp for linear interpolation
-    x_interp = pd.date_range(df.index.min().date(), df.index.max().date(), freq='MS')
+    # Use numpy.interp for linear interpolation, but only within the range of actual data
+    # Create date range only between first and last actual data points
+    x_interp = pd.date_range(actual_data.index.min().date(), actual_data.index.max().date(), freq='MS')
     y_interp = np.interp(x_interp, x, y)
 
     # Create a new DataFrame with the interpolated values
     df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
+    
+    # Preserve original values at actual data points to ensure accuracy
+    for idx in actual_data.index:
+        if idx in df_interpolated.index:
+            df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
 
     #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
     return df_interpolated
 
 # Create a cubic interpolation function
 def cubic_interpolation(df, kw):
-    x = df.index
-    y = df[kw].values
+    # Extract actual data points (non-NaN values)
+    actual_data = df[~df[kw].isna()]
+    
+    if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
+        return linear_interpolation(df, kw)  # Fall back to linear interpolation if not enough points
+    
+    x = actual_data.index
+    y = actual_data[kw].values
 
     # Create a Cubic Spline interpolator
     spline = CubicSpline(x, y)
-    # Generate interpolated values for all months within the original year range
-    start_year_tm = df.index.min()
-    start_year = start_year_tm.date()
-    end_year_tm = df.index.max()
-    end_year = end_year_tm.date()
-    x_interp = pd.date_range(start_year, end_year, freq='MS')
+    
+    # Generate interpolated values only between first and last actual data points
+    start_date = actual_data.index.min().date()
+    end_date = actual_data.index.max().date()
+    x_interp = pd.date_range(start_date, end_date, freq='MS')
+    
     # Evaluate the spline at the interpolated points
     y_interp = spline(x_interp)
 
-    # Create a new DataFrame with the interpolated values and set 'Month' as index
+    # Create a new DataFrame with the interpolated values
     df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
+    
+    # Preserve original values at actual data points to ensure accuracy
+    for idx in actual_data.index:
+        if idx in df_interpolated.index:
+            df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
 
     #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
     return df_interpolated
 
 # Create a BSpline interpolation function
-def bspline_interpolation(df, kw):
-    # Assuming your data is in a DataFrame called 'df' with columns 'year' and 'value'
-    x = df.index
-    y = df[kw].values
+def bspline_interpolation(df, column):
+    # Extract actual data points (non-NaN values)
+    actual_data = df[~df[column].isna()]
+    
+    if actual_data.empty or len(actual_data) < 4:  # B-spline typically requires at least 4 points
+        # Fall back to simpler interpolation if not enough points
+        if len(actual_data) >= 2:
+            # Create a simple linear interpolation
+            x = actual_data.index.astype(int) / 10**9
+            y = actual_data[column].values
+            
+            # Generate interpolated values only between first and last actual data points
+            start_date = actual_data.index.min()
+            end_date = actual_data.index.max()
+            x_interp = pd.date_range(start_date, end_date, freq='MS')
+            x_interp_unix = x_interp.astype(int) / 10**9
+            
+            # Linear interpolation
+            y_interp = np.interp(x_interp_unix, x, y)
+            
+            # Create result dataframe
+            df_interpolated = pd.DataFrame(index=x_interp)
+            df_interpolated[column] = y_interp
+            
+            # Preserve original values at actual data points
+            for idx in actual_data.index:
+                if idx in df_interpolated.index:
+                    df_interpolated.loc[idx, column] = actual_data.loc[idx, column]
+                    
+            return df_interpolated
+        else:
+            return df.copy()  # Return original if not enough points
+    
+    x = actual_data.index.astype(int) / 10**9  # Convert to Unix timestamp
+    y = actual_data[column].values
 
     # Create a B-spline interpolator
     tck = interp.splrep(x, y, k=3)  # k=3 for a cubic B-spline
-    # Generate interpolated values for all months within the original year range
-    start_year_tm = df.index.min()
-    start_year = start_year_tm.date()
-    end_year_tm = df.index.max()
-    end_year = end_year_tm.date()
-    x_interp = pd.date_range(start_year, end_year, freq='MS')  # Monthly intervals
-    # x_interp = pd.date_range(start_year, end_year + pd.DateOffset(years=1), freq='MS')  # Monthly intervals
-    y_interp = interp.splev(x_interp, tck)
 
-    # Create a new DataFrame with the interpolated values and set 'Month' as index
-    df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
+    # Generate interpolated values only between first and last actual data points
+    start_date = actual_data.index.min()
+    end_date = actual_data.index.max()
+    
+    # Create a list to store interpolated data
+    interpolated_data = []
+    
+    # Generate monthly points only between first and last actual data points
+    x_interp = pd.date_range(start=start_date, end=end_date, freq='MS')
+    x_interp_unix = x_interp.astype(int) / 10**9
+    y_interp = interp.splev(x_interp_unix, tck)
+    
+    # Add the interpolated data
+    for date, value in zip(x_interp, y_interp):
+        interpolated_data.append((date, value))
 
-    #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
+    # Create a new DataFrame with the interpolated values
+    df_interpolated = pd.DataFrame(interpolated_data, columns=['date', column])
+    df_interpolated.set_index('date', inplace=True)
+
+    # Preserve all original data points from the original dataset
+    for idx in actual_data.index:
+        if idx in df_interpolated.index:
+            df_interpolated.loc[idx, column] = actual_data.loc[idx, column]
+
     return df_interpolated
 
 #*** END GNNgram
@@ -674,15 +741,28 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           csv_arima += csv_arimaA[n]
           # Prepare data for plotting (last 24 months)
           last_months = train[col].iloc[-mb:]
-          # Make predictions (adjust steps as needed)
-          predictions, conf_int = best_model.predict(n_periods=mf, return_conf_int=True)
+          
+          # Make predictions using the statsmodels ARIMA model with confidence intervals
           predictions = results.forecast(steps=mf)
+          
+          # Get confidence intervals from the statsmodels ARIMA model
+          pred_conf = results.get_forecast(steps=mf)
+          conf_int = pred_conf.conf_int()
+          
           # Calculate RMSE and MAE
           actual = test[col]
           predicted = predictions
           if len(predictions) > len(test[col]):
             predicted = predictions[:len(test[col])]
-          rmse = mean_squared_error(actual, predicted, squared=False)
+          
+          # Try using squared parameter if available, otherwise calculate RMSE manually
+          try:
+              rmse = mean_squared_error(actual, predicted, squared=False)
+          except TypeError:
+              # For older scikit-learn versions that don't support the squared parameter
+              mse = mean_squared_error(actual, predicted)
+              rmse = np.sqrt(mse)
+              
           mae = mean_absolute_error(actual, predicted)
           print(f"Predicciones para {col} ({actual_menu}):\n{predictions}")
           print(f"\nError Cuadrático Medio Raíz (ECM Raíz) RMSE: {rmse}\nError Absoluto Medio (EAM) MAE: {mae}\n")
@@ -704,7 +784,10 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
           # Plot test data with scatter and alpha
           test_scatter = ax.scatter(test.index, test[col], label='Data Test', alpha=0.4, marker='*')
           # Fill between for confidence interval
-          ci_fill = ax.fill_between(predictions.index, conf_int[:, 0], conf_int[:, 1], alpha=0.1, color='b', label='Intervalo de Confidencia')         
+          ci_fill = ax.fill_between(predictions.index, 
+                                   conf_int.iloc[:, 0],  # Lower bound
+                                   conf_int.iloc[:, 1],  # Upper bound
+                                   alpha=0.1, color='b', label='Intervalo de Confidencia')
           # Add labels and title
           ax.set_title(f"Modelo ARIMA para {col} ({actual_menu})")
           ax.set_xlabel('Meses - Años')
@@ -1989,7 +2072,11 @@ def ai_analysis():
         f_system_prompt = system_prompt_2.format(selected_sources=sel_sources)
         csv_combined_data = combined_dataset.to_csv(index=True)
 
-    p_sp = prompt_sp.format(all_kws=all_keywords if top_choice == 1 else actual_menu)
+    # Add the selected_sources parameter to the format call
+    if top_choice == 1:
+        p_sp = prompt_sp.format(all_kws=all_keywords, selected_sources="")
+    else:
+        p_sp = prompt_sp.format(all_kws=actual_menu, selected_sources=sel_sources)
 
     if top_choice == 1:
         p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \

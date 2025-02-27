@@ -64,6 +64,25 @@ def load_state():
             return json.load(f)
     return []
 
+def get_indexed_tools():
+    """Get list of tools already indexed in CRIndex.csv"""
+    project_root = get_project_root()
+    index_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
+    indexed_tools = []
+    
+    if os.path.exists(index_path):
+        try:
+            with open(index_path, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f)
+                next(reader)  # Skip header
+                for row in reader:
+                    if row and len(row) >= 1:
+                        indexed_tools.append(row[0])
+        except Exception as e:
+            logging.getLogger(__name__).error(f"Error reading CRIndex.csv: {str(e)}")
+    
+    return indexed_tools
+
 def normalize_filename(name):
     """Normalize filename to ASCII characters, replace spaces with underscore"""
     normalized = unicodedata.normalize('NFKD', name).encode('ASCII', 'ignore').decode()
@@ -338,14 +357,22 @@ def main():
         tools_data = read_input_csv(input_file)
         logger.info(f"Found {len(tools_data)} tools to process")
         
-        # Load previously processed tools
+        # Load previously processed tools from state file
         processed_tools = load_state()
-        logger.info(f"Found {len(processed_tools)} previously processed tools")
+        logger.info(f"Found {len(processed_tools)} previously processed tools in state file")
+        
+        # Get tools already indexed in CRIndex.csv
+        indexed_tools = get_indexed_tools()
+        logger.info(f"Found {len(indexed_tools)} tools already indexed in CRIndex.csv")
+        
+        # Combine both lists to get all tools to skip
+        tools_to_skip = list(set(processed_tools + indexed_tools))
+        logger.info(f"Total {len(tools_to_skip)} tools will be skipped (already processed or indexed)")
         
         for tool_name, query in tools_data:
-            # Skip if already processed
-            if tool_name in processed_tools:
-                logger.info(f"Skipping already processed tool: {tool_name}")
+            # Skip if already processed or indexed
+            if tool_name in tools_to_skip:
+                logger.info(f"Skipping already processed or indexed tool: {tool_name}")
                 continue
                 
             logger.info(f"Processing tool: {tool_name}")
