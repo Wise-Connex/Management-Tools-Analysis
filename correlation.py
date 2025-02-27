@@ -51,6 +51,8 @@ from datetime import datetime
 from statsmodels.tsa.seasonal import seasonal_decompose
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import random
+import google.api_core.exceptions
 
 
 # AI Prompts imports 
@@ -176,7 +178,20 @@ def get_unique_filename(base_filename, unique_folder):
         counter += 1
     return filename
 
-def gemini_prompt(system_prompt,prompt,m='flash'):
+def gemini_prompt(system_prompt, prompt, m='flash', max_retries=5, initial_backoff=1):
+  """
+  Send a prompt to the Gemini API with retry logic for handling timeouts and service issues.
+  
+  Args:
+      system_prompt: The system instructions for the model
+      prompt: The user prompt to send to the model
+      m: Model type ('pro' or 'flash')
+      max_retries: Maximum number of retry attempts
+      initial_backoff: Initial backoff time in seconds (will increase exponentially)
+      
+  Returns:
+      The text response from the model
+  """
   system_instructions = system_prompt
 
   #print('\n**************************** INPUT ********************************\n')
@@ -207,12 +222,45 @@ def gemini_prompt(system_prompt,prompt,m='flash'):
 
   if api_key is None:
       raise ValueError("GOOGLE_API_KEY environment variable is not set")
-  #api_key = userdata.get(api_key_name)
+  
   genai.configure(api_key=api_key)
-  model = genai.GenerativeModel(model, system_instruction=system_instructions)
+  model_instance = genai.GenerativeModel(model, system_instruction=system_instructions)
   config = genai.GenerationConfig(temperature=temperature, stop_sequences=[stop_sequence])
-  response = model.generate_content(contents=[prompt], generation_config=config)
-  return response.text
+  
+  # Implement retry logic with exponential backoff
+  retry_count = 0
+  backoff_time = initial_backoff
+  
+  while retry_count < max_retries:
+    try:
+      # If this isn't the first attempt, log that we're retrying
+      if retry_count > 0:
+        print(f"\x1b[33m(Retry attempt {retry_count}/{max_retries} after waiting {backoff_time}s)\x1b[0m")
+      
+      # Try to generate content
+      response = model_instance.generate_content(contents=[prompt], generation_config=config)
+      return response.text
+      
+    except google.api_core.exceptions.DeadlineExceeded as e:
+      # Handle timeout errors specifically
+      retry_count += 1
+      
+      if retry_count >= max_retries:
+        print(f"\x1b[31mFailed after {max_retries} retries. Last error: {str(e)}\x1b[0m")
+        # Return a fallback message instead of raising an exception
+        return f"[API TIMEOUT ERROR: The request to the Gemini API timed out after {max_retries} attempts. The prompt may be too complex or the service may be experiencing issues.]"
+      
+      # Calculate exponential backoff with jitter
+      jitter = random.uniform(0, 0.1 * backoff_time)  # Add up to 10% jitter
+      wait_time = backoff_time + jitter
+      print(f"\x1b[33mAPI timeout occurred. Retrying in {wait_time:.2f} seconds...\x1b[0m")
+      time.sleep(wait_time)
+      backoff_time *= 2  # Exponential backoff
+      
+    except Exception as e:
+      # Handle other exceptions
+      print(f"\x1b[31mError calling Gemini API: {str(e)}\x1b[0m")
+      return f"[API ERROR: {str(e)}]"
 
 def linear_interpolation(df, kw):
     # Extract actual data points (non-NaN values)
@@ -2091,9 +2139,18 @@ def ai_analysis():
     n=0
     n+=1
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
+    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
     gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
-    prompt_spanish=f'{p_sp} {gem_temporal_trends}'
-    gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    
+    # Only proceed with translation if we got a valid response
+    if not gem_temporal_trends.startswith("[API"):
+        prompt_spanish=f'{p_sp} {gem_temporal_trends}'
+        print("Traduciendo respuesta...")
+        gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    else:
+        # If there was an API error, don't try to translate the error message
+        gem_temporal_trends_sp = f"Error en el análisis: {gem_temporal_trends}"
+    
     #display(Markdown(gem_temporal_trends_sp))
     print(gem_temporal_trends_sp)
 
@@ -2103,12 +2160,50 @@ def ai_analysis():
         p_2 = cross_relationship_prompt_1.format(dbs=actual_menu, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
         print(f'\n\n\n{n}. Analizando relaciones entre palabras clave...')
       else:
-        p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=actual_menu, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
+        # Optimize the correlation matrix if it's too large
+        if len(csv_correlation) > 50000:  # If correlation matrix is large
+            print(f"\x1b[33mWarning: Correlation matrix is large ({len(csv_correlation)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+            # Simplify by keeping only the header and a subset of rows
+            csv_lines = csv_correlation.split('\n')
+            if len(csv_lines) > 100:
+                truncated_corr = '\n'.join(csv_lines[:50]) + '\n...[data truncated]...\n' + '\n'.join(csv_lines[-50:])
+                csv_corr_for_prompt = truncated_corr
+            else:
+                csv_corr_for_prompt = csv_correlation
+        else:
+            csv_corr_for_prompt = csv_correlation
+            
+        # Optimize the combined dataset if it's too large
+        if len(csv_combined_data) > 50000:
+            # Already handled in the next section, use the same approach
+            csv_lines = csv_combined_data.split('\n')
+            header = csv_lines[0]
+            data_lines = csv_lines[1:]
+            subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+            first_chunk = data_lines[:subset_size//2]
+            last_chunk = data_lines[-(subset_size//2):]
+            truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
+            csv_data_for_prompt = truncated_csv
+        else:
+            csv_data_for_prompt = csv_combined_data
+            
+        p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=actual_menu, 
+                                               csv_corr_matrix=csv_corr_for_prompt, 
+                                               csv_combined_data=csv_data_for_prompt)        
         print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
       
+      print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
       gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
-      prompt_spanish=f'{p_sp} {gem_cross_keyword}'
-      gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+      
+      # Only proceed with translation if we got a valid response
+      if not gem_cross_keyword.startswith("[API"):
+          prompt_spanish=f'{p_sp} {gem_cross_keyword}'
+          print("Traduciendo respuesta...")
+          gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+      else:
+          # If there was an API error, don't try to translate the error message
+          gem_cross_keyword_sp = f"Error en el análisis: {gem_cross_keyword}"
+          
       #display(Markdown(gem_cross_keyword_sp))
       print(gem_cross_keyword_sp)
     else:
@@ -2121,12 +2216,43 @@ def ai_analysis():
       p_3 = trend_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_means_trends=csv_means_trends, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
       print(f'\n\n\n{n}. Investigando Patrones de Tendencia General...')
     else:
-      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, csv_corr_matrix=csv_correlation, csv_combined_data=csv_combined_data)        
+      # Optimize the prompt to reduce its size and complexity
+      # 1. Limit the CSV data size by truncating if necessary
+      max_csv_size = 100000  # Limit CSV size to ~100KB
+      if len(csv_combined_data) > max_csv_size:
+          print(f"\x1b[33mWarning: Combined dataset CSV is large ({len(csv_combined_data)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+          # Keep header row and truncate the rest
+          csv_lines = csv_combined_data.split('\n')
+          header = csv_lines[0]
+          # Take a subset of lines (first 20% and last 20% to maintain time series context)
+          data_lines = csv_lines[1:]
+          subset_size = min(len(data_lines), int(max_csv_size / 50))  # Approximate number of lines to keep
+          first_chunk = data_lines[:subset_size//2]
+          last_chunk = data_lines[-(subset_size//2):]
+          truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
+          csv_for_prompt = truncated_csv
+      else:
+          csv_for_prompt = csv_combined_data
+      
+      # 2. Create the optimized prompt
+      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, 
+                                          csv_corr_matrix=csv_correlation, 
+                                          csv_combined_data=csv_for_prompt)
       print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
     
-    gem_industry_specific=gemini_prompt(f_system_prompt,p_3)
-    prompt_spanish=f'{p_sp} {gem_industry_specific}'
-    gem_industry_specific_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    # Use the optimized gemini_prompt function with retry logic
+    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
+    gem_industry_specific=gemini_prompt(f_system_prompt, p_3)
+    
+    # Only proceed with translation if we got a valid response (not an error message)
+    if not gem_industry_specific.startswith("[API"):
+        prompt_spanish=f'{p_sp} {gem_industry_specific}'
+        print("Traduciendo respuesta...")
+        gem_industry_specific_sp=gemini_prompt(f_system_prompt, prompt_spanish)
+    else:
+        # If there was an API error, don't try to translate the error message
+        gem_industry_specific_sp = f"Error en el análisis: {gem_industry_specific}"
+    
     #display(Markdown(gem_industry_specific_sp))
     print(gem_industry_specific_sp)
 
@@ -2135,12 +2261,33 @@ def ai_analysis():
       p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima)
       print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
     else:
-      p_4 = arima_analysis_prompt_2.format(selected_sources=sel_sources, selected_keyword=actual_menu, arima_results=csv_arima)        
+      # Optimize ARIMA results if they're too large
+      if len(csv_arima) > 50000:
+          print(f"\x1b[33mWarning: ARIMA results are large ({len(csv_arima)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+          csv_lines = csv_arima.split('\n')
+          header = csv_lines[0]
+          data_lines = csv_lines[1:]
+          subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+          truncated_arima = header + '\n' + '\n'.join(data_lines[:subset_size])
+          csv_arima_for_prompt = truncated_arima
+      else:
+          csv_arima_for_prompt = csv_arima
+          
+      p_4 = arima_analysis_prompt_2.format(selected_sources=sel_sources, selected_keyword=actual_menu, arima_results=csv_arima_for_prompt)        
       print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
 
+    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
     gem_arima=gemini_prompt(f_system_prompt,p_4)
-    prompt_spanish=f'{p_sp} {gem_arima}'
-    gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    
+    # Only proceed with translation if we got a valid response
+    if not gem_arima.startswith("[API"):
+        prompt_spanish=f'{p_sp} {gem_arima}'
+        print("Traduciendo respuesta...")
+        gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    else:
+        # If there was an API error, don't try to translate the error message
+        gem_arima_sp = f"Error en el análisis: {gem_arima}"
+        
     #display(Markdown(gem_arima_sp))
     print(gem_arima_sp)
 
@@ -2149,12 +2296,39 @@ def ai_analysis():
       p_5 = seasonal_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_seasonal=csv_seasonal)
       print(f'\n\n\n{n}. Interpretando patrones estacionales...')
     else:
-      p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, csv_seasonal=csv_seasonal, csv_correlation=csv_correlation)        
+      # Optimize seasonal data if it's too large
+      if len(csv_seasonal) > 50000:
+          print(f"\x1b[33mWarning: Seasonal analysis data is large ({len(csv_seasonal)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+          csv_lines = csv_seasonal.split('\n')
+          header = csv_lines[0]
+          data_lines = csv_lines[1:]
+          subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+          truncated_seasonal = header + '\n' + '\n'.join(data_lines[:subset_size])
+          csv_seasonal_for_prompt = truncated_seasonal
+      else:
+          csv_seasonal_for_prompt = csv_seasonal
+          
+      # Reuse the optimized correlation matrix from earlier
+      if 'csv_corr_for_prompt' not in locals():
+          csv_corr_for_prompt = csv_correlation
+          
+      p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, 
+                                            csv_seasonal=csv_seasonal_for_prompt, 
+                                            csv_correlation=csv_corr_for_prompt)        
       print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
-    
+
+    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
     gem_seasonal=gemini_prompt(f_system_prompt,p_5)
-    prompt_spanish=f'{p_sp} {gem_seasonal}'
-    gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    
+    # Only proceed with translation if we got a valid response
+    if not gem_seasonal.startswith("[API"):
+        prompt_spanish=f'{p_sp} {gem_seasonal}'
+        print("Traduciendo respuesta...")
+        gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    else:
+        # If there was an API error, don't try to translate the error message
+        gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
+        
     #display(Markdown(gem_seasonal_sp))
     print(gem_seasonal_sp)
 
@@ -2163,12 +2337,51 @@ def ai_analysis():
       p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier)
       print(f'\n\n\n{n}. Analizando patrones cíclicos...')
     else:
-      p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, selected_sources=sel_sources, csv_fourier=csv_fourier, csv_combined_data=csv_combined_data)        
+      # Optimize Fourier analysis data if it's too large
+      if len(csv_fourier) > 50000:
+          print(f"\x1b[33mWarning: Fourier analysis data is large ({len(csv_fourier)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+          csv_lines = csv_fourier.split('\n')
+          header = csv_lines[0]
+          data_lines = csv_lines[1:]
+          subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+          truncated_fourier = header + '\n' + '\n'.join(data_lines[:subset_size])
+          csv_fourier_for_prompt = truncated_fourier
+      else:
+          csv_fourier_for_prompt = csv_fourier
+          
+      # Reuse the optimized combined dataset from earlier if available
+      if 'csv_data_for_prompt' not in locals():
+          # If not already optimized, check if it needs optimization
+          if len(csv_combined_data) > 50000:
+              csv_lines = csv_combined_data.split('\n')
+              header = csv_lines[0]
+              data_lines = csv_lines[1:]
+              subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+              first_chunk = data_lines[:subset_size//2]
+              last_chunk = data_lines[-(subset_size//2):]
+              truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
+              csv_data_for_prompt = truncated_csv
+          else:
+              csv_data_for_prompt = csv_combined_data
+      
+      p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, 
+                                      selected_sources=sel_sources, 
+                                      csv_fourier=csv_fourier_for_prompt, 
+                                      csv_combined_data=csv_data_for_prompt)        
       print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
+    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
     gem_fourier=gemini_prompt(f_system_prompt,p_6)
-    prompt_spanish=f'{p_sp} {gem_fourier}'
-    gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    
+    # Only proceed with translation if we got a valid response
+    if not gem_fourier.startswith("[API"):
+        prompt_spanish=f'{p_sp} {gem_fourier}'
+        print("Traduciendo respuesta...")
+        gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    else:
+        # If there was an API error, don't try to translate the error message
+        gem_fourier_sp = f"Error en el análisis: {gem_fourier}"
+        
     #display(Markdown(gem_fourier_sp))
     print(gem_fourier_sp)
 
@@ -2183,9 +2396,18 @@ def ai_analysis():
           arima_predictions=gem_arima, seasonal_analysis=gem_seasonal, cyclical_patterns=gem_fourier)          
     
     print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...\n')
+    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
     gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
-    prompt_spanish=f'{p_sp} {gem_conclusions}'
-    gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    
+    # Only proceed with translation if we got a valid response
+    if not gem_conclusions.startswith("[API"):
+        prompt_spanish=f'{p_sp} {gem_conclusions}'
+        print("Traduciendo respuesta...")
+        gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+    else:
+        # If there was an API error, don't try to translate the error message
+        gem_conclusions_sp = f"Error en el análisis: {gem_conclusions}"
+        
     #display(Markdown(gem_conclusions_sp))
     print(gem_conclusions_sp)
 

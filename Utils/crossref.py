@@ -52,8 +52,10 @@ def save_state(processed_tools):
     """Save progress state to file"""
     project_root = get_project_root()
     state_file = os.path.join(project_root, 'NewDBase', '.crossref_state.json')
+    os.makedirs(os.path.dirname(state_file), exist_ok=True)  # Ensure directory exists
     with open(state_file, 'w') as f:
         json.dump(processed_tools, f)
+    logging.getLogger(__name__).info(f"Saved state with {len(processed_tools)} processed tools")
 
 def load_state():
     """Load progress state from file"""
@@ -91,10 +93,26 @@ def normalize_filename(name):
 
 def read_input_csv(filepath):
     """Read the input CSV file and extract tool names and queries"""
-    df = pd.read_csv(filepath)
-    return list(zip(df['Herramienta Gerencial'], df['Keywords']))
+    try:
+        df = pd.read_csv(filepath)
+        # Check if the expected columns exist
+        if 'Herramienta Gerencial' in df.columns and 'Keywords' in df.columns:
+            return list(zip(df['Herramienta Gerencial'], df['Keywords']))
+        else:
+            # Try alternative column names
+            tool_col = next((col for col in df.columns if 'herramienta' in col.lower() or 'tool' in col.lower()), None)
+            keyword_col = next((col for col in df.columns if 'keyword' in col.lower()), None)
+            
+            if tool_col and keyword_col:
+                return list(zip(df[tool_col], df[keyword_col]))
+            else:
+                logging.getLogger(__name__).error(f"Could not find required columns in CSV. Available columns: {df.columns.tolist()}")
+                return []
+    except Exception as e:
+        logging.getLogger(__name__).error(f"Error reading input CSV: {str(e)}")
+        return []
 
-def get_crossref_data(query):
+def get_crossref_data(query, max_runtime=7200):
     """Get data from Crossref API with enhanced error handling and resume capability"""
     logger = logging.getLogger(__name__)
     results = []
@@ -109,7 +127,6 @@ def get_crossref_data(query):
     max_empty_batches = 5  # Maximum number of consecutive empty batches before stopping
     
     # Set maximum runtime for a single query (in seconds)
-    max_runtime = 3600  # 1 hour
     start_time = time.time()
     
     # Load saved state if exists
@@ -134,6 +151,7 @@ def get_crossref_data(query):
                 os.remove(state_file)
     
     logger.info(f"Starting/Resuming Crossref query: {query}")
+    logger.info(f"Maximum runtime set to {max_runtime} seconds")
     
     # Initialize total batches
     total_batches = None
@@ -212,6 +230,11 @@ def get_crossref_data(query):
                         # Don't mark as completed_successfully to allow resuming later
                         break
                     
+                    # Check if shutdown was requested
+                    if shutdown_requested:
+                        logger.info("Shutdown requested. Saving progress and stopping.")
+                        break
+                    
                     # Save state after each successful batch
                     # Convert datetime objects to strings for JSON serialization
                     serializable_results = [(dt.strftime("%Y-%m-%d"), count) 
@@ -223,20 +246,26 @@ def get_crossref_data(query):
                         'total_items': total_items,
                         'batch_counter': batch_counter
                     }
+                    
+                    # Ensure directory exists
+                    os.makedirs(os.path.dirname(state_file), exist_ok=True)
+                    
                     with open(state_file, 'w') as f:
                         json.dump(state, f)
                     
                     if batch_counter >= total_batches:
                         logger.info("All expected batches processed")
                         completed_successfully = True
-                        os.remove(state_file)  # Clean up state file after completion
+                        if os.path.exists(state_file):
+                            os.remove(state_file)  # Clean up state file after completion
                         break  # Break retry loop
                     
                     cursor = next_cursor
                     if not cursor:
                         logger.info("No more results available")
                         completed_successfully = True
-                        os.remove(state_file)  # Clean up state file after completion
+                        if os.path.exists(state_file):
+                            os.remove(state_file)  # Clean up state file after completion
                         break  # Break retry loop
                     
                     time.sleep(1)  # Rate limiting
@@ -263,13 +292,15 @@ def get_crossref_data(query):
                         raise  # Re-raise to be caught by outer try-except
 
             # Add this check to break out of the outer while loop
-            if batch_counter >= total_batches or not cursor or completed_successfully or (time.time() - start_time) > max_runtime:
+            if batch_counter >= total_batches or not cursor or completed_successfully or (time.time() - start_time) > max_runtime or shutdown_requested:
                 break
 
         logger.info(f"Total items queried: {total_items}")
         logger.info(f"Total results collected: {len(results)}")
         
-        if completed_successfully:
+        # Even if not completed, return partial results if we have enough data
+        # This allows for incremental progress even with very large queries
+        if completed_successfully or len(results) > 1000:
             return results
         else:
             return None
@@ -325,28 +356,92 @@ def save_to_csv(data, tool_name):
     return filename
 
 def update_index(tool_name, filename):
-    """Update or create the CRIndex.csv file"""
+    """Update or create index file with tool name and filename"""
     logger = logging.getLogger(__name__)
+    
     project_root = get_project_root()
     index_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
     
-    # Create new index file if it doesn't exist
+    # Create index file if it doesn't exist
     if not os.path.exists(index_path):
         with open(index_path, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerow(['Keyword', 'Filename'])
     
-    # Append new entry
+    # Append to index
     with open(index_path, 'a', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow([tool_name, filename])
     
-    logger.info(f"Index updated with {filename}")
+    logger.info(f"Updated index with {tool_name} -> {filename}")
+
+def process_specific_tool(tool_name):
+    """Process a specific tool by name"""
+    logger = setup_logging()
+    logger.info(f"Processing specific tool: {tool_name}")
+    
+    try:
+        # Read input CSV from project root
+        project_root = get_project_root()
+        input_file = os.path.join(project_root, 'rawData', 'Tabla Python Dimar - Notas Crossref.csv')
+        logger.info(f"Reading input file: {input_file}")
+        
+        tools_data = read_input_csv(input_file)
+        
+        # Find the specific tool
+        tool_data = None
+        for name, query in tools_data:
+            if name.lower() == tool_name.lower():
+                tool_data = (name, query)
+                break
+        
+        if not tool_data:
+            logger.error(f"Tool '{tool_name}' not found in input CSV")
+            return False
+        
+        # Process the tool
+        name, query = tool_data
+        logger.info(f"Found tool: {name} with query: {query}")
+        
+        # Get data from Crossref with increased runtime (4 hours)
+        results = get_crossref_data(query, max_runtime=14400)
+        if results is None:
+            logger.error(f"Failed to get complete data for {name}")
+            return False
+        
+        # Check if results are empty
+        if not results:
+            logger.warning(f"No results found for {name}")
+            return False
+        
+        # Process and save results
+        grouped_data = group_by_month(results)
+        filename = save_to_csv(grouped_data, name)
+        update_index(name, filename)
+        
+        logger.info(f"Successfully processed {name}")
+        return True
+        
+    except Exception as e:
+        logger.error(f"Error processing specific tool: {str(e)}", exc_info=True)
+        return False
 
 def main():
     """Main function to process the input CSV and generate results"""
     logger = setup_logging()
     logger.info("Starting Crossref data collection process")
+    
+    # Check for command line arguments
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '--tool' and len(sys.argv) > 2:
+            tool_name = sys.argv[2]
+            success = process_specific_tool(tool_name)
+            sys.exit(0 if success else 1)
+        elif sys.argv[1] == '--help':
+            print("Usage:")
+            print("  python crossref.py                   # Process all tools")
+            print("  python crossref.py --tool 'Tool Name'  # Process specific tool")
+            sys.exit(0)
     
     try:
         # Read input CSV from project root
@@ -383,8 +478,8 @@ def main():
                 save_state(processed_tools)
                 sys.exit(0)
             
-            # Get data from Crossref
-            results = get_crossref_data(query)
+            # Get data from Crossref with increased runtime (2 hours)
+            results = get_crossref_data(query, max_runtime=7200)
             if results is None:
                 logger.error(f"Failed to get complete data for {tool_name}, skipping CSV generation")
                 continue
