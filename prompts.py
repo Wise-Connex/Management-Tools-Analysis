@@ -875,6 +875,7 @@ Take a deep breath and think step by step about how to best accomplish this goal
 - Output a list of the 5 best takeaways from the content in a section called ###2. Key Points
 
 # OUTPUT INSTRUCTIONS
+- First section name is also the same Title #SUMMARY
 - Create the output using the formatting above.
 - You only output human readable Markdown.
 - Output numbered lists, not bullets.
