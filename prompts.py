@@ -89,7 +89,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
 - No hagas recomendaciones sobre datos adicionales. Limítate a los datos proporcionados.
 - Mantén el formato Markdown en todas las salidas.
 - No menciones las visualizaciones, ya que se manejarán por separado.
-- Conservar sin cambios, y en su idioma original las palabras que se indiquen en {}.
+- Conservar sin cambios, y en su idioma original las palabras que se indiquen en entre signos de llaves.
 - Omisión de Elementos Innecesarios: No incluir autoevaluaciones, introducciones a las respuestas (ir directo a las secciones). 
 - La interpretación debe ser implícita, ni discusiones sobre hipótesis. No usar pronombres personales.
 - Una Sola Fuente de Datos: Si solo hay una fuente de datos disponible ({dbs}), omitir cualquier análisis o consideración que implique mencionar o comparar con otras fuentes. En esos casos, omitir sin justificar por qué.
