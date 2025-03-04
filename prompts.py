@@ -324,59 +324,58 @@ Note:
  - Avoid Sections of Code (python or else) *not code blocks*
 """
 
-temporal_analysis_prompt_1 = """# INSTRUCCIONES ESPECÍFICAS
-## Analizar Tendencias Temporales de {all_kw}
+temporal_analysis_prompt_1 = """# Análisis Temporal - {all_kw} ({dbs})
 
-**Objetivo:** Analizar la evolución de la herramienta de gestión {all_kw} en {dbs} a lo largo del tiempo, identificar patrones significativos en su adopción/interés, y *relacionar estos patrones con las etapas del ciclo de vida de las modas gerenciales y las antinomias del ecosistema transorganizacional*.
+Herramienta: {all_kw}
+Fuente: {dbs}
 
-Herramienta de Gestión: {all_kw}
-Fuente de Datos: {dbs}
+**Objetivo:** Analizar la evolución de la herramienta de gestión {all_kw} en {dbs} a lo largo del tiempo, identificar patrones significativos en su adopción/interés, y *relacionar estos patrones con las etapas del ciclo de vida de las modas gerenciales, las antinomias del ecosistema transorganizacional y las preguntas de investigación*.
 
-**TAREAS:**
+**Tareas Específicas, Cálculos e Interpretación Técnica:**
 
-1. **Identificar Períodos Pico:**
- * Determinar los períodos de máxima adopción/interés para {all_kw}.
- * Analizar el contexto y los posibles impulsores de estos picos, *considerando tanto factores externos (ej., eventos económicos, avances tecnológicos) como factores internos relacionados con las tensiones entre innovación y ortodoxia en las organizaciones*.
- * Cuantificar la magnitud y duración de los períodos pico. *Interpretar estos valores en términos de la intensidad y persistencia del interés en la herramienta*.
+1.  **Identificar Períodos Pico:**
+    *   **Tarea:** Determinar los períodos (meses/años) de máxima adopción/interés para {all_kw} en {dbs}.  *Si hay múltiples picos, identificar los más relevantes*. Calcular la magnitud (valor máximo) y duración (en meses/años) de cada período pico *significativo*.
+    *   **Cálculos:**
+        *   Valor máximo de la serie temporal.
+        *   Fechas (inicio y fin) de cada período pico.
+        *   Duración de cada período pico (en meses o años).
+        *   *Opcional:* Calcular la "intensidad" del pico (ej., el área bajo la curva durante el período pico).
+    *   **Interpretación Técnica:**  Describir brevemente los picos (cuántos hay, cuándo ocurren, qué tan altos son).  *No* interpretar en términos de gestión todavía.  Ejemplo: "Se identifican tres períodos pico principales: el primero en [año], con un valor máximo de X; el segundo en [año], con un valor máximo de Y; y el tercero en [año], con un valor máximo de Z. El primer pico es el más pronunciado y duradero."
 
-2. **Analizar Fases de Declive:**
- * Identificar disminuciones significativas en el uso/interés en la herramienta.
- * Evaluar la tasa y el patrón de declive (ej., gradual, abrupto, cíclico). *Relacionar estos patrones con las posibles causas de la disminución del interés, incluyendo la posible exacerbación de las antinomias organizacionales*.
- * Calcular las velocidades de declive.
+2.  **Analizar Fases de Declive:**
+    *   **Tarea:** Identificar períodos de disminución *significativa* en el interés/uso de {all_kw}. Calcular la tasa de declive (ej., porcentaje de disminución por año o por período) para cada fase de declive *significativa*. Describir el patrón de declive (gradual, abrupto, escalonado, etc.).
+    *   **Cálculos:**
+        *   Fechas (inicio y fin) de cada fase de declive.
+        *   Tasa de declive (porcentaje de cambio por unidad de tiempo).
+        *   *Opcional:* Calcular la "velocidad" del declive (ej., la pendiente de la curva durante la fase de declive).
+    *   **Interpretación Técnica:** Describir brevemente las fases de declive (cuántas hay, cuándo ocurren, qué tan rápido es el declive).  Ejemplo: "Se observan dos fases principales de declive. La primera, entre [año] y [año], muestra un declive rápido, con una tasa promedio de X% por año. La segunda, entre [año] y [año], muestra un declive más gradual..."
 
-3. **Evaluar Cambios de Patrón:**
- * Detectar patrones de reactivación, evolución o adaptación de la herramienta. *Interpretar estos patrones a la luz de la capacidad de la herramienta para responder a las cambiantes necesidades del ecosistema transorganizacional y mitigar las tensiones entre estabilidad y cambio*.
+3.  **Evaluar Cambios de Patrón:**
+    *   **Tarea:**  Buscar patrones de *reactivación* (aumentos en el interés/uso después de un declive), *evolución* (cambios graduales en el nivel de interés/uso) o *adaptación* (cambios en la *forma* en que se usa la herramienta, que *no* se pueden detectar directamente en los datos, pero se pueden *inferir* de cambios en la tendencia).
+    *   **Cálculos:**  No hay cálculos específicos aquí, pero se pueden utilizar *métodos de detección de puntos de cambio* (*changepoint detection*) para identificar momentos en los que la tendencia cambia significativamente.
+    *   **Interpretación Técnica:**  Describir *cualitativamente* cualquier cambio de patrón observado.  Ejemplo: "Después de un período de declive, se observa una ligera reactivación del interés alrededor de [año], aunque no alcanza los niveles anteriores."
 
-4. **Analizar Patrones del Ciclo de Vida:**
- * Evaluar la etapa del ciclo de vida de la herramienta (introducción, crecimiento, madurez, declive, posible resurgimiento). *Comparar la duración y las características del ciclo de vida de {all_kw} con los patrones típicos de las modas gerenciales, identificando similitudes y diferencias*.
-	* Calcular métricas del ciclo de vida y evalúe la relación de las métricas con los patrones de comportamiento en su adopción.
+4.  **Analizar Patrones del Ciclo de Vida:**
+    * **Tarea:** Basándose en los patrones observados (picos, declives, cambios), *inferir* la etapa actual del ciclo de vida de {all_kw}: introducción, crecimiento, madurez, declive, posible resurgimiento/adaptación. Calcular métricas como:
+        *   **NADT (Normalized Annual Deviation Trend):** Calcular la desviación anual promedio *normalizada* (es decir, dividida por la media de la serie). Esto proporciona una medida de la *tendencia general* a lo largo del tiempo, *independiente de la escala* de los datos.
+        *   **MAST (Moving Average Smoothed Trend):** Calcular una media móvil (ej., de 5 años) de la serie temporal para *suavizar* las fluctuaciones y resaltar la tendencia a largo plazo.
+        *   *Otras métricas relevantes según la naturaleza de los datos*.  Ejemplo: Si hay datos de adopción (ej., de Bain), se podrían calcular tasas de adopción y abandono.
+* **Cálculos:**
+    *   NADT.
+    *   MAST.
+    *   Otras métricas relevantes.
+* **Interpretación Técnica:**
+        *NADT:* Un valor de NADT, por ejemplo, de -0.05, puede ser interpretado como: "La serie temporal muestra una tendencia decreciente con una disminución promedio de 5 unidades por año".
+	*MAST:* Un valor de MAST, por ejemplo, de -0.03, puede ser interpretado como: "La serie temporal muestra una tendencia decreciente con una disminución promedio de 3 unidades por año, según la tendencia suavizada con promedio móvil".
 
-**DATOS REQUERIDOS:** 
+**Datos Requeridos:**
 
-Los resultados de tus cálculos relacionados con las tendencias temporales.
-
-**REQUISITOS DE DATOS:**
-1. **Datos de la Herramienta de Gestión:**
-- Para los últimos 20 años: {csv_last_20_data}
-- Para los últimos 15 años: {csv_last_15_data}
-- Para los últimos 10 años: {csv_last_10_data}
-- Para los últimos 5 años: {csv_last_5_data}
-- Para el último año: {csv_last_year_data}
-    - Fecha: Datos mensuales (semanales para el último año).
-    - Palabras clave: Identificadores de herramientas de gestión de {all_kw}.
-    - Métricas de Uso: Valores relativos de uso/adopción (escala de 0 a 100).
-
-2. **Datos Contextuales:**
-- Tendencias y medias para las herramientas en los últimos 20 años: {csv_means_trends}
-- Todos los Indicadores de significancia estadística.
-- Métricas de descomposición de tendencias.
-
-IMPORTANTE:
-- Dado que los gráficos y visualizaciones se incluirán al final del informe, por favor no los menciones aquí.
-- Evita dar recomendaciones para un análisis mejor o adicional.
-
-# RESULTADOS ANTERIORES
-(Aquí se incluirían, en formato Markdown, los resultados de *todos* los prompts ejecutados previamente. Si este es el primer prompt, esta sección estaría vacía).
+*   {csv_last_20_data}
+*   {csv_last_15_data}
+*   {csv_last_10_data}
+*   {csv_last_5_data}
+*   {csv_last_year_data}
+*   {csv_means_trends}
 """
 
 temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
