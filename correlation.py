@@ -2697,14 +2697,27 @@ def get_filenames_for_keyword(keyword, selected_sources):
     return filenames
 
 def process_dataset(df, source, all_datasets, selected_sources):
+    """
+    Process dataset based on source type and selected sources.
+    When GB is selected, converts monthly data to annual format.
+    For Bain data, preserves annual values when GB is selected.
+    
+    Args:
+        df (pd.DataFrame): Input dataset
+        source (int): Source identifier
+        all_datasets (dict): Dictionary of all datasets
+        selected_sources (list): List of selected source identifiers
+    
+    Returns:
+        pd.DataFrame: Processed dataset
+    """
     global earliest_date
     global latest_date
     
-    print(f"Processing dataset for source {source}")
-    print(f"Original dataframe shape: {df.shape}")
-    print(f"Original dataframe head:\n{df.head()}")
-    print(f"Original dataframe dtypes:\n{df.dtypes}")
-
+    print(f"\nProcessing dataset for source {source}")
+    print(f"Input shape: {df.shape}")
+    print(f"Input frequency: {df.index.freq}")
+    
     # Ensure the index is datetime and timezone-naive
     df.index = pd.to_datetime(df.index).tz_localize(None)
     
@@ -2713,77 +2726,45 @@ def process_dataset(df, source, all_datasets, selected_sources):
     latest_date = min(df.index.max() for df in all_datasets.values())
     print(f"Common date range: {earliest_date} to {latest_date}")
 
-    # Handle Crossref data when combined with Bain or Google Books
-    has_bain = any(src in selected_sources for src in [3, 5])
-    has_crossref = 4 in selected_sources
-    has_google_books = 2 in selected_sources
-
-    if has_crossref and (has_bain or has_google_books):
-        # If Crossref is combined with Bain or Google Books, 
-        # adjust the date range to start from the earliest Bain/Google Books data
-        bain_or_books_datasets = {
-            src: data for src, data in all_datasets.items() 
-            if src in ([2] if has_google_books else []) + ([3, 5] if has_bain else [])
-        }
-        earliest_other = max(df.index.min() for df in bain_or_books_datasets.values())
-        earliest_date = max(earliest_date, earliest_other)
-        print(f"Adjusted date range to match Bain/Google Books: {earliest_date} to {latest_date}")
-
-    if 2 in selected_sources:
-        # Resample data based on source
-        if source == 2:
+    # Check if Google Books is selected
+    is_annual_mode = 2 in selected_sources
+    
+    if is_annual_mode:
+        # Handle different sources in annual mode
+        if source == 2:  # Google Books
+            # GB data is already annual, just trim to common date range
             df_resampled = df.loc[earliest_date:latest_date]
-        elif source == 4:
-            df = df.apply(pd.to_numeric, errors='coerce')
-            df_resampled = df.resample('YE').sum()
-            df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
-            # Trim to common date range after resampling
+            
+        elif source in [3, 5]:  # Bain (Usability & Satisfaction)
+            # For Bain data, keep only the first month of each year as it represents the annual value
+            df['year'] = df.index.year
+            df_resampled = df.groupby('year').first()
+            df_resampled.index = pd.to_datetime(df_resampled.index, format='%Y')
             df_resampled = df_resampled.loc[earliest_date:latest_date]
-        elif source in [1, 3, 5]:
-            df_resampled = []
-            years = range(earliest_date.year, latest_date.year + 1)
             
-            for year in years:
-                if year == earliest_date.year:
-                    # First year: January to June only
-                    period_data = df[
-                        (df.index.year == year) & 
-                        (df.index.month <= 6)
-                    ]
-                    if not period_data.empty:
-                        mean_value = period_data.iloc[:, 0].mean()
-                        df_resampled.append((f"{year}-01-01", mean_value))
-                elif year == latest_date.year:
-                    # Last year: July to December only
-                    period_data = df[
-                        (df.index.year == year) & 
-                        (df.index.month >= 7)
-                    ]
-                    if not period_data.empty:
-                        mean_value = period_data.iloc[:, 0].mean()
-                        df_resampled.append((f"{year}-01-01", mean_value))
-                else:
-                    # Calculate mean from July of previous year to June of current year
-                    period_data = df[
-                        ((df.index.year == year - 1) & (df.index.month >= 7)) |
-                        ((df.index.year == year) & (df.index.month <= 6))
-                    ]
-                    if len(period_data) == 12:  # Only calculate if we have full 12 months
-                        mean_value = period_data.iloc[:, 0].mean()
-                        df_resampled.append((f"{year}-01-01", mean_value))
+        elif source == 4:  # Crossref
+            # Convert Crossref data to annual by taking the mean
+            df = df.apply(pd.to_numeric, errors='coerce')
+            df_resampled = df.resample('Y').mean()
+            df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
+            df_resampled = df_resampled.loc[earliest_date:latest_date]
             
-            df_resampled = pd.DataFrame(df_resampled, columns=['Date', 'Value'])
-            df_resampled.set_index('Date', inplace=True)
-            df_resampled.index = pd.to_datetime(df_resampled.index)
+        elif source == 1:  # Google Trends
+            # Convert GT data to annual by taking the mean
+            df_resampled = df.resample('Y').mean()
+            df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
+            df_resampled = df_resampled.loc[earliest_date:latest_date]
+            
         else:
             df_resampled = df.copy()
-
+            
     else:
         # For monthly data, simply trim to the common date range
         df_resampled = df.loc[earliest_date:latest_date]
 
     print(f"Final dataframe shape: {df_resampled.shape}")
     print(f"Final dataframe head:\n{df_resampled.head()}")
+    print(f"Final frequency: {df_resampled.index.freq}")
 
     return df_resampled
 
