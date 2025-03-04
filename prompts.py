@@ -376,6 +376,13 @@ Fuente: {dbs}
 *   {csv_last_5_data}
 *   {csv_last_year_data}
 *   {csv_means_trends}
+
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
 """
 
 temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
@@ -441,31 +448,57 @@ IMPORTANT:
 """
 
 cross_relationship_prompt_1 = """### **Explore Cross-Tool Relationships**
+# Análisis de Relaciones Cruzadas - {all_kw} ({dbs})
 
-**Objective:** To analyze the relationships between different management tools in {dbs} and identify meaningful interaction patterns.
-Management Tool: {all_kw}
-Data Source: {dbs}
+Herramienta: {all_kw}
+Fuente: {dbs}
 
-**Tasks:**
+**Objetivo:** Explorar las relaciones entre {all_kw} y otras herramientas de gestión en {dbs}, identificar patrones de interacción (complementariedad, sustitución, coexistencia, etc.), y *evaluar cómo estas relaciones pueden influir en la adopción, difusión y ciclo de vida de {all_kw}, así como su capacidad para abordar las antinomias organizacionales*.
 
-1. **Correlation Analysis:**
-    - Identify strong positive/negative correlations between tools
-    - Calculate statistical significance of relationships
-    - Analyze temporal stability of correlations
+**Tareas Específicas e Inferencias:**
 
-2. **Tool Pattern Analysis:**
-    - Identify groups of tools that show similar adoption patterns
-    - Analyze complementary tool relationships
-    - Detect potential tool substitution patterns
+1.  **Análisis de Correlación:**
+    *   **Tarea:** Calcular la correlación (ej., coeficiente de correlación de Pearson) entre la serie temporal de {all_kw} y las series temporales de *otras herramientas de gestión* (si están disponibles en {dbs}).  Identificar correlaciones *significativas* (tanto positivas como negativas). Evaluar la *estabilidad temporal* de las correlaciones (¿cambian a lo largo del tiempo?).
+    *   **Inferencias y Relevancia:**
+        *   **Correlación Positiva:** Podría indicar:
+            *   **Complementariedad:** Las herramientas se utilizan juntas para lograr un objetivo común.
+            *   **Tendencia Compartida:** Ambas herramientas se ven afectadas por los mismos factores externos.
+            *   **Adopción Secuencial:** Una herramienta "allana el camino" para la otra.
+        *   **Correlación Negativa:** Podría indicar:
+            *   **Sustitución:** Una herramienta reemplaza a la otra.
+            *   **Competencia:** Las herramientas compiten por la atención y los recursos de las organizaciones.
+            *   **Tendencias Opuestas:** Las herramientas responden a necesidades o filosofías de gestión diferentes.
+        *   **Estabilidad Temporal:**
+            *   **Correlaciones Estables:** Sugieren una relación *duradera* entre las herramientas.
+            *   **Correlaciones Cambiantes:** Podrían indicar una *evolución* en la relación entre las herramientas (ej., una herramienta que inicialmente era complementaria se vuelve sustituta).
+        *   **Aporte a la Investigación:** Las correlaciones ayudan a identificar el "ecosistema" de herramientas de gestión en el que se inserta {all_kw} y cómo este ecosistema influye en su trayectoria.
 
-3. **Business Impact Analysis:**
-    - Evaluate synergistic tool combinations
-    - Identify potential tool conflicts or redundancies
-    - Analyze sequential adoption patterns
+2.  **Análisis de Patrones de Herramientas:**
+    *   **Tarea:** Identificar *grupos* de herramientas que muestren patrones de adopción/interés *similares* a {all_kw} (ej., crecimiento/declive simultáneo, picos en los mismos períodos).  Identificar también herramientas con patrones *opuestos*.
+    *   **Inferencias y Relevancia:**
+        *   **Patrones Similares:** Podría indicar:
+            *   Herramientas que abordan *necesidades similares* o complementarias.
+            *   Herramientas que se ven afectadas por los *mismos factores externos*.
+            *   Herramientas que forman parte de una *misma "ola"* de innovación gerencial.
+        *   **Patrones Opuestos:** Podría indicar:
+            *   Herramientas que compiten por la atención.
+            *   Herramientas que representan *enfoques diferentes* o incluso *contradictorios*.
+        *   **Aporte a la Investigación:**  La identificación de grupos de herramientas ayuda a comprender cómo las modas gerenciales se agrupan y evolucionan juntas, y cómo las tensiones entre innovación y ortodoxia podrían manifestarse a nivel de *conjuntos* de herramientas.
 
+3.  **Análisis de Impacto Empresarial (Sinergias y Conflictos):**
+* **Tarea:** Basado en el análisis de correlaciones y patrones, *inferir* posibles *sinergias* (combinaciones de herramientas que potencian mutuamente su efectividad) y *conflictos* (combinaciones que disminuyen la efectividad o son redundantes).
+    *   **Inferencias y Relevancia:**
+        *  **Sinergias:** Identificar si la combinación de herramientas produce resultados superiores.
+        *   **Conflictos:** Identificar si la adopción conjunta de ciertas herramientas es *contraproducente* o *innecesaria*.
+        *   **Adopción Secuencial:**  ¿Hay herramientas que *típicamente* se adoptan *antes* o *después* de {all_kw}? ¿Esto sugiere una secuencia lógica de implementación?
+    *   **Aporte a la Investigación:**  Este análisis ayuda a comprender cómo las organizaciones *combinan* herramientas de gestión y cómo estas combinaciones pueden afectar su capacidad para abordar las antinomias organizacionales (ej., ¿una combinación de herramientas promueve la estabilidad *y* la innovación, o solo una de ellas?).
+    
 **Data Required:**
 - Correlation matrix: {csv_corr_matrix}
 - Regression analysis results: {csv_regression}
+**Resultados Anteriores:**
+**`## Conexiones con Análisis Previos`** (Solo si *no* es el primer prompt)
+* Referencia y discusión *explícita* de cómo los resultados de este prompt se optimizan o mejoran con los resultados de los prompts anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
 
 Note: 
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -518,34 +551,52 @@ Note:
 
 trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
 
-**Objective:** To analyze broader patterns and contextual factors affecting {all_kw} management tool adoption in {dbs} data.
-Management Tool: {all_kw}
-Data Source: {dbs}
+# Análisis de Patrones Generales de Tendencia para {all_kw}
 
-**Tasks:**
+Herramienta de Gestión: {all_kw}
+Fuente de Datos: {dbs}
 
-1. **General Pattern Analysis:**
-    - Identify common adoption and decline patterns
-    - Analyze tool lifecycle characteristics
-    - Evaluate external factor influences
-    - Calculate pattern similarity metrics
+**Objetivo:** Analizar de forma general la tendencia que describe la herramienta de gestión {all_kw} en {dbs}, con el fin de tener una panorámica inicial de su comportamiento, identificar patrones amplios, y relacionar estos patrones con factores contextuales y con otras herramientas (si es posible). Este análisis servirá como insumo para análisis posteriores más detallados.
 
-2. **Contextual Factor Analysis:**
-    - Analyze economic cycle impacts
-    - Evaluate technological advancement effects
-    - Assess market condition influences
-    - Calculate external factor correlations
+**Tareas Específicas, Cálculos e Interpretación Técnica:**
 
-3. **Tool Category Analysis:**
-    - Group tools by similar behavior patterns
-    - Identify common success/failure factors
-    - Analyze adoption timing relationships
-    - Calculate category-specific metrics
+1.  **Análisis de Patrón General:**
+    *   **Tarea:** Calcular los promedios de interés/uso de {all_kw} en {dbs} para diferentes períodos: 20 años, 15 años, 10 años, 5 años y 1 año.  A partir de estos promedios, *describir* el patrón general de adopción/declive (ej., "declive constante", "crecimiento inicial seguido de estabilización", etc.).  Relacionar este patrón con las *características generales* del ciclo de vida de la herramienta (sin entrar en detalles específicos de las etapas, eso se hará en el análisis temporal). Calcular las tendencias NADT y MAST.
+    *   **Cálculos:**
+        *   Promedio de interés/uso para los últimos 20, 15, 10, 5 y 1 año.
+        *   NADT (20 años).
+        *   MAST (20 años).
+    *   **Interpretación Técnica:** Describir *objetivamente* el patrón general observado a partir de los promedios y las tendencias.  Ejemplo: "El interés promedio en {all_kw} ha disminuido constantemente a medida que se acorta el período de análisis, lo que sugiere una pérdida de popularidad sostenida.  Las tendencias NADT y MAST confirman este patrón, mostrando valores fuertemente negativos."
 
-**Data Required:**
-- Trends and means for tools: {csv_means_trends}
-- Correlation analysis results: {csv_corr_matrix}
-- Regression analysis results: {csv_regression}
+2.  **Análisis de Factores Contextuales:** (Esta sección se *omite* si no hay datos de correlación/regresión).
+    *   **Tarea:** *Si hay datos de correlación o regresión disponibles*, analizar la *posible* influencia de factores externos (ej., ciclos económicos, avances tecnológicos, condiciones del mercado) en el interés/uso de {all_kw}.  *Si no hay datos de correlación/regresión, esta sección se omite*.
+    *   **Cálculos:** (Dependerán de los datos disponibles).  Ejemplos:
+        *   Coeficientes de correlación entre {all_kw} y variables contextuales.
+        *   Resultados de análisis de regresión (coeficientes, R cuadrado, valores p).
+    *   **Interpretación Técnica:** *Si hay datos*, describir las relaciones observadas (ej., "Se observa una correlación positiva y significativa entre el interés en {all_kw} y el crecimiento del PIB, lo que sugiere que...").  *Si no hay datos*, esta sección se omite.
+
+3.  **Análisis de Categoría de Herramientas:** (Esta sección se *adapta* según la disponibilidad de datos).
+    *   **Tarea:** *Si hay datos disponibles sobre otras herramientas*, analizar la relación de {all_kw} con su categoría de herramientas.  *Si no hay datos sobre otras herramientas, esta sección se simplifica o se omite*.
+    *   **Cálculos/Análisis:** (Dependerán de los datos disponibles). Ejemplos:
+        *   *Si hay datos de otras herramientas:*
+            *   Agrupar {all_kw} con otras herramientas que muestren patrones similares (si los hay).
+            *   Identificar factores comunes de éxito/fracaso (si es posible).
+            *   Analizar relaciones de tiempo de adopción (si es posible).
+            *   Calcular métricas específicas de la categoría (si existen y son relevantes).
+        *   *Si no hay datos de otras herramientas:*
+            *   Simplemente *identificar* la categoría general de {all_kw} (ej., "herramienta de planificación estratégica", "herramienta de gestión de la calidad", etc.).
+            *  Omitir el resto.
+    *   **Interpretación Técnica:**  Describir *cualitativamente* la relación de {all_kw} con su categoría (si es posible) y *cualquier* patrón observable en relación con otras herramientas (si hay datos).
+
+**Datos Requeridos:**
+
+*   Datos de series temporales para {all_kw} en {dbs} (20, 15, 10, 5 y 1 año).
+*   Tendencias y medias para {all_kw} y, *si están disponibles*, para otras herramientas ({csv_means_trends}).
+*   *Si están disponibles*: Resultados de análisis de correlación y regresión ({csv_corr_matrix}, {csv_regression}).  *Si no están disponibles, estas secciones se omiten*.
+
+**Resultados Anteriores:**
+**`## Conexiones con Análisis Previos`** (Solo si *no* es el primer prompt)
+    *   Referencia y discusión *explícita* de cómo los resultados de este prompt se optimizan o mejoran con los resultados de los prompts anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
 
 Note: 
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
