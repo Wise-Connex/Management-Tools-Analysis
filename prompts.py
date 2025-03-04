@@ -744,32 +744,63 @@ Note:
 
 seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
 
-**Objective:** To analyze the significance and characteristics of seasonal patterns in {all_kw} management tool adoption within {dbs} data.
-Management Tool: {all_kw}
-Data Source: {dbs}
+# Análisis Estacional - {all_kw} ({dbs})
 
-**Tasks:**
+Herramienta: {all_kw}
+Fuente: {dbs}
 
-1. **Seasonal Pattern Analysis:**
-    - Identify and quantify recurring patterns
-    - Evaluate pattern consistency across years
-    - Analyze peak and trough periods
-    - Assess pattern evolution over time
+**Objetivo:** Identificar y analizar patrones estacionales en la adopción/interés de {all_kw} en {dbs}, *interpretar las causas* de estos patrones y *evaluar sus implicaciones* para la gestión y la investigación sobre modas gerenciales.
 
-2. **Causal Factor Analysis:**
-    - Analyze business cycle influences
-    - Evaluate fiscal year impacts
-    - Identify potential industry drivers
-    - Consider external market factors
+**Tareas Específicas, Cálculos e Interpretación Técnica:**
 
-3. **Pattern Implications:**
-    - Assess pattern stability for forecasting
-    - Evaluate trend vs seasonal components
-    - Consider impact on adoption strategies
-    - Analyze practical significance
+1.  **Identificación de Patrones Estacionales:**
+    *   **Tarea:** Utilizar la descomposición estacional (si es aplicable a la fuente de datos y al tipo de datos) para identificar patrones estacionales *consistentes* en la serie temporal de {all_kw}. Determinar los *meses/trimestres* de mayor y menor interés/uso.  Si la descomposición estacional *no* es aplicable (ej., porque la fuente de datos no proporciona datos con la frecuencia necesaria), utilizar *otros métodos* para detectar posibles patrones estacionales. Estos métodos alternativos podrían incluir:
+        *   **Análisis visual:** Examinar la serie temporal en busca de patrones repetitivos a lo largo del año.
+        *   **Comparación de medias mensuales/trimestrales:** Calcular el promedio de interés/uso para cada mes/trimestre y comparar los valores para identificar posibles picos y valles.
+        *   **Autocorrelación:** Calcular la función de autocorrelación para detectar posibles correlaciones entre valores separados por 12 meses (o el período estacional relevante).
+    *  **Cálculos:**
+        *   *Si se utiliza descomposición estacional:*
+            *   Componente estacional de la serie temporal.
+            *   Amplitud de la estacionalidad (ej., diferencia entre el máximo y el mínimo del componente estacional, o desviación estándar del componente estacional).
+        *   *Si no se utiliza descomposición estacional:*
+            *   Medias mensuales/trimestrales de interés/uso.
+            *   *Opcional:* Función de autocorrelación.
+        *   *En ambos casos:*
+            *   Identificación de los meses/trimestres de mayor y menor interés/uso.
+        *   *Opcional:* Pruebas estadísticas para la presencia de estacionalidad (ej., prueba de Kruskal-Wallis, ANOVA estacional). *Nota:* Estas pruebas deben usarse con precaución si los datos no cumplen los supuestos de las pruebas.
+    *   **Interpretación Técnica:** Describir *cualitativamente* y *cuantitativamente* el patrón estacional (si existe). Ejemplo: "El análisis revela un patrón estacional [claro/débil/inexistente]. [Si hay un patrón:] Los picos de interés se observan consistentemente en los meses de [meses], mientras que los valles se presentan en los meses de [meses]. La amplitud de la estacionalidad es de [valor] unidades, lo que indica una influencia estacional [fuerte/moderada/débil]." Si *no* hay un patrón claro, indicarlo explícitamente: "No se identifica un patrón estacional consistente en los datos de {dbs} para {all_kw}."
 
-**Data Required:**
-- Seasonal decomposition results: {csv_seasonal}
+2.  **Interpretación de las Causas:**
+    *   **Tarea:** *Inferir* las *posibles causas* de los patrones estacionales observados (o la ausencia de ellos). Considerar:
+        *   **Ciclos Empresariales:** Planificación estratégica anual, revisiones de presupuesto, cierres de año fiscal, lanzamientos de productos/servicios, etc.
+        *   **Ciclos Académicos:** Publicación de artículos, conferencias, inicio/fin de semestres/trimestres, etc. (especialmente relevante para Crossref y, en menor medida, para Google Books).
+        *   **Eventos Estacionales:** Vacaciones, feriados, eventos climáticos, etc. (podrían influir en Google Trends).
+        *   **Factores Específicos de la Industria:** Si {all_kw} está asociada a una industria en particular, considerar los ciclos específicos de esa industria (ej., temporadas de siembra/cosecha en agricultura, temporadas de ventas en comercio minorista, etc.).
+    *   **Inferencias y Relevancia:**
+        *   **Causas Probables:** ¿Cuáles son las explicaciones *más plausibles* para los patrones estacionales (o la ausencia de ellos)?  *No* afirmar causalidad definitiva, sino *sugerir* posibles explicaciones basadas en el conocimiento del contexto.
+        *   **Relación con las Antinomias:** ¿Los patrones estacionales reflejan una tensión entre la necesidad de planificación (estabilidad) y la necesidad de adaptación (cambio)? Por ejemplo, ¿los picos de interés coinciden con períodos en los que las organizaciones se centran en la planificación a largo plazo, o con períodos en los que necesitan adaptarse a cambios estacionales en la demanda?
+        *   **Aporte a la Investigación:** La interpretación de las causas ayuda a comprender *por qué* la adopción/interés de {all_kw} varía a lo largo del año y cómo estos factores se relacionan con el contexto empresarial, académico y social.
+
+3.  **Implicaciones Prácticas:**
+    *   **Tarea:**  Discutir las *implicaciones prácticas* de los patrones estacionales para:
+        *   **Organizaciones:**  ¿Cómo pueden las organizaciones *anticipar* y *aprovechar* los patrones estacionales? (ej., planificar la implementación de la herramienta en los períodos de mayor interés, evitar la competencia en los picos, etc.).
+        *   **Consultores:**  ¿Cómo pueden los consultores *utilizar* esta información para asesorar a sus clientes? (ej., recomendar la herramienta en ciertos momentos del año, ajustar las estrategias de marketing, etc.).
+        *   **Investigadores:** ¿Qué *nuevas preguntas* surgen a partir de estos patrones estacionales?
+    *   **Inferencias y Relevancia:**
+        *   **Planificación Estratégica:**  La estacionalidad puede informar la planificación estratégica relacionada con la adopción/uso de {all_kw}.
+        *   **Marketing y Comunicación:**  Los patrones estacionales pueden guiar las estrategias de marketing y comunicación.
+        *   **Investigación Futura:**  Los patrones estacionales pueden generar nuevas preguntas de investigación sobre los factores cíclicos que influyen en las modas gerenciales.
+        *  **Aporte a la Investigación:** Esta discución conecta los hallazgos con el mundo real de las organizaciones, consultores e investigadores.
+
+**Datos Requeridos:**
+*   Datos de series temporales (idealmente, descompuestos si la fuente de datos lo permite y la herramienta lo soporta). Si la fuente de datos *no* permite la descomposición, se utilizarán los datos originales.
+*   Cualquier información contextual relevante sobre ciclos empresariales, académicos, de la industria, etc.
+*   Seasonal decomposition results: {csv_seasonal}
+
+
+**Resultados Anteriores:**
+**`## Conexiones con Análisis Previos`** (Solo si *no* es el primer prompt)
+    *   Referencia y discusión *explícita* de cómo los resultados de este prompt se optimizan o mejoran con los resultados de los prompts anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
 
 Note: 
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -823,28 +854,57 @@ Note:
 
 prompt_6_single_analysis = """### **Cyclical Pattern Analysis for Management Tools**
 
-**Objective:** Analyze temporal patterns and cycles in {all_kw} management tool adoption and interest by {dbs}.
-Management Tool: {all_kw}
-Data Source: {dbs}
+# Análisis Cíclico - {all_kw} ({dbs})
 
-**Analysis Requirements:**
+Herramienta: {all_kw}
+Fuente: {dbs}
 
-1. **Pattern Strength Assessment:**
-   - Evaluate the significance of identified cycles in {all_kw}
-   - Quantify the strength of periodic patterns
-   - Identify dominant cycle lengths and their reliability
+**Objetivo:** Identificar y analizar patrones cíclicos *no estacionales* en la adopción/interés de {all_kw} en {dbs}, *interpretar las causas* de estos ciclos y *evaluar sus implicaciones* para la gestión y la investigación sobre modas gerenciales.
 
-2. **Contextual Analysis:**
-   - Examine business environment factors coinciding with cycles
-   - Analyze relationship with technology adoption patterns
-   - Identify seasonal or industry-specific influences
+**Tareas Específicas e Inferencias:**
 
-3. **Trend Implications:**
-   - Assess pattern stability and evolution over time
-   - Evaluate predictive value for future tool adoption
-   - Identify potential market saturation points
+1.  **Identificación de Patrones Cíclicos:**
+    *   **Tarea:** Utilizar el análisis de Fourier (u otras técnicas de análisis espectral) para identificar *frecuencias dominantes* en la serie temporal de {all_kw}. Convertir estas frecuencias en *períodos* (ej., un ciclo de 4 años).  Evaluar la *fuerza* de cada ciclo (amplitud).
+    *   **Inferencias y Relevancia:**
+        *   **Existencia de Ciclos:**  ¿Hay ciclos *claros y significativos*? Si no los hay, esto sugiere que los factores cíclicos *no estacionales* no son un impulsor importante.
+        *   **Períodos Dominantes:**  ¿Cuáles son las duraciones de los ciclos más importantes?
+        *   **Fuerza de los Ciclos:**  ¿Qué tan fuertes son los ciclos? Ciclos fuertes sugieren una influencia cíclica importante.
+        *   **Aporte a la Investigación:** La identificación de ciclos ayuda a comprender los *patrones de fluctuación a largo plazo* que no están relacionados con la estacionalidad.
+
+2.  **Interpretación de las Causas:**
+    *   **Tarea:** *Inferir* las *posibles causas* de los patrones cíclicos observados. Considerar:
+        *   **Ciclos Económicos:**  Recesiones, expansiones, etc.
+        *   **Ciclos Tecnológicos:**  Aparición de nuevas tecnologías que complementan o sustituyen a {all_kw}.
+        *   **Ciclos de la Industria:**  Ciclos específicos de la industria a la que pertenece {all_kw}.
+        *   **Ciclos de "Moda Gerencial":**  Ciclos inherentes a la difusión y adopción de innovaciones gerenciales (independientes de factores externos).
+        * **Ciclos Políticos:** Los cambios de gobierno, políticas públicas, etc.
+
+    *   **Inferencias y Relevancia:**
+        *   **Causas Probables:**  ¿Cuáles son las explicaciones *más plausibles* para los ciclos observados?
+        *   **Relación con las Antinomias:**  ¿Los ciclos reflejan una tensión entre la necesidad de estabilidad y la necesidad de cambio? ¿Podrían los ciclos estar relacionados con períodos en los que las organizaciones son más propensas a adoptar nuevas herramientas (en tiempos de crisis o cambio) o a aferrarse a las existentes (en tiempos de estabilidad)?
+        *   **Aporte a la Investigación:**  La interpretación de las causas ayuda a comprender *por qué* la adopción/interés de {all_kw} fluctúa a largo plazo y cómo estos factores se relacionan con el contexto económico, tecnológico y empresarial.
+
+3.  **Implicaciones Prácticas:**
+
+    *   **Tarea:**  Discutir las *implicaciones prácticas* de los patrones cíclicos para:
+        *   **Organizaciones:**  ¿Cómo pueden las organizaciones *anticipar* y *adaptarse* a los ciclos? (ej., ser más cautelosas al adoptar la herramienta durante un posible pico del ciclo, prepararse para posibles declives, etc.).
+        *   **Consultores:**  ¿Cómo pueden los consultores *utilizar* esta información para asesorar a sus clientes? (ej., recomendar la herramienta en ciertos momentos del ciclo, advertir sobre los riesgos de adopción en momentos inoportunos, etc.).
+        *   **Investigadores:**  ¿Qué *nuevas preguntas* surgen a partir de estos patrones cíclicos?
+
+    *   **Inferencias y Relevancia:**
+        *   **Planificación Estratégica:**  Los ciclos pueden informar la planificación estratégica a largo plazo.
+        *   **Gestión del Riesgo:**  La comprensión de los ciclos puede ayudar a las organizaciones a gestionar el riesgo asociado a la adopción de modas gerenciales.
+        *   **Investigación Futura:**  Los patrones cíclicos pueden generar nuevas preguntas de investigación sobre los factores que impulsan los ciclos de las modas gerenciales.
+        *  **Aporte a la Investigación:** Conecta los patrones con el mundo real.
 
 **Data Input:** {csv_fourier}
+*   Datos de series temporales.
+*   Resultados del análisis de Fourier (u otras técnicas de análisis espectral).
+*	Cualquier información contextual relevante sobre ciclos económicos, tecnológicos, etc.
+
+**Resultados Anteriores:**
+**`## Conexiones con Análisis Previos`** (Solo si *no* es el primer prompt)
+    *   Referencia y discusión *explícita* de cómo los resultados de este prompt se optimizan o mejoran con los resultados de los prompts anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
 
 Notes:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -893,31 +953,47 @@ Notes:
 
 prompt_conclusions_standalone = """## Synthesize Findings and Draw Conclusions - {all_kw} Analysis
 
-**Objective:** To synthesize findings and draw comprehensive conclusions about {all_kw} trends and adoption patterns based on {dbs} data.
-Management Tool: {all_kw}
-Data Source: {dbs}
+# Síntesis de Hallazgos y Conclusiones - Análisis de [{all_kw}] en {dbs}
 
-**Tasks:**
+Herramienta: {all_kw}
+Fuente: {dbs}
 
-1. **Key Trends Analysis:**
-    - Summarize the evolution of management tools over the analyzed period
-    - Identify dominant tools and emerging trends
-    - Highlight any significant shifts or disruptions in tool adoption
+**Objetivo:** Sintetizar los hallazgos de los *diferentes análisis estadísticos* realizados sobre la herramienta {all_kw} en la fuente de datos {dbs}, extraer conclusiones *específicas* sobre su trayectoria, y conectar estos hallazgos con las preguntas de investigación y las implicaciones para la gestión.  Este prompt consolida los resultados *antes* de pasar a la síntesis general entre herramientas.
 
-2. **Pattern Recognition:**
-    - Analyze temporal patterns (seasonal, cyclical, long-term)
-    - Evaluate relationships between different management tools
-    - Identify industry-specific adoption patterns
+**Tareas:**
 
-3. **Impact Assessment:**
-    - Evaluate the effectiveness of different management tools
-    - Analyze adoption rates and abandonment patterns
-    - Identify factors influencing tool selection and implementation
+1.  **Revisión de Resultados Previos:** Revisar *cuidadosamente* los resultados de *todos* los prompts anteriores relacionados con {all_kw} en {dbs}:
+    *   Análisis Temporal.
+    *   Análisis de Patrones Generales de Tendencia.
+    *   Análisis ARIMA.
+    *   Análisis Estacional.
+    *   Análisis Cíclico.
+    *   Análisis de Relaciones Cruzadas (si aplica).
 
-4. **Strategic Insights:**
-    - Provide recommendations for tool selection and implementation
-    - Identify potential risks and success factors
-    - Suggest best practices for tool evaluation and adoption
+2.  **Síntesis de Hallazgos Clave:**  Elaborar una síntesis *concisa* pero *completa* de los hallazgos *más importantes* de cada análisis.  *No* repetir todos los detalles, sino *resaltar* los puntos *cruciales* que contribuyen a la comprensión de la trayectoria de {all_kw}.  Ejemplos:
+    *   "El análisis temporal revela una tendencia general a la baja, con un declive más pronunciado en los primeros años y una estabilización posterior."
+    *   "El modelo ARIMA predice una continuación de esta estabilización a la baja."
+    *   "Se identifica un patrón estacional débil, con picos menores en [meses]."
+    *   "El análisis cíclico sugiere la posible presencia de un ciclo de N años, aunque su fuerza es moderada."
+    *  "No se identifican correlaciones estadísticamente significativas de factores externos con la herramienta" (si aplica)
+   *  "La herramienta se agrupa en la categoría de Herramientas de X, sin presentar correlaciones fuertes con otras herramientas"
+
+3.  **Análisis Integrado:** *Integrar* los hallazgos de los diferentes análisis para construir una *narrativa coherente* sobre la trayectoria de {all_kw} en {dbs}. Responder a preguntas como:
+    *   ¿Cuál es la *tendencia general*?
+    *   ¿En qué *etapa del ciclo de vida* parece encontrarse la herramienta?
+    *   ¿Qué *factores* parecen estar impulsando la trayectoria de la herramienta (estacionalidad, ciclos, factores externos, relaciones con otras herramientas)?
+    *   ¿Hay evidencia de *adaptación* o *evolución* de la herramienta?
+    *   ¿Las *predicciones* del modelo ARIMA son consistentes con los patrones observados?
+    * ¿Cómo se relacionan los patrones estacionales y cíclicos con los ciclos empresariales, académicos, o de la industria?
+    * ¿Existen factores comunes de éxito o fracaso en esta categoría de herramientas que sean relevantes para la herramienta analizada?
+
+4.  **Implicaciones (Integradas):**  Discutir las implicaciones de los hallazgos *integrados* para:
+    *   **Investigadores:** ¿Cómo contribuyen estos hallazgos a la investigación sobre modas gerenciales? ¿Qué nuevas preguntas surgen?
+    *   **Consultores:** ¿Qué consejos se pueden extraer para la recomendación y el uso de {all_kw}?
+    *   **Organizaciones:** ¿Qué deben considerar las organizaciones al evaluar la adopción o el uso continuo de {all_kw}?
+     *(Utilizar el formato de implicaciones integradas que definimos anteriormente, dirigiéndose a cada audiencia dentro del flujo natural del texto, sin subsecciones separadas).*
+
+5. **Limitaciones Especificas:** Incluir las limitaciones de la fuente de datos, y otras.
 
 **Data Integration:**
     # Temporal Trends
@@ -932,6 +1008,12 @@ Data Source: {dbs}
     {seasonal_analysis}
     # Cyclical Patterns
     {cyclical_patterns}
+
+    **Datos Requeridos:**
+*   Resultados de *todos* los prompts anteriores para {all_kw} en {dbs}.
+**Resultados Anteriores:**
+## Conexiones con Análisis Previos`**
+    *   Referencia y discusión *explícita* de cómo los resultados de este prompt se optimizan o mejoran con los resultados de los prompts anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
 
 **Key Considerations:**
 - Focus on practical implications for organizations
