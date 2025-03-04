@@ -90,7 +90,7 @@ Los datos provienen de diversas fuentes, cada una con sus propias característic
 ## **FORMATO DE SALIDA GENERAL**
 El resultado de cada prompt debe ser un informe en formato Markdown, estructurado de la siguiente manera:
 
-1.  **`# [Título: Análisis de la Trayectoria de {all_kw} ({dbs})]`**
+1.  **`# [Título: Análisis de la Trayectoria de {all_kw} {dbs}]`**
     *   Ejemplo: `# Análisis de la Trayectoria de Balanced Scorecard (Google Trends)`
     *   *Nota:* El título es *conciso* y *directo*.
 
@@ -209,10 +209,10 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
 *   No hagas recomendaciones sobre datos adicionales. Limítate a los datos proporcionados.
 *   Mantén el formato Markdown en todas las salidas.
 *   No menciones las visualizaciones, ya que se manejarán por separado.
-*   Conservar sin cambios, y en su idioma original las palabras que se indiquen entre llaves, por ejemplo ({dbs}).
+*   Conservar sin cambios, y en su idioma original las palabras que se indiquen entre llaves, por ejemplo {dbs}
 *   Omisión de Elementos Innecesarios: No incluir autoevaluaciones, introducciones a las respuestas (ir directo a las secciones).
 *   La interpretación debe ser implícita, ni discusiones sobre hipótesis. No usar pronombres personales.
-*   Una Sola Fuente de Datos: Si solo hay una fuente de datos disponible ({dbs}), omitir cualquier análisis o consideración que implique mencionar o comparar con otras fuentes. En esos casos, omitir sin justificar por qué.
+*   Una Sola Fuente de Datos: Si solo hay una fuente de datos disponible {dbs} , omitir cualquier análisis o consideración que implique mencionar o comparar con otras fuentes. En esos casos, omitir sin justificar por qué.
 *   Concisión y Claridad: El informe debe ser lo más preciso, directo, conciso y claro posible, sin sacrificar el rigor. Evitar repeticiones.
 *   Prioridad de Evidencia: La clasificación en un modelo y las conclusiones deben estar sólidamente basadas en el análisis estadístico.
 
