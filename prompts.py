@@ -492,7 +492,7 @@ Fuente: {dbs}
         *   **Conflictos:** Identificar si la adopción conjunta de ciertas herramientas es *contraproducente* o *innecesaria*.
         *   **Adopción Secuencial:**  ¿Hay herramientas que *típicamente* se adoptan *antes* o *después* de {all_kw}? ¿Esto sugiere una secuencia lógica de implementación?
     *   **Aporte a la Investigación:**  Este análisis ayuda a comprender cómo las organizaciones *combinan* herramientas de gestión y cómo estas combinaciones pueden afectar su capacidad para abordar las antinomias organizacionales (ej., ¿una combinación de herramientas promueve la estabilidad *y* la innovación, o solo una de ellas?).
-    
+
 **Data Required:**
 - Correlation matrix: {csv_corr_matrix}
 - Regression analysis results: {csv_regression}
@@ -646,32 +646,46 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 
 arima_analysis_prompt_1 = """### **Analyze ARIMA Model Performance**
 
-**Objective:** To evaluate and interpret ARIMA model forecasting performance for {all_kw} management tool adoption patterns in {dbs}.
-Management Tool: {all_kw}
-Data Source: {dbs}
+# Análisis ARIMA - {all_kw} ({dbs})
 
-**Tasks:**
+Herramienta: {all_kw}
+Fuente: {dbs}
 
-1. **Model Performance Assessment:**
-    - Interpret provided accuracy metrics:
-        * Root Mean Square Error (RMSE)
-        * Mean Absolute Error (MAE)
-        * Error Cuadrático Medio (ECM)
-    - Evaluate prediction accuracy at different time horizons
-    - Analyze forecast confidence intervals
-    - Assess model fit quality
+**Objetivo:** Evaluar la capacidad del modelo ARIMA para *predecir* los patrones de adopción/interés de {all_kw} en {dbs}, *interpretar* las implicaciones de las predicciones del modelo para la *futura evolución* de la herramienta, y *relacionar* estas predicciones con las antinomias del ecosistema transorganizacional, el ciclo de vida de las modas gerenciales y las preguntas de investigación.
 
-2. **Parameter Analysis:**
-    - Evaluate significance of AR, I, and MA components
-    - Analyze selected model order (p,d,q)
-    - Assess stationarity implications
-    - Review parameter significance levels
+**Tareas Específicas e Inferencias:**
 
-3. **Model Insights:**
-    - Interpret forecast trends and patterns
-    - Identify significant trend changes
-    - Evaluate forecast reliability
-    - Assess practical implications for tool adoption
+1.  **Evaluación del Rendimiento del Modelo:**
+    *   **Tarea:** Interpretar las métricas de ajuste del modelo (RMSE, MAE, AIC, BIC) *en el contexto de la variabilidad inherente a los datos de tendencias de gestión*.  No hay valores "buenos" o "malos" absolutos; lo importante es la *comparación relativa* con otros modelos y la *magnitud* de los errores en relación con la escala de los datos (0-100).  Evaluar la precisión a diferentes horizontes temporales (corto, medio, largo plazo) y analizar los intervalos de confianza.
+    *   **Inferencias y Relevancia:**
+        *   **RMSE/MAE:**  ¿Qué tan grandes son los errores de predicción en promedio? ¿Son aceptables dado el contexto?
+        *   **AIC/BIC:**  ¿El modelo está bien ajustado o es demasiado complejo?
+        *   **Precisión a Diferentes Horizontes:**  ¿El modelo es más preciso a corto plazo que a largo plazo? Esto es *esperable*, pero es importante cuantificarlo.
+        *   **Intervalos de Confianza:**  ¿Qué tan amplios son los intervalos de confianza?  Intervalos amplios indican *mayor incertidumbre* en las predicciones.
+        *   **Aporte a la Investigación:** La evaluación del rendimiento del modelo determina la *fiabilidad* de las predicciones y establece los *límites* de lo que se puede inferir sobre el futuro de la herramienta.
+
+2.  **Análisis de Parámetros:**
+    *   **Tarea:** Interpretar los parámetros del modelo ARIMA (p, d, q) y los coeficientes de los términos AR y MA.  Determinar si los parámetros son *estadísticamente significativos*.
+    *   **Inferencias y Relevancia:**
+        *   **p (orden autorregresivo):** Indica cuántos períodos pasados influyen en el valor actual. Un valor alto de *p* sugiere una fuerte dependencia de los valores pasados.
+        *   **d (grado de diferenciación):** Indica cuántas veces se necesita diferenciar la serie para hacerla estacionaria.  Un valor alto de *d* sugiere una tendencia fuerte (lineal, cuadrática, etc.).
+        *   **q (orden de media móvil):** Indica cuántos errores pasados influyen en el valor actual.
+        *   **Coeficientes AR y MA:**  Indican la *dirección* y *magnitud* de la influencia de los valores pasados y los errores pasados.
+        *   **Significancia Estadística:**  Los parámetros no significativos podrían indicar que el modelo es *demasiado complejo* o que ciertos componentes no son relevantes.
+        *   **Aporte a la Investigación:** La interpretación de los parámetros ayuda a comprender las *características intrínsecas* de la serie temporal de {all_kw} (ej., si es fuertemente dependiente del pasado, si tiene una tendencia fuerte, si es muy volátil).
+
+3.  **Perspectivas del Modelo (Predicciones):**
+    *   **Tarea:**  Analizar las *predicciones* del modelo ARIMA para {all_kw}.  ¿El modelo predice un crecimiento, un declive, una estabilización, fluctuaciones cíclicas, u otro patrón?  Comparar las predicciones con los patrones observados en el pasado.
+    *   **Inferencias y Relevancia:**
+        *   **Tendencia Predicha:**  ¿Hacia dónde se dirige la herramienta, según el modelo?
+        *   **Patrones Predichos:**  ¿El modelo predice ciclos, estacionalidad u otros patrones regulares?
+        *   **Relación con el Ciclo de Vida:**  ¿Las predicciones son consistentes con la etapa actual del ciclo de vida de la herramienta (inferida del análisis temporal)?  ¿El modelo sugiere una transición a una nueva etapa?
+        *   **Relación con las Antinomias:**  ¿Las predicciones sugieren que la herramienta será capaz de *mitigar* las tensiones entre innovación y ortodoxia, o que *sucumbirá* a ellas?  Por ejemplo, una predicción de declive podría indicar que la herramienta no ha logrado un equilibrio entre estos dos polos.
+        *   **Aporte a la Investigación:** Las predicciones del modelo (junto con su evaluación de fiabilidad) proporcionan una *base cuantitativa* para discutir las *posibles trayectorias futuras* de {all_kw} y su relación con las preguntas de investigación.  *Importante:*  Las predicciones deben presentarse como *escenarios probables*, no como certezas.
+
+**Resultados Anteriores:**
+**`## Conexiones con Análisis Previos`** (Solo si *no* es el primer prompt)
+    *   Referencia y discusión *explícita* de cómo los resultados de este prompt se optimizan o mejoran con los resultados de los prompts anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
 
 **Data Input:**
 ARIMA Model Results: {arima_results}
