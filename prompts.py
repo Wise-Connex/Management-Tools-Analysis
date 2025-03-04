@@ -90,7 +90,7 @@ Los datos provienen de diversas fuentes, cada una con sus propias característic
 ## **FORMATO DE SALIDA GENERAL**
 El resultado de cada prompt debe ser un informe en formato Markdown, estructurado de la siguiente manera:
 
-1.  **`# [Título: Análisis de la Trayectoria de {all_kw} {dbs}]`**
+1.  **`# [Título: Análisis de la Trayectoria de la herramienta gerencial en la base o fuente de datos]`**
     *   Ejemplo: `# Análisis de la Trayectoria de Balanced Scorecard (Google Trends)`
     *   *Nota:* El título es *conciso* y *directo*.
 
@@ -102,11 +102,11 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
         *   *No* incluirá cifras específicas aquí, solo descripciones cualitativas.
 	* **Extensión:** **Aproximadamente 250-300 palabras.** *Prioriza la concisión y la claridad*. Incluye solo la información *esencial*.
 
-3.  **`## Introducción: Contexto y Relevancia de {all_kw}`**
+3.  **`## Introducción: Contexto y Relevancia de la herramienta gerencial`**
     *   *Contenido:*
-        *   **Definición:** Una definición *clara y concisa* de la herramienta {all_kw}. *No* usar jerga excesiva; definir términos técnicos si es necesario.
+        *   **Definición:** Una definición *clara y concisa* de la herramienta gerencial. *No* usar jerga excesiva; definir términos técnicos si es necesario.
         *   **Relevancia:** Explicar *por qué* esta herramienta es (o fue) relevante para las organizaciones. ¿Qué problemas pretende resolver? ¿Qué beneficios promete?
-        *   **Contexto Temporal:** Mencionar *explícitamente* el período de tiempo analizado y la fuente de datos. Ejemplo: “Este análisis examina la trayectoria de {all_kw} en {dbs} durante el período de [Fecha Inicio] a [Fecha Fin].” Si se conoce que el origen de la herramienta es previo al lapso analizado, hacer la distinción aclarando que este análisis es solo para el lapso de tiempo definido.
+        *   **Contexto Temporal:** Mencionar *explícitamente* el período de tiempo analizado y la fuente de datos. Ejemplo: “Este análisis examina la trayectoria de la herramienta gerencial en base de datos utilizada durante el período de [Fecha Inicio] a [Fecha Fin].” Si se conoce que el origen de la herramienta es previo al lapso analizado, hacer la distinción aclarando que este análisis es solo para el lapso de tiempo definido.
 	* **Relevancia de la fuente de datos:** Indicar qué revelan o qué muestran los datos para efectos de este análisis. Ventajas.
 	* **Implicaciones:** Posibles implicaciones que se pueden obtener del análisis.
 	* **Extensión:** **Aproximadamente 400-450 palabras.** *Sé conciso, pero asegúrate de cubrir todos los puntos clave (definición, relevancia, contexto temporal, relevancia de la fuente, implicaciones).*.
@@ -128,7 +128,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
             ```
     *   *Ejemplo de Tabla:*
         ```
-          | Fecha      | Valor ({all_kw} en {dbs}) |
+          | Fecha      | Valor (herramienta gerencial en fuente de datos) |
           |------------|---------------------------|
           | 2005-01-01 | 45                        |
           | 2005-02-01 | 48                        |
@@ -147,7 +147,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
 *Nota: Se puede dividir en subsecciones (`###`) si hay muchos datos de diferentes tipos (ej., `### Datos de Series Temporales`, `### Resultados del Modelo ARIMA`, etc.).*
 *Extensión:* No hay límite de palabras, ya que depende de la cantidad de datos. *Prioriza la claridad y la organización*.
 
-5.  **`## Análisis de la Trayectoria de {all_kw}`**
+5.  **`## Análisis de la Trayectoria de la herramienta gerencial`**
 
     *   *Contenido:* Esta sección presenta el *análisis* e *interpretación* de los datos, construyendo una *narrativa* sobre la trayectoria de la herramienta.
     *   *Estructura:*
@@ -209,10 +209,10 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
 *   No hagas recomendaciones sobre datos adicionales. Limítate a los datos proporcionados.
 *   Mantén el formato Markdown en todas las salidas.
 *   No menciones las visualizaciones, ya que se manejarán por separado.
-*   Conservar sin cambios, y en su idioma original las palabras que se indiquen entre llaves, por ejemplo {dbs}
+*   Conservar sin cambios, y en su idioma original las palabras que se indiquen entre llaves
 *   Omisión de Elementos Innecesarios: No incluir autoevaluaciones, introducciones a las respuestas (ir directo a las secciones).
 *   La interpretación debe ser implícita, ni discusiones sobre hipótesis. No usar pronombres personales.
-*   Una Sola Fuente de Datos: Si solo hay una fuente de datos disponible {dbs} , omitir cualquier análisis o consideración que implique mencionar o comparar con otras fuentes. En esos casos, omitir sin justificar por qué.
+*   Una Sola Fuente de Datos: Si solo hay una fuente de datos disponible, omitir cualquier análisis o consideración que implique mencionar o comparar con otras fuentes. En esos casos, omitir sin justificar por qué.
 *   Concisión y Claridad: El informe debe ser lo más preciso, directo, conciso y claro posible, sin sacrificar el rigor. Evitar repeticiones.
 *   Prioridad de Evidencia: La clasificación en un modelo y las conclusiones deben estar sólidamente basadas en el análisis estadístico.
 
