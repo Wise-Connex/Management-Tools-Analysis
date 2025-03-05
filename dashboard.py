@@ -2,7 +2,7 @@ import dash
 from dash import html, dcc, dash_table
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from correlation import get_all_keywords, get_file_data2, create_combined_dataset  # Update import
+from correlation import get_all_keywords, get_file_data2, create_combined_dataset, create_combined_dataset2, display_combined_datasets  # Update import
 import pandas as pd
 import plotly.graph_objects as go  # Add this import
 import numpy as np  # Add this import

@@ -1899,7 +1899,7 @@ def init_variables():
     global csv_last_5_data
     global csv_last_year_data
     global csv_all_data
-    global csv_means_trends
+    global csv_means_trends  # Added the missing global variable
     global trends_results
     global all_kw
     global current_year
@@ -1908,7 +1908,11 @@ def init_variables():
     global one_keyword
     global menu
     global current_year
-    
+    global combined_dataset
+    global combined_dataset2  # Add the new global variable
+    global datasets_norm_full  # Add the new global variable
+    global all_datasets_full  # Add the new global variable
+
     image_markdown = "\n\n# Gráficos\n\n"
     
     plt.style.use('ggplot')
@@ -2765,21 +2769,122 @@ def process_dataset(df, source, all_datasets, selected_sources):
     print(f"Final dataframe shape: {df_resampled.shape}")
     print(f"Final dataframe head:\n{df_resampled.head()}")
     print(f"Final frequency: {df_resampled.index.freq}")
+    
+    return df_resampled
 
+def process_dataset_full(df, source, selected_sources):
+    """
+    Process dataset without trimming to common date range.
+    Similar to process_dataset but preserves all dates.
+    
+    Args:
+        df (pd.DataFrame): Input dataset
+        source (int): Source identifier
+        selected_sources (list): List of selected source identifiers
+    
+    Returns:
+        pd.DataFrame: Processed dataset with all original dates
+    """
+    print(f"\nProcessing full dataset for source {source}")
+    print(f"Input shape: {df.shape}")
+    print(f"Input frequency: {df.index.freq}")
+    
+    # Ensure the index is datetime and timezone-naive
+    df.index = pd.to_datetime(df.index).tz_localize(None)
+    
+    # Check if Google Books is selected
+    is_annual_mode = 2 in selected_sources
+    
+    if is_annual_mode:
+        # Handle different sources in annual mode
+        if source == 2:  # Google Books
+            # GB data is already annual, no need to resample
+            df_resampled = df.copy()
+            
+        elif source in [3, 5]:  # Bain (Usability & Satisfaction)
+            # For Bain data, keep only the first month of each year as it represents the annual value
+            df['year'] = df.index.year
+            df_resampled = df.groupby('year').first()
+            df_resampled.index = pd.to_datetime(df_resampled.index, format='%Y')
+            
+        elif source == 4:  # Crossref
+            # Convert Crossref data to annual by taking the mean
+            df = df.apply(pd.to_numeric, errors='coerce')
+            df_resampled = df.resample('Y').mean()
+            df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
+            
+        elif source == 1:  # Google Trends
+            # Convert GT data to annual by taking the mean
+            df_resampled = df.resample('Y').mean()
+            df_resampled.index = pd.to_datetime(df_resampled.index.strftime('%Y-01-01'))
+            
+        else:
+            df_resampled = df.copy()
+            
+    else:
+        # For monthly data, keep as is
+        df_resampled = df.copy()
+
+    print(f"Final full dataframe shape: {df_resampled.shape}")
+    print(f"Final full dataframe head:\n{df_resampled.head()}")
+    print(f"Final frequency: {df_resampled.index.freq}")
+    
     return df_resampled
 
 def normalize_dataset(df):
     """
-    Normalizes the dataset to a scale from 0 to 100.
+    Normalize dataset values to a 0-100 scale.
+    
     Args:
-        df (pandas.DataFrame): The dataset to normalize.
+        df (pd.DataFrame): Input dataset
+    
     Returns:
-        pandas.DataFrame: The normalized dataset.
+        pd.DataFrame: Normalized dataset
     """
-    min_val = df.min().min()
-    max_val = df.max().max()
-    normalized_df = (df - min_val) / (max_val - min_val) * 100
-    return normalized_df
+    # Create a copy to avoid modifying the original
+    df_norm = df.copy()
+    
+    # Normalize each column to 0-100 range
+    for col in df_norm.columns:
+        min_val = df_norm[col].min()
+        max_val = df_norm[col].max()
+        
+        # Check if min and max are the same to avoid division by zero
+        if max_val != min_val:
+            df_norm[col] = 100 * (df_norm[col] - min_val) / (max_val - min_val)
+        else:
+            # If all values are the same, set to 50 (middle of range)
+            df_norm[col] = 50
+    
+    return df_norm
+
+def normalize_dataset_full(df):
+    """
+    Normalize a dataset without assuming common date ranges.
+    Similar to normalize_dataset but works with any date range.
+    
+    Args:
+        df (pd.DataFrame): The dataset to normalize
+        
+    Returns:
+        pd.DataFrame: Normalized dataset
+    """
+    # Create a copy to avoid modifying the original
+    df_norm = df.copy()
+    
+    # Normalize each column to 0-100 range
+    for col in df_norm.columns:
+        min_val = df_norm[col].min()
+        max_val = df_norm[col].max()
+        
+        # Check if min and max are the same to avoid division by zero
+        if max_val != min_val:
+            df_norm[col] = 100 * (df_norm[col] - min_val) / (max_val - min_val)
+        else:
+            # If all values are the same, set to 50 (middle of range)
+            df_norm[col] = 50
+    
+    return df_norm
 
 def process_and_normalize_datasets(allKeywords):
     global menu
@@ -2810,6 +2915,63 @@ def process_and_normalize_datasets(allKeywords):
     
     return datasets_norm, selected_sources
 
+def process_and_normalize_datasets_full(allKeywords):
+    """
+    Process and normalize datasets without trimming to common date range.
+    Similar to process_and_normalize_datasets but preserves all dates.
+    
+    Args:
+        allKeywords (list): List of keywords to process
+        
+    Returns:
+        tuple: (datasets_norm_full, selected_sources) - Normalized datasets with all dates and selected sources
+    """
+    global datasets_norm_full
+    global all_datasets_full
+    global selected_keyword
+    global selected_sources
+    
+    # Use the same keyword and sources as in the regular function
+    # to avoid asking the user twice
+    
+    # Initialize dictionaries to store datasets
+    all_datasets_full = {}
+    datasets_norm_full = {}
+    
+    # Get file data for each source
+    filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
+    
+    # Get raw data for each source
+    for source in selected_sources:
+        menu = source  # Set the global menu variable
+        df = get_file_data(filenames.get(source, 'Archivo no encontrado'), menu)
+        if df.empty or (df == 0).all().all():
+            print(f"Warning: Full dataset for source {source} is empty or contains only zeros.")
+            continue
+        all_datasets_full[source] = df
+    
+    # Process each dataset without trimming
+    for source in selected_sources:
+        if source in all_datasets_full:
+            datasets_full = process_dataset_full(all_datasets_full[source], source, selected_sources)
+            all_datasets_full[source] = datasets_full
+            print(f"\nConjunto de datos completo procesado: {source}")
+            print(all_datasets_full[source].head())
+            print(f"Dimensiones: {all_datasets_full[source].shape}\n\n")
+    
+    print("Full datasets (without trimming):")
+    print(all_datasets_full)
+    
+    # Normalize each dataset
+    datasets_norm_full = {source: normalize_dataset_full(df) for source, df in all_datasets_full.items()}
+    
+    # Print the normalized datasets for verification
+    for source, df_norm in datasets_norm_full.items():
+        print(f"\nNormalized full dataset for source {source}:")
+        print(df_norm)
+        print("\n")
+    
+    return datasets_norm_full, selected_sources
 
 def get_file_data2(selected_keyword, selected_sources):
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
@@ -2873,6 +3035,116 @@ def create_combined_dataset(datasets_norm, selected_sources, dbase_options):
 
     return combined_data
 
+def create_combined_dataset2(datasets_norm, selected_sources, dbase_options):
+    """
+    Creates a combined dataset that includes ALL date ranges from all selected sources,
+    filling missing values with NaN.
+    
+    Unlike create_combined_dataset which only includes common date ranges, this function
+    preserves all dates from all sources.
+    
+    Parameters:
+    -----------
+    datasets_norm : dict
+        Dictionary containing normalized datasets for each source
+    selected_sources : list
+        List of selected data sources
+    dbase_options : dict
+        Dictionary mapping source codes to their full names
+        
+    Returns:
+    --------
+    pandas.DataFrame
+        Combined dataset with all dates from all sources
+    """
+    global combined_dataset2
+    
+    # Initialize an empty DataFrame to store the combined dataset
+    combined_dataset2 = pd.DataFrame()
+    
+    # Get all unique dates from all datasets
+    all_dates = set()
+    for source in selected_sources:
+        if source in datasets_norm and not datasets_norm[source].empty:
+            all_dates.update(datasets_norm[source].index)
+    
+    # Sort the dates
+    all_dates = sorted(list(all_dates))
+    
+    # Create a DataFrame with all dates
+    combined_dataset2 = pd.DataFrame(index=all_dates)
+    
+    # Add data from each source
+    for source in selected_sources:
+        if source in datasets_norm and not datasets_norm[source].empty:
+            source_name = dbase_options.get(source, source)
+            # Reindex the source dataset to include all dates, filling with NaN
+            source_data = datasets_norm[source].reindex(all_dates)
+            
+            # Add columns from this source to the combined dataset
+            for col in source_data.columns:
+                combined_dataset2[f"{source_name}_{col}"] = source_data[col]
+    
+    # Sort by date
+    combined_dataset2.sort_index(inplace=True)
+    
+    return combined_dataset2
+
+def display_combined_datasets():
+    """
+    Displays both combined datasets (common date range and all dates) in full,
+    with a pause at the end to allow for comparison.
+    
+    This function prints the entire datasets, not just head and tail portions,
+    to allow for complete examination of the data differences.
+    """
+    global combined_dataset, combined_dataset2
+    
+    # Check if both datasets exist
+    if 'combined_dataset' not in globals() or combined_dataset is None:
+        print(f"{RED}Error: combined_dataset is not available.{RESET}")
+        return
+        
+    if 'combined_dataset2' not in globals() or combined_dataset2 is None:
+        print(f"{RED}Error: combined_dataset2 is not available.{RESET}")
+        return
+    
+    # Display header for the first dataset
+    print(f"\n{YELLOW}{'='*80}{RESET}")
+    print(f"{YELLOW}COMBINED DATASET (COMMON DATE RANGE ONLY){RESET}")
+    print(f"{YELLOW}{'='*80}{RESET}")
+    
+    # Display the entire first dataset
+    pd.set_option('display.max_rows', None)  # Show all rows
+    pd.set_option('display.max_columns', None)  # Show all columns
+    pd.set_option('display.width', None)  # Auto-detect width
+    
+    print(combined_dataset)
+    
+    # Display header for the second dataset
+    print(f"\n{GREEN}{'='*80}{RESET}")
+    print(f"{GREEN}COMBINED DATASET 2 (ALL DATES FROM ALL SOURCES){RESET}")
+    print(f"{GREEN}{'='*80}{RESET}")
+    
+    # Display the entire second dataset
+    print(combined_dataset2)
+    
+    # Reset display options to default
+    pd.reset_option('display.max_rows')
+    pd.reset_option('display.max_columns')
+    pd.reset_option('display.width')
+    
+    # Display summary statistics
+    print(f"\n{BLUE}{'='*80}{RESET}")
+    print(f"{BLUE}DATASET COMPARISON SUMMARY{RESET}")
+    print(f"{BLUE}{'='*80}{RESET}")
+    print(f"Combined Dataset (common dates) shape: {combined_dataset.shape}")
+    print(f"Combined Dataset 2 (all dates) shape: {combined_dataset2.shape}")
+    print(f"Additional dates in Dataset 2: {combined_dataset2.shape[0] - combined_dataset.shape[0]}")
+    
+    # Pause at the end
+    input(f"\n{YELLOW}Press Enter to continue...{RESET}")
+
 def main():
     global top_choice
     global combined_dataset
@@ -2906,11 +3178,21 @@ def main():
         elif top_choice == 2:
             # Nuevo flujo para comparación entre fuentes de datos
             init_variables()
+            
+            # Process datasets with common date range
             datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
             combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
-            csv_combined_dataset = combined_dataset.to_csv(index=True)  
-            print(combined_dataset)
-            print(csv_combined_dataset)
+            
+            # Process datasets with full date range (using the same selected_sources)
+            datasets_norm_full, _ = process_and_normalize_datasets_full(all_keywords)
+            combined_dataset2 = create_combined_dataset2(datasets_norm_full, selected_sources, dbase_options)
+            
+            # Save the combined dataset to CSV
+            csv_combined_dataset = combined_dataset.to_csv(index=True)
+            
+            # Display both datasets for comparison
+            display_combined_datasets()
+            
             # Set menu to a default value if it's not already set
             if 'menu' not in globals() or menu is None:
                 menu = 1  # Default value, adjust as needed based on your application logic
