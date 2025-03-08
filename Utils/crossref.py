@@ -144,6 +144,7 @@ def get_crossref_data(query, max_runtime=7200):
     batch_counter = 0  # Initialize batch_counter here
     empty_batch_counter = 0  # Track consecutive empty batches
     max_empty_batches = 5  # Maximum number of consecutive empty batches before stopping
+    cursor_expired = False  # Flag to track if cursor has expired
     
     # Set maximum runtime for a single query (in seconds)
     start_time = time.time()
@@ -180,7 +181,11 @@ def get_crossref_data(query, max_runtime=7200):
 
     try:
         while cursor:
-            batch_counter += 1
+            # Don't increment batch counter if we're restarting due to expired cursor
+            if not cursor_expired:
+                batch_counter += 1
+            cursor_expired = False  # Reset the flag
+            
             retry_count = 0
             
             while retry_count < max_retries:
@@ -197,7 +202,7 @@ def get_crossref_data(query, max_runtime=7200):
                     logger.debug(f"Requesting URL: {full_url}")
                     
                     # Use requests with timeout
-                    response = requests.get(full_url, timeout=30)
+                    response = requests.get(full_url, timeout=45)  # Increased timeout from 30 to 45 seconds
                     response.raise_for_status()
                     data = response.json()
                     
@@ -289,6 +294,40 @@ def get_crossref_data(query, max_runtime=7200):
                     
                     time.sleep(1)  # Rate limiting
                     break  # Break retry loop on success
+                
+                except requests.HTTPError as e:
+                    # Check if this is a 404 error (likely expired cursor)
+                    if hasattr(e, 'response') and e.response.status_code == 404 and cursor != '*':
+                        logger.warning(f"Cursor expired (404 error). Restarting with a fresh cursor.")
+                        cursor = '*'
+                        cursor_expired = True
+                        # Don't count this as a retry - we're starting fresh
+                        break
+                    
+                    # For other HTTP errors, follow the normal retry process
+                    retry_count += 1
+                    if retry_count < max_retries:
+                        delay = base_delay * (2 ** retry_count)
+                        logger.warning(f"HTTP error: {str(e)}. Retrying in {delay} seconds... (Attempt {retry_count + 1}/{max_retries})")
+                        time.sleep(delay)
+                    else:
+                        logger.error(f"Max retries reached for HTTP error: {str(e)}")
+                        # Save state before raising exception
+                        serializable_results = [(dt.strftime("%Y-%m-%d"), count) 
+                                             for dt, count in results]
+                        state = {
+                            'query': query,
+                            'cursor': cursor,  # Keep the same cursor to retry this batch
+                            'results': serializable_results,
+                            'total_items': total_items,
+                            'batch_counter': batch_counter - 1  # Revert batch counter so we retry this batch
+                        }
+                        
+                        os.makedirs(os.path.dirname(state_file), exist_ok=True)
+                        with open(state_file, 'w') as f:
+                            json.dump(state, f)
+                        logger.info(f"Saved state before HTTP error. Will resume from batch {batch_counter-1} on next run.")
+                        raise  # Re-raise to be caught by outer try-except
                     
                 except requests.Timeout:
                     retry_count += 1
@@ -298,6 +337,21 @@ def get_crossref_data(query, max_runtime=7200):
                         time.sleep(delay)
                     else:
                         logger.error("Max retries reached for timeout")
+                        # Save state before raising exception
+                        serializable_results = [(dt.strftime("%Y-%m-%d"), count) 
+                                             for dt, count in results]
+                        state = {
+                            'query': query,
+                            'cursor': cursor,  # Keep the same cursor to retry this batch
+                            'results': serializable_results,
+                            'total_items': total_items,
+                            'batch_counter': batch_counter - 1  # Revert batch counter so we retry this batch
+                        }
+                        
+                        os.makedirs(os.path.dirname(state_file), exist_ok=True)
+                        with open(state_file, 'w') as f:
+                            json.dump(state, f)
+                        logger.info(f"Saved state before timeout error. Will resume from batch {batch_counter-1} on next run.")
                         raise  # Re-raise to be caught by outer try-except
                         
                 except requests.exceptions.RequestException as e:
@@ -308,7 +362,26 @@ def get_crossref_data(query, max_runtime=7200):
                         time.sleep(delay)
                     else:
                         logger.error(f"Max retries reached for request error: {str(e)}")
+                        # Save state before raising exception
+                        serializable_results = [(dt.strftime("%Y-%m-%d"), count) 
+                                             for dt, count in results]
+                        state = {
+                            'query': query,
+                            'cursor': cursor,  # Keep the same cursor to retry this batch
+                            'results': serializable_results,
+                            'total_items': total_items,
+                            'batch_counter': batch_counter - 1  # Revert batch counter so we retry this batch
+                        }
+                        
+                        os.makedirs(os.path.dirname(state_file), exist_ok=True)
+                        with open(state_file, 'w') as f:
+                            json.dump(state, f)
+                        logger.info(f"Saved state before request error. Will resume from batch {batch_counter-1} on next run.")
                         raise  # Re-raise to be caught by outer try-except
+
+            # Handle case where we're restarting with a fresh cursor
+            if cursor_expired:
+                continue  # Skip the rest of the while loop and try again with the new cursor
 
             # Add this check to break out of the outer while loop
             if batch_counter >= total_batches or not cursor or completed_successfully or (time.time() - start_time) > max_runtime or shutdown_requested:
@@ -327,6 +400,22 @@ def get_crossref_data(query, max_runtime=7200):
 
     except Exception as e:
         logger.error(f"Error during data collection: {str(e)}")
+        # Save state before returning
+        if results:  # Only save if we have results
+            serializable_results = [(dt.strftime("%Y-%m-%d"), count) 
+                                 for dt, count in results]
+            state = {
+                'query': query,
+                'cursor': cursor,
+                'results': serializable_results,
+                'total_items': total_items,
+                'batch_counter': batch_counter - 1  # Revert batch counter to retry the failed batch
+            }
+            
+            os.makedirs(os.path.dirname(state_file), exist_ok=True)
+            with open(state_file, 'w') as f:
+                json.dump(state, f)
+            logger.info(f"Saved state after error. You can resume from batch {batch_counter-1}.")
         return None
 
 def group_by_month(data):

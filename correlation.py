@@ -506,8 +506,13 @@ def add_image_to_report(title, filename):
         print(f"Image file exists: {full_path}")
         with open(full_path, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode()
-        image_markdown += f"## {title}\n\n"
-        image_markdown += f"<img src='data:image/png;base64,{encoded_string}' style='max-width: 100%; height: auto;'>\n\n"
+        # Generate HTML directly
+        image_markdown += f"""
+        <figure>
+            <img src='data:image/png;base64,{encoded_string}' style='max-width: 100%; height: auto;'>
+            <figcaption>Figura: {title}</figcaption>
+        </figure>
+        """
     else:
         print(f"Image file does not exist: {full_path}")
 
@@ -1976,6 +1981,8 @@ def results():
     global csv_seasonal
     global all_keywords
     global csv_means_trendsA
+    global combined_dataset
+    global combined_dataset2
     
     # *************************************************************************************
     # Part 1 - Tendencias y Medias
@@ -1987,7 +1994,7 @@ def results():
     csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
     
     if top_choice == 2:
-        all_keywords = combined_dataset.columns.tolist()
+        all_keywords = combined_dataset2.columns.tolist()
     for kw in all_keywords:
         results = check_trends2(kw)
         csv_writer.writerow([kw] + results['means'] + results['trends'])
@@ -2382,17 +2389,24 @@ def ai_analysis():
     print(gem_summary_sp)    
 
 def csv2table(csv_data, header_line=0):
-        csv_lines= csv_data.strip().split('\n')
-        headers = csv_lines[header_line].split(',')
-        # Create markdown table header with smaller font and rotated text
-        table = "<div class='table-wrapper'>\n<table class='data-table'>"
-        table += "<tr>" + "".join([f"<th>{h}</th>" for h in headers]) + "</tr>\n"
-        # Add data rows
-        for line in csv_lines[1:]:
+    csv_lines = csv_data.strip().split('\n')
+    if not csv_lines:
+        return ""
+    
+    headers = csv_lines[header_line].split(',')
+    # Create HTML table with proper structure
+    table = "<div class='table-wrapper'>\n<table class='data-table'>\n<thead>\n"
+    table += "<tr>" + "".join([f"<th>{h}</th>" for h in headers]) + "</tr>\n"
+    table += "</thead>\n<tbody>\n"
+    
+    # Add data rows
+    for i, line in enumerate(csv_lines):
+        if i != header_line:  # Skip the header line
             values = line.split(',')
             table += "<tr>" + "".join([f"<td>{v}</td>" for v in values]) + "</tr>\n"
-        table += "</table>\n</div>\n\n"
-        return table
+    
+    table += "</tbody>\n</table>\n</div>\n\n"
+    return table
     
 def report_pdf():
     global data_txt
@@ -2401,90 +2415,63 @@ def report_pdf():
     global csv_means_trends
     global image_markdown
     
+    # Create data section in HTML directly (not markdown)
     data_txt = ''
     data_txt += "<div class='page-break'></div>\n"
-    data_txt += "# Datos\n"
+    data_txt += "<h1>Datos</h1>\n"
     if top_choice == 1:
-        data_txt += "## Herramientas Gerenciales:\n"
-        data_txt += ", ".join(all_keywords) + "\n"
+        data_txt += "<h2>Herramientas Gerenciales:</h2>\n"
+        data_txt += "<p>" + ", ".join(all_keywords) + "</p>\n"
     else:
-        data_txt += "## Herramientas Gerenciales:\n"
-        data_txt += actual_menu + "\n"
-        data_txt += "### Fuentes de Datos:\n"
-        data_txt += ", ".join(all_keywords) + "\n"
-    data_txt += "\n\n\n"
-    data_txt += f"## Datos de {actual_menu}\n"
+        data_txt += "<h2>Herramientas Gerenciales:</h2>\n"
+        data_txt += "<p>" + actual_menu + "</p>\n"
+        data_txt += "<h3>Fuentes de Datos:</h3>\n"
+        data_txt += "<p>" + ", ".join(all_keywords) + "</p>\n"
+    data_txt += "\n"
+    data_txt += f"<h2>Datos de {actual_menu}</h2>\n"
     
     if top_choice == 1:
         year_adjust = 0
         if menu == 2:
             year_adjust = 2
-            data_txt += f"### 72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})\n"
-            #data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+            data_txt += f"<h3>72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})</h3>\n"
             data_txt += csv2table(csv_all_data)
         elif menu == 4:
             year_adjust = 2
-            data_txt += f"### 74 años (Mensual) ({current_year-74} - {current_year})\n"
-            #data_txt += csv_all_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+            data_txt += f"<h3>74 años (Mensual) ({current_year-74} - {current_year})</h3>\n"
             data_txt += csv2table(csv_all_data)
-        data_txt += f"### 20 años (Mensual) ({current_year-20} - {current_year})\n"
-        #data_txt += csv_last_20_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"<h3>20 años (Mensual) ({current_year-20} - {current_year})</h3>\n"
         data_txt += csv2table(csv_last_20_data)
-        data_txt += f"### 15 años (Mensual) ({current_year-15} - {current_year})\n"
-        #data_txt += csv_last_15_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"<h3>15 años (Mensual) ({current_year-15} - {current_year})</h3>\n"
         data_txt += csv2table(csv_last_15_data)
-        data_txt += f"### 10 años (Mensual) ({current_year-10} - {current_year})\n"
-        #data_txt += csv_last_10_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"<h3>10 años (Mensual) ({current_year-10} - {current_year})</h3>\n"
         data_txt += csv2table(csv_last_10_data)
-        data_txt += f"### 5 años (Mensual) ({current_year-5} - {current_year})\n"
-        #data_txt += csv_last_5_data.replace(',', ' | ').replace('\n', ' |\n| ') + "\n"
+        data_txt += f"<h3>5 años (Mensual) ({current_year-5} - {current_year})</h3>\n"
         data_txt += csv2table(csv_last_5_data)
     else:
         data_txt += csv2table(csv_combined_data)     
     data_txt += "\n\n\n"
     data_txt += "<div class='page-break'></div>\n"  # Add page break here
-    data_txt += "## Datos Medias y Tendencias\n"
-    data_txt += f"### Medias y Tendencias ({current_year-20} - {current_year})\n"
+    data_txt += "<h2>Datos Medias y Tendencias</h2>\n"
+    data_txt += f"<h3>Medias y Tendencias ({current_year-20} - {current_year})</h3>\n"
     data_txt += csv_means_trendsA
     data_txt += csv2table(csv_means_trends)
     if not one_keyword:
-        data_txt += f"### Correlación\n"
+        data_txt += f"<h3>Correlación</h3>\n"
         data_txt += csv2table(csv_correlation)        
-        data_txt += f"### Regresión\n"
+        data_txt += f"<h3>Regresión</h3>\n"
         data_txt += csv2table(csv_regression)
-    data_txt += f"## ARIMA\n"
+    data_txt += f"<h2>ARIMA</h2>\n"
     for n in range(len(csv_arimaA)):
         data_txt += csv_arimaA[n]
         data_txt += csv2table(csv_arimaB[n])
-    data_txt += f"## Estacional\n"
+    data_txt += f"<h2>Estacional</h2>\n"
     data_txt += csv2table(csv_seasonal)
-    data_txt += f"## Fourier\n"
+    data_txt += f"<h2>Fourier</h2>\n"
     data_txt += csv2table(csv_fourier)
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
-    report = "\n"
-    report += "<div class='page-break'></div>\n"
-    report += gem_summary_sp  
-    report += "<div class='page-break'></div>\n"
-    report += gem_temporal_trends_sp  
-    report += "<div class='page-break'></div>\n"
-    if not one_keyword:
-        report += gem_cross_keyword_sp
-        report += "<div class='page-break'></div>\n"
-    report += gem_industry_specific_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_arima_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_seasonal_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_fourier_sp
-    report += "<div class='page-break'></div>\n"
-    report += gem_conclusions_sp
-    report += "<div class='page-break'></div>\n"
-
-    # Add the image markdown to the report
-    report += image_markdown
-
-    toc = generate_markdown_toc(report)
+    
+    # Set up years for title
     if menu == 2:
         start_year = current_year-70+year_adjust
         end_year = current_year-year_adjust
@@ -2494,65 +2481,182 @@ def report_pdf():
     else:
         start_year = current_year-20
         end_year = current_year
-    report = f"<div style='text-align: center;'><h1>Análisis de {', '.join(all_keywords)} \n</h1></div><div style='text-align: center;'>({actual_menu}) ({str(start_year)} - {str(end_year)})</div>\n\n</br></br></br></br>**Tabla de Contenido**\n</br></br>{toc}\n\n</br></br>\n {report}"
-    report += data_txt
-    report += "\n---</br></br></br><small>\n"
-    report += "\n**************************************************\n"
-    report += f"(c) 2024 - {current_year} Diomar Anez & Dimar Anez\n</br>"
-    report += f'Contacto: [SOLIDUM](https://www.solidum360.com) & [WISE CONNEX](https://www.wiseconnex.com) \n'
-    report += "**************************************************\n"
-    report += "</br></br>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. "
-    report += "Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. "
-    report += "Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta https://opensource.org/licenses/MIT/ "
-    now = datetime.now()
-    date_time_string = now.strftime("%Y-%m-%d %H:%M:%S")
-    report += "</br></br>Reporte generado el " + date_time_string + "\n"
-    report += "</small>"
-
+        
+    # Generate table of contents from markdown sections
+    # First, create a temporary markdown document with all the headings
+    temp_markdown = ""
+    temp_markdown += "# Resumen Ejecutivo\n"
+    temp_markdown += "# Tendencias Temporales\n"
+    if not one_keyword:
+        temp_markdown += "# Análisis Cruzado de Palabras Clave\n"
+    temp_markdown += "# Análisis Específico de la Industria\n"
+    temp_markdown += "# Análisis ARIMA\n"
+    temp_markdown += "# Análisis Estacional\n"
+    temp_markdown += "# Análisis de Fourier\n"
+    temp_markdown += "# Conclusiones\n"
+    temp_markdown += "# Datos\n"
+    
+    # Generate TOC from the temporary markdown
+    toc_html = generate_markdown_toc(temp_markdown)
+    
+    # Build the complete HTML document
     html_content = f"""
+    <!DOCTYPE html>
     <html>
     <head>
+        <meta charset="UTF-8">
+        <title>Análisis Estadístico de Herramientas Gerenciales</title>
         <style>
+            /* Page size and margins */
+            @page {{
+                size: 8.5in 11in;
+                margin: 1.25in;
+            }}
+            
+            /* Base document styles */
+            body {{
+                font-family: "Times New Roman", Times, serif;
+                font-size: 12pt;
+                line-height: 1.5;
+                color: #000000;
+                margin: 0; /* Remove body margin since @page handles it */
+                padding: 0;
+                background-color: #ffffff;
+                counter-reset: page;
+                width: 100%;
+            }}
+
+            /* Title page */
+            .title-page {{
+                text-align: center;
+                margin-top: 5cm;
+                margin-bottom: 5cm;
+            }}
+
+            .title-page h1 {{
+                font-size: 18pt;
+                margin-bottom: 1cm;
+            }}
+
+            .title-page .subtitle {{
+                font-size: 14pt;
+                margin-bottom: 2cm;
+            }}
+
+            .title-page .authors {{
+                font-size: 12pt;
+                margin-bottom: 1cm;
+            }}
+
+            .title-page .date {{
+                font-size: 12pt;
+                margin-bottom: 1cm;
+            }}
+
+            /* Content sections */
+            .toc, #resumen-ejecutivo, #tendencias-temporales,
+            #analisis-cruzado-de-palabras-clave, #analisis-especifico-de-la-industria,
+            #analisis-arima, #analisis-estacional, #analisis-de-fourier,
+            #conclusiones, #graficos, #datos {{
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }}
+
+            /* Table of contents */
+            .toc {{
+                margin: 2cm 0;
+            }}
+
+            .toc h2 {{
+                text-align: center;
+                font-size: 14pt;
+                margin-bottom: 1cm;
+            }}
+
+            /* Headings */
+            h1, h2, h3, h4, h5, h6 {{
+                font-family: "Times New Roman", Times, serif;
+                font-weight: bold;
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+            }}
+
+            h1 {{
+                font-size: 16pt;
+                text-align: center;
+                margin-top: 2em;
+            }}
+
+            h2 {{
+                font-size: 14pt;
+            }}
+
+            h3 {{
+                font-size: 12pt;
+            }}
+
+            /* Paragraphs */
+            p {{
+                text-align: justify;
+                margin-bottom: 1em;
+                width: 100%;
+            }}
+
+            /* Page numbering */
             @page {{
                 @bottom-right {{
                     content: counter(page);
                 }}
             }}
-            body {{
-                counter-reset: page;
-            }}
+
+            /* Page breaks */
             .page-break {{
                 page-break-after: always;
                 counter-increment: page;
+                height: 0;
+                display: block;
             }}
+
+            /* Tables */
             table {{
                 border-collapse: collapse;
                 width: 100%;
+                margin: 1.5em 0;
+                page-break-inside: avoid;
             }}
+
             th, td {{
                 border: 1px solid black;
                 padding: 8px;
                 text-align: left;
             }}
+
             th {{
                 background-color: #f2f2f2;
+                font-weight: bold;
             }}
+
             .table-wrapper {{
                 width: 100%;
+                max-width: none;
                 overflow-x: auto;
                 margin-bottom: 1em;
+                padding: 0;
             }}
+
             .data-table {{
-                font-size: 8pt;
+                font-size: 10pt;
                 width: 100%;
                 border-collapse: collapse;
                 table-layout: fixed;
             }}
+
             .data-table th {{
                 padding: 5px 2px;
                 vertical-align: bottom;
                 text-align: left;
-                font-size: 8pt;
+                font-size: 10pt;
                 /* Change white-space to normal to allow wrapping */
                 white-space: normal;
                 /* Add word-wrap for better control */
@@ -2560,41 +2664,252 @@ def report_pdf():
                 /* Optional: add a max height if needed */
                 max-height: 50px;
             }}
+
             .data-table td {{
                 padding: 5px 2px;
-                font-size: 7pt;
+                font-size: 9pt;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }}
+
+            /* Table captions */
+            .table-caption {{
+                font-style: italic;
+                text-align: center;
+                margin-top: 0.5em;
+                caption-side: bottom;
+                font-size: 10pt;
+            }}
+
+            /* Figures and images */
+            figure {{
+                text-align: center;
+                margin: 1.5em 0;
+                page-break-inside: avoid;
+            }}
+
+            img {{
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 1.5em auto;
+                page-break-inside: avoid;
+            }}
+
+            figcaption {{
+                font-style: italic;
+                text-align: center;
+                margin-top: 0.5em;
+                font-size: 10pt;
+            }}
+
+            /* Abstract section */
+            .abstract {{
+                margin: 2em 0;
+                font-size: 11pt;
+            }}
+
+            .abstract h2 {{
+                text-align: center;
+                font-size: 12pt;
+                font-weight: bold;
+            }}
+
+            .abstract p {{
+                text-align: justify;
+            }}
+
+            /* References and citations */
+            .references {{
+                margin-top: 2em;
+            }}
+
+            .references h2 {{
+                text-align: center;
+            }}
+
+            .references ol {{
+                padding-left: 1em;
+            }}
+
+            .references li {{
+                text-indent: -1em;
+                padding-left: 1em;
+                margin-bottom: 0.5em;
+            }}
+
+            /* Footer */
+            .footer {{
+                margin-top: 2em;
+                border-top: 1px solid #000;
+                padding-top: 1em;
+                font-size: 9pt;
+            }}
+
+            /* Print-specific styles */
             @media print {{
+                body {{
+                    font-size: 12pt;
+                }}
+                
+                a {{
+                    text-decoration: none;
+                    color: #000000;
+                }}
+                
                 .table-wrapper {{
                     overflow-x: visible;
                 }}
                 
                 .data-table {{
-                    font-size: 7pt;
+                    font-size: 9pt;
                     page-break-inside: avoid;
                 }}
-            }}            
+                
+                img {{
+                    max-width: 100% !important;
+                }}
+                
+                h1, h2, h3, h4, h5, h6 {{
+                    page-break-after: avoid;
+                    page-break-inside: avoid;
+                }}
+                
+                p {{
+                    orphans: 3;
+                    widows: 3;
+                }}
+            }}
         </style>
     </head>
     <body>
-        {markdown.markdown(report, extensions=["tables"])}
+        <!-- Title Page -->
+        <div class="title-page">
+            <h1>Análisis de {', '.join(all_keywords)}</h1>
+            <div class="subtitle">({actual_menu}) ({str(start_year)} - {str(end_year)})</div>
+            <div class="authors">Diomar Anez & Dimar Anez</div>
+            <div class="date">{datetime.now().strftime("%d de %B de %Y")}</div>
+        </div>
+        <div class="page-break"></div>
+        
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>Tabla de Contenido</h2>
+            {toc_html}
+        </div>
+        <div class="page-break"></div>
+        
+        <!-- Main Content - Convert markdown sections to HTML -->
+        <div id="resumen-ejecutivo">
+            <h1>Resumen Ejecutivo</h1>
+            {markdown.markdown(gem_summary_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <div id="tendencias-temporales">
+            <h1>Tendencias Temporales</h1>
+            {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+    """
+    
+    if not one_keyword:
+        html_content += f"""
+        <div id="analisis-cruzado-de-palabras-clave">
+            <h1>Análisis Cruzado de Palabras Clave</h1>
+            {markdown.markdown(gem_cross_keyword_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        """
+    
+    html_content += f"""
+        <div id="analisis-especifico-de-la-industria">
+            <h1>Análisis Específico de la Industria</h1>
+            {markdown.markdown(gem_industry_specific_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <div id="analisis-arima">
+            <h1>Análisis ARIMA</h1>
+            {markdown.markdown(gem_arima_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <div id="analisis-estacional">
+            <h1>Análisis Estacional</h1>
+            {markdown.markdown(gem_seasonal_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <div id="analisis-de-fourier">
+            <h1>Análisis de Fourier</h1>
+            {markdown.markdown(gem_fourier_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <div id="conclusiones">
+            <h1>Conclusiones</h1>
+            {markdown.markdown(gem_conclusions_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <!-- Images -->
+        <div id="graficos">
+            <h1>Gráficos</h1>
+            {image_markdown}
+        </div>
+        
+        <!-- Data Section -->
+        <div id="datos">
+            {data_txt}
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>(c) 2024 - {current_year} Diomar Anez & Dimar Anez</p>
+            <p>Contacto: <a href="https://www.solidum360.com">SOLIDUM</a> & <a href="https://www.wiseconnex.com">WISE CONNEX</a></p>
+            <p>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. 
+            Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. 
+            Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta <a href="https://opensource.org/licenses/MIT/">https://opensource.org/licenses/MIT/</a></p>
+            <p>Reporte generado el {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
+        </div>
     </body>
     </html>
     """
 
-    # Replace existing page break divs with the new class
-    html_content = html_content.replace('<div style="page-break-after: always;"></div>', '<div class="page-break"></div>')
-
-    # Add page breaks after each graph
-    html_content = html_content.replace('</img>', '</img><div class="page-break"></div>')
-
+    # No need to replace page breaks or add them after figures since we're now using proper HTML structure
+    
     pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
     print(f"Saving PDF to: {pdf_path}")
-    print(f"Number of images in report: {html_content.count('<img')}")
-    weasyprint.HTML(string=html_content).write_pdf(pdf_path)
+    print(f"Number of figures in report: {html_content.count('<figure>')}")
+    
+    # Create custom CSS for page size and margins
+    from weasyprint import HTML, CSS
+    
+    custom_css = CSS(string='''
+        @page {
+            size: 8.5in 11in;
+            margin: 0.75in;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        /* Ensure content uses full width */
+        .title-page, .toc, div[id], .footer {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    ''')
+    
+    # Apply the custom CSS when generating the PDF
+    HTML(string=html_content).write_pdf(pdf_path, stylesheets=[custom_css])
+    
     char='*'
     title='********** ' + filename + ' PDF REPORT SAVED **********'
     qty=len(title)
@@ -3148,6 +3463,7 @@ def display_combined_datasets():
 def main():
     global top_choice
     global combined_dataset
+    global combined_dataset2
     global trends_results
     global csv_combined_dataset
     global menu  # Ensure menu is declared as global here
