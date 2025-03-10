@@ -132,6 +132,9 @@ global selected_keyword
 global selected_sources
 global earliest_date
 global latest_date
+global earliest_year
+global latest_year
+global total_years
 global keycharts
 global csv_combined_dataset
 keycharts = []
@@ -884,6 +887,9 @@ def process_file_data(all_kw, d_filename):
   global combined_dataset
   global combined_dataset2
   global menu
+  global earliest_year
+  global latest_year
+  global total_years
   
   # Ensure menu has a default value if not set
   if 'menu' not in globals() or menu is None:
@@ -2427,6 +2433,9 @@ def report_pdf():
     global all_keywords
     global actual_menu
     global top_choice
+    global earliest_year
+    global latest_year
+    global total_years
     
     # Find the cover image path from portada-combined.csv
     cover_image_path = None
@@ -2443,19 +2452,26 @@ def report_pdf():
     
     # Determine which data source we're using
     data_source_code = ""
+    data_source_name = ""
     if menu == 1:
         data_source_code = "GT"  # Google Trends
+        data_source_name = "Google Trends"
     elif menu == 2:
         data_source_code = "GB"  # Google Books Ngrams
+        data_source_name = "Google Books Ngram"
     elif menu == 3:
         data_source_code = "BU"  # Bain - Usability
+        data_source_name = "Bain & Company - Usability"
     elif menu == 4:
         data_source_code = "CR"  # Crossref.org
+        data_source_name = "Crossref.org"
     elif menu == 5:
         data_source_code = "BS"  # Bain - Satisfaction
+        data_source_name = "Bain & Company - Satisfaction"
     # Add other data sources as needed
     
     print(f"DEBUG: Using data source code: '{data_source_code}'")
+    print(f"DEBUG: Using data source name: '{data_source_name}'")
     
     # Read the CSV file to find the cover image
     import pandas as pd
@@ -2481,11 +2497,16 @@ def report_pdf():
             
             print(f"DEBUG: Found {len(matching_rows)} matching rows for tool: '{current_tool}'")
             
+            # Get the Cod value from the matching row
+            cod_value = ""
             if not matching_rows.empty:
                 # Look for a row with the matching data source code
                 data_source_matches = matching_rows[matching_rows['Cód'].str.endswith(data_source_code, na=False)]
                 
                 if not data_source_matches.empty:
+                    # Get the Cod value from the first matching row
+                    cod_value = data_source_matches.iloc[0]['Cód']
+                    print(f"DEBUG: Found Cod value: {cod_value}")
                     # Get the file path from the first matching row with the correct data source
                     file_info = data_source_matches.iloc[0]['File']
                     cover_image_path = os.path.join('pub-assets', file_info)
@@ -2578,32 +2599,34 @@ def report_pdf():
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
     
     # Set up years for title
-    if menu == 2:
-        start_year = current_year-70+year_adjust
-        end_year = current_year-year_adjust
-    elif menu == 4:
-        start_year = current_year-74
-        end_year = current_year
-    else:
-        start_year = current_year-20
-        end_year = current_year
+    # if menu == 2:
+    #     start_year = current_year-70+year_adjust
+    #     end_year = current_year-year_adjust
+    # elif menu == 4:
+    #     start_year = current_year-74
+    #     end_year = current_year
+    # else:
+    #     start_year = current_year-20
+    #     end_year = current_year
+    start_year = earliest_year
+    end_year = latest_year
         
     # Generate table of contents from markdown sections
     # First, create a temporary markdown document with all the headings
-    temp_markdown = ""
-    temp_markdown += "# Resumen Ejecutivo\n"
-    temp_markdown += "# Tendencias Temporales\n"
-    if not one_keyword:
-        temp_markdown += "# Análisis Cruzado de Palabras Clave\n"
-    temp_markdown += "# Análisis Específico de la Industria\n"
-    temp_markdown += "# Análisis ARIMA\n"
-    temp_markdown += "# Análisis Estacional\n"
-    temp_markdown += "# Análisis de Fourier\n"
-    temp_markdown += "# Conclusiones\n"
-    temp_markdown += "# Datos\n"
+    # temp_markdown = ""
+    # temp_markdown += "# Resumen Ejecutivo\n"
+    # temp_markdown += "# Tendencias Temporales\n"
+    # if not one_keyword:
+    #     temp_markdown += "# Análisis Cruzado de Palabras Clave\n"
+    # temp_markdown += "# Análisis Específico de la Industria\n"
+    # temp_markdown += "# Análisis ARIMA\n"
+    # temp_markdown += "# Análisis Estacional\n"
+    # temp_markdown += "# Análisis de Fourier\n"
+    # temp_markdown += "# Conclusiones\n"
+    # temp_markdown += "# Datos\n"
     
-    # Generate TOC from the temporary markdown
-    toc_html = generate_markdown_toc(temp_markdown)
+    # # Generate TOC from the temporary markdown
+    # toc_html = generate_markdown_toc(temp_markdown)
     
     # Build the complete HTML document
     html_content = f"""
@@ -2899,13 +2922,6 @@ def report_pdf():
         </div>
         <div class="page-break"></div>
         
-        <!-- Table of Contents -->
-        <div class="toc">
-            <h2>Tabla de Contenido</h2>
-            {toc_html}
-        </div>
-        <div class="page-break"></div>
-        
         <!-- Main Content - Convert markdown sections to HTML -->
         <div id="resumen-ejecutivo">
             <h1>Resumen Ejecutivo</h1>
@@ -3000,7 +3016,23 @@ def report_pdf():
         @page {{
             size: 8.5in 11in;
             margin: 0.75in;
-            @bottom-right {{ content: counter(page); }}
+            @top-left {{ 
+                content: "{data_source_name}"; 
+                font-size: 8pt;
+            }}
+            @top-right {{ 
+                content: "{cod_value}"; 
+                font-size: 8pt;
+            }}
+            @bottom-right {{ 
+                content: counter(page); 
+                font-size: 8pt;
+            }}
+            @bottom-left {{ 
+                content: "{current_tool}"; 
+                font-size: 8pt;
+                font-style: italic;
+            }}
         }}
         
         /* Base document styles */
@@ -3234,6 +3266,24 @@ def report_pdf():
     HTML(string=html_content).write_pdf(content_pdf_path, stylesheets=[content_css])
     print(f"DEBUG: Content PDF generated at: {content_pdf_path}")
     
+    # Generate a PDF with TOC based on the content PDF
+    content_with_toc_path = os.path.join(unique_folder, f'{filename}_with_toc.pdf')
+    try:
+        print(f"DEBUG: Generating TOC from content PDF")
+        generate_pdf_toc(content_pdf_path, content_with_toc_path)
+        # If successful, use the content with TOC
+        if os.path.exists(content_with_toc_path):
+            print(f"DEBUG: Successfully generated PDF with TOC")
+            # Remove the original content PDF and use the one with TOC
+            os.remove(content_pdf_path)
+            content_pdf_path = content_with_toc_path
+    except Exception as e:
+        print(f"ERROR: Failed to generate TOC: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        # Continue with the original content PDF if TOC generation fails
+        print(f"DEBUG: Continuing with original content PDF without dynamic TOC")
+    
     # Now create a separate cover PDF and merge them
     if cover_image_path:
         print(f"DEBUG: Creating cover PDF with image: {cover_image_path}")
@@ -3266,12 +3316,34 @@ def report_pdf():
                 output.add_page(cover_pdf.pages[0])
                 print(f"DEBUG: Added cover page to output PDF")
                 
-                # Add all content pages
-                for page in content_pdf.pages:
-                    output.add_page(page)
-                print(f"DEBUG: Added {len(content_pdf.pages)} content pages to output PDF")
+                # If we have a TOC, add it after the cover but before the content
+                if os.path.exists(content_with_toc_path):
+                    # The content_pdf already has the TOC at the beginning, so we need to:
+                    # 1. Extract just the TOC pages (typically just 1 page)
+                    # 2. Then add the content pages separately
+                    
+                    # Determine how many pages are in the TOC
+                    # We'll assume the first 1-2 pages are TOC (adjust if needed)
+                    toc_page_count = 1  # Default to 1 page for TOC
+                    
+                    # Add TOC pages after cover
+                    toc_pdf = PdfReader(content_with_toc_path)
+                    for i in range(min(toc_page_count, len(toc_pdf.pages))):
+                        output.add_page(toc_pdf.pages[i])
+                    print(f"DEBUG: Added {toc_page_count} TOC pages after cover")
+                    
+                    # Add content pages (skipping TOC pages)
+                    for i in range(toc_page_count, len(content_pdf.pages)):
+                        output.add_page(content_pdf.pages[i])
+                    print(f"DEBUG: Added {len(content_pdf.pages) - toc_page_count} content pages")
+                else:
+                    # No TOC was generated, just add all content pages
+                    # Add all content pages
+                    for page in content_pdf.pages:
+                        output.add_page(page)
+                    print(f"DEBUG: Added {len(content_pdf.pages)} content pages (no TOC)")
                 
-                # Write the final merged PDF
+                # Write the final PDF
                 with open(pdf_path, "wb") as output_stream:
                     output.write(output_stream)
                 
@@ -3334,6 +3406,236 @@ def top_level_menu():
                 print(f"{RED}Opción inválida.{RESET}")
         except ValueError:
             print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
+
+def generate_pdf_toc(input_pdf_path, output_pdf_path):
+    """Generate a table of contents for a PDF and add it to the beginning of the document."""
+    try:
+        print(f"Attempting to generate TOC for {input_pdf_path}")
+        
+        # Check if the input PDF exists
+        if not os.path.exists(input_pdf_path):
+            print(f"Error: Input PDF {input_pdf_path} does not exist")
+            return False
+            
+        # Import PyPDF2 with compatibility for different versions
+        try:
+            from PyPDF2 import PdfReader, PdfWriter
+        except ImportError:
+            from PyPDF2 import PdfFileReader as PdfReader, PdfFileWriter as PdfWriter
+            
+        # Read the input PDF
+        reader = PdfReader(input_pdf_path)
+        writer = PdfWriter()
+        
+        # Extract text from each page to find headings
+        headings = []
+        
+        # Define main section patterns with word boundaries to avoid partial matches
+        main_sections = [
+            (re.compile(r'(?:^|\n)(?:\s*)(Resumen Ejecutivo)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Tendencias Temporales)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis Cruzado de Palabras Clave)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis Específico de la Industria)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis ARIMA)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis Estacional)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis de Fourier)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Conclusiones)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Gráficos)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Datos)(?:\s*$|\s+)', re.IGNORECASE), 1)
+        ]
+        
+        print(f"PDF has {len(reader.pages)} pages")
+        
+        # First pass: Find main sections only
+        main_section_headings = []
+        current_page = 0
+        
+        for i, page in enumerate(reader.pages):
+            try:
+                text = page.extract_text()
+                if not text:
+                    continue
+                    
+                # Only check for main sections in this pass
+                for pattern, level in main_sections:
+                    matches = pattern.findall(text)
+                    for match in matches:
+                        # Clean up the heading text
+                        heading_text = match.strip()
+                        # Only add if it's a significant heading (not just a word)
+                        if len(heading_text) > 3:
+                            main_section_headings.append((level, heading_text, i + 1))
+                            print(f"Found main section: '{heading_text}' on page {i + 1}")
+                
+            except Exception as e:
+                print(f"Error extracting text from page {i+1}: {str(e)}")
+        
+        # Filter to keep only desired sections
+        filtered_main_sections = []
+        seen_sections = set()
+        datos_sections = []
+        conclusiones_sections = []
+
+        # Process main sections to keep only first occurrence of each (except Datos and Conclusiones)
+        for level, title, page_num in main_section_headings:
+            normalized_title = ' '.join(word.capitalize() for word in title.split())
+            
+            # Handle "Datos" separately - collect all instances
+            if normalized_title.lower() == "datos":
+                datos_sections.append((level, normalized_title, page_num))
+                continue
+                
+            # Handle "Conclusiones" separately - collect all instances
+            if normalized_title.lower() == "conclusiones":
+                conclusiones_sections.append((level, normalized_title, page_num))
+                continue
+                
+            # For other sections, keep only first occurrence
+            if normalized_title.lower() not in seen_sections:
+                seen_sections.add(normalized_title.lower())
+                filtered_main_sections.append((level, normalized_title, page_num))
+
+        # Add only the last occurrence of "Conclusiones" if it exists
+        if conclusiones_sections:
+            # Sort by page number and take the last one
+            conclusiones_sections.sort(key=lambda x: x[2])
+            filtered_main_sections.append(conclusiones_sections[-1])
+
+        # Add only the last occurrence of "Datos" if it exists
+        if datos_sections:
+            # Sort by page number and take the last one
+            datos_sections.sort(key=lambda x: x[2])
+            filtered_main_sections.append(datos_sections[-1])
+
+        # Sort all sections by page number
+        filtered_main_sections.sort(key=lambda x: x[2])
+
+        # Replace main_section_headings with our filtered list
+        main_section_headings = filtered_main_sections
+        
+        # Use only main sections for the final TOC (no subsections)
+        final_headings = main_section_headings
+        
+        print(f"Found {len(main_section_headings)} main sections (no subsections included)")
+        
+        # If no headings found, create default TOC entries
+        if not final_headings:
+            print("Warning: No headings found in the document. Creating default TOC entries.")
+            final_headings = [
+                (1, "Resumen Ejecutivo", 2),
+                (1, "Tendencias Temporales", 5),
+                (1, "Análisis Cruzado", 10),
+                (1, "Análisis ARIMA", 15),
+                (1, "Análisis Estacional", 20),
+                (1, "Análisis de Fourier", 25),
+                (1, "Conclusiones", 30),
+                (1, "Gráficos", 35),
+                (1, "Datos", 40)
+            ]
+        
+        # Create a TOC page with text in left column and page numbers in right column
+        from reportlab.lib.pagesizes import letter
+        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+        from reportlab.lib.enums import TA_LEFT, TA_RIGHT
+        from reportlab.lib import colors
+        from io import BytesIO
+
+        buffer = BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=letter, leftMargin=72, rightMargin=72, topMargin=72, bottomMargin=72)
+        styles = getSampleStyleSheet()
+
+        # Create custom styles for TOC
+        title_style = ParagraphStyle(
+            'TOCTitle',
+            parent=styles['Heading1'],
+            fontName='Times-Roman',
+            fontSize=16,
+            leading=20,
+            alignment=TA_LEFT,
+            spaceAfter=20
+        )
+
+        # Style for the TOC entry text
+        entry_text_style = ParagraphStyle(
+            'TOCEntryText',
+            parent=styles['Normal'],
+            fontName='Times-Roman',
+            fontSize=12,
+            leading=16,
+            alignment=TA_LEFT
+        )
+
+        # Style for the page numbers (right-aligned)
+        page_num_style = ParagraphStyle(
+            'TOCPageNum',
+            parent=styles['Normal'],
+            fontName='Times-Roman',
+            fontSize=12,
+            leading=16,
+            alignment=TA_RIGHT
+        )
+
+        # Create flowables for the TOC
+        flowables = []
+
+        # Add TOC title
+        flowables.append(Paragraph("Tabla de Contenido", title_style))
+        flowables.append(Spacer(1, 20))
+
+        # Create table data for two-column layout (text and page number)
+        table_data = []
+
+        # Add each TOC entry as a row in the table
+        for level, title, page_num in final_headings:
+            # No indentation needed since we only have main sections
+            table_data.append([
+                Paragraph(f"{title}", entry_text_style),
+                Paragraph(f"{page_num}", page_num_style)
+            ])
+
+        # Create the table with appropriate column widths
+        col_widths = ['85%', '15%']  # Adjust as needed
+        toc_table = Table(table_data, colWidths=col_widths)
+
+        # Add table style with dotted leader between text and page number
+        table_style = TableStyle([
+            ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+            ('TOPPADDING', (0, 0), (-1, -1), 3),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+            # Optional: Add dotted leader line
+            ('LINEBELOW', (0, 0), (0, -1), 0.5, colors.gray, 1, (1, 2))
+        ])
+
+        toc_table.setStyle(table_style)
+        flowables.append(toc_table)
+
+        # Build the TOC PDF
+        doc.build(flowables)
+        
+        # Get the PDF content from the buffer
+        buffer.seek(0)
+        toc_pdf = PdfReader(buffer)
+        
+        # Add TOC to the beginning of the document
+        for i in range(len(toc_pdf.pages)):
+            writer.add_page(toc_pdf.pages[i])
+        
+        # Add the original content
+        for i in range(len(reader.pages)):
+            writer.add_page(reader.pages[i])
+        
+        # Write the output PDF
+        with open(output_pdf_path, 'wb') as output_file:
+            writer.write(output_file)
+            
+        print(f"Successfully created TOC and saved to {output_pdf_path}")
+        return True
+        
+    except Exception as e:
+        print(f"Error generating TOC: {str(e)}")
+        traceback.print_exc()
+        return False
 
 def get_all_keywords():
     all_keywords = []
