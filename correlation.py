@@ -882,6 +882,7 @@ def process_data(data):
 #  Fetches and processes Google Trends data for different time periods.
 def process_file_data(all_kw, d_filename):
   global combined_dataset
+  global combined_dataset2
   global menu
   
   # Ensure menu has a default value if not set
@@ -893,7 +894,13 @@ def process_file_data(all_kw, d_filename):
     # Group data and calculate means
     all_data = get_file_data(d_filename, menu2)
   if top_choice == 2:
-    all_data = combined_dataset#PPRINT(f"\n{all_data}")
+    # Use combined_dataset2 instead of combined_dataset when in cross-source analysis mode
+    all_data = combined_dataset2
+
+  # Calculate the earliest and latest years in the dataset
+  earliest_year = all_data.index.min().year
+  latest_year = all_data.index.max().year
+  total_years = latest_year - earliest_year + 1
 
   if top_choice == 1:
     if menu == 2:
@@ -930,7 +937,7 @@ def process_file_data(all_kw, d_filename):
   mean_last_5 = process_data(last_5_years)
   mean_last_year = process_data(last_year)
 
-  # Return results as a dictionary
+  # Return results as a dictionary including the new year-related values
   return {
       'all_data': all_data,
       'mean_all': mean_all,
@@ -944,6 +951,9 @@ def process_file_data(all_kw, d_filename):
       'mean_last_5': mean_last_5,
       'last_year_data': last_year,
       'mean_last_year': mean_last_year,
+      'earliest_year': earliest_year,
+      'latest_year': latest_year,
+      'total_years': total_years,
   }
 
   # Replaces all spaces in each element of an array with newlines.
@@ -2414,9 +2424,105 @@ def report_pdf():
     global report
     global csv_means_trends
     global image_markdown
+    global all_keywords
+    global actual_menu
+    global top_choice
+    
+    # Find the cover image path from portada-combined.csv
+    cover_image_path = None
+    current_tool = ""
+    
+    print("\n--- DEBUG: Report PDF Cover Page Generation ---")
+    
+    if top_choice == 1:
+        current_tool = all_keywords[0] if isinstance(all_keywords, list) and all_keywords else ""
+        print(f"DEBUG: Using tool from all_keywords: '{current_tool}'")
+    else:
+        current_tool = actual_menu
+        print(f"DEBUG: Using tool from actual_menu: '{current_tool}'")
+    
+    # Determine which data source we're using
+    data_source_code = ""
+    if menu == 1:
+        data_source_code = "GT"  # Google Trends
+    elif menu == 2:
+        data_source_code = "GB"  # Google Books Ngrams
+    elif menu == 3:
+        data_source_code = "BU"  # Bain - Usability
+    elif menu == 4:
+        data_source_code = "CR"  # Crossref.org
+    elif menu == 5:
+        data_source_code = "BS"  # Bain - Satisfaction
+    # Add other data sources as needed
+    
+    print(f"DEBUG: Using data source code: '{data_source_code}'")
+    
+    # Read the CSV file to find the cover image
+    import pandas as pd
+    import os
+    
+    # Path to the CSV file
+    csv_path = 'pub-assets/portada-combined.csv'
+    
+    # Read the CSV file
+    if os.path.exists(csv_path):
+        print(f"DEBUG: CSV file exists at: {csv_path}")
+        try:
+            portada_df = pd.read_csv(csv_path)
+            print(f"DEBUG: CSV loaded, contains {len(portada_df)} rows")
+            print(f"DEBUG: CSV columns: {portada_df.columns.tolist()}")
+            
+            # Print a few sample tool names from CSV for verification
+            sample_tools = portada_df['Herramienta'].unique()[:5].tolist()
+            print(f"DEBUG: Sample tools in CSV: {sample_tools}")
+            
+            # Find the matching rows for the current tool
+            matching_rows = portada_df[portada_df['Herramienta'] == current_tool]
+            
+            print(f"DEBUG: Found {len(matching_rows)} matching rows for tool: '{current_tool}'")
+            
+            if not matching_rows.empty:
+                # Look for a row with the matching data source code
+                data_source_matches = matching_rows[matching_rows['Cód'].str.endswith(data_source_code, na=False)]
+                
+                if not data_source_matches.empty:
+                    # Get the file path from the first matching row with the correct data source
+                    file_info = data_source_matches.iloc[0]['File']
+                    cover_image_path = os.path.join('pub-assets', file_info)
+                    print(f"DEBUG: Found cover image for data source '{data_source_code}': {cover_image_path}")
+                else:
+                    # If no specific match for the data source, fall back to the first matching row
+                    file_info = matching_rows.iloc[0]['File']
+                    cover_image_path = os.path.join('pub-assets', file_info)
+                    print(f"DEBUG: No specific cover for data source '{data_source_code}', using default: {cover_image_path}")
+                
+                # Check if the file exists
+                if not os.path.exists(cover_image_path):
+                    print(f"ERROR: Cover image not found at: {cover_image_path}")
+                    # Try with and without 'pub-assets' prefix
+                    alt_path = file_info
+                    if os.path.exists(alt_path):
+                        print(f"DEBUG: Found image at alternate path: {alt_path}")
+                        cover_image_path = alt_path
+                    else:
+                        print(f"ERROR: Also tried alternate path with no success: {alt_path}")
+                        cover_image_path = None
+                else:
+                    print(f"DEBUG: Found cover image at: {cover_image_path}")
+            else:
+                print(f"WARNING: No matching tool found in CSV. Available tools: {portada_df['Herramienta'].unique().tolist()[:10]}")
+        except Exception as e:
+            print(f"ERROR: Error finding cover image: {str(e)}")
+            import traceback
+            traceback.print_exc()
+    else:
+        print(f"ERROR: CSV file not found at: {csv_path}")
     
     # Create data section in HTML directly (not markdown)
     data_txt = ''
+    
+    # We no longer need the CSS styles in data_txt since we're adding them directly to WeasyPrint
+    
     data_txt += "<div class='page-break'></div>\n"
     data_txt += "<h1>Datos</h1>\n"
     if top_choice == 1:
@@ -2881,34 +2987,324 @@ def report_pdf():
     # No need to replace page breaks or add them after figures since we're now using proper HTML structure
     
     pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
+    content_pdf_path = os.path.join(unique_folder, f'{filename}_content.pdf')
     print(f"Saving PDF to: {pdf_path}")
     print(f"Number of figures in report: {html_content.count('<figure>')}")
     
     # Create custom CSS for page size and margins
     from weasyprint import HTML, CSS
     
-    custom_css = CSS(string='''
-        @page {
+    # CSS for content pages only (no cover page)
+    content_css = CSS(string=f'''
+        /* Regular pages */
+        @page {{
             size: 8.5in 11in;
             margin: 0.75in;
-        }
+            @bottom-right {{ content: counter(page); }}
+        }}
         
-        body {
+        /* Base document styles */
+        body {{
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000000;
             margin: 0;
             padding: 0;
+            background-color: #ffffff;
+            counter-reset: page;
             width: 100%;
-        }
+        }}
         
-        /* Ensure content uses full width */
-        .title-page, .toc, div[id], .footer {
-            width: 100%;
+        /* Title page */
+        .title-page {{
+            text-align: center;
+            margin-top: 5cm;
+            margin-bottom: 5cm;
+        }}
+
+        .title-page h1 {{
+            font-size: 18pt;
+            margin-bottom: 1cm;
+        }}
+
+        .title-page .subtitle {{
+            font-size: 14pt;
+            margin-bottom: 2cm;
+        }}
+
+        .title-page .authors {{
+            font-size: 12pt;
+            margin-bottom: 1cm;
+        }}
+
+        .title-page .date {{
+            font-size: 12pt;
+            margin-bottom: 1cm;
+        }}
+
+        /* Content sections */
+        .toc, #resumen-ejecutivo, #tendencias-temporales,
+        #analisis-cruzado-de-palabras-clave, #analisis-especifico-de-la-industria,
+        #analisis-arima, #analisis-estacional, #analisis-de-fourier,
+        #conclusiones, #graficos, #datos {{
             padding: 0;
             margin: 0;
-        }
+            width: 100%;
+        }}
+
+        /* Table of contents */
+        .toc {{
+            margin: 2cm 0;
+        }}
+
+        .toc h2 {{
+            text-align: center;
+            font-size: 14pt;
+            margin-bottom: 1cm;
+        }}
+
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {{
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }}
+
+        h1 {{
+            font-size: 16pt;
+            text-align: center;
+            margin-top: 2em;
+        }}
+
+        h2 {{
+            font-size: 14pt;
+        }}
+
+        h3 {{
+            font-size: 12pt;
+        }}
+
+        /* Paragraphs */
+        p {{
+            text-align: justify;
+            margin-bottom: 1em;
+            width: 100%;
+        }}
+
+        /* Page breaks */
+        .page-break {{
+            page-break-after: always;
+            counter-increment: page;
+            height: 0;
+            display: block;
+        }}
+
+        /* Tables */
+        table {{
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1.5em 0;
+            page-break-inside: avoid;
+        }}
+
+        th, td {{
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }}
+
+        th {{
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }}
+
+        .table-wrapper {{
+            width: 100%;
+            max-width: none;
+            overflow-x: auto;
+            margin-bottom: 1em;
+            padding: 0;
+        }}
+
+        .data-table {{
+            font-size: 10pt;
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }}
+
+        .data-table th {{
+            padding: 5px 2px;
+            vertical-align: bottom;
+            text-align: left;
+            font-size: 10pt;
+            white-space: normal;
+            word-wrap: break-word;
+            max-height: 50px;
+        }}
+
+        .data-table td {{
+            padding: 5px 2px;
+            font-size: 9pt;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }}
+
+        /* Table captions */
+        .table-caption {{
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5em;
+            caption-side: bottom;
+            font-size: 10pt;
+        }}
+
+        /* Figures and images */
+        figure {{
+            text-align: center;
+            margin: 1.5em 0;
+            page-break-inside: avoid;
+        }}
+
+        img {{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5em auto;
+            page-break-inside: avoid;
+        }}
+
+        figcaption {{
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5em;
+            font-size: 10pt;
+        }}
+
+        /* Footer */
+        .footer {{
+            margin-top: 2em;
+            border-top: 1px solid #000;
+            padding-top: 1em;
+            font-size: 9pt;
+        }}
+
+        /* Print-specific styles */
+        @media print {{
+            body {{
+                font-size: 12pt;
+            }}
+            
+            a {{
+                text-decoration: none;
+                color: #000000;
+            }}
+            
+            .table-wrapper {{
+                overflow-x: visible;
+            }}
+            
+            .data-table {{
+                font-size: 9pt;
+                page-break-inside: avoid;
+            }}
+            
+            img {{
+                max-width: 100% !important;
+            }}
+            
+            h1, h2, h3, h4, h5, h6 {{
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }}
+            
+            p {{
+                orphans: 3;
+                widows: 3;
+            }}
+        }}
     ''')
     
-    # Apply the custom CSS when generating the PDF
-    HTML(string=html_content).write_pdf(pdf_path, stylesheets=[custom_css])
+    print(f"DEBUG: About to generate content PDF with WeasyPrint")
+    
+    # First generate the content PDF without cover
+    HTML(string=html_content).write_pdf(content_pdf_path, stylesheets=[content_css])
+    print(f"DEBUG: Content PDF generated at: {content_pdf_path}")
+    
+    # Now create a separate cover PDF and merge them
+    if cover_image_path:
+        print(f"DEBUG: Creating cover PDF with image: {cover_image_path}")
+        # Check if image exists and is accessible
+        if os.path.exists(cover_image_path) and os.access(cover_image_path, os.R_OK):
+            try:
+                # Import necessary libraries for PDF manipulation
+                from reportlab.pdfgen import canvas
+                from reportlab.lib.pagesizes import letter
+                from PyPDF2 import PdfReader, PdfWriter
+                import io
+                
+                # Create a PDF with just the cover image
+                cover_pdf_buffer = io.BytesIO()
+                c = canvas.Canvas(cover_pdf_buffer, pagesize=letter)
+                
+                # Draw the image at full page size without margins
+                c.drawImage(cover_image_path, 0, 0, width=8.5*72, height=11*72)
+                c.save()
+                
+                print(f"DEBUG: Cover PDF created in memory")
+                
+                # Merge the cover with content PDF
+                cover_pdf = PdfReader(io.BytesIO(cover_pdf_buffer.getvalue()))
+                content_pdf = PdfReader(content_pdf_path)
+                
+                output = PdfWriter()
+                
+                # Add cover page first
+                output.add_page(cover_pdf.pages[0])
+                print(f"DEBUG: Added cover page to output PDF")
+                
+                # Add all content pages
+                for page in content_pdf.pages:
+                    output.add_page(page)
+                print(f"DEBUG: Added {len(content_pdf.pages)} content pages to output PDF")
+                
+                # Write the final merged PDF
+                with open(pdf_path, "wb") as output_stream:
+                    output.write(output_stream)
+                
+                print(f"DEBUG: Final merged PDF saved to: {pdf_path}")
+                
+                # Remove the temporary content PDF
+                if os.path.exists(content_pdf_path):
+                    os.remove(content_pdf_path)
+                    print(f"DEBUG: Removed temporary content PDF")
+                
+            except Exception as e:
+                print(f"ERROR: Failed to create cover PDF: {str(e)}")
+                import traceback
+                traceback.print_exc()
+                
+                # If merging fails, just use the content PDF
+                if os.path.exists(content_pdf_path):
+                    import shutil
+                    shutil.move(content_pdf_path, pdf_path)
+                    print(f"DEBUG: Fallback - using content PDF as final output")
+        else:
+            print(f"ERROR: Cover image exists but cannot be read or accessed: {cover_image_path}")
+            # If cover image is inaccessible, just use the content PDF
+            if os.path.exists(content_pdf_path):
+                import shutil
+                shutil.move(content_pdf_path, pdf_path)
+                print(f"DEBUG: Fallback - using content PDF as final output")
+    else:
+        print("DEBUG: No cover image to add, using content PDF as final output")
+        # If no cover image, just rename the content PDF
+        if os.path.exists(content_pdf_path):
+            import shutil
+            shutil.move(content_pdf_path, pdf_path)
     
     char='*'
     title='********** ' + filename + ' PDF REPORT SAVED **********'
