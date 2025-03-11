@@ -1024,6 +1024,9 @@ def relative_comparison():
     global image_markdown
     global keycharts
     global current_year
+    global earliest_year
+    global latest_year
+    global total_years
     
     print(f"\nCreando gráficos de comparación relativa...")
 
@@ -1039,7 +1042,7 @@ def relative_comparison():
 
     # Calculate the maximum y-value across all datasets
     all_means = [
-        trends_results['mean_all'] if menu == 2 or menu == 4 else None,
+        trends_results['mean_all'], # if menu == 2 or menu == 4 else None,
         trends_results['mean_last_20'],
         trends_results['mean_last_15'],
         trends_results['mean_last_10'],
@@ -1054,7 +1057,7 @@ def relative_comparison():
         len_years = latest_date.year - earliest_date.year
         total_rows = 7 if len_years > 20 else 6
         
-    # Create grid spec with 9 columns and the determined number of rows
+    # Create grid spec with 10 columns and the determined number of rows
     gs = fig.add_gridspec(total_rows, 10, height_ratios=[0.2] + [1] * (total_rows - 1))
 
     # Define slices for odd and even subplots
@@ -1096,42 +1099,63 @@ def relative_comparison():
         title_even_charts = f'{title_charts}\nen el período para {actual_menu}'  
 
     if top_choice == 1:
+        if total_years > 20:
+            gs = fig.add_gridspec(6, 10, height_ratios=[0.2] + [1] * (6 - 1))
+        elif total_years > 15:
+            gs = fig.add_gridspec(5, 10, height_ratios=[0.2] + [1] * (5 - 1))
+        elif total_years > 10:
+            gs = fig.add_gridspec(4, 10, height_ratios=[0.2] + [1] * (4 - 1))
+        elif total_years > 5:
+            gs = fig.add_gridspec(3, 10, height_ratios=[0.2] + [1] * (3 - 1))
+        
+        
+    if top_choice == 1:
         i = 1
         # all data
-        if menu == 2 or menu == 4 or menu == 3 or menu == 5:
+        if total_years > 20:
             ax1 = fig.add_subplot(gs[i, axODD])
             ax2 = fig.add_subplot(gs[i, axEVEN])
-            setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {72 if menu == 2 else 74 if menu == 4 else 42} años\n({current_year - (72 if menu == 2 else 74 if menu == 4 else 30)}-{current_year})', window_size, colors)
+            setup_subplot(ax1, trends_results['all_data'], trends_results['mean_all'], title_odd_charts, f'Período de {total_years} años\n({earliest_year}-{latest_year})', window_size, colors)
             setup_bar_subplot(ax2, trends_results['mean_all'], title_even_charts, max_y_value, x_pos, colors)
             i += 1
             title_odd_charts = ''
             title_even_charts = ''
 
         # Last 20-years
-        ax3 = fig.add_subplot(gs[i, axODD])
-        ax4 = fig.add_subplot(gs[i, axEVEN])
-        setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, f'Período de 20 años\n({current_year - 20}-{current_year})', window_size, colors)
-        setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts, max_y_value, x_pos, colors)
-        i += 1
+        if total_years > 15:
+            ax3 = fig.add_subplot(gs[i, axODD])
+            ax4 = fig.add_subplot(gs[i, axEVEN])
+            setup_subplot(ax3, trends_results['last_20_years_data'], trends_results['mean_last_20'], title_odd_charts, f'Período de 20 años\n({latest_year - 20}-{latest_year})', window_size, colors)
+            setup_bar_subplot(ax4, trends_results['mean_last_20'], title_even_charts, max_y_value, x_pos, colors)
+            i += 1
+            title_odd_charts = ''
+            title_even_charts = ''
 
         # Last 15-years
-        ax5 = fig.add_subplot(gs[i, axODD])
-        ax6 = fig.add_subplot(gs[i, axEVEN])
-        setup_subplot(ax5, trends_results['last_15_years_data'], trends_results['mean_last_15'], '', f'Período de 15 años\n({current_year - 15}-{current_year})', window_size, colors)
-        setup_bar_subplot(ax6, trends_results['mean_last_15'], '', max_y_value, x_pos, colors)
-        i += 1
-
+        if total_years > 10:
+            ax5 = fig.add_subplot(gs[i, axODD])
+            ax6 = fig.add_subplot(gs[i, axEVEN])
+            setup_subplot(ax5, trends_results['last_15_years_data'], trends_results['mean_last_15'], title_odd_charts, f'Período de 15 años\n({latest_year - 15}-{latest_year})', window_size, colors)
+            setup_bar_subplot(ax6, trends_results['mean_last_15'], title_even_charts, max_y_value, x_pos, colors)
+            i += 1
+            title_odd_charts = ''
+            title_even_charts = ''
+            
         # Last 10-years
-        ax7 = fig.add_subplot(gs[i, axODD])
-        ax8 = fig.add_subplot(gs[i, axEVEN])
-        setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], '', f'Período de 10 años\n({current_year - 10}-{current_year})', window_size, colors)
-        setup_bar_subplot(ax8, trends_results['mean_last_10'], '', max_y_value, x_pos, colors)
-        i += 1
+        if total_years > 5:
+            ax7 = fig.add_subplot(gs[i, axODD])
+            ax8 = fig.add_subplot(gs[i, axEVEN])
+            setup_subplot(ax7, trends_results['last_10_years_data'], trends_results['mean_last_10'], title_odd_charts, f'Período de 10 años\n({latest_year - 10}-{latest_year})', window_size, colors)
+            setup_bar_subplot(ax8, trends_results['mean_last_10'], title_even_charts, max_y_value, x_pos, colors)
+            i += 1
+            title_odd_charts = ''
+            title_even_charts = ''
+                        
         # Last 5-years
         ax9 = fig.add_subplot(gs[i, axODD])
         ax10 = fig.add_subplot(gs[i, axEVEN])
-        setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], '', f'Período de 5 años\n({current_year - 5}-{current_year})', window_size, colors)
-        setup_bar_subplot(ax10, trends_results['mean_last_5'], '', max_y_value, x_pos, colors)
+        setup_subplot(ax9, trends_results['last_5_years_data'], trends_results['mean_last_5'], title_odd_charts, f'Período de 5 años\n({latest_year - 5}-{latest_year})', window_size, colors)
+        setup_bar_subplot(ax10, trends_results['mean_last_5'], title_even_charts, max_y_value, x_pos, colors)
     else:
         current_year = latest_date.year
         i = 1
@@ -1179,7 +1203,15 @@ def relative_comparison():
 
 
     # Add legend at the bottom, outside of the plots
-    handles, labels = ax3.get_legend_handles_labels()
+    if total_years > 20:
+        handles, labels = ax1.get_legend_handles_labels()
+    elif total_years > 15:
+        handles, labels = ax3.get_legend_handles_labels()
+    elif total_years > 10:
+        handles, labels = ax5.get_legend_handles_labels()
+    elif total_years > 5:
+        handles, labels = ax7.get_legend_handles_labels()
+        
     labels = [f"{label} ({actual_menu})" for label in labels]
     fig.legend(handles, labels, loc='lower right', bbox_to_anchor=(0.55, 0.05),
                 ncol=len(all_keywords), fontsize=12)
@@ -2655,33 +2687,73 @@ def report_pdf():
                 width: 100%;
             }}
 
-            /* Title page */
+            /* Reset for title page elements */
+            .title-page * {{
+                margin: 0;
+                padding: 0;
+                position: static;
+            }}
+            
+            /* Title page as a container */
             .title-page {{
-                text-align: center;
-                margin-top: 5cm;
-                margin-bottom: 5cm;
+                position: relative;
+                height: 11in;
+                width: 8.5in;
+                padding: 0;
+                margin: 0 auto;
+                box-sizing: border-box;
+                left: -1.25in; /* Shift left by 1.25 inches */
+                top: -1.25in; /* Shift up by 1.25 inch */
             }}
-
+            
+            /* Title positioning */
             .title-page h1 {{
-                font-size: 18pt;
-                margin-bottom: 1cm;
+                position: absolute !important;
+                top: 5in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 24pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }}
-
+            
+            /* Subtitle positioning */
             .title-page .subtitle {{
-                font-size: 14pt;
-                margin-bottom: 2cm;
+                position: absolute !important;
+                top: 5.7in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 14pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }}
-
+            
+            /* Authors positioning */
             .title-page .authors {{
-                font-size: 12pt;
-                margin-bottom: 1cm;
+                position: absolute !important;
+                bottom: 2.5in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 14pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }}
-
+            
+            /* Date positioning */
             .title-page .date {{
-                font-size: 12pt;
-                margin-bottom: 1cm;
+                position: absolute !important;
+                bottom: 1.5in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 12pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }}
-
+            
             /* Content sections */
             .toc, #resumen-ejecutivo, #tendencias-temporales,
             #analisis-cruzado-de-palabras-clave, #analisis-especifico-de-la-industria,
