@@ -1400,6 +1400,22 @@ def check_trends2(kw):
     global actual_menu
     global menu
     global trends_results
+    global earliest_year
+    global latest_year
+    global total_years
+    global trend_analysis_text  # NEW: Global variable for text output
+    
+    # NEW: Initialize a list to capture all output
+    trend_output = []
+    
+    # NEW: Define a custom print function that captures output
+    def capture_print(*args, **kwargs):
+        # Convert all arguments to strings and join with spaces
+        output = ' '.join(str(arg) for arg in args)
+        # Add to our capture list
+        trend_output.append(output)
+        # Also print to console as normal
+        print(*args, **kwargs)
     
     data = trends_results['last_20_years_data']
     mean = trends_results['mean_last_20']
@@ -1418,8 +1434,10 @@ def check_trends2(kw):
 
     if top_choice == 1:
         banner_msg(title=' Herramienta: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
+        trend_output.append(f"Herramienta: {kw.upper()} ({actual_menu})")
     else:
         banner_msg(title=' Fuente de Datos: ' + kw.upper() + ' (' + actual_menu + ') ', margin=1,color1=YELLOW, color2=WHITE)
+        trend_output.append(f"Fuente de Datos: {kw.upper()} ({actual_menu})")
 
     # Set years2 based on menu
     if menu == 3 or menu == 5:
@@ -1428,12 +1446,9 @@ def check_trends2(kw):
         years2 = 2 
     else:
         years2 = 0
-
-#         1: "Google Trends",
-#         2: "Google Books Ngrams",
-#         3: "Bain - Usabilidad",
-#         4: "Crossref.org",
-#         5: "Bain - Satisfacción"
+        
+    # Create the figure and axes BEFORE any bar creation
+    fig, ax = plt.subplots(figsize=(10,6))
     
     # Calculate averages
     if top_choice == 1:
@@ -1485,96 +1500,420 @@ def check_trends2(kw):
         
     # Calculate relative widths
     if top_choice == 1:
-        if menu == 2 or menu == 4 or menu == 3 or menu == 5:
-            avg_all_width = base_width * (72 + years2) / 20 * 2
-            avg_20_width = base_width * 20 / 20 * 2
-            avg_15_width = base_width * 15 / 20 * 2
-            avg_10_width = base_width * 10 / 20 * 2
-            avg_5_width = base_width * 5 / 20 * 2
-            avg_1_width = base_width * 1 / 20 * 2.5
-
-            bar_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
-                            avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
-                            avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-            bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
-            years_list = [72 + years2, 20, 15, 10, 5, 1]
-            if top_choice == 2:
-                years_list = [years_range, years2, 15, 10, 5, 1]
+        if total_years > 20:
+            # Create arrays for all time periods
+            bar_widths = []
+            bar_positions = []
+            years_list = []
+            avgs = []
+            colors = ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue']
+            position_offset = 0
+            
+            # Add all_data bar if available
+            if avg_all is not None:
+                avg_all_width = base_width * total_years / 20 * 2
+                bar_widths.append(avg_all_width)
+                bar_positions.append(position_offset)
+                years_list.append(total_years)
+                avgs.append(avg_all)
+                position_offset += avg_all_width/1.55
+            
+            # Add 20-year bar if available
+            if avg_20 is not None and total_years >= 20:
+                avg_20_width = base_width * 20 / 20 * 2
+                bar_widths.append(avg_20_width)
+                bar_positions.append(position_offset)
+                years_list.append(20)
+                avgs.append(avg_20)
+                position_offset += avg_20_width
+            
+            # Add 15-year bar if available
+            if avg_15 is not None and total_years >= 15:
+                avg_15_width = base_width * 15 / 20 * 2
+                bar_widths.append(avg_15_width)
+                bar_positions.append(position_offset)
+                years_list.append(15)
+                avgs.append(avg_15)
+                position_offset += avg_15_width
+            
+            # Add 10-year bar if available
+            if avg_10 is not None and total_years >= 10:
+                avg_10_width = base_width * 10 / 20 * 2
+                bar_widths.append(avg_10_width)
+                bar_positions.append(position_offset)
+                years_list.append(10)
+                avgs.append(avg_10)
+                position_offset += avg_10_width
+            
+            # Add 5-year bar if available
+            if avg_5 is not None and total_years >= 5:
+                avg_5_width = base_width * 5 / 20 * 2
+                bar_widths.append(avg_5_width)
+                bar_positions.append(position_offset)
+                years_list.append(5)
+                avgs.append(avg_5)
+                position_offset += avg_5_width
+            
+            # Always add 1-year bar
+            if avg_1 is not None:
+                avg_1_width = base_width * 1 / 20 * 2.5
+                bar_widths.append(avg_1_width)
+                bar_positions.append(position_offset)
+                years_list.append(1)
+                avgs.append(avg_1)
+            
+            # Trim colors to match the number of bars
+            colors = colors[:len(bar_widths)]
+            
+            # Create the bars with consistent arrays
+            rects = []
+            for pos, width, avg, year, color in zip(bar_positions, bar_widths, avgs, years_list, colors):
+                if avg is not None:
+                    if year == total_years:
+                        label = f'Media {total_years} Años ({earliest_year} - {latest_year}): {eng_notation(avg)}'
+                    else:
+                        label = f'Media {year} Años: {eng_notation(avg)}'
+                    rects.append(ax.bar(pos, avg, width, label=label, color=color))
+        elif total_years > 15:
+            # Create arrays for time periods
+            bar_widths = []
+            bar_positions = []
+            years_list = []
+            avgs = []
+            colors = ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue']
+            position_offset = 0
+            
+            # Add 20-year or total_years bar
+            avg_20_width = base_width * total_years / 20 * 2
+            bar_widths.append(avg_20_width)
+            bar_positions.append(position_offset)
+            years_list.append(total_years)
+            avgs.append(avg_20)
+            position_offset += avg_20_width
+            
+            # Add 15-year bar if available
+            if avg_15 is not None:
+                avg_15_width = base_width * 15 / 20 * 2
+                bar_widths.append(avg_15_width)
+                bar_positions.append(position_offset)
+                years_list.append(15)
+                avgs.append(avg_15)
+                position_offset += avg_15_width
+            
+            # Add 10-year bar if available
+            if avg_10 is not None:
+                avg_10_width = base_width * 10 / 20 * 2
+                bar_widths.append(avg_10_width)
+                bar_positions.append(position_offset)
+                years_list.append(10)
+                avgs.append(avg_10)
+                position_offset += avg_10_width
+            
+            # Add 5-year bar if available
+            if avg_5 is not None:
+                avg_5_width = base_width * 5 / 20 * 2
+                bar_widths.append(avg_5_width)
+                bar_positions.append(position_offset)
+                years_list.append(5)
+                avgs.append(avg_5)
+                position_offset += avg_5_width
+            
+            # Always add 1-year bar
+            if avg_1 is not None:
+                avg_1_width = base_width * 1 / 20 * 2.5
+                bar_widths.append(avg_1_width)
+                bar_positions.append(position_offset)
+                years_list.append(1)
+                avgs.append(avg_1)
+            
+            # Trim colors to match the number of bars
+            colors = colors[:len(bar_widths)]
+            
+            # Create the bars with consistent arrays
+            rects = []
+            for pos, width, avg, year, color in zip(bar_positions, bar_widths, avgs, years_list, colors):
+                if avg is not None:
+                    label = f'Media {year} Años ({earliest_year} - {latest_year}): {eng_notation(avg)}'
+                    rects.append(ax.bar(pos, avg, width, label=label, color=color))
+        elif total_years > 10:
+            # Create arrays for time periods
+            bar_widths = []
+            bar_positions = []
+            years_list = []
+            avgs = []
+            colors = ['steelblue', 'dodgerblue', 'darkblue', 'midnightblue']
+            position_offset = 0
+            
+            # Add 15-year or total_years bar
+            avg_15_width = base_width * total_years / 20 * 2
+            bar_widths.append(avg_15_width)
+            bar_positions.append(position_offset)
+            years_list.append(total_years)
+            avgs.append(avg_15)
+            position_offset += avg_15_width
+            
+            # Add 10-year bar if available
+            if avg_10 is not None:
+                avg_10_width = base_width * 10 / 20 * 2
+                bar_widths.append(avg_10_width)
+                bar_positions.append(position_offset)
+                years_list.append(10)
+                avgs.append(avg_10)
+                position_offset += avg_10_width
+            
+            # Add 5-year bar if available
+            if avg_5 is not None:
+                avg_5_width = base_width * 5 / 20 * 2
+                bar_widths.append(avg_5_width)
+                bar_positions.append(position_offset)
+                years_list.append(5)
+                avgs.append(avg_5)
+                position_offset += avg_5_width
+            
+            # Always add 1-year bar
+            if avg_1 is not None:
+                avg_1_width = base_width * 1 / 20 * 2.5
+                bar_widths.append(avg_1_width)
+                bar_positions.append(position_offset)
+                years_list.append(1)
+                avgs.append(avg_1)
+            
+            # Trim colors to match the number of bars
+            colors = colors[:len(bar_widths)]
+            
+            # Create the bars with consistent arrays
+            rects = []
+            for pos, width, avg, year, color in zip(bar_positions, bar_widths, avgs, years_list, colors):
+                if avg is not None:
+                    label = f'Media {year} Años ({earliest_year} - {latest_year}): {eng_notation(avg)}'
+                    rects.append(ax.bar(pos, avg, width, label=label, color=color))
+        elif total_years > 5:
+            # Create arrays for time periods
+            bar_widths = []
+            bar_positions = []
+            years_list = []
+            avgs = []
+            colors = ['dodgerblue', 'darkblue', 'midnightblue']
+            position_offset = 0
+            
+            # Add 10-year or total_years bar
+            avg_10_width = base_width * total_years / 20 * 2
+            bar_widths.append(avg_10_width)
+            bar_positions.append(position_offset)
+            years_list.append(total_years)
+            avgs.append(avg_10)
+            position_offset += avg_10_width
+            
+            # Add 5-year bar if available
+            if avg_5 is not None:
+                avg_5_width = base_width * 5 / 20 * 2
+                bar_widths.append(avg_5_width)
+                bar_positions.append(position_offset)
+                years_list.append(5)
+                avgs.append(avg_5)
+                position_offset += avg_5_width
+            
+            # Always add 1-year bar
+            if avg_1 is not None:
+                avg_1_width = base_width * 1 / 20 * 2.5
+                bar_widths.append(avg_1_width)
+                bar_positions.append(position_offset)
+                years_list.append(1)
+                avgs.append(avg_1)
+            
+            # Trim colors to match the number of bars
+            colors = colors[:len(bar_widths)]
+            
+            # Create the bars with consistent arrays
+            rects = []
+            for pos, width, avg, year, color in zip(bar_positions, bar_widths, avgs, years_list, colors):
+                if avg is not None:
+                    label = f'Media {year} Años ({earliest_year} - {latest_year}): {eng_notation(avg)}'
+                    rects.append(ax.bar(pos, avg, width, label=label, color=color))
         else:
-            avg_20_width = base_width * 20 / 20 * 2
-            avg_15_width = base_width * 15 / 20 * 2
-            avg_10_width = base_width * 10 / 20 * 2
-            avg_5_width = base_width * 5 / 20 * 2
-            avg_1_width = base_width * 1 / 20 * 2.5
-
-            bar_positions = [0, avg_20_width, avg_20_width + avg_15_width,
-                            avg_20_width + avg_15_width + avg_10_width,
-                            avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-            bar_widths = [avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
-            years_list = [20, 15, 10, 5, 1]
-            if top_choice == 2:
-                years_list = [years2, 15, 10, 5, 1]
+            # For very short time series (5 years or less)
+            bar_widths = []
+            bar_positions = []
+            years_list = []
+            avgs = []
+            colors = ['darkblue', 'midnightblue']
+            position_offset = 0
+            
+            # Add 5-year or total_years bar
+            if avg_5 is not None:
+                avg_5_width = base_width * total_years / 20 * 2
+                bar_widths.append(avg_5_width)
+                bar_positions.append(position_offset)
+                years_list.append(total_years)
+                avgs.append(avg_5)
+                position_offset += avg_5_width
+            
+            # Always add 1-year bar
+            if avg_1 is not None:
+                avg_1_width = base_width * 1 / 20 * 2.5
+                bar_widths.append(avg_1_width)
+                bar_positions.append(position_offset)
+                years_list.append(1)
+                avgs.append(avg_1)
+            
+            # Trim colors to match the number of bars
+            colors = colors[:len(bar_widths)]
+            
+            # Create the bars with consistent arrays
+            rects = []
+            for pos, width, avg, year, color in zip(bar_positions, bar_widths, avgs, years_list, colors):
+                if avg is not None:
+                    label = f'Media {year} Años ({earliest_year} - {latest_year}): {eng_notation(avg)}'
+                    rects.append(ax.bar(pos, avg, width, label=label, color=color))
     else:
+        # For source analysis (top_choice == 2)
         if years_range > 20:
-            avg_all_width = base_width * (years_range) / 20 * 2
-            avg_20_width = base_width * 20 / 20 * 2
-            avg_15_width = base_width * 15 / 20 * 2
-            avg_10_width = base_width * 10 / 20 * 2
-            avg_5_width = base_width * 5 / 20 * 2
-            avg_1_width = base_width * 1 / 20 * 2.5
-
-            bar_positions = [0, avg_all_width/1.55, avg_all_width/1.62 + avg_20_width, avg_all_width/1.71 + avg_20_width + avg_15_width,
-                            avg_all_width/1.81 + avg_20_width + avg_15_width + avg_10_width,
-                            avg_all_width/1.89 + avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-            bar_widths = [avg_all_width, avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
-            years_list = [years_range, years2, 15, 10, 5, 1]
+            # Create arrays for all time periods
+            bar_widths = []
+            bar_positions = []
+            years_list = []
+            avgs = []
+            colors = ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue']
+            position_offset = 0
+            
+            # Add all_data bar if available
+            if avg_all is not None:
+                avg_all_width = base_width * years_range / 20 * 2
+                bar_widths.append(avg_all_width)
+                bar_positions.append(position_offset)
+                years_list.append(years_range)
+                avgs.append(avg_all)
+                position_offset += avg_all_width/1.55
+            
+            # Add 20-year bar if available
+            if avg_20 is not None:
+                avg_20_width = base_width * 20 / 20 * 2
+                bar_widths.append(avg_20_width)
+                bar_positions.append(position_offset)
+                years_list.append(20)
+                avgs.append(avg_20)
+                position_offset += avg_20_width
+            
+            # Add 15-year bar if available
+            if avg_15 is not None:
+                avg_15_width = base_width * 15 / 20 * 2
+                bar_widths.append(avg_15_width)
+                bar_positions.append(position_offset)
+                years_list.append(15)
+                avgs.append(avg_15)
+                position_offset += avg_15_width
+            
+            # Add 10-year bar if available
+            if avg_10 is not None:
+                avg_10_width = base_width * 10 / 20 * 2
+                bar_widths.append(avg_10_width)
+                bar_positions.append(position_offset)
+                years_list.append(10)
+                avgs.append(avg_10)
+                position_offset += avg_10_width
+            
+            # Add 5-year bar if available
+            if avg_5 is not None:
+                avg_5_width = base_width * 5 / 20 * 2
+                bar_widths.append(avg_5_width)
+                bar_positions.append(position_offset)
+                years_list.append(5)
+                avgs.append(avg_5)
+                position_offset += avg_5_width
+            
+            # Always add 1-year bar
+            if avg_1 is not None:
+                avg_1_width = base_width * 1 / 20 * 2.5
+                bar_widths.append(avg_1_width)
+                bar_positions.append(position_offset)
+                years_list.append(1)
+                avgs.append(avg_1)
+            
+            # Trim colors to match the number of bars
+            colors = colors[:len(bar_widths)]
+            
+            # Create the bars with consistent arrays
+            rects = []
+            for pos, width, avg, year, color in zip(bar_positions, bar_widths, avgs, years_list, colors):
+                if avg is not None:
+                    label = f'Media {year} Años ({current_year-year} - {current_year}): {eng_notation(avg)}'
+                    rects.append(ax.bar(pos, avg, width, label=label, color=color))
         else:
-            avg_20_width = base_width * years2 / 20 * 2
-            avg_15_width = base_width * 15 / 20 * 2
-            avg_10_width = base_width * 10 / 20 * 2
-            avg_5_width = base_width * 5 / 20 * 2
-            avg_1_width = base_width * 1 / 20 * 2.5
-
-            bar_positions = [0, avg_20_width, avg_20_width + avg_15_width,
-                            avg_20_width + avg_15_width + avg_10_width,
-                            avg_20_width + avg_15_width + avg_10_width + avg_5_width]
-            bar_widths = [avg_20_width, avg_15_width, avg_10_width, avg_5_width, avg_1_width]
-            years_list = [years2, 15, 10, 5, 1]
+            # For shorter time series
+            bar_widths = []
+            bar_positions = []
+            years_list = []
+            avgs = []
+            colors = ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue']
+            position_offset = 0
+            
+            # Add years2 bar (which might be less than 20)
+            if avg_20 is not None:
+                avg_20_width = base_width * years2 / 20 * 2
+                bar_widths.append(avg_20_width)
+                bar_positions.append(position_offset)
+                years_list.append(years2)
+                avgs.append(avg_20)
+                position_offset += avg_20_width
+            
+            # Add 15-year bar if available and applicable
+            if avg_15 is not None and years2 >= 15:
+                avg_15_width = base_width * 15 / 20 * 2
+                bar_widths.append(avg_15_width)
+                bar_positions.append(position_offset)
+                years_list.append(15)
+                avgs.append(avg_15)
+                position_offset += avg_15_width
+            
+            # Add 10-year bar if available and applicable
+            if avg_10 is not None and years2 >= 10:
+                avg_10_width = base_width * 10 / 20 * 2
+                bar_widths.append(avg_10_width)
+                bar_positions.append(position_offset)
+                years_list.append(10)
+                avgs.append(avg_10)
+                position_offset += avg_10_width
+            
+            # Add 5-year bar if available and applicable
+            if avg_5 is not None and years2 >= 5:
+                avg_5_width = base_width * 5 / 20 * 2
+                bar_widths.append(avg_5_width)
+                bar_positions.append(position_offset)
+                years_list.append(5)
+                avgs.append(avg_5)
+                position_offset += avg_5_width
+            
+            # Always add 1-year bar
+            if avg_1 is not None:
+                avg_1_width = base_width * 1 / 20 * 2.5
+                bar_widths.append(avg_1_width)
+                bar_positions.append(position_offset)
+                years_list.append(1)
+                avgs.append(avg_1)
+            
+            # Trim colors to match the number of bars
+            colors = colors[:len(bar_widths)]
+            
+            # Create the bars with consistent arrays
+            rects = []
+            for pos, width, avg, year, color in zip(bar_positions, bar_widths, avgs, years_list, colors):
+                if avg is not None:
+                    label = f'Media {year} Años ({current_year-year} - {current_year}): {eng_notation(avg)}'
+                    rects.append(ax.bar(pos, avg, width, label=label, color=color))
                 
-    # Create the bar graph
-    fig, ax = plt.subplots(figsize=(10,6))
+    # Create the bar graph - MOVED HERE before any bar creation
 
-    # Create bars
-    if top_choice == 1:
-        if menu == 2 or menu == 4:
-            # Filter out None values and create bars only for valid data
-            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
-                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
-                                                            [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                            years_list,
-                                                            ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])
-                    if avg is not None]  # Add this condition
-        else:
-            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
-                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
-                                                            [avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                            years_list,
-                                                            ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])
-                    if avg is not None]  # Add this condition
-    else:
-        if years_range > 20:
-            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
-                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
-                                                            [avg_all, avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                            years_list,
-                                                            ['lightgrey', 'lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
-        else:
-            rects = [ax.bar(pos, avg, width, label=f'Media {years} Años ({current_year-years} - {current_year}): {eng_notation(avg)}', color=color)
-                    for pos, width, avg, years, color in zip(bar_positions, bar_widths, 
-                                                            [avg_20, avg_15, avg_10, avg_5, avg_1],
-                                                            years_list,
-                                                            ['lightsteelblue', 'steelblue', 'dodgerblue', 'darkblue', 'midnightblue'])]
+        # ... existing code ...
+
     # Set the x-axis labels and title
+    # SIMPLE SOLUTION: Create labels directly from positions
+    years_list = [str(year) for year in years_list]  # Convert all to strings for consistency
+    
+    # Ensure positions and labels match exactly
+    if len(bar_positions) != len(years_list):
+        # Just use position indices as labels if there's a mismatch
+        years_list = [str(i+1) for i in range(len(bar_positions))]
+    
     ax.set_xticks(bar_positions)
     ax.set_xticklabels(years_list)
     ax.set_ylabel('Media')
@@ -1611,8 +1950,8 @@ def check_trends2(kw):
 
     # Calculate trends
     trend_20 = round(((avg_1 - trends_results['mean_last_20'][kw]) / trends_results['mean_last_20'][kw]) * 100, 2)
-    print('')
-    print(f'Tendencia Normalizada de Desviación Anual (20 años): {trend_20}')
+    capture_print('')
+    capture_print(f'Tendencia Normalizada de Desviación Anual (20 años): {trend_20}')
 
     # Calculate the moving average for the last 5 years (adjust as needed)
     last_20_years_data = trends_results['last_20_years_data'][kw]
@@ -1620,11 +1959,72 @@ def check_trends2(kw):
 
     # Compare the last value of the moving average to the 20-year average
     trend2_20 = round(((moving_avg.iloc[-1] - avg_20) / avg_20) * 100, 2)
-    print(f'Tendencia Suavizada por Media Móvil (20 años): {trend2_20}')
-    print('')
+    capture_print(f'Tendencia Suavizada por Media Móvil (20 años): {trend2_20}')
+    capture_print('')
+
+    # ENHANCED CODE: Determine the appropriate reference period based on available data
+    # First check if we have data longer than 20 years
+    if 'all_data' in trends_results and kw in trends_results['all_data'] and avg_all is not None:
+        # Calculate how many years of data we have in all_data
+        all_data_years = len(trends_results['all_data'][kw])
+        
+        # Use all available data if it's more than 20 years
+        if all_data_years > 20:
+            reference_period = all_data_years
+            reference_data = trends_results['all_data'][kw]
+            reference_avg = avg_all
+            capture_print(f"Usando serie histórica completa: {reference_period} años")
+        else:
+            # Default to 20 years if available
+            reference_period = 20
+            reference_data = trends_results['last_20_years_data'][kw]
+            reference_avg = avg_20
+    # If all_data isn't available or doesn't have more than 20 years, use the best available shorter period
+    elif total_years >= 20:
+        reference_period = 20
+        reference_data = trends_results['last_20_years_data'][kw]
+        reference_avg = avg_20
+    elif total_years >= 15:
+        reference_period = 15
+        reference_data = trends_results['last_15_years_data'][kw]
+        reference_avg = avg_15
+    elif total_years >= 10:
+        reference_period = 10
+        reference_data = trends_results['last_10_years_data'][kw]
+        reference_avg = avg_10
+    elif total_years >= 5:
+        reference_period = 5
+        reference_data = trends_results['last_5_years_data'][kw]
+        reference_avg = avg_5
+    else:
+        reference_period = total_years
+        reference_data = last_20_years_data  # Use whatever data we have
+        reference_avg = avg_1  # In this case, trend analysis won't be very meaningful
+    
+    # Recalculate trend based on the appropriate reference period
+    trend_adjusted = round(((avg_1 - reference_avg) / reference_avg) * 100, 2) if reference_avg > 0 else 0
+    
+    capture_print(f'Tendencia Normalizada de Desviación Anual ({reference_period} años): {trend_adjusted}')
+
+    # Calculate the moving average with an appropriate window size
+    if reference_period > 50:
+        window_size = 24  # 2-year moving average for very long series
+    elif reference_period > 30:
+        window_size = 18  # 1.5-year moving average for long series
+    elif reference_period > 20:
+        window_size = 12  # 1-year moving average for medium series
+    else:
+        window_size = max(3, min(12, len(reference_data)//4))  # Adaptive window for shorter series
+        
+    moving_avg = reference_data.rolling(window=window_size).mean()
+    
+    # Compare the last value of the moving average to the reference average
+    trend2_adjusted = round(((moving_avg.iloc[-1] - reference_avg) / reference_avg) * 100, 2) if reference_avg > 0 else 0
+    capture_print(f'Tendencia Suavizada por Media Móvil ({reference_period} años, ventana={window_size} meses): {trend2_adjusted}')
+    capture_print('')
 
     trends = {}
-    trends[kw] = [trend_20, trend2_20]
+    trends[kw] = [trend_20, trend2_adjusted]
 
     # Define the variable based on the menu selection
     if menu == 2 or menu == 4 :
@@ -1636,63 +2036,73 @@ def check_trends2(kw):
     else:
         interest_var = "el interés"
 
-    print(f'{interest_var.capitalize()} promedio de los últimos 20 años para "{kw.upper()}" fue {eng_notation(trends_results["mean_last_20"][kw])}.')
-    print(f'{interest_var.capitalize()} del último año para "{kw.upper()}" comparado con los últimos 20 años resulta con una tendencia de {trend_20}%.')
+    # For very long time series, mention the start year
+    if reference_period > 20:
+        start_year = current_year - reference_period
+        capture_print(f'{interest_var.capitalize()} promedio histórico ({start_year}-{current_year}, {reference_period} años) para "{kw.upper()}" fue {eng_notation(reference_avg)}.')
+    else:
+        capture_print(f'{interest_var.capitalize()} promedio de los últimos {reference_period} años para "{kw.upper()}" fue {eng_notation(reference_avg)}.')
+        
+    capture_print(f'{interest_var.capitalize()} del último año para "{kw.upper()}" comparado con el promedio histórico resulta con una tendencia de {trend_adjusted}%.')
 
-    trend = trend_20
-    yearsago = 20
+    trend = trend_adjusted
+    yearsago = reference_period
     mean_value = mean[kw]
 
     # Adjusted logic based on 1-100 index range
     if mean_value > 75:
         if abs(trend) <= 5:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto y estable durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto y estable durante los últimos {yearsago} años.')
         elif trend > 5:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto y está aumentando durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto y está aumentando durante los últimos {yearsago} años.')
         else:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto pero está disminuyendo durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es muy alto pero está disminuyendo durante los últimos {yearsago} años.')
     elif mean_value > 50:
         if abs(trend) <= 10:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto y relativamente estable durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto y relativamente estable durante los últimos {yearsago} años.')
         elif trend > 10:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto y está aumentando significativamente durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto y está aumentando significativamente durante los últimos {yearsago} años.')
         else:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto pero está disminuyendo significativamente durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es alto pero está disminuyendo significativamente durante los últimos {yearsago} años.')
     elif mean_value > 25:
         if abs(trend) <= 15:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado y muestra algunas fluctuaciones durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado y muestra algunas fluctuaciones durante los últimos {yearsago} años.')
         elif trend > 15:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado pero está en tendencia creciente durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado pero está en tendencia creciente durante los últimos {yearsago} años.')
         else:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado pero muestra una tendencia decreciente durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es moderado pero muestra una tendencia decreciente durante los últimos {yearsago} años.')
     else:
         if trend > 50:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo pero está creciendo rápidamente durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo pero está creciendo rápidamente durante los últimos {yearsago} años.')
         elif trend > 0:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo pero muestra un ligero crecimiento durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo pero muestra un ligero crecimiento durante los últimos {yearsago} años.')
         elif trend < -50:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo y está disminuyendo rápidamente durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo y está disminuyendo rápidamente durante los últimos {yearsago} años.')
         else:
-            print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo y muestra una ligera disminución durante los últimos {yearsago} años.')
+            capture_print(f'{interest_var.capitalize()} por "{kw.upper()}" es bajo y muestra una ligera disminución durante los últimos {yearsago} años.')
 
-    # Comparison last year vs. 20 years ago
-    if avg_20 == 0:
-        print(f'No había {interest_var} medible por "{kw.upper()}" hace {yearsago} años.')
-    elif trend2_20 > 50:
-        print(f'{interest_var.capitalize()} del último año es mucho más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_20}%.')
-    elif trend2_20 > 15:
-        print(f'{interest_var.capitalize()} del último año es considerablemente más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_20}%.')
-    elif trend2_20 < -50:
-        print(f'{interest_var.capitalize()} del último año es mucho más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_20)}%.')
-    elif trend2_20 < -15:
-        print(f'{interest_var.capitalize()} del último año es considerablemente más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_20)}%.')
+    # Comparison last year vs. reference period
+    if reference_avg == 0:
+        capture_print(f'No había {interest_var} medible por "{kw.upper()}" hace {yearsago} años.')
+    elif trend2_adjusted > 50:
+        capture_print(f'{interest_var.capitalize()} del último año es mucho más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_adjusted}%.')
+    elif trend2_adjusted > 15:
+        capture_print(f'{interest_var.capitalize()} del último año es considerablemente más alto en comparación con hace {yearsago} años. Ha aumentado en un {trend2_adjusted}%.')
+    elif trend2_adjusted < -50:
+        capture_print(f'{interest_var.capitalize()} del último año es mucho más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_adjusted)}%.')
+    elif trend2_adjusted < -15:
+        capture_print(f'{interest_var.capitalize()} del último año es considerablemente más bajo en comparación con hace {yearsago} años. Ha disminuido en un {abs(trend2_adjusted)}%.')
     else:
-        print(f'{interest_var.capitalize()} del último año es comparable al de hace {yearsago} años. Ha cambiado en un {trend2_20}%.')
-    print('')
+        capture_print(f'{interest_var.capitalize()} del último año es comparable al de hace {yearsago} años. Ha cambiado en un {trend2_adjusted}%.')
+    capture_print('')
 
+    # NEW: Store the captured output in the global variable
+    trend_analysis_text[kw] = '\n'.join(trend_output)
+    
     return {
         'means': means[kw],
-        'trends': trends[kw]
+        'trends': trends[kw],
+        'analysis_text': trend_analysis_text[kw]  # Also include the text in the return value
     }
 
 def create_unique_filename(keywords, max_length=20):
@@ -1965,7 +2375,9 @@ def init_variables():
     global combined_dataset2  # Add the new global variable
     global datasets_norm_full  # Add the new global variable
     global all_datasets_full  # Add the new global variable
-
+    # NEW: Add global variable for storing text output
+    global trend_analysis_text
+    
     image_markdown = "\n\n# Gráficos\n\n"
     
     plt.style.use('ggplot')
@@ -2015,6 +2427,9 @@ def init_variables():
         os.makedirs(unique_folder)
         # Make the unique folder writable
         os.chmod(unique_folder, 0o777)
+    
+    # NEW: Initialize the trend analysis text dictionary
+    trend_analysis_text = {}
 
 # *************************************************************************************
 # RESULTS
