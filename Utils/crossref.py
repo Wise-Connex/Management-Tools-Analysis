@@ -134,10 +134,18 @@ def read_input_csv(filepath):
 def get_crossref_data(query, max_runtime=7200):
     """Get data from Crossref API with enhanced error handling and resume capability"""
     logger = logging.getLogger(__name__)
+    
+    # Check for extended mode
+    if os.environ.get('CROSSREF_EXTENDED_MODE') == 'TRUE':
+        # Extend runtime to 10 hours for problematic queries
+        max_runtime = 36000  # 10 hours
+        logger.info(f"Running in EXTENDED mode with {max_runtime/3600} hour timeout")
+    
     results = []
     
     current_year = datetime.now().year
-    rows = 1000
+    # Modify batch size for extended mode to reduce load
+    rows = 500 if os.environ.get('CROSSREF_EXTENDED_MODE') == 'TRUE' else 1000
     cursor = '*'
     total_items = 0
     completed_successfully = False
@@ -292,7 +300,9 @@ def get_crossref_data(query, max_runtime=7200):
                             os.remove(state_file)  # Clean up state file after completion
                         break  # Break retry loop
                     
-                    time.sleep(1)  # Rate limiting
+                    # Add additional delay between requests in extended mode
+                    time_delay = 2 if os.environ.get('CROSSREF_EXTENDED_MODE') == 'TRUE' else 1
+                    time.sleep(time_delay)  # Rate limiting
                     break  # Break retry loop on success
                 
                 except requests.HTTPError as e:
@@ -537,6 +547,11 @@ def process_specific_tool(tool_name, force_reprocess=False):
     logger = setup_logging()
     logger.info(f"Processing specific tool: {tool_name}")
     
+    # Check for extended mode
+    extended_mode = os.environ.get('CROSSREF_EXTENDED_MODE') == 'TRUE'
+    if extended_mode:
+        logger.info("Running in EXTENDED mode with optimized parameters")
+    
     try:
         # Read input CSV from project root
         project_root = get_project_root()
@@ -567,8 +582,9 @@ def process_specific_tool(tool_name, force_reprocess=False):
         name, query = tool_data
         logger.info(f"Found tool: {name} with query: {query}")
         
-        # Get data from Crossref with increased runtime (5 hours)
-        result = get_crossref_data(query, max_runtime=18000)
+        # Get data from Crossref with runtime based on mode
+        max_runtime = 36000 if extended_mode else 18000  # 10 hours in extended mode, 5 hours otherwise
+        result = get_crossref_data(query, max_runtime=max_runtime)
         if result is None:
             logger.error(f"Failed to get data for {name}")
             return False
@@ -671,8 +687,9 @@ def main():
                 save_state(processed_tools)
                 sys.exit(0)
             
-            # Get data from Crossref with increased runtime (5 hours)
-            result = get_crossref_data(query, max_runtime=18000)
+            # Get data from Crossref with runtime based on mode
+            max_runtime = 36000 if extended_mode else 18000  # 10 hours in extended mode, 5 hours otherwise
+            result = get_crossref_data(query, max_runtime=max_runtime)
             if result is None:
                 logger.error(f"Failed to get data for {tool_name}, skipping CSV generation")
                 continue
