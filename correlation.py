@@ -2888,6 +2888,9 @@ def report_pdf():
     cover_image_path = None
     current_tool = ""
     
+    # Add a boolean flag to track if the report has a cover
+    has_cover = False
+    
     print("\n--- DEBUG: Report PDF Cover Page Generation ---")
     
     if top_choice == 1:
@@ -3803,6 +3806,9 @@ def report_pdf():
                 output.add_page(cover_pdf.pages[0])
                 print(f"DEBUG: Added cover page to output PDF")
                 
+                # Set the flag to indicate the report has a cover
+                has_cover = True
+                
                 # If we have a TOC, add it after the cover but before the content
                 if os.path.exists(content_with_toc_path):
                     # The content_pdf already has the TOC at the beginning, so we need to:
@@ -3829,6 +3835,31 @@ def report_pdf():
                     for page in content_pdf.pages:
                         output.add_page(page)
                     print(f"DEBUG: Added {len(content_pdf.pages)} content pages (no TOC)")
+                
+                # If we have a cover, extract data source code and append back PDF
+                if has_cover:
+                    # Use the data_source_code that's already defined in the function
+                    # (no need to extract it from the cover filename)
+                    
+                    # Correct path for back PDF files (using relative path)
+                    back_pdf_path = os.path.join('pub-assets/Back', f"{data_source_code}-BACK.pdf")
+                    
+                    print(f"DEBUG: Looking for back PDF: {back_pdf_path}")
+                    
+                    if os.path.exists(back_pdf_path) and os.access(back_pdf_path, os.R_OK):
+                        try:
+                            # Open the back PDF
+                            back_pdf = PdfReader(back_pdf_path)
+                            
+                            # Add all pages from the back PDF
+                            for page in back_pdf.pages:
+                                output.add_page(page)
+                                
+                            print(f"DEBUG: Successfully added back PDF: {back_pdf_path}")
+                        except Exception as e:
+                            print(f"ERROR: Failed to add back PDF: {str(e)}")
+                        else:
+                            print(f"WARNING: Back PDF not found or not accessible: {back_pdf_path}")
                 
                 # Write the final PDF
                 with open(pdf_path, "wb") as output_stream:
