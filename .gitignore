@@ -56,7 +56,7 @@ unique_folder/
 .cache/
 
 # Generated reports
-*.pdf
+data/*.pdf
 
 # Dependency directories
 share/
