@@ -577,8 +577,7 @@ def seasonal_analysis(period='last_20_years_data'):
     global charts
     global csv_seasonal
     global image_markdown
-    global skip_seasonal
-    skip_seasonal = [False for _ in range(len(all_keywords))]  
+    global skip_seasonal  
      
     # Assuming 'trends_results' is a dictionary
     data = pd.DataFrame(trends_results[period])
@@ -594,6 +593,7 @@ def seasonal_analysis(period='last_20_years_data'):
         data.index = pd.to_datetime(data.index)
     # Get all numeric columns (keywords)
     all_keywords = data.select_dtypes(include=[np.number]).columns.tolist()
+    skip_seasonal = [False for _ in range(len(all_keywords))]
     csv_seasonal = ""# Analyze each keyword
     n=0
     for keyword in all_keywords:
@@ -3837,7 +3837,31 @@ def report_pdf():
                 # Set the flag to indicate the report has a cover
                 has_cover = True
                 
-                # If we have a TOC, add it after the cover but before the content
+                # If we have a cover, look for the intro PDF to add after the cover
+                if has_cover and 'cod_value' in locals():
+                    # Construct the path to the intro PDF using the report code
+                    intro_pdf_path = os.path.join('pub-assets', 'Intro-A', f'{cod_value}-INTRO-A.pdf')
+                    print(f"DEBUG: Looking for intro PDF: {intro_pdf_path}")
+                    
+                    # Check if the intro PDF exists and is accessible
+                    if os.path.exists(intro_pdf_path) and os.access(intro_pdf_path, os.R_OK):
+                        try:
+                            # Open the intro PDF
+                            intro_pdf = PdfReader(intro_pdf_path)
+                            
+                            # Add all pages from the intro PDF
+                            for page in intro_pdf.pages:
+                                output.add_page(page)
+                                
+                            print(f"DEBUG: Successfully added intro PDF: {intro_pdf_path} ({len(intro_pdf.pages)} pages)")
+                        except Exception as e:
+                            print(f"ERROR: Failed to add intro PDF: {str(e)}")
+                            import traceback
+                            traceback.print_exc()
+                    else:
+                        print(f"WARNING: Intro PDF not found or not accessible: {intro_pdf_path}")
+                
+                # If we have a TOC, add it after the cover (and intro if present) but before the content
                 if os.path.exists(content_with_toc_path):
                     # The content_pdf already has the TOC at the beginning, so we need to:
                     # 1. Extract just the TOC pages (typically just 1 page)
@@ -4180,7 +4204,6 @@ def generate_pdf_toc(input_pdf_path, output_pdf_path):
         
     except Exception as e:
         print(f"Error generating TOC: {str(e)}")
-        traceback.print_exc()
         return False
 
 def get_all_keywords():

@@ -4,6 +4,8 @@ This document have some important code snipets from correlation.py
 
 init_variables is a very important function, don't delete nothing for it, if you need to do any changes let me know first
 
+## init_variables
+
 ```python
 # *************************************************************************************
 # INIT VARIABLES
@@ -85,7 +87,7 @@ def init_variables():
         os.chmod(unique_folder, 0o777)
 ```
 
-# check_trends2
+## check_trends2
 
 ```python
 def check_trends2(kw):
