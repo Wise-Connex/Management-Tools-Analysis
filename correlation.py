@@ -137,6 +137,8 @@ global latest_year
 global total_years
 global keycharts
 global csv_combined_dataset
+global skip_seasonal
+global skip_arima
 keycharts = []
 csv_arimaA = []
 csv_arimaB = []
@@ -575,6 +577,9 @@ def seasonal_analysis(period='last_20_years_data'):
     global charts
     global csv_seasonal
     global image_markdown
+    global skip_seasonal
+    skip_seasonal = [False for _ in range(len(all_keywords))]  
+     
     # Assuming 'trends_results' is a dictionary
     data = pd.DataFrame(trends_results[period])
     banner_msg(f'Análisis Estacional {actual_menu}',margin=1,color1=YELLOW,color2=WHITE)
@@ -590,15 +595,18 @@ def seasonal_analysis(period='last_20_years_data'):
     # Get all numeric columns (keywords)
     all_keywords = data.select_dtypes(include=[np.number]).columns.tolist()
     csv_seasonal = ""# Analyze each keyword
+    n=0
     for keyword in all_keywords:
         def decompose_series(series):
             if menu == 2:
                 # For annual data, we can't perform seasonal decomposition
                 print(f"Seasonal decomposition not applicable for annual data ({keyword})")
+                skip_seasonal[n] = True
                 return None
             else:
                 if len(series) < 24:
                     print(f"Not enough data points for seasonal decomposition ({keyword})")
+                    skip_seasonal[n] = True
                     return None
                 decomposition = sm.tsa.seasonal_decompose(series, model='additive', period=12)
                 seasonal = decomposition.seasonal
@@ -690,6 +698,8 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
   global csv_arimaA
   global csv_arimaB
   global csv_arima
+  global skip_arima
+  skip_arima = [False for _ in range(len(all_keywords))]    
   csv_arimaA = ["" for _ in range(len(all_keywords))]
   csv_arimaB = ["" for _ in range(len(all_keywords))]
   
@@ -725,6 +735,7 @@ def arima_model(mb=24, mf=60, ts=18, p=0, d=1, q=2, auto=True):
       # Check if the column has enough non-zero values
       if (train[col] != 0).sum() <= 10:  # Adjust this threshold as needed
           print(f"Skipping {col} due to insufficient non-zero values")
+          skip_arima[n] = True
           csv_arimaA[n] += f"Skipping {col} due to insufficient non-zero values\n"
           continue
 
@@ -2961,6 +2972,8 @@ def report_pdf():
                     file_info = data_source_matches.iloc[0]['File']
                     cover_image_path = os.path.join('pub-assets', file_info)
                     print(f"DEBUG: Found cover image for data source '{data_source_code}': {cover_image_path}")
+                    # Set has_cover to True since we found a valid cover image
+                    has_cover = True
                 else:
                     # If no specific match for the data source, fall back to the first matching row
                     file_info = matching_rows.iloc[0]['File']
@@ -2975,11 +2988,15 @@ def report_pdf():
                     if os.path.exists(alt_path):
                         print(f"DEBUG: Found image at alternate path: {alt_path}")
                         cover_image_path = alt_path
+                        # Set has_cover to True since we found a valid cover image
+                        has_cover = True
                     else:
                         print(f"ERROR: Also tried alternate path with no success: {alt_path}")
                         cover_image_path = None
                 else:
                     print(f"DEBUG: Found cover image at: {cover_image_path}")
+                    # Set has_cover to True since we found a valid cover image
+                    has_cover = True
             else:
                 print(f"WARNING: No matching tool found in CSV. Available tools: {portada_df['Herramienta'].unique().tolist()[:10]}")
         except Exception as e:
@@ -3403,6 +3420,11 @@ def report_pdf():
         </style>
     </head>
     <body>
+"""
+
+    # Only include the title page if has_cover is False
+    if not has_cover:
+        html_content += f"""
         <!-- Title Page -->
         <div class="title-page">
             <h1>Análisis de {', '.join(all_keywords)}</h1>
@@ -3411,7 +3433,13 @@ def report_pdf():
             <div class="date">{datetime.now().strftime("%d de %B de %Y")}</div>
         </div>
         <div class="page-break"></div>
-        
+"""
+    else:
+        html_content += f"""
+"""
+
+    # Continue with the rest of the HTML content
+    html_content += f"""
         <!-- Main Content - Convert markdown sections to HTML -->
         <div id="resumen-ejecutivo">
             <h1>Resumen Ejecutivo</h1>
@@ -3424,7 +3452,7 @@ def report_pdf():
             {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
         </div>
         <div class="page-break"></div>
-    """
+"""
     
     if not one_keyword:
         html_content += f"""
