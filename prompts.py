@@ -94,15 +94,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
     *   Ejemplo: `# Análisis de la Trayectoria de Balanced Scorecard (Google Trends)`
     *   *Nota:* El título es *conciso* y *directo*.
 
-2.  **`## Resumen Ejecutivo`**
-    *   *Contenido:* Un resumen *muy conciso* (máximo 150 palabras, idealmente 100) que capture:
-        *   La *tendencia principal* (crecimiento, declive, estancamiento, ciclicidad).
-        *   La *etapa actual del ciclo de vida* (si es determinable).
-        *   *Implicaciones clave* para *investigadores*, *consultores* y *organizaciones* (una frase para cada uno, si es posible, sin explicitar cual frase es para cada sector).
-        *   *No* incluirá cifras específicas aquí, solo descripciones cualitativas.
-	* **Extensión:** **Aproximadamente 250-300 palabras.** *Prioriza la concisión y la claridad*. Incluye solo la información *esencial*.
-
-3.  **`## Introducción: Contexto y Relevancia de la herramienta gerencial`**
+2.  **`## Introducción: Contexto y Relevancia de la herramienta gerencial`**
     *   *Contenido:*
         *   **Definición:** Una definición *clara y concisa* de la herramienta gerencial. *No* usar jerga excesiva; definir términos técnicos si es necesario.
         *   **Relevancia:** Explicar *por qué* esta herramienta es (o fue) relevante para las organizaciones. ¿Qué problemas pretende resolver? ¿Qué beneficios promete?
@@ -111,7 +103,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
 	* **Implicaciones:** Posibles implicaciones que se pueden obtener del análisis.
 	* **Extensión:** **Aproximadamente 400-450 palabras.** *Sé conciso, pero asegúrate de cubrir todos los puntos clave (definición, relevancia, contexto temporal, relevancia de la fuente, implicaciones).*.
 
-4. **## PRESENTACIÓN DE DATOS ESTADÍSTICOS**
+3. **## PRESENTACIÓN DE DATOS ESTADÍSTICOS**
 
     *   *Contenido:* Esta sección presenta los *datos estadísticos brutos* y los *resultados de los cálculos* de manera *objetiva*, *completa* y *sin interpretación*.  El objetivo es proporcionar una base de datos transparente para el análisis posterior.
     *   *Formato:*
@@ -147,7 +139,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
 *Nota: Se puede dividir en subsecciones (`###`) si hay muchos datos de diferentes tipos (ej., `### Datos de Series Temporales`, `### Resultados del Modelo ARIMA`, etc.).*
 *Extensión:* No hay límite de palabras, ya que depende de la cantidad de datos. *Prioriza la claridad y la organización*.
 
-5.  **`## Análisis de la Trayectoria de la herramienta gerencial`**
+4.  **`## Análisis de la Trayectoria de la herramienta gerencial`**
 
     *   *Contenido:* Esta sección presenta el *análisis* e *interpretación* de los datos, construyendo una *narrativa* sobre la trayectoria de la herramienta.
     *   *Estructura:*
@@ -172,7 +164,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
 
     *   *Extensión:* La extensión *total* de la sección "Análisis de la Trayectoria" (incluyendo *todas* las subsecciones) es variable, *pero generalmente entre 600 y 900 palabras*. La extensión dependerá de la complejidad de los patrones observados. *Prioriza la profundidad del análisis y la claridad de la narrativa sobre la brevedad*. *No te preocupes por un límite estricto, pero evita la redundancia y la verbosidad*.
 
-6.  **`## IMPLICACIONES Y RECOMENDACIONES`**
+5.  **`## IMPLICACIONES Y RECOMENDACIONES`**
     *   *Contenido:* Esta sección *sintetiza* los hallazgos clave y ofrece *perspectivas accionables* para *diferentes audiencias*: investigadores, consultores y organizaciones (públicas, privadas, PYMES, multinacionales y ONG).
     *   *Formato:*
         *   *No* utilices subsecciones separadas para cada audiencia. En su lugar, *integra* las implicaciones en un texto coherente.
@@ -197,7 +189,7 @@ El resultado de cada prompt debe ser un informe en formato Markdown, estructurad
     *   *Extensión:* **Aproximadamente 400-600 palabras en total.**  Esto te da suficiente espacio para desarrollar las implicaciones para cada audiencia de forma adecuada. *Prioriza la profundidad y la especificidad sobre la brevedad*.
 
 
-7. **`## Conclusiones`** (Solo si es el primer prompt)
+6. **`## Conclusiones`** (Solo si es el primer prompt)
     * Síntesis.
 **Extensión:** Extensión entre 250 a 300 palabras.
 
