@@ -74,6 +74,7 @@ def print_welcome():
     print("=" * 70)
     print("This application extracts historical data from Crossref API for management tools.")
     print("It searches month by month from 1950 to present and saves results in a CSV file.")
+    print("Use --all to process all available management tools (Herramientas Gerenciales).")
     print("=" * 70)
 
 def get_available_tools():
@@ -470,18 +471,61 @@ def process_all_tools(tools, start_year, end_year=None):
         list: List of paths to saved CSV files
     """
     logger = logging.getLogger(__name__)
-    logger.info(f"Processing all {len(tools)} tools")
-    print(f"\nProcessing all {len(tools)} tools from {start_year} to {end_year or 'present'}")
+    total_tools = len(tools)
+    logger.info(f"Processing all {total_tools} tools")
+    
+    print(f"\n{'='*30}")
+    print(f"PROCESSING ALL {total_tools} MANAGEMENT TOOLS")
+    print(f"{'='*30}")
+    print(f"Date range: {start_year} to {end_year or 'present'}")
+    print(f"Output directory: NewDBase")
+    print(f"{'='*30}\n")
     
     output_files = []
+    successful_tools = []
+    failed_tools = []
     
-    for i, tool_name in enumerate(tools, 1):
-        print(f"\n[{i}/{len(tools)}] Processing tool: {tool_name}")
-        output_file = process_tool(tool_name, start_year, end_year)
-        if output_file:
-            output_files.append(output_file)
+    # Sort tools alphabetically for better user experience
+    sorted_tools = sorted(tools)
     
-    print(f"\nProcessed {len(output_files)} tools successfully")
+    for i, tool_name in enumerate(sorted_tools, 1):
+        print(f"\n{'-'*50}")
+        print(f"[{i}/{total_tools}] Processing tool: {tool_name}")
+        print(f"{'-'*50}")
+        
+        try:
+            output_file = process_tool(tool_name, start_year, end_year)
+            if output_file:
+                output_files.append(output_file)
+                successful_tools.append((tool_name, output_file))
+            else:
+                failed_tools.append(tool_name)
+        except Exception as e:
+            logger.error(f"Error processing tool {tool_name}: {str(e)}")
+            print(f"Error processing tool {tool_name}: {str(e)}")
+            failed_tools.append(tool_name)
+    
+    # Print summary
+    print(f"\n{'='*30}")
+    print(f"PROCESSING SUMMARY")
+    print(f"{'='*30}")
+    print(f"Total tools: {total_tools}")
+    print(f"Successfully processed: {len(successful_tools)}")
+    print(f"Failed: {len(failed_tools)}")
+    
+    if successful_tools:
+        print(f"\nSuccessfully processed tools:")
+        for i, (tool_name, file_path) in enumerate(successful_tools, 1):
+            filename = os.path.basename(file_path)
+            print(f"{i}. {tool_name} -> {filename}")
+    
+    if failed_tools:
+        print(f"\nFailed tools:")
+        for i, tool_name in enumerate(failed_tools, 1):
+            print(f"{i}. {tool_name}")
+    
+    print(f"\nAll output files are saved in the 'NewDBase' directory.")
+    
     return output_files
 
 def main():
@@ -506,6 +550,9 @@ def main():
     # Process based on arguments
     if args.all:
         # Process all tools
+        logger.info(f"Running in 'all tools' mode with {len(tools)} tools")
+        print(f"\nRunning in 'all tools' mode. Found {len(tools)} management tools.")
+        
         output_files = process_all_tools(tools, args.start_year, end_year)
         if not output_files:
             print("Failed to process any tools.")
