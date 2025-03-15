@@ -439,7 +439,7 @@ def bspline_interpolation(df, column):
 
 def get_file_data(filename, menu):
     # Path to the local 'dbase' folder
-    local_path = "./dbase/"
+    local_path = "dbase/"
     
     # Construct the full path to the CSV file
     file_path = os.path.join(local_path, filename)
