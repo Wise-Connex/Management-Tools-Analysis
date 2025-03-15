@@ -1,0 +1,3396 @@
+{
+  "metadata": {
+    "tool": "Benchmarking",
+    "date": "2022-01",
+    "extraction_time": "2025-03-14T23:41:36.287922",
+    "total_results": 519
+  },
+  "data": {
+    "status": "ok",
+    "message-type": "work-list",
+    "message-version": "1.0.0",
+    "message": {
+      "total-results": 519,
+      "items": [
+        {
+          "DOI": "10.4060/cb8335en",
+          "title": [
+            "Benchmarking species diversification in global aquaculture"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                26
+              ]
+            ]
+          },
+          "type": "edited-book"
+        },
+        {
+          "DOI": "10.1504/ijpmb.2022.10051635",
+          "title": [
+            "Benchmarking the Sustainable Banking Performance of Indian Commercial Banks"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "DEERGHA",
+              "family": "SHARMA",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Raveena",
+              "family": "Gaba",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Journal of Process Management and Benchmarking"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1504/ijpmb.2022.125841",
+          "title": [
+            "Corporate succession planning: accident or part of the strategic benchmarking process"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Alan D.",
+              "family": "Smith",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Journal of Process Management and Benchmarking"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1504/ijpmb.2022.10050066",
+          "title": [
+            "Benchmarking the Metal additive manufacturing processes using integrated AHP"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Vimal",
+              "family": "KEK",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Naveen Srinivas",
+              "family": "M",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Journal of Process Management and Benchmarking"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.18653/v1/2022.nlppower-1.11",
+          "title": [
+            "Benchmarking Post-Hoc Interpretability Approaches for Transformer-based Misogyny Detection"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Giuseppe",
+              "family": "Attanasio",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Debora",
+              "family": "Nozza",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Eliana",
+              "family": "Pastor",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Dirk",
+              "family": "Hovy",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Proceedings of NLP Power! The First Workshop on Efficient Benchmarking in NLP"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.1504/ijpmb.2022.10049615",
+          "title": [
+            "Benchmarking the financial performance of Indian commercial banks by a hybrid MCDM approach"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "PAWAN",
+              "family": "KUMAR",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "DEERGHA",
+              "family": "SHARMA",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Journal of Process Management and Benchmarking"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.59350/mhqzx-ydj73",
+          "title": [
+            "Wordless Song: Benchmarking Wordle performance using R"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                5
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "http://orcid.org/0000-0001-8927-6967",
+              "authenticated-orcid": false,
+              "given": "Stephen",
+              "family": "Royle",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "type": "posted-content",
+          "abstract": "<p>A quick post about a puzzle called Wordle that is currently taking over the internet. It’s a mastermind-like game where the object is to guess an unknown 5-letter word. Puzzlers are encouraged to share their results after completing a puzzle. Here is an example for puzzle 192. So how do you know if your performance on today’s puzzle was any good? Why not benchmark your effort against the crowd?</p>"
+        },
+        {
+          "DOI": "10.5771/9783748911784-93",
+          "title": [
+            "Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Jürgen",
+              "family": "Burmeister",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Fachlexikon der Sozialen Arbeit"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.5040/9781501365287.169",
+          "title": [
+            "benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "The Fairchild Books Dictionary of Fashion"
+          ],
+          "type": "other"
+        },
+        {
+          "DOI": "10.5267/j.uscm.2022.1.001",
+          "title": [
+            "The effect of benchmarking reasons on benchmarking success: An empirical study on public universities"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Abdulaziz D.",
+              "family": "Alhammadi",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Sura I.",
+              "family": "Alayed",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Uncertain Supply Chain Management"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:p>The aim of this study is to explore benchmarking reasons and their effects on benchmarking success from the perspectives of university managers in different management levels. Six reasons were examined for their role in benchmarking success. These reasons are top management support, university internal assessment, employee participation, benchmarking benefits, benchmarking competitor, and benchmarking partner. Data were gathered by a questionnaire distributed to managers from all levels in public universities. The questionnaire was developed based on related works on benchmarking. Two hundred questionnaires were distributed to the sample members and 167 questionnaires were returned with a response rate of 83.5%. The results indicated university internal assessment is the most influential reason for benchmarking success, followed by benchmarking benefits, benchmarking partner, top management support, and finally, employee participation. It was found that benchmarking competitors had no effect on benchmarking success. Therefore, universities are called for considering such reasons when heading for benchmarking. Researchers also are requested to validate such findings and to explore more reasons for benchmarking success.</jats:p>"
+        },
+        {
+          "DOI": "10.18653/v1/2022.nlppower-1",
+          "title": [
+            "Proceedings of NLP Power! The First Workshop on Efficient Benchmarking in NLP"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "type": "proceedings"
+        },
+        {
+          "DOI": "10.53053/aupt3297",
+          "title": [
+            "Community Newsletter: Race reporting, benchmarking, chandelier cells"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "name": "Spectrum",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Spectrum"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.5040/9781501365287.562",
+          "title": [
+            "competitive benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "The Fairchild Books Dictionary of Fashion"
+          ],
+          "type": "other"
+        },
+        {
+          "DOI": "10.18653/v1/2022.nlppower-1.7",
+          "title": [
+            "Beyond Static models and test sets: Benchmarking the potential of pre-trained models across tasks and languages"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Kabir",
+              "family": "Ahuja",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Sandipan",
+              "family": "Dandapat",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Sunayana",
+              "family": "Sitaram",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Monojit",
+              "family": "Choudhury",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Proceedings of NLP Power! The First Workshop on Efficient Benchmarking in NLP"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.5220/0010862000003120",
+          "title": [
+            "Benchmarking Consumer Data and Privacy Knowledge in Connected and Autonomous Vehicles"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Flora",
+              "family": "Barber",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "School of Computer Science, University of Nottingham, U.K., --- Select a Country ---"
+                }
+              ]
+            },
+            {
+              "given": "Steven",
+              "family": "Furnell",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "School of Computer Science, University of Nottingham, U.K., --- Select a Country ---"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Proceedings of the 8th International Conference on Information Systems Security and Privacy"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.18653/v1/2022.nlppower-1.3",
+          "title": [
+            "Benchmarking for Public Health Surveillance tasks on Social Media with a Domain-Specific Pretrained Language Model"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Usman",
+              "family": "Naseem",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Byoung",
+              "family": "Chan Lee",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Matloob",
+              "family": "Khushi",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Jinman",
+              "family": "Kim",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Adam",
+              "family": "Dunn",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Proceedings of NLP Power! The First Workshop on Efficient Benchmarking in NLP"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4136093",
+          "title": [
+            "Benchmarking Benchmarks"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Marta",
+              "family": "Khomyn",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Talis J.",
+              "family": "Putnins",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1037/t86454-000",
+          "title": [
+            "eHealth UsaBility Benchmarking Instrument"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Marijke",
+              "family": "Broekhuis",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Lex",
+              "family": "van Velsen",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "PsycTESTS Dataset"
+          ],
+          "type": "dataset"
+        },
+        {
+          "DOI": "10.5771/9783415072329-197",
+          "title": [
+            "8.  Auftragskalkulation und Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Ralf",
+              "family": "Sorg",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Immobilienmakler"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.1504/ijpmb.2022.125337",
+          "title": [
+            "Competitive benchmarking of Universiti Utara Malaysia's performance against the performance of selected Malaysian universities"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Engku M.",
+              "family": "Nazri",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "S. Kanageswari Suppiah",
+              "family": "Shanmugam",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Nor Aziah Abd",
+              "family": "Manaf",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Journal of Process Management and Benchmarking"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1108/bij-08-2021-0465",
+          "title": [
+            "Benchmarking the failure assessment of perishable product supply chain using fault tree approach: insights from apple case study of India"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                11
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "http://orcid.org/0000-0001-7280-4153",
+              "authenticated-orcid": false,
+              "given": "Manisha",
+              "family": "Bhardwaj",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "ORCID": "http://orcid.org/0000-0001-9870-4097",
+              "authenticated-orcid": false,
+              "given": "Rajat",
+              "family": "Agrawal",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Benchmarking: An International Journal"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:sec><jats:title content-type=\"abstract-subheading\">Purpose</jats:title><jats:p>The purpose of this paper is to facilitate perishable product supply chain (PPSC) managers and practitioners to assess PPSC failure events. The paper proposed fault tree methodology for assessing failures associated with PPSC for evaluating the performance in terms of effective PPSC management adoption.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title><jats:p>Initially, different failure events were identified from literature and semi-structured interviews from experts. Fault tree model was developed from the identified failure events. Probability of failure events was calculated using Poisson distribution based on the annual reports and interviews conducted from experts. Further, qualitative analysis – minimum cut sets (MCSs), structural importance coefficient (SIC) – and quantitative analysis – Birnbaum importance measure (BIM), criticality importance factor (CIF) and diagnosis importance factor (DIF) – were performed for ranking of failure events. In this study, fault tree development and analysis were conducted on apple supply chain to present the authenticity of this method for failure analysis.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Findings</jats:title><jats:p>The findings indicate that the failure events, given as failure at production and procurement (A2), that is, involvement of middleman (BE3), handling and packaging failure (BE4) and transportation failure (A3), hold the highest-ranking scores in analysis of PPSC using fault tree approach.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Originality/value</jats:title><jats:p>This research uses the modularization approach for evaluation of failure events of PPSC. This paper explores failures related to PPSC for efficient management initiatives in apple supply chain context. The paper also provides suggestion from managerial perspective with respect to each failure event.</jats:p></jats:sec>"
+        },
+        {
+          "DOI": "10.1109/cps-iotbench56135.2022",
+          "title": [
+            "2022 Workshop on Benchmarking Cyber-Physical Systems and Internet of Things (CPS-IoTBench)"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "type": "proceedings"
+        },
+        {
+          "DOI": "10.1007/978-3-030-94437-7_6",
+          "title": [
+            "Orchestrating DBMS Benchmarking in the Cloud with Kubernetes"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Patrick K.",
+              "family": "Erdelt",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Lecture Notes in Computer Science",
+            "Performance Evaluation and Benchmarking"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.5220/0011540800003335",
+          "title": [
+            "Knowledge Management and Benchmarking for Health Care System Development Activities"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Annamaija",
+              "family": "Paunu",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Information and Knowledge Management, Tampere University, Tampere, Finland, --- Select a Country ---"
+                }
+              ]
+            },
+            {
+              "given": "Hannele",
+              "family": "Väyrynen",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Information and Knowledge Management, Tampere University, Tampere, Finland, --- Select a Country ---"
+                }
+              ]
+            },
+            {
+              "given": "Nina",
+              "family": "Helander",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Information and Knowledge Management, Tampere University, Tampere, Finland, --- Select a Country ---"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Proceedings of the 14th International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.3997/2214-4609.20224113",
+          "title": [
+            "Benchmarking an Advanced Reservoir Simulator"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "S.",
+              "family": "Shareef",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Hamad Bin Khalifa University"
+                }
+              ]
+            },
+            {
+              "given": "A.",
+              "family": "Abushaikha",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Hamad Bin Khalifa University"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Fourth EAGE WIPIC Workshop"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.5220/0011531700003523",
+          "title": [
+            "How Much Data is Enough? Benchmarking Transfer Learning for Few Shot ECG Image Classification"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Sathvik",
+              "family": "Bhaskarpandit",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Computer Science and Information Systems, BITS Pilani Hyderabad Campus, Hyderabad, India, --- Select a Country ---"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Proceedings of the 1st Workshop on Scarce Data in Artificial Intelligence for Healthcare"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4101997",
+          "title": [
+            "Benchmarking Econometric and Machine Learning Methodologies in Nowcasting"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Daniel",
+              "family": "Hopp",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4043097",
+          "title": [
+            "Benchmarking Peptide Structure Prediction With AlphaFold2"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Alican",
+              "family": "Gulsevin",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Jens",
+              "family": "Meiler",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.46830/wriwp.20.00010",
+          "title": [
+            "Benchmarking Energy Performance of Offices in Kochi"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Dhilon",
+              "family": "Subramanian",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Sumedha",
+              "family": "Malaviya",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Bharath",
+              "family": "Jairaj",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "World Resources Institute"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:p>This paper discusses the methodology to benchmark the energy performance of existing buildings at a city scale. The research focused on collecting relevant data from 50 office spaces in Kochi to understand and compare their energy performance. The study also included a qualitative analysis to realize the major barriers to energy retrofits.</jats:p>"
+        },
+        {
+          "DOI": "10.2139/ssrn.4210608",
+          "title": [
+            "Energy Benchmarking for Secondary School Buildings Applying a Top-Down Approach"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Salah",
+              "family": "Vaisi",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Mahtab",
+              "family": "Firouzi",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Pouya",
+              "family": "Varmazyari",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "type": "posted-content"
+        },
+        {
+          "DOI": "10.21203/rs.3.rs-1203650/v1",
+          "title": [
+            "DD-KARB: Data-Driven Compliance to Quality by Rule Based Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                7
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Mohammad Reza",
+              "family": "Besharati",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Sharif University of Technology"
+                }
+              ]
+            },
+            {
+              "given": "Mohammad",
+              "family": "Izadi",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Sharif University of Technology"
+                }
+              ]
+            }
+          ],
+          "type": "posted-content",
+          "abstract": "<jats:title>Abstract</jats:title>\n        <jats:p>Rather than proof and logical evaluation, benchmarking can be used for compliance assessment. Naturally, a set of benchmarks can shape an applied solution to compliance assessment. This paper proposes the KARB solution system, i.e. preventing compliance anomalies through rule-based benchmarking. In fact, rule-based benchmarking means evaluating an under-compliance system with its symbolic specification and using a set of symbolic rules (on the behalf of the semantic logic of evaluation). A case study was conducted to demonstrate and analyze the KARB solution. The IR-QUMA study (Iranian Survey on Quality in Messenger Apps) was then conducted to evaluate the quality of some messenger applications. According to the evaluation results, the hybrid DD-KARB method (with a combination of semantics-awareness and data-drivenness) is more effective than solo methods and can compute a somehow good estimation for the messenger application user quality scores. Therefore, DD-KARB can be considered a method for quality benchmarking in this technical context.</jats:p>"
+        },
+        {
+          "DOI": "10.1109/pmbs56514.2022",
+          "title": [
+            "2022 IEEE/ACM International Workshop on Performance Modeling, Benchmarking and Simulation of High Performance Computer Systems (PMBS)"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "type": "proceedings"
+        },
+        {
+          "DOI": "10.2139/ssrn.4249120",
+          "title": [
+            "Benchmarking Adversarial Transferability on Synthetic Speech Detection"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Shunyi",
+              "family": "Chen",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Jiacheng",
+              "family": "Deng",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Diqun",
+              "family": "Yan",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Li",
+              "family": "Dong",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Rangding",
+              "family": "Wang",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "type": "posted-content"
+        },
+        {
+          "DOI": "10.1007/978-3-030-94437-7_8",
+          "title": [
+            "Tell-Tale Tail Latencies: Pitfalls and Perils in Database Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "https://orcid.org/0000-0003-2933-5093",
+              "authenticated-orcid": false,
+              "given": "Michael",
+              "family": "Fruth",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Stefanie",
+              "family": "Scherzinger",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "ORCID": "https://orcid.org/0000-0002-9765-8313",
+              "authenticated-orcid": false,
+              "given": "Wolfgang",
+              "family": "Mauerer",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Ralf",
+              "family": "Ramsauer",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Lecture Notes in Computer Science",
+            "Performance Evaluation and Benchmarking"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.1007/978-3-030-77644-2_6-1",
+          "title": [
+            "Facet Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Alex B.",
+              "family": "Siegling",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Konstantinos V.",
+              "family": "Petrides",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Handbook of Assessment in Mindfulness Research"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.1007/978-3-030-94437-7_1",
+          "title": [
+            "A YCSB Workload for Benchmarking Hotspot Object Behaviour in NoSQL Databases"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Casper",
+              "family": "Claesen",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Ansar",
+              "family": "Rafique",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Dimitri",
+              "family": "Van Landuyt",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Wouter",
+              "family": "Joosen",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Lecture Notes in Computer Science",
+            "Performance Evaluation and Benchmarking"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.1007/978-3-319-63962-8_79-2",
+          "title": [
+            "Benchmarking and Graph Generation"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Angela",
+              "family": "Bonifati",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Arnau",
+              "family": "Prat-Pérez",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Encyclopedia of Big Data Technologies"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.18543/tcwm8040",
+          "title": [
+            "Benchmarking foundations and their role in advancing sustainable development goals"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Cuadernos Orkestra"
+          ],
+          "type": "report",
+          "abstract": "<jats:p>Constellations of organisations are important partners in the implementation of the 2030 Agenda and the achievement of all SDGs (EU, 2021; UNGC, 2021). The EU and the UN consider that private foundations have a role to play in fulfilling these goals. They are organisations that can make a contribution through funding and by using their potential to mobilise actors involved. Although they are recognised as having a role in reaching the SDGs, there is little work on how these foundations can be stronger players in the attainment of these goals.  This benchmarking report extends existing knowledge of the practices that foundations engaged in connection with the 2030 Agenda and the SDGs, so that these practices can inspire and/or stimulate the reflection of third-party foundations that are seeking to improve their performance in relation to the SDGs.</jats:p>"
+        },
+        {
+          "DOI": "10.1007/978-3-030-94437-7_3",
+          "title": [
+            "EvoBench: Benchmarking Schema Evolution in NoSQL"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "André",
+              "family": "Conrad",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Mark Lukas",
+              "family": "Möller",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Tobias",
+              "family": "Kreiter",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Jan-Christopher",
+              "family": "Mair",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Meike",
+              "family": "Klettke",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Uta",
+              "family": "Störl",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Lecture Notes in Computer Science",
+            "Performance Evaluation and Benchmarking"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.2139/ssrn.4258091",
+          "title": [
+            "Benchmarking Investment Fund Performance for the Multiperiod Investor"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Stephen H.",
+              "family": "Penman",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Yuan",
+              "family": "Zou",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.34156/9783791043098-147",
+          "title": [
+            "7 Benchmarking und Reverse Engineering"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Thorsten",
+              "family": "Knauer",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Friedrich",
+              "family": "Sommer",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Arnt",
+              "family": "Wöhrmann",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Kostenmanagement"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.5220/0011585400003335",
+          "title": [
+            "From Server-based to Web-based Translation Memory Systems: Benchmarking, Testing and Implementation in STAR7"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Enrico",
+              "family": "Giai",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "STAR7, S.p.A., Language Technologies Expert, Corso Orbassano 336, Torino, Italy, --- Select a Country ---"
+                }
+              ]
+            },
+            {
+              "given": "Nicola",
+              "family": "Poeta",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "STAR7, S.p.A., Global Content, Service Line Leader, Corso Orbassano 336, Torino, Italy, --- Select a Country ---"
+                }
+              ]
+            },
+            {
+              "given": "David",
+              "family": "Turnbull",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "STAR7, S.p.A., Language Lead, Corso Orbassano 336, Torino, Italy, --- Select a Country ---"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Proceedings of the 14th International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.1097/rli.0000000000000855",
+          "title": [
+            "Benchmarking Feature Selection Methods in Radiomics"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                18
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Aydin",
+              "family": "Demircioğlu",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Investigative Radiology"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:sec>\n            <jats:title>Objectives</jats:title>\n            <jats:p>A critical problem in radiomic studies is the high dimensionality of the datasets, which stems from small sample sizes and many generic features extracted from the volume of interest. Therefore, feature selection methods are used, which aim to remove redundant as well as irrelevant features. Because there are many feature selection algorithms, it is key to understand their performance in the context of radiomics.</jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Materials and Methods</jats:title>\n            <jats:p>A total of 29 feature selection algorithms and 10 classifiers were evaluated on 10 publicly available radiomic datasets. Feature selection methods were compared for training times, for the stability of the selected features, and for ranking, which measures the pairwise similarity of the methods. In addition, the predictive performance of the algorithms was measured by utilizing the area under the receiver operating characteristic curve of the best-performing classifier.</jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Results</jats:title>\n            <jats:p>Feature selections differed largely in training times as well as stability and similarity. No single method was able to outperform another one consistently in predictive performance.</jats:p>\n          </jats:sec>\n          <jats:sec>\n            <jats:title>Conclusion</jats:title>\n            <jats:p>Our results indicated that simpler methods are more stable than complex ones and do not perform worse in terms of area under the receiver operating characteristic curve. Analysis of variance, least absolute shrinkage and selection operator, and minimum redundancy, maximum relevance ensemble appear to be good choices for radiomic studies in terms of predictive performance, as they outperformed most other feature selection methods.</jats:p>\n          </jats:sec>"
+        },
+        {
+          "DOI": "10.2139/ssrn.4249412",
+          "title": [
+            "Benchmarking Machine Learning Models to Predict Corporate Bankruptcy"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Emmanuel",
+              "family": "Alanis",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Sudheer",
+              "family": "Chava",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Agam",
+              "family": "Shah",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1101/2022.01.11.475979",
+          "title": [
+            "Benchmarking taxonomic classifiers with Illumina and Nanopore sequence data for clinical metagenomic diagnostic applications"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                13
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "https://orcid.org/0000-0001-9208-4376",
+              "authenticated-orcid": false,
+              "given": "Kumeren N.",
+              "family": "Govender",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "David W.",
+              "family": "Eyre",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "type": "posted-content",
+          "abstract": "<jats:title>Abstract</jats:title><jats:p>Culture-independent metagenomic detection of microbial species has the potential to provide rapid and precise real-time diagnostic results. However, it is potentially limited by sequencing and classification errors. We use simulated and real-world data to benchmark rates of species misclassification using 100 reference genomes for each of ten common bloodstream pathogens and six frequent blood culture contaminants (n=1600). Simulating both with and without sequencing error for both the Illumina and Oxford Nanopore platforms, we evaluated commonly used classification tools including Kraken2, Bracken, and Centrifuge, utilising mini (8GB) and standard (30-50GB) databases. Bracken with the standard database performed best, the median percentage of reads across both sequencing platforms identified correctly to the species level was 98.46% (IQR 93.0:99.3) [range 57.1:100]. For Kraken2 with a mini database, a commonly used combination, median species-level identification was 79.3% (IQR 39.1:88.8) [range 11.2:100]. Classification performance varied by species, with E. coli being more challenging to classify correctly (59.4% to 96.4% reads with correct species, varying by tool used). By filtering out shorter Nanopore reads (&lt;3500bp) we found performance similar or superior to Illumina sequencing, despite higher sequencing error rates. Misclassification was more common when the misclassified species had a higher average nucleotide identity to the true species. Our findings highlight taxonomic misclassification of sequencing data occurs and varies by sequencing and analysis workflow. This “bioinformatic contamination” should be accounted for in metagenomic pipelines to ensure accurate results that can support clinical decision making.</jats:p><jats:sec><jats:title>Importance</jats:title><jats:p>Metagenomics may transform clinical microbiology by enabling more rapid species detection in a potentially unbiased manner and reducing reliance on culture-based approaches. However, it is still limited by ongoing challenges such as sequencing and classification software errors. In this study, we use simulated and real-world data to define the intrinsic rates of species misclassification that occur using Illumina and Oxford Nanopore sequencing platforms with commonly used taxonomic classification tools and databases. We quantify the extent of “bioinformatic contamination” arising from the classification process. This enables us to identify the best performing tools that maximize classification accuracy, and to suggest how taxonomic misclassification can be formally accounted for in clinical diagnostic workflows. Specifically, we specify thresholds for identifying or excluding polymicrobial infections in metagenomic samples, based on rates of misclassification of similar species, which might have clinical implications when treating infection.</jats:p></jats:sec>"
+        },
+        {
+          "DOI": "10.2139/ssrn.4174563",
+          "title": [
+            "Benchmarking Private Equity: The Direct Alpha Method"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Oleg",
+              "family": "Gredil",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Barry E",
+              "family": "Griffiths",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Rüdiger",
+              "family": "Stucke",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1007/978-3-030-66252-3_2329",
+          "title": [
+            "Local Government Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Nuno F.",
+              "family": "da Cruz",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Global Encyclopedia of Public Administration, Public Policy, and Governance"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.2172/2001668",
+          "title": [
+            "Quantum computing characterization and benchmarking."
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                1
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Megan",
+              "family": "Dahlhauser",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Proposed for presentation at the Sandia National Laboratories and Purdue Quantum Workshop in ,"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4207520",
+          "title": [
+            "Performance Benchmarking of Residential Air Conditioning Systems Using Smart Thermostat Data"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Fangzhou",
+              "family": "Guo",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Bryan",
+              "family": "Rasmussen",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4124097",
+          "title": [
+            "Benchmarking Equity Premium Forecasts: Using the Full History Makes the Benchmark More Stringent"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Gunter",
+              "family": "Löffler",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.3389/978-2-88974-115-1",
+          "title": [
+            "Benchmarking Biodiversity in an Era of Rapid Change"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Frontiers Research Topics"
+          ],
+          "type": "book"
+        },
+        {
+          "DOI": "10.2139/ssrn.4065010",
+          "title": [
+            "Foundations of Sustainable Construction Management Research: International Benchmarking of the Critical Success Factors"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "AbdulLateef",
+              "family": "Olanrewaju",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1039/d2dd00015f",
+          "title": [
+            "PaRoutes: towards a framework for benchmarking retrosynthesis route predictions"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "https://orcid.org/0000-0002-7624-7363",
+              "authenticated-orcid": false,
+              "given": "Samuel",
+              "family": "Genheden",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Molecular AI, Discovery Sciences, R&D, AstraZeneca Gothenburg, SE-431 83 Mölndal, Sweden"
+                }
+              ]
+            },
+            {
+              "ORCID": "https://orcid.org/0000-0003-1614-7376",
+              "authenticated-orcid": false,
+              "given": "Esben",
+              "family": "Bjerrum",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Molecular AI, Discovery Sciences, R&D, AstraZeneca Gothenburg, SE-431 83 Mölndal, Sweden"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Digital Discovery"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:p>PaRoutes is a framework benchmarking multi-step retrosynthesis methods. It consists of synthetic routes extracted from the patent literature, stock compounds, as well as scripts to compute route quality and route diversity metrics.</jats:p>"
+        },
+        {
+          "DOI": "10.22533/at.ed.349221201",
+          "title": [
+            "Psicologia e administração uma perspectiva sobre o Benchmarking em incubadoras de empresas"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                12
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Gracielie da Silva",
+              "family": "Campos",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Larissa Mastella",
+              "family": "Lena",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Dieter Rugard",
+              "family": "Siedenberg",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "type": "book"
+        },
+        {
+          "DOI": "10.2139/ssrn.4249600",
+          "title": [
+            "What's My Employee Worth? The Effects of Salary Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Zoe",
+              "family": "Cullen",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Shengwu",
+              "family": "Li",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Ricardo",
+              "family": "Perez-Truglia",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.35774/econa2022.03.041",
+          "title": [
+            "FORMING OF BENCHMARKING SYSTEMS FOR OIL REFINERIES"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Kateryna",
+              "family": "Maksakova",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Sumy State University"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Economic Analysis"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:p>Introduction. In the conditions of increasing degree of uncertainty in socio-economic systems, the implementation of the latest management tools and systems aimed at ensuring the efficiency, flexibility and adaptability of enterprises, in particular – benchmarking tools and systems, becomes especially important. In the existing macroeconomic conditions, the problem of introducing benchmarking into the management practice of oil refining enterprises is relevant and timely.\nPurpose. The study is aimed at the systematization of the conceptual foundations of the formation of benchmarking systems of domestic enterprises in the oil refining industry. In order to achieve the specified goal, an analysis of the substantive field of the \"benchmarking\" category was conducted; approaches to the formation of benchmarking systems existing in domestic practice are systematized; the conceptual principles of the formation of the benchmarking system for oil refining enterprises were developed.\nResults. As a result of the conducted categorical analysis of the definition of \"benchmarking\", it was determined that there are significant differences in domestic scientific opinion regarding its interpretation, and its content field in some cases is not defined clearly enough, because the authors mix the concept of benchmarking with the concepts of marketing and competitive analysis. It was determined that the vast majority of domestic authors interpret the category of benchmarking through the supercategories of process, tool (method), search, activity. It is proposed to consider benchmarking as a management subsystem. In the formulated author's definition, benchmarking is interpreted as a system that is a set of tools, methods and management tools aimed at the systematic search for exemplary (or standard) management practices, business processes, products or solutions both in the industry and beyond, and as well as their comparison with the company's existing practices, business processes, products or solutions in order to increase the efficiency of its economic activity, improve its competitive position and increase its social significance.\nBased on this and on the basis of the systematization of approaches to the formation of benchmarking systems existing in domestic practice, the conceptual principles of the formation of the benchmarking system, which can be used at domestic enterprises of the oil refining industry, have been developed.</jats:p>"
+        },
+        {
+          "DOI": "10.1201/9781003228615-4",
+          "title": [
+            "The Quest for Supreme Performance: Benchmarking to Save Lives"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                5
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Darren",
+              "family": "Dalcher",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Rethinking Project Management for A Dynamic and Digital World"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.2139/ssrn.4085117",
+          "title": [
+            "Where’s Tobin? Protecting Intergenerational Equity for Endowments: A New Benchmarking Approach"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Barton",
+              "family": "Waring",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Laurence B.",
+              "family": "Siegel",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1007/978-3-658-22933-7_28",
+          "title": [
+            "Organisation der Kommunikationsfunktion: Grundmodelle und Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Ansgar",
+              "family": "Zerfaß",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Christoph",
+              "family": "Lautenbach",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Jan Erik",
+              "family": "Sass",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Handbuch Unternehmenskommunikation"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.2139/ssrn.4141050",
+          "title": [
+            "Benchmarking the Benchmark - Comparing Synthetic and Real-World Network Ids Datasets"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Siamak",
+              "family": "Layeghy",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Marcus",
+              "family": "Gallagher",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Marius",
+              "family": "Portmann",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.30970/eli.20.4",
+          "title": [
+            "BENCHMARKING PARALLEL REQUEST PROCESSING SPEEDS ON AWS CLOUD SERVICES"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "O.",
+              "family": "Sihunov",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "L.",
+              "family": "Demkiv",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Electronics and Information Technologies"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2514/6.2022-0512",
+          "title": [
+            "Scenario-Based Simulation Platform for Developing New Interfaces and Benchmarking Controller Performance"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                3
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Raphaël",
+              "family": "Tuor",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Universite de Fribourg Section sciences"
+                }
+              ]
+            },
+            {
+              "given": "Denis",
+              "family": "Lalanne",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Universite de Fribourg Section sciences"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "AIAA SCITECH 2022 Forum"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.17504/protocols.io.b3nfqmbn",
+          "title": [
+            "Benchmarking missing-values approaches for predictive models on health databases v2"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                10
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "https://orcid.org/0000-0003-0556-0763",
+              "authenticated-orcid": false,
+              "given": "Alexandre",
+              "family": "Perez-Lebel",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Gaël",
+              "family": "Varoquaux",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Marine",
+              "family": "Le Morvan",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Julie",
+              "family": "Josse",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Jean-Baptiste",
+              "family": "Poline",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "type": "posted-content",
+          "abstract": "<p>BACKGROUND As databases grow larger, it becomes harder to fully control their collection, and they frequently come with missing values: incomplete observations. These large databases are well suited to train machine-learning models, for instance for forecasting or to extract biomarkers in biomedical settings. Such predictive approaches can use discriminative --rather than generative-- modeling, and thus open the door to new missing-values strategies. Yet existing empirical evaluations of strategies to handle missing values have focused on inferential statistics.  RESULTS Here we conduct a systematic benchmark of missing-values strategies in predictive models with a focus on large health databases: four electronic health record datasets, a population brain imaging one, a health survey and two intensive care ones. Using gradient-boosted trees, we compare native support for missing values with simple and state-of-the-art imputation prior to learning. We investigate prediction accuracy and computational time. For prediction after imputation, we find that adding an indicator to express which values have been imputed is important, suggesting that the data are missing not at random. Elaborate missing values imputation can improve prediction compared to simple strategies but requires longer computational time on large data. Learning trees that model missing values --with missing incorporated attribute-- leads to robust, fast, and well-performing predictive modeling.  CONCLUSIONS Native support for missing values in supervised machine learning predicts better than state-of-the-art imputation with much less computational cost. When using imputation, it is important to add indicator columns expressing which values have been imputed. </p>"
+        },
+        {
+          "DOI": "10.2139/ssrn.4195978",
+          "title": [
+            "Benchmarking Fairness Measures for Calibrated Recommendation Systems on Movies Domain"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Diego Corrêa da",
+              "family": "Silva",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Frederico Araújo",
+              "family": "Durão",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.36468/pharmaceutical-sciences.1051",
+          "title": [
+            "Benchmarking Docking Protocols for Virtual Screenings of Novel Acetylcholinesterase Inhibitors"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "E.",
+              "family": "Mateev",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "M.",
+              "family": "Georgieva",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "A.",
+              "family": "Zlatkov",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Indian Journal of Pharmaceutical Sciences"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.5958/2249-7137.2022.00663.2",
+          "title": [
+            "Benchmarking in increasing the economic efficiency of industrial enterprises"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Mamatkulova Nadira",
+              "family": "Makkamovna",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "ACADEMICIA: An International Multidisciplinary Research Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1093/rap/rkac037",
+          "title": [
+            "Benchmarking tocilizumab use for giant cell arteritis"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "https://orcid.org/0000-0003-2538-3362",
+              "authenticated-orcid": false,
+              "given": "Richard",
+              "family": "Conway",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Rheumatology, St. James’s Hospital"
+                },
+                {
+                  "name": "Clinical Medicine, Trinity College Dublin, Dublin, Ireland"
+                }
+              ]
+            },
+            {
+              "ORCID": "https://orcid.org/0000-0001-9699-4000",
+              "authenticated-orcid": false,
+              "given": "Michael S",
+              "family": "Putman",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Medical College of Wisconsin, Milwaukee, WI, USA"
+                }
+              ]
+            },
+            {
+              "ORCID": "https://orcid.org/0000-0003-2483-5873",
+              "authenticated-orcid": false,
+              "given": "Sarah L",
+              "family": "Mackie",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Leeds Institute of Rheumatic and Musculoskeletal Medicine, University of Leeds"
+                },
+                {
+                  "name": "NIHR Leeds Biomedical Research Unit, Leeds Teaching Hospitals NHS Trust, Leeds, UK"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Rheumatology Advances in Practice"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4039939",
+          "title": [
+            "Endogenous Benchmarking and Government Accountability: Experimental Evidence from the COVID-19 Pandemic"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Michael",
+              "family": "Becher",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Sylvain",
+              "family": "Brouard",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Daniel",
+              "family": "Stegmueller",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4193537",
+          "title": [
+            "Benchmarking the Sustainability of Concrete and Steel Modular Construction for Buildings in Urban Development"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Wei",
+              "family": "Pan",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Zhiqian",
+              "family": "Zhang",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.13182/physor22-37639",
+          "title": [
+            "Development and Benchmarking of Transient Nodal Code SIMULATE5-K Neutron Kinetics Solver"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Tamer",
+              "family": "Bahadir",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Conference on Physics of Reactors 2022 (PHYSOR 2022)"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.1007/978-3-030-96917-2_3",
+          "title": [
+            "Benchmarking Theory"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Tome",
+              "family": "Eftimov",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Peter",
+              "family": "Korošec",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Natural Computing Series",
+            "Deep Statistical Comparison for Meta-heuristic Stochastic Optimization Algorithms"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.26434/chemrxiv-2022-35wtw",
+          "title": [
+            "Small Gold-Thiolate Clusters Au3(SMe)3: Benchmarking of Density Functionals and Bonding Analysis"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1,
+                11
+              ]
+            ]
+          },
+          "author": [
+            {
+              "ORCID": "http://orcid.org/0000-0001-9959-4061",
+              "authenticated-orcid": false,
+              "given": "Maya",
+              "family": "Khatun",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Indian Institute of Technology Kharagpur"
+                }
+              ]
+            },
+            {
+              "given": "Sayan",
+              "family": "Paul",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Indian Institute of Technology Kharagpur"
+                }
+              ]
+            },
+            {
+              "given": "Saikat",
+              "family": "Roy",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Indian Institute of Technology Kharagpur"
+                }
+              ]
+            },
+            {
+              "given": "Subhasis",
+              "family": "Dey",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Indian Institute of Technology Kharagpur"
+                }
+              ]
+            },
+            {
+              "given": "Anakuthil",
+              "family": "Anoop",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Indian Institute of Technology Kharagpur"
+                }
+              ]
+            }
+          ],
+          "type": "posted-content",
+          "abstract": "<jats:p>We present a benchmark study on popular density functionals for their efficiency and accuracy in the geometry and relative stability of gold-thiolate nanoclusters taking Au3(SMe)3 isomers. We have used normalized mean absolute error (NMAE) analysis as a parameter to compare the results with the reference methods - DLPNO-CCSD(T) and RI-SCS-MP2. We have also compared the performance on the thiolate interaction energy of the stable geometries using the results from our benchmark study. One of the promising functional is PBE that shows robust performance for geometry optimization. On the other hand, M06-2X stands out as the proper choice for the relative energies of the clusters. With the selected methods, we have analyzed the gold-sulfur interaction in Au3(SMe)3 and a comparison is made with AuSMe. The bonding analysis has revealed a partial covalency between gold and sulfur atoms in general. On going from AuSMe to Au3(SMe)3, a substantial flow of charge from gold atoms to thiolate ligands as a result of the increase in gold s-d hybridization. As the s-d mixing in Au increases, the main character of Au-S interaction shifts from covalent to ionic. Hence, a covalent-charge-transfer interaction dominates in gold-sulfur bonding and gives rise to a charge-shift bonding.</jats:p>"
+        },
+        {
+          "DOI": "10.1007/978-1-4842-7355-5_31",
+          "title": [
+            "Unit Testing, Benchmarking, and Logging"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Adam",
+              "family": "Freeman",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Pro Go"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.1016/j.hpb.2022.05.355",
+          "title": [
+            "Benchmarking our Series"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "S.",
+              "family": "López-Ben",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "C.",
+              "family": "Caula",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "M.",
+              "family": "Casellas",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "M.",
+              "family": "Albiol",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "E.",
+              "family": "Castro",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "L.",
+              "family": "Falgueras",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "HPB"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4062428",
+          "title": [
+            "Learning to let go: A field experiment on benchmarking and entrepreneur exit"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Yun",
+              "family": "Hou",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Ivan P. L.",
+              "family": "Png",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4085706",
+          "title": [
+            "A Goal-Oriented Approach for Supporting Input/Output Determinationin Regulatory Benchmarking of Brazilian Electricity Transmission"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Bruno",
+              "family": "Vilela",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Heinz",
+              "family": "Ahn",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.25236/ajbm.2022.040201",
+          "title": [
+            "Airlines Benchmarking Analysis based on Financial Performance-Emirates, Southwest Airlines, Singapore Airlines and Lufthansa"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "container-title": [
+            "Academic Journal of Business &amp; Management"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.18653/v1/2022.nlppower-1.2",
+          "title": [
+            "Towards Stronger Adversarial Baselines Through Human-AI Collaboration"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Wencong",
+              "family": "You",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Daniel",
+              "family": "Lowd",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Proceedings of NLP Power! The First Workshop on Efficient Benchmarking in NLP"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.1109/bigcomp54360.2022.00032",
+          "title": [
+            "Benchmarking Deep Graph Models for Large Molecular Generation"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                1
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Jin-Jun",
+              "family": "Park",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Ajou University,Dept. of Artificial Intelligence,Suwon,Republic of Korea"
+                }
+              ]
+            },
+            {
+              "given": "Lee",
+              "family": "Sael",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Software and Computer Engineering, Ajou University,Suwon,Republic of Korea"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "2022 IEEE International Conference on Big Data and Smart Computing (BigComp)"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.1007/978-3-030-66252-3_3669",
+          "title": [
+            "Network Administration: Benchmarking e-Government in Togo"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Lijun",
+              "family": "Chen",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Apetogbo Komlan",
+              "family": "Aklikokou",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Global Encyclopedia of Public Administration, Public Policy, and Governance"
+          ],
+          "type": "book-chapter"
+        },
+        {
+          "DOI": "10.18653/v1/2022.findings-emnlp.224",
+          "title": [
+            "Benchmarking Language Models for Code Syntax Understanding"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Da",
+              "family": "Shen",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Xinyun",
+              "family": "Chen",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Chenguang",
+              "family": "Wang",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Koushik",
+              "family": "Sen",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Dawn",
+              "family": "Song",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Findings of the Association for Computational Linguistics: EMNLP 2022"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.36244/icj.2022.3.6",
+          "title": [
+            "Towards Implementing a Software Tester for Benchmarking MAP-T Devices"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Ahmed",
+              "family": "Al-hamadani",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Gábor",
+              "family": "Lencse",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Infocommunications journal"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:p>Several IPv6 transition technologies have been designed and developed over the past few years to accelerate the full adoption of the IPv6 address pool. To make things more organized, the Benchmarking Working Group of IETF has standardized a comprehensive benchmarking methodology for these technologies in its RFC 8219. The Mapping of Address and Port using Translation (MAP-T) is one of the most important transition technologies that belong to the double translation category in RFC 8219. This paper aims at presenting our progress towards implementing the world’s first RFC 8219 compliant Tester for the MAP-T devices, more specifically, the MAP-T Customer Edge (CE) and the MAP-T Border Relay (BR). As part of the work of this paper, we presented a typical design for the Tester, followed by a discussion about the operational requirements, the scope of measurements, and some design considerations. Then, we installed a testbed for one of the MAP-T implementations, called Jool, and showed the results of the testbed. And finally, we ended up with a brief description of the MAP-T test program and its configuration parameters in case of testing the BR device.</jats:p>"
+        },
+        {
+          "DOI": "10.2139/ssrn.4157442",
+          "title": [
+            "Benchmarking the Effects of the Fed's Secondary Market Corporate Credit Facility Using Yankee Bonds"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "George G.",
+              "family": "Pennacchi",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Hui",
+              "family": "Xu",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.5771/0947-9856-2022-2-70",
+          "title": [
+            "Benchmarking als Treiber der Digitalisierung für ein modernes Kulturmanagement"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Dirk",
+              "family": "Burghardt",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Andreas",
+              "family": "Schmid",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Rainer",
+              "family": "Graf",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Verwaltung &amp; Management"
+          ],
+          "type": "journal-article",
+          "abstract": "<p>Die Staatlichen Kunstsammlungen Dresden sind einer der bedeutendsten Museumsverbünde Deutschlands und verfügen über Kunst- und Kulturgegenstände von unschätzbarem Wert. Das Management der SKD ist aufgrund seiner komplexen Struktur, knapper öffentlicher Mittel und Post-Corona-Unsicherheiten herausfordernd. Ein kontinuierlicher Weiterentwicklungsbedarf ist auch vor dem Hintergrund der Digitalisierung angezeigt. Im Rahmen eines Projekts zur Weiterentwicklung der Führungs- und Verwaltungsstrukturen wurden auf Basis von Benchmarks Verbesserungspotenziale abgeleitet, die in ihrer Konsequenz die Aufbau- und Ablauforganisation infrage stellten und wichtige Impulse für die weitere Digitalisierung der Organisation lieferten. Kultureinrichtungen können aus Benchmarks und Industriestandards lernen, was bisher aufgrund der institutionellen Besonderheiten infrage gestellt wird.1 Diese Erkenntnis ist für ein modernes und digitales Kulturmanagement entscheidend, weil bewährte Methoden, Instrumente und Lösungen auf den Kulturbetrieb übertragen werden können - was letztlich existenzsichernd wirkt. </p>"
+        },
+        {
+          "DOI": "10.2139/ssrn.4068661",
+          "title": [
+            "Benchmarking the Effects of the Fed's Secondary Market Corporate Credit Facility Using Yankee Bonds"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "George G.",
+              "family": "Pennacchi",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Hui",
+              "family": "Xu",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.18653/v1/2022.findings-acl.296",
+          "title": [
+            "Benchmarking Answer Verification Methods for Question Answering-Based Summarization Evaluation Metrics"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Daniel",
+              "family": "Deutsch",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Dan",
+              "family": "Roth",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Findings of the Association for Computational Linguistics: ACL 2022"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.55439/eced/vol23_iss3/a1",
+          "title": [
+            "AUTOMOBILE ENTERPRISES EVALUATION OF EFFICIENCY OF INNOVATIVE BENCHMARKING SYSTEM"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "K.",
+              "family": "Sharipov",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "S.",
+              "family": "Tadjiev",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Economics and education"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4173750",
+          "title": [
+            "Benchmarking a Multi-Layer Approach and Neural Network Architectures for Defect Detection in Pbf-Lb/M"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Jorrit",
+              "family": "Voigt",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Michael",
+              "family": "Moeckel",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.2139/ssrn.4129779",
+          "title": [
+            "A Benchmarking Framework for Performance Evaluation of Statistical Wind Power Forecasting Models"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Juan Manuel",
+              "family": "González Sopeña",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Vikram",
+              "family": "Pakrashi",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Bidisha",
+              "family": "Ghosh",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "SSRN Electronic Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1007/978-3-030-90586-6",
+          "title": [
+            "The Art of Benchmarking"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Martin",
+              "family": "Kütz",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Contributions to Management Science"
+          ],
+          "type": "book"
+        },
+        {
+          "DOI": "10.53015/2782-263x_2022_2_14",
+          "title": [
+            "Benchmarking as a way to increase the efficiency of the company's operational activities"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "O.V.",
+              "family": "Zhuravleva",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Financial University under the Government of the Russian Federation, Lipetsk branch"
+                }
+              ]
+            },
+            {
+              "given": "D.A.",
+              "family": "Sokolova",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Financial University under the Government of the Russian Federation, Lipetsk branch"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Innovative Economics and Law"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.53884/27132854_2022_5_18",
+          "title": [
+            "BENCHMARKING OF SPECIFIC GREENHOUSE GAS EMISSIONS IN FERTILIZER INDUSTRY"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Alexander Y.",
+              "family": "Popov",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Federal State Autonomous Body Research Institute «Environmental Industry Policy Centre»"
+                }
+              ]
+            },
+            {
+              "given": "Andrej S.",
+              "family": "Malyavin",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Federal State Autonomous Body Research Institute «Environmental Industry Policy Centre»"
+                }
+              ]
+            },
+            {
+              "given": "Vera M.",
+              "family": "Kostyleva",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Federal State Autonomous Body Research Institute «Environmental Industry Policy Centre»"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Chemical Industry Today"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1016/j.hpb.2022.05.872",
+          "title": [
+            "Pancreaticoduodenectomy: Benchmarking the New HPB Surgery Fellowship Graduate in a Non University Setting"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "N.",
+              "family": "McBrier",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "R.",
+              "family": "Redfern",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "K.",
+              "family": "Simo",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "HPB"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.13031/aea.14888",
+          "title": [
+            "Perspective: Benchmarking Opportunities  Can Contribute to Circular Food Systems  in Controlled Environment Agriculture"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Carmen",
+              "family": "Azzaretti",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Gretchenno",
+              "family": "Schimelpfenig",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Applied Engineering in Agriculture"
+          ],
+          "type": "journal-article",
+          "abstract": "<jats:p><jats:bold>Highlights</jats:bold></jats:p><jats:p><jats:list list-type=\"bullet\"><jats:list-item><jats:p>Controlled Environment Agriculture facilities can achieve better resource efficiency and productivity than field farming.</jats:p></jats:list-item><jats:list-item><jats:p>Controlled Environment Agriculture food systems provide resiliency and economic benefits for communities.</jats:p></jats:list-item><jats:list-item><jats:p>Efficient Controlled Environment Agriculture strategies can reduce solid waste and wastewater emissions by recycling materials and using closed loop system approaches.</jats:p></jats:list-item><jats:list-item><jats:p>Benchmarking is key to measurement and validation and certification systems can encourage and promote circularity.</jats:p></jats:list-item></jats:list></jats:p><jats:p><jats:bold>Abstract.</jats:bold> Controlled Environment Agriculture (CEA) approaches offer pathways to circular economy systems. CEA facilities have the potential to offer increased climate resiliency and efficient use of land. Recirculating water practices in CEA operations can substantially reduce water use in the face of resource scarcity. The greenhouse gas emissions associated with food production remain a major concern for both field agriculture and CEA facilities. Benchmarking tools and certification programs can encourage and promote circular systems. Keywords: Circular economy, Energy, Greenhouse, Greenhouse gas emissions , Productivity, Protected agriculture, Regeneration, Resilience, Vertical farming, Water.</jats:p>"
+        },
+        {
+          "DOI": "10.13182/physor22-37402",
+          "title": [
+            "SERPENT 2 and TRIPOLI-4 Neutronics Benchmarking of the Jules Horowitz Reactor"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Jussi",
+              "family": "Peltonen",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "David",
+              "family": "Blanchet",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Conference on Physics of Reactors 2022 (PHYSOR 2022)"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.18653/v1/2022.nlppower-1.9",
+          "title": [
+            "Language Invariant Properties in Natural Language Processing"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Federico",
+              "family": "Bianchi",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Debora",
+              "family": "Nozza",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Dirk",
+              "family": "Hovy",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Proceedings of NLP Power! The First Workshop on Efficient Benchmarking in NLP"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.1093/rap/rkac069",
+          "title": [
+            "Comment on: Benchmarking tocilizumab use for giant cell arteritis"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Shalini",
+              "family": "Janagan",
+              "sequence": "first",
+              "affiliation": [
+                {
+                  "name": "Department of Rheumatology, University Hospitals Bristol and Weston NHS Foundation Trust , Bristol, UK"
+                }
+              ]
+            },
+            {
+              "given": "Catherine",
+              "family": "Guly",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Bristol Eye Hospital, University Hospitals Bristol and Weston NHS Foundation Trust , Bristol, UK"
+                }
+              ]
+            },
+            {
+              "given": "Sarah",
+              "family": "Skeoch",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Rheumatology, Royal National Hospital for Rheumatic Diseases, Royal United Hospitals , Bath, UK"
+                }
+              ]
+            },
+            {
+              "ORCID": "https://orcid.org/0000-0002-7939-5978",
+              "authenticated-orcid": false,
+              "given": "Joanna C",
+              "family": "Robson",
+              "sequence": "additional",
+              "affiliation": [
+                {
+                  "name": "Department of Rheumatology, University Hospitals Bristol and Weston NHS Foundation Trust , Bristol, UK"
+                },
+                {
+                  "name": "Rheumatology Research, Faculty of Health and Applied Science, University of the West of England , Bristol, UK"
+                }
+              ]
+            }
+          ],
+          "container-title": [
+            "Rheumatology Advances in Practice"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.13182/physor22-37412",
+          "title": [
+            "Benchmarking of ENDF/B-VIII.0 Cross Sections for LWR Ex-Core Transport Applications"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Greg",
+              "family": "Fischer",
+              "sequence": "first",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "International Conference on Physics of Reactors 2022 (PHYSOR 2022)"
+          ],
+          "type": "proceedings-article"
+        },
+        {
+          "DOI": "10.1016/j.bpj.2021.11.1735",
+          "title": [
+            "Benchmarking molecular dynamics force fields for simulations of biological condensates"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022,
+                2
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Kumar",
+              "family": "Sarthak",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "David N.",
+              "family": "Winogradoff",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Aleksei",
+              "family": "Aksimentiev",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "Biophysical Journal"
+          ],
+          "type": "journal-article"
+        },
+        {
+          "DOI": "10.1016/j.ifacol.2022.06.044",
+          "title": [
+            "Benchmarking of Symmetric Cryptographic Algorithms on a Deeply Embedded System"
+          ],
+          "published": {
+            "date-parts": [
+              [
+                2022
+              ]
+            ]
+          },
+          "author": [
+            {
+              "given": "Heiko",
+              "family": "Bühler",
+              "sequence": "first",
+              "affiliation": []
+            },
+            {
+              "given": "Andreas",
+              "family": "Walz",
+              "sequence": "additional",
+              "affiliation": []
+            },
+            {
+              "given": "Axel",
+              "family": "Sikora",
+              "sequence": "additional",
+              "affiliation": []
+            }
+          ],
+          "container-title": [
+            "IFAC-PapersOnLine"
+          ],
+          "type": "journal-article"
+        }
+      ]
+    }
+  }
+}

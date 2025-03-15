@@ -3961,8 +3961,8 @@ def report_pdf():
                             print(f"DEBUG: Successfully added back PDF: {back_pdf_path}")
                         except Exception as e:
                             print(f"ERROR: Failed to add back PDF: {str(e)}")
-                        else:
-                            print(f"WARNING: Back PDF not found or not accessible: {back_pdf_path}")
+                    else:
+                        print(f"WARNING: Back PDF not found or not accessible: {back_pdf_path}")
                 
                 # Write the final PDF
                 with open(pdf_path, "wb") as output_stream:
