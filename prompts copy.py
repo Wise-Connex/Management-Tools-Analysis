@@ -14,14 +14,8 @@ Your analysis should focus on:
   - Change point detection in adoption patterns
   - Trend decomposition (seasonal, cyclical, random components)
 
-- **Cross-Tool Dynamics**
-  - Correlation analysis between tool adoptions
-  - Lead-lag relationships
-  - Substitution and complementarity effects
-
 - **Statistical Methods**
   - Time series analysis (ARIMA, decomposition)
-  - Correlation and regression analysis
   - Significance testing (p-values < 0.05)
   - Effect size reporting (Cohen's d, R², etc.)
 
@@ -158,24 +152,25 @@ Data Source: {dbs}
 **Data Requirements:**
 
 1. **Management Tool Data:**
+- For the all years: {csv_all_data}
 - For the last 20 years: {csv_last_20_data}
 - For the last 15 years: {csv_last_15_data}
 - For the last 10 years: {csv_last_10_data}
 - For the last 5 years: {csv_last_5_data}
 - For the last year: {csv_last_year_data}
-    - Date: Monthly data (weekly for last year)
+    - Date: Monthly data
     - Keywords: Management tool identifiers from {all_kw}
-    - Usage Metrics: Relative usage/adoption values (0-100 scale)
+    - Usage Metrics: Relative usage/adoption values
 
 2. **Contextual Data:**
 - Trends and means for tools over last 20 years: {csv_means_trends}
-- Statistical significance indicators
-- Trend decomposition metrics
+- Statistical significance indicators {csv_significance}
 
 IMPORTANT: 
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 - Avoid to give Recomendations for better or aditional analysis.
-- 
+
+OUTPUT:
 """
 
 temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**

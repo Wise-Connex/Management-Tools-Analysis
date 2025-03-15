@@ -19,10 +19,9 @@ data/
 *.xls
 
 # Image files
-*.png
-*.jpg
-*.jpeg
-*.gif
+# *.jpg
+# *.jpeg
+# *.gif
 
 # OS-generated files
 .DS_Store

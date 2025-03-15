@@ -2420,7 +2420,7 @@ def init_variables():
             one_keyword = True # Set one keyword
         trends_results = process_file_data(all_keywords, data_filename)
         print(all_keywords)
-        if menu==2 or menu==4:
+        if total_years > 20:
           csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
         csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
         csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
@@ -2541,6 +2541,7 @@ def ai_analysis():
     global csv_combined_data
     global csv_correlation
     global gem_summary_sp
+    global csv_all_data
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
 
@@ -2559,6 +2560,7 @@ def ai_analysis():
 
     if top_choice == 1:
         p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \
+                          csv_all_data=csv_all_data, trend_analysis_text=trend_analysis_text, \
                           csv_last_20_data=csv_last_20_data, csv_last_15_data=csv_last_15_data, csv_last_10_data=csv_last_10_data, \
                           csv_last_5_data=csv_last_5_data, csv_last_year_data=csv_last_year_data, \
                           csv_means_trends=csv_means_trends)        
