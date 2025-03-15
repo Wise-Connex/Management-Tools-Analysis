@@ -3877,12 +3877,61 @@ def report_pdf():
                         output.add_page(toc_pdf.pages[i])
                     print(f"DEBUG: Added {toc_page_count} TOC pages after cover")
                     
+                    # After TOC is added, look for the intro-B PDF to add after the TOC
+                    if has_cover and 'cod_value' in locals():
+                        # Construct the path to the intro-B PDF using the report code
+                        intro_b_pdf_path = os.path.join('pub-assets', 'Intro-B', f'{cod_value}-INTRO-B.pdf')
+                        print(f"DEBUG: Looking for intro-B PDF: {intro_b_pdf_path}")
+                        
+                        # Check if the intro-B PDF exists and is accessible
+                        if os.path.exists(intro_b_pdf_path) and os.access(intro_b_pdf_path, os.R_OK):
+                            try:
+                                # Open the intro-B PDF
+                                intro_b_pdf = PdfReader(intro_b_pdf_path)
+                                
+                                # Add all pages from the intro-B PDF
+                                for page in intro_b_pdf.pages:
+                                    output.add_page(page)
+                                    
+                                print(f"DEBUG: Successfully added intro-B PDF: {intro_b_pdf_path} ({len(intro_b_pdf.pages)} pages)")
+                            except Exception as e:
+                                print(f"ERROR: Failed to add intro-B PDF: {str(e)}")
+                                import traceback
+                                traceback.print_exc()
+                        else:
+                            print(f"WARNING: Intro-B PDF not found or not accessible: {intro_b_pdf_path}")
+                    
                     # Add content pages (skipping TOC pages)
                     for i in range(toc_page_count, len(content_pdf.pages)):
                         output.add_page(content_pdf.pages[i])
                     print(f"DEBUG: Added {len(content_pdf.pages) - toc_page_count} content pages")
                 else:
-                    # No TOC was generated, just add all content pages
+                    # No TOC was generated
+                    
+                    # Even without TOC, look for the intro-B PDF to add before content
+                    if has_cover and 'cod_value' in locals():
+                        # Construct the path to the intro-B PDF using the report code
+                        intro_b_pdf_path = os.path.join('pub-assets', 'Intro-B', f'{cod_value}-INTRO-B.pdf')
+                        print(f"DEBUG: Looking for intro-B PDF (no TOC case): {intro_b_pdf_path}")
+                        
+                        # Check if the intro-B PDF exists and is accessible
+                        if os.path.exists(intro_b_pdf_path) and os.access(intro_b_pdf_path, os.R_OK):
+                            try:
+                                # Open the intro-B PDF
+                                intro_b_pdf = PdfReader(intro_b_pdf_path)
+                                
+                                # Add all pages from the intro-B PDF
+                                for page in intro_b_pdf.pages:
+                                    output.add_page(page)
+                                    
+                                print(f"DEBUG: Successfully added intro-B PDF: {intro_b_pdf_path} ({len(intro_b_pdf.pages)} pages)")
+                            except Exception as e:
+                                print(f"ERROR: Failed to add intro-B PDF: {str(e)}")
+                                import traceback
+                                traceback.print_exc()
+                        else:
+                            print(f"WARNING: Intro-B PDF not found or not accessible: {intro_b_pdf_path}")
+                    
                     # Add all content pages
                     for page in content_pdf.pages:
                         output.add_page(page)
