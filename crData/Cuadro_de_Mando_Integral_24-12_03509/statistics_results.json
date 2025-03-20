@@ -1,0 +1,36 @@
+{
+  "batch_summary": {
+    "batch_id": "03509",
+    "tool_name": "Balanced Scorecard",
+    "date_period": "24-12",
+    "processing_time": "2025-03-19T21:04:00.848106"
+  },
+  "record_statistics": {
+    "total_raw_records": 86,
+    "total_records_before_dedup": 86,
+    "total_records_after_dedup": 86,
+    "duplicated_records": 0,
+    "duplication_rate": "0.00%",
+    "total_crossref_publications": 1734289,
+    "percentage_of_total_crossref": "0.0050%"
+  },
+  "term_statistics": [
+    {
+      "term": "Scorecard",
+      "total_results": 86,
+      "processed_count": 86,
+      "discarded_count": 0
+    }
+  ],
+  "file_paths": {
+    "base_folder": "crData/Cuadro_de_Mando_Integral_24-12_03509",
+    "term_results_folder": "crData/Cuadro_de_Mando_Integral_24-12_03509/term_results",
+    "merged": "crData/Cuadro_de_Mando_Integral_24-12_03509/merged_results.json",
+    "filtered": "crData/Cuadro_de_Mando_Integral_24-12_03509/filtered_results.json",
+    "final": "crData/Cuadro_de_Mando_Integral_24-12_03509/final_results.json",
+    "statistics": "crData/Cuadro_de_Mando_Integral_24-12_03509/statistics_results.json"
+  },
+  "processing_details": {
+    "boolean_query": null
+  }
+}

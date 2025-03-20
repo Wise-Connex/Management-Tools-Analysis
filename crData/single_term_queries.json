@@ -1,84 +1,25 @@
 {
-  "Reengineering": [
-    "(Reengineering)"
-  ],
-  "Supply Chain Management": [
-    "Supply",
-    "Chain"
-  ],
-  "Scenario Planning": [
-    "Scenario",
-    "Planning"
-  ],
-  "Strategic Planning": [
-    "(Strategic”)"
-  ],
-  "Benchmarking": [
-    "(Benchmarking)"
-  ],
-  "Core Competencies": [
-    "(Core)"
-  ],
-  "Balanced Scorecard": [
-    "Balanced",
-    "Scorecard"
-  ],
-  "Growth Strategies": [
-    "(Growth)"
-  ],
-  "Customer Relationship Management": [
-    "(Customer)"
-  ],
-  "Total Quality Management": [
-    "Total",
-    "Quality"
-  ],
-  "Mission Statements": [
-    "Mission",
-    "Vision"
-  ],
-  "Corporate Venture Capital": [
-    "“Strategic",
-    "Venture”"
-  ],
-  "Outsourcing": [
-    "(Outsourcing)"
-  ],
-  "Customer Segmentation": [
-    "(Segmentation)"
-  ],
-  "Mergers and Acquisitions": [
-    "“Mergers”"
-  ],
-  "Activity Based Management": [
-    "Activity",
-    "Based"
-  ],
-  "Zero Based Budgeting": [
-    "(Budgeting)"
-  ],
-  "Knowledge Management": [
-    "“Knowledge",
-    "Management”"
-  ],
-  "Change Management Programs": [
-    "Change",
-    "Management"
-  ],
-  "Price Optimization": [
-    "Price",
-    "Pricing"
-  ],
-  "Loyalty Management": [
-    "Loyalty",
-    "Customer”"
-  ],
-  "Design Thinking": [
-    "“Innovation",
-    "Thinking”"
-  ],
-  "Corporate Code of Ethics": [
-    "“Employee",
-    "Corporate”"
-  ]
+  "Reengineering": ["Reengineering"],
+  "Supply Chain Management": ["Supply", "Chain"],
+  "Scenario Planning": ["Scenario", "Planning"],
+  "Strategic Planning": ["Strategic"],
+  "Benchmarking": ["Benchmarking"],
+  "Core Competencies": ["Core"],
+  "Balanced Scorecard": ["Scorecard"],
+  "Growth Strategies": ["Growth"],
+  "Customer Relationship Management": ["Customer"],
+  "Total Quality Management": ["Total", "Quality"],
+  "Mission Statements": ["Mission", "Vision"],
+  "Corporate Venture Capital": ["“Strategic", "Venture”"],
+  "Outsourcing": ["Outsourcing"],
+  "Customer Segmentation": ["Segmentation"],
+  "Mergers and Acquisitions": ["“Mergers”"],
+  "Activity Based Management": ["Activity", "Based"],
+  "Zero Based Budgeting": ["Budgeting"],
+  "Knowledge Management": ["Knowledge", "Management"],
+  "Change Management Programs": ["Change", "Management"],
+  "Price Optimization": ["Price", "Pricing"],
+  "Loyalty Management": ["Loyalty", "Customer”"],
+  "Design Thinking": ["Innovation", "Thinking"],
+  "Corporate Code of Ethics": ["Employee", "Corporate"]
 }

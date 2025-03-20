@@ -1,0 +1,926 @@
+{
+  "term": "Scorecard",
+  "total_results": 75,
+  "processed_count": 75,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1596/42376",
+      "title": [
+        "World Bank Group Scorecard FY24"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-11"
+    },
+    {
+      "doi": "10.13037/gr.vol40.e20248637",
+      "title": [
+        "BALANCED SCORECARD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gestão &amp; Regionalidade"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>O objetivo deste estudo foi mapear e investigar o desenvolvimento e a estrutura das redes sociais da produção científica do tema Balanced Scorecard publicada nos periódicos científicos nacionais brasileiros indexados na biblioteca eletrônica Scientific Periodicals Electronic Library (SPELL). Metodologicamente, esta pesquisa apropriou-se das técnicas de Análise de Redes Sociais sob as perspectivas da análise de redes sociais one-mode e two-mode. Os principais resultados foram: Sérgio Murilo Petri foi o autor mais profícuo e com o maior degree; a Universidade Federal de Santa Catarina foi a mais produtiva, e, obteve destaque na centralidade de grau; a Revista Eletrônica de Estratégia &amp; Negócios foi o periódico científico mais central; as palavras-chave: planejamento estratégico, estratégia, indicadores de desempenho, avaliação de desempenho e gestão estratégica, foram as que tiveram mais relevo no degree; e os temas mais abordados pelos autores foram: gestão estratégica, indicadores de desempenho, gestão pública, planejamento estratégico e avaliação de desempenho.</jats:p>"
+    },
+    {
+      "doi": "10.1016/j.nmd.2024.07.102",
+      "title": [
+        "365P Duchenne video assessment 2.0 scorecard performance: evaluation of inter-item and inter-scorecard relationships"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Neuromuscular Disorders"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.4324/9781032715247-11",
+      "title": [
+        "Self-Assessment Scorecard"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Fundamentals of Effective Mentorship"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-11"
+    },
+    {
+      "doi": "10.20944/preprints202410.1598.v1",
+      "title": [
+        "The Balanced Scorecard Methodology: Performance Metrics and Strategy Execution in SMEs: A Systematic Review"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>The Balanced Scorecard (BSC) is a widely recognized strategic performance metric that has been extensively studied in large corporations but remains underexplored in the context of Small and Medium-sized Enterprises (SMEs). Understanding the effectiveness of BSC in aligning performance metrics with strategic goals and enhancing performance management in SMEs is critical for fostering growth and competitive advantage. This systematic review aims to evaluate the effectiveness of the Balanced Scorecard in measuring performance and strategy execution within SMEs, particularly focusing on financial and non-financial outcomes such as employee motivation, customer satisfaction, and business sustainability. A systematic review was conducted following the PRISMA framework, incorporating 136 studies sourced from Google Scholar, Web of Science, and SCOPUS. Eligibility criteria focused on publications from the last ten years that address the implementation of BSC in SMEs. Quantitative, qualitative, and mixed-method studies were included, with 49.63% of studies using quantitative methods, 26.67% qualitative, and 23.70% mixed-methods. Risk of bias was assessed using the Chrohane tool, revealing high risks in 90 studies due to incomplete outcome data and selective reporting. The review found that 74% of studies adopted a holistic approach by focusing on all four BSC perspectives (Financial, Customer, Internal Processes, and Learning and Growth). ROI emerged as the most frequently discussed key performance indicator, addressed in 36.84% of publications, while customer satisfaction and employee engagement were covered in 26.32% each. Geographic disparities were observed, with most of the research concentrated in Asia and Europe (40%) and only 8% in Africa. Despite positive outcomes such as improved business sustainability and competitive advantage (38.52% of studies), challenges persisted, including poor strategy execution and limited resources, necessitating careful customization of BSC to SME-specific contexts. The Balanced Scorecard demonstrates significant potential in enhancing performance management and strategic execution within SMEs, particularly when tailored to address unique constraints such as resource limitations. This review highlights the need for further research to standardize key performance indicators and explore sector-specific applications. By addressing these gaps, the BSC can be more effectively utilized to drive growth, agility, and long-term competitive advantage in SMEs.</jats:p>"
+    },
+    {
+      "doi": "10.54254/2755-2721/96/20241452",
+      "title": [
+        "Research on the Risk Control Model Development Based on Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied and Computational Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Abstract. Effective risk management is vital for ensuring the stability and profitability of financial institutions. This study focuses on enhancing credit risk assessment by developing a scoring model that quantifies customer risk factors using logistic regression. Key features such as Weight of Evidence (WOE) and Information Value (IV) were employed to transform and select variables. The datasets used in this research, cs-training.csv and cs-test.csv, were preprocessed, including handling missing data and binning continuous variables to improve model interpretability and performance. The logistic regression model yielded an AUC value of 0.78, demonstrating strong predictive capabilities, though optimization is necessary to improve the F1 score. The final scorecard generated from the model provides actionable insights for financial institutions, enabling more accurate risk predictions and decision-making. This tool is particularly useful for loan approvals and credit issuance, offering a data-driven approach to managing credit risk in modern financial environments.</jats:p>"
+    },
+    {
+      "doi": "10.37394/232032.2025.3.1",
+      "title": [
+        "Developing the Balanced Scorecard Model to be used for Evaluating Resources Planning Systems Performance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Financial Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The balanced scorecard serves as a valuable tool for assessing performance, particularly in the domain of information systems. This research aimed to use a balance scorecard, which consists of four dimensions: the financial, internal process, users’ satisfaction, and learning and growth in evaluating the resource planning systems. By using a questionnaire, the data was collected from 382 respondents. The results of the data analysis showed that all the dimensions have moderate averages; the performance of the resource planning systems by applying the balanced scorecard equations is moderate for its four dimensions, with an average value of 64%, which is less than the targeted value according to the respondents’ opinions. The research recommends increasing the opportunities for training to improve users’ satisfaction in using resource planning systems.</jats:p>",
+      "publication_date": "2024-12"
+    },
+    {
+      "doi": "10.36984/jkm.v7i2.502",
+      "title": [
+        "ANALISIS KINERJA BERDASARKAN BALANCED SCORECARD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JURNAL KESEHATAN MERCUSUAR"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Rumah sakit merupakah sebuah sektor publik dimana memiliki fungsi sebagai pusat pelayanan. Sehingga diperlukan penilaian kinerja dari berbagi sudut pandang dalam meningkatkan dan mengoptimalisasi pelayanan yang diberikan. Rumah sakit umum haji medan merupakan salah satu sektor publik yang sudah ditetapkan sebagai BLUD sehingga perlu memperhatikan lebih terhadap kinerja rumah sakit itu sendiri. Penelitian ini dilakukan dengan metode operational research secara studi cross sectional dengan analisis data kualitatif dan kuantitatif menggunakan single case study. Data yang digunakan dalam penelitian ini adalah data primer melalui kuesioner yang ditujukan pada pasien dan karyawan rumah sakit dan data sekunder melalui observasi dan telaah dokumen. Pengukuran kinerja dengan menggunakan metode balance scorecard meliputi empat perspektif yaitu keuangan, pelanggan, proses bisnis internal, pertumbuhan dan pembelajaran. Hasil penelitian menunjukkan bahwa pencapaian kinerja dengan pendekatan model balance scorecard adalah : 1) perspektif keuangan terdapat pada dua indikator yang hasil pencapaian rata-ratanya tidak sesuai dengan standar baku rumah sakit yakni perputaran piutang di atas 50-70 hari, rasio aktivitas tidak efektif karena target dibawah 100%. 2) perspektif pelanggan bahwa kepuasan pelanggan baik dengan skor rata-rata 4,23. 3) perspektif proses bisnis internal terdapat dua variable yang hasil capaian rata-ratanya di bawah standar ideal rumah sakit yakni average length of stay dan turn over interval sedangkan bed turnover rate berada diatas standar rumah sakit 40-50 kali serta gross death rate  &gt; 45/1000 penderita keluar dan net death rate &gt;25/1000 ideal; 4) perspektif pertumbuhan dan pembelajaran produktivitas karyawan meningkat, setiap tahunnya serta kepuasan karyawan baik dengan skor rata-rata 4,11. Tahun 2020-2023 mengalami kenaikan dan sudah memenuhi kriteria dari 4 perspektif tersebut.</jats:p>"
+    },
+    {
+      "doi": "10.21776/jki.2024.03.4.24",
+      "title": [
+        "Evaluasi Kinerja Berbasis Balanced Scorecard Pada Usaha Rintisan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Kewirausahaan dan Inovasi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The objective of this research is to identify and provide solutions to the problems faced by Kotento by creating a strategy map. The map was designed using a Balanced Scorecard approach aimed at increasing the total revenue of the company. The results of the Balanced Scorecard were then compiled into Key Performance Indicators to be applied by the company's management. This descriptive qualitative research uses primary and secondary data. The primary data was obtained through interviews with informants, documentation and field observations, while the secondary data was obtained through literature studies in scientific journals and other relevant sources. This research finds the poor management system that requires company performance evaluation, strategic target setting, and improvement initiation in the company’s business processes. Stagnant or even decreasing total revenue is the result of other problems. To develop a solution for Kotento’s problem, this research uses four perspectives in the Balanced Scorecard; they are financial perspective, customer perspective, internal business perspective, and learning and growth perspective. This effort succeeded in setting several strategic targets that can lead to an increase in Kotento’s total revenue.\n \nAbstrak\nTujuan dari penelitian ini adalah untuk mengidentifikasi dan memberikan solusi atas permasalahan Kotento dengan menyusun Strategy Map. Strategy Map dirancang dengan pendekatan Balanced Scorecard yang bertujuan untuk meningkatkan total revenue Kotento. Hasil dari Balanced Scorecard yang telah dibentuk, kemudian disusun menjadi Key Perfomance Indicator sebagai bentuk penerapan dalam manajemen Kotento. Penelitian ini merupakan penelitian kualitatif dengan pendekatan deskriptif. Jenis data yang digunakan dalam penelitian yaitu data primer dan data sekunder. Data primer diperoleh melalui kegiatan wawancara dengan para informan, dokumentasi, dan observasi lapangan, sedangkan data sekunder diperoleh melalui studi pustaka, jurnal ilmiah, serta sumber lain yang relevan. Hasil penelitian ini menunjukkan sistem manajemen Kotento yang buruk sehingga perlu proses evaluasi kinerja perusahaan, penetapan sasaran strategis dan inisiasi perbaikan dalam proses bisnisnya. Masalah dalam total revenue yang stagnan bahkan menurun saling berkaitan akibat dari permasalahan lain yang ditemukan peneliti. Dalam menyusun rancangan solusi bagi Kotento, peneliti menggunakan empat perspektif di dalam Balanced Scorecard yaitu perspektif keuangan, perspektif pelanggan, perspektif bisnis internal serta perspektif pembelajaran dan pertumbuhan. Dengan demikian, terciptalah beberapa sasaran strategis yang mengarah pada target peningkatan total revenue Kotento.</jats:p>"
+    },
+    {
+      "doi": "10.58812/smb.v3i01.477",
+      "title": [
+        "Wawasan Bibliometrik tentang Balanced Scorecard sebagai Alat Manajemen Strategis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Sanskara Manajemen Dan Bisnis"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Studi ini menganalisis Balanced Scorecard (BSC) sebagai alat manajemen strategis melalui pendekatan bibliometrik dan visualisasi jaringan kolaborasi. Dengan menggunakan data dari berbagai sumber akademik, penelitian ini mengidentifikasi tren publikasi, hubungan antara penulis, institusi, dan negara yang terlibat dalam penelitian terkait BSC. Hasil analisis menunjukkan bahwa BSC telah berfungsi tidak hanya sebagai kerangka kerja untuk mengukur kinerja, tetapi juga sebagai titik pusat kolaborasi internasional. Penelitian ini menemukan bahwa negara-negara seperti Amerika Serikat, China, dan Jerman merupakan hub utama dalam penelitian BSC, sementara negara-negara berkembang aktif berpartisipasi dalam kolaborasi global. Temuan ini menegaskan pentingnya sinergi dalam menghasilkan pengetahuan baru dan menerapkan praktik manajerial yang efektif di berbagai konteks, menunjukkan relevansi dan adaptabilitas BSC dalam menghadapi tantangan manajemen kontemporer.</jats:p>"
+    },
+    {
+      "doi": "10.3390/su16219174",
+      "title": [
+        "Operationalization of ESG-Integrated Strategy Through the Balanced Scorecard in FMCG Companies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Sustainability"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The increasing focus on sustainability and climate change mitigation necessitates that corporate strategies not only build competitive advantage but also contribute to the creation of sustainable operations. The purpose of the article is to present, based on the analyses of the development of the strategic targets of leading Fast-Moving Consumer Goods (FMCG) companies, a method for operationalizing an ESG-adapted corporate strategy within FMCG companies using the Balanced Scorecard (BSC). ESG, encompassing environmental, social, and governance factors, requires a shift in both strategic management theory and practice. The author explores how ESG metrics can be integrated into the traditional BSC framework alongside financial, customer, and business processes and learning and growth perspectives to align with the growing importance of sustainability. The study identifies specific measures that contribute to a successful transition toward sustainable business practices. The findings demonstrate that the BSC, when adapted to incorporate ESG considerations, is an effective tool for strategy implementation and operational management in FMCG companies. While the proposed framework focuses on the FMCG sector, it has potential applications across other industries. The article makes important theoretical contributions, though it would benefit from further empirical research, sector-specific comparisons, and a more detailed examination of external ESG factors that impact corporate strategy.</jats:p>"
+    },
+    {
+      "doi": "10.18502/kss.v9i32.17430",
+      "title": [
+        "Enhancing Organizational Performance Through Integrated ERP-Based Balanced Scorecard Systems: A Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "KnE Social Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Organizations must continuously thrive to remain successful in the highly competitive business landscape. An integral aspect of achieving this success is implementing an efficient performance management system (PMS) that regularly monitors organizational performance. Large companies often employ Enterprise Resource Planning (ERP) systems to integrate data and information across various departments and business units within the company group, providing easy, comprehensive, and structured data collection. However, despite the advantages of ERP systems, a considerable amount of valuable data goes to waste as it is not integrated with the company’s PMS. This study aims to develop a balanced scorecard-based performance management system that utilizes the existing ERP system in a furniture company. In-depth interviews with the board of directors and general managers were conducted to assess the need for the PMS, formulate a strategic map and scorecard, determine scorecard weights, and establish targets for each category. During the implementation phase, it was observed that the financial indicators consistently fell below the baseline values, signaling an urgent need for management intervention. However, indicators from three other perspectives demonstrated relatively better performance than those from the financial perspective. This discrepancy emphasized the need to revise the strategic map, as solid performance in the other perspectives should translate into positive financial indicators. The management of the company validated the initial implementation results of the performance management system by noting a concerning decline in the company’s liquidity. This study argues for the importance of integration between the ERP system and the BSC performance management system, where the implementation of the ERP system alone cannot indicate the critical conditions experienced by the company.\r\nKeywords: Enterprise Resource Planning (ERP), performance management systems, balanced scorecard, case study</jats:p>"
+    },
+    {
+      "doi": "10.7454/arsi.v10i3.1190",
+      "title": [
+        "RENCANA STRATEGIS PENINGKATAN KINERJA POLIKLINIK EKSEKUTIF RUMAH SAKIT X TAHUN 2024 -2027: PENDEKATAN BALANCED SCORECARD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal ARSI : Administrasi Rumah Sakit Indonesia"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Hospital X is a private hospital that has executive polyclinic services. Medical record data shows that in the last four years, the number of visits from the executive polyclinic unit has never reached the target set. This research is to prepare the strategic plan for improving the executive polyclinic of Hospital X's performance for 2024-2027. The types of data in this research are primary data and secondary data. Primary data is qualitative data from in-depth interviews, Consensus Decision Making Group (CDMG) with informants, and direct observation. Secondary data consists of quantitative data and qualitative data. Strategy implementation will be described as Key Performance Indicators (KPI) using the Balanced Scorecard (BSC) approach. The Matching Stage results in the IE matrix show the position of the hospital in cell 1 in the IE matrix, namely grow and build. The QSPM results combined with existing theory in determining priority strategies produce the following strategy sequence: optimizing promotion, optimizing facilities and facilities, optimizing products and services, optimizing technology, optimizing human resources, and optimizing service excellence. The conclusion is that the strategic plan, made complete with indicators according to the BSC and targets, will be able to serve as a guide for Hospital X in realizing executive polyclinic services as superior services.</jats:p>",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.14488/cneg2024_cneg_pt_049_0392_23293",
+      "title": [
+        "Innovation Scorecard: uma análise bibliométrica"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Anais do Congresso Nacional de Excelência em Gestão"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.55732/nter.v2i2.1483",
+      "title": [
+        "Strategi Pengukuran Kinerja dengan Metode Balanced Scorecard dan Analytical Hierarchy Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nusantara Technology and Engineering Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>PT. Group Cemerlang Plastindo membutuhkan sistem pengukuran kinerja yang efektif untuk mengevaluasi kinerja organisasi secara menyeluruh, dengan fokus pada empat perspektif Balanced Scorecard (BSC). Penelitian ini bertujuan untuk mengetahui pengukuran kinerja menggunakan metode Balanced Scorecard (BSC) dan Analytical Hierarchy Process (AHP) di PT. Group Cemerlang Plastindo. Metode yang digunakan dalam penelitian ini yaitu kuantitatif. Hasil penelitian ini menunjukkan bahwa penyusunan sistem pengukuran kinerja melibatkan 13 sasaran strategis dan 21 indikator kinerja (KPI) berdasarkan 4 perspektif BSC. Kebaruan dari penelitian ini terletak pada penerapan kombinasi metode Balanced Scorecard (BSC) dan Analytical Hierarchy Process (AHP) untuk mengukur kinerja perusahaan secara menyeluruh, yang tidak hanya mengidentifikasi indikator kinerja utama (KPI) dari empat perspektif BSC tetapi juga memberikan pembobotan berbasis prioritas strategis menggunakan AHP. Penelitian ini memberikan rekomendasi untuk perbaikan sistem pengukuran kinerja di PT. Group Cemerlang Plastindo, serta memberikan wawasan mengenai area-area yang memerlukan perhatian khusus berdasarkan hasil analisis KPI yang menunjukkan skor kuning dan merah.\r\nPT. Group Cemerlang Plastindo requires an effective performance measurement system to evaluate the overall performance of the organization, focusing on the four perspectives of the Balanced Scorecard (BSC). This study aims to determine the performance measurement using the Balanced Scorecard (BSC) and Analytical Hierarchy Process (AHP) methods at PT. Group Cemerlang Plastindo. The method used in this study is quantitative. The results of this study indicate that the preparation of the performance measurement system involves 13 strategic objectives, and 21 performance indicators (KPIs) based on 4 BSC perspectives. The novelty of this study lies in the application of a combination of the Balanced Scorecard (BSC) and Analytical Hierarchy Process (AHP) methods to measure the company's overall performance, which not only identifies key performance indicators (KPIs) from the four BSC perspectives but also provides strategic priority-based weighting using AHP. This study provides recommendations for improving the performance measurement system at PT. Group Cemerlang Plastindo, as well as providing insight into areas that require special attention based on the results of the KPI analysis showing yellow and red scores.</jats:p>"
+    },
+    {
+      "doi": "10.54367/jimat.v3i2.4252",
+      "title": [
+        "PENERAPAN BALANCED SCORECARD SEBAGAI SISTEM PENGUKURAN KINERJA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Ilmiah Akuntansi  (JIMAT)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study aims to determine the performance of the CU Sondang Nauli Savings and Loans Cooperative when measured by applying the Balanced Scorecard concept through four perspectives, namely: Financial perspective, Customer perspective, Internal business process perspective and Growth and learning perspective. The population in this study is the financial statements and member data of the Sondang Nauli CU Savings and Loan Cooperative, the samples in this study are financial statements, member data, and employee data of the 2022 CU Sondang Nauli Savings and Loan Cooperative. Data collection techniques in this study were carried out by interview, documentation and questionnaire techniques. The data analysis technique used in this study is a descriptive analysis technique. Based on the results of the study showed that the performance from a financial perspective of 33,57%, a customer perspective of 69,43%, an internal business process perspective of 93,68%, and a growth and learning perspective of 100%, the total performance of the CU Sondang Nauli Savings and Loans Cooperative is 74% included in the A or \"Very Healthy\" category.\r\n </jats:p>"
+    },
+    {
+      "doi": "10.47573/aya.5379.2.369.6",
+      "title": [
+        "A Aplicação do Balanced Scorecard (BSC) em Empresa Concessionária de Veículos Automotores"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Administração &amp; Gestão um olhar para o futuro organizacional 9"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.14488/enegep2024_tn_wpg_422_2072_48040",
+      "title": [
+        "Balanced Scorecard e a Gestão da Inovação em Serviços de TI:  Uma Revisão Bibliométrica"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Anais do Encontro Nacional de Engenharia de Produção"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.47756/aihc.y9i1.165",
+      "title": [
+        "Design and evaluation of a balanced scorecard to measure the impact of COVID-19 on a Mexican higher education institution"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Avances en Interacción Humano-Computadora"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The COVID-19 pandemic has highlighted the importance of effectively monitoring and understanding its impact on the general population, especially regarding mental health and well-being. The isolation measures implemented during the lockdown significantly affected people's lives by changing habits and circumstances. To address this challenge, this project aims to develop a comprehensive Balanced Scorecard for data gathered through surveys from higher education students at a Mexican university.\r\nThis study aims to validate the usability of the Balanced Scorecard for users and ensure that it effectively meets their needs. The project encounters significant challenges, such as ensuring the quality and accuracy of collected data and addressing potential data cleansing issues. However, the insights generated could be crucial for decision-making in future pandemics and epidemics.</jats:p>"
+    },
+    {
+      "doi": "10.54471/iqtishoduna.v13i2.2690",
+      "title": [
+        "Measuring Company Performance: Using The Balanced Scorecard Approach Method"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IQTISHODUNA: Jurnal Ekonomi Islam"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This research aims to look at the company's performance using the balanced scorecard method, which will be measured using a financial perspective, customer perspective, internal business perspective and performance learning and growth perspective, the research method uses a descriptive analysis research method with quantitative descriptive approach, the research results show that the company's performance uses a perspective approach. The higher the financial percentage of the current ratio, the more liquid the financial condition of the research object is, while the company's performance using a customer perspective means that the revenue generating index increases, the service gets better, while the financial performance measured using the customer business method shows that Minimize Error Rate and Rework (MERR)The smaller it is, the smaller the error in the service system. Results of Prime Plaza Hotel Purwakarta in 2021 using a balanced scorecard for the Learning and Growth perspective, Prime Plaza Hotel Purwakarta got a meaning Fair/Average.</jats:p>"
+    },
+    {
+      "doi": "10.36418/syntax-literate.v9i10.11408",
+      "title": [
+        "Balanced Scorecard dalam Pengukuran Kinerja Sekretariat Kementerian Koperasi dan UKM"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Syntax Literate ; Jurnal Ilmiah Indonesia"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Penelitian ini bertujuan untuk menganalisis kinerja Sekretariat Kementerian Koperasi dan Usaha Kecil dan Menengah dengan metode balanced scorecard. Penelitian ini adalah deskriptif kualitatif. Hasil penelitian menunjukkan kinerja Sekretariat Kementerian Koperasi dan Usaha Kecil dan Menengah memperlihatkan masih terdapat beberapa hal yang perlu ditingkatkan. Pada perspektif pelanggan memperlihatkan perbedaan pengalaman yang diterima oleh responden sehingga mengindikasikan tidak semua pegawai terpenuhi harapannya karena pemberian pelayanan belum merata. Perspektif proses bisnis hasilnya sudah cukup baik karena telah adanya inovasi, adanya tujuan yang jelas dan adanya keluaran, adanya kegiatan yang dilakukan untuk mencapai tujuan, serta proses bisnis yang dilakukan telah mempengaruhi lebih dari satu unit organisasi. Pada perspektif pembelajaran dan penumbuhan, belum dapat dikatakan baik yang tercerminkan dari pengembangan kapasitas pegawai yang belum optimal, serta belum terpenuhinya secara utuh tiga komponen utama dalam perspektif pembelajaran yaitu kapabilitas pegawai, kapabilitas sistem informasi, serta motivasi, pemberdayaan, dan keserasian. Pada perspektif keuangan, belum dikatakan baik karena adanya inefisiensi anggaran.</jats:p>"
+    },
+    {
+      "doi": "10.18374/ijbr-24-2.3",
+      "title": [
+        "ENHANCING EMPLOYEE WELL BEING THROUGH A BALANCED SCORECARD FRAMEWORK: PROPOSING AN INTERNAL PROCESS PERSPECTIVE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Business Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.37012/jtik.v10i2.2266",
+      "title": [
+        "IT Balanced Scorecard: Sarana untuk Mempermudah Pengukuran Kinerja pada Divisi IT PT Telkom"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Teknologi Informatika dan Komputer"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Pada divisi Unit Fixed Broadband Access &amp; Service Operation (FBB ASO) di witel Jakarta Barat PT Telkom Indonesia menggunakan Customer Operational Center (COC) sebagai salah satu sistem informasi. Sistem Customer Operational Center (COC) sebagai platform web yang terintegrasi dengan Telegram, memiliki peran penting dalam memantau dan menyelesaikan masalah operasional, sehingga meningkatkan efektivitas dan efisiensi secara keseluruhan. Evaluasi kinerja sistem informasi COC sangat krusial karena berpengaruh langsung terhadap keberhasilan operasional perusahaan. Studi memiliki goals akhir untuk mengetahui hasil performa atau evaluasi COC untuk menentukan sejauh mana sistem tersebut mencapai tujuannya. Penelitian ini memakai empat sudut pandang dari IT Balanced Scorecard: kontribusi organisasi, orientasi pengguna, keunggulan operasional, dan orientasi masa depan. Data dikumpulkan melalui observasi langsung dan kuesioner yang diisi oleh teknisi dan staf sistem COC. Metode ini memungkinkan penilaian yang komprehensif terhadap kinerja sistem dari berbagai sudut pandang. Namun, hanya aspek kontribusi organisasi, orientasi pengguna, dan orientasi masa depan yang dinilai baik oleh sistem informasi COC. Studi ini mengungkapkan bahwa sistem COC secara umum efektif dalam mencapai tujuannya, namun keunggulan operasional masih memerlukan perbaikan. Penelitian ini juga menunjukkan bahwa IT Balanced Scorecard efektif dalam mengevaluasi dan meningkatkan kinerja sistem informasi, serta menyediakan kerangka kerja yang bermanfaat untuk evaluasi serupa di organisasi lain.</jats:p>"
+    },
+    {
+      "doi": "10.55707/eb.v11i2.137",
+      "title": [
+        "Corporate Wellness and Balanced Scorecard: the Case of a Slovenian Company"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revija za ekonomske in poslovne vede"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The goals of the research are to investigate the benefits of corporate wellness (CW) for an organization as well as to investigate the implementation of CW in a chosen Slovenian organizationn. We first introduce the comprehensive concept of the balanced scorecard (BSC) and provide some literature review on the CW benefits. Next, based on the literature analysis as well as on the results of semi-structured interviews in a chosen organization, we answer research questions regarding the benefits of CW integration into BSC and use of the CW programs in a Slovenian company. One of the results is also an updated theoretical concept called corporate wellness-balanced scorecard (CW-BSC). The theoretical understanding of the BSC in relation to health and well-being has thus taken a step forward. Our research reveals that CW in a selected Slovenian company is not implemented at a strategic level. The research sets the base for a more comprehensive measurement in the organization, a more effective approach to strategic management and the development of human capital management, which in turn contribute to better business performance.</jats:p>"
+    },
+    {
+      "doi": "10.1002/9781394308477.ch5",
+      "title": [
+        "The Tortoise and the Hare"
+      ],
+      "type": "other",
+      "container-title": [
+        "Unlock Your Leadership Story"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.31869/mm.v7i1.5911",
+      "title": [
+        "PENGUKURAN KINERJA RUMAH SAKIT X DI KOTA PADANG PANJANG DENGAN PENDEKATAN BALANCED SCORECARD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Menara Medika"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Latar Belakang: Pengukuran kinerja penting untuk menilai efektivitas dan efisiensi operasional rumah sakit. Observasi awal menunjukan bahwa terdapat karyawan yang berhenti kerja dan pandemi COVID-19 mengganggu arus kas rumah sakit. Tujuan: untuk mengukur kinerja Rumah Sakit X di Kota Padang Panjang menggunakan pendekatan balanced scorecard, dengan menganalisis perspektif keuangan serta pembelajaran dan pertumbuhan. Metode: penelitian menggunakan metode kuantitatif deskriptif, dengan fokus pada dua indikator keuangan, yaitu ROA dan ROE, serta pembelajaran dan pertumbuhan melalui retensi karyawan yang mencakup komponen organisasi, peluang karir, penghargaan, rancangan tugas dan pekerjaan, serta hubungan karyawan. Populasi penelitian ini terdiri dari 40 responden karyawan non-medis. Hasil: Kinerja keuangan rumah sakit mengalami penurunan, dengan ROA dari 2,23% pada tahun 2022 menjadi 0,51% pada tahun 2023, dan ROE dari 2,54% menjadi 0,57% pada periode yang sama. Dari perspektif pembelajaran dan pertumbuhan, komponen organisasi, peluang karir, dan penghargaan dinilai baik (52,5%, 52,5%, dan 57,5%,). Sedangkan, rancangan tugas dan pekerjaan serta hubungan karyawan dinilai kurang baik (75% dan 62,5%). Kesimpulan dan Saran: Disimpulkan  bahwa kinerja keuangan rumah sakit dinilai kurang baik, sedangkan aspek pembelajaran dan pertumbuhan sebagian besar dinilai baik, kecuali rancangan tugas dan pekerjaan serta hubungan karyawan. Disarankan agar rumah sakit mengevaluasi strategi pengelolaan aset dan ekuitas, memperbaiki rancangan tugas, dan meningkatkan dukungan manajemen serta interaksi positif antar karyawan. Aspek yang dinilai baik perlu dipertahankan dan ditingkatkan untuk mendukung retensi karyawan dan kinerja rumah sakit.</jats:p>"
+    },
+    {
+      "doi": "10.37339/e-bis.v8i2.1772",
+      "title": [
+        "Pengukuran Kinerja Pada Dinas Pertanian Dan  Ketahanan Pangan Kabupaten Situbondo Dengan  Metode Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal E-Bis"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Kinerja sektor publik pada instansi pemerintahanan di kabupaten situbondo diukur dari kemampuannya dalam realisasikan E-SAKIP dengan kategori memuaskan pada tahun 2023. Penelitian ini bertujuan untuk mengukur kinerja organisasi pada Dinas Pertanian Dan Ketahanan Pangan Kabupaten Situbondo dengan menggunakan metode balanced scorecard. Balanced scorecard yang mempunyai empat perspektif yaitu, perspektif keuangan, perspektif pelanggan, perspektif bisnis internal, yang terakhir perspektif pertumbuhan dan pembelajaran. Penelitian ini menggunakan metode kualitatif. Teknik analisis data penelitian ini menggunakan metode simpel random sampling yang ditujukan untuk perspektif pelanggan dan perspektif pertumbuhan dan pembelajaran yang disasarkan kepada para petani Kabupaten Situbondo dan pegawai dinas. Pada hasil analisis data keseluruhan pengukuran kinerja organisasi yang diukur dengan metode balanced scorecard dengan empat perspektif yaitu, perspektif keuangan, perspektif pelanggan, perspektif bisnis internal,  yang terakhir perspektif pertumbuhan dan pembelajaran semuanya memperoleh hasil yang cukup baik.</jats:p>"
+    },
+    {
+      "doi": "10.4337/9781803920672.00015",
+      "title": [
+        "The balanced scorecard framework as a key performance measurement innovation: a judgment and decision-making perspective"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Research Handbook on Performance Measurement for Management Control"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-11"
+    },
+    {
+      "doi": "10.29303/aksioma.v23i2.419",
+      "title": [
+        "Pengukuran Kinerja Keuangan Menggunakan Balanced Scorecard Pada Koperasi KPRI Obor"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Riset Akuntansi Aksioma"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Tujuan penelitian ini adalah untuk mengetahui pengukuran kinerja pada perspektif keuangan (Rasio likuiditas, Rasio Solvabilitas, Rasio Rentabilitas), perspektif pelanggan (tingkat akuisisi pelanggan), perspektif proses bisnis internal (manufacturing cycle efficiency) serta perspektif pembelajaran dan pertumbuhan (tingkat kepuasan karyawan dan tingkat retensi karyawan) dengan menggunakan metode Balanced Scorecard di Koperasi Pegawai Republik Indonesia (KPRI) Obor Kota Bima.  Populasi penelitian mencakup 101 pelanggan anggota aktif dengan teknik pengambilan sampel adalah accidental sampling dengan pengambilan sampel jenuh/metode sensus. Penelitian ini memperoleh hasil bahwa pengukuran kinerja keuangan menggunakan Balanced scorecard dinilai dari empat perspektif, yaitu perspektif bisnis internal, perspektif pelanggan, serta perspektif pertumbuhan dan pembelajaran dinilai efisien. Sedangkan perspektif keuangan yang diukur melalui tiga rasio dinilai kurang memadai. Kinerja KPRI Obor berdasarkan pengukuran kriteria keseimbangan Balanced scorecard, dianggap cukup baik dengan skor 0,2 (Cukup Baik).</jats:p>"
+    },
+    {
+      "doi": "10.47191/rajar/v10i10.01",
+      "title": [
+        "Performance Analysis of Slamet Riyadi Hospital Pharmacy Installation Surakarta Using Balanced Scorecard Method"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "RA JOURNAL OF APPLIED RESEARCH"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study aims to determine the extent to which the performance of the Pharmacy Installation of the Hospital Class III 04.06.04 Slamet Riyadi Surakarta with the Balanced Scorecard method. This study is a non-experimental study with an exploratory and descriptive design. Data were collected retrospectively and simultaneously with in-depth interviews with pharmacists of the pharmacy facility, staff and patient questionnaires, and direct observation. Data were analyzed descriptively and compared with existing standards. The findings indicate that 1) Financial perspective performance, TOR values are not yet in accordance with standards, the average GPM value is in accordance with the standard of 20-33% and the GROS value has not met the standard. 2) Customer perspective performance shows that there is high patient satisfaction with the performance of the Hospital Pharmacy Installation. However, there is a significant gap between satisfaction with its performance and patient expectations. Customer retention has increased customer acquisition in period one to period two. 3) Internal business perspective performance shows that drug availability reaches an optimal 100%, dispensing time for compounded prescriptions meets the standard, but for non-compounded prescriptions has not met the standard. PIO is delivered optimally 100% on information on indications, dosages, rules of use, side effects and related contraindications and how to store drugs have not been given to all patients. 4) The performance of the learning and growth perspective shows that satisfaction and work enthusiasm have a high category and the Hospital Information Management (SIM) system has not been optimally integrated. 5) The results of the SWOT analysis are included in quadrant II with a diversification strategy.</jats:p>"
+    },
+    {
+      "doi": "10.22515/jurnalalhakim.v6i2.9914",
+      "title": [
+        "Analisis Kinerja Baznas Kabupaten Sukoharjo Dengan Metode Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Al-Hakim: Jurnal Ilmiah Mahasiswa, Studi Syariah, Hukum dan Filantropi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The optimization of zakat management requires strong institutional support. One effort to achieve this is by evaluating the performance of zakat management institutions, particularly the National Amil Zakat Agency (BAZNAS). Several performance measurement models have been developed, such as IZN, IDZ, CIBEST, IMZ, ISZM, and the Balanced Scorecard. These models enable a comprehensive and simultaneous performance evaluation of BAZNAS. For example, a previous study analyzed the performance of BAZNAS Sukoharjo using the IZN model, with results indicating a \"fair\" performance. To build on this research, the present study uses field research with a descriptive qualitative approach, employing the Balanced Scorecard analysis. It measures performance from four perspectives: financial, customer (muzakki), internal business processes, and learning and growth. The results show that the performance of BAZNAS Sukoharjo, evaluated using the Balanced Scorecard, is rated \"good\" in the financial (zakat fund growth), customer (muzakki), and internal business process (programs implemented) perspectives, with a score of \"1.\" Furthermore, the learning and growth perspective also achieved a \"good\" rating, with a score of \"1.\" These results indicate that the performance has met the work targets, as well as the institution's vision and mission.</jats:p>"
+    },
+    {
+      "doi": "10.51804/jiso.v7i1.74-81",
+      "title": [
+        "MANAJEMEN KINERJA BERBASIS KPI DI PERGURUAN TINGGI: INTEGRASI BALANCED SCORECARD DAN IPMS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JISO : Journal of Industrial and Systems Optimization"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study explores the application of the Balanced Scorecard (BSC) and Integrated Performance Measurement System (IPMS) in the context of higher education institutions in Indonesia. This approach is used to identify relevant Key Performance Indicators (KPIs) and determine priority weights using the Pairwise Comparison method. The results show that implementing BSC and IPMS can provide a comprehensive performance measurement framework, covering four main perspectives: finance, customer (student and graduate users), internal processes, and learning and growth. The study's findings also show the importance of focusing on human resource development, optimizing operational efficiency, and increasing stakeholder satisfaction as critical factors in achieving the strategic goals of higher education institutions. This study offers practical contributions to improving performance management in higher education institutions. It provides applicable guidance for institution managers in effectively adopting BSC and IPMS approaches.\nPenelitian ini bertujuan untuk mengeksplorasi penerapan Balanced Scorecard (BSC) dan Integrated Performance Measurement System (IPMS) dalam konteks institusi pendidikan tinggi di Indonesia. Pendekatan ini digunakan untuk mengidentifikasi Key Performance Indicators (KPI) yang relevan dan menentukan bobot prioritas menggunakan metode Pairwise Comparison. Hasil penelitian menunjukkan bahwa penerapan BSC dan IPMS dapat memberikan kerangka pengukuran kinerja yang komprehensif, mencakup empat perspektif utama: finance/keuangan, customer/pelanggan (mahasiswa dan pengguna lulusan), internal business process/proses internal, serta learning and growth/pembelajaran dan pertumbuhan. Temuan penelitian juga menunjukkan pentingnya fokus pada pengembangan sumber daya manusia (SDM), optimalisasi efisiensi operasional, serta peningkatan kepuasan stakeholder sebagai faktor kunci dalam pencapaian tujuan strategis institusi pendidikan tinggi. Studi ini menawarkan kontribusi praktis dalam meningkatkan manajemen kinerja di institusi pendidikan tinggi serta memberikan panduan yang aplikatif untuk pengelola institusi dalam mengadopsi pendekatan BSC dan IPMS secara efektif.</jats:p>"
+    },
+    {
+      "doi": "10.5861/ijrsm.2024.1299",
+      "title": [
+        "Knowledge management practices, competitive strategies, and the balanced scorecard: Basis for an organizational performance improvement framework"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Research Studies in Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.37159/jpa.v26i4.4792",
+      "title": [
+        "PENCAPAIAN KINERJA PETANI DENGAN PENDEKATAN BALANCED SCORECARD (STUDI KASUS KELOMPOK TANI KAKAO SIDODADI DESA PUTAT KECAMATAN PATUK KABUPATEN GUNUNG KIDUL)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Pertanian Agros"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.53494/jira.v10i2.663",
+      "title": [
+        "Effectiveness of Strategic Performance and the Impact of Balanced Scorecard on DKI Jakarta Government Achievements"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Ilmiah Raflesia Akuntansi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Anggitaningsih, R., Irawan, B., Prihatini, D., &amp; Barokah, I. (2023). The Effect of Balanced Scorecard Understanding on Employee Performance with Career System and Compensation System as Moderating Variable. Calitatea, 24(192), 306–316.\r\nAnggitaningsih, R., Irawan, B., Prihatini, D., &amp; Barokah, I. (2023). Pengaruh Pemahaman Balanced Scorecard terhadap Kinerja Karyawan dengan Sistem Karir dan Sistem Kompensasi sebagai Variabel Moderasi. Calitatea, 24(192), 306–316.\r\nBouckaert, G., &amp; Van Dooren, W. (2003). Performance measurement and management in public sector organizations.\r\nBshayreh, M. M., Qawqzeh, H. K., Al-Momany, I. A. A., Saleh, M. M. A., &amp; Al Qallap, K. D. H. (2024). The Influence of Balanced Scorecard Perspectives on the Firms’ Performance: Evidence from the Banks in the Developing Market.\r\nCignitas, C. P., Torrents Arévalo, J. A., &amp; Vilajosana Crusells, J. (2021). Balanced scorecard, the key to employee well-being the impact of balanced scorecard on employee well-being: The case of state of Michigan-USA. International Journal of Business &amp; Management, 9(12), 175–197.\r\nCIGNITAS, C. P., Arevalo, J. A. T., &amp; Crusells, J. V. (2022). The effect of strategy performance management methods on employee well-being: A case study analyzing the effects of balanced scorecard.\r\nDabor, A. O., Dabor, E. L., Eguasa, B. E., Atarere, L. O. I., &amp; Abusomwa, R. E. (2023). Balance Scorecard and Performance of Money Deposit Bank in Nigeria. Nigerian Academy of Management Journal, 18(1), 12–29.\r\nDavis, S., &amp; Albright, T. (2004). An investigation of the effect of balanced scorecard implementation on financial performance. Management Accounting Research, 15(2), 135–153.\r\nDhariwal, P., &amp; Nichol, A. (2021). Diffusion models beat GANs on image synthesis. Advances in Neural Information Processing Systems, 34, 8780–8794.\r\nDuwe, A. (2024). Effectiveness of Balanced Scorecard Performance Management System on Provision of Quality Services (Doctoral dissertation, The Open University of Tanzania).\r\nGazi, F., Atan, T., &amp; Kılıç, M. (2022). The assessment of internal indicators on the balanced scorecard measures of sustainability. Sustainability, 14(14), 8595.\r\nHe, K., Chen, X., Xie, S., Li, Y., Dollár, P., &amp; Girshick, R. (2022). Masked autoencoders are scalable vision learners. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 16000–16009).\r\nIstiarsono, Z. (2022). Penerapan balanced scorecard dalam bidang pendidikan: Kajian teoretik. Intelegensi: Jurnal Pendidikan dan Pembelajaran, 7(1), 1–9.\r\nJassem, S., Zakaria, Z., &amp; Che Azmi, A. (2022). Arsitektur balanced scorecard keberlanjutan dan hasil kinerja lingkungan: Tinjauan sistematis. Jurnal Internasional Produktivitas dan Manajemen Kinerja, 71(5), 1728–1760.\r\nKhaleeli, M., Faisal, R., &amp; Anwar, S. (2021). The effect of green marketing, green supply chain and green human resources on business performance: Balanced scorecard approach. Uncertain Supply Chain Management, 9(1), 133–138.\r\nLiu, Z. (2024). Implementation of the balanced scorecard in large firms: A systematic review. Asian Journal of Accounting and Finance, 6(2), 1–11.\r\nMiliki, A. (2024). Efektivitas Sistem Manajemen Kinerja Balanced Scorecard pada Penyediaan Pelayanan Berkualitas (Disertasi Doktoral, The Open University of Tanzania).\r\nMushtaha, A., Aljifri, K., &amp; Zoubeidi, T. (2024). Critical success factors of effective implementation of balanced scorecard and organisational performance: Case of UAE private hospitals. Journal for International Business and Entrepreneurship Development, 16(3), 425–446.\r\nNour, A. I., Alamleh, L. W., Al-Atoot, S. M., &amp; Almomani, K. M. (2022). Pengaruh penerapan balanced scorecard terhadap kualitas laba di antara bank-bank yang terdaftar di Palestine Exchange. Jurnal Humaniora dan Ilmu Sosial Universitas Cihan-Erbil, 6(1), 101–112.\r\nRafiq, M., Maqbool, S., Martins, J. M., Mata, M. N., Dantas, R. M., Naz, S., &amp; Correia, A. B. (2021). A study on balanced scorecard and its impact on sustainable development of renewable energy organizations; A mediating role of political and regulatory institutions. Risks, 9(6), 110.\r\nSharaf-Addin, H. H., &amp; Fazel, H. (2021). Balanced scorecard development as a performance management system in Saudi Public Universities: A case study approach. Asia-Pacific Journal of Management Research and Innovation, 17(1–2), 57–70.\r\nTorrents Arévalo, J. A., Vilajosana Crusells, J., &amp; Cignitas, C. P. (2022). Literature review on the effect of balanced scorecard on employee wellbeing. International Journal of Business and Management, 17(3), 103–120.\r\nVan Thuong, C., &amp; Singh, H. (2023). Dampak balanced scorecard terhadap kinerja perusahaan di Kota Ho Chi Minh, Vietnam. Jurnal Internasional Kepemimpinan Organisasi, 12(2).\r\nWaworuntu, E. C., Kainde, S. J., &amp; Mandagi, D. W. (2022). Work-life balance, job satisfaction, and performance among millennial and Gen Z employees: A systematic review. Society, 10(2), 384–398.\r\n </jats:p>"
+    },
+    {
+      "doi": "10.37641/jiakes.v12i5.2781",
+      "title": [
+        "Performance Measurement Analysis of Athallah Primary Clinic Using Balanced Scorecard Method Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Ilmiah Akuntansi Kesatuan"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Performance measurement has always been a benchmark for business success, including the type of health service business at Athallah Pratama Clinic. This study uses quantitative descriptive analysis. The aim of this research is to measure performance at the Klinik Pratama Athallah with the concept of a Balanced Scorecard approach from four perspectives, namely: financial perspective, customer perspective, internal business process perspective and growth and learning perspective. The data analysis method used is comparative analysis, namely by comparing the performance measurements that have been achieved by Klinik Pratama Athallah with the performance measurements that have been achieved using the Balanced Scorecard method approach with the total score. It is hoped that the results of this research will mean that Klinik Pratama Athallah can implement performance measurement using the Balanced Scorecard method approach because the large score can show \"Good\" results over a period of 2 years.</jats:p>"
+    },
+    {
+      "doi": "10.36418/syntax-literate.v9i10.16961",
+      "title": [
+        "Pengukuran Kinerja Staf pada Credit Union Sauan Sibarrung dengan Pendekatan Human Resource Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Syntax Literate ; Jurnal Ilmiah Indonesia"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Penelitian ini bertujuan untuk mengetahui tingkat kinerja staf CU. Sauan Sibarrung yang diukur dengan pendekatan Human Resource Scorecard. Prosedur pengumpulan data dalam penelitian ini dilakukan melalui metode wawancara terbuka dan kuesuiner. Informan dalam penelitian ini adalah HRD CU. Sauan Sibarrung. Teknik analisis data yang digunakan dalam pengukuran kinerja adalah key performance indicators dan (KPI) dan analytical hierarchy process (AHP) yang diolah secara sistematis melalui perkalian matriks. Hasil perhitungan CR (consistency ratio) dari keseluruhan perspektif, strategy objective, program inisiatif dan aktivitas menunjukkan hasil yang konsisten karena nilainya 0 dan berada dibawah 10% atau 0,1. Dari hasil perhitungan, diperoleh bobot keseluruhan perspektif sebesar 99%, dimana perspektif keuangan dengan bobot sebesar 17%, perspektif pelanggan dengan bobot sebesar 40%, perspektif proses internal bisnis dengan bobot sebesar 22% dan perspektif pertumbuhan dan pembelajaran dengan bobot sebesar 20%. Berdasarkan hasil tersebut, dapat disimpulkan bahwa tingkat kinerja staf CU. Sauan Sibarrung sangat baik.</jats:p>"
+    },
+    {
+      "doi": "10.31004/jutin.v7i4.32498",
+      "title": [
+        "Analisis pengukuran kinerja karyawan menggunakan metode Human Resource Scorecard (HRSC) di UPT Industri Kayu dan Produk Kayu Pasuruan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Teknik Industri Terintegrasi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This research aims to analyze employee performance measurements at the Pasuruan Timber and Wood Products UPTI using the Human Resource Scorecard (HRSC) method. The HRSC method is used as a holistic approach in evaluating employee performance by paying attention to financial aspects, customers, internal processes, as well as growth and learning. This research explores data through in-depth interviews and direct observation of HR management practices at UPTI. Data analysis was carried out to identify the main factors that influence employee performance in the organization using guidelines and metrics provided by HRSC. It is hoped that the research results can provide in-depth insight for the management of Pasuruan Wood and Wood Products UPTI in improving employee performance, identifying areas that need improvement, and increasing overall effectiveness. It is hoped that the findings from this research can become the basis for developing more effective human resource management strategies and can better support the achievement of organizational goals.</jats:p>"
+    },
+    {
+      "doi": "10.46799/ajesh.v3i11.458",
+      "title": [
+        "A Proposed Corporate Performance Management System Using the Balanced Scorecard for PT PJM"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Asian Journal of Engineering, Social and Health"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>PT PJM experienced significant financial losses in 2023 due to high operational costs and inadequate profit margins, highlighting inefficiencies in its performance management. The absence of a comprehensive Performance Management System (PMS) limited the company’s focus to financial metrics, neglecting critical dimensions such as customer satisfaction, operational efficiency, and employee development. This research aims to address these challenges by proposing a Balanced Scorecard (BSC) framework tailored to PT PJM’s needs to improve profitability and efficiency. The study employed a mixed-methods approach, utilizing primary data from interviews and observations and secondary data from the company’s financial records. Key Performance Indicators (KPIs) were developed to align with the BSC framework, focusing on financial, customer, internal processes, and learning and growth perspectives. This multi-dimensional framework allows PT PJM to address operational inefficiencies and improve overall performance. The findings indicate that implementing the BSC-based PMS can optimize operational costs, improve customer satisfaction, enhance employee competency, and ultimately drive sustainable growth. This research not only provides actionable recommendations for PT PJM but also contributes to the literature on strategic performance management in medium-sized enterprises in emerging markets. Future research could explore the application of this framework in other regions or industries to validate its effectiveness and scalability.</jats:p>"
+    },
+    {
+      "doi": "10.36040/industri.v14i2.8895",
+      "title": [
+        "PENGUKURAN KINERJA KELUARGA BERENCANA DENGAN BALANCED SCORECARD BALAI PEMBERDAYAAN PEREMPUAN TAHUN 2022"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Industri Inovatif : Jurnal Teknik Industri"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Penelitian ini bertujuan menganalisis dampak penurunan jumlah penduduk terhadap kesadaran kb di 14 desa di Kecamatan Dringu Kabupaten Probolinggo dengan menggunakan pendekatan Balanced Scorecard (BSC). Tujuan utamanya adalah mengukur kinerja program Keluarga Berencana (KB) dan kesadaran masyarakat melalui key performance indikator (KPI) yang diukur dari perspektif pelanggan dan pembelajaran pertumbuhan. Penelitian ini berfokus pada perspektif non finansial yaitu perspektif pelanggan, dan perspektif pembelajaran dan pertumbuhan dengan pendekatan balanced scorecard pada Balai DP3AP2KB Kecamatan Dringu Kabupaten Probolinggo yang berorientasi pada pelayanan masyarakat dibandingkan orientasi keuntungan perusahaan. Penelitian menunjukkan kpi dengan pendekatan balanced scorecard memberikan gambaran menyeluruh. Dari sudut pandang pelanggan, factor kepuasan masyarakat terhadap layanan, pemahaman mereka terhadap manfaat, dan partisipasi dalam program terkait kb diukur untuk mengukur kesadaran masyarakat. Dalam perspektif pembelajaran dan pertumbuhan, evaluasi efektivitas program, kemampuan organisasi dalam memahami perubahan sosial, serta kemampuan pembelajaran dan adaptasi diukur untuk menilai efektivitas program. Penelitian ini memberikan rekomendasi untuk meningkatkan pengukuran kinerjanya dengan memperluas fokus pengukuran di luar aspek finansial dan kuantitatif.</jats:p>"
+    },
+    {
+      "doi": "10.7769/gesec.v15i10.4275",
+      "title": [
+        "Grau de sofisticação da adoção do Balanced Scorecard: evidências de um setor industrial do estado de Pernambuco"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revista de Gestão e Secretariado"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>O objetivo deste artigo é investigar o grau de sofisticação da adoção do BSC nas indústrias de bebidas instaladas no estado de Pernambuco e catalogadas pela Federação das Indústrias do Estado de Pernambuco. Os resultados da pesquisa mostraram que a amostra investigada não faz uso do BSC, porém, em maioria, utiliza indicadores de desempenho, variando entre os mais simples voltados apenas para a área financeira e os mais complexos, que envolvem a parte de produção e a área comercial, os quais se assemelham à estrutura e formato do BSC. Foi perceptível, também, que os relatórios gerenciais são ferramentas cruciais para a condução das empresas, ajudando na gestão estratégica, e são bastante utilizados pelos gestores.</jats:p>"
+    },
+    {
+      "doi": "10.61132/ijmicse.v1i4.92",
+      "title": [
+        "Chain Performance Analysis Supply Using the Balanced Scorecard Method in the Kachi Milk Beverage Business"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Mechanical, Industrial and Control Systems Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>One of efforts that can done to be able to sufficient need customer with method notice management chain supply in a way well, that's it This because basically​ chain supply This notice regarding the goods process until customer in a way good. In the chain supply evaluation performance becomes very important, because Can know effectiveness strategy determination and its application in the business world. The goal in study This is For analyze flow performance chain supply as well as know mark chain supply which obtained what is Kachi Milk's business ? Already Good or no. Method of analysis in study This use balanced scorecard. On the Balanced Scorecard This explain mission and tactics capable organization​ made into become business for reach objective as well as become reject measuring performance in the company. Research results This is in the form of results the average value shows that from perspective finance to obtain value 3 (enough) good), internal business process perspective obtains value 3.4 (good), perspective growth and development to obtain value 3.12 (enough) good) and perspective customer to obtain value 3.6 (good). For the total average value for all perspective is 3.28 (enough) good). Concluded that performance on the chain supply business This Kachi Milk drink Enough Good based on four perspective, the need for efforts in business Kachi Milk drink for increase performance chain to be more increase. \r\n </jats:p>"
+    },
+    {
+      "doi": "10.26905/pjiap.v9i2.13935",
+      "title": [
+        "Analysis of key success factors in implementing the balanced scorecard to improve hospital performance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Publisia: Jurnal Ilmu Administrasi Publik"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Implementing the Balanced Scorecard (BSC) in hospitals has become an essential focus in improving organisational performance in the healthcare sector, especially in Indonesia, which faces unique challenges in terms of resources and infrastructure. This article aims to identify and analyse the critical success factors in implementing BSC in hospitals, with the hope of providing practical recommendations for management. The method used in this research is a systematic literature review, which involves a comprehensive analysis of various previous studies on implementing the Balanced Scorecard (BSC) in the healthcare sector. The research findings indicate that factors such as resource utilisation efficiency, patient satisfaction, management commitment, employee participation, and strategic alignment are crucial elements that significantly influence the success of BSC implementation. Implementing the Balanced Scorecard (BSC) in hospitals is an effective way to improve performance. Key success factors include efficient use of resources, patient satisfaction, and strong management support.</jats:p>"
+    },
+    {
+      "doi": "10.48175/ijarsct-22363",
+      "title": [
+        "Performance Assessment of Selected Public Sector Banks in India: A Balanced Scorecard Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Advanced Research in Science, Communication and Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study examines the performance of selected Indian public sector banks — State Bank of India (SBI), Bank of Baroda (BOB), Canara Bank, Union Bank of India, and United Commercial Bank (UCO Bank) — using the Balanced Scorecard (BSC) framework. The BSC assesses banks across four perspectives: Financial, Customer, Internal Business Process, and Learning &amp; Growth. Each perspective provides insights into a bank’s strategic strengths and areas for improvement. Results indicate that financial stability is well-maintained, though variations in customer engagement and internal processes suggest opportunities for operational enhancement</jats:p>"
+    },
+    {
+      "doi": "10.7769/gesec.v15i11.4397",
+      "title": [
+        "Strategic planning and emotions: the relevance of an emotional dimension for the balanced scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revista de Gestão e Secretariado"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Emotional aspect is a challenge in achieving goals and performing strategic planning within the organizations. Such elements are not always taken into consideration in businesses as they interfere with a positive organizational climate. This is a crucial fact since it promotes employees’ joy. In this paper we suggest a fifth dimension in the Balanced Scorecard (BSC) considering employees’ emotions alongside the the four Kaplan and Norton's strategic aspects. To this, we conducted semi-structured interviews with eight employees of the IT at two higher education institutions in Brazil. We collected data through the registration, analysis, and coding, which mapped the primary emotions described by the employees facing the challenges to implement the strategic planning and seek the results sought by the company organization. The bibliographic research was conducted upon scientific digital databases. From this research, we found emotions such as joy, happiness, motivation, contentment, love, pride, satisfaction, sadness, frustration, and anxiety inside the people involved in strategic activities. We suggest a BSC dimension, i.e., 'Emotions', to consider employee well-being, valuing the organization's more structured planning addressed to maintenance the positive climate, improved performance, and employee engagement to deliver the desired results.</jats:p>"
+    },
+    {
+      "doi": "10.4038/ija.v4i1.60",
+      "title": [
+        "Interrelationships Between Non-Financial Perspectives of Balanced Scorecard: Evidence from Sri Lankan Public Listed Companies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Accountancy"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The objective of this study is to examine the interrelationship among the non-financial perspectives of the Balanced Scorecard. Out of 285 PLCs listed, 102 PLCs in the Colombo Stock Exchange; Sri Lanka have responded in this study and data collected with a standard questionnaire. Respondents were from the managerial capacity of the companies. The questionnaire captures all aspects that construct each non-financial perspective of the Balanced Scorecard using 5-point Likert scale. Two factors under each non-financial perspective, totaling to six factors were found through a factor analysis and the factors were used in finding the interrelationship between non-financial perspectives. Results reveal that the learning and growth perspective has a relationship with the internal business process perspective where both internal oriented learning and external oriented learning are highly correlated with collaborative process efficiency. The relationship between internal business process perspective and customer perspective is evidenced by the strong correlation that customer satisfaction has with both product delivery process efficiency and collaborative process efficiency. Learning and growth perspective reveals a relationship with the customer perspective having internal oriented learning strongly correlated with customer satisfaction. This study contributes to the body of knowledge by confirming the underlying assumption in the Balanced Scorecard and notifying firms that have or haven’t adopted the Balanced Scorecard approach with a general conclusion to focus on the non-financial perspectives by understanding the interrelationship between them.</jats:p>"
+    },
+    {
+      "doi": "10.34925/eip.2024.171.10.089",
+      "title": [
+        "СИСТЕМА СБАЛАНСИРОВАННЫХ ПОКАЗАТЕЛЕЙ КАК ОСНОВА ФОРМИРОВАНИЯ ЦИФРОВОЙ СРЕДЫ БИЗНЕСА"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Экономика и предпринимательство"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Задачи по обеспечению ускоренного внедрения цифровых технологий в экономике и социальной сфере обозначены национальной программе «Цифровая экономика Российской Федерации», разработанная Правительством и утвержденная президиумом Совета при Президенте Российской Федерации по стратегическому развитию и национальным проектам в июне 2019 г. Формирование цифровой среды любой компании связано с сложной системой взаимоотношений, возникающих в процессе производства и управления. В статье обосновывается возможность использования системы сбалансированных показателей (ССП) в качестве платформы для реструктуризации построении общей архитектурной модели цифровой среды.</jats:p>\n                                                                                            <jats:p>The tasks of ensuring the accelerated introduction of digital technologies in the economy and social sphere are outlined in the national program \"Digital Economy of the Russian Federation\", developed by the Government and approved by the Presidium of the Presidential Council for Strategic Development and National Projects in June 2019. The formation of the digital environment of any company is associated with a complex system of relationships arising in the production and management process. The article substantiates the possibility of using the balanced scorecard as a platform for restructuring the construction of a common architectural model of the digital environment.</jats:p>",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.33830/isbest.v4i1.3248",
+      "title": [
+        "Organizational Performance Improvement Strategies Through the Implementation of Balanced Scorecard at KPPN Jakarta VII"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceeding of The International Seminar on Business, Economics, Social Science and Technology (ISBEST)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>KPPN Jakarta VII is a vertical agency under the Regional Office of the Directorate General of Treasury of DKI Jakarta Province, Directorate General of Treasury, Ministry of Finance which has the task of carrying out the authority as the State General Treasurer, distributing financing at the expense of the budget, and administering budget receipts and expenditures through and from the state treasury based on statutory regulations. In carrying out the tasks and objectives of the organization, KPPN Jakarta VII carries out performance management based on a balanced scorecard. Balanced scorecard is a strategic management system that guides leaders and members of the organization to translate the vision, mission, and strategy of the organization into real measurable actions. Organizational performance is measured so that it can reflect the achievement of organizational goals. This is very important as part of the implementation of good governance. This paper provides an overview of the implementation of the balanced scorecard at KPPN Jakarta VII as a tool in managing organizational performance. The method used is descriptive qualitative with primary data in the form of performance improvement strategies and organizational performance achievements. As a result, the consistent and continuously improved implementation of the balanced scorecard results in an increased organizational performance score of KPPN Jakarta VII and encourages the creation of service innovations as a form of adaptive organization.</jats:p>"
+    },
+    {
+      "doi": "10.14488/enegep2024_tn_st_414_2036_47727",
+      "title": [
+        "MEDIÇÃO DE DESEMPENHO DA METODOLOGIA LEAN SIX SIGMA BASEADA NA ABORDAGEM BALANCED SCORECARD"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Anais do Encontro Nacional de Engenharia de Produção"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.13037/gr.vol40.e20248619",
+      "title": [
+        "BALANCED SCORECARD NA GESTÃO COMERCIAL DE UMA EMPRESA DE TELECOMUNICAÇÕES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gestão &amp; Regionalidade"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Para manterem-se no mercado, as organizações precisam se adequar as mudanças que ocorrem no meio corporativo, dispondo de mecanismos que possibilitem boa gestão, como é o caso do Balanced Scorecard. Assim, o objetivo do estudo consiste em analisar como os indicadores Balanced Scorecard podem auxiliar os gestores do departamento comercial nas tomadas de decisões em uma empresa do ramo de telecomunicações e para tanto, foi desenvolvida uma pesquisa descritiva, quantitativa, mediante um levantamento com 102 gestores do departamento comercial de todas as filiais da empresa e os dados tratados por meio da estatística descritiva e análise fatorial confirmatória. Os resultados apontam que, mediante os indicadores das quatro perspectivas do BSC, é possível realizar análises mais concretas, identificação de causa raiz, a partir das três perspectivas elencadas: processos internos, clientes/aprendizagem e renovação e financeira, possibilitando a criação de planos de ações eficazes para tomadas de decisões mais assertivas no departamento comercial.</jats:p>"
+    },
+    {
+      "doi": "10.34925/eip.2024.171.10.189",
+      "title": [
+        "ОЦЕНКА РИСКОВ МЕТАЛЛУРГИЧЕСКОГО ПРЕДПРИЯТИЯ С ИСПОЛЬЗОВАНИЕМ СИСТЕМЫ СБАЛАНСИРОВАННЫХ ПОКАЗАТЕЛЕЙ"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Экономика и предпринимательство"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Успешное развитие любой компании требует адекватной системы оценки рисков, которая позволит вовремя оценить угрозы и принять соответствующие превентивные меры. Следовательно, для того чтобы правильно оценивать риски деятельности компании необходимо грамотно выбирать методы их оценки. Исследование проводилось на базе ПАО «Магнитогорский металлургический комбинат», которое представляет собой металлургический комплекс с полным производственным циклом, начиная с подготовки железорудного сырья и заканчивая глубокой переработкой черных металлов. В качестве методов исследования использовались метод экспертных оценок и метод системы сбалансированных показателей. В настоящее время очень активно используется такой метод оценки рисков как метод экспертных оценок, то есть верность оценки уровня рисков очень сильно зависит от уровня квалификации экспертов, что снижает достоверность полученных результатов. Для преодоления этого недостатка предлагается методика оценки рисков, которая базируется на системе сбалансированных показателей. Методика оценки риска на базе системы сбалансированных показателей позволяет охватить разные аспекты функционирования компании и учесть уровень значимости тех или иных показателей для разных компаний через коэффициенты. И, самое главное, она лишена главного недостатка метода экспертных оценок - субъективизма.</jats:p>\n                                                                                            <jats:p>The successful development of any company requires an adequate risk assessment system that will allow timely assessment of threats and appropriate preventive measures. Therefore, in order to correctly assess the risks of the company's activities, it is necessary to choose the methods of their assessment correctly. The study was conducted on the basis of PJSC Magnitogorsk Iron and Steel Works, which is a metallurgical complex with a full production cycle, starting with the preparation of iron ore raw materials and ending with deep processing of ferrous metals. The method of expert assessments and the method of the balanced scorecard were used as research methods. Currently, such a risk assessment method as the expert assessment method is very actively used, that is, the accuracy of the risk assessment depends very much on the level of expertise of experts, which reduces the reliability of the results obtained. To overcome this disadvantage, a risk assessment methodology is proposed, which is based on a system of balanced indicators. The risk assessment methodology based on a balanced scorecard system allows you to cover different aspects of the company's functioning and take into account the level of significance of certain indicators for different companies through coefficients. And, most importantly, it lacks the main drawback of the expert assessment method - subjectivism.</jats:p>",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.1016/j.sdentj.2024.08.008",
+      "title": [
+        "Eight-year evaluation of dental public health students’ research using balanced scorecard – Retrospective study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Saudi Dental Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.37715/leecom.v6i2.5116",
+      "title": [
+        "Perancangan Balance Scorecard untuk Pemberdayaan Komunitas Griyongaso di Desa Rejoagung, Kabupaten Jember"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Leverage, Engagement, Empowerment of Community (LeECOM)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Desa Rejoagung, Kecamatan Semboro, Kabupaten Jember, memiliki potensi besar dalam sektor pertanian dan pariwisata, namun menghadapi tantangan signifikan seperti tingginya urbanisasi tenaga kerja muda dan lemahnya inovasi produk. Untuk meningkatkan manajemen usaha homestay kelompok usaha bersama (KUBE) Griyongaso, program pengabdian masyarakat ini menerapkan Balanced Scorecard (BSC) sebagai alat manajemen strategis. BSC membantu dalam pengukuran kinerja berdasarkan empat perspektif, yaitu keuangan, pelanggan, proses bisnis internal, serta pembelajaran dan pertumbuhan. Program ini melibatkan pelatihan, penyusunan Key Performance Indicators (KPI), dan pengembangan Standar Operasional Prosedur (SOP) untuk meningkatkan kualitas layanan. Hasil kegiatan berupa peningkatan pendapatan, kepuasan pelanggan, serta kapasitas manajerial anggota KUBE. Melalui penerapan BSC, KUBE Griyongaso diharapkan dapat mencapai keberlanjutan usaha homestay berbasis komunitas dan memberikan dampak positif bagi ekonomi desa.</jats:p>"
+    },
+    {
+      "doi": "10.47467/reslaj.v6i10.3434",
+      "title": [
+        "Analisis Keterkaitan Kualitas Pendidikan, Nilai Pelanggan di Sekolah Swasta Melalui Pendekatan Balanced Scorecard."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Reslaj: Religion Education Social Laa Roiba Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The use of the Balanced Scorecard method in performance measurement including determining teaching quality and customer value, allows assessment of financial aspects, customers, internal business processes, and learning and growth based on the goals that the organization has set. This measurement is based on the organization's stated goals, vision and mission. With the Balanced Scorecard, SMKN 2 Rangkasbitung obtained a comprehensive picture of its teaching quality and customer value, including the school's ability to fulfill the satisfaction of educational stakeholders. This research used a descriptive qualitative approach, with interview, observation and documentation techniques. Data analysis techniques recommended by Miles and Hubermen are data reduction, data presentation and conclusion drawing based on themes in the research.  In the context of education, the Balance Scorecard serves as a guide to measuring and improving the performance of educational institutions comprehensively, and obtaining commitment from project participants and clarifying the framework for implementation and management that must be implemented after the preparation of the initial Balance Scorecad, as well as helping institutions to translate vision, mission into concrete actions through performance measurement from various perspectives and used to boost the organization's ability to multiply performance</jats:p>"
+    },
+    {
+      "doi": "10.47861/jipm-nalanda.v2i4.1492",
+      "title": [
+        "Pengelolaan Keuangan Berbasis Balanced Scorecard di SMK Nukila Kota Ternate"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Informasi Pengabdian Masyarakat"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>BSC is a strategic management framework used by organizations or companies to measure and monitor performance from various different and balanced perspectives. This concept, which was first introduced in 1992, was created as a solution to provide a more comprehensive view of company performance. Not only focusing on financial aspects, BSC is a metric that also takes into account other perspectives, namely customers, internal processes, and learning and growth. Balanced Scorecard (BSC)-based financial management training at the Nukila Vocational School aims to improve the school's financial management capabilities in a more focused and effective manner. It is hoped that this training can help schools achieve their strategic goals, both in terms of finance, operations and educational quality. This activity is very important for schools because it can provide education regarding appropriate financial management methods in accordance with financial management targets and can see opportunities and problems that will be faced at this time</jats:p>"
+    },
+    {
+      "doi": "10.59141/comserva.v4i6.2507",
+      "title": [
+        "Strategi Peningkatan Kinerja Pegawai Melalui Pendekatan Balanced Scorecard Di Badan Perencanaan Pembangunan Daerah Sumatera Barat"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "COMSERVA : Jurnal Penelitian dan Pengabdian Masyarakat"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Badan Perencanaan Pembangunan Daerah (Bappeda) Sumatera Barat berusaha meningkatkan kinerja pegawai untuk mencapai tujuan pembangunan daerah yang optimal. Salah satu strategi yang efektif dalam meningkatkan kinerja pegawai adalah dengan menggunakan Balanced Scorecard. Strategi peningkatan kinerja pegawai melalui Balanced Scorecard di Bappeda Sumatera Barat didasarkan pada empat perspektif utama: Pelanggan, Finansial, Proses Bisnis Internal dan Pembelajaran dan Pertumbuhan. Implementasi Balanced Scorecard melibatkan semua level manajerial mulai dari individu hingga tim dan departemen. Langkah-langkah implementasi termasuk definisi tujuan, sasaran, strategi, dan program sebagai basis pengukuran; pengembangan framework pengukuran kinerja bertingkat berdasarkan struktur organisasi dan penggunaan indikator kinerja yang spesifik untuk setiap individu, tim, dan kelompok. Implementasi Balanced Scorecard di Bappeda Sumatera Barat menunjukkan peningkatan kinerja pegawai secara signifikan. Hasil penelitian menunjukkan bahwa terdapat pengaruh positif dan signifikan Balanced Scorecard terhadap kinerja manajerial. Menggunakan Balanced Scorecard sebagai strategi peningkatan kinerja pegawai di Bappeda Sumatera Barat dapat meningkatkan kemampuan kerja perusahaan secara keseluruhan. Sistem ini memungkinkan transparansi strategis, meningkatkan komunikasi dan ketepatan eksekusi, serta memfasilitasi kolaborasi antar divisi. Oleh karena itu, Bappeda Sumatera Barat direkomendasikan untuk melanjutkan implementasi Balanced Scorecard sebagai salah satu instrumen utama dalam meningkatkan kinerja pegawai dan mencapai tujuan pembangunan daerah yang lebih efektif.</jats:p>"
+    },
+    {
+      "doi": "10.29105/vtga10.6-1005",
+      "title": [
+        "The Business Strategy Game: Implementación de un cuadro de mando integral",
+        "The Business Strategy Game: Implementation of a balanced scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vinculatégica EFAN"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Los estrategas organizacionales deben desempeñarse profesionalmente para lograr la máxima eficiencia y eficacia posible en toda acción realizada, lo cual, deberá verse reflejado en la adecuada gestión de las ventajas competitivas del ente dirigido y, de esta manera, superar los diversos retos y adversidades intrínsecos a su entorno. Por ello, el objetivo central del trabajo realizado es el establecimiento de las metas estratégicas de un negocio virtual mediante la formulación de un cuadro de mando integral (CMI), asimismo, se optó por utilizar el software especializado de toma de decisiones The Business Strategy Game (BSG). Dicho paquete electrónico de negocios fue elegido por ser utilizado ampliamente de forma global, tanto en organizaciones para capacitar a la platilla gerencial, como en Instituciones de Educación Superior. Los resultados obtenidos del CMI desarrollado pueden ser capitalizados como un recurso practico para ejemplificar la elección de los indicadores más adecuados en la medición y evaluación de los aspectos financieros y no financieros organizacionales, es decir, los recursos tangibles e intangibles que son igualmente importantes para alcanzar el éxito esperado.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-031-67890-5_17",
+      "title": [
+        "Using the Balanced Scorecard in Evaluating School Education Quality"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "Harnessing AI, Machine Learning, and IoT for Intelligent Business"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/s13132-024-02417-7",
+      "title": [
+        "Applied Strategic Analysis of Learning and Growth as a New Tool for an Integrated Study of the Organization’s Activities in the Field of Learning and Growth Based on a Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Knowledge Economy"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.47467/reslaj.v6i10.3436",
+      "title": [
+        "Penerapan Manajemen Balance Scorecard (BSC): Studi Kasus di MIS Miftahul Ulum Kec. Serpong Utara Kota Tangerang Selatan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Reslaj: Religion Education Social Laa Roiba Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The implementation of Balanced Scorecard (BSC) management at MIS Miftahul Ulum, Serpong Utara District, South Tangerang City is still facing some obstacles. The lack of understanding and accurate data, structured systems, resources, and accountability culture are the main barriers. This has resulted in the suboptimal achievement of strategic goals, such as learning, internal process, customer, and financial indicators that are not yet maximized. The purpose of this study is to determine the extent to which the implementation of Balanced Scorecard (BSC) management at MIS Miftahul Ulum, reviewed from four perspectives, namely: financial, customer, internal process, and learning and growth. This research is qualitative, with data collection methods including interviews, observations, and documentation. Data validity is ensured through triangulation, and data analysis techniques include data collection, data reduction, data presentation, and conclusion drawing. The research shows that the quality of education at MIS Miftahul Ulum, Serpong Utara District, South Tangerang City has improved compared to previously. However, some adjustments need to be made in the implementation of Balanced Scorecard (BSC). Conclusion: MIS Miftahul Ulum focuses on diversifying funding sources, increasing the efficiency of fund management, and increasing income from voluntary donations. Customer satisfaction and making MIS Miftahul Ulum the main school of choice for students and parents. Progress in its internal processes by implementing a quality curriculum, an effective teaching and learning process, and timely completion of teaching and learning tasks, and a quality curriculum provides a strong foundation for students to learn and grow. Effectiveness of the teaching and learning process: An effective teaching and learning process allows students to reach their full learning potential. Timely completion of teaching and learning tasks: Timely completion of teaching and learning tasks ensures that students have enough time to learn and understand the subject matter.</jats:p>"
+    },
+    {
+      "doi": "10.56211/factory.v3i1.618",
+      "title": [
+        "Penentuan Strategi Perusahaan dengan Metode Balanced Scorecard dan SWOT di UD Virti Kamal Pancing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Factory Jurnal Industri, Manajemen dan Rekayasa Sistem Industri"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n\n\n\nTujuan penelitian ini untuk mengetahui dan menggambarkan strategi yang cocok untuk meningkatkan penjualan produk di UDVirti Kamal Pancing. Penelitian ini dilaksanakan dengan menggunakan metode balanced scorecard dan SWOT. Dari hasil perhitungan dengan metode balanced scorecard pada UD Virti Kamal Pancing pada tahun 2022-2021 sudah cukup baik dikarenakan masa pandemi yang hampir berakhir dan pasar jual beli mulai membaik, namun pada tahun 2023-2022 keuangan berdasarkan balanced scorecard mengalami penurunan dari 4 perspektif tersebut sehingga omset antara input dan output tidak sesusai. Berdasarkan hasil perhitungan analisis SWOT, dapat diketahui bahwa UD Virti Kamal Pancing dalam beberapa faktor yaitu kekuatan (S) 2,05 kelemahan (W) 1,94, peluang (O) 1,97 dan ancaman (T) 2,02. Maka selisih dari total skor kekuatan dan kelemahan adalah (+) 0,11, sedangkan selisih untuk total skor peluang dan ancaman adalah (-) 0,05 menerangkan bahwa UDVirti Kamal Pancing terletak pada kuadran II. Dimana UDVirti Kamal Pancing menghadapi berbagai ancaman tetapi masih memiliki kekuatan dari segi internal.\n\n\n\n</jats:p>"
+    },
+    {
+      "doi": "10.1093/eurheartj/ehae666.1578",
+      "title": [
+        "Comparison of multiple high sensitivity cardiac troponin assays for early low risk rule out of myocardial infarction: SCORECARD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Heart Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:sec>\n                  <jats:title>Background/Introduction</jats:title>\n                  <jats:p>The use of a single low high-sensitivity cardiac troponin measurement to rule out myocardial infarction (MI) at presentation is advocated by international guidelines. Studies have not systematically compared high-sensitivity cardiac troponin (hs-cTn) I and T assays to determine which values should be used to rule out MI in patients with suspected acute coronary syndrome.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>Methods</jats:title>\n                  <jats:p>In a pooled analysis from three prospective observational cohort studies the lowest cTn concentration was determined that gave a negative predictive value (NPV) of ≥99.5% for MI or death at 30 days on presentation to the emergency department. EDTA or lithium heparin plasma or serum samples collected at presentation were measured using five hs-cTnI assays (Abbott ARCHITECT i2000, Beckman Coulter Access 2, Siemens Atellica IM, Ortho-Clinical Diagnostics VITROS 5600, LSI Medience PATHFAST) and one hs-cTnT assay (Roche Cobas e411). The diagnostic outcome of MI or death at 30 days was adjudicated according to the Fourth Universal Definition of MI. Optimal thresholds were determined to identify the highest proportion of patients that could be considered for discharge for a NPV of ≥99.5% for each assay.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>Results</jats:title>\n                  <jats:p>Among 941 patients, MI or death at 30 days occurred in 113 (12%). Optimized thresholds varied between assays ranging from &amp;lt;2 to &amp;lt;7 ng/L (Table) that identified between 22% and 60% of patients as low risk (0-1%) for MI or death at 30 days.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>Conclusions</jats:title>\n                  <jats:p>Our data identify differences in the effectiveness of thresholds between hs-cTnI and hs-cTnT assays for the same safety performance to rule out MI on presentation using a single measurement. In some cases, these thresholds differ from those used in clinical practice. Due to lack of assay standardization, optimal decision thresholds should be defined and validated for each high sensitivity cTn assay.</jats:p>\n               </jats:sec>",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.14309/01.ajg.0001031472.19892.ce",
+      "title": [
+        "S526 Evaluation of the Impact of Endoscopic Education With Endoscopist-Specific Scorecard Feedback on the Sessile Serrated Lesion Detection Rate (SSLDR)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Gastroenterology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.54371/jiip.v7i11.6230",
+      "title": [
+        "Pemetaan Bibliometrik terhadap Perkembangan Penelitian dengan Topik Balanced Scorecard pada Google Scholar Menggunakan Vosviewer"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JIIP - Jurnal Ilmiah Ilmu Pendidikan"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Penelitian ini bertujuan untuk menganalisis bibliometrik literatur BSC dalam konteks akuntansi manajemen, mengidentifikasi tren, pola publikasi, serta kontribusi terhadap teori dan praktik. Metode yang digunakan adalah analisis bibliometrik dengan data RIS dari Google Scholar, dianalisis menggunakan aplikasi Publish or Perish dan VOSviewer. Hasil penelitian menunjukkan penurunan signifikan dalam jumlah publikasi terkait BSC, dengan tema utama meliputi integrasi BSC dengan strategi bisnis, sektor publik, dan inovasi dalam pengukuran kinerja. Temuan ini menunjukkan posisi BSC sebagai alat manajemen strategis yang masih jarang digunakan dan memberikan panduan praktis untuk implementasi yang lebih adaptif dan inovatif. Penelitian ini juga mengidentifikasi keterbatasan metodologis dan memberikan saran untuk penelitian lanjutan serta implikasi sosial dan etis dari penerapan BSC.</jats:p>"
+    },
+    {
+      "doi": "10.61368/r.s.d.h.v5i4.365",
+      "title": [
+        "Implementación de la herramienta del Balanced Scorecard: Estudio de caso  aplicado al Supermercado Minimarket Cebú ubicado en  Santander de Quilichao, Departamento del Cauca"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revista Científica de Salud y Desarrollo Humano"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>En un mundo globalizado la competitividad es importante, debido  a que  las  empresas  cada día requieren postular estrategias para sus operaciones, por ello, en este estudio se demuestra  la importancia de fundar destrezas que ayuden a las mipymes. Para ello, la aplicación de la herramienta del Balanced Scorecard y  la inclusión de sus cuatro perspectivas se utilizan como una propuesta organizacional para lograr que se cumplan los objetivos propuestos de la organización y llegar a las  metas planteadas. Por tanto, el objetivo de la propuesta fue implementar la herramienta del BSC para la empresa para la mejora de las estrategias competitivas. La metodología utilizada fue la de un estudio de caso. Previamente, se realizó una encuesta  con preguntas abiertas ejecutada a los clientes que frecuentan el negocio, como también a los empleados que laboran dentro del él. Como primera etapa se debió definir  la misión, visión y de los valores de la empresa, independientemente del tamaño o segmento. Por lo tanto,  se concluye que la instauración del BSC es un instrumento de gestión valioso donde permite que los procesos sean más eficientes en cuanto a cambios e innovación. Los resultados obtenidos permitieron medir los valores agregados a sus clientes y empleados. El  aplicar las cuatro perspectivas de BSC: la financiera, de cliente, de procesos internos y de aprendizaje; representaciones que se pueden establecer una cadena de causa-efecto para la  toma de iniciativas necesarias.</jats:p>"
+    },
+    {
+      "doi": "10.1108/ijqrm-07-2023-0239",
+      "title": [
+        "Investigate the distinctive link between a balanced scorecard and organizational performance in IT and non-IT sectors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Quality &amp; Reliability Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-subheading\">Purpose</jats:title><jats:p>The purpose of this research is to examine how the implementation of a balanced scorecard (BSC) affects business outcomes in both information technology (IT) and non-IT sectors.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title><jats:p>Partial least squares structural equation modeling (PLS-SEM) was used to test the hypothesis. A random sample was used to collect 170 responses from the IT companies and 166 from non-IT companies by using the questionnaire method. The questionnaire was distributed to the top- and middle-level managers in Bangalore city, and we used SmartPLS software to explore the relationship between our research constructs.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Findings</jats:title><jats:p>The results of this study indicate that a BSC has a significant and positive impact on organizational performance in IT and non-IT sectors. The main distinction in this study is that all BSC perspectives [learning and growth perspective, internal business process (IBP) perspective, customer perspective (CP) and financial perspective (FP)] have a significant, direct and indirect impact on IT companies. On the other hand, solely three BSC perspectives (IBP perspective, CP and FP) have a significant impact on non-IT companies, while learning and growth perspective has an insignificant impact on the FP.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Originality/value</jats:title><jats:p>This study provides a critical theoretical and practical contribution of a BSC on business performance in IT and non-IT industries.</jats:p></jats:sec>"
+    },
+    {
+      "doi": "10.1016/j.anai.2024.06.009",
+      "title": [
+        "Developing an infant atopic dermatitis scorecard for pediatric clinicians"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of Allergy, Asthma &amp; Immunology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.26118/2782-4586.2024.64.96.028",
+      "title": [
+        "РАЗРАБОТКА ПРИЛОЖЕНИЯ ДЛЯ ОПТИМИЗАЦИИ БИЗНЕС-ПРОЦЕССОВ НА ОСНОВЕ СИ-СТЕМНОЙ ДИНАМИКИ И СБАЛАНСИРОВАННОЙ СИСТЕМЫ ПОКАЗАТЕЛЕЙ"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Monetary Economics and Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>В с татье о бсуждается р азработка п риложения д ля б изнес- процессов на основе динамических систем, направленных на оптимизацию ре-кламных стратегий и снижение затрат на привлечение клиентов (CAC). В ис-следовании применяются методы динамики систем с использованием про-граммного обеспечения Vensim для моделирования маркетинговых про- цессов и анализа ключевых показателей эффективности (KPI). Демонстри- руется, как компании могут повысить эффективность рекламы путем опти- мизации рас-пределения рекламных бюджетов, что приводит к увеличению коэффициен-тов конверсии и прибыльности. Полученные данные подчерки- вают взаимо-связь между маркетинговыми усилиями, поведением клиентов и финансовы-ми результатами, что позволяет компаниям достигать устойчи- вого роста в условиях конкурентного рынка.</jats:p>"
+    },
+    {
+      "doi": "10.1002/tie.22420",
+      "title": [
+        "Which Strategic Control Suits Wine Family Companies to Improve Control? A Proposal Through the Balanced Scorecard in a Tuscany Wine Company of Michele Satta"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Thunderbird International Business Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>ABSTRACT</jats:title><jats:p>In the last few years, growth and increased market and organizational complexity, including the effects of the pandemic era, require family firm members to develop managerial strategies to improve their businesses. This study pays attention to the study of strategic performance measurement systems, as important tools that, if well applied, positively influence business management, being directly linked to critical success factors. First, particular attention is on The Tuscany Region, in the area of Bolgheri. Second, to carry out the empirical study of this research, the first implementation of the Balanced Scorecard (BSC) will be realized with the collaboration of one company in the same Region. This article sheds useful insights for practitioners on the effective implementation of accounting and strategic innovations and it encourages wine companies to seriously weigh investing in developing strategic performance management systems.</jats:p>",
+      "publication_date": "2025-03"
+    },
+    {
+      "doi": "10.60076/ijeam.v1i4.895",
+      "title": [
+        "Systematic Literature Review (SLR): The Application of Balanced Scorecard Strategy on Financial Performance in the Food and Beverage Industry in Indonesia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Economics, Accounting and Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The implementation of the Balanced Scorecard (BSC) strategy in the food and beverage sector holds high relevance, given this sector's significant contribution to Indonesia's economy. Although extensive research has been conducted on BSC, understanding of its impact on financial performance within the Indonesian context remains limited. This study aims to examine the effect of the learning and growth perspective and the customer perspective within the BSC framework on the financial performance of companies in Indonesia's food and beverage sector. Research data was sourced from Google Scholar and Semantic Scholar for publications from 2019 to 2024. Of the 329 articles identified, six were selected as primary data sources for further analysis.\r\nThe results are expected to provide valuable insights for company management in implementing BSC to enhance financial performance, and serve as a reference for future research in this area. This study employs a survey design by distributing structured questionnaires to respondents from companies in the food and beverage industry. The sampling technique used is stratified sampling, with data analysis carried out through descriptive statistics and simple linear regression. The findings indicate that both BSC perspectives have a positive and significant impact on financial performance, with the learning and growth perspective and the customer perspective each demonstrating significant influence</jats:p>"
+    },
+    {
+      "doi": "10.36418/syntax-literate.v9i11.52397",
+      "title": [
+        "Analisis Implementasi Komponen Balanced Scorecard terhadap Pencapaian Nilai Kinerja Organisasi pada Organisasi Sektor Publik (Studi Kasus pada Satuan Kerja di Kantor Wilayah Direktorat Jenderal Pajak Jawa Barat III Tahun 2017 s.d. 2023)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Syntax Literate ; Jurnal Ilmiah Indonesia"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Balanced Scorecard adalah sebuah sistem manajemen yang membantu organisasi memperjelas visi dan strateginya serta mengubahnya menjadi tindakan nyata. Saat ini, Balanced Scorecard banyak digunakan karena kesederhanaan dan kemudahan penerapannya. Pengukuran kinerja di sektor publik dengan menggunakan instrumen Balanced Scorecard berfungsi untuk mengevaluasi pencapaian kinerja dalam mewujudkan akuntabilitas instansi pemerintah. Penelitian ini bertujuan menguraikan bagaimana proses penerapan Balanced Scorecard pada instansi pemerintah dan kemudian menilai pengaruh masing-masing komponen Balanced Scorecard terhadap kinerja organisasi berdasarkan arah dan besarnya perubahan masing-masing komponen Balanced Scorecard. Metode pengumpulan data yang digunakan meliputi dokumentasi dan penelitian pustaka. Penelitian ini dilakukan di Kanwil DJP Jawa Barat III, dengan fokus pada Indikator Kinerja Utama eselon II dan unit-unit di bawahnya, yaitu unit eselon III, unit eselon IV, serta Kelompok Jabatan Fungsional, dengan periode pengamatan dari tahun 2017 hingga 2023. Hasil penelitian menunjukkan bahwa Balanced Scorecard dengan beberapa modifikasi, sepenuhnya berlaku untuk instansi pemerintah dan sebagian besar komponennya berpengaruh terhadap capaian kinerja organisasi.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-031-71318-7_24",
+      "title": [
+        "Employing the Balanced Scorecard to Reduce Administrative Corruption in Organizations"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "Business Sustainability with Artificial Intelligence (AI): Challenges and Opportunities"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1093/neuonc/noae144.300",
+      "title": [
+        "P17.13.B NANO-LM: AN UPDATED SCORECARD FOR THE CLINICAL ASSESSMENT OF PATIENTS WITH LEPTOMENINGEAL METASTASES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Neuro-Oncology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:sec>\n                  <jats:title>BACKGROUND</jats:title>\n                  <jats:p>There are no validated tools for the clinical neurological assessment of patients with leptomeningeal metastases. However, clinical examination during the course of the disease guides medical management and is part of response assessment in clinical trials. Standardization of clinical neurological assessment in LM is therefore essential, also because MRI may not always be obtained owing to rapid clinical deterioration and itself subject to rater disagreement.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>MATERIAL AND METHODS</jats:title>\n                  <jats:p>The RANO-LM group launched a 2-steps process, aiming at improving and homogenizing the clinical assessment in patients with leptomeningeal metastasis. We report here on the first step: the establishment of a consensus scorecard. The RANO-LM group had 9 virtual meetings to define general recommendations on neurological assessment and selected domains of interest that should be tested. Domains of interest were selected from the Neurological Assessment in Neuro-Oncology (NANO) scale and from the first RANO-LM proposal.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>RESULTS</jats:title>\n                  <jats:p>Fourteen domains in neurological assessment were selected: level of consciousness, cognition, nausea and vomiting, vision, eye movement, facial strength, hearing, swallowing, dysarthria, limb strength, ataxia, walking, cauda equina symptoms-bowels and cauda equina symptoms-bladder). For each item, a clear instruction on how to perform the assessment is provided with scoring criteria between 0 and 2. The general status of the patient and use of steroids, pain medications, and anti-emetics should be considered when assessing the patient. Neurological sequelae from previous brain metastases or treatment (neuropathy, post-radiotherapy toxicities) should be rated at the baseline evaluation; it should be specified in the comments when symptoms or signs may be related to a condition other than leptomeningeal metastasis. The evaluation should be declared as non-evaluable when neurological symptoms or signs that develop during the follow-up are related or suspected to be related to comorbidities or any other medical event. In these situations, specific details should be included in the comments. If these signs and symptoms are retrospectively interpreted as related to leptomeningeal metastasis and not to any comorbidity, the date of symptoms or signs appearance should be retrospectively back-dated to assess the response.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>CONCLUSION</jats:title>\n                  <jats:p>A NANO-LM consensus scorecard has been established. A prospective validation of the proposal is currently ongoing at various medical centers.</jats:p>\n               </jats:sec>",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.1016/j.ijdrr.2024.104869",
+      "title": [
+        "Strengthening public health system resilience to disasters in Türkiye: Insights from a scorecard methodology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Disaster Risk Reduction"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.31940/jasafint.v7i2.127-141",
+      "title": [
+        "Performance analysis of the Village Credit Institution (LPD) of Tanjung Bungkak Traditional Village using the balanced scorecard approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Sciences in Accounting, Finance, and Tax"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The balanced scorecard is a tool for measuring company performance from financial and non-financial aspects through four perspectives including the financial perspective, customer perspective, internal business process perspective, and learning and growth perspective. This research uses a quantitative descriptive approach carried out at the Tanjung Bungkak Traditional Village LPD located in Denpasar with the aim of knowing the performance of the Tanjung Bungkak Traditional Village LPD seen from the four perspectives in the balanced scorecard. Data collection techniques used include documentation, observation, interviews and surveys. The results of the analysis show that the performance of the Tanjung Bungkak Traditional Village LPD, when viewed from a financial perspective, is not good with the calculation of Cash Ratio (CR) and Loan to Deposit Ratio (LDR) categorized as quite good, Debt to Equity Ratio (DER) categorized as good, but Operations Cost to Operating Income (BOPO), Non-Performing Loans (NPL), Return on Assets (ROA) and Return on Equity (ROE) are categorized as poor. From a customer perspective, LPD's performance is assessed as good from the results of customer retention and customer satisfaction calculations with a percentage of positive statements reaching 93%. From an internal business process perspective, LPD performance is in fairly good criteria from the results of calculations of the innovation process and operational processes using service cycle effectiveness. The learning and growth perspective shows good LPD performance from calculating employee retention, employee productivity and employee satisfaction with the percentage of positive statements reaching 83%.</jats:p>",
+      "publication_date": "2024-10"
+    }
+  ]
+}

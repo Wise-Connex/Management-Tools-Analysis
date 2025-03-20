@@ -5,7 +5,7 @@
   "Strategic Planning": "Strategic AND_NEXT Planning OR Strategic AND_NEXT Budgeting OR Strategic AND_NEXT Thinking OR Strategic AND_NEXT Management",
   "Benchmarking": "#",
   "Core Competencies": "Core AND_NEXT Competencies OR Core AND_NEXT Competence",
-  "Balanced Scorecard": "Balanced AND_NEXT Scorecard",
+  "Balanced Scorecard": "Balanced AND_NEXT Scorecard OR Balance AND_NEXT Scorecard",
   "Growth Strategies": "Growth AND_NEXT Strategies OR Growth AND_NEXT Strategy",
   "Customer Relationship Management": "Customer AND_NEXT Relationship AND_NEXT Management OR Customer AND_NEXT Experience AND_NEXT Management OR Customer AND_NEXT Satisfaction",
   "Total Quality Management": "Total AND_NEXT Quality",
