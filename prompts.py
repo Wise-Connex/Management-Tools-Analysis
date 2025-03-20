@@ -341,7 +341,7 @@ Note:
  - Avoid Sections of Code (python or else) *not code blocks*
 """
 
-temporal_analysis_prompt_1 = """**PROPUESTA REFINADA DEL PROMPT ESPECÍFICO (ANÁLISIS TEMPORAL):**
+temporal_analysis_prompt_1 = """****PROPUESTA REFINADA DEL PROMPT ESPECÍFICO (ANÁLISIS TEMPORAL):**
 
 ```markdown
 # ANÁLISIS TEMPORAL - {all_kw} ({dbs})
@@ -349,16 +349,30 @@ temporal_analysis_prompt_1 = """**PROPUESTA REFINADA DEL PROMPT ESPECÍFICO (AN�
 **Herramienta:** {all_kw}
 **Fuente:** {dbs}
 
-**OBJETIVO PRINCIPAL:** Evaluar la evolución temporal de la herramienta de gestión {all_kw} en la fuente de datos {dbs}.  Identificar y cuantificar *objetivamente* las etapas de surgimiento, crecimiento (incluyendo períodos pico), declive, estabilización, resurgimiento y/o transformación a lo largo del tiempo.  *No* se asume *a priori* que la herramienta sigue un patrón de "moda gerencial".
+**OBJETIVO PRINCIPAL:** Evaluar la evolución temporal de la herramienta de gestión {all_kw} en la fuente de datos {dbs}. Identificar y cuantificar *objetivamente* las etapas de surgimiento, crecimiento (incluyendo períodos pico), declive, estabilización, resurgimiento y/o transformación a lo largo del tiempo. *No* se asume *a priori* que la herramienta sigue un patrón de "moda gerencial". Relacionar los hallazgos con las antinomias del ecosistema transorganizacional (si es relevante) y con las preguntas de investigación.
 
 Analizar la evolución de la herramienta de gestión {all_kw} en {dbs} a lo largo del tiempo, identificar patrones significativos en su adopción/interés, y *evaluar si estos patrones son consistentes con la definición operacional de "moda gerencial" (proporcionada en el prompt del sistema) o con otras posibles explicaciones* (proporcionada en el prompt del sistema). Identificar y cuantificar *objetivamente* las etapas de surgimiento, crecimiento (incluyendo períodos pico), declive, estabilización, resurgimiento y/o transformación a lo largo del tiempo.  *No* se asume *a priori* que la herramienta sigue un patrón de "moda gerencial".  Relacionar los hallazgos con las antinomias del ecosistema transorganizacional (si es relevante) y con las preguntas de investigación.
 
-## **I. CONTEXTO: EL RITMO DE LAS HERRAMIENTAS DE GESTIÓN**
+## **I. Contexto: el ritmo de las herramientas de gestión**
 
-*   **Definición:** El análisis temporal, en el contexto de esta investigación, se refiere al estudio *cuantitativo* de cómo el interés o uso de una herramienta de gestión (medido a través de la fuente de datos {dbs}) cambia a lo largo del tiempo.  Se utilizan métodos estadísticos para identificar patrones, tendencias y puntos de inflexión en la serie temporal.
-*   **Relevancia:** Este análisis es crucial para *investigar* si los patrones de adopción, uso y declive/transformación de las herramientas de gestión son consistentes con la *idea* de "modas gerenciales" (caracterizadas por un ciclo de vida corto, con un rápido crecimiento seguido de un declive) o si sugieren la existencia de *otros* fenómenos.  Los resultados *podrían* proporcionar evidencia a favor o en contra de la existencia o no de las modas gerenciales, o revelar patrones más complejos.
-*   **Contexto Temporal:** Este análisis se centra en el período comprendido entre [Fecha de Inicio] y [Fecha de Fin], según los datos disponibles en {dbs}.  *Si se conoce la fecha de origen de la herramienta y es anterior a [Fecha de Inicio], aclararlo explícitamente*.  Ejemplo: "Aunque la herramienta {all_kw} se originó en [año], este análisis se enfoca en el período [Fecha de Inicio] - [Fecha de Fin], debido a la disponibilidad de datos en {dbs}."
-*   **Relevancia de la Fuente de Datos ({dbs}):**  [Aquí se debe incluir la descripción específica de la fuente de datos {dbs}, tal como aparece en el prompt del sistema.  Por ejemplo, para Google Trends, se incluiría la descripción de "Naturaleza", "Metodología", "Limitaciones", "Fortalezas" e "Interpretación" que ya tienes definida.  Esto es *crucial* para contextualizar los resultados.]
+[Una línea en blanco aquí]
+
+*   **Definición:** El análisis temporal, en el contexto de esta investigación, se refiere al estudio *cuantitativo* de cómo el interés o uso de una herramienta de gestión (medido a través de la fuente de datos {dbs}) cambia a lo largo del tiempo. Se utilizan métodos estadísticos para identificar patrones, tendencias y puntos de inflexión en la serie temporal.
+
+[Una línea en blanco aquí]
+
+*   **Relevancia:** Este análisis es crucial para *investigar* si los patrones de adopción, uso y declive/transformación de las herramientas de gestión son consistentes con la *idea* de "modas gerenciales" (caracterizadas por un ciclo de vida corto, con un rápido crecimiento seguido de un declive) o si sugieren la existencia de *otros* fenómenos. Los resultados *podrían* proporcionar evidencia a favor o en contra de la existencia o no de las modas gerenciales, o revelar patrones más complejos.
+
+[Una línea en blanco aquí]
+
+*   **Contexto Temporal:** Este análisis se centra en el período comprendido entre [Fecha de Inicio] y [Fecha de Fin], según los datos disponibles en {dbs}. *Si se conoce la fecha de origen de la herramienta y es anterior a [Fecha de Inicio], aclararlo explícitamente*. Ejemplo: "Aunque la herramienta {all_kw} se originó en [año], este análisis se enfoca en el período [Fecha de Inicio] - [Fecha de Fin], debido a la disponibilidad de datos en {dbs}."
+
+[Una línea en blanco aquí]
+
+*   **Relevancia de la Fuente de Datos ({dbs}):** [Aquí se debe incluir la descripción específica de la fuente de datos {dbs}, tal como aparece en el prompt del sistema. Por ejemplo, para Google Trends, se incluiría la descripción de "Naturaleza", "Metodología", "Limitaciones", "Fortalezas" e "Interpretación" que ya tienes definida. Esto es *crucial* para contextualizar los resultados.]
+
+[Una línea en blanco aquí]
+
 *   **Posibles Implicaciones:** Los resultados de este análisis *podrían*:
     *   Ayudar a determinar si la herramienta {all_kw} muestra un patrón temporal consistente con la definición operacional de "moda gerencial".
     *   Revelar patrones de adopción y uso más complejos (ej., ciclos con resurgimiento, estabilización a largo plazo, etc.).
@@ -366,13 +380,16 @@ Analizar la evolución de la herramienta de gestión {all_kw} en {dbs} a lo larg
     *   Proporcionar información útil para la toma de decisiones en las organizaciones sobre la adopción o abandono de la herramienta.
     *   Sugerir nuevas líneas de investigación sobre los factores que influyen en la dinámica temporal de las herramientas de gestión.
 
+[Una línea en blanco aquí]
+
 **Extensión:** Aproximadamente 400-450 palabras.
 
-## **II. DATOS EN BRUTO: UNA MIRADA OBJETIVA**
+
+## **II. Datos en bruto: una mirada objetiva**
 
 Esta sección presenta los datos *brutos* de la serie temporal de {all_kw} en {dbs}, sin *ninguna* interpretación.  El objetivo es proporcionar una base de datos transparente para el análisis posterior.
 
-*   **`### Serie temporal completa ({dbs})`**
+*   **`### Datos de la serie temporal ({dbs})`**
     *   Presentar los datos de la serie temporal completa en una tabla clara y concisa.
     *   **Formato de la Tabla:**
 
@@ -395,67 +412,196 @@ Esta sección presenta los datos *brutos* de la serie temporal de {all_kw} en {d
 
     *   *Si la serie temporal es muy larga*, se puede presentar una *muestra* representativa de los datos (ej., los primeros y últimos años, y algunos años intermedios) *y* acotar que al final del informe están disponibles todos los datos.
 
+[Una línea en blanco aquí]
+
 *   **`### Estadísticas descriptivas básicas`**
 **Objetivo:** Proporcionar un resumen cuantitativo de la serie temporal de {all_kw} en {dbs}, representando su comportamiento en un momento único, un período específico o patrones repetitivos, según la naturaleza de los datos.  
 
-**Tarea:** Calcular y presentar las estadísticas descriptivas básicas, considerando todos los escenarios probables (series estables, con picos aislados, cíclicas, con tendencia, alta variabilidad). Incluir fechas cuando sean relevantes (mínimo, máximo, o coincidencias significativas para media/mediana).  
+[Una línea en blanco aquí]
+
+**Tarea:** Presentar las estadísticas descriptivas básicas, considerando e identificando todos los escenarios probables (series estables, con picos aislados, cíclicas, con tendencia, alta variabilidad). Incluir fechas cuando sean relevantes (mínimo, máximo, o coincidencias significativas para media/mediana).  
+
+[Una línea en blanco aquí]
 
 **Estadísticas a reportar:**  
-- **Mínimo:** Valor más bajo de la serie [Valor] y su fecha asociada [Fecha].  
+- **Mínimo:** Valor más bajo de la serie [Valor] y su fecha asociada [Fecha].
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Máximo:** Valor más alto de la serie [Valor] y su fecha asociada [Fecha].  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Media:** Promedio aritmético de la serie [Valor]. Incluir fecha o período si coincide con un evento o etapa significativa (ej., pico, declive).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Mediana:** Valor central de la serie [Valor]. Incluir fecha o período si coincide con un evento o etapa significativa.  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Desviación Estándar:** Medida de dispersión alrededor de la media [Valor].  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Rango:** Diferencia entre máximo y mínimo [Valor].  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Percentiles (25%, 75%):** Valores que delimitan el 25% inferior y superior de la serie [Valor], con fechas asociadas si son relevantes.  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Asimetría (Skewness):** Indicador de la simetría de la distribución [Valor]. Positivo (cola derecha), negativo (cola izquierda) o cercano a 0 (simétrica).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Curtosis:** Indicador de la concentración de datos en las colas [Valor]. Alta (>3, colas pesadas), baja (<3, colas ligeras) o normal (~3, gaussiana).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Tendencia General (NADT):** Desviación anual promedio normalizada [% por año], para series con tendencia clara.  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 - **Frecuencia de Picos:** Número de valores ≥ 75% del máximo, con fechas asociadas si son múltiples.  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
 
 **Escenarios Considerados:**  
 1. **Serie estable**: Valores con baja variabilidad (desviación estándar baja).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
+
+[Una línea en blanco aquí]
+
 2. **Picos aislados**: Uno o pocos valores extremos (máximos/mínimos únicos).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
+
+[Una línea en blanco aquí]
+
 3. **Patrones cíclicos**: Variaciones repetitivas (detectadas por percentiles o frecuencia de picos).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
+
+[Una línea en blanco aquí]
+
 4. **Tendencia marcada**: Crecimiento o declive sostenido (reflejado en NADT).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
+
+[Una línea en blanco aquí]
+
 5. **Alta volatilidad**: Grandes fluctuaciones (alta desviación estándar, curtosis elevada).  
+Agregar un comentario  analítico descriptivo interpretativo crítico.
+
+[Una línea en blanco aquí]
 
 **Interpretación Técnica:**  
-- Presentar los valores calculados objetivamente, con notas breves sobre su significado en el contexto del escenario identificado.  
-- Ejemplo para una serie con picos aislados: "El máximo de 98 en [2010-03-01] indica un pico aislado, mientras que la desviación estándar de 18.3 sugiere moderada variabilidad general."  
-- Ejemplo para una serie cíclica: "La frecuencia de 5 picos ≥ 75% del máximo sugiere un patrón cíclico, con asimetría de 0.8 indicando una distribución sesgada hacia valores altos."  
+Presentar los valores calculados objetivamente, acompañados de comentarios analíticos descriptivos, interpretativos y críticos que destaquen su significado en el contexto del escenario identificado (ej., picos aislados, patrón cíclico, tendencia sostenida, estabilidad).
+Ejemplo para una serie con picos aislados: "El máximo de 98 en [2010-03-01] indica un pico aislado significativo, mientras que la desviación estándar de 18.3 refleja una variabilidad moderada en el resto de la serie."
+Ejemplo para una serie cíclica: "La frecuencia de 5 picos ≥ 75% del máximo sugiere un patrón cíclico recurrente, con una asimetría de 0.8 indicando una distribución sesgada hacia valores altos en períodos de auge."
+Ejemplo para una serie con tendencia: "Un NADT de -0.03 muestra un declive sostenido del 3% anual, consistente con una etapa de madurez o abandono gradual."
 
 **Formato de Salida:**  
 ```
 - **Mínimo:** [Valor] ([Fecha])  
+  - [Comentario analítico descriptivo interpretativo crítico que describe el contexto del mínimo, su relevancia temporal o su relación con la serie.]  
+
+[Una línea en blanco aquí]
+
 - **Máximo:** [Valor] ([Fecha])  
+  - [Comentario analítico descriptivo interpretativo crítico que destaca la magnitud del pico, su singularidad o su posición en el ciclo.]  
+
+[Una línea en blanco aquí]
+
 - **Media:** [Valor] ([Fecha o período, si aplica])  
+  - [Comentario analítico descriptivo interpretativo crítico que evalúa si la media refleja estabilidad, un promedio sesgado por picos, o una etapa específica.]  
+
+[Una línea en blanco aquí]
+
 - **Mediana:** [Valor] ([Fecha o período, si aplica])  
+  - [Comentario analítico descriptivo interpretativo crítico que compara con la media y sugiere simetría o sesgo en la distribución.]  
+
+[Una línea en blanco aquí]
+
 - **Desviación Estándar:** [Valor]  
+  - [Comentario analítico descriptivo interpretativo crítico que interpreta la variabilidad y su implicación en la consistencia de la serie.]  
+
+[Una línea en blanco aquí]
+
 - **Rango:** [Valor]  
+  - [Comentario analítico descriptivo interpretativo crítico que evalúa la amplitud de fluctuaciones y su relación con la volatilidad.]  
+
+[Una línea en blanco aquí]
+
 - **Percentil 25%:** [Valor] ([Fecha, si aplica])  
+  - [Comentario analítico descriptivo interpretativo crítico que describe el comportamiento del 25% inferior y su estabilidad o cambio.]  
+
+[Una línea en blanco aquí]
+
 - **Percentil 75%:** [Valor] ([Fecha, si aplica])  
+  - [Comentario analítico descriptivo interpretativo crítico que analiza el 25% superior y su relación con picos o tendencias.]  
+
+[Una línea en blanco aquí]
+
 - **Asimetría:** [Valor]  
+  - [Comentario analítico descriptivo interpretativo crítico que interpreta la forma de la distribución y su sesgo hacia valores altos o bajos.]  
+
+[Una línea en blanco aquí]
+
 - **Curtosis:** [Valor]  
+  - [Comentario analítico descriptivo interpretativo crítico que evalúa la concentración en las colas y la presencia de extremos.]  
+
+[Una línea en blanco aquí]
+
 - **Tendencia General (NADT):** [±Valor %/año]  
+  - [Comentario analítico descriptivo interpretativo crítico que describe la dirección y magnitud de la tendencia a largo plazo.]  
+
+[Una línea en blanco aquí]
+
 - **Frecuencia de Picos:** [Número] ([Fechas de picos principales])  
-```
+  - [Comentario analítico descriptivo interpretativo crítico que evalúa la recurrencia de eventos significativos y su distribución temporal.]  ```
+
+[Una línea en blanco aquí]
 
 **Ejemplo Completo:**  
 ```
-- **Mínimo:** 12 (2023-07-01)  
-- **Máximo:** 98 (2010-03-01)  
-- **Media:** 56.7 (coincide con estabilización en 2015-2016)  
-- **Mediana:** 58  
-- **Desviación Estándar:** 18.3  
-- **Rango:** 86  
-- **Percentil 25%:** 42 (2012-01-01)  
-- **Percentil 75%:** 72 (2018-06-01)  
-- **Asimetría:** 0.6 (distribución moderadamente sesgada a la derecha)  
-- **Curtosis:** 3.2 (ligeramente más pesada que una gaussiana)  
-- **Tendencia General (NADT):** -0.03 (-3% por año)  
-- **Frecuencia de Picos:** 3 ([2010-03-01], [2014-09-01], [2019-02-01])  
-```
+- **Mínimo:** 5 (2022-11-01)  
+  - El valor más bajo de 5 en noviembre de 2022 sugiere un punto de declive pronunciado, posiblemente tras un período de mayor interés previo.  
+
+[Una línea en blanco aquí]
+
+- **Máximo:** 95 (2012-06-01)  
+  - El pico de 95 en junio de 2012 indica un evento aislado de alta intensidad, marcando el auge más significativo en la serie temporal.  
+
+[Una línea en blanco aquí]
+
+- **Media:** 42.3 (estabilización en 2016-2018)  
+  - La media de 42.3, alineada con un período estable entre 2016 y 2018, refleja un nivel promedio moderado, influido por picos extremos.  
+
+[Una línea en blanco aquí]
+
+- **Mediana:** 40 (2017-03-01)  
+  - La mediana de 40, cercana a la media, sugiere una distribución relativamente simétrica, con un valor central estable en marzo de 2017.  
+
+[Una línea en blanco aquí]
+
+- **Desviación Estándar:** 22.1  
+  - Una desviación estándar de 22.1 indica una variabilidad considerable, reflejando fluctuaciones marcadas entre picos y declives.  
+
+[Una línea en blanco aquí]
+
+- **Rango:** 90  
+  - El rango de 90 evidencia una amplitud significativa en el interés/uso, desde mínimos extremos hasta un pico destacado.  
+
+[Una línea en blanco aquí]
+
+- **Percentil 25%:** 25 (2014-09-01)  
+  - El percentil 25% de 25 en septiembre de 2014 muestra que el 25% inferior de los datos se concentra en valores bajos, típico de fases de declive o baja actividad.  
+
+[Una línea en blanco aquí]
+
+- **Percentil 75%:** 60 (2019-02-01)  
+  - El percentil 75% de 60 en febrero de 2019 indica que el 25% superior incluye valores moderadamente altos, asociados a resurgimientos o picos secundarios.  
+
+[Una línea en blanco aquí]
+
+- **Asimetría:** 0.7  
+  - Una asimetría de 0.7 sugiere una distribución moderadamente sesgada hacia la derecha, con más valores altos concentrados en períodos de auge.  
+
+[Una línea en blanco aquí]
+
+- **Curtosis:** 3.5  
+  - Una curtosis de 3.5, ligeramente superior a la normal, indica colas algo más pesadas, reflejando la presencia de valores extremos como el pico de 2012.  
+
+[Una línea en blanco aquí]
+
+- **Tendencia General (NADT):** -0.02 (-2% por año)  
+  - Un NADT de -0.02 señala un declive gradual del 2% anual, consistente con una tendencia descendente a largo plazo tras el pico inicial.  
+
+[Una línea en blanco aquí]
+
+- **Frecuencia de Picos:** 4 ([2012-06-01], [2015-03-01], [2019-02-01], [2021-08-01])  
+  - La identificación de 4 picos principales en 2012, 2015, 2019 y 2021 sugiere un patrón de resurgimientos intermitentes tras el auge inicial.```
+
+[Una línea en blanco aquí]
 
 **Notas:**  
 - Si la serie es demasiado corta o simple (ej., pocos datos), omitir métricas irrelevantes como asimetría o curtosis. No es necesario ni justifica su exclusión ni su omisión.
@@ -476,178 +622,610 @@ o	Usage Metrics: Relative usage/adoption values
 
 **Extensión:**  Variable (depende de la longitud de la serie temporal). Priorizar la claridad y la transparencia.
 
-## **III. ANÁLISIS ESTADÍSTICO: DESCIFRANDO EL ROMPECABEZAS TEMPORAL**
+## **III. Análisis estadístico: descifrando el rompecabezas temporal**
 
-Esta sección presenta los resultados de los análisis estadísticos realizados sobre la serie temporal, junto con una *interpretación técnica preliminar*. La interpretación en esta sección se limita a *describir objetivamente* los patrones observados, *sin* extraer conclusiones sobre la naturaleza de la herramienta como "moda gerencial" ni relacionar los hallazgos con el contexto empresarial.
+Esta sección despliega los resultados del escrutinio estadístico aplicado a la serie temporal, acompañados de una interpretación técnica preliminar. En este análisis, se prioriza una descripción rigurosa y objetiva de los patrones emergentes, absteniéndose de inferencias sobre la categorización de la herramienta como "moda gerencial" o de vinculaciones con el ámbito empresarial. Como un cartógrafo que traza las líneas de un terreno ignoto, este apartado se limita a delinear las coordenadas temporales sin aventurar hipótesis sobre su significado último.
+
+[Una línea en blanco aquí]
 
 *   **`### Surgimiento y crecimiento: ¿Innovación?`**
 
     *   **Tarea:**
-        *   Determinar el momento *inicial de surgimiento* de la herramienta {all_kw} en {dbs}. Se define el surgimiento como el primer registro en el que el valor de la serie temporal es *significativamente* mayor que cero (o que un umbral predefinido, si aplica).
-        *   Identificar la *fase de crecimiento* posterior al surgimiento.
-    *   **Cálculos:**
-        *   **Fecha de Surgimiento:** Primer valor > 0 (o > umbral).
-        *   **Tasa de Crecimiento Inicial:** Calcular la tasa de crecimiento promedio (ej., porcentaje de cambio por año) durante la fase de crecimiento. Se puede utilizar una regresión lineal simple para estimar la pendiente de la curva durante esta fase.
-    *   **Interpretación Técnica:**
-        *   Describir *objetivamente* el surgimiento y la fase de crecimiento.
-        *   Ejemplo: "El surgimiento de {all_kw} en {dbs} se observa en [mes/año], con un valor inicial de X. La fase de crecimiento inicial se extiende desde [mes/año] hasta [mes/año], con una tasa de crecimiento promedio de Y% por año."
+        *   Determinar el momento inicial de surgimiento de la herramienta {all_kw} en {dbs}, entendido como el instante en que la serie temporal trasciende el umbral del silencio estadístico, pasando de la inactividad a una presencia discernible. Este hito se define como el primer registro donde el valor supera significativamente el cero o un umbral preestablecido, si los datos lo justifican.
+Identificar la fase de crecimiento subsiguiente, aquel período donde la herramienta, cual semilla recién germinada, extiende sus raíces y despliega su follaje en el paisaje de los datos.
+
+*   **`#### Cálculos:
+Fecha de Surgimiento: Primer valor > 0 o superior a un umbral estadístico (ej., 5% del máximo histórico, ajustado según la escala de {dbs}). Este punto marca el alba de la herramienta en el registro temporal.
+
+[Una línea en blanco aquí]
+
+Tasa de Crecimiento Inicial: Cuantificación del ímpetu ascendente mediante el cálculo de la tasa promedio de incremento (expresada como porcentaje de cambio por unidad de tiempo, típicamente anual) durante la fase de crecimiento. Se emplea una regresión lineal simple para estimar la pendiente de la trayectoria ascendente, reflejando la velocidad con que la herramienta gana terreno.
+
+[Una línea en blanco aquí]
+
+*   **`#### Interpretación Técnica:
+Se ofrece una descripción objetiva y despojada de conjeturas sobre el surgimiento y la fase de crecimiento, presentando los hallazgos como un espejo fiel de los datos.
+
+Ejemplo Referencial 1 (Surgimiento Tardío con Crecimiento Rápido): "El surgimiento de {all_kw} en {dbs} se registra en marzo de 2015, con un valor inicial de 8, apenas un susurro en el vasto silencio previo. La fase de crecimiento inicial, extendida desde marzo de 2015 hasta diciembre de 2016, exhibe una tasa de crecimiento promedio de 45% por año, un ascenso vertiginoso que evoca el estallido de un géiser tras años de presión subterránea."
+
+Ejemplo Referencial 2 (Surgimiento Temprano con Crecimiento Gradual): "La herramienta {all_kw} emerge en {dbs} en enero de 2005, con un valor inicial de 3, como el primer brote que asoma en un campo árido. Su fase de crecimiento, desplegada entre enero de 2005 y junio de 2008, muestra una tasa de incremento promedio de 12% por año, un avance pausado pero constante, similar al crecimiento metódico de un roble en sus primeras estaciones."
+
+Ejemplo Referencial 3 (Surgimiento Ambiguo con Crecimiento Intermitente): "El surgimiento de {all_kw} en {dbs} se detecta tentativamente en octubre de 2010, con un valor inicial de 4, un destello fugaz que apenas rompe la penumbra estadística. La fase de crecimiento, observable entre octubre de 2010 y abril de 2012, presenta una tasa de crecimiento promedio de 25% por año, aunque marcada por fluctuaciones que recuerdan el titubeo de una llama bajo ráfagas de viento."
+
+[Una línea en blanco aquí]
 
 *   **`### Picos de interés: ¿Qué revelan?`**
 
-    *   **Tarea:** Identificar los *períodos pico* de interés o uso de {all_kw} en {dbs}.  Un período pico se define como un período en el que el valor de la serie temporal alcanza un máximo local y se mantiene *relativamente alto* durante un tiempo determinado (ej., ≥ 75% del máximo local durante al menos 3 meses).
-    *   **Cálculos:**
-        *   Identificar todos los máximos locales en la serie temporal.
-        *   Para cada máximo local, determinar si se cumple el criterio de "período pico" (≥ 75% del máximo local durante al menos 3 meses).
-        *   Para cada período pico identificado:
-            *   **Valor Máximo:** El valor máximo alcanzado durante el período pico.
-            *   **Fechas (Inicio y Fin):** Las fechas de inicio y fin del período pico.
-            *   **Duración:** La duración del período pico (en meses o años).
-            *   **Intensidad (Opcional):** El área bajo la curva durante el período pico (calculada mediante integración numérica, si aplica).
-    *   **Interpretación Técnica:**
-        *   Describir *objetivamente* los períodos pico identificados (cantidad, ubicación temporal, magnitud, duración, intensidad).
-        *   Ejemplo: "Se identifican dos períodos pico principales. El primero ocurre entre [mes/año] y [mes/año], alcanzando un valor máximo de X y una duración de Y meses. El segundo período pico se observa entre [mes/año] y [mes/año], con un valor máximo de Z y una duración de W meses."
+    *   **Tarea:** Tarea:
+Identificar los períodos pico de interés o uso de la herramienta {all_kw} en {dbs}, definidos como aquellos intervalos donde la serie temporal alcanza un máximo local y sostiene un nivel relativamente elevado durante un período sostenido. Específicamente, un período pico se caracteriza por valores ≥ 75% del máximo local durante al menos 3 meses consecutivos, reflejando un umbral de prominencia estadística que distingue estos eventos de fluctuaciones efímeras. La tarea consiste en cartografiar estos hitos como crestas en el horizonte temporal, iluminando los momentos de mayor resonancia de la herramienta.
+
+*   **`#### Cálculos:
+Identificación de Máximos Locales: Localizar todos los máximos locales en la serie temporal mediante un análisis de derivadas discretas o algoritmos de detección de picos (ej., comparación de valores adyacentes en una ventana móvil de 3-5 puntos). Cada máximo local representa un candidato a período pico.
+
+[Una línea en blanco aquí]
+
+Criterio de Período Pico: Para cada máximo local identificado, verificar si los valores circundantes cumplen el umbral de ≥ 75% del máximo durante un intervalo mínimo de 3 meses consecutivos. Este criterio asegura que solo los picos con una base sólida y sostenida sean clasificados como períodos pico, descartando ascensos transitorios.
+
+[Una línea en blanco aquí]
+
+Métricas por Período Pico: Para cada período pico confirmado:
+Valor Máximo: El valor más alto alcanzado dentro del intervalo, expresado en la escala de {dbs}.
+Fechas (Inicio y Fin): Las fechas exactas que delimitan el inicio (primer valor ≥ 75% del máximo) y el fin (último valor ≥ 75% del máximo) del período pico.
+Duración: El lapso temporal del período pico, calculado en meses o años (diferencia entre fecha de fin y fecha de inicio).
+
+[Una línea en blanco aquí]
+
+Intensidad (Opcional): La magnitud acumulada del interés o uso durante el período pico, estimada como el área bajo la curva (mediante integración numérica, como el método trapezoidal, si los datos lo permiten). Esta métrica captura la "masa" del pico, más allá de su altura máxima.
+
+[Una línea en blanco aquí]
+
+Interpretación Técnica:
+Se presenta una descripción objetiva y desprovista de especulaciones sobre los períodos pico identificados, detallando su cantidad, ubicación temporal, magnitud, duración e intensidad (si aplica). El análisis se limita a reflejar los datos como un eco puro de la serie temporal, sin atribuir significados externos.
+
+Ejemplo Referencial 1 (Pico Único y Pronunciado): "Un único período pico prominente emerge para {all_kw} en {dbs} entre junio de 2010 y febrero de 2011, alcanzando un valor máximo de 92 y extendiéndose por 9 meses. Este episodio, cual faro solitario en la vastedad del océano temporal, exhibe una intensidad de 720 unidades (área bajo la curva), señalando un apogeo sostenido y singular en la trayectoria de la herramienta."
+
+Ejemplo Referencial 2 (Múltiples Picos Recurrentes): "Se identifican tres períodos pico principales para {all_kw} en {dbs}. El primero se extiende desde marzo de 2012 hasta agosto de 2012, con un valor máximo de 85 y una duración de 6 meses; el segundo, entre abril de 2015 y octubre de 2015, con un valor máximo de 78 y una duración de 7 meses; y el tercero, entre enero de 2019 y mayo de 2019, con un valor máximo de 70 y una duración de 5 meses. Estos picos, como cumbres sucesivas en una cordillera ondulante, sugieren una recurrencia cíclica de interés con intensidades respectivas de 450, 410 y 320 unidades."
+
+Ejemplo Referencial 3 (Pico Difuso y Prolongado): "Un período pico difuso se observa para {all_kw} en {dbs} entre noviembre de 2008 y abril de 2010, alcanzando un valor máximo de 65 y prolongándose por 18 meses. Este intervalo, similar a una meseta elevada más que a una aguja afilada, presenta una intensidad acumulada de 980 unidades, reflejando un interés sostenido pero menos agudo que en configuraciones de picos más abruptos.".
+
+[Una línea en blanco aquí]
 
 *   **`### Declives y estabilizaciones: ¿desuso o persistencia?`**
 
-    *   **Tarea:** Identificar las *fases de declive* (disminución significativa en el interés/uso) y las *fases de estabilización* (períodos de relativa estabilidad) en la serie temporal de {all_kw} en {dbs}.
-    *   **Cálculos:**
-        *   **Fases de Declive:**
-            *   Identificar los períodos en los que la serie temporal muestra una disminución *significativa* (ej., > 20%) desde un pico previo.
-            *   Para cada fase de declive:
-                *   **Fechas (Inicio y Fin):** Las fechas de inicio y fin de la fase de declive.
-                *   **Tasa de Declive:** El porcentaje de cambio por unidad de tiempo (mes/año) durante la fase de declive.
-                *   **Pendiente Media:** La pendiente de la curva durante la fase de declive (calculada mediante regresión lineal simple).
-        *   **Fases de Estabilización:**
-            *   Identificar los períodos en los que la serie temporal muestra una variación *relativamente baja* (ej., < 10%) durante un tiempo determinado (ej., al menos 6 meses).
-            *   Para cada fase de estabilización:
-                *   **Fechas (Inicio y Fin):** Las fechas de inicio y fin de la fase de estabilización.
-                *   **Duración:** La duración de la fase de estabilización (en meses o años).
-                *   **Coeficiente de Variación:** El coeficiente de variación (desviación estándar / media) durante la fase de estabilización, como medida de la consistencia del interés/uso.
-    *   **Interpretación Técnica:**
-        *   Describir *objetivamente* las fases de declive y estabilización identificadas (cantidad, ubicación temporal, tasa de declive, duración de la estabilización, coeficiente de variación).
-        *   Ejemplo: "Se identifican dos fases de declive principales. La primera se extiende desde [mes/año] hasta [mes/año], con una tasa de declive promedio de X% por año y una pendiente media de Y. La segunda fase, entre [mes/año] y [mes/año], muestra una disminución más gradual, con una tasa de declive de Z% por año. Se observa una fase de estabilización entre [mes/año] y [mes/año], con una duración de W meses y un coeficiente de variación de V."
+    *   **Tarea:** Identificar las fases de declive en la serie temporal de {all_kw} en {dbs}, entendidas como intervalos donde el interés o uso experimenta una disminución significativa, marcando un retroceso notable desde un estado previo de prominencia. Asimismo, detectar las fases de estabilización, períodos donde la serie se asienta en un equilibrio relativo, exhibiendo una variación mínima que sugiere persistencia o meseta en lugar de cambio drástico. Este análisis busca trazar tanto los descensos abruptos como los llanos apacibles en el relieve temporal de la herramienta, proporcionando un mapa preciso de su dinámica.
+
+*   **`#### Cálculos:
+
+[Una línea en blanco aquí]
+
+Fases de Declive:
+
+[Una línea en blanco aquí]
+
+Identificación: Localizar los períodos donde la serie temporal registra una disminución significativa, definida como una caída > 20% desde un pico previo (máximo local identificado en análisis anteriores). Este umbral asegura que solo se consideren descensos sustanciales, excluyendo fluctuaciones menores.
+
+[Una línea en blanco aquí]
+
+Métricas por Fase de Declive:
+Fechas (Inicio y Fin): Determinar el inicio (primer valor tras el pico que inicia la caída > 20%) y el fin (punto donde la disminución se detiene o se estabiliza) de cada fase, expresados como [mes/año].
+Tasa de Declive: Calcular el porcentaje de cambio promedio por unidad de tiempo (mes o año) durante la fase, utilizando la fórmula [(valor inicial - valor final) / valor inicial] / duración, expresado como %/tiempo.
+Pendiente Media: Estimar la inclinación de la trayectoria descendente mediante regresión lineal simple aplicada al segmento de la serie en la fase de declive, expresada en unidades de {dbs} por mes o año, reflejando la velocidad del retroceso.
+
+[Una línea en blanco aquí]
+
+Fases de Estabilización:
+Identificación: Detectar los períodos donde la serie temporal muestra una variación relativamente baja, definida como un cambio < 10% en los valores respecto a la media del segmento, sostenido durante al menos 6 meses consecutivos. Este criterio captura intervalos de consistencia frente a la volatilidad.
+
+[Una línea en blanco aquí]
+
+Métricas por Fase de Estabilización:
+Fechas (Inicio y Fin): Establecer el inicio (primer mes del intervalo con variación < 10%) y el fin (último mes antes de un cambio > 10% o el final de los datos), expresados como [mes/año].
+Duración: Calcular la extensión temporal de la fase en meses o años (diferencia entre fecha de fin y fecha de inicio).
+Coeficiente de Variación: Computar la relación desviación estándar / media dentro del segmento estabilizado, expresada como un valor adimensional, como indicador de la homogeneidad del interés o uso durante la fase.
+
+[Una línea en blanco aquí]
+
+Interpretación Técnica:
+Se presenta una descripción objetiva y desprovista de especulaciones sobre las fases de declive y estabilización identificadas, detallando su cantidad, ubicación temporal, tasa de declive, pendiente media, duración y coeficiente de variación. El análisis se limita a reflejar los datos como un eco puro de la serie temporal, sin atribuir significados externos.
+
+Ejemplo Referencial 1 (Declive Abrupto con Estabilización Breve): "Para {all_kw} en {dbs}, se identifica una fase de declive pronunciada entre julio de 2013 y marzo de 2014, con una tasa de declive promedio de 35% por año y una pendiente media de -4.2 unidades/mes, evocando el desplome de un acantilado tras una cima efímera. Le sigue una fase de estabilización desde abril de 2014 hasta octubre de 2014, con una duración de 7 meses y un coeficiente de variación de 0.08, un respiro pasajero como un remanso tras la corriente."
+
+Ejemplo Referencial 2 (Declives Graduales con Estabilización Prolongada): "Se observan dos fases de declive para {all_kw} en {dbs}. La primera, entre enero de 2010 y diciembre de 2011, presenta una tasa de declive de 15% por año y una pendiente media de -1.8 unidades/mes, un descenso pausado como el lento desvanecer de un crepúsculo. La segunda, desde mayo de 2016 hasta febrero de 2017, muestra una tasa de 10% por año y una pendiente de -1.2 unidades/mes. Entre ambas, una fase de estabilización se extiende desde enero de 2012 hasta abril de 2016, con una duración de 52 meses y un coeficiente de variación de 0.05, una llanura serena que sugiere una persistencia notable."
+
+Ejemplo Referencial 3 (Declive Intermitente sin Estabilización Clara): "Una única fase de declive intermitente se detecta para {all_kw} en {dbs} entre agosto de 2018 y noviembre de 2020, con una tasa de declive promedio de 25% por año y una pendiente media de -2.5 unidades/mes, un descenso irregular como el zigzag de un río en terreno quebrado. No se identifican fases de estabilización sostenidas, con variaciones superiores al 10% en todos los segmentos de 6 meses, reflejando una ausencia de mesetas en este paisaje temporal agitado."
+
+[Una línea en blanco aquí]
 
 *   **`### Resurgimientos y transformaciones: ¿Metamorfosis?`**
 
-    *   **Tarea:** Detectar *patrones de resurgimiento* (aumentos significativos en el interés/uso después de un declive) y *posibles transformaciones* (cambios en la tendencia que sugieran una evolución en el uso o percepción de la herramienta).
-    *   **Cálculos:**
-        *   **Resurgimientos:**
-            *   Identificar los períodos en los que la serie temporal muestra un aumento *significativo* (ej., > 20%) después de un mínimo local.
-            *   Para cada resurgimiento:
-                *   **Fecha de Inicio:** La fecha en la que comienza el resurgimiento.
-                *   **Magnitud del Resurgimiento:** El porcentaje de aumento desde el mínimo previo.
-        *   **Transformaciones:**
-            *   Utilizar *métodos de detección de puntos de cambio* (ej., algoritmo PELT, ruptures en Python) para identificar puntos en los que la tendencia de la serie temporal cambia *significativamente*.
-            *   Para cada punto de cambio identificado:
-                *   **Fecha:** La fecha en la que ocurre el punto de cambio.
-                *   **Descripción Cualitativa:** Una descripción *cualitativa* del cambio observado (ej., "cambio de una tendencia creciente a una decreciente", "aumento en la variabilidad", etc.).
-    *   **Interpretación Técnica:**
-        *   Describir *objetivamente* los patrones de resurgimiento y los puntos de cambio identificados.
-        *   Ejemplo: "Se observa un resurgimiento en el interés por {all_kw} a partir de [mes/año], con un aumento del X% desde el mínimo previo. El algoritmo de detección de puntos de cambio identifica un punto de cambio significativo en [mes/año], que sugiere una posible transformación en la tendencia de la serie temporal."
+    *   **Tarea:** Detectar patrones de resurgimiento en la serie temporal de {all_kw} en {dbs}, definidos como incrementos significativos en el interés o uso tras un declive, señalando un renacer estadístico desde las cenizas de un mínimo previo. Asimismo, identificar posibles transformaciones, entendidas como alteraciones sustanciales en la tendencia que sugieran una evolución en la percepción o aplicación de la herramienta, cual crisálida que emerge en una forma renovada. Este análisis busca capturar tanto los brotes inesperados como las metamorfosis estructurales en el tejido temporal de los datos.
+
+*   **`#### Cálculos:
+
+[Una línea en blanco aquí]
+
+Resurgimientos:
+
+[Una línea en blanco aquí]
+
+Identificación: Localizar los períodos donde la serie temporal registra un aumento significativo, definido como un incremento > 20% desde un mínimo local (el valor más bajo en un segmento descendente previamente identificado). Este umbral asegura que solo se consideren ascensos relevantes, excluyendo oscilaciones menores.
+
+[Una línea en blanco aquí]
+
+Métricas por Resurgimiento:
+Fecha de Inicio: El punto exacto [mes/año] donde el valor comienza a superar el 20% del mínimo local, marcando el despertar del resurgimiento.
+Magnitud del Resurgimiento: El porcentaje de aumento calculado como [(valor máximo post-mínimo - mínimo local) / mínimo local] × 100, reflejando la fuerza del rebote desde el nadir.
+
+[Una línea en blanco aquí]
+
+Transformaciones:
+
+[Una línea en blanco aquí]
+
+Identificación: Aplicar métodos de detección de puntos de cambio (ej., algoritmo PELT implementado en la librería ruptures de Python) para pinpointar momentos donde la tendencia de la serie temporal experimenta una ruptura significativa. Estos puntos se detectan mediante cambios en la media, varianza o pendiente, utilizando un criterio estadístico (ej., penalización BIC o umbral de significancia).
+
+[Una línea en blanco aquí]
+
+Métricas por Punto de Cambio:
+Fecha: El momento exacto [mes/año] donde ocurre la ruptura, identificado por el algoritmo.
+Descripción Cualitativa: Una caracterización breve y objetiva del cambio observado, como "transición de una tendencia ascendente a descendente", "incremento abrupto en la variabilidad" o "estabilización tras volatilidad", basada en las propiedades estadísticas pre y post-ruptura.
+
+[Una línea en blanco aquí]
+
+Interpretación Técnica:
+Se presenta una descripción objetiva y desprovista de especulaciones sobre los patrones de resurgimiento y los puntos de cambio identificados, detallando fechas, magnitudes y características cualitativas. El análisis se limita a reflejar los datos como un eco puro de la serie temporal, sin atribuir significados externos.
+
+Ejemplo Referencial 1 (Resurgimiento Fuerte sin Transformación Clara): "Un resurgimiento notable de {all_kw} en {dbs} se observa a partir de mayo de 2017, con un aumento del 45% desde un mínimo local de 20 en febrero de 2017, un renacer vigoroso como el brote de una planta tras una sequía prolongada. El análisis de puntos de cambio no detecta rupturas significativas en la tendencia subyacente, sugiriendo que este ascenso ocurre dentro de una dinámica preexistente."
+
+Ejemplo Referencial 2 (Resurgimiento Moderado con Transformación Evidente): "Se identifica un resurgimiento para {all_kw} en {dbs} desde noviembre de 2019, con una magnitud del 28% desde un mínimo de 35 en julio de 2019, un despertar modesto como el resplandor de una chispa en la penumbra. El algoritmo PELT señala un punto de cambio significativo en diciembre de 2019, donde la tendencia pasa de un declive gradual (-2% anual) a una estabilización con variación mínima, una metamorfosis que evoca el giro de una brújula recalibrada."
+
+Ejemplo Referencial 3 (Múltiples Resurgimientos con Transformación Compleja): "Dos resurgimientos emergen para {all_kw} en {dbs}: el primero en marzo de 2014, con un aumento del 33% desde un mínimo de 15 en diciembre de 2013, y el segundo en junio de 2021, con un incremento del 25% desde un mínimo de 40 en febrero de 2021, destellos intermitentes como faros en una costa tormentosa. El análisis de puntos de cambio detecta una ruptura en julio de 2021, marcando un aumento en la variabilidad (de 5 a 12 unidades) y una pendiente positiva (+1.5 unidades/mes), sugiriendo una transformación hacia una dinámica más volátil y ascendente."
+
+[Una línea en blanco aquí]
+
 
 *   **`### El ciclo de vida completo: uniendo las piezas`**
 
-    *   **Tarea:** Integrar los hallazgos de las secciones anteriores para *inferir* las etapas del ciclo de vida de {all_kw} en {dbs}: surgimiento, crecimiento, declive, estabilización, resurgimiento (si aplica), transformación (si aplica).  *Justificar explícitamente* la clasificación de cada etapa, basándose en los cálculos y las interpretaciones técnicas previas.
-    *   **Cálculos:**
-        *   **NADT (Desviación Anual Promedio Normalizada):** Calcular la desviación anual promedio normalizada de la serie temporal completa.
-        *   **MAST (Media Móvil Suavizada de la Tendencia):** Calcular una media móvil suavizada (ej., de 12 meses) de la serie temporal para visualizar la tendencia a largo plazo.
-        *   **Desviación Estándar:** Calcular la desviación estándar de la serie temporal completa.
-        *   **Tasa de Crecimiento/Declive Promedio por Etapa:**  Calcular la tasa de crecimiento/declive promedio (ej., porcentaje de cambio por año) para *cada etapa* del ciclo de vida identificada (utilizando regresión lineal segmentada, si aplica).
-        * **Duración total del ciclo:** (desde surgimiento hasta el último dato).
-    *   **Interpretación Técnica:**
-        *   Presentar los valores de NADT, MAST y desviación estándar, con una breve interpretación *técnica*.
-        *   Describir *objetivamente* las etapas del ciclo de vida identificadas, *justificando* la clasificación de cada etapa con base en los cálculos y las interpretaciones previas.  *No* hacer afirmaciones sobre si la herramienta es o no una "moda gerencial" en esta sección.
-        *   Ejemplo:
-            *   "NADT: -0.05 (indica una disminución promedio del 5% anual en el interés/uso)."
-            *   "MAST: Muestra un crecimiento inicial hasta [año], seguido de un declive y una posterior estabilización."
-            *   "Desviación Estándar: X (indica una alta/baja volatilidad en el interés/uso)."
-            *   "Basándose en los patrones observados y los cálculos realizados, se infiere que el ciclo de vida de {all_kw} en {dbs} se compone de las siguientes etapas:
-                1.  **Surgimiento:** [mes/año] - [mes/año] (tasa de crecimiento promedio: Y% por año).
-                2.  **Crecimiento:** [mes/año] - [mes/año] (tasa de crecimiento promedio: Z% por año).
-                3.  **Declive:** [mes/año] - [mes/año] (tasa de declive promedio: W% por año).
-                4.  **Estabilización:** [mes/año] - [mes/año] (coeficiente de variación: V).
-                5.  **Resurgimiento:** [mes/año] - [Fecha Actual] (tasa de crecimiento promedio: U% por año)."
+    *   **Tarea:** Integrar los hallazgos de las secciones previas (surgimiento, crecimiento, declives, estabilizaciones, resurgimientos y transformaciones) para inferir las etapas del ciclo de vida de {all_kw} en {dbs}, abarcando surgimiento, crecimiento, declive, estabilización, resurgimiento (si aplica) y transformación (si aplica). Este ejercicio busca ensamblar las piezas dispersas del rompecabezas temporal, construyendo una narrativa estadística coherente de la trayectoria de la herramienta. Cada etapa debe ser justificada explícitamente con base en los cálculos y las interpretaciones técnicas precedentes, anclando la clasificación en la evidencia cuantitativa sin derivar hacia especulaciones cualitativas.
+
+*   **`#### Cálculos:
+
+[Una línea en blanco aquí]
+
+NADT (Desviación Anual Promedio Normalizada): Computar la desviación anual promedio normalizada de la serie temporal completa, expresada como un porcentaje por año [(valor final - valor inicial) / valor inicial / número de años], para capturar la tendencia global de crecimiento o declive.
+
+[Una línea en blanco aquí]
+
+MAST (Media Móvil Suavizada de la Tendencia): Calcular una media móvil suavizada con una ventana de 12 meses (o ajustada según la granularidad de {dbs}) para revelar la tendencia subyacente a largo plazo, eliminando fluctuaciones de corto plazo.
+
+[Una línea en blanco aquí]
+
+Desviación Estándar: Determinar la desviación estándar de la serie temporal completa, expresada en unidades de {dbs}, como medida de la volatilidad global del interés o uso.
+
+[Una línea en blanco aquí]
+
+Tasa de Crecimiento/Declive Promedio por Etapa: Calcular la tasa promedio de cambio (en porcentaje por año) para cada etapa identificada del ciclo de vida, utilizando regresión lineal segmentada aplicada a los intervalos correspondientes (surgimiento, crecimiento, declive, etc.), ajustando los segmentos según los puntos de cambio o transiciones detectados previamente.
+
+[Una línea en blanco aquí]
+
+Duración Total del Ciclo: Establecer el lapso completo del ciclo, desde la fecha de surgimiento (primer valor > 0 o umbral) hasta el último dato disponible, expresado en meses o años.
+
+[Una línea en blanco aquí]
+
+Interpretación Técnica:
+Presentar los valores de NADT, MAST y desviación estándar con una interpretación técnica breve y objetiva, seguida de una descripción detallada de las etapas del ciclo de vida, justificando cada clasificación con cálculos específicos y referencias a las secciones previas. El análisis se limita a un ensamblaje factual de los datos, sin incursiones en la categorización de la herramienta como "moda gerencial".
+
+Ejemplo Referencial 1 (Ciclo Breve con Declive Rápido):
+"NADT: -0.08 (refleja una disminución promedio del 8% anual en el interés/uso a lo largo de la serie)."
+"MAST: Revela un crecimiento inicial hasta junio de 2015, seguido de un declive sostenido sin recuperación significativa."
+"Desviación Estándar: 15.2 (indica una volatilidad moderada, dominada por un pico temprano)."
+"El ciclo de vida de {all_kw} en {dbs} se compone de:
+Surgimiento: Marzo de 2014 - Mayo de 2014 (tasa de crecimiento promedio: 50% por año), un brote efímero como un relámpago en la oscuridad.
+Crecimiento: Junio de 2014 - Junio de 2015 (tasa de crecimiento promedio: 35% por año), un ascenso fugaz que alcanza su cenit.
+Declive: Julio de 2015 - Diciembre de 2016 (tasa de declive promedio: 40% por año), un desplome abrupto como un castillo de naipes al viento.
+Duración total del ciclo: 33 meses, sin evidencia de estabilización ni resurgimiento, un arco breve que se extingue rápidamente."
+
+Ejemplo Referencial 2 (Ciclo Complejo con Resurgimiento):
+"NADT: -0.02 (sugiere un declive promedio del 2% anual, matizado por fluctuaciones)."
+"MAST: Muestra un crecimiento hasta 2010, un declive hasta 2015, una estabilización hasta 2019, y un resurgimiento posterior."
+"Desviación Estándar: 22.5 (refleja alta volatilidad impulsada por picos y caídas)."
+"El ciclo de vida de {all_kw} en {dbs} se compone de:
+Surgimiento: Enero de 2008 - Junio de 2008 (tasa de crecimiento promedio: 20% por año), un amanecer tímido en el horizonte temporal.
+Crecimiento: Julio de 2008 - Diciembre de 2010 (tasa de crecimiento promedio: 25% por año), una marea ascendente hacia su apogeo.
+Declive: Enero de 2011 - Marzo de 2015 (tasa de declive promedio: 15% por año), un reflujo gradual como el retiro de las olas.
+Estabilización: Abril de 2015 - Junio de 2019 (coeficiente de variación: 0.06), una meseta serena en el flujo de los datos.
+Resurgimiento: Julio de 2019 - [Fecha Actual] (tasa de crecimiento promedio: 18% por año), un renacer como el retorno de la primavera tras un invierno prolongado.
+Duración total del ciclo: 15 años, un recorrido sinuoso con fases bien definidas."
+
+Ejemplo Referencial 3 (Ciclo Estable con Transformación):
+"NADT: 0.01 (indica un crecimiento leve del 1% anual, casi neutro)."
+"MAST: Exhibe una tendencia ascendente suave hasta 2018, seguida de una transformación hacia mayor variabilidad."
+"Desviación Estándar: 10.8 (sugiere baja volatilidad general, con cambios recientes)."
+"El ciclo de vida de {all_kw} en {dbs} se compone de:
+Surgimiento: Mayo de 2010 - Septiembre de 2010 (tasa de crecimiento promedio: 15% por año), un despertar discreto como el rumor de un arroyo.
+Crecimiento: Octubre de 2010 - Junio de 2014 (tasa de crecimiento promedio: 10% por año), un avance constante como el fluir de un río tranquilo.
+Estabilización: Julio de 2014 - Diciembre de 2018 (coeficiente de variación: 0.04), una corriente apacible de persistencia.
+Transformación: Enero de 2019 - [Fecha Actual] (pendiente post-ruptura: +1.2 unidades/mes), un giro hacia mayor dinamismo, como un río que se bifurca en nuevos cauces.
+Duración total del ciclo: 14 años, un trayecto de estabilidad con una inflexión reciente."
 
 **Extensión:** Variable (depende de la complejidad de los patrones). Priorizar la claridad, la precisión y la justificación.
 
 ## **IV. ANÁLISIS E INTERPRETACIÓN: MÁS ALLÁ DE LOS NÚMEROS**
 
-Esta sección presenta el *análisis* e *interpretación* de los resultados estadísticos.  Se *construye* sobre la interpretación técnica preliminar (Sección III), añadiendo una capa de *interpretación aplicada* y *relacionando los hallazgos con las preguntas de investigación*.
+Esta sección despliega el análisis y la interpretación de los resultados estadísticos, elevando el escrutinio más allá de la mera cuantificación hacia un diálogo reflexivo con los datos. Construye sobre la interpretación técnica preliminar delineada en la Sección III, tejiendo una capa de interpretación aplicada que conecta los hallazgos con las preguntas de investigación. Como un arqueólogo que interpreta los fragmentos de una civilización perdida, este apartado busca desentrañar significados potenciales sin imponer certezas absolutas, manteniendo un equilibrio entre rigor analítico y apertura exploratoria.
 
-*   **`### Tendencia General: ¿Hacia dónde se dirige {all_kw}?`**
+*   **`### Tendencia general: ¿Hacia dónde se dirige {all_kw}?`**
 
-    *   Analizar la *tendencia general* de la serie temporal (creciente, decreciente, estable, fluctuante), utilizando los resultados de NADT, MAST y la descripción de las etapas del ciclo de vida.
-    *   *Interpretar* la tendencia en el contexto de la investigación: ¿Qué *podría* sugerir esta tendencia sobre la popularidad, el uso o la relevancia de la herramienta a largo plazo?
-    *   Considerar *explicaciones alternativas* para la tendencia observada (además de la de "moda gerencial").
+    *   **Tarea:** Analizar la tendencia general de la serie temporal de {all_kw} en {dbs}, clasificándola como creciente, decreciente, estable o fluctuante, con base en las métricas estadísticas de la Sección III: NADT (Desviación Anual Promedio Normalizada), MAST (Media Móvil Suavizada de la Tendencia) y la descripción detallada de las etapas del ciclo de vida.
+    *   Interpretar esta tendencia en el contexto de las preguntas de investigación, explorando lo que podría sugerir sobre la popularidad, el uso o la relevancia a largo plazo de la herramienta, sin afirmar conclusiones definitivas.
+    *   Considerar explicaciones alternativas para la tendencia observada, más allá de la hipótesis de "moda gerencial", abriendo el análisis a factores contextuales o dinámicas emergentes que puedan influir en la trayectoria, presentadas como supuestos plausibles en lugar de causalidades confirmadas.
+
+*   **`#### Cálculos y evidencia base:
+
+[Una línea en blanco aquí]
+
+NADT: Utilizar el valor calculado (en % por año) para determinar la dirección y magnitud promedio de la tendencia global.
+
+[Una línea en blanco aquí]
+
+MAST: Examinar la media móvil suavizada (ventana de 12 meses) para identificar patrones a largo plazo, como ascensos sostenidos, descensos graduales o mesetas persistentes.
+
+[Una línea en blanco aquí]
+
+Etapas del Ciclo de Vida: Integrar la secuencia y características de las etapas (surgimiento, crecimiento, declive, estabilización, resurgimiento, transformación) para contextualizar la tendencia en el tiempo.
+
+[Una línea en blanco aquí]
+
+Interpretación Aplicada:
+
+[Una línea en blanco aquí]
+
+Análisis de la Tendencia: Describir la tendencia general de manera objetiva, fundamentándola en las métricas específicas, y clasificarla como creciente (NADT positivo sostenido), decreciente (NADT negativo sostenido), estable (NADT cercano a cero con baja variabilidad en MAST) o fluctuante (NADT variable con oscilaciones marcadas en MAST).
+
+[Una línea en blanco aquí]
+
+Conexión con la Investigación: Reflexionar sobre las implicancias potenciales de la tendencia en relación con las preguntas de investigación, como la adopción, difusión o perdurabilidad de la herramienta, utilizando un lenguaje cauteloso ("podría indicar", "sugiere la posibilidad") para mantener la neutralidad exploratoria.
+
+[Una línea en blanco aquí]
+
+Explicaciones Alternativas: Proponer factores externos o dinámicas subyacentes que podrían explicar la tendencia, como cambios tecnológicos, eventos económicos o evoluciones organizacionales, presentándolos como hipótesis tentativas sin afirmar causalidad.
+
+Ejemplos Referenciales:
+Ejemplo 1 (Tendencia Decreciente):
+Análisis: "La tendencia general de {all_kw} en {dbs} es decreciente, con un NADT de -0.06 (-6% anual), corroborado por una MAST que muestra un crecimiento inicial hasta 2012, seguido de un declive sostenido hasta la fecha actual. El ciclo de vida revela un surgimiento en 2010, un pico en 2012 y un declive prolongado sin resurgimientos significativos, un ocaso gradual como el desvanecer de una estrella en el firmamento."
+Interpretación: "Esta tendencia podría sugerir una disminución en la popularidad o relevancia de {all_kw} a largo plazo, posiblemente reflejando una pérdida de interés sostenido tras un auge inicial. En el contexto de la investigación, esto plantea preguntas sobre los factores que precipitan el abandono de herramientas una vez alcanzada su cúspide."
+Alternativas: "Más allá de una narrativa de 'moda gerencial', el declive podría atribuirse a la emergencia de tecnologías sustitutas que desplazaron su utilidad, o a un contexto económico que redujo la inversión en enfoques similares, supuestos que merecen exploración adicional."
+
+Ejemplo 2 (Tendencia Fluctuante con Resurgimientos):
+Análisis: "La tendencia general de {all_kw} en {dbs} es fluctuante, con un NADT de -0.01 (-1% anual) que oculta oscilaciones significativas. La MAST evidencia un crecimiento hasta 2009, declives entre 2010-2014, estabilización hasta 2018, y resurgimientos en 2019 y 2022. Este patrón, como las mareas que suben y bajan en un océano inquieto, refleja una dinámica cíclica más que lineal."
+Interpretación: "Las fluctuaciones podrían indicar una relevancia intermitente de {all_kw}, con períodos de adopción renovada que sugieren una capacidad de adaptación o redescubrimiento. Esto alinea con las preguntas de investigación sobre patrones históricos de difusión y resurgimiento, destacando la posibilidad de una vida útil no convencional."
+Alternativas: "En lugar de una 'moda gerencial' efímera, las oscilaciones podrían responder a ciclos económicos que reactivan su uso, o a innovaciones contextuales que redefinen su aplicación, hipótesis que invitan a un análisis más profundo de las condiciones externas."
+
+Ejemplo 3 (Tendencia Estable con Transformación):
+Análisis: "La tendencia general de {all_kw} en {dbs} es estable, con un NADT de 0.02 (+2% anual) y una MAST que muestra un crecimiento suave hasta 2017, seguido de una estabilización con un giro hacia mayor variabilidad en 2020. El ciclo de vida incluye un surgimiento en 2013, crecimiento hasta 2017, estabilización hasta 2019, y una transformación reciente, un río que fluye con calma antes de bifurcarse en nuevos cauces."
+Interpretación: "Esta estabilidad podría sugerir una relevancia sostenida de {all_kw}, con la transformación reciente indicando una evolución en su uso o percepción. En el marco de la investigación, esto apunta a una posible resiliencia frente a las tensiones entre innovación y ortodoxia, o a una capacidad de co-evolución con el ecosistema organizacional."
+Alternativas: "Más allá de ser una 'moda', la estabilidad podría explicarse por una integración estructural en prácticas organizacionales, o por una respuesta a demandas macroeconómicas persistentes, supuestos que enriquecen el análisis de su perdurabilidad."
+
 
 *   **`### Ciclo de Vida: ¿Moda pasajera o herramienta duradera?`**
 
-    *   Analizar las etapas del ciclo de vida identificadas en la Sección III.
-    *   *Evaluar* si el ciclo de vida de {all_kw} es *consistente* con la definición operacional de "moda gerencial" (proporcionada en el prompt del sistema).
-    *   *Justificar* esta evaluación *exhaustivamente*, basándose en la evidencia presentada (duración de las etapas, tasa de crecimiento/declive, presencia/ausencia de resurgimiento/transformación, etc.).
-    *   Si el ciclo de vida *no* es consistente con la definición de "moda gerencial", *proponer y discutir explicaciones alternativas*.
-    *  Comparar el ciclo de vida con el patrón teórico (ej., curva en S de Rogers) si aplica.
+[Una línea en blanco aquí]
+
+Tarea:
+    *   Analizar las etapas del ciclo de vida de {all_kw} identificadas en la Sección III (surgimiento, crecimiento, declive, estabilización, resurgimiento, transformación), integrando sus características cuantitativas y temporales.
+    *   Evaluar si este ciclo de vida es consistente con la definición operacional de "moda gerencial" proporcionada en el prompt del sistema: innovaciones tecnológicas administrativas que emergen y se difunden rápidamente, prometiendo mejoras en el desempeño, pero caracterizadas por una naturaleza efímera y un uso masivo que declina con el tiempo (Añez Barrios, 2023b; Madsen & Stenheim, 2014; Pollach, 2021).
+    *   Justificar esta evaluación de manera exhaustiva, fundamentándola en la evidencia estadística (duración de las etapas, tasas de crecimiento/declive, presencia o ausencia de resurgimientos/transformaciones, etc.), evitando conclusiones apresuradas.
+    *   Si el ciclo de vida no se alinea con la definición de "moda gerencial", proponer y discutir explicaciones alternativas que den cuenta de su trayectoria, considerando múltiples perspectivas.
+    *   Comparar el ciclo de vida con el patrón teórico de difusión, como la curva en S de Rogers (introducción, crecimiento, madurez, declive), si resulta aplicable, evaluando similitudes y divergencias.
+    *   No limitarse a reiterar los datos; emplearlos como evidencia para sustentar interpretaciones y conclusiones, explorando múltiples explicaciones posibles con un enfoque crítico y matizado.
+
+Cálculos y Evidencia Base:
+    *   Utilizar las métricas de la Sección III: duración de cada etapa (en meses/años), tasas de crecimiento/declive promedio (% por año), NADT, MAST, desviación estándar, presencia/ausencia de resurgimientos o puntos de cambio, y coeficientes de variación en fases de estabilización.
+
+Interpretación Aplicada:
+    *   Análisis del Ciclo de Vida: Resumir las etapas identificadas, destacando sus características cuantitativas clave (inicio, fin, tasas, duración).
+    *   Evaluación frente a "Moda Gerencial": Contrastar el ciclo con los rasgos definitorios de una "moda gerencial" (difusión rápida, auge breve, declive marcado), justificando si se ajusta o diverge, con referencias específicas a los datos.
+    *   Explicaciones Alternativas: Si no encaja como "moda", proponer hipótesis alternativas (ej., adopción estructural, evolución contextual), respaldándolas con evidencia y discutiendo su plausibilidad.
+    *   Comparación Teórica: Evaluar la alineación con la curva en S de Rogers, analizando si sigue un patrón de adopción típico (introducción lenta, crecimiento exponencial, saturación, declive) o se aparta de este modelo.
+
+Ejemplos Referenciales:
+
+Ejemplo 1 (Ciclo Breve, Consistente con "Moda Gerencial"):
+Análisis: "El ciclo de vida de {all_kw} en {dbs} abarca un surgimiento en marzo de 2014, un crecimiento rápido hasta junio de 2015 (tasa: 35% anual), y un declive abrupto hasta diciembre de 2016 (tasa: -40% anual), con una duración total de 33 meses y un NADT de -0.08."
+Evaluación: "Este patrón es consistente con la definición de 'moda gerencial': una emergencia veloz (3 meses), un auge breve (15 meses) y un colapso pronunciado sin resurgimientos, un meteoro que cruza el cielo organizacional y se extingue rápidamente. La alta tasa de crecimiento inicial y el declive subsiguiente reflejan la difusión masiva y efímera descrita por Madsen & Stenheim (2014)."
+Justificación: "La duración corta (33 meses), la ausencia de estabilización (coeficiente de variación > 0.1 en todos los segmentos) y la falta de resurgimientos respaldan esta clasificación. La MAST muestra un pico aislado en 2015 seguido de un descenso sostenido, alineándose con un uso intenso pero pasajero."
+Comparación Teórica: "El ciclo sigue parcialmente la curva en S de Rogers (introducción y crecimiento), pero trunca la fase de madurez, colapsando antes de alcanzar saturación, lo que refuerza su carácter efímero."
+
+Ejemplo 2 (Ciclo Complejo, No Consistente con "Moda Gerencial"):
+Análisis: "El ciclo de vida de {all_kw} en {dbs} incluye surgimiento en enero de 2008 (tasa: 20% anual), crecimiento hasta diciembre de 2010 (tasa: 25% anual), declive hasta marzo de 2015 (tasa: -15% anual), estabilización hasta junio de 2019 (coeficiente de variación: 0.06), y resurgimiento desde julio de 2019 (tasa: 18% anual), con un NADT de -0.02 y duración de 15 años."
+Evaluación: "Este ciclo no se alinea plenamente con una 'moda gerencial'. Aunque presenta un crecimiento inicial rápido, su duración prolongada (15 años), la estabilización sostenida (52 meses) y los resurgimientos sugieren una trayectoria más duradera, un río que serpentea y renace en lugar de un relámpago fugaz."
+Justificación: "La fase de estabilización prolongada y el resurgimiento contradicen la naturaleza efímera de las modas (Pollach, 2021). La MAST evidencia una tendencia oscilante pero persistente, y la baja tasa de declive (-15% anual) indica un retroceso gradual, no un abandono masivo."
+Explicaciones Alternativas: "Podría reflejar una integración estructural en prácticas organizacionales, donde {all_kw} se adapta a necesidades cambiantes, o un redescubrimiento impulsado por innovaciones contextuales, como nuevas aplicaciones tecnológicas. Estas hipótesis sugieren una co-evolución con el ecosistema transorganizacional."
+Comparación Teórica: "El ciclo se asemeja a una curva en S extendida (crecimiento, madurez, resurgimiento), pero con declives y recuperaciones que desafían la linealidad de Rogers, apuntando a una dinámica cíclica más compleja."
+
+Ejemplo 3 (Ciclo Estable, No Consistente con "Moda Gerencial"):
+Análisis: "El ciclo de vida de {all_kw} en {dbs} consta de un surgimiento en mayo de 2010 (tasa: 15% anual), crecimiento hasta junio de 2014 (tasa: 10% anual), estabilización hasta diciembre de 2018 (coeficiente de variación: 0.04), y transformación desde enero de 2019 (pendiente: +1.2 unidades/mes), con un NADT de 0.02 y duración de 14 años."
+Evaluación: "Este patrón no encaja con la definición de 'moda gerencial'. La estabilidad prolongada (54 meses) y la transformación reciente sugieren una herramienta duradera, un roble arraigado que se adapta al viento en lugar de una flor pasajera."
+Justificación: "La baja tasa de crecimiento inicial (10-15% anual), la ausencia de declive significativo y la transformación (aumento en variabilidad) contradicen la difusión rápida y el abandono típico de las modas. La MAST muestra una tendencia ascendente suave, reforzando su perdurabilidad."
+Explicaciones Alternativas: "Podría indicar una asimilación estructural en el ecosistema organizacional, o una respuesta a demandas sostenidas del mercado, como regulaciones o necesidades operativas persistentes, lo que apunta a una relevancia intrínseca más que a un auge pasajero."
+Comparación Teórica: "El ciclo sigue una curva en S hasta la madurez (2014-2018), pero la transformación post-2019 introduce una divergencia, sugiriendo una evolución que trasciende el modelo de Rogers."
+[Una línea en blanco aquí]
 
 *   **`### Puntos de Inflexión: ¿Qué factores intervienen?`**
 
-    *   Analizar los *puntos de inflexión* identificados en la serie temporal (picos, declives, resurgimientos, puntos de cambio).
-    *   Para *cada* punto de inflexión, *considerar* la *posible* influencia de *factores externos*:
-        *   Eventos económicos.
-        *   Eventos tecnológicos.
-        *   Eventos sociales.
-        *   Eventos políticos.
-        *   Eventos ambientales.
-        *   Eventos específicos de la industria.
-        *   Publicaciones influyentes.
-        *   Influencia de "gurus" o consultores.
-        *   Efecto de "contagio" o imitación.
-        *   Presiones institucionales.
-        *   Cambios en la percepción del riesgo.
-    *   *Importante:* *No* afirmar causalidad. Utilizar un lenguaje cauteloso y probabilístico (ej., "Este punto de inflexión *podría* estar relacionado con...", "Es *posible* que este evento haya influido en...", "Este cambio *coincide* temporalmente con...").
+[Una línea en blanco aquí]
+
+Tarea:
+    *   Analizar los puntos de inflexión identificados en la serie temporal de {all_kw} en {dbs}, incluyendo picos, declives, resurgimientos y puntos de cambio detectados en la Sección III, como hitos que marcan giros significativos en su trayectoria temporal.
+    *   Para cada punto de inflexión, considerar la posible influencia de factores externos, basándose en la lista exhaustiva proporcionada (eventos económicos, tecnológicos, sociales, políticos, ambientales, específicos de la industria, publicaciones influyentes, influencia de "gurús" o consultores, efecto de contagio o imitación, presiones institucionales, cambios en la percepción del riesgo).
+    *   Importante: Evitar afirmar causalidad; emplear un lenguaje cauteloso y probabilístico (ej., "podría estar relacionado con", "es posible que haya influido", "coincide temporalmente con") para reflejar incertidumbre y mantener la integridad analítica.
+    *   No limitarse a repetir los datos; utilizarlos como evidencia para sustentar interpretaciones y conclusiones, explorando múltiples explicaciones posibles con un enfoque crítico y multidimensional.
+
+Cálculos y Evidencia Base:
+    *   Utilizar las métricas de la Sección III: fechas de picos (valor máximo, duración), declives (tasa, pendiente), resurgimientos (magnitud, inicio), y puntos de cambio (fecha, descripción cualitativa), como anclas temporales para correlacionar con factores externos potenciales.
+
+Interpretación Aplicada:
+    *   Análisis de Puntos de Inflexión: Resumir cada punto de inflexión identificado, destacando su ubicación temporal y características cuantitativas clave.
+    *   Consideración de Factores Externos: Para cada punto, explorar cómo los factores externos listados podrían haber influido, utilizando los datos como base para hipótesis tentativas, sin afirmar relaciones causales.
+    *   Múltiples Explicaciones: Presentar diversas interpretaciones plausibles, evaluando su coherencia temporal con el punto de inflexión, y destacando la incertidumbre inherente al análisis.
+
+Ejemplos Referenciales:
+
+Ejemplo 1 (Pico en 2012):
+Análisis: "Un pico prominente de {all_kw} en {dbs} ocurre en junio de 2012, con un valor máximo de 92 y una duración de 9 meses, un faro solitario que ilumina brevemente el paisaje temporal."
+Factores Externos:
+"Este pico coincide temporalmente con una recuperación económica post-crisis de 2008, lo que podría haber estimulado la adopción de herramientas prometedoras de eficiencia."
+"Es posible que una publicación influyente, como un libro o artículo destacado en ese año, haya elevado el interés, amplificando su difusión."
+"El efecto de contagio o imitación podría haber jugado un rol, con organizaciones siguiendo a pioneros visibles en la industria."
+Interpretación: "Estas coincidencias sugieren que el pico podría estar relacionado con un contexto económico favorable o una narrativa promocional, aunque la falta de datos específicos impide descartar otras influencias, como eventos tecnológicos o presiones institucionales emergentes."
+
+Ejemplo 2 (Declive en 2015-2017):
+Análisis: "Un declive sostenido de {all_kw} en {dbs} se extiende desde julio de 2015 hasta febrero de 2017, con una tasa de -15% anual, un reflujo gradual como el retiro de las olas tras una marea alta."
+Factores Externos:
+"Este declive coincide con una desaceleración económica global en 2015-2016, lo que podría haber reducido la inversión en nuevas herramientas gerenciales."
+"Es posible que avances tecnológicos, como la irrupción de soluciones digitales disruptivas, hayan desplazado el interés hacia alternativas más innovadoras."
+"Cambios en la percepción del riesgo podrían haber influido, si las organizaciones asociaron {all_kw} con resultados inciertos tras su auge inicial."
+Interpretación: "El declive podría reflejar una combinación de restricciones económicas y competencia tecnológica, aunque la influencia de eventos sociales o políticos específicos de la industria no puede descartarse, invitando a una exploración más profunda de estas intersecciones temporales."
+
+Ejemplo 3 (Resurgimiento y Punto de Cambio en 2019):
+Análisis: "Un resurgimiento de {all_kw} en {dbs} comienza en julio de 2019, con un aumento del 28% desde un mínimo previo, seguido de un punto de cambio en diciembre de 2019 que marca una estabilización, un renacer como la primavera tras un invierno silente."
+Factores Externos:
+"Este resurgimiento coincide temporalmente con la digitalización acelerada post-2018, lo que podría haber revitalizado su relevancia en un entorno tecnológico renovado."
+"Es posible que la influencia de 'gurús' o consultores haya impulsado su adopción, si figuras prominentes lo promovieron en conferencias o publicaciones de 2019."
+"Eventos específicos de la industria, como nuevas regulaciones o demandas operativas, podrían haber alineado {all_kw} con necesidades emergentes."
+Interpretación: "El resurgimiento y transformación podrían estar vinculados a un contexto tecnológico o profesional favorable, aunque el efecto de presiones institucionales o publicaciones influyentes ofrece explicaciones igualmente plausibles, subrayando la multiplicidad de fuerzas potenciales en juego."
+
 
 *   **`### [Otras Subsecciones Temáticas (Opcional)]`**
 
-    *   Si los hallazgos lo justifican, se pueden añadir otras subsecciones temáticas para profundizar en aspectos específicos del análisis.  Ejemplos:
-        *   `### Análisis Específico de la Fase de Resurgimiento` (si aplica).
-        *   `### Análisis de la Variabilidad de la Serie Temporal`.
-        *   `### Relación con las Antinomias del Ecosistema Transorganizacional` (si es relevante).
+[Una línea en blanco aquí]
 
-**Extensión:** 800-1.200 palabras en total (para *todas* las subsecciones de la Sección IV).
+Tarea:
+    *   Si los hallazgos estadísticos de la Sección III lo justifican, desarrollar subsecciones temáticas adicionales para profundizar en aspectos específicos del análisis de {all_kw} en {dbs}. Estas subsecciones deben surgir orgánicamente de patrones o características destacadas en los datos, aportando una lente enfocada a la interpretación aplicada.
 
+Cada subsección debe:
+    *   Analizar un aspecto concreto de la serie temporal o su ciclo de vida, utilizando métricas específicas como evidencia.
+    *   Conectar los hallazgos con las preguntas de investigación, explorando implicancias potenciales sin afirmar causalidad definitiva.
+    *   Considerar múltiples explicaciones o perspectivas, manteniendo un lenguaje cauteloso y probabilístico (ej., "podría sugerir", "es posible que").
+
+Ejemplos sugeridos incluyen, pero no se limitan a:
+    *   Análisis Específico de la Fase de Resurgimiento (si aplica).
+    *   Análisis de la Variabilidad de la Serie Temporal.
+    *   Relación con las Antinomias del Ecosistema Transorganizacional (si es relevante).
+
+Instrucciones:
+    *   Evaluar los datos de la Sección III para determinar si hay patrones o métricas (ej., resurgimientos prominentes, alta volatilidad, alineación con antinomias) que justifiquen una subsección adicional.
+    *   Desarrollar cada subsección con:
+    *   Un resumen de los datos relevantes (fechas, tasas, valores).
+    *   Una interpretación aplicada que conecte con las preguntas de investigación.
+    *   Factores o explicaciones alternativas, si procede.
+    *   No repetir datos sin análisis; usarlos como base para interpretaciones profundas.
+
+Ejemplos Referenciales:
+
+Análisis Específico de la Fase de Resurgimiento
+
+Tarea: Analizar en detalle la fase de resurgimiento identificada en la Sección III, si existe, explorando su magnitud, duración y contexto temporal.
+
+Cálculos y Evidencia Base: Magnitud del resurgimiento (% de aumento desde el mínimo), fecha de inicio, duración (meses), pendiente post-resurgimiento (regresión lineal), comparación con picos previos.
+Ejemplo:
+
+Análisis: "El resurgimiento de {all_kw} en {dbs} comienza en julio de 2019, con un aumento del 28% desde un mínimo de 35, extendiéndose por 18 meses hasta diciembre de 2020, con una pendiente de +1.5 unidades/mes. Este rebote, como un fénix que alza el vuelo desde las cenizas, supera en duración al pico inicial de 2012 (9 meses)."
+
+Interpretación: "Este resurgimiento podría sugerir una renovada relevancia de {all_kw}, posiblemente vinculada a su capacidad de adaptación a nuevas demandas organizacionales. En el contexto de la investigación, plantea preguntas sobre los desencadenantes de la revitalización tras períodos de declive."
+
+Explicaciones Alternativas: "Es posible que innovaciones tecnológicas de 2019 hayan facilitado su reaplicación, o que eventos específicos de la industria (ej., regulaciones) lo hayan repositionado como solución viable, hipótesis que contrastan con un simple efecto de imitación."
+
+
+Análisis de la Variabilidad de la Serie Temporal
+
+Tarea: Examinar la volatilidad de {all_kw} en {dbs} a lo largo del tiempo, utilizando métricas de dispersión para evaluar su consistencia o inestabilidad.
+
+Cálculos y Evidencia Base: Desviación estándar global, coeficientes de variación por etapa, frecuencia de picos (valores ≥ 75% del máximo), amplitud de fluctuaciones (rango).
+
+Ejemplo:
+Análisis: "La serie temporal de {all_kw} en {dbs} exhibe una desviación estándar de 22.5, con un rango de 90 y cuatro picos principales (2012, 2015, 2019, 2021). La variabilidad, como el latido irregular de un corazón inquieto, contrasta con una estabilización de 52 meses (2012-2016) con un coeficiente de variación de 0.05."
+
+Interpretación: "Esta alta volatilidad podría indicar una adopción intermitente de {all_kw}, sugiriendo una sensibilidad a factores externos o una percepción cambiante de su utilidad. Esto resuena con las preguntas de investigación sobre la estabilidad de las herramientas gerenciales en el tiempo."
+
+Explicaciones Alternativas: "La inestabilidad podría estar relacionada con ciclos económicos o tecnológicos que alteran su demanda, aunque también es posible que refleje una difusión impulsada por 'gurús' seguida de olvido, un patrón que merece mayor escrutinio."
+
+
+
+Relación con las Antinomias del Ecosistema Transorganizacional
+
+Tarea: Explorar cómo las etapas del ciclo de vida de {all_kw} en {dbs} se relacionan con las antinomias organizacionales (ej., estabilidad vs. innovación, control vs. flexibilidad), si son relevantes al contexto de la investigación.
+
+Cálculos y Evidencia Base: Duración y tasas de cada etapa, puntos de cambio, comparación cualitativa con antinomias (basada en Sección III y datos previos).
+
+Ejemplo:
+
+Análisis: "El ciclo de vida de {all_kw} muestra un crecimiento inicial (2008-2010, 25% anual) seguido de un declive (2011-2015, -15% anual) y una estabilización prolongada (2015-2019, coeficiente de variación: 0.06). Estos patrones, como hilos en el telar de las antinomias, podrían reflejar tensiones entre innovación (crecimiento) y estabilidad (meseta)."
+
+Interpretación: "Es posible que {all_kw} haya surgido como respuesta a la necesidad de innovación, pero su estabilización sugiera una reconciliación con la estabilidad, alineándose con las preguntas de investigación sobre cómo las herramientas median las antinomias transorganizacionales."
+
+Explicaciones Alternativas: "El declive podría estar vinculado a un exceso de control que sofocó su flexibilidad, o a una resistencia organizacional frente a su carácter disruptivo, hipótesis que invitan a explorar las dinámicas de poder y cultura en su adopción."
+
+[Una línea en blanco aquí]
+
+**Extensión:** Variable (depende de la complejidad de los patrones y la riqueza de la interpretación). *Priorizar la profundidad del análisis y la claridad de la narrativa sobre la brevedad*.
 
 ## **V. IMPLICACIONES E IMPACTOS: ¿QUÉ SIGNIFICA TODO ESTO?**
 
-Esta sección *sintetiza* los hallazgos clave y ofrece *perspectivas* para *diferentes audiencias*: investigadores, consultores y organizaciones (públicas, privadas, PYMES, multinacionales y ONG).
+[Una línea en blanco aquí]
 
-*   Integrar las implicaciones en un texto coherente.
-*   Dirigirse a cada audiencia de forma explícita, pero dentro del flujo natural del texto.
-*   Cubrir *todos* los siguientes puntos:
-    *   **Contribución a la Investigación:**
-        *   ¿Cómo ayudan los hallazgos a responder a las preguntas de investigación?
-        *   ¿Qué nuevas preguntas o líneas de investigación sugieren los hallazgos?
-    *   **Aportes útiles y Consejos para Consultores:**
-        *   ¿Cuándo y cómo *podrían* los consultores evaluar la herramienta {all_kw}?
-        *   ¿Qué precauciones *deberían* tomar los consultores al recomendar (o no) la herramienta?
-        * ¿Qué nuevas preguntas se abren para las empresas de consultoría?
-    *   **Consideraciones para Organizaciones:**
-        *   ¿Cómo *podría* la herramienta {all_kw} alinearse (o no) con la estrategia de *diferentes tipos* de organizaciones para (a) organizaciones públicas, (b) organizaciones privadas, (c) Pymes, (d) multinacionales, y (e) ONG´s.
-        *   ¿Qué tipo de organizaciones se *podrían* beneficiar más (o menos) de la herramienta, y *por qué*?
-        *   ¿Qué riesgos o desafíos *podrían* surgir al adoptar (o abandonar) la herramienta?
-        *  **Consideraciones para la investigación:** Se debe interpelar sobre los límites del conocimiento, planteando nuevos cuestionamientos a la luz de lo encontrado.
-        *  **Consideraciones para las empresas consultoras:** Como intermediarias de la adopción de herramientas, deben reconsiderar sus catálogos de herramientas, y su pertinencia con la realidad del mercado.
-        * **Consideraciones según el tipo de organización.**
-        * **Consideraciones considerando (i) las dinámicas de mercado, (ii) competencia y competitividad de los entornos organizacionales, y (iii) los factores macroeconómicos y microeconómicos que impactan en el procesos de toma de decisiones de directivos y gerentes.
+Tarea General:
 
-**Extensión:** 600-800 palabras.
+    *   Sintetizar los hallazgos clave derivados del análisis de la serie temporal de {all_kw} en {dbs}, integrando las tendencias, etapas del ciclo de vida y puntos de inflexión identificados en las Secciones III y IV, para construir un texto narrativo coherente que ofrezca perspectivas accionables.
+    *   Dirigirse explícitamente a tres audiencias —investigadores, consultores y organizaciones (públicas, privadas, PYMES, multinacionales, ONG)— dentro de un flujo discursivo natural, evitando subsecciones separadas para mantener la continuidad del texto.
+    *   Cubrir exhaustivamente todos los puntos especificados a continuación, desarrollando las implicaciones de manera completa, específica y fundamentada en los datos, evitando generalidades o afirmaciones vagas.
+
+Instrucciones Específicas para la IA:
+
+    *   **Integración Narrativa:
+    *   Combinar los hallazgos en un relato unificado que fluya lógicamente, comenzando con una síntesis general de los resultados (tendencia, ciclo de vida, volatilidad) y luego abordando las implicancias para cada audiencia dentro del mismo texto.
+
+Ejemplo orientativo: "Los hallazgos muestran un ciclo de vida de {all_kw} con un pico en [año] y un declive sostenido. Para los investigadores, esto sugiere X; para los consultores, implica Y; y para las organizaciones, plantea Z."
+
+    *   **Uso de Datos como Evidencia:
+    *   Basar todas las interpretaciones en métricas específicas de la Sección III (NADT, MAST, tasas de crecimiento/declive, duración de etapas) y análisis de la Sección IV (tendencias, puntos de inflexión), citándolas explícitamente para respaldar cada punto.
+    *   No repetir datos sin análisis; transformarlos en implicancias concretas (ej., "Un NADT de -0.06 indica un declive del 6% anual, lo que podría sugerir a los consultores cautela al recomendar {all_kw}").
+
+Lenguaje Cauteloso y Probabilístico:
+    *   Utilizar términos como "podría", "sugiere la posibilidad", "es plausible que" para evitar afirmaciones definitivas, reflejando incertidumbre inherente a las interpretaciones aplicadas.
+
+Audiencias Específicas:
+    *   Investigadores: Enfocarse en la contribución teórica y nuevas preguntas, integrándolas al inicio o como reflexión central del texto.
+    *   Consultores: Insertar consejos prácticos y precauciones en el flujo, conectándolos con las dinámicas observadas.
+    *   Organizaciones: Detallar implicancias estratégicas para cada tipo (públicas, privadas, PYMES, multinacionales, ONG) hacia el final, con ejemplos contextuales.
+
+Puntos a Cubrir Exhaustivamente:
+
+    *   **Contribución a la Investigación:
+Cómo ayudan los hallazgos a responder a las preguntas de investigación:
+
+    *   Identificar las preguntas específicas del estudio (ej., "¿Cómo evolucionan las herramientas gerenciales en el tiempo?") y vincularlas con los resultados (tendencia, ciclo de vida, puntos de inflexión).
+Ejemplo: "Si {all_kw} muestra un declive sostenido (NADT: -0.05), responde a la pregunta sobre la perdurabilidad de las herramientas, sugiriendo una vida útil limitada."
+
+    *   Qué nuevas preguntas o líneas de investigación sugieren los hallazgos:
+Proponer al menos 2-3 preguntas específicas basadas en patrones inesperados (ej., resurgimientos, alta volatilidad).
+Ejemplo: "¿Qué factores externos catalizan los resurgimientos de {all_kw} en [año]? ¿Cómo influyen las antinomias organizacionales en su estabilización?"
+
+    *   Límites del Conocimiento:
+Reflexionar sobre las limitaciones del análisis (ej., falta de datos contextuales) y sugerir áreas de exploración futura.
+
+    *   **Aportes Útiles y Consejos para Consultores:
+    *   Cuándo y cómo podrían evaluar {all_kw}:
+    *   Indicar contextos específicos basados en el ciclo (ej., "durante picos o resurgimientos para proyectos a corto plazo") y métodos (ej., "analizar MAST para tendencias sostenidas").
+Ejemplo: "Evaluar {all_kw} en fases de crecimiento (tasa: 25% anual) para intervenciones rápidas."
+
+Precauciones al recomendar (o no) la herramienta:
+Señalar riesgos derivados de los datos (ej., declive abrupto, volatilidad alta) y recomendar análisis contextual previo.
+
+Ejemplo: "Evitar recomendar {all_kw} si muestra un declive prolongado (-15% anual) sin evidencia de resurgimiento."
+
+Nuevas preguntas para consultoras:
+    *   Plantear 1-2 interrogantes prácticas e intentar responderlas (ej., "¿Cómo anticipar el abandono de {all_kw}?").
+
+    *   **Consideraciones para Organizaciones:
+Alineación con estrategias de diferentes tipos de organizaciones:
+    *   Públicas: Evaluar si {all_kw} se adapta a necesidades de estabilidad o cumplimiento, usando datos (ej., estabilización de 54 meses).
+    *   Privadas: Analizar su potencial competitivo en función de picos o resurgimientos (ej., aumento del 28% en 2019).
+    *   PYMES: Considerar viabilidad según recursos y volatilidad (ej., desviación estándar: 22.5).
+    *   Multinacionales: Explorar escalabilidad y transformación (ej., pendiente post-2019: +1.2).
+    *   ONG: Evaluar impacto sostenido frente a ciclos cortos (ej., declive de -40% anual).
+
+    *   **Beneficios y limitaciones por tipo:
+    *   Identificar qué organizaciones ganan más (ej., "multinacionales en resurgimientos por flexibilidad") y por qué (ej., "adaptabilidad a mercados globales"), con evidencia.
+
+Riesgos o desafíos:
+    *   Detallar al menos 2-3 riesgos (ej., obsolescencia, costos sunk) y desafíos (ej., resistencia interna) con ejemplos basados en datos.
+
+Consideraciones Adicionales:
+    *   Dinámicas de Mercado: Relacionar hallazgos con tendencias de oferta/demanda (ej., "un pico en 2012 podría reflejar un mercado en auge").
+    *   Competencia y Competitividad: Analizar cómo {all_kw} afecta la ventaja competitiva (ej., "resurgimiento en 2019 podría diferenciar frente a rivales").
+    *   Factores Macro y Microeconómicos: Vincular con decisiones gerenciales (ej., "declive en 2015 podría estar ligado a recesión macro").
+
+Ejemplo Orientativo:
+"La serie temporal de {all_kw} muestra un NADT de -0.02 y un ciclo con surgimiento en 2008, crecimiento hasta 2010 (25% anual), declive hasta 2015 (-15% anual), y resurgimiento en 2019 (18% anual). Para los investigadores, esto responde a la pregunta sobre ciclos de herramientas, sugiriendo resiliencia, y plantea nuevas interrogantes: ¿qué impulsa los resurgimientos? Los consultores podrían evaluar {all_kw} en fases de resurgimiento para proyectos dinámicos, pero deberían precaerse de su volatilidad (desviación estándar: 22.5). Las organizaciones públicas podrían beneficiarse de su estabilización (2015-2019), mientras las PYMES deberían evitarla en declives por recursos limitados. Dinámicas de mercado, como una recesión en 2015, podrían explicar su trayectoria, afectando decisiones gerenciales."
+
+Notas para la IA:
+Ajustar el contenido según los datos específicos de {all_kw} en {dbs}.
+Mantener un tono doctoral (ej., "sintetiza", "perspectivas accionables") y evitar generalidades (ej., "es útil" sin contexto).
+Garantizar que cada punto se desarrolle con al menos 2-3 frases específicas.
+[Una línea en blanco aquí]
+
+**Extensión:** Variable. *Asegurar que se cubren todas las audiencias y se desarrollan las implicaciones de forma completa*.
 
 ## **VI. REFLEXIONES CRÍTICAS Y DISOLUCIONES FINALES **
 
-*   **Resumen Conciso:** Sintetizar los *principales hallazgos* del análisis en un párrafo breve y claro.
-*   **Evaluación Crítica:** A la luz de *toda* la evidencia presentada, *evaluar* si los patrones observados son *más consistentes* con la definición operacional de "moda gerencial" o con *otras* posibles explicaciones. *Justificar* esta evaluación.
-*   **Limitaciones:** Reconocer *explícitamente* las *limitaciones* del análisis (ej., posibles sesgos de la fuente de datos, naturaleza exploratoria del estudio, etc.). *No* crear una sección separada de "Limitaciones", sino integrar esta discusión en las reflexiones finales.
-*   **Futuras Investigaciones:** *Opcional:* Si no se han cubierto completamente en la sección de "Implicaciones", sugerir *brevemente* posibles líneas de investigación futura.
+Tarea General:
+    *   Sintetizar los hallazgos clave del análisis de la serie temporal de {all_kw} en {dbs} y ofrecer una evaluación crítica final que consolide las interpretaciones previas, reflexionando sobre su significado en el contexto de la investigación. Este apartado debe cerrar el análisis con un balance entre síntesis, juicio crítico y reconocimiento de limitaciones, proyectando una mirada introspectiva y prospectiva sin derivar en especulaciones infundadas.
+    *   Producir un texto narrativo coherente de 600-700 palabras que integre todos los elementos especificados, evitando subsecciones separadas para mantener la continuidad discursiva.
+    *   Finalizar con un salto de página explícito (indicado como [Salto de página] en el texto) para señalar el inicio de un nuevo capítulo.
 
-**Extensión:** 400-500 palabras.
+Instrucciones Específicas para la IA:
+
+    *   **Estructura Narrativa:
+    *   Construir un relato fluido que comience con el resumen conciso, transite hacia la evaluación crítica, incorpore las limitaciones de manera natural dentro de la reflexión, y concluya con sugerencias opcionales para futuras investigaciones, si no se han agotado en la Sección V.
+
+Ejemplo orientativo: "El análisis revela X. A la luz de esta evidencia, los patrones sugieren Y, aunque las limitaciones de Z matizan esta interpretación. Futuras indagaciones podrían explorar W."
+
+Uso de Datos como Evidencia:
+    *   Basar todas las afirmaciones en métricas específicas de las Secciones III y IV (ej., NADT, MAST, tasas de crecimiento/declive, duración de etapas, puntos de inflexión), citándolas explícitamente para sustentar la síntesis y la evaluación crítica.
+    *   No repetir datos sin análisis; transformarlos en conclusiones reflexivas (ej., "Un declive de -15% anual no solo señala un retroceso, sino que cuestiona la sostenibilidad de {all_kw}").
+
+Lenguaje Doctoral y Cauteloso:
+    *   Emplear un tono académico riguroso (ej., "sintetizar", "evaluar críticamente", "consistencia con la evidencia") y términos probabilísticos (ej., "más consistente con", "podría indicar") para reflejar incertidumbre y mantener objetividad.
+
+Extensión Controlada:
+Asegurar que el texto final oscile entre 600 y 700 palabras, ajustando la profundidad de cada componente (resumen: ~100 palabras, evaluación: ~300-350 palabras, limitaciones: ~150-200 palabras, futuras investigaciones: ~50-100 palabras si aplica) para cumplir con el rango especificado.
+
+Puntos a Cubrir Exhaustivamente:
+
+    *   **Resumen Conciso:
+
+Tarea: Sintetizar los principales hallazgos del análisis en un párrafo breve y claro (~100 palabras), destacando la tendencia general (ej., decreciente, fluctuante), las etapas clave del ciclo de vida (surgimiento, picos, declives, resurgimientos), y patrones notables (ej., volatilidad, transformaciones).
+Instrucción: Incluir al menos 3-4 métricas específicas (ej., "NADT: -0.05", "pico en [año]: 92", "estabilización: 54 meses") para anclar la síntesis en los datos.
+
+Ejemplo orientativo: "El análisis de {all_kw} en {dbs} muestra un NADT de -0.02, con un surgimiento en 2008, un pico en 2012 (valor: 92), un declive hasta 2015 (-15% anual), y un resurgimiento en 2019 (28%), reflejando un ciclo complejo."
+
+    *   **Evaluación Crítica:
+Tarea: Evaluar si los patrones observados son más consistentes con la definición operacional de "moda gerencial" (innovaciones de auge rápido y declive efímero, Madsen & Stenheim, 2014) o con otras explicaciones (ej., resiliencia, integración estructural), considerando toda la evidencia de las Secciones III y IV.
+
+Instrucción:
+Contrastar los datos con los rasgos de una "moda" (difusión rápida, pico breve, declive sostenido) y alternativas (estabilización prolongada, resurgimientos).
+Justificar exhaustivamente con al menos 3-4 referencias a métricas (ej., "duración total: 15 años", "tasa de crecimiento: 25% anual", "ausencia de declive final").
+
+Ejemplo: "Un ciclo breve de 33 meses con declive de -40% anual es más consistente con una moda, mientras una estabilización de 52 meses sugiere durabilidad."
+
+Nota: Mantener un juicio equilibrado, reconociendo ambigüedades (ej., "aunque X sugiere una moda, Y apunta a otra dinámica").
+
+    *   **Limitaciones:
+Tarea: Reconocer explícitamente las limitaciones del análisis, integrándolas en el flujo narrativo sin crear una sección separada, y destacando al menos 2-3 restricciones específicas.
+
+Instrucción:
+Incluir limitaciones como sesgos de la fuente {dbs} (ej., representatividad, granularidad), naturaleza exploratoria (falta de datos causales), o alcance temporal (ej., datos incompletos post-[año]).
+Tejrlas en la reflexión (ej., "Si bien el declive sugiere X, la dependencia de {dbs} podría subestimar factores contextuales").
+
+Ejemplo orientativo:* "La evaluación se ve matizada por la naturaleza exploratoria del estudio, que carece de datos externos para confirmar causalidad, y por posibles sesgos en {dbs}, que podrían no capturar usos no registrados."
+
+    *   **Futuras Investigaciones (Opcional):
+Tarea: Si no se han cubierto completamente en la Sección V, sugerir brevemente 1-2 líneas de investigación futura basadas en los hallazgos o limitaciones, integrándolas al cierre del texto.
+Instrucción:
+Vincular a patrones o vacíos específicos (ej., "el resurgimiento en 2019 invita a explorar factores tecnológicos").
+Mantener brevedad (~50-100 palabras) y especificidad.
+
+Ejemplo orientativo:* "Futuras indagaciones podrían examinar cómo eventos externos impulsan los resurgimientos de {all_kw}."
+
+Nota: Omitir si ya se abordó exhaustivamente en la Sección V, verificando primero.
+Ejemplo Orientativo:
+"El análisis de {all_kw} en {dbs} revela un NADT de -0.02, con un surgimiento en 2008, crecimiento hasta 2010 (25% anual), declive hasta 2015 (-15% anual), estabilización hasta 2019 (52 meses), y resurgimiento en 2019 (18%). Estos patrones son más consistentes con una herramienta duradera que con una moda gerencial, cuya efimeridad (Madsen & Stenheim, 2014) no explica la estabilización prolongada ni el rebote tardío. Sin embargo, la dependencia de {dbs} podría subestimar dinámicas externas, y la falta de datos causales limita la certeza. Futuras investigaciones podrían explorar los desencadenantes del resurgimiento. [Salto de página]"
+
+Notas:
+Ajustar el contenido según los datos específicos de {all_kw} en {dbs}, verificando consistencia con las Secciones III y IV.
+Garantizar 600-700 palabras, distribuyendo proporcionalmente (resumen: ~100, evaluación: ~350, limitaciones: ~150, futuro: ~50-100 si aplica).
+Incluir [Salto de página] al final como instrucción literal para el formato
 ```"""
 
 temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
