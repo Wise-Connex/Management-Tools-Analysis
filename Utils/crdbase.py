@@ -847,6 +847,24 @@ def get_tool_keywords(tool_name):
         logger.error(f"Error reading keywords file: {str(e)}")
         return None
 
+def convert_year(yy):
+    """
+    Convert 2-digit year to 4-digit year
+    - Years 00-49 are assumed to be 2000-2049
+    - Years 50-99 are assumed to be 1950-1999
+    
+    Args:
+        yy: Two-digit year string
+        
+    Returns:
+        str: Four-digit year string
+    """
+    year = int(yy)
+    if year >= 50:
+        return f"19{yy}"
+    else:
+        return f"20{yy}"
+
 def query_crossref_api(term, date, max_rows=DEFAULT_ROWS):
     """
     Query Crossref API for a term and date
@@ -867,8 +885,10 @@ def query_crossref_api(term, date, max_rows=DEFAULT_ROWS):
         if len(date_parts) != 2:
             raise ValueError("Invalid date format. Expected YY-MM")
             
-        year = f"20{date_parts[0]}"
+        year = convert_year(date_parts[0])  # Use new convert_year function
         month = date_parts[1]
+        
+        logger.info(f"Converting date {date} to {year}-{month}")
         
         # Setup API parameters
         base_url = "https://api.crossref.org/works"
