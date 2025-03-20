@@ -1,0 +1,50 @@
+# Format: Tool Name: Original query -> Optimizado query
+# Use -> to separate Original and Optimizado queries
+# Use multiple lines for multiple optimizations
+
+1. Original: "Reengineering + Business Process Reengineering + Process Reengineering"
+Optimizado: ("Reengineering")
+2. Original: "Supply Chain Management + Supply Chain Integration + Supply Chain"
+Optimizado: ("Supply | Chain") + ("Supply +Chain")
+3. Original: "Scenario Planning + Scenario Analysis + Contingency Planning + Scenario and Contingency Planning"
+Optimizado: ("Scenario | Planning") + ("Scenario +Planning" | "Scenario +Analysis" | "Contingency +Planning")
+4. Original: "Strategic Planning + Dynamic Strategic Planning + Strategic Budgeting + Strategic Thinking + Strategic Management"
+Optimizado: ("Strategic”) + ("Strategic +Planning" | "Strategic +Budgeting" | "Strategic +Thinking " | "Strategic +Management")
+5. Original: "Benchmarking"
+Optimizado: ("Benchmarking")
+6. Original: "Core Competencies + Core Competence"
+Optimizado: ("Core") + ("Core +Competencies " | " Core +Competence")
+7. Original: "Balanced Scorecard"
+Optimizado: ("Balanced | Scorecard") + ("Balanced +Scorecard")
+8. Original: "Growth Strategies + Growth Strategy"
+Optimizado: ("Growth") + ("Growth +Strategies" | "Growth +Strategy")
+9. Original: "Customer Relationship Management + Customer Experience Management + Customer Satisfaction Measurement + Customer Satisfaction"
+Optimizado: ("Customer") + ("Customer +Relationship +Management" | "Customer +Experience +Management" | "Customer +Satisfaction")
+10. Original: "Total Quality Management + TQM + Total Quality"
+Optimizado: ("Total | Quality") + ("Total +Quality")
+11. Original: "Mission Statements + Vision Statements + Purpose Statements + Mission and Vision"
+Optimizado: ("Mission | Vision") + ("Mission +Statements" | "Vision +Statements" | "Mision +and +Vision”)
+12. Original: "Corporate Venture Capital + Strategic Alliance + Strategic Alliances"
+Optimizado: (“Strategic | Venture”) + ("Corporate +Venture +Capital" | "Strategic +Alliances")
+13. Original: "Outsourcing"
+Optimizado: ("Outsourcing")
+14. Original: "Customer Segmentation + Market Segmentation"
+Optimizado: ("Segmentation") + ("Customer +Segmentation " | " Market +Segmentation")
+15. Original: "Mergers and Acquisitions + Mergers & Acquisitions"
+Optimizado: (“Mergers”) + ("Mergers +and +Acquisitions" | “mergers +& + acquisitions”)
+16. Original: "Activity Based Management + Activity Based Costing"
+Optimizado: ("Activity | Based") + ("Activity +Based +Management" | "Activity +Based +Costing”)
+17. Original: "Zero Based Budgeting + Priority Based Budgeting + Program Budgeting"
+Optimizado: ("Budgeting") + ("Zero +Based +Budgeting" | "Priority +Based +Budgeting" | "Program +Budgeting")
+18. Original: "Knowledge Management + Intellectual Capital Management + Knowledge Transfer"
+Optimizado: (“Knowledge | Management”) + ("Knowledge +Management" | "Intellectual +Capital +Management" | "Knowledge" +Transfer")
+19. Original: "Change Management Programs + Change Management"
+Optimizado: ("Change | Management") + ("Change +Management")
+20. Original: "Price Optimization + Pricing Optimization + Dynamic Pricing Models + Optimal Pricing + Dynamic Pricing"
+Optimizado: ("Price | Pricing) + ("Price +Optimization" | "Pricing +Optimization" | "Dynamic +Pricing” | “Optimal +Pricing")
+21. Original: "Loyalty Management + Customer Loyalty + Satisfaction and Loyalty + Customer Retention"
+Optimizado: ("Loyalty | Customer”) + ("Loyalty +Management” | “Customer +Loyalty” | “Satisfaction +and +Loyalty” | “Customer +Retention")
+22. Original: "Design Thinking + Open Innovation + Collaborative Innovation + Market Innovation + Crowdsourcing Innovation"
+Optimizado: (“Innovation | Thinking”) + ("Design +Thinking” | “Open +Innovation” | “Collaborative +Innovation” | “Market +Innovation” | “Crowdsourcing +Innovation")
+23. Original: "Corporate Code of Ethics + Employee Engagement Programs + Employee Engagement Surveys + Employee Engagement"
+Optimizado: (“Employee | Corporate”) + ("Corporate +Code +of +Ethics” | “Employee +Engagement")
