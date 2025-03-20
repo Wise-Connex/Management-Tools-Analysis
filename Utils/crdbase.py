@@ -23,11 +23,433 @@ import requests
 from datetime import datetime
 from urllib.parse import quote_plus
 import time
+import shutil
+import re
 
 # Global constants
 APP_NAME = "crdbase"
-APP_VERSION = "1.0.0"
+APP_VERSION = "2.0.0"  # Updated version number
 DEFAULT_ROWS = 1000  # Default number of results to return from API per page
+CROSSREF_API_DELAY = 1.5  # Delay between API calls in seconds
+
+# Tool name mappings
+TOOL_NAME_MAPPINGS = {
+    # Reengineering variations
+    "Reingeniería de Procesos": "Reengineering",
+    "BPR": "Reengineering",
+    "Process Reengineering": "Reengineering",
+    "Business Reengineering": "Reengineering",
+    "Reingeniería": "Reengineering",
+    
+    # Supply Chain Management variations
+    "Gestión de la Cadena de Suministro": "Supply Chain Management",
+    "SCM": "Supply Chain Management",
+    "Supply Chain": "Supply Chain Management",
+    "Cadena de Suministro": "Supply Chain Management",
+    
+    # Scenario Planning variations
+    "Planificación de Escenarios": "Scenario Planning",
+    "Scenario Analysis": "Scenario Planning",
+    "Scenario-based Planning": "Scenario Planning",
+    "Planificación por Escenarios": "Scenario Planning",
+    
+    # Strategic Planning variations
+    "Planificación Estratégica": "Strategic Planning",
+    "Strategic Management": "Strategic Planning",
+    "Strategic Plan": "Strategic Planning",
+    
+    # Customer Experience/CRM variations
+    "Experiencia del Cliente": "Customer Relationship Management",
+    "CRM": "Customer Relationship Management",
+    "Customer Relations": "Customer Relationship Management",
+    "Gestión de Relaciones con Clientes": "Customer Relationship Management",
+    
+    # Total Quality Management variations
+    "Calidad Total": "Total Quality Management",
+    "TQM": "Total Quality Management",
+    "Total Quality": "Total Quality Management",
+    "Gestión de Calidad Total": "Total Quality Management",
+    
+    # Mission/Vision variations
+    "Propósito y Visión": "Mission Statements",
+    "Mission and Vision": "Mission Statements",
+    "Mission Statement": "Mission Statements",
+    "Misión y Visión": "Mission Statements",
+    
+    # Core Competencies variations
+    "Competencias Centrales": "Core Competencies",
+    "Core Competency": "Core Competencies",
+    "Core Capability": "Core Competencies",
+    "Core Capabilities": "Core Competencies",
+    
+    # Balanced Scorecard variations
+    "Cuadro de Mando Integral": "Balanced Scorecard",
+    "CMI": "Balanced Scorecard",
+    "BSC": "Balanced Scorecard",
+    
+    # Strategic Alliances/Venture Capital variations
+    "Alianzas y Capital de Riesgo": "Corporate Venture Capital",
+    "CVC": "Corporate Venture Capital",
+    "Corporate Venturing": "Corporate Venture Capital",
+    "Strategic Alliance": "Corporate Venture Capital",
+    "Strategic Alliances": "Corporate Venture Capital",
+    
+    # Customer Segmentation variations
+    "Segmentación de Clientes": "Customer Segmentation",
+    "Market Segmentation": "Customer Segmentation",
+    "Segmentación": "Customer Segmentation",
+    
+    # Mergers and Acquisitions variations
+    "Fusiones y Adquisiciones": "Mergers and Acquisitions",
+    "M&A": "Mergers and Acquisitions",
+    "Mergers & Acquisitions": "Mergers and Acquisitions",
+    
+    # Activity Based Management variations
+    "Gestión de Costos": "Activity Based Management",
+    "ABM": "Activity Based Management",
+    "Activity-Based Management": "Activity Based Management",
+    "Activity Based Costing": "Activity Based Management",
+    
+    # Zero Based Budgeting variations
+    "Presupuesto Base Cero": "Zero Based Budgeting",
+    "ZBB": "Zero Based Budgeting",
+    "Zero-Based Budgeting": "Zero Based Budgeting",
+    
+    # Growth Strategies variations
+    "Estrategias de Crecimiento": "Growth Strategies",
+    "Growth Strategy": "Growth Strategies",
+    "Growth Strategy Tools": "Growth Strategies",
+    
+    # Knowledge Management variations
+    "Gestión del Conocimiento": "Knowledge Management",
+    "KM": "Knowledge Management",
+    "Knowledge Transfer": "Knowledge Management",
+    "Intellectual Capital Management": "Knowledge Management",
+    
+    # Change Management variations
+    "Gestión del Cambio": "Change Management Programs",
+    "Change Programs": "Change Management Programs",
+    "Change Management": "Change Management Programs",
+    
+    # Price Optimization variations
+    "Optimización de Precios": "Price Optimization",
+    "Pricing Optimization": "Price Optimization",
+    "Price Management": "Price Optimization",
+    "Dynamic Pricing": "Price Optimization",
+    "Optimal Pricing": "Price Optimization",
+    
+    # Customer Loyalty variations
+    "Lealtad del Cliente": "Loyalty Management",
+    "Customer Loyalty": "Loyalty Management",
+    "Loyalty Programs": "Loyalty Management",
+    "Customer Retention": "Loyalty Management",
+    "Satisfaction and Loyalty": "Loyalty Management",
+    
+    # Design Thinking/Innovation variations
+    "Innovación Colaborativa": "Design Thinking",
+    "Design-Thinking": "Design Thinking",
+    "Design Innovation": "Design Thinking",
+    "Open Innovation": "Design Thinking",
+    "Collaborative Innovation": "Design Thinking",
+    "Market Innovation": "Design Thinking",
+    
+    # Corporate Code of Ethics/Employee Engagement variations
+    "Talento y Compromiso": "Corporate Code of Ethics",
+    "Code of Ethics": "Corporate Code of Ethics",
+    "Corporate Ethics": "Corporate Code of Ethics",
+    "Employee Engagement": "Corporate Code of Ethics",
+    "Employee Engagement Programs": "Corporate Code of Ethics"
+}
+
+def map_tool_name(tool_name):
+    """
+    Map alternative tool names to their standard name
+    
+    Args:
+        tool_name: Input tool name
+        
+    Returns:
+        str: Standardized tool name
+    """
+    return TOOL_NAME_MAPPINGS.get(tool_name, tool_name)
+
+class BatchProcessor:
+    """Manages batch processing and file organization"""
+    
+    def __init__(self, tool_name, date):
+        """
+        Initialize batch processor
+        
+        Args:
+            tool_name: Name of the management tool
+            date: Date in YY-MM format
+        """
+        # Initialize logger first
+        self.logger = logging.getLogger(__name__)
+        
+        # Map tool name if necessary
+        self.original_tool_name = tool_name
+        self.tool_name = map_tool_name(tool_name)
+        if self.tool_name != self.original_tool_name:
+            self.logger.info(f"Mapped tool name '{self.original_tool_name}' to '{self.tool_name}'")
+        
+        self.date = date
+        
+        # Generate shorter batch ID (5 chars) using timestamp components
+        timestamp = datetime.now()
+        # Use minute (2 digits) + second (2 digits) + microsecond (1 digit)
+        self.batch_id = f"{timestamp.minute:02d}{timestamp.second:02d}{timestamp.microsecond // 100000}"
+        
+        # Setup batch folder after logger is initialized
+        self.base_path = self.setup_batch_folder()
+        
+        self.logger.info(f"Initialized BatchProcessor for {self.original_tool_name} ({date})")
+        
+    def setup_batch_folder(self):
+        """Create and setup batch folder structure"""
+        # Create safe folder name using original tool name
+        safe_tool_name = self.original_tool_name.replace(' ', '_').replace('/', '_')
+        folder_name = f"{safe_tool_name}_{self.date}_{self.batch_id}"
+        
+        # Create folder structure
+        base_path = os.path.join('crData', folder_name)
+        term_results_path = os.path.join(base_path, 'term_results')
+        
+        os.makedirs(term_results_path, exist_ok=True)
+        
+        self.logger.info(f"Created batch folder structure at {base_path}")
+        return base_path
+    
+    def get_file_path(self, file_type, term=None):
+        """
+        Generate standardized file paths for batch files
+        
+        Args:
+            file_type: Type of file (term, merged, filtered, final, statistics)
+            term: Optional term name for individual term results
+            
+        Returns:
+            str: Full path to the file
+        """
+        if term:
+            # Individual term result file
+            safe_term = term.replace(' ', '_').replace('/', '_')
+            return os.path.join(self.base_path, 'term_results', f"{safe_term}_results.json")
+        
+        # Other file types
+        return os.path.join(self.base_path, f"{file_type}_results.json")
+    
+    def get_all_paths(self):
+        """
+        Get all file paths associated with this batch
+        
+        Returns:
+            dict: Dictionary of all file paths
+        """
+        return {
+            'base_folder': self.base_path,
+            'term_results_folder': os.path.join(self.base_path, 'term_results'),
+            'merged': self.get_file_path('merged'),
+            'filtered': self.get_file_path('filtered'),
+            'final': self.get_file_path('final'),
+            'statistics': self.get_file_path('statistics')
+        }
+    
+    def save_json(self, data, file_type, term=None):
+        """
+        Save data to JSON file
+        
+        Args:
+            data: Data to save
+            file_type: Type of file
+            term: Optional term name for individual term results
+            
+        Returns:
+            str: Path to saved file
+        """
+        file_path = self.get_file_path(file_type, term)
+        try:
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            self.logger.info(f"Saved {file_type} data to {file_path}")
+            return file_path
+        except Exception as e:
+            self.logger.error(f"Error saving {file_type} data: {str(e)}")
+            raise
+
+def parse_boolean_expression(expression):
+    """
+    Parse a boolean expression into a structured format that can be evaluated
+    
+    Args:
+        expression: Boolean expression string
+        
+    Returns:
+        dict: Parsed expression structure
+    """
+    logger = logging.getLogger(__name__)
+    logger.info(f"Parsing boolean expression: {expression}")
+    
+    # Clean up the expression
+    # Replace double quotes with single quotes for easier parsing
+    clean_expr = expression.replace('""', '"')
+    
+    # Split by AND first
+    and_parts = []
+    current_part = ""
+    paren_level = 0
+    
+    # Handle nested parentheses in AND splitting
+    for char in clean_expr:
+        if char == '(' and current_part.strip() == "":
+            paren_level += 1
+            if paren_level > 1:
+                current_part += char
+        elif char == '(':
+            paren_level += 1
+            current_part += char
+        elif char == ')':
+            paren_level -= 1
+            if paren_level >= 0:
+                current_part += char
+        elif char == 'A' and paren_level == 0 and len(current_part) >= 4 and current_part[-4:] == " AND":
+            # Found " AND" at paren_level 0, split here
+            and_parts.append(current_part[:-4].strip())
+            current_part = ""
+        else:
+            current_part += char
+    
+    # Add the last part if not empty
+    if current_part.strip():
+        and_parts.append(current_part.strip())
+    
+    # If no AND parts were found, try the simpler approach
+    if not and_parts:
+        and_parts = [part.strip() for part in clean_expr.split(' AND ')]
+    
+    parsed = {
+        'type': 'AND',
+        'parts': []
+    }
+    
+    for and_part in and_parts:
+        # Check if this part has OR conditions
+        if ' OR ' in and_part:
+            # Handle parentheses if present
+            if and_part.startswith('(') and and_part.endswith(')'):
+                and_part = and_part[1:-1].strip()
+            
+            # Split by OR
+            or_parts = []
+            current_or = ""
+            or_paren_level = 0
+            
+            # Handle nested parentheses in OR splitting
+            for char in and_part:
+                if char == '(':
+                    or_paren_level += 1
+                    current_or += char
+                elif char == ')':
+                    or_paren_level -= 1
+                    current_or += char
+                elif char == 'O' and or_paren_level == 0 and len(current_or) >= 3 and current_or[-3:] == " OR":
+                    # Found " OR" at paren_level 0, split here
+                    or_parts.append(current_or[:-3].strip())
+                    current_or = ""
+                else:
+                    current_or += char
+            
+            # Add the last part if not empty
+            if current_or.strip():
+                or_parts.append(current_or.strip())
+            
+            # If no OR parts were found, try the simpler approach
+            if not or_parts:
+                or_parts = [part.strip() for part in and_part.split(' OR ')]
+            
+            parsed['parts'].append({
+                'type': 'OR',
+                'parts': or_parts
+            })
+        else:
+            # Single term (no OR)
+            parsed['parts'].append(and_part.strip())
+    
+    logger.info(f"Parsed expression: {parsed}")
+    return parsed
+
+def evaluate_boolean_expression(item, parsed_expr):
+    """
+    Evaluate if an item matches a parsed boolean expression
+    
+    Args:
+        item: Item to evaluate (dict with metadata)
+        parsed_expr: Parsed boolean expression
+        
+    Returns:
+        bool: True if item matches the expression, False otherwise
+    """
+    # Helper function to check if a term is in an item's metadata
+    def term_matches(term, item):
+        # Remove quotes and parentheses if present
+        term = term.replace('"', '').replace('(', '').replace(')', '').strip()
+        
+        # Skip empty terms
+        if not term:
+            return True
+        
+        # Check in title
+        if 'title' in item and isinstance(item['title'], list) and len(item['title']) > 0:
+            title = ' '.join(item['title']).lower()
+            if term.lower() in title:
+                return True
+        
+        # Check in abstract
+        if 'abstract' in item and item['abstract']:
+            if isinstance(item['abstract'], str):
+                abstract = item['abstract'].lower()
+                if term.lower() in abstract:
+                    return True
+            elif isinstance(item['abstract'], list):
+                abstract = ' '.join(item['abstract']).lower()
+                if term.lower() in abstract:
+                    return True
+        
+        # Check in subject
+        if 'subject' in item and isinstance(item['subject'], list):
+            subjects = ' '.join(item['subject']).lower()
+            if term.lower() in subjects:
+                return True
+            
+        # Check in container-title (journal name)
+        if 'container-title' in item and isinstance(item['container-title'], list) and len(item['container-title']) > 0:
+            container_title = ' '.join(item['container-title']).lower()
+            if term.lower() in container_title:
+                return True
+        
+        return False
+    
+    # Evaluate AND expression
+    if parsed_expr['type'] == 'AND':
+        for part in parsed_expr['parts']:
+            if isinstance(part, dict) and part['type'] == 'OR':
+                # Evaluate OR expression
+                or_result = False
+                for or_part in part['parts']:
+                    if term_matches(or_part, item):
+                        or_result = True
+                        break
+                
+                if not or_result:
+                    return False
+            else:
+                # Evaluate single term
+                if not term_matches(part, item):
+                    return False
+        
+        return True
+    
+    return False
 
 def get_project_root():
     """Get the project root directory"""
@@ -65,17 +487,24 @@ def parse_arguments():
                         help='Maximum total number of results to return (default: all available)')
     parser.add_argument('--all', action='store_true', 
                         help='Retrieve all available results (may take longer for large result sets)')
+    parser.add_argument('--post-filter', action='store_true',
+                        help='Apply keyword filtering after retrieving results (recommended for complex queries)')
     parser.add_argument('--version', action='version', version=f'{APP_NAME} {APP_VERSION}')
     return parser.parse_args()
 
 def print_welcome():
-    """Print welcome message"""
-    print(f"\n{APP_NAME.upper()} v{APP_VERSION} - Management Tool Data Extraction")
-    print("=" * 50)
-    print("This application queries the Crossref API for specific management tools and dates.")
-    print("Results are saved as JSON files for later exploration.")
-    print("By default, up to 1000 results are retrieved. Use --all to retrieve all available results.")
-    print("=" * 50)
+    """Print welcome message and version information"""
+    print(f"\nWelcome to {APP_NAME} v{APP_VERSION}")
+    print("Management Tool Data Extraction Application")
+    print("\nThis application allows you to extract data from the Crossref API")
+    print("for specific management tools and dates.")
+    print("\nFeatures:")
+    print("- Extract data by tool name and date")
+    print("- Support for complex boolean keyword expressions")
+    print("- Post-query filtering for better result accuracy")
+    print("- Automatic pagination handling")
+    print("- Progress reporting and error handling")
+    print("\nUse --help for command line options\n")
 
 # ===== SECTION 2: TOOL SELECTION MENU (REVISED) =====
 
@@ -418,138 +847,99 @@ def get_tool_keywords(tool_name):
         logger.error(f"Error reading keywords file: {str(e)}")
         return None
 
-def query_crossref_api(keywords, date, max_rows=DEFAULT_ROWS, max_results=None):
+def query_crossref_api(term, date, max_rows=DEFAULT_ROWS):
     """
-    Query Crossref API with keywords for a specific date
+    Query Crossref API for a single term
     
     Args:
-        keywords: Search keywords
-        date: Date in YYYY-MM format
-        max_rows: Maximum number of results to return per request
-        max_results: Maximum total number of results to return (None for all)
+        term: Search term
+        date: Date in YY-MM format
+        max_rows: Maximum rows per page
         
     Returns:
-        dict: API response data or None if error
+        tuple: (total_results, items)
     """
     logger = logging.getLogger(__name__)
     
+    # Convert date to required format (YYYY-MM)
+    year = int(f"20{date.split('-')[0]}")
+    month = int(date.split('-')[1])
+    from_date = f"{year}-{month:02d}"
+    to_date = f"{year}-{month+1:02d}" if month < 12 else f"{year+1}-01"
+    
+    # Base URL for the Crossref API
+    base_url = "https://api.crossref.org/works"
+    
+    # Prepare query parameters
+    params = {
+        'query': term,
+        'filter': f'from-pub-date:{from_date},until-pub-date:{to_date}',
+        'rows': max_rows,
+        'cursor': '*',
+        'select': 'DOI,title,published-print,type,subject,container-title,abstract'
+    }
+    
+    # Add email for polite pool
+    headers = {'User-Agent': f'{APP_NAME}/{APP_VERSION} (mailto:your-email@domain.com)'}
+    
+    all_items = []
+    total_results = 0
+    items_retrieved = 0
+    last_progress = -1  # Track last printed progress to avoid duplicate prints
+    
     try:
-        # Parse the date to get year and month
-        year, month = date.split('-')
-        
-        # Calculate the start and end dates for the month
-        start_date = f"{year}-{month}-01"
-        
-        # Calculate end date (last day of month)
-        if month == '12':
-            end_date = f"{int(year)+1}-01-01"
-        else:
-            end_month = int(month) + 1
-            end_date = f"{year}-{end_month:02d}-01"
-        
-        # Prepare the query parameters
-        # Remove quotes from keywords if they exist
-        clean_keywords = keywords.replace('"', '')
-        
-        # Initialize variables for pagination
-        cursor = "*"  # Start with the first page
-        all_items = []
-        total_results = 0
-        page_count = 0
-        
-        # Loop until we've retrieved all results or reached a limit
-        while cursor:
-            params = {
-                'query': clean_keywords,
-                'filter': f'from-pub-date:{start_date},until-pub-date:{end_date}',
-                'rows': max_rows,
-                'cursor': cursor,
-                'select': 'DOI,title,published,author,container-title,type,subject,abstract'
-            }
+        while True:
+            # Add delay between requests
+            time.sleep(CROSSREF_API_DELAY)
             
-            # Construct the URL
-            base_url = "https://api.crossref.org/works"
-            query_string = "&".join([f"{k}={quote_plus(str(v))}" for k, v in params.items()])
-            url = f"{base_url}?{query_string}"
-            
-            page_count += 1
-            logger.info(f"Querying Crossref API (page {page_count}): {url}")
-            if page_count == 1:
-                print(f"Querying Crossref API for {date}...")
-            else:
-                print(f"Retrieving page {page_count}...")
-            
-            # Make the request
-            response = requests.get(url, timeout=60)
+            # Make request
+            response = requests.get(base_url, params=params, headers=headers)
             response.raise_for_status()
-            
-            # Parse the response
             data = response.json()
             
-            # Check if we have results
-            if 'message' in data and 'items' in data['message']:
-                items = data['message']['items']
-                if page_count == 1:
-                    # Get total results from first page
-                    total_results = data['message'].get('total-results', 0)
-                    logger.info(f"Found {total_results} total results")
-                    print(f"Found {total_results} total results")
+            # Update total results
+            total_results = data['message']['total-results']
+            
+            # Process items
+            items = data['message']['items']
+            current_page_items = len(items)
+            if current_page_items == 0:
+                break
                 
-                # Add items to our collection
-                all_items.extend(items)
-                logger.info(f"Retrieved {len(items)} items from page {page_count}")
-                print(f"Retrieved {len(items)} items from page {page_count} (total: {len(all_items)})")
+            all_items.extend(items)
+            items_retrieved += current_page_items
+            
+            # Calculate and display progress
+            if total_results > 0:
+                progress = min(100, int((items_retrieved / total_results) * 100))
+                if progress != last_progress:  # Only print if progress has changed
+                    progress_bar = '=' * (progress // 2) + '>' + ' ' * (50 - (progress // 2))
+                    print(f"\rRetrieving {term}: [{progress_bar}] {progress}% ({items_retrieved}/{total_results})", end='', flush=True)
+                    last_progress = progress
+            
+            # Log progress
+            logger.info(f"Retrieved {items_retrieved}/{total_results} results for term '{term}'")
+            
+            # Check if we've retrieved all results
+            if items_retrieved >= total_results:
+                print()  # New line after progress bar is complete
+                break
+            
+            # Get next cursor
+            next_cursor = data['message'].get('next-cursor')
+            if not next_cursor:
+                print()  # New line after progress bar
+                break
                 
-                # Check if we've reached the maximum results limit
-                if max_results is not None and len(all_items) >= max_results:
-                    logger.info(f"Reached maximum results limit of {max_results}")
-                    print(f"Reached maximum results limit of {max_results}")
-                    # Trim excess results if needed
-                    if len(all_items) > max_results:
-                        all_items = all_items[:max_results]
-                    break
-                
-                # Get next cursor for pagination
-                next_cursor = data['message'].get('next-cursor')
-                
-                # Check if we should continue pagination
-                if next_cursor and len(all_items) < total_results:
-                    cursor = next_cursor
-                    # Add a small delay to avoid rate limiting
-                    time.sleep(1)
-                else:
-                    # No more pages or we've reached our limit
-                    cursor = None
-            else:
-                logger.warning("No results found in API response")
-                print("No results found in API response")
-                return None
-        
-        # Create a new response with all items
-        result = {
-            'status': 'ok',
-            'message-type': 'work-list',
-            'message-version': '1.0.0',
-            'message': {
-                'total-results': total_results,
-                'items': all_items
-            }
-        }
-        
-        logger.info(f"Retrieved {len(all_items)} items in total across {page_count} pages")
-        print(f"Retrieved {len(all_items)} items in total across {page_count} pages")
-        
-        return result
-    
-    except requests.exceptions.RequestException as e:
-        logger.error(f"API request error: {str(e)}")
-        print(f"Error querying Crossref API: {str(e)}")
-        return None
-    
+            # Update cursor for next page
+            params['cursor'] = next_cursor
+            
     except Exception as e:
-        logger.error(f"Error processing API response: {str(e)}")
-        print(f"Error processing API response: {str(e)}")
-        return None
+        print()  # New line in case of error
+        logger.error(f"Error querying Crossref API for term '{term}': {str(e)}")
+        return 0, []
+    
+    return total_results, all_items
 
 def save_to_json(data, tool_name, date, output_path=None):
     """
@@ -605,116 +995,654 @@ def save_to_json(data, tool_name, date, output_path=None):
         print(f"\nError saving data: {str(e)}")
         return None
 
-def extract_crossref_data(tool_name, date, output_path=None, max_rows=DEFAULT_ROWS, max_results=None):
+def extract_crossref_data(tool_name, date, output_path=None, max_rows=DEFAULT_ROWS, max_results=None, post_filter=False):
     """
     Extract data from Crossref API for a specific tool and date
     
     Args:
-        tool_name: Name of the tool
-        date: Date in YYYY-MM format
-        output_path: Optional output file path
-        max_rows: Maximum number of results to return per request
-        max_results: Maximum total number of results to return (None for all)
+        tool_name: Name of the management tool
+        date: Date in YY-MM format
+        output_path: Optional path to save JSON output
+        max_rows: Maximum number of results to return per page
+        max_results: Maximum total number of results to return
+        post_filter: Whether to apply keyword filtering after retrieving results
         
     Returns:
-        str: Path to the saved file or None if error
+        str: Path to the saved JSON file or None if error
     """
     logger = logging.getLogger(__name__)
-    logger.info(f"Extracting Crossref data for {tool_name} on {date}")
+    logger.info(f"Extracting data for {tool_name} ({date})")
     
     # Get keywords for the tool
     keywords = get_tool_keywords(tool_name)
     if not keywords:
-        print(f"Error: Could not find keywords for {tool_name}")
+        print(f"Error: Could not find keywords for tool '{tool_name}'")
         return None
     
     # Query Crossref API
-    data = query_crossref_api(keywords, date, max_rows, max_results)
-    if not data:
+    total_results, items = query_crossref_api(keywords, date, max_rows)
+    if not items:
         print(f"Error: Could not retrieve data from Crossref API for {date}")
         return None
+    
+    # Prepare data for saving
+    data = {
+        'status': 'ok',
+        'message-type': 'work-list',
+        'message-version': '1.0.0',
+        'message': {
+            'total-results': total_results,
+            'items': items
+        }
+    }
     
     # Save data to JSON file
     return save_to_json(data, tool_name, date, output_path)
 
-if __name__ == "__main__":
-    # Setup logging
+def get_single_terms(tool_name):
+    """
+    Get individual search terms from single_term_queries.json
+    
+    Args:
+        tool_name: Name of the tool
+        
+    Returns:
+        list: List of search terms
+    """
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Map tool name if necessary
+        mapped_tool_name = map_tool_name(tool_name)
+        if mapped_tool_name != tool_name:
+            logger.info(f"Looking up terms for mapped tool name '{mapped_tool_name}'")
+        
+        # Load single term queries
+        project_root = get_project_root()
+        queries_file = os.path.join(project_root, 'crData', 'single_term_queries.json')
+        
+        with open(queries_file, 'r', encoding='utf-8') as f:
+            queries = json.load(f)
+        
+        # Get terms for tool
+        if mapped_tool_name not in queries:
+            logger.error(f"Tool '{mapped_tool_name}' not found in single_term_queries.json")
+            return []
+            
+        terms = queries[mapped_tool_name]
+        logger.info(f"Found {len(terms)} search terms for {mapped_tool_name}")
+        return terms
+        
+    except Exception as e:
+        logger.error(f"Error loading single term queries: {str(e)}")
+        return []
+
+def process_entry(item):
+    """
+    Process a single entry from the Crossref API
+    
+    Args:
+        item: API response item
+        
+    Returns:
+        dict: Processed item or None if invalid
+    """
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Check required fields
+        if not item.get('DOI'):
+            logger.debug("Skipping entry: Missing DOI")
+            return None
+            
+        if not item.get('title'):
+            logger.debug(f"Skipping entry {item['DOI']}: Missing title")
+            return None
+        
+        # Create processed entry with required fields
+        processed = {
+            'doi': item['DOI'],
+            'title': item['title'],
+            'type': item.get('type', ''),
+            'container-title': item.get('container-title', []),
+            'subject': item.get('subject', []),
+            'abstract': item.get('abstract', '')
+        }
+        
+        # Add publication date if available
+        if 'published-print' in item:
+            date_parts = item['published-print'].get('date-parts', [[]])[0]
+            if len(date_parts) >= 2:
+                processed['publication_date'] = f"{date_parts[0]}-{date_parts[1]:02d}"
+        
+        return processed
+        
+    except Exception as e:
+        logger.error(f"Error processing entry: {str(e)}")
+        return None
+
+def process_individual_terms(terms, date, batch):
+    """
+    Process each search term individually
+    
+    Args:
+        terms: List of search terms
+        date: Date in YY-MM format
+        batch: BatchProcessor instance
+        
+    Returns:
+        list: List of file paths containing term results
+    """
+    logger = logging.getLogger(__name__)
+    term_files = []
+    
+    for term in terms:
+        logger.info(f"Processing term: {term}")
+        
+        # Query API
+        total_results, items = query_crossref_api(term, date)
+        
+        if items:
+            # Process entries
+            processed_items = []
+            discarded_count = 0
+            
+            for item in items:
+                processed_item = process_entry(item)
+                if processed_item:
+                    processed_items.append(processed_item)
+                else:
+                    discarded_count += 1
+            
+            # Save results
+            data = {
+                'term': term,
+                'total_results': total_results,
+                'processed_count': len(processed_items),
+                'discarded_count': discarded_count,
+                'items': processed_items
+            }
+            
+            file_path = batch.save_json(data, 'term', term)
+            term_files.append(file_path)
+            
+            logger.info(f"Saved {len(processed_items)} results for term '{term}'")
+        else:
+            logger.warning(f"No results found for term '{term}'")
+    
+    return term_files
+
+def merge_term_results(term_files, batch):
+    """
+    Merge individual term results
+    
+    Args:
+        term_files: List of term result file paths
+        batch: BatchProcessor instance
+        
+    Returns:
+        dict: Merged results
+    """
+    logger = logging.getLogger(__name__)
+    
+    merged_items = []
+    term_stats = []
+    
+    for file_path in term_files:
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                
+            merged_items.extend(data['items'])
+            term_stats.append({
+                'term': data['term'],
+                'total_results': data['total_results'],
+                'processed_count': data['processed_count'],
+                'discarded_count': data['discarded_count']
+            })
+            
+        except Exception as e:
+            logger.error(f"Error merging results from {file_path}: {str(e)}")
+    
+    # Save merged results
+    merged_data = {
+        'term_statistics': term_stats,
+        'total_items': len(merged_items),
+        'items': merged_items
+    }
+    
+    batch.save_json(merged_data, 'merged')
+    return merged_data
+
+def get_boolean_query(tool_name):
+    """
+    Get boolean logic query from boolean_logic_queries.json
+    
+    Args:
+        tool_name: Name of the tool
+        
+    Returns:
+        str: Boolean logic query
+    """
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Load boolean logic queries
+        project_root = get_project_root()
+        queries_file = os.path.join(project_root, 'crData', 'boolean_logic_queries.json')
+        
+        with open(queries_file, 'r', encoding='utf-8') as f:
+            queries = json.load(f)
+        
+        # Get query for tool
+        if tool_name not in queries:
+            logger.error(f"Tool '{tool_name}' not found in boolean_logic_queries.json")
+            return None
+            
+        query = queries[tool_name]
+        logger.info(f"Found boolean query for {tool_name}: {query}")
+        return query
+        
+    except Exception as e:
+        logger.error(f"Error loading boolean logic queries: {str(e)}")
+        return None
+
+def check_consecutive_terms(text, terms):
+    """
+    Check if terms appear consecutively in text
+    
+    Args:
+        text: Text to search in
+        terms: List of terms to find consecutively
+        
+    Returns:
+        bool: True if terms are found consecutively
+    """
+    if not text or not terms:
+        return False
+    
+    # Convert text to lowercase for case-insensitive matching
+    text = text.lower()
+    
+    # Convert terms to lowercase
+    terms = [t.lower() for t in terms]
+    
+    # Join terms with space to create pattern
+    pattern = r'\b' + r'\s+'.join(terms) + r'\b'
+    
+    # Use regex to find consecutive terms
+    return bool(re.search(pattern, text))
+
+def apply_boolean_filter(merged_results, boolean_query, batch):
+    """
+    Apply boolean logic filtering to merged results
+    
+    Args:
+        merged_results: Merged results data
+        boolean_query: Boolean logic query
+        batch: BatchProcessor instance
+        
+    Returns:
+        dict: Filtered results
+    """
+    logger = logging.getLogger(__name__)
+    
+    # If no boolean query provided, pass through all results but maintain structure
+    if not boolean_query:
+        logger.warning("No boolean query provided, using all results")
+        filtered_data = {
+            'query': None,  # Set query to None instead of trying to access it later
+            'total_items': len(merged_results['items']),
+            'items': merged_results['items']
+        }
+        batch.save_json(filtered_data, 'filtered')
+        return filtered_data
+    
+    filtered_items = []
+    
+    # Process each item
+    for item in merged_results['items']:
+        # Get searchable text fields
+        title = ' '.join(item.get('title', [])) if isinstance(item.get('title'), list) else str(item.get('title', ''))
+        abstract = item.get('abstract', '') or ''
+        subject = ' '.join(item.get('subject', [])) if isinstance(item.get('subject'), list) else str(item.get('subject', ''))
+        
+        # Handle different query types
+        if boolean_query == '#':
+            # Use exact term match (already filtered by API)
+            filtered_items.append(item)
+            continue
+        
+        # Split query into parts
+        parts = boolean_query.split(' OR ')
+        matched = False
+        
+        for part in parts:
+            if 'AND_NEXT' in part:
+                # Handle consecutive terms
+                terms = [t.strip() for t in part.split('AND_NEXT')]
+                
+                # Check each field for consecutive terms
+                if (check_consecutive_terms(title, terms) or
+                    check_consecutive_terms(abstract, terms) or
+                    check_consecutive_terms(subject, terms)):
+                    matched = True
+                    break
+            else:
+                # Handle simple term
+                term = part.strip().lower()
+                if (term in title.lower() or
+                    term in abstract.lower() or
+                    term in subject.lower()):
+                    matched = True
+                    break
+        
+        if matched:
+            filtered_items.append(item)
+    
+    # Save filtered results
+    filtered_data = {
+        'query': boolean_query,
+        'total_items': len(filtered_items),
+        'items': filtered_items
+    }
+    
+    batch.save_json(filtered_data, 'filtered')
+    return filtered_data
+
+def process_dois(filtered_results, batch):
+    """
+    Process and deduplicate DOIs
+    
+    Args:
+        filtered_results: Filtered results data
+        batch: BatchProcessor instance
+        
+    Returns:
+        dict: Final results with unique DOIs
+    """
+    logger = logging.getLogger(__name__)
+    
+    # Track unique DOIs
+    seen_dois = set()
+    unique_items = []
+    duplicate_count = 0
+    
+    for item in filtered_results['items']:
+        doi = item['doi']
+        if doi not in seen_dois:
+            seen_dois.add(doi)
+            unique_items.append(item)
+        else:
+            duplicate_count += 1
+    
+    # Save final results
+    final_data = {
+        'total_items': len(unique_items),
+        'duplicate_count': duplicate_count,
+        'items': unique_items
+    }
+    
+    batch.save_json(final_data, 'final')
+    return final_data
+
+def get_total_crossref_publications(date):
+    """
+    Get total number of Crossref publications for the period
+    
+    Args:
+        date: Date in YY-MM format
+        
+    Returns:
+        int: Total number of publications
+    """
+    logger = logging.getLogger(__name__)
+    
+    # Convert date to required format (YYYY-MM)
+    year = int(f"20{date.split('-')[0]}")
+    month = int(date.split('-')[1])
+    from_date = f"{year}-{month:02d}"
+    to_date = f"{year}-{month+1:02d}" if month < 12 else f"{year+1}-01"
+    
+    # Query Crossref API
+    base_url = "https://api.crossref.org/works"
+    params = {
+        'filter': f'from-pub-date:{from_date},until-pub-date:{to_date}',
+        'rows': 0
+    }
+    
+    try:
+        response = requests.get(base_url, params=params)
+        response.raise_for_status()
+        data = response.json()
+        total = data['message']['total-results']
+        logger.info(f"Total Crossref publications for {from_date}: {total}")
+        return total
+    except Exception as e:
+        logger.error(f"Error getting total Crossref publications: {str(e)}")
+        return 0
+
+def generate_batch_statistics(batch, results):
+    """
+    Generate comprehensive batch statistics
+    
+    Args:
+        batch: BatchProcessor instance
+        results: Dictionary containing all results data
+        
+    Returns:
+        dict: Batch statistics
+    """
+    # Get total Crossref publications
+    total_crossref = get_total_crossref_publications(batch.date)
+    
+    # Calculate percentages
+    final_count = len(results['final']['items'])
+    crossref_percentage = (final_count / total_crossref * 100) if total_crossref > 0 else 0
+    
+    return {
+        'batch_summary': {
+            'batch_id': batch.batch_id,
+            'tool_name': batch.tool_name,
+            'date_period': batch.date,
+            'processing_time': datetime.now().isoformat()
+        },
+        'record_statistics': {
+            'total_raw_records': results['merged']['total_items'],
+            'total_records_before_dedup': results['filtered']['total_items'],
+            'total_records_after_dedup': final_count,
+            'duplicated_records': results['final']['duplicate_count'],
+            'duplication_rate': f"{(results['final']['duplicate_count'] / results['filtered']['total_items'] * 100):.2f}%",
+            'total_crossref_publications': total_crossref,
+            'percentage_of_total_crossref': f"{crossref_percentage:.4f}%"
+        },
+        'term_statistics': results['merged']['term_statistics'],
+        'file_paths': batch.get_all_paths(),
+        'processing_details': {
+            'boolean_query': results['filtered']['query']
+        }
+    }
+
+def print_batch_summary(statistics):
+    """
+    Print formatted batch summary
+    
+    Args:
+        statistics: Batch statistics dictionary
+    """
+    print("\n" + "="*50)
+    print("BATCH PROCESSING SUMMARY")
+    print("="*50)
+    
+    # Batch Information
+    print("\nBatch Information:")
+    print(f"Batch ID: {statistics['batch_summary']['batch_id']}")
+    print(f"Tool: {statistics['batch_summary']['tool_name']}")
+    print(f"Period: {statistics['batch_summary']['date_period']}")
+    print(f"Processing Time: {statistics['batch_summary']['processing_time']}")
+    
+    # Record Statistics
+    print("\nRecord Statistics:")
+    print(f"Total Raw Records: {statistics['record_statistics']['total_raw_records']:,}")
+    print(f"Records Before Deduplication: {statistics['record_statistics']['total_records_before_dedup']:,}")
+    print(f"Records After Deduplication: {statistics['record_statistics']['total_records_after_dedup']:,}")
+    print(f"Duplicated Records: {statistics['record_statistics']['duplicated_records']:,}")
+    print(f"Duplication Rate: {statistics['record_statistics']['duplication_rate']}")
+    print(f"Total Crossref Publications: {statistics['record_statistics']['total_crossref_publications']:,}")
+    print(f"Percentage of Total Crossref: {statistics['record_statistics']['percentage_of_total_crossref']}")
+    
+    # Term Statistics
+    print("\nTerm Statistics:")
+    for term_stat in statistics['term_statistics']:
+        print(f"\nTerm: {term_stat['term']}")
+        print(f"  Total Results: {term_stat['total_results']:,}")
+        print(f"  Processed: {term_stat['processed_count']:,}")
+        print(f"  Discarded: {term_stat['discarded_count']:,}")
+    
+    # File Paths
+    print("\nFile Paths:")
+    for file_type, path in statistics['file_paths'].items():
+        print(f"{file_type}: {path}")
+    
+    # Processing Details
+    print("\nProcessing Details:")
+    print(f"Boolean Query: {statistics['processing_details']['boolean_query']}")
+    
+    print("\n" + "="*50)
+
+def process_tool_data(tool_name, date):
+    """
+    Main processing flow for tool data extraction
+    
+    Args:
+        tool_name: Name of the management tool
+        date: Date in YY-MM format
+        
+    Returns:
+        dict: Batch statistics
+    """
+    logger = logging.getLogger(__name__)
+    logger.info(f"Starting data extraction for {tool_name} ({date})")
+    
+    try:
+        # Initialize batch processor
+        batch = BatchProcessor(tool_name, date)
+        
+        # 1. Get search terms
+        terms = get_single_terms(tool_name)
+        if not terms:
+            raise ValueError(f"No search terms found for {tool_name}")
+        
+        # 2. Process individual terms
+        term_files = process_individual_terms(terms, date, batch)
+        if not term_files:
+            raise ValueError(f"No results found for any terms")
+        
+        # 3. Merge results
+        merged_results = merge_term_results(term_files, batch)
+        
+        # 4. Get and apply boolean query
+        boolean_query = get_boolean_query(tool_name)
+        filtered_results = apply_boolean_filter(merged_results, boolean_query, batch)
+        
+        # 5. Process DOIs
+        final_results = process_dois(filtered_results, batch)
+        
+        # 6. Generate statistics
+        results = {
+            'merged': merged_results,
+            'filtered': filtered_results,
+            'final': final_results
+        }
+        
+        statistics = generate_batch_statistics(batch, results)
+        
+        # Save statistics
+        batch.save_json(statistics, 'statistics')
+        
+        # Print summary
+        print_batch_summary(statistics)
+        
+        return statistics
+        
+    except Exception as e:
+        logger.error(f"Error processing {tool_name}: {str(e)}")
+        raise
+
+def main():
+    """Main entry point"""
+    # Set up logging
     logger = setup_logging()
-    logger.info(f"Starting {APP_NAME} v{APP_VERSION}")
     
-    # Parse arguments and print welcome message
-    args = parse_arguments()
-    print_welcome()
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Extract Crossref API data for management tools')
+    parser.add_argument('--tool', help='Specific tool name to extract data for')
+    parser.add_argument('--date', help='Specific date in YY-MM format')
+    parser.add_argument('--version', action='version', version=f'{APP_NAME} {APP_VERSION}')
+    args = parser.parse_args()
     
-    # Handle the --all flag (set max_results to None)
-    if args.all:
-        args.max_results = None
-        logger.info("--all flag specified, retrieving all available results")
-    
-    # Process command line arguments
-    if args.tool and args.date:
-        # Find tool by name
-        tools = get_available_tools()
-        if not tools:
-            print("No tools available. Please check the keywords file.")
-            sys.exit(1)
+    try:
+        # Print welcome message
+        print(f"\nWelcome to {APP_NAME} v{APP_VERSION}")
+        print("Management Tool Data Extraction Application\n")
         
-        tool = find_tool_by_name(tools, args.tool)
-        if not tool:
-            print(f"Tool not found: {args.tool}")
-            sys.exit(1)
+        if args.tool and args.date:
+            # Command line mode
+            logger.info(f"Running in command line mode with tool='{args.tool}' date='{args.date}'")
+            
+            # Validate date format
+            if not validate_date_format(args.date):
+                raise ValueError("Invalid date format. Please use YY-MM format (e.g., 24-01)")
+            
+            # Process tool data
+            statistics = process_tool_data(args.tool, args.date)
+            
+        else:
+            # Interactive mode
+            logger.info("Running in interactive mode")
+            
+            # Get available tools
+            tools = get_available_tools()
+            if not tools:
+                raise ValueError("No tools available")
+            
+            # Display tool menu
+            print("\nAvailable tools:")
+            for i, tool in enumerate(tools, 1):
+                print(f"{i}. {tool}")
+            
+            # Get tool selection
+            while True:
+                try:
+                    selection = input("\nSelect a tool (number): ")
+                    tool_index = int(selection) - 1
+                    if 0 <= tool_index < len(tools):
+                        selected_tool = tools[tool_index]
+                        break
+                    print(f"Invalid selection. Please enter a number between 1 and {len(tools)}")
+                except ValueError:
+                    print("Invalid input. Please enter a number")
+            
+            # Get date
+            while True:
+                date = input("\nEnter date (YY-MM format, e.g., 24-01): ")
+                if validate_date_format(date):
+                    break
+                print("Invalid date format. Please use YY-MM format")
+            
+            # Process tool data
+            statistics = process_tool_data(selected_tool, date)
         
-        # Validate and convert date
-        if not validate_date_format(args.date):
-            print(f"Invalid date format: {args.date}. Please use YY-MM format.")
-            sys.exit(1)
+        logger.info("Processing completed successfully")
+        return 0
         
-        date = convert_date_format(args.date, 'YYYY-MM')
-        if not date:
-            print(f"Error converting date: {args.date}")
-            sys.exit(1)
-        
-        # Validate date range
-        if not validate_date_range(date):
-            print(f"Invalid date range. Please enter a date between 1950 and present.")
-            sys.exit(1)
-        
-        print(f"Selected tool: {tool}")
-        print(f"Selected date: {date}")
-        
-        # Extract data
-        output_file = extract_crossref_data(tool, date, args.output, args.rows, args.max_results)
-        if not output_file:
-            print("Failed to extract data.")
-            sys.exit(1)
-        
-    else:
-        # Interactive mode
-        tools = get_available_tools()
-        if not tools:
-            print("No tools available. Please check the keywords file.")
-            sys.exit(1)
-        
-        # Display tool selection menu
-        selected_tool = display_tool_menu(tools)
-        if not selected_tool:
-            print("No tool selected. Exiting.")
-            sys.exit(0)
-        
-        print(f"Selected tool: {selected_tool}")
-        
-        # Get date input
-        selected_date = get_date_input()
-        if not selected_date:
-            print("No date selected. Exiting.")
-            sys.exit(0)
-        
-        print(f"Selected date: {selected_date}")
-        
-        # Extract data
-        output_file = extract_crossref_data(selected_tool, selected_date, args.output, args.rows, args.max_results)
-        if not output_file:
-            print("Failed to extract data.")
-            sys.exit(1)
-        
-        print("\nData extraction completed successfully.") 
+    except KeyboardInterrupt:
+        print("\nOperation cancelled by user")
+        return 1
+    except Exception as e:
+        logger.error(f"Error: {str(e)}")
+        print(f"\nError: {str(e)}")
+        return 1
+
+if __name__ == "__main__":
+    sys.exit(main()) 
