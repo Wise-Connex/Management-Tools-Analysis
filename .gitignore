@@ -69,4 +69,8 @@ pyvenv.cfg
 #API Keys
 .env
 
+#tryouts
 NewDBase/.crossref_batch_state.json
+crData/*/*.json
+crData/*/*/*.csv
+crData/*/*/*.json
