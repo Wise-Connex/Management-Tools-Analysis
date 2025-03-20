@@ -849,56 +849,57 @@ def get_tool_keywords(tool_name):
 
 def query_crossref_api(term, date, max_rows=DEFAULT_ROWS):
     """
-    Query Crossref API for a single term
+    Query Crossref API for a term and date
     
     Args:
         term: Search term
         date: Date in YY-MM format
-        max_rows: Maximum rows per page
+        max_rows: Maximum rows to return per page
         
     Returns:
-        tuple: (total_results, items)
+        dict: API response data
     """
     logger = logging.getLogger(__name__)
     
-    # Convert date to required format (YYYY-MM)
-    year = int(f"20{date.split('-')[0]}")
-    month = int(date.split('-')[1])
-    from_date = f"{year}-{month:02d}"
-    to_date = f"{year}-{month+1:02d}" if month < 12 else f"{year+1}-01"
-    
-    # Base URL for the Crossref API
-    base_url = "https://api.crossref.org/works"
-    
-    # Prepare query parameters
-    params = {
-        'query': term,
-        'filter': f'from-pub-date:{from_date},until-pub-date:{to_date}',
-        'rows': max_rows,
-        'cursor': '*',
-        'select': 'DOI,title,published-print,type,subject,container-title,abstract'
-    }
-    
-    # Add email for polite pool
-    headers = {'User-Agent': f'{APP_NAME}/{APP_VERSION} (mailto:your-email@domain.com)'}
-    
-    all_items = []
-    total_results = 0
-    items_retrieved = 0
-    last_progress = -1  # Track last printed progress to avoid duplicate prints
-    
     try:
-        while True:
-            # Add delay between requests
-            time.sleep(CROSSREF_API_DELAY)
+        # Convert date to required format
+        date_parts = date.split('-')
+        if len(date_parts) != 2:
+            raise ValueError("Invalid date format. Expected YY-MM")
             
-            # Make request
-            response = requests.get(base_url, params=params, headers=headers)
+        year = f"20{date_parts[0]}"
+        month = date_parts[1]
+        
+        # Setup API parameters
+        base_url = "https://api.crossref.org/works"
+        params = {
+            'query': term,
+            'rows': max_rows,
+            'filter': f"from-pub-date:{year}-{month},until-pub-date:{year}-{month}",
+            'cursor': '*'  # Start cursor
+        }
+        
+        all_items = []
+        total_results = 0
+        items_retrieved = 0
+        
+        # Process paginated results
+        while True:
+            # Make API request
+            response = requests.get(base_url, params=params)
             response.raise_for_status()
+            
+            # Parse response
             data = response.json()
             
-            # Update total results
-            total_results = data['message']['total-results']
+            # Get total results on first page
+            if total_results == 0:
+                total_results = data['message']['total-results']
+                logger.info(f"Total results for term '{term}': {total_results}")
+                
+                if total_results == 0:
+                    logger.warning("No results found")
+                    break
             
             # Process items
             items = data['message']['items']
@@ -911,14 +912,8 @@ def query_crossref_api(term, date, max_rows=DEFAULT_ROWS):
             
             # Calculate and display progress
             if total_results > 0:
-                progress = min(100, int((items_retrieved / total_results) * 100))
-                if progress != last_progress:  # Only print if progress has changed
-                    progress_bar = '=' * (progress // 2) + '>' + ' ' * (50 - (progress // 2))
-                    print(f"\rRetrieving {term}: [{progress_bar}] {progress}% ({items_retrieved}/{total_results})", end='', flush=True)
-                    last_progress = progress
-            
-            # Log progress
-            logger.info(f"Retrieved {items_retrieved}/{total_results} results for term '{term}'")
+                progress = (items_retrieved / total_results) * 100
+                print(f"\rRetrieving results: {items_retrieved}/{total_results} ({progress:.1f}%)", end='')
             
             # Check if we've retrieved all results
             if items_retrieved >= total_results:
@@ -930,16 +925,28 @@ def query_crossref_api(term, date, max_rows=DEFAULT_ROWS):
             if not next_cursor:
                 print()  # New line after progress bar
                 break
-                
+            
             # Update cursor for next page
             params['cursor'] = next_cursor
             
+        # Return results
+        return {
+            'term': term,
+            'total_results': total_results,
+            'processed_count': items_retrieved,
+            'discarded_count': total_results - items_retrieved if total_results > items_retrieved else 0,
+            'items': all_items
+        }
+        
+    except requests.exceptions.RequestException as e:
+        logger.error(f"API request error for term '{term}': {str(e)}")
+        return None
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON parsing error for term '{term}': {str(e)}")
+        return None
     except Exception as e:
-        print()  # New line in case of error
-        logger.error(f"Error querying Crossref API for term '{term}': {str(e)}")
-        return 0, []
-    
-    return total_results, all_items
+        logger.error(f"Unexpected error processing term '{term}': {str(e)}")
+        return None
 
 def save_to_json(data, tool_name, date, output_path=None):
     """
@@ -1123,7 +1130,7 @@ def process_entry(item):
 
 def process_individual_terms(terms, date, batch):
     """
-    Process each search term individually
+    Process individual search terms
     
     Args:
         terms: List of search terms
@@ -1131,7 +1138,7 @@ def process_individual_terms(terms, date, batch):
         batch: BatchProcessor instance
         
     Returns:
-        list: List of file paths containing term results
+        list: List of processed term file paths
     """
     logger = logging.getLogger(__name__)
     term_files = []
@@ -1140,35 +1147,32 @@ def process_individual_terms(terms, date, batch):
         logger.info(f"Processing term: {term}")
         
         # Query API
-        total_results, items = query_crossref_api(term, date)
+        api_response = query_crossref_api(term, date)
         
-        if items:
-            # Process entries
-            processed_items = []
-            discarded_count = 0
+        # Skip if no results or error
+        if not api_response:
+            logger.warning(f"No results for term: {term}")
+            continue
             
-            for item in items:
-                processed_item = process_entry(item)
-                if processed_item:
-                    processed_items.append(processed_item)
-                else:
-                    discarded_count += 1
-            
-            # Save results
-            data = {
-                'term': term,
-                'total_results': total_results,
-                'processed_count': len(processed_items),
-                'discarded_count': discarded_count,
-                'items': processed_items
-            }
-            
-            file_path = batch.save_json(data, 'term', term)
+        # Process results
+        processed_data = {
+            'term': term,
+            'total_results': api_response['total_results'],
+            'processed_count': api_response['processed_count'],
+            'discarded_count': api_response['discarded_count'],
+            'items': []
+        }
+        
+        # Process each item
+        for item in api_response['items']:
+            processed_item = process_entry(item)
+            if processed_item:
+                processed_data['items'].append(processed_item)
+        
+        # Save term results
+        file_path = batch.save_json(processed_data, 'term', term)
+        if file_path:
             term_files.append(file_path)
-            
-            logger.info(f"Saved {len(processed_items)} results for term '{term}'")
-        else:
-            logger.warning(f"No results found for term '{term}'")
     
     return term_files
 
@@ -1249,33 +1253,30 @@ def get_boolean_query(tool_name):
 
 def check_consecutive_terms(text, terms):
     """
-    Check if terms appear consecutively in text
+    Check if terms appear consecutively in the text as a complete phrase
     
     Args:
-        text: Text to search in
+        text: Text to search in (title)
         terms: List of terms to find consecutively
         
     Returns:
-        bool: True if terms are found consecutively
+        bool: True if terms appear consecutively as a complete phrase
     """
     if not text or not terms:
         return False
     
-    # Convert text to lowercase for case-insensitive matching
-    text = text.lower()
+    # Create regex pattern for exact phrase matching with word boundaries
+    # Join terms and escape special characters
+    phrase = ' '.join(terms).lower()
+    pattern = r'\b' + re.escape(phrase) + r'\b'
+    text_lower = text.lower()
     
-    # Convert terms to lowercase
-    terms = [t.lower() for t in terms]
-    
-    # Join terms with space to create pattern
-    pattern = r'\b' + r'\s+'.join(terms) + r'\b'
-    
-    # Use regex to find consecutive terms
-    return bool(re.search(pattern, text))
+    match = re.search(pattern, text_lower)
+    return bool(match)
 
 def apply_boolean_filter(merged_results, boolean_query, batch):
     """
-    Apply boolean logic filtering to merged results
+    Apply boolean logic filtering to merged results, checking only titles for exact phrases
     
     Args:
         merged_results: Merged results data
@@ -1287,11 +1288,11 @@ def apply_boolean_filter(merged_results, boolean_query, batch):
     """
     logger = logging.getLogger(__name__)
     
-    # If no boolean query provided, pass through all results but maintain structure
+    # If no boolean query provided, pass through all results
     if not boolean_query:
         logger.warning("No boolean query provided, using all results")
         filtered_data = {
-            'query': None,  # Set query to None instead of trying to access it later
+            'query': None,
             'total_items': len(merged_results['items']),
             'items': merged_results['items']
         }
@@ -1300,51 +1301,44 @@ def apply_boolean_filter(merged_results, boolean_query, batch):
     
     filtered_items = []
     
-    # Process each item
+    # Convert boolean query to exact phrases to match
+    exact_phrases = []
+    if boolean_query == '#':
+        # Special case: use all results from API
+        return merged_results
+        
+    # Split on OR and convert AND_NEXT to spaces for exact phrases
+    for part in boolean_query.split(' OR '):
+        # Replace AND_NEXT with a single space and normalize whitespace
+        phrase = ' '.join(part.split('AND_NEXT'))
+        # Normalize whitespace: remove extra spaces and strip
+        phrase = ' '.join(phrase.split()).strip().lower()
+        exact_phrases.append(phrase)
+    
+    logger.info(f"Looking for exact phrases: {exact_phrases}")
+    
+    # Check each item's title for exact phrases
     for item in merged_results['items']:
-        # Get searchable text fields
+        # Get title as single string, lowercase for comparison
         title = ' '.join(item.get('title', [])) if isinstance(item.get('title'), list) else str(item.get('title', ''))
-        abstract = item.get('abstract', '') or ''
-        subject = ' '.join(item.get('subject', [])) if isinstance(item.get('subject'), list) else str(item.get('subject', ''))
+        # Normalize whitespace in title too
+        title = ' '.join(title.split()).strip().lower()
         
-        # Handle different query types
-        if boolean_query == '#':
-            # Use exact term match (already filtered by API)
-            filtered_items.append(item)
-            continue
-        
-        # Split query into parts
-        parts = boolean_query.split(' OR ')
-        matched = False
-        
-        for part in parts:
-            if 'AND_NEXT' in part:
-                # Handle consecutive terms
-                terms = [t.strip() for t in part.split('AND_NEXT')]
-                
-                # Check each field for consecutive terms
-                if (check_consecutive_terms(title, terms) or
-                    check_consecutive_terms(abstract, terms) or
-                    check_consecutive_terms(subject, terms)):
-                    matched = True
-                    break
-            else:
-                # Handle simple term
-                term = part.strip().lower()
-                if (term in title.lower() or
-                    term in abstract.lower() or
-                    term in subject.lower()):
-                    matched = True
-                    break
-        
-        if matched:
-            filtered_items.append(item)
+        # Check if any of our exact phrases appear in the title
+        for phrase in exact_phrases:
+            if phrase in title:
+                logger.debug(f"Matched phrase '{phrase}' in title: {title}")
+                filtered_items.append(item)
+                break
+    
+    logger.info(f"Filtered {len(filtered_items)} items from {len(merged_results['items'])} total")
     
     # Save filtered results
     filtered_data = {
         'query': boolean_query,
         'total_items': len(filtered_items),
-        'items': filtered_items
+        'items': filtered_items,
+        'exact_phrases': exact_phrases  # Include phrases for debugging
     }
     
     batch.save_json(filtered_data, 'filtered')
@@ -1388,7 +1382,7 @@ def process_dois(filtered_results, batch):
 
 def get_total_crossref_publications(date):
     """
-    Get total number of Crossref publications for the period
+    Get total number of Crossref publications for the specific month
     
     Args:
         date: Date in YY-MM format
@@ -1398,117 +1392,127 @@ def get_total_crossref_publications(date):
     """
     logger = logging.getLogger(__name__)
     
-    # Convert date to required format (YYYY-MM)
-    year = int(f"20{date.split('-')[0]}")
-    month = int(date.split('-')[1])
-    from_date = f"{year}-{month:02d}"
-    to_date = f"{year}-{month+1:02d}" if month < 12 else f"{year+1}-01"
-    
-    # Query Crossref API
-    base_url = "https://api.crossref.org/works"
-    params = {
-        'filter': f'from-pub-date:{from_date},until-pub-date:{to_date}',
-        'rows': 0
-    }
-    
     try:
+        # Convert date to required format (YYYY-MM)
+        year = int(f"20{date.split('-')[0]}")
+        month = int(date.split('-')[1])
+        target_date = f"{year}-{month:02d}"
+        
+        # Query Crossref API for the specific month
+        base_url = "https://api.crossref.org/works"
+        params = {
+            'filter': f'from-pub-date:{target_date},until-pub-date:{target_date}',
+            'rows': 0
+        }
+        
         response = requests.get(base_url, params=params)
         response.raise_for_status()
         data = response.json()
         total = data['message']['total-results']
-        logger.info(f"Total Crossref publications for {from_date}: {total}")
+        logger.info(f"Total Crossref publications for {target_date}: {total:,}")
         return total
+        
     except Exception as e:
         logger.error(f"Error getting total Crossref publications: {str(e)}")
         return 0
 
 def generate_batch_statistics(batch, results):
     """
-    Generate comprehensive batch statistics
+    Generate statistics for batch processing
     
     Args:
         batch: BatchProcessor instance
-        results: Dictionary containing all results data
+        results: Dictionary containing processing results
         
     Returns:
-        dict: Batch statistics
+        dict: Statistics about the batch processing
     """
-    # Get total Crossref publications
+    # Get total Crossref publications for comparison
     total_crossref = get_total_crossref_publications(batch.date)
+    final_count = len(results.get('items', []))
     
     # Calculate percentages
-    final_count = len(results['final']['items'])
     crossref_percentage = (final_count / total_crossref * 100) if total_crossref > 0 else 0
     
-    return {
-        'batch_summary': {
-            'batch_id': batch.batch_id,
-            'tool_name': batch.tool_name,
-            'date_period': batch.date,
-            'processing_time': datetime.now().isoformat()
-        },
-        'record_statistics': {
-            'total_raw_records': results['merged']['total_items'],
-            'total_records_before_dedup': results['filtered']['total_items'],
-            'total_records_after_dedup': final_count,
-            'duplicated_records': results['final']['duplicate_count'],
-            'duplication_rate': f"{(results['final']['duplicate_count'] / results['filtered']['total_items'] * 100):.2f}%",
-            'total_crossref_publications': total_crossref,
-            'percentage_of_total_crossref': f"{crossref_percentage:.4f}%"
-        },
-        'term_statistics': results['merged']['term_statistics'],
+    statistics = {
+        'tool_name': batch.original_tool_name,  # Use original (non-mapped) tool name
+        'batch_id': batch.batch_id,
+        'date': batch.date,
+        'initial_count': results.get('initial_count', 0),
+        'filtered_count': results.get('filtered_count', 0),
+        'final_count': final_count,
+        'duplicate_count': results.get('duplicate_count', 0),
+        'terms': results.get('term_counts', {}),
         'file_paths': batch.get_all_paths(),
-        'processing_details': {
-            'boolean_query': results['filtered']['query']
-        }
+        'processing_time': results.get('processing_time', 0),
+        'total_crossref': total_crossref,
+        'crossref_percentage': crossref_percentage
     }
+    
+    return statistics
 
 def print_batch_summary(statistics):
     """
-    Print formatted batch summary
+    Print a formatted summary of batch processing results
     
     Args:
-        statistics: Batch statistics dictionary
+        statistics: Dictionary containing batch statistics
     """
-    print("\n" + "="*50)
-    print("BATCH PROCESSING SUMMARY")
-    print("="*50)
+    logger = logging.getLogger(__name__)
     
-    # Batch Information
-    print("\nBatch Information:")
-    print(f"Batch ID: {statistics['batch_summary']['batch_id']}")
-    print(f"Tool: {statistics['batch_summary']['tool_name']}")
-    print(f"Period: {statistics['batch_summary']['date_period']}")
-    print(f"Processing Time: {statistics['batch_summary']['processing_time']}")
+    # Get tool name and record counts
+    tool_name = statistics.get('tool_name', 'Unknown Tool')
+    final_count = statistics.get('final_count', 0)
     
-    # Record Statistics
+    # Print header with key information
+    print("\n" + "="*80)
+    print(f"SUMMARY FOR: {tool_name}")
+    print(f"FINAL RECORDS: {final_count}")
+    print("="*80 + "\n")
+    
+    # Print detailed statistics
+    print("Processing Details:")
+    print("-"*40)
+    
+    # Batch information
+    print(f"Batch ID: {statistics.get('batch_id', 'N/A')}")
+    print(f"Date: {statistics.get('date', 'N/A')}")
+    
+    # Record statistics
     print("\nRecord Statistics:")
-    print(f"Total Raw Records: {statistics['record_statistics']['total_raw_records']:,}")
-    print(f"Records Before Deduplication: {statistics['record_statistics']['total_records_before_dedup']:,}")
-    print(f"Records After Deduplication: {statistics['record_statistics']['total_records_after_dedup']:,}")
-    print(f"Duplicated Records: {statistics['record_statistics']['duplicated_records']:,}")
-    print(f"Duplication Rate: {statistics['record_statistics']['duplication_rate']}")
-    print(f"Total Crossref Publications: {statistics['record_statistics']['total_crossref_publications']:,}")
-    print(f"Percentage of Total Crossref: {statistics['record_statistics']['percentage_of_total_crossref']}")
+    print(f"- Total Raw Records: {statistics.get('initial_count', 0):,}")
+    print(f"- Records Before Deduplication: {statistics.get('filtered_count', 0):,}")
+    print(f"- Records After Deduplication: {final_count:,}")
+    print(f"- Duplicated Records: {statistics.get('duplicate_count', 0):,}")
     
-    # Term Statistics
-    print("\nTerm Statistics:")
-    for term_stat in statistics['term_statistics']:
-        print(f"\nTerm: {term_stat['term']}")
-        print(f"  Total Results: {term_stat['total_results']:,}")
-        print(f"  Processed: {term_stat['processed_count']:,}")
-        print(f"  Discarded: {term_stat['discarded_count']:,}")
+    # Calculate duplication rate
+    if statistics.get('filtered_count', 0) > 0:
+        duplication_rate = (statistics.get('duplicate_count', 0) / statistics.get('filtered_count', 0)) * 100
+        print(f"- Duplication Rate: {duplication_rate:.2f}%")
     
-    # File Paths
-    print("\nFile Paths:")
-    for file_type, path in statistics['file_paths'].items():
-        print(f"{file_type}: {path}")
+    # Crossref statistics
+    total_crossref = statistics.get('total_crossref', 0)
+    crossref_percentage = statistics.get('crossref_percentage', 0)
+    print(f"- Total Crossref Publications: {total_crossref:,}")
+    print(f"- Percentage of Total Crossref: {crossref_percentage:.4f}%")
     
-    # Processing Details
-    print("\nProcessing Details:")
-    print(f"Boolean Query: {statistics['processing_details']['boolean_query']}")
+    # Term statistics
+    if 'terms' in statistics:
+        print("\nTerm Results:")
+        for term, count in statistics['terms'].items():
+            print(f"- {term}: {count:,} records")
     
-    print("\n" + "="*50)
+    # File paths
+    if 'file_paths' in statistics:
+        print("\nOutput Files:")
+        for file_type, path in statistics['file_paths'].items():
+            print(f"- {file_type}: {path}")
+    
+    # Processing time
+    if 'processing_time' in statistics:
+        print(f"\nProcessing Time: {statistics['processing_time']:.2f} seconds")
+    
+    print("\n" + "="*80)
 
 def process_tool_data(tool_name, date):
     """
@@ -1541,8 +1545,10 @@ def process_tool_data(tool_name, date):
         # 3. Merge results
         merged_results = merge_term_results(term_files, batch)
         
-        # 4. Get and apply boolean query
-        boolean_query = get_boolean_query(tool_name)
+        # 4. Get and apply boolean query - use mapped name for query lookup
+        boolean_query = get_boolean_query(batch.tool_name)  # Use mapped name (e.g., 'Balanced Scorecard')
+        if boolean_query:
+            logger.info(f"Using boolean query from mapped tool '{batch.tool_name}': {boolean_query}")
         filtered_results = apply_boolean_filter(merged_results, boolean_query, batch)
         
         # 5. Process DOIs
@@ -1550,9 +1556,12 @@ def process_tool_data(tool_name, date):
         
         # 6. Generate statistics
         results = {
-            'merged': merged_results,
-            'filtered': filtered_results,
-            'final': final_results
+            'initial_count': merged_results.get('total_items', 0),
+            'filtered_count': filtered_results.get('total_items', 0),
+            'items': final_results.get('items', []),
+            'term_counts': {stat['term']: stat['total_results'] 
+                          for stat in merged_results.get('term_statistics', [])},
+            'processing_time': time.time() - batch.start_time if hasattr(batch, 'start_time') else 0
         }
         
         statistics = generate_batch_statistics(batch, results)
@@ -1582,10 +1591,10 @@ def main():
     args = parser.parse_args()
     
     try:
-        # Print welcome message
+    # Print welcome message
         print(f"\nWelcome to {APP_NAME} v{APP_VERSION}")
         print("Management Tool Data Extraction Application\n")
-        
+    
         if args.tool and args.date:
             # Command line mode
             logger.info(f"Running in command line mode with tool='{args.tool}' date='{args.date}'")
@@ -1596,7 +1605,7 @@ def main():
             
             # Process tool data
             statistics = process_tool_data(args.tool, args.date)
-            
+        
         else:
             # Interactive mode
             logger.info("Running in interactive mode")
@@ -1635,7 +1644,7 @@ def main():
         
         logger.info("Processing completed successfully")
         return 0
-        
+    
     except KeyboardInterrupt:
         print("\nOperation cancelled by user")
         return 1
