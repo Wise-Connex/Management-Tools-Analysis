@@ -72,5 +72,6 @@ pyvenv.cfg
 #tryouts
 NewDBase/.crossref_batch_state.json
 crData/*/*.json
+crData/*/*.csv
 crData/*/*/*.csv
 crData/*/*/*.json
