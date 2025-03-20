@@ -1309,8 +1309,11 @@ def apply_boolean_filter(merged_results, boolean_query, batch):
         
     # Split on OR and convert AND_NEXT to spaces for exact phrases
     for part in boolean_query.split(' OR '):
-        phrase = ' '.join(part.split('AND_NEXT')).strip()
-        exact_phrases.append(phrase.lower())
+        # Replace AND_NEXT with a single space and normalize whitespace
+        phrase = ' '.join(part.split('AND_NEXT'))
+        # Normalize whitespace: remove extra spaces and strip
+        phrase = ' '.join(phrase.split()).strip().lower()
+        exact_phrases.append(phrase)
     
     logger.info(f"Looking for exact phrases: {exact_phrases}")
     
@@ -1318,7 +1321,8 @@ def apply_boolean_filter(merged_results, boolean_query, batch):
     for item in merged_results['items']:
         # Get title as single string, lowercase for comparison
         title = ' '.join(item.get('title', [])) if isinstance(item.get('title'), list) else str(item.get('title', ''))
-        title = title.lower()
+        # Normalize whitespace in title too
+        title = ' '.join(title.split()).strip().lower()
         
         # Check if any of our exact phrases appear in the title
         for phrase in exact_phrases:
@@ -1378,7 +1382,7 @@ def process_dois(filtered_results, batch):
 
 def get_total_crossref_publications(date):
     """
-    Get total number of Crossref publications for the period
+    Get total number of Crossref publications for the specific month
     
     Args:
         date: Date in YY-MM format
@@ -1388,26 +1392,26 @@ def get_total_crossref_publications(date):
     """
     logger = logging.getLogger(__name__)
     
-    # Convert date to required format (YYYY-MM)
-    year = int(f"20{date.split('-')[0]}")
-    month = int(date.split('-')[1])
-    from_date = f"{year}-{month:02d}"
-    to_date = f"{year}-{month+1:02d}" if month < 12 else f"{year+1}-01"
-    
-    # Query Crossref API
-    base_url = "https://api.crossref.org/works"
-    params = {
-        'filter': f'from-pub-date:{from_date},until-pub-date:{to_date}',
-        'rows': 0
-    }
-    
     try:
+        # Convert date to required format (YYYY-MM)
+        year = int(f"20{date.split('-')[0]}")
+        month = int(date.split('-')[1])
+        target_date = f"{year}-{month:02d}"
+        
+        # Query Crossref API for the specific month
+        base_url = "https://api.crossref.org/works"
+        params = {
+            'filter': f'from-pub-date:{target_date},until-pub-date:{target_date}',
+            'rows': 0
+        }
+        
         response = requests.get(base_url, params=params)
         response.raise_for_status()
         data = response.json()
         total = data['message']['total-results']
-        logger.info(f"Total Crossref publications for {from_date}: {total}")
+        logger.info(f"Total Crossref publications for {target_date}: {total:,}")
         return total
+        
     except Exception as e:
         logger.error(f"Error getting total Crossref publications: {str(e)}")
         return 0
@@ -1423,16 +1427,26 @@ def generate_batch_statistics(batch, results):
     Returns:
         dict: Statistics about the batch processing
     """
+    # Get total Crossref publications for comparison
+    total_crossref = get_total_crossref_publications(batch.date)
+    final_count = len(results.get('items', []))
+    
+    # Calculate percentages
+    crossref_percentage = (final_count / total_crossref * 100) if total_crossref > 0 else 0
+    
     statistics = {
         'tool_name': batch.original_tool_name,  # Use original (non-mapped) tool name
         'batch_id': batch.batch_id,
         'date': batch.date,
         'initial_count': results.get('initial_count', 0),
         'filtered_count': results.get('filtered_count', 0),
-        'final_count': len(results.get('items', [])),
+        'final_count': final_count,
+        'duplicate_count': results.get('duplicate_count', 0),
         'terms': results.get('term_counts', {}),
         'file_paths': batch.get_all_paths(),
-        'processing_time': results.get('processing_time', 0)
+        'processing_time': results.get('processing_time', 0),
+        'total_crossref': total_crossref,
+        'crossref_percentage': crossref_percentage
     }
     
     return statistics
@@ -1465,16 +1479,28 @@ def print_batch_summary(statistics):
     print(f"Date: {statistics.get('date', 'N/A')}")
     
     # Record statistics
-    print("\nRecord Counts:")
-    print(f"- Initial Records: {statistics.get('initial_count', 0)}")
-    print(f"- After Filtering: {statistics.get('filtered_count', 0)}")
-    print(f"- Final (Deduplicated): {final_count}")
+    print("\nRecord Statistics:")
+    print(f"- Total Raw Records: {statistics.get('initial_count', 0):,}")
+    print(f"- Records Before Deduplication: {statistics.get('filtered_count', 0):,}")
+    print(f"- Records After Deduplication: {final_count:,}")
+    print(f"- Duplicated Records: {statistics.get('duplicate_count', 0):,}")
+    
+    # Calculate duplication rate
+    if statistics.get('filtered_count', 0) > 0:
+        duplication_rate = (statistics.get('duplicate_count', 0) / statistics.get('filtered_count', 0)) * 100
+        print(f"- Duplication Rate: {duplication_rate:.2f}%")
+    
+    # Crossref statistics
+    total_crossref = statistics.get('total_crossref', 0)
+    crossref_percentage = statistics.get('crossref_percentage', 0)
+    print(f"- Total Crossref Publications: {total_crossref:,}")
+    print(f"- Percentage of Total Crossref: {crossref_percentage:.4f}%")
     
     # Term statistics
     if 'terms' in statistics:
         print("\nTerm Results:")
         for term, count in statistics['terms'].items():
-            print(f"- {term}: {count} records")
+            print(f"- {term}: {count:,} records")
     
     # File paths
     if 'file_paths' in statistics:
@@ -1519,8 +1545,10 @@ def process_tool_data(tool_name, date):
         # 3. Merge results
         merged_results = merge_term_results(term_files, batch)
         
-        # 4. Get and apply boolean query
-        boolean_query = get_boolean_query(tool_name)
+        # 4. Get and apply boolean query - use mapped name for query lookup
+        boolean_query = get_boolean_query(batch.tool_name)  # Use mapped name (e.g., 'Balanced Scorecard')
+        if boolean_query:
+            logger.info(f"Using boolean query from mapped tool '{batch.tool_name}': {boolean_query}")
         filtered_results = apply_boolean_filter(merged_results, boolean_query, batch)
         
         # 5. Process DOIs
@@ -1528,9 +1556,12 @@ def process_tool_data(tool_name, date):
         
         # 6. Generate statistics
         results = {
-            'merged': merged_results,
-            'filtered': filtered_results,
-            'final': final_results
+            'initial_count': merged_results.get('total_items', 0),
+            'filtered_count': filtered_results.get('total_items', 0),
+            'items': final_results.get('items', []),
+            'term_counts': {stat['term']: stat['total_results'] 
+                          for stat in merged_results.get('term_statistics', [])},
+            'processing_time': time.time() - batch.start_time if hasattr(batch, 'start_time') else 0
         }
         
         statistics = generate_batch_statistics(batch, results)
