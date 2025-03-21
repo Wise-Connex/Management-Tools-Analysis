@@ -1,0 +1,95 @@
+{
+  "term": "Scorecard",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/978-3-642-32504-5_13",
+      "title": [
+        "18:00 Balanced Scorecard: BSC"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cybernetic Approach to Project Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.21512/bbr.v3i2.1269",
+      "title": [
+        "INTEGRASI METODE BALANCED SCORECARD DAN SISTEM MANAJEMEN PENGENDALIAN"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Binus Business Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This article discusses sales force performance measurement at PT Merapi Utama Pharma and integrates performance measurement and management control system. The balanced scorecard (BSC) is a strategic planning and management system that is used extensively in business and industry, government, and nonprofit organizations worldwide to align business activities to the vision and strategy of the organization, improve internal and external communications, and monitor organization performance against strategic goals. The balanced scorecard suggests that we view the organization from four perspectives : the learning and growth perspective, the internal business processes perspective, the customer perspective, and the financial perspective.The management control system used is levers of control framework, included beliefs control system, boundary control system, diagnostic control system, and interactive control systems. </jats:p>"
+    },
+    {
+      "doi": "10.24297/ijmit.v2i1.1409",
+      "title": [
+        "Applying GQM method in Balanced Scorecard System for Iranian university performance appraisal: Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INTERNATIONAL JOURNAL OF MANAGEMENT &amp; INFORMATION TECHNOLOGY"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Rapid development in academic instruction sector has resulted in changes in the supply and demand of higher education graduates and influenced on the quality of education. Hence, if the performance assessment of a university is done in an effective manner, the university may identify internal strong and weak points and provide the chance of improvement. The aim of this article is to apply Balanced Scorecard Systems to access the performance of a sample in Irans universities. On the other hand, this article describes how to apply GQM method to obtain the suitable metrics of measurement in Balanced Scorecard System assessment to improve the efficiency.</jats:p>"
+    },
+    {
+      "doi": "10.18226/610001/mostraxii.2012.19",
+      "title": [
+        "Balanced Scorecard como uma Ferramenta de Gestão de Pessoas. O caso empresa Remo Camisetas Promocionais"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "XII Mostra de Iniciação Científica, Pós-graduação, Pesquisa e Extensão"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-11"
+    },
+    {
+      "doi": "10.5897/ajbm12.160",
+      "title": [
+        "Performance measurement using balanced scorecard measures and strategy based on Miles and Snows typology in Iran"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "African Journal of Business Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.ijpe.2012.01.040",
+      "title": [
+        "Generic balanced scorecard framework for third party logistics service provider"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-11"
+    },
+    {
+      "doi": "10.1007/s11628-012-0175-5",
+      "title": [
+        "Using the balanced scorecard on supply chain integration performance—a case study of service businesses"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Service Business"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-12"
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "term": "Scorecard",
+  "total_results": 16,
+  "processed_count": 16,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/ms.2013.134",
+      "title": [
+        "The Frictionless Development Environment Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-11"
+    },
+    {
+      "doi": "10.1016/j.ecolind.2013.04.005",
+      "title": [
+        "Development of a sustainable balanced scorecard framework"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecological Indicators"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-11"
+    },
+    {
+      "doi": "10.1016/j.eswa.2013.05.060",
+      "title": [
+        "Assessing scorecard performance: A literature review and classification"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Expert Systems with Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-11"
+    },
+    {
+      "doi": "10.1109/iciii.2013.6703653",
+      "title": [
+        "Performance evaluation of customer knowledge management competence based on Balanced Scorecard"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 6th International Conference on Information Management, Innovation Management and Industrial Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-11"
+    },
+    {
+      "doi": "10.5901/mjss.2013.v4n14p23",
+      "title": [
+        "Performance Measurement in a South African Government Social Services Department: A Balanced Scorecard Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Mediterranean Journal of Social Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-11"
+    },
+    {
+      "doi": "10.21609/jsi.v9i1.346",
+      "title": [
+        "PENERAPAN IT BALANCED SCORECARD DAN COMPETENCY GAP INDEX DALAM TATA KELOLA IT: STUDI KASUS PT. CAPELLA MEDAN"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Sistem Informasi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Dalam memasuki persaingan penjualan mobil dan pelayanan purna jualnya, perusahaan berusaha memanfaatkan TI sebagai alat untuk dapat memenangkan persaingan tersebut. Agar TI dapat dimanfaatkan secara maksimal dan mendukung sistem yang ada di perusahaan, dibutuhkan penilaian kinerja dari TI secara berkala. Salah satu metode untuk melakukan penilaian terhadap kinerja departemen TI adalah dengan memanfaatkan IT Balanced Scorecard sebagai tolak ukur efisiensi dalam pemanfaatan TI saat ini dan menggunakan COBIT 4.1 pada 4 (empat) domain yaitu: perencanaan dan pengorganisasian atau PO (Planning and Organization), pengadaan dan implementasi atau AI (Acquisition and Implementation), Pengantaran dan Dukungan (Delivery and Support) serta Pengawasan dan Evaluasi (Monitor and Evaluate) sebagai alat ukurnya. Dari kedua cara tersebut, peneliti mencoba untuk membuat IT Blueprint sebagai hasil akhir dari pemanfaaatan TI diperusahaan, sehingga pihak management dapat merencanakan bagaimana perkembangan TI diperusahaan untuk beberapa tahun mendatang.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-658-01590-9_2",
+      "title": [
+        "IT-Controlling-Konzept"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Masterkurs IT-Controlling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-01590-9_5",
+      "title": [
+        "Kostenrechnung für IT-Controller"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Masterkurs IT-Controlling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-01590-9_7",
+      "title": [
+        "Prozesskostenrechnung für IT-Controller"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Masterkurs IT-Controlling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-01590-9_1",
+      "title": [
+        "Leitbildcontrolling-Konzept in der Informationsgesellschaft"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Masterkurs IT-Controlling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-01590-9_6",
+      "title": [
+        "Deckungsbeitragsrechnung für IT-Controller"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Masterkurs IT-Controlling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.18226/610001/mostraxiii.2013.26",
+      "title": [
+        "A Viabilidade de Implantação do Balanced Scorecard na Studio Pilates"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "XIII Mostra de Iniciação Científica, Pós-graduação, Pesquisa e Extensão"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-11"
+    },
+    {
+      "doi": "10.1007/978-3-658-01590-9_4",
+      "title": [
+        "Einsatz operativer IT-Controlling-Werkzeuge"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Masterkurs IT-Controlling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/0258042x13516596",
+      "title": [
+        "Strategy Implementation Using Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management and Labour Studies"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Personal values are at the core of any individual. One’s action, behaviour and decisions are largely guided by one’s values and beliefs. Since organizations are social set-ups, impact of the values of those in the leadership position is far-reaching. This article is a fallout of a bigger study on implementation of balanced scorecard. This qualitative study, following case study approach, provides empirical evidences about the ways in which personal values of the leaders and employees affect their pursuit of the strategy. It also highlights what impact leadership values have upon the team members, and how this impacts strategy implementation. The values of responsibility, sincerity, initiative, integrity, humility, optimism, zeal, compassion, righteousness and discipline have been discussed. Overall, the study indicates that when leaders and employees have strong moral values, they impact strategy implementation positively. </jats:p>",
+      "publication_date": "2013-11"
+    },
+    {
+      "doi": "10.9771/rcufba.v7i2.8559",
+      "title": [
+        "O Balanced Scorecard (BSC) e Suas Aplicações: Uma Análise do Perfil dos Anais dos Congressos ANPCONT, ENANPAD e USP."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revista de Contabilidade da UFBA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Este trabalho concentra-se nos objetivos e aplicações encontrados nos artigos publicados em anais de ANPCONT, ENANPAD e USP sobre o Balanced Scorecard (BSC), no período que compreende os anos de 2007-2012. Este trabalho consiste em uma pesquisa documental, com base em uma metodologia exploratória e descritiva, que analisou uma amostra de 32 artigos. Na análise de dados, a amostra foi dividida em três estratos, de acordo com os fins visados pelas pesquisas. A primeira camada contém os estudos que relatam as experiências com a implementação do BSC, o segundo estrato contém os estudos sobre a implantação da ferramenta em seus “conceitos clássicos\" e o terceiro estrato contém os estudos relacionados à implantação de novos modelos de BSC. Os resultados indicam que, no primeiro estrato, 54% dos estudos visam mostrar a importância do BSC para a companhia. Em relação ao segundo estrato, 38% dos estudos guiam para a implantação do BSC como uma ferramenta de apoio à tomada de decisão e outros 38% guiam para a implantatação da estratégia organizacional. Finalmente, no terceiro estrato, 56% dos estudos nele contidos, apresentam propostas de novos modelos de BSC que visam melhorar a gestão estratégica organizacional.</jats:p>"
+    },
+    {
+      "doi": "10.18696/reunir.v3i4.175",
+      "title": [
+        "ANÁLISE DE MODELOS DE BALANCED SCORECARD ELABORADOS A PARTIR DA ÓTICA DA SUSTENTABILIDADE ATRAVÉS DO USO DA MATRIZ SWOT"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "REUNIR: Revista de Administração, Contabilidade e Sustentabilidade"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Este artigo teve o objetivo de analisarmodelos de Balanced Scorecard elaborados a partir da ótica dasustentabilidade através do uso da Matriz SWOT. Para a operacionalização destapesquisa foi realizada uma pesquisa bibliográfica para identificar modelos de BalancedScorecard específicos voltados para aspectos relacionados àsustentabilidade empresarial. Foram encontrados vinte e um artigos científicosque faziam a apresentação de modelos de Balanced Scorecard voltados paraa questão ambiental, dos quais apenas três artigos se enquadraram no critériode elegibilidade estabelecido. Posteriormente, foi operacionalizada a análise SWOTreferente à adaptabilidade dos modelos encontrados para empresasagroindustriais. A partir dos resultados obtidos, foi possível visualizar asdiferenças existentes entre os três modelos encontrados.</jats:p>"
+    }
+  ]
+}

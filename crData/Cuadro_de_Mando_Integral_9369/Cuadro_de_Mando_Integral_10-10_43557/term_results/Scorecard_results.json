@@ -1,0 +1,33 @@
+{
+  "term": "Scorecard",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/09526861011081868",
+      "title": [
+        "Cooperation and competition: balanced scorecard and hospital privatization"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Health Care Quality Assurance"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>In 2000 the Skåne Region (a public authority) and a private contractor made a five‐year agreement for the provision of both in‐patient care and out‐patient medical services to about 30,000 inhabitants in the south‐east part of the region. The Skåne Region is the main provider of health care to about one million inhabitants in the south of Sweden and is responsible for all health care (private and public), including ten hospitals. This paper seeks to answer the question of how the Skåne Region can control and cooperate with a private contractor, entering into competition with the public health care providers in the region.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>This is a longitudinal study conducted between 2001‐2006. It is based on 28 taped interviews with employees responsible for the contracting process, participating observations and comprehensive secondary material. The study presents experiences made by the contractor and the public authority on how to work out and follow‐up assignments within the health care sector regarding patient interest, public interest and professional medical interest.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>Measurement within the frames of the balanced scorecard (BSC) made it possible to control both volumes and health care quality delivered by the private competing contractor. The political purchaser claims that the Skåne Region has established a cost‐effective and successful control system based on trust and measurement.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>This paper reports on a control system, between public purchaser and a private provider within health care, that focuses on and follow‐up not only health care production but also health care quality.</jats:p></jats:sec>",
+      "publication_date": "2010-10"
+    },
+    {
+      "doi": "10.5007/2175-8069.2010v7n13p63",
+      "title": [
+        "Implementação do Balanced Scorecard de acordo com os preceitos da Gestão do Conhecimento em uma organização que explora a atividade pecuária de gado bovino de corte em Minas Gerais &lt;br&gt;DOI:10.5007/2175-8069.2010v7n13p63"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revista Contemporânea de Contabilidade"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

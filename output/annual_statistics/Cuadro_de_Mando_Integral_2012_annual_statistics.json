@@ -1,0 +1,382 @@
+{
+  "tool_name": "Cuadro de Mando Integral",
+  "year": "2012",
+  "monthly_stats": {
+    "12-01": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "45428",
+      "date": "12-01",
+      "initial_count": 162,
+      "filtered_count": 90,
+      "final_count": 90,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 162
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 1051300,
+      "crossref_percentage": 0.008560829449253305
+    },
+    "12-02": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "45500",
+      "date": "12-02",
+      "initial_count": 8,
+      "filtered_count": 5,
+      "final_count": 5,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 8
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 224062,
+      "crossref_percentage": 0.0022315252028456407
+    },
+    "12-03": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "45559",
+      "date": "12-03",
+      "initial_count": 15,
+      "filtered_count": 11,
+      "final_count": 11,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 15
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 267348,
+      "crossref_percentage": 0.004114487484477161
+    },
+    "12-04": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46013",
+      "date": "12-04",
+      "initial_count": 12,
+      "filtered_count": 7,
+      "final_count": 7,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 12
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 249623,
+      "crossref_percentage": 0.0028042287769957093
+    },
+    "12-05": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46091",
+      "date": "12-05",
+      "initial_count": 10,
+      "filtered_count": 8,
+      "final_count": 8,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 10
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 269751,
+      "crossref_percentage": 0.0029656979955588673
+    },
+    "12-06": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46153",
+      "date": "12-06",
+      "initial_count": 41,
+      "filtered_count": 19,
+      "final_count": 19,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 41
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 285256,
+      "crossref_percentage": 0.006660683736713689
+    },
+    "12-07": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46198",
+      "date": "12-07",
+      "initial_count": 35,
+      "filtered_count": 17,
+      "final_count": 17,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 35
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 252415,
+      "crossref_percentage": 0.00673494047501139
+    },
+    "12-08": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46265",
+      "date": "12-08",
+      "initial_count": 25,
+      "filtered_count": 5,
+      "final_count": 5,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 25
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 228696,
+      "crossref_percentage": 0.0021863084618882708
+    },
+    "12-09": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46343",
+      "date": "12-09",
+      "initial_count": 17,
+      "filtered_count": 11,
+      "final_count": 11,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 17
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 281815,
+      "crossref_percentage": 0.0039032698756276277
+    },
+    "12-10": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46411",
+      "date": "12-10",
+      "initial_count": 26,
+      "filtered_count": 21,
+      "final_count": 21,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 26
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 313629,
+      "crossref_percentage": 0.006695809379872397
+    },
+    "12-11": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46481",
+      "date": "12-11",
+      "initial_count": 7,
+      "filtered_count": 7,
+      "final_count": 7,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 7
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 283626,
+      "crossref_percentage": 0.0024680388962930056
+    },
+    "12-12": {
+      "tool_name": "Cuadro de Mando Integral",
+      "batch_id": "46523",
+      "date": "12-12",
+      "initial_count": 22,
+      "filtered_count": 20,
+      "final_count": 20,
+      "duplicate_count": 0,
+      "terms": {
+        "Scorecard": 22
+      },
+      "file_paths": {
+        "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523",
+        "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/term_results",
+        "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/merged_results.json",
+        "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/filtered_results.json",
+        "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/final_results.json",
+        "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 347465,
+      "crossref_percentage": 0.005755975421984948
+    }
+  },
+  "total_records": 221,
+  "total_duplicates": 0,
+  "monthly_files": {
+    "12-01": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-01_45428/statistics_results.json"
+    },
+    "12-02": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-02_45500/statistics_results.json"
+    },
+    "12-03": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-03_45559/statistics_results.json"
+    },
+    "12-04": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-04_46013/statistics_results.json"
+    },
+    "12-05": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-05_46091/statistics_results.json"
+    },
+    "12-06": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-06_46153/statistics_results.json"
+    },
+    "12-07": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-07_46198/statistics_results.json"
+    },
+    "12-08": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-08_46265/statistics_results.json"
+    },
+    "12-09": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-09_46343/statistics_results.json"
+    },
+    "12-10": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-10_46411/statistics_results.json"
+    },
+    "12-11": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-11_46481/statistics_results.json"
+    },
+    "12-12": {
+      "base_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523",
+      "term_results_folder": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/term_results",
+      "merged": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/merged_results.json",
+      "filtered": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/filtered_results.json",
+      "final": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/final_results.json",
+      "statistics": "crData/Cuadro_de_Mando_Integral_9369/Cuadro_de_Mando_Integral_12-12_46523/statistics_results.json"
+    }
+  }
+}

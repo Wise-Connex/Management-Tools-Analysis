@@ -1,0 +1,96 @@
+{
+  "term": "Scorecard",
+  "total_results": 14,
+  "processed_count": 14,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.3139/9783446428171",
+      "title": [
+        "Balanced Scorecard anwenden"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-04"
+    },
+    {
+      "doi": "10.22201/fca.24488410e.2011.215",
+      "title": [
+        "Balanced Scorecard para extraer conocimiento de la tecnología"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Contaduría y Administración"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>En la globalización, la innovación tecnológica (it) y el capital intelectual (ci) son fuerzas que ayudan a las instituciones a crecer y a alcanzar sus objetivos. Para lograrlos, se han desarrollado herramientas que ayudan a las organizaciones a identificar los puntos medulares y sus relaciones para traducir las acciones en resultados concretos; uno de esos instrumentos es el Balanced Scorecard (bsc), el cual identifica los elementos clave de la compañía para manejarlos de manera sistemática y estructurada bajo relaciones de causa-efecto. &lt;br /&gt;En este trabajo se adapta la metodología del bsc a un proyecto de innovación tecnológica de una institución del sector público mexicano encargada de aplicar la Ley Federal de Radio y Televisión con el propósito de extraer el ci y mayores beneficios de la tecnología adquirida. De la adaptación, surge el tablero de capacidades tecnológicas (tct) y la cadena de valor tecnológica, cuyos eslabones principales son la it y el ci; las diferencias técnicas entre cada uno de ellos impactan los objetivos organizacionales. Las variaciones entre los eslabones constituyen áreas de oportunidad donde aplica el tct con el fin de incrementar el conocimiento, las capacidades de la organización y, en consecuencia, los beneficios tangibles e intangibles de la tecnología.  </jats:p>"
+    },
+    {
+      "doi": "10.12927/cjnl.2011.22334",
+      "title": [
+        "Using a Nursing Balanced Scorecard Approach to Measure and Optimize Nursing Performance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nursing Leadership"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-04"
+    },
+    {
+      "doi": "10.1080/09537287.2010.536626",
+      "title": [
+        "A balanced scorecard for measuring the impact of industry–university collaboration"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Production Planning &amp; Control"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-07"
+    },
+    {
+      "doi": "10.1080/02642060902852908",
+      "title": [
+        "Financial service sector performance measurement model: AHP sensitivity analysis and balanced scorecard approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Service Industries Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-04"
+    },
+    {
+      "doi": "10.1007/s11524-011-9556-7",
+      "title": [
+        "A Rapid Assessment Scorecard to Identify Informal Settlements at Higher Maternal and Child Health Risk in Mumbai"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Urban Health"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-10"
+    },
+    {
+      "doi": "10.1016/j.resconrec.2010.10.008",
+      "title": [
+        "Designing a mixed performance measurement system for environmental supply chain management using evolutionary game theory and balanced scorecard: A case study of an auto industry supply chain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Resources, Conservation and Recycling"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-04"
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "tool_name": "Competencias Centrales",
+  "year": "2022",
+  "monthly_stats": {
+    "22-01": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "48387",
+      "date": "22-01",
+      "initial_count": 4040,
+      "filtered_count": 43,
+      "final_count": 43,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 4040
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 1790348,
+      "crossref_percentage": 0.0024017677010279566
+    },
+    "22-02": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "49106",
+      "date": "22-02",
+      "initial_count": 1100,
+      "filtered_count": 7,
+      "final_count": 7,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1100
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 419064,
+      "crossref_percentage": 0.001670389248420289
+    },
+    "22-03": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "49227",
+      "date": "22-03",
+      "initial_count": 1298,
+      "filtered_count": 13,
+      "final_count": 13,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1298
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 904518,
+      "crossref_percentage": 0.001437229552092938
+    },
+    "22-04": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "49354",
+      "date": "22-04",
+      "initial_count": 1160,
+      "filtered_count": 14,
+      "final_count": 14,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1160
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 481325,
+      "crossref_percentage": 0.0029086376149171558
+    },
+    "22-05": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "49491",
+      "date": "22-05",
+      "initial_count": 1255,
+      "filtered_count": 13,
+      "final_count": 13,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1255
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 505004,
+      "crossref_percentage": 0.0025742370357462515
+    },
+    "22-06": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "50022",
+      "date": "22-06",
+      "initial_count": 1309,
+      "filtered_count": 15,
+      "final_count": 15,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1309
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 603208,
+      "crossref_percentage": 0.002486704420365778
+    },
+    "22-07": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "50176",
+      "date": "22-07",
+      "initial_count": 1201,
+      "filtered_count": 19,
+      "final_count": 19,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1201
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 498486,
+      "crossref_percentage": 0.003811541347199319
+    },
+    "22-08": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "50291",
+      "date": "22-08",
+      "initial_count": 1231,
+      "filtered_count": 15,
+      "final_count": 15,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1231
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 485120,
+      "crossref_percentage": 0.0030920184696569923
+    },
+    "22-09": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "50445",
+      "date": "22-09",
+      "initial_count": 1318,
+      "filtered_count": 18,
+      "final_count": 18,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1318
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 555137,
+      "crossref_percentage": 0.003242442856448048
+    },
+    "22-10": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "50592",
+      "date": "22-10",
+      "initial_count": 1309,
+      "filtered_count": 15,
+      "final_count": 15,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1309
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 539322,
+      "crossref_percentage": 0.002781269816547443
+    },
+    "22-11": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "51121",
+      "date": "22-11",
+      "initial_count": 1410,
+      "filtered_count": 13,
+      "final_count": 13,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1410
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 569185,
+      "crossref_percentage": 0.0022839674271106936
+    },
+    "22-12": {
+      "tool_name": "Competencias Centrales",
+      "batch_id": "51236",
+      "date": "22-12",
+      "initial_count": 1507,
+      "filtered_count": 15,
+      "final_count": 15,
+      "duplicate_count": 0,
+      "terms": {
+        "Core": 1507
+      },
+      "file_paths": {
+        "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236",
+        "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/term_results",
+        "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/merged_results.json",
+        "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/filtered_results.json",
+        "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/final_results.json",
+        "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/statistics_results.json"
+      },
+      "processing_time": 0,
+      "total_crossref": 830082,
+      "crossref_percentage": 0.0018070503877930131
+    }
+  },
+  "total_records": 200,
+  "total_duplicates": 0,
+  "monthly_files": {
+    "22-01": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-01_48387/statistics_results.json"
+    },
+    "22-02": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-02_49106/statistics_results.json"
+    },
+    "22-03": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-03_49227/statistics_results.json"
+    },
+    "22-04": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-04_49354/statistics_results.json"
+    },
+    "22-05": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-05_49491/statistics_results.json"
+    },
+    "22-06": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-06_50022/statistics_results.json"
+    },
+    "22-07": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-07_50176/statistics_results.json"
+    },
+    "22-08": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-08_50291/statistics_results.json"
+    },
+    "22-09": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-09_50445/statistics_results.json"
+    },
+    "22-10": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-10_50592/statistics_results.json"
+    },
+    "22-11": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-11_51121/statistics_results.json"
+    },
+    "22-12": {
+      "base_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236",
+      "term_results_folder": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/term_results",
+      "merged": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/merged_results.json",
+      "filtered": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/filtered_results.json",
+      "final": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/final_results.json",
+      "statistics": "crData/Competencias_Centrales_2319/Competencias_Centrales_22-12_51236/statistics_results.json"
+    }
+  }
+}

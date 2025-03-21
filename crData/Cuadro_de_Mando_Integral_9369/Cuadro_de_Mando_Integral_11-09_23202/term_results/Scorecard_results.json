@@ -1,0 +1,266 @@
+{
+  "term": "Scorecard",
+  "total_results": 20,
+  "processed_count": 20,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/17410401111167780",
+      "title": [
+        "When is a balanced scorecard a balanced scorecard?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Productivity and Performance Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>The Balanced Scorecard (BSC) is widely applied as a performance measurement and strategy implementation tool by organizations. Research has revealed that the term “balanced scorecard” may be understood differently by managers both within as well as across organizations implying that the performance measurement systems implemented in organizations may not be similar to the construct envisioned by Kaplan and Norton. Using Kaplan and Norton's Balanced Scorecard construct as a basis, the paper aims to develop and test a five‐level taxonomy to classify firms' performance measurement systems.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>A Balanced Scorecard taxonomy is validated using a large sample of professional accountants working in Canadian organizations.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The five‐level taxonomy is used to categorize the performance measurement systems of 149 organizations. It is found that 111 organizations' (74.5 percent) performance measurement systems met the criteria to be classified as a Basic Level 1 BSC, while 61 (40.9 percent) organizations have structurally complete Level 3 BSCs, and 36 (24.2 percent) organizations have fully developed Level 5 BSCs. The paper also discusses differences between Level 1 and Level 5 BSC organizations.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>While many researchers assume that organizations' performance measurement systems are similar in implementation level and use, the paper demonstrates that organizations are at different levels of BSC implementation and use, a factor that should be taken into consideration when designing empirical studies to test the efficacy of Kaplan and Norton's BSC.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>The five‐level BSC taxonomy scheme provides managers working with Kaplan and Norton's BSC with a tool to plan their implementation steps and then benchmark their progress towards implementing a fully developed Level 5 BSC.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>In developing and empirically validating a BSC taxonomy, the paper builds on and extends previous research on BSC implementation and its potential implications.</jats:p></jats:sec>",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1201/b11252-17",
+      "title": [
+        "Balanced Scorecard Metrics"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Social Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1109/icieem.2011.6035594",
+      "title": [
+        "Performance model of knowledge workers based on balanced scorecard"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 IEEE 18th International Conference on Industrial Engineering and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1289/ehp.119-a384a",
+      "title": [
+        "Scorecard Rates Emission Reductions of Hybrid Vehicles"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Health Perspectives"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1002/pfi.20240",
+      "title": [
+        "Developing and executing strategy: Using the balanced scorecard for alignment and accountability"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Performance Improvement"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1109/icqr.2011.6031683",
+      "title": [
+        "Maintenance metrics: A hierarchical model of balanced scorecard"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 IEEE International Conference on Quality and Reliability"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1109/icm.2011.143",
+      "title": [
+        "A Performance Evaluation Model of Green Supply Chain Based on Balanced Scorecard"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference of Information Technology, Computer Engineering and Management Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1007/978-3-642-23860-4_27",
+      "title": [
+        "The Manufacturing Adaptability Scorecard - a tool to analyze the benefit of autonomous production processes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Enabling Manufacturing Competitiveness and Economic Sustainability"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5772/17208",
+      "title": [
+        "A Lean Balanced Scorecard Using the Delphi Process: Enhancements for Decision Making"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Efficient Decision Support Systems - Practice and Challenges in Multidisciplinary Domains"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icmse.2011.6070000",
+      "title": [
+        "The analysis on the value drivers of agriculture high-tech companies based on the balanced scorecard"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference on Management Science &amp; Engineering 18th Annual Conference Proceedings"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.18552/joaw.v1i1.35",
+      "title": [
+        "Using the ‘Balanced Scorecard’ Method to Evaluate and Plan Writing Centre Provision"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Academic Writing"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/009102601104000302",
+      "title": [
+        "Promoting Organizational Fit in Strategic HRM: Applying the HR Scorecard in Public Service Organizations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Public Personnel Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Some models of strategic HRM promote the idea of linking HRM's practices so they “fit” line managers' needs for implementing their strategies and objectives. We tried to apply the idea of “fit” by using the HR Scorecard in two public sector organizations: the Victoria Cool Aid Society and the Ministry of Water, Land and Air Protection. In our applications, we took each of the organization's strategic themes and asked a series of questions to identify HRM objectives, activities, initiatives, and measures to respond to internal client needs. The projects focused on the long range outcome of helping each organization achieve its strategies and objectives in an effective and efficient way. It did this by helping develop a better “fit” between HRM's systems, procedures and practices and what various line departments needed. </jats:p>",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1109/pci.2011.43",
+      "title": [
+        "Developing an Information System for Quality Assurance in Higher Education Using the Balanced Scorecard Technique - The Case Study of TEI-A"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 15th Panhellenic Conference on Informatics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.12968/bjom.2011.19.9.578",
+      "title": [
+        "The Intrapartum Scorecard: Enhancing safety on the labour ward"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "British Journal of Midwifery"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The National Patient Safety Agency developed an Intrapartum Scorecard for labour ward coordinators to record the demand on their service and the resources available to meet that demand. The evaluation of the pilot at 11 maternity units found that staff valued having this information in one place to support decision‐making in real time. However, nearly half the labour ward coordinators reported difficulty in finding time to complete the Scorecard. Units also used information recorded on the Scorecard as an aid to understanding the pressures on the labour ward over 24 hours throughout the week. The Scorecard was launched in February 2010 as part of the National Patient Safety Agency's Intrapartum Toolkit. In a follow up survey of Heads of Midwifery, over half the respondents were either using the Scorecard or planning to use it. Maternity units would like to adapt the tool in light of their particular requirements. </jats:p>",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1201/b11239-15",
+      "title": [
+        "Appendix II"
+      ],
+      "type": "other",
+      "container-title": [
+        "ASPA Series in Public Administration and Public Policy",
+        "Government Performance and Results"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1016/j.cjca.2011.07.131",
+      "title": [
+        "185 Early extubation following cardiac surgery: Pre-operative scorecard using the Manitoba model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Canadian Journal of Cardiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1201/b11239-14",
+      "title": [
+        "Appendix I"
+      ],
+      "type": "other",
+      "container-title": [
+        "ASPA Series in Public Administration and Public Policy",
+        "Government Performance and Results"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1016/j.eswa.2011.04.082",
+      "title": [
+        "Using the FDM and ANP to construct a sustainability balanced scorecard for the semiconductor industry"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Expert Systems with Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.21171/ges.v5i10.1342",
+      "title": [
+        "MAPA ESTRATÉGICO DO BALANCED SCORECARD COMO FERRAMENTA DE APOIO AO PROGRAMA DE RESPONSABILIDADE AMBIENTAL NA JUSTIÇA FEDERAL DO RIO GRANDE DO NORTE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gestão e Sociedade"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>O objetivo desta pesquisa foi desenvolver o mapa estratégico do Programa de Responsabilidade Ambiental na Justiça Federal do Rio Grande do Norte, a fim de explicitar a estratégia deste programa e possibilitar o desenvolvimento de ações orientadas estrategicamente. Para tanto, foram realizadas reuniões de análise de oportunidades, ameaças, forças e fraquezas do programa, além da definição de missão e visão, havendo por fim a construção do mapa estratégico a partir destas informações. Como resultado, os objetivos estratégicos foram definidos em quatro perspectivas: financeira, relacionada ao apoio financeiro ao programa; processos internos, relacionada ao controle e planejamento das ações, bem como definição e aprovação das idéias; desenvolvimento e comunicação, relacionada à divulgação interna e externa de aspectos importantes do programa; e participação, relacionada ao envolvimento dos servidores com ações concretas do programa de responsabilidade ambiental. Como perspectiva futura, espera-se que o mapa seja comunicado e detalhado para que possa tornar-se referência na instituição.</jats:p>"
+    },
+    {
+      "doi": "10.1080/02522667.2011.10700114",
+      "title": [
+        "A typology and assessment of human resources performance in the financial services industry: The human resources scorecard perspective"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Information and Optimization Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    }
+  ]
+}

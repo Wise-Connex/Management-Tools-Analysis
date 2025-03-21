@@ -1,0 +1,527 @@
+{
+  "term": "Scorecard",
+  "total_results": 41,
+  "processed_count": 41,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4324/9780080489018-17",
+      "title": [
+        "Communicating Results"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-20",
+      "title": [
+        "Implementation Issues"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080478890",
+      "title": [
+        "The Leadership Scorecard"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4324/9780080489018-16",
+      "title": [
+        "Identifying Intangible Measures"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-19",
+      "title": [
+        "Forecasting the ROI"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-8",
+      "title": [
+        "Initial Analysis and Planning"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-7",
+      "title": [
+        "The Business Case for ROI"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-26",
+      "title": [
+        "Safety Incentive Program (National Steel)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018",
+      "title": [
+        "The Human Resources Scorecard"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4324/9780080489018-22",
+      "title": [
+        "Sexual Harassment Prevention (Healthcare Inc.)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-25",
+      "title": [
+        "Stress Management (Midwest Electric Inc.)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-13",
+      "title": [
+        "Converting Data to Monetary Value"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-11",
+      "title": [
+        "Collecting Data After HR Program Implementation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-24",
+      "title": [
+        "Absenteeism Reduction Program (Metro Transit Authority)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-28",
+      "title": [
+        "Technology-Based Learning (United Petroleum International)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-10",
+      "title": [
+        "Collecting Data During HR Program Implementation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-15",
+      "title": [
+        "Calculating the Actual Return on Investment"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-27",
+      "title": [
+        "Executive Leadership Development (Imperial National Bank)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-14",
+      "title": [
+        "Monitoring the Cost of Human Resource Programs"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-23",
+      "title": [
+        "Competency-Based Pay System (National Crushed Stone Company)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.15373/22778179/august2014/60",
+      "title": [
+        "Exploration of Association Between Corporate Social Responsibility and Balance Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Scientific Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.1108/jaoc.2012.31508baa.003",
+      "title": [
+        "Special issue on the Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Accounting &amp; Organizational Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.4324/9780080489018-12",
+      "title": [
+        "Isolating the Effects of an HR Program ................................ Preliminary Issues, 169. The Ten Strategies, 171. Using the"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Human Resources Scorecard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.5897/ajbm11.645",
+      "title": [
+        "Problems and perspectives of balanced scorecard implementation in Serbia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AFRICAN JOURNAL OF BUSINESS MANAGEMENT"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1108/01409171211238848",
+      "title": [
+        "The balanced scorecard: the effects of feedback on performance evaluation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Research Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>The use of a balanced scorecard (BSC) for performance evaluation is meant to help evaluators make more complete decisions, as they have a variety of financial and non‐financial measures to assess. The problem is that users have difficulty taking all of the measures into consideration. The tendency to place more weight on common measures (measures that are the same across divisions) while either ignoring or placing very little weight on unique measures (measures are unique to a particular division) has become known as a “common measures bias”. The purpose of this paper is to extend a line of research that works to understand how this common measures bias might be mitigated.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>This study examines whether the presence of task property feedback, a form of cognitive feedback, prior to a performance evaluation task, can help evaluators overcome the tendency to rely primarily on common measures. This study used a 2×2 experimental design where subjects were asked to evaluate the performance of two managers under either feedback or non‐feedback conditions. In the feedback condition, subjects were provided with their supervisor's suggestions about performance evaluation in the use of BSCs.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>This study finds that when subjects were given task property feedback, a form of cognitive feedback, they tended to use more unique measures than if they were not given any feedback information at all.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>In practice, more straight forward and simple feedback information is likely easier for companies to implement and easier for evaluators to follow. Feedback information that is too complex or that requires too much effort may frustrate evaluators, at which point they may abandon the effort. The authors' findings also indicate that direct and clear guidance from the top manager of a business may be seen as pressure by lower‐level managers. It is important for top managers to create such a performance evaluation environment so that all BSC measures are considered.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The paper finds that when evaluators judge the performance of managers through the use of a BSC, they tend to weight common measures more heavily than they do unique measures, unless they are provided cognitive feedback to cue them into the importance of using all measures. This study is one of many, following LS (2000), documenting a finding of common measures bias in the use of BSCs. Where this study contributes to the literature is in the use of task property feedback, a form of cognitive feedback, to overcome this bias. Since the use of unique measures is a key attribute of BSCs as they help users capture the nuances of a specific division's or firm's strategy, it is crucial that performance evaluators pay careful attention to them.</jats:p></jats:sec>",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.5539/ass.v8n8p155",
+      "title": [
+        "The Construction of Indicator System for Performance Measurement of Chinese Enterprises Based on Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Asian Social Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5897/ajbm11.2905",
+      "title": [
+        "The balanced scorecard (BSC) implications on the increase of public companies performance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AFRICAN JOURNAL OF BUSINESS MANAGEMENT"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/s10405-012-0600-4",
+      "title": [
+        "Die „Balanced Scorecard“ in Praxis und Krankenhaus"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Der Pneumologe"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-07"
+    },
+    {
+      "doi": "10.7251/emc1201041a",
+      "title": [
+        "PROBLEMI U IZBORU SOFTVERA ZA IMPLEMENTACIJU BALANCED SCORECARD-a"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EMC Review - Časopis za ekonomiju - APEIRON"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Kompleksnost Balanced Scorecard sistema upravljanja ukazuje na neminovnost korišćenja softverskih paketa u cilju jednostavnije implementacije za sve zaposlene i na svim nivoima u kompaniji. U skladu sa tim izvršena je analiza i preispitivanje raspoloživih softvera za BSC sa ciljem da se nađe najpovoljnije rešenje. Pri izboru softverskog paketa za BSC treba imati u vidu da BSCCol (Balanced Scorecard Colaborative) certifikuje samo one softverske pakete koji zadovoljavaju Kaplan-Nortonova ograničenja. Imajući u vidu da je broj raspoloživih softvera na tržištu ogroman, za implementaciju BSC-a neophodno je izvršiti sistemske analize kako bi se za konkretnu organizaciju izabralo najpogodnije rešenje. Standardom ISO/IEC 9126-1 koji se koristi za ocenu kvaliteta softvera neophodno je ispuniti sledeće kriterijume i to: funkcionalnost, pouzdanost, efikasnost, održavanje, portabilnost, upotrebljivost.</jats:p>"
+    },
+    {
+      "doi": "10.1016/j.cpa.2012.01.002",
+      "title": [
+        "Implicit racial prejudice against African-Americans in balanced scorecard performance evaluations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Critical Perspectives on Accounting"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.15600/2238-1252/rct.v17n33p87-102",
+      "title": [
+        "Roteiro para Implantação de Balanced Scorecard: Estudo de Caso em Pequena Empresa"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revista de Ciência &amp; Tecnologia"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5897/ajbm11.2700",
+      "title": [
+        "Designing and implementing of balanced scorecard system in educational systems: Results obtained from a case study in Iranian universities"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AFRICAN JOURNAL OF BUSINESS MANAGEMENT"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/shuser.2012.6269016",
+      "title": [
+        "Notice of Retraction The relevance of balanced scorecard in predicting future market price"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 IEEE Symposium on Humanities, Science and Engineering Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.21714/2236-02632012v2n1tac17",
+      "title": [
+        "Modelo de Remuneração Variável Atrelada ao Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "TAC – Tecnologias de Administração e Contabilidade"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1108/14777281211249905",
+      "title": [
+        "Balanced Scorecard – fostering learning organizations towards achieving strategic results: a case study of an oil PSU in India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Development and Learning in Organizations: An International Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>This paper aims to review the latest management developments across the globe and pinpoint practical implications from cutting‐edge research and case studies.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>This briefing is prepared by an independent writer who adds their own impartial comments and places the articles in context.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>Organizations compete to succeed in a continuously changing business scenario. It is obvious that as an organization, they need to learn continuously, develop their competencies and adapt to the changes in business environment, thus becoming a learning organization. However, it is important that the individual and collective learning of the organization is such that it contributes to accomplishing strategic business results and the organization's vision. This can be achieved through the Balanced Scorecard as it clearly highlights in the “Learning &amp; Growth” perspectives, the competencies and organizational capabilities that need to be built. The Balanced Scorecard thus links the learning endeavors of the organization with its strategy and vision.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>The paper provides strategic insights and practical thinking that have influenced some of the world's leading organizations.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The briefing saves busy executives and researchers hours of reading time by selecting only the very best, most pertinent information and presenting it in a condensed and easy‐to digest format.</jats:p></jats:sec>",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.3923/tasr.2012.456.466",
+      "title": [
+        "An Analytical Network Process Approach for Evaluating Banking Performance Based on Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Trends in Applied Sciences Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.5120/7531-0615",
+      "title": [
+        "Predicting, Prioritizing &amp; Planning Enterprise System&amp;apos;s CSFs for Smart Factory: a Balanced Scorecard FPG-Data-Mining Scenario Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.omega.2011.06.006",
+      "title": [
+        "Integrating the Data Envelopment Analysis and the Balanced Scorecard approaches for enhanced performance assessment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Omega"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.1142/s0219877012500095",
+      "title": [
+        "HARVESTING IP-BASED VALUE POTENTIAL: THE INTELLECTUAL PROPERTY SCORECARD AS A MECHANISM TO CAPITALIZE ON TECHNOLOGICAL INNOVATION, KNOWLEDGE, AND IP"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Innovation and Technology Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> There is a staggering decline in the capitalization of intellectual property (IP) and low levels of investment in R&amp;D, particularly with respect to emerging nations within the global IP environment, which limits accelerated industrial growth. In most emerging markets, this necessitates that management address multiple competencies better, that exploit organizational resources, knowledge, and management ability, to adapt faster than the competition. Our research offers a management model to address this management challenge strategically. </jats:p><jats:p> This research also indicates that IP as a value creation mechanism is currently not a top management priority although investors increasingly look toward good IP management as an indicator of future organizational growth. The research presents the IP Scorecard, a further inductive development of Kaplan and Norton's traditional Balanced Scorecard. The IP Scorecard is a strategic management tool that enables management to drive a robust industrial growth strategy that is explicitly positioned within the knowledge economy, identifying target areas for organizational development around knowledge and IP management, in order to achieve the competitive higher-ground, by strategically creating and capitalizing on value arising from innovation and R&amp;D activities. </jats:p><jats:p> The IP Scorecard sensitizes management on where and how to carve out competitive turf, particularly from a knowledge and IP value creation perspective, seeking ultimately to enhance corporate/shareholder and product-life-cycle value. The paper encompasses limited field research findings on key IP-related strategic management considerations that promote leadership in innovation and R&amp;D, across the product life cycle. </jats:p>",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.1080/14783363.2012.669546",
+      "title": [
+        "The alignment of managers’ mental models with the balanced scorecard strategy map"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Total Quality Management &amp; Business Excellence"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    },
+    {
+      "doi": "10.9708/jksci.2012.17.6.191",
+      "title": [
+        "A Study of the Effectiveness of IT Asset Management Through Application of Balanced Scorecard in the Public Organizations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Korea Society of Computer and Information"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-06"
+    }
+  ]
+}

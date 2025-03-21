@@ -1,0 +1,84 @@
+{
+  "term": "Scorecard",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1002/9781118266182.ch11",
+      "title": [
+        "A Scorecard for Infrastructure Performance"
+      ],
+      "type": "other",
+      "container-title": [
+        "Infrastructure Finance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-02"
+    },
+    {
+      "doi": "10.22219/jtiumm.vol10.no1.81-90",
+      "title": [
+        "Perancangan Sistem Pengukuran Kinerja Pada Rumah Sakit dengan Menggunakan Metode Balanced Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Teknik Industri"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Elizabeth Hospital of Situbondo represent one of the some hospital exist in Sub-province of Situbondo. With condition of like this is existing hospital have to show maximal performance and can give best service to society so that can become hospital society choice. Beside give service of health, as a hospital unit also have compulsion to always ever take care of the continuity of its life, even the including all existing shares or unit to expand in an optimal fashion. With condition of above, hence company in this case RS. Elizabeth Situbondo can become company of which can exploit system measurement of performance by using method of balanced scorecard to increase company performance on an ongoing basis so that can give required service consumer swiftly is, effective, inwrought, and professional. At this research of concept which is used in designing system measurement of performance balanced scorecard. As for in perspective which used in this research cover five in perpective that is finance, cutomer or client, internal business process, study and growth, and benefit to society. From this in perpective fifth is later then developed to become performance indicators able to be measured to utilize to know level attainment of Hospital performance. Pursuant to determination of performance indicator is later then conducted measurement by using ill obtained datas from home every its indicator, this measurement use objective matrix (OMAX), where hospital periodical can do planning and control to attainment of performance. In measurement use OMAX, included also wight element of each measured indicator, where in determination of wight every the indicator use analytical hierarchy process ( AHP). In measurement of in perpective fifth conducted performance yield 23 indicator. Result of performance measurement in 2007, index attainment of performance equal to 6,616.</jats:p>"
+    },
+    {
+      "doi": "10.22409/engevista.v9i1.182",
+      "title": [
+        "COMPARANDO A ABRANGÊNCIA DO BALANCED SCORECARD COM OS MODELOS DO TQC E PNQ"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engevista"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Este estudo descritivo estatístico, baseado em pesquisa realizada pela Fundação Dom Cabral, apresenta uma comparação da abrangência dos modelos BSC, TQC e PNQ, como ferramentas de controle de desempenho, a partir dos resultados de pesquisa realizada com as 500 maiores empresas privadas que atuam no mercado brasileiro, de acordo com a Revista Exame de Junho de 2000. O estudo também procura identificar as características destes três modelos de avaliação de desempenho empresarial, visando estabelecer uma matriz comparativa que possa servir de base para orientar a seleção de um modelo de controle de desempenho adequado à realidade de cada empresa. Acredita-se que este estudo será relevante para empresas que estejam considerando o Balanced Scorecard apenas como uma ferramenta de suporte ao desenvolvimento e \nimplementação da estratégia da empresa. </jats:p>"
+    },
+    {
+      "doi": "10.1002/jcaf.20576",
+      "title": [
+        "The promise and perils of the balanced scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Corporate Accounting &amp; Finance"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>There is lack of consensus as to what a balanced scorecard is. Many organizations develop a balanced scorecard without first developing a strategy map, from which key performance indicators (KPIs) for the balanced scorecard should be derived. In addition, many organizations confuse strategic KPIs, which belong in a balanced scorecard, with operational performance indicators (PIs), which belong in a dashboard. © 2010 Wiley Periodicals, Inc.</jats:p>",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1002/jcaf.20581",
+      "title": [
+        "Information search using the balanced scorecard: What matters?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Corporate Accounting &amp; Finance"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Information overload has been rightly called one of the \"deadly sins\" of balanced scorecards. To help organizations make their scorecards balanced, this article discusses how many and what types of measures to use. © 2010 Wiley Periodicals, Inc.</jats:p>",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1016/j.jacr.2009.09.018",
+      "title": [
+        "Quantifying Radiation Safety and Quality in Medical Imaging, Part 4: The Medical Imaging Agent Scorecard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American College of Radiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-02"
+    }
+  ]
+}

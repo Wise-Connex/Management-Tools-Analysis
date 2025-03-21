@@ -1,0 +1,326 @@
+{
+  "term": "Core",
+  "total_results": 25,
+  "processed_count": 25,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/5627390",
+      "title": [
+        "Hydraulic design and performance of a GCFR core assembly orifice"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0301-0104(80)85091-9",
+      "title": [
+        "Theoretical study of the core-ionized and various core-excited and shake-up states of acetylene and ethylene by ab initio MRD-CI methods"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.2172/5714235",
+      "title": [
+        "ORCULT-I: a loop dynamics simulator program for the core flow test loop. [GCFR reactor simulator]"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/988500.1248444",
+      "title": [
+        "Implementations of the Core"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGGRAPH Computer Graphics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1111/j.1365-246x.1980.tb04287.x",
+      "title": [
+        "Simple core undertones"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geophysical Journal International"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0375-9601(80)90863-4",
+      "title": [
+        "Soft-core model for ionic crystals normal ionic salts and superionic conductors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1145/988500.988506",
+      "title": [
+        "Logical pick device simulation algorithms for the core system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGGRAPH Computer Graphics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The specifications for logical pick devices in the Status Report of the Graphics Standards Planning Committee are reviewed followed by a short, general discussion of Pick simulation. Then, the simulation of Picks by point selection and segment display file processing is discussed in detail with emphasis on the improvement of performence using extents. Finally, the picking algorithms of two major Core implementations are outlined.</jats:p>",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0022-0248(80)90219-5",
+      "title": [
+        "The core structure of shish-kebab crystals of polyethylene"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Crystal Growth"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0009-2614(80)85108-6",
+      "title": [
+        "Core photoelectron spectra of narrow-band metallic materials"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical Physics Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0301-4622(80)85010-1",
+      "title": [
+        "Thermal transition of core particle is not a two-state process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biophysical Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.13182/nt80-a32433",
+      "title": [
+        "Containment Response to Postulated Core Meltdown Accidents in the Fast Flux Test Facility"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1143/ptp.63.459",
+      "title": [
+        "The First-Order E2 Core Polarization Charge of 41Ca in Woods-Saxon Shell Model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Progress of Theoretical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0031-9201(80)90069-2",
+      "title": [
+        "Core formation, evolution, and convection: a geophysical model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics of the Earth and Planetary Interiors"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1080/18811248.1980.9732557",
+      "title": [
+        "Application of Improved Coarse Mesh Method to BWR Core Calculations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Nuclear Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0198-0149(80)90097-7",
+      "title": [
+        "Burrow-like structures at depth in a Cape Basin red clay core"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Deep Sea Research Part A. Oceanographic Research Papers"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1111/j.1749-6632.1980.tb15943.x",
+      "title": [
+        "NEUTRINO FLOW AND STELLAR CORE COLLAPSE*"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1088/0022-3719/13/6/006",
+      "title": [
+        "Diffuse scattering in orientationally disordered crystals: hard-core correlations treated by the weak-graph method"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics C: Solid State Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1139/e80-024",
+      "title": [
+        "Shallow core snow chemistry of Athabasca Glacier, Alberta"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Canadian Journal of Earth Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Examination of concentrations of several chemical species in a 7.37 m deep pit excavated close to the 1978 summer equilibrium line altitude (ELA) of Athabasca Glacier (2694 m) suggests that: (1) aerosol forms of NO<jats:sub>3</jats:sub><jats:sup>−</jats:sup>, PO<jats:sub>4</jats:sub><jats:sup>3−</jats:sup>, and reactive SiO<jats:sub>2</jats:sub> entered this area in diluted concentrations compared to values for Edmonton, Alberta, the closest heavily populated area; (2) Fe values were similar to those in Edmonton; and (3) the glacier's yearly net mass balance for the sample area was 1.5 and 2.4–2.7 m H<jats:sub>2</jats:sub>O equivalent for the 1976–1977 and 1977–1978 mass balance years. </jats:p>",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0301-0104(80)85083-x",
+      "title": [
+        "A nonempirical LCAO MO SCF investigation of core ionization phenomena in the series XCO (X = CH+3, CF+3, BH3, BF3)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1364/josa.70.000179",
+      "title": [
+        "Core/cladding power distribution, propagation constant, and group delay: Simple relation for power-law graded-index fibers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Optical Society of America"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0006-291x(80)90406-4",
+      "title": [
+        "A new O-glycosidically linked tri-hexosamine core structure in sheep gastric mucin: A preliminary note"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochemical and Biophysical Research Communications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0002-9149(80)90805-x",
+      "title": [
+        "Quantitation of platelet deposition in core-tex femoral artery implants in the canine model and its reduction with dipyridamole and prostacyclin"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Cardiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1016/0148-9062(80)90139-4",
+      "title": [
+        "Forecasting changes in the stress-strain state of frozen core of a rock-fill-earth dam at its thawing during operation (in Russian)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Rock Mechanics and Mining Sciences &amp; Geomechanics Abstracts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1007/bf02209351",
+      "title": [
+        "Clay mineral composition in shallow water sediment samples near the Antarctic Peninsula and in deep-sea core samples from the pacific and the Indian-Antarctic Basins"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Oceanographical Society of Japan"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-02"
+    },
+    {
+      "doi": "10.1103/physrevlett.44.553.2",
+      "title": [
+        "Structure-Dependent<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mn>4</mml:mn><mml:mi>f</mml:mi></mml:math>-Core-Level Binding Energies for Surface Atoms on Ir(111), Ir(100)-(5×1), AND METASTABLE Ir(100)-(1×1)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review Letters"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}
