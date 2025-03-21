@@ -1570,7 +1570,7 @@ def get_total_crossref_publications(date):
     
     try:
         # Convert date to required format (YYYY-MM)
-        year = int(f"20{date.split('-')[0]}")
+        year = convert_year(date.split('-')[0])  # Use convert_year for proper year conversion
         month = int(date.split('-')[1])
         target_date = f"{year}-{month:02d}"
         
@@ -1607,7 +1607,7 @@ def generate_batch_statistics(batch, results):
     total_crossref = get_total_crossref_publications(batch.date)
     final_count = len(results.get('items', []))
     
-    # Calculate percentages
+    # Calculate percentage relative to total Crossref publications for the month
     crossref_percentage = (final_count / total_crossref * 100) if total_crossref > 0 else 0
     
     # Calculate processing time
@@ -1670,10 +1670,10 @@ def print_batch_summary(statistics):
         print(f"- Duplication Rate: {duplication_rate:.2f}%")
     
     # Crossref statistics
-    total_crossref = statistics.get('total_crossref', 0)
-    crossref_percentage = statistics.get('crossref_percentage', 0)
-    print(f"- Total Crossref Publications: {total_crossref:,}")
-    print(f"- Percentage of Total Crossref: {crossref_percentage:.4f}%")
+    print("\nCrossref Statistics:")
+    print(f"- Total Publications in Crossref: {statistics.get('total_crossref', 0):,}")
+    print(f"- Records with Crossref DOIs: {statistics.get('crossref_matches', 0):,}")
+    print(f"- % Records with DOIs: {statistics.get('crossref_percentage', 0):.2f}%")
     
     # Term statistics
     if 'terms' in statistics:
@@ -1967,13 +1967,29 @@ def process_tool_year_range(tool_name, start_year, end_year):
                 multi_year_statistics['yearly_stats'][str(year)] = {'error': str(e)}
             
             # Add a small delay between years to avoid API rate limits
-            time.sleep(CROSSREF_API_DELAY * 2)  # Double delay between years
+            time.sleep(CROSSREF_API_DELAY * 2)
         
         # Generate and print multi-year summary
         print_multi_year_summary(multi_year_statistics)
         
         # Save multi-year statistics
         save_multi_year_statistics(multi_year_statistics, tool_name)
+        
+        # Create CSV reports
+        try:
+            monthly_rel_path, other_paths = create_csv_reports(multi_year_statistics, tool_name)
+            print("\nCSV reports created:")
+            print(f"- Monthly relative: {os.path.basename(monthly_rel_path)}")
+            for path in other_paths:
+                print(f"- {os.path.basename(path)}")
+            
+            # Update CRIndex.csv
+            update_crindex(tool_name, monthly_rel_path)
+            print(f"\nUpdated CRIndex.csv with {os.path.basename(monthly_rel_path)}")
+            
+        except Exception as e:
+            logger.error(f"Error creating CSV reports: {str(e)}")
+            print(f"Error creating CSV reports: {str(e)}")
         
         return multi_year_statistics
         
@@ -2009,20 +2025,31 @@ def print_multi_year_summary(statistics):
         records = stats.get('total_records', 0)
         duplicates = stats.get('total_duplicates', 0)
         successful_months = stats.get('successful_months', 0)
-        year_total_crossref = stats.get('total_crossref', 0)
         
-        total_records += records
+        # Calculate yearly totals
+        year_total_records = 0
+        year_total_crossref = 0
+        
+        # Sum up monthly totals for the year
+        for month_stats in stats['monthly_stats'].values():
+            if 'error' not in month_stats:
+                year_total_records += month_stats.get('final_count', 0)
+                year_total_crossref += month_stats.get('total_crossref', 0)
+        
+        total_records += year_total_records
         total_duplicates += duplicates
         total_crossref += year_total_crossref
+        
         if successful_months > 0:
             successful_years += 1
         
         print(f"\n{year}:")
-        print(f"- Records: {records:,}")
+        print(f"- Records: {year_total_records:,}")
+        print(f"- Total Crossref Publications: {year_total_crossref:,}")
         print(f"- Duplicates: {duplicates:,}")
         if year_total_crossref > 0:
-            yearly_crossref_percentage = (records / year_total_crossref * 100)
-            print(f"- % of Crossref: {yearly_crossref_percentage:.4f}%")
+            yearly_percentage = (year_total_records / year_total_crossref * 100)
+            print(f"- % of Total Crossref: {yearly_percentage:.4f}%")
         if successful_months == 12:
             print("- All months were successfully processed")
         else:
@@ -2031,11 +2058,15 @@ def print_multi_year_summary(statistics):
     print("\n" + "="*40)
     print("Multi-Year Totals:")
     print(f"- Total Records: {total_records:,}")
+    print(f"- Total Crossref Publications: {total_crossref:,}")
     print(f"- Total Duplicates: {total_duplicates:,}")
     if total_crossref > 0:
-        total_crossref_percentage = (total_records / total_crossref * 100)
-        print(f"- % of Crossref: {total_crossref_percentage:.4f}%")
-    print(f"- Successfully Processed Years: {successful_years}/{len(statistics['yearly_stats'])}")
+        total_percentage = (total_records / total_crossref * 100)
+        print(f"- % of Total Crossref: {total_percentage:.4f}%")
+    if successful_years == len(statistics['yearly_stats']):
+        print("- All years were successfully processed")
+    else:
+        print(f"- Successfully processed {successful_years} out of {len(statistics['yearly_stats'])} years")
     print("="*80 + "\n")
 
 def save_multi_year_statistics(statistics, tool_name):
@@ -2069,6 +2100,176 @@ def save_multi_year_statistics(statistics, tool_name):
     except Exception as e:
         logger.error(f"Error saving multi-year statistics: {str(e)}")
         print(f"Error saving multi-year statistics: {str(e)}")
+
+def create_csv_reports(statistics, tool_name):
+    """
+    Create CSV report files from multi-year statistics
+    
+    Args:
+        statistics: Dictionary containing multi-year statistics
+        tool_name: Name of the tool
+        
+    Returns:
+        tuple: Paths to the created CSV files
+    """
+    logger = logging.getLogger(__name__)
+    
+    # Create safe filename prefix
+    safe_tool_name = tool_name.replace(' ', '')
+    
+    # Setup output directory
+    output_dir = os.path.join('output', 'csv_reports')
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Define file paths
+    monthly_abs_path = os.path.join(output_dir, f"CR_{safe_tool_name}_monthly_absolute.csv")
+    yearly_abs_path = os.path.join(output_dir, f"CR_{safe_tool_name}_yearly_absolute.csv")
+    monthly_rel_path = os.path.join(output_dir, f"CR_{safe_tool_name}_monthly_relative.csv")
+    yearly_rel_path = os.path.join(output_dir, f"CR_{safe_tool_name}_yearly_relative.csv")
+    
+    try:
+        # Prepare data for CSV files
+        monthly_abs_data = []
+        monthly_rel_data = []
+        yearly_abs_data = []
+        yearly_rel_data = []
+        
+        # Process each year
+        for year, year_stats in sorted(statistics['yearly_stats'].items()):
+            if 'error' in year_stats:
+                continue
+                
+            # Calculate yearly totals
+            year_total_records = 0
+            year_total_crossref = 0
+            
+            # Process monthly data first to accumulate yearly totals
+            for month_date, month_stats in sorted(year_stats['monthly_stats'].items()):
+                if 'error' in month_stats:
+                    continue
+                
+                # Convert YY-MM to YYYY-MM
+                yy, mm = month_date.split('-')
+                yyyy = convert_year(yy)
+                date = f"{yyyy}-{mm}"
+                
+                # Get monthly counts
+                monthly_records = month_stats.get('final_count', 0)
+                monthly_crossref = month_stats.get('total_crossref', 0)
+                
+                # Add to yearly totals
+                year_total_records += monthly_records
+                year_total_crossref += monthly_crossref
+                
+                # Add monthly absolute data
+                monthly_abs_data.append({
+                    'Date': date,
+                    tool_name: monthly_records
+                })
+                
+                # Add monthly relative data (percentage of total Crossref for that month)
+                if monthly_crossref > 0:
+                    monthly_rel_data.append({
+                        'Date': date,
+                        tool_name: (monthly_records / monthly_crossref * 100)
+                    })
+            
+            # Add yearly absolute data
+            yearly_abs_data.append({
+                'Date': f"{year}-01",
+                tool_name: year_total_records
+            })
+            
+            # Add yearly relative data (percentage of total Crossref for that year)
+            if year_total_crossref > 0:
+                yearly_rel_data.append({
+                    'Date': f"{year}-01",
+                    tool_name: (year_total_records / year_total_crossref * 100)
+                })
+        
+        # Write CSV files
+        fieldnames = ['Date', tool_name]
+        
+        # Write monthly absolute CSV
+        with open(monthly_abs_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(monthly_abs_data)
+        logger.info(f"Created monthly absolute CSV: {monthly_abs_path}")
+        
+        # Write yearly absolute CSV
+        with open(yearly_abs_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(yearly_abs_data)
+        logger.info(f"Created yearly absolute CSV: {yearly_abs_path}")
+        
+        # Write monthly relative CSV
+        with open(monthly_rel_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(monthly_rel_data)
+        logger.info(f"Created monthly relative CSV: {monthly_rel_path}")
+        
+        # Write yearly relative CSV
+        with open(yearly_rel_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(yearly_rel_data)
+        logger.info(f"Created yearly relative CSV: {yearly_rel_path}")
+        
+        return monthly_rel_path, [yearly_abs_path, monthly_abs_path, yearly_rel_path]
+        
+    except Exception as e:
+        logger.error(f"Error creating CSV reports: {str(e)}")
+        return None, None
+
+def update_crindex(tool_name, monthly_relative_path):
+    """
+    Update CRIndex.csv with the monthly relative CSV filename and mark as complete
+    
+    Args:
+        tool_name: Name of the tool
+        monthly_relative_path: Path to the monthly relative CSV file
+    """
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Get project root and CRIndex path
+        project_root = get_project_root()
+        crindex_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
+        
+        # Read current CRIndex
+        rows = []
+        with open(crindex_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+        
+        # Update tool entry
+        filename = os.path.basename(monthly_relative_path)
+        updated = False
+        for row in rows:
+            if row['Keyword'] == tool_name:
+                row['Filename'] = filename
+                row['Complete'] = 'True'
+                updated = True
+                break
+        
+        if not updated:
+            logger.warning(f"Tool '{tool_name}' not found in CRIndex.csv")
+            return
+        
+        # Write updated CRIndex
+        with open(crindex_path, 'w', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=['Keyword', 'Filename', 'Complete'])
+            writer.writeheader()
+            writer.writerows(rows)
+        
+        logger.info(f"Updated CRIndex.csv for tool '{tool_name}'")
+        
+    except Exception as e:
+        logger.error(f"Error updating CRIndex.csv: {str(e)}")
+        raise
 
 def main():
     """Main entry point"""
@@ -2142,22 +2343,51 @@ def main():
             if not tools:
                 raise ValueError("No tools available")
             
-            # Display tool menu
-            print("\nAvailable tools:")
-            for i, tool in enumerate(tools, 1):
-                print(f"{i}. {tool}")
+            # Display tool menu with new options
+            print("\nAvailable options:")
+            print("A. Process All Tools")
+            print("F. Process First Half of Tools")
+            print("S. Process Second Half of Tools")
+            print("I. Process Individual Tool")
             
-            # Get tool selection
             while True:
-                try:
-                    selection = input("\nSelect a tool (number): ")
-                    tool_index = int(selection) - 1
-                    if 0 <= tool_index < len(tools):
-                        selected_tool = tools[tool_index]
-                        break
-                    print(f"Invalid selection. Please enter a number between 1 and {len(tools)}")
-                except ValueError:
-                    print("Invalid input. Please enter a number")
+                selection = input("\nSelect an option (A/F/S/I): ").strip().upper()
+                if selection in ['A', 'F', 'S', 'I']:
+                    break
+                print("Invalid selection. Please enter A, F, S, or I")
+            
+            selected_tools = []
+            if selection == 'I':
+                # Display individual tool menu
+                print("\nAvailable tools:")
+                for i, tool in enumerate(tools, 1):
+                    print(f"{i}. {tool}")
+                
+                # Get tool selection
+                while True:
+                    try:
+                        tool_selection = input("\nSelect a tool (number): ")
+                        tool_index = int(tool_selection) - 1
+                        if 0 <= tool_index < len(tools):
+                            selected_tools = [tools[tool_index]]
+                            break
+                        print(f"Invalid selection. Please enter a number between 1 and {len(tools)}")
+                    except ValueError:
+                        print("Invalid input. Please enter a number")
+            
+            elif selection == 'A':
+                selected_tools = tools
+                print(f"\nSelected all {len(tools)} tools for processing")
+            
+            elif selection == 'F':
+                midpoint = len(tools) // 2
+                selected_tools = tools[:midpoint]
+                print(f"\nSelected first half ({len(selected_tools)} tools) for processing")
+            
+            else:  # selection == 'S'
+                midpoint = len(tools) // 2
+                selected_tools = tools[midpoint:]
+                print(f"\nSelected second half ({len(selected_tools)} tools) for processing")
             
             # Ask user if they want to process a specific month, entire year, or year range
             while True:
@@ -2166,34 +2396,44 @@ def main():
                     break
                 print("Invalid input. Please enter 'M' for month, 'Y' for year, or 'R' for range")
             
-            if mode == 'M':
-                # Get specific month
-                while True:
-                    date = input("\nEnter date (YY-MM format, e.g., 24-01): ")
-                    if validate_date_format(date):
-                        break
-                    print("Invalid date format. Please use YY-MM format")
+            # Process each selected tool
+            for tool in selected_tools:
+                print(f"\nProcessing tool: {tool}")
                 
-                # Process tool data for specific month
-                statistics = process_tool_data(selected_tool, date)
-            
-            elif mode == 'Y':
-                # Get year
-                year = get_year_input()
-                if not year:
-                    return 1
+                if mode == 'M':
+                    # Get specific month
+                    while True:
+                        date = input("\nEnter date (YY-MM format, e.g., 24-01): ")
+                        if validate_date_format(date):
+                            break
+                        print("Invalid date format. Please use YY-MM format")
+                    
+                    # Process tool data for specific month
+                    statistics = process_tool_data(tool, date)
                 
-                # Process tool data for entire year
-                statistics = process_tool_year_data(selected_tool, year)
-            
-            else:  # mode == 'R'
-                # Get year range
-                start_year, end_year = get_year_range_input()
-                if not start_year or not end_year:
-                    return 1
+                elif mode == 'Y':
+                    # Get year
+                    year = get_year_input()
+                    if not year:
+                        continue
+                    
+                    # Process tool data for entire year
+                    statistics = process_tool_year_data(tool, year)
                 
-                # Process tool data for year range
-                statistics = process_tool_year_range(selected_tool, start_year, end_year)
+                else:  # mode == 'R'
+                    # Get year range
+                    start_year, end_year = get_year_range_input()
+                    if not start_year or not end_year:
+                        continue
+                    
+                    # Process tool data for year range
+                    statistics = process_tool_year_range(tool, start_year, end_year)
+                
+                print(f"\nCompleted processing for {tool}")
+                
+                # If processing multiple tools, add a delay to avoid API rate limits
+                if len(selected_tools) > 1:
+                    time.sleep(CROSSREF_API_DELAY * 3)
         
         logger.info("Processing completed successfully")
         return 0
