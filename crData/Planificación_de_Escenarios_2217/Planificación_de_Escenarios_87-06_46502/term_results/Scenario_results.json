@@ -1,0 +1,33 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0016-3287(87)90025-5",
+      "title": [
+        "Energy, the environment and employment: A new scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1987-06"
+    },
+    {
+      "doi": "10.46298/cst.11849",
+      "title": [
+        "Scenario of transport project in urban environment: synthesis of economic and ecology?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Les Cahiers Scientifiques du Transport - Scientific Papers in Transportation"
+      ],
+      "subject": [],
+      "abstract": "<jats:p xml:lang=\"en\">Within the context of the public debate concerning environmental transport concepts the following questions are of increasing interest:- are ecological transport concepts, aiming at a substantial decrease of car usage within urban areas of high density at the same time economic in terms of cost and monetary benefits?- which transport projects contribute to both ecological and economic aims?- which is the method to compare and evaluate ecological and originally monetary criteria?These questions were answered in the framework of a research project entitled \"Case studies for the economic and ecological evaluation of alternative transport concepts\" sponsored by the German environmental agency. The results pro¬vide basic information and support to improve decision-making of urban political bodies.</jats:p>\n          <jats:p xml:lang=\"fr\">Dans un contexte de débat public en faveur d'aménagement transport intégrant l'environnement, les questions suivantes présentent un intérêt croissant :- les projets de transport prenant en compte la protection de l'environnement et visant à réduire de façon substantielle le trafic automobile en milieu urbain dense, peuvent-ils correspondre simultanément à des projets économiquement avantageux ?- quels sont les projets d'aménagement transport pour lesquels coïncident des avantages économiques et des avantages écologiques ?- quelle méthode permettrait de procéder à une évaluation comparative de critères écologiques et de critères économiques ?Ces questions font l'objet d'un rapport de recherche intitulé « Étude de cas pour une évaluation économique et écologique d'alternatives en matière d'aménagement transport » qui a été parrainé par le Ministère de l'Environnement de la République Fédérale d'Allemagne. Cette recherche fournit aux instances communales une information de base et est conçue comme un outil d'aide à la décision.</jats:p>"
+    }
+  ]
+}

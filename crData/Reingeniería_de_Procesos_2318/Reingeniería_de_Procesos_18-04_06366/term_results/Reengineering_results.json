@@ -1,0 +1,100 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/iea.2018.8387075",
+      "title": [
+        "Business process reengineering for the saline management in hospitals"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 5th International Conference on Industrial Engineering and Applications (ICIEA)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-04"
+    },
+    {
+      "doi": "10.1016/j.trecan.2018.02.010",
+      "title": [
+        "Reengineering the Tumor Vasculature: Improving Drug Delivery and Efficacy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Trends in Cancer"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-04"
+    },
+    {
+      "doi": "10.12753/2066-026x-18-117",
+      "title": [
+        "REENGINEERING LEARNING SCENARIOS WITH TECHNOLOGIES BASED ON UBIQUITOUS COMPUTING"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "eLearning and Software for Education",
+        "14th International Conference eLearning and Software for Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The ubiquitous computing is meant to integrate electronic computing systems into everyday life. This increases the level of comfort of life but also increases the efficiency of using the environmental resources. One of the most important features of these systems is intuitive use. Simple integration into various processes is also an advantage. Reengineering learning scenarios using ubiquitous computing make only to accelerate the learning process and to ease the connections between the learning domains. Common development platforms such as Arduino or Raspberry Pi can be excellent tools for applying ubiquitous computing principles to the learning process at all levels: from primary school to higher education. This paper presents two real case studies on the use of ubiquitous computing in higher education through which the learning process has been enriched both as a didactic technique and as an attractiveness for students. The use of cheap platforms that students can experience both within the university and at home is a way to allow them to continue their studies outside of the mandatory laboratory hours and even encourage them to attend additional study hours. Experimenting and creating an environment where creativity plays an important role is an attractiveness factor without which modern education cannot be conceived. The ability to integrate individual tasks with existing content networks such as Youtube or Moodle is an additional argument in the reengineering of learning scenarios. The use of Internet community specialists as a complement to the classical learning process is the last ingredient proposed in the presented scenario.</jats:p>",
+      "publication_date": "2018-04"
+    },
+    {
+      "doi": "10.1145/3230348.3230377",
+      "title": [
+        "Business Process Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2018 1st International Conference on Internet and e-Business"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-04"
+    },
+    {
+      "doi": "10.29333/ejmste/90591",
+      "title": [
+        "Reengineering Industry-Oriented Educational Programs at Senior High Schools in Taiwan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EURASIA Journal of Mathematics, Science and Technology Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-04"
+    },
+    {
+      "doi": "10.1177/1933719117737849",
+      "title": [
+        "Reengineering Electronic Fetal Monitoring Interpretation: Using the Fetal Reserve Index to Anticipate the Need for Emergent Operative Delivery"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Reproductive Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-04"
+    },
+    {
+      "doi": "10.1016/j.trecan.2018.02.005",
+      "title": [
+        "Reengineering the Physical Microenvironment of Tumors to Improve Drug Delivery and Efficacy: From Mathematical Modeling to Bench to Bedside"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Trends in Cancer"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-04"
+    }
+  ]
+}

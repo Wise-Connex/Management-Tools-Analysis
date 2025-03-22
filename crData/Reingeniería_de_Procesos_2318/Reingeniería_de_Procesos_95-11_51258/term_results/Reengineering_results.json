@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/52.469776",
+      "title": [
+        "Web-based business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-11"
+    },
+    {
+      "doi": "10.1080/03155986.1995.11732283",
+      "title": [
+        "Requirements For Successful Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INFOR: Information Systems and Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-11"
+    },
+    {
+      "doi": "10.1080/03155986.1995.11732285",
+      "title": [
+        "Reengineering Business Processes: A Complexity Theory Approach To Value Added"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INFOR: Information Systems and Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-11"
+    },
+    {
+      "doi": "10.1080/03155986.1995.11732286",
+      "title": [
+        "An Approach To Business Process Reengineering: The Contribution Of Socio-Technical And Soft Or Concepts"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INFOR: Information Systems and Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-11"
+    }
+  ]
+}

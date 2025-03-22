@@ -1,0 +1,381 @@
+{
+  "tool_name": "Gestión de la Cadena de Suministro",
+  "year": "1997",
+  "monthly_stats": {
+    "97-01": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "32589",
+      "date": "97-01",
+      "initial_count": 421,
+      "filtered_count": 17,
+      "final_count": 17,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 421
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/statistics_results.json"
+      },
+      "processing_time": 4.628908157348633,
+      "total_crossref": 493687,
+      "crossref_percentage": 0.0034434773449574328
+    },
+    "97-02": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33050",
+      "date": "97-02",
+      "initial_count": 60,
+      "filtered_count": 5,
+      "final_count": 5,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 60
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/statistics_results.json"
+      },
+      "processing_time": 4.022174119949341,
+      "total_crossref": 79240,
+      "crossref_percentage": 0.006309944472488642
+    },
+    "97-03": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33106",
+      "date": "97-03",
+      "initial_count": 86,
+      "filtered_count": 6,
+      "final_count": 6,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 86
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/statistics_results.json"
+      },
+      "processing_time": 2.2146658897399902,
+      "total_crossref": 98540,
+      "crossref_percentage": 0.006088897909478384
+    },
+    "97-04": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33143",
+      "date": "97-04",
+      "initial_count": 61,
+      "filtered_count": 4,
+      "final_count": 4,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 61
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/statistics_results.json"
+      },
+      "processing_time": 2.7296130657196045,
+      "total_crossref": 93617,
+      "crossref_percentage": 0.004272728243801874
+    },
+    "97-05": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33185",
+      "date": "97-05",
+      "initial_count": 62,
+      "filtered_count": 2,
+      "final_count": 2,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 62
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/statistics_results.json"
+      },
+      "processing_time": 2.0880932807922363,
+      "total_crossref": 92678,
+      "crossref_percentage": 0.0021580094520814
+    },
+    "97-06": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33221",
+      "date": "97-06",
+      "initial_count": 94,
+      "filtered_count": 6,
+      "final_count": 6,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 94
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/statistics_results.json"
+      },
+      "processing_time": 1.427968978881836,
+      "total_crossref": 97676,
+      "crossref_percentage": 0.00614275768868504
+    },
+    "97-07": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33251",
+      "date": "97-07",
+      "initial_count": 85,
+      "filtered_count": 3,
+      "final_count": 3,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 85
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/statistics_results.json"
+      },
+      "processing_time": 1.9023420810699463,
+      "total_crossref": 92051,
+      "crossref_percentage": 0.003259062910777721
+    },
+    "97-08": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33285",
+      "date": "97-08",
+      "initial_count": 77,
+      "filtered_count": 2,
+      "final_count": 2,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 77
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/statistics_results.json"
+      },
+      "processing_time": 2.5971591472625732,
+      "total_crossref": 79571,
+      "crossref_percentage": 0.002513478528609669
+    },
+    "97-09": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33326",
+      "date": "97-09",
+      "initial_count": 93,
+      "filtered_count": 18,
+      "final_count": 18,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 93
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/statistics_results.json"
+      },
+      "processing_time": 2.6838698387145996,
+      "total_crossref": 106288,
+      "crossref_percentage": 0.016935119674845702
+    },
+    "97-10": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33368",
+      "date": "97-10",
+      "initial_count": 57,
+      "filtered_count": 2,
+      "final_count": 2,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 57
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/statistics_results.json"
+      },
+      "processing_time": 1.9774699211120605,
+      "total_crossref": 89794,
+      "crossref_percentage": 0.0022273203109339154
+    },
+    "97-11": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33403",
+      "date": "97-11",
+      "initial_count": 53,
+      "filtered_count": 2,
+      "final_count": 2,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 53
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/statistics_results.json"
+      },
+      "processing_time": 2.4482569694519043,
+      "total_crossref": 83405,
+      "crossref_percentage": 0.002397937773514777
+    },
+    "97-12": {
+      "tool_name": "Gestión de la Cadena de Suministro",
+      "batch_id": "33442",
+      "date": "97-12",
+      "initial_count": 107,
+      "filtered_count": 5,
+      "final_count": 5,
+      "duplicate_count": 0,
+      "terms": {
+        "Supply": 107
+      },
+      "file_paths": {
+        "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442",
+        "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/term_results",
+        "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/merged_results.json",
+        "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/filtered_results.json",
+        "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/final_results.json",
+        "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/statistics_results.json"
+      },
+      "processing_time": 2.5768330097198486,
+      "total_crossref": 123483,
+      "crossref_percentage": 0.00404914036749998
+    }
+  },
+  "total_duplicates": 0,
+  "monthly_files": {
+    "97-01": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-01_32589/statistics_results.json"
+    },
+    "97-02": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-02_33050/statistics_results.json"
+    },
+    "97-03": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-03_33106/statistics_results.json"
+    },
+    "97-04": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-04_33143/statistics_results.json"
+    },
+    "97-05": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-05_33185/statistics_results.json"
+    },
+    "97-06": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-06_33221/statistics_results.json"
+    },
+    "97-07": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-07_33251/statistics_results.json"
+    },
+    "97-08": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-08_33285/statistics_results.json"
+    },
+    "97-09": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-09_33326/statistics_results.json"
+    },
+    "97-10": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-10_33368/statistics_results.json"
+    },
+    "97-11": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-11_33403/statistics_results.json"
+    },
+    "97-12": {
+      "base_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442",
+      "term_results_folder": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/term_results",
+      "merged": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/merged_results.json",
+      "filtered": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/filtered_results.json",
+      "final": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/final_results.json",
+      "statistics": "crData/Gestión_de_la_Cadena_de_Suministro_8153/Gestión_de_la_Cadena_de_Suministro_97-12_33442/statistics_results.json"
+    }
+  }
+}

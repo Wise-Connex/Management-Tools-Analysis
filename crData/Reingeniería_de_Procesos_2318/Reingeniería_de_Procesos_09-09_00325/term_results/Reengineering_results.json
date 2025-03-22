@@ -1,0 +1,99 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/icsea.2009.43",
+      "title": [
+        "Preserving Cohesive Structures for Tool-Based Modularity Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2009 Fourth International Conference on Software Engineering Advances"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-09"
+    },
+    {
+      "doi": "10.2478/v10051-009-0016-z",
+      "title": [
+        "Process Reengineering and Innovation of Remaking Soapsuds"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Organizacija"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Process Reengineering and Innovation of Remaking Soapsuds</jats:title>\n               <jats:p>This article uses a business process renovation method to address an environmental protection problem. The presented case, studied in factories which remake crude vegetable oil (soapsuds remake), focuses on reengineering one of the business processes which is classified as an obligatory process. This process has to be performed to comply with the requirements of the existing ecology legislation. Therefore, it is reasonable to take a radical approach - business process reengineering. Soapsuds with oil remnants are a secondary product in the vegetable oil refining process. According to the legislation, secondary products as waste are not acceptable for the environment. Soapsuds remake as it is currently carried out produces technical fatty acids and, as a side product, calcium sulphate. Calcium sulphate is listed as special waste; therefore it must be deposited in a special waste landfill site. In the course of searching for a solution to this ecological problem, a new idea came up, namely that soapsuds are taken to the biogas plant. At the biogas plant, they can be decomposed into biogas, which is then used to generate electric energy, for heating or to supplement municipal gas. Thus, the reengineering of the process is upgraded into process innovation and environmental innovation. Using data obtained from the available literature, we managed to prove that process reengineering, which is simultaneously process innovation and ecological innovation, can be applied in practice. Side products resulting from the anaerobic digestion of soapsuds in the biogas plant comply better with the requirements of the Slovenian ecological legislation than those occurring in the process used up to now.</jats:p>",
+      "publication_date": "2009-09"
+    },
+    {
+      "doi": "10.1080/00137910903108286",
+      "title": [
+        "An Application of Value-of-Information to Decision Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Engineering Economist"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-09"
+    },
+    {
+      "doi": "10.1109/icmss.2009.5302682",
+      "title": [
+        "Notice of Retraction: The Research on Process Reengineering of Capital Flow in Manufacturing Enterprises: In Order to Reduce Purchasing Cost"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2009 International Conference on Management and Service Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-09"
+    },
+    {
+      "doi": "10.1111/j.1467-9221.2009.00721.x",
+      "title": [
+        "The Emotional Reengineering of Loss: On the Grief‐Anger‐Social Action Continuum"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Political Psychology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This article deals with the role of bereaved parents' anger as a motivating force for political and public activism. After reviewing the place of anger in the experience of processing loss and bereavement and presenting anger as a factor that leads to public initiative, the article deals with the place that anger occupies in the bereaved sector of Israeli society. The claim is made that Israeli society has changed since its early years, when “the national management of emotions” did not allow anger to be present in the public discourse of bereaved parents, to the current era in which anger is an inseparable part of Israeli bereavement discourse. The following section of the article includes an interpretive analysis of the place of anger among the research subjects, bereaved parents who later became public and political entrepreneurs. All of the research subjects lost a son in one of three circumstances that are part of the Israeli security agenda: operational accidents, terrorist attacks, and IDF combat in Lebanon. Finally, the study attempts to answer how anger structures both public and private bereavement in Israel, shaping the bereaved parents as instant celebrities.</jats:p>",
+      "publication_date": "2009-10"
+    },
+    {
+      "doi": "10.1109/icsm.2009.5306293",
+      "title": [
+        "Digging deep: Software reengineering supported by database reverse engineering of a system with 30&amp;#x002B; years of legacy"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2009 IEEE International Conference on Software Maintenance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-09"
+    },
+    {
+      "doi": "10.1080/00207540903168090",
+      "title": [
+        "Aligning business process reengineering in implementing global supply chain systems by the SCOR model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-10"
+    }
+  ]
+}

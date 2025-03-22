@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/mspec.1975.6368777",
+      "title": [
+        "Technology forecasting II: Computers: The scenario suggests omnipresent computers shaping future patterns of business and daily life"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Spectrum"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1975-04"
+    }
+  ]
+}

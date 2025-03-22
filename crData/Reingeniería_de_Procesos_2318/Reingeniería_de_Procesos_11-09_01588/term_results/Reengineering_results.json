@@ -1,0 +1,109 @@
+{
+  "term": "Reengineering",
+  "total_results": 8,
+  "processed_count": 8,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/ms.2011.97",
+      "title": [
+        "Gardening Your Architecture, Part 2: Reengineering and Rewriting"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.19030/jabr.v14i1.5725",
+      "title": [
+        "Reengineering: Internal Controls Are More Important Than Ever Before"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Business Research (JABR)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>&lt;span&gt;Companies are reengineering their fundamental business processes to improve quality, service, and efficiency. When vital business processes are reengineered, new ways of managing and controlling the processes are required. A reengineered accounts payable system and the controls that should be included in the system are described. Through training and support of those who will perform the new processes and the appropriate use of internal controls, companies will maximize their benefits from business reengineering.&lt;/span&gt;</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-0-85729-778-5_9",
+      "title": [
+        "A Reengineering Methodology for Supply Chain Networks Operating Under Disruptions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Supply Chain Disruptions"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.17816/0321-4443-69198",
+      "title": [
+        "Reengineering in garden machinery production"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Traktory i sel hozmashiny"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icieem.2011.6035132",
+      "title": [
+        "Reengineering of construction project procurement process on bill of quantities"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 IEEE 18th International Conference on Industrial Engineering and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1109/icsm.2011.6080809",
+      "title": [
+        "Incremental and iterative reengineering towards Software Product Line: An industrial case study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 27th IEEE International Conference on Software Maintenance (ICSM)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1145/2024445.2024466",
+      "title": [
+        "Problem-solution mapping for forward and reengineering on architectural level"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 12th International Workshop on Principles of Software Evolution and the 7th annual ERCIM Workshop on Software Evolution"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    },
+    {
+      "doi": "10.1021/cen-v089n038.p034",
+      "title": [
+        "REENGINEERING THE UNDERGRAD LAB"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-09"
+    }
+  ]
+}

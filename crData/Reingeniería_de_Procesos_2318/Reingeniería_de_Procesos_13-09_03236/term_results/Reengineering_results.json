@@ -1,0 +1,174 @@
+{
+  "term": "Reengineering",
+  "total_results": 13,
+  "processed_count": 13,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1002/pfi.21368",
+      "title": [
+        "Travel Reengineering: A Military Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Performance Improvement"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.1109/icsm.2013.100",
+      "title": [
+        "Automated S/W Reengineering for Fault-Tolerant and Energy-Efficient Distributed Execution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 IEEE International Conference on Software Maintenance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.1109/icsm.2013.75",
+      "title": [
+        "Understanding Schema Evolution as a Basis for Database Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 IEEE International Conference on Software Maintenance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.1201/b15938-136",
+      "title": [
+        "Reengineering defense products through a risk-based framework: How can maintenance go further?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Safety, Reliability and Risk Analysis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.1109/cicn.2013.139",
+      "title": [
+        "Business Process Reengineering for Better Sale of China Lubricant Enterprises"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 5th International Conference on Computational Intelligence and Communication Networks"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.1145/2494266.2494309",
+      "title": [
+        "A framework for usage-based document reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2013 ACM symposium on Document engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.4028/www.scientific.net/amm.427-429.2660",
+      "title": [
+        "Research on Reliability of Software in Internet of Things for Risk Assessment and Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Mechanics and Materials"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In order to establish software system in application conditions of Internet of Things (IOT) on reliability of evaluation system and methods. This paper puts Quality of Service (QoS) of the protocols and reliability assessment of software system together, with aims at research on very large complex software system in reliability assessment, which is consisted of individual components in distribution of the perception layer, network layer and application layer of IOT and subsystems. At the same time, this paper adopts reengineering technology to realize the reliability evolution of software system in IOT application conditions, and improve the reliability index of software assessment further.</jats:p>"
+    },
+    {
+      "doi": "10.5120/13600-1364",
+      "title": [
+        "Reengineering Government Process of Elections by Introducing Unemployed Ad Hoc Work Force Registered through Employment Exchanges in India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/edoc.2013.36",
+      "title": [
+        "Determining Power Consumption of Business Processes and Their Activities to Enable Green Business Process Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th IEEE International Enterprise Distributed Object Computing Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.1016/j.cct.2013.06.008",
+      "title": [
+        "Understanding facilitators and barriers to reengineering the clinical research enterprise in community-based practice settings"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Contemporary Clinical Trials"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.1108/bpmj-jun-2012-0059",
+      "title": [
+        "Reengineering the seaport container truck hauling process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    },
+    {
+      "doi": "10.6007/ijarbss/v3-i9/229",
+      "title": [
+        "Evaluation of the effect of using Information Technology Infrastructure for Business Process Reengineering in Small and Medium sized Enterprises of Kermanshah Province"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Academic Research in Business and Social Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1021/bi400542z",
+      "title": [
+        "Surface Reengineering of RPA70N Enables Cocrystallization with an Inhibitor of the Replication Protein A Interaction Motif of ATR Interacting Protein"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-09"
+    }
+  ]
+}

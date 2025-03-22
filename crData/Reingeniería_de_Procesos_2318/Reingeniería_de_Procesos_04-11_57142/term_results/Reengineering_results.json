@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/j.virol.2004.08.036",
+      "title": [
+        "Reengineering paramyxovirus tropism"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Virology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1016/s0160-791x(04)00053-3",
+      "title": [
+        "Neutralizing the piracy of motion pictures: reengineering the industryʼs supply chain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technology in Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1016/j.techsoc.2004.08.001",
+      "title": [
+        "Neutralizing the piracy of motion pictures: reengineering the industry’s supply chain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technology in Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    }
+  ]
+}

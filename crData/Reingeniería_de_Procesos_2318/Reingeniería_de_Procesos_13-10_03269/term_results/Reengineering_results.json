@@ -1,0 +1,85 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1117/12.2026018",
+      "title": [
+        "Towards high performance inverted polymer solar cells through interfacial reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Organic Photovoltaics XIV"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-10"
+    },
+    {
+      "doi": "10.1093/icon/mot041",
+      "title": [
+        "Constitutional reengineering: Dialogue's migration from Canada to Australia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Constitutional Law"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-10"
+    },
+    {
+      "doi": "10.5120/13915-1821",
+      "title": [
+        "Flexibility Analysis in Business Process Reengineering with Theory of Constraint using Intelligent Dynamic Workflow System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3410/f.718122768.793484563",
+      "title": [
+        "Faculty Opinions recommendation of Surface reengineering of RPA70N enables cocrystallization with an inhibitor of the replication protein A interaction motif of ATR interacting protein."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-10"
+    },
+    {
+      "doi": "10.5130/pppm.v4i1.3285",
+      "title": [
+        "Critical analysis of existing business process reengineering models: towards the development of a comprehensive integrated model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Project, Program &amp; Portfolio Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Over the past two decades, business process reengineering (BPR) has been one of the most popular approaches to improving the efficiency and effectiveness of an organisation. However, a review of the relevant literature reveals that available BPR models that have been widely in use have some serious limitations and fail to take into consideration the human factor and change management. The theoretical gap identified in academic research is also reflected in industrial practice. This article analyses existing BPR models in order to set the stage for the development of a comprehensive integrated model to address their theoretical deficiencies. The article will provide an overview of the main issues, limitations and challenges of existing BPR models. The limitations will then be itemised, described and analysed to provide evidence for the need of a more systematic model that would help organisations to successfully carry out BPR initiatives and projects. </jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-642-39928-2_3",
+      "title": [
+        "DSS Based IT Service Support Process Reengineering Using ITIL: A Case Study"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Intelligent Systems Reference Library",
+        "Engineering and Management of IT-based Service Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

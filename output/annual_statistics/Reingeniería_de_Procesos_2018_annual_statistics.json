@@ -1,0 +1,381 @@
+{
+  "tool_name": "Reingeniería de Procesos",
+  "year": "2018",
+  "monthly_stats": {
+    "18-01": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06266",
+      "date": "18-01",
+      "initial_count": 56,
+      "filtered_count": 56,
+      "final_count": 56,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 56
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/statistics_results.json"
+      },
+      "processing_time": 1.9471781253814697,
+      "total_crossref": 1401133,
+      "crossref_percentage": 0.003996765474797896
+    },
+    "18-02": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06300",
+      "date": "18-02",
+      "initial_count": 7,
+      "filtered_count": 7,
+      "final_count": 7,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 7
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/statistics_results.json"
+      },
+      "processing_time": 1.4080660343170166,
+      "total_crossref": 338244,
+      "crossref_percentage": 0.0020695119499532883
+    },
+    "18-03": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06330",
+      "date": "18-03",
+      "initial_count": 111,
+      "filtered_count": 8,
+      "final_count": 8,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 111
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/statistics_results.json"
+      },
+      "processing_time": 2.160374879837036,
+      "total_crossref": 383573,
+      "crossref_percentage": 0.0020856525355017167
+    },
+    "18-04": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06366",
+      "date": "18-04",
+      "initial_count": 7,
+      "filtered_count": 7,
+      "final_count": 7,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 7
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/statistics_results.json"
+      },
+      "processing_time": 1.6362690925598145,
+      "total_crossref": 389268,
+      "crossref_percentage": 0.0017982469661004757
+    },
+    "18-05": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06398",
+      "date": "18-05",
+      "initial_count": 3,
+      "filtered_count": 3,
+      "final_count": 3,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 3
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/statistics_results.json"
+      },
+      "processing_time": 1.5536160469055176,
+      "total_crossref": 386962,
+      "crossref_percentage": 0.0007752699231449083
+    },
+    "18-06": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06428",
+      "date": "18-06",
+      "initial_count": 10,
+      "filtered_count": 10,
+      "final_count": 10,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 10
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/statistics_results.json"
+      },
+      "processing_time": 1.9492108821868896,
+      "total_crossref": 425697,
+      "crossref_percentage": 0.0023490886710500663
+    },
+    "18-07": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06463",
+      "date": "18-07",
+      "initial_count": 6,
+      "filtered_count": 6,
+      "final_count": 6,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 6
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/statistics_results.json"
+      },
+      "processing_time": 1.4072299003601074,
+      "total_crossref": 382301,
+      "crossref_percentage": 0.001569443972158064
+    },
+    "18-08": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06492",
+      "date": "18-08",
+      "initial_count": 9,
+      "filtered_count": 9,
+      "final_count": 9,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 9
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/statistics_results.json"
+      },
+      "processing_time": 1.7774028778076172,
+      "total_crossref": 350916,
+      "crossref_percentage": 0.0025647163423725334
+    },
+    "18-09": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06525",
+      "date": "18-09",
+      "initial_count": 9,
+      "filtered_count": 9,
+      "final_count": 9,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 9
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/statistics_results.json"
+      },
+      "processing_time": 1.4947278499603271,
+      "total_crossref": 420988,
+      "crossref_percentage": 0.0021378281566220413
+    },
+    "18-10": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06555",
+      "date": "18-10",
+      "initial_count": 16,
+      "filtered_count": 11,
+      "final_count": 11,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 16
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/statistics_results.json"
+      },
+      "processing_time": 1.71293306350708,
+      "total_crossref": 458168,
+      "crossref_percentage": 0.002400866057865237
+    },
+    "18-11": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "06587",
+      "date": "18-11",
+      "initial_count": 6,
+      "filtered_count": 6,
+      "final_count": 6,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 6
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/statistics_results.json"
+      },
+      "processing_time": 1.5915451049804688,
+      "total_crossref": 395489,
+      "crossref_percentage": 0.001517109198991628
+    },
+    "18-12": {
+      "tool_name": "Reingeniería de Procesos",
+      "batch_id": "07018",
+      "date": "18-12",
+      "initial_count": 8,
+      "filtered_count": 8,
+      "final_count": 8,
+      "duplicate_count": 0,
+      "terms": {
+        "Reengineering": 8
+      },
+      "file_paths": {
+        "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018",
+        "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/term_results",
+        "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/merged_results.json",
+        "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/filtered_results.json",
+        "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/final_results.json",
+        "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/statistics_results.json"
+      },
+      "processing_time": 2.237489938735962,
+      "total_crossref": 539736,
+      "crossref_percentage": 0.001482206115582433
+    }
+  },
+  "total_duplicates": 0,
+  "monthly_files": {
+    "18-01": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-01_06266/statistics_results.json"
+    },
+    "18-02": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-02_06300/statistics_results.json"
+    },
+    "18-03": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-03_06330/statistics_results.json"
+    },
+    "18-04": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-04_06366/statistics_results.json"
+    },
+    "18-05": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-05_06398/statistics_results.json"
+    },
+    "18-06": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-06_06428/statistics_results.json"
+    },
+    "18-07": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-07_06463/statistics_results.json"
+    },
+    "18-08": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-08_06492/statistics_results.json"
+    },
+    "18-09": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-09_06525/statistics_results.json"
+    },
+    "18-10": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-10_06555/statistics_results.json"
+    },
+    "18-11": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-11_06587/statistics_results.json"
+    },
+    "18-12": {
+      "base_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018",
+      "term_results_folder": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/term_results",
+      "merged": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/merged_results.json",
+      "filtered": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/filtered_results.json",
+      "final": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/final_results.json",
+      "statistics": "crData/Reingeniería_de_Procesos_2318/Reingeniería_de_Procesos_18-12_07018/statistics_results.json"
+    }
+  }
+}

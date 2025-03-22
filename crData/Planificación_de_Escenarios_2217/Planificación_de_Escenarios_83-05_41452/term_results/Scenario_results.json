@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0370-2693(83)91483-1",
+      "title": [
+        "Flavor changing neutral currents and ΔS = 2 transitions in the hypercolor scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1983-05"
+    },
+    {
+      "doi": "10.1007/bf02378563",
+      "title": [
+        "Some analyses of the FAA post crash aircraft fire scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fire Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1983-05"
+    }
+  ]
+}

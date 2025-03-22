@@ -1,0 +1,22 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1117/12.955014",
+      "title": [
+        "&lt;title&gt;A Scenario On Polarization In A Planetary Atmosphere&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Polarized Light: Instruments, Devices, Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1976-10"
+    }
+  ]
+}

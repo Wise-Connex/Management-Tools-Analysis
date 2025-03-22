@@ -1,0 +1,46 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1103/physrevb.34.6567",
+      "title": [
+        "New phase-transition scenario for chiral and algebraic order in a generalized planar model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.13182/fst86-a24776",
+      "title": [
+        "Ignition and Fueling Scenario Calculations for Neutral-Beam-Heated Tokamak Reactors Based on Pellet Injection"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-11"
+    },
+    {
+      "doi": "10.1016/0048-9697(86)90335-9",
+      "title": [
+        "The Dutch economy and the environment, 1980–2000: Methodology and results of a scenario study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science of The Total Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-11"
+    }
+  ]
+}

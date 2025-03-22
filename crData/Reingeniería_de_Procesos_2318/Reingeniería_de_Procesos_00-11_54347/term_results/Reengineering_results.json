@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/02621710010378237",
+      "title": [
+        "Why does reengineering fail? A practical guide for successful implementation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Process redesign is not always successful and is almost always accompanied by pain or at least unpleasant side effects. Many companies have undertaken reengineering efforts only to abandon them with little or no positive results. As important as it is to understand how to reengineer, it is crucial to understand how to avoid the traps. A disciplined, step‐by‐step approach to implementing process redesign is critical to the effort. This article offers a framework for the successful design and construction of the reengineering solution.</jats:p>",
+      "publication_date": "2000-11"
+    },
+    {
+      "doi": "10.3233/thc-2000-8506",
+      "title": [
+        "Reengineering the biomedical-equipment procurement process through an integrated Management Information System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technology and Health Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-11"
+    }
+  ]
+}

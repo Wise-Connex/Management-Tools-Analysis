@@ -1,0 +1,125 @@
+{
+  "term": "Reengineering",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2514/6.1996-3525",
+      "title": [
+        "Principles and technologies for reengineering pilot training"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Flight Simulation Technologies Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.14236/ewic/cm1996.4",
+      "title": [
+        "Realising Strategic Management Reengineering Objectives with DEMO"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Electronic Workshops in Computing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.20867/thm.2.1.11",
+      "title": [
+        "Reengineering in business functions and hotel controlling"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tourism and hospitality management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Business reengineering as a new stream in philosophy in managerial theory and practice, deserves appropriate attention. Such request sounds extremely natural when an hotel industry is concerned. Employing positive aims in business reengineering and controlling, as a way of modern management in a hotel business process, hotel management achieves valuable possibilities to gain better business results.</jats:p>",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.1016/0925-7535(96)00040-9",
+      "title": [
+        "Training engineers to conduct ergonomics work analysis in a reengineering context"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Safety Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.1002/j.2334-5837.1996.tb02137.x",
+      "title": [
+        "NAVY LEGACY SYSTEMS REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INCOSE International Symposium"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Legacy systems abound in the Navy. In many cases it is infeasible or ill advised to develop new systems from scratch. Yet due to new system requirements, increasing maintenance costs, or other reasons it is desirable to somehow replace or upgrade these systems. There is also a desire to capture some of the capabilities inherent in these systems and somehow reuse them. This paper looks at some of the issues involved reengineering, and in particular those that tend to be unique to or more pronounced in Navy systems. It also briefly describes some progress that has been made using language translation to facilitate reengineering of Navy systems to open architectures.</jats:p>",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.1002/j.2334-5837.1996.tb01998.x",
+      "title": [
+        "REENGINEERING PROCESS OF A CORPORATE FINANCIAL SYSTEM: A SYSTEMS ENGINEERING SOLUTION"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INCOSE International Symposium"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This paper analyzes, evaluates, and recommends Reengineering of a Corporate Financial System (CFS) that is currently in operation in a leading global communication company. The analysis highlights the problem areas in the CFS regulatory financial statements of the Fortune 500 Company. As a result of this Reengineering process, a new state‐of‐the‐art system will be proposed that will eliminate the existing bottlenecks.</jats:p><jats:p>The initial purpose of the CFS was to serve the regulatory requirements inherent in the communication services line of the business. Over time, however, the system has evolved to support multiple business units. Today, the CFS General Ledger process serves the financial community of the corporate Communications, Communications Products, Information Management Services and Corporate Headquarters business units and divisions. The purpose of the CFS General Ledger System is to receive, on‐line, detailed financial data from various feeder systems, perform validations and balancing, allocations, update the General Ledger data base, and provide financial data for downstream systems in order to satisfy legal, regulatory, accounting and management decision making requirements. These functions are supported by numerous systems referred to as the “CFS Family of Systems”. They include the Corporate Financial Input System (CFIS), CFS Daily, Individual Allocation Systems, Corporate Financial Inquiry and Reporting System (CFIRS), and the Financial Reporting System. The on‐line interaction among these systems is analyzed in this paper.</jats:p>",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.1016/0019-8501(96)00029-6",
+      "title": [
+        "Reengineering using the theory of constraints: A case analysis of Moore Business Forms"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Industrial Marketing Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.1002/j.2334-5837.1996.tb01984.x",
+      "title": [
+        "IMACCS: A DEMONSTRATION IN REENGINEERING GROUND DATA SYSTEMS DEVELOPMENT"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INCOSE International Symposium"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This paper describes a successfully functioning, commercial, off‐the‐shelf (COTS)‐based ground support system called the Integrated Monitoring, Analysis, and Control COTS System (IMACCS). IMACCS was implemented as a prototype by Goddard Space Flight Center (GSFC), Mission Operations and Data Systems Directorate (MO&amp;DSD) to operate NASA's Solar Anomalous and Magnetospheric Particle Explorer (SAMPEX). IMACCS was conceived specifically to build on previous experience in testbed evaluation of COTS products. The purpose of the IMACCS project was to integrate a typical set of such tools, connect them to live tracking and telemetry data from a real, on‐orbit satellite, and perform shadow mission operations. The objective of the IMACCS project was to assess the completeness, robustness, and performance of a COTS‐based ground system. As a constraint, IMACCS was to be implemented within 90 days of project approval. This paper discusses the challenges that led to the IMACCS project; the processes used for implementing IMACCS; how these processes fit within MO&amp;DSD's reengineered ground systems development processes; and the results obtained by comparing IMACCS' requirements, operations, costs, and implementation process against the currently operating ground system.</jats:p>",
+      "publication_date": "1996-07"
+    },
+    {
+      "doi": "10.1002/j.2334-5837.1996.tb01991.x",
+      "title": [
+        "Business Reengineering for Information Technology: From Business Process to System Requirements"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INCOSE International Symposium"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The bridge between business process and information systems reengineering is all too often missing from the roadmap of reengineering efforts. When process and system engineers get to this transition, they discover a rickety old bridge with steep terrain on either side of a wide chasm. Recognizing this dilemma, we developed the Business Reengineering for Information Technology (BRIT) approach that systematically transitions from business process to information systems engineering. BRIT is designed to handle a wide range of reengineering factors including: “best practices,” COTS applications, non‐standard business processes, and change situations ranging from continuous improvement to radical restructuring. This proven approach is described here with relevant examples of its applications.</jats:p>",
+      "publication_date": "1996-07"
+    }
+  ]
+}

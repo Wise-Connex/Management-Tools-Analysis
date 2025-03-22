@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/eb054467",
+      "title": [
+        "Making reengineering strategic"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Planning Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Many managers wrongly think of business process reengineering only in terms of automating paperwork to cut costs and headcount. But the methodology can also be used to create sets of superior business processes that together produce unique goods and services their customers value highly. In the following cases the companies have achieved important competitive advantage because their customer‐serving processes—and all the business processes sub‐routines—are seen as the means</jats:p>",
+      "publication_date": "1994-04"
+    },
+    {
+      "doi": "10.1145/181628.181633",
+      "title": [
+        "A possible approach to object-oriented reengineering of Cobol programs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Reengineering is rapidly becoming a recognized and important component of future computer-aided systems-engineering (CASE) environment. This paper presents framework for analyzing Object-Oriented Reengineering process of COBOL programs. The process embody software engineering principles that concern module interactions such as low coupling and high cohesion.</jats:p>",
+      "publication_date": "1994-04"
+    },
+    {
+      "doi": "10.1016/0969-6016(94)90017-5",
+      "title": [
+        "Information systems, operational research and business reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Transactions in Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-04"
+    },
+    {
+      "doi": "10.1111/1475-3995.d01-18",
+      "title": [
+        "Information Systems, Operational Research and Business Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Transactions in Operational Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>There has been much concern expressed during recent times to ensure that information technology (IT) considerations are firmly aligned with business imperatives. For example, two of the top ranked information systems management issues during the 1980s were concerned with the problems incurred in aligning the Information Systems function with that of the organisation as a whole, and in linking information systems and business strategies.</jats:p><jats:p>Conversely, recent research and practice has provided us with a vision of IT‐induced business process redesign, the opportunity for inter‐organisational systems and even the redefinition and refocusing of business products and services.</jats:p><jats:p>The reality for many organisations remains that IT investment is seen as a necessary evil at best, with many questioning whether it represents value for money. There have also been somewhat negative reactions to the topic of business process redesign itself: is it old wine in a new bottle? And is it all too risky a business to suggest that radical change rather than incremental change is what is required?</jats:p><jats:p>This paper reviews these issues and argues for a refocussing of our attention on (i) information and business systems, and (ii) implementation issues and organisational change, as opposed to the more common practice of concentrating on information technology <jats:italic>per se</jats:italic>. It takes an organisational, soft operational research perspective on the subject of business reengineering, and provides some outline guidelines for the process of managing the change that is often both necessary and potentially desirable with the introduction and utilisation of new IT. It raises the question whether the lessons from the application of the softer operational research approaches over the past 20 years or so could be used to provide a more informed intervention, given the complexity of the task... and answers that question in the affirmative!</jats:p>",
+      "publication_date": "1994-04"
+    },
+    {
+      "doi": "10.2307/41165753",
+      "title": [
+        "Business Process Reengineering: Charting a Strategic Path for the Information Age"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "California Management Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-04"
+    }
+  ]
+}

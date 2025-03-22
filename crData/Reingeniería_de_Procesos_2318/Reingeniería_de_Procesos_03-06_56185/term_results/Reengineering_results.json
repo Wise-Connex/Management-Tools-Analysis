@@ -1,0 +1,99 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1201/9781420031393-36",
+      "title": [
+        "Reengineering the Business Continuity Planning Process"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "IS Management Handbook"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-06"
+    },
+    {
+      "doi": "10.1201/9781420031393.ch30",
+      "title": [
+        "Reengineering the Business Continuity Planning Process"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "IS Management Handbook, 8th Edition"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-06"
+    },
+    {
+      "doi": "10.1108/07378830310479839",
+      "title": [
+        "Reengineering archival access through the OAI protocols"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Library Hi Tech"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The Open Archives Initiative (OAI) Protocol for Metadata Harvesting presents one promising method by which metadata regarding archives and manuscripts can be shared and made more interoperable with metadata from other sources. Against the background of archival descriptive theory and practice, this article outlines a method for exposing deep, hierarchical metadata from encoded archival description (EAD) files and assesses some theoretical and practical issues that will need to be confronted by institutions choosing to provide or harvest OAI records generated from EAD files. Using OAI on top of existing EAD implementations would allow institutions to repurpose their data and potentially reach more users but would also accelerate the process of reengineering archival access mechanisms. Archivists and technologists using OAI with EAD must pay careful attention to the necessity of preserving archival context and provenance.</jats:p>",
+      "publication_date": "2003-06"
+    },
+    {
+      "doi": "10.1108/09544780310469343",
+      "title": [
+        "Reengineering construction business processes through electronic commerce"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The TQM Magazine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-06"
+    },
+    {
+      "doi": "10.3745/kipstd.2003.10d.3.471",
+      "title": [
+        "A BPN model for Web-based Business Process Reengineering and Specification"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The KIPS Transactions:PartD"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-06"
+    },
+    {
+      "doi": "10.1016/s1474-6670(17)33658-3",
+      "title": [
+        "Reengineering an Embedded Laboratory Allowing Remote Expriments Through the Internet"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-06"
+    },
+    {
+      "doi": "10.1021/cen-v081n022.p016",
+      "title": [
+        "CATCHING UP WITH REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-06"
+    }
+  ]
+}

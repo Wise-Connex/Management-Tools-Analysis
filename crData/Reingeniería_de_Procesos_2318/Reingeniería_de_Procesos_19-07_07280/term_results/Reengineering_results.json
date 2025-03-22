@@ -1,0 +1,137 @@
+{
+  "term": "Reengineering",
+  "total_results": 10,
+  "processed_count": 10,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.33622/0869-7019.2019.07.71-76",
+      "title": [
+        "Reengineering in Construction"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Promyshlennoe i Grazhdanskoe Stroitel'stvo"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article discusses the use of the methodology of reengineering in investment and construction activities. In this regard, a retrospective of reengineering is investigated, a definition of this concept is given, and directions for its use in investment and construction activities are established. At the corporate level, there are three types of reengineering: business-processes, technological processes and capital construction projects. Reengineering activity, except a functional view horizontally, can be qualified vertically, where its hierarchy is manifested, and also grouped according to the signs of territorial zoning. It is noted that a specific type of reengineering is the reengineering of territories and buildings. It is noted that a specific type is the reengineering of territories and buildings. Considering the industry level as the highest level in the hierarchy, the possible options for initiating \"top-down\" reengineering and \"bottom-up\" reengineering are established, and factors affecting this process are identified. The article provides charts and tables for the distribution of reengineering types on the time scale of investment and construction activities, the distribution of participants in investment and construction activities by types of reengineering, as well as the hierarchy of reengineering activities and the variability of regulatory actions.</jats:p>",
+      "publication_date": "2019-07"
+    },
+    {
+      "doi": "10.5120/ijca2019919166",
+      "title": [
+        "Accelerometer-based Activity Recognition: Reengineering Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1201/9780138736654-28",
+      "title": [
+        "Designing Innovative Business Systems through Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Handbook of Applied Expert Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-07"
+    },
+    {
+      "doi": "10.22227/1997-0935.2019.7.912-921",
+      "title": [
+        "Elements of information and analytical support for the reengineering of capital construction objects"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vestnik MGSU"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Introduction: the article considers problems related to the development of information and analytical support for the reengineer-ing of capital construction projects and identifies its components: information, analytical, technical and personnel. The article presents the main provisions of the technical and personnel support of the given subsystem of reengineering. Special attention is paid to the formation of a parametric model of reengineering of capital construction projects, which is the basis for the formation of typical organizational solutions. The variability of these decisions is related to the qualification of organizational charts and resource support for reengineering activities. Materials and methods: it emerged that the information component has its aggregation: information model, software, regulation of functioning of the information model and software. The analytical component includes a parametric model, generic solutions and guidelines on the development and application of reengineering. Results: as a basis of the parametric model, aggregative parameter groups of reengineering measures at the capital construction facility and their decomposition are established. The article gives an order of formation of standard solutions for the reengineering of capital construction projects, which includes organizsational charts for its implementation and the resource support of the reengineering components. Separately the article considers a structure of regulatory documents for the reengineering of capital construction projects. Regulatory documents can be categorized into general, development and application ones as well as industrial and enterprise regulations for the reengineering of a capital construction facility. Conclusions: the formed system of the information and analytical support for the reengineering can give a serious impetus to the development and qualitative transformation of the capital construction facility. The effective functioning of the system of infor-mation and analytical support for reengineering is possible if there is an efficient regulatory and methodological base of these measures and an adequate information model of the capital construction facility at the stage of its maintenance.</jats:p>",
+      "publication_date": "2019-07"
+    },
+    {
+      "doi": "10.15276/aait.03.2019.2",
+      "title": [
+        "ANALYSIS AND SYNTHESIS OF THE RESULTS OF COMPLEX EXPERIMENTAL RESEARCH ON REENGINEERING OF OPEN CAD SYSTEMS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Aspects of Information Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article presents the final results of scientific research on the development of models and methods of reengineering, as well as technologies of  multilingual recoding of open systems of automated design.  The common  feature of all software systems lies in the  fact  that  there  is  an  evolutionary  aging  of  the  types  of  support  under  the  influence  of  time  and  other  integral  factors  of information, namely, updating: operating systems, programming languages, principles of the operation of distributed data processing systems,   etc.   Such   a   tendency   leads   to   deterioration   of   speed,   information   and   communication,   graphic,   time   and   other characteristics,  up  to  a  complete  system  failure.  Reengineering  is  a  process  that  allows  creating  quickly  and  easily  new,  improved software systems, using the experience of previous software products. The purpose of the article is to systematize the results of the integration  of  reusable  component,  which  have  been  accumulated  by  developers  over  a  certain  period  of  development  of  sectoral computer-aided  design  systems  in  updating  the  software  structures  of  ready-made  resources.  Based  on  the  obtained  scientific  and practical  results,  the  analysis  of  the  developed  models  and  methods  of  reengineering  of  types  of  support  for  open  computer-aided design  systems  is  performed.  In  general,  reengineering  includes  the  processes  of  reorganization  and  restructuring  of  a  software system, conversion of individual system components into another, more modern programming language, as well as the modification or  modernization  processes  of  the  structure  and  data  system.  The  study  involved  the  following  methods:  assembly,  specifying, synthesizing  and  compositional  programming,  methods  of  generative  and  recognizing  grammars.  At  present  time,  the  process  of  a new  software  products  design  is  not  very  effective  without  the  use  of  the  UML  methodology,  but  when  it  is  applied,  the  speed  of development  increases  by  times.  UML  as  a  language  for  a  graphical  description  for  object  modeling,  in  addition  to  simple  design, supports  also  the  function  of  generating  and  reengineering  code  based  on  model  data,  as  discussed  in  the  article.  The  distinctive feature of this research is the ability to support the work of  more  than ten most popular programming languages. In applying these technologies,  it  is  possible  to  automate  the  process  of  software  components  recoding  and,  therefore,  to  free  the  working  time  of programmers  from routine reprogramming and reduce the probability of occurrence of structural errors inherited from the previous system.  The  use  of  the  obtained results  will  improve  significantly  the  efficiency  of  the  application  of  automated  design  systems  in such  fields  of  their  use  as:  mechanic  engineering,  telecommunications,  production  and  transport  management,  education,  etc.  The developed models and methods will be useful to system  architects and program engineers involved in redesigning software already being in their multi-year operation.</jats:p>",
+      "publication_date": "2019-07"
+    },
+    {
+      "doi": "10.1108/ijppm-11-2018-0383",
+      "title": [
+        "Organizational enablers of business process reengineering implementation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Productivity and Performance Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-subheading\">Purpose</jats:title><jats:p>The purpose of this paper is to investigate the main organizational factors that contribute to the successful implementation of business process reengineering (BPR) in the Egyptian banking sector. These factors include management commitment, information technology (IT) infrastructure, people management, change readiness, centralization and formalization.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title><jats:p>The key organizational enablers were identified through an extensive literature review. Then, statistical analysis was carried out based on data collected, using a questionnaire instrument, from 184 managers employed in 38 banks operating in Egypt.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Findings</jats:title><jats:p>The results of the study indicate that management commitment, IT infrastructure, people management, change readiness and organizational structure with a low degree of formalization are critical enablers for implementing a successful BPR program within the Egyptian banking sector.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Practical implications</jats:title><jats:p>The results may support managers of banks in identifying and assessing the influence of integrating organizational factors that facilitate or hinder the successful implementation of BPR.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Originality/value</jats:title><jats:p>Since 2004, the Egyptian banking system has involved in major reform programs and many BPR efforts. Much research effort is required to investigate the BPR projects within the Egyptian banks in order to develop a concrete base of knowledge and understanding of the nature of BPR and factors that support its successful implementation. Moreover, there is an insufficiency of empirical studies regarding the implementation of BPR within the Egyptian service sector. The current study fills this gap by exploring and examining the main organizational factors affecting BPR implementation in a developing country.</jats:p></jats:sec>",
+      "publication_date": "2019-07"
+    },
+    {
+      "doi": "10.23939/eem2019.01.001",
+      "title": [
+        "Economic evaluation of administration systems in the context of management business processes reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economics, Entrepreneurship, Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-09"
+    },
+    {
+      "doi": "10.1016/j.gene.2019.04.074",
+      "title": [
+        "Reengineering lipid biosynthetic pathways of Aspergillus oryzae for enhanced production of γ-linolenic acid and dihomo-γ-linolenic acid"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gene"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-07"
+    },
+    {
+      "doi": "10.1145/3327960.3332382",
+      "title": [
+        "Blockchain-enabled Data Provenance in Cloud Datacenter Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2019 ACM International Symposium on Blockchain and Secure Critical Infrastructure"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-07"
+    },
+    {
+      "doi": "10.69798/13272922",
+      "title": [
+        "Reengineering Dental Hospital Information System Workflow Process: A case of the Obafemi Awolowo University Teaching Hospital Dental Clinic"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Conference Proceedings"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The existing workflow process that dental patients undergo in hospitals is riddled with repetitive steps. This has led to delays in dental service delivery. Thus, there is a dire need for a workflow process that will eliminate repeated procedures and reduce the waiting time of service delivery. This paper seeks to reengineer the workflow problem in a dental hospital with a view to reducing the problems encountered by dental patients. The time taken for each workflow process was obtained from the staff and patients in Obafemi Awolowo University Teaching Hospital Complex Dental Clinic through interviews and observation. The existing and proposed workflow process models were represented using Petri net as workflow net and designed using Unified Modelling Language (UML) tools. The models were simulated in MATLAB environment using Simulink. The performance of the proposed model was evaluated by benchmarking it with the existing model using patient throughput and waiting time as performance metrics. The result showed that the proposed model outperformed the existing model significantly by a reduction in patient waiting time by 36.8% as a result of the reduction in the number of processes from 14 to 8 processes, thereby leading to higher patient throughput of 0.2 patients/sec. It was concluded that the proposed model can be adopted by the Hospital management for more effective and efficient healthcare service delivery.</jats:p>",
+      "publication_date": "2019-07"
+    }
+  ]
+}

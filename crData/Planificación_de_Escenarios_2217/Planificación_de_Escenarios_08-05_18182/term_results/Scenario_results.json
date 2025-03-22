@@ -1,0 +1,833 @@
+{
+  "term": "Scenario",
+  "total_results": 64,
+  "processed_count": 64,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4043/19409-ms",
+      "title": [
+        "The Future Drilling Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "All Days"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n                  <jats:title>Abstract</jats:title>\n                  <jats:p>This paper will include:The technical basisThe work processesPlans and visions for the future</jats:p>\n                  <jats:p>The paper gives an overview over field tried equipment, pilot tested equipment and the synergy effect when combing the different technical solutions in future drilling scenarios.</jats:p>\n                  <jats:p>Drilltronics is an integrated control system for real time monitoring and control of the drilling process. Based on mathematical computer models for dynamic real-time analysis of the well behavior, critical limits for operational parameters like drilling fluid pump rate, trip velocity and optimal process parameters are calculated. The result of the calculations is applied directly to control drilling equipment in real time. The Drilltronics system has been field tested on the Statfjord C platform. Combining the Drilltronics system with wired pipe, decision support programs, and continuous measurements of drilling fluid parameters give synergy effects that in future may allow remote operated drilling systems.</jats:p>\n                  <jats:p>To handle drilling through sections with large pressure variations between individual layers or between the overburden and the reservoir future drilling practice will change. Rotary steerable liner drilling systems will be available primo 2008. StatoilHydro and one of StatoilHydro's suppliers are developing a 9 5/8?? and a 7?? system. A full drilling tool package can be included in the system. By combining steerable liner drilling with the expandable pipe technology and managed pressure drilling methods, lot of to-days drilling challenges can be solved.</jats:p>\n                  <jats:sec>\n                     <jats:title>Background</jats:title>\n                     <jats:p>StatoilHydro has identified Automated Drilling Systems (ADS) as one of our major technological efforts in a relatively near future. The technology as such is to a large extent at hand. It is a matter of taking the technology into operation. Our experience is that many of the drilling problems are related to human error or rather; slow response wrt corrective actions. ADS has the capability, if designed correctly, to eliminate this type of misbehaviour. It is mandatory to design the Automated Drilling Systems such that the general progress in operation is not slowed down.</jats:p>\n                  </jats:sec>\n               </jats:sec>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.2118/19409-ms",
+      "title": [
+        "The Future Drilling Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of Offshore Technology Conference"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.17660/actahortic.2008.785.3",
+      "title": [
+        "INDIAN VITICULTURE SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Horticulturae"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/radar.2008.4721092",
+      "title": [
+        "Scenario based RCS statistics of complex ground targets"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE Radar Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.3170/2008-7-18576",
+      "title": [
+        "Scenario modeling for conservation management in the En Afeq Nature Reserve, Israel"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Vegetation Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.2514/6.2008-3516",
+      "title": [
+        "A Scenario-Based Process for Requirements Development: Application to Mission Operations Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SpaceOps 2008 Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.3402/tellusa.v60i3.15369",
+      "title": [
+        "Marine downscaling of a future climate scenario for the North Sea"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tellus A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1142/9789812818805_0017",
+      "title": [
+        "INTERMITTENCY SCENARIO OF TRANSITION TO CHAOS IN PLASMA"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Chaos, Complexity and Transport"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/vetecs.2008.24",
+      "title": [
+        "Application of the TDD Underlay Concept to Home NodeB Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "VTC Spring 2008 - IEEE Vehicular Technology Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/icbbe.2008.203",
+      "title": [
+        "Yet Another Scenario of Pattern Formation: Interpretation of Position Information"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 2nd International Conference on Bioinformatics and Biomedical Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1038/laban0508-194a",
+      "title": [
+        "Response to Protocol Review Scenario: Precise justification is needed"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1038/laban0508-194b",
+      "title": [
+        "Response to Protocol Review Scenario: Statistics should be used"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.5539/ies.v1n2p45",
+      "title": [
+        "School Based Assessment: Will it Really Change the Education Scenario in Bangladesh?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Education Studies"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1088/0031-8949/77/06/065101",
+      "title": [
+        "Lepton flavor violating radion decays in the Randall–Sundrum scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physica Scripta"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1038/laban0508-193b",
+      "title": [
+        "Response to Protocol Review Scenario: Stronger rationales encouraged"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1061/40976(316)26",
+      "title": [
+        "Water Portfolio Scenario Analysis for Mesa, Arizona"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "World Environmental and Water Resources Congress 2008"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.17660/actahortic.2008.785.8",
+      "title": [
+        "NEW TABLE AND WINE GRAPE CULTIVARS: WORLD SCENARIO WITH EMPHASIS ON BRAZIL"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Horticulturae"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/isorc.2008.56",
+      "title": [
+        "Scenario Based Evaluation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 11th IEEE International Symposium on Object and Component-Oriented Real-Time Distributed Computing (ISORC)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/ths.2008.4534464",
+      "title": [
+        "Seeking Shelter: Towards a Multi-Agent Based Simulation of a School Lockdown Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE Conference on Technologies for Homeland Security"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/vetecs.2008.560",
+      "title": [
+        "Optimum Pilot Placement for Chunk-Based OFDMA Uplink: Time Direction Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "VTC Spring 2008 - IEEE Vehicular Technology Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/iccw.2008.11",
+      "title": [
+        "Capacity and Coverage Analysis of a 3GPP-LTE Multihop Deployment Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "ICC Workshops - 2008 IEEE International Conference on Communications Workshops"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/baltic.2008.4625527",
+      "title": [
+        "Scenario simulations of recent Baltic Sea inflows using the hydrodynamic transport model GETM"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE/OES US/EU-Baltic International Symposium"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1175/2007jcli1803.1",
+      "title": [
+        "Response of Regional Sea Level to Atmospheric Pressure Loading in a Climate Change Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Climate"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>The regional response of the global ocean to low-frequency changes in atmospheric pressure loading, ηib, is analyzed as it occurs in the Max Planck Institute for Meteorology (MPI-M) coupled ocean–atmosphere climate model in response to increased atmospheric CO2 concentrations. Results suggest that long-term changes in ηib can lead to increases in high-latitude sea level by up to 5 and 10 cm, respectively, after doubling and quadrupling the atmospheric CO2 content. At low latitudes, sea level will decrease simultaneously between 2 and 4 cm through the combined effects of changes in the atmospheric circulation and through the increase of its moisture content. In subpolar regions, associated rates of sea level increase are of the order of 0.4–0.6 mm yr−1 for quadrupled atmospheric CO2 concentrations, while in mid- and low latitudes, sea level will decrease at a rate of 0.2 mm yr−1. Differences between doubling and quadrupling CO2 concentrations indicate regionally dependent nonlinearities in the changing climate system. The analysis suggests that in some regions (including the coasts of northern Europe) low-frequency ηib changes could be as large as 10%–20% of a global sea level increase anticipated over the next 100 yr. While not being a dominant effect, amplitudes of long-period ηib changes are large enough to be included in future estimates of climate-related regional sea level change. Increasing the vertically integrated atmospheric CO2 content by 4 and 12 kg m−2 (on global average), in response to doubling and quadrupling atmospheric CO2 concentrations, suggests associated reductions of global sea level by 0.6 and 1.7 cm, respectively. The differences between two different model solutions are significant, especially in the Southern Ocean, where they show significantly different atmospheric mass and pressure distributions, and at low latitudes, where differences resemble the contribution of increased moisture content added to the inverted-barometer (IB) effect in the MPI-M solution.</jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.physletb.2008.04.042",
+      "title": [
+        "Neutralino dark matter in light Higgs boson scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.gloplacha.2008.01.002",
+      "title": [
+        "Climate and carbon cycle changes under the overshoot scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Global and Planetary Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.orl.2007.11.005",
+      "title": [
+        "Complexity of single machine scheduling problems under scenario-based uncertainty"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Operations Research Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1111/j.1600-0870.2008.00311.x",
+      "title": [
+        "Marine downscaling of a future climate scenario for the North Sea"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tellus A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1103/physrevd.77.105028",
+      "title": [
+        "Global string and vortex superfluids in a supersymmetric scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/1523422307313320",
+      "title": [
+        "Cognitive Barriers in the Scenario Development Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The literature on scenario planning can be neatly divided into two broad categories: (a) anecdotal, practitioner oriented articles that describe how scenario planning has been undertaken in organizations, its espoused benefits, and experienced-based advice on how to construct scenarios and (b) articles that are more academic and analytical in that they attempt to provide a theoretical underpinning for scenarios based on a small body of empirical studies of related topics. It is this second category, the empirical studies of related topics that this article focuses on, in particular, research findings from the cognitive psychology domain in terms of how knowledge is organized and activated in the human mind, cognitive simplification processes, and inductive versus deductive thinking. A research project focusing on the scenario development process is described and the preliminary findings related to the impact of these cognitive phenomena in terms of learning barriers in the development process is discussed. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.physleta.2008.01.080",
+      "title": [
+        "New universal bifurcation scenario in one-dimensional trimodal maps"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/1523422307313319",
+      "title": [
+        "Applying Scenario Planning Across Multiple Levels of Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Planning for an uncertain future is problematic yet necessary for organizations to remain viable. Scenario planning helps organizations to increase their capacity to learn and adapt as the future unfolds and results in strategies that more effectively help organizations prepare for an uncertain future. Because organizations are complex, multilevel systems, scenario planners must also focus the complexities of learning across multiple levels of analysis. Fostering the learning processes that support effective implementation of strategy across multiple levels of analysis requires attention to the elements and relationships that drive learning from one level to the next. Few strategies for learning fully articulate and integrate the characteristics of learning at different levels of analysis.This article identifies key elements and relationships constituting learning at multiple levels of analysis—individual, group, organization, and industry—and provides an integrated view of multilevel learning in organizational settings to guide and support strategic planning and implementation. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/1523422307313321",
+      "title": [
+        "Scenario-Based Strategy in Practice: A Framework"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article documents the underlying principles of scenario planning considered best practice in its application. These principles have been learned directly over the past 15 years from the first- and second-generation pioneers of the scenario method. In this article, human resource development professionals wishing to gain expertise in the discipline of scenario planning will encounter a way of thinking about this work, some key processes having a track record of success, and an outline of the knowledge skills they need to develop to become competent practitioners . The first part identifies a number of key phenomena that led to the birth of scenario-based strategy as a method.The second part describes some of the essential process elements, their origins, and the competencies needed for facilitation and execution.The goal of this article is to provide a set of reliable “handrails” for practitioners and guidelines for identifying useful further learning resources. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.resuscitation.2008.03.075",
+      "title": [
+        "Validation of a scoring system for the ALS cardiac arrest scenario test (CASTest)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Resuscitation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/vetecs.2008.579",
+      "title": [
+        "Inter-System Handover Parameter Auto-Tuning in a Joint-RRM Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "VTC Spring 2008 - IEEE Vehicular Technology Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/1523422307313328",
+      "title": [
+        "Applying Organization Development Tools in Scenario Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Scenario planning, as an ongoing process for helping leaders in an organization to think more expansively and flexibly, is a complex process requiring trained professionals as facilitators.What approaches do such facilitators use to maximize the benefits of scenario planning? In this article,the authors posit that organization development, with its multitude of interventions, is essential for use in the process. Interventions to be used in each of the three phases of scenario planning are described briefly. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/melcon.2008.4618406",
+      "title": [
+        "Adjustment of a Fuzzy Logic Controller for IS-HO parameters in a heterogeneous scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "MELECON 2008 - The 14th IEEE Mediterranean Electrotechnical Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/1523422307313530",
+      "title": [
+        "Scenario Planning: Human Resource Development's Strategic Learning Tool"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article introduces the concepts of scenario planning and HRD. A discussion of the major areas of overlap is provided, the links are clarified in a strategic context, and clear opportunities for both researchers and practitioners are outlined.This article also provides a short overview of what is to come in this issue of ADHR.The authors carefully outline this issue and each of its major points for optimizing HRD professionals as they work to leverage scenario planning as HRD's strategic learning tool. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1088/1126-6708/2008/05/042",
+      "title": [
+        "Cosmological constant, brane tension and large hierarchy in a generalized Randall-Sundrum braneworld scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of High Energy Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/01443410701665873",
+      "title": [
+        "Assessing the psychometric properties of a scenario‐based measure of achievement guilt and shame"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Educational Psychology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    },
+    {
+      "doi": "10.1088/1742-6596/112/2/022090",
+      "title": [
+        "High energy electron transport in dense plasma in fast ignition scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics: Conference Series"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/1523422307313311",
+      "title": [
+        "Scenario Planning: Toward a More Complete Model for Practice"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Numerous approaches to scenario planning exist. In fact, as a discipline that has grown more in practice than in any other domain, much about the process is not fully understood.This has led to extreme variety in method and process for conducting scenario projects.The authors begin the task of investigating the elements that appear common to multiple models and processes with intent of aggregating these elements toward a best practice approach. In this article, the authors present and describe several prominent scenario planning models in detail, highlighting the strengths and areas for improvement in each.They then discuss opportunities for solidifying best practices in terms of a sound approach to scenario planning in addition to offering the basis of a unifying model for moving the study of scenario planning forward. Conclusions and suggestions are provided for organizational decision makers and researchers. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.compedu.2007.02.004",
+      "title": [
+        "The development of a formative scenario-based computer assisted assessment tool in psychology for teachers: The PePCAA project"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/vetecs.2008.403",
+      "title": [
+        "An Auction Based Joint Radio Resource Management Scheme and Architecture in a Multi-Operator Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "VTC Spring 2008 - IEEE Vehicular Technology Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.4043/19691-ms",
+      "title": [
+        "Emerging Geophysical Technologies: Is Planting and Re-Planting of Nodes in a 4C-4D Scenario the Optimum and Most Cost-Effective Solution for Field Reservoir Monitoring?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "All Days"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n                  <jats:title>Abstract</jats:title>\n                  <jats:p>Seabed data acquisition methods offer numerous advantages over towed streamer data. These advantages can lead to improved static and dynamic reservoir characterization. By recording complete vector field data at the sea floor with full azimuth acquisition improved shallow resolution, signal-to-noise ratio, spectral content, deep imaging and 3D illumination can be achieved. Also in the presence of obstacles such as production facilities a regular coverage can be assured.</jats:p>\n                  <jats:p>Autonomous node technology has been developed to a fully commercial system. It has demonstrated improved imaging of complex reservoir with both pressure (PP) and converted shear (PS) with stable and consistent measurements achieved by very well planted nodes into the sea floor and full azimuth acquisition with densely sampled shots.</jats:p>\n                  <jats:p>It has been experienced that the background response from well planted nodes can be repeated in a 4C-4D scenario when the coupling conditions are the same. The vector fidelity in the node system will secure this behavior. In addition, the accurate positioning and re-positioning of the nodes under realistic water depth ranges gives positioning accuracy close to permanently buried cable systems. An experiment performed on the Volve field in the North Sea with pairs of nodes planted side by side clearly confirmed the high degree of stability in the coupling and the repeatability of the measurements from all components. At 100 m water depth all the planted nodes were within a short radius around the pre-plot position.</jats:p>\n                  <jats:p>A cost sensitivity study of different 4C-4D node scenarios depending of field size, water depths and node spacing indicates that, for larger field sizes (300-600km2 receiver coverage), the alternative use of nodes could be significantly more cost effective than permanently buried cable systems. Moreover, there are advantages linked to the acquisition geometry, operation, zero equipment life time risk and low initial investment.</jats:p>\n                  <jats:sec>\n                     <jats:title>Introduction</jats:title>\n                     <jats:p>Marine seismic exploration and reservoir imaging have been through numerous stages of adjustments and improvements. Towed streamer surveys from 2D to 3D and now to 4D dominate the offshore seismic survey with a well established technology which remains the most common acquisition with narrow azimuth coverage. New techniques such as \" single sensor recording?? (Egan et al, 2005), \" over-under?? (Singh et al, 1996) and \" wide azimuth?? (Campbell et al, 2002) have recently delivered impressive results. These techniques have raised the cost and complexity to more traditionally \" simple?? towed streamer operations.</jats:p>\n                  </jats:sec>\n               </jats:sec>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/1523422307304101",
+      "title": [
+        "Scanning Beyond the Horizon: Exploring the Ontological and Epistemological Basis for Scenario Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The two-step process of scenario building and action planning that constitutes scenario planning enables methodological rigor, theory testing, and good inquiry to be demonstrated by researchers through established criteria. This article focuses on the philosophical underpinnings of scenario planning that have not been addressed in the human resource development literature and that are treated as problematic from a theoretical perspective because of the conjectural nature of the future. This article categorizes these underpinnings and reviews the claims that can be made with respect to their ontological and epistemological status. A pragmatic perspective that builds on critical realist and constructivist—interpretive paradigms to emphasize decision-making utility as the outcome of inquiry rather than testable knowledge production is proposed. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1080/13632460802013388",
+      "title": [
+        "Displacement-Based Earthquake Loss Assessment for an Earthquake Scenario in Istanbul"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Earthquake Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1109/kingn.2008.4542267",
+      "title": [
+        "Distributed PBX gateways to enable the hosted enterprise services architecture in a NGN scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 First ITU-T Kaleidoscope Academic Conference - Innovations in NGN: Future Network and Services"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1088/1475-7516/2008/05/020",
+      "title": [
+        "Anomaly driven cosmology: big boost scenario and AdS/CFT correspondence"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Cosmology and Astroparticle Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/1523422307313332",
+      "title": [
+        "Scenario Planning as Developing Leadership Capability and Capacity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Documented scenario planning projects report a diverse cross section of organizational members. Yet most projects involve executive and senior management teams as their primary participants. Given the participation of higher-level organizational members, a question arises as to whether the scenario planning process is useful in developing leadership capability and capacity within an organization. The implied link between scenario planning and the development of leadership capability must first be described, understood, and substantiated before it can be assumed to be of strategic utility to organizations and fields of practice. This article presents the outcomes of an exploratory inquiry into the association between scenario planning and leadership. Initial discoveries suggest that the development of leadership capability and capacity are reasonable expected outcomes of scenario planning and tentatively positions scenario planning as a strategic tool in human resource development. </jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.ecoenv.2007.09.001",
+      "title": [
+        "Deltamethrin toxicity to the midge Chironomus riparius Meigen—Effects of exposure scenario and sediment quality"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecotoxicology and Environmental Safety"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.2118/19691-ms",
+      "title": [
+        "Emerging Geophysical Technologies: Is Planting and Re-planting of Nodes in a 4C-4D Scenario the Optimum and Most Cost-Effective Solution for Field Reservoir Monitoring?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of Offshore Technology Conference"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1093/ejechocard/jen137",
+      "title": [
+        "Investigating the European Society of Cardiology Diastology Guidelines in a practical scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Echocardiography"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/s11116-008-9170-z",
+      "title": [
+        "More gray hair—but for whom? Scenario-based simulations of elderly activity travel patterns in 2020"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-08"
+    },
+    {
+      "doi": "10.13182/fst08-a1744",
+      "title": [
+        "Chapter 4: Advanced Tokamak Scenario Development at JET"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1111/j.1365-2966.2008.13178.x",
+      "title": [
+        "Testing the AGB scenario as the origin of the extreme-helium population in ω Centauri"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Monthly Notices of the Royal Astronomical Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1111/j.1475-682x.2008.00234.x",
+      "title": [
+        "<i>The </i>Selendang Ayu<i> Shipwreck and Oil Spill: Considering Threats and Fears of a Worst‐Case Scenario</i>*"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Sociological Inquiry"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>On December 8, 2004, the <jats:italic>Selendang Ayu</jats:italic>, a Malaysian‐flagged freighter, ran aground off Unalaska Island in Alaska's Aleutian chain. Despite rescue efforts by the United States Coast Guard, six of the <jats:italic>Selendang Ayu's</jats:italic> crew members died. In addition to the deaths, more than 300,000 gallons of heavy bulk fuel oil spilled into the sea. Much of the oil washed onto the island's shores, into areas providing cultural, recreational, subsistence, and commercial fishing resources for residents of the renewable resource community of Dutch Harbor/Unalaska. The purpose of this article is to identify and examine different dimensions of risk, based on qualitative research conducted in 2005. We use a contextual constructionist approach to understand risk, which conceptualizes risk as an objective hazard, threat, or danger that is mediated through social and cultural processes. Research methods included 31 personal interviews, participatory observation, and a review of media coverage. Findings revealed several dimensions of risk perceived by residents: the incident in relation to Dutch Harbor/Unalaska as a high‐risk community and more general current events; threats to the community's annual $1 billion seafood industry; threats to Alaska Native subsistence culture; and issues of future risk and uncertainty. Interviews and observations support our conclusion that the <jats:italic>Selendang Ayu</jats:italic> incident represented a “shot across the bow” that could have been a “worst case” if oil had contaminated commercial fish processing. Residents believe that it is only a matter of time before another, more damaging accident occurs. Given this general perception, it is important to more clearly assess risk in Dutch Harbor/Unalaska and help the community increase resilience to the multiple hazards it faces. More broadly, Dutch Harbor/Unalaska serves as an example—all communities could benefit from better risk assessments and increased attention to resiliency.</jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.cma.2007.09.025",
+      "title": [
+        "An approach to the Sandia workshop static frame challenge problem: A combination of elementary probabilistic, fuzzy set, and worst scenario tools"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer Methods in Applied Mechanics and Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1145/1496046.1496082",
+      "title": [
+        "Transparent protocol translation and load balancing on a network processor in a media streaming scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 18th International Workshop on Network and Operating Systems Support for Digital Audio and Video"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1520/jai101116",
+      "title": [
+        "Hydrogen Content, Preoxidation, and Cooling Scenario Effects on Post-Quench Microstructure and Mechanical Properties of Zircaloy-4 and M5® Alloys in LOCA Conditions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of ASTM International"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Previous papers pointed out the influence of long-term service exposures on the thermal-mechanical behavior of Zr alloys in LOCA conditions and, especially, the impact of in-service hydrogen pick-up on post-quench mechanical properties. Moreover, the oxide layer grown under in-service conditions was occasionally expected to have a protective effect against high temperature oxidation. Finally, the oxygen and hydrogen distributions within the prior-β layer appear as a key parameter with regard to the residual ductility of the alloy, especially as a function of the cooling scenario. The objective of the study presented here was to further investigate the influence of these parameters on the post-quench mechanical properties. Unirradiated Zircaloy-4 and M5® cladding tubes were consequently hydrided up to different concentration levels, then oxidized at high temperature (1000–1200°C) up to at least 10 % measured equivalent cladding reacted (ECR) and directly quenched to room temperature (RT). Ring compression tests (RCT), 3-point bending tests (3PBT) at RT and 135°C, as well as impact tests at RT were then performed to determine the evolution of the post-quench mechanical properties of Zircaloy-4 and M5® alloys with H content. Similarly, specimens preoxidized out-of-pile were also submitted to high temperature oxidation and direct quench, as well as to post-quench ring compression tests. Along with calculations of oxygen diffusion in the metal, results from those tests allowed us to estimate the assumed protective effect of the pretransient oxide layer. Finally, using specimens in the as-received condition or hydrided to typical end-of-life H contents, the effect of temperature history after oxidation at 1200°C was studied, i.e., at the end of the high temperature isothermal oxidation, samples were either submitted to direct quenching to RT or to slow cooling to different final quenching temperatures. It was thus demonstrated that the cooling scenario has a significant impact on the post-quench mechanical properties. All test samples were investigated by means of fractographic examinations to assess the type of failure mode. Moreover, a deep metallurgical analysis has been performed: SEM and image analysis were used for accurate phase thickness measurements, nuclear and electron microprobes for quantitative mapping of hydrogen and oxygen. It proved that the oxygen and hydrogen contents and their distribution in the prior-β layer have a first-order influence on the residual ductility. From all the results obtained on as-received and hydrided samples directly quenched from the oxidation temperature, it was then possible to derive a relationship between structural parameters, i.e., oxygen and hydrogen contents and thickness of the prior-β layer, and the post-quench impact properties at RT.</jats:p>",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1051/0004-6361:20079169",
+      "title": [
+        "Fluorine in carbon-enhanced metal-poor stars: a binary scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astronomy &amp; Astrophysics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.4016/5849.01",
+      "title": [
+        "1.3.6.-v1-Multi-hop VANETs Simulation using VanetMobiSim/Ns-2 (Scenario A)"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "SciVee"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1080/13632460802014188",
+      "title": [
+        "A Comparative Study of European Earthquake Loss Estimation Tools for a Scenario in Istanbul"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Earthquake Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.4016/5880.01",
+      "title": [
+        "1.3.6.-v2-Multi-hop VANETs Simulation using VanetMobiSim/Ns-2 (Scenario B)"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "SciVee"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1088/0029-5515/48/7/075001",
+      "title": [
+        "Influence of toroidal rotation on transport and stability in hybrid scenario plasmas in DIII-D"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Fusion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    }
+  ]
+}

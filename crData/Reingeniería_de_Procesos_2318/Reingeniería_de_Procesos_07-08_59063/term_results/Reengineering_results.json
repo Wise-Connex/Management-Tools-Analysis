@@ -1,0 +1,138 @@
+{
+  "term": "Reengineering",
+  "total_results": 10,
+  "processed_count": 10,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/iri.2007.4296705",
+      "title": [
+        "Software Stability in Software Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Conference on Information Reuse and Integration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1109/icmlc.2007.4370158",
+      "title": [
+        "The Cultural Model of Chinese Enterprises' Business Process Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 International Conference on Machine Learning and Cybernetics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1109/ical.2007.4338945",
+      "title": [
+        "Supply Chain Business Process Reengineering Directed by the Project"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Conference on Automation and Logistics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1109/sera.2007.111",
+      "title": [
+        "Reengineering Class Hierarchies into 3D Bridge Form"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "5th ACIS International Conference on Software Engineering Research, Management &amp; Applications (SERA 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1109/ical.2007.4339074",
+      "title": [
+        "Effect of Business Process Reengineering on Logistics Performance: A Case Study of Taiwan"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Conference on Automation and Logistics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1109/icsea.2007.10",
+      "title": [
+        "A Reengineering Approach of the Legacy System in the Digital Media Domain"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Conference on Software Engineering Advances (ICSEA 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1109/icmse.2007.4422188",
+      "title": [
+        "The Optimization Design of Measure &amp;#x00026; Payment Process in Construction by Using the Business Process Reengineering Technology"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 International Conference on Management Science and Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1111/j.1468-2230.2007.00664.x",
+      "title": [
+        "Reengineering the Child Support Scheme: An Australian Perspective on the British Government's Proposals"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Modern Law Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>After years of problems with the Child Support Scheme in Britain, the Government has decided to attempt reform again, less than four years after a previous major change was implemented in 2003. The author evaluates these reform proposals, drawing upon his experience in leading a recent major review of child support policy in Australia. While many of the reform measures offer a sensible way forward for child support policy, Britain risks going backwards in terms of community acceptance of the child support obligation. The Government needs to consider the likely impact of its policy settings on private agreements about child support. Ways are proposed both to protect the Treasury and to promote the wellbeing of children by adopting different policy settings that ensure the resident parent has an incentive to bargain for the level of child support required by the new formula. The new formula itself is evaluated in the light of the international research on the costs of children. Ways are also suggested for developing a co‐ordinated approach across government to the provision of support services for parents who do not live together.</jats:p>",
+      "publication_date": "2007-09"
+    },
+    {
+      "doi": "10.1109/iembs.2007.4353106",
+      "title": [
+        "PACS: Reengineering Workflow in the Imaging Department of a National Health Institute in Mexico"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 29th Annual International Conference of the IEEE Engineering in Medicine and Biology Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1073/pnas.0702199104",
+      "title": [
+        "Thermodynamically reengineering the listerial invasion complex InlA/E-cadherin"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the National Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n            Biological processes essentially all depend on the specific recognition between macromolecules and their interaction partners. Although many such interactions have been characterized both structurally and biophysically, the thermodynamic effects of small atomic changes remain poorly understood. Based on the crystal structure of the bacterial invasion protein internalin (InlA) of\n            <jats:italic>Listeria monocytogenes</jats:italic>\n            in complex with its human receptor E-cadherin (hEC1), we analyzed the interface to identify single amino acid substitutions in InlA that would potentially improve the overall quality of interaction and hence increase the weak binding affinity of the complex. Dissociation constants of InlA-variant/hEC1 complexes, as well as enthalpy and entropy of binding, were quantified by isothermal titration calorimetry. All single substitutions indeed significantly increase binding affinity. Structural changes were verified crystallographically at ≤2.0-Å resolution, allowing thermodynamic characteristics of single substitutions to be rationalized structurally and providing unique insights into atomic contributions to binding enthalpy and entropy. Structural and thermodynamic data of all combinations of individual substitutions result in a thermodynamic network, allowing the source of cooperativity between distant recognition sites to be identified. One such pair of single substitutions improves affinity 5,000-fold. We thus demonstrate that rational reengineering of protein complexes is possible by making use of physically distant hot spots of recognition.\n          </jats:p>",
+      "publication_date": "2007-08"
+    }
+  ]
+}

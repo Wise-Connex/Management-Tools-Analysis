@@ -1,0 +1,307 @@
+{
+  "term": "Planning",
+  "total_results": 23,
+  "processed_count": 23,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1038/1671001a0",
+      "title": [
+        "Planning in Scientific Research"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1097/00000446-195106000-00063",
+      "title": [
+        "Planning Together for the Patientʼs Care"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AJN, American Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.2307/3387393",
+      "title": [
+        "Teacher-Pupil Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Music Educators Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.2307/1069454",
+      "title": [
+        "Life Insurance and Estate Tax Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Virginia Law Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.2307/3707803",
+      "title": [
+        "Freedom, Power, Democratic Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Catholic Sociological Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1049/pi-2.1951.0099",
+      "title": [
+        "The planning of an electricity board's distribution system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the IEE - Part II: Power Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1097/00000446-195106000-00059",
+      "title": [
+        "Joint Planning for the Psychiatric Nursing Affiliation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AJN, American Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.2307/3459167",
+      "title": [
+        "The Nursing Survey: An Essential for Sound Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.2307/3459185",
+      "title": [
+        "Joint Planning for the Psychiatric Nursing Affiliation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1097/00000446-195106000-00042",
+      "title": [
+        "The Nursing Survey—an Essential for Sound Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AJN, American Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.2307/3707828",
+      "title": [
+        "City Planning: A Selection of Readings in Its Theory and Practice"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Catholic Sociological Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1080/01944365108979319",
+      "title": [
+        "In Defense of Planning Commissions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Institute of Planners"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1080/01944365108979324",
+      "title": [
+        "The Art in City Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Institute of Planners"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1080/00119253.1951.10743134",
+      "title": [
+        "What the Artist must know about Engraving"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1080/01944365108979328",
+      "title": [
+        "County Planning in the Philadelphia Area"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Institute of Planners"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1049/pi-2.1951.0101",
+      "title": [
+        "The author's reply to the discussion on “The planning of an electricity board's distribution system”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the IEE - Part II: Power Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1049/pi-2.1951.0100",
+      "title": [
+        "Discussion on “The planning of an electricity board's distribution system” before the Supply Section, 24th January, 1950"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the IEE - Part II: Power Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1080/01944365108979318",
+      "title": [
+        "A Community Builder Looks At Community Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Institute of Planners"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1017/s2753447200001049",
+      "title": [
+        "Sites for Rotor Stations—Some Town Planning Considerations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of the Helicopter Association of Great Britain"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The previous speaker has briefly stated the requirements which for satisfactory operation of a helicopter service should govern the siting of a Rotor Station they may be summarised as—commercially “a central location in the town, with convenient access by road and rail”, and—operationally “relative freedom from local ‘smog’ and from high obstructions”</jats:p><jats:p>It is probable that the <jats:italic>travelling</jats:italic> public also would describe their chief requirement as “a central location and convenient road and rail access”, but when the question of siting is viewed disinterestedly—as it must be by the town planning authority—when account is taken of the probable effect that the Rotor Station, its use and its situation, may have upon the public in general, and on the owners and occupiers of adjacent property in particular—a rather different set of criteria must be considered</jats:p>",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1017/s0003055400294161",
+      "title": [
+        "The Principles of Economic Planning. By W. Arthur Lewis. (Washington, D. C.: Public Affairs Press. 1951. Pp. 128. Paper $2.00, Cloth $2.50.)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Political Science Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.2105/ajph.41.6.712",
+      "title": [
+        "Basic Data Needed in Planning Programs for the Care of Premature Infants"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Public Health and the Nations Health"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1017/s0020268100013834",
+      "title": [
+        "The Principles of Economic Planning. By Professor W. Arthur Lewis. [Pp. 128, Dennis Dobson Ltd. 8<i>s</i>. 6<i>d</i>.]"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Institute of Actuaries"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    },
+    {
+      "doi": "10.1021/cen-v029n024.p2362",
+      "title": [
+        "France Production and Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-06"
+    }
+  ]
+}

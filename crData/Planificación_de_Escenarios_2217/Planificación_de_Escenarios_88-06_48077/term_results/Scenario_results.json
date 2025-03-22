@@ -1,0 +1,86 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0029-5493(88)90055-6",
+      "title": [
+        "TMI-2 accident scenario update"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-06"
+    },
+    {
+      "doi": "10.1080/00405848809543355",
+      "title": [
+        "Selecting and compensating mentor teachers: A win‐win scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Theory Into Practice"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-06"
+    },
+    {
+      "doi": "10.1063/1.527895",
+      "title": [
+        "The Vaidya–Patel solution with Robertson–Walker metric as a rotating inflationary scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Mathematical Physics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The Vaidya–Patel solution of a rotating homogeneous fluid in the presence of a Maxwellian source-free electromagnetic field is interpretated as an inflationary scenario with a gauge field with local U(1) symmetry, a vacuum energy, and a rotating perfect fluid. An explicit solution is found to be expressible in terms of known solutions representing the radiation filled Robertson–Walker universe with a cosmological term. In the case that the rotating fluid is radiation, the discussion of the model is considerably simplified. How the time scale of transition into a pseudo-de Sitter stage, as observed by an observer following the rotating fluid, is affected by vorticity is also studied.</jats:p>",
+      "publication_date": "1988-06"
+    },
+    {
+      "doi": "10.1086/185186",
+      "title": [
+        "The lithium isotope ratio in Population II halo dwarfs - A proposed test of the late decaying massive particle nucleosynthesis scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-06"
+    },
+    {
+      "doi": "10.7748/phc.6.6.18.s10",
+      "title": [
+        "Critique of the Health Beliefs model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Primary Health Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-06"
+    },
+    {
+      "doi": "10.1080/00268948808075256",
+      "title": [
+        "Nonionic C<sub>12</sub>E<sub>5</sub>Aqueous Lamellar Phases: a Light Scattering Study And a Temptative Scenario of the Transition to the Isotropic Phase"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Molecular Crystals and Liquid Crystals Incorporating Nonlinear Optics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-06"
+    }
+  ]
+}

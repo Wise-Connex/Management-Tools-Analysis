@@ -1,0 +1,56 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/5394743",
+      "title": [
+        "Electric and Hybrid Vehicle System Research and Development Project: Hybrid Vehicle Potential Assessment. Volume VIII. Scenario generation"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4148/0146-9282.1929",
+      "title": [
+        "The games people play; the names people say - part of today's educational scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Educational Considerations"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1111/j.1467-7717.1979.tb00147.x",
+      "title": [
+        "Scenario for a Housing Improvement Program in Disaster‐Prone Areas"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Disasters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-09"
+    },
+    {
+      "doi": "10.1016/0040-1625(79)90038-6",
+      "title": [
+        "Structuring the future—application of a scenario-generation procedure"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-09"
+    }
+  ]
+}

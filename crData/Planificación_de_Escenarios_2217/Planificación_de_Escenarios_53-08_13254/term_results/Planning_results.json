@@ -1,0 +1,73 @@
+{
+  "term": "Planning",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1126/science.118.3058.147",
+      "title": [
+        "Research Planning and Research Policy Scientists and Administrators"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-08"
+    },
+    {
+      "doi": "10.2307/1233679",
+      "title": [
+        "Planning One Town"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Farm Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-08"
+    },
+    {
+      "doi": "10.1287/opre.1.4.187",
+      "title": [
+        "Application of Operations-Research Techniques to Airborne Weapon System Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Operations Research Society of America"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> It is believed that the extension and application of operations research techniques to systems analysis can improve the basis for decisions on new airborne weapon systems. Although the surface has only been scratched in this field and many things are yet to be learned, experience to date has provided reason for confidence that these methods will prove to be reliable and useful tools for the executive over the years. As experience and know-how increase, and sufficient groups of qualified personnel become available in both industry and the military, such analyses should become recognized as matters of good business procedure. It is to be hoped that in the future standard practice both in industry and in the Department of Defense will require that systems analyses be performed in advance of all basic planning decisions for design and production of future weapon systems. </jats:p><jats:p> Operations Research, ISSN 0030-364X, was published as Journal of the Operations Research Society of America from 1952 to 1955 under ISSN 0096-3984. </jats:p>",
+      "publication_date": "1953-08"
+    },
+    {
+      "doi": "10.1017/s1373971900101684",
+      "title": [
+        "L. v. Mises \n            Planning for Freedom. \n            South Holland, Illinois, Iribertarian Press, 1952, $ 1.50."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bulletin de l'Institut de recherches économiques et sociales"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-08"
+    },
+    {
+      "doi": "10.1287/opre.1.4.200",
+      "title": [
+        "The Development of Planning Procedures at Air Proving Ground Command"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Operations Research Society of America"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Sophisticated models and complex mathematical formulations are not always necessary for the development of successful planning techniques. Often rather simple and straightforward algebraic statements will serve management's purposes very well. Since planning is in essence prediction, precision of prediction is desirable. Although a relatively simple and direct planning method may lose in precision, it has certain major advantages: (1) timeliness through quick development and application; (2) ease of application; and (3) an understanding of the model on the part of management, who must take action on the basis of the predictions. Often these advantages far outweigh the disadvantages of loss of precision. </jats:p><jats:p> Operations Research, ISSN 0030-364X, was published as Journal of the Operations Research Society of America from 1952 to 1955 under ISSN 0096-3984. </jats:p>",
+      "publication_date": "1953-08"
+    }
+  ]
+}

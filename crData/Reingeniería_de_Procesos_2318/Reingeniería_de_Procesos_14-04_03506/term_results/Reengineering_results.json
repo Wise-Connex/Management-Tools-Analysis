@@ -1,0 +1,58 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.14710/jmasif.5.9.53-61",
+      "title": [
+        "IMPLEMENTASI INTERPRETIVE TRANSFORMER APPROACH DALAM MIGRASI DATA SEBAGAI RANGKAIAN DATABASE REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JURNAL MASYARAKAT INFORMATIKA"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.6007/ijarbss/v4-i4/786",
+      "title": [
+        "Decision Support Systems Effect on Reengineering Field Research on Jordanian Tourism Companies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Academic Research in Business and Social Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/19488289.2013.879681",
+      "title": [
+        "Business Process Reengineering Through Lean Thinking: A Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Enterprise Transformation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-04"
+    },
+    {
+      "doi": "10.1088/1742-6596/495/1/012011",
+      "title": [
+        "Designing Process Improvement of Finished Good On Time Release and Performance Indicator Tool in Milk Industry Using Business Process Reengineering Method"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics: Conference Series"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-04"
+    }
+  ]
+}

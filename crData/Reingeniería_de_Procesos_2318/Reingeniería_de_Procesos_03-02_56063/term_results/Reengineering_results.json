@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/tpwrs.2002.807034",
+      "title": [
+        "A software architecture for power market supporting system and reengineering of legacy ems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Power Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1061/(asce)0733-9364(2003)129:1(105)",
+      "title": [
+        "Reengineering of Construction Management Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Construction Engineering and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1093/ajhp/46.10.2047a",
+      "title": [
+        "Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Health-System Pharmacy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-10"
+    },
+    {
+      "doi": "10.1287/inte.19.5.31",
+      "title": [
+        "Scenario Planning at Southern California Edison"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interfaces"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> After a review of its forecasting record for the prior two decades, Southern California Edison Company became convinced that traditional forecasting methods were inadequate, and it adopted the techniques of scenario planning to develop its resource plan. Scenarios were created, their implications were evaluated, and strategic responses were developed. </jats:p>",
+      "publication_date": "1989-10"
+    },
+    {
+      "doi": "10.1086/167934",
+      "title": [
+        "Superclustering in the explosion scenario. II - Prolate spheroidal shells from superconducting cosmic strings"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-10"
+    },
+    {
+      "doi": "10.1016/0141-1195(89)90049-1",
+      "title": [
+        "A scenario for the development and implementation of a building product model standard"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Engineering Software (1978)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-10"
+    }
+  ]
+}

@@ -1,0 +1,801 @@
+{
+  "term": "Supply",
+  "total_results": 61,
+  "processed_count": 61,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1300/j472v01n02_05",
+      "title": [
+        "The British Library Document Supply Centre:"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1108/02641619110155369",
+      "title": [
+        "A European‐wide survey of interlending and document supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interlending &amp; Document Supply"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>A summary of a report to UNESCO with the results of a study\nexamining various aspects of interlending and document supply throughout\nEurope. Examines the size and nature of collections available for\ninterlending, the state of union catalogues and the use of new\ntechnology. Concludes that there is considerable disparity in practice\nand development throughout Europe with differences in financial and\nprofessional practices and uneven development of union catalogues.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1108/02641619110154540",
+      "title": [
+        "European interlending: Some remarks about its feasibility"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interlending &amp; Document Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_01",
+      "title": [
+        "EDITORIAL"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_14",
+      "title": [
+        "Kappa's Interlibrary Loan World"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_13",
+      "title": [
+        "BOOK REVIEWS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_07",
+      "title": [
+        "Interlibrary Loan and the ALA/SRRT Guidelines"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_09",
+      "title": [
+        "Whither 1984?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_02",
+      "title": [
+        "A BUYER'S GUIDE TO TELEFACSIMILE FEATURES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_12",
+      "title": [
+        "Incorrect Citations:"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_08",
+      "title": [
+        "Characteristics of Interlibrary Loan Usage in the Small College Library"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_03",
+      "title": [
+        "Message Handling Systems (X.400):"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_11",
+      "title": [
+        "More Than Just \"Fax\":"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_04",
+      "title": [
+        "Interlibrary Loan Protocol:"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_06",
+      "title": [
+        "Academic Interlibrary Loan in New York State:"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1300/j472v01n02_10",
+      "title": [
+        "Universal Availability of Publications:"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interlibrary Loan &amp; Information Supply"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0961-1290(91)90326-r",
+      "title": [
+        "Triquint to supply Motorola"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "III-Vs Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0034-3617(91)90261-v",
+      "title": [
+        "Economic nitrogen supply for composites curing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Reinforced Plastics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1136/vr.128.6.133",
+      "title": [
+        "Supply and demand--the veterinary perspective"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Veterinary Record"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.4271/910796",
+      "title": [
+        "Unique Power Supply for Automotive Audio Power Amplifier"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1108/02641619110154522",
+      "title": [
+        "Interlending between academic libraries in France – A\nreview"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interlending &amp; Document Supply"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Describes interlending activities in French academic libraries.\nExplains their use of new technologies including electronic document\ndelivery and electronic mail. Charging policies are discussed and a list\nof specialised resource centres is provided.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0306-9192(91)90073-s",
+      "title": [
+        "Aggregate agricultural supply response in Chile, 1962–82"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Food Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1002/1520-6750(199102)38:1<107::aid-nav3220380110>3.0.co;2-4",
+      "title": [
+        "Future supply uncertainty in EOQ models"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Naval Research Logistics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.2307/2061336",
+      "title": [
+        "Increasing contraceptive use in Bangladesh: The role of demand and supply factors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Demography"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>This article analyzes the determinants of contraceptive use in Bangladesh, focusing on the roles of demand for additional children and of family planning service supply. Data from the Matlab Family Planning Health Services Project are used to examine the contributions of these factors to the difference in prevalence of modern contraceptive use between the project area and a control area served by the government family planning and health programs. Results of multivariate analysis deriving from the Easterlin synthesis framework show the importance of family planning supply factors in reducing psychic and resource costs of fertility regulation and in activating latent demand for contraception. Demand for birth limiting and for birth spacing emerge as important explanatory factors; demand for birth spacing is greater in the project area, and both demand measures exert a stronger effect on contraceptive behavior in that area.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1097/00008480-199102000-00019",
+      "title": [
+        "Transfusion medicine advances"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Current Opinion in Pediatrics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0148-6195(91)90002-e",
+      "title": [
+        "Money supply announcements: A retrospective"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Economics and Business"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0022-1996(91)90007-s",
+      "title": [
+        "Endogenous labor supply in international trade theory"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of International Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1093/jof/89.2.31",
+      "title": [
+        "Shifting Southern Softwood Stumpage Supply: Implications for Welfare Estimation from Technical Change"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Forestry"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>This paper estimates the economic benefits from increasing timber inventory in the southern softwood forest over the period from 1950 to 1980. The analysis measures the benefits arising to consumers and producers of stumpage from increases in softwood stumpage availability. Over the period of the analysis, average total benefits are roughly equal between the pulpwood and solidwood (combined lumber and plywood) stumpage markets. Average combined benefits range from $1.3 million to $5.3 million per year (1967 $). The size of the total benefits are more greatly affected by the level of shift assumed than they are by the structural characteristics of the market. The distribution of the benefits, however, differs quite markedly depending on the market structure. Pulpwood consumers (pulp and paper mills), for instance, receive greater than 150% of the total benefits from increased productivity effects on stumpage production as producers receive negative benefits. Solidwood producers receive positive benefits from increasing supply, although only 10% of the total benefits that are created. These distributional imbalances in the effects of policies designed to improve forest productivity should be considered in future analyses which assess the impacts and returns of these policies.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.2307/1242881",
+      "title": [
+        "Supply Response Under Proportional Profits Taxation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Agricultural Economics"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>A striking result in the theory of the competitive firm under certainty is the proposition that a proportional profits tax (with full offsets for losses) will have no impact on optimal output. This result does not apply under uncertainty. It is shown that, under constant or increasing returns to scale, a proportional profits tax will yield an unambiguous expansion in output. The same result is shown to hold for the more general rank‐dependent expected utility (RDEU) model.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0304-4076(91)90101-i",
+      "title": [
+        "Grouped-data estimation and testing in simple labor-supply models"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Econometrics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1080/03052159108941059",
+      "title": [
+        "DECOMPOSITION TECHNIQUE FOR OPTIMAL DESIGN OF WATER SUPPLY NETWORKS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engineering Optimization"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1287/mksc.10.1.83",
+      "title": [
+        "Innovation Diffusion in the Presence of Supply Restrictions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Marketing Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Innovation diffusion models are developed to represent the spread of a new product from its manufacturer(s) to its ultimate users. In the marketplace, however, the growth of a new product can be retarded by supply restrictions such as the unavailability of the product due to limitations on the production capacity or difficulties encountered in setting up distribution systems. In the presence of supply restrictions, diffusion models must be developed to capture the dynamics of supply restrictions and to allow management to evaluate the impact of such supply restrictions on the growth of a new product in the market place. Based on the Bass innovation diffusion model, the objective of this paper is to suggest a parsimonious diffusion model that integrates the demand side dynamics with the supply side restrictions. The sensitivity of innovation diffusion patterns in the presence of supply restrictions is examined. An application examining the diffusion of new telephones in Israel is documented to illustrate the usefulness of the proposed model. </jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.2307/968753",
+      "title": [
+        "Soldiers and Settlers: Military Supply in the Southwest: 1861-1885"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Western Historical Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1007/bf02662798",
+      "title": [
+        "Die zukünftige Rohholzversorgung Europas",
+        "Europe's future roundwood supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Holz als Roh- und Werkstoff"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1007/bf01945420",
+      "title": [
+        "Effects of exaggerated amino acid and protein supply in man"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Experientia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1007/bf00323767",
+      "title": [
+        "Fluctuating food supply affects the clutch size of Tengmalm's owl independent of laying date"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Oecologia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0169-5347(91)90125-h",
+      "title": [
+        "Implications of ‘supply-side’ ecology for environmental assessment and management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Trends in Ecology &amp; Evolution"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.2307/135478",
+      "title": [
+        "Behavioural Response to UI Reform in Constrained and Unconstrained Models of Labour Supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Canadian Journal of Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1111/j.1745-6592.1991.tb00350.x",
+      "title": [
+        "Pilot Plant to Treat Contaminated New Jersey Water Supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Groundwater Monitoring &amp; Remediation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1093/sjaf/15.1.31",
+      "title": [
+        "Softwood Timber Supply and the Future of the Southern Forest Economy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Southern Journal of Applied Forestry"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Fifty-year projections of the Southern forest economy suggest that in the period prior to 2015, nonindustrial owner-ships will be unable to sustain past growth in softwood harvest. Harvest could expand dramatically in later years, however, if the high rates of plantation establishment observed during the 1980s are maintained into the next century. Industrial harvest will continue to rise, but cannot increase fast enough to offset the nonindustrial shortfall. Sawtimber stumpage prices will rise sharply over the period to 2015 and stabilize or decline thereafter. Higher rates of planting influence only the later portion of this projection. Prospects of higher rates of recycled fiber use in U.S. paper and board production could have dramatic implications for the adequacy of Southern timber supply and sharply reduce stumpage price growth in both the near- and long-term. South. J. Appl. For. 15(1):31-37.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.2307/2164047",
+      "title": [
+        "Famine and Food Supply in the Graeco-Roman World: Responses to Risk and Crisis."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Historical Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.2307/1242886",
+      "title": [
+        "Price Changes, Supply Elasticities, Industry Organization, and Dairy Output Distribution"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Agricultural Economics"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Long‐run price elasticities of milk supply are decomposed into price elasticities of yield, herd size, and farm population. For northeastern U.S. dairy farms, these elasticities are shown to vary with farm size because of size‐related differences in capital intensity, specialization, yield and herd size variability, and rates of entry/exit into dairy. In the short run, price responsiveness is shown to decrease with farm size. In the long run, large farms are shown to be most price responsive. Results suggest that lower milk prices could make revenue distribution less equal in both the short and long run by altering output and population distributions.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1002/jmor.1052070207",
+      "title": [
+        "Topography and nerve supply of the cucullaris (trapezius) of skates"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Morphology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Dissections of Sudan black B stained specimens reveal that, of a complex of medial, intermediate, and lateral muscles of skates, presumed homologous to the cucullaris of sharks, only the lateral muscle is innervated by a branch or branches of the vagus and is inserted, in part, to the fused pharyngobranchials of the caudal visceral arches. The medial and intermediate muscles are supplied by separate branches of rostral spinal nerves and do not attach to the branchial skeleton. The lateral muscle therefore is the most likely homologue of the cucullaris (trapezius) of sharks and perhaps other fishes and tetrapods. The medial and intermediate muscles appear to be part of the axial musculature.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0167-188x(91)90019-x",
+      "title": [
+        "Procurement under uncertain supply lead times — A dual- sourcing technique could save costs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engineering Costs and Production Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1007/bf01424083",
+      "title": [
+        "The real prospects for power supply of the eastern part of the country lie only in hydropower"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hydrotechnical Construction"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1215/03616878-16-1-121",
+      "title": [
+        "The Willingness to Give: The Public and the Supply of Transplantable Organs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Health Politics, Policy and Law"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>We report the results of a representative random-sample telephone survey of the public's willingness to donate organs. Our goal was to identify differences within the public and target groups who might be receptive to educational efforts to increase donation. We distinguish differences in attitude and demographic characteristics in three groups: those committed to donation, those opposed, and those who might change their opinions with more specific information. While approval of donation is nearly universal, only about half of the public would donate a relative's organs when they do not know the relative's preference. Whites, higher-income individuals, and those with higher educational levels were more favorable. Those who might change their minds fall midway between those committed and those opposed, both demographically and by attitude. They include more nonwhites and more individuals with incomes less than $25,000 than members of the group committed to donation. Targeting public education messages to this group is likely to have the most success in reducing the gap between supply and demand for human organs.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0167-188x(91)90013-r",
+      "title": [
+        "Replacement of auxiliary power supply system—A case study in an urban railway"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engineering Costs and Production Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1108/02641619110154531",
+      "title": [
+        "The online document ordering network for libraries in the\nFederal Republic of Germany: The role of the National Library of\nEconomics"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interlending &amp; Document Supply"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Describes the task of the National Library of Economics and the\nSerial Database, a union list of serials in Germany providing an online\ndocument ordering module. Types of user, subject requests and date and\ncountry of publications are presented and discussed. Concludes that the\noverall performance of the service is favourable.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1111/j.1467-9485.1991.tb00297.x",
+      "title": [
+        "UK EXPORTS OF MANUFACTURES: THE ROLE OF SUPPLY SIDE FACTORS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Scottish Journal of Political Economy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.4271/910568",
+      "title": [
+        "Effect of Fuel Atomization at a Fuel Supply System on the Lean Burn Characteristics in a Spark-Ignition Engine"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/00207219108921294",
+      "title": [
+        "Temporary arc discharges resulting from glow-to-arc transitions and effect of power supply parameters"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Electronics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1017/s0266467400005101",
+      "title": [
+        "The effect of water supply on tree seed germination and seedling survival in a tropical seasonal forest in Veracruz, Mexico"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Tropical Ecology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>ABSTRACT</jats:title><jats:p>In Iropical seasonal forests, mass seedling death may incidentally occur early in the rainy season following untimely germination provoked by an isolated heavy rainfall. We hypothesized that, in a soil with little moisture retention capacity, irregular rainfall patterns would result in large fluctuations of water supply and, in the early wet season, drought episodes could cause seedling death. This hypothesis was tested in a seasonal tropical forest in Mexico where seedling density is low and the soil consists of almost pure sand with a low water retention capacity. Various patterns of simulated rainfall were applied in the forest to seeds and seedlings of three common tree species. Overall very little difference in germination and seedling survival was observed between the various rainfall treatments. The results showed that rainfall patterns and the soil texture may interact in a much more complex way than was initially hypothesized, and that water availability to seeds and seedlings is not necessarily predictable. The absence of seedlings of the three tree species might be better explained by high seed predation and low light level in the understorey.</jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1007/bf01009882",
+      "title": [
+        "Self-adjusting anode power supply for a gyrotron"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Infrared and Millimeter Waves"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1515/jbnst-1991-0203",
+      "title": [
+        "Unsichere Rente: Wie reagieren Arbeitsangebot und Ersparnis?/Social Security Insecurity: How do Labor Supply and Savings Respond to Increasing Risk?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jahrbücher für Nationalökonomie und Statistik"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1148/radiology.178.2.1846240",
+      "title": [
+        "Benign and malignant nodules in cirrhotic livers: distinction based on blood supply."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Radiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0377-8401(91)90036-r",
+      "title": [
+        "Additivity of the apparent and true ileal digestible amino acid supply in barley, maize, wheat or soya-bean meal based diets for growing pigs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Animal Feed Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1086/ahr/96.1.145",
+      "title": [
+        "<scp>peter garnsey</scp>. <i>Famine and Food Supply in the Graeco-Roman World: Responses to Risk and Crisis</i>. New York: Cambridge University Press. 1988. Pp. xiv, 303. $39.50"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Historical Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0266-7681(91)90138-e",
+      "title": [
+        "Anatomical Demonstration of the Nerve-Supply to the Flexor Tendon"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Hand Surgery"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> A dissection of four unembalmed human fingers demonstrated a branch from the digital nerve which enters the flexor tendon sheath at the same place as the transverse branch of the digital artery. We conclude that this branch supplies the nerve fibres found within the vinculum. </jats:p>",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/0006-291x(91)91558-t",
+      "title": [
+        "2,3,7,8-Tetrachlorodibenzo-p-dioxin increases reliance on fats as a fuel source independently of diet: Evidence that diminished carbohydrate supply contributes to dioxin lethality"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochemical and Biophysical Research Communications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1117/12.24813",
+      "title": [
+        "&lt;title&gt;Efficiency of a 5V/5-mW power by light power supply for avionics applications&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Fiber Optic Systems for Mobile Platforms IV"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    },
+    {
+      "doi": "10.1016/s0021-9258(18)49898-5",
+      "title": [
+        "Regulation of cholesterol 7 alpha-hydroxylase by hepatic 7 alpha-hydroxylated bile acid flux and newly synthesized cholesterol supply."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Biological Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-02"
+    }
+  ]
+}

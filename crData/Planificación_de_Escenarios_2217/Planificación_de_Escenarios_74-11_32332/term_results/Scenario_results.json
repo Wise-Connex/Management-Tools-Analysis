@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/cdc.1974.270435",
+      "title": [
+        "An integrated world oil model for policy scenario analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "1974 IEEE Conference on Decision and Control including the 13th Symposium on Adaptive Processes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1974-11"
+    },
+    {
+      "doi": "10.1109/cdc.1974.270432",
+      "title": [
+        "USF of computer-based scenario analysis for assessment and decision making: Examination of a potential food crisis in South Asia"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "1974 IEEE Conference on Decision and Control including the 13th Symposium on Adaptive Processes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1974-11"
+    }
+  ]
+}

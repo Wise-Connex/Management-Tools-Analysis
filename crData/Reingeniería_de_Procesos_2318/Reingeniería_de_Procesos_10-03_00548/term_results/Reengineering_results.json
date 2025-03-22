@@ -1,0 +1,812 @@
+{
+  "term": "Reengineering",
+  "total_results": 62,
+  "processed_count": 62,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/csmr.2010.28",
+      "title": [
+        "Experiences from a Brazilian Bank Reengineering Project"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr18456.2010",
+      "title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.11",
+      "title": [
+        "Author Index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.3",
+      "title": [
+        "Copyright Page"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.55",
+      "title": [
+        "[Cover art]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.12",
+      "title": [
+        "Publisher's Information"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.2",
+      "title": [
+        "Title Page iii"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.1",
+      "title": [
+        "Title Page i"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.9",
+      "title": [
+        "Table of Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.6",
+      "title": [
+        "Committees and Conference Organization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.8",
+      "title": [
+        "Keynote: Judith Bishop"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.4",
+      "title": [
+        "Welcome from the Conference Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.7",
+      "title": [
+        "Keynote: Serge Demeyer"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.51",
+      "title": [
+        "Keynote: Jesús Villasante"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.10",
+      "title": [
+        "Incremental Reflexion Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.5",
+      "title": [
+        "Sponsor, Technical Co-Sponsors, and Participating Organizations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.24",
+      "title": [
+        "Designing Maintainable XML Transformations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.18",
+      "title": [
+        "Effort-Aware Defect Prediction Models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.23",
+      "title": [
+        "Achieving Agility in Adaptive and Perfective Software Maintenance"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.44",
+      "title": [
+        "InCode: Continuous Quality Assessment and Improvement"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.33",
+      "title": [
+        "Code Similarities Beyond Copy &amp;amp; Paste"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.50",
+      "title": [
+        "Interactive Exploration of Co-evolving Software Entities"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.49",
+      "title": [
+        "Software System Evolution Driven by Business Alignment Measure"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.56",
+      "title": [
+        "Modular network models for class dependencies in software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.25",
+      "title": [
+        "Data Migration from a Product to a Data Warehouse Using ETL Tool"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.53",
+      "title": [
+        "SQM 2010: Fourth International Workshop on System Quality and Maintainability"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.36",
+      "title": [
+        "A Probabilistic Based Approach towards Software System Clustering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.43",
+      "title": [
+        "Reconstruction of Class Hierarchies for Decompilation of C++ Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/itc.2010.84",
+      "title": [
+        "Reengineering Semantic Web Service Composition in a Mobile Environment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 International Conference on Recent Trends in Information, Telecommunication and Computing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.37",
+      "title": [
+        "Supporting Collaboration Awareness with Real-Time Visualization of Development Activity"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.46",
+      "title": [
+        "WikiDev 2.0: Facilitating Software Development Teams"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.13",
+      "title": [
+        "Adopting and Evaluating Service Oriented Architecture in Industry"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.21",
+      "title": [
+        "Automating Coverage Metrics for Dynamic Web Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.34",
+      "title": [
+        "Reverse Engineering Component Models for Quality Predictions"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.22",
+      "title": [
+        "Using Architecturally Significant Requirements for Guiding System Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.42",
+      "title": [
+        "Under and Over Approximation of State Models Recovered for Ajax Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.45",
+      "title": [
+        "Detecting Modularity \"Smells\" in Dependencies Injected with Java Annotations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.16",
+      "title": [
+        "Improving Behavioral Design Pattern Detection through Model Checking"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.19",
+      "title": [
+        "Utilizing Debug Information to Compact Loops in Large Program Traces"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.27",
+      "title": [
+        "Exploring the Influence of Identifier Names on Code Quality: An Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.17",
+      "title": [
+        "A Heuristic-Based Approach to Identify Concepts in Execution Traces"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.47",
+      "title": [
+        "Numerical Signatures of Antipatterns: An Approach Based on B-Splines"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.35",
+      "title": [
+        "CIASYS--Change Impact Analysis at System Level"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.29",
+      "title": [
+        "Towards a Safe Method for Computing Dependencies in Database-Intensive Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.54",
+      "title": [
+        "SOAME 2010: International Workshop on SOA Migration and Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.38",
+      "title": [
+        "Refactoring Generics in JAVA: A Case Study on Extract Method"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/etcs.2010.23",
+      "title": [
+        "Notice of Retraction: The Process Reengineering of Curriculum Setting Based on Analytic Hierarchy Process and Modularization Method"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 Second International Workshop on Education Technology and Computer Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1108/14635771011022325",
+      "title": [
+        "Benchmarking the redesign of “business process reengineering” curriculum"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Benchmarking: An International Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>The purpose of this paper is to illustrate the application of business process reengineering (BPR) and benchmarking principles to redesign an undergraduate course on BPR to achieve continuous improvements. The principles are applied on a course on BPR in the curriculum of engineering management (EM) program at Stevens Institute of Technology. The EM program aims to provide the students the knowledge and skills, which are necessary to work effectively at the interface between technology, management, and engineering. BPR course (EM435) is recently added to EM program's curriculum to support the need for providing the bridge between the engineering of systems and business operations.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The research approach design is laid out from the time the EM435 course is first offered in the fall of 2006 to the senior year EM students. The students are surveyed and areas of redesign and improvements are identified based on benchmarking against ABET criteria and their associated outcomes, student expectations, similar academic courses, and industry expectations of skills and knowledge.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The identification of the improvement areas in the BPR curriculum leads to a continuous process improvement (CPI) initiative, which has been continued in a more structured manner. Research findings indicate a strong support for more case studies, use of BPR tool, and real‐life project in their investigation of effective pedagogy for teaching BPR to engineering undergraduates.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>This paper demonstrates the value of applying benchmarking and CPI methodology in maintaining effective teaching and learning of BPR concepts. More empirical metrics can be developed in future to measure the success of course, improvements.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>The findings of this research will promote adoption of courses on BPR and lay a foundation for BPR curriculum in engineering. The CPI approach will provide opportunities to analyze improvements over a period of time.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>This paper is unique in its application of benchmarking and CPI for improving BPR curriculum at an undergraduate engineering level.</jats:p></jats:sec>",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.14",
+      "title": [
+        "Does the Past Say It All? Using History to Predict Change Sets in a CMDB"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.31",
+      "title": [
+        "Recognizing Words from Source Code Identifiers Using Speech Recognition Techniques"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.20",
+      "title": [
+        "Co-evolving Annotations and Source Code through Smart Annotations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.41",
+      "title": [
+        "LIFT Revisited: Enhancing the Understanding of NATURAL/ADABAS Legacy Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.15",
+      "title": [
+        "Selecting Optimal Maintenance Plans Based on Cost/Reliability Tradeoffs for Software Subject to Structural and Behavioral Changes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.32",
+      "title": [
+        "Development of a Methodology, Software -- Suite and Service for Supporting Software Architecture Reconstruction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.26",
+      "title": [
+        "Static Information Flow Analysis with Handling of Implicit Flows and a Study on Effects of Implicit Flows vs Explicit Flows"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.48",
+      "title": [
+        "The Hybrid Technique for Object-Oriented Software Change Impact Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.52",
+      "title": [
+        "An Initial Study on the Bug Report Duplication Problem"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.40",
+      "title": [
+        "DPDX--Towards a Common Result Exchange Format for Design Pattern Detection Tools"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.39",
+      "title": [
+        "Automatic Comparison of Load Tests to Support the Performance Analysis of Large Enterprise Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/tsmca.2009.2037019",
+      "title": [
+        "The Analytic Supporting Tools for Business Reengineering With System Integration Design"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1109/csmr.2010.30",
+      "title": [
+        "ROMULUS: Domain Driven Design and Mashup Oriented Development Based on Open Source Java Metaframework for Pragmatic, Reliable and Secure Web Development"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 14th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    },
+    {
+      "doi": "10.1097/acm.0b013e3181ccc877",
+      "title": [
+        "Reengineering the National Clinical and Translational Research Enterprise: The Strategic Plan of the National Clinical and Translational Science Awards Consortium"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Academic Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-03"
+    }
+  ]
+}

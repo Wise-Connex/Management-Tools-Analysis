@@ -1,0 +1,121 @@
+{
+  "term": "Scenario",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1017/cbo9780511522130.016",
+      "title": [
+        "Scenario immunization"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Financial Optimization"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-05"
+    },
+    {
+      "doi": "10.2172/6759968",
+      "title": [
+        "Review of accident analysis calculations, 232-Z seismic scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1093/ajhp/50.5.953a",
+      "title": [
+        "Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Health-System Pharmacy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-05"
+    },
+    {
+      "doi": "10.1103/physrevd.47.4046",
+      "title": [
+        "Upper bounds of supersymmetric particle masses in a gaugino-originated radiative breaking scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.7551/mitpress/4307.003.0029",
+      "title": [
+        "Scenario Semantics of Extended Logic Programs"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Logic Programming and Non-Monotonic Reasoning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-05"
+    },
+    {
+      "doi": "10.1016/0921-4526(93)90709-f",
+      "title": [
+        "Van Hove scenario for cuprate superconductivity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physica B: Condensed Matter"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-05"
+    },
+    {
+      "doi": "10.1080/03086539308582894",
+      "title": [
+        "The Anglo‐Japanese alliance of August 1905 and the defending of India: A case of the worst scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Imperial and Commonwealth History"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-05"
+    },
+    {
+      "doi": "10.1126/science.260.5111.1176",
+      "title": [
+        "The Human Scenario Beclouded:\n            <i>Evolutionary Ecology and Human Behavior</i>\n            . Eric Alden Smith and Bruce Winterhalder, Eds. Aldine de Gruyter, Hawthorne, NY, 1992. xvi, 470 pp., illus. $59.95; paper, $29.95. Foundations of Human Behavior."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-05"
+    },
+    {
+      "doi": "10.7748/ns.7.36.22.s29",
+      "title": [
+        "Evolution and opportunity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nursing Standard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-05"
+    }
+  ]
+}

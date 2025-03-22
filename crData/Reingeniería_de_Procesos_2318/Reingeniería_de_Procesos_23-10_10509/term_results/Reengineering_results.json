@@ -1,0 +1,97 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.17979/spudc.000024.19",
+      "title": [
+        "Efficient Database Evolution in Digital Library Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Congreso XoveTIC: impulsando el talento científico (6º. 2023. A Coruña)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>With the advancement of internet applications, extensive information systems were created to effectively manage and provide easy access to documents, which coincided with a global initiative to convert physical documents into digital format, making them accessible through the internet. After two decades, these databases are well-structured and organized, although the software used to manage them is gradually becoming outdated. Additionally, once the initial digitization and creation of metadata are completed, it is sensible to enhance the metadata further to provide more detailed information about the documents. In this article we propose a tool to facilitate the evolution of large documentary databases</jats:p>",
+      "publication_date": "2023-10"
+    },
+    {
+      "doi": "10.37899/journal-la-sociale.v4i2.818",
+      "title": [
+        "Business Process Reengineering Approval Services For Spatial Use Activities"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal La Sociale"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This Business Process Reengineering aims to redesign the business process of the Land Use Utilization Compliance Approval Service (PKKPR) in North Bolaang Mongondow Regency. The method used involves the following stages: 1) Engineering Preparation; 2) As-Is Process analysis; 3) To-Be Process Engineering; 4) Analysis of modified time base value added. After conducting the analysis of the 'To-be' Business Process, there has been an improvement in service value, which can be measured by: 1) An increase in VAR by 18.96%; 2) A significant increase in Business Process Effectiveness, reaching 100%, which can be described as Highly Effective; 3) A decrease in the complexity score of the business process to 2040, indicating that the business process has become less complex.</jats:p>"
+    },
+    {
+      "doi": "10.58344/locus.v2i9.1723",
+      "title": [
+        "REENGINEERING ARSITEKTUR MONOLITHIC KE MICROSERVICES PADA WEBSITE MANAGEMENT CONTENT MQTV"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Locus Penelitian dan Pengabdian"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Perkembangan teknologi memberikan banyak manfaat. Salah satu teknologi yang sudah banyak digunakan dan membantu pekerjaan masyarakat adalah internet. MQTV adalah perusahaan stasiun TV yang menyediakan konten mereka dalam bentuk digital. MQTV memiliki website CMS dalam pengelolaan konten. Namun, seiring berjalannya waktu, website MQTV dapat mengalami masalah seperti batasan skalabilitas terbatas. Penggunaan arsitektur microservices dalam pengembangan aplikasi dapat memecahkan masalah arsitektur monolithic. Tujuan penelitian melakukan reengineering arsitektur website menjadi microservice, melakukan tahapan atau fase reengineering dan membandingkan hasil load testing dari website monolith dan   microservice. Metode penelitian yang dilakukan yaitu project feasibility analisis, analisi and planning, reengineering implementation dan testing and transition. Analisis kelayakan dilakukan pada website MQTV dengan hasil yaitu akan dilakukan reengineering arsitektur menjadi microservice. Analisi dan perancangan dilakukan untuk memahami struktur microservice yang akan dibuat. Reengineering implementasi dilakukan dengan membuat service-service dengan menggunakan REST api dan mencantumkan dokumentasi-dokumentasi dari hasil implementasi. Hasil dari implementasi website microservice dilakukan pegujian dengan menggunakan metode load testing dengan hasil menunjukan laju kinerja website arsitektur microservice lebih unggul dari arsitektur monolithic. metode penelitian yang di gunakan adalah Project Feasibility Analysis Mengevaluasi kebutuhan dan tujuan organisasi yang dicapai oleh sistem yang ada, produk perangkat lunak yang digunakan saat ini harus dianalisis dalam hal spesifikasi masalah termasuk tujuan, motivasi, batasan, dan aturan bisnis. hasil dari penelitian ini agar mengetahuai hasil percobaan pengujian yang dapat disimpulkan pada website CMS MQTV dengan arsitektur microservice lebih unggul dibandingkan dengan monolithic.</jats:p>"
+    },
+    {
+      "doi": "10.1109/csit61576.2023.10324175",
+      "title": [
+        "The Synthesis Method for Specifications and Requirements in the Process of IT Project Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE 18th International Conference on Computer Science and Information Technologies (CSIT)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-10"
+    },
+    {
+      "doi": "10.4324/9781003358411-14",
+      "title": [
+        "Bayesian Machine Learning Approach for Evaluating the Effectiveness of an Order Fulfillment Reengineering Project in the Downstream Oil and Gas Supply Chain"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Artificial Intelligence for Business"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-10"
+    },
+    {
+      "doi": "10.18137/rnu.v9187.23.03.p.136",
+      "title": [
+        "Stages of reengineering the information system of the enterprise within the framework of zero trust technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vestnik of Russian New University. Series «Complex systems: models, analysis, management»"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Развитие информационных систем предприятия связано с необходимостью поддержки удаленной работы сотрудников. Причины могут носить разный характер. В этих условиях обеспечить защиту периметра предприятия достаточно сложно на основе существующей парадигмы защиты периметра. В настоящее время активно развиваются и внедряются системы защиты на основе архитектуры нулевого доверия. В статье проведен анализ особенностей внедрения этой технологии на предприятии, где применяются традиционные системы защиты информации, основанные на использовании VPN-технологий и межсетевых экранов. Рассматриваются основные шаги, которые позволят в случае необходимости поэтапно выполнить переход на архитектуру нулевого доверия.</jats:p>\n                                                                                            <jats:p>The development of enterprise information systems is associated with the need to support remote work of employees. The reasons may be of a different nature. Under these conditions, it is quite difficult to provide enterprise perimeter protection based on the existing perimeter protection paradigm. Currently, protection systems based on zero trust architecture are being actively developed and implemented. The article analyzes the features of the implementation of this technology in an enterprise that uses a traditional information security system based on the use of VPN technologies and firewalls. The main steps are considered that will allow, if necessary, a phased transition to a zero-trust architecture.</jats:p>",
+      "publication_date": "2023-10"
+    },
+    {
+      "doi": "10.36171/jamd23.26.s3.17",
+      "title": [
+        "Reengineering the clinical pathway for gestational diabetes at the Endocrinology and Diabetes Center (i.e. UOSD Endocrinologia e Diabetologia) in S. Giovanni Addolorata Hospital",
+        "Riprogettazione dei processi assistenziali dedicati alla donna con diabete gestazionale nell’UOSD di Endocrinologia e diabetologia dell’AO San Giovanni Addolorata – Roma"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of AMD"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Obiettivo dello studio è stato quello di riorganizzare l’attuale percorso di cura ambulatoriale delle donne con diabete gestazionale (GDM) nell’UOSD Endocrinologia e Diabetologia per assicurare un percorso multidisciplinare e multiprofessionale che risponda ai complessi bisogni assistenziali delle utenti, frequentemente portatrici di barriera linguistica, e nello stesso tempo agli obiettivi strategici aziendali. Per analizzare il percorso esistente e riprogettare i processi assistenziali è stata applicata la metodologia del Business Process Reengineering (BPR) e utilizzati i dati provenienti da diverse fonti. Per valutare il raggiungimento degli obiettivi specifici individuati nella fase di riprogettazione è stato definito un set di indicatori di processo. I processi assistenziali sono stati descritti con diagramma di flusso e matrice RACI. Le tempistiche di realizzazione del progetto sono state illustrate con un cronoprogramma. L’analisi ha individuato e quantificato le criticità principali: l’aumento del tempo di attraversamento per le donne con barriera linguistica, e la mancanza di coordinamento negli orari degli appuntamenti tra le Unità Operative coinvolte. È stata, quindi, riprogettata l’assistenza alle donne con GDM prevedendo l’uso della mediazione culturale e utilizzando la modalità assistenziale dei Pacchetti Ambulatoriali Complessi (PAC), che assicura il coordinamento del team multiprofessionale e multidisciplinare ad opera dello specialista referente. PAROLE CHIAVE Business Process Reengineering; Diabete gestazionale; Percorsi assistenziali; Pacchetto Ambulatoriale Complesso (PAC).</jats:p>"
+    }
+  ]
+}

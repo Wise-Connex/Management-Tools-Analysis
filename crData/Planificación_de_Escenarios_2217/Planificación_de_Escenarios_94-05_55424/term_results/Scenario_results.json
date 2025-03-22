@@ -1,0 +1,84 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1103/physrevd.49.5266",
+      "title": [
+        "Quantum black holes: Nonperturbative corrections and no-veil scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1006/inco.1994.1042",
+      "title": [
+        "The Lazy Lambda Calculus in a Concurrency Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information and Computation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-05"
+    },
+    {
+      "doi": "10.1016/0370-2693(94)90720-x",
+      "title": [
+        "Relaxed bounds on the dilaton mass in a string cosmology scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-05"
+    },
+    {
+      "doi": "10.1080/09537289408919497",
+      "title": [
+        "Scenario aggregation in single-resource production planning models with uncertain demand"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Production Planning &amp; Control"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-05"
+    },
+    {
+      "doi": "10.7748/ns.8.34.23.s34",
+      "title": [
+        "Quality assured courses"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nursing Standard"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-05"
+    },
+    {
+      "doi": "10.1103/physrevb.49.13070",
+      "title": [
+        "Isotope-shift exponent, pressure coefficient of<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant=\"italic\">T</mml:mi></mml:mrow><mml:mrow><mml:mi mathvariant=\"italic\">c</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math>, and the superconducting-gap ratio within the van Hove scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

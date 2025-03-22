@@ -1,0 +1,99 @@
+{
+  "term": "Supply",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1021/ac60079a749",
+      "title": [
+        "THE LABORATORY SUPPLY CENTER"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Analytical Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-07"
+    },
+    {
+      "doi": "10.1021/ac60079a748",
+      "title": [
+        "GENERAL LABORATORY SUPPLY COMPANY"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Analytical Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-07"
+    },
+    {
+      "doi": "10.1021/ac60079a753",
+      "title": [
+        "NEW YORK Laboratory Supply COMPANY INC."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Analytical Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-07"
+    },
+    {
+      "doi": "10.1038/172047a0",
+      "title": [
+        "Food Supply and Consumption in Great Britain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-07"
+    },
+    {
+      "doi": "10.1080/00185868.1953.9947514",
+      "title": [
+        "Work Simplification in Central Supply Service"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hospital Topics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-07"
+    },
+    {
+      "doi": "10.1086/617999",
+      "title": [
+        "Book Supply and the Book Market"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Library Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-07"
+    },
+    {
+      "doi": "10.1111/j.1536-7150.1953.tb00533.x",
+      "title": [
+        "The Long‐Run Prospects of Italian Agriculture"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Economics and Sociology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1953-07"
+    }
+  ]
+}

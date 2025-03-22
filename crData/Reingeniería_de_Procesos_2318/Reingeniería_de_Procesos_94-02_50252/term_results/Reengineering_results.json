@@ -1,0 +1,32 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada289965",
+      "title": [
+        "Software Reengineering Project Planning Guide, Version 2.0."
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-02"
+    },
+    {
+      "doi": "10.1108/eb054461",
+      "title": [
+        "A Practical guide for implementing reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Planning Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The only true gauge of successful reengineering is whether the reengineered process delivered results that increased the competitive advantage of the organization. Therefore, success lies not only in executing a well‐defined methodology, or in developing leading‐edge technology or a set of human‐resource enablers, but in effectively implementing the changes.</jats:p>",
+      "publication_date": "1994-02"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "term": "Reengineering",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1201/9781420007671-22",
+      "title": [
+        "C6 REENGINEERING OF A CABLE CAR"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Process Oriented Analysis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.1109/icsm.2006.50",
+      "title": [
+        "Reengineering Process Based on the Unified Process"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2006 22nd IEEE International Conference on Software Maintenance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.1201/9781420007671.ch14",
+      "title": [
+        "Reengineering Of A Cable Car"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Process Oriented Analysis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.1109/crmico.2006.256443",
+      "title": [
+        "The Integrated Environment for Design, Programming, Testing and Reengineering of the Distributed Information Resources"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2006 16th International Crimean Microwave and Telecommunication Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.1109/icsm.2006.51",
+      "title": [
+        "Reengineering User Interfaces of E-Commerce Applications Using Business Processes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2006 22nd IEEE International Conference on Software Maintenance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.1109/re.2006.36",
+      "title": [
+        "J-PRiM: A Java Tool for a Process Reengineering i* Methodology"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "14th IEEE International Requirements Engineering Conference (RE'06)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.3233/mgs-2006-2201",
+      "title": [
+        "Reengineering websites into stateful resources for grid service oriented evolution"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Multiagent and Grid Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.2310/6650.2006.06014",
+      "title": [
+        "Reengineering Clinical Research with Informatics"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Investigative Medicine"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title/><jats:p>The future success of the translational research spectrum depends on the clinical research enterprise's ability to break through the barriers that constrain its productivity. As more basic science discoveries emerge, our ability to effectively translate this knowledge into improved patient care rests squarely on the manner in which we answer clinical questions. Informatics—the science of effective information use—is poised to help advance the conduct of science. However, incorporating informatics into the enterprise comes with its own set of challenges. To harness the benefits of improved information use, it is important to first establish how information flows within research. A thoughtful implementation of informatics—one that factors in social and organizational nuances—will undoubtedly lead to a more efficient and effective clinical research enterprise.</jats:p></jats:sec>",
+      "publication_date": "2006-09"
+    },
+    {
+      "doi": "10.1073/pnas.0607045103",
+      "title": [
+        "Correction for Franco et al., Notch/Delta signaling constrains reengineering of pro-T cells by PU.1"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the National Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-09"
+    }
+  ]
+}

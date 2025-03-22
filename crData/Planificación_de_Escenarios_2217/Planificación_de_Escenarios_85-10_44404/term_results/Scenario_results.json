@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1002/smj.4250060404",
+      "title": [
+        "Multiple scenario approach and strategic behaviour in European companies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Strategic Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Nowadays, scenarios are a popular subject in management literature. However, information available about how extensively scenarios are used and the possible motives for their use, as well as their effects on strategic behaviour in companies, has hitherto been very limited. Results of a survey among <jats:italic>Fortune's</jats:italic> top 1000 companies in the U.S.A. in 1977 and 1981 showed a growing corporate interest in scenarios. A survey of the use of scenarios in large Western European companies in 1981 provided evidence of similar interest in Europe. In this article, results of the European survey are presented and the differences between user and non‐user attitudes towards the future among European firms analysed and the implications for strategic behaviour outlined.</jats:p>",
+      "publication_date": "1985-10"
+    },
+    {
+      "doi": "10.1016/0375-9601(85)90684-x",
+      "title": [
+        "Chaotic Josephson scenario in an Sn/SnxOy/Sn tunnel junction at 10 GHz"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-10"
+    }
+  ]
+}

@@ -1,0 +1,550 @@
+{
+  "term": "Scenario",
+  "total_results": 42,
+  "processed_count": 42,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1117/12.672883",
+      "title": [
+        "Scenario management and automated scenario generation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Modeling and Simulation for Military Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.2172/898003",
+      "title": [
+        "Contact Interface Verification for DYNA3D Scenario 1: Basic Contact"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.2172/898011",
+      "title": [
+        "Contact Interface Verification for DYNA3D Scenario 2: Multi-Surface Contact"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1038/laban0506-17b",
+      "title": [
+        "Response to Protocol Review Scenario: Answer unclear"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1038/laban0506-18b",
+      "title": [
+        "Response to Protocol Review Scenario: Cut the funds"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1002/9780470087978.ch45",
+      "title": [
+        "Characterizing Nonlinear Pharmacokinetics: An Example Scenario for a Therapeutic Protein"
+      ],
+      "type": "other",
+      "container-title": [
+        "Pharmacometrics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/oceansap.2006.4393957",
+      "title": [
+        "Scenario Based Study of ETAM and FFTSA in Realistic Simulated Environment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "OCEANS 2006 - Asia Pacific"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1109/tac.2006.875041",
+      "title": [
+        "The Scenario Approach to Robust Control Design"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Automatic Control"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1088/1126-6708/2006/05/021",
+      "title": [
+        "Speed of sound in the mass varying neutrinos scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of High Energy Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1038/laban0506-18a",
+      "title": [
+        "Response to Protocol Review Scenario: Contrary to the 3 Rs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1111/j.1442-8903.2006.00291.x",
+      "title": [
+        "Landscape scenario modelling of vegetation condition"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecological Management &amp; Restoration"
+      ],
+      "subject": [],
+      "abstract": "<jats:p><jats:bold>Summary </jats:bold> Landscape scenario modelling is a useful aid to planning for biodiversity conservation. Vegetation condition modelling is increasingly being integrated into such analysis. Model complexity and model uncertainty are critical factors that must be addressed when tailoring vegetation condition modelling to individual applications. We describe three approaches that we have used to compare the effects of different landscape scenarios on vegetation condition. The first is a simple land‐use–condition approach where vegetation condition is determined solely by land use. The second is a land‐use–regeneration approach that introduces transition functions to model vegetation condition dynamics associated with land use change. The third is a threat–regeneration approach, which models vegetation condition dynamics based on the interaction between regeneration and a range of mapped threats. The three approaches represent a progression towards increased refinement and realism, but also increased complexity and data requirements. We examine the relative usefulness of the three approaches and conclude that there is no single ‘silver bullet’ solution but recommend judicious matching of approaches to applications within a collaborative and adaptive setting.</jats:p>",
+      "publication_date": "2006-06"
+    },
+    {
+      "doi": "10.15173/esr.v14i1.484",
+      "title": [
+        "Adapting for Uncertainty: A Scenario Analysis of U.S. Technology Energy Futures"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Studies Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.ssc.2006.03.012",
+      "title": [
+        "The selected thermodynamic properties of the strong-coupled superconductors in the van Hove scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Solid State Communications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1109/cscwd.2006.253130",
+      "title": [
+        "Scenario-based Design Knowledge Acquiring and Application in Collaborative Product Design"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2006 10th International Conference on Computer Supported Cooperative Work in Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1088/1742-6596/39/1/042",
+      "title": [
+        "Dark Matter candidates in a baryogenesis inspired scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics: Conference Series"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.jseaes.2005.01.003",
+      "title": [
+        "A new tectonic scenario for the Sanandaj–Sirjan Zone (Iran)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Asian Earth Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.agee.2005.11.023",
+      "title": [
+        "Scenario-based studies of future land use in Europe"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agriculture, Ecosystems &amp; Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1017/cbo9780511541964.022",
+      "title": [
+        "The Scenario Barents Sea study: a case of minimal realistic modelling to compare management strategies for marine ecosystems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Top Predators in Marine Ecosystems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.jcfm.2006.02.002",
+      "title": [
+        "Socio-cultural aspect of sexual practices and sexual offences – An Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Clinical Forensic Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.agee.2005.11.007",
+      "title": [
+        "Future European agricultural landscapes—What can we learn from existing quantitative land use scenario studies?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agriculture, Ecosystems &amp; Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1145/1138953.1138959",
+      "title": [
+        "A scenario based notation for specifying temporal properties"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2006 international workshop on Scenarios and state machines: models, algorithms, and tools"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.agee.2005.11.005",
+      "title": [
+        "Scenario development to explore the future of Europe's rural areas"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agriculture, Ecosystems &amp; Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1145/1138953.1138969",
+      "title": [
+        "Scenario-driven modeling and validation of requirements models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2006 international workshop on Scenarios and state machines: models, algorithms, and tools"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1109/cscwd.2006.253240",
+      "title": [
+        "A Case Study on Scenario Approach in Taipei-Beijing Collaborative Design through Computer-Mediated Communication"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2006 10th International Conference on Computer Supported Cooperative Work in Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.gene.2005.12.017",
+      "title": [
+        "Evolutionary scenario for acquisition of CAG repeats in human SCA1 gene"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gene"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1038/sj.cdd.4401963",
+      "title": [
+        "Mitochondrial outer membrane permeabilization during apoptosis: the innocent bystander scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cell Death &amp; Differentiation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-08"
+    },
+    {
+      "doi": "10.1016/j.ijpe.2005.05.018",
+      "title": [
+        "Scenario-based planning for lot-sizing and scheduling with uncertain processing times"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1080/02619760600617268",
+      "title": [
+        "Education the way ahead? An evaluation of a pilot course on scenario writing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Teacher Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1145/1138953.1138956",
+      "title": [
+        "A comparative survey of scenario-based to state-based model synthesis approaches"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2006 international workshop on Scenarios and state machines: models, algorithms, and tools"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.ijepes.2005.11.018",
+      "title": [
+        "Line outage contingency analysis including the system islanding scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Electrical Power &amp; Energy Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/s0140-6701(06)81445-1",
+      "title": [
+        "06/01441 The potential for greenhouse gases mitigation in household sector of Iran: cases of price reform/efficiency improvement and scenario for 2000-201"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fuel and Energy Abstracts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1111/j.1365-246x.2006.02842.x",
+      "title": [
+        "Estimating rupture scenario likelihood based on dynamic rupture simulations: the example of the segmented Middle Durance fault, southeastern France"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geophysical Journal International"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1007/s11069-005-8599-z",
+      "title": [
+        "Impact of Climate Change on the Regional Hydrology – Scenario-Based Modelling Studies in the German Rhine Catchment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Natural Hazards"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.2495/air06072",
+      "title": [
+        "Emission scenario of PM<sub>10</sub> in Italy and its source territorial distribution: analysis and perspective"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "WIT Transactions on Ecology and the Environment, Vol 86",
+        "Air Pollution XIV"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1108/09564230610667113",
+      "title": [
+        "Service validity and service reliability of search, experience and credence services"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Service Industry Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1080/14703290600650483",
+      "title": [
+        "Education system using interactive 3D computer graphics (3D‐CG) animation and scenario language for teaching materials"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Innovations in Education and Teaching International"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1057/palgrave.jors.2602029",
+      "title": [
+        "Multicriteria and multiperiod programming for scenario analysis in Guadalquivir river irrigated farming"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Operational Research Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1016/j.techfore.2004.12.003",
+      "title": [
+        "A scenario analysis of energy requirements and energy intensity for China's rapidly developing society in the year 2020"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1063/1.2177645",
+      "title": [
+        "Long pulse high performance plasma scenario development for the National Spherical Torus Experiment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics of Plasmas"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The National Spherical Torus Experiment [Ono et al., Nucl. Fusion, 44, 452 (2004)] is targeting long pulse high performance, noninductive sustained operations at low aspect ratio, and the demonstration of nonsolenoidal startup and current rampup. The modeling of these plasmas provides a framework for experimental planning and identifies the tools to access these regimes. Simulations based on neutral beam injection (NBI)-heated plasmas are made to understand the impact of various modifications and identify the requirements for (1) high elongation and triangularity, (2) density control to optimize the current drive, (3) plasma rotation and/or feedback stabilization to operate above the no-wall β limit, and (4) electron Bernstein waves (EBW) for off-axis heating/current drive (H/CD). Integrated scenarios are constructed to provide the transport evolution and H/CD source modeling, supported by rf and stability analyses. Important factors include the energy confinement, Zeff, early heating/H mode, broadening of the NBI-driven current profile, and maintaining q(0) and qmin&amp;gt;1.0. Simulations show that noninductive sustained plasmas can be reached at IP=800 kA, BT=0.5 T, κ≈2.5, βN⩽5, β⩽15%, fNI=92%, and q(0)&amp;gt;1.0 with NBI H/CD, density control, and similar global energy confinement to experiments. The noninductive sustained high β plasmas can be reached at IP=1.0 MA, BT=0.35 T, κ≈2.5, βN⩽9, β⩽43%, fNI=100%, and q(0)&amp;gt;1.5 with NBI H/CD and 3.0 MW of EBW H/CD, density control, and 25% higher global energy confinement than experiments. A scenario for nonsolenoidal plasma current rampup is developed using high harmonic fast wave H/CD in the early low IP and low Te phase, followed by NBI H/CD to continue the current ramp, reaching a maximum of 480 kA after 3.4 s.</jats:p>",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1111/j.1469-8137.2006.01740.x",
+      "title": [
+        "A new scenario for the Quaternary history of European beech populations: palaeobotanical evidence and genetic consequences"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New Phytologist"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-07"
+    },
+    {
+      "doi": "10.1016/j.ijrobp.2005.11.010",
+      "title": [
+        "Prospective multicenter study of combined treatment with chemotherapy and radiotherapy in breast cancer women with the rare clinical scenario of ipsilateral supraclavicular node recurrence without distant metastases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Radiation Oncology*Biology*Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1051/0004-6361:20054075",
+      "title": [
+        "Testing the inverse-Compton catastrophe scenario in the intra-day variable blazar S5 0716+71"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astronomy &amp; Astrophysics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-06"
+    }
+  ]
+}

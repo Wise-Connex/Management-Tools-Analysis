@@ -1,0 +1,61 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1177/104687818301400306",
+      "title": [
+        "A Game Framework for Scenario Generation for the Co2 Issue"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Simulation &amp; Games"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1983-09"
+    },
+    {
+      "doi": "10.1016/0370-2693(83)90740-2",
+      "title": [
+        "Higher order exchange contributions to δS=2 amplitudes in a dynamical scenario for weak interactions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1983-09"
+    },
+    {
+      "doi": "10.1002/ir.37019833906",
+      "title": [
+        "Multiple scenario analysis: Introducing uncertainty into the planning process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New Directions for Institutional Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Multiple scenario analysis addresses the dilemma of strategic planners who must have some understanding of the future while recognizing the inadequacy of predicting it.</jats:p>",
+      "publication_date": "1983-09"
+    },
+    {
+      "doi": "10.1117/12.935933",
+      "title": [
+        "&lt;title&gt;Applied Engineering And Technology Simulated LWIR Targets Scenario In Low Optical Background&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Applications of Optical Metrology: Techniques and Measurements II"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1983-09"
+    }
+  ]
+}

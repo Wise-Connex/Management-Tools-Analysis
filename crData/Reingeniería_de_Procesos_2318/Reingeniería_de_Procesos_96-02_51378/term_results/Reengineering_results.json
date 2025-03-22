@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1097/00005110-199602000-00007",
+      "title": [
+        "The Reengineering Revolution"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Nursing Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-02"
+    },
+    {
+      "doi": "10.1145/226060.226065",
+      "title": [
+        "Translating SQL for database reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGPLAN Notices"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>A tool for porting database applications is presented. The tool transforms VMS/Rdb applications written in C and embedded SQL into a portable, database-independent application interface which can be directly installed on a target platform and database management system with a separate customization tool. The converter is based on standard techniques developed for compiling programming languages. The original task of the converter was to port a large administrative system from VMS/Rdb into Oracle, but the tool can be used for other reengineering applications as well.</jats:p>",
+      "publication_date": "1996-02"
+    },
+    {
+      "doi": "10.1080/03155986.1996.11732292",
+      "title": [
+        "Culture-Sensitive, Strategy-Level Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INFOR: Information Systems and Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-02"
+    },
+    {
+      "doi": "10.1145/230798.230810",
+      "title": [
+        "The ORION project"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communications of the ACM"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-02"
+    },
+    {
+      "doi": "10.1021/cen-v074n006.p014",
+      "title": [
+        "Broad Industry Forces Reshape R&amp;D Outlook For Chemical Producers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-02"
+    }
+  ]
+}

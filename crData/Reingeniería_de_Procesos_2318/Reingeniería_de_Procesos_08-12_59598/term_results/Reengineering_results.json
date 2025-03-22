@@ -1,0 +1,85 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/kam.2008.117",
+      "title": [
+        "Research on Reengineering of ERP System Based on Data Mining and MAS"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 International Symposium on Knowledge Acquisition and Modeling"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.4314/jorind.v3i1.42421",
+      "title": [
+        "Business Process Reengineering And Systemic Productivity Enhancement: Lessons From Nigeria\\'s Old Generation Banks"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Research in National Development"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/ieem.2008.4737940",
+      "title": [
+        "Reengineering radiology transcription process through Voice Recognition"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE International Conference on Industrial Engineering and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/wsc.2008.4736253",
+      "title": [
+        "Business process based simulation: a powerful tool for demand analysis of business process reengineering and information system implementation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 Winter Simulation Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/isbim.2008.182",
+      "title": [
+        "Implementation of the Computer Aided Business Process Reengineering System Based on UML and J2EE Technology"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 International Seminar on Business and Information Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/wsc.2008.4736216",
+      "title": [
+        "Supportive role of the simulation in the process of ship engine crankcase production process of reengineering (case study)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 Winter Simulation Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    }
+  ]
+}

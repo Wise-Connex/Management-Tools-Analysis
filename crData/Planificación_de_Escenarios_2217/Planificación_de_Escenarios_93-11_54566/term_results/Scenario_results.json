@@ -1,0 +1,32 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada275452",
+      "title": [
+        "Scenario Analysis: Applications and Extensions"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-11"
+    },
+    {
+      "doi": "10.1086/173320",
+      "title": [
+        "A Hydrodynamic Treatment of the Cold Dark Matter Cosmological Scenario with a Cosmological Constant"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-11"
+    }
+  ]
+}

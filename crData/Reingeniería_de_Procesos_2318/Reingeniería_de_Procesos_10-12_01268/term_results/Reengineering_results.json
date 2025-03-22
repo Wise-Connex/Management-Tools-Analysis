@@ -1,0 +1,111 @@
+{
+  "term": "Reengineering",
+  "total_results": 8,
+  "processed_count": 8,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1201/b10452-10",
+      "title": [
+        "- Application of Business Process Reengineering to Space Center Workforce Planning"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Systems Engineering Tools and Methods"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-12"
+    },
+    {
+      "doi": "10.1081/e-eia-120046818",
+      "title": [
+        "Business Continuity Planning: Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Encyclopedia of Information Assurance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-12"
+    },
+    {
+      "doi": "10.1109/icise.2010.5690215",
+      "title": [
+        "Supply chain reengineering for industrial transfer"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 2nd International Conference on Information Science and Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-12"
+    },
+    {
+      "doi": "10.1109/icise.2010.5691865",
+      "title": [
+        "Process reengineering of manufacturing information and performance evaluation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 2nd International Conference on Information Science and Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-12"
+    },
+    {
+      "doi": "10.1201/9781439809266-7",
+      "title": [
+        "Application of Business Process Reengineering to Space Center Workforce Planning"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Engineering and Management Innovation",
+        "Systems Engineering Tools and Methods"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-12"
+    },
+    {
+      "doi": "10.1007/978-90-481-9920-4_52",
+      "title": [
+        "Creating a New Heaven and a New Earth: Megachurches and the Reengineering of America’s Spiritual Soil"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Engineering Earth"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.51200/ljms.vi.3000",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING IN LABUAN FIRE SERVICES OPERATIONS: A CASE STUDY"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Labuan e-Journal of Muamalat and Society (LJMS)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Most of the Business Processes Reengineering (BPR) researches carried out in private sector because of the dynamism of the business processes. Thus, this case study aim to examine the level of improvement and impact whilst taking into account factors and variables which contribute to success (failure) of business process reengineering (BPR) of e-business project in a small public organization. The project focus to describe experience learned during reengineering process of the operations function at Labuan Fire and Rescue Department (LFRD) with cooperation from Labuan School of Informatics Science (LSIS). The team have eventually proposed an actual interactive design of an e-business system called as regional Fire Department Information System (rFDIS) combined dual functions system: (1) inventory management system that help LFRD inventory officers up-to-date and complete data about its inventory, and (2) is a mapping system specifically for fire hydrant allocation through out the entire Labuan island that emulates the Geographic Information System (GIS).</jats:p>"
+    },
+    {
+      "doi": "10.20537/vm100414",
+      "title": [
+        "Procedure for custom-made software application while designing and reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vestnik Udmurtskogo Universiteta. Matematika. Mekhanika. Komp'yuternye Nauki"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-12"
+    }
+  ]
+}

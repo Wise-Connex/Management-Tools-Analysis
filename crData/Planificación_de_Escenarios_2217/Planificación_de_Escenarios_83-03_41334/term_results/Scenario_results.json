@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1080/03071848308522214",
+      "title": [
+        "Surprise and the single scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The RUSI Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1983-03"
+    },
+    {
+      "doi": "10.1177/002234338302000103",
+      "title": [
+        "A Counterforce/Countervalue Scenario- or How Much Destructive Capability is Enough?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Peace Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Military forces and weapon systems - unless they are determined only for political reasons or internally di rected - must be capable of being reduced to a military relationship between on the one hand alternative tar get options and on the other hand the capability they have to threaten or destroy. This applies to the Theatre Nuclear Forces as well as to the NATO decision of December 1979. </jats:p><jats:p> Consequently, the question of the necessity for reactive armament - in German language the so-called \"Nachrüstung\" - can also be investigated by a comparison between (already) existing potential, enemy first strike and/or defence capabilities and alternative target options. To make the question more real by ap plying it to NATO's decision concerning reactive armament in the area of Long Range Theatre Nuclear For ces (LRTNF), we should ask: Without the planned increase in Euro-strategic systems, is NATO faced with the situation of an \"atomic deterrent deficit\", and conversely does the prospect exist for WTO of a nuclear offensive war with a calculable risk and acceptable consequences? </jats:p>",
+      "publication_date": "1983-03"
+    }
+  ]
+}

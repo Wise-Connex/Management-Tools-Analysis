@@ -1,0 +1,87 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0301-4215(95)90160-9",
+      "title": [
+        "Scenario analysis of global warming using the Asian Pacific Integrated Model (AIM)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-04"
+    },
+    {
+      "doi": "10.1007/bf03053623",
+      "title": [
+        "On the formation of voids via shell crossing scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Physica Hungarica A) Heavy Ion Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-04"
+    },
+    {
+      "doi": "10.1117/12.206638",
+      "title": [
+        "&lt;title&gt;Multimedia processing and transport for the wireless personal terminal scenario&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Visual Communications and Image Processing '95"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-04"
+    },
+    {
+      "doi": "10.13182/fst95-a11947056",
+      "title": [
+        "Long Pulse Operations Scenario of LHD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-04"
+    },
+    {
+      "doi": "10.1007/bf00164030",
+      "title": [
+        "Molecular analysis of glyceraldehyde-3-phosphate dehydrogenase in Trypanoplasma borelli: An evolutionary scenario of subcellular compartmentation in Kinetoplastida"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Molecular Evolution"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-04"
+    },
+    {
+      "doi": "10.1016/0168-9002(94)01409-4",
+      "title": [
+        "Competition of longitudinal modes and the scenario of single-mode regime build-up for the FOM-Fusion-FEM project"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-04"
+    }
+  ]
+}

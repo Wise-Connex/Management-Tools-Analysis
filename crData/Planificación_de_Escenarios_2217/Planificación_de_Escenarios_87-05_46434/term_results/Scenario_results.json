@@ -1,0 +1,56 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/6265333",
+      "title": [
+        "A scenario for estimating the charge on the electron in terms of Planck's constant and the speed of light"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0375-9601(87)90301-x",
+      "title": [
+        "Quantum effects near the singularity in a general cosmological scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1987-05"
+    },
+    {
+      "doi": "10.1300/j120v08n19_24",
+      "title": [
+        "A Scenario of the Reference Librarian in a Small University Library"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Reference Librarian"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1987-05"
+    },
+    {
+      "doi": "10.33043/th.12.2.3-9",
+      "title": [
+        "Active Learning and the Survey Class"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Teaching History: A Journal of Methods"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Article published in Teaching History by Bailey and Eggleston.</jats:p>"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "term": "Reengineering",
+  "total_results": 11,
+  "processed_count": 11,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1177/003172170508700112",
+      "title": [
+        "Reengineering Schools for the 21st Century"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Phi Delta Kappan"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/s1359-6446(05)03557-9",
+      "title": [
+        "Reengineering the pharmaceutical industry by crash-testing molecules"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Drug Discovery Today"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1145/1095430.1081765",
+      "title": [
+        "Reengineering towards components using \"Reconn-exion\""
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Continuing to develop software from scratch will not be feasible indefinitely. Reusing existing software would seem to be a viable solution to this problem. The paradigm of component-based development (CBD) explicitly accounts for reuse in its process. Unfortunately the majority of existing software systems are not implemented using CBD, thus reusing portions of this software using CBD becomes difficult. Reengineering and maintenance research contains a plethora of software analysis and restructuring techniques that could be used to help us exploit legacy applications for reuse. This thesis focuses on two such techniques and combines variations of them for the purpose of component recovery: A feature location technique called Software Reconnaissance and a design recovery technique called Software Reflexion Modelling. Their combination is called \"Component Reconn-exion.\" We describe the technique, highlight results and evaluation to date and finally discuss further work necessary to complete our contribution as a PhD. thesis.</jats:p>",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1145/1095430.1081723",
+      "title": [
+        "Moose"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Software systems are complex and difficult to analyze. Reengineering is a complex activity that usually involves combining different techniques and tools. MOOSE is an reengineering environment designed to provide the necessary infrastructure for building new tools and for integrating them. MOOSE centers on a language independent meta-model, and offers services like grouping, querying, navigation, and meta-descriptions. Several tools have been built on top of MOOSE dealing with different aspects of reengineering like: visualization, evolution analysis, semantic analysis, concept analysis or dynamic analysis.</jats:p>",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1111/j.1537-2995.2005.00617.x",
+      "title": [
+        "Reengineering transfusion and cellular therapy processes hospitalwide: ensuring the safe utilization of blood products"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transfusion"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Efforts to make blood transfusion as safe as possible have focused on making the blood in the bag as disease‐free as possible. The results have been dramatic, and the costs have been correspondingly high. Although blood services will have to continue to deal with emerging pathogens, efforts to reduce the transfusion of infectious agents presently posing a risk will require high incremental costs and result in only improvements of a small magnitude.</jats:p><jats:p>The other aspect of safe blood transfusion, the actual transfusion process performed primarily in hospitals, has been accorded considerably less interest. We should turn our attention to enhancing overall blood safety by focusing on improving the process of blood transfusion. Errors involving patient, specimen, and blood product identification put transfused patients at risk, increasing the mortality risk for some. Solutions that could improve the transfusion process are discussed as a focus of this article.</jats:p>",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1145/1095430.1081707",
+      "title": [
+        "The story of moose"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n            MOOSE is a language-independent environment for reverse- and re-engineering complex software systems. MOOSE provides a set of services including a common meta-model, metrics evaluation and visualization, a model repository, and generic GUI support for querying, browsing and grouping. The development effort invested in MOOSE has paid off in precisely those research activities that benefit from applying a\n            <jats:italic>combination</jats:italic>\n            of complementary techniques. We describe how MOOSE has evolved over the years, we draw a number of lessons learned from our experience, and we outline the present and future of MOOSE.\n          </jats:p>",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/j.entcs.2005.07.001",
+      "title": [
+        "Co-transformations in Information System Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Electronic Notes in Theoretical Computer Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1145/1081706.1081723",
+      "title": [
+        "Moose"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 10th European software engineering conference held jointly with 13th ACM SIGSOFT international symposium on Foundations of software engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1145/1081706.1081765",
+      "title": [
+        "Reengineering towards components using \"Reconn-exion\""
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 10th European software engineering conference held jointly with 13th ACM SIGSOFT international symposium on Foundations of software engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.3928/01484834-20050901-03",
+      "title": [
+        "Doctor of Nursing Practice Program Development: Reengineering Health Care"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Nursing Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In this article, we describe the developmental process of a Doctor of Nursing Practice (DNP) program that uses interdisciplinary resources to create unique DNP curriculum opportunities. Other schools may benefit from this experience in the development of their own DNP programs. The program delivers an innovative curriculum from post-baccalaureate to doctorate, emphasizing health care engineering and interdisciplinary collaboration among faculty, hospitals, community leaders, and policymakers. This DNP program is uniquely situated to provide leadership in solving complex clinical problems through its partnership with the Regenstrief Center for Healthcare Engineering, the School of Pharmacy, the Homeland Security Institute, and the Center on Aging and the Life Course.</jats:p>\n          <jats:p>Doctoral coursework, interdisciplinary collaboration, health care engineering/systems approaches, and new knowledge result in uniquely qualified providers. Post-baccalaureate students complete the university's Adult Nurse Practitioner program or its developing Pediatric Nurse Practitioner program during the first 2 years of the 4-year curriculum. A total of 83 post-baccalaureate credit hours include 1,526 hours of supervised clinical practice, a health policy residency, and cognate residencies in an area of specialization. The seven core competencies recommended by the American Association of Colleges of Nursing are incorporated into the curriculum.</jats:p>",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1145/1081706.1081707",
+      "title": [
+        "The story of moose"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 10th European software engineering conference held jointly with 13th ACM SIGSOFT international symposium on Foundations of software engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    }
+  ]
+}

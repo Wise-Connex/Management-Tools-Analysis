@@ -1,0 +1,98 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/ichi48887.2020.9374370",
+      "title": [
+        "Reengineering Clinical Decision Support Systems for Artificial Intelligence"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2020 IEEE International Conference on Healthcare Informatics (ICHI)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-11"
+    },
+    {
+      "doi": "10.32702/2306-6814.2020.19-20.88",
+      "title": [
+        "REENGINEERING AS A PROCESS OF ENTERPRISES EXIT FROM THE CORONACRISIS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Investytsiyi: praktyka ta dosvid"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icos50156.2020.9293641",
+      "title": [
+        "A Comparative Study of Web Design for Reengineering Pharmacokinetics Application"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2020 IEEE Conference on Open Systems (ICOS)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-11"
+    },
+    {
+      "doi": "10.1088/1742-6596/1679/3/032014",
+      "title": [
+        "Assessment of the synergetic efficiency of industrial companies reengineering processes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics: Conference Series"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>The relevance of the research topic is due to the fact that in the conditions of increasing global hypercompetition, it is necessary to modernize production processes on the basis of synergetic reengineering of business processes, production, technological and organizational systems. The purpose of the research is to develop practical recommendations for evaluating the effectiveness of project-synergetic reengineering processes in the system of industrial transformation of industrial companies. In this regard, the author puts forward the concept of development of industrial companies on the basis of project-synergetic reengineering of production and technological systems and business processes, and also offers a methodological assessment of the synergetic efficiency of reengineering projects, taking into account the receipt of synergetic effects. The information and empirical basis of the research is based on legislative and regulatory acts of the Russian Federation, materials of Rosstat, regional statistical services, as well as the results of the author’s original research. The practical significance of the results of this study is that the proposed program-target methodology for designing reengineering processes will cover all the links of creating innovations from generating ideas to their implementation in mass production, eliminate gaps and institutional traps, overcome barriers and reduce transaction costs in industry.</jats:p>",
+      "publication_date": "2020-11"
+    },
+    {
+      "doi": "10.1088/1742-6596/1661/1/012176",
+      "title": [
+        "Modeling as a tool for reengineering the enterprise production processes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics: Conference Series"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Effective reengineering of the main activity of the enterprise requires a systematic approach, covering all stages from project preparation to its implementation. The article shows the algorithm for reengineering the production processes of the enterprise and its implementation on the example of one of the leading manufacturing enterprises of the Krasnoyarsk Territory, Russia. The algorithm includes the construction of structural-functional models using the AllFusion Process Modeler (BPWin) software environment common in Russia and simulation based on the Arena product. A user can develop a technological process or process flow diagrams, as is usually done when describing “as-is” business processes or when designing a “to-be” business process, and then export them to Arena applying these tools together. Reengineering of the main processes according to the proposed stages of the methodology helps to evaluate their effectiveness before making direct changes.</jats:p>",
+      "publication_date": "2020-11"
+    },
+    {
+      "doi": "10.1108/978-1-78973-981-720201030",
+      "title": [
+        "Reengineering of the Process of Attribution of General Shop Expenditures to Products’ Cost at a Machine-building Company"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Circular Economy in Developed and Developing Countries: Perspective, Methods and Examples"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-11"
+    },
+    {
+      "doi": "10.1016/j.stem.2020.08.003",
+      "title": [
+        "Reengineering an Antiarrhythmic Drug Using Patient hiPSC Cardiomyocytes to Improve Therapeutic Potential and Reduce Toxicity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cell Stem Cell"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-11"
+    }
+  ]
+}

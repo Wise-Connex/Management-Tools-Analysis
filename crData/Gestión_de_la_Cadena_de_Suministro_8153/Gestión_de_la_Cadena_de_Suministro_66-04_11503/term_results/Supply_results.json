@@ -1,0 +1,97 @@
+{
+  "term": "Supply",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1021/ac60236a878",
+      "title": [
+        "LABORATORY SUPPLY CENTER"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Analytical Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1966-04"
+    },
+    {
+      "doi": "10.1136/bmj.1.5491.861-a",
+      "title": [
+        "Cardiovascular Disease and Water Supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BMJ"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1966-04"
+    },
+    {
+      "doi": "10.1016/0042-207x(66)91187-0",
+      "title": [
+        "High-voltage power supply for mass-spectroscopy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vacuum"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1966-04"
+    },
+    {
+      "doi": "10.2172/4518882",
+      "title": [
+        "PROPOSED STRAIGHT /THETA/-PINCH DEVICES ENERGIZED BY THE ENERGY STORAGE SUPPLY OF THE TOROIDAL /THETA/-PINCH (SCYLLAC)"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1966-04"
+    },
+    {
+      "doi": "10.1017/s0022215100065403",
+      "title": [
+        "Blood Supply of the Uvula and its Surgical Importance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Laryngology &amp; Otology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1966-04"
+    },
+    {
+      "doi": "10.1002/bjs.1800530411",
+      "title": [
+        "An X-ray microscopic study of the blood-supply to the aortic bifurcation and common iliac arteries"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of British Surgery"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1966-04"
+    },
+    {
+      "doi": "10.1007/bf02232914",
+      "title": [
+        "Growth and copper content of anatomical plant parts as influenced by copper supply and time"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Plant and Soil"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1966-04"
+    }
+  ]
+}

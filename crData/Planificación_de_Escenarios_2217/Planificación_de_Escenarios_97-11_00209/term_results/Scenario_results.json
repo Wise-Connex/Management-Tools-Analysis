@@ -1,0 +1,60 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/s0013-7952(97)81913-8",
+      "title": [
+        "Benefits of scenario ground motion maps"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engineering Geology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-11"
+    },
+    {
+      "doi": "10.1007/bf02725502",
+      "title": [
+        "Deafness and its prevention—Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Indian Journal of Pediatrics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-11"
+    },
+    {
+      "doi": "10.1016/s0140-6701(97)82241-2",
+      "title": [
+        "97/04956 Energy-environment implications of cement manufacturing in India: a scenario analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fuel and Energy Abstracts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-11"
+    },
+    {
+      "doi": "10.1134/1.1261915",
+      "title": [
+        "Scenario for the establishment of an electron beam “squeezed state” in a magnetically insulated vircator"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technical Physics Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-11"
+    }
+  ]
+}

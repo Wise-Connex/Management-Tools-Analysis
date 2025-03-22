@@ -1,0 +1,86 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/bf02683782",
+      "title": [
+        "Consolidation, internationalization, and the future of publishing: A scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Book Research Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-09"
+    },
+    {
+      "doi": "10.1016/0001-6918(89)90050-4",
+      "title": [
+        "Relative importance of scenario information and frequency information in the judgment of risk"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Psychologica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-09"
+    },
+    {
+      "doi": "10.1007/bf01796819",
+      "title": [
+        "Projecting household dynamics"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Population"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-09"
+    },
+    {
+      "doi": "10.1086/167870",
+      "title": [
+        "Ultraviolet events observed in active regions. I - Observations and scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-09"
+    },
+    {
+      "doi": "10.1080/08912968909386508",
+      "title": [
+        "Oceanic stable isotope composition and a scenario for the Permo‐Triassic crisis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Historical Biology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-09"
+    },
+    {
+      "doi": "10.13182/nt89-a27637",
+      "title": [
+        "A Scenario of the Three Mile Island Unit 2 Accident"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-09"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2307/3430562",
+      "title": [
+        "The Development of Applied Action Levels for Soil Contact: A Scenario for the Exposure of Humans to Soil in a Residential Setting"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Health Perspectives"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-02"
+    },
+    {
+      "doi": "10.1289/ehp.8979291",
+      "title": [
+        "The development of applied action levels for soil contact: a scenario for the exposure of humans to soil in a residential setting."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Health Perspectives"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-02"
+    }
+  ]
+}

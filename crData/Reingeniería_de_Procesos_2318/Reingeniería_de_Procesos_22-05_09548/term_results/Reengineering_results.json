@@ -1,0 +1,147 @@
+{
+  "term": "Reengineering",
+  "total_results": 11,
+  "processed_count": 11,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.32620/reks.2022.2.04",
+      "title": [
+        "Topological structure reengineering regional electric power systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "RADIOELECTRONIC AND COMPUTER SYSTEMS"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This paper analyses the topology of a regional power system distribution grid. This research improves the efficiency of the electric power system's operation by using upgrading the redesign (reengineering) methods of topological structures within distribution grids. The research object is an electric power system that consists of generation, transmission and distribution parts and requires reengineering. The subject of research is the re-engineering of the topology of the power system distribution grid. To achieve the research purpose, modifications of k-means algorithm as well as the small step algorithm based on the statistical analysis, clustering and minimum spanning tree development methods of Prim and Kraskal are used. The modifications described in this paper allow for optimization of the network based on user needs, properties of the operating grid elements, and other additional constraints for flexibility and generality. Given the varying parameters, this method provides the means to redesign parts of the distribution grid, keeping its certain elements safe from displacement, but also the means to redesign the whole distribution grid, including changes to the number and location of transformer substations and transmission lines. Conclusions. To solve the problem of determining the territorially close groups of consumers in the paper, it was proposed to use the k-means clustering algorithm. This algorithm allows us to divide consumer sets into clusters, so that coordinates of their centres will be recommended as locations of transformer substations. The modernization of the k-means algorithm was proposed by developing procedures for adding and combining clusters using different strategies for determining starting centroids. Based on this, a method for reengineering the topological structures of regional electric power systems in terms of the possibility of their fundamental restructuring was developed. The results of this research may be useful to various enterprises, organizations or institutes dealing with the elaboration or design of electric power system development on the corporate, regional or local level.</jats:p>"
+    },
+    {
+      "doi": "10.3390/su14116564",
+      "title": [
+        "Towards Sustainable Production Processes Reengineering: Case Study at INCOM Egypt"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Sustainability"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>INCOM Egypt has undergone automation in some processes where critical aspects of its operations are transformed and automated. This paper presents an overview of INCOM Egypt processes using Ould Riva and analyses the process of ‘handling a product’. It aims to demonstrate effective automation of the production of wires and cables process accompanied to Industry 4.0 while considering environmental and economic sustainability goals that were inhibited by COVID-19 restrictions. Ould’s Riva method is used to analyse the production process of wires and cables to propose improvements for automating the process. Business process modelling is utilised to study the processes for clearer understating. The flow of information within the process is also analysed to integrate the production process with other processes and supply chains, which helps to identify which production activities can be automated and mainstreamed into the information flow to achieve environmental and economic sustainability. The context of INCOM Egypt, as a case study, is presented along with the Riva model of its operations. The paper identifies the before, i.e., As-Is process, and after, i.e., To-Be Process, automation of the ‘handle a product’ process using the Role Activity Diagram (RAD). The process involved redesigning and improving different activities to increase resource-use efficiency to participate in achieving the goals of sustainability. The focus of this paper is to investigate the negative impact of COVID-19 on sustainability and to examine the accomplishments of process automation of wire production towards environmental and economic sustainability. The results of the research reveal a relationship between business process modelling and sustainability. Moreover, automation of processes (Industry 4.0) is found to reduce the negative effect of COVID-19 on production. A triangulation between process modelling, process automation (Industry 4.0), and sustainability was determined. Each one is reinforcing and impacting one another. The RAD model demonstrates that automation of the activities in the process reduces waste, time, cost, and redundant processes as factors of sustainability, which may also help to lessen the unfavorable effects of the pandemic. The results proved generalisation on other organisations in the same line of business.</jats:p>"
+    },
+    {
+      "doi": "10.34925/eip.2021.137.12.130",
+      "title": [
+        "Business process reengineering: theory and practice of application"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Экономика и предпринимательство"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Реинжиниринг служит одним из важных инструментов антикризисного управления, ведь он включает в себя перепроектирование и даже обновление бизнес - процессов, с целью радикального усовершенствования деятельности работы. При сформировавшейся неустойчивой экономической ситуации в нашем мире, управление не видит ничего более приемлемого, как отыскание и усиленное использование новоизобретенных форм, определенных методик и приемов, а также сфер бизнеса, т.к., устарелые доступы на данный момент времени являются не самыми подходящими.</jats:p>\n                                                                                            <jats:p>Reengineering serves as one of the important tools of crisis management, because it includes redesigning and even updating business processes in order to radically improve the activities of the work. With the unstable economic situation in our world, management sees nothing more acceptable than the search and increased use of newly invented forms, certain techniques and techniques, as well as business areas, because outdated accesses at this point in time are not the most suitable.</jats:p>",
+      "publication_date": "2022-05"
+    },
+    {
+      "doi": "10.22227/1997-0935.2022.5.646-654",
+      "title": [
+        "Application of logistics of regulatory impacts in the reengineering of transport infrastructure facilities"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vestnik MGSU"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Introduction. The development of transport infrastructure may be ensured through the reengineering of existing facilities of the same name, and also in conjunction with the construction of new buildings and structures in the convertible right-of-way. The objective of the research is to provide a scientific basis for the impacts within the framework of reengineering programs for transportation infrastructure facilities. In accordance with the chosen research area, reconstruction, technical re-equipment, renovation are considered to be the reengineering measures of individual transportation infrastructure facilities, and reclamation is the one of land plots in the right-of-way and adjacent territories. The management body acts on the object and subject with Regulatory Impact to achieve the set goals, recipients of the impact are the reengineering program participants, i.e. owners, contractors, clients.&#x0D;\nMaterials and methods. The theory of Regulatory Impact Logistics and methodological provisions of simulation modelling are applied in the research. The research provides a diagram of the interaction of subjects, participating in the implementation of reengineering programs for transportation infrastructure facilities, to confirm the feasibility and substantiate the possibility of allocating resources between the works on facilities in the process of operational management.&#x0D;\nResults. The result of the research is a formalized description of the determining the execution of reengineering programs and formation of proposals for newly launched transportation infrastructure facilities.&#x0D;\nConclusions. The results are established to form a possible basis for a system of information and analytical support for reengineering of transportation infrastructure facilities, this system, among other things, will contribute to the optimal consumption of material and technical resources and their effective supply schedule. Ultimately, this should lead to a reduction in the cost and duration of reengineering of transportation infrastructure facilities.</jats:p>",
+      "publication_date": "2022-05"
+    },
+    {
+      "doi": "10.17580/chm.2022.05.04",
+      "title": [
+        "Reengineering of the roller hardening machine of the sheet-rolling shop of JSC Ural Steel"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chernye Metally"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-05"
+    },
+    {
+      "doi": "10.36887/2415-8453-2022-2-6",
+      "title": [
+        "Reengineering business projects: organizational, management and financial aspects"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ukrainian Journal of Applied Economics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article considers the development of integration mechanisms as a direction of strategic management in the implementation of procedures for reengineering business projects. The basis for reengineering is certain production and commercial processes - business projects, which are separated from the general business structure of the company to ensure partial involvement of innovative tools to generate and implement appropriate algorithms for reengineering and strengthen action on specific market activities. Theoretical developments on outlining the possibilities of ensuring the competitive development of business projects through the involvement of tools in the field of management, the formation of various models of organizational structures and areas of attracting financial resources are presented. It is proposed to build a reengineering model for projects through the basis of technological development, organizational development and market development. Prospects for the integration of organizational and management system through a set of tools and taking into account the results of their interaction are outlined. The directions of attraction of financial resources to business projects are presented, possibilities and prospects of project financing are defined, formation of a portfolio for increase of investment attractiveness, attraction of crediting mechanisms are considered. Recommendations for involving the integration mechanism of business project reengineering are developed and algorithms of procedural implementation are presented with definition of features of introduction of risk management models. The article provides a theoretical basis and formulates practical proposals for effective development of business projects on the basis of reengineering and activation of market behavior. Market activity of business entities in the implementation of individual projects is based on the prerequisites for the creation of internal key competencies and external market success factors by strengthening the innovative orientation of business in the current uncertainty of economic systems. Keywords: business project, business process reengineering, organizational mechanism, management mechanism, financial mechanism, integration mechanisms, risk management, effectiveness.</jats:p>",
+      "publication_date": "2022-05"
+    },
+    {
+      "doi": "10.35261/gijtsi.v3i01.6546",
+      "title": [
+        "Usulan Perbaikan Instruksi Kerja dan Alat Bantu Berdasarkan Set-up Process Reengineering pada Mesin KBA  di Perum Peruri"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Go-Integratif : Jurnal Teknik Sistem dan Industri"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Perum Peruri merupakan Badan Usaha Milik Negara (BUMN) yang dipercaya oleh Pemerintah Republik Indonesia untuk mencetak uang kertas dan uang logam rupiah. Dalam proses produksinya, ketika akan melakukan proses set-up atau pergantian pecahan uang rupiah, terdapat suatu masalah pada mesin Koenig &amp; Bauer (KBA) yang mengakibatkan proses set-up memakan waktu yang lama. Hal ini menyebabkan terjadinya breakdown time hingga 141 menit. Tujuan penelitian ini adalah untuk mengurangi waktu set-up pada mesin tersebut dengan merancang instruksi kerja dan alat bantu berdasarkan process reengineering. Sebelum menerapkan process reengineering, penelitian ini diawali dengan mengidentifikasi kondisi awal pada proses set-up, yaitu meliputi fasilitas, sumber daya manusia (SDM), metode, dan lingkungan. Selanjutnya dilakukan process reengineering melalui tiga tahapan, yaitu rethink, redesign, dan retool. Berdasarkan penerapan process reengineering tersebut, perlu dirancang dan diusulkan perbaikan instruksi kerja dan pembuatan alat bantu dalam melakukan set-up. Hasil akhir dari penerapan process reengineering ini, durasi proses set-up terjadi penurunan dari 141 menit menjadi 52 menit.</jats:p>"
+    },
+    {
+      "doi": "10.1002/9781119823469.ch11",
+      "title": [
+        "Conceptual Principles of Reengineering of Agricultural Resources: Open Problems, Challenges and Future Trends"
+      ],
+      "type": "other",
+      "container-title": [
+        "The Digital Agricultural Revolution"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-05"
+    },
+    {
+      "doi": "10.1108/bpmj-12-2020-0593",
+      "title": [
+        "Implementing halal logistics in a non-Muslim-dominant environment: a proposal for reengineering the business processes in two stages"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-subheading\">Purpose</jats:title><jats:p>The purpose of this paper, positioned in the halal logistics research domain, is to bridge the gap between the theory of halal logistics and halal logistics' empirical implementation through a business process reengineering (BPR) project in the context of a major European airport (i.e. Frankfurt Airport, Fraport AG).</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title><jats:p>An in-depth case study approach has been adopted in the authors' business processes reengineering proposal. Prior investigations on the topic maintained that “business process analysis and activity elimination” (BP and AE) and “problem analysis” (PA) are the most widespread approaches when the prominent business reengineering dimension under analysis is the specific process/task. Consistently, the authors adopted a six-step BP&amp;AE-based model in order to implement the halal logistics requirements in the context of an air cargo supply chain.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Findings</jats:title><jats:p>This paper addresses fundamental issues about the analysis and the redesign of air cargo processes when halal shipments are taken into account. Conceptual breakthroughs of new processes are suggested. The paper sheds light on potential issues which may arise when adapting the extant air cargo processes to halal logistics guidelines. In addition, the paper suggests an appropriate resolution scheme articulated in two stages of progressively higher compliance to halal logistics according to the Malaysian standards (MS).</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Research limitations/implications</jats:title><jats:p>The outcome of this work has implications for practitioners, researchers, and transport associations. For practitioners, the study offers an immediately applicable implementation plan which is ready to be discussed with all agents involved in the business reengineering (BR) process. For researchers, the study offers a basis for future halal logistics reengineering projects, both from a theoretical and from an empirical standpoint. Finally, the collaboration of transport associations will become mandatory due to an update of the International Air Transport Association (IATA) code system that includes a dedicated halal code, “HAL”, for halal air cargo shipments.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Originality/value</jats:title><jats:p>The concept of halal logistics is still in the infant stage and there is a complete lack of academic publications, especially empirical implementations of halal logistics principles. The authors' project provides detailed guidelines to help air cargo operators operating in non-Muslim-dominant countries to reengineer their internal processes and, in doing so, to comply with halal logistics and principles.</jats:p></jats:sec>",
+      "publication_date": "2022-12"
+    },
+    {
+      "doi": "10.1158/0008-5472.can-21-3652",
+      "title": [
+        "Reengineering Ponatinib to Minimize Cardiovascular Toxicity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cancer Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:sec>\n                  <jats:title/>\n                  <jats:p>Small molecule tyrosine kinase inhibitors (TKI) have revolutionized cancer treatment and greatly improved patient survival. However, life-threatening cardiotoxicity of many TKIs has become a major concern. Ponatinib (ICLUSIG) was developed as an inhibitor of the BCR-ABL oncogene and is among the most cardiotoxic of TKIs. Consequently, use of ponatinib is restricted to the treatment of tumors carrying T315I-mutated BCR-ABL, which occurs in chronic myeloid leukemia (CML) and confers resistance to first- and second-generation inhibitors such as imatinib and nilotinib. Through parallel screening of cardiovascular toxicity and antitumor efficacy assays, we engineered safer analogs of ponatinib that retained potency against T315I BCR-ABL kinase activity and suppressed T315I mutant CML tumor growth. The new compounds were substantially less toxic in human cardiac vasculogenesis and cardiomyocyte contractility assays in vitro. The compounds showed a larger therapeutic window in vivo, leading to regression of human T315I mutant CML xenografts without cardiotoxicity. Comparison of the kinase inhibition profiles of ponatinib and the new compounds suggested that ponatinib cardiotoxicity is mediated by a few kinases, some of which were previously unassociated with cardiovascular disease. Overall, the study develops an approach using complex phenotypic assays to reduce the high risk of cardiovascular toxicity that is prevalent among small molecule oncology therapeutics.</jats:p>\n               </jats:sec>\n               <jats:sec>\n                  <jats:title>Significance:</jats:title>\n                  <jats:p>Newly developed ponatinib analogs retain antitumor efficacy but elicit significantly decreased cardiotoxicity, representing a therapeutic opportunity for safer CML treatment.</jats:p>\n               </jats:sec>",
+      "publication_date": "2022-08"
+    },
+    {
+      "doi": "10.1371/journal.pone.0266944",
+      "title": [
+        "Venous thromboembolism (VTE) prevention and diagnosis in COVID-19: Practice patterns and outcomes at 33 hospitals"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "PLOS ONE"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec id=\"sec001\">\n<jats:title>Background</jats:title>\n<jats:p>Early reports of increased thrombosis risk with SARS-CoV-2 infection led to changes in venous thromboembolism (VTE) management. Real-world data on the prevalence, efficacy and harms of these changes informs best practices.</jats:p>\n</jats:sec>\n<jats:sec id=\"sec002\">\n<jats:title>Objective</jats:title>\n<jats:p>Define practice patterns and clinical outcomes related to VTE diagnosis, prevention, and management in hospitalized patients with coronavirus disease-19 (COVID-19) using a multi-hospital US sample.</jats:p>\n</jats:sec>\n<jats:sec id=\"sec003\">\n<jats:title>Methods</jats:title>\n<jats:p>In this retrospective cross-sectional study of 1121 patients admitted to 33 hospitals, exposure was dose of anticoagulant prescribed for VTE prophylaxis (standard, intensified, therapeutic), and primary outcome was VTE (pulmonary embolism [PE] and deep vein thrombosis [DVT]); secondary outcomes were PE, DVT, arterial thromboembolism (ATE), and bleeding events. Multivariable logistic regression models accounting for clustering by site and adjusted for risk factors were used to estimate odds ratios (ORs). Inverse probability weighting was used to account for confounding by indication.</jats:p>\n</jats:sec>\n<jats:sec id=\"sec004\">\n<jats:title>Results</jats:title>\n<jats:p>1121 patients (mean age 60 ± 18, 47% female) admitted with COVID-19 between February 2, 2020 and December 31, 2020 to 33 US hospitals were included. Pharmacologic VTE prophylaxis was prescribed in 86%. Forty-seven patients (4.2%) had PE, 51 (4.6%) had DVT, and 23 (2.1%) had ATE. Forty-six patients (4.1%) had major bleeding and 46 (4.1%) had clinically relevant non-major bleeding. Compared to standard prophylaxis, adjusted odds of VTE were 0.67 (95% CI 0.21–2.1) with no prophylaxis, 1.0 (95% CI 0.06–17) with intensified, and 3.0 (95% CI 0.89–10) with therapeutic. Adjusted odds of bleeding with no prophylaxis were 5.6 (95% CI 3.0–11) and 5.3 (95% CI 3.0–10) with therapeutic (no events on intensified dosing).</jats:p>\n</jats:sec>\n<jats:sec id=\"sec005\">\n<jats:title>Conclusions</jats:title>\n<jats:p>Therapeutic anticoagulation was associated with a 3-fold increased odds of VTE and 5-fold increased odds of bleeding. While higher bleeding rates with high-intensity prophylaxis were likely due to full-dose anticoagulation, we conclude that high thrombosis rates were due to clinical concern for thrombosis before formal diagnosis.</jats:p>\n</jats:sec>"
+    }
+  ]
+}

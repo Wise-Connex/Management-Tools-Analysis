@@ -1,0 +1,86 @@
+{
+  "term": "Supply",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1021/ac60059a760",
+      "title": [
+        "THE LABORATORY SUPPLY CENTER"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Analytical Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-11"
+    },
+    {
+      "doi": "10.1109/ee.1951.6436910",
+      "title": [
+        "Engineers: A vital resource in critically short supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Electrical Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-11"
+    },
+    {
+      "doi": "10.1002/j.1551-8833.1951.tb19051.x",
+      "title": [
+        "Water Supply in Finland"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal AWWA"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-11"
+    },
+    {
+      "doi": "10.1088/0950-7671/28/11/302",
+      "title": [
+        "A stabilized a.c. supply for lamps and valve heaters"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Scientific Instruments"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-11"
+    },
+    {
+      "doi": "10.2307/1336727",
+      "title": [
+        "Negligence. Duty of Care. Failure to Supply One-Eyed Employee with Goggles Created Unreasonable Risk Because of Gravity of Possible Injury"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Harvard Law Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-11"
+    },
+    {
+      "doi": "10.1177/000271625127800120",
+      "title": [
+        "Problems of United States Mineral Supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The ANNALS of the American Academy of Political and Social Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1951-11"
+    }
+  ]
+}

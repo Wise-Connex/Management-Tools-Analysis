@@ -1,0 +1,58 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada236967",
+      "title": [
+        "A Scenario-Based Methodology for Evaluating User Interface Functionality on a Database Retrieval Task"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-05"
+    },
+    {
+      "doi": "10.3733/ca.v045n03p6",
+      "title": [
+        "Well set aside proposal: A scenario for ground water banking"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "California Agriculture"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-05"
+    },
+    {
+      "doi": "10.1080/01418619108213923",
+      "title": [
+        "Rapid-pair-enhanced diffusion in α-Zr and its integration into the point-defect scenario in h.c.p. metals"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Philosophical Magazine A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-05"
+    },
+    {
+      "doi": "10.1016/0167-8809(91)90082-9",
+      "title": [
+        "Potential impacts of a CO2-induced climate change using the GISS scenario on agriculture in Quebec, Canada"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agriculture, Ecosystems &amp; Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-05"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1524/9783486700350-012",
+      "title": [
+        "11. Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Controlling"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-12"
+    },
+    {
+      "doi": "10.4028/www.scientific.net/msf.471-472.770",
+      "title": [
+        "Method of Product Development Process Analysis and Reengineering for Concurrent Engineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Materials Science Forum"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Product development process analysis and reengineering are the basic for enterprise to put CE into practice. The characteristics of concurrent PDP are analyzed and compared with the traditional PDP. The basic requirements, methods and steps of PDP analysis, improvement and reengineering for CE are presented. The process model for PDP analysis and reengineering is built. According to the actual PDP in Qiqihar Railway Rolling Stock Company in China, the process for the\ngrain rolling stock development is analyzed and improved, and the result is  satisfactory.</jats:p>"
+    },
+    {
+      "doi": "10.1108/07378830410570449",
+      "title": [
+        "How to organise the digital library: reengineering and change management in the Bayerische Staatsbibliothek, Munich"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Library Hi Tech"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The introduction of digital resources has not only had considerable impact on the role of libraries in the information society, but it has also had a remarkable effect on back office procedures, i.e. on the way the library is organised. This article presents a case study of a reengineering process at the Bayerische Staatsbibliothek (Bavarian State Library) in Munich, Germany, the central regional library of the State of Bavaria and one of the largest academic research libraries in Europe with local, regional and supraregional responsibilities. Due to the multiple roles of this library, it was particularly important not only to bridge the gap between traditional and new material, but also to create a flexible organisational platform for the various tasks at the different levels indicated.</jats:p>",
+      "publication_date": "2004-12"
+    }
+  ]
+}

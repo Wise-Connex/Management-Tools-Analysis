@@ -1,0 +1,33 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.18372/2306-1472.35.1563",
+      "title": [
+        "REENGINEERING OF THE AIR SIMULATORS LEGACY SOFTWARE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of National Aviation University"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1108/14637150810849418",
+      "title": [
+        "Modelling strategic actor relationships for risk management in organizations undergoing business process reengineering due to information systems adoption"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>Because of the competitive economy, organizations today seek to rationalize, innovate and adapt to changing environments and circumstances as part of business process reengineering (BPR) efforts. Irrespective of the process reengineering program selected and the technique used to model it, BPR brings with it the issues of organizational and process changes. Thus, BPR initiatives involve risk taking. Effective management of risks and their prediction and estimation should help in minimizing failures from BPR efforts. Risk management is non‐trivial due to the large uncertainty involved with business success with BPR efforts. Though some attempt has been made to model risk management in enterprise information systems using conventional conceptual modelling techniques, the previous works have analyzed and modeled the same just by addressing “what” a process is like, but do not address “why” the process is the way it is.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The approach presents a new technique for analyzing and modelling early‐phase requirements of organizational risk management that provides the motivations, intents, and rationales behind the entities and activities.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>A case study has been considered to illustrate this approach.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The approach is novel in the sense that there is no similar intentional modeling approach for risk management to the best of one's knowledge. The approach is expected to be valuable because by using this approach one can reason about the risks associated with BPR and can incorporate prominently the issues related to risk in the process of systems analysis and design.</jats:p></jats:sec>",
+      "publication_date": "2008-02"
+    }
+  ]
+}

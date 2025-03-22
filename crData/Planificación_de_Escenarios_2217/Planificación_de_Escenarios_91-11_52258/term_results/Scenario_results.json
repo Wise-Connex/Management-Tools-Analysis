@@ -1,0 +1,96 @@
+{
+  "term": "Scenario",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/6206679",
+      "title": [
+        "Monitoring the response of the upper troposphere/lower stratosphere to a greenhouse gas scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1063/1.858191",
+      "title": [
+        "A route to chaos in an oscillatory flow: Feigenbaum scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics of Fluids A: Fluid Dynamics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The transition process which leads the oscillatory flow over a wavy wall from a periodic behavior to chaos is studied by means of the numerical algorithm described by Blondeaux and Vittori [J. Fluid Mech. 226, 257 (1991)]. By increasing the Reynolds number, it has been found that the flow experiences an infinite sequence of period doublings (pitchfork bifurcations) which take place at successive critical values. These critical values of the Reynolds number accumulate to a finite limit with the Feigenbaum rate of convergence. For Reynolds numbers larger than the above limit a chaotic flow is detected.</jats:p>",
+      "publication_date": "1991-11"
+    },
+    {
+      "doi": "10.1016/0375-9601(91)90202-j",
+      "title": [
+        "Gravitino mass bounds in a general cosmological scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-11"
+    },
+    {
+      "doi": "10.1016/s0140-1963(18)30676-1",
+      "title": [
+        "Blackbuck and chinkara in the Thar desert: a changing scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Arid Environments"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-11"
+    },
+    {
+      "doi": "10.1002/for.3980100602",
+      "title": [
+        "When and how to use scenario planning: A heuristic approach with illustration"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Forecasting"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This paper offers a step‐by‐step analysis of a heuristic approach to scenario planning, taking a managerial perspective. The scenario method is contrasted in general with more traditional planning techniques, which tend to perform less well when faced with high uncertainty and complexity. An actual case involving a manufacturing company is used to illustrate the main steps of the proposed heuristic. Its essence is to identify relevant trends and uncertainties, and blend them into scenarios that are internally consistent. In addition, the scenarios should bound the range of plausible uncertainties and challenge managerial thinking. Links to decision making are examined next, including administrative policies as well as integrative techniques. At the strategic level, a key‐success‐factor matrix is proposed for integrating scenarios, competitor analysis and strategic vision. At the operational level, Monte Carlo simulation is suggested and illustrated as one useful technique for combining scenario thinking with formal project evaluation (after appropriate translations). The paper concludes with a general discussion of scenario planning, to place it in a broader perspective.</jats:p>",
+      "publication_date": "1991-11"
+    },
+    {
+      "doi": "10.1098/rspb.1991.0143",
+      "title": [
+        "Ancestral transfer of symbionts between cockroaches and termites: an unlikely scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Royal Society of London. Series B: Biological Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-11"
+    },
+    {
+      "doi": "10.1111/j.1540-5915.1991.tb01907.x",
+      "title": [
+        "An Empirical Comparison of Direct Questioning, Scenario, and Randomized Response Methods for Obtaining Sensitive Business Information*"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Decision Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>ABSTRACT</jats:title><jats:p>Certain business practices include legal but ethically questionable activities. Surveys intended to determine the nature and extent of such activities must employ questioning methods which mitigate the inherent threat of sensitive questions and account for social desirability effects. This study uses a national mail survey of chief executive officers (CEOs) of manufacturing firms to compare the performance of direct questioning, scenario, and randomized response methods for estimating the prevalence of several sensitive business practices. The direct questioning and scenario versions used self‐reporting (individual‐based) questions, as well as the CEO's perceptions of the extent to which others engage in questionable activities (other‐based). In general, the estimates of the prevalence of selected questionable activities were lowest when the individual‐based direct questioning was used and highest when other‐based (either direct questioning or scenario) methods were used. The individual‐ based scenario and randomized response estimates represented intermediate estimates. Suggested guidelines for using the three methods for eliciting sensitive information are discussed.</jats:p>",
+      "publication_date": "1991-11"
+    }
+  ]
+}

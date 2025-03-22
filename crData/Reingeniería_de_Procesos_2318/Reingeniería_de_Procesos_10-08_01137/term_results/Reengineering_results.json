@@ -1,0 +1,97 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/icmss.2010.5575862",
+      "title": [
+        "The Analysis of Business Process Reengineering Applicability and Process of Implementation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 International Conference on Management and Service Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-08"
+    },
+    {
+      "doi": "10.1109/icmss.2010.5576656",
+      "title": [
+        "A Fundamental Framework of Business Process Reengineering Methodology Based on IT"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 International Conference on Management and Service Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-08"
+    },
+    {
+      "doi": "10.4314/jbas.v1i2.57348",
+      "title": [
+        "Business process reengineering in Ethiopian public organizations: the relationship between theory and practice"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Business and Administrative Studies"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3410/f.4916957.4847055",
+      "title": [
+        "Faculty Opinions recommendation of Organ reengineering through development of a transplantable recellularized liver graft using decellularized liver matrix."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-09"
+    },
+    {
+      "doi": "10.1109/icmss.2010.5577224",
+      "title": [
+        "Notice of Retraction: Research on the Theory Framework of Project Construction Management Process Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 International Conference on Management and Service Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-08"
+    },
+    {
+      "doi": "10.1109/icacte.2010.5579290",
+      "title": [
+        "Notice of Retraction: Innovated model of human resource outsourcing based on process reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 3rd International Conference on Advanced Computer Theory and Engineering(ICACTE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-08"
+    },
+    {
+      "doi": "10.5614/jts.2005.12.3.8",
+      "title": [
+        "Construction Business Process Reengineering (CBPR): A Case Study of Construction Organizations in Malaysia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Teknik Sipil"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

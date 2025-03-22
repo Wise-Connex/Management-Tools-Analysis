@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1111/j.1600-065x.2008.00617.x",
+      "title": [
+        "Reengineering dendritic cell‐based anti‐cancer vaccines"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Immunological Reviews"
+      ],
+      "subject": [],
+      "abstract": "<jats:p><jats:bold>Summary: </jats:bold> Despite initial enthusiasm, dendritic cell (DC)‐based anti‐cancer vaccines have yet to live up to their promise as one of the best hopes for generating effective anti‐tumor immunity. One of the principal reasons for the generally disappointing results achieved thus far could be that the full potential of DCs has not been effectively exploited. Here, we argue that dramatic improvements in vaccine efficacy will probably require a careful re‐evaluation of current vaccine design. The formulation of new strategies must take into account the natural history of DCs, particularly their role in helping the immune system deal with infection. Equally critical is the emerging importance of soluble factors, notably interleukin‐12, in modulating the quality of immune responses. Vaccines should also be designed to recruit helper T cells and antibody‐producing B cells rather than simply cytotoxic T lymphocytes. Finally, the judicious selection of tumor, target antigen, and disease stage best suited for treatment should serve as the foundation of trial designs. Our discussion addresses a recent clinical vaccine trial to treat early breast cancer, where many elements of this new strategy were put into practice.</jats:p>",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1016/s1553-7250(08)34020-3",
+      "title": [
+        "Improving the Documentation of Vital Signs: A Business Reengineering Efficiency Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Joint Commission Journal on Quality and Patient Safety"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-03"
+    }
+  ]
+}

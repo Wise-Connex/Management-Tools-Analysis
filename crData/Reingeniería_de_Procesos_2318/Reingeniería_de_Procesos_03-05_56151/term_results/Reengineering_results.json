@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1145/773126.773136",
+      "title": [
+        "Reengineering of database intensive application"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Reengineering databases has been a challenge since ages and it requires process mapping to understand better and significantly improve the business processes and performance. In this paper we describe a generic architecture for reengineering legacy databases, which is an outcome of working on a real software project. The goal of this research is to formalize a process that is applicable to different database reengineering scenarios and requirements. We elaborate the steps that were actually done for implementing the project.</jats:p>",
+      "publication_date": "2003-05"
+    },
+    {
+      "doi": "10.1300/j010v36n04_02",
+      "title": [
+        "The Effect of Organizational Reengineering on Job Satisfaction for Staff in Hospital Social Work Departments"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Social Work in Health Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-05"
+    }
+  ]
+}

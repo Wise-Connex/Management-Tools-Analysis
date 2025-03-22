@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.17660/actahortic.1992.307.20",
+      "title": [
+        "GLOBAL SCENARIO FOR FLORICULTURE 2000"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Horticulturae"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-08"
+    },
+    {
+      "doi": "10.1177/105256299201600311",
+      "title": [
+        "Computer-Assisted Scenario Analysis (CASA): Using Word Processing to Enhance Case Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-08"
+    }
+  ]
+}

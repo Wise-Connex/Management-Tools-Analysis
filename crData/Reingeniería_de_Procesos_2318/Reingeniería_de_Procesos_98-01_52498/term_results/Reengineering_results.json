@@ -1,0 +1,739 @@
+{
+  "term": "Reengineering",
+  "total_results": 61,
+  "processed_count": 61,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/csmr.1998.665725",
+      "title": [
+        "Proceedings of the Second Euromicro Conference on Software Maintenance and Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Second Euromicro Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/631227",
+      "title": [
+        "ORNL engineering design and construction reengineering report"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-83673-1_11",
+      "title": [
+        "Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Handbuch zur Verwaltungsreform"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.1998",
+      "title": [
+        "Proceedings of the Second Euromicro Conference on Software Maintenance and Reengineering"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/10.4018/978-1-878289-29-2",
+      "title": [
+        "Business Process Change"
+      ],
+      "type": "monograph",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-01"
+    },
+    {
+      "doi": "10.4018/978-1-87828-929-2",
+      "title": [
+        "Business Process Change"
+      ],
+      "type": "monograph",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-01"
+    },
+    {
+      "doi": "10.15358/0935-0381-1998-3-150",
+      "title": [
+        "Controlling und Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Controlling"
+      ],
+      "subject": [],
+      "abstract": "<p>Im Rahmen des Business Process Reengineering erfolgt die Umstellung von einer funktions- zu einer prozessorientierten Arbeitsweise des Unternehmens. Die Prozessorientierung ist Konsequenz der zentralen Forderung des Konzeptes nach strikter Kundenorientierung aller Unternehmensaktivitäten. Der vorliegende Artikel geht auf die Frage ein, welchen Beitrag das Controlling zur Unterstützung von Restrukturierungsprojekten leisten kann. Dabei wird diskutiert, welche Leistungen das Controlling im Prozess der Restrukturierung erbringen kann. Des weiteren wird aufgezeigt, dass nach der Restrukturierung ein Anpassungsbedarf in Bezug auf das funktionale Controlling besteht, das auch prozessorientiert ausgestaltet werden muss. Abschließend wird die Bedeutung des institutionalen Controlling in einem prozessorganisierten Unternehmen diskutiert und die mögliche Konsequenz für dessen organisatorische Verankerung aufgezeigt.</p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-08926-1_3",
+      "title": [
+        "Software Reengineering aus betriebswirtschaftlicher Sicht"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Reverse Engineering konzeptioneller Datenschemata"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-94430-6_5",
+      "title": [
+        "Strategische Neupositionierung durch Reengineering der Managementprozesse"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Strategische Unternehmensberatung"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-71982-0_8",
+      "title": [
+        "Reengineering — der Weg zur Prozeßorganisation zukünftiger Unternehmen"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Integrale Infrastrukturplanung"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.1998.665832",
+      "title": [
+        "Author index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Second Euromicro Conference on Software Maintenance and Reengineering CSMR-98"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-99744-9_3",
+      "title": [
+        "Vom Business Reengineering zum Prozeßmanagement"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozeßmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-99744-9_1",
+      "title": [
+        "Einführung in das Thema Business Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozeßmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-94522-8_21",
+      "title": [
+        "Prospektive Gleichstellung durch Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Chancengleichheit durch Personalpolitik"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5",
+      "title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-008043334-9/50186-4",
+      "title": [
+        "Human reengineering of work and living"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Global Ergonomics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-663-08926-1_2",
+      "title": [
+        "Terminologische und technische Grundlagen des Software Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Reverse Engineering konzeptioneller Datenschemata"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-99744-9_2",
+      "title": [
+        "Die drei neuen Ideen des Business Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozeßmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-663-08926-1_4",
+      "title": [
+        "Messungen als Voraussetzung und Ausgangspunkt von Reengineering-Maßnahmen"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Reverse Engineering konzeptioneller Datenschemata"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-663-07676-6_10",
+      "title": [
+        "Integration von Business Process Reengineering mit dem SAP-R/3-Prozeßmodell"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Informationsmodellierung"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-90216-0_2",
+      "title": [
+        "Vom Business Reengineering zur Prozeßorganisation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Change Management auf Biegen und Brechen?"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5281-9_21",
+      "title": [
+        "Reengineering and continuous improvement"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Handbook of Total Quality Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-663-05994-3_8",
+      "title": [
+        "Ein Vorgehensmodell für das Software Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Vorgehensmodelle für die betriebliche Anwendungsentwicklung"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-99744-9_4",
+      "title": [
+        "Was kann Business Reengineering von bewährten Konzepten übernehmen?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozeßmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5487-5_8",
+      "title": [
+        "Reengineering with EDI"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "EDI and Data Networking in the Public Sector"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_8",
+      "title": [
+        "Conclusions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_1",
+      "title": [
+        "Introduction"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-663-01580-2_19",
+      "title": [
+        "Probleme der Konzeptualisierung und Umsetzung eines Reengineering von Verkauf und Kundendienst im Kraftfahrzeughandel"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Marktorientierte Unternehmensführung"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.1874949",
+      "title": [
+        "Reingeniería y Otras Tácticas de Reconversión Empresaria (Reengineering and other Turnaround Tactics)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-58996-6_18",
+      "title": [
+        "Vom Reengineering zum Wissensmanagement"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Neue Märkte, neue Medien, neue Methoden — Roadmap zur agilen Organisation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-26661-5_24",
+      "title": [
+        "Business Process Reengineering with PROPLAN®"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Handbook on Architectures of Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_2",
+      "title": [
+        "Plan-Based Program Understanding"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.21236/ada362221",
+      "title": [
+        "Evaluating Technology As A Change Agent for Reengineering USAF Basic Military Training,"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-01"
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_5",
+      "title": [
+        "Additional Experiments with Concept Recovery"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_3",
+      "title": [
+        "Program Understanding and Constraint Satisfaction"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_4",
+      "title": [
+        "Initial Experiments with Concept Recovery"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1037//0021-9010.83.6.975",
+      "title": [
+        "Compensation consequences of reengineering."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Psychology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1097/00004010-199802330-00007",
+      "title": [
+        "Reengineering: Deja Vu All Over Again"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Health Care Management Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5467-7_30",
+      "title": [
+        "Design and Reengineering of Production Systems: Yugoslavian (IISE) Approaches"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Group Technology and Cellular Manufacturing"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/hicss.1998.655290",
+      "title": [
+        "Introduction To The Internet And Process Reengineering Minitrack"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Thirty-First Hawaii International Conference on System Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1097/00004010-199807000-00007",
+      "title": [
+        "Reengineering: Deja Vu All Over Again"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Health Care Management Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_7",
+      "title": [
+        "Improving Our Constraint-Based Approach"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-84950-2_6",
+      "title": [
+        "Die Rolle der Informationsverarbeitung beim Business Reengineering Management"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Management for Business and Competitive Intelligence and Excellence"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3406/netco.1998.1406",
+      "title": [
+        "Cyberspace and call centers. New patterns of location, outsourcing and reengineering of services in Germany"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Netcom"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Entwicklung und Diffusion von Call Center sind Teil von Aktivitaeten im Bereich von Telearbeit und Teledienstleistungen. Call Center, zuerst nur auf Telefon-Kommunikation basiert, ist im Begriff eine Dienstleistung im Cyberspace zu werden. Dieser Beitrag bietet einen Blick auf die Call Center Innovation und ihre Dynamik in verschiedenen Teilen Deutschlands und Europas. Der Schwerpunkt liegt auf Standortmustem, Outsourcingaktivitaeten und Neuformierung von Teledienstleistungen.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-1-4615-5461-5_6",
+      "title": [
+        "Program Understanding and AI Plan Recognition"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Constraint-Based Design Recovery for Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1097/00006216-199823010-00013",
+      "title": [
+        "Reengineering for a New Millennium"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nursing Administration Quarterly"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/(sici)1520-6858(1998)1:3<159::aid-sys2>3.0.co;2-h",
+      "title": [
+        "IBPM: An integrated systems model for business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Systems Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-0-387-35300-5_9",
+      "title": [
+        "The Reengineering of Relational Databases based on Key and Data Correlations"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Data Mining and Reverse Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/(sici)1099-0542(1998)6:1<15::aid-cae3>3.0.co;2-3",
+      "title": [
+        "Information-technology-based tools for reengineering construction engineering education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer Applications in Engineering Education"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s1084-8568(99)80115-1",
+      "title": [
+        "Quality comes to criminal justice: Reengineering core processes in the courthouse"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Quality Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-01"
+    },
+    {
+      "doi": "10.1007/978-3-322-84950-2_8",
+      "title": [
+        "Methodisches Vorgehen beim Business Process Reengineering mit anschließender Einführung einer Standardsoftware unter Einsatz von PROMET®"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Management for Business and Competitive Intelligence and Excellence"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4615-5499-8_4",
+      "title": [
+        "Enterprise Modeling within the Framework of Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information and Process Integration in Enterprises"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1097/00019514-199806020-00008",
+      "title": [
+        "Building Better Team Charters"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Quality Management in Health Care"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-49255-0_11",
+      "title": [
+        "Reengineering the Modularity of OO Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Object-Oriented Technology: ECOOP’98 Workshop Reader"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3233/978-1-60750-896-0-1171",
+      "title": [
+        "Healthcare Systems Process Reengineering for Developing Countries: A Report to IMIA Working Group 9"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Health Technology and Informatics",
+        "MEDINFO &amp;apos;98"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>To discover what kinds of health informatics the developing countries need, we look first to the underlying social structures that informatics is to support.</jats:p>"
+    },
+    {
+      "doi": "10.1108/eb040674",
+      "title": [
+        "Taking some big steps towards the digital library — lessons learned from the reengineering process at the Technical Knowledge Center &amp; Library of Denmark"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "VINE"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In this article recent developments in the management of electronic journals at the Technical Knowledge Center &amp; Library of Denmark (DTV) are outlined. Special emphasis is put on the reengineering of library services to take advantage of changes in electronic publishing, and on the development in house of a common user interface to electronic journals and databases. The human resource development activities including a domestic PC programme and distance learning as a primary means of educating staff are highlighted.</jats:p>",
+      "publication_date": "1998-01"
+    },
+    {
+      "doi": "10.1007/3-540-68383-6_15",
+      "title": [
+        "Reengineering C/C++ Source Code by Transforming State Machines"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Development and Evolution of Software Architectures for Product Families"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-58923-2_19",
+      "title": [
+        "Benchmarking, Innovation and Reengineering: Should we Pull the Plug on the Internet or Make it Serve us Better?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Herausforderungen an das Management",
+        "Unternehmen im Wandel — Change Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-68383-6_19",
+      "title": [
+        "The Relation between the Product Line Development Entry Points and Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Development and Evolution of Software Architectures for Product Families"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-49524-6_31",
+      "title": [
+        "Reengineering Conventional Data and Process Models with Business Object Models: A Case Study Based on SAP R/3 and UML"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Conceptual Modeling – ER ’98"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/3468.725347",
+      "title": [
+        "Human and organizational error as a basis for process reengineering: with applications to systems integration planning and marketing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and Humans"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

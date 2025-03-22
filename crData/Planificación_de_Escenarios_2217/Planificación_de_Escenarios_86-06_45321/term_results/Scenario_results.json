@@ -1,0 +1,59 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1086/184672",
+      "title": [
+        "The decaying particles scenario and the Virgocentric infall"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-06"
+    },
+    {
+      "doi": "10.5915/18-1-11730",
+      "title": [
+        "Present Scenario Affecting F.M.G.'s"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Islamic Medical Association of North America"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1086/164250",
+      "title": [
+        "A phenomenological triple star scenario for SS 433"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-06"
+    },
+    {
+      "doi": "10.1086/114115",
+      "title": [
+        "On the spectroscopic orbit of the bright WC binary Gamma(2) Velorum, with implications for the evolutionary scenario of Wolf-Rayet stars"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astronomical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-06"
+    }
+  ]
+}

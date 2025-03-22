@@ -1,0 +1,151 @@
+{
+  "term": "Reengineering",
+  "total_results": 11,
+  "processed_count": 11,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1201/9781439834541-11",
+      "title": [
+        "Reengineering the User Organization"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cloud Computing Strategies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1201/9781439834541-c6",
+      "title": [
+        "Reengineering the User Organization"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cloud Computing Strategies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1126/science.1192224",
+      "title": [
+        "Reengineering Enzymes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>First-principles design and directed evolution expand the role of enzymes in chemical synthesis.</jats:p>",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1007/bf03231142",
+      "title": [
+        "Prozessleistung kontinuierlich steigern"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bankmagazin"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1109/indin.2010.5549715",
+      "title": [
+        "Reengineering of IEC 61131 into IEC 61499 Function Blocks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 8th IEEE International Conference on Industrial Informatics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1109/compsac.2010.46",
+      "title": [
+        "An Ontology-Based Approach to Reengineering Enterprise Software for Cloud Computing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 IEEE 34th Annual Computer Software and Applications Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.33899/tanra.2010.161877",
+      "title": [
+        "Using Computers in Reengineering in the Preparation of Balance Budget Sheet"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "TANMIYAT AL-RAFIDAIN"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1109/ieec.2010.5533304",
+      "title": [
+        "Government Innovation Based on Electronic Government: Government Process Reengineering as the Case"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 2nd International Symposium on Information Engineering and Electronic Commerce"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1108/14637151011065964",
+      "title": [
+        "Proposal of data warehouse in the context of healthcare process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>This paper aims to set out the relationship between business process reengineering (BPR) and data warehouse (DW) and identify the advantages brought by the integration of DW technology in BPR projects.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>This paper is primarily based on a case study which was conducted in a Tunisian hospital and allowed some lessons to be learned.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>Introducing changes in the field of healthcare services has become a necessity to provide better satisfaction to patients and to offer faster services and of better quality. So, the BPR approach can be applied to introduce these changes and provide better satisfaction to recipients of services, i.e. the hospital patients. This study is based on a case study based on the BPR application for healthcare process in some services of Farhat Hached Hospital in Sousse, Tunisia. This case study has mainly contributed to a proposed DW for healthcare services.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>The proposed DW and the new corresponding process have not yet been implemented in the real life of the considered services. The research work in this project allowed the provision of detailed and rational justifications for the information technology introduction in BPR applied in healthcare services and in particular to the implementation of the DW concept. In addition to the detailed justifications, the research paper provided the prerequisite for the success of the project as well as its technical specifications and appropriateness to the specifity to the local setting.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The lessons learned were related in one hand to the particularities of BPR projects using the DW technology and on the other hand to the advantages brought by the DW technologies in the BPR projects. The following questions are considered in this paper: what are the particularities of the BPR projects using the DW technology? What are the main contributions of the DW technology to BPR projects?</jats:p></jats:sec>",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1080/14241277.2010.509849",
+      "title": [
+        "Business Process Reengineering Within the Media Industry in Taiwan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal on Media Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    },
+    {
+      "doi": "10.1007/s10916-010-9553-5",
+      "title": [
+        "Prescription-Filling Process Reengineering of an Outpatient Pharmacy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Medical Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-04"
+    }
+  ]
+}

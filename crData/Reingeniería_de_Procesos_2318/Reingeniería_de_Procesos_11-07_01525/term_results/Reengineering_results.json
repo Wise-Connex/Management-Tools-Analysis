@@ -1,0 +1,137 @@
+{
+  "term": "Reengineering",
+  "total_results": 10,
+  "processed_count": 10,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1002/smr.548",
+      "title": [
+        "A retrospective view of software maintenance and reengineering research – a selection of papers from <i>European Conference on Software Maintenance and Reengineering 2010</i>"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Software: Evolution and Process"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>SUMMARY</jats:title><jats:p>As a summary of past, current, and future trends in software maintenance and reengineering research, we give in this editorial a retrospective look from the past 14 years to now. We provide insight on how software maintenance has evolved and on the most important research topics presented in the series of the <jats:italic>European Conference on Software Maintenance and Reengineering</jats:italic>. Copyright © 2011 John Wiley &amp; Sons, Ltd.</jats:p>",
+      "publication_date": "2013-06"
+    },
+    {
+      "doi": "10.1126/scitranslmed.3002747",
+      "title": [
+        "Reengineering Translational Science: The Time Is Right"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science Translational Medicine"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The new National Center for Advancing Translational Sciences aims to revamp the process of biomedical research translation.</jats:p>",
+      "publication_date": "2011-07"
+    },
+    {
+      "doi": "10.1109/compsacw.2011.84",
+      "title": [
+        "Reconciling Requirements and Implementation via Reengineering for Context-Aware Service Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 IEEE 35th Annual Computer Software and Applications Conference Workshops"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-07"
+    },
+    {
+      "doi": "10.1109/mace.2011.5987000",
+      "title": [
+        "Research on new method of automobile developing process reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 Second International Conference on Mechanic Automation and Control Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-07"
+    },
+    {
+      "doi": "10.1109/indin.2011.6034987",
+      "title": [
+        "Introducing model-based development within the reengineering of a Smart House controllers system"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 9th IEEE International Conference on Industrial Informatics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-07"
+    },
+    {
+      "doi": "10.5121/ijsea.2011.2309",
+      "title": [
+        "Techrisk - A Decisional Framework to Measure Technical Dimensions of Legacy Application for Rejuvenation Through Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Software Engineering &amp; Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-07"
+    },
+    {
+      "doi": "10.1016/j.giq.2010.07.010",
+      "title": [
+        "Transformational change and business process reengineering (BPR): Lessons from the British and Dutch public sector"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Government Information Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-07"
+    },
+    {
+      "doi": "10.4028/www.scientific.net/amr.282-283.74",
+      "title": [
+        "Multi-Criteria Decision Analysis Method and Management Information System Reengineering for Solving Vendor-Managed Inventory Bottlenecks in the Notebook Computer Industry"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advanced Materials Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Due to increased uncertainties in corporate demands the vendor-managed inventory method was developed; however, relevant literature indicates that the vendor managed inventory system has bottlenecks in implementation. Thus, this study applied the Fuzzy Delphi Analytic Hierarchy Process for selecting objective attributes, and constructed a vendor managed objective hierarchy structure. Using ABC Classification, category A multi-objective attributes was selected. Dynamic multi-criteria decision analysis was used to analyze category A multi-objective attributes, as selected by different sectors in the first year. If all the objectives have quantitative attributes, multi-criteria programming was used to construct the model. Further, comparisons were conducted for the results obtained from the Non-dominated Sorting Genetic Algorithm, the Particle swarm optimization method, and the modified multi-criteria planning method. Modified Data Envelopment Analysis was used for performance evaluation. ARIS (Architecture of Integrated Information System) analyzed relevant corporate process reengineering, and the decision results were incorporated into the management information system.</jats:p>"
+    },
+    {
+      "doi": "10.1080/1360080x.2011.585741",
+      "title": [
+        "Towards a framework for business process reengineering in higher education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Higher Education Policy and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-08"
+    },
+    {
+      "doi": "10.1016/j.bpj.2011.05.039",
+      "title": [
+        "Reengineering Rate-Limiting, Millisecond Enzyme Motions by Introduction of an Unnatural Amino Acid"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-07"
+    }
+  ]
+}

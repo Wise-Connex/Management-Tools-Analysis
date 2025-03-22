@@ -1,0 +1,124 @@
+{
+  "term": "Reengineering",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/iconac.2016.7604893",
+      "title": [
+        "Understanding software reengineering requirements for cloud-oriented service architecture"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2016 22nd International Conference on Automation and Computing (ICAC)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-09"
+    },
+    {
+      "doi": "10.1109/stc-csit.2016.7589855",
+      "title": [
+        "Multicriteria architecture choice of software system under design and reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2016 XIth International Scientific and Technical Conference Computer Sciences and Information Technologies (CSIT)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-09"
+    },
+    {
+      "doi": "10.1016/j.sbspro.2016.09.051",
+      "title": [
+        "Reengineering of Tourism Organization Structure: The Case of Slovakia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia - Social and Behavioral Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-09"
+    },
+    {
+      "doi": "10.1016/j.amjmed.2015.11.037",
+      "title": [
+        "Health Care 2020: The Critical Role of Palliative/Hospice Care in the Reengineering of Health Care Delivery"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-09"
+    },
+    {
+      "doi": "10.1145/2934466.2962733",
+      "title": [
+        "Experiences from reengineering and modularizing a legacy software generator with a projectional language workbench"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 20th International Systems and Software Product Line Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-09"
+    },
+    {
+      "doi": "10.1166/jctn.2016.5493",
+      "title": [
+        "Research on Enterprise Resource Planning Process Reengineering Under Public Supervision of Postal Parcel"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Computational and Theoretical Nanoscience"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-09"
+    },
+    {
+      "doi": "10.1101/cshperspect.a027094",
+      "title": [
+        "Reengineering the Tumor Microenvironment to Alleviate Hypoxia and Overcome Cancer Heterogeneity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cold Spring Harbor Perspectives in Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-12"
+    },
+    {
+      "doi": "10.15587/2312-8372.2016.79982",
+      "title": [
+        "The project management of the building structure reengineering by the limits in all functional areas"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technology audit and production reserves"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.24867/ijiem-2016-3-111",
+      "title": [
+        "Reengineering the Port Equipment Maintenance Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Industrial Engineering and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-09"
+    }
+  ]
+}

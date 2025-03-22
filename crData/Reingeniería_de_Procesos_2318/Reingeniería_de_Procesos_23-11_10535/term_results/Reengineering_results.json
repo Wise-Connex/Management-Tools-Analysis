@@ -1,0 +1,59 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.34925/eip.2023.158.09.166",
+      "title": [
+        "THE ROLE OF INFORMATION TECHNOLOGY IN BUSINESS PROCESS REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Экономика и предпринимательство"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Современный бизнес – это конкурентная среда, требующая от компаний достижения и удержания высоких позиций на рынке и увеличения прибыли. Для этого необходимо обеспечить адаптивность компании и ее взаимодействие с окружающей средой. Это предполагает изменение механизмов и методологии работы компании, в том числе процесса реинжиниринга бизнес-процессов (BRP). BRP включает в себя фундаментальный пересмотр и реструктуризацию бизнес-процессов с целью повышения качества продукции и услуг и увеличения продаж.</jats:p>\n                                                                                            <jats:p>Modern business is a competitive environment that requires companies to achieve and maintain high positions in the market and increase profits. To do this, it is necessary to ensure the adaptability of the company and its interaction with the environment. This involves changing the mechanisms and methodology of the company's work, including the process of business process reengineering (BRP). BRP includes a fundamental revision and restructuring of business processes in order to improve the quality of products and services and increase sales.</jats:p>",
+      "publication_date": "2023-11"
+    },
+    {
+      "doi": "10.18576/isl/121133",
+      "title": [
+        "The Impact of Business Process Reengineering (BPR) on Strategic Performance: A Field Study on Telecommunications Companies in the Republic of Yemen"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Sciences Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-11"
+    },
+    {
+      "doi": "10.54327/set2024/v4.i1.102",
+      "title": [
+        "Challenges, Strategies and Recommendations for Reengineering Engineering Education in Sub-Saharan Africa: A Review"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science, Engineering and Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>With the continent of Africa occupying the front seat of underdevelopment in the world, and its population increasing exponentially, there is an urgent need to come up with strategies to tackle the underdevelopment ravaging the continent and the demand posed by its constantly growing population. Engineering through appropriate engineering education is the answer to these challenges. In this review article, some of the challenges facing engineering education in sub-Saharan Africa such as responsiveness and relevance in the design of the undergraduate curriculum, shortage in the engineering capacity, etc. were studied. The factors that influence engineering education, in general, were also discussed and the strategies that are required for producing engineering graduates capable of taking up the challenges facing the 21st century engineers in the region were highlighted. Lastly, the review presents a guide for future engineering education and recommendations on how to re-engineer engineering education in sub-Saharan Africa to produce engineering graduates who are qualified technically and otherwise.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-981-99-5354-7_10",
+      "title": [
+        "Business Process Reengineering in Public Sector: A Case Study of World Book Fair"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Disruptive Technologies and Digital Transformations for Society 5.0",
+        "Computational Intelligence for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

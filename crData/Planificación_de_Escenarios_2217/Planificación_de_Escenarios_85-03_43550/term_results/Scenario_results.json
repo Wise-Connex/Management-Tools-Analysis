@@ -1,0 +1,47 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2307/2408366",
+      "title": [
+        "Tertiary Speciation Models in Australian Anurans: Molecular Data Challenge Pleistocene Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Evolution"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-03"
+    },
+    {
+      "doi": "10.1016/0370-2693(85)91168-2",
+      "title": [
+        "The forward-backward asymmetry in a composite scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-03"
+    },
+    {
+      "doi": "10.1111/j.1558-5646.1985.tb05670.x",
+      "title": [
+        "TERTIARY SPECIATION MODELS IN AUSTRALIAN ANURANS: MOLECULAR DATA CHALLENGE PLEISTOCENE SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Evolution"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-03"
+    }
+  ]
+}

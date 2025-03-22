@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/wicom.2007.1049",
+      "title": [
+        "Business Process Reengineering Based on Improving Mental Models of Enterprises"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 International Conference on Wireless Communications, Networking and Mobile Computing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-09"
+    },
+    {
+      "doi": "10.1108/14637150710823174",
+      "title": [
+        "Business process reengineering in UAE public sector"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>This paper seeks to reengineer the applications' processes of the Naturalization and Residency Department in Al Ain city and to develop an electronic version of the reengineered processes.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The research approach used in this work is similar to the five‐point redesign process. Also, this work is categorized as incremental as opposed to the radical way of change. The five steps are: establishment of the business vision and objectives; identification and focus on the core business processes that support them; modeling and analysis of the business environment; streamlining; and continuous control and improvement of the previous steps.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>It is believed that the best possible solution for shorter and more efficient processing paths was achieved. Great savings in cost, time and human resources were achieved. Many factors have contributed to the success of the work. These include the efficient reengineered process, efficient database design, search facilities, electronic document archive and easy‐to‐use user interface.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>There were some critical factors that had to be considered. Perhaps, one of the most serious obstacles was the reluctance of some key decision makers to cease or reduce some of their authorities. Those officers believe that a direct supervision or control on the different stages of the processes is essential. Special considerations may be required under certain circumstances and these are only dealt with by key decision makers. The absolute minimum of two approval points model has helped to eliminate those legitimate concerns. Other factors such as reluctance of the users to accept change, job redundancy resulting from the change and financial resources were important but less significant.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The paper is a case study that describes the reengineering processes in the public sector in UAE. This sector suffers from a great deficiency and this work represents a leading step towards improving its working practices. The value of the paper lies in the comprehensive study and analysis of this department and the efficient customized solutions it offered.</jats:p></jats:sec>",
+      "publication_date": "2007-09"
+    },
+    {
+      "doi": "10.1179/174328607x228884",
+      "title": [
+        "Abandoning current faulty budgeting process through information technology and systems reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Mining Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-09"
+    },
+    {
+      "doi": "10.1109/scam.2007.4362901",
+      "title": [
+        "Reengineering Standard Java Runtime Systems through Dynamic Bytecode Instrumentation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Seventh IEEE International Working Conference on Source Code Analysis and Manipulation (SCAM 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-09"
+    },
+    {
+      "doi": "10.1109/scam.2007.20",
+      "title": [
+        "Reengineering Standard Java Runtime Systems through Dynamic Bytecode Instrumentation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Seventh IEEE International Working Conference on Source Code Analysis and Manipulation (SCAM 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-09"
+    }
+  ]
+}

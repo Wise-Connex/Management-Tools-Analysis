@@ -1,0 +1,83 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada289687",
+      "title": [
+        "Automatic Test Scenario Generator (ATSG) User's Manual."
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-07"
+    },
+    {
+      "doi": "10.1086/171482",
+      "title": [
+        "A hydrodynamic treatment of the cold dark matter cosmological scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-07"
+    },
+    {
+      "doi": "10.4271/921247",
+      "title": [
+        "The Effects of a Reduced Pressure Scenario on the Columbus APM Environmental Control System"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/0015732515920202",
+      "title": [
+        "Software Exports-World Scenario and India's Prospects"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Foreign Trade Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-07"
+    },
+    {
+      "doi": "10.1016/0749-5978(92)90038-9",
+      "title": [
+        "Effects of frequency and scenario information on the evaluation of large-scale risks"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Organizational Behavior and Human Decision Processes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-07"
+    },
+    {
+      "doi": "10.1177/107049659200100105",
+      "title": [
+        "The Potential for Reducing Carbon Dioxide Emissions with Modern Energy Technology: An Illustrative Scenario for the Power Sector in China"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Environment &amp; Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> As development and environmental goals become increasingly inte grated in international discourse, practical efforts to generate economic and environmental benefits simultaneously deserve increased attention. The electricity scenario for China presented here suggests thatan expansion of the power sector in China consistent with achieving a high living standard could be brought about over the next half century in ways that offer major environmental benefits, including no increase in CO, emissions from the power sector, at competitive costs. Accomplishing this goal requires that the following six elements be integrated: efficient electricity end-use, hydroelectric power, nuclear power, efficient gas turbine technologies fired with naturalgas, use ofcoal-derived hydrogen in fuel cells,and biomass-integrated gasifier/gas turbine technologies. While modern technology is emphasized, the scenario involves only systems that could be commercialized in the 1990s-no long-term technological possibilities are taken into account. </jats:p>",
+      "publication_date": "1992-07"
+    }
+  ]
+}

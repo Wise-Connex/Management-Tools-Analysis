@@ -1,0 +1,1446 @@
+{
+  "term": "Reengineering",
+  "total_results": 111,
+  "processed_count": 111,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/saner.2018.8330257",
+      "title": [
+        "Reengineering an industrial HMI: Approach, objectives, and challenges"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330185",
+      "title": [
+        "Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330188",
+      "title": [
+        "Sponsors"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0016",
+      "title": [
+        "Notes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0001",
+      "title": [
+        "Acknowledgments"
+      ],
+      "type": "other",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0018",
+      "title": [
+        "Index"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0002",
+      "title": [
+        "Introduction"
+      ],
+      "type": "other",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0017",
+      "title": [
+        "Further Reading"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0013",
+      "title": [
+        "Synthetic Humanity"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330187",
+      "title": [
+        "Organizing committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330183",
+      "title": [
+        "[Front matter]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0019",
+      "title": [
+        "[ Front Matter ]"
+      ],
+      "type": "other",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0005",
+      "title": [
+        "Repositioned Atoms"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0007",
+      "title": [
+        "Artificial Organisms"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.001.0001",
+      "title": [
+        "The Synthetic Age"
+      ],
+      "type": "edited-book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>Imagining a future in which humans fundamentally reshape the natural world using nanotechnology, synthetic biology, de-extinction, and climate engineering.</jats:p>\n               <jats:p>We have all heard that there are no longer any places left on Earth untouched by humans. The significance of this goes beyond statistics documenting melting glaciers and shrinking species counts. It signals a new geological epoch. In The Synthetic Age, Christopher Preston argues that what is most startling about this coming epoch is not only how much impact humans have had but, more important, how much deliberate shaping they will start to do. Emerging technologies promise to give us the power to take over some of Nature's most basic operations. It is not just that we are exiting the Holocene and entering the Anthropocene; it is that we are leaving behind the time in which planetary change is just the unintended consequence of unbridled industrialism. A world designed by engineers and technicians means the birth of the planet's first Synthetic Age.</jats:p>\n               <jats:p>Preston describes a range of technologies that will reconfigure Earth's very metabolism: nanotechnologies that can restructure natural forms of matter; “molecular manufacturing” that offers unlimited repurposing; synthetic biology's potential to build, not just read, a genome; “biological mini-machines” that can outdesign evolution; the relocation and resurrection of species; and climate engineering attempts to manage solar radiation by synthesizing a volcanic haze, cool surface temperatures by increasing the brightness of clouds, and remove carbon from the atmosphere with artificial trees that capture carbon from the breeze.</jats:p>\n               <jats:p>What does it mean when humans shift from being caretakers of the Earth to being shapers of it? And in whom should we trust to decide the contours of our synthetic future? These questions are too important to be left to the engineers.</jats:p>",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330184",
+      "title": [
+        "Author index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0003",
+      "title": [
+        "Key Figures"
+      ],
+      "type": "other",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0012",
+      "title": [
+        "Remixing the Atmosphere"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0006",
+      "title": [
+        "DNA on Demand"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0008",
+      "title": [
+        "Ecosystems to Order"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0014",
+      "title": [
+        "The Transitional Moment"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0004",
+      "title": [
+        "Making New Matter"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0009",
+      "title": [
+        "Relocating and Resurrecting Species"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330186",
+      "title": [
+        "Message from the chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0010",
+      "title": [
+        "The Evolutionary Power of Cities"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0015",
+      "title": [
+        "Afterword: A Postscript on the Wild"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.4324/9780429501074-27",
+      "title": [
+        "Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Defining Public Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.7551/mitpress/11466.003.0011",
+      "title": [
+        "How to Turn Back the Sun"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Synthetic Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330202",
+      "title": [
+        "Mining stackoverflow for program repair"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330191",
+      "title": [
+        "Compilers are sprinters — IDEs are marathoners (keynote)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330251",
+      "title": [
+        "GoldRusher: A miner for rapid identification of hidden code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1016/j.cub.2018.01.042",
+      "title": [
+        "Reengineering the primary body axis by ectopic cWnt signaling"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Current Biology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330221",
+      "title": [
+        "Efficient features for function matching between binary executables"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330199",
+      "title": [
+        "Structured random differential testing of instruction decoders"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330261",
+      "title": [
+        "Diggit: Automated code review via software repository mining"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330249",
+      "title": [
+        "APIDiff: Detecting API breaking changes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330264",
+      "title": [
+        "Re-evaluating method-level bug prediction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330201",
+      "title": [
+        "Automatically repairing dependency-related build breakage"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330253",
+      "title": [
+        "Bring your own coding style"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330230",
+      "title": [
+        "Detection of protection-impacting changes during software evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330196",
+      "title": [
+        "Micro-clones in evolving software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330223",
+      "title": [
+        "How do developers discuss rationale?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330222",
+      "title": [
+        "Using recurrent neural networks for decompilation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330211",
+      "title": [
+        "Using a probabilistic model to predict bug fixes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330228",
+      "title": [
+        "Improving developers awareness of the exception handling policy"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330254",
+      "title": [
+        "FINALIsT<sup>2</sup>: Feature identification, localization, and tracing tool"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330231",
+      "title": [
+        "Mining sandboxes: Are we there yet?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330256",
+      "title": [
+        "RETICULA: Real-time code quality assessment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330190",
+      "title": [
+        "Towards a new digital business operating system: Speed, data, ecosystems, and empowerment (keynote)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330193",
+      "title": [
+        "Design patterns impact on software quality: Where are the theories?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330194",
+      "title": [
+        "Benchmarks for software clone detection: A ten-year retrospective"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330255",
+      "title": [
+        "ChangeMacroRecorder: Recording fine-grained textual changes of source code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330246",
+      "title": [
+        "Generating descriptions for screenshots to assist crowdsourced testing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330263",
+      "title": [
+        "How do scientists develop scientific software? An external replication"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330207",
+      "title": [
+        "Maintaining behaviour driven development specifications: Challenges and opportunities"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330189",
+      "title": [
+        "A decade of software quality analysis in practice: Surprises, anecdotes, and lessons learned (keynote)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330245",
+      "title": [
+        "A comparison of software engineering domain specific sentiment analysis tools"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330214",
+      "title": [
+        "Why and how Java developers break APIs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330250",
+      "title": [
+        "LICCA: A tool for cross-language clone detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330192",
+      "title": [
+        "Ten years of JDeodorant: Lessons learned from the hunt for smells"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330213",
+      "title": [
+        "Classifying stack overflow posts on API issues"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330243",
+      "title": [
+        "Extracting features from requirements: Achieving accuracy and automation with neural networks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330260",
+      "title": [
+        "Fuzz testing in practice: Obstacles and solutions"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330262",
+      "title": [
+        "Duplicate question detection in stack overflow: A reproducibility study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330212",
+      "title": [
+        "Connecting software metrics across versions to predict defects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330236",
+      "title": [
+        "How developers micro-optimize Android apps (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330200",
+      "title": [
+        "Clustering support for inadequate test suite reduction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330216",
+      "title": [
+        "Mining framework usage graphs from app corpora"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330232",
+      "title": [
+        "DeepWeak: Reasoning common software weaknesses via knowledge graph embedding"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330209",
+      "title": [
+        "Automatically exploiting implicit design knowledge when solving the class responsibility assignment problem"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330224",
+      "title": [
+        "Automated quality assessment for crowdsourced test reports of mobile applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330218",
+      "title": [
+        "Supporting exploratory code search with differencing and visualization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330233",
+      "title": [
+        "Towards just-in-time suggestions for log changes (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330229",
+      "title": [
+        "Detecting faulty empty cells in spreadsheets"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330238",
+      "title": [
+        "A comparison framework for runtime monitoring approaches (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330252",
+      "title": [
+        "BECLoMA: Augmenting stack traces with user review information"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330265",
+      "title": [
+        "Keep it simple: Is deep learning good for linguistic smell detection?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330234",
+      "title": [
+        "Which log level should developers choose for a new logging statement? (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330225",
+      "title": [
+        "The impact of refactoring changes on the SZZ algorithm: An empirical study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330259",
+      "title": [
+        "Grammatical inference from data exchange files: An experiment on engineering software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330210",
+      "title": [
+        "Cross-version defect prediction via hybrid active learning with kernel principal component analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.2196/cancer.7515",
+      "title": [
+        "Toward Timely Data for Cancer Research: Assessment and Reengineering of the Cancer Reporting Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JMIR Cancer"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/saner.2018.8330227",
+      "title": [
+        "Automated refactoring of client-side JavaScript code to ES6 modules"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330197",
+      "title": [
+        "SMARTLOG: Place error log statement by deep understanding of log intention"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330203",
+      "title": [
+        "Dissection of a bug dataset: Anatomy of 395 patches from Defects4J"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1111/anti.12390",
+      "title": [
+        "Grabbing Land for Equitable Development? Reengineering Land Dispossession through Securitising Land Development Rights in Chongqing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Antipode"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This article examines the securitisation of land development rights under the dipiao scheme in Chongqing, China. It argues that this instrument is based on the dispossession and exploitation of rural households but these unequal relations have been concealed and naturalised through the complex geographies and temporalities of dispossessory arrangements, financing mechanisms and discursive tactics. By overcoming political barriers to land commodification and dispossession in this way, the Chongqing government has expanded the frontier of commodifiable land and sustained a land‐based, urban‐centric and debt‐financed accumulation. Instead of narrowing the urban–rural divide, this instrument reproduces and solidifies it. On this basis, the article argues that conceptual and political innovations for inclusive and equitable development needs to shift the attention from land to people.</jats:p>",
+      "publication_date": "2018-09"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330226",
+      "title": [
+        "An extensible approach for taming the challenges of JavaScript dead code elimination"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.33479/kurawal.v1i1.91",
+      "title": [
+        "REENGINEERING WEBSITE UNIVERSITAS MA CHUNG MENGGUNAKAN FRAMEWORK “THE PERIODIC TABLE OF SEO SUCCESS FACTORS”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Kurawal - Jurnal Teknologi, Informasi dan Industri"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Dalam upaya memperluas koneksi dan kemitraan dengan berbagai instansi luar, pihak Universitasmembangun sebuah website resmi yang digunakan sebagai media informasi internal kepada pihakeksternal. Namun dalam pembuatan sebuah website tidak hanya melihat dari segi tampilan daninformasinya saja namun keramahan dengan mesin pencari yang kini menjadi salah satu sumberkunjungan terbesar perlu diperhatikan. Search Engine Optimization (SEO) adalah usaha-usaha dalammengoptimasi website terhadap mesin pencari agar mendapatkan peringkat yang lebih baik SERP. Mesinpencari menggunakan algoritma tertentu dalam mengurutkan hasil pencarian yang relevan dengan katakunci. Dengan mempraktekkan SEO itu berarti menyesuaikan website supaya bersahabat denganalgoritma tersebut sekaligus memudahkan mesin pencari dalam merayapi, mengindeks, dan memahamikonten website. Oleh karena itu, perancangan kembali official website Ma Chung dengan menerapkanfaktor-faktor penentu keberhasilan di hasil pencarian dibutuhkan sebagai upaya mengoptimalkan kinerjawebsite terhadap mesin pencari. Reengineering official website Ma Chung ini menggunakan framework“The Periodic Table of SEO Success Factors”.</jats:p>"
+    },
+    {
+      "doi": "10.33479/kurawal.2018.1.1.10-20",
+      "title": [
+        "REENGINEERING WEBSITE UNIVERSITAS MA CHUNG MENGGUNAKAN FRAMEWORK “THE PERIODIC TABLE OF SEO SUCCESS FACTORS”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Kurawal - Jurnal Teknologi, Informasi dan Industri"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Dalam upaya memperluas koneksi dan kemitraan dengan berbagai instansi luar, pihak Universitasmembangun sebuah website resmi yang digunakan sebagai media informasi internal kepada pihakeksternal. Namun dalam pembuatan sebuah website tidak hanya melihat dari segi tampilan daninformasinya saja namun keramahan dengan mesin pencari yang kini menjadi salah satu sumberkunjungan terbesar perlu diperhatikan. Search Engine Optimization (SEO) adalah usaha-usaha dalammengoptimasi website terhadap mesin pencari agar mendapatkan peringkat yang lebih baik SERP. Mesinpencari menggunakan algoritma tertentu dalam mengurutkan hasil pencarian yang relevan dengan katakunci. Dengan mempraktekkan SEO itu berarti menyesuaikan website supaya bersahabat denganalgoritma tersebut sekaligus memudahkan mesin pencari dalam merayapi, mengindeks, dan memahamikonten website. Oleh karena itu, perancangan kembali official website Ma Chung dengan menerapkanfaktor-faktor penentu keberhasilan di hasil pencarian dibutuhkan sebagai upaya mengoptimalkan kinerjawebsite terhadap mesin pencari. Reengineering official website Ma Chung ini menggunakan framework“The Periodic Table of SEO Success Factors”.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330242",
+      "title": [
+        "Spreadsheet guardian: An approach to protecting semantic correctness throughout the evolution of spreadsheets (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330206",
+      "title": [
+        "How good is your puppet? An empirically defined and validated quality model for puppet"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330220",
+      "title": [
+        "A deep neural network language model with contexts for source code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330215",
+      "title": [
+        "Mining accurate message formats for service APIs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330198",
+      "title": [
+        "Exploring the integration of user feedback in automated testing of Android applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330266",
+      "title": [
+        "Detecting code smells using machine learning techniques: Are we there yet?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330240",
+      "title": [
+        "A mapping study on design-time quality attributes and metrics (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330205",
+      "title": [
+        "How do developers fix issues and pay back technical debt in the Apache ecosystem?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330258",
+      "title": [
+        "Model-based software restructuring: Lessons from cleaning up COM interfaces in industrial legacy code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330195",
+      "title": [
+        "Context is king: The developer perspective on the usage of static analysis tools"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330204",
+      "title": [
+        "Detecting third-party libraries in Android applications with high precision and recall"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330208",
+      "title": [
+        "Recursion aware modeling and discovery for hierarchical software event log analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330248",
+      "title": [
+        "The Statechart Workbench: Enabling scalable software event log analysis using process mining"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330219",
+      "title": [
+        "Syntax and sensibility: Using language models to detect and correct syntax errors"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330237",
+      "title": [
+        "The relationship between evolutionary coupling and defects in large industrial software (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330217",
+      "title": [
+        "A generalized model for visualizing library popularity, adoption, and diffusion within a software ecosystem"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330241",
+      "title": [
+        "Review participation in modern code review: An empirical study of the Android, Qt, and OpenStack projects (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330244",
+      "title": [
+        "OctoBubbles: A Multi-view interactive environment for concurrent visualization and synchronization of UML models and code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330239",
+      "title": [
+        "Modularity and architecture of PLC-based software for automated production systems: An analysis in industrial companies (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.21739/ibr.2018.03.22.1.135",
+      "title": [
+        "A Case Study on the Application of Global Logistic Service Cost Management System by BPR(Business Process Reengineering)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INTERNATIONAL BUSINESS REVIEW"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330235",
+      "title": [
+        "A study of the relation of mobile device attributes with the user-perceived quality of Android apps (journal-first abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    },
+    {
+      "doi": "10.1109/saner.2018.8330247",
+      "title": [
+        "Reconciling the past and the present: An empirical study on the application of source code transformations to automatically rejuvenate Java programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 IEEE 25th International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-03"
+    }
+  ]
+}

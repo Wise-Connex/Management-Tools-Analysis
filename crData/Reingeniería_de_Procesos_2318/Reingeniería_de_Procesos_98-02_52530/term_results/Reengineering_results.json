@@ -1,0 +1,32 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada345714",
+      "title": [
+        "Reengineering DoD Installation Infrastructure"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-02"
+    },
+    {
+      "doi": "10.1145/269012.269020",
+      "title": [
+        "Reengineering inspection"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communications of the ACM"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-02"
+    }
+  ]
+}

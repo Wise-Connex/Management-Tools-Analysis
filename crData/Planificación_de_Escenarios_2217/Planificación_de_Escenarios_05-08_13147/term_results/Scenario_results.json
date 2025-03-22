@@ -1,0 +1,408 @@
+{
+  "term": "Scenario",
+  "total_results": 31,
+  "processed_count": 31,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1201/9780203025581",
+      "title": [
+        "Scenario Innovation"
+      ],
+      "type": "reference-book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1201/9780203025581-11",
+      "title": [
+        "Integrated Visions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Scenario Innovation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1201/9780203025581-7",
+      "title": [
+        "The Experimental Garden"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Scenario Innovation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1201/9780203025581-9",
+      "title": [
+        "The VISIONS Approach"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Scenario Innovation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1201/9780203025581-8",
+      "title": [
+        "The Global Context"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Scenario Innovation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1201/9780203025581-10",
+      "title": [
+        "Regional and European Scenarios"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Scenario Innovation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1201/9780203025581-12",
+      "title": [
+        "Experiences from an Experimental Garden"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Scenario Innovation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1201/9781420037845-26",
+      "title": [
+        "Urban Scenario Modeling and Forecast for Sustainable Urban and Regional Planning"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "GIS for Sustainable Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1142/9789812701657_0011",
+      "title": [
+        "Beyond Inflation: A Cyclic Universe Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "String Theory and Cosmology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1029/2005gl023383",
+      "title": [
+        "Simulated change of the east Asian circulation under global warming scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geophysical Research Letters"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Changes in east Asian circulation pattern are investigated by the most recent versions of coupled climate models, one a high resolution version of the CCSR/NIES/FRCGC model and the other an ensemble of 17 state‐of‐the‐art models made available by the international modeling community. These recent model results appear to give more credence to the following aspects: weakened winter monsoon associated with the shallower and northeastward shifted planetary wave trough over the east coast of the Eurasian Continent and increased activity of east Asian monsoonal rain band in summer associated with the strengthening of anticyclonic cells to its south and north.</jats:p>",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1063/1.2012067",
+      "title": [
+        "Hierarchy of beam plasma instabilities up to high beam densities for fast ignition scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics of Plasmas"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The hierarchy of electromagnetic instabilities suffered by a relativistic electron beam passing through a plasma is investigated. The fluid approximation is used and beam densities up to the plasma one are considered. The hierarchy between instabilities is established in terms of two parameters only: the beam relativistic factor and the ratio nb∕np of the beam density to the plasma one. It is found that for nb∕np≲0.53, the most unstable modes are a mix between filamentation and two-stream instabilities. Beyond this limit, filamentation instability may dominate, depending on the beam relativistic factor. The largest growth rates are found for a beam density slightly smaller than the plasma one.</jats:p>",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1201/9780849330513.ch19",
+      "title": [
+        "Urban Scenario Modeling and Forecast for Sustainable Urban and Regional Planning"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "GIS for Sustainable Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1017/s0263034605219997",
+      "title": [
+        "Mitigation of electromagnetic instabilities in fast ignition  scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Laser and Particle Beams"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1201/9781420037845.ch19",
+      "title": [
+        "Urban Scenario Modeling and Forecast for Sustainable Urban and Regional Planning"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "GIS for Sustainable Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1016/j.futures.2004.10.020",
+      "title": [
+        "Whether the weather: comments on ‘An abrupt climate change scenario and its implications for United States national security’"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1016/j.physletb.2005.06.083",
+      "title": [
+        "A predictive seesaw scenario for EDMs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1016/j.envsoft.2004.09.012",
+      "title": [
+        "A DSS for water resources management under uncertainty by scenario analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Modelling &amp; Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1287/moor.1050.0146",
+      "title": [
+        "The Scenario Generation Algorithm for Multistage Stochastic Linear Programming"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Mathematics of Operations Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> A multistage stochastic linear program (MSLP) is a model of sequential stochastic optimization where the objective and constraints are linear. When any of the random variables used in the MSLP are continuous, the problem is infinite dimensional. To numerically tackle such a problem, we usually replace it with a finite-dimensional approximation. Even when all the random variables have finite support, the problem is often computationally intractable and must be approximated by a problem of smaller dimension. One of the primary challenges in the field of stochastic programming deals with discovering effective ways to evaluate the importance of scenarios and to use that information to trim the scenario tree in such a way that the solution to the smaller optimization problem is not much different from the problem stated with the original tree. The scenario generation (SG) algorithm proposed in this paper is a finite-element method that addresses this problem for the class of MSLP with random right-hand sides. </jats:p>",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1086/431277",
+      "title": [
+        "Testing the Massive Disk Scenario for IRAS 18089−1732"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1143/jpsj.74.2223",
+      "title": [
+        "Bifurcation Scenario to Nikolaevskii Turbulence in Small Systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Physical Society of Japan"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1287/trsc.1040.0097",
+      "title": [
+        "A Scenario Aggregation–Based Approach for Determining a Robust Airline Fleet Composition for Dynamic Capacity Allocation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Recently, airlines and aircraft manufacturers have realized the benefits of the emerging concept of dynamic capacity allocation, and have initiated advanced decision support systems to assist them in this respect. Strategic airline fleet planning is one of the major issues addressed through such systems. We present background research connected with the dynamic allocation concept, which accounts explicitly for the stochastic nature of passenger demand in the fleet composition problem. We address this problem through a scenario aggregation–based approach and present results on representative case studies based on realistic data. Our investigations establish clear benefits of a stochastic approach as compared with deterministic formulations, as well as its implementation feasibility using state-of-the-art optimization software. </jats:p>",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1007/s00146-005-0337-2",
+      "title": [
+        "The narrative aspect of scenario building - How story telling may give people a memory of the future"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AI &amp; SOCIETY"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.2166/wst.2005.0093",
+      "title": [
+        "Coupling the SHARON process with Anammox: Model-based scenario analysis with focus on operating costs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Water Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The combined SHARON-Anammox process for treating wastewater streams with high ammonia concentration is discussed. Partial nitritation in the SHARON reactor should be performed to such an extent that an Anammox-optimal nitrite:ammonium ratio is generated. The SHARON process is typically applied to sludge digestion rejection water in order to relieve the ammonium load recycled to the main plant.A simulation study for realistic influent conditions on a SHARON reactor with a fixed volume and operated with constant air flow rate reveals that the actual nitrite:ammonium ratio might deviate significantly from the ideal ratio and might endanger operation of the subsequent Anammox reactor. It is further examined how the nitrite:ammonium ratio might be optimized. A cascade pH control strategy and a cascade O2 control strategy are tested. Simulation results are presented and the performance of the different strategies is assessed and quantified in an economic way by means of an operating cost index. Best results are obtained by means of cascade feedback control of the SHARON effluent nitrite:ammonium ratio through setting an O2-set-point that is tracked by adjusting the air flow rate.</jats:p>",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1140/epjc/s2005-02294-9",
+      "title": [
+        "Probing the light neutral Higgs boson scenario of the CP-violating MSSM Higgs sector at the LHC"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The European Physical Journal C"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.13182/fst05-a975",
+      "title": [
+        "Development and Validation of an Atmospheric Dispersion Model for Tritium Using the IAEA Biomass Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1007/s00170-004-2152-1",
+      "title": [
+        "Tool planning in the scenario of multiple existing semiconductor fabs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The International Journal of Advanced Manufacturing Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.2190/jxm7-787u-7234-1g72",
+      "title": [
+        "Experimental Investigation of Burning Scenario of Loaded 3.49-Ton Pickup Trucks"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Fire Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1007/s10163-004-0130-1",
+      "title": [
+        "Risk evaluation with waste scenario: lead emissions in solder waste treatment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Material Cycles and Waste Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1068/b31109",
+      "title": [
+        "Use of a Collaborative GIS-Based Planning-Support System to Assist in Formulating a Sustainable-Development Scenario for Hervey Bay, Australia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environment and Planning B: Planning and Design"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Planning-support systems offer an effective way of integrating social, economic, and environmental datasets, enabling a number of holistic spatial planning scenarios to be generated and evaluated by local planners. With increased acceptance of computer technology as a platform for the development and delivery of professional tools, planning-support systems (PSSs) may well be embraced by practitioners to improve current practices, just as computer-aided design (CAD) has been widely accepted by architects as a useful design and visualisation tool. There is some perceived optimism, (or realism?) that this may be the case sooner rather than later. It is believed that ‘What if?’ is one such PSS which is suitable for enhancing current planning practice. The author provides a technical and experiential examination of an application of the What if? PSS in assisting in the formulation of a sustainable land use strategy for Hervey Bay, Australia, supplementing previous published results. The focus of the research is to examine the underlying model and discuss the collaborative application of the PSS with local planners in a scenario-building exercise. Furthermore, the perceived strengths and weaknesses of the PSS are outlined from the perspective of the urban modeller, together with ex-ante feedback from the local planners on the use of the PSS to formulate urban-growth scenarios. In conclusion, the merits of the use of such a PSS are discussed and some future directions for the development of collaborative spatial decision-support tools are offered. </jats:p>",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1007/s11269-005-3277-1",
+      "title": [
+        "Development and Application of an Integrated Water Balance Model to Study the Sensitivity of the Tokyo Metropolitan Area Water Availability Scenario to Climatic Changes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Water Resources Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1177/095574900501700206",
+      "title": [
+        "National Policy for Library and Information Systems and Services in India: The New Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Alexandria: The Journal of National and International Library and Information Issues"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> India has had a long history of Library and Information Services. However, due to the hierarchical social structure and the colonial past, Indian Library and Information Systems and Services (LISS) have mainly catered to the elite minority. The post-independence policies of the government have gradually changed this scenario and the LISS have become much more broad-based and people-oriented. The paper deals with the historical background of policy formulation in India, which has positively affected LISS in different ways to cope with the new environment and new expectations of the users. It also spells out the details of the National Policy on Library and Information Services (NAPLIS) and the need for a more holistic New Information Policy. Such a policy will have to deal with all the related fields and IT-oriented activities, which will give LISS the much needed direction to steer India to become an information-oriented society. </jats:p>",
+      "publication_date": "2005-08"
+    }
+  ]
+}

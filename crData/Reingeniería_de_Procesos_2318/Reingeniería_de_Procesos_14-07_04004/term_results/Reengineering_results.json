@@ -1,0 +1,85 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/1762056",
+      "title": [
+        "IDC Reengineering Phase 2 Inception Iteration I1 Agenda"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-07"
+    },
+    {
+      "doi": "10.4028/www.scientific.net/amr.989-994.2336",
+      "title": [
+        "The Effect of Enterprise Business Process Reengineering Fuzzy Comprehensive Evaluation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advanced Materials Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This paper analyzed the mechanism of the Enterprise business process reengineering (BPR) to study the performance of the development process, Determined the importance of process cost, process, quality, customer satisfaction to process performance, and on this basis, further established the effect factors layer of process reengineering evaluation index system and build the enterprise develop business process reengineering effect evaluation system. Finally, this article determine the weight of each evaluation index based on the attribute hierarchical model and empirical analyses by using fuzzy comprehensive evaluation method.</jats:p>"
+    },
+    {
+      "doi": "10.1109/fuzz-ieee.2014.6891569",
+      "title": [
+        "Reengineering fuzzy nested relational databases into fuzzy XML model"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 IEEE International Conference on Fuzzy Systems (FUZZ-IEEE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-07"
+    },
+    {
+      "doi": "10.4018/978-1-4666-5888-2.ch329",
+      "title": [
+        "Health Information Technology and Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Information Quality and Management",
+        "Encyclopedia of Information Science and Technology, Third Edition"
+      ],
+      "subject": [],
+      "abstract": "<jats:p />",
+      "publication_date": "2014-07"
+    },
+    {
+      "doi": "10.1117/12.2060918",
+      "title": [
+        "Reengineering observatory operations for the time domain"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Observatory Operations: Strategies, Processes, and Systems V"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-07"
+    },
+    {
+      "doi": "10.12709/fbim.02.02.02.32",
+      "title": [
+        "EFFECTIVE STRATEGY TO IMPROVE BUSINESS PROCESSES USING BUSINESS PROCESS REENGINEERING METHOD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "FBIM Transactions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-07"
+    }
+  ]
+}

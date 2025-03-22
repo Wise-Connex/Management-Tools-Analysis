@@ -1,0 +1,188 @@
+{
+  "term": "Scenario",
+  "total_results": 14,
+  "processed_count": 14,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1103/physreve.61.6971",
+      "title": [
+        "Unsupervised learning of binary vectors: A Gaussian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review E"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1029/00eo00181",
+      "title": [
+        "Confluence of natural hazards: A possible scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Eos, Transactions American Geophysical Union"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>As society considers hazards that may affect human populations on a large scale, it is best to avoid the Chicken Little syndrome. Overreaction will serve no useful purpose. On the other hand, we should also recognize the increasing vulnerability that our society faces as it builds up dependencies on highly complex, and highly interconnected, technologies.</jats:p>",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1016/s0370-2693(00)00538-4",
+      "title": [
+        "Cosmology in the Randall–Sundrum brane world scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1016/s1474-6670(17)39867-1",
+      "title": [
+        "Robust Estimation for Uncertain Models in a Data Fusion Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1093/imammb/17.2.95",
+      "title": [
+        "Three-stage AIDS incubation period: a best case scenario using addict-needle interaction assumptions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Mathematical Medicine and Biology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1093/imammb17.2.95",
+      "title": [
+        "Three-stage AIDS incubation period: a best case scenario using addict-needle interaction assumptions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Mathematical Medicine and Biology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1143/ptp.103.1227",
+      "title": [
+        "Four-Dimensional Planck Scale Is Not Universal in Fifth Dimension in Randall-Sundrum Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Progress of Theoretical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1109/4233.845202",
+      "title": [
+        "A medical digital library to support scenario and user-tailored information retrieval"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Information Technology in Biomedicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1103/physrevd.62.023512",
+      "title": [
+        "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>Q</mml:mi></mml:math>-ball formation in the gravity-mediated SUSY breaking scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3152/147154600781767493",
+      "title": [
+        "A policy scenario analysis of sustainable agricultural development options: a case study for Nepal"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Impact Assessment and Project Appraisal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1016/s0168-1699(00)00109-5",
+      "title": [
+        "TELSA: the Tool for Exploratory Landscape Scenario Analyses"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers and Electronics in Agriculture"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1029/1999ja000415",
+      "title": [
+        "A scenario covering all phases of nightside convection with the roles of ion drifts and reconnection determined from the observed field‐aligned currents"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Geophysical Research: Space Physics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The rate of transfer of magnetic flux into the nightside dipole‐like region is a function of the field‐aligned current (FAC) intensity and <jats:italic>N</jats:italic><jats:sub><jats:italic>t</jats:italic></jats:sub>–<jats:italic>N</jats:italic><jats:sub><jats:italic>d</jats:italic></jats:sub>, where <jats:italic>N</jats:italic><jats:sub><jats:italic>t</jats:italic></jats:sub> and <jats:italic>N</jats:italic><jats:sub><jats:italic>d</jats:italic></jats:sub> are the total number of plasma sheet ions on flux tubes in the near‐Earth tail and just inside the dipole‐like region. In addition, for slowly varying convection, the FAC intensity is a function of the magnetic flux in the tail. The above two relationships provide the basis for a scenario for convection. Convection bays and steady state occur if there is an ample supply of flux tubes with a small value of <jats:italic>N</jats:italic><jats:sub><jats:italic>t</jats:italic></jats:sub> in the near‐Earth tail. The growth phase occurs when a major increase in dayside reconnection leads to an increase in the amount of tail flux, which in turn causes increased convection into the nightside dipolar region. The plasma sheet thins until the predipolarization phase starts (reconnection or some similar process). The reconnection provides magnetic flux with reduced <jats:italic>N</jats:italic><jats:sub><jats:italic>t</jats:italic></jats:sub>, and also produces a change in the field‐aligned currents, both of which increase the dipolarization rate after electrical coupling with the ionosphere is established. At that time, either a pseudobreakup or a substorm onset will occur. The recovery phase is a convection toward a steady state, in which the plasma undergoes redistribution in latitude, local time, radial distance, and energy. It can be either fairly localized or magnetosphere‐wide, depending on the changes that have occurred in the dayside reconnection rate.</jats:p>",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1088/0954-3899/26/8/303",
+      "title": [
+        "Renormalization-group effects on scenario with nearly degenerate neutrino masses and bi-maximal mixing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics G: Nuclear and Particle Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-08"
+    },
+    {
+      "doi": "10.1088/0029-5515/40/6/320",
+      "title": [
+        "Status of advanced tokamak scenario modelling with off-axis electron cyclotron current drive in DIII-D"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Fusion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    }
+  ]
+}

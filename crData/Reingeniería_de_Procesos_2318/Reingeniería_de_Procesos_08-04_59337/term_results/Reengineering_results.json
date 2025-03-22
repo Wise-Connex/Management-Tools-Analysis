@@ -1,0 +1,800 @@
+{
+  "term": "Reengineering",
+  "total_results": 61,
+  "processed_count": 61,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/csmr.2008.4493308",
+      "title": [
+        "Reengineering Idiomatic Exception Handling in Legacy C Code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493293",
+      "title": [
+        "Software Maintenance and Reengineering in the Days of Software Agents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493322",
+      "title": [
+        "A Systematic Literature Review of Approaches to Reengineering for Multi-Channel Access"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493338",
+      "title": [
+        "CSMR Tool Demonstration: Welcome"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493333",
+      "title": [
+        "Industrial Track Session¿Introduction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493331",
+      "title": [
+        "Automatic Support for the Migration Towards Aspects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493306",
+      "title": [
+        "Training and Certifying Software Maintainers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493343",
+      "title": [
+        "SMART Tool Demonstration"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493318",
+      "title": [
+        "Backtracking Incremental Continuous Integration"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493344",
+      "title": [
+        "CSMR 2008 Workshop Introduction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493294",
+      "title": [
+        "Metamodels Taken Seriously: The TGraph Approach"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493317",
+      "title": [
+        "How Lisp Systems Look Different"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493330",
+      "title": [
+        "Modularity-Oriented Refactoring"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493325",
+      "title": [
+        "Do Design Patterns Impact Software Quality Positively?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493298",
+      "title": [
+        "Aligning Software Maintenance to the Offshore Reality"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493334",
+      "title": [
+        "Outline of an SLA Management Model"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493295",
+      "title": [
+        "A Flexible Framework to Support Collaborative Software Evolution Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493315",
+      "title": [
+        "Extracting Domain Ontologies from Domain Specific APIs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493326",
+      "title": [
+        "Visual Detection of Design Anomalies"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493347",
+      "title": [
+        "SASE 2008: First Workshop on Self-Adaptive Software Engineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493332",
+      "title": [
+        "Traceability Management meets Information Retrieval Methods ¿Strengths and Limitations¿"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1108/14637150810864916",
+      "title": [
+        "Determinants of Bahraini managers' acceptance of business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>This paper aims to examine the possible underlying factors that influence managers' intentions towards adopting business process reengineering (BPR) in a less‐developed country (LDC) context, namely Bahrain.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The study used a survey method to elicit opinions from 104 managers from 14 different big Bahraini businesses.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The results showed that the existence of some organizational capabilities such as “effective project management experiences” and “the ability to build an organizational‐wide need for change” are important requisites to gain positive salient beliefs toward accepting BPR. Moreover, it showed that “managers' cognitive style” and “level of education” had significant influences on their “intentions to adopt BPR approach.” The findings also suggest that other external factors such as “competitive pressures” and “managers' beliefs about BPR” are significant antecedents to BPR perceived ease of use.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>Conclusions are drawn about BPR experiences in countries such as Bahrain. Those experiences are compared and contrasted with the related prior studies, which are mainly from western countries' practices. Possible future research issues are raised to extend the author understanding of how BPR initiatives are promoted in organizations. However, the sample was limited to one LDC, which limits the possibility of generalizing its findings to all less‐developed countries.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The study provides insights into the required organizational capabilities, circumstances, and/or beliefs that ease promoting BPR initiatives in businesses. Accordingly, possible‐related strategies can be devised to enhance BPR practices in organizations.</jats:p></jats:sec>",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493339",
+      "title": [
+        "SOLIDFX: An Integrated Reverse Engineering Environment for C++"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493314",
+      "title": [
+        "Using Dataflow Information for Concern Identification in Object-Oriented Software Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493323",
+      "title": [
+        "Use Case Redocumentation from GUI Event Traces"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493307",
+      "title": [
+        "Decision Reuse in an Interactive Model Transformation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493336",
+      "title": [
+        "Supporting Language Conversion by Metric Based Reports"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493342",
+      "title": [
+        "JDeodorant: Identification and Removal of Type-Checking Bad Smells"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.3390/jtaer3010004",
+      "title": [
+        "Reengineering, Simulation and Data Analysis of an RFID System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Theoretical and Applied Electronic Commerce Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>We present a discrete event simulation model reproducing the adoption of Radio Frequency Identification (RFID) technology for the optimal management of common logistics processes of a Fast Moving Consumer Goods (FMCG) warehouse. In this study, simulation is exploited as a powerful tool to replicate both the reengineered RFID logistics processes and the flows of Electronic Product Code (EPC) data generated by such processes. Moreover, a complex tool has been developed to analyze data resulting from the simulation runs, thus addressing the issue of how the flows of EPC data generated by RFID technology can be exploited to provide value-added information for optimally managing the logistics processes. Specifically, an EPCIS compliant Data Warehouse has been designed to act as EPCIS Repository and store EPC data resulting from simulation. Starting from EPC data, properly designed tools, referred to as Business Intelligence Modules, provide value-added information for processes optimization. Due to the newness of RFID adoption in the logistics context and to the lack of real case examples that can be examined, we believe that both the model and the data management system developed can be very useful to understand the practical implications of the technology and related information flow, as well as to show how to leverage EPC data for process management. Results of the study can provide a proof-of-concept to substantiate the adoption of RFID technology in the FMCG industry.</jats:p>"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493304",
+      "title": [
+        "Reverse Engineering Software-Models of Component-Based Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1016/j.cad.2007.12.003",
+      "title": [
+        "Product interface reengineering using fuzzy clustering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer-Aided Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493320",
+      "title": [
+        "Using Architectural Models to Predict the Maintainability of Enterprise Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493300",
+      "title": [
+        "Goto Elimination Strategies in the Migration of Legacy Code to Java"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493319",
+      "title": [
+        "Quantifying Maintainability in Feature Oriented Product Lines"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493297",
+      "title": [
+        "Module Reload through Dynamic Update - The Case of NetBeans"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493299",
+      "title": [
+        "Architecture Compliance Checking - Experiences from Successful Technology Transfer to Industry"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493302",
+      "title": [
+        "Trend Analysis and Issue Prediction in Large-Scale Open Source Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493309",
+      "title": [
+        "Towards a Benchmark for Evaluating Design Pattern Miner Tools"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493340",
+      "title": [
+        "A Tool for Optimizing the Build Performance of Large Software Code Bases"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493335",
+      "title": [
+        "Experiences in Adapting a Source Code-Based Quality Assessment Technology"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493321",
+      "title": [
+        "Towards Recovering Architectural Concepts Using Latent Semantic Indexing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493348",
+      "title": [
+        "CSMR 2008 Workshop Overview for MoDSE: 2<sup>nd</sup> Workshop on Model-Driven Software Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493305",
+      "title": [
+        "Understanding the Impact of Distribution in Object-Oriented Distributed Systems Using Structural Program Dependencies"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493329",
+      "title": [
+        "Reverse Engineering of Aspect Oriented Systems to Support their Comprehension, Evolution, Testing and Assessment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493345",
+      "title": [
+        "SOAM 2008: 2nd Workshop on SOA-Based Systems Maintenance and Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493341",
+      "title": [
+        "Hecataeus: A What-If Analysis Tool for Database Schema Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1080/1097198x.2008.10856469",
+      "title": [
+        "Information Systems Reengineering and Integration"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Global Information Technology Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493327",
+      "title": [
+        "Comparing \"Traditional\" and Web Specific Fit Tables in Maintenance Tasks: A Preliminary Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493296",
+      "title": [
+        "Wrapper-based System Evolution Application to CODASYL to Relational Migration"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493337",
+      "title": [
+        "Coping with Requirements Changes in Software Verification and Validation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1016/j.ijinfomgt.2007.06.001",
+      "title": [
+        "Reengineering systems in general practice—A case study review"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Information Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493316",
+      "title": [
+        "Package Reference Fingerprint: a Rich and Compact Visualization to Understand Package Relationships"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493324",
+      "title": [
+        "Quality-Driven Extraction of a Component-based Architecture from an Object-Oriented System"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493303",
+      "title": [
+        "Test Blueprints¿ Exposing Side Effects in Execution Traces to Support Writing Unit Tests"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493301",
+      "title": [
+        "Interpretation of Source Code Clusters in Terms of the ISO/IEC-9126 Maintainability Characteristics"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493311",
+      "title": [
+        "Supporting the Grow-and-Prune Model in Software Product Lines Evolution Using Clone Detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493313",
+      "title": [
+        "On the Maintainability of Aspect-Oriented Software: A Concern-Oriented Measurement Framework"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1016/j.jss.2007.06.001",
+      "title": [
+        "Guest Editor’s Introduction: 10th Conference on Software Maintenance and Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Systems and Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493312",
+      "title": [
+        "Assessing the Support of ER and UML Class Diagrams during Maintenance Activities on Data Models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1213/ane.0b013e318165e05e",
+      "title": [
+        "Reengineering Fast-Track Anesthesia: The Expanding Role of Anesthesiologists in Perioperative Medical Care Meeting in Abano Terme, Padova, Italy, on June 19–20, 2007"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Anesthesia &amp; Analgesia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1109/csmr.2008.4493310",
+      "title": [
+        "Splitting a Large Software Archive for Easing Future Software Evolution - An Industrial Experience Report using Formal Concept Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 12th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-04"
+    }
+  ]
+}

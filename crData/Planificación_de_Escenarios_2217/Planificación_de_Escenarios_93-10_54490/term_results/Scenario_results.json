@@ -1,0 +1,47 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1086/191831",
+      "title": [
+        "An evolutionary scenario for primeval stellar populations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal Supplement Series"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-10"
+    },
+    {
+      "doi": "10.1038/nbt1093-1173",
+      "title": [
+        "A Win-Win Scenario for Natural Resource Access"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nature Biotechnology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-10"
+    },
+    {
+      "doi": "10.1080/12265089308422822",
+      "title": [
+        "Equalization of income in a unified Korea: A scenario approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of East and West Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-10"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0016-3287(81)90104-x",
+      "title": [
+        "Scenario probability scaling: an eigenvector analysis of elicited scenario odds ratios"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1981-12"
+    },
+    {
+      "doi": "10.1117/12.932767",
+      "title": [
+        "&lt;title&gt;Multi-Imagery Exploitation System (MIES) Tactical Scenario Analysis&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Airborne Reconnaissance V"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1981-12"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1145/958844.958850",
+      "title": [
+        "Scenario reality planning: review of The future of consensus-formation technology utilization in a normative governmental planning support system environment by R. H. Martin"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGCAS Computers and Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1976-09"
+    }
+  ]
+}

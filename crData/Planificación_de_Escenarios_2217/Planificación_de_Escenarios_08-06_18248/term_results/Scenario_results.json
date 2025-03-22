@@ -1,0 +1,772 @@
+{
+  "term": "Scenario",
+  "total_results": 59,
+  "processed_count": 59,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/j.cor.2006.10.013",
+      "title": [
+        "Scenario relaxation algorithm for finite scenario-based min–max regret and min–max relative regret robust optimization"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Operations Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1177/1523422308316456",
+      "title": [
+        "Using Scenarios to Develop Crisis Managers: Applications of Scenario Planning and Scenario-Based Training"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Developing Human Resources"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The problem and the solution. Since the events of September 11, 2001, and Hurricane Katrina during the summer of 2005, the words crisis and disaster evoke images of families stranded on causeways turned islands, surrounded by what little property they could carry; houses smashed by killing winds; and skyscrapers crumbling out of the sky. Disastrous events, such as fires, tornadoes, hurricanes, terrorist incidents, and chemical spills, cause the loss of resources, destruction of property, financial hardship, and death. During these events, local, state, and federal governments commit large numbers of resources, time, and money to mitigate the consequences of the disaster.To manage the response to these events, leaders of public safety organizations and agencies such as fire and police departments, emergency medical services, and health-care organizations, public works departments, private industry, and nongovernmental organizations (NGOs) descend on the disaster site.These leaders are required to make high consequence decisions with incomplete or inaccurate information, ill-defined goals, and the pressures of time and a constantly changing situation by drawing on their training and experience. This article positions scenario planning and scenario-based training as two cutting-edge methods for organizational leaders to understand better their environments so as to avoid disastrous events and to put in place efficient and effective plans for coping if disaster should strike. </jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1109/icpc.2008.42",
+      "title": [
+        "Scenario-Based Comparison of Clone Detection Techniques"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 16th IEEE International Conference on Program Comprehension"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.15396/eres2008_153",
+      "title": [
+        "THE SCENARIO OF A MORTGAGE CRISIS IN AN EASTERN EUROPEAN COUNTRY"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Book of Abstracts: 15th Annual European Real Estate Society Conference - Krakow, Poland"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1038/laban0608-244a",
+      "title": [
+        "Response to Protocol Review Scenario: Is the deviation significant?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1109/ew.2008.4623913",
+      "title": [
+        "Raising coverage and capacity using fixed relays in a realistic scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 14th European Wireless Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1145/1391469.1391710",
+      "title": [
+        "Automated hardware-independent scenario identification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 45th annual Design Automation Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1038/laban0608-244b",
+      "title": [
+        "Response to Protocol Review Scenario: IACUC should develop policies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1007/s00268-008-9634-5",
+      "title": [
+        "Trauma Care in India: Current Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "World Journal of Surgery"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Trauma‐care systems in India are at a nascent stage of development. Industrialized cities, rural towns, and villages coexist with a variety of health care facilities and an almost complete lack of organized trauma care. There is gross disparity between trauma services available in various parts of the country. Rural India has inefficient services for trauma care, due to the varied topography, financial constraints, and lack of appropriate health infrastructure. There is no national lead agency to coordinate various components of a trauma system. No mechanism for accreditation of trauma centers and professionals exists. Education in trauma life‐support skills has only recently become available. A nationwide survey encompassing various facilities has documented significant deficiencies in current trauma systems. Some initiatives on improving prehospital systems have been seen recently. Although injury is a major public‐health problem, the government, medical fraternity, and the society are yet to recognize it as a significant public health challenge.</jats:p>",
+      "publication_date": "2008-08"
+    },
+    {
+      "doi": "10.1038/laban0608-243b",
+      "title": [
+        "Response to Protocol Review Scenario: Communication is the key"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1177/0973217920080202",
+      "title": [
+        "Current scenario of neonatal nursing in India and the way forward"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Neonatology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1149/2.f04082if",
+      "title": [
+        "Metal Corrosion in the Human Body: The Ultimate Bio-Corrosion Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Electrochemical Society Interface"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>It is not something one usually thinks about until it becomes a personal health issue for most of us. That is, the need for the implantation of a medical device (Fig. 1) to improve our existing medical condition. The majority of these devices are made of a metal alloy, and for most of us, any concerns about corrosion implications from these implants are secondary to the relief we feel from the anticipated beneficial effect these devices are designed to have.</jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1209/0295-5075/82/61001",
+      "title": [
+        "New contribution to dimension-five operators on proton decay in anomaly mediation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EPL (Europhysics Letters)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1142/9789812779885_0015",
+      "title": [
+        "A SCENARIO FOR STUDYING OFF-AXIS VORTICES IN BOSE-EINSTEIN CONDENSATES"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Recent Progress in Many-Body Theories"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1109/policy.2008.26",
+      "title": [
+        "Policy-Governed Information Exchange in a U.S. Army Operational Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE Workshop on Policies for Distributed Systems and Networks"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1016/s1441-3582(08)70004-1",
+      "title": [
+        "Service Quality: Insights from the Indian Banking Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Australasian Marketing Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The Indian banking industry is going through turbulent times. With the lowering of entry barriers and blurring of product lines of banks and non-banks since the financial sector reforms, banks are functioning increasingly under competitive pressures. Hence, it is imperative that banks maintain a loyal customer base. In order to achieve this and improve their market and profit positions, many retail banks are directing their strategies towards increasing customer satisfaction and loyalty through improved service quality. Moreover, with the advent of international banking, the trend towards larger bank holding companies, and innovations in the marketplace, customers have greater and greater difficulty in distinguishing and selecting one institution from another. Therefore the current problem for the banking industry in India is to determine the dimensions of customer-perceived service quality. This is because if service quality dimensions can be identified, service managers should be able to improve the delivery of customer perceived quality during the service process and have greater control over the overall outcome. </jats:p><jats:p> The objective of the study was to explore the dimensions of customer perceived service quality in the context of the Indian retail banking industry. A set of service quality parameters, drawn from customers’ perceptions about service quality as well as the bank marketing and service quality literature, were drawn up. These parameters have been used in the context of four of the largest banks in India to identify the underlying dimensions of service quality, using factor analysis. </jats:p><jats:p> The study suggests that customers distinguish four dimensions of service quality in the case of the retail banking industry in India, namely, attitude, competence, tangibles and convenience. Identifying the underlying dimensions of the service quality construct in the Indian retail banking industry is the first step in the definition and hence provision of quality service. This article has drawn upon the findings of the service quality dimensions to contend the initiatives that banks’ managers can take to enhance employees’ skills and attitudes and instill a customer-service culture. </jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1258/ce.2007.007048",
+      "title": [
+        "Implementing the Mental Capacity Act and the Code of Practice – a developing scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Clinical Ethics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article sets out a scenario highlighting some of the issues to be faced by NHS hospitals when dealing with patients who may require treatment under the Mental Capacity Act 2005. The article sets out matters to consider when dealing with patients in A&amp;E, assessments of best interests, emergency treatment, lasting powers of attorney and transferring patients to nursing homes. All of these matters come under the remit of the Act. </jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1016/s0973-0508(08)80026-3",
+      "title": [
+        "Primary reconstruction of depressed skull fracture — The changing scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Indian Journal of Neurotrauma"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1109/ijcnn.2008.4633994",
+      "title": [
+        "Modeling network attacks for scenario construction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE International Joint Conference on Neural Networks (IEEE World Congress on Computational Intelligence)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1177/1046878107305611",
+      "title": [
+        "NANO SCENARIO: Role-playing to appreciate the societal effects of nanotechnology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Simulation &amp; Gaming"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article describes a university-sponsored experiential-based simulation, the NANO SCENARIO, to increase the public's awareness and affect attitudes on the societal implications of nanoscience and nanotechnology by bringing together diverse stakeholders' perspectives in a participatory learning environment. Nanotechnology has the potential for massive societal effects across all sectors, globally. Thus, new forms of education are needed to prepare members of society for making complex decisions about policy, governance, and values. Here, the authors examine the theoretical and conceptual framework of the simulation, which uses improvised role-play and perspective-taking to engage the public in a transformative learning experience. As part of this examination, they describe the uses and constraints of simulations with open-ended goals and without competition and prescribed rules. They believe educational role-play scenarios with active participation of the public can serve as a dynamic method for civic engagement across a range of complex, interdisciplinary topics and new technological dilemmas. </jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1209/0295-5075/82/69001",
+      "title": [
+        "Instability of scalar perturbations in a phantomic cosmological scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EPL (Europhysics Letters)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1029/2008gl033940",
+      "title": [
+        "Climate change scenario for Costa Rican montane forests"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geophysical Research Letters"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Tropical montane cloud forests are characterized by persistent immersion in clouds, an important source of moisture during the dry season. Future changes in temperature and precipitation could alter cloud cover at the vegetation level and seriously affect mountain ecosystems. A regional climate modeling study that focuses on changes in the distributions of temperature and precipitation in Costa Rica shows, in general, an increase in temperature and a decrease in precipitation under the A2 scenario. At high elevations, warming is amplified and future temperature distribution lies outside the range of present‐day distribution. Compared to the Caribbean side, temperature changes are greater at high elevations on the Pacific side. Model results also show significant changes in precipitation amounts and variability and an increase in the altitude of cloud formation on the Pacific side that may have serious implications for mountain ecosystems in and around Costa Rica.</jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1134/s1063773708060030",
+      "title": [
+        "Circumstellar Na I and Ca II absorption lines of type Ia supernovae in the symbiotic scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astronomy Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.2478/v10108-009-0001-y",
+      "title": [
+        "Two Languages - One Annotation Scenario? Experience from the Prague Dependency Treebank"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Prague Bulletin of Mathematical Linguistics"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Two Languages - One Annotation Scenario? Experience from the Prague Dependency Treebank</jats:title>\n        <jats:p>This paper compares the two FGD-based annotation scenarios for Czech and for English, with the Czech as the basis. We discuss the secondary predication expressed by infinitive and its functions in Czech and English, respectively. We give a few examples of English constructions that do not have direct counterparts in Czech (e.g., tough movement and causative constructions with <jats:italic>make, get</jats:italic>, and <jats:italic>have</jats:italic>), as well as some phenomena central in English but much less employed in Czech (object raising or control in adjectives as nominal predicates), and, last, structures more or less parallel both in their function and distribution, whose respective annotation differs due to significant differences in the respective linguistic traditions (verbs of perception).</jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.3763/cpol.2007.0493.8.supp.s60",
+      "title": [
+        "A global perspective to achieve a low-carbon society (LCS): scenario analysis with the ETSAP-TIAM model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Climate Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1177/1046878107305610",
+      "title": [
+        "Examining the societal impacts of nanotechnology through simulation: NANO SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Simulation &amp; Gaming"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article describes a university-sponsored experiential-based simulation, the NANO SCENARIO, to increase the public's awareness and affect attitudes on the societal implications of nanoscience and nanotechnology by bringing together diverse stakeholders' perspectives in a participatory learning environment. Nanotechnology has the potential for massive societal effects across all sectors, globally. Thus, new forms of education are needed to prepare members of society for making complex decisions about policy, governance, and values. Here, the authors examine the theoretical and conceptual framework of the simulation, which uses improvised role-play and perspective-taking to engage the public in a transformative learning experience. As part of this examination, they describe the uses and constraints of simulations with open-ended goals and without competition and prescribed rules. They believe educational role-play scenarios with active participation of the public can serve as a dynamic method for civic engagement across a range of complex, interdisciplinary topics and new technological dilemmas. </jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1016/j.nuclphysa.2008.03.005",
+      "title": [
+        "Thermalization of a color glass condensate and review of the “bottom–up” scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Physics A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1016/j.renene.2007.08.016",
+      "title": [
+        "New scenario of the non-conventional renewable energies on Chile after the incentives created on the “Short Law I”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Renewable Energy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1118/1.2961877",
+      "title": [
+        "SU-GG-T-125: Incorporating Uncertainty in Radiation Therapy Optimization with Scenario and Voxel Sampling"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Medical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1109/wcica.2008.4594471",
+      "title": [
+        "Sliding mode decoupling fashion purposed for fault tolerant control system &amp; new design scenario to implemented"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 7th World Congress on Intelligent Control and Automation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1140/epjc/s10052-008-0639-x",
+      "title": [
+        "Unparticle physics and lepton flavor violating radion decays in the Randall–Sundrum scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The European Physical Journal C"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    },
+    {
+      "doi": "10.1088/0264-9381/25/13/135004",
+      "title": [
+        "The cosmological slingshot scenario: a stringy early times universe"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Classical and Quantum Gravity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    },
+    {
+      "doi": "10.1109/cbms.2008.71",
+      "title": [
+        "Automatic Generation of Integration and Preprocessing Ontologies for Biomedical Sources in a Distributed Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 21st IEEE International Symposium on Computer-Based Medical Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.2514/6.2008-7462",
+      "title": [
+        "Performance Study of Radar And Seeker Estimator in a Realistic Tactical Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIAA Guidance, Navigation and Control Conference and Exhibit"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-08"
+    },
+    {
+      "doi": "10.1029/2007wr006137",
+      "title": [
+        "Modeling GCM and scenario uncertainty using a possibilistic approach: Application to the Mahanadi River, India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Water Resources Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Climate change impact assessment on water resources with downscaled General Circulation Model (GCM) simulation output is characterized by uncertainty due to incomplete knowledge about the underlying geophysical processes of global change (GCM uncertainties) and due to uncertain future scenarios (scenario uncertainties). Disagreement between different GCMs and scenarios in regional climate change impact studies indicates that overreliance on a single GCM with a scenario could lead to inappropriate planning and adaptation responses. This paper focuses on modeling GCM and scenario uncertainty using possibility theory in projecting streamflow of Mahanadi river, at Hirakud, India. A downscaling method based on fuzzy clustering and Relevance Vector Machine (RVM) is applied to project monsoon streamflow from three GCMs with two green house emission scenarios. Possibilities are assigned to all the GCMs with scenarios based on their performance in modeling the streamflow of the recent past (1991–2005), when there are signals of climate forcing. The possibilities associated with different GCMs and scenarios are used as weights in computing the possibilistic mean of the CDFs projected for three standard time slices 2020s, 2050s, and 2080s. The result shows that the value of streamflow at which the CDF reaches 1 reduces with time, which shows the reduction in probability of occurrence of extreme high flow events in future. Historic record of monsoon streamflow of Mahanadi river also shows similar decreasing trend, which may be due to the effect of high surface warming. Reduction in Mahandai streamflow is likely to pose a major challenge for water resources engineers in meeting water demands in future.</jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1186/1477-7819-6-58",
+      "title": [
+        "Male breast cancer: is the scenario changing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "World Journal of Surgical Oncology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.54561/prj0201079s",
+      "title": [
+        "HERITAGE CONTESTATION AND CONTEXT OF RELIGION: POLITICAL SCENARIO FROM SOUTHERN ASIA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "POLITICS AND RELIGION JOURNAL"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Heritage is a cultural identity to be refl ected in the purview of individual, unique and multiple layers of pluralism, especially with respect to religion, at least in Oriental cultures that maintained their traditions and continuity together with examples of contestation, destruction and also sometimes harmonious co-existence. In the span of time the layering of various cultures put their marks, which in the sequence of time turn to be the issue of confl icts due to claims and controls by the diff erent groups. As a consequence there resulted issues of representation, belongingness, control and power, dissonance and contestation. Despite all theoretic constructs and human concerns for peace and harmony the issue of dissonance dominates, especially withreference to ethnicities and religion. The religious built environments are the pitiful suff erers in such happenings of turmoil recorded every parts of the world. In South Asia the Muslim invasion in medieval period (15th to 18th centuries) had been the major force and process for destruction and superimposing Islamic structure, like in case of major sacred cities of Hindus in north India. In the areas of old culture one fi nds heritagescapes that are subject to ‘ill construction and jumbled space’ where ‘several sites appear incompatibly’. The confl icts between secularist democracy and democratic religiosity are the common phenomena in South Asian region. So on, confl icts between archaeological sites or monuments and lived cultural heritage. It may be accepted rationally that if the two communities, Hindus and Muslims, are ready not to heap defeat and humiliation with an aim to re-establish the history of the medieval times, the issues can be resolved amicably. This essay reviews the emerging literature dealing with the enduring role and context of religion in the issue of contesting heritage (mostly cultural). Emphasis is further laid on the contextual constructs of analysis, examples from diff erent parts of Southern Asia, and fi nally role of religion in policies, mitigation and management of contesting heritage.</jats:p>",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1098/rsta.2008.0070",
+      "title": [
+        "Emergent physics: Fermi-point scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The Fermi-point scenario of emergent gravity has the following consequences: gravity emerges together with fermionic and bosonic matter; emergent fermionic matter consists of massless Weyl fermions; emergent bosonic matter consists of gauge fields; Lorentz symmetry persists well above the Planck energy; space–time is naturally four dimensional; the Universe is naturally flat; the cosmological constant is naturally small or zero; the underlying physics is based on discrete symmetries; ‘quantum gravity’ cannot be obtained by quantization of Einstein equations; and there is no contradiction between quantum mechanics and gravity, etc.</jats:p>",
+      "publication_date": "2008-08"
+    },
+    {
+      "doi": "10.2514/6.2008-6310",
+      "title": [
+        "Autonomous Decision Making with Uncertainty for an Urban Intelligence, Surveillance and Reconnaissance (ISR) Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIAA Guidance, Navigation and Control Conference and Exhibit"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-08"
+    },
+    {
+      "doi": "10.15716/dr.2008..28.43",
+      "title": [
+        "Imaging style of The Koreanness, The Ascension of Han-ne -in the scenario of Oh Young Jin and the movie of Ha Kil Jong"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Drama"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1016/j.cor.2006.10.002",
+      "title": [
+        "Heuristic and exact algorithms for the max–min optimization of the multi-scenario knapsack problem"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Operations Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1049/iet-cvi:20070074",
+      "title": [
+        "Temporal reasoning for scenario recognition in video-surveillance using Bayesian networks"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IET Computer Vision"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1016/j.ijpe.2007.11.009",
+      "title": [
+        "A multistage scenario optimisation procedure to plan annualised working hours under demand uncertainty"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1109/icton.2008.4598360",
+      "title": [
+        "Multi-granular optical cross-connects for the CANON network scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 10th Anniversary International Conference on Transparent Optical Networks"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1080/16522354.2008.11073466",
+      "title": [
+        "Newspapers on Electronic Paper Devices: A Scenario Analysis of Possible Business Models"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Media Business Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1103/physrevb.77.219904",
+      "title": [
+        "Erratum: Competing order scenario of two-gap behavior in hole-doped cuprates [Phys. Rev. B<b>77</b>, 134516 (2008)]"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1140/epjc/s10052-008-0630-6",
+      "title": [
+        "Neutrino decay as a possible interpretation of the MiniBooNE observation with unparticle scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The European Physical Journal C"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    },
+    {
+      "doi": "10.1785/0120060230",
+      "title": [
+        "Simulated Ground Motion in Santa Clara Valley, California, and Vicinity from M&gt;=6.7 Scenario Earthquakes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bulletin of the Seismological Society of America"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1007/s00267-008-9155-x",
+      "title": [
+        "Scenario Modeling Potential Eco-Efficiency Gains from a Transition to Organic Agriculture: Life Cycle Perspectives on Canadian Canola, Corn, Soy, and Wheat Production"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1103/physrevb.77.214529",
+      "title": [
+        "One-gap scenario to explain Raman scattering in a<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>d</mml:mi></mml:math>-wave superconductor"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icton.2008.4598799",
+      "title": [
+        "Remote Pumping and Signalling in a Passive Optical Network Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 10th Anniversary International Conference on Transparent Optical Networks"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1140/epjc/s10052-008-0643-1",
+      "title": [
+        "Lepton polarization asymmetry and forward–backward asymmetry in exclusive B→K1τ+τ- decay in universal extra dimension scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The European Physical Journal C"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    },
+    {
+      "doi": "10.1016/j.jss.2007.08.036",
+      "title": [
+        "Software reuse: The Brazilian industry scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Systems and Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.5762/kais.2008.9.3.681",
+      "title": [
+        "A GUI Testing Method base on Scenario for Mobile Application Software"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Korea Academia-Industrial cooperation Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1080/17499510802111146",
+      "title": [
+        "Scenario-based earthquake loss estimation for the city of Cairo, Egypt"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Georisk: Assessment and Management of Risk for Engineered Systems and Geohazards"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.17323/1995-459x.2008.2.18.35",
+      "title": [
+        "The Sector of Intellectual Services: Prospects of Development and Scenario Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Foresight-Russia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1209/0295-5075/83/27003",
+      "title": [
+        "Colossal enhancement of magnetoresistance in La\n                    <sub>0.67</sub>\n                    Sr\n                    <sub>0.33</sub>\n                    MnO\n                    <sub>3</sub>\n                    /Pr\n                    <sub>0.67</sub>\n                    Ca\n                    <sub>0.33</sub>\n                    MnO\n                    <sub>3</sub>\n                    multilayers: Reproducing the phase separation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EPL (Europhysics Letters)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    },
+    {
+      "doi": "10.1080/00223131.2008.10875931",
+      "title": [
+        "Environmental Gamma Radiation Monitoring Around Nuclear Power Stations in India, an Indian Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Nuclear Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    },
+    {
+      "doi": "10.1016/j.nuclphysb.2007.12.022",
+      "title": [
+        "Double lepton polarization in <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" altimg=\"si1.gif\" overflow=\"scroll\"><mml:msub><mml:mi>Λ</mml:mi><mml:mi>b</mml:mi></mml:msub><mml:mo>→</mml:mo><mml:mi>Λ</mml:mi><mml:msup><mml:mi>ℓ</mml:mi><mml:mo>+</mml:mo></mml:msup><mml:msup><mml:mi>ℓ</mml:mi><mml:mo>−</mml:mo></mml:msup></mml:math> decay in the Standard Model with fourth generations scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Physics B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-06"
+    }
+  ]
+}

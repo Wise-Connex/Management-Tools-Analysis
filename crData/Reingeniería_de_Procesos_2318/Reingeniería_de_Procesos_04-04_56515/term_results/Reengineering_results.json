@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/09544780410523008",
+      "title": [
+        "Process reengineering: who embraces it and why?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The TQM Magazine"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study examined employee reactions to a process reengineering initiative in a large financial services organization. Data were obtained from 2,514 employees, using questionnaires completed anonymously. Employees having longer company tenure, those at higher levels, and men held more favorable attitudes toward the reengineering initiative. Employees indicating greater understanding of the reengineering effort had more favorable attitudes toward it. Employees holding more favorable attitudes toward the process reengineering initiative also reported more positive work experiences and outcomes and described the organization in more favorable ways. Implications for managing large‐scale change efforts are proposed.</jats:p>",
+      "publication_date": "2004-04"
+    },
+    {
+      "doi": "10.1145/985921.986141",
+      "title": [
+        "Reengineering planning process guided by usability evaluation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "CHI '04 Extended Abstracts on Human Factors in Computing Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-04"
+    },
+    {
+      "doi": "10.1108/14637150410530262",
+      "title": [
+        "Reengineering of the quotation process: application of knowledge based systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Is it possible to support the engineering processes with intelligent product models when the knowledge and information work is very complex? This paper describes how IT‐supported product configuration can support the complex engineering activities carried out in the quotation processes. The research has been carried out at the Centre for Product Modelling at the Technical University of Denmark in co‐operation with F.L. Smidth, a Danish cement plant manufacturer with a world‐wide leading position. The redesign of the quotation process lasted three years but, as the paper illustrates, remarkable results have been accomplished. The lead‐time for making quotations was reduced from two to four weeks to one to two days. A better quality of quotes was obtained, and the direct consumption of engineering resources for making quotations was reduced from five man‐weeks to one to two man‐days.</jats:p>",
+      "publication_date": "2004-04"
+    }
+  ]
+}

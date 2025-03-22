@@ -1,0 +1,1061 @@
+{
+  "term": "Reengineering",
+  "total_results": 81,
+  "processed_count": 81,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747155",
+      "title": [
+        "Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747153",
+      "title": [
+        "Author index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747158",
+      "title": [
+        "Organizing Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747154",
+      "title": [
+        "[Title page]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747156",
+      "title": [
+        "[Title page]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747157",
+      "title": [
+        "Welcome from the conference chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747184",
+      "title": [
+        "Formal foundations for semi-parsing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1201/b16472-9",
+      "title": [
+        "Reengineering the Built Environment: Progress in Schools, Work Sites, Neighborhoods, and Parks"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Handbook of Obesity - Volume 2"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747220",
+      "title": [
+        "SENSEI: Software evolution service integration"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747208",
+      "title": [
+        "in*Bug: Visual analytics of bug repositories"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747160",
+      "title": [
+        "Unification and refactoring of clones"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747187",
+      "title": [
+        "An algorithm for keyword search on an execution path"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747189",
+      "title": [
+        "Spotting automatically cross-language relations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747217",
+      "title": [
+        "PHP AiR: Analyzing PHP systems with Rascal"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747222",
+      "title": [
+        "International workshop on software clones"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747191",
+      "title": [
+        "Mining frequent bug-fix code changes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747174",
+      "title": [
+        "Remodularization analysis using semantic clustering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747183",
+      "title": [
+        "On the maintainability of CRAN packages"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747219",
+      "title": [
+        "DAHLIA: A visual analyzer of database schema evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747224",
+      "title": [
+        "International workshop on software quality and maintainability"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747164",
+      "title": [
+        "An empirical study of long lived bugs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747221",
+      "title": [
+        "Understanding the evolution of socio-technical aspects in open source ecosystems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747159",
+      "title": [
+        "Using biology and ecology as inspiration for software maintenance? (Keynote abstract)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747178",
+      "title": [
+        "Reverse engineering web configurators"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747212",
+      "title": [
+        "Bit-error injection for software developers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747196",
+      "title": [
+        "Lightweight runtime reverse engineering of binary file format variants"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747175",
+      "title": [
+        "Mc2FOR: A tool for automatically translating MATLAB to FORTRAN 95"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747197",
+      "title": [
+        "Towards tool support for analyzing legacy systems in technical domains"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747205",
+      "title": [
+        "ECOS: Ecological studies of open source software ecosystems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747176",
+      "title": [
+        "Does return null matter?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747215",
+      "title": [
+        "Follow the path: Debugging tools for test-driven fault navigation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747202",
+      "title": [
+        "CHOREOS: Large scale choreographies for the future internet"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747188",
+      "title": [
+        "Comparison of feature implementations across languages, technologies, and styles"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747216",
+      "title": [
+        "JMODEX: Model extraction for verifying security properties of web applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747213",
+      "title": [
+        "Automated construction of a software-specific word similarity database"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747211",
+      "title": [
+        "Building development tools interactively using the EKEKO meta-programming library"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747182",
+      "title": [
+        "Examining the relationship between topic model similarity and software maintenance"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747192",
+      "title": [
+        "Orchestrating change: An artistic representation of software evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747227",
+      "title": [
+        "Detecting infeasible branches based on code patterns"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747218",
+      "title": [
+        "Mc2FOR demo: A tool for automatically translating MATLAB to FORTRAN 95"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747177",
+      "title": [
+        "Extracting relative thresholds for source code metrics"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747162",
+      "title": [
+        "Follow the path: Debugging state anomalies along execution histories"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747169",
+      "title": [
+        "Supporting continuous integration by mashing-up software quality information"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747223",
+      "title": [
+        "International workshop on open and original problems in software language engineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747166",
+      "title": [
+        "Cross-project defect prediction models: L'Union fait la force"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747210",
+      "title": [
+        "How the Sando search tool recommends queries"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747228",
+      "title": [
+        "Web API growing pains: Stories from client developers and their code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747185",
+      "title": [
+        "On the use of positional proximity in IR-based feature location"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747225",
+      "title": [
+        "A case study of paired interleaving for evaluating code search techniques"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.5120/15323-3635",
+      "title": [
+        "A Novel Methodology for the Impact Measurement of Reengineering Risk in Infrastructure and Stakeholder Segment of Legacy System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747195",
+      "title": [
+        "Fact extraction from bash in support of script migration"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747209",
+      "title": [
+        "APIEvolutionMiner: Keeping API evolution under control"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747161",
+      "title": [
+        "Automatic ranking of clones for refactoring through mining association rules"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747163",
+      "title": [
+        "Towards more accurate multi-label software behavior learning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747167",
+      "title": [
+        "An empirical study of bug report field reassignment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747186",
+      "title": [
+        "Recommending verbs for rename method using association rule mining"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747198",
+      "title": [
+        "Analysis and clustering of model clones: An automotive industrial experience"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747193",
+      "title": [
+        "Co-evolving code-related and database-related changes in a data-intensive software system"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747194",
+      "title": [
+        "Improving the detection accuracy of evolutionary coupling by measuring change correspondence"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747203",
+      "title": [
+        "DIVERSIFY: Ecology-inspired software evolution for diversity emergence"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747168",
+      "title": [
+        "The vision of software clone management: Past, present, and future (Keynote paper)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747180",
+      "title": [
+        "Transition and defect patterns of components in dependency cycles during software evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747200",
+      "title": [
+        "Towards recovering and exploiting domain knowledge from C code: A case study on automotive software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747229",
+      "title": [
+        "An empirical study on the fault-proneness of clone migration in clone genealogies"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747226",
+      "title": [
+        "Broken promises: An empirical study into evolution problems in Java programs caused by library upgrades"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747172",
+      "title": [
+        "Test suite reduction for fault detection and localization: A combined approach"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747214",
+      "title": [
+        "Qualitygate SourceAudit: A tool for assessing the technical quality of software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747171",
+      "title": [
+        "Mitigating the Risk of software change in practice: Retrospective on more than 50 architecture evaluations in industry (Keynote paper)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747190",
+      "title": [
+        "NL-based query refinement and contextualized code search results: A user study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747207",
+      "title": [
+        "Model inference and security testing in the spacios project"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747181",
+      "title": [
+        "Anti-pattern detection with model queries: A comparison of approaches"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747179",
+      "title": [
+        "A contextual approach for effective recovery of inter-process communication patterns from HPC traces"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747170",
+      "title": [
+        "Towards a context-aware IDE-based meta search engine for recommendation about programming errors and exceptions"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747173",
+      "title": [
+        "In medio stat virtus: Extract class refactoring through nash equilibria"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747206",
+      "title": [
+        "FITTEST: A new continuous and automated testing process for future Internet applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1007/s10796-014-9487-4",
+      "title": [
+        "How business process reengineering affects information technology investment and employee performance under different performance measurement"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Systems Frontiers"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-10"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747201",
+      "title": [
+        "Migrating legacy spreadsheets-based systems to Web MVC architecture: An industrial case study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747199",
+      "title": [
+        "Experience on applying software architecture recovery to automotive embedded systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747165",
+      "title": [
+        "Identifying risky areas of software code in Agile/Lean software development: An industrial experience report"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.1109/csmr-wcre.2014.6747204",
+      "title": [
+        "The market for open source: An intelligent virtual open source marketplace"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    },
+    {
+      "doi": "10.12737/2324",
+      "title": [
+        "Innovative Development of the Enterprises on the Basis of Reengineering of Business Processes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Actual directions of scientific researches of the XXI century: theory and practice",
+        "Актуальные направления научных исследований XXI века: теория и практика"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-02"
+    }
+  ]
+}

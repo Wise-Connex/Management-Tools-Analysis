@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0016-3287(77)90034-9",
+      "title": [
+        "Scenario generation: limitations and developments in cross-impact analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1977-06"
+    }
+  ]
+}

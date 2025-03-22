@@ -1,0 +1,53 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/6388294",
+      "title": [
+        "Scenario for the relativistic heavy ion collider (RHIC) for Brookhaven National Laboratory"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/1119255",
+      "title": [
+        "Scenario for the Relativistic Heavy Ion Collider (RHIC) for Brookhaven National Laboratory"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0370-2693(84)91085-2",
+      "title": [
+        "A scenario for SUSY QCD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-05"
+    },
+    {
+      "doi": "10.1103/physrevd.29.2158",
+      "title": [
+        "Thermal production of superheavy magnetic monopoles in the new inflationary-Universe scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1061/40932(246)223",
+      "title": [
+        "Business Process Reengineering in Heilongjiang Rice Container Intermodal Transportation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Conference on Transportation Engineering 2007"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-07"
+    },
+    {
+      "doi": "10.1061/40932(246)278",
+      "title": [
+        "Business Process Analyzing and Reengineering of Container Non-Stop Express Transportation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Conference on Transportation Engineering 2007"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-07"
+    },
+    {
+      "doi": "10.1201/9781420043358.ch69",
+      "title": [
+        "Reengineering Ttr Amyloid Inhibition Properties of Diflunisal"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "XIth International Symposium on Amyloidosis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-07"
+    }
+  ]
+}

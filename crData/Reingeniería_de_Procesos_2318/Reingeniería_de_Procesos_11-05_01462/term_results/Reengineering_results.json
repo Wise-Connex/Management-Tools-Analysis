@@ -1,0 +1,125 @@
+{
+  "term": "Reengineering",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/icbmei.2011.5920398",
+      "title": [
+        "Research on enterprise's network accounting process reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference on Business Management and Electronic Information"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.1109/icebeg.2011.5881952",
+      "title": [
+        "Government process reengineering based on knowledge management"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference on E-Business and E-Government (ICEE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.1145/1985782.1985789",
+      "title": [
+        "Reengineering a scientific software and lessons learned"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 4th International Workshop on Software Engineering for Computational Science and Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.1109/icbmei.2011.5920373",
+      "title": [
+        "Research on the &amp;#x201C;house&amp;#x201D; pattern of Chinese business reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference on Business Management and Electronic Information"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.1145/1985793.1986009",
+      "title": [
+        "Reengineering legacy software products into software product line based on automatic variability analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 33rd International Conference on Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.1109/icebeg.2011.5881694",
+      "title": [
+        "Notice of Retraction: Research on applying the internet of things for logistics business process reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference on E-Business and E-Government (ICEE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.3410/f.10179956.10967054",
+      "title": [
+        "Faculty Opinions recommendation of Conversion of Sox17 into a pluripotency reprogramming factor by reengineering its association with Oct4 on DNA."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.1109/icbmei.2011.5917972",
+      "title": [
+        "Research on the E-Commerce-oriented solution of reengineering and operating of business model of specialized market in China: With the case of SJQ.cn"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference on Business Management and Electronic Information"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-05"
+    },
+    {
+      "doi": "10.1002/stem.639",
+      "title": [
+        "Conversion of Sox17 into a Pluripotency Reprogramming Factor by Reengineering Its Association with Oct4 on DNA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Stem Cells"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Very few proteins are capable to induce pluripotent stem (iPS) cells and their biochemical uniqueness remains unexplained. For example, Sox2 cooperates with other transcription factors to generate iPS cells, but Sox17, despite binding to similar DNA sequences, cannot. Here, we show that Sox2 and Sox17 exhibit inverse heterodimerization preferences with Oct4 on the canonical versus a newly identified compressed sox/oct motif. We can swap the cooperativity profiles of Sox2 and Sox17 by exchanging single amino acids at the Oct4 interaction interface resulting in Sox2KE and Sox17EK proteins. The reengineered Sox17EK now promotes reprogramming of somatic cells to iPS, whereas Sox2KE has lost this potential. Consistently, when Sox2KE is overexpressed in embryonic stem cells it forces endoderm differentiation similar to wild-type Sox17. Together, we demonstrate that strategic point mutations that facilitate Sox/Oct4 dimer formation on variant DNA motifs lead to a dramatic swap of the bioactivities of Sox2 and Sox17.</jats:p>",
+      "publication_date": "2011-06"
+    }
+  ]
+}

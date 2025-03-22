@@ -1,0 +1,146 @@
+{
+  "term": "Reengineering",
+  "total_results": 11,
+  "processed_count": 11,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.26226/morressier.57fe118cd462b8028d8907b1",
+      "title": [
+        "The ECDC Surveillance Systems Reengineering (SSR) project: improved surveillance for tomorrow"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1115/imece2016-65697",
+      "title": [
+        "Automated Reengineering of Industrial Service-Based Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Volume 2: Advanced Manufacturing"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Complex systems are not of static nature. Most are governed by a particular set of laws and behave accordingly to a certain range of expected inputs and variables, but they can also evolve in response to unforeseen stimulus. The same principle can be applied to industrial information systems. Larger systems such as an entire company or a network of companies may be divided into further subsystems, including information systems, each behaving autonomously but is still under influence of the others, interacting with them in a holistic manner. This paper explores this relationship and proposes a conceptual solution to the strain of sustaining interoperability in complex service-based networks from the domain of manufacturing. To such effect, and in order to tackle the complex relationships and dependencies implicit in web-service environments, information modeling is used, allowing for the optimization of several service engineering activities and enterprise business processes while maximizing the efficiency of system’s interactions. Hence, service modeling and orchestration is here suggested as a baseline to network monitoring, and as a possible approach to automatically handle and recover from erratic behavior, providing systems with adaptive web services and self-organizing capabilities.</jats:p>",
+      "publication_date": "2016-11"
+    },
+    {
+      "doi": "10.2147/ahct.s101946",
+      "title": [
+        "Quantitative analysis of business process reengineering deployment in health information technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advanced Health Care Technologies"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3410/f.726475087.793525623",
+      "title": [
+        "Faculty Opinions recommendation of Reengineering chimeric antigen receptor T cells for targeted therapy of autoimmune disease."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-11"
+    },
+    {
+      "doi": "10.1108/bpmj-05-2015-0057",
+      "title": [
+        "Fuzzy model on selecting processes in Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Purpose</jats:title>\n<jats:p>The purpose of this paper is to present a methodology to assist enterprise decision makers (DMs) to select from a number of processes during Business Process Reengineering (BPR) according to organizational objectives. Indeed, after the identification and classification of process and illustration of the organizational objectives and criteria, the effect of each process on each objective and criterion is calculated to select the most appropriate processes for reengineering purposes.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title>\n<jats:p>The proposed methodology uses fuzzy quality function deployment (QFD) technique to convert the qualitative data (DM’s opinion) to quantitative ones and then calculates the effects of each process on the organizational objectives and criteria. Then, by using the result of fuzzy QFD, the amount of satisfaction of each process according to each criterion is calculated. By combining this data with other effective variables in BPR projects such as “cost” and “time,” a multi-objective goal programming (GP) model is formulated and solved to identify the most appropriate business processes.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Findings</jats:title>\n<jats:p>In fact, a quantitative model is presented in which fuzzy QFD and GP methods are combined to help DMs to adopt an appropriate strategy for implementing BPR projects successfully by selecting proper processes for reengineering purposes. In addition, the presented model uses both qualitative and quantitative data and turns them into quantitative ones. An example is also provided to show how the model works.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Research limitations/implications</jats:title>\n<jats:p>Following this investigation, other researchers could able to complete the model with more dynamic and local variables to enhance the accuracy of the model.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Practical implications</jats:title>\n<jats:p>The introduced model will support organizations and managers to select appropriate processes for BPR; so in practice, the mentioned projects will be more efficient and successful.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Originality/value</jats:title>\n<jats:p>The paper study is essential for organizations, because the presented decision-making model is based on fuzzy QFD and GP methods that enable the enterprises to select the business processes during the BPR projects easily. In this paper, a GP model is presented to create a balance between organizational satisfaction level and cost and time of implementing BPR projects considering organizational constraints. The proposed model was applied to a real case and the authors showed that it is an easy-to-use, valid, and powerful tool for implementing BPR projects.</jats:p>\n</jats:sec>",
+      "publication_date": "2016-11"
+    },
+    {
+      "doi": "10.21515/1990-4665-123-043",
+      "title": [
+        "DEVELOPMENT OF SCIENTIFICALLYEDUCATIONAL POTENTIAL OF THE UNIVERSITY ON THE BASIS OF REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Polythematic Online Scientific Journal of Kuban State Agrarian University"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.sbspro.2016.11.038",
+      "title": [
+        "The Effects of Reengineering, Organizational Climate and Psychological Capital on the Firm Performance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia - Social and Behavioral Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-11"
+    },
+    {
+      "doi": "10.2118/183262-ms",
+      "title": [
+        "Gas Condensate Field Infrastructure Reengineering on the Declining Production Stage to Increase Profitability of Exploitation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Abu Dhabi International Petroleum Exhibition &amp; Conference"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>The objective of the work is to develop technical measures for the reconstruction of a major gas condensate field processing facilities – central processing plant of Valanginian horizon raw gas of the Vostochno-Urengoyskoe gas condensate field (design pressure – 6.0 MPa), and the assessment of the impact of these measures on the economic efficiency of the plant.</jats:p>\n               <jats:p>Developed technical measures require minimal investment and include application of fractionation technology by means of available energy flows at an intermediate separation stage as well as at gas condensate stabilization, optimization of piping arrangement scheme, recycling of unstable condensate weathering gas. The implementation of these measures allows: to improve the separation degree of light and heavy gas components (improves the quality and yield of commercial gas and increases the yield of stable gas condensate), to ensure the recovery of the cold reduced condensate (reduces the temperature at the stage of the low-temperature separation), to reduce the pressure loss during preliminary raw gas treatment (which increases feasible pressure drop at the low-temperature separation stage) and decrease the amount of gas flared (increases yield of commercial gas).</jats:p>\n               <jats:p>It's shown that providing the high quality of commercial products at inlet pressure decrease to 2-2,5 MPa, commercial gas output increase up to 1,5-2% and stable gas condensate up to 12-15% are the results of developed solutions implementation that prolongs the terms of highly profitable field operation for 10-15 years and increases integral profitability of business by 30-40%. Thus, reengineering is an effective margin increase instrument of gas-condensate fields development.</jats:p>",
+      "publication_date": "2016-11"
+    },
+    {
+      "doi": "10.12816/0033587",
+      "title": [
+        "أنموذج هندرة لعملية اتخاذ القرار التربوي في الجامعات الأردنية = Reengineering Model for Educational Decision Making Process in Jordanian Universities"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Dirasat Educational Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-11"
+    },
+    {
+      "doi": "10.1002/chem.201604765",
+      "title": [
+        "Reengineering Antibiotics to Combat Bacterial Resistance: Click Chemistry [1,2,3]‐Triazole Vancomycin Dimers with Potent Activity against MRSA and VRE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemistry – A European Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Vancomycin has long been considered a drug of last resort. Its efficiency in treating multiple drug‐resistant bacterial infections, particularly methicillin‐resistant <jats:italic>Staphylococcus aureus</jats:italic> (MRSA), has had a profound effect on the treatment of life‐threatening infections. However, the emergence of resistance to vancomycin is a cause for significant worldwide concern, prompting the urgent development of new effective treatments for antibiotic resistant bacterial infections. Harnessing the benefits of multivalency and cooperativity against vancomycin‐resistant strains, we report a Click Chemistry approach towards reengineered vancomycin derivatives and the synthesis of a number of dimers with increased potency against MRSA and vancomycin resistant <jats:italic>Enterococci</jats:italic> (VRE; VanB). These semi‐synthetic dimeric ligands were linked together with great efficiency using the powerful CuAAC reaction, demonstrating high levels of selectivity and purity.</jats:p>",
+      "publication_date": "2017-01"
+    },
+    {
+      "doi": "10.18869/nrip.hdq.1.4.193",
+      "title": [
+        "The Effectiveness of Reengineering Moheb Project to Improve Knowledge, Attitude, and Performance of Individuals &amp; Local Communities in Response to Earthquake: A Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Health in Emergencies and Disasters Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-11"
+    }
+  ]
+}

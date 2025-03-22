@@ -1,0 +1,21 @@
+{
+  "term": "Reengineering",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4018/irmj.2004100101",
+      "title": [
+        "An Examination of the Role of Organizational Enablers in Business Process Reengineering and the Impact of Information Technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Resources Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<p>This study examines organizational factors that affect the implementation of business process reengineering (BPR) when applying two specific Information Technologies (i.e., electronic data interchange and/or Internet technology). This research uses a survey methodology to gather information about how organizational enablers and IT affect BPR implementation. By determining the factors that affect BPR implementation, these factors can be managed in the best interest of customers, employees, and organizations. From the nine hypotheses tested in this study, six factors found to be positively associated with successful implementation of BPR. These factors are: top management supports, change management, centralization of decision making, formalization of procedure, organizational culture, and customer involvement. No significant relationship is found between employee resistance and integration of jobs with successful implementation of BPR. In this research we found that the lack of resources is negatively associated with successful implementation of BPR. We also found that, different information technologies such as those examined in this paper — EDI and Internet — provide different capabilities and can be useful in different ways and for different purposes. The findings of this research can help practitioners to better understand the role of critical success and failure factors in BPR, as well as the impact of different Information Technologies on BPR. By determining the factors that affect BPR implementation, these factors can be managed in the best interest of customers, employees, and organizations.</p>",
+      "publication_date": "2004-10"
+    }
+  ]
+}

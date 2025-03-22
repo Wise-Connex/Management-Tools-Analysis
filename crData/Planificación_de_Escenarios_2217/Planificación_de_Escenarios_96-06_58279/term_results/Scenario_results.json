@@ -1,0 +1,174 @@
+{
+  "term": "Scenario",
+  "total_results": 13,
+  "processed_count": 13,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/335151",
+      "title": [
+        "Spent N fuel project preliminary saftey evaluation of the cold vacuum drying system -- calculations for the flammable gas ignition scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0301-4215(96)00026-2",
+      "title": [
+        "Indian scenario of renewable energy for sustainable development"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1093/mnras/280.4.1000",
+      "title": [
+        "An evolutionary scenario for short-period millisecond binary pulsars"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Monthly Notices of the Royal Astronomical Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1007/bf02104832",
+      "title": [
+        "A primordial cosmological scenario and the horizon problem"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "General Relativity and Gravitation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1016/0300-9572(96)83805-6",
+      "title": [
+        "O-21 Quality of telephone guided cardiopulmonary resuscitation (CPR) of layman in a simulated cardiac arrest scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Resuscitation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1007/bf00051785",
+      "title": [
+        "Extinctions of montane mammals reconsidered: putting a global-warming scenario on ice"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biodiversity and Conservation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1029/95ja03192",
+      "title": [
+        "Coupled‐mode scenario for the magnetospheric dynamics"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Geophysical Research: Space Physics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Substorm phenomena are reviewed with emphasis on the magnetospheric source region of the onset, on the morphology of the initial breakup and subsequent activations, and on the variable character of individual substorms. We provide evidence that before the substorm onset and during the following activations an intense, thin current sheet is formed at the interface between the quasi‐dipolar and taillike magnetic field regions. We infer that the initial breakup, the following multiple activations, pseudobreakups, and other short‐term activations during nonsubstorm times are all similar in morphology and have the same formation mechanism. We postulate that the elementary units of energy dissipation, impulsive dissipation events, which are localized in space and have a short lifetime of ∼1 min, are the manifestations of tail reconnection. We also emphasize the evidence that previous authors have presented in favor of this time dependence and localization. On the basis of the above, we suggest that there are two basic magnetospheric processes responsible for energy storage and dissipation during both substorm and nonsubstorm times: A global and slow quasi‐static tail reconfiguration responsible for the energy storage, and a sequence of local, sporadic, short‐term energy dissipation events. These competitive processes can be observed most the time in some part of the plasma sheet; their relative intensity determines the type of large‐scale dynamic evolution. In this scenario, the various dynamical situations are interpreted as variations in the balance between the two competing processes.</jats:p>",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1111/j.1749-6632.1996.tb32478.x",
+      "title": [
+        "Introduction to Scenario Planning Results"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1080/10292389609380546",
+      "title": [
+        "Permian and early Triassic isotopic records of carbon and strontium in Australia and a scenario of events about the Permian‐Triassic boundary"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Historical Biology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1080/10556799608203247",
+      "title": [
+        "Generation of the 128<i>h</i><sup>−1</sup>Mpc periodicity of the universe in the scalar field condensate baryogenesis scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astronomical &amp; Astrophysical Transactions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1111/j.1749-6632.1996.tb32481.x",
+      "title": [
+        "Report of the Scenario Planning Group for Accelerated Climate Change “Apple Crisp”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1111/j.1749-6632.1996.tb32480.x",
+      "title": [
+        "Report of the Scenario Planning Group for Medium Climate Change “Apple Fritters”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    },
+    {
+      "doi": "10.1111/j.1749-6632.1996.tb32479.x",
+      "title": [
+        "Report of the Scenario Planning Group for No Climate Change: “Little Green Apples”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-06"
+    }
+  ]
+}

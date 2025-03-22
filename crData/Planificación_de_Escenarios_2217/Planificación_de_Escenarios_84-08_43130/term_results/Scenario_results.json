@@ -1,0 +1,30 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/5019588",
+      "title": [
+        "Scenario and parameter studies on global deposition of radioactivity using the computer model GLODEP2"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1103/physrevlett.53.641",
+      "title": [
+        "Possible Supersymmetry Scenario for<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>p</mml:mi><mml:mrow><mml:mrow><mml:mover><mml:mrow><mml:mi>p</mml:mi></mml:mrow><mml:mrow><mml:mo>―</mml:mo></mml:mrow></mml:mover></mml:mrow></mml:mrow></mml:math>Collider Monojet Events and Unaccompanied \"Photon\" Events"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review Letters"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

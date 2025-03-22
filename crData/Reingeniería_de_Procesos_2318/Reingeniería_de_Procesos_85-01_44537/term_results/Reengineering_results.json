@@ -1,0 +1,56 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/978-1-4612-3980-2_10",
+      "title": [
+        "Software Quality Attributes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Methods for Business Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4612-3980-2_11",
+      "title": [
+        "The Software Development Process"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Methods for Business Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4612-3980-2_9",
+      "title": [
+        "Modularization and Requirements Engineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Methods for Business Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4612-3980-2_12",
+      "title": [
+        "Software Cost and Risk Estimation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Methods for Business Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

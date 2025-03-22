@@ -1,0 +1,145 @@
+{
+  "term": "Reengineering",
+  "total_results": 11,
+  "processed_count": 11,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1080/21670811.2021.1903959",
+      "title": [
+        "Reengineering Journalism: Product Manager as News Industry Institutional Entrepreneur"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Digital Journalism"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-10"
+    },
+    {
+      "doi": "10.1201/9781003138914-16",
+      "title": [
+        "Business process reengineering of school committee in Indonesia"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Synergizing Management, Technology and Innovation in Generating Sustainable and Competitive Business Growth"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2021-04"
+    },
+    {
+      "doi": "10.3390/w13091193",
+      "title": [
+        "Transformation of Waste Stabilization Ponds: Reengineering of an Obsolete Sewage Treatment System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Water"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Waste Stabilization Ponds (WSPs) are commonly used for sewage treatment. These systems are composed of a series of ponds: (1) anaerobic ponds, (2) facultative ponds, and (3) maturation ponds. WSPs generally produce good-quality effluent in terms of organic matter and pathogen removal, but their application has disadvantages. The most serious disadvantages are a long retention time, the release of biogas, and the impossibility of removing nutrients. A promising alternative to the use of WSPs is replacing the anaerobic pond and facultative pond with an upflow anaerobic sludge blanket (UASB) reactor, with the advantages of greatly reducing the retention time and the biogas capture. The post-treatment ponds of the UASB reactor effluent involve oxygen production and the biological consumption of carbon dioxide, which raises the pH. An experimental investigation showed that it is possible to use polishing ponds in a sequential batch regime instead of continuous flow. This modification accelerates the decay of pathogens and accelerates the increase in pH, which, in turn, facilitates the removal of nitrogen and phosphorus. This produces a good-quality effluent with low concentrations of biodegradable organic material, nutrients, and pathogens. This good-quality effluent is obtained in a system without energy consumption or auxiliary materials and with a much smaller area than conventional stabilization ponds.</jats:p>"
+    },
+    {
+      "doi": "10.7717/peerj-cs.505",
+      "title": [
+        "Adaptive model to support business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "PeerJ Computer Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The one constant in the world is change. The changing dynamics of business environment enforces the organizations to re-design or reengineer their business processes. The main objective of such reengineering processes is to provide services or produce products with the possible lowest cost, shortest time, and best quality. Accordingly, Business Process Re-engineering (BPR) provides a roadmap of how to efficiently achieve the operational goals in terms of enhanced flexibility and productivity, reduced cost, and improved quality of service or product. In this article, we propose an efficient model for BPR. The model specifies where the breakdowns occur in BPR implementation, justifies why such breakdowns occur, and proposes techniques to prevent their occurrence again. The proposed model has been built based on two main sections. The first section focuses on integrating Critical Success Factors (CSFs) and the performance of business processes during the reengineering processes. Additionally, it implements the association rule mining technique to investigate the relationship between CSFs and different business processes. The second section aims to measure the performance of business processes (intended success of BPR) by process time, cycle time, quality and cost before and after reengineering processes. A case study of the Egyptian Tax Authority (ETA) is used to test the efficiency of the proposed model.</jats:p>"
+    },
+    {
+      "doi": "10.20961/sp.v16i1.45902",
+      "title": [
+        "Government Process Reengineering in the Implementation of Electronic Welfare System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Spirit Publik: Jurnal Administrasi Publik"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>&lt;p&gt;In the current era of globalization, it cannot be denied that the presence of technology is certainly very helpful for human work. In the level of government, technological developments have also been exploited by bringing up electronic government. In utilizing the development of existing technology, the Surakarta City Government through the Surakarta City Social Service is trying to make a new breakthrough by creating an Sistem Informasi Kesejahteraan Elektronik (E-SIK) which is expected to be used to overcome the problem of the data of poor families in the city of Surakarta, because there are findings stating that the data of poor families in the city of Surakarta that entered in the last two years turned out to be almost thirty percent of the indicators received or produced incomplete, so that the data could not be processed. It should be recalled, that one of the basics and prerequisites for implementation e-government is the Government Business Process Reengineering, but the Government Process Reengineering is not enough to fix functional and non-functional problems. the methodological procedures that will be used are forecasting, the forecasting approach extrapolation or ekstrapolative forecasting. It will begin by reviewing a series of data or previous research documents with similar research objects and research problems, namely regarding obstacles in the process of implementing e-government in various regions, then trying to project them with research that will be carried out to predict the possibility. obstacles that will arise during the process of implementing an Electronic Welfare Information System (E-SIK).&lt;/p&gt;</jats:p>"
+    },
+    {
+      "doi": "10.1088/1742-6596/1889/2/022104",
+      "title": [
+        "Reengineering of organizational and technological processes of NPP construction"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics: Conference Series"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Nuclear power construction is characterized by high capital costs, a significant number of participants in the design and construction processes. One of the most significant factors of the efficiency of NPP projects implementation is the adopted technology for the construction. An analysis of the Soviet and modern experience in the NPPs construction allows to assert that the piece reinforcing application leads to an increase in the project implementation time. The technology of large-block assembling of NPP structures and equipment have been widely used by the world leaders in NPPs construction, but the implementation of this technology required significant costs for the organization of the necessary infrastructure. In the context of the rapid development of computing systems, instrumentation and mechanical engineering, it is proposed to fundamentally rethink the processes of NPP construction. It is proposed to return to the technologies of large-block installation of NPP structures by switching from rail lifting mechanisms to pneumatic wheels, by robotizing the processes of enlargement and installation of structures and equipment. The functions of managing and making organizational and technological decisions can be partially transferred to a specially developed neural network that has access to an array of data on previously implemented projects. This approach allows us to consider the NPP construction project as a cyber-physical system and opens the way to a whole range of areas of fundamental and applied research in the field of technology, organization and management of the construction of NPP.</jats:p>",
+      "publication_date": "2021-04"
+    },
+    {
+      "doi": "10.14716/ijtech.v12i2.4418",
+      "title": [
+        "Business Process Reengineering at ICT Operations, In Managing Smart Cities as New Customers (Non-Human)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.24843/jim.2021.v09.i03.p01",
+      "title": [
+        "Reengineering Business Process Manufacturing Company Sales Module Using Odoo V12.0 Application"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Ilmiah Merpati (Menara Penelitian Akademika Teknologi Informasi)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The manufacturing industry applies the use of ERP to run corporate business processes, build good communication and improve service quality. This study aims to provide a Business Process Reengineering proposal to the sales department using the Odoo V12.0 so that the system can be integrated. The methodology used in this research is Business Process Reengineering, where the research only focuses on the sales field. Existing business processes, namely purchasing products, sales orders and invoicing manuall. Reengineering that has been carried out is the product sales process, the sales order process, and the payment process. Reengineering has been carried out quite well by using the User Acceptance Test method and obtaining agreed responses as the greatest value in every aspect. The results obtained are based on 5 categories, namely content items by 63%, module items by 53%, multimedia element items by 88%, navigation aspects by 70% and usability items by 82%.&#x0D;\n Keywords: Business Process Reengineering, Enterprise Resource Planning, Odoo V12.0, Sales, User Acceptance Test </jats:p>"
+    },
+    {
+      "doi": "10.12737/2306-627x-2021-10-1-34-41",
+      "title": [
+        "Business Models of Reengineering Control Systems in Industrial Holdings"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Scientific Research and Development. Economics of the Firm"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The post-industrial stage of the development of the national economy marked the need for traditional sectors to adopt the national economy (one of these industries is industry) completely new management paradigms based on the accents of digitalization and machine management of operational business processes and the shift of the manager from the position of a classic manager to a navigator, developing the trajectory of industrial business taking into account current challenges and threats in the presence markets and the capabilities of the internal environment to self-renewal and self-development taking into account the private interests of top managers.</jats:p>",
+      "publication_date": "2021-04"
+    },
+    {
+      "doi": "10.36622/vstu.2021.20.1.018",
+      "title": [
+        "REENGINEERING OF THE PROCESSES OF CONTROL OF INDICATORS OF THE PATIENT'S CONDITION IN THE FRAMEWORK OF THE MEDICAL INFORMATION SYSTEM"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "СИСТЕМНЫЙ АНАЛИЗ И УПРАВЛЕНИЕ В БИОМЕДИЦИНСКИХ СИСТЕМАХ"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>В данной статье описываются пути повышения качества медико-диагностического процесса в результате внедрения медицинской информационной системы во врачебную практику. Также проводится анализ деятельности врача по контролю показателей состояния пациента как в стационарных условиях, так и с применением медицинских информационных систем. Применения реинжиниринга как совокупности средств, мер и методов, в том числе соответствующих информационных, позволят кардинально улучшить основные показатели деятельности медицинских организаций, в том числе медицинского персонала. С данной целью осуществляется анализ и последующее переосмысление существующих медико-диагностических процессов. Таким образом, сформированные методы реинжиниринга могут быть использованы в процессе разработки инновационной стратегии развития. Основным документом, отражающим состояние пациента, является медицинская карта, которая служит документальным доказательством проведенного лечебно-диагностического и реабилитационного процесса, отражает взаимодействие лечащего врача с другими специалистами и службами, отражает динамику и исход заболевания. Электронная медицинская карта может значительно повысить безопасность и качество медицинской помощи, увеличить оперативность представления медицинской информации, обеспечить комфортность в работе медицинского персонала. Использование соответствующего программного обеспечений и медицинской информационной системы контроля показателей состояния пациента в рамках электронной медицинской карты обеспечит постоянное взаимодействие врача и пациента и повысит оперативность лечебно-диагностического процесса</jats:p>\n                                                                                            <jats:p>This article describes ways to improve the quality of the medical diagnostic process as a result of the introduction of the medical information system into medical practice. An analysis of the doctor's activities is also carried out to monitor the indicators of the patient's condition both in stationary conditions and using medical information systems. The use of reengineering as a set of tools, measures and methods, including the relevant information, will radically improve the main performance indicators of medical organizations, including medical personnel. For this purpose, the analysis and subsequent rethinking of existing medical and diagnostic processes is carried out. Thus, the formed reengineering methods can be used in the process of developing an innovative development strategy. The main document reflecting the patient's condition is a medical record, which serves as documentary evidence of the medical, diagnostic and rehabilitation process, reflects the interaction of the attending physician with other specialists and services, reflects the dynamics and outcome of the disease. An electronic medical record can significantly improve the safety and quality of medical care, increase the efficiency of medical information submission, and ensure the comfort of medical personnel. The use of appropriate software and a medical information system for monitoring indicators of the patient's condition within the framework of an electronic medical record will ensure constant interaction between a doctor and a patient and increase the efficiency of the medical diagnostic process</jats:p>",
+      "publication_date": "2021-04"
+    },
+    {
+      "doi": "10.33005/ebgc.v4i1.170",
+      "title": [
+        "Analysis of Business Process Reengineering and Export Platform in Supporting Business Exports of Creative Economy Players in the Micro,  Small and Medium Business in Culinary Sub-sector"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Economics, Business, and Government Challenges"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\r\n\r\n\r\n\r\nThe creative economy has a large contribution to Gross Domestic Product (GDP) that the role of creativity and knowledge in generating new ideas is a driver of economic growth and is able to absorb a large number of workers. Strong infrastructure support is needed, such as platfroms and facilitators as an intermediary between creative industry players and the market or consumer if they want to expand their business into the global market. The purpose of this research is to describe the factors that can help Indonesian creative industry players to enter the global market by focusing on four things: Business Process Reengineering ; support system (in terms of product technology, legality, and capital); as well as a platform as an infrastructure as an intermediary between creative industry players and the global market. This research used a qualitative method (review paper) by using data obtained from related journals and articles that were studied, then described descriptively based on the researcher’s perspective.  The key informants in the study were cassava flour producers and gluten free food pioneers who have successfully exported as research subjects\r\n\r\n\r\n\r\n</jats:p>"
+    }
+  ]
+}

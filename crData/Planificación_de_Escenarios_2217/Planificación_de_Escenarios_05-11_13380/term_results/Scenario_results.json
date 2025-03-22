@@ -1,0 +1,330 @@
+{
+  "term": "Scenario",
+  "total_results": 25,
+  "processed_count": 25,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/j.nuclphysbps.2005.04.049",
+      "title": [
+        "Curvaton scenario and inhomogeneous reheat scenario with low scale inflation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Physics B - Proceedings Supplements"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.2523/iptc-11006-ms",
+      "title": [
+        "Natural Gas Scenario - Pakistan Case Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "All Days"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n                  <jats:title>Abstract</jats:title>\n                  <jats:p>World Natural Gas scenario has changed rapidly in the last decade and Natural Gas is set to play an increasing role in meeting the future energy needs as demand rises across the world. Natural Gas demand has increased by 75% over the past twenty years and its share in the total energy consumption is globally expected to increase from 23% in 2002 to 28% by the end of 2005. Pakistan has proven reserves of 796.32 Bcm (28.10 Tcf) and net annual gas consumption of 34.09 Bcm (1.203 Tcf). At present Pakistan's energy mix comprises 50% of Natural Gas share and there is continuous rise in gas consumption with a target to extend it to about 55%. Paper discusses chronology of Pakistan's Natural Gas starting from first find in 1952 and development of most extensive transmission and distribution network over the years. Conclusively, the paper would focus to demonstrate the upcoming challenges in Pakistan to meet the growing demands in addition to the opportunities that such challenges bring along.</jats:p>\n                  <jats:sec>\n                     <jats:title>Introduction</jats:title>\n                     <jats:p>Natural Gas has already played a vital role in shaping the industry outlook and meeting energy demands in North America, Western and Eastern European countries, and industrialized Asia due to its availability and environmental acceptance. The availability of Natural Gas worldwide and specifically the abundance in Middle East, coupled with its environmental acceptability and various applications across all sectors, will continue to play an increasingly important role in meeting demand for energy in the World. Natural Gas is one of the cleanest, safest, and most useful of all energy sources. Natural gas is the most precious energy source which has extremely efficient BTU input to BTU use ratio. It is also a major feedstock for the production of ammonia for use in fertilizer production and a cleaner fuel choice for power plants.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                     <jats:title>World Natural Gas Scenario</jats:title>\n                     <jats:p>The World gas scenario has changed rapidly in the last decade. Today Natural Gas is the fastest growing primary energy source. Presently world Natural Gas proven reserves are 6,337 Tcf. More than 75% of world gas reserves are held by ten countries, which represent 40% of the total natural gas exports through pipeline and/or LNG. Pakistan is ranked at number 30 and represents 0.4% of world gas reserves.</jats:p>\n                  </jats:sec>\n               </jats:sec>",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.5194/bgd-2-1719-2005",
+      "title": [
+        "Mini-ribozymes and freezing environment: a new scenario for the early RNA world"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>Abstract. The RNA World hypothesis states that the present-day life, which is based on DNA genomes and protein enzymes, was preceded by a simpler life form based primarily on RNA. During this era, the genetic information resided in the sequence of RNA molecules and the phenotype derived from the catalytic properties of RNA. Though it is a widely accepted scenario, a number of problems remain unsolved. One of the biggest questions is how complex RNAs could evolve, survive and replicate under typically assumed ''warm and wet'' conditions, taking into account that the RNA phosphodiester backbone is chemically unstable under these conditions. We suggest that prebiotic conditions associated with freezing could have been of key importance in the early RNA World, and discuss the role of primitive catalytic RNA in the evolution of RNA size and complexity.\n                        </jats:p>"
+    },
+    {
+      "doi": "10.1126/science.310.5751.1117c",
+      "title": [
+        "Preparing for the Worst-Case Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1038/laban1105-15b",
+      "title": [
+        "Response to Protocol Review Scenario: Compromise is in order"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1038/laban1105-16a",
+      "title": [
+        "Response to Protocol Review Scenario: Consider analgesia for all"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1007/s10530-004-2996-1",
+      "title": [
+        "Impact Scenario for an Introduced Decapod on Arctic Epibenthic Communities"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biological Invasions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1002/047000942x.ch13",
+      "title": [
+        "Models, Concepts, and Examples: Applying Scenario‐Driven Hazard Analysis"
+      ],
+      "type": "other",
+      "container-title": [
+        "Assurance Technologies Principles and Practices"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1109/maes.2005.1576068",
+      "title": [
+        "Data communications concept for a SATS scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Aerospace and Electronic Systems Magazine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1145/1101826.1101853",
+      "title": [
+        "Scenario optimization for interactive category search"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 7th ACM SIGMM international workshop on Multimedia information retrieval"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1145/1101149.1101328",
+      "title": [
+        "Scenario based dynamic video abstractions using graph matching"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 13th annual ACM international conference on Multimedia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1016/j.nuclphysbps.2005.04.046",
+      "title": [
+        "The Curvaton Scenario for the Origin of Large-scale Structure"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Physics B - Proceedings Supplements"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1038/laban1105-16b",
+      "title": [
+        "Response to Protocol Review Scenario: Proof is in the records"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1145/1096000.1096009",
+      "title": [
+        "An architecture for distributed scenario building and evaluation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communications of the ACM"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>A Web portal can support collaborative learning and help individuals and organizations plan for an uncertain future.</jats:p>",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1075/tsl.63.17sak",
+      "title": [
+        "Development of an inclusive-exclusive distinction"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Typological Studies in Language",
+        "Clusivity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1007/s00146-005-0025-2",
+      "title": [
+        "Combining ergonomics, culture and scenario for the design of a cooperation platform"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AI &amp; SOCIETY"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-06"
+    },
+    {
+      "doi": "10.1029/2005gl023762",
+      "title": [
+        "North Sea storm surge statistics based on projections in a warmer climate: How important are the driving GCM and the chosen emission scenario?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geophysical Research Letters"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Climate models, simulating the effect of plausible future emission concentrations (scenarios), describe for the future an increase of high wind speeds over Northwest Europe during winter. With the help of a hydrodynamic model of the North Sea, these atmospheric future conditions are used to project storm surge heights for the Northwest European Shelf Sea. Four different projections are presented, all generated with the same Regional Climate Model, which itself is driven with two different Global Climate Model scenarios both exposed to two different emission scenarios. The analyses are carried out for a 30‐year time‐slice at the end of the 21st century. All four ensemble members point to a significant increase of storm surge elevations for the continental North Sea coast of between 15 and almost 25 cm. However, the different storm surge projections are not statistically distinguishable from each other but can provide a range of possible evolutions of surge extremes in a warmer climate.</jats:p>",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1140/epjc/s2005-02373-y",
+      "title": [
+        "Electric dipole moments of charged leptons in the split fermion scenario in the two Higgs doublet model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The European Physical Journal C"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.5408/1089-9995-53.5.522",
+      "title": [
+        "Teacher/Scientist Partnership Develops a Simulated Natural Disaster Scenario to Enhance Student Learning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Geoscience Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.24297/ijct.v4i2c2.4184",
+      "title": [
+        "Evaluation of Operation of Lake Tana Reservoir Future Water Use under Emerging Scenario with and without climate Change Impacts,  Upper Blue Nile"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INTERNATIONAL JOURNAL OF COMPUTERS &amp; TECHNOLOGY"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This paper presents simulation of Lake Tana reservoir future water use under emerging scenario with and without climate change impacts.    Two different development and climate change scenarios were developed to simulate Lake Tana water level i.e., i) Base line scenario (1991-2000) ,ii) Future development scenario on short term periods(2031-2040) , and ii) Future development scenario on long term periods (2091-2100). River head flow estimated by Soil and Water Assessment Tool (SWAT) was used as an input to Water Evaluation And Planning (WEAP) model to simulate the Lake level for each scenario.   Based on WEAP model simulation results, demand coverage and reliability of 100% was observed in all scenarios for Tana-Beles hydropower project. For scenarios without climate change impacts, there are longer periods of time when mean monthly lake levels are below 1785 masl (i.e., the minimum lake level required for shipping). Under natural conditions (lake level without project), they exceed this level in 100%.under current conditions (Base line scenario, BLS), they exceed this level in 89% of the months. In the full development scenario (FDSCÊ¹), this will decrease to 83%. For all scenarios with climate change impacts, Lake water Level will not significantly be affected by climate change impacts.</jats:p>"
+    },
+    {
+      "doi": "10.1016/j.fusengdes.2005.06.211",
+      "title": [
+        "Optimization of the IGNITOR operating scenario at 11MA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1016/j.fusengdes.2005.06.207",
+      "title": [
+        "3D-analysis of an ITER accident scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1579/0044-7447-34.7.533",
+      "title": [
+        "Parameter Precision in the HBV-NP Model and Impacts on Nitrogen Scenario Simulations in the Rönneå River, Southern Sweden"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AMBIO: A Journal of the Human Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1360/04yd0248",
+      "title": [
+        "Developing land use scenario dynamics model by the integration of system dynamics model and cellular automata model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science in China Series D: Earth Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1088/0741-3335/47/12b/s11",
+      "title": [
+        "ITER operation beyond its baseline scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Plasma Physics and Controlled Fusion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    }
+  ]
+}

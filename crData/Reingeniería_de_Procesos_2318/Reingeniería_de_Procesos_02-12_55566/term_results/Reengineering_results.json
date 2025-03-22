@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1177/1350507602334003",
+      "title": [
+        "Reengineering as Knowledge Management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Learning"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This study of business process reengineering within a UK hospital engages with the following phenomena of interest to organizational scholars and practitioners: corporate change programmes; new forms of organizing; and knowledge processes in and around organizations. A hospital change programme is conceptualized here as a form of knowledge management whereby organizational leaders used business process reengineering in an attempt to effect changed organizational arrangements and performance. Utilizing Cook and Brown's distinction between knowledge and knowing, the article observes shifts in the ambition, organization and practice of the reengineering programme over time. Data linking the process and performance of the reengineering programme suggest that viewing reengineering, and other best practice concepts, as objective transferable knowledge resources is of limited theoretical and practical utility. Rather, the encounter between reengineering as `off-the shelf' prescription and the hospital setting reveals the interaction between `knowledge' and `knowing' to be a social process more subject to politicized relations and arrangements than presently theorized. Thus the study promotes a more socialized view of knowledge management and greater links between contemporary developments in theorizing about organizational change, learning and knowledge processes. Other observations emanating from the study are that greater attention needs to be given to assumptions of knowledge transfer and use within debate about best-practice concepts and corporate change programmes. Possibilities for transforming organizations to effect new organizational form and process are also theorized as more complex than some contemporary writing suggests. </jats:p>",
+      "publication_date": "2002-12"
+    },
+    {
+      "doi": "10.1016/s0168-3659(02)00288-2",
+      "title": [
+        "Reengineering of a commercially available bovine intravaginal insert (CIDR insert) containing progesterone"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Controlled Release"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-12"
+    },
+    {
+      "doi": "10.1108/14637150210449148",
+      "title": [
+        "Quantitative risk level estimation of business process reengineering efforts"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>With risk defined as the possibility of deviation in the results from the expected goals, business process reengineering (BPR) initiatives clearly involve risk taking. However, due to the high expected returns of such efforts, the acceptable risk levels of BPR will tend to be greater than those of less ambitious projects. This research reports the development of a tool to quantitatively estimate the potential risk level of a BPR effort before an organization commits its resources to that effort. The underlying research employed a survey of BPR‐experienced organizations to collect assessment information in order to build a BPR risk estimation model. The developed tool uses triangular fuzzy numbers to approximate the degree of success/failure of proposed BPR initiatives. The tool can be applied by any organization contemplating BPR, thus giving such organizations a heretofore unavailable estimate of the risk level of proposed BPR efforts. Validation was performed based upon an 18‐month BPR project conducted at the Missouri Lottery.</jats:p>",
+      "publication_date": "2002-12"
+    }
+  ]
+}

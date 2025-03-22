@@ -1,0 +1,242 @@
+{
+  "term": "Reengineering",
+  "total_results": 18,
+  "processed_count": 18,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/csmr.2007.18",
+      "title": [
+        "Co-Reviewers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.36",
+      "title": [
+        "Monitoring Requirements Evolution using Views"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.48",
+      "title": [
+        "The Reality of Libraries"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.15",
+      "title": [
+        "Automated Mass Maintenance of Software Assets"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.27",
+      "title": [
+        "How Developers Develop Features"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.22",
+      "title": [
+        "Evolution from a Scientific Application to an Applicable Product"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1145/1244002.1244320",
+      "title": [
+        "Software reengineering with architecture decomposition"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2007 ACM symposium on Applied computing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.16",
+      "title": [
+        "Automated Protection of PHP Applications Against SQL-injection Attacks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.13",
+      "title": [
+        "API Changes - How FarWould You Go?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.54",
+      "title": [
+        "Visualizing Testsuites to Aid in Software Understanding"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.7",
+      "title": [
+        "A maintenance oriented Framework for software components characterization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/ecbs.2007.62",
+      "title": [
+        "Reengineering a Legacy Tool for Software Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "14th Annual IEEE International Conference and Workshops on the Engineering of Computer-Based Systems (ECBS'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.28",
+      "title": [
+        "Incremental Specification Validation and Runtime Adaptivity of Distributed Component Information systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.32",
+      "title": [
+        "MetricViewEvolution: UML-based Views for Monitoring Model Evolution and Quality"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1016/j.tips.2007.01.006",
+      "title": [
+        "Neoceptors: reengineering GPCRs to recognize tailored ligands"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Trends in Pharmacological Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.46",
+      "title": [
+        "Testing Techniques for the Cross-platform Migration of Very Large Interactive Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.50",
+      "title": [
+        "Towards A Process-Oriented Software Architecture Reconstruction Taxonomy"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    },
+    {
+      "doi": "10.1109/csmr.2007.47",
+      "title": [
+        "The Dynamic Function Coupling Metric and Its Use in Software Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-03"
+    }
+  ]
+}

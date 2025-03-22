@@ -1,0 +1,72 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.3860/lsr.v6i0.291",
+      "title": [
+        "Reengineering Towards a Structured Systems Development Environment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Loyola Schools Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2514/6.2008-3276",
+      "title": [
+        "Evolution and Reengineering of NASA's Flight Dynamics Facility (FDF)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SpaceOps 2008 Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1007/s11761-008-0023-6",
+      "title": [
+        "Log-based mining techniques applied to Web service composition reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Service Oriented Computing and Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-07"
+    },
+    {
+      "doi": "10.1061/(asce)0733-9364(2008)134:5(371)",
+      "title": [
+        "Construction Process Reengineering by Integrating Lean Principles and Computer Simulation Techniques"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Construction Engineering and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/193229680800200304",
+      "title": [
+        "Multicenter Validation of a Computer-Based Clinical Decision Support Tool for Glucose Control in Adult and Pediatric Intensive Care Units"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Diabetes Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title>Introduction:</jats:title><jats:p> Hyperglycemia during critical illness is common, and intravenous insulin therapy (IIT) to normalize blood glucose improves outcomes in selected populations. Methods differ widely in complexity, insulin dosing approaches, efficacy, and rates of hypoglycemia. We developed a simple bedside-computerized decision support protocol (eProtocol-insulin) that yields promising results in the development center. We examined the effectiveness and safety of this tool in six adult and five pediatric intensive care units (ICUs) in other centers. </jats:p></jats:sec><jats:sec><jats:title>Methods:</jats:title><jats:p> We required attending physicians of eligible patients to independently intend to use intravenous insulin to normalize blood glucose. We used eProtocol-insulin for glucose control for a duration determined by the clinical caregivers. Adults had an anticipated length of stay of 3 or more days. In pediatric ICUs, we also required support or intended support with mechanical ventilation for greater than 24 hours or with a vasoactive infusion. We recorded all instances in which eProtocol-insulin instructions were not accepted and all blood glucose values. An independent data safety and monitoring board monitored study results and subject safety. Bedside nurses were selected randomly to complete a paper survey describing their perceptions of quality of care and workload related to eProtocol-insulin use. </jats:p></jats:sec><jats:sec><jats:title>Results:</jats:title><jats:p> Clinicians accepted 93% of eProtocol-insulin instructions (11,773/12,645) in 100 adult and 48 pediatric subjects. Forty-eight percent of glucose values were in the target range. Both of these results met a priori-defined efficacy thresholds. Only 0.18% of glucose values were ≤40 mg/dl. This is lower than values reported in prior IIT studies. Although nurses reported eProtocol-insulin required as much work as managing a mechanical ventilator, most nurses felt eProtocol-insulin had a low impact on their ability to complete non-IIT nursing activities. </jats:p></jats:sec><jats:sec><jats:title>Conclusions:</jats:title><jats:p> A multicenter validation demonstrated that eProtocol-insulin is a valid, exportable tool that can assist clinicians in achieving control of glucose in critically ill adults and children. </jats:p></jats:sec>",
+      "publication_date": "2008-05"
+    }
+  ]
+}

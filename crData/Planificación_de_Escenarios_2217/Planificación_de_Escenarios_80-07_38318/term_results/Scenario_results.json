@@ -1,0 +1,57 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/5070281",
+      "title": [
+        "Energy efficient buildings. Technical potentials and policy recommendations for conservation and renewable resources: a least cost scenario, 1980-2000"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/0015732515800203",
+      "title": [
+        "A Scenario of World Business in the 21st Century"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Foreign Trade Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-07"
+    },
+    {
+      "doi": "10.1080/0140528800020302",
+      "title": [
+        "Biology in Community Education: a Philippine Scenario for Lifelong Education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Science Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-07"
+    },
+    {
+      "doi": "10.1177/016224398000500313",
+      "title": [
+        "Literature Review : A Low Energy Growth 2030 Scenario and the Perspectives for Western Europe by Umberto Colombo and Oliviero Bernardini Report prepared for the Commission of the European Communities, Panel on Low Energy Growth, July 1979. v + 267 pp.; no price given"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science, Technology, &amp; Human Values"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1980-07"
+    }
+  ]
+}

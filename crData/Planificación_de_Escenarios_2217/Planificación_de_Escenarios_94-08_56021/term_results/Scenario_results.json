@@ -1,0 +1,111 @@
+{
+  "term": "Scenario",
+  "total_results": 8,
+  "processed_count": 8,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2514/6.1994-4176",
+      "title": [
+        "Hydrogen energy network start-up scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Intersociety Energy Conversion Engineering Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-08"
+    },
+    {
+      "doi": "10.1016/0169-555x(94)90023-x",
+      "title": [
+        "Global warming and permafrost in Eurasia: a catastrophic scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geomorphology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-08"
+    },
+    {
+      "doi": "10.1086/174499",
+      "title": [
+        "A hydrodynamic approach to cosmology: The mixed dark matter cosmological scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-08"
+    },
+    {
+      "doi": "10.1086/174500",
+      "title": [
+        "On the evolution of clustering and the biased galaxy formation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-08"
+    },
+    {
+      "doi": "10.1007/bf01719695",
+      "title": [
+        "Political fiction or a future scenario for a pandemic of influenza?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Epidemiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-08"
+    },
+    {
+      "doi": "10.1007/s00585-994-0996-1",
+      "title": [
+        "Impact on ozone of high-speed stratospheric aircraft: effects of the emission scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annales Geophysicae"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Abstract. A photochemical-transport two-dimensional model has been used to assess the impact of a projected fleet of high-speed stratospheric aircraft using different emissions scenarios. It is shown that the presence in the background atmosphere of nitric acid trihydrate aerosols is responsible for a lower stratospheric denoxification in addition to that caused by the sulfate aerosol layer. This has the effect of further decreasing the relative role of the odd nitrogen catalytic cycle for ozone destruction, so that the lower stratosphere is primarily controlled by chlorine species. The effect of aircraft injection of nitric oxides is that of decreasing the level of ClO, so that the lower stratospheric ozone (below about 20-25 km altitude) increases. The net effect on global ozone is that of a small increase even at Mach 2.4, and is enhanced by adopting emission scenarios including altitude restriction at 15 or 18 km. Reductions of the emission index (EI) of nitric oxides below relatively small values (about 15) are shown to reduce the aircraft-induced ozone increase, because of the associated smaller decrease of ClO. This conclusion is no more valid when the emission index is raised at the present values (about 45).\n                    </jats:p>"
+    },
+    {
+      "doi": "10.1016/0960-1481(94)90172-4",
+      "title": [
+        "Energy scenario of Zambia: Prospects and constraints in the use of renewable energy resources"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Renewable Energy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-08"
+    },
+    {
+      "doi": "10.1111/j.1469-185x.1994.tb01270.x",
+      "title": [
+        "THE ORIGIN OF THE LAND PLANT SPOROPHYTE: AN INTERPOLATIONAL SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biological Reviews"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Summary</jats:title><jats:p>The origin of terrestrial plants from a charophycean ancestor is assumed as a basis for the consideration of the origin of life histories amongst this group. Charophycean algae are vegetatively gametophytic, thus requiring the interpolation of the multicellular sporophytic stage. The model presented here derives the sporophyte and typical sporangial contents from the zygospore produced from the reproductive structure of a hypothetical charophycean land plant ancestor. The presence of monads, dyads, and various forms of tetrads in the fossil record of presumed land plants add support to this model. In addition, such spore types suggest that the temporal relationship of meiosis to sporopollenin deposition was less strictly controlled than in extant land plants.</jats:p>",
+      "publication_date": "1994-08"
+    }
+  ]
+}

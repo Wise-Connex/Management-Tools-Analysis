@@ -1,0 +1,180 @@
+{
+  "term": "Reengineering",
+  "total_results": 14,
+  "processed_count": 14,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21203/rs.3.rs-4739552/v1",
+      "title": [
+        "Ambiguity in Business Process Reengineering: A Comprehensive Review of Trends, Challenges and Future Prospects."
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<title>Abstract</title>\n        <p>This document presents a comprehensive Systematic Literature Review (SLR) on the critical topic of Ambiguity In Business Process Reengineering (BPR). The review meticulously analyzes a range of methodologies, identifies prevalent challenges, and outlines potential avenues for future research in this domain. Through a thorough examination of 60 papers published between 2000 and 2023, this SLR illuminates evolving trends in Ambiguity Techniques, emphasizing the paramount importance of clear Business Process Reengineering in software development. By exploring the synergies between human expertise and computational methods, the review evaluates the strengths and weaknesses of various approaches, particularly their implications for collaborative efforts between Business Process Reengineering (BPR) engineers and testers. Notably, the study explores novel approaches aimed at problem-solving and preventing future challenges. Furthermore, it explores the promising integration of Artificial Intelligence and Machine learning with contextual awareness and adaptive learning models as a strategic means to address current limitations in unclear meaning. This research serves as a foundational contribution to advancing the field of BPR, with a specific focus on optimizing software development and delivery efficiency and effectiveness.</p>"
+    },
+    {
+      "doi": "10.47576/2949-1878.2024.8.8.007",
+      "title": [
+        "Digital reengineering of business processes for an industrial enterprise"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>В статье рассматриваются теоретические основы бизнес-процессов, реинжиниринга бизнес-процессов и цифрового реинжиниринга. Определяются и анализируются основные преимущества цифрового реинжиниринга по сравнению с традиционными подходами, включая его способность обеспечивать более высокую скорость и точность выполнения операций, снижение затрат, более быструю реакцию на изменения потребностей потребителей. Особое внимание уделяется механизмам цифрового реинжиниринга, а именно автоматизации и роботизации процессов, использованию технологий интернета вещей, внедрению искусственного интеллекта, процессов анализа больших данных, применению аддитивных технологий, а также внедрению цифровых двойников и блокчейн-фреймворков. Важной частью работы выступает пример цифрового реинжиниринга бизнес-процесса модернизации оборудования на промышленном предприятии. В рамках примера строятся две модели: AS-IS, которая отражает существующий бизнес-процесс без внедрения цифрового двойника модернизируемого оборудования, и TO-BE, которая представляет процесс модернизации оборудования с использованием технологий цифровых двойников. Модели позволяют наглядно продемонстрировать преимущества проведения цифрового реинжиниринга. Заключительная часть статьи посвящена рассмотрению перспектив дальнейшего развития цифрового реинжиниринга в промышленности, включая распространение использования технологий искусственного интеллекта и машинного обучения, а также переход к устойчивому производству и экологической ответственности.</jats:p>\n                                                                                            <jats:p>This article examines the theoretical foundations of business processes, business process reengineering, and digital reengineering. The primary advantages of digital reengineering over traditional approaches are identified and analyzed, including its ability to provide higher speed and accuracy in operations, cost reduction, and faster response to changing consumer needs. Particular attention is paid to the mechanisms of digital reengineering, namely automation and robotics of processes, the use of IoT technologies, the implementation of artificial intelligence, big data analytics, the application of additive manufacturing technologies, as well as the introduction of digital twins and blockchain frameworks. An important part of this work is the example of digital reengineering of the equipment modernization process at an industrial enterprise. Within this example, two models are built: AS-IS, which reflects the existing business process without the implementation of a digital twin for the modernized equipment, and TO-BE, which represents the equipment modernization process using digital twin technologies. These models clearly demonstrate the advantages of conducting digital reengineering. The concluding part of the article discusses the prospects for further development of digital reengineering in the industry, including the widespread use of artificial intelligence and machine learning technologies, as well as the transition to sustainable production and environmental responsibility.</jats:p>"
+    },
+    {
+      "doi": "10.1016/j.heliyon.2024.e35251",
+      "title": [
+        "Sustainable design: Circular innovation design method under process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Heliyon"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-08"
+    },
+    {
+      "doi": "10.24158/pep.2024.8.18",
+      "title": [
+        "Reengineering Business Processes in Tourism Active Services"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Общество: политика, экономика, право"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This article analyzes the primary challenges faced by the tourism industry. In 2022, significant changes occurred in the global economy and social sphere, impacting all sectors. These changes have certainly affected all industries. Therefore, it is important to learn how to apply integrated approaches to existing processes in order to improve the efficiency, effectiveness and customer satisfaction of the tourism industry. Today, the tourism sector must be ready to adapt to the changing needs and expectations of its customers. Modern business conditions in the tourism sector require constant revision and updating of processes to increase competitiveness and improve the quality of services. The author comes to the conclusion about the importance of reengineering as a key element of strategic management in the tourism business, emphasizing the need for adaptation and an innovative approach to achieve sustainable development in a dynamically changing market.</jats:p>",
+      "publication_date": "2024-08"
+    },
+    {
+      "doi": "10.37859/coscitech.v5i2.7426",
+      "title": [
+        "Business Process Reengineering pada Reservasi Pasien Rumah Sakit Umum Universitas Muhammadiyah Malang"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal CoSciTech (Computer Science and Information Technology)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Sebagai institusi penyedia layanan kesehatan, Rumah Sakit Umum Universitas Muhammadiyah Malang menghadapi tuntutan untuk meningkatkan efisiensi operasional, kemudahan pada akses informasi, dan pelayanan yang baik kepada pasien dan calon pasien. Rumah Sakit Umum Universitas Muhammadiyah Malang masih memiliki proses reservasi pasien yang kurang efisien dikarenakan mesin pendaftaran yang disediakan rumah sakit memiliki jumlah yang terbatas dan hanya dapat digunakan oleh pasien yang datang ke rumah sakit. Hal ini menyebabkan antrian yang panjang ketika pasien yang mendaftar dalam jumlah yang banyak. Permasalahan lainnya terdapat pada beberapa informasi yang terkait dengan proses reservasi yang hanya dapat diakses langsung di rumah sakit membuat calon pasien harus kembali pada lain hari ketika klinik atau departemen yang ingin dituju tidak tersedia. Business Process Reengineering (BPR) menjadi salah satu solusi yang dapat dilakukan pada permasalahan yang ditemui pada reservasi pasien RSU UMM. Dalam melakukan BPR, proses bisnis dapat dieliminasi atau dioptimalkan untuk meningkatkan efisiensi dari proses. Penelitian ini melakukan BPR menggunakan standar ASME (American Society of Mechanical Engineers) dan uji efisiensi throughput sebagai alat bantu untuk mengukur efisiensi proses bisnis baru dan lama. Pada penelitian ini, hasil efisiensi throughput dari proses bisnis awal pada proses reservasi pasien Rumah Sakit Umum Universitas Muhammadiyah Malang sebesar 49,09% dan meningkat menjadi 97,38% pada proses bisnis rekomendasi setelah dilakukan business process reengineering. Selanjutnya dilakukan analisis kelebihan dan kekurangan untuk mengetahui permasalahan yang mungkin muncul pada hasil proses bisnis rekomendasi. Hasil akhir dari penelitian ini adalah solusi berupa rancangan antarmuka aplikasi mobile yang telah disesuaikan dengan kebutuhan berdasarkan proses bisnis rekomendasi.</jats:p>"
+    },
+    {
+      "doi": "10.29100/jipi.v9i3.5393",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING LAPORAN SERTIFIKASI PADA CV.AGROBAS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JIPI (Jurnal Ilmiah Penelitian dan Pembelajaran Informatika)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3844/jcssp.2024.872.884",
+      "title": [
+        "Enhancement of Semantic Analysis Based on the Ontology Reengineering: A Case Study on Moroccan Tourism Domain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Computer Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-08"
+    },
+    {
+      "doi": "10.55927/ijba.v4i4.10663",
+      "title": [
+        "Customer Complaint Service Business Processes Redesign with Artificial Intelligence Technology Using Business Process Reengineering Approach (Study Case: Ceria BRI Application)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Indonesian Journal of Business Analytics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This article analyses the business process redesign of Ceria BRI's customer complaint service using Artificial Intelligence (AI) technology with Business Process Reengineering (BPR) approach. This qualitative research with a post-positivism paradigm reveals that making complaints at Ceria BRI currently uses several channels such as telephone, email, social media, and applications. The problems faced include the high number of complaints that received every month in 2023, and some complaints were resolved over Service Level Agreement (SLA). The proposed solution is to redesign the proposed business process design by applying the four stages of Business Process Reengineering (BPR), namely Visioning-Identifying-Analyzing-Redesigning. These steps aim to improve service quality, grow positive interactions with customers, and enhance the internal performance of the Ceria BRI customer complaint service team.</jats:p>"
+    },
+    {
+      "doi": "10.1145/3695652.3695668",
+      "title": [
+        "Project Identification and Evaluation: a Case on Business Process Reengineering of Ports Project Workflow Management"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2024 7th International Conference on Information Management and Management Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-08"
+    },
+    {
+      "doi": "10.31539/costing.v7i5.10767",
+      "title": [
+        "ANALISA IMPLEMENTASI BUSINESS PROCESS REENGINEERING: STUDY LITERATURE REVIEW"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Economic, Bussines and Accounting (COSTING)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Business Process Reengineering (BPR) adalah suatu metode manajemen perubahan yang menitikberatkan pada perbaikan proses dengan cara mengurangi elemen-elemen proses yang tidak memberikan nilai tambah. BPR adalah teknik yang pada dasarnya digunakan oleh sebuah organisasi untuk memikirkan kembali dan meningkatkan pekerjaan mereka dengan tujuan untuk secara dramatis meningkatkan klien. metode pendekatan BPR secara menyeluruh membentuk kembali praktik bisnis yang ditujukan untuk mencapai kinerja yang lebih baik secara keseluruhan baik dalam hal biaya, kualitas layanan, kecepatan layanan, dan kemahiran petugas layanan. Artikel ini bertujuan untuk menemukan bagaimana literatur sebelumnya telah menggambarkan faktor-faktor keberhasilan BPR, dalam hal Human-Technology-Organization (HTO) elemen dan tantangan apa saja yang akan dihadapi oleh praktisi BPR. Berdasarkan dari temuan melalui literature review menunjukkan bahwa BPR adalah metodologi terbaik yang dapat dapat diterapkan pada banyak organisasi bisnis sehingga dapat menghasilkan proses bisnis yang efektif, efisien dan hemat biaya. BPR melibatkan pemikiran ulang proses bisnis yang dapat membantu secara drastis mengurangi biaya produk atau jasa. Dari perspektif historis, BPR telah diterima sebagai strategi manajemen bisnis yang kuat sejak tahun 1990.\r\n </jats:p>"
+    },
+    {
+      "doi": "10.1201/9781003492122-7",
+      "title": [
+        "Reengineering Processes of Youth Exposure on Agriculture and Environmental Sustainability: Revealing Big Data Technology and Security Adoption in the Digital Ecosystem"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Sustainability in Energy and Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-08"
+    },
+    {
+      "doi": "10.62754/joe.v3i4.3686",
+      "title": [
+        "Standardization of the Modeling System for Choosing the Reengineering Form to Change Business Processes at Critical Energy Infrastructure Enterprises: Challenges for Human Capital Security"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Ecohumanism"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The topic of standardizing the modeling system for choosing the reengineering form to change business processes at critical energy infrastructure enterprises presents a complex interplay between technological advancements, process optimization, and the safeguarding of human capital. This discussion spans over several facets of organizational management, highlighting both the opportunities and challenges inherent in such transformative endeavors.  The purpose of the article is to model the choice of the reengineering form to change business processes at critical energy infrastructure enterprises. The object of the study is a critical energy infrastructure enterprise. The methodology of the study involves the use of the IDEF0 method. As a result of the modeling, a model for choosing the reengineering form to change business processes at critical energy infrastructure enterprises is presented.</jats:p>"
+    },
+    {
+      "doi": "10.1007/s10664-024-10521-0",
+      "title": [
+        "Challenges and practices of deep learning model reengineering: A case study on computer vision"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Empirical Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:sec>\n                <jats:title>Context</jats:title>\n                <jats:p>Many engineering organizations are reimplementing and extending deep neural networks from the research community. We describe this process as deep learning model reengineering. Deep learning model reengineering — reusing, replicating, adapting, and enhancing state-of-the-art deep learning approaches — is challenging for reasons including under-documented reference models, changing requirements, and the cost of implementation and testing.</jats:p>\n              </jats:sec><jats:sec>\n                <jats:title>Objective</jats:title>\n                <jats:p>Prior work has characterized the challenges of deep learning model development, but as yet we know little about the deep learning model reengineering process and its common challenges. Prior work has examined DL systems from a “product” view, examining defects from projects regardless of the engineers’ purpose. Our study is focused on reengineering activities from a “process” view, and focuses on engineers specifically engaged in the reengineering process.</jats:p>\n              </jats:sec><jats:sec>\n                <jats:title>Method</jats:title>\n                <jats:p>Our goal is to understand the characteristics and challenges of deep learning model reengineering. We conducted a mixed-methods case study of this phenomenon, focusing on the context of computer vision. Our results draw from two data sources: defects reported in open-source reeengineering projects, and interviews conducted with practitioners and the leaders of a reengineering team. From the defect data source, we analyzed 348 defects from 27 open-source deep learning projects. Meanwhile, our reengineering team replicated 7 deep learning models over two years; we interviewed 2 open-source contributors, 4 practitioners, and 6 reengineering team leaders to understand their experiences.</jats:p>\n              </jats:sec><jats:sec>\n                <jats:title>Results</jats:title>\n                <jats:p>Our results describe how deep learning-based computer vision techniques are reengineered, quantitatively analyze the distribution of defects in this process, and qualitatively discuss challenges and practices. We found that most defects (58%) are reported by re-users, and that reproducibility-related defects tend to be discovered during training (68% of them are). Our analysis shows that most environment defects (88%) are interface defects, and most environment defects (46%) are caused by API defects. We found that training defects have diverse symptoms and root causes. We identified four main challenges in the DL reengineering process: model operationalization, performance debugging, portability of DL operations, and customized data pipeline. Integrating our quantitative and qualitative data, we propose a novel reengineering workflow.</jats:p>\n              </jats:sec><jats:sec>\n                <jats:title>Conclusions</jats:title>\n                <jats:p>Our findings inform several conclusion, including: standardizing model reengineering practices, developing validation tools to support model reengineering, automated support beyond manual model reengineering, and measuring additional unknown aspects of model reengineering.</jats:p>\n              </jats:sec>",
+      "publication_date": "2024-11"
+    },
+    {
+      "doi": "10.1002/adma.202407143",
+      "title": [
+        "Crystalline Texture Reengineering of Zinc Powder‐Based Fibrous Anode for Remarkable Mechano‐Electrochemical Stability"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advanced Materials"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The challenge of inadequate mechano‐electrochemical stability in rechargeable fibrous Zn‐ion batteries (FZIBs) has emerged as a critical challenge for their broad applications. Traditional rigid Zn wires struggle to maintain a stable electrochemical interface when subjected to external mechanical stress. To address this issue, a wet‐spinning technique has been developed to fabricate Zn powder based fibrous anode, while carbon nanotubes (CNTs) introduced to enhance the spinnability of Zn powder dispersion. The followed annealing treatment has been conducted to reengineer the Zn crystalline texture with CNTs assisted surface tension regulation to redirect (002) crystallographic textural formation. The thus‐derived annealed Zn@CNTs fiber demonstrates great mechano‐electrochemical stability after a long‐term bending and electrochemical process. The fabricated FZIB demonstrates a remarkable durability, surpassing 800 h at 1 mA cm<jats:sup>−2</jats:sup> and 1 mAh cm<jats:sup>−2</jats:sup>, with a marginal voltage hysteresis increase of 21.7 mV even after 100 twisting cycles under 180 degree twisting angle. The assembled FZIB full cell displays an 88.6% capacity retention even after a long cycle of a series of bending, knotting, and straightening deformation. It has been also woven into a 200 cm<jats:sup>2</jats:sup> size textile to demonstrate its capability to integrate into smart textiles.</jats:p>"
+    }
+  ]
+}

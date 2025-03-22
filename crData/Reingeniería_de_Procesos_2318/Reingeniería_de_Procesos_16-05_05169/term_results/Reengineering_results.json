@@ -1,0 +1,71 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.12737/19670",
+      "title": [
+        "Organizational design: reorganization, reengineering, harmonization"
+      ],
+      "type": "edited-book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-05"
+    },
+    {
+      "doi": "10.9708/jksci.2016.21.5.119",
+      "title": [
+        "Extracting of Features in Code Changes of Existing System for Reengineering to Product Line"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Korea Society of Computer and Information"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-05"
+    },
+    {
+      "doi": "10.1080/15476278.2016.1185584",
+      "title": [
+        "Decellularized spleen matrix for reengineering functional hepatic-like tissue based on bone marrow mesenchymal stem cells"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Organogenesis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-07"
+    },
+    {
+      "doi": "10.1186/s12911-016-0298-z",
+      "title": [
+        "Reengineering of MeSH thesauri for term selection to optimize literature retrieval and knowledge reconstruction in support of stem cell research"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BMC Medical Informatics and Decision Making"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-12"
+    },
+    {
+      "doi": "10.1016/j.bbabio.2015.09.001",
+      "title": [
+        "Reengineering cyt b562 for hydrogen production: A facile route to artificial hydrogenases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochimica et Biophysica Acta (BBA) - Bioenergetics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2016-05"
+    }
+  ]
+}

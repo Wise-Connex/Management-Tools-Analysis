@@ -1,0 +1,46 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21423/aabppro19847214",
+      "title": [
+        "Ostertagiosis in Missouri Beef Cattle"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Association of Bovine Practitioners  Conference Proceedings"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Our studies with spring calf-cow herds were conducted from 1979 through 1983 on 6 separate farms. Results were presented to AABP in 1983 by Dr. Mike Brauer and will only be summarized here. Breeds for the most part were Angus or Hereford cross or purebred, with some Charolais and Simmental. Study herds were usually 15 to 20 pairs per group which were grazed on summer pastures of orchard grass, fescue, timothy and clover. (Pasture type seemed to have little effect on parasite survivability or transmission). Fecal egg counts, body weights, and grass collection were made biweekly or monthly, and fecal egg samples werecultured for third-stage larva (L3) identification. The predominant species found was Ostertagia ostertagi with Trichostrongylus axei and Cooperia spp also wellrepresented but less numerous. These findings were further corroborated by pairs of tracer or sentinel calves necropsied each month. But most important was the observation that arrest-prone larvae (pre Type II ostertagiasis) were present in the abomasa of tracers in April to August with adults of Type II appearing in late July and into August, a situationwhich closely approximates that of southern states, representing a departure from the traditional or northern seasonality.</jats:p>"
+    },
+    {
+      "doi": "10.1080/00335638509383747",
+      "title": [
+        "Discovering rhetorical imprints: La Follette, “Iago,” and the melodramatic scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Quarterly Journal of Speech"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-11"
+    },
+    {
+      "doi": "10.2469/faj.v41.n6.49",
+      "title": [
+        "A Scenario-Dependent Dividend Discount Model: Bridging the Gap Between Top-Down Investment Information and Bottom-Up Forecasts"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Financial Analysts Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-11"
+    }
+  ]
+}

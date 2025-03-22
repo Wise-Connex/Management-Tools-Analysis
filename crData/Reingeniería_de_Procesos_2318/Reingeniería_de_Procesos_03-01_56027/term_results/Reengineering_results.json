@@ -1,0 +1,912 @@
+{
+  "term": "Reengineering",
+  "total_results": 75,
+  "processed_count": 75,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/b978-155860639-5/50000-6",
+      "title": [
+        "Praise for Object-Oriented Reengineering Patterns"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50006-7",
+      "title": [
+        "Reengineering Patterns"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2003.1192404",
+      "title": [
+        "Proceedings Seventh European Conference on Software Maintenance and Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Seventh European Conference onSoftware Maintenance and Reengineering, 2003. Proceedings."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0006",
+      "title": [
+        "2 Process Reengineering and Business Transformation"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-1-55860-639-5.x5000-7",
+      "title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "type": "edited-book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50017-1",
+      "title": [
+        "References"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50018-3",
+      "title": [
+        "Index"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50005-5",
+      "title": [
+        "Acknowledgments"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50004-3",
+      "title": [
+        "Preface"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2003",
+      "title": [
+        "Seventh European Conference onSoftware Maintenance and Reengineering, 2003. Proceedings."
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50016-x",
+      "title": [
+        "Thumbnail Patterns"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50001-8",
+      "title": [
+        "About the Authors"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50002-x",
+      "title": [
+        "Foreword"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50003-1",
+      "title": [
+        "Foreword"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-89099-3_17",
+      "title": [
+        "Reengineering im Transaction Banking"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Transaction Banking"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2003.1192451",
+      "title": [
+        "Author index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Seventh European Conference onSoftware Maintenance and Reengineering, 2003. Proceedings."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0016",
+      "title": [
+        "Bibliography"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0017",
+      "title": [
+        "Index"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50011-0",
+      "title": [
+        "Tests"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b0-12-227240-4/00146-5",
+      "title": [
+        "Reengineering for Business Processes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Encyclopedia of Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251",
+      "title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<JATS1:p>Information technology matters. The formulation of business models and strategies is likely to be seriously flawed if it neglects new technological changes and repercussions. Information technology and organizational learning are both critical to attaining and sustaining competitive advantage. Based on these premises, and on the increasingly evident obsolescence of the traditional, hierarchical business model, the author takes an integrated approach to the discussion of organizational learning, new value propositions, supply-chain optimization, e-commerce, new perspectives on business process reengineering, collaborative business models, globalization of business, and the continuing trend toward virtual integration.</JATS1:p>\n\t\t\t\t\t<JATS1:p>This book is not another tired exhortation to take advantage of technology to improve corporate performance. One cannot utilize technology to its full potential without also overhauling the rigid, hierarchical business model that was designed for the command-and-control corporate environment of the industrial era. Tsai takes a comprehensive view of everything that needs to be done in order to make the most of emerging technologies. The new information economy calls for companies that foster strategic collaboration through a more horizontal organizational structure. A more synchronized supply chain yields better customer service, higher quality, faster delivery, and lower inventory. In the customer-centric environment, a new value proposition is essential. Business processes must be fast, focused, flexible, responsive, and nimble. With the knowledge gained from this book, one should be able to face the future with an ability and capacity to discern technology policies and make decisions concerning strategic positioning and competitive business strategy.</JATS1:p>"
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50009-2",
+      "title": [
+        "Initial Understanding"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50012-2",
+      "title": [
+        "Migration Strategies"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50008-0",
+      "title": [
+        "First Contact"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50014-6",
+      "title": [
+        "Redistribute Responsibilities"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50007-9",
+      "title": [
+        "Setting Direction"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50010-9",
+      "title": [
+        "Detailed Model Capture"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-96611-7_3",
+      "title": [
+        "Vom Business Reengineering zum Prozessmanagement"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozessmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0018",
+      "title": [
+        "About the Author"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50013-4",
+      "title": [
+        "Detecting Duplicated Code"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0003",
+      "title": [
+        "Introduction  Information Economy"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0004",
+      "title": [
+        "Part I Business Processes"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0008",
+      "title": [
+        "Part II Business Strategy"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-96611-7_1",
+      "title": [
+        "Einführung in das Thema Business Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozessmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-155860639-5/50015-8",
+      "title": [
+        "Transform Conditionals to Polymorphism"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Object-Oriented Reengineering Patterns"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0015",
+      "title": [
+        "8 Toward Virtual Integration"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0014",
+      "title": [
+        "Part IV Toward Virtual Integration"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0011",
+      "title": [
+        "Part III Managing the Transformation"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-96611-7_2",
+      "title": [
+        "Die drei neuen Ideen des Business Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozessmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-19020-9_9",
+      "title": [
+        "Slowenische Eisenbahn — Prozessoptimierungsprojekt (Process Reengineering)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Change Management im Unternehmen"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-89822-7_1",
+      "title": [
+        "Business Reengineering im Zeitalter des Internets"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Web-basierte Systemintegration"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-24703-6_9",
+      "title": [
+        "Slovenian Railways Process Reengineering Project"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Business Process Change Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-96611-7_4",
+      "title": [
+        "Was kann Business Reengineering von bewährten Konzepten übernehmen?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozessmanagement als Kernkompetenz"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0010",
+      "title": [
+        "5 Collaborative Business Models and Strategic Competitiveness"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0005",
+      "title": [
+        "1 Organizational Learning  From Synergy to Strategy"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0013",
+      "title": [
+        "7 Managing Global Business Transformation  Strategic Challenges"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0007",
+      "title": [
+        "3 Supply-Chain Optimization  Enhancing Value Creation"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0009",
+      "title": [
+        "4 Technology Adoption  Organizational Dynamics and Competitive Advantage"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9798400670251.0012",
+      "title": [
+        "6 Managing the Transformation  Making e-Business a Reality"
+      ],
+      "type": "other",
+      "container-title": [
+        "Information Technology and Business Process Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-19002-5_12",
+      "title": [
+        "Software-Reengineering für geschäftsentscheidende Anwendungen — Minimierung betrieblicher Risiken und Senkung der Wartungskosten"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Xpert.press",
+        "Business Continuity"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1097/00006216-200301000-00008",
+      "title": [
+        "Computer Simulation as a Basis for Pharmacy Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nursing Administration Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-01"
+    },
+    {
+      "doi": "10.1109/adc.2003.1231449",
+      "title": [
+        "PARFAIT: towards a framework-based agile reengineering process"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Agile Development Conference, 2003. ADC 2003"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/emr.2003.1267014",
+      "title": [
+        "Reengineering the corporation: a manifesto for business revolution [Book Review]"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Engineering Management Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5381/jot.2003.2.2.a3",
+      "title": [
+        "Using an Object-Oriented Methodology Called TAD in Business Process Reengineering."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Object Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/emr.2003.1267017",
+      "title": [
+        "Reengineering: leveraging the power of integrated product development [Book Review]"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Engineering Management Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/hicss.2003.1174232",
+      "title": [
+        "A cognitive framework for reengineering knowledge-intensive processes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "36th Annual Hawaii International Conference on System Sciences, 2003. Proceedings of the"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5381/jot.2003.2.3.r1",
+      "title": [
+        "Object-Oriented Reengineering Patterns, by Serge Demeyer, Stéphane Ducasse and Oscar Nierstasz."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Object Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-59140-061-5.ch006",
+      "title": [
+        "Heineken USA"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cases on Information Technology Series",
+        "Annals of Cases on Information Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>To facilitate the parent companys push to gain market share, Heineken USA needed to be more responsive to market demand fluctuation. Because of the long lead-time between order and delivery, they found that responding to marketplace changes in a timely fashion was becoming increasingly difficult. In the meantime, major competitors such as Anheuser Busch were responding to consumer demands for fresher products by providing freshness label dating. Heineken USA launched its new Internet based system called Heineken Operational Planning System (HOPS) to allow the parent company to produce the beer closer to the time when they need to deliver it, so the customer receives a fresher product. The new system enables Heineken USA to achieve 50% reduction in the lead-time from order to delivery and 10% increase in sales.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-59140-047-9.ch006",
+      "title": [
+        "Migrating Legacy System to the Web"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Software Maintenance Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The Internet is an extremely important new technology that is changing the way in which organizations conduct their business and interact with their partners and customers. To take advantage of the Internet open architecture, most companies are applying business reengineering with the aim of moving from hierarchical centralized structures to networked decentralized business units cooperating with one another. As a consequence, the way in which software information systems are conceived, designed, and built is changing too. Monolithic, mainframe-based systems are being replaced by distributed, Web-centric, component-based systems with an open architecture. Ideally, business process reengineering should entail the adoption of new software systems designed to satisfy the new needs of the redesigned business. However, economic and technical constraints make it impossible in most cases to discard the existing and legacy systems and develop replacement systems from scratch. Therefore, legacy system migration strategies are often preferred to replacement. This entails that a balance must be struck between the constraints imposed by the existing legacy systems and the opportunities offered by the reengineering of the business processes.</jats:p>"
+    },
+    {
+      "doi": "10.1504/ijcat.2003.000327",
+      "title": [
+        "A consolidated methodology for business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications in Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/944542.944544",
+      "title": [
+        "Processes of software reengineering planning supported by usability principles"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Latin American conference on Human-computer interaction  - CLIHC '03"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-44895-0_21",
+      "title": [
+        "Integrating Business Process Reengineering with Information Systems Development: Issues &amp; Implications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Business Process Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1615/jautomatinfscien.v35.i2.10",
+      "title": [
+        "Concept of Integrated Environment of Reengineering for Complex Informating-Controlling Systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Automation and Information Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-93177-749-0.ch009",
+      "title": [
+        "Data Mining for Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "ERP &amp; Data Warehousing in Organizations"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Transitioning from a mining to meaning perspective in organization data mining can be a crucial step in the successful application of data mining technologies. The purpose of this paper is to examine more fully the implications of that shift. The use of data mining technology was part of our cycle time study of the Poplar County Criminal Justice System (a fictitious name). In this paper we will report on the use of data mining in the Poplar County Criminal Justice System (PCCJS) study in an attempt to speed up their case handling processes. Marketing and finance researchers are more involved with “simple” (i.e., direct) relationships, whereas BPR researchers are more concerned with long chains of interacting processes. This difference appears in the tools these researchers use: marketing and finance researchers are more interested in set-theoretic problems, BPR researchers, in graph-theoretic problems. Yet data mining technologies incorporate graph-theoretic algorithms. Consequently, they should be able to support hypothesis generation in BPR activities. We were able to come up with relevant and meaningful hypotheses for BPR in the PCCJS system by using data mining technology, specifically sequential pattern analysis: “Which areas we should look into in order to speed up the case handling process?” This valuable outcome would have not been possible without data mining technology, considering the large volume of data on hand. It is hoped that this study will contribute to broadening the scope of applicability of data mining technology.</jats:p>"
+    },
+    {
+      "doi": "10.1007/10929179_58",
+      "title": [
+        "Process Reengineering on Base of Law – The New Austrian States Budgeting and Bookkeeping System"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Electronic Government"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijcat.2003.000323",
+      "title": [
+        "Reengineering the process in the design of object-orientation using concepts of industrial engineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications in Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijiem.2003.003821",
+      "title": [
+        "Allying business process reengineering with strategy: a new perspective for BPR"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Internet and Enterprise Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1071/sp03015",
+      "title": [
+        "Practical Aspects of the Information System Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The South Pacific Journal of Natural and Applied Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The information system transition from the local and client-server financial and management information systems to n-tier information system is a very painful process, especially for academic and NGOs with a limited budget for computer equipment and software modernization. If such organizations area of activities are financial and project management, integrity, consistency and security become the key factors for information system development and implementation. The article presents results of the analyses, development and implementation of n-tier Oracle-based information systems for a NGO. Organizational and management problems, current technological infrastructure, financial resources availability, software platforms and developers solutions, local and headquarter offices requirements were analyzed. The systems were developed within the following requirements: financial and management information confidentiality and appropriate availability improvement and systems integration; organizational information and procedure standards development; incomplete and inconsistent information elimination from the data flow; transparency of the projects activity for public evaluation and information technology resources utilization by the non-for-profit, academic and NGOs for the project activity within Internet components. The first system prototype was presented at the European Foundations Center (EFC) Information Technology Conference in Brussels, Belgium, 24-25 June 1999. During 2000-2001, the system was migrated into Oracle Portal environment and development process was completed.</jats:p>"
+    },
+    {
+      "doi": "10.1111/1540-6210.00260",
+      "title": [
+        "Reengineering Nonprofit Financial Accountability: Toward a More Reliable Foundation for Regulation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Public Administration Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The annual Internal Revenue Service Form 990 tax filing is the principal disclosure mechanism for nonprofit organizations. Although considerable efforts have been made to improve the accuracy and accessibility of Form 990, questions remain as to whether this data source is the most desirable foundation for a system of nonprofit accountability. Taking a broad perspective on financial accountability, this article assesses not only the quality and availability of the financial data, but also the entire financial–reporting model. The article develops a framework for thinking critically about nonprofit financial accountability. After examining the current structure of nonprofit financial reporting and contrasting it with alternative systems developed for other industries, the article concludes with recommendations for reengineering nonprofit financial accountability.</jats:p>",
+      "publication_date": "2003-01"
+    },
+    {
+      "doi": "10.1109/icca.2003.1595135",
+      "title": [
+        "Knowledge Reengineering and Reusing Based on Ontology in Online Organizational Discussion"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The Fourth International Conference on Control and Automation 2003 ICCA Final Program and Book of Abstracts ICCA-03"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1081/qen-120024012",
+      "title": [
+        "Reengineering of the Laundry Service at a University Campus: A Continuous‐Improvement Quality‐Management Methodology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Quality Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-01"
+    },
+    {
+      "doi": "10.1080/0951192021000039594",
+      "title": [
+        "A model decomposition approach for a manufacturing enterprise in Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Integrated Manufacturing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-01"
+    },
+    {
+      "doi": "10.1177/0002716202238575",
+      "title": [
+        "Markets, Management, and “Reengineering” Higher Education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The ANNALS of the American Academy of Political and Social Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Recent years have witnessed a variety of efforts to reengineer higher education into closer alignment with market principles and management approaches drawn from business. However, critical debates on these efforts typically fail to discern a number of significant issues. Many such reengineering efforts involve an intermingling of three distinctively different organizational paradigms: a professional paradigm characteristic of traditional higher education organization, a bureaucratic machine paradigm representative of traditional business organization, and an innovative or “adhocratic” paradigm defended by its proponents as a timely alternative to traditional bureaucratic organization. This intermingling typically is carried out in a fashion oblivious to the nuances of organizational design and with little or no attention to the conflicts likely to result. Continued neglect of these issues, however, will condemn proponents of higher education adhocracy to problems in the future. </jats:p>",
+      "publication_date": "2003-01"
+    },
+    {
+      "doi": "10.1007/978-0-387-35634-1_13",
+      "title": [
+        "The Discourse of a Large Scale Organizational Transformation: The Reengineering of IBM, 1989–1994"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "IFIP Advances in Information and Communication Technology",
+        "Global and Organizational Discourse about Information Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1037/e461022006-001",
+      "title": [
+        "Reengineering Human Performance and Fatigue Research Through Use of Physiological Monitoring Devices, Web-Based and Mobile Device Data Collection Methods, and Integrated Data Storage Techniques"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "PsycEXTRA Dataset"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/14637150010352390",
+      "title": [
+        "Enterprise resource planning in reengineering business"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-12"
+    },
+    {
+      "doi": "10.2190/0ky8-y8fx-vtqm-eb92",
+      "title": [
+        "Web-Based Agents for Reengineering Engineering Education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Educational Computing Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Agent technology has great potential to make WWW-based learning environments effective. This study describes four Web-based agents developed for reengineering a freshman chemistry laboratory education: 1) the “intelligent tutoring tool” that conducts on-line problem-solving coaching, 2) the “adaptive lecture guide” that provides navigation guidance sensitive to students' knowledge status, 3) the “student modeler” that assesses students' knowledge performance based on students' progress during on-line quiz sessions, 4) the expert-agent that stores the domain expertise. The advantages of this approach are twofold. First, these agents play constructive roles within student's Web-based learning environment by providing an individualized interaction that overwise would be a fairly dull learning environment. Second, the modular design of the learning environment using agents has great potential to be progressively scaled to support widely cooperative educational content development in the future. </jats:p>",
+      "publication_date": "2000-12"
+    }
+  ]
+}

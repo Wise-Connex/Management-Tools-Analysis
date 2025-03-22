@@ -1,0 +1,60 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/bf00119381",
+      "title": [
+        "Affinity among mountain ranges in Megamexico: A phytogeographical scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vegetatio"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-11"
+    },
+    {
+      "doi": "10.1016/0921-4534(94)00177-4",
+      "title": [
+        "Electronic structure and the van Hove singularity scenario in high-Tc HgBa2CuO4+δ superconductor pressure effects"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physica C: Superconductivity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-11"
+    },
+    {
+      "doi": "10.1080/09537289408919529",
+      "title": [
+        "An evaluation of product commonality and group technology production methods in a pre-defined multiple-machine scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Production Planning &amp; Control"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-11"
+    },
+    {
+      "doi": "10.1080/10587259408039265",
+      "title": [
+        "Novel Optical Properties of Fullerene Doped Conducting Polymers: Scenario of Photo Process, Persistent Photoconductivity and Enhanced Electroluminescence Quenching"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Molecular Crystals and Liquid Crystals Science and Technology. Section A. Molecular Crystals and Liquid Crystals"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-11"
+    }
+  ]
+}

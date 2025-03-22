@@ -1,0 +1,21 @@
+{
+  "term": "Reengineering",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0950-5849(89)90098-0",
+      "title": [
+        "Tool for automatic reengineering of COBOL applications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information and Software Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-03"
+    }
+  ]
+}

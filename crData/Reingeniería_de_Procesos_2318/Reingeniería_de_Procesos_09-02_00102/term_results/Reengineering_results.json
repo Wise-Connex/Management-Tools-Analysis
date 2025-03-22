@@ -1,0 +1,46 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.5539/ibr.v1n2p82",
+      "title": [
+        "The Financial Process Reengineering Based on the Value Chain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Business Research"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/1744935908098861",
+      "title": [
+        "Reengineering works: Don’t report, exhort"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management &amp; Organizational History"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-02"
+    },
+    {
+      "doi": "10.3745/kipstd.2009.16-d.1.83",
+      "title": [
+        "Method and Application of Searching Hot Spot For Reengineering Software Using AOP"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The KIPS Transactions:PartD"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-02"
+    }
+  ]
+}

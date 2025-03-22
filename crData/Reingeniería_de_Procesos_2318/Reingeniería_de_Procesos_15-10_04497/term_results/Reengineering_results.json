@@ -1,0 +1,85 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/j.giq.2015.07.002",
+      "title": [
+        "Reengineering the open government concept: An empirical support for a proposed model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Government Information Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-10"
+    },
+    {
+      "doi": "10.22303/csrid.6.3.2014.159-170",
+      "title": [
+        "BUSSINESS PROCESS REENGINEERING SISTEM PRESENSI   MAHASISWA BERBASIS WAKTU SECARA PAPERLESS  (STUDY KASUS : STMIK POTENSI UTAMA)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "CSRID (Computer Science Research and Its Development Journal)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>&lt;p&gt;Abstract &lt;br /&gt;Bussiness Process Reengineering merupakan sebuah konsep rekontruksi ulang dengan melakukan tindakan secara dramatis dan radikal sehingga dapat menghasilkan perbaikan proses, penghematan biaya, serta peningkatan kecepatan. Sistem Presensi Mahasiswa di STMIK Potensi Utama yang berjalan saat ini, setelah dilakukan evaluasi ternyata memiliki banyak kelemahan ditinjau dari 5 indikator penyebab perlunya dilakukan Bussiness Process Reengenering. Penelitian ini bertujuan untuk melakukan proses Reengineering sehingga menghasilkan peningkatan sistem jika dibandingkan dengan sebelum dilakukan Bussiness Process Reengineering dengan menggunakan 3 pendekatan (restructure, informate, dan mind). Berdasarkan hasil penelitian ternyata tidak terjadi peningkatan pada kategori input, kemudian dari kategori proses terjadi peningkatan sebesar 66,67%. Lalu ditinjau kategori output, terjadi peningkatan sebesar 50%. Namun secara keseluruhan Bussiness Process Reengineering yang dilakukan terhadap sistem Presensi Mahasiswa di STMIK Potensi Utama dapat dikatakan berhasil dengan baik. Sistem baru yang dihasilkan dengan memanfaatkan konsep Bussiness Process Reengineering di STMIK Potensi Utama adalah sebuah protype aplikasi presensi mahasiswa secara paperless berbasis web dengan metode batasan waktu.&lt;/p&gt;</jats:p>"
+    },
+    {
+      "doi": "10.1108/ics-10-2014-0071",
+      "title": [
+        "Reengineering the user: privacy concerns about personal data on smartphones"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information &amp; Computer Security"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n               <jats:title content-type=\"abstract-heading\">Purpose</jats:title>\n               <jats:p> – This paper aims to discuss the privacy and security concerns that have risen from the permissions model in the Android operating system, along with two shortcomings that have not been adequately addressed. </jats:p>\n            </jats:sec>\n            <jats:sec>\n               <jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title>\n               <jats:p> – The impact of the applications’ evolutionary increment of permission requests from both the user’s and the developer’s point of view is studied, and finally, a series of remedies against the erosion of users’ privacy is proposed. </jats:p>\n            </jats:sec>\n            <jats:sec>\n               <jats:title content-type=\"abstract-heading\">Findings</jats:title>\n               <jats:p> – The results of this work indicate that, even though providing access to personal data of smartphone users is by definition neither problematic nor unlawful, today’s smartphone operating systems do not provide an adequate level of protection for the user’s personal data. However, there are several ideas that can significantly improve the situation and mitigate privacy concerns of users of smart devices. </jats:p>\n            </jats:sec>\n            <jats:sec>\n               <jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title>\n               <jats:p> – The proposed approach was evaluated through an examination of the Android’s permission model, although issues arise in other operating systems. The authors’ future intention is to conduct a user study to measure the user’s awareness and concepts surrounding privacy concerns to empirically investigate the above-mentioned suggestions. </jats:p>\n            </jats:sec>\n            <jats:sec>\n               <jats:title content-type=\"abstract-heading\">Practical implications</jats:title>\n               <jats:p> – The proposed suggestions in this paper, if adopted in practice, could significantly improve the situation and mitigate privacy concerns of users of smart devices. </jats:p>\n            </jats:sec>\n            <jats:sec>\n               <jats:title content-type=\"abstract-heading\">Social implications</jats:title>\n               <jats:p> – The recommendations proposed in this paper would strongly enhance the control of users over their personal data and improve their ability to distinguish legitimate apps from malware or grayware. </jats:p>\n            </jats:sec>\n            <jats:sec>\n               <jats:title content-type=\"abstract-heading\">Originality/value</jats:title>\n               <jats:p> – This paper emphasises two shortcomings of the permissions models of mobile operating systems which, in authors’ view, have not been adequately addressed to date and propose an inherent way for apps and other entities of the mobile computing ecosystem to commit to responsible and transparent practices on mobile users’ privacy.</jats:p>\n            </jats:sec>",
+      "publication_date": "2015-10"
+    },
+    {
+      "doi": "10.1177/0950017015604109",
+      "title": [
+        "Customer-driven management models for choiceless clientele? Business process reengineering in a California welfare agency"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Work, Employment and Society"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Business process reengineering and lean are increasingly used to restructure public sector work. This article presents a case study of reengineering in a California welfare agency. It finds extensive work intensification and reduced autonomy for the workforce, and deteriorating service for the clientele. Rather than attribute these outcomes as inherent to the business process reengineering model, this article emphasizes how cost cutting and quantitative efficiency were prioritized over worker empowerment and service quality because the organization is a government agency facing severe budgetary pressures under neoliberalism, and the clientele consists of indigent families and individuals who have no choice of an alternative provider. </jats:p>",
+      "publication_date": "2016-02"
+    },
+    {
+      "doi": "10.1167/tvst.4.5.10",
+      "title": [
+        "Reengineering Human Bruch's Membrane Increases Rod Outer Segment Phagocytosis by Human Retinal Pigment Epithelium"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Translational Vision Science &amp; Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-10"
+    },
+    {
+      "doi": "10.1172/jci82768",
+      "title": [
+        "Reengineering a transmembrane protein to treat muscular dystrophy using exon skipping"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Clinical Investigation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-10"
+    }
+  ]
+}

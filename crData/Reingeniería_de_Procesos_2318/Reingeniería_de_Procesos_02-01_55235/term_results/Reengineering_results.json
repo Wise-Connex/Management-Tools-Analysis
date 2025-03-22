@@ -1,0 +1,856 @@
+{
+  "term": "Reengineering",
+  "total_results": 70,
+  "processed_count": 70,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/978-3-663-07918-7_6",
+      "title": [
+        "Grundlagen der privatwirtschaftlichen Reengineering-Konzepte Business Process Reengineering (BPR) und Geschäftsprozeßoptimierung (GPO)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_7",
+      "title": [
+        "Übertragung der Reengineering-Konzepte auf den Bereich der öffentlichen Verwaltung"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4",
+      "title": [
+        "Successful Software Reengineering"
+      ],
+      "type": "monograph",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-16-2.ch017",
+      "title": [
+        "Business Process Reengineering is not just for Businesses but is also for Governments"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Modern Organizations in Virtual Communities"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Business Process Reengineering (BPR) has been hailed as a cure for many of the woes in today’s organizations. Many organizations have embarked on BPR but the results have been mixed. Failure is not uncommon but this does not appear to have affected the BPR drive to achieve dramatic improvements in organizational performance. The pragmatic goal-driven approaches adopted by corporations and other businesses position them advantageously in their BPR pursuits. But what about public bodies with their bureaucratic baggage? Is BPR relevant to them? If relevant, is it feasible in the public sector, particularly the public sector of developing nations which tend to have bigger baggage? This chapter draws on the experience of Singapore to suggest strategies for reengineering practice in the public sector of developing countries and other nations.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7",
+      "title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch001",
+      "title": [
+        "Computer Aided Method Engineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The relationship between information systems development methods, organizational information systems engineering requirements, and the advantage of flexible automated support environments is presented. CASE technology is presented as a possible solution to provide flexible automated support. In this chapter the major topic is a conceptual model to specify the functionality of a support environment. First a review of a number of basic concepts and approaches for deriving models for CASE environments are given. An informal description of service component concepts used to derive a generic framework is presented. Further, a configuration of service components, to support Computer Aided Method Engineering (CAME), is outlined.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch002",
+      "title": [
+        "Architecture and Implementation Issues"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Historically the focus is on the theory of how problem-specific systems design tools can be supported by a Computer Aided Method Engineering (CAME) environment based on service object representation. To arrive at an implementation model, the conceptual model of the service object representation must be formalized. This theory is feasible when there is adequate computer support. Many researchers have emphasized strongly that requirement specification languages should have a rigorous formal basis; however, this need for formality has not been generally acknowledged in the field of information systems development. Most organizations and research groups tend to define their own methods using techniques advocated within such methods that often have no formal foundation. Discussions of modeling techniques are based on numerous examples, mostly using diagrams and notational conventions, to provide a popular style for the definition of new concepts and their behavior. In a CAME environment however, which gives the freedom to specify a modeling technique from scratch, it is difficult to avoid deficiencies such as inconsistency, lack of structure, over specification, incompleteness, ambiguity, and redundancy without using a formal approach. In automated support a formal model is used to provide stable specifications for implementation. In fact, an implementation can be seen as another, enormously detailed formal description, usually in an imperative programming language. To implement this sophisticated automated support, formal specifications of the CAME service description with adequate formal reasoning were derived earlier. In this chapter the concentration is on using representation formalism to construct a problem-specific CAME environment. Such an automated support environment must be provided for the information systems design stage in particular for the required UpperCASE tools according to the methods chosen for the problem situations. The vision is that CAME environments must function as a service-based, object-oriented MetaCASE environment that offers the services required for modeling tools, and using a mechanism to interpret the required modeling knowledge and changing the visual representation to the required form using a graphic object binding mechanism. Further, this environment must offer a mechanism for the populations of models specified according to such UpperCASE tools.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_1",
+      "title": [
+        "Einleitung"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch003",
+      "title": [
+        "Future Directions in CASE Repositories"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Today, components and Component Based Development (CBD) is seen as one of the important events in the evolution of information technology. Components and CBD offer the promise of a software marketplace where components may be built, bought, or sold in a manner similar to components in other industries. In the light of the ongoing developments, in the manner and art of developing software systems, it is important to consider how the Computer Aided Systems Engineering (CASE) environment that supports building these systems can be produced on a CBD approach. In spite of the fact that CASE environments have been around since the ’70s, there are still many problems with these environments. Among the problems of CASE environments are the lack of conceptual models to help understand the technology, the poor state of user requirements specification, inflexible method, support and complicated integration facilities, which contribute to the dissatisfaction in CASE users.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_3",
+      "title": [
+        "Das Programmbudget"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2002",
+      "title": [
+        "Proceedings of the Sixth European Conference on Software Maintenance and Reengineering"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-012663351-1.50014-2",
+      "title": [
+        "IIS21001 Knowledge Reengineering Standard"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Intangible Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/0471028959.sof595",
+      "title": [
+        "Reengineering"
+      ],
+      "type": "other",
+      "container-title": [
+        "Encyclopedia of Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n          <jats:p>\n            <jats:italic>Reengineering</jats:italic>\n            is a term applied to software development where an existing or legacy) system is undergoing some degree of redevelopment. It is synonyms are\n            <jats:italic>software renewal</jats:italic>\n            and\n            <jats:italic>software renovation</jats:italic>\n            .\n          </jats:p>\n          <jats:p>Systems were upgraded in two ways. The first way was by completely rebuilding, thus replacing the initial system. As technology advanced, both in hardware and software capability, the capability to enhance software gracefully was improved and became more cost effective. New hardware was developed to be “upward‐compatible” from prior systems, thus, enabling moving to a new generation of hardware while rehosting existing software. Software portability was enhanced through the effective use of high order languages, cross‐compilers, and standard interfaces to operating system support environments. In addition, the investment in software was becoming so great that rewriting the system was not cost‐effective. A combination of these and other circumstances gave rise to the reengineering of software that is common in today's business environment.</jats:p>\n          <jats:p>Changes to systems are driven by customer and user demands. As a system becomes old hardware performance becomes an issue. Existing hardware may be one to two generations old in terms of hardware that is currently available, and maintenance of the hardware may be costly. In some situations the original vendor may have gone out of business or dropped support for the system. The user may be completely satisfied with the existing software and may wish to simply replace the hardware with a modem system. In another example, the software may be becoming old in the sense that it has undergone extensive upgrade and maintenance is difficult and costly. Or, the original software may not have been engineered well, with poor or missing documentation describing its operation and construction. The user may wish to correct this situation, developing new documentation at the same time upgrading the system to new hardware. This was a common occurrence in the 1980s as users were concerned with the maintenance and support of systems.</jats:p>\n          <jats:p>Reengineering of software intensive systems has a spectrum of possibilities. Both hardware and software can be reengineered, either by themselves or in some combination. In a hardware reengineered project, the hardware is normally swapped out with new equipment, and the software may not be modified at all. Or, the hardware may be held constant and the software reengineered.</jats:p>"
+    },
+    {
+      "doi": "10.1016/b978-012663351-1.50015-4",
+      "title": [
+        "Examples of IIS21001 Knowledge Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Intangible Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch007",
+      "title": [
+        "The Future of Software Development"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Software development has changed dramatically in the last fifty years and will continue to change. Its future course is of particular interest to developers, in order to gain the correct skills, and to any person faced with a strategic information technology (IT) decision. It is commonly accepted that computers will play an ever-larger role in modern civilisation. There are many unknowns, but the IT decisions made today will affect the competitiveness and preparedness for tomorrow. Awareness of the central issues that will affect the future of software development is the best form of preparation. This chapter presents a view of the future of software development based on the history of software development and the results of two surveys.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_2",
+      "title": [
+        "Ausgangsbedingungen und Ursachen der Reformbestrebungen"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch004",
+      "title": [
+        "Audit of a CASE Environment"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The diffusion of CASE tools, along with the ever more pressing problems surrounding the management of the systems development department, has meant that themes related to internal control and audit of a CASE environment are of increasing interest. In fact, the high cost of introducing CASE technology added to the potential improvement in productivity and quality have made it one of the most important areas for the Information Systems auditor. In this paper we will deal with some of the questions that have to be taken into account when auditing a CASE environment. Our aim is not to offer exhaustive checklists of factors of influence in this kind of environment, but rather to reflect upon some themes that have been dealt with throughout in the literature but from a different perspective to that of the information systems audit. In order to do this we will begin by briefly introducing the basic concepts of the information systems audit, giving a brief explanation of the different methodologies that are used in this area. We will also analize the risks that must be taken into account when installing a CASE tool.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-540-24720-3",
+      "title": [
+        "Cyber Commerce Reframing"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1215/9780822384069-003",
+      "title": [
+        "Reengineering Immaterial G-Men"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "State Work"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch006",
+      "title": [
+        "Achieving Effective Software Reuse for Business Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>“Reuse (software) engineering is a process where a technology asset is designed and developed following architectural principles, and with the intent of being reused in the future” (Bean, 1999). “If programming has a Holy Grail, wide-spread code reuse is it with a bullet. While IT has made and continues to make laudable progress in our reuse, we never seem to make great strides in this area” (Grinzo, 1998). The quest for that Holy Grail has taken many developers over many years down unproductive paths” (Bowen, 1997). This chapter reports on software reuse research (both literature research and design/coding research) and presents an approach for effective software reuse in the development of business systems. This approach is based on Object Oriented technology and provides for both the specification and enforcement of software reuse and corporate standards.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch013",
+      "title": [
+        "Information Modeling and Method Engineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Information modeling is the cornerstone of information systems analysis and design. Information models, the products of information modeling, not only provide the abstractions required to facilitate communication between the analysts and end users, but they also provide a formal basis for developing tools and techniques used in information systems development. The process of designing, constructing, and adapting information modeling methods for information systems development is known as method engineering. Despite the pivotal role of modeling methods in successful information systems development, most modeling methods are designed based on common sense and intuition of the method designers with little or no theoretical foundation or empirical evidence. Systematic scientific approach is missing! This paper proposes the use of cognitive psychology as a reference discipline for information modeling and method engineering. Theories in cognitive psychology are reviewed in this paper and their application to information modeling and method engineering are also discussed.</jats:p>"
+    },
+    {
+      "doi": "10.1002/0471028959.sof028",
+      "title": [
+        "Business Process Reengineering"
+      ],
+      "type": "other",
+      "container-title": [
+        "Encyclopedia of Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n          <jats:p>In this article the fact that the revolution of business process reengineering was not widely implemented, and that many efforts failed is recalled. two major reasons in favor of reengineering old economy information systems are: keeping pace with technology advances and improving business processes. how business processes always traditionally aligned with the technological waves of batch‐oriented information systems and client/server systems, and in the future can align with Web‐based architectures is ultimated. Then how corporations can align their businesses to the information technology of the twenty‐first century: by revolution or by evolution is discussed. When the technological infrastructure is in place, new business processes can emerge. Technology drives business change, and that business (process) reengineering follows software reengineering is stressed.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_9",
+      "title": [
+        "Zusammenfassende Schlußbetrachtung und Wertung der Ergebnisse"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-322-94824-3_5",
+      "title": [
+        "Strategische Neupositionierung durch Reengineering der Managementprozesse"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Strategische Unternehmensberatung"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch017",
+      "title": [
+        "A Recursive Approach to Software Development"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Researchers and practitioners alike agree that the waterfall approach to software development results in poor quality software systems. Unfortunately, the waterfall approach is inherently used in almost all of today’s development efforts resulting in system failures. The problem lies in the forward, linear development effort that produces inconsistent and incorrect specifications, designs, and code artifacts. It is proposed in this paper that a recursive software development process be used as a means of managing the complexity of today’s software systems. The recursive approach has the flexibility needed to perform development activities in any order to ensure that system requirements are met.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch018",
+      "title": [
+        "Adding Alternative Access Paths to Abstract Data Types"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>We present in this paper a proposal for developing efficient programs in the abstract data type (ADT) programming framework, keeping the modular structure of programs and without violating the information hiding principle. The proposal focuses in the concept of “shortcut” as an efficient way of accessing to data, alternative to the access by means of the primitive operations of the ADT. We develop our approach in a particular ADT, a store of items. We define shortcuts in a formal manner, using algebraic specifications interpreted with initial semantics, and so the result has a well-defined meaning and fits in the ADT framework. Efficiency is assured with an adequate representation of the type, which provides O(1) access to items in the store without penalising the primitive operations of the ADT.</jats:p>"
+    },
+    {
+      "doi": "10.1109/csmr.2002.995784",
+      "title": [
+        "CSMR 2002 [front matter]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Sixth European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch005",
+      "title": [
+        "Process Model for Round-trip Engineering with Relational Database"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Iterative and incremental development of client/server database systems requires a round-trip engineering support, in particular in a design-implementation cycle. This paper identifies some more difficult round-trip engineering scenarios and defines processes needed to handle those scenarios. The processes conform to the current state-of-the-practice in forward and reverse engineering with relational databases. The paper identifies limitations of a tool-driven round-trip engineering. The limitations can be linked to three reasons: (1) the inability of a CASE/4GL tool to always generate correct incremental code after schema has been changed, (2) the need for a CASE/4GL to understand the reverse-engineered procedural parts written (or modified) in the implementation phase, (3) the requirement that a database content (extension) be re-instated at the end of each design-implementation cycle. Technical limitations introduce a risk that design models and a database implementation become misaligned and the design-implementation cycle cannot be continued for iterative and incremental software production. Project managers need a process model to impose necessary rigour on design and programming teams to alleviate technical restrictions. The paper defines a project management strategy that enforces appropriate automated and manual processes on database development teams.</jats:p>"
+    },
+    {
+      "doi": "10.1109/csmr.2002.995813",
+      "title": [
+        "Author index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Sixth European Conference on Software Maintenance and Reengineering CSMR-02"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch014",
+      "title": [
+        "Load-Testing of Web Site Applications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The growth in e-commerce has been accompanied by an enormous need to host robust web sites. Electronic Commerce has changed the role of Information Technology (IT) function from its elementary business support to providing key competitive advantages. Rapid changes in several technologies, while improving the ability to develop and deliver web sites quickly, have also increased the complexity of designing and managing them. It is easy for a consumer or business partner to change to a different supplier if an in-house or outsourced E-Commerce site does not perform up to expectations. Implementing an appropriate web-application testing program is critical in an environment where barriers to switching suppliers of web sites are minimal. Developing robust web sites that perform well under varying loads can be ensured only by a rigorous testing of these web sites before launching them in a production environment.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch021",
+      "title": [
+        "A Process Model for Certification of Product and Process"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Software certification has become more and more popular, especially for software developers, as it can provide confidence to customers that the product is of acceptable quality. Software certification can be done at two levels: the development process and the software product itself. There are many different certification schemes, such as ISO 9001 and CMM for development process, and Y2K compliance for software product. This chapter first identifies two process models, one for process certification and another for product certification. We then propose a certification process for Commercial off-The-Shelf (COTS) product and its development process. Finally a generalized model of certification process (GCM) for both product certification and development process certification is developed. Example certification schemes are then mapped to this model to illustrate its validity. The evaluation shows that the popular certification schemes fit well into GCM. GCM may be used as a basis to develop a certification scheme for particular application domains or to validate a particular certification process.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_5",
+      "title": [
+        "Vergleich der ganzheitlichen Reformkonzepte Programmbudget und Neues Steuerungsmodell"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch010",
+      "title": [
+        "Extended Spatiotemporal UML"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This chapter presents a conceptual modeling language for spatiotemporal applications that offers built-in support for capturing spatially referenced, time-varying information. More specifically, the well-known object-oriented Unified Modeling Language (UML) is extended to capture the semantics of spatiotemporal data. The extension, Extended Spatiotemporal UML, maintains language clarity and simplicity by introducing a small base set of fundamental modeling constructs: spatial, temporal, and thematic. These constructs can then be combined and applied at attribute, attribute group, association, and/or class levels of the object-oriented model; where the attribute group is an additional construct introduced for attributes with the same spatiotemporal properties. A formal functional specification of the semantic modeling constructs and their symbolic combinations is given and an example is used to illustrate the simplicity and flexibility of this approach.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch015",
+      "title": [
+        "Component-Based ERP Design in a Distributed Object Environment"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>ERP (Enterprise Resource Planning) vendors have seen a dramatic increase in their sales this decade. Even though several vendors are producing great products and making huge profits, there are some problems to be resolved to make ERP applications a continuous success in the next decades. Current ERP applications have the low reusability and interchangeability of various modules among different vendors’ packages. One of the main reasons for these shortfalls is a tight coupling of ERP domain knowledge with the particular implementation tools. Also, efforts in establishing and using the standards in specifications of ERP applications have been inconsequential. In this article, strategic steps to wield a dominant power in the future ERP market are discussed. These steps are as follows: 1. Knowledge Modeling: Abstraction of Domain Knowledge from Tools; 2. Componentization of Domain Knowledge; 3. Implementation of Componentized Domain Knowledge; 4. Marketing Strategies for Domain Knowledge Components.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_4",
+      "title": [
+        "Das Neue Steuerungsmodell als ganzheitliches Reformkonzept der öffentlichen Verwaltung"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch019",
+      "title": [
+        "Relational Data Modeling for Geographic Information Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This chapter addresses data modeling problems inherent in the use of geographic information systems (GIS) that are not adequately covered by traditional modeling techniques. GIS technology has only recently begun to be used for traditional system development by large numbers of organizations and there are few procedures for modeling GIS data and applications in a business context. This circumstance is partially a result of the fact that GIS developers have traditionally been knowledgeable end users or facilitators and they have generally been called on to build standalone systems, often for their own use. This paper discusses geographic systems and proposes relational modeling techniques that document organizational data integrity rules when systems that include spatial data are developed for more widespread use.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch012",
+      "title": [
+        "Java Integrated Development Environments' Support for Reuse-Oriented Software Development"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Component reuse is a promising direction to develop software more efficiently and cost effectively. One part of software development is the actual programming with an integrated development environment (IDE). We studied three Java IDEs and how they support reuse-oriented software development. We derived evaluation criteria from a known reuse model. As a conclusion we suggest that current Java IDEs need to improve their support for the reuse process.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-642-56005-7_12",
+      "title": [
+        "Software Reengineering for Mission-Critical Applications — Minimizing Business Risks and Reducing Maintenance Costs"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Business Continuity"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch008",
+      "title": [
+        "Understanding the Role of Use Cases in UML"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>A use case is a description of a sequence of actions constituting a complete task or transaction in an application. Use cases were first proposed by Jacobson (1987) and have since been incorporated as one of the key modeling constructs in UML (Booch, Jacobson, &amp; Rumbaugh, 1999) and the Unified Software Development Process (Jacobson, Booch, &amp; Rumbaugh, 1999). This paper traces the development of use cases, and identifies a number of problems with both their application and theoretical underpinnings. From an application perspective, the use case concept is marked by a high degree of variety in the level of abstraction versus implementation detail advocated by various authors. In addition, use cases are promoted as a primary mechanism for identifying objects in an application, even though they focus on processes rather than objects. Moreover, there is an apparent inconsistency between the so-called naturalness of object models and the commonly held view that use cases should be the primary means of communicating and verifying requirements with users. From a theoretical standpoint, the introduction of implementation issues in use cases can be seen as prematurely anchoring the analysis to particular implementation decisions. In addition, the fragmentation of objects across use cases creates conceptual difficulties in developing a comprehensive class model from a set of use cases. Moreover, the role of categorization in human thinking suggests that class models may serve directly as a good mechanism for communicating and verifying application requirements with users. We conclude by outlining a framework for further empirical research to resolve issues raised in our analysis.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-931777-10-0.ch013",
+      "title": [
+        "Hiring in the Post-Reengineering Environment"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Human Factors in Information Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In today’s post-reengineering environment, jobs are often more complex on both operational and managerial levels. Employees must possess a greater range of skills and are often given more autonomy in decision making. Employers seeking to address the increased risks in hiring for these positions may seek more information about job candidates. Information technology can be used to create an infrastructure that supports greater access to employee information. Attitudes on the part of employers and job candidates must be studied before building infrastructures to support the hiring process. Hypotheses are presented to support exploration of these issues. A study using situationally conditioned belief (SCB) was conducted. Results indicate that employers are seeking more sensitive information about job candidates, especially for managerial jobs, that managerial candidates are willing to provide more sensitive information, and that a significant gap exists for both operational and managerial candidates between the amount of information candidates are willing to reveal and the amount of information desired by employers.</jats:p>"
+    },
+    {
+      "doi": "10.1108/eb058374",
+      "title": [
+        "Reengineering tourism organizations — The case of Italy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tourism Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The destination as the area of movement of guests during their stay often leads to a cooperation among different tourism organizations and destinations: on the one hand, the co‐operation is necessary to be able to offer the products demanded by different guests, on the other hand, it is necessary to be able to guarantee a sensible appearance to the market. With an empirical research carried out in 1999 and 2000, the European Academy Bolzano took the Italian regional and sub‐regional tourism organizations into consideration to evaluate the progress in managing the destination Italy. Rigidity of the organizational structures, little cooperation and integration as well as insufficient market resources are some of the main results. Further developments in change management, stakeholder management, branding, and the setting of clear and measurable goals are some of the issues analyzed. In consideration of an analysis of the Italian regions with regard to their actual politics of destination development the paper concludes with the proposal of a new model of tourism organizational structure based on networks and on the distinction between territorializable basic tasks and deterritorializable product/market tasks. This paper is a conceptional work relevant for traditional destinations and valid as a case study.</jats:p>",
+      "publication_date": "2002-01"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch020",
+      "title": [
+        "Software Process Models are Software Too"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>A software process model describes a set of partially-ordered sequences of activities that are carried out in order to accomplish certain goals. While numerous process modeling approaches have been proposed over the years, it seems that none of them have yet addressed the full range of concepts described in this definition. Most focus on activities and activity ordering; few, if any, focus on representing organizational goals and process improvement. Most provide concrete implementation approaches; few, if any, describe the general model(s) upon which these implementations are built. This paper suggests a new approach for developing software process modeling systems. If “Software Processes are Software Too,” as suggested by Osterweil (1987), then so are software process models, and hence there may be processes and models that are used in regular software development that may be useful in the process modeling domain as well. The paper focuses on the domain class model as an example of one type of model that might be produced if an approach such as the Unified Process were used in the process modeling domain. Such a process, and the set of models produced by it, if used, may be helpful in moving the process modeling field forward. While identifying the conceptual needs of process modeling systems, these models leave totally open the choice of how to formalize and implement actual solutions. A domain class model for process models is developed as an example of one of these models.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-663-07918-7_8",
+      "title": [
+        "Überlegungen für eine potentielle Weiterentwicklung der Verwaltungsreform: Mit NSM und GPO zur lernenden Verwaltung?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Verwaltungsmodernisierung durch Reengineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch009",
+      "title": [
+        "Enhancing a Rigorous Reuse Process with Natural Language Requirement Specifications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Reusability is the ability to use the same software elements for constructing many different applications. Formal specifications can help to semiautomatic design processes based on reusable components. However, during the first stages of development, when the interaction with the stakeholders is crucial, the use of client-oriented requirements engineering techniques seems to be necessary in order to enhance the communication between the stakeholders and the software engineers. In this chapter, we propose a systematic reuse approach that integrates natural language requirement specifications with formal specifications in RSL (RAISE Specification Language). On the one hand, some heuristics are described to develop a formal specification in RSL starting from models belonging to the Requirements Baseline. On the other hand, we have defined a reusable component model that integrates RSL specifications at different levels of abstraction, as well as presented a process with reuse based on the model.</jats:p>"
+    },
+    {
+      "doi": "10.1007/3-540-45832-8_21",
+      "title": [
+        "Graph-Based Reengineering of Telecommunication Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Graph Transformation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4324/9780203204962-25",
+      "title": [
+        "Reengineering public sector organisations using information technology"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Reinventing Government in the Information Age"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-01"
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch016",
+      "title": [
+        "Knowledge and Object-Oriented Approach for Interoperability of Heterogeneous Information Management Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>For the interoperability of heterogeneous information management systems, schema mapping approaches have been used to build a unified view. The schema mapping approach offers full transparencies and is very powerful from the user’s point of view. However, the traditional mapping approach needs to be strengthened for information management systems that have non-traditional data types, no schema, or incompatible schemas. We have incorporated numerous concepts and constructs associated with the knowledge and object-oriented paradigm such as abstract views with a set of procedures, encapsulation, inheritance and class composition hierarchies to resolve the above problem. This extension also accommodates the ability to determine and explicitly represent the semantics in the schema. Additionally, we have outlined a query processing method using the unified view. We are currently developing a prototype to support seamless access to structured data and unstructured data managed by different information management systems.</jats:p>"
+    },
+    {
+      "doi": "10.1007/3-540-48046-3_8",
+      "title": [
+        "Software Development Reengineering — An Experience Report"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Reliable Software Technologies — Ada-Europe 2002"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icca.2002.1229770",
+      "title": [
+        "The optimizing reengineering of supply chain"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 2002 International Conference on Control and Automation, 2002. ICCA. Final Program and Book of Abstracts."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-931777-12-4.ch011",
+      "title": [
+        "A Design Method for Real-Time Object-Oriented Systems Using Communicating Real-Time State Machines"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Successful Software Reengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Many methodologies for software modeling and design include some form of static and dynamic modeling to describe the structural and behavioral views respectively. Modeling and design of complex real-time software systems requires notations for describing concurrency, asynchronous event handling, communication between independent machines, timing properties. Dynamic modeling of real time systems using object-oriented methodologies requires extensions to the traditional state machine notations in order to convey the real-time system characteristics and constraints. This chapter proposes an object-oriented analysis and design methodology that augments the traditional UML (Unified Modeling Language) dynamic model with real-time extensions based on high-level parallel machines and communication notations from CRSM (Communicating Real-Time State Machines). An example of the proposed methodology is provided using a realistic example of an automated passenger train system.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-540-24720-3_12",
+      "title": [
+        "Case Study: Multi-national IT Company"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cyber Commerce Reframing"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-93070-840-2.ch034",
+      "title": [
+        "Reengineering the Selling Process in a Showroom"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cases on Information Technology Series",
+        "Annals of Cases on Information Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The case presented chronicles the reengineering efforts of a small Yugoslavian showroom wholesaler. Following an initial period of success, the company subsequently became unable to deliver the promised level of quality and service. A team of consultants was engaged who recommended business-process reengineering in order to help improve performance. The strategy they devised for the company involved replacing functional specialists with case managers. While the strategy was successfully implemented, it was not followed by appropriate changes in information technology, thus limiting the effectiveness of the entire process. The goals of this case are threefold. The authors seek: 1) to help the reader understand the current situation; 2) to develop a swift fix strategy; 3) to outline tactical and strategic plans for future development. Readers will be able to review several working prototypes1 of information subsystems designed to support the suggested reengineering process.</jats:p>"
+    },
+    {
+      "doi": "10.1007/3-540-46020-9_33",
+      "title": [
+        "Transformation Systems: Generative Reuse for Software Generation, Maintenance and Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Software Reuse: Methods, Techniques, and Tools"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-0-387-35613-6_46",
+      "title": [
+        "Internet-Based Electronic Procurement Solutions — Opportunities for Support and Reengineering of Direct Materials Procurement"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Knowledge and Technology Integration in Production and Services"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-24720-3_13",
+      "title": [
+        "Case Study: US-Based Internet Start-up"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cyber Commerce Reframing"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/00207540210132733",
+      "title": [
+        "Modelling and analysis of business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-01"
+    },
+    {
+      "doi": "10.1007/978-94-015-9970-2_16",
+      "title": [
+        "Does Business Process Reengineering Diminish the Quality of Work Life?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Social Indicators Research Series",
+        "Advances in Quality of Life Research 2001"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-45652-x_15",
+      "title": [
+        "Feature Interaction and Dependencies: Modeling Features for Reengineering a Legacy Product Line"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Software Product Lines"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1097/00019514-200210020-00009",
+      "title": [
+        "The Synergistic Role TQM and Reengineering Could Play in Standardizing the European Vaccination Policy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Quality Management in Health Care"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-0-387-35585-6_23",
+      "title": [
+        "Using Ontologies in Virtual Brainstorming for Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "IFIP Advances in Information and Communication Technology",
+        "Collaborative Business Ecosystems and Virtual Enterprises"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-45652-x_20",
+      "title": [
+        "Using the Options Analysis for Reengineering (OAR) Method for Mining Components for a Product Line"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Software Product Lines"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2498/cit.2002.03.10",
+      "title": [
+        "Applying the ISRQCC Method in a Web Reengineering Process. The SwissInsurances (SWI) Web Engineering Audit"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Computing and Information Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-56168-9_103",
+      "title": [
+        "Framework for systematic assessment of the regional HUSpacs after the reengineering of hospital and external processes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "CARS 2002 Computer Assisted Radiology and Surgery"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2175/193864702785301259",
+      "title": [
+        "Web-Based Enterprise Information System Supports Phoenix Water Services Department Reengineering Needs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Water Environment Federation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-01"
+    },
+    {
+      "doi": "10.1109/iembs.2002.1053461",
+      "title": [
+        "Reengineering biomedical engineering curricula: a new product development approach"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Second Joint 24th Annual Conference and the Annual Fall Meeting of the Biomedical Engineering Society] [Engineering in Medicine and Biology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3182/20020721-6-es-1901.00976",
+      "title": [
+        "REENGINEERING EMBEDDED SYSTEMS FOR THE INTERNET"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-47984-8_13",
+      "title": [
+        "Improving Software Quality in Product Families through Systematic Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Software Quality — ECSQ 2002"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3141/1782-07",
+      "title": [
+        "Application of Reengineering Techniques in Redesign of Port Processes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Research Record: Journal of the Transportation Research Board"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Basic findings and recommendations of a 3-year research project are presented. The project deals with the application of business process reengineering methods to small- and medium-sized ports as a way of achieving overall effectiveness of port processes, as well as producing port-user benefits of all kinds. The project adopted a customer-oriented process view for tackling the problems faced. It produced a number of “tools” and work guidelines that port authorities can use to reconsider and review their processes with a view to changing (reengineering) them to increase efficiency. The basic premise and reasoning behind the work was that simply applying advanced technology to current port processes does not produce dramatic improvements. Normally these processes are fragmented, that is, they lack transparency and continuity because a variety of entities with seemingly conflicting interests are involved. To overcome this fragmentation and maximize the possibility of synergetic effects, a dynamic reconfiguration of the whole port system (i.e., the processes, entities involved, and their interrelations) is suggested. A brief review is presented of tools that were produced. Also described are specific generic reengineering solutions for port processes that resulted from the work, based on the suggested dynamic port system configuration. </jats:p>",
+      "publication_date": "2002-01"
+    },
+    {
+      "doi": "10.1007/3-540-47961-9_26",
+      "title": [
+        "Reengineering of Database Applications to EJB Based Architecture"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Notes on Numerical Fluid Mechanics and Multidisciplinary Design",
+        "Active Flow and Combustion Control 2018"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/10170660209509195",
+      "title": [
+        "DEVELOPMENT AND APPLICATION OF AN INTEGRATED BUSINESS PROCESS REENGINEERING METHODOLOGY—AN EXAMPLE OF THE INTRODUCTION OF AN ERP SYSTEM"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Chinese Institute of Industrial Engineers"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-01"
+    }
+  ]
+}

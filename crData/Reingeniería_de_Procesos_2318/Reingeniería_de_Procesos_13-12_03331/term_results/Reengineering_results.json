@@ -1,0 +1,83 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1158/2159-8290.cd-rw2013-237",
+      "title": [
+        "Antibody Reengineering Improves Therapeutic Index in Preclinical Models"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cancer Discovery"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>An EGFR Probody exhibits antitumor efficacy similar to cetuximab, with decreased skin toxicity.</jats:p>",
+      "publication_date": "2013-12"
+    },
+    {
+      "doi": "10.1007/978-3-642-40660-7_180",
+      "title": [
+        "Integration of the Culture Industry Chain Service Process Reengineering of Artron"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "LISS 2013"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-04403-9_4",
+      "title": [
+        "Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Managing Process Innovation through Exploitation and Exploration"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.13053/rcs-65-1-12",
+      "title": [
+        "Strategic Learning, towards a Teaching Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Research in Computing Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5121/cseij.2013.3602",
+      "title": [
+        "Ontology Driven Knowledge Map for Enhancing Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer Science &amp; Engineering: An International Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-12"
+    },
+    {
+      "doi": "10.12812/ksms.2013.15.4.185",
+      "title": [
+        "A Study on Productivity Improvement through Safety Management and Manufacturing Process Reengineering : Case Study in Polyurethane Manufacturer"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Korea Safety Management and Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-12"
+    }
+  ]
+}

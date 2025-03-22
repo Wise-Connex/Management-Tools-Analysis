@@ -1,0 +1,59 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1045/september2004-missingham",
+      "title": [
+        "Reengineering a National Resource Discovery Service"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "D-Lib Magazine"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1201/9780203022528-177",
+      "title": [
+        "Analysis of the hindering factors and countermeasures for process reengineering in China’s coal enterprises"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Mining Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-09"
+    },
+    {
+      "doi": "10.1167/iovs.04-0193",
+      "title": [
+        "Reengineering of Aged Bruch’s Membrane to Enhance Retinal Pigment Epithelium Repopulation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Investigative Opthalmology &amp; Visual Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-09"
+    },
+    {
+      "doi": "10.1201/9780203022528.ch177",
+      "title": [
+        "Analysis of the hindering factors and countermeasures for process reengineering in China‚Äôs coal enterprises"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Mining Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-09"
+    }
+  ]
+}

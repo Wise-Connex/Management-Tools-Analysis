@@ -1,0 +1,588 @@
+{
+  "term": "Planning",
+  "total_results": 45,
+  "processed_count": 45,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2307/1965326",
+      "title": [
+        "The United States: A Strategy for Implementing Family Planning Services"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Studies in Family Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/1965327",
+      "title": [
+        "International Planned Parenthood Federation: Survey of Member Organizations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Studies in Family Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/1965325",
+      "title": [
+        "United States: Methods of Fertility Control, 1955, 1960, &amp; 1965"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Studies in Family Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.001.0001",
+      "title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "type": "edited-book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>The decisiveness of the right angle, which is uncommon in nature, would seem to exercise an irresistible appeal to the human mind, for it permeates man's art, artifacts, and architecture. That it should also appear as a basic organizational element in town plans over many centuries and in many cultures only confirms this appeal. The present work examines Greek, Etruscan, Italic, Hellenistic, and Roman cities that were based on orthogonal or grid plans – those characterized by streets intersecting at right angles to form blocks of regular size and spacing. Some of these have only recently been uncovered.</jats:p>\n               <jats:p>The author suggests that the implementation of these plans may have constituted the first exercise in master planning for the future extension and development of cities. These goals doubtless varied in ancient times from the tyrannical – suggesting an authoritarian control with the power to order a population into a strict grid pattern – to the egalitarian – implicit in the essential uniformity and equality of the blocks regardless of location.</jats:p>\n               <jats:p>In Roman times the orthogonal plan was to evolve into a quadrant system in which two broad streets at right angles served as the defining axes of the town, meeting to produce a formal central space, the “origin” of the coordinated city. These plans are discussed in the book, but the major emphasis is on “Hippodamean” layouts, in which a few – usually three or four – main parallel roads are intersected at right angles by numerous narrow streets to form long, narrow blocks.</jats:p>\n               <jats:p>Hippodamean plans are named for Hippodamus of Miletus, a Greek of the fifth century B. C. Although in antiquity Hippodamus was believed to have devised this scheme, the author points out that such plans antedate Hippodamus by an extensive period and that his role was one of refining and further systematizing the plan. His chief contribution appears to be the application of his insight into political organization and social behavior to town planning.</jats:p>\n               <jats:p>Indeed, Hippodamean plans go back at least to the seventh century B.C. in Greece, and rectangular elements basic to such plans have been found not only throughout the Mediterranean region but in Aztec, Indian, and Chinese cultures as well.</jats:p>\n               <jats:p>A number of aerial photographs are juxtaposed with detailed plans prepared by archaeologists and provide a fascinating insight into the solutions that Hippodamus and other planners evolved in the process of adjusting the needs of urban settlements to the exigencies of the terrain.</jats:p>",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0001",
+      "title": [
+        "Introduction"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0008",
+      "title": [
+        "Conclusion"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0009",
+      "title": [
+        "Appendix (1970)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0007",
+      "title": [
+        "Roman Cities"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0010",
+      "title": [
+        "[ Front Matter ]"
+      ],
+      "type": "other",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0003",
+      "title": [
+        "The Greek City"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0004",
+      "title": [
+        "Hippodamus of Miletus"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0005",
+      "title": [
+        "The Etruscan and Italic Cities"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0002",
+      "title": [
+        "Cities of the Sixth and Fifth Centuries B.C."
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.58680/ej196722030",
+      "title": [
+        "A Program for Better Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "English Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/811690",
+      "title": [
+        "A Program for Better Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The English Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.7551/mitpress/5192.003.0006",
+      "title": [
+        "Greek Cities of the Fourth Century B.C. and in the Hellenistic Era"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Orthogonal Town Planning in Antiquity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1080/00420986720080081",
+      "title": [
+        "Book Review: Population Growth and Planning Policy by D. E. C. Eversley, V. Jackson and G. Lomas, Frank Cass, 1965, pp. 88, 36/Industry, Employment and Population in the North-East by Joint Consultative Committee on Regional Planning, Newcastle, 1964, n.p"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Urban Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1007/bf00734130",
+      "title": [
+        "Flow-chart planning in blast-furnace repair"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Metallurgist"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1093/jaoac/50.1.159a",
+      "title": [
+        "Report of the AOAC Long Range Planning Committee"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of AOAC INTERNATIONAL"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.4271/670324",
+      "title": [
+        "The Northeast Corridor Transportation Project — Broad Gauged Transportation Planning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4271/670381",
+      "title": [
+        "Advanced Space Vehicle Planning: An Analysis of the First Decade"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2307/3420312",
+      "title": [
+        "Planning an Intensive Care Unit"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/2552536",
+      "title": [
+        "Planning and Growth in Rich and Poor Countries."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1007/bf02930585",
+      "title": [
+        "Balance of eight years of economic planning in Indonesia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Intereconomics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1097/00000446-196702000-00034",
+      "title": [
+        "Planning an Intensive Care Unit"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AJN, American Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1080/00228958.1967.10517975",
+      "title": [
+        "Planning an Uncomfortable Experience"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Kappa Delta Pi Record"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/2552519",
+      "title": [
+        "Problems of Economic Dynamics and Planning: Essays in Honour of Michal Kalecki."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2118/1502-pa",
+      "title": [
+        "Better Investment Planning of Gas-Producing Operations By Computer Simulation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Petroleum Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Depending on the degree of selectivity possible and the degree of variation in the character of the reserves, an optimum solution to planning investments for multiple-reservoir gas operations can be very complex. A gas sales simulation computer program has been developed to assist in making investment decisions leading to maximum profits. The simulation permits an integrated case study calculation of the reservoir depletion process, well deliverability, gas liquid recovery and economics for a predetermined plan of operation. The factors simulated, data requirements and program logic are described in this article and applications to various field problems are discussed. The case study simulation technique has been used successfully in operations and investment planning for gas sales from a producing complex. It is considered to be a valuable tool both for detailing short-term investments and for forecasting long-range investment requirements and deliverability.</jats:p>\n               <jats:p>Introduction</jats:p>\n               <jats:p>From the standpoint of operations planning, a gas-producing property will be complex when a large number of investment alternatives exist. For most properties, the basic alternative will be between well development and amount of compression. There are unique situations, however, where several reservoirs will underlie a single-interest lease or unitized tract (only one operator and only one royalty owner), and equitable lease participation is not a factor in the producing operations. The investment alternatives for this type of property are far greater than usual since selection may be exercised in the depletion of individual reservoirs. The program to be discussed was developed for operations and investment planning for a complex property where all reservoirs have only one operator and one royalty owner. It is recognized that before this type of program can be generally applied, it is mandatory that the problem of equitable lease participation be solved. Because the reserves in a typical complex property may have wide variations in reservoir size, well deliverability, gas value and development cost, a judicious selection and timing of investments is necessary for maximum profits. However, an optimum solution to investment planning can be very difficult. The calculation of an optimum can be made using linear programming techniques if the sale involves only a very few reservoirs. For a large number of reservoirs, the excessive number of equations required for linear programming makes this calculation technique (and thus true optimization) impractical. This article describes a computer program which has been used to evaluate investment decisions by simulating complex gas-producing operations. Basically, the program computes the 20-year deliverability and economics for a complex system according to data which have been supplied to it. In other words, it permits a case study approach to evaluating a predetermined plan of operation. From an evaluation of several potentially attractive plans, a near-optimum solution can be selected.</jats:p>\n               <jats:p>Simulation Structure</jats:p>\n               <jats:p>The gas producing process simulated is illustrated schematically in Fig. 1. It may be described as the calculation of simultaneous gas flow from a group of reservoirs, interconnected at field separation stations and through gathering system network, to a single delivery point.</jats:p>\n               <jats:p>JPT</jats:p>\n               <jats:p>P. 157ˆ</jats:p>",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1001/jama.1967.03120060081013",
+      "title": [
+        "Yale Studies in Family Health Care"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JAMA"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1080/00325481.1967.11693060",
+      "title": [
+        "Your Finances"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Postgraduate Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.4271/670655",
+      "title": [
+        "Inventory Control Models for Logistics Planning and Operational Readiness with Cost Constraints"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2307/3150166",
+      "title": [
+        "Sales Planning and Control Using Absorbing Markov Chains"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Marketing Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1080/0020486670050106",
+      "title": [
+        "THE POLITICAL FEASIBILITY OF PLANNING FOR SCHOOL INTEGRATION"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Equity &amp; Excellence in Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1287/mnsc.13.6.b255",
+      "title": [
+        "Inflow of Private Capital and Choice of Planning Strategies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> International flow of private capital can be seen as a situation wherein a variety of conflicting interests are involved. The interests of the government of the country in which foreign investment takes place, do not concur with the interests of the foreign private investor. The interests of the foreign private investor and those of the government of his own country can be mutually conflicting ones, since the private profitability of an investment project differs from its social desirability. The interests of the government of the capital exporting country and those of the government of the capital-importing country, can also be at variance with each other. Our attention here is confined to analyse the first category of conflict of interests, in which the foreign private investor and the government of the capital importing country are the two policy-makers. In this situation, interests of one policy-maker are affected by the choice of planning strategies by the other policy-maker and each wants to choose his strategies so as to “optimise” his interests. The purpose of this paper is to demonstrate the usefulness of Game Theory approach in arriving at the “best” planning strategies open to the two policy-makers involved. In the immediately following two sections, we describe the interests of the foreign private investor and those of the government of the capital-importing country (hereinafter called the domestic planner). In the remaining sections, we discuss the problem of optimum policy making as a two-person non-zero-sum game, with the domestic planner and the foreign private investor as the players of the game. The appendix gives the mathematical formulations of the game model and its solutions. </jats:p>",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1287/mnsc.13.6.b219",
+      "title": [
+        "A Program of Research in Business Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The purpose of this paper is to outline a program of research which is needed to improve the state of the art of business planning. We have approached this task by relating planning to management science on one hand, and to certain areas of descriptive knowledge on the other. From these relations we have constructed a comprehensive program for research on planning. Some parts of this program are being actively pursued, some are still in need of attention. It is our hope that this paper will contribute to a two-fold purpose: that it will help give the business planner a sense of unique identity, and that it will provide him with a research program which he can pursue in strengthening this identity. </jats:p>",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/2091742",
+      "title": [
+        "Fertility and Family Planning in the United States."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Sociological Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1177/002224376700400108",
+      "title": [
+        "Sales Planning and Control Using Absorbing Markov Chains"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Marketing Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> A stochastic model that generates data for sales planning and control is described. An example is presented that shows how these data are used to plan short-run sales activities and train effective salesmen. In the model, changes in customer propensities to buy are treated as Markov processes. Finally, it is suggested that the concepts developed here may be computerized and integrated into existing systems for planning and control. </jats:p>",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1080/00420986720080201",
+      "title": [
+        "Book Review: Rural Planning in Developing Countries edited by Raahan Weitz, Routledge, London, 1965, pp. 443, 56/-"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Urban Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1007/bf01150070",
+      "title": [
+        "Theory and practice of planning the demand of the national economy for chemical equipment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical and Petroleum Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2105/ajph.57.2.374",
+      "title": [
+        "FAMILY PLANNING AND POPULATION PROGRAMS: A Review of World Developments"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Public Health and the Nations Health"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1080/00420986720080061",
+      "title": [
+        "Book Review: The Regional City : An Anglo-American Discussion of Metropolitan Planning, edited by Derek Senior, Longmans, 1966, pp. 192, 42/-"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Urban Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1126/science.155.3764.796",
+      "title": [
+        "Coordinated Planning for Science in Communist Europe"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The Council is not engaged in the supranational formulation of policy and planning on scientific research and technology, but has made considerable progress in coordinating research policies and plans on a limited number of scientific and technical problems of priority interest and of common concern to all members. The establishment of national science-planning institutions in CEMA countries and the adoption of a uniform approach to the formulation of national science policies and plans must be considered basic procedures for achieving international coordination of their efforts.</jats:p>\n          <jats:p>The creation of organizational units within CEMA to deal specifically with the coordination of science policies and plans represents a strengthening of the institutional framework that is necessary for coordination of an internationally cooperative effort in research and technology. Moreover, CEMA's 1-year plan for science and technology has probably been of considerable value as a pilot project for the formulation of the research plan for 1966-70. The delineation of a limited number of important scientific and technical problems of common interest to the members, and the allocation of research projects to a country having the highest capability to conduct them, hold considerable promise for financial savings and for improved utilization of the limited scientific manpower and research facilities of the CEMA countries. While all these measures are significant in CEMA's attempt to improve coordination of science policy and planning, only time will enable true assessment of their effectiveness. The Council's scheme for the specialization of labor in research and technology has met and will undoubtedly continue to meet, considerable opposition by various segments of the scientific communities because of deep-rooted and long-standing national prejudices, and reluctance of vested interests to give up research activities in which they are interested and to which their professional futures are tied. Moreover, opposition to CEMA-sponsored programs for specialization in research will continue to stem from the desire of some member countries further to reduce Russian influence in their domestic affairs.</jats:p>\n          <jats:p>While recognizing the financial savings that can accrue to them from division of labor in research within CEMA, the smaller countries cannot be unaware that there is probably a limit to which the Soviet Union, with its vast scientific and technological base, is willing to participate in the division-of-labor scheme. As a world power, the Soviet Union can hardly become dependent upon other members of CEMA in any field. Nevertheless, by promoting the coordination of research plans and a division of labor among CEMA members, the Soviet Union stands to gain by having its scientific-research effort augmented in several fields by the efforts of other members.</jats:p>",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/139871",
+      "title": [
+        "Manpower Planning in a Free Society. By Richard A. Lester. Princeton, NJ: Princeton University Press. 1966. Pp. xiv, 227. $5.00."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Canadian Journal of Economics and Political Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.1111/j.2164-0947.1967.tb02283.x",
+      "title": [
+        "SOCIO‐ECONOMIC REGIONAL PLANNING: A CASE STUDY IN NASSAU AND SUFFOLK COUNTIES, NEW YORK*"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transactions of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    },
+    {
+      "doi": "10.2307/2051946",
+      "title": [
+        "Market Control and Planning in Communist China. By Dwight H. Perkins. Cambridge, Massachusetts: Harvard University Press, 1965. viii, 291 pp. Table, Chart, Appendices, Bibliography, Index. $7.00."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Asian Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-02"
+    }
+  ]
+}

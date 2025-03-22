@@ -1,0 +1,86 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1103/physrevd.44.970",
+      "title": [
+        "Initial condition for the minimal isocurvature scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2514/6.1991-2773",
+      "title": [
+        "An adaptive control algorithm using hierarchical reduced order localparameter estimators for a distributed sensor scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Navigation and Control Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-08"
+    },
+    {
+      "doi": "10.1002/mde.4090120403",
+      "title": [
+        "MNE competitiveness: A scenario‐driven technology transfer construct"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Managerial and Decision Economics"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>To compete effectively, multi‐national enterprises (MNEs) must establish market presence in their global rivals' home courts and/or profit sanctuaries. Technology transfer is often used as a means toward that end. The technology adoption decisions of an aggressor MNE and a defender MNE are investigated in a model that features indirect moves and changes in strategy through technology transfer. Each firm may adopt a strategy that incorporates the transfer of <jats:italic>high technology or appropriate technology.</jats:italic> The strategic decision situation is modelled as a closed‐loop sequential equilibrium in discrete time. In contrast to results in the technology adoption literature, the aggressor MNE may successfully transfer technology first, to be imitated later by the defender MNE. This and several other scenarios emerge from the model which, by incorporating the cost of social adjustment and risks involved in technology transfer, ties technology to the competitive interaction of MNEs and specifies conditions for creating competitive advantage through technology, both locally and worldwide.</jats:p>",
+      "publication_date": "1991-08"
+    },
+    {
+      "doi": "10.1103/physrevb.44.2381",
+      "title": [
+        "Fractional-quantum-Hall scenario for two-dimensional spin systems and pairing due to statistical gauge forces"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1117/12.45655",
+      "title": [
+        "&lt;title&gt;End-to-end scenario-generating model for IRST performance analysis&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Signal and Data Processing of Small Targets 1991"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-08"
+    },
+    {
+      "doi": "10.1117/12.46682",
+      "title": [
+        "&lt;title&gt;Radiometric calibration of space-borne Fourier transform infrared-emission spectrometers: proposed scenario for European Space Agency's Michelson interferometer for passive atmospheric sounding&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Calibration of Passive Remote Observing Optical and Microwave Instrumentation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-08"
+    }
+  ]
+}

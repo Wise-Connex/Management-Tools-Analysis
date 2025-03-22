@@ -2271,6 +2271,36 @@ def update_crindex(tool_name, monthly_relative_path):
         logger.error(f"Error updating CRIndex.csv: {str(e)}")
         raise
 
+def check_tool_completion(tool_name):
+    """
+    Check if a tool has been already processed by looking at CRIndex.csv
+    
+    Args:
+        tool_name: Name of the tool to check
+        
+    Returns:
+        bool: True if tool is marked as complete, False otherwise
+    """
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Get project root and CRIndex path
+        project_root = get_project_root()
+        crindex_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
+        
+        # Read CRIndex
+        with open(crindex_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row['Keyword'] == tool_name:
+                    return row.get('Complete', '').lower() == 'true'
+        
+        return False
+        
+    except Exception as e:
+        logger.error(f"Error checking tool completion: {str(e)}")
+        return False
+
 def main():
     """Main entry point"""
     # Set up logging
@@ -2396,44 +2426,71 @@ def main():
                     break
                 print("Invalid input. Please enter 'M' for month, 'Y' for year, or 'R' for range")
             
+            # Get date/year input once before processing tools
+            if mode == 'M':
+                # Get specific month
+                while True:
+                    date = input("\nEnter date (YY-MM format, e.g., 24-01): ")
+                    if validate_date_format(date):
+                        break
+                    print("Invalid date format. Please use YY-MM format")
+            elif mode == 'Y':
+                # Get year
+                year = get_year_input()
+                if not year:
+                    return 1
+            else:  # mode == 'R'
+                # Get year range
+                start_year, end_year = get_year_range_input()
+                if not start_year or not end_year:
+                    return 1
+            
             # Process each selected tool
+            total_tools = len(selected_tools)
+            processed_tools = 0
+            skipped_tools = 0
+            
+            print(f"\nStarting processing of {total_tools} tools...")
+            
             for tool in selected_tools:
-                print(f"\nProcessing tool: {tool}")
+                # Check if tool is already completed
+                if check_tool_completion(tool):
+                    print(f"\nSkipping {tool} - Already completed")
+                    skipped_tools += 1
+                    continue
                 
-                if mode == 'M':
-                    # Get specific month
-                    while True:
-                        date = input("\nEnter date (YY-MM format, e.g., 24-01): ")
-                        if validate_date_format(date):
-                            break
-                        print("Invalid date format. Please use YY-MM format")
+                print(f"\nProcessing tool {processed_tools + 1} of {total_tools}: {tool}")
+                
+                try:
+                    if mode == 'M':
+                        # Process tool data for specific month
+                        statistics = process_tool_data(tool, date)
+                    elif mode == 'Y':
+                        # Process tool data for entire year
+                        statistics = process_tool_year_data(tool, year)
+                    else:  # mode == 'R'
+                        # Process tool data for year range
+                        statistics = process_tool_year_range(tool, start_year, end_year)
                     
-                    # Process tool data for specific month
-                    statistics = process_tool_data(tool, date)
-                
-                elif mode == 'Y':
-                    # Get year
-                    year = get_year_input()
-                    if not year:
-                        continue
+                    print(f"\nCompleted processing for {tool}")
+                    processed_tools += 1
                     
-                    # Process tool data for entire year
-                    statistics = process_tool_year_data(tool, year)
-                
-                else:  # mode == 'R'
-                    # Get year range
-                    start_year, end_year = get_year_range_input()
-                    if not start_year or not end_year:
-                        continue
-                    
-                    # Process tool data for year range
-                    statistics = process_tool_year_range(tool, start_year, end_year)
-                
-                print(f"\nCompleted processing for {tool}")
+                except Exception as e:
+                    logger.error(f"Error processing {tool}: {str(e)}")
+                    print(f"\nError processing {tool}: {str(e)}")
+                    continue
                 
                 # If processing multiple tools, add a delay to avoid API rate limits
-                if len(selected_tools) > 1:
+                if processed_tools < total_tools - skipped_tools:
                     time.sleep(CROSSREF_API_DELAY * 3)
+            
+            # Print final summary
+            print("\n" + "="*40)
+            print("Processing Summary:")
+            print(f"Total tools selected: {total_tools}")
+            print(f"Tools processed: {processed_tools}")
+            print(f"Tools skipped (already completed): {skipped_tools}")
+            print("="*40 + "\n")
         
         logger.info("Processing completed successfully")
         return 0

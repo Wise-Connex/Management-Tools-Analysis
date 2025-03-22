@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/itime.2012.6291389",
+      "title": [
+        "Reengineering high-cost medical consumables management by Tianjian system"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 International Symposium on Information Technologies in Medicine and Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-08"
+    },
+    {
+      "doi": "10.1109/qsic.2012.46",
+      "title": [
+        "A Program Transformation Framework for Multicore Software Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 12th International Conference on Quality Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-08"
+    },
+    {
+      "doi": "10.1109/iri.2012.6303067",
+      "title": [
+        "Reengineering legacy systems towards system of systems development"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 IEEE 13th International Conference on Information Reuse &amp; Integration (IRI)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-08"
+    },
+    {
+      "doi": "10.1093/nar/gks768",
+      "title": [
+        "A global sampling approach to designing and reengineering RNA secondary structures"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nucleic Acids Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-11"
+    }
+  ]
+}

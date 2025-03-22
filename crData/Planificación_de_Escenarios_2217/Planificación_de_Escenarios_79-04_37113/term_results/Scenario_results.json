@@ -1,0 +1,28 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/5234405",
+      "title": [
+        "Future role of geopressured resources in US energy policy:  a scenario approach and analysis. Final report, July 1, 1978-March 31, 1979"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/5492603",
+      "title": [
+        "Regional Issue Identification and Assessment program (RIIA). Environmental impacts and issues of the EIA MID-MID scenario: Federal Region I (New England)"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

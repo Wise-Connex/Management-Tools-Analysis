@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1177/0019556120020404",
+      "title": [
+        "E-Governance: Process Reengineering Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Indian Journal of Public Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1108/14637150210435008",
+      "title": [
+        "Business process reengineering and performance improvement"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Previous researchers have investigated the principles of business process reengineering (BPR) and how firms approach this process. However, previous research makes no distinction among BPR projects in different organizational contexts. The present research investigates the BPR methods best suited for financial institutions. Based on a case study conducted in Chase Manhattan Bank, this research attempts to provide guidelines for BPR projects in financial institutions that will help them achieve dramatic performance gains. Chase BPR projects include four phases encompassing a wide scope of activities: energize, focus, invent, and launch. As seen in Chase BPR projects such as e‐fund disbursement cards and service charge reengineering, these efforts resulted in new products and services in addition to producing dramatic increases in revenue and operating savings.</jats:p>",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1016/s0164-1212(02)00020-1",
+      "title": [
+        "Reengineering legacy systems for distributed environments"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Systems and Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    }
+  ]
+}

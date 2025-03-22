@@ -1,0 +1,86 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/64.511773",
+      "title": [
+        "Al models for business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Expert"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-08"
+    },
+    {
+      "doi": "10.1016/0024-6301(96)81517-2",
+      "title": [
+        "Business process change: Reengineering concepts, methods and technologies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Long Range Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-08"
+    },
+    {
+      "doi": "10.1016/s0378-7206(96)01046-4",
+      "title": [
+        "IT divergence in reengineering support: Performance expectations vs. perceptions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information &amp; Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-08"
+    },
+    {
+      "doi": "10.1016/0305-0483(96)00007-2",
+      "title": [
+        "Reengineering the new product development process: A framework for innovation and flexibility in high technology firms"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Omega"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-08"
+    },
+    {
+      "doi": "10.1007/s002870050030",
+      "title": [
+        "Einordnung und Terminologie des Software Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Informatik-Spektrum"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-08"
+    },
+    {
+      "doi": "10.1074/jbc.271.31.18326",
+      "title": [
+        "Reengineering the Nucleotide Cofactor Specificity of the RecA Protein by Mutation of Aspartic Acid 100"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Biological Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-08"
+    }
+  ]
+}

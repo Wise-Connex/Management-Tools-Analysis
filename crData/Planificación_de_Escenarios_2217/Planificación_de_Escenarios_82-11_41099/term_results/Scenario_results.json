@@ -1,0 +1,44 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0377-2217(82)90251-x",
+      "title": [
+        "Scenario analysis as a background for important energy policy decisions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1982-11"
+    },
+    {
+      "doi": "10.1016/0370-2693(82)90541-x",
+      "title": [
+        "Dynamics of phase transition in the new inflationary universe scenario and generation of perturbations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1982-11"
+    },
+    {
+      "doi": "10.2172/1084045",
+      "title": [
+        "An Independent Assessment of Evacuation Time Estimates for A Peak Population Scenario in the Emergency Planning Zone of the Seabrook Nuclear Power Station"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

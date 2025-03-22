@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2967/jnmt.118.208272",
+      "title": [
+        "Reimagining Program Development and Reengineering Program Design"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Nuclear Medicine Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-09"
+    },
+    {
+      "doi": "10.1109/infoman.2018.8392825",
+      "title": [
+        "Analysis and reengineering of online overseas-study intermediary service chain under the trend of e-business"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 4th International Conference on Information Management (ICIM)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-05"
+    },
+    {
+      "doi": "10.1145/3183440.3195067",
+      "title": [
+        "Reengineering legacy systems for supporting SOA"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 40th International Conference on Software Engineering: Companion Proceeedings"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-05"
+    }
+  ]
+}

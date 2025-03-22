@@ -1,0 +1,32 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada372045",
+      "title": [
+        "A Case Study: Business Process Reengineering at Raymond W. Bliss Army Community Hospital"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-05"
+    },
+    {
+      "doi": "10.1016/s0166-4972(96)00123-x",
+      "title": [
+        "Process reengineering in the public sector: Learning some private sector lessons"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technovation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-05"
+    }
+  ]
+}

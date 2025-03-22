@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0370-2693(83)90027-8",
+      "title": [
+        "An extended most attractive channel scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1983-06"
+    }
+  ]
+}

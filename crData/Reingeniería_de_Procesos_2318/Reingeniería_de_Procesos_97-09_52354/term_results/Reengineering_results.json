@@ -1,0 +1,96 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/563254",
+      "title": [
+        "Environmental management compliance reengineering project, FY 1997 report"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.17723/aarc.60.4.6405275227647220",
+      "title": [
+        "First Things First: Reengineering Finding Aids for Implementation of EAD"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Archivist"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Although it is tempting for a repository to begin its work with EAD by marking up its existing finding aids as they are, more satisfying results will ensue if the repository invests some time up front in assessing, and perhaps revising, its finding aid model. The Minnesota Historical Society recently completed such a project to evaluate the effectiveness of its finding aids and to reengineer their look, feel, and structure in order to make them more effective tools for delivering information about archival materials to distance users via the World Wide Web, as well as to in-house users. The author describes the process and the results of that intensive project.</jats:p>",
+      "publication_date": "1997-09"
+    },
+    {
+      "doi": "10.1016/s1474-6670(17)42357-3",
+      "title": [
+        "A Flow Oriented Approach in the Reengineering Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-09"
+    },
+    {
+      "doi": "10.1016/s0002-8223(97)00609-3",
+      "title": [
+        "Reengineering Food Service"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Dietetic Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-09"
+    },
+    {
+      "doi": "10.1111/j.1945-1474.1997.tb00903.x",
+      "title": [
+        "Reengineering the Emergency Evaluation of Chest Pain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal For Healthcare Quality"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-09"
+    },
+    {
+      "doi": "10.1016/s0002-8223(97)00678-0",
+      "title": [
+        "Reengineering Nutrition Care Services Through The Dietitians Self-Directed Team"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Dietetic Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-09"
+    },
+    {
+      "doi": "10.1111/j.1937-5956.1997.tb00429.x",
+      "title": [
+        "REENGINEERING CHANNEL REORDERING PROCESSES TO IMPROVE TOTAL SUPPLY‐CHAIN PERFORMANCE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Production and Operations Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This paper discusses the relationship between business process reengineering and channel performance for firms implementing electronic data interchange (EDI) linkages within the U.S. grocery industry. Both quantitative and qualitative data sources are combined to test the hypothesis that channel transformation involving adoption of EDI and redesign of replenishment processes enables performance improvements more than an order of magnitude greater than implementation of EDI alone. This new process, enabled by EDI, provides retailers with 50‐ 100% higher inventory turns for products on continuous replenishment processes (CRP) relative to retailer performance using traditional ordering processes. Firms adopting EDI without using CRP to reengineer the ordering processes have failed to realize any statistically significant improvements in either inventory levels or warehouse stockouts. This research provides evidence to support the claims of process reengineering that are common in the popular business press, but for which statistically significant empirical evidence is minimal. The findings of the research also demonstrate the potential improvements that firms can realize through extending the business process reengineering concept to include the firms' entire supply chain. </jats:p>",
+      "publication_date": "1997-09"
+    }
+  ]
+}

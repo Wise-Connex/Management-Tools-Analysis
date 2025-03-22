@@ -1,0 +1,582 @@
+{
+  "term": "Reengineering",
+  "total_results": 47,
+  "processed_count": 47,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.5220/0005095203510356",
+      "title": [
+        "Software Reengineering Toolkit with Tangible Interface by Haptics"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 9th International Conference on Software Engineering and Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-20617-7_100391",
+      "title": [
+        "Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "CIRP Encyclopedia of Production Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr-wcre32813.2014",
+      "title": [
+        "2014 Software Evolution Week - IEEE Conference on Software Maintenance, Reengineering, and Reverse Engineering (CSMR-WCRE)"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-8349-4691-1_16",
+      "title": [
+        "Business Process Reengineering (BPR)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Top 100 Management Tools"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1057/9781137444189_2",
+      "title": [
+        "Reengineering China: Ending Ideology and Getting Pragmatic"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Fusion Economics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6",
+      "title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-007-0753-5_103458",
+      "title": [
+        "Reengineering the Public Sector"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Encyclopedia of Quality of Life and Well-Being Research"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4135/9781483332406.n4",
+      "title": [
+        "Reengineering with Technology"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Breakthrough Leadership in the Digital Age: Using Learning Science to Reboot Schooling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6_7",
+      "title": [
+        "Conclusions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6_2",
+      "title": [
+        "Fundamentals"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6_1",
+      "title": [
+        "Introduction"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5937/tehnika1405861d",
+      "title": [
+        "Application of information and communication technology in process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tehnika"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6_4",
+      "title": [
+        "Related Work"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-4301-7.ch012",
+      "title": [
+        "Component-Based Modeling for Information Systems Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Design and Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>An Information System can be envisioned as a set of interdependent components that provide the intended services. The component based modeling serves as a tool for collecting requirements of an Information System in user perspective and business perspective at various stages of software development. The chapter presents a methodology for component based modeling and development of an Information System, starting from the requirements definition phase, arriving at candidate components and creation of final components and their interfaces. The methodology aims at clarifying the intricate details and usage of an Information System via business type models and use-case models. The chapter presents the interaction diagrams in order to describe interactions among objects in systems perspective, and context diagrams for reflecting upon the business domain. Finally, the chapter proposes component replacement as a methodology for system reengineering, and model-view-control framework for component refinement and evolution in order to achieve a reengineered information system that reflects upon current requirements in business domain. The reengineering techniques proposed in this chapter can be applied to legacy systems to turn them into a component-oriented reengineered system.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6_6",
+      "title": [
+        "Further Applications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6_5",
+      "title": [
+        "Case Study: DeAs"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.2413425",
+      "title": [
+        "Twilight of Rationality: Rational Analysis of Social Reengineering and Methods Used in Social Sciences"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-658-05270-6_3",
+      "title": [
+        "Model-Driven Software Migration"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Model-Driven Software Migration: A Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.12720/lnit.2.1.50-53",
+      "title": [
+        "Thinking on the Equipment Acquisition Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lecture Notes on Information Theory"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-4301-7.ch036",
+      "title": [
+        "Reengineering Structured Legacy System Documentation to UML Object-Oriented Artifacts"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Design and Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The need for reengineering of software systems has dramatically increased as legacy systems are migrated to new platforms and rewritten in modern object-oriented languages. Although the de facto standard for describing object-oriented systems is the Unified Modeling Language (UML), many legacy systems have been documented using non-object-oriented structured analysis and design methods. Problems arise in the migration because non-object-oriented documentation is inherently not conducive to the development of object-oriented systems. This chapter presents a set of rules to automate the conversion of systems which were originally modeled using structured techniques to UML. The newly created UML documentation can then be used in developing an object-oriented equivalent system. The UML model may also be used by computer aided software engineering tools to implement a new system. The reengineering rules are tested on an example structured system to demonstrate their viability.</jats:p>"
+    },
+    {
+      "doi": "10.53078/20778481_2014_3_130",
+      "title": [
+        "NEW INNOVATION POLICY INSTRUMENTS FOR IMPLEMENTING PROGRAMS OF TECHNOLOGY REENGINEERING OF INDUSTRIAL ENTERPRISES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Вестник Белорусско-Российского университета"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijasm.2014.061430",
+      "title": [
+        "Re-reengineering the dream: agility as competitive adaptability"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Agile Systems and Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.14195/978-972-8954-42-0_11",
+      "title": [
+        "Advanced 3D scan data analysis for performant reengineering maintenance processes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Proceedings of Maintenance Performance Measurement and Management (MPMM) Conference 2014"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.15623/ijret.2014.0301018",
+      "title": [
+        "REENGINEERING OF RELATIONAL DATABASES TO OBJECTORIENTED DATABASE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Research in Engineering and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-01"
+    },
+    {
+      "doi": "10.4018/ijamse.2014010104",
+      "title": [
+        "Business Process Reengineering (BPR) Key Success Factors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Applied Management Sciences and Engineering"
+      ],
+      "subject": [],
+      "abstract": "<p>Several authors and researchers have questioned the effectiveness of business process reengineering (BPR) as a holistic organizational approach especially after the demise of giant organizations all over the world. However, at a time of economic turbulence and uncertainty, BPR becomes instrumental in helping organizations reengineer existing processes and optimize them to better stay competitive and accelerate business. This paper addresses this criticism and proposes a framework that encompasses key factors that must be considered in any BPR initiative in order to ensure its success. As well as providing executives with a practical guide to consult when starting, planning, implementing and controlling the different activities needed to complete a reengineering project. The paper also identifies and elaborates on the key success BPR factors: 1) Organization wide commitment, 2) BPR team composition, 3) Business needs analysis, 4) Adequate IT infrastructure, 5) Effective change management, and 6) Ongoing continuous improvement. These key factors are presented in light of supporting literature.</p>",
+      "publication_date": "2014-01"
+    },
+    {
+      "doi": "10.1145/2556624.2556643",
+      "title": [
+        "A taxonomy of software product line reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Eighth International Workshop on Variability Modelling of Software-Intensive Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-01"
+    },
+    {
+      "doi": "10.4018/978-1-4666-4301-7.ch061",
+      "title": [
+        "Reengineering the Portal to Texas HistorySM"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Design and Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This case study reports the activities, findings, and lessons learned during a project that replaced the legacy Digital Asset Management (DAM) system of The Portal to Texas History? at the University of North Texas Libraries with an open source system. This unique system decouples the application development framework from the backend infrastructure, effectively relieving the development and growth constraints inherent in the legacy system. In a novel approach for an academic library, genealogists participated in the user-centered, iterative approach used to prototype, develop, and test the user interface. The resulting system promoted productivity gains by enabling programming staff to work in parallel from specialized areas of expertise. A post-project review process identified a number of lessons learned, including the importance of representing the requirements and priorities of internal and external stakeholders. The review process also informed an application development model that may be useful to other digital libraries.</jats:p>"
+    },
+    {
+      "doi": "10.2139/ssrn.2547377",
+      "title": [
+        "Multimedia Tools in the Design of a Business Process Reengineering Course Based on Teaching and the Human Brain: Principles of Brain-Based Teaching"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.protcy.2014.10.074",
+      "title": [
+        "Reengineering the Teaching of SAP SCM – How to Make Students Understand What They are Clicking in Supply Network Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-319-05948-8_10",
+      "title": [
+        "Reengineering of Software Requirement Specification"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Intelligent Systems and Computing",
+        "New Perspectives in Information Systems and Technologies, Volume 2"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijpmb.2014.063239",
+      "title": [
+        "Business process reengineering in public sector: ranking the implementation barriers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Process Management and Benchmarking"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5121/ijpla.2014.4102",
+      "title": [
+        "Investigation of Quality and Functional Risk Issues in Reengineering Process of Legacy Software System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Programming Languages and Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-01"
+    },
+    {
+      "doi": "10.2991/iemi-14.2014.1",
+      "title": [
+        "A Fuzzy Petri nets/ANP Evaluation Model on Business Process Reengineering Implementation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 5th International Asia Conference on Industrial Engineering and Management Innovation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3233/idt-130182",
+      "title": [
+        "ITIL-based IT service support process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Intelligent Decision Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-01"
+    },
+    {
+      "doi": "10.4172/2161-0711.s2-001",
+      "title": [
+        "The Electronic Hospital Information System Implemented at the District General Hospital Trincomalee-An Experience of Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Community Medicine &amp; Health Education"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2991/icetis-14.2014.119",
+      "title": [
+        "New Product Development Procedure Reengineering Based on the Lean Theory"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Advances in Intelligent Systems Research",
+        "Proceedings of the 2014 International Conference on Education Technology and Information System (ICETIS 2014)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-319-05951-8_21",
+      "title": [
+        "Reengineering Requirements Specification Based on IEEE 830 Standard and Traceability"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Intelligent Systems and Computing",
+        "New Perspectives in Information Systems and Technologies, Volume 1"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.2377213",
+      "title": [
+        "Pour Une RRinggnierie Des Partenariats Verticaux : Le Cas De La Plateforme De La Filiire Automobile (For a reengineering of the vertical partnerships: the case of the Automobile Industry Plateform (PFA))"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1021/bi4011732",
+      "title": [
+        "Targeted Reengineering of Protein Geranylgeranyltransferase Type I Selectivity Functionally Implicates Active-Site Residues in Protein-Substrate Recognition"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-01"
+    },
+    {
+      "doi": "10.3233/978-1-61499-415-2-203",
+      "title": [
+        "An Integrated Approach to Safety-driven and ICT-enabled Process Reengineering: Methodological Advice and a Case Study"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Health Technology and Informatics",
+        "Nursing Informatics 2014"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Patient safety is a central concern inside any healthcare environment. With the progress of Information and Communication Technologies (ICTs), new solutions have become available to support care and management processes. Analyzing process risks helps identifying areas of improvement and provides ICT-solutions design with indications on what portions of the process need primary interventions. Understanding the link between process reengineering, technology assessment of enabling technologies and risk management allows user acceptance and patient safety improvements. Fondazione IRCCS Istituto Nazionale dei Tumori (INT), offers a good example of process reengineering driven by the purpose of increasing patient safety, enabled by new technologies. A pillar of the evolution of ICT process support at INT is based on Radio Frequency Identification technologies, implemented to identify and trace items and people across processes. This paper will present an integrated approach, based on process reengineering methodologies and risk assessment studies, and methodological advice applied to a case of surgical kits management procedures.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-4666-4301-7.ch063",
+      "title": [
+        "Engineering and Reengineering of Technology Enhanced Learning Scenarios Using Context Awareness Processes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Design and Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This chapter proposes a context modeling process to help tutors adapt their tutorship actions based on students’ profiles and performance on Technology Enhanced Learning environments (TEL). It attempts also to involve teachers as designers in the engineering process of a TEL system development and to support their activity of auto-regulation regarding the students’ guidance and assistance. This aim leads to improve teaching strategies as well as to enhance the quality of the learning objects and the learning scenario itself. In fact, if the TEL system is already adaptive, by means of this approach, its improvement is fostered. If not, the process will support its iterative transformation from predefined to adaptive. The Model Driven Engineering (MDE) methodology is used since it gives educational designers (teachers for this proposal) and software designers the ability to define, communicate, and test a solution while creating artifacts that become part of the overall solution. The Usage Tracking Language (UTL) has been developed to provide the actors of a TEL system (designers, tutors, learners, and analysts) with a dutiful tool to describe the observed uses of the descriptive pedagogical scenario and their semantics, including the definition of the observation needs and the means required for data acquisition. The structure of tracks and their transformations from raw data allows the calculation of indicators which supports the building of users’ models that will influence users’ decision making. Finally, a case study using the Hop3X environment for learning Java programming to apply this process is presented.</jats:p>"
+    },
+    {
+      "doi": "10.1371/journal.ppat.1003902",
+      "title": [
+        "Reengineering Redox Sensitive GFP to Measure Mycothiol Redox Potential of Mycobacterium tuberculosis during Infection"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "PLoS Pathogens"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-55182-6_65",
+      "title": [
+        "$$\\delta $$-Shock Supply Chain Reengineering Decision Model Under Weibull Distribution"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Intelligent Systems and Computing",
+        "Proceedings of the Eighth International Conference on Management Science and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-662-43880-0_65",
+      "title": [
+        "Reengineering and Extending the Agents in Grid Ontology"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Large-Scale Scientific Computing"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.12677/bglo.2014.24009",
+      "title": [
+        "A Conceptual Framework on Market Ability Reengineering (MAR) for Open Economy—A Case Study on Dongguan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business and Globalization"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-81-322-1665-0_9",
+      "title": [
+        "To Study the Architectural Designs of a Proposed Comprehensive Software Extractor for Reengineering Tool: A Literature Survey"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Intelligent Systems and Computing",
+        "Intelligent Computing, Networking, and Informatics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-319-09492-2_18",
+      "title": [
+        "Reengineering of Object-Oriented Software into Aspect-Oriented Ones Supported by Class Models"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Business Information Processing",
+        "Enterprise Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "term": "Reengineering",
+  "total_results": 29,
+  "processed_count": 29,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1515/9783486787061-004",
+      "title": [
+        "2. Kapitel: Entwicklungsstand Des Software-Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-005",
+      "title": [
+        "3. Kapitel: Vorgehensweise Zum Software-Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-003",
+      "title": [
+        "1. Kapitel: Grundlagen Des Software-Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-006",
+      "title": [
+        "4. Kapitel: Spezielle Vorgehensmodelle Zum Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-007",
+      "title": [
+        "5. Kapitel: Reengineering Von Fortran-Programmen"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-008",
+      "title": [
+        "6. Kapitel: Weitere Aspekte Des Software-Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-fm",
+      "title": [
+        "Frontmatter"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-012",
+      "title": [
+        "Literaturverzeichnis"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-toc",
+      "title": [
+        "Inhaltsverzeichnis"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-001",
+      "title": [
+        "Vorwort"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-002",
+      "title": [
+        "Einführung"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-011",
+      "title": [
+        "Glossar"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-013",
+      "title": [
+        "Stichwortverzeichnis"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-010",
+      "title": [
+        "FORTRAN-Anweisungen"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061-009",
+      "title": [
+        "Zusammenfassung Und Ausblick"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software-Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1515/9783486787061",
+      "title": [
+        "Software-Reengineering"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.3233/hsm-1994-13408",
+      "title": [
+        "Reengineering in Higher Education: A Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Human Systems Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This paper explores the relationship between employers' selection criteria such as GPA, internship and previous working experience, student activities, graduates' areas of concentration, and gender upon the graduates' starting salary. The orientation and focus of this paper remains on micro analysis of graduates' earnings. An extensive set of statistical analyses is performed. The qualitative results and implications of the study are explored and presented. It is determined, through a set of analyses, that only GPA, computer science concentration, and student gender were significant and relevant selection criteria in the determination of graduates' starting salary. At the conclusion, the policy and planning implementation and implications of the study are presented as reengineering tools for three groups of constituents.</jats:p>",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1097/00019514-199412000-00028",
+      "title": [
+        "A24 Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Quality Management in Health Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1177/026839629400900401",
+      "title": [
+        "Mini-Theme Issue: Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Information Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1016/0263-2373(94)90027-2",
+      "title": [
+        "Forging a link between business strategy and business reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Management Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1057/jit.1994.34",
+      "title": [
+        "Business Process Reengineering: BreakPoint Strategies for Market Dominance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Information Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1097/00005110-199412000-00013",
+      "title": [
+        "Reengineering Hospitals Using the ???Function Follows Form??? Model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JONA: The Journal of Nursing Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1016/0963-8687(94)90038-8",
+      "title": [
+        "Reengineering the corporation: A manifesto for business revolution"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Strategic Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1177/026839629400900408",
+      "title": [
+        "Book Review: Business Process Reengineering: BreakPoint Strategies for Market Dominance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Information Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1016/s0840-4704(10)61077-0",
+      "title": [
+        "Business Process Reengineering: A Remedy for Health Care"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Healthcare Management Forum"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Health care organizations are facing significant economic constraints that threaten to dismantle core services. The perceived need for reform is great. Business process reengineering may be the strong medicine required to achieve dramatic productivity improvement without jeopardizing the quality and scope of core health care services. Reengineering challenges health care organizations to eliminate functions that do not contribute to a flattened organization structure in which fewer care providers deliver a wider range of health care services. Information technology is used to displace manual checks and controls. Reengineering may facilitate the implementation of contemporary management models, such as patient-focused care, case management and product or program management. The product of reengineering can be enhanced over time by Continuous Quality Improvement. </jats:p>",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1002/npr.4040140110",
+      "title": [
+        "The U.S. patent and trademark office: A case study in business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "National Productivity Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>In spite of Vice President Al Gore's initiative, few federal government agencies have actively embraced the concept of business process reengineering. One notable exception is the Patent and Trademark Office of the Department of Commerce. Already one of the best managed agencies in the federal government, the PTO is revamping the application process for both patents and trademarks and expects to save lens of millions of dollars every year once the redesigned systems are fully implemented.</jats:p><jats:p>The new processes will take full advantage of electronic technology to achieve huge reductions in labor and printing costs, as well as allow innovative and flexible management techniques such as work‐at‐home programs. Responsibility and authority will be concentrated in fewer employees through job enrichment and restructuring, and the level of service provided to PTO's customers will improve. The redesigned trademark application process also will meet up coming international trademark requirements.</jats:p>",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1145/193173.195299",
+      "title": [
+        "Reengineering a complex application using a scalable data structure compiler"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2nd ACM SIGSOFT symposium on Foundations of software engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1145/195274.195299",
+      "title": [
+        "Reengineering a complex application using a scalable data structure compiler"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>P2 is a scalable compiler for collection data structures. High-level abstractions insulate P2 users from data structure implementation details. By specifying a target data structure as a composition of components from a reuse library, the P2 compiler replaces abstract operations with their concrete implementations.LEAPS is a production system compiler that produces the fastest sequential executables of OPS5 rule sets. LEAPS is a hand-written, highly-tuned, performance-driven application that relies on complex data structures. Reengineering LEAPS using P2 was an acid test to evaluate P2's scalability, productivity benefits, and generated code performance.In this paper, we present some of our experimental results and experience in this reengineering exercise. We show that P2 scaled to this complex application, substantially increased productivity, and provided unexpected performance gains.</jats:p>",
+      "publication_date": "1994-12"
+    },
+    {
+      "doi": "10.1016/0963-8687(94)90036-1",
+      "title": [
+        "New treatments or old remedies: is business process reengineering really socio-technical design?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Strategic Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-12"
+    }
+  ]
+}

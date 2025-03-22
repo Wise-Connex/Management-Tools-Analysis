@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1177/096701068601700203",
+      "title": [
+        "Command in Crisis: A Middle East Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bulletin of Peace Proposals"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-04"
+    },
+    {
+      "doi": "10.1080/00091383.1986.9937049",
+      "title": [
+        "Administrators vs. Faculty"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Change: The Magazine of Higher Learning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-04"
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+{
+  "term": "Scenario",
+  "total_results": 26,
+  "processed_count": 26,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.5194/adgeo-5-43-2005",
+      "title": [
+        "Evaluation of hydrological models for scenario analyses: signal-to-noise-ratio between scenario effects and model uncertainty"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Geosciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Abstract. Many model applications suffer from the fact that although it is well known that model application implies different sources of uncertainty there is no objective criterion to decide whether a model is suitable for a particular application or not. This paper introduces a comparative index between the uncertainty of a model and the change effects of scenario calculations which enables the modeller to objectively decide about suitability of a model to be applied in scenario analysis studies. The index is called \"signal-to-noise-ratio\", and it is applied for an exemplary scenario study which was performed within the GLOWA-IMPETUS project in Benin. The conceptual UHP model was applied on the upper Ouémé basin. Although model calibration and validation were successful, uncertainties on model parameters and input data could be identified. Applying the \"signal-to-noise-ratio\" on regional scale subcatchments of the upper Ouémé comparing water availability indicators for uncertainty studies and scenario analyses the UHP model turned out to be suitable to predict long-term water balances under the present poor data availability and changing environmental conditions in subhumid West Africa.\n                    </jats:p>"
+    },
+    {
+      "doi": "10.1127/0941-2948/2005/0076",
+      "title": [
+        "Changes of the Arctic climate under the SRES B2 scenario conditions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Meteorologische Zeitschrift"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1016/j.futures.2005.02.011",
+      "title": [
+        "The future of the red metal—scenario analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1515/9783110332865.217",
+      "title": [
+        "The Goldilocks Scenario: Is Noun-noun Compounding Compositional?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Applications to Linguistics, Psychology and Neuroscience"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1007/s00766-005-0024-3",
+      "title": [
+        "Goal and scenario validation: a fluent combination"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-04"
+    },
+    {
+      "doi": "10.2523/97526-ms",
+      "title": [
+        "Water Flooding Efficiency in a Scenario of Multiple Induced Fractures: An \nApplied Geomechanical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE International Improved Oil Recovery Conference in Asia Pacific"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2118/97526-ms",
+      "title": [
+        "Water Flooding Efficiency in a Scenario of Multiple Induced Fractures, an Applied Geomechanical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE International Improved Oil Recovery Conference in Asia Pacific"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Understanding and predicting multiple fracture propagation behaviour whilst injecting water in the layered reservoir of Field A, offshore Nigeria, presents several major challenges.</jats:p>\n               <jats:p>The water flood efficiency will be affected by the behaviour of each independent fracture during the injection process. For this reason an accurate estimation of the behaviour of each individual fracture and their interdependence are essential for field development.</jats:p>\n               <jats:p>The principle objective of the study was to find the main factors that controlled the multiple fracture growth behaviour using a 3D fracture simulation model. A water injection well was planned in a reservoir with 5 moderate to high permeability sand layers varying from 6 to 25 feet in true vertical thickness. A further consideration was that the sand layers in the reservoir had depleted from 2600 psi to 1900 psi. A comprehensive lithological and geomechanical model of the reservoir section was constructed for simulating the injection process. As a mixture of seawater and formation water was planned for injection possible chemical effects were also considered in the study. The 3D simulation model of multiple fracture propagation considered thermal and pore pressure effects. In addition, reservoir pressure depletion and particle plugging were also considered.</jats:p>\n               <jats:p>The behaviour of each individual fracture was shown to be interdependent on the other fractures in the model. The results of the simulations demonstrated that over the first 5 years of planned water injection, the behaviour of the fractures was mainly dependant on the pressure depletion effects at the time of water injection and particle plugging. Critically, the depletion effects were the decisive element in fracture containment i.e. to guarantee vertical growth into only the selected sand sequences. Some scenarios that were modelled showed that for the planned injection flow rates, fracture containment was not possible after one year of injection. However, in these cases, if the injection rate was reduced by around 20% for a limited period, the fracture growth could be controlled. Full rates could be resumed after this reduced injection period. The introduction of such an injection flow rate control (IFC) during the injection period would then allow the fracture containment and water flood confinement into the selected reservoir sequence.</jats:p>\n               <jats:p>Understanding the variables that influence multiple fracture behaviour allows timely decisions on surface equipment requirements. In addition the operational conditions associated with the injection process are defined. The injection strategy can then be targeted to promote an optimum water flood profile and water placement into only the selected sand intervals.</jats:p>\n               <jats:p>It is through the process of modelling the multiple fracture interaction and behaviour that the water injection efficiency can be optimised.</jats:p>",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1097/00008469-200512000-00004",
+      "title": [
+        "Trends in cervical cancer incidence – Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Cancer Prevention"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.36953/ecj.2005.0612316",
+      "title": [
+        "Forest status and land use scenario at Singrauli: A Bird Eye View"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environment Conservation Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Present paper deals with the forest status and land use  pattern at Singrauli. Singrauli region  once  had very dense dry tropical forest, which due to rapid industrialization in recent years got significantly reduced. It is concluded from the study that in general the area under forest and agriculture reduced tremendously while the area under mining has increased markedly.</jats:p>"
+    },
+    {
+      "doi": "10.1016/j.jclinane.2005.09.006",
+      "title": [
+        "Unique method of teaching root-cause analysis using a simulated case scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Clinical Anesthesia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1016/j.jclinane.2005.09.036",
+      "title": [
+        "Unique method of teaching root-cause analysis using a simulated case scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Clinical Anesthesia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1007/s10441-005-2528-0",
+      "title": [
+        "An Evolutionary Scenario For The Origin Of Pentaradial Echinoderms—Implications From The Hydraulic Principles Of Form Determination"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Biotheoretica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1590/s0103-97332005000700030",
+      "title": [
+        "Solutions for Klein-Gordon equation in Randall-Sundrum-Kerr scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Brazilian Journal of Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/tse.2005.131",
+      "title": [
+        "A scenario-matching approach to the description and model checking of real-time properties"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1029/2005jd006417",
+      "title": [
+        "A new approach to scenario analysis using simplified chemical transport models"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Geophysical Research: Atmospheres"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Given the computational burden of running full chemical transport models, it is highly desirable to have alternative ways to obtain fast and accurate approximations to at least some of these model outputs. We propose two methods that closely approximate the ammonia wet deposition of the Community Multiscale Air Quality (CMAQ) model, a regional‐scale three‐dimensional chemical transport model. The first method uses a greatly simplified version of CMAQ, called here “Tracer,” which requires one fortieth the processing time of CMAQ. The second method uses an extension of the Tracer model called “Multitracer.” Both methods make use of a CMAQ run under a reference emission scenario and are shown to provide good approximations to CMAQ outputs under different emission scenarios. The first fast approximation method proposed here requires a Tracer run under the new emission scenario while the second proposed approximation only requires a matrix multiplication between a precomputed matrix that approximates the transport in the model, obtained from a single Multitracer run, and the new emission. It will be shown that this method is not a simple source‐receptor approximation of the model. As an important application of the second predictor, we propose an inverse modeling method for ammonia that makes it possible to adjust emissions by a different factor for each of the 100 subregions of the spatial domain. Testing with pseudodata yields a good match between the inverse modeled emissions and the actual emissions. Estimates of emissions using actual observations in the eastern United States show a reasonable adjustment field.</jats:p>",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1007/s10460-005-3389-5",
+      "title": [
+        "Simulating Agricultural Conversion to Residential use in the Hudson River Valley: Scenario Analyses and Case Studies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agriculture and Human Values"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1111/j.1537-2995.2005.00673.x",
+      "title": [
+        "The median whole‐blood donation time in the best‐case scenario: findings at one blood center"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transfusion"
+      ],
+      "subject": [],
+      "abstract": "<jats:p><jats:bold>BACKGROUND: </jats:bold> Whole‐blood donation times in a donor population when there are no impediments to blood donation at any point can be used to determine the shortest median whole‐blood donation time. This statistic is relevant to blood donors and collection staff.</jats:p><jats:p><jats:bold>STUDY DESIGN AND METHODS: </jats:bold> Small, overstaffed blood drives in August 2004 were evaluated via operation records and supervisor interviews to determine if there were any impediments to whole‐blood donation at any point in the process. Four‐hundred ninety‐two whole‐blood donations from 33 blood drives were not impeded and were evaluated for whole‐blood donation times. Registration records (entry time) and blood donor records (phlebotomy start and end time) provided three objective time points for the process, the median postphlebotomy interval at the phlebotomy station was estimated, and 10 minutes was assigned for the refreshment period.</jats:p><jats:p><jats:bold>RESULTS: </jats:bold> The median donation time for the whole‐blood donation process was 50 minutes. The 25 to 75 percent range was 46 to 56 minutes, and the 10 to 90 percent range was 42 to 64 minutes. First‐time blood donors had blood donation times that were 5 to 6 minutes longer than in repeat blood donors (55.5 min vs. 50 min), and women had slightly longer donation times than men (51 min vs. 49 min). Five percent of the donors had donation times that exceeded 69 minutes.</jats:p><jats:p><jats:bold>CONCLUSION: </jats:bold> The median whole‐blood donation time and range under the best circumstances was defined based on the process in place in our blood center in August 2004.</jats:p>",
+      "publication_date": "2006-01"
+    },
+    {
+      "doi": "10.22323/1.020.0248",
+      "title": [
+        "Vortex Proliferation and the Dual Superconductor Scenario for Confinement: The 3D Lattice Higgs Model"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of XXIIIrd International Symposium on Lattice Field Theory — PoS(LAT2005)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1061/(asce)1076-0342(2005)11:4(211)",
+      "title": [
+        "Terrorism Scenario Identification by Superposition of Infrastructure Networks"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Infrastructure Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1088/1126-6708/2005/12/011",
+      "title": [
+        "Exploring the BWCA (Bino-Wino co-annihilation) scenario for neutralino dark matter"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of High Energy Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3745/kipstd.2005.12d.7.1049",
+      "title": [
+        "Scenario-Based Implementation Synthesis for Real-Time Object-Oriented Models"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The KIPS Transactions:PartD"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1016/j.agwat.2005.02.003",
+      "title": [
+        "Simulating water and salt movement in tile-drained fields irrigated with saline water under a Serial Biological Concentration management scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agricultural Water Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.2304/pfie.2005.3.4.327",
+      "title": [
+        "Multicultural Challenges in Educational Policies within a Non-Conservative Scenario: The Case of the Emerging Reforms in Higher Education in Brazil"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Policy Futures in Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The article discusses the extent to which multiculturalism has had an impact in the emerging reforms in higher education in Brazil, against the backdrop of the rise of a new non-Conservative, Labour-oriented government whose political agenda is marked by a discursive stand against conservatism, neo-liberalism and neocolonialism. Building on a postcolonial critical multicultural approach and on the need to include ideology in discussions concerning educational reform, it argues that educational policies should work towards valuing cultural diversity and challenging discriminatory practices without falling into dichotomies that freeze subject and institutional identities and fail to consider their mobility, hybridization and contingency. It then proposes alternative perspectives to consider future policies in education that take multiculturalism on board in a transformational perspective. </jats:p>",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.5713/ajas.2005.1800",
+      "title": [
+        "Present Scenario and Future Prospects of Phytase in Aquafeed - Review -"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Asian-Australasian Journal of Animal Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s1440-2440(05)80053-2",
+      "title": [
+        "Time-motion analysis of elite field hockey during several games in succession: A tournament scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Science and Medicine in Sport"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1103/physrevlett.95.247203",
+      "title": [
+        "Algebraic Vortex Liquid in Spin-<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mn>1</mml:mn><mml:mo>/</mml:mo><mml:mn>2</mml:mn></mml:math>Triangular Antiferromagnets: Scenario for<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:msub><mml:mi>Cs</mml:mi><mml:mn>2</mml:mn></mml:msub><mml:msub><mml:mi>CuCl</mml:mi><mml:mn>4</mml:mn></mml:msub></mml:math>"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review Letters"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

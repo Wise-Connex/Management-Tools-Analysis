@@ -1,0 +1,43 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/6055010",
+      "title": [
+        "Conceptual design of the Truscott Brine Lake solar-pond system. Volume I. Utility-independent scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1981-06"
+    },
+    {
+      "doi": "10.21236/ada102332",
+      "title": [
+        "Automated Scenario Generation and Interaction Techniques"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1981-06"
+    },
+    {
+      "doi": "10.1109/tcom.1981.1095068",
+      "title": [
+        "Security Requirements and Protocols for a Broadcast Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Communications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1981-06"
+    }
+  ]
+}

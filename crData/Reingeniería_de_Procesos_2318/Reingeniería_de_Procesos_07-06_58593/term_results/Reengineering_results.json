@@ -1,0 +1,137 @@
+{
+  "term": "Reengineering",
+  "total_results": 10,
+  "processed_count": 10,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/14637150710752344",
+      "title": [
+        "Business process reengineering: critical success factors in higher education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>The purpose of this paper is to examine the critical success factors of business process reengineering (BPR) in higher education (HE).</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>Empirical case studies collected from three private higher education institutions in Malaysia, which have embarked on BPR successfully.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>Seven factors were found to be critical to BPR implementation success. The factors are teamwork and quality culture, quality management system and satisfactory rewards, effective change management, less bureaucratic and participative, information technology/information system, effective project management and adequate financial resources.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>The paper provides a framework for future research to explore organisational development in making BPR happen successfully.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>This research contributes to studies of BPR in HE context, by considering the soft issues in its implementation.</jats:p></jats:sec>",
+      "publication_date": "2007-06"
+    },
+    {
+      "doi": "10.1109/isce.2007.4382227",
+      "title": [
+        "Reengineering for System Requirements Reuse: Methodology and Use-Case"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Symposium on Consumer Electronics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-06"
+    },
+    {
+      "doi": "10.1108/14637150710752281",
+      "title": [
+        "Business process reengineering in UAE public sector: a town planning case study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>To reengineer the applications' processes of the land department of Al‐Ain Municipality and to develop an electronic version of the reengineered processes.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The research approach used in this work is similar to the five‐point incremental approach and the work of Gunasekaran <jats:italic>et al.</jats:italic> These steps are: establishment of the business vision and objectives; identification and focus on the core business processes that support them; modeling and analysis of the business environment; streamlining; and continuous control and improvement of previous steps.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The best possible solution for shorter and more efficient processing path was achieved. Great savings in cost, time and human resources were achieved. Many factors have contributed to the success of the work. These include the efficient reengineered process, efficient database design, search facilities, electronic document archive and easy‐to‐use user interface.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>The authors were not absolutely free to select the model they think is better. There were some critical factors that had to be considered. Perhaps, one of the most serious obstacles was the reluctance of some key decision makers to cease or reduce some of their authorities. Those officers believe that a direct supervision or control on the different stages of the processes is essential. The justification given is that the issue of land allocation is critical and may be problematic. Special considerations may be required under certain circumstances and these are only dealt with by key decision makers. Other factors such as reluctance of the users for change, job redundancy resulting from the change and financial resources were important but less significant. Therefore, many models were suggested before the final one was agreed on.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The paper is a case study that describes the reengineering processes in the public sector in UAE. This sector suffers from a great deficiency and this work represents a leading step towards improving its working practices. The value of the paper lies in the comprehensive study and analysis of this department and the efficient customized solutions it offered.</jats:p></jats:sec>",
+      "publication_date": "2007-06"
+    },
+    {
+      "doi": "10.21608/asc.2007.147558",
+      "title": [
+        "A Practical Approach for Implementing Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the ACS Advances in Computer Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-06"
+    },
+    {
+      "doi": "10.4304/jcp.2.4.23-30",
+      "title": [
+        "Applying Task Modeling and Pattern-Based Techniques in Reengineering Processes for Mobile Learning User Interfaces: A Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Computers"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5392/jkca.2007.7.6.169",
+      "title": [
+        "Reengineering of Hospital Administration Process for Efficient Hospital Management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of the Korea Contents Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-06"
+    },
+    {
+      "doi": "10.1016/j.sapharm.2006.06.005",
+      "title": [
+        "Reengineering pharmacotherapy delivery to maximize the role of the pharmacist and improve patient outcomes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Research in Social and Administrative Pharmacy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-06"
+    },
+    {
+      "doi": "10.1111/j.1540-4609.2007.00140.x",
+      "title": [
+        "Reengineering Academic Teams Toward a Network Organizational Structure*"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Decision Sciences Journal of Innovative Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>ABSTRACT</jats:title><jats:p>This article examines student teamwork in the academic field from a structural perspective. Student teams are often prearranged and then left to organize themselves and get on with their work, without any further structural support; this, however, can become a negative experience on teamwork. A varied contribution among team members often occurs and unavoidably leads to friction and reduced performance. The aim of this project is to explore the main problems in academic teamwork and investigate tools that provide relevant solutions. We present the concept of network organizational structure and discuss how this can improve collaboration and communication. The main tools to achieve a structural transformation from the more traditional form of team organization to the fairer network form, and their implications are discussed.</jats:p>",
+      "publication_date": "2007-07"
+    },
+    {
+      "doi": "10.1080/00207540600767780",
+      "title": [
+        "Assessing the impact of information technology on firm performance considering the role of intervening variables: organizational infrastructures and business processes reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-06"
+    },
+    {
+      "doi": "10.1021/cen-v085n026.p027",
+      "title": [
+        "AGENTS OF CHANGE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-06"
+    }
+  ]
+}

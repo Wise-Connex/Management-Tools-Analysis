@@ -1,0 +1,740 @@
+{
+  "term": "Scenario",
+  "total_results": 58,
+  "processed_count": 58,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1037/t92330-000",
+      "title": [
+        "After-Scenario Questionnaire"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "PsycTESTS Dataset"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-08"
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_4",
+      "title": [
+        "Tools for scenario building"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1037/e533502008-001",
+      "title": [
+        "Surface transportation for the year 2020: A desirable scenario"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "PsycEXTRA Dataset"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/ispw.1994.512787",
+      "title": [
+        "Life-cycle (sub) process scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings. Ninth International Software Process Workshop"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1063/1.49050",
+      "title": [
+        "Scenario of self-organization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIP Conference Proceedings"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.58837/chula.pasaa.25.1.9",
+      "title": [
+        "Testing for Communicative Proficiency: A Scenario-Based Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "PASAA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p/>"
+    },
+    {
+      "doi": "10.1007/978-1-349-24237-5_12",
+      "title": [
+        "Acid Rain: A Business-as-Usual Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "UK Environmental Policy in the 1990s"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1093/oso/9780198538455.003.0002",
+      "title": [
+        "Inference operations on scenario descriptions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Features and Fluents"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Reasoning about scenario descriptions may appear to be a straightforward application of formal logic, but it turns out to have a number of peculiar characteristics which have to do with how different types of premise are expressed. The preSCDt chapter attempts to express, in precise terms, both what the important issues are and how they can be broken down into more restricted subproblems.</jats:p>",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.1093/oso/9780195085747.003.0002",
+      "title": [
+        "The OCF Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Future Of The Environment"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>The content of the OCF scenano was developed in the course of carrying out ten case studies that provide the bulk of the data for this project. In order to examine likely future changes in emissions of carbon dioxide and oxides of sulfur and nitrogen, we focused on the most energy-intensive sectors. The technologies of greatest interest to us would promote development by their efficient use of energy and materials and their potential for low pollution and commercial implementation on a significant scale. Data collection for a case study covers one or several related sectors (e.g., iron and steel) and requires identifying the technological choices faced both in producing the output (in the iron and steel sector itself) and in using it (in the metal-fabricating sectors). The description of each technological alternative (e.g., electric arc technology) involves quantifying the major inputs per unit of output.</jats:p>",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.1615/ichmt.1995.radtransfprocheatmasstransfsevnuclreactacc.190",
+      "title": [
+        "MOLTEN POOL MODELLING IN PWR SEVERE ACCIDENT SCENARIO CODES"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the International Symposium"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_7",
+      "title": [
+        "Modelling concepts"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.14429/dsj.45.4117",
+      "title": [
+        "Future Operational Scenario for Antitank Guided Missile Systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Defence Science Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4000/books.ifra.570",
+      "title": [
+        "Zaire: A Worse Case Scenario?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Comfort of Strangers"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_6",
+      "title": [
+        "Introduction to Part II"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_13",
+      "title": [
+        "Introduction to Part III"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_19",
+      "title": [
+        "Introduction to Part IV"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_2",
+      "title": [
+        "Introduction to Part I"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1049/cp:19950063",
+      "title": [
+        "Mobile satellite communication systems. A competitive scenario for new systems and services"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "10th International Conference on Digital Satellite Communications (ICDSC-10)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1049/ic:19950701",
+      "title": [
+        "A comparison of IN and TINA through a service scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "IEE Third Tutorial Seminar on `The Intelligent Network - The Next Generation'"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_14",
+      "title": [
+        "Current procedures"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-349-23909-2_13",
+      "title": [
+        "Changes in Social Values in the Thai Society and Economy: A Post-Industrialization Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Thailand’s Industrialization and its Consequences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1159/000107845",
+      "title": [
+        "Worst-Case Scenario: Management in Poor-Grade Aneurysmal Subarachnoid Hemorrhage"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cerebrovascular Diseases"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_5",
+      "title": [
+        "Scenarios and rural policy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3362/9781780446301.001",
+      "title": [
+        "1. Toward a New Development Paradigm; Women Create a New Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Transforming Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.3368/er.13.1.58",
+      "title": [
+        "A Restoration Scenario for the Klamath River Basin"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecological Restoration"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8",
+      "title": [
+        "Scenario Studies for the Rural Environment"
+      ],
+      "type": "book",
+      "container-title": [
+        "Environment &amp; Policy"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_1",
+      "title": [
+        "General Introduction"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-0-387-34883-4_2",
+      "title": [
+        "OSI Protocol Testing System based on User Friendly Test Scenario Specification Functions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Protocol Test Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_17",
+      "title": [
+        "Policies"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1103/physrevd.51.r296",
+      "title": [
+        "Heavy τ neutrino as the late decaying particle in the cold dark matter scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0273-1177(95)00255-d",
+      "title": [
+        "The nightward ion flow scenario at Venus revisited"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Space Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.1109/59.466506",
+      "title": [
+        "Planning substation capacity under the single-contingency scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Power Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/3-540-60343-3_28",
+      "title": [
+        "Dynamic structuring of lexical knowledge in a reusability scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "KI-95: Advances in Artificial Intelligence"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/225434.225461",
+      "title": [
+        "Using scenario-based designs to review user interface changes and enhancements"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the conference on Designing interactive systems processes, practices, methods, &amp; techniques - DIS '95"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/10248079508904600",
+      "title": [
+        "STAGE DEFINITION FOR AHS DEPLOYMENT AND AN EVOLUTIONARY SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "I V H S Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_3",
+      "title": [
+        "Scenarios as a tool"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/10248079508903839",
+      "title": [
+        "STAGE DEFINITION FOR AHS DEPLOYMENT AND AN AHS EVOLUTIONARY SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "I V H S Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.17660/actahortic.1995.340.30",
+      "title": [
+        "SCENARIO ANALYSIS FOR ESTIMATING THE SOCIO-ECONOMIC CONSEQUENCES IN DUTCH BULBGROWING BY RESTRICTING FERTILIZERS AND PESTICIDES."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Horticulturae"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.1061/(asce)0733-9372(1995)121:6(472)",
+      "title": [
+        "Environmental Audit: Indian Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Environmental Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.1007/978-3-642-79629-6_12",
+      "title": [
+        "The Mobile Robot of MAIA: Actions and Interactions in a Real Life Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Biology and Technology of Intelligent Autonomous Agents"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_20",
+      "title": [
+        "Regional rural planning"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_10",
+      "title": [
+        "Models and GIS"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/bf00626904",
+      "title": [
+        "A primordial cosmological scenario with two scalar fields and matter"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astrophysics and Space Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-79827-6_14",
+      "title": [
+        "Connectivity and Isolation in Transport Networks: A Policy Scenario Experiment for the Greek Island Economy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Spatial Science",
+        "Overcoming Isolation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_22",
+      "title": [
+        "Set-aside"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/02615479511220131",
+      "title": [
+        "Putting a ‘scenario approach’ to teaching social work law into practice: One year's experience on a probation APP"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Social Work Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-01"
+    },
+    {
+      "doi": "10.1130/0091-7613(1995)023<0787:chomiv>2.3.co;2",
+      "title": [
+        "Crustal history of Margarita Island (Venezuela) in detail: Constraint on the Caribbean plate-tectonic scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1557/proc-412-897",
+      "title": [
+        "Preliminary Analysis of Important Site-Specific Dose Assessment Parameters and Exposure Pathways Applicable to a Groundwater Release Scenario at Yucca Mountain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "MRS Proceedings"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>To develop capabilities for compliance determination, the Nuclear Regulatory Commission (NRC) conducts total system performance assessment (TSPA) for the proposed repository at Yucca Mountain (YM) in an iterative manner. Because the new Environmental Protection Agency (EPA) standard for YM may set a dose or risk limit, an auxiliary study was conducted to develop estimates of site-specific dose assessment parameters for future TSPAs. YM site-relevant data was obtained for irrigation, agriculture, resuspension, crop interception, and soil. A Monte Carlo based importance analysis was used to identify predominant parameters for the groundwater pathway. In this analysis, the GENII-S code generated individual annual total effective dose equivalents (TEDEs) for 20 nuclides and 43 sampled parameters based upon unit groundwater concentrations. Scatter plots and correlation results indicate the crop interception fraction, food transfer factors, consumption rates, and irrigation rate are correlated with TEDEs for specific nuclides. Influential parameter groups correspond to expected pathway behavior of specific nuclides. Results for nuclides that transfer more readily to plants, such as <jats:sup>99</jats:sup>Tc, indicate crop ingestion pathway parameters are most highly correlated with the TEDE, and those that transfer to milk (<jats:sup>59</jats:sup>Ni) or beef (<jats:sup>79</jats:sup>Se, <jats:sup>129</jats:sup>I, <jats:sup>135</jats:sup>Cs, <jats:sup>137</jats:sup>Cs) show predominant correlations with animal product ingestion pathway parameters. Such relationships provide useful insight to important parameters and exposure pathways applicable to doses from specific nuclides.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_16",
+      "title": [
+        "Requirements and data"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s0921-2647(06)80265-0",
+      "title": [
+        "Scenario based specification of interaction metaphors"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Human Factors/Ergonomics",
+        "Symbiosis of Human and Artifact - Future Computing and Design for Human-Computer Interaction, Proceedings of the Sixth International Conference on Human-Computer Interaction, (HCI International '95)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_23",
+      "title": [
+        "New futures for specific regions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_8",
+      "title": [
+        "Models and scale aspect"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_15",
+      "title": [
+        "Operational tools"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_9",
+      "title": [
+        "Operational decision support tools"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_18",
+      "title": [
+        "Case Studies"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_21",
+      "title": [
+        "Operational methods for land use scenarios"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_12",
+      "title": [
+        "Case studies on water and nutrient management"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-94-011-0441-8_11",
+      "title": [
+        "Model parametrization and data needs"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Environment &amp; Policy",
+        "Scenario Studies for the Rural Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

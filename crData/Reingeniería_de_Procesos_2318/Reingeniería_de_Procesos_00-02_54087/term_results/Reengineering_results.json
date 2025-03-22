@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/s0196-6553(00)90010-5",
+      "title": [
+        "Reengineering and infection control programs: Commentary and a case study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Infection Control"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-02"
+    },
+    {
+      "doi": "10.3152/147154300781782110",
+      "title": [
+        "‘Reengineering’ engineering research and education in Brazil: cooperative networks and coalitions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science and Public Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-02"
+    }
+  ]
+}

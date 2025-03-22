@@ -1,0 +1,122 @@
+{
+  "term": "Reengineering",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.5604/01.3001.0010.2872",
+      "title": [
+        "Reengineering and Controlling in I.D.C. Holding"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Zeszyty Naukowe Wyższej Szkoły Humanitas Zarządzanie"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The role of reengineering and controlling is a leading issue of the article. The author used the case of I.D.C.Holding for this presentation. The article is a case study of practice and it fulfills a cognitive role.\n\n</jats:p>",
+      "publication_date": "2017-05"
+    },
+    {
+      "doi": "10.1109/ieeegcc.2017.8448038",
+      "title": [
+        "Business Process Reengineering Using Enterprise Social Network"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2017 9th IEEE-GCC Conference and Exhibition (GCCCE)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-05"
+    },
+    {
+      "doi": "10.3998/ptb.6959004.0009.008",
+      "title": [
+        "Reengineering Metaphysics: Modularity, Parthood, and Evolvability in Metabolic Engineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Philosophy, Theory, and Practice in Biology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/ccaa.2017.8229927",
+      "title": [
+        "Identification of requirements of software reengineering for JAVA projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2017 International Conference on Computing, Communication and Automation (ICCCA)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-05"
+    },
+    {
+      "doi": "10.12783/dtssehs/icss2016/8929",
+      "title": [
+        "Research on Hotel Service Process Reengineering Based On Mobile Internet Technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "DEStech Transactions on Social Science, Education and Human Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.31292/jb.v3i1.94",
+      "title": [
+        "Rekayasa Ulang (Reengineering) Sistem Informasi Manajemen Pertanahan Nasional dengan Pendekatan Unified Modelling Language (UML)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BHUMI: Jurnal Agraria dan Pertanahan"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The quality of decisions, including in land management, need sufficient, precise and accurate data and information. Land Information System at national level become strategic instruments in providing data and information of land, that nowadays not only needed to provide legal certainty of land ownership, but also to support decision making in land management in term of restructuring land tenure and ownership, land value arrangement, land use planning and arrangement, and permit/license related to land development. The existing Land Management Information System (SIMTANAS) was considered irrelevant with current needs. In its database organization, the existing SIMTANAS only account on land registration. Land information that considered as strategic information, such as restriction of land use and arrangement, and responsibilities related to land right and ownership have not been integrated into the system. Regarding this condition, reengineering of SIMTANAS is considered crucial. Reengineering can be implemented using model driven approach with Unified Modeling Language (UML). UML is able to model reengineering from organizational model, functional model, static model and dynamic model of SIMTANAS. Kualitas keputusan, termasuk di dalamnya keputusan-keputusan dalam manajemen pertanahan sangat memerlukan data dan informasi yanng memadai, tepat, dan akurat. Sistem Informasi Pertanahan Nasional menjadi intrumen strategis dalam penyediaan data dan informasi pertanahan yang dewasa ini tidak hanya untuk kepentingan jaminan kepastian hukum penguasaan dan pemilikan tanah, namun sudah harus mampu mendukung keputusan-keputusan manajemen pertanahan dalam hal penataan penguasaan dan pemilikan tanah (land tenure), pengaturan yang terkait dengan nilai tanah (land value), pengaturan dan perencanaan penggunaan dan pemanfatan ruang (land use), dan pengaturan perizinan yang terkait dengan kegiatan pembangunan di atas bidang tanah (land development). Sistem Informasi Manajemen Pertanahan Nasional atau disebut  SIMTANAS yang sudah ada tidak relevan lagi dengan kebutuhan karena disamping penyusunan basis data hanya berdasarkan pendaftaran tanah, informasi-informasi strategis bidang tanah, berupa pengaturan apa yang boleh dan tidak boleh dilakukan (restriction) serta kewajiban-kewajiban yang melekat pada bidang tanah (servitude) atau disebut aspek responsibility belum terintegrasi didalamnya. Rekayasa ulang (reengineering) SIMTANAS menjadi urgen dilakukan. Rekayasa ulang dapat menggunaka pendekatan model driven menggunakan unified modelling language (UML) UML dapat memodelkan rekayasa ulang mulai dari model organisasional, fungsional, model statis maupun model dinamis SIMTANAS.</jats:p>"
+    },
+    {
+      "doi": "10.15276/eltecs.25.101.2017.40",
+      "title": [
+        "CHOOSING THE OPTIMAL PLAN FOR ENERGY EFFICIENT REENGINEERING OF CORPO-RATE COMPUTER NETWORK"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ELECTRICAL AND COMPUTER SYSTEMS"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-05"
+    },
+    {
+      "doi": "10.1109/rcis.2017.7956514",
+      "title": [
+        "A modeling framework for business process reengineering using big data analytics and a goal-orientation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2017 11th International Conference on Research Challenges in Information Science (RCIS)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-05"
+    },
+    {
+      "doi": "10.17580/gzh.2017.05.15",
+      "title": [
+        "Reengineering of roasting machines at pelletizing factory"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gornyi Zhurnal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-05"
+    }
+  ]
+}

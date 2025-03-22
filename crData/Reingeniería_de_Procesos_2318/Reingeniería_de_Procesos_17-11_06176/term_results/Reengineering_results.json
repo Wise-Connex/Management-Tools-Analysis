@@ -1,0 +1,108 @@
+{
+  "term": "Reengineering",
+  "total_results": 8,
+  "processed_count": 8,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1201/9780203710517",
+      "title": [
+        "Reengineering Systems Integration Success (1997)"
+      ],
+      "type": "book",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1201/9780203712726-49",
+      "title": [
+        "Reengineering IS Professionals"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Handbook of: Data Center Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-11"
+    },
+    {
+      "doi": "10.1201/9780203710739-35",
+      "title": [
+        "Reengineering Methodologies and Tools"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Project Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-11"
+    },
+    {
+      "doi": "10.1201/9780203712726-28",
+      "title": [
+        "Implementing Business Process Reengineering: A Case Study"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Handbook of: Data Center Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-11"
+    },
+    {
+      "doi": "10.1108/sl-09-2017-0089",
+      "title": [
+        "Machine reengineering: robots and people working smarter together"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Strategy &amp; Leadership"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Purpose</jats:title>\n<jats:p>The authors explore the potential of machine learning, computers employ that an algorithm to sort data, make decisions and then continuously assess and improve their functionality. They suggest that it be used to power a radical redesign of company processes that they call machine reengineering.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title>\n<jats:p>The authors interpret a survey of more than a thousand corporate public agency IT professionals on their use of artificial intelligence and machine learning.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Findings</jats:title>\n<jats:p>Companies that embrace machine learning find that it adds value to the work product of their employees and provides companies with new capabilities.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Practical implications</jats:title>\n<jats:p>Working together with an intelligent machine, workers become custodians of powerfully smart tools, tools that personalize work to maximize their most productive ways of working.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Originality/value</jats:title>\n<jats:p>A guide to establishing a culture that empowers employees to thrive alongside intelligent machines.</jats:p>\n</jats:sec>",
+      "publication_date": "2017-11"
+    },
+    {
+      "doi": "10.1086/693954",
+      "title": [
+        "The Equity Ethic: Black and Latinx College Students Reengineering Their STEM Careers toward Justice"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-11"
+    },
+    {
+      "doi": "10.1111/awr.12127",
+      "title": [
+        "Reengineering India: Work, Capital, and Class in an Offshore Economy. CarolUpadhya. London: Oxford University Press, 2016."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Anthropology of Work Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2017-12"
+    },
+    {
+      "doi": "10.29244/jitkt.v9i1.17933",
+      "title": [
+        "MODIFICATION AND REENGINEERING OF ELECTRONIC FISH AGGREGATING DEVICE AS A FISHING TOOLS BASED ON LED ILLUMINANCE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Ilmu dan Teknologi Kelautan Tropis"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Fish Aggregating Devices (FADs) is generally made from foliage like a leaf of coconut, palm and nut, but with the development of marine and fishing technology, the FADs could be made electronic ally. Electronic FADs had been developed by using light and sound as an attractor, and  was able to aggregate fish but the catch harvest was still relatively low compared with lift net lamp. In this paper we describe the recent development of electronic FADs. The new electronic FADs has 120 watts total power of LEDs as attractor, 12V 12Ah battery as the energy resources, and HDPE as the body of FADs. The lighting of the new is either blue – red light color (RE1) or red-white light color (RE2). The two kinds of lighting are tested and compared and its light distribution underwater case measured in term of the value of luminous flux. The results showed that new FADs work well in the water with light penetration of RE1 was better than RE2.  Keywords: FADs, instrument, fishing, light</jats:p>"
+    }
+  ]
+}

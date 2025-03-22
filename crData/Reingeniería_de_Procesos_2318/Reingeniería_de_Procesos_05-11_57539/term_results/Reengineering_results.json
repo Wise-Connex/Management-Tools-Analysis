@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/tencon.2005.301068",
+      "title": [
+        "A Dual-Spiral Reengineering Model for Legacy System"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "TENCON 2005 - 2005 IEEE Region 10 Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1097/01.mlr.0000182549.85761.cd",
+      "title": [
+        "Effects of New Zealand??s Health Reengineering on Nursing and Patient Outcomes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Medical Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.3233/sju-2005-22103",
+      "title": [
+        "Reengineering the census of population and housing in the united states"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Statistical Journal of the United Nations Economic Commission for Europe"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1080/03155986.2005.11732732",
+      "title": [
+        "Using Computer Simulation for Surgical Care Process Reengineering in Hospitals"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INFOR: Information Systems and Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    }
+  ]
+}

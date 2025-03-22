@@ -1,0 +1,1760 @@
+{
+  "term": "Reengineering",
+  "total_results": 137,
+  "processed_count": 137,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/saner56733.2023.00003",
+      "title": [
+        "Copyright"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00009",
+      "title": [
+        "Keynotes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00120",
+      "title": [
+        "Author Index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00010",
+      "title": [
+        "Invited Talks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00007",
+      "title": [
+        "Program Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00008",
+      "title": [
+        "Steering Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00006",
+      "title": [
+        "Organizing Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00004",
+      "title": [
+        "Table of Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00001",
+      "title": [
+        "Title Page I"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00002",
+      "title": [
+        "Title Page III"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1017/9781108865630",
+      "title": [
+        "Reengineering the Sharing Economy"
+      ],
+      "type": "edited-book",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>The current sharing economy suffers from system-wide deficiencies even as it produces distinctive benefits and advantages for some participants. The first generation of sharing markets has left us to question: Will there be any workers in the sharing economy? Can we know enough about these technologies to regulate them? Is there any way to avoid the monopolization of assets, information, and wealth? Using convergent, transdisciplinary perspectives, this volume examines the challenge of reengineering a sharing economy that is more equitable, democratic, sustainable, and just. The volume enhances the reader's capacity for integrating applicable findings and theories in business, law and social science into ethical engineering design and practice. At the same time, the book helps explain how technological innovations in the sharing economy create value for different stakeholders and how they impact society at large. Reengineering the Sharing Economy is also available as Open Access on Cambridge Core.</jats:p>",
+      "publication_date": "2023-04"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00005",
+      "title": [
+        "Message from the General Chair and Program Co-Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00111",
+      "title": [
+        "Insights from Building a GUI Testing Tool"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00083",
+      "title": [
+        "Naturalistic Static Program Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00093",
+      "title": [
+        "Revisiting Inter-Class Maintainability Indicators"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00074",
+      "title": [
+        "Weak Labelling for File-level Source Code Classification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00069",
+      "title": [
+        "WasmSlim: Optimizing WebAssembly Binary Distribution via Automatic Module Splitting"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00060",
+      "title": [
+        "Self-Adaptive Ensemble-based Approach for Software Effort Estimation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00031",
+      "title": [
+        "In-Situ Concolic Testing of JavaScript"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.26580/pthj.art51-2023",
+      "title": [
+        "COVID-19 Pandemic: Strengthening the immunity by reengineering among mental health tangles"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "PSYCHTECH &amp; HEALTH JOURNAL"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Currently, all of us are experiencing the unforeseen circumstances of the coronavirus disease 2019 (COVID-19) that have developed a spectrum of effects, which can be best understood in terms of psychological, physical, and immunity problems among people. For this reason, we are particularly interested in the role of mental health in strengthening the immune system in times of COVID-19. What protective factors help maintain and support the good mental health and well-being of any person who faces extreme pandemic-like situations? The Pandemic has had significant and variable impacts on people’s mental health and immunity system. Every family who faces the Pandemic directly or indirectly experiences partial or no control over their thinking, emotions, actions, and coping related to COVID-19 and deaths. To achieve good mental health and a strong immunity system, maintaining the homeostasis of mind and body, engagement in close connections, and social support, using low-stressor techniques, nearness to the environment, practicing Yoga and meditation, infusing positivity, and following healthy lifestyles are necessary for people. In addition, there is an emphasis placed on various approaches to the 4 M’s, which include mental health, mental immunity, mindset, and stressor, to jettison all mental health tangles and minimize the impact of the COVID-19 Pandemic. Thus, mental health and immunity can be restored by controlling the overwhelming thoughts, emotions, and actions of COVID-19 through the inculcation of life-savior techniques and the 4 M’s as a part of daily life.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00015",
+      "title": [
+        "Solder: Retrofitting Legacy Code with Cross-Language Patches"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00049",
+      "title": [
+        "A Multi-Step Learning Approach to Assist Code Review"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00106",
+      "title": [
+        "An analysis of the Oracles used in Ethereum’s blockchain"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00048",
+      "title": [
+        "Optimizing Continuous Integration by Dynamic Test Proportion Selection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00112",
+      "title": [
+        "Deep Reinforcement Learning Guided Decision Tree Learning For Program Synthesis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00014",
+      "title": [
+        "A Hierarchical Topical Modeling Approach for Recommending Repair of Quality Bugs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00034",
+      "title": [
+        "Multi-Modal API Recommendation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00103",
+      "title": [
+        "Blockchain oracles for document certification: A case study."
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00108",
+      "title": [
+        "Detection of test smells with basic language analysis methods and its evaluation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00016",
+      "title": [
+        "Pseudocode to Code Based on Adaptive Global and Local Information"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00067",
+      "title": [
+        "Constructing Temporal Networks of OSS Programming Language Ecosystems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00088",
+      "title": [
+        "Leveraging and Evaluating Automatic Code Summarization for JPA Program Comprehension"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00080",
+      "title": [
+        "HFCommunity: A Tool to Analyze the Hugging Face Hub Community"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00094",
+      "title": [
+        "Large-Scale Evaluation of Method-Level Bug Localization with FinerBench4BL"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00045",
+      "title": [
+        "CSSAM: Code Search via Attention Matching of Code Semantics and Structures"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00013",
+      "title": [
+        "Towards Understanding the Impacts of Textual Dissimilarity on Duplicate Bug Report Detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00026",
+      "title": [
+        "An Empirical Comparison of Model-Agnostic Techniques for Defect Prediction Models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00023",
+      "title": [
+        "Intelligent Constraint Classification for Symbolic Execution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.46593/ijaera.2023.v08i11.001",
+      "title": [
+        "Framework of Family Business Process Reengineering Success and Failure Factors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Advanced Engineering Research and Applications"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The study aimed to build a family framework to re-engineer family businesses’ success and failure processes in the Kingdom of Saudi Arabia. Documentary methods are the techniques used to categorize, investigate, interpret and identify the limitations of physical sources, most commonly written documents, whether in the private or public domain (personal papers, commercial records, state archives, communications, or legislation). The data that will be examined is the data for the period 2021-2022. The data was obtained through observations and documentation. The study revealed that family businesses in the Kingdom of Saudi Arabia need to be restructured to keep pace with the Kingdom’s vision 2030 and the requirements of the local and international capital markets for achieving tangible success in the business sector in Saudi Arabia.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00096",
+      "title": [
+        "Evaluating and improving transformers pre-trained on ASTs for Code Completion"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00081",
+      "title": [
+        "Multi-Layer Observability for Fault Localization in Microservices Based Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00061",
+      "title": [
+        "Boosting Compiler Testing via Eliminating Test Programs with Long-Execution-Time"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00114",
+      "title": [
+        "Interpretable Software Defect Prediction Incorporating Multiple Rules"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00019",
+      "title": [
+        "Studying and Complementing the Use of Identifiers in Logs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00082",
+      "title": [
+        "xVMP: An LLVM-based Code Virtualization Obfuscator"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00104",
+      "title": [
+        "Analysis of Users’ Most Discussed Topics and Trends on Blockchain Technologies and Smart Contracts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00044",
+      "title": [
+        "Enhancing Comprehension and Navigation in Jupyter Notebooks with Static Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00054",
+      "title": [
+        "Brigadier: A Datalog-based IAST framework for Node.js Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00012",
+      "title": [
+        "Understanding the Archived Projects on GitHub"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00077",
+      "title": [
+        "JTestMigBench and JTestMigTax: A benchmark and taxonomy for unit test migration"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00110",
+      "title": [
+        "A Comparative Study of Code Clone Genealogies in Test Code and Production Code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00047",
+      "title": [
+        "Understanding the Impact of Quantum Noise on Quantum Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00098",
+      "title": [
+        "Extended Abstract of E-SC4R: Explaining Software Clustering for Remodularisation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00109",
+      "title": [
+        "Bug or not Bug? Analysing the Reasons Behind Metamorphic Relation Violations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00075",
+      "title": [
+        "Towards Automated Code Reviews: Does Learning Code Structure Help?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00038",
+      "title": [
+        "Slice-Based Code Change Representation Learning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00084",
+      "title": [
+        "µDetector: Automated Intrusion Detection for Microservices"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00107",
+      "title": [
+        "Investigating Software Testing and Maintenance of Open-Source Distributed Ledger"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00118",
+      "title": [
+        "SICUP: A Comment Updating Approach based on Structural Information"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00039",
+      "title": [
+        "Improving Fine-tuning Pre-trained Models on Small Source Code Datasets via Variational Information Bottleneck"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00011",
+      "title": [
+        "An Empirical Study of Smart Contract Decompilers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00028",
+      "title": [
+        "On the Effect of Transitivity and Granularity on Vulnerability Propagation in the Maven Ecosystem"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00057",
+      "title": [
+        "IRP2API: Automated Mapping of Cyber Security Incident Response Plan to Security Tools’ APIs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.36948/ijfmr.2023.v05i02.1789",
+      "title": [
+        "Driving Operational Excellence: Assessment of the Impact of Information Technology on Business Strategies and Business Processes Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal For Multidisciplinary Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Organizations have undergone transformation as a result of the modern, globally competitive business environment, which has compelled them to be inventive and adopt cutting-edge tools, techniques, and technology. The business procedure and available resources are seen as rivals by them. As a result, they continuously redesign, reorder, and upgrade their technology resources.\nIn recent years, BPR has grown to be one of the most significant and well-liked change management strategies, garnering significant interest from academics and practitioners. This paper critically examines the how IT influence business strategies and further affect BPR and uses theory to explore extent to their interrelations drive operational excellence in organizations.</jats:p>"
+    },
+    {
+      "doi": "10.53373/reds.2023.59.2.0113",
+      "title": [
+        "COLLECTIVE CHAPTER: REENGINEERING BUSINESS PROCESSES AND INFORMATION TECHNOLOGIES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revue Européenne du Droit Social"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00095",
+      "title": [
+        "Technical Debt Diffuseness in the Apache Ecosystem: A Differentiated Replication"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00105",
+      "title": [
+        "An Optimized Concurrent Proof of Authority Consensus Protocol"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.34755/irok.2023.99.16.019",
+      "title": [
+        "Исследование инноваций в процессе разработки новых продуктов и услуг на основе реинжиниринга"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Актуальные вопросы современной экономики"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00090",
+      "title": [
+        "An Experience Report on Regression-Free Repair of Deep Neural Network Model"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00042",
+      "title": [
+        "Automated Image Reduction for Explaining Black-box Classifiers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00063",
+      "title": [
+        "Architecture Decisions in AI-based Systems Development: An Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00070",
+      "title": [
+        "Large Language Models: The Next Frontier for Variable Discovery within Metamorphic Testing?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00097",
+      "title": [
+        "Extended Abstract of A Comparative Study and Analysis of Developer Communications on Slack and Gitter"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00116",
+      "title": [
+        "TAG: UML Activity Diagram Deeply Supervised Generation from Business Textural Specification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00073",
+      "title": [
+        "An Empirical Investigation on the Performance of Domain Adaptation for T5 Code Completion"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00024",
+      "title": [
+        "Cross-Language Call Graph Construction Supporting Different Host Languages"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00053",
+      "title": [
+        "Automatic Code Annotation Generation Based on Heterogeneous Graph Structure"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00022",
+      "title": [
+        "Efficient Pattern-based Static Analysis Approach via Regular-Expression Rules"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00052",
+      "title": [
+        "Towards Privacy Preserving Cross Project Defect Prediction with Federated Learning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00085",
+      "title": [
+        "WasmA: A Static WebAssembly Analysis Framework for Everyone"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00021",
+      "title": [
+        "MulCS: Towards a Unified Deep Representation for Multilingual Code Search"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00113",
+      "title": [
+        "EcoDialTest: Adaptive Mutation Schedule for Automated Dialogue Systems Testing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00046",
+      "title": [
+        "Towards a Large-Scale Empirical Study of Python Static Type Annotations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00027",
+      "title": [
+        "Security Code Recommendations for Smart Contract"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00087",
+      "title": [
+        "Environment-aware Testing for DNN-based Smart-home WiFi Sensing Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00025",
+      "title": [
+        "Topic Recommendation for GitHub Repositories: How Far Can Extreme Multi-Label Learning Go?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00036",
+      "title": [
+        "D-ACT: Towards Diff-Aware Code Transformation for Code Review Under a Time-Wise Evaluation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00056",
+      "title": [
+        "Test Input Selection for Deep Neural Network Enhancement Based on Multiple-Objective Optimization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00062",
+      "title": [
+        "Prediction of Vulnerability Characteristics Based on Vulnerability Description and Prompt Learning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00037",
+      "title": [
+        "UDA-DP: Unsupervised Domain Adaptation for Software Defect Prediction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00055",
+      "title": [
+        "How Dynamic Features Affect API Usages? An Empirical Study of API Misuses in Python Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00099",
+      "title": [
+        "Extended Abstract of SeCNN: A semantic CNN parser for code comment generation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00101",
+      "title": [
+        "Extended Abstract of Combine Sliced Joint Graph with Graph Neural Networks for Smart Contract Vulnerability Detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00092",
+      "title": [
+        "MLinter: Learning Coding Practices from Examples—Dream or Reality?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00040",
+      "title": [
+        "Documentation-Guided API Sequence Search without Worrying about the Text-API Semantic Gap"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00043",
+      "title": [
+        "MixCode: Enhancing Code Classification by Mixup-Based Data Augmentation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00089",
+      "title": [
+        "A Method of Component Prediction for Crash Bug Reports Using Component-Based Features and Machine Learning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00072",
+      "title": [
+        "CGORewritter: A better way to use C library in G"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00076",
+      "title": [
+        "How Robust Is a Large Pre-trained Language Model for Code Generationƒ A Case on Attacking GPT2"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00032",
+      "title": [
+        "Learning Program Representations with a Tree-Structured Transformer"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00035",
+      "title": [
+        "Analysis and Propagation of Feature Revisions in Preprocessor-based Software Product Lines"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00065",
+      "title": [
+        "RGDroid: Detecting Android Malware with Graph Convolutional Networks against Structural Attacks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00029",
+      "title": [
+        "ClawSAT: Towards Both Robust and Accurate Code Models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00033",
+      "title": [
+        "Extending Source Code Pre-Trained Language Models to Summarise Decompiled Binaries"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00064",
+      "title": [
+        "Self-Admitted Library Migrations in Java, JavaScript, and Python Packaging Ecosystems: A Comparative Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00117",
+      "title": [
+        "Multimodal Sentiment Analysis under modality deficiency with prototype-Augmentation in software engineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00051",
+      "title": [
+        "Characterize Software Release Notes of GitHub Projects: Structure, Writing Style, and Content"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00058",
+      "title": [
+        "Detecting JavaScript Transpiler Bugs with Grammar-guided Mutation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.36941/jicd-2023-0003",
+      "title": [
+        "Reengineering Small-Scale Business Enterprises as Predictors of Youth Employment and Poverty Alleviation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of International Cooperation and Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The study examines the reengineering of small-scale business enterprises as predictors of youth employment and poverty alleviation. Four objectives and four research questions were posed. The population of the study was two hundred and sixty (260) registered businesses. The study was carried out using a survey research design. A research-created questionnaire titled \"Reengineering of Small-Scale Business Enterprises as Predictors of Youth Employment and Poverty Alleviation\" was used to collect data (RSCBEPYEPA scale). The instrument was validated by one test and measurement expert and two vocational education experts. A trial/pilot test was conducted on 40 registered businessmen and women in Akwa Ibom State who were not part of the main study population, and the study received an overall reliability coefficient of 0.92 using Cronbach's alpha data analysis. The survey was given to 260 registered businesses. The entire study population was used. To answer the research questions, the data was analyzed using means and standard deviation, and the multivariate analysis of variance (MANOVA) statistic was used to test the hypothesis at the 0.05 level of significance. The result showed that the government provided small-scale businesses in Cross River State with financial support, capacity-building programs, legislative support, and the provision of facilities for youth employment and poverty alleviation. It was recommended, among other things, that small-scale business entrepreneurs should take advantage of the financial support provided by the government to boost their businesses.&#x0D;\n &#x0D;\nReceived: 10 January 2023 / Accepted: 26 February 2023 / Published: 6 March 2023</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00059",
+      "title": [
+        "Towards Understanding Fixes of SonarQube Static Analysis Violations: A Large-Scale Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00017",
+      "title": [
+        "Identifying Emergent Leadership in Open Source Software Projects Based on Communication Styles"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00071",
+      "title": [
+        "Combining Contexts from Multiple Sources for Documentation-Specific Code Example Generation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00119",
+      "title": [
+        "ASTHGCN: Adaptive Spatio-Temporal Hypergraph Convolutional Network for Traffic Forecasting"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00018",
+      "title": [
+        "NeuralCCD: Integrating Multiple Features for Neural Coincidental Correctness Detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00041",
+      "title": [
+        "A Comprehensive Study of WebAssembly Runtime Bugs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00100",
+      "title": [
+        "Extended Abstract of Graph4Web: A Relation-Aware Graph Attention Network for Web Service Classification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.6007/ijarems/v12-i1/15855",
+      "title": [
+        "Reengineering the Relationship between Tax Knowledge and Voluntary Tax Compliance in Nigeria: The Moderating Role of Tax Service Quality"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Academic Research in Economics and Management Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00115",
+      "title": [
+        "A Cross-Language Name Binding Recognition and Discrimination Approach for Identifiers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.52436/1.jutif.2023.4.2.746",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING SUPPLY CHAIN MANAGEMENT SYSTEM BASED BLOCKCHAIN USING BPR LC"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Teknik Informatika (Jutif)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The agricultural sector in Indonesia is a superior sector compared to other sectors. The red onion commodity in Indonesia has the highest household consumption rate. Nowadays, technological developments are widely used to support existing agriculture to get maximum results. One of the technologies that can be used in agriculture is blockchain. The application of blockchain has gained importance in information systems and information technology research in the agricultural sector. However, in Indonesia, precisely in Central Java, there is no red onion supply chain management that uses blockchain technology for data storage, data security and data transparency. The author has a goal to re-engineer to overcome these problems by implementing blockchain technology using the Hyperledger Fabric and modeling business processes with Business Process Modeling Notation (BPMN). This research uses the Business Process Re-Engineering Life Cycle method in which this research produces red onion supply chain management with a new business process that is described by Business Process Modeling Notation (BPMN) and produces blockchain applications with various features and testing has been carried out using the Black box testing method with the result that existing features can run well without problems and the web application is running according to user needs to support supply chain management deficiencies so that they become more optimal and transparent in data storage.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00078",
+      "title": [
+        "TADL: Fault Localization with Transformer-based Anomaly Detection for Dynamic Microservice Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00066",
+      "title": [
+        "Exploring and Repairing Gender Fairness Violations in Word Embedding-based Sentiment Analysis Model through Adversarial Patches"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00030",
+      "title": [
+        "Efficient Generation of Floating-Point Inputs for Compiler-Induced Variability"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00086",
+      "title": [
+        "ISTA: Automatic Test Case Generation and Optimization for Intelligent Systems based on Coverage Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1158/0008-5472.c.6513977",
+      "title": [
+        "Data from Reengineering Ponatinib to Minimize Cardiovascular Toxicity"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>&lt;div&gt;Abstract&lt;p&gt;Small molecule tyrosine kinase inhibitors (TKI) have revolutionized cancer treatment and greatly improved patient survival. However, life-threatening cardiotoxicity of many TKIs has become a major concern. Ponatinib (ICLUSIG) was developed as an inhibitor of the &lt;i&gt;BCR-ABL&lt;/i&gt; oncogene and is among the most cardiotoxic of TKIs. Consequently, use of ponatinib is restricted to the treatment of tumors carrying T315I-mutated BCR-ABL, which occurs in chronic myeloid leukemia (CML) and confers resistance to first- and second-generation inhibitors such as imatinib and nilotinib. Through parallel screening of cardiovascular toxicity and antitumor efficacy assays, we engineered safer analogs of ponatinib that retained potency against T315I BCR-ABL kinase activity and suppressed T315I mutant CML tumor growth. The new compounds were substantially less toxic in human cardiac vasculogenesis and cardiomyocyte contractility assays &lt;i&gt;in vitro&lt;/i&gt;. The compounds showed a larger therapeutic window &lt;i&gt;in vivo&lt;/i&gt;, leading to regression of human T315I mutant CML xenografts without cardiotoxicity. Comparison of the kinase inhibition profiles of ponatinib and the new compounds suggested that ponatinib cardiotoxicity is mediated by a few kinases, some of which were previously unassociated with cardiovascular disease. Overall, the study develops an approach using complex phenotypic assays to reduce the high risk of cardiovascular toxicity that is prevalent among small molecule oncology therapeutics.&lt;/p&gt;Significance:&lt;p&gt;Newly developed ponatinib analogs retain antitumor efficacy but elicit significantly decreased cardiotoxicity, representing a therapeutic opportunity for safer CML treatment.&lt;/p&gt;&lt;/div&gt;</jats:p>"
+    },
+    {
+      "doi": "10.1158/0008-5472.c.6513977.v1",
+      "title": [
+        "Data from Reengineering Ponatinib to Minimize Cardiovascular Toxicity"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>&lt;div&gt;Abstract&lt;p&gt;Small molecule tyrosine kinase inhibitors (TKI) have revolutionized cancer treatment and greatly improved patient survival. However, life-threatening cardiotoxicity of many TKIs has become a major concern. Ponatinib (ICLUSIG) was developed as an inhibitor of the &lt;i&gt;BCR-ABL&lt;/i&gt; oncogene and is among the most cardiotoxic of TKIs. Consequently, use of ponatinib is restricted to the treatment of tumors carrying T315I-mutated BCR-ABL, which occurs in chronic myeloid leukemia (CML) and confers resistance to first- and second-generation inhibitors such as imatinib and nilotinib. Through parallel screening of cardiovascular toxicity and antitumor efficacy assays, we engineered safer analogs of ponatinib that retained potency against T315I BCR-ABL kinase activity and suppressed T315I mutant CML tumor growth. The new compounds were substantially less toxic in human cardiac vasculogenesis and cardiomyocyte contractility assays &lt;i&gt;in vitro&lt;/i&gt;. The compounds showed a larger therapeutic window &lt;i&gt;in vivo&lt;/i&gt;, leading to regression of human T315I mutant CML xenografts without cardiotoxicity. Comparison of the kinase inhibition profiles of ponatinib and the new compounds suggested that ponatinib cardiotoxicity is mediated by a few kinases, some of which were previously unassociated with cardiovascular disease. Overall, the study develops an approach using complex phenotypic assays to reduce the high risk of cardiovascular toxicity that is prevalent among small molecule oncology therapeutics.&lt;/p&gt;Significance:&lt;p&gt;Newly developed ponatinib analogs retain antitumor efficacy but elicit significantly decreased cardiotoxicity, representing a therapeutic opportunity for safer CML treatment.&lt;/p&gt;&lt;/div&gt;</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00020",
+      "title": [
+        "Automatic Identification of Crash-inducing Smart Contracts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1007/s42405-023-00580-w",
+      "title": [
+        "Routing Prediction Strategy for UAV Swarm Network Using Pigeon-Inspired Optimization-Based Neural Network"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Aeronautical and Space Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>A routing prediction strategy via a pigeon-inspired optimization (PIO)-based neural network (NN) is designed for UAV swarm networks with highly dynamic topology. The proposed strategy can predict the performance of the neighboring nodes as the next hop. For more precise prediction and less computational complexity, the states of the UAV swarm motion and the network are considered as the prior information, and the PIO-based NN framework is established. Based on the system model, PIO is applied to find the optimal weight matrices of the NN-based routing prediction model. The matrix of the hop count index function is calculated using this prediction model. The proposed strategy can directly determine the next hop based on the prediction results or can be combined with other routing methods to maintain a balance between the stability and the shortest path. Numerical simulations are conducted to demonstrate the effectiveness of the proposed strategy.</jats:p>",
+      "publication_date": "2023-11"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00079",
+      "title": [
+        "TemLock: A Lightweight Template-based Approach for Fixing Deadlocks Caused by ReentrantLock"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1158/0008-5472.22431764",
+      "title": [
+        "Supplementary Figure from Reengineering Ponatinib to Minimize Cardiovascular Toxicity"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>Supplementary Figure from Reengineering Ponatinib to Minimize Cardiovascular Toxicity</jats:p>"
+    },
+    {
+      "doi": "10.1158/0008-5472.22431758",
+      "title": [
+        "Supplementary Table from Reengineering Ponatinib to Minimize Cardiovascular Toxicity"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>Supplementary Table from Reengineering Ponatinib to Minimize Cardiovascular Toxicity</jats:p>"
+    },
+    {
+      "doi": "10.1158/0008-5472.22431758.v1",
+      "title": [
+        "Supplementary Table from Reengineering Ponatinib to Minimize Cardiovascular Toxicity"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>Supplementary Table from Reengineering Ponatinib to Minimize Cardiovascular Toxicity</jats:p>"
+    },
+    {
+      "doi": "10.1158/0008-5472.22431764.v1",
+      "title": [
+        "Supplementary Figure from Reengineering Ponatinib to Minimize Cardiovascular Toxicity"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": "<jats:p>Supplementary Figure from Reengineering Ponatinib to Minimize Cardiovascular Toxicity</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00068",
+      "title": [
+        "An Adaptive Partition-Based Approach for Adaptive Random Testing on Real Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00050",
+      "title": [
+        "Evaluating Learning-to-Rank Models for Prioritizing Code Review Requests using Process Simulation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.3390/pr11030945",
+      "title": [
+        "Numerical Simulation and Process Enhancement of the Hydrolysis of 2-Chlorobenzal Chloride"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Processes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Hydrolysis of 2-Chlorobenzal chloride is the primary production method of 2-chlobrobenzaldehyde in industry, but the reactor technologies and reaction processes of this method are traditional and underdeveloped, in which the dichotomous leaf hydrolysis agitator is commonly used, resulting in low efficiency during the hydrolysis process. In this article, ANSYS software was utilized to enhance the hydrolytic reactors used in industrial production by simulating and analyzing the dispersion characteristics of droplets in the reactor. The particle size distribution of dispersed phase droplets and the Sauter mean diameter (D32) were used to characterize the dispersion effect, and the dispersion characteristics of the dichotomous leaf agitator and the three-bladed back-curved impeller, three-bladed propeller impeller, open turbine impeller, and crescent impeller were compared and studied. The results showed that there was a log-linear relationship between the D32 of the dispersed phase and the stirring speed in different systems; the number of tiny droplets in the three-bladed back-curved impeller system increased remarkably, and the droplets size distribution width decreased significantly, achieving mass transfer enhancement in the hydrolysis reaction system. The reliability of the simulation results was verified by the measurement experiment using the Sauter mean diameter (D32) of dispersed phase droplets. The results showed that the Sauter mean diameter (D32) variation trend is consistent with that of the simulation, and the error between them is less than 10%. A lab-scale hydrolytic reactor was designed and produced based on the scheme of an industrial hydrolytic reactor equipped with a three-bladed back-curved impeller, the effect of the hydrolytic reaction was verified, and the process conditions were strengthened under the same conditions. The results showed that, compared with the case in the reactor using a dichotomous leaf hydrolysis agitator at the same reaction temperature and catalyst conditions, the reaction time of hydrolysis completion reduced to 58.33% at the lab-scale, and to 63.89% at the industrial-scale at the stirring rate of 446 r/min, using a three-bladed back-curved impeller. These results provide a technical scheme and a basis for process strengthening for improving the production efficiency of 2-chlorobenzaldehyde production equipment in industry.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00091",
+      "title": [
+        "Negative Results of Fusing Code and Documentation for Learning to Accurately Identify Sensitive Source and Sink Methods : An Application to the Android Framework for Data Leak Detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    },
+    {
+      "doi": "10.1109/saner56733.2023.00102",
+      "title": [
+        "Extended Abstract of Candidate Test Set Reduction for Adaptive Random Testing: An Overheads Reduction Technique"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2023 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-03"
+    }
+  ]
+}

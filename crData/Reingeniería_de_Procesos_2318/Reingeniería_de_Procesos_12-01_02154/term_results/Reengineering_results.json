@@ -1,0 +1,699 @@
+{
+  "term": "Reengineering",
+  "total_results": 56,
+  "processed_count": 56,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2139/ssrn.2194107",
+      "title": [
+        "Business Process Reengineering (BPR) to Business Model Reengineering (BMR)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch010",
+      "title": [
+        "Supply Chain Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This chapter describes a debacle that occurred when a large assembler of fast moving consumer electronics commissioned the set up of a new supply chain. Four key players undertaking five processes were involved. These companies planned to operate sell-buy relationships. Upon starting to ramp-up of the first product component sets, it became clear that companies did not trust their successors to pay for all goods delivered. Similarly, suppliers were not trusted to deliver perfect goods. Companies receiving component sets refused liability for damage or defects introduced by companies further up the supply chain. A remedial quick-fix using centralised inspection at the principal supplier soon was adopted to facilitate supply of complete sets of mechanical parts to the assembler. Significant similarities exist between the case study supply chain and the concepts used in business process reengineering. The chapter identifies stages undertaken to improve an inbound supply chain for complex plastic mouldings assemblies. The principal research methods used were participant-observer and action orientation. All company names have been disguised to comply with confidentiality agreements. The author was a Logistics Project Leader during the period of this research. He acted as an internal consultant for Alpha Co, with responsibilities for encouraging new product development teams to modify the products to take into consideration ‘design for logistics’ concepts.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch004",
+      "title": [
+        "Component-Based Modeling for Information Systems Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>An Information System can be envisioned as a set of interdependent components that provide the intended services. The component based modeling serves as a tool for collecting requirements of an Information System in user perspective and business perspective at various stages of software development. The chapter presents a methodology for component based modeling and development of an Information System, starting from the requirements definition phase, arriving at candidate components and creation of final components and their interfaces. The methodology aims at clarifying the intricate details and usage of an Information System via business type models and use-case models. The chapter presents the interaction diagrams in order to describe interactions among objects in systems perspective, and context diagrams for reflecting upon the business domain. Finally, the chapter proposes component replacement as a methodology for system reengineering, and model-view-control framework for component refinement and evolution in order to achieve a reengineered information system that reflects upon current requirements in business domain. The reengineering techniques proposed in this chapter can be applied to legacy systems to turn them into a component-oriented reengineered system.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch002",
+      "title": [
+        "Reengineering Structured Legacy System Documentation to UML Object-Oriented Artifacts"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The need for reengineering of software systems has dramatically increased as legacy systems are migrated to new platforms and rewritten in modern object-oriented languages. Although the de facto standard for describing object-oriented systems is the Unified Modeling Language (UML), many legacy systems have been documented using non-object-oriented structured analysis and design methods. Problems arise in the migration because non-object-oriented documentation is inherently not conducive to the development of object-oriented systems. This chapter presents a set of rules to automate the conversion of systems which were originally modeled using structured techniques to UML. The newly created UML documentation can then be used in developing an object-oriented equivalent system. The UML model may also be used by computer aided software engineering tools to implement a new system. The reengineering rules are tested on an example structured system to demonstrate their viability.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch003",
+      "title": [
+        "Traditional Data Oriented versus Process Oriented Reengineering of Legacy Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The chapter presents data oriented and process oriented models of legacy systems. It discusses the details of systems development and evolution models mainly aiming at an ongoing reengineering of legacy systems. It proposes few strategies for reengineering of both data oriented model and process oriented models. The legacy systems often miss automatic interfaces to external systems, so the chapter presents a strategy focusing on automatic update of data of the system. Likewise, the chapter also presents a strategy for process reengineering in order to integrate external systems. Finally, a legacy system is envisioned as a comprehensive mix of both data and process oriented, while proposing a gradual ongoing reengineering of both data structures and process methods.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch008",
+      "title": [
+        "Risk Management and Business Processes Reengineering, Success Drivers for ERP Projects"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>By using a case study example and focusing on the implementation phase, this chapter presents and emphasises the validity of specific risk management model. Briefly, an overview of another two ERP projects risk management’s models will be provided; the first model deals with ERP as technology where risks are managed in accordance to Information Technology and Information System (IT &amp; IS) projects governance. The second model considers the integrated and interdisciplinary nature of ERP systems and introduces the term “ERP Governance” as a model that demands balance between IT and business governance. The third model, while similar to the second, relies heavily on best-practises and assessment frameworks from the industry. Throughout this chapter, the author explores this model, its importance, and application in contexts similar in nature to those found in the hierarchically structured intergovernmental organizations. Finally, the author concludes that embedding risk management best practices into the organization culture and business processes can positively influence the success of ERP system implementation. In other words, earlier adoption of risk management best practices for ERP system implementation will help both business &amp; projects to meet their intended objectives and thus positively influence the success of ERP projects by ensuring that prescribed goals are met.</jats:p>"
+    },
+    {
+      "doi": "10.15358/9783800642182_51",
+      "title": [
+        "3 Das Prozesskonzept des Business Process Reengineering (BPR)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Prozessorganisation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch012",
+      "title": [
+        "Architecture for the Reengineering of Legacy Point of Sale Terminals through Web Services for the Reduction of Transaction Fees"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>With the conventional legacy POS payment transaction method, vendors are bound to a payment institute in their region and can only use relatively expensive dedicated or slow dial-up lines to their financial institute. This chapter covers the work to produce an architecture that shows how to reengineer traditional point of sales terminal payments in order to adapt these for payment over the Internet through Web services. With the use of Web services for payment transactions, vendors will get more freedom to choose their provider and the services they take without having to throw away their legacy applications. Given the globalization of the economy, vendors can negotiate services and fees with payment providers all over the world. Literature research and prototype tests and evaluation in this project show that transactions fees and performance of POS terminal payments transactions trough Web services can be competitive to conventional payment transactions methods and create flexibility for vendors POS terminal application. Vendor’s available Internet connections and the Web services standards in the market can be used for payment transactions. With Web services, the system can be created and changed relatively quickly and simply if the right skills are available.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch009",
+      "title": [
+        "Reengineering for Enterprise Resource Planning (ERP) Systems Implementation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Reengineering is a concept that is applicable to all industries, particularly information and communication technology (ICT) projects regardless of organizational type, size, culture, or location. The enterprise resource planning (ERP) system frequently requires organizations to change their existing business processes to harmonize them its functional activities. 72% of the ERP implementation failures reported worldwide (Eric, 2010) because of the various critical success factors (CSFs). A Critical Success Factor (CSF) is defined as a factor needed to implement ERP system successfully. Assessing the importance of CSFs of Enterprise Resource Planning systems has always remained an important concern for academicians and researchers. This study explores and assesses the CSFs affecting the ERP implementation success. Long term Top management Support (LTS), Perceived ERP benefits (PEB), ERP in-house Training (EIT), Project Tracking (PTG), Visible Project Phases (VPP), Project Phase Update (PPU), Interdepartmental Cooperation (IDP), Strategic IT planning (STP), ERP vendor Support (EVS), and Data Analysis and Conversion (DAC) were found dominant critical factors for the success of the ERP implementation in the manufacturing sector. This study investigates how many CSFs are strongly correlated with each other for the success of ERP projects in the manufacturing sector. Furthermore, this study also tests empirically using the Statistical Package for Social Science Analysis of Moment on Structures (SPSS AMOS 18.0) to justify the level of CSFs among the local and joint-venture companies using a t-test analysis.</jats:p>"
+    },
+    {
+      "doi": "10.1002/9781119202721.app8",
+      "title": [
+        "Process Design (Reengineering)"
+      ],
+      "type": "other",
+      "container-title": [
+        "Statistical Thinking"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-01"
+    },
+    {
+      "doi": "10.5771/9783845242019-65",
+      "title": [
+        "Open Choice – Ein strategisches Vorgehensmodell für ein prozessorientiertes Reengineering öffentlicher Aufgabenwahrnehmung"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Die Erneuerung des arbeitenden Staates"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.2739360",
+      "title": [
+        "A Study of Business Process Reengineering (BPR) in Manufacturing Industry Perspective"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0",
+      "title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "type": "monograph",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5120/4612-6605",
+      "title": [
+        "Component Replacement Strategies for Information Systems Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/9781119197003.ch12",
+      "title": [
+        "ERM Case Study: Reengineering The Corporate Pension"
+      ],
+      "type": "other",
+      "container-title": [
+        "Strategic Corporate Finance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-01"
+    },
+    {
+      "doi": "10.1007/978-88-470-2658-2_8",
+      "title": [
+        "Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "SpringerBriefs in Business",
+        "From Total Quality Control to Lean Six Sigma"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.proeng.2012.01.364",
+      "title": [
+        "Reengineering from Tradition to Cloud: A Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch001",
+      "title": [
+        "Improve Business Agility of Legacy IT System"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In this chapter, an approach to improve business agility of a legacy IT system by modernizing COBOL application development is presented. The special features in this approach include the introduction of service oriented architecture (SOA) for Web application integration, using the model driven development approach with code generation, and agile development process. The component architecture and its framework, together with the infrastructure for development and testing, are also presented. The development approach is called “Gaby Paradigm,” which is explained in the chapter. The architecture, framework, and development process have been applied to a number of projects successfully since 2004.</jats:p>"
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch006",
+      "title": [
+        "Business Risk Analysis"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Up until now, efficient and applicable project methodologies, process improvement methodologies, product improvement methodologies, and relevant software engineering best practices have been developed and successfully implemented in many software projects in a variety of industries. However, projects still fail. Most of the project failure factors are diagnosed; however, some may fall through holes or gaps and get overlooked due to unknown reasons. The basis of this research study is a comprehensive questionnaire with relevant and probing questions that have collected data on obsolescence of requirements. Through analysis of the gathered data and information, this study aimed to present these risk factors, their impact, and a possible way to measure them. The critical factors identified and the result of this research project can be a trigger to conduct further in-depth analysis of project risks based on categories of projects (maintenance &amp; support projects, development projects, data conversion projects, etc.), or rather, analysis of projects based on the business area/function. This research study is another attempt to assist in turning IT project failures into project successes.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-94-007-3010-6_104",
+      "title": [
+        "Increasing energy efficiency by remanufacturing and reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Design for Innovative Value Towards a Sustainable Society"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.22495/cocv9i2c1art1",
+      "title": [
+        "Total quality management and business process reengineering: A contemporary business focus"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Corporate Ownership and Control"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The purpose of the study is to compare and contrast the two approaches of total quality management (TQM) and business process reengineering (BPR). This exploratory study focuses on the core areas, assumptions and scope pertinent to both TQM and BPR. Even though the two approaches focus on performance, organizational effectiveness and efficiency, the practical usage and approaches differ. The key drivers of the two dimensions provide futurists with a guide not to obliterate its salience in today’s competitive business organizations. The article examines each approach and acknowledges the potential benefits in situation-specific circumstances and encounters. Certainly, the practices differ, and with a contingency focus, the study probes into salient features of TQM and BPR, hence enriching the study to speculate about the future in order to create an efficacious effect. Lastly, the study attempts to determine whether one approach has the potential to outshadow the other.</jats:p>"
+    },
+    {
+      "doi": "10.1504/ijws.2012.045811",
+      "title": [
+        "A framework for reengineering web applications towards semantic web services"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Web Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-1740-7.ch086",
+      "title": [
+        "Government Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Digital Democracy"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Despite differences between public and private sectors, business process reengineering (BPR) principles have been widely used in reengineering government processes. This has led to a growing body of literature on government process reengineering (GPR). This chapter presents synthesis and analysis of the literature on government process reengineering from 1997 to 2009. It reviews normative studies that examine the nature and characteristics of government process reengineering, challenges and problems of undertaking government process reengineering, and relationships between government process reengineering and IT-especially enterprise resource planning (ERP)-based E-Government. The review also encompasses the methods, techniques and tools for undertaking GPR; analytical and conceptual GPR models and frameworks; and empirical studies that evaluate GPR implementation outcomes and identify the critical success or failure factors. The chapter summarizes the selected articles in terms of research types, methods, theories, and contexts. Based on the review, areas for future research are defined.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-8349-4105-3_16",
+      "title": [
+        "Business Process Reengineering (BPR)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Top 100 Management Tools"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s2212-5671(12)00318-8",
+      "title": [
+        "Business Process Reengineering in Motorcycle Workshop X for Business Sustainability"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia Economics and Finance"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3410/f.13409153.14858077",
+      "title": [
+        "Faculty Opinions recommendation of Reengineering a tryptophan halogenase to preferentially chlorinate a direct alkaloid precursor."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-01"
+    },
+    {
+      "doi": "10.7763/ijeeee.2011.v1.58",
+      "title": [
+        "Business Process Reengineering Implementation: Developing a Causal Model of Critical Success Factors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of e-Education, e-Business, e-Management and e-Learning"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0249-6.ch014",
+      "title": [
+        "Business Process Reengineering a Sustained Trend?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Business Enterprise, Process, and Technology Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Business Process Reengineering (BPR) is an important aspect of Business Process Management. The concept of BPR has been widely discussed in the past decade; however, it remains undetermined how prevalent the applications of Davenport, Hammer and Champy’s ideas are, especially with respect to their relevancy for actual business practice. This paper analyses which ideas of BPR actually have been implemented in practice many years after the “hype”. Based on a survey, the BPR-practices of major German enterprises listed in the German stock market are investigated. The study indicates that BPR is important in practice, although not all ideas of BPR seem to be wholly implemented. Especially the ideas of radical redesign of business processes and the process-oriented organizational structure could not be confirmed by the survey.</jats:p>"
+    },
+    {
+      "doi": "10.1016/b978-0-12-396962-0.00011-2",
+      "title": [
+        "Reengineering Biopharmaceuticals for Targeted Delivery Across the Blood–Brain Barrier"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Methods in Enzymology",
+        "Protein Engineering for Therapeutics, Part B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch007",
+      "title": [
+        "Assessing Workflow Ability of ERP and WfM Systems for Implementing Business Processes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Automation of a business process can be obtained by using a workflow management system or ERP system embedding workflow functionalities. The wider diffusion of ERP systems tends to favor the latter solution. There are several practical limitations of most ERP systems when automating business processes. To date, there is a lack of empirical studies aiming at achieving an evidence of these limitations. This chapter reports a study assessing the “workflow ability” of ERP systems and comparing this with that of Workflow Management Systems. Then, an empirical study was conducted regarding two different case studies. The correctness and completeness of the process models implemented using ERP and WfM systems were evaluated and analyzed.</jats:p>"
+    },
+    {
+      "doi": "10.1016/j.autcon.2011.05.010",
+      "title": [
+        "KM-oriented business process reengineering for construction firms"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Automation in Construction"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-01"
+    },
+    {
+      "doi": "10.1126/scitranslmed.3002951",
+      "title": [
+        "A Virtual National Laboratory for Reengineering Clinical Translational Science"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science Translational Medicine"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The CTSA Consortium has developed a national test bed that can be used for evaluating approaches aimed at reducing wasted efforts and speeding clinical trial completion.</jats:p>",
+      "publication_date": "2012-01"
+    },
+    {
+      "doi": "10.1007/978-3-642-33489-4_7",
+      "title": [
+        "Improving PA Business Processes through Modeling, Analysis, and Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Electronic Government"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch005",
+      "title": [
+        "Critical Issues to Consider when Evaluating Inter-Organizational Process Integration Configurations"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Networks of companies can use a range of configurations to create inter-organizational processes. Problems become apparent when partnering companies decide to set them up. Those problems take a different form in centralized and decentralized inter-organizational process-integration scenarios. This chapter identifies eight process issues to be taken into account when evaluating inter-organizational integration configurations: difficulties to identify when a task should be executed, understanding what a task does exactly, agreeing how to trigger tasks, distributing investments among parties, delivering appropriate service levels, preserving value of the inter-organizational process, process ownership clarity, and managing in the frame of changing relationships. Examples are given of how problems arise in a completely centralized and in a completely decentralized inter-organizational process integration scenarios.</jats:p>"
+    },
+    {
+      "doi": "10.4236/ib.2012.44043",
+      "title": [
+        "Marketing Process Reengineering within a Romanian Software Company Focused on the Implementation of a Freelancing Strategy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "iBusiness"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch011",
+      "title": [
+        "An Effortless Approach for Migrating from Legacy Software Systems to Web Services"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>One of the vital reasons for reverse engineering legacy software systems is to make it inter-operable. Moreover, technological advancements and changes in usability also motivate reverse engineering to exploit new features and incorporate them in legacy software systems. In this context, Web services are emerging and evolving as solutions for software systems for business applications in terms of facilitating interactions between business to business and business to customers. Web services are gaining significance due to inherent features like interoperability, simple implementation, and exploiting the boom in Internet infrastructure. Thus, this work proposes a framework based strategy using .net for effortless migration from legacy software systems to Web services. Further, this work also proposes that software metrics observed during the process of reverse engineering facilitate design of Web services from legacy systems.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-642-33469-6_24",
+      "title": [
+        "Process Modeling and Reengineering in the Integration Stage of Electronic Government"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Web Information Systems and Mining"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5539/ijbm.v7n2p89",
+      "title": [
+        "Business Process Reengineering: Strategic Tool for Managing Organizational Change an Application in a Multinational Company"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Business and Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4471-4017-7_6",
+      "title": [
+        "Application of IPPR to the Reengineering Problems of Class 3"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Springer Series in Advanced Manufacturing",
+        "Re-engineering of Products and Processes"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.enzmictec.2011.09.004",
+      "title": [
+        "Nano reengineering of horseradish peroxidase with dendritic macromolecules for stability enhancement"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Enzyme and Microbial Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-01"
+    },
+    {
+      "doi": "10.1016/j.sbspro.2012.04.081",
+      "title": [
+        "Reengineering the Locomotive Operation Management Process in the Railways of Iran (RAI)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia - Social and Behavioral Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-27281-3_5",
+      "title": [
+        "Implementation of Business Process Reengineering Based on Workflow Management"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "IFIP Advances in Information and Communication Technology",
+        "Computer and Computing Technologies in Agriculture V"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijleg.2012.050203",
+      "title": [
+        "The impact of business process reengineering on the management of customer services: an empirical study among Nigerian banks"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Logistics Economics and Globalisation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4471-2274-6_16",
+      "title": [
+        "The Logistics Reengineering Process in a Warehouse/Order Fulfillment System: A Case Study"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Warehousing in the Global Supply Chain"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-4666-0155-0.ch013",
+      "title": [
+        "From an Ad-Hoc to a Proactive Software Release Plan and Deployment"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Information Systems Reengineering for Modern Business Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Managing software and its various components such as maintenance, upgrades, and patches, has become a requirement to secure one’s place in a competitive market. The rapid change in engineering software, especially for the Aerospace industry, highlights the importance of software management. Negligence of any maintenance component can put the organization into risk. Therefore, standardizing processes are necessary to avoid not only these risks, but also minimize costs and ensure employee productivity. Currently, an Aerospace company upgrades most of their engineering software on an ad-hoc basis. This means that an upgrade is only done when an end-user requests it. The study will therefore examine the current operations and offer a strategic reengineered process. The objective of such changes is to ultimately streamline the distribution of engineering software upgrades proactively throughout the organization.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-642-25789-6_45",
+      "title": [
+        "Legacy System User Interface Reengineering Based on the Agile Model Driven Approach"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Electrical Engineering",
+        "Recent Advances in Computer Science and Information Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4471-4017-7_5",
+      "title": [
+        "Application of IPPR to the Reengineering Problems of Class 2"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Springer Series in Advanced Manufacturing",
+        "Re-engineering of Products and Processes"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-4471-4017-7_4",
+      "title": [
+        "Application of IPPR to the Reengineering Problems of Class 1"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Springer Series in Advanced Manufacturing",
+        "Re-engineering of Products and Processes"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1039/c2gc35790a",
+      "title": [
+        "Reengineering CelA2 cellulase for hydrolysis in aqueous solutions of deep eutectic solvents and concentrated seawater"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Green Chemistry"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-29148-7_2",
+      "title": [
+        "The Study of Financial Management Information for Business Process Reengineering under the Low-Carbon Economy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Intelligent and Soft Computing",
+        "Soft Computing in Information Communication Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-33618-8_50",
+      "title": [
+        "ORM Logic-Based English (OLE) and the ORM ReDesigner Tool: Fact-Based Reengineering and Migration of Relational Databases"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "On the Move to Meaningful Internet Systems: OTM 2012 Workshops"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-31128-4_6",
+      "title": [
+        "Identifying Business Rules to Legacy Systems Reengineering Based on BPM and SOA"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Computational Science and Its Applications – ICCSA 2012"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-33618-8_14",
+      "title": [
+        "Internal Logistics Integration by Automated Storage and Retrieval Systems: A Reengineering Case Study"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "On the Move to Meaningful Internet Systems: OTM 2012 Workshops"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-27509-8_41",
+      "title": [
+        "A Framework for Intelligent Information System – Reengineering Energy Consumption in Buildings to Reduce Carbon Footprint"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Smart Innovation, Systems and Technologies",
+        "Sustainability in Energy and Buildings"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-60960-842-2.ch003",
+      "title": [
+        "Engineering and Reengineering of Technology Enhanced Learning Scenarios Using Context Awareness Processes"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Intelligent and Adaptive Learning Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This chapter proposes a context modeling process to help tutors adapt their tutorship actions based on students’ profiles and performance on Technology Enhanced Learning environments (TEL). It attempts also to involve teachers as designers in the engineering process of a TEL system development and to support their activity of auto-regulation regarding the students’ guidance and assistance. This aim leads to improve teaching strategies as well as to enhance the quality of the learning objects and the learning scenario itself. In fact, if the TEL system is already adaptive, by means of this approach, its improvement is fostered. If not, the process will support its iterative transformation from predefined to adaptive. The Model Driven Engineering (MDE) methodology is used since it gives educational designers (teachers for this proposal) and software designers the ability to define, communicate, and test a solution while creating artifacts that become part of the overall solution. The Usage Tracking Language (UTL) has been developed to provide the actors of a TEL system (designers, tutors, learners, and analysts) with a dutiful tool to describe the observed uses of the descriptive pedagogical scenario and their semantics, including the definition of the observation needs and the means required for data acquisition. The structure of tracks and their transformations from raw data allows the calculation of indicators which supports the building of users’ models that will influence users’ decision making. Finally, a case study using the Hop3X environment for learning Java programming to apply this process is presented.</jats:p>"
+    },
+    {
+      "doi": "10.1021/ja209937s",
+      "title": [
+        "Total Synthesis of [Ψ[C(═S)NH]Tpg<sup>4</sup>]Vancomycin Aglycon, [Ψ[C(═NH)NH]Tpg<sup>4</sup>]Vancomycin Aglycon, and Related Key Compounds: Reengineering Vancomycin for Dual <scp>d</scp>-Ala-<scp>d</scp>-Ala and <scp>d</scp>-Ala-<scp>d</scp>-Lac Binding"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Chemical Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-01"
+    }
+  ]
+}

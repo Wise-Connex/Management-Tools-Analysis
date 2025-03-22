@@ -1,0 +1,70 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/1762096",
+      "title": [
+        "IDC Reengineering Phase 2 Glossary"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-08"
+    },
+    {
+      "doi": "10.1109/hotchips.2014.7478829",
+      "title": [
+        "OpenPOWER: Reengineering a server ecosystem for large-scale data centers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 IEEE Hot Chips 26 Symposium (HCS)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-08"
+    },
+    {
+      "doi": "10.3126/jer.v4i2.12381",
+      "title": [
+        "Reengineering Education and Reimagining Rural Transformation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Education and Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p xml:lang=\"en\">Editorial</jats:p>",
+      "publication_date": "2014-08"
+    },
+    {
+      "doi": "10.1109/icmse.2014.6930262",
+      "title": [
+        "Research on reengineering model of supply chain with two types of failures"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 International Conference on Management Science &amp; Engineering 21th Annual Conference Proceedings"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-08"
+    },
+    {
+      "doi": "10.14810/ijbiss.2014.3301",
+      "title": [
+        "A Study on the Sectors of Economy Serviced by Pre-Industry System Developers among Companies in Metro Manila : A Tool for Business Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Business Information Systems Strategies"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

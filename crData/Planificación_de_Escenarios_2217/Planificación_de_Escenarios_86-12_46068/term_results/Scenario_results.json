@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1001/jama.1986.03380210055011",
+      "title": [
+        "Nuclear Disaster Preparedness: The SONGS Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JAMA: The Journal of the American Medical Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-12"
+    },
+    {
+      "doi": "10.1016/0024-6301(86)90094-4",
+      "title": [
+        "Multinational business in the 1990s—A scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Long Range Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1986-12"
+    }
+  ]
+}

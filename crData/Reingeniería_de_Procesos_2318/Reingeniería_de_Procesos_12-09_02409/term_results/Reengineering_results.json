@@ -1,0 +1,124 @@
+{
+  "term": "Reengineering",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/icsm.2012.6405312",
+      "title": [
+        "Reengineering embedded automotive software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 28th IEEE International Conference on Software Maintenance (ICSM)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-09"
+    },
+    {
+      "doi": "10.5130/pppm.v3i1.2783",
+      "title": [
+        "Management of business process reengineering projects: a case study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Project, Program &amp; Portfolio Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Business process reengineering (BPR) projects are undertaken by outward-looking companies that are looking for significant change in their performance and wanting radical changes in the chosen parameters. Generally, these companies are trendsetters in their respective industries. BPR projects take longer time for completion and may require significant capital inflows as well. This paper discusses BPR, special requirements/considerations for BPR project management and, through a case analysis, seeks to identify and emphasise the critical success factors for the implementation of a BPR project</jats:p>"
+    },
+    {
+      "doi": "10.1109/conseg.2012.6349488",
+      "title": [
+        "A quantitative model for the evaluation of reengineering risk in infrastructure perspective of legacy system"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 CSI Sixth International Conference on Software Engineering (CONSEG)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-09"
+    },
+    {
+      "doi": "10.1007/s10489-012-0386-4",
+      "title": [
+        "Formal approach for reengineering fuzzy XML in fuzzy object-oriented databases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Intelligence"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-06"
+    },
+    {
+      "doi": "10.1109/wocn.2012.6331901",
+      "title": [
+        "Decision driven risk measurement model to quantify reengineering risk in stakeholder perspective of legacy system"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 Ninth International Conference on Wireless and Optical Communications Networks (WOCN)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-09"
+    },
+    {
+      "doi": "10.1108/14637151211270171",
+      "title": [
+        "Promises from SOA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>The purpose of this paper is to support the application of a combined BPM (business process management)/SOA (service‐oriented architecture) approach and contribute to the body of knowledge on the business value of SOA.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>This case study highlights the promising results of a process reengineering project at Belgacom Mobile, Belgium's largest mobile telecommunications operator. The reengineering effort centered around a key automation pillar involving in particular the optimization of the SIM card ordering process. SOA principles were applied to ensure both the flexibility of the redesigned process and its capability of dealing with newly emerging SIM card types. This case demonstrates the potential benefits of combining BPM and SOA concepts to establish IT‐enabled process innovation.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>In terms of performance improvement, the studied project resulted in: increased process flexibility and consistency, considerably shorter lead times, and enhanced process control.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>The findings from this case study present useful insights for other companies trying to reap the benefits of combined BPM and SOA. However, the single case study approach presents some limitations to the generalizability of the proposed learning points and concepts. Some case specific features such as the sector or company size might influence the generalizability. Nevertheless, the paper rather intends to trigger conceptual thinking about IT‐enabled process innovation and an architectural approach.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The added value of this project, which contributes to the general understanding of SOA potential for BPM, lies in its innovative approach, whereby product and process are separated by means of production process ID creation. The redesign approach thus provides a sustainable answer to the ever shortening life cycle of products and technologies. In particular process practitioners will find value in reading the learning points from this paper.</jats:p></jats:sec>",
+      "publication_date": "2012-09"
+    },
+    {
+      "doi": "10.1109/icsm.2012.6405313",
+      "title": [
+        "Incremental reengineering and migration of a 40 year old airport operations system"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 28th IEEE International Conference on Software Maintenance (ICSM)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-09"
+    },
+    {
+      "doi": "10.1056/nejmp1206230",
+      "title": [
+        "From Sick Care to Health Care — Reengineering Prevention into the U.S. System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New England Journal of Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-09"
+    },
+    {
+      "doi": "10.6106/kjcem.2012.13.5.113",
+      "title": [
+        "Reengineering of TACT Process Management Analyzed on Task Information"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Korean Journal of Construction Engineering and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-09"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1097/00005110-199703000-00004",
+      "title": [
+        "Beyond Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Nursing Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-03"
+    },
+    {
+      "doi": "10.1108/eb023446",
+      "title": [
+        "O, come in equivocator! The fallacies of reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Communication Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>It cannot be known for sure, but it appears that the sentence uttered most often by advocates for the reengineering construct is: ‘Reengineering is not downsizing!’ This disputed association of terms usually draws a defensive complaint or disclaimer from reengineering enthusiasts and from any corporate communicator who must win either public or employee support for the programme. But this paper argues that this recurring disclaimer is naive and self‐serving. That is, enthusiasts for reengineering tend to mislead us and themselves in three ways. They—fail to examine the suspect organisational metaphor on which the reengineering construct is based;—equivocate about the meaning of the essential term ‘work’; and confound the goals of reengineering with its inevitable consequences.</jats:p>",
+      "publication_date": "1997-03"
+    },
+    {
+      "doi": "10.1061/(asce)0742-597x(1997)13:2(20)",
+      "title": [
+        "Reengineering an Engineering Consultant"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management in Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-03"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/5627356",
+      "title": [
+        "Summary of FY-1978 consultant input for scenario methodology development"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/5526674",
+      "title": [
+        "Regionl Issue Identification and Assessment (RIIA):  an environmental evaluation of the EIA Mid-Mid Scenario for Federal Region 8"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-11"
+    },
+    {
+      "doi": "10.1007/bf00139827",
+      "title": [
+        "On the scenario approach to simulation modeling for complex policy assessment and design"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Policy Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-11"
+    }
+  ]
+}

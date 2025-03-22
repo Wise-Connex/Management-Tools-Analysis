@@ -1,0 +1,61 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/b978-0-08-041699-1.50047-1",
+      "title": [
+        "A multiple transputer target tracker for a random scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-09"
+    },
+    {
+      "doi": "10.1016/0370-2693(91)90938-m",
+      "title": [
+        "Event shape analysis of the reaction 40Ar+51V within a prompt multifragmentation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-09"
+    },
+    {
+      "doi": "10.1007/bf00007454",
+      "title": [
+        "Guppies, toadfish, lungfish, coelacanths and frogs: a scenario for the evolution of urea retention in fishes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Biology of Fishes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-09"
+    },
+    {
+      "doi": "10.1117/12.45805",
+      "title": [
+        "&lt;title&gt;End-to-end model for detection performance evaluation against scenario-specific targets&lt;/title&gt;"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Infrared Imaging Systems: Design, Analysis, Modeling, and Testing II"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-09"
+    }
+  ]
+}

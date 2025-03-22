@@ -1,0 +1,33 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.5897/ajbm11.2792",
+      "title": [
+        "Moderating effect of Information technology (IT) capability on the relationship between business process reengineering factors and organizational performance of Bank"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AFRICAN JOURNAL OF BUSINESS MANAGEMENT"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/ecbs.2012.3",
+      "title": [
+        "A Case Study in Software Reengineering for a DSP-based System on a Chip: Adaptation of Dolby Virtual Speaker"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2012 IEEE 19th International Conference and Workshops on Engineering of Computer-Based Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-04"
+    }
+  ]
+}

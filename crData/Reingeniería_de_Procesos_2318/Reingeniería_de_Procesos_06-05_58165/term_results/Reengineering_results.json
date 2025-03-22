@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1145/1134285.1134395",
+      "title": [
+        "Experience in teaching a software reengineering course"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 28th international conference on Software engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1108/14777260610662744",
+      "title": [
+        "Managing hospital supplies: process reengineering at Gujarat Cancer Research Institute, India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Health Organization and Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>Aims to give an overview of the re‐engineering of processes and structures at Gujarat Cancer Research Institute (GCRI), Ahmedabad.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>A general review of the design, development and implementation of reengineered systems in order to address concerns about the existing systems.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>GCRI is a comprehensive cancer care center with 550 beds and well equipped with modern diagnostic and treatment facilities. It serves about 200,000 outpatients and 16,000 inpatients annually. The approach to a better management of hospital supplies led to the design, development, and implementation of an IT‐based reengineered and integrated purchase and inventory management system. The new system has given GCRI a saving of about 8 percent of its annual costs of purchases, and improved the availability of materials to the user departments.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>Shows that the savings obtained are used not only for buying more hospital supplies, but also to buy better quality of hospital supplies, and thereby satisfactorily address the GCRI responsibility towards meeting its social obligations for cancer care.</jats:p></jats:sec>",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.1007/s00170-006-0602-7",
+      "title": [
+        "Strategy and method of part reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The International Journal of Advanced Manufacturing Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-08"
+    },
+    {
+      "doi": "10.1145/1134285.1134359",
+      "title": [
+        "Reengineering standalone C++ legacy systems into the J2EE partition distributed environment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 28th international conference on Software engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-05"
+    },
+    {
+      "doi": "10.20867/thm.12.1.13",
+      "title": [
+        "THE IMPORTANCE OF REENGINEERING IN THE DEVELOPMENT STRATEGY OF HOTEL AND TOURISM ENTERPRISES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tourism and hospitality management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Frequent changes on the global market are making it difficult to determine future tourist trends. Competition among foreign hotel chains, national tourism enterprises and family businesses is dynamising the market in response to increasingly discerning tourist needs. Hotel and tourism enterprises need to actively manage changes in creating new competitive advantages. Business reengineering, changing the business philosophy and creating a new generation of managers are preconditions needed to break away from the remnants of the former system and to bridge the gap between excellent opporunities and confined reality. To adapt to the system of new market values, companies must apply modern business determinants and innovative development strategies.</jats:p>",
+      "publication_date": "2006-05"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "term": "Scenario",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0883-9026(89)90023-2",
+      "title": [
+        "Present certainty equivalents and weighted scenario valuations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Business Venturing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-03"
+    },
+    {
+      "doi": "10.13182/fst89-a39811",
+      "title": [
+        "Poloidal Field System Analysis and Scenario Development for ITER"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-03"
+    },
+    {
+      "doi": "10.1108/eum0000000001513",
+      "title": [
+        "A Delphi Forecast for the Singapore Tourism Industry:\nFuture Scenario and Marketing Implications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Marketing Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This article attempts to ascertain the future scenario of the\nSingapore tourism industry through the use of the Delphi technique. Two\npanels were established for the purpose of this study. The first panel\nconsisted of key individuals in the local tourist industry. The second\npanel comprised an international group of executives participating in an\nexecutive development programme in Singapore. The panels were asked to\nexamine a host of events related to the tourism industry in Singapore\nand to provide their assessments on the likelihood of these events\nhappening in different time horizons. Based on the findings, events with\nhigher probability of occurrence and crucial to tourism development are\nidentified. Marketing implications of these events are discussed and\nstrategies for tourism planning suggested.</jats:p>",
+      "publication_date": "1989-03"
+    },
+    {
+      "doi": "10.1007/bf01548588",
+      "title": [
+        "A scenario for generating the fermionic mass spectrum and its predictions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Zeitschrift f�r Physik C Particles and Fields"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-03"
+    },
+    {
+      "doi": "10.2307/1564311",
+      "title": [
+        "Niche Relationships between Two Sympatric Liolaemus Lizards in a Fluctuating Environment: The \"Lean\" versus \"Feast\" Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Herpetology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-03"
+    }
+  ]
+}

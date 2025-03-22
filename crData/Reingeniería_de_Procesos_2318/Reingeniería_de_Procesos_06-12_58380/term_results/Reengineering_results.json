@@ -1,0 +1,86 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1162/biot.2006.1.4.338",
+      "title": [
+        "Reengineering the Darwinian Sciences in Social Context"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biological Theory"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-12"
+    },
+    {
+      "doi": "10.1016/j.cie.2006.08.016",
+      "title": [
+        "Workflow structuring and reengineering method for design process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Industrial Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-12"
+    },
+    {
+      "doi": "10.1108/17410400610710198",
+      "title": [
+        "Reengineering the supply chain in a paint company"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Productivity and Performance Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>The purpose of this paper is to outline the importance and benefits an organisation can achieve through supply chain integration. These benefits are primarily in the area of achieving superior customer service and operating with lower working capital.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>A three level framework for achieving the integration has been proposed which is in the form of structural integration, process integration and performance integration. The paper also describes in detail the factors influencing an organisations working capital needs and how this integration mechanism allows the organisation to exercise control over these factors. The framework has been described in the form of a case study in a paints company.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The research findings reveal that most of the Indian organisations have aligned their supply chain objectives with their business objectives. They are now on course for aligning their processes and management focus. Enhanced levels of competitiveness would require Indian organisations to manage the three‐dimensional alignment of achieving the agenda set by the business strategy.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>Further research work should focus on assessing the current level of supply chain integration. It is essential that structure and strategy should be aligned to achieve the business objective of providing superior customer service at the lowest cost.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>This paper provides a detailed study to help supply chain managers improve supply chain efficiency through reengineering. Dramatic improvements have been achieved with the improvement of service levels (OTIF) by more than 20 per cent across all regions. Planning orientation and organisational integration resulted in process optimisation across the supply chain.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The benefits of re‐engineering have increased company's commitment to the integration of the Supply Chain Organisation and it is driving further business improvement initiatives through this organisation. This framework can also be used as a guiding source to carry out organisational transformation process.</jats:p></jats:sec>",
+      "publication_date": "2006-12"
+    },
+    {
+      "doi": "10.1109/apscc.2006.41",
+      "title": [
+        "Decision Process Reengineering of Outsourcing Based on Manufacturing Specification Management"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2006 IEEE Asia-Pacific Conference on Services Computing (APSCC'06)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-12"
+    },
+    {
+      "doi": "10.1109/apscc.2006.36",
+      "title": [
+        "Applying Data Mining and Petri Net in Reengineering of Manufacture Management Information System"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2006 IEEE Asia-Pacific Conference on Services Computing (APSCC'06)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-12"
+    },
+    {
+      "doi": "10.1002/cpe.1147",
+      "title": [
+        "<i>Reengineering for Parallelism</i>: an entry point into PLPP for legacy applications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Concurrency and Computation: Practice and Experience"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Many parallel programs begin as legacy sequential code that is later reengineered to take advantage of parallel hardware. This paper presents a <jats:italic>pattern</jats:italic> called <jats:italic>Reengineering for Parallelism</jats:italic> to help with this task. The new pattern is intended to be used in conjunction with PLPP (Pattern Language for Parallel Programming), described in our book (Mattson TG, Sanders BA, Massingill BL. <jats:italic>Patterns for Parallel Programming</jats:italic>. Addison‐Wesley: Reading, MA, 2004). PLPP contains a structured collection of patterns and embodies a methodology for developing parallel programs in which the programmer starts with a good understanding of the problem, works through a sequence of patterns, and finally ends up with the code. Most of the patterns in PLPP are also applicable when reengineering legacy code, but it is not always clear how to get started. <jats:italic>Reengineering for Parallelism</jats:italic> provides an alternate point of entry into PLPP and addresses particular issues that arise when dealing with legacy code. Copyright © 2006 John Wiley &amp; Sons, Ltd.</jats:p>",
+      "publication_date": "2007-03"
+    }
+  ]
+}

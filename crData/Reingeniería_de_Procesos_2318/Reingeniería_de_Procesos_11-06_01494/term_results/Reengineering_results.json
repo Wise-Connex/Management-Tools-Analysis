@@ -1,0 +1,150 @@
+{
+  "term": "Reengineering",
+  "total_results": 11,
+  "processed_count": 11,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.7551/mitpress/9780262016032.003.0015",
+      "title": [
+        "Reengineering Medical Education"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Better Doctors, Better Patients, Better Decisions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.1109/csss.2011.5974710",
+      "title": [
+        "Study on event-oriented business process reengineering and its application"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2011 International Conference on Computer Science and Service System (CSSS)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.1109/i-society18435.2011.5978437",
+      "title": [
+        "Reengineering of a virtual library in science technology and innovation: Improvements on information access"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Conference on Information Society (i-Society 2011)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.1001/jama.2011.697",
+      "title": [
+        "Hospital Mortality, Length of Stay, and Preventable Complications Among Critically Ill Patients Before and After Tele-ICU Reengineering of Critical Care Processes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JAMA"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.4028/www.scientific.net/amm.63-64.12",
+      "title": [
+        "Business Process Reengineering and Functional Design of Information System Based on DFSS: A Case Study of Pharmaceutical Wholesale Enterprise"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Mechanics and Materials"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Firstly, this paper studies the integration and implementation of design for six sigma (DFSS) and business process reengineering (BPR), proposes the idea of DFSS-BPR integration framework and implementation framework of process reengineering; simultaneous it analyzes the process of business process reengineering of DFSS-based good supply practice (GSP), builds the optimized major business process of GSP; and finally makes functional adaptation design of GSP information system based on the optimized GSP business process. The results of this study are useful for the analysis, design and smooth implementation of consequent GSP information system.</jats:p>"
+    },
+    {
+      "doi": "10.1109/icrms.2011.5979380",
+      "title": [
+        "Process reengineering method for synthesis design of reliability maintainability supportability and performance"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The Proceedings of 2011 9th International Conference on Reliability, Maintainability and Safety"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.5121/ijcsit.2011.3319",
+      "title": [
+        "RCause - A Root Cause Analysis Model to Identify the Root Causes of Software Reengineering Problems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Science and Information Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.3410/f.10953957.12584055",
+      "title": [
+        "Faculty Opinions recommendation of Hospital mortality, length of stay, and preventable complications among critically ill patients before and after tele-ICU reengineering of critical care processes."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.3410/f.10953957.11884061",
+      "title": [
+        "Faculty Opinions recommendation of Hospital mortality, length of stay, and preventable complications among critically ill patients before and after tele-ICU reengineering of critical care processes."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.3410/f.10953957.12478059",
+      "title": [
+        "Faculty Opinions recommendation of Hospital mortality, length of stay, and preventable complications among critically ill patients before and after tele-ICU reengineering of critical care processes."
+      ],
+      "type": "dataset",
+      "container-title": [
+        "Faculty Opinions – Post-Publication Peer Review of the Biomedical Literature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    },
+    {
+      "doi": "10.1145/2000259.2000265",
+      "title": [
+        "Combining clustering and pattern detection for the reengineering of component-based software systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the joint ACM SIGSOFT conference -- QoSA and ACM SIGSOFT symposium -- ISARCS on Quality of software architectures -- QoSA and architecting critical systems -- ISARCS"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2011-06"
+    }
+  ]
+}

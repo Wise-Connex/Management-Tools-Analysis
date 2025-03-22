@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1177/0015732515820101",
+      "title": [
+        "Future of Indian Shipping"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Foreign Trade Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1982-04"
+    },
+    {
+      "doi": "10.1145/1006258.1006275",
+      "title": [
+        "Scenario-based prototyping for requirements identification"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The three major facets of software requirements engineering are: (1) requirements identification, (2) requirements analysis, and (3) requirements communication. Much research addresses the latter two aspects, but few practical approaches exist for addressing the first one. Hence, system requirements remains the most critical and problemprone area of system development. There is thus an urgent need for a methodology which helps a user identify requirements and realize potential impacts, in a timely manner.The objectives of this research are: (1) develop a methodology (and accompanying tools) to aid users in identifying requirements before building a system, and (2) evaluate the effectiveness of the methodology (and tools) in actual use.The novel approach of this research is an attempt to capture the conceptual system as visualized by the user, by use of operational examples (\"scenarios\"). By means of simulation and man-machine interface techniques, the scenarios may serve as a \"quick and dirty\" prototype of the intended system, providing the means for requirements analysis and validation, and for communicating the real intent of the requirements. It is anticipated that the methodology can be extended to fully support the concept of step-wise refinement and continuing system validation.</jats:p>",
+      "publication_date": "1982-12"
+    }
+  ]
+}

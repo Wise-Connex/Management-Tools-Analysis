@@ -1,0 +1,83 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.33082/td.2024.1-20.02",
+      "title": [
+        "REENGINEERING AS A STAGE OF THE MICRO-LOGISTICS SYSTEM LIFE CYCLE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transport development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Introduction. The modern business environment poses new challenges to enterprises, which requires, in particular, the application of a logistics approach and consideration of enterprise management processes as a micro-logistics system. This allows not only to take into account the peculiarities of the development of a company throughout its life cycle, but also provides an opportunity to effectively manage the duration of individual stages of their life cycle. Lifecycle analysis is a widely used tool for substantiating strategic choices aimed at the regular emergence of new products and the development of promising types of business. An important and relevant task is to study different views on the main stages of the life cycle of an enterprise as a micro-logistics system. Special attention should be paid to the study of the processes of managing the decline stage in the life cycle, which remains insufficiently studied, namely the use of the reengineering mechanism at this stage. Purpose. The purpose is to determine the peculiarities of the development of the decline phase in the life cycle of an enterprise as a period of time during which it is advisable to use reengineering to simplify and modernise the business processes of an enterprise as a micrologistics system. Results. The results of the study are to substantiate the potential to consider the enterprise as a micro-logistics system and to determine its inherent nature of both the logistics and design systems. The processes of managing the stage of decline in the life cycle have been studied, and it does not necessarily have to end with the ‘death’ or liquidation of the enterprise. It is substantiated that reengineering can be considered an option for its ‘revival’ or ‘transformation’, as well as the possibility of phased introduction of not only new business processes, but also the production of many different products. Conclusions. Based on the analysis, the study proves that reengineering should be considered not only as a tool that can significantly extend the life cycle of an enterprise’s products, optimise and improve processes at each stage of its life cycle, and adapt them to new realities and opportunities, but also as a life cycle stage that replaces the stage of enterprise decline. Such an approach, combined with a project-based approach to managing an enterprise as a micro-logistics system, will significantly increase the efficiency of its operations and have a positive impact on competitiveness in a turbulent market.</jats:p>"
+    },
+    {
+      "doi": "10.33168/jsms.2024.0612",
+      "title": [
+        "Improving Company Revenue through Business Process  Reengineering: A Case Study of PT XYZ"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of System and Management Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-05"
+    },
+    {
+      "doi": "10.37859/coscitech.v5i1.6944",
+      "title": [
+        "Business process reengineering on room rental administration system in Malang city"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal CoSciTech (Computer Science and Information Technology)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The improvement of operational efficiency in the room rental industry has become a primary focus for stakeholders. This article introduces a study proposing the implementation of Business Process Reengineering (BPR) in the room rental administration system in the city of Malang. The main objective of this research is to identify, analyze, and redesign existing business processes to enhance efficiency in room rental services and management. The methodology involves observation, business process analysis, and the application of BPR principles to adjust the administration system. This study highlights the need for innovation in information technology to support sustainable business process transformation. The results indicate that the implementation of BPR in the room rental administration system can lead to a significant improvement in operational efficiency, accelerating services by 65.397%, as evidenced by the Throughput Efficiency test. This is a notable increase from the previous 26.903% before BPR to 92.30% after BPR. The implications of these findings provide a foundation for further development in integrating the latest technology within the context of the room rental industry.</jats:p>"
+    },
+    {
+      "doi": "10.1056/nejmp2314800",
+      "title": [
+        "Reengineering Addiction — The Tobacco Industry’s Potential Response to a Nicotine Standard for Cigarettes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New England Journal of Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-05"
+    },
+    {
+      "doi": "10.1088/1757-899x/1301/1/012155",
+      "title": [
+        "Reengineering the RHIC helium cooled current leads for EIC"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IOP Conference Series: Materials Science and Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>The electron ion collider (EIC) Hadron Storage Ring (HSR) will reuse most of the existing superconducting magnets (SC) from the RHIC storage ring. However, for some sectors of the machine, a modification of the accelerators optics will be required. To do this, the existing RHIC magnet electrical circuits will have to be modified and some superconducting current leads will need to be used at higher current. A work has been conducted to understand the current leads design parameters and their operational flexibility around these parameters, in particular for use at higher current.</jats:p>\n               <jats:p>This paper details the study of the existing RHIC current leads, their potential for use at higher current and where required the modifications to extend their operational range.</jats:p>",
+      "publication_date": "2024-05"
+    },
+    {
+      "doi": "10.1002/smll.202312286",
+      "title": [
+        "Reengineering of an Artificial Protein Cage for Efficient Packaging of Active Enzymes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Small"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Protein cages that readily encapsulate active enzymes of interest present useful nanotools for delivery and catalysis, wherein those with programmable disassembly characteristics serve as particularly attractive platforms. Here, a general guest packaging system based on an artificial protein cage, TRAP‐cage, the disassembly of which can be induced by the addition of reducing agents, is established. In this system, TRAP‐cage with SpyCatcher moieties in the lumen is prepared using genetic modification of the protein building block and assembled into a cage structure with either monovalent gold ions or molecular crosslinkers. The resulting protein cage can efficiently capture guest proteins equipped with a SpyTag by simply mixing them in an aqueous solution. This post‐assembly loading system, which circumvents the exposure of guests to thiol‐reactive crosslinkers, enables the packaging of enzymes possessing a catalytic cysteine or a metal cofactor while retaining their catalytic activity.</jats:p>"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0040-1625(72)90009-1",
+      "title": [
+        "Meeting of the council on cybernetic stability: A scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1972-01"
+    }
+  ]
+}

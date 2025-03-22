@@ -1,0 +1,99 @@
+{
+  "term": "Supply",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/s0140-6736(50)91390-0",
+      "title": [
+        "Population and Food-supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Lancet"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-09"
+    },
+    {
+      "doi": "10.1063/1.1745718",
+      "title": [
+        "Erratum: Regulated Low Voltage Power Supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Review of Scientific Instruments"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-09"
+    },
+    {
+      "doi": "10.1177/002248715000100305",
+      "title": [
+        "Summary of an Investigation of College-Teacher Supply and Demand"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Teacher Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article presents an abstract of the findings of the first nationwide study of college-teacher supply and demand in the United States. Mr. Mosier, Assistant State Superintendent of Public Instruction in Michigan, directed the study, which was jointly sponsored by the North Central Association of Colleges and Secondary Schools and the National Commission on Teacher Education and Professional Stand ards. It was a companion study to the 1950 National Teacher Supply and De mand Study directed by Ray C. Maul, now in its fourth year. Copies of the complete report of the Mosier study may be secured by writing the National Commission on Teacher Education and Professional Stand ards, 1201 Sixteenth Street, Northwest, Washington 6, D. C. </jats:p>",
+      "publication_date": "1950-09"
+    },
+    {
+      "doi": "10.1021/cen-v028n036.p3024",
+      "title": [
+        "POTOMAC POSTSCRIPTS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-09"
+    },
+    {
+      "doi": "10.1007/s0033312300500337",
+      "title": [
+        "J. P. Guilford and William B. Michael The Prediction of Categories from Measurements: With Applications to Personnel Selection and Clinical Prognosis. Beverly Hills: Sheridan Supply Company, 1949. Pp. 55."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Psychometrika"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-09"
+    },
+    {
+      "doi": "10.1021/cen-v028n037.p3168",
+      "title": [
+        "BEHIND THE MARKETS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-09"
+    },
+    {
+      "doi": "10.1021/cen-v028n036.p3076",
+      "title": [
+        "BEHIND THE MARKETS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-09"
+    }
+  ]
+}

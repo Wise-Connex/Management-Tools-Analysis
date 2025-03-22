@@ -1,0 +1,138 @@
+{
+  "term": "Scenario",
+  "total_results": 10,
+  "processed_count": 10,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1093/ajhp/49.4.864a",
+      "title": [
+        "Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Health-System Pharmacy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1145/142386.1054872",
+      "title": [
+        "WILL THE REAL SCENARIO PLEASE STAND UP?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGCHI Bulletin"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>At every phase of its development, human-computer interaction has had its devices for disabling critical thinking. In recent years, terms like \"hypertext\" and \"groupware\" have sometimes functioned that way. But such excesses have been countered by critical and debunking literature (e.g., Jones, 1987; Grudin, 1991). I would like to draw attention to another such device: the term \"scenario\". \"Scenario\" qualifies as a buzzword because it is extremely vague and has a myriad of uses. Indeed, it probably entered the HCI community from the US government bureaucracy, especially the military, where it remains a popular term for any detailed alternative possibility. Another established use is in business, in which a growth scenario describes the anticipated increase in demand for a product through the step-by-step fulfilment of a marketing plan.</jats:p>",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1093/forestscience/38.2.430",
+      "title": [
+        "A Scenario Approach to Stochastic Anticipatory Optimization in Stand Management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Forest Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>A flexible model for stochastic optimization is developed that can be used with forest stand simulation models. Stochasticity is represented by a large set of scenarios, each of which is an outcome of stochastic processes. A stochastic environment is described by random yearly growth rate levels and catastrophes, such as wild fire or windthrow. The optimization model is defined in control variable space and includes the timing, intensity, and type of thinning, and rotation length for an even-aged stand. Single-tree growth and mortality models are used. Numerical results in a risk-neutral case show that the optimum rotation is shortened with an increasing probability of a catastrophe. Further, an increasing growth rate variation has mixed and weak effects that depend, in particular, on the tree mortality model. If a stand cannot be thinned, increasing risk-taking shortens the optimum rotation, given the model set used. For. Sci. 38(2):430-447.</jats:p>",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1016/0016-3287(92)90033-c",
+      "title": [
+        "Delphi in a future scenario study on mental health and mental health care"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1007/bf02169496",
+      "title": [
+        "A differential game in three dimensions: The aerial dogfight scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Dynamics and Control"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1007/bf00682815",
+      "title": [
+        "Qualms concerning the inflationary scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Foundations of Physics Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1145/146802.146834",
+      "title": [
+        "Getting around the task-artifact cycle"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM Transactions on Information Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n            We are developing an “action science” approach to human-computer interaction (HCI), seeking to better integrate activities directed at understanding with those directed at design. The approach leverages development practices of current HCI with methods and concepts to support a shift toward using broad and explicit design rationale to reify where we are in a design process, why we are there, and to guide reasoning about where we might go from there. We represent a designed artifact as the set of user scenarios supported by that artifact and more finely by causal schemas detailing the underlying psychological rationale. These schemas, called\n            <jats:italic>claims</jats:italic>\n            , unpack wherefores and whys of the scenarios. In this paper, we stand back from several empirical projects to clarify our commitments and practices.\n          </jats:p>",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1016/0168-1923(92)90086-j",
+      "title": [
+        "Simulations of crop response to climate change: effects with present technology and no adjustments (the ‘dumb farmer’ scenario)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agricultural and Forest Meteorology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1016/0168-1923(92)90087-k",
+      "title": [
+        "Simulations of crop responses to climate change: effects with present technology and currently available adjustments (the ‘smart farmer’ scenario)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agricultural and Forest Meteorology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-04"
+    },
+    {
+      "doi": "10.1007/bf00178137",
+      "title": [
+        "A model to predict and assess the impacts of hydrologic changes on terrestrial ecosystems in The Netherlands, and its use in a climate scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Wetlands Ecology and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-04"
+    }
+  ]
+}

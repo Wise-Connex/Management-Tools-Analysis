@@ -1,0 +1,96 @@
+{
+  "term": "Scenario",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/532679",
+      "title": [
+        "Analysis of BIOMOVS II Uranium Mill Tailings scenario 1.07 with the RESRAD computer code"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s0921-4534(97)00264-5",
+      "title": [
+        "High Tc superconductors : the van Hove scenario, a review"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physica C: Superconductivity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-08"
+    },
+    {
+      "doi": "10.1016/s0921-4534(97)00243-8",
+      "title": [
+        "The charge-density-wave quantum-critical-point scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physica C: Superconductivity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-08"
+    },
+    {
+      "doi": "10.1016/s0921-4534(97)00916-7",
+      "title": [
+        "The van Hove scenario of high Tc superconductors: the effect of doping"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physica C: Superconductivity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-08"
+    },
+    {
+      "doi": "10.1142/s0217751x97001894",
+      "title": [
+        "A Sterile Neutrino Scenario Constrained By Experiments and Cosmology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Modern Physics A"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> We analyze a scheme in which three active neutrinos and one sterile neutrino account for the solar, the atmospheric and the LSND neutrino anomalies in a model-independent way. It is shown that if the equivalent number, N<jats:sub>ν</jats:sub>, of the light neutrino species is less than 4, then the constraints from these anomalies, accelerator and reactor experiments and big bang nucleosynthesis force a general 4 × 4 mixing matrix to be effectively split into two 2 × 2 matrices. If these neutrinos are of the Majorana type, then negative results of neutrinoless double beta decay experiments imply that the total mass of neutrinos is not sufficient to account for all the hot dark matter components. </jats:p>",
+      "publication_date": "1997-08"
+    },
+    {
+      "doi": "10.1016/s0022-3697(97)00025-5",
+      "title": [
+        "A survey of the Van Hove scenario for high-tc superconductivity with special emphasis on pseudogaps and striped phases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics and Chemistry of Solids"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-08"
+    },
+    {
+      "doi": "10.1016/s0921-8009(97)00574-0",
+      "title": [
+        "A dynamic ecological-economic model as a tool for conflict resolution in an invasive-alien-plant, biological control and native-plant scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecological Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-08"
+    }
+  ]
+}

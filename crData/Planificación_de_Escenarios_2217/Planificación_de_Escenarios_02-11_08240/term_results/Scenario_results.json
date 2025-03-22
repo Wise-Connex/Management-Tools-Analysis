@@ -1,0 +1,305 @@
+{
+  "term": "Scenario",
+  "total_results": 23,
+  "processed_count": 23,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4324/9780203470947-20",
+      "title": [
+        "Scenario 2: Managing others"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Diary of A Deputy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1109/mc.2002.1046973",
+      "title": [
+        "Q: a scenario description language for interactive agents"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1201/9780203302743.ch9",
+      "title": [
+        "Focused Groups"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Focus Groups"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1103/physrevlett.89.221801",
+      "title": [
+        "Light Gluino, Light Bottom Squark Scenario, and LEP Predictions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review Letters"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1103/physrevd.66.105007",
+      "title": [
+        "Adler-Bell-Jackiw anomaly in the 3-brane scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1287/mnsc.48.11.1512.261",
+      "title": [
+        "Comment on “Generating Scenario Trees for Multistage Decision Problems”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> In models of decision making under uncertainty, one typically has to approximate the uncertainties by a limited number of discrete outcomes. Høyland and Wallace (2001) formulate a nonlinear programming problem to generate such a limited number of discrete outcomes while satisfying specified statistical properties. They have developed and employed this method for a stochastic multistage asset-allocation problem. When the method is applied to such financial optimization problems under uncertainty, we argue here that it does not suffice to match statistical properties. To obtain realistic outcomes, the (limited) description of the uncertainty in such models should also exclude arbitrage opportunities, and thereby be consistent with financial asset pricing theory. We illustrate that the method proposed by Høyland and Wallace can result in arbitrage opportunities in the scenario tree if only statistical properties are imposed. We show how one can check ex post for the presence of arbitrage opportunities in a scenario tree by checking for the existence of solutions to sets of linear equations. Arbitrage opportunities can also be precluded ex ante in the scenario tree by adding constraints to the nonlinear programming problem of Høyland and Wallace. </jats:p>",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1260/095830502762231322",
+      "title": [
+        "Pines in the Himalayas: Past, Present and Future Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy &amp; Environment"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The Himalayas have a great environmental influence in the Indian subcontinent. But Himalayan ecosystems with their rich biodiversity are particularly fragile. In the recent past, India has been serially affected by several natural calamities like droughts, floods and even earthquakes. Scientists all over the world have warned of various contributing factors. But, the major cause has been attributed to one important matrix – the constant degeneration of the Himalayan ecology. Human activities have resulted in arrested succession, leading to exhaustion of the germplasm of larger shrubs and trees, and invasion of exotic weeds. Large-scale transformation of landscapes for chir-pine plantation in the Himalayas has resulted in changes in soil physicochemical and biological properties. In this article the author depicts the introduction of pines as well as the present and future consequences of pine culture in the Himalayas. </jats:p>",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1097/00002030-200211220-00020",
+      "title": [
+        "Estimating the effectiveness and efficiency of US HIV prevention efforts using scenario and cost-effectiveness analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AIDS"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1145/587051.587069",
+      "title": [
+        "Negative scenarios for implied scenario elicitation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 10th ACM SIGSOFT symposium on Foundations of software engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1017/s0022112002002136",
+      "title": [
+        "Magnetohydrodynamic flow in the liquid phase \nfor a specific pool boiling scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Fluid Mechanics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In the <jats:sc>EVOLVE</jats:sc> concept for a nuclear fusion blanket a pool boiling scenario has been \nproposed where a number of permanent vertical vapour channels are formed in a \nhorizontal layer of liquid lithium. Similar situations occur during laser beam welding \nwhere a relatively long vapour capillary is observed. The present analysis focuses \non the flow of the electrically conducting liquid phase in the presence of a strong \nuniform horizontal magnetic field. The cross-section of vapour channels is circular if \nsurface tension dominates magnetic forces. In the opposite case a stretching of the \nliquid–vapour interface along magnetic field lines is observed and contours become \npossible where a major part of the interface is straight and aligned with the field. For \nstrong magnetic fields the liquid flow exhibits several distinct subregions. Most of the \nliquid domain is occupied by inviscid cores. These are separated from each other by \nparallel layers that spread along the field lines which are tangential to the vapour \nchannel. In one core, which is located between two parallel layers, the flow direction \nis preferentially oriented along magnetic field lines, while in the other cores the flow \nis perpendicular to the field.</jats:p>",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1145/605466.605484",
+      "title": [
+        "Negative scenarios for implied scenario elicitation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Scenario-based specifications such as Message Sequence Charts (MSCs) are popular for requirement elicitation and specification. MSCs describe two distinct aspects of a system: on the one hand they provide examples of intended system behaviour and on the other they outline the system architecture. A mismatch between architecture and behaviour may give rise to implied scenarios. Implied scenarios occur because a component's local view of the system state is insufficient to enforce specified system behaviour. An implied scenario indicates a gap in the MSC specification that needs to be clarified. It may simply mean that an acceptable scenario has been overlooked and should be added to the scenario specification. Alternatively, it may represent an unacceptable behaviour which should be documented and avoided in the final implementation. Thus implied scenarios can be used to iteratively drive requirements elicitation. However, in order to do so, tools for coping with rejected implied scenarios are needed. The contributions of this paper are twofold. Firstly, we define a language for describing negative scenarios. Secondly, we complement existing implied scenario detection methods with techniques for accommodating negative scenarios.</jats:p>",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1007/bf02978679",
+      "title": [
+        "A structured framework and language for scenario-based Life Cycle assessment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The International Journal of Life Cycle Assessment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.3810/pgm.2002.11.1350",
+      "title": [
+        "Potential agents of chemical warfare"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Postgraduate Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1016/s0038-1098(02)00246-6",
+      "title": [
+        "van Hove scenario for a high Tc superconductor having a (s+d)-wave symmetry order parameter"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Solid State Communications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1051/jp4:20020355",
+      "title": [
+        "Spin density wave – metal (superconductor) competition:\nA phase segregation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal de Physique IV"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\nWe present a model comparing the free energy of a phase exhibiting a segregation between spin density\nwave (SDW) and metallic domains (eventually superconducting domains) and the free energy of homogeneous\nphases which explains the findings observed recently in (TMTSF)<jats:sub>2</jats:sub>PF<jats:sub>6</jats:sub>. The dispersion relation of this \nquasi-one-dimensional organic conductor is linearized around the Fermi level. Deviations from perfect nesting which\nstabilizes the SDW state are described by a unique parameter t$'_b$, this parameter can be the pressure as well.\n</jats:p>",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1086/342815",
+      "title": [
+        "Reconstructing an Adaptationist Scenario: What Selective Forces Favor the Evolution of Viviparity in Montane Reptiles?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Naturalist"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1016/s0016-3287(02)00030-7",
+      "title": [
+        "Planning of strategic innovation aimed at environmental sustainability: actor-networks, scenario acceptance and backcasting analysis within a polymeric coating chain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1086/342842",
+      "title": [
+        "Magnetic Reconnection Scenario of the Bastille Day 2000 Flare"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1001/archotol.128.11.1255",
+      "title": [
+        "A Cost-Utility Scenario Analysis of Bilateral Cochlear Implantation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Archives of Otolaryngology–Head &amp; Neck Surgery"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1061/(asce)1527-6988(2002)3:4(158)",
+      "title": [
+        "Sustainable Cities, a Regional Seismic Scenario, and the 6-23-2001 Arequipa Peru Earthquake"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Natural Hazards Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.2118/80292-pa",
+      "title": [
+        "Aconcagua, Camden Hills, and King's Peak Fields, Gulf of Mexico, Employ Intelligent Completion Technology in Unique Field-Development Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SPE Production &amp; Facilities"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Summary</jats:title>\n               <jats:p>The economic success of deepwater and ultradeepwater developments often depends on the use of innovative technologies that can increase production and minimize workover needs to achieve the sought-after field efficiency during the productive life of the field. Intelligent completion technology, a new concept for the oil field, is one of the technologies that can support these needs. This well-completion concept allows the operator to obtain real-time or near-real-time reservoir data, then reconfig. the wellbore production/ injection architecture to adapt to the information obtained.</jats:p>\n               <jats:p>Along with pipeline, platform, and subsea system synergies, three fields in the Gulf of Mexico—Aconcagua, Camden Hills, and King's Peak—use intelligent completion technology to optimize a marginal reserve base. Located in Mississippi Canyon Blocks 173, 217, 305, and 348 and Desoto Canyon Blocks 133 and 177 in 6,200 to 7,200 ft of water, the three fields’ production will be tied to the Canyon Station host platform, 55 miles from the most distant well location.</jats:p>",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1016/s0264-8172(02)00121-6",
+      "title": [
+        "Kinematics of eastern Salt Range and South Potwar Basin (Pakistan): a new scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Marine and Petroleum Geology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1088/0029-5515/42/12/304",
+      "title": [
+        "Confinement physics of the advanced scenario with ELMy H-mode edge in ASDEX Upgrade"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Fusion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-12"
+    }
+  ]
+}

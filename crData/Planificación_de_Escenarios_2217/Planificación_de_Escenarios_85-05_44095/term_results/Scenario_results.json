@@ -1,0 +1,56 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.14217/9781848593985-5-en",
+      "title": [
+        "The Threat Scenario"
+      ],
+      "type": "component",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-05"
+    },
+    {
+      "doi": "10.1103/physrevd.31.2385.2",
+      "title": [
+        "Erratum: Ultralight Dirac neutrinos from possible supergrand scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0378-7206(85)90004-7",
+      "title": [
+        "An IS∗ case: The closed loop scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information &amp; Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-05"
+    },
+    {
+      "doi": "10.1103/physrevlett.54.2359",
+      "title": [
+        "Orientational Order in Liquids: A Possible Scenario of Freezing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review Letters"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

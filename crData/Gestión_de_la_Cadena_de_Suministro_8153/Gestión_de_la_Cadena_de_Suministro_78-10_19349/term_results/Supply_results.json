@@ -1,0 +1,352 @@
+{
+  "term": "Supply",
+  "total_results": 27,
+  "processed_count": 27,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/1155964",
+      "title": [
+        "Energy doubler magnet power supply and quench protection"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/12234507",
+      "title": [
+        "Bulk Electric Energy Supply System: Outages and load reductions.Third quarter of 1978, Jul 1 - September 30, 1978"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0304-4076(78)90030-1",
+      "title": [
+        "Labour supply and commuting time"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Econometrics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.2523/8100-ms",
+      "title": [
+        "Method for Rating High Pedestal Cranes for Lifting from Supply Boats in Various  Sea States"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE European Petroleum Conference"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2307/2526331",
+      "title": [
+        "A Dynamic Analysis of Public Intermediate Goods Supply in Open Economy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Economic Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1111/j.2153-3490.1978.tb00864.x",
+      "title": [
+        "The supply from rainfall of four elements to an area of northeast Rhodesia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tellus"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.2118/8100-ms",
+      "title": [
+        "Method For Rating High Pedestal Cranes For Lifting From Supply Boats In Various  Sea States"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE European Petroleum Conference"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n                  <jats:title>Abstract</jats:title>\n                  <jats:p>This paper describes a method of quantifying the impact effects throughout an offshore platform crane structure when lifting from supply boats in various sea states. The method employs Multi-Degree of Freedom dynamic analysis techniques. It is particularly relevant to cranes mounted on high (flexible) pedestals and in addition to providing a method for rating the cranes, it can be used to generate fatigue spectre for the various crane components.</jats:p>\n                  <jats:p>An earlier published method for determining the impact effects is also described. This method ignored the effect of the masses in the crane structure and some comparison of results of the two methods is included.</jats:p>\n                  <jats:sec>\n                     <jats:title>Introduction</jats:title>\n                     <jats:p>Offshore platform cranes, especially in the North Sea area, have a significant accident and failure record. A number of these failures can be related to the large impact effects to which the cranes are subjected while picking up moving masses during the offloading of cargo from supply boats. There is, therefore, a requirement for an accurate method of quantifying these impact effects in order that they may be taken into account in the design or rating of the cranes. This paper describes such a method and comments on possible inaccuracies in an earlier published method. Some discussion is also included on other applications of the method employed.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                     <jats:title>Description of the Problem</jats:title>\n                     <jats:p>When a supply boat or other vessel is being offloaded by a platform crane, the boat and the items to be offloaded are not static, but moving vertically with the heave of the vessel caused by the waves.</jats:p>\n                     <jats:p>If the vessel is dropping when the crane hoist line becomes tight, the load being lifted will be snatched off the deck of the vessel and the crane will experience an impact effect due to this snatch loading. As these impact effects could overload the crane and cause a failure, it is desirable that these impact effects can be quantified and the crane rated accordingly.</jats:p>\n                     <jats:p>It is fairly obvious that vertical motion of the vessel is an important factor in determining the impact effect. For ease of computation, and with minimal error, this vertical motion is assumed sinusoidal, and therefore, if we can determine the amplitude and period of the motion, all other characteristics of the motion can be computed.</jats:p>\n                     <jats:p>The motion of the vessel is closely related to wave motions, but there is no fixed relationship between wave height and period. However, certain general relationships do exist between wave height and period for given geographical areas and Line A on Figure (1) shows a suggested relationship between significant wave height and period for the northern North Sea area. This graph was generated by averaging a number of relationships published in certain oceanography books and reports. (Note: The significant wave height is defined as the average of the highest third of the waves. It is also the normal sea state reported by an experienced observer). In order to account for the heave and pitch of the vessel about the water surface, some amplification of the wave motion may be taken into account. An arbitrary 30% increase in the amplitude of the motion has been used in the past to account for this effect.</jats:p>\n                     <jats:p>Having defined the amplitude and period of the motion, we can compute the maximum vertical velocity of the vessel in any sea state and this is shown on Line B on Figure (1). (Note: This relationship is based on the wave height/period relationships shown and the assumptions stated above).</jats:p>\n                  </jats:sec>\n               </jats:sec>",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.2307/3192293",
+      "title": [
+        "Equal Education in Art: A Study of Art Supply Expenditures on the Elementary Level"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Art Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1063/1.1135279",
+      "title": [
+        "New circuit for a constant voltage supply using series-shunt regulation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Review of Scientific Instruments"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>A new circuit for constant voltage supply with series-shunt regulation has been designed to improve the suppression ratio of the incoming fluctuating noise. A typical example applicable to instruments with high sensitivity is also reported.</jats:p>",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.5694/j.1326-5377.1978.tb131627.x",
+      "title": [
+        "Supply of Human Pituitary Growth Hormone"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Medical Journal of Australia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.3905/jpm.1978.408668",
+      "title": [
+        "Weekly changes in the money supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Portfolio Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1086/451073",
+      "title": [
+        "Export Earnings Instability: Price, Quantity, Supply, Demand?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economic Development and Cultural Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1109/mspec.1978.6367910",
+      "title": [
+        "Techniques that optimize the use of the world's dwindling energy supply inevitably affect productivity as well"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Spectrum"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.2307/3667",
+      "title": [
+        "Small Rodent Populations and Food Supply in a Derbyshire Ashwood"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Animal Ecology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1007/bf02552057",
+      "title": [
+        "Accessory blood supply to the liver from the dorsal pancreatic artery: An unusual anatomic variant"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cardiovascular Radiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.2307/1057677",
+      "title": [
+        "Budget Size in a Democracy Revisited: The Public Supply of Private, Public and Semi-Public Goods"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Southern Economic Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1002/j.1551-8833.1978.tb04241.x",
+      "title": [
+        "An Analysis of Municipal Water Supply Costs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal AWWA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Data from an EPA case study of the Cincinnati Water Works are used to develop cost functions that reflect actual variations in the cost of supplying water across a service area. The analysis suggests that there may be definite limitations on the cost‐effective size of a utility service area.</jats:p>",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1111/j.1748-1716.1978.tb06273.x",
+      "title": [
+        "Maximal aerobic power related to the capillary supply of the quadriceps femoris muscle in man"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Physiologica Scandinavica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1080/00220387808421703",
+      "title": [
+        "Money supply, inflation and the balance of payments in Sri Lanka (1959–74): A comment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Development Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1007/bf00860374",
+      "title": [
+        "Heat exchange in the heat-supply zone of two-phase thermosiphons for small degrees of filling"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Engineering Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1042/bst0060878",
+      "title": [
+        "Compartmentation and Supply of Cholesterol: Two Important Factors in the Co-ordinate Regulation of Hydroxymethylglutaryl-CoA Reductase and Cholesterol 7α-Hydroxylase"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochemical Society Transactions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1177/030802267804101006",
+      "title": [
+        "Supply and Use of Aids and Appliances"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "British Journal of Occupational Therapy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1111/j.1744-7348.1978.tb02635.x",
+      "title": [
+        "Effects of irradiance and water supply on grain development in wheat"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of Applied Biology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>SUMMARY</jats:title><jats:p>The effects of two levels of irradiance and of water supply on grain development in two cultivars of winter wheat were studied by imposing treatments during the phases of cell production and cell expansion in the endosperm. The storage capacity of the grain was determined by cell number in the endosperm, which was reduced by both treatments during the cell production phase. Changes in cell number caused by the treatments were due to changes in the rate of production of cells; the duration of the cell production phase was constant. Weight per grain at maturity was proportional, both within and between cultivars, to the number of endosperm cells, except when treatments altered the supply of assimilate to the grain during the cell expansion phase.</jats:p><jats:p>Reducing irradiance and water during the cell expansion phase decreased the rate of accumulation of dry matter in the grain and reduced weight per grain at maturity, with no effect on the duration of grain filling. Shrivelled grain resulted from a failure of the endosperm cells to fill completely, and was characterised by a reduction in the number of ‘B’‐type starch granules.</jats:p>",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1080/03680770.1977.11896617",
+      "title": [
+        "Helsinki metropolitan area water supply and water quality in Lake Päijänne"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SIL Proceedings, 1922-2010"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1097/00132586-197810000-00028",
+      "title": [
+        "HEMODYNAMICS, MYOCARDIAL CONTRACTILITY, VENTRICULAR VOLUMES AND MYOCARDIAL OXYGEN SUPPLY UNDER VARIOUS INHALATION ANAESTHETICS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Survey of Anesthesiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1111/j.1474-919x.1978.tb06813.x",
+      "title": [
+        "FACTORS AFFECTING THE FOOD SUPPLY AND BREEDING SEASON OF RESIDENT BIRDS AND MOVEMENTS OF PALAEARCTIC MIGRANTS IN A TROPICAL AFRICAN SAVANNAH"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ibis"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>SUMMARY</jats:title><jats:p>The fact that Palaearctic migrants arrive in the northern tropical savannah of Africa during the dry season suggests potential competition for food with African species. Moreover, in the southern tropical savannah African species breed during the rainy seasons, when Palaearctic migrants are present.</jats:p><jats:p>In the equatorial area of Serengeti, East Africa, an index of the food supply for insectivorous birds was obtained from 3 years of light‐trap measurements and sweep net samples. Adults of Lepidoptera, Coleoptera, Orthoptera and Isoptera are sparse in the dry season but become locally abundant after the first rainstorms that mark its close. They are apparently blown by converging winds ahead of the inter‐tropical front and settle to lay eggs where rain has fallen. These early storms therefore produce localized superabundances of food. In the ensuing rainy seasons insect abundance remains high.</jats:p><jats:p>African insectivorous birds breed during the wet period, reaching a peak two months after the insect increase. It is suggested that this lag is due to the need to recover body condition, build up reserves for eggs, develop gonads and wait for vegetation and insect larvae to develop. In the samples available, breeding records of above‐ground nesters peaked in the first rains, while ground‐nesters peaked in the second (main) rains. Predators bred towards the end of the rains, when there is an abundance of fledglings and small mammals. Thus the food supply could act as the ultimate factor determining the timing of the breeding season in this area.</jats:p><jats:p>Palaearctic migrants arrive in the Serengeti 4–10 weeks ahead of the main rain front. However, most species are only found where rain has fallen recently. When conditions dry up they move on to other wet areas. Thus they overlap with African species only where there is a superabundance of insects. When the rains become widespread Palaearctic migrants disperse into their usual habitats, and therefore appear not to compete for available resources with closely related species of African birds. The situation in West Africa, where residents and migrants overlap throughout the dry season, cannot be explained in the same terms.</jats:p>",
+      "publication_date": "1978-10"
+    },
+    {
+      "doi": "10.1016/0148-9062(78)91093-8",
+      "title": [
+        "Recommended practice for the design and construction of earth dams for industrial and potable water supply in the far North and permafrost areas"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Rock Mechanics and Mining Sciences &amp; Geomechanics Abstracts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-10"
+    }
+  ]
+}

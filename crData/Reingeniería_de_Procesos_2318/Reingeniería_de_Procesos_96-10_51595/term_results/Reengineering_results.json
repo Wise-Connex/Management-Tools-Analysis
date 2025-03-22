@@ -1,0 +1,98 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1097/00001888-199610000-00008",
+      "title": [
+        "Reengineering academic medical centers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Academic Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-10"
+    },
+    {
+      "doi": "10.2523/36696-ms",
+      "title": [
+        "Reengineering Simulation: A Bottom-Line Approach to Managing Complexity and \nComplexification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE Annual Technical Conference and Exhibition"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2118/36696-ms",
+      "title": [
+        "Reengineering Simulation: A Bottom-Line Approach to Managing Complexity and Complexification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE Annual Technical Conference and Exhibition"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Managing complexity and technological complexification is a business need. The paper outlines a methodology to significantly increase value-addition by multi-disciplinary reservoir studies. It ensures a level of complexification in line both with business questions at hand and the realities of reservoirs.</jats:p>",
+      "publication_date": "1996-10"
+    },
+    {
+      "doi": "10.1016/0360-8352(96)00082-4",
+      "title": [
+        "A framework for a process reengineering decision support system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Industrial Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-10"
+    },
+    {
+      "doi": "10.1108/19355181199600008",
+      "title": [
+        "Reengineering the MBA for Small and Mid‐Size Firms: A Business‐Driven Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Business"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Most universities have MBA programs designed to train functionally specialized managers for large Fortune 1000 type firms. The graduate management education needs of small and mid‐size firms have been largely ignored. Many innovative MBA programs have themes that emphasize entrepreneurship, management of technology, or international business, but none have integrated all three themes in a redesigned MBA program that meets the needs of small and mid‐size firms.This paper describes a successful business‐driven approach to re‐engineering the form and content of an MBA program to create a higher value‐added program for smaller and rapidly growing enterprises. This curriculum development process was funded by a grant from the Cleveland Foundation’s Statewide Program for Businessand Management Education.  Guided by a business‐driven process, The University of Toledo successfully initiated a new Executive MBA for Small and Mid‐size firms in the fall of 1995.</jats:p>",
+      "publication_date": "1996-10"
+    },
+    {
+      "doi": "10.1145/243327.243623",
+      "title": [
+        "Small-scale structural reengineering of software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Joint proceedings of the second international software architecture workshop (ISAW-2) and international workshop on multiple perspectives in software development (Viewpoints '96) on SIGSOFT '96 workshops"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-10"
+    },
+    {
+      "doi": "10.1016/0360-8352(96)00144-1",
+      "title": [
+        "Modeling car dealership credit operations using arena as a business process reengineering demonstration"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Industrial Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-10"
+    }
+  ]
+}

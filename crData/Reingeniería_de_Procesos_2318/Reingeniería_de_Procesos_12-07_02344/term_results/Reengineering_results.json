@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/indin.2012.6300877",
+      "title": [
+        "An approach for assisting industrial application reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "IEEE 10th International Conference on Industrial Informatics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2012-07"
+    },
+    {
+      "doi": "10.3171/2012.4.focus1293",
+      "title": [
+        "Reengineering acute episodic and chronic care delivery: the Geisinger Health System experience"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Neurosurgical Focus"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Comparative effectiveness research (CER) represents an evolution in clinical decision-making research that allows for the study of heterogeneous groups of patients with complex diseases processes. It has foundations in decision science, reliability science, and health care policy research. Health care finance will increasingly rely on CER for guidance in the coming years. There is increasing awareness of the importance of decreasing unwarranted variation in health care delivery. In the past 7 years, Geisinger Health System has performed broad reengineering of its acute episodic and chronic care delivery models utilizing macrosystem-level application of CER principles. These provider-driven process initiatives have resulted in significant improvement across all segments of care delivery, improved patient outcomes, and notable cost containment. These programs have led to the creation of novel pricing models, and when “hardwired” throughout a care delivery system, they can lead to correct medical decision making by 100% of providers in all patient encounters. Neurosurgery as a specialty faces unique challenges and opportunities with respect to broad adoption and application of CER techniques.</jats:p>",
+      "publication_date": "2012-07"
+    },
+    {
+      "doi": "10.47893/ijatce.2012.1029",
+      "title": [
+        "Reengineering In Construction Industry “EXPERT PROJECT GROUP” AQUIREMENT APPROACH FOR RE-ENGINEERING CONSTRUCTION PROJECT PROCESSES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Advanced Technology in Civil Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The existing problem in the construction industry, i.e. owner or client dissatisfaction in terms of prolonged delivery times, exceeded budgets and the non-attainment of quality standards. Real problems were substantiated by the emphasis on contractual responsibilities and risks. Construction investments are generally believed to be expensive. When contractual processes are in disarray, owners’ risks become bigger and more likely. It is obvious that owner dissatisfaction and its links to contracting and procurement processes need to be explored described and discussed. Hence, it focuses on the means of reducing owners’ investment and contractual risks in construction projects through the re-engineering of contracting processes.</jats:p>",
+      "publication_date": "2012-07"
+    }
+  ]
+}

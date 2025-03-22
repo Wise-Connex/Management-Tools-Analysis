@@ -1,0 +1,98 @@
+{
+  "term": "Reengineering",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.15588/1607-3274-2019-1-14",
+      "title": [
+        "THE IDEALIZED MODELS OF SOFTWARE SYSTEMS REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Radio Electronics, Computer Science, Control"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/07317131.2019.1584995",
+      "title": [
+        "Reengineering the library: issues in electronic resources management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technical Services Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-04"
+    },
+    {
+      "doi": "10.1080/15323269.2019.1585821",
+      "title": [
+        "Reengineering the Library: Issues in Electronic Resources Management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Hospital Librarianship"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-04"
+    },
+    {
+      "doi": "10.1016/j.mset.2018.10.004",
+      "title": [
+        "Review on the role of solid waste materials in soft soils reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Materials Science for Energy Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-04"
+    },
+    {
+      "doi": "10.15276/hait.02.2019.2",
+      "title": [
+        "SOFTWARE FOR AUTOMATED DESIGN OF NETWORK GRAPHICS OF  SOFTWARE SYSTEMS REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Herald of Advanced Information Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The subject of the work is the construction of a graphical network model of reengineering of the software system. Purpose  of  the  paper  is  development  of  software  for  increasing  the  level  of  automation  of  designing  network  charts  for  the  organization of production by reengineering software systems in the framework of project management. Network planning is one of the  forms  of  graphical  representation  of  the  work  content  and  the  duration  of  implementation  of  strategic  plans  and  long-term  complexes of project, planning, organizational and other activities of the enterprise. Along with linear charts and table calculations, network  planning  methods  are  extensively  used  in  the  development  of  long-term  plans  and  models  for  the  creation  of  complex  production systems and other objects of long-term use. The “Nodes-Activity” type of graphs is used in modern specialized packages of planning and operational management computer programs. The task before creating a software tool is the ability to work with all types  of  network  charts  with  the  possibilities  of  their  comprehensive  transformation.  Methods.  The  article  is  based  on  methods  of  network planning for the PERT (Program Evaluation and Review Technique) methodology, the use of elements of graph theory and the Gantt chart method as an accounting method for project management. Simulation of the system software architecture is carried out within the UML (Unified Modeling Language) 2.5 methodology using the CASE toolkit Enterprise Architect 14. Project decisions proposed  by  the  authors  are  the  results  of  the  article.  The  content  of  the  design  part  is  determined,  firstly,  by  the  specifics  of  the  planning  of  software  projects  reengineering,  and  secondly,  by  the  features  of  specific  technical  proposals  for  a  project  that  is  manageable.  The  architecture  (project  “Frame”)  software  for  managing  network  planning  of  software  project  reengineering  is  designed  in  the  article.  Conclusions.  The  architecture  is  developed  in  the  form  of  several  structural  and  behavioral  diagrams,  namely: use case diagram, which provides an analyst with a detailed idea of the software field of application; sequence diagram that is  designed  to  create  a  programmer's  imagination  on  how  to  perform  actions  when  working  with  a  future  program  tool;  statechart  diagram that is required for a visual representation of those states in which the software can be at different times; class diagrams that are used to design the main form filling of the future software; component diagram that is designed to examine the composition of the components of the future software and indicate the sequence of compilation and assembly of individual modules. The numerical and temporal estimation of the planning parameters is based on the data obtained from the Gantt design charts.</jats:p>",
+      "publication_date": "2019-04"
+    },
+    {
+      "doi": "10.22394/1726-1139-2019-4-89-98",
+      "title": [
+        "The Project Development of Administrative Processes Reengineering Within the Public Authorities"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Administrative consulting"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-04"
+    },
+    {
+      "doi": "10.30929/1995-0519.2019.2.117-126",
+      "title": [
+        "РЕІНЖИНІРИНГ ГРАФІЧНИХ БАЗ ДАНИХ У СЕРЕДОВИЩІ ВІДКРИТОЇ СИСТЕМИ АВТОМАТИЗОВАНОГО ПРОЕКТУВАННЯ BRL-CAD. МОДЕЛЮВАННЯ ПОВЕДІНКОВОЇ ЧАСТИНИ"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transactions of Kremenchuk Mykhailo Ostrohradskyi National University"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-04"
+    }
+  ]
+}

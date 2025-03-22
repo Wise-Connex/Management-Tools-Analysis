@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/s0378-7206(03)00098-3",
+      "title": [
+        "Exploring the relationship between information technology and business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information &amp; Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-05"
+    },
+    {
+      "doi": "10.1109/mpae.2004.1293614",
+      "title": [
+        "Reengineering education: a change is needed in U.S. engineering education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Power and Energy Magazine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-05"
+    },
+    {
+      "doi": "10.1021/bc034192+",
+      "title": [
+        "Combinatorial Chemical Reengineering of the Alpha Class Glutathione Transferases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bioconjugate Chemistry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-07"
+    },
+    {
+      "doi": "10.1016/j.infsof.2003.08.003",
+      "title": [
+        "Reengineering windows software applications into reusable CORBA objects"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information and Software Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-05"
+    }
+  ]
+}

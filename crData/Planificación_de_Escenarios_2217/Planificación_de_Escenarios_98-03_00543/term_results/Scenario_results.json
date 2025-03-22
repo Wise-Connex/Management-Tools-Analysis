@@ -1,0 +1,227 @@
+{
+  "term": "Scenario",
+  "total_results": 17,
+  "processed_count": 17,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/bf02802920",
+      "title": [
+        "Scenario-based requirements analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.2523/39717-ms",
+      "title": [
+        "Uncertainty Handling Through Scenario-Based Reservoir Modelling"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE Asia Pacific Conference on Integrated Modelling for Asset Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s0370-2693(98)00149-x",
+      "title": [
+        "A scenario for contact interactions at HERA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.2118/39717-ms",
+      "title": [
+        "Uncertainty Handling Through Scenario-Based Reservoir Modelling"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE Asia Pacific Conference on Integrated Modelling for Asset Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Quantitative forecasts of sub-surface productivity underpin prospect appraisal and development planning, yet the uncertainties intrinsic to those forecasts are difficult to predict. Moreover, the uncertainties invariably remain commercially significant throughout the field life cycle. This paper supports a case for the application of process-based logic to uncertainty handling, expressed in terms of independent, deterministically designed, concept-based development scenarios. Case studies of scenario-based logic are given, applied to 3-D reservoir modelling and simulation for a new, ‘greenfield’ site in Oman and a mature, ‘brownfield’ asset in Thailand. In both cases, uncertainty ranges are generated which provide a quantitative link between subsurface unknowns and commercial decisionmaking.</jats:p>",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1007/s007660050002",
+      "title": [
+        "Scenario Management: An Interdisciplinary Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1007/s007660050004",
+      "title": [
+        "Scenario-Based Analysis of COTS Acquisition Impacts"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1080/03637759809376435",
+      "title": [
+        "Pragmatic uses of metaphor: Models and metaphor in the nuclear winter scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communication Monographs"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1068/p270373",
+      "title": [
+        "Review: Words, Thoughts and Theories, Scenario-Based Design: Envisioning Work and Technology in System Development"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Perception"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1007/s007660050003",
+      "title": [
+        "Scenario Development and Practical Decision Making under Uncertainty: Application to Requirements Engineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1007/s007660050005",
+      "title": [
+        "Scenario-Based Techniques for Supporting the Elaboration and the Validation of Formal Requirements"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1016/s0001-2092(06)62831-7",
+      "title": [
+        "Using a Case Scenario Approach to Evaluate Age‐Specific Competencies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AORN Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>ABSTRACT</jats:title><jats:sec><jats:label /><jats:p>Age‐specific competencies for staff members having direct patient contact is a requirement of the Joint Commission on Accreditation of Healthcare Organizations. This article addresses an annual competency evaluation of perioperative staff members relating to age‐specific criteria. Several types of case scenarios were developed and given to staff members (eg, RNs, surgical technologists, OR assistants, postanesthesia care unit attendants) according to their specific job descriptions and responsibilities within the surgical services department. A case scenario format was used because of the variety of health care personnel and the ability to manipulate the scenarios according to the needs of patients, staff members, and the institution. The evaluation tools were meant to adequately assess staff members' abilities to care for patients throughout the life span. <jats:italic>AORN J</jats:italic> 67 (March 1998) 634–642.</jats:p></jats:sec>",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1080/10572317.1998.10762462",
+      "title": [
+        "The Changing Face of Africa’s Information and Communication Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Information &amp; Library Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1103/physrevb.57.6957",
+      "title": [
+        "Four-step scenario for doping-induced phase changes in a three-dimensional charge-density-wave system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1021/om9704298",
+      "title": [
+        "Density Functional Study on the Preactivation Scenario of the Dötz Reaction:  Carbon Monoxide Dissociation versus Alkyne Addition as the First Reaction Step"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Organometallics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-04"
+    },
+    {
+      "doi": "10.1007/bf02802919",
+      "title": [
+        "A proposal for a scenario classification framework"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1207/s15327655jchn1501_3",
+      "title": [
+        "Evaluating Critical Thinking Skills in a Scenario-Based Community Health Course"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Community Health Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    },
+    {
+      "doi": "10.1080/09638199800000007",
+      "title": [
+        "Export trade, trade derivatives, and economic growth of Hong Kong: a new scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of International Trade &amp; Economic Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-03"
+    }
+  ]
+}

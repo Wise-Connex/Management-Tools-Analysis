@@ -1,0 +1,158 @@
+{
+  "term": "Reengineering",
+  "total_results": 12,
+  "processed_count": 12,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/978-3-642-52400-4_5",
+      "title": [
+        "ReEngineering und Innovation in der Anwendungsentwicklung"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Wirtschaftsinformatik ’93"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-78196-4_142",
+      "title": [
+        "Reengineering als Ansatz zur Softwareintegration"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "DGOR / ÖGOR"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1049/em:19930065",
+      "title": [
+        "Reengineering the Corporation. A Manifesto for Business Evolution"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engineering Management Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/168555.168570",
+      "title": [
+        "Visual support for reengineering work processes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the conference on Organizational computing systems  - COCS '93"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-95690-4_15",
+      "title": [
+        "Softwaresanierung und Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Springer Compass",
+        "CASE in der Praxis"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/10580539308906921",
+      "title": [
+        "CYRUS F. GIBSON"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Systems Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-01"
+    },
+    {
+      "doi": "10.1016/0164-1212(93)90047-2",
+      "title": [
+        "Domain model-driven software reengineering and maintenance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Systems and Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-01"
+    },
+    {
+      "doi": "10.1300/j025v09n02_14",
+      "title": [
+        "Beyond Computers as Tools:"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers in the Schools"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-01"
+    },
+    {
+      "doi": "10.1145/168555.168584",
+      "title": [
+        "An actor dependency model of organizational work"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the conference on Organizational computing systems  - COCS '93"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/10580539308906939",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Systems Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-01"
+    },
+    {
+      "doi": "10.1007/3-540-57234-1_76",
+      "title": [
+        "Reengineering of user interfaces for the migration of database applications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Database and Expert Systems Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/168555.168571",
+      "title": [
+        "Reengineering a business process with an innovative workflow management system"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the conference on Organizational computing systems  - COCS '93"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "term": "Scenario",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1126/science.241.4862.157",
+      "title": [
+        "The Otter-Urchin-Kelp Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-07"
+    },
+    {
+      "doi": "10.1016/0360-5442(88)90008-4",
+      "title": [
+        "Navy jet fuel production during a military mobilization scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-07"
+    },
+    {
+      "doi": "10.1080/03081068808717361",
+      "title": [
+        "Scenario construction for transport planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Planning and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-07"
+    },
+    {
+      "doi": "10.55540/0031-1723.1508",
+      "title": [
+        "THE MEDIA AND OUR NEXT INTERVENTION: A SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The US Army War College Quarterly: Parameters"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1175/1520-0442(1988)001<0669:tpioas>2.0.co;2",
+      "title": [
+        "The Potential Impacts of a Scenario of C0<sub>2</sub>-Induced Climatic Change on Ontafio, Canada"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Climate"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1988-07"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.17265/1537-1506/2007.02.010",
+      "title": [
+        "Study on Business Process Reengineering for Chinese Traditional Logistics Enterprises"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chinese Business Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-02"
+    },
+    {
+      "doi": "10.3745/kipstd.2007.14-d.1.067",
+      "title": [
+        "Model-Based Quantitative Reengineering for Identifying Components from Object-Oriented Systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The KIPS Transactions:PartD"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-02"
+    }
+  ]
+}

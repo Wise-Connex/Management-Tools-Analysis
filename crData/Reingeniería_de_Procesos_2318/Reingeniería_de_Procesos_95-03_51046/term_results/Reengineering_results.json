@@ -1,0 +1,151 @@
+{
+  "term": "Reengineering",
+  "total_results": 11,
+  "processed_count": 11,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0007-6813(95)90057-8",
+      "title": [
+        "Reengineering boards of directors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Horizons"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1016/0963-8687(95)80011-e",
+      "title": [
+        "Reconsidering reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Strategic Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1108/eb054510",
+      "title": [
+        "Selective Insurance Corporation: Uniting reengineering and strategy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Planning Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Selective Insurance, a mid‐sized regional property and casualty insurance firm, first mounted a classic strategy‐development effort and then implemented a reengineering effort focused on the core processes that drove their business.</jats:p>",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1016/0263-2373(94)00057-e",
+      "title": [
+        "Process reengineering and the dynamic balance of the organisation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Management Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1002/tqem.3310040311",
+      "title": [
+        "Reengineering the environmental function: Making tough decisions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Quality Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The process outlined in this article includes tools that can be used to achieve the efficiencies necessary for effective reengineering. This process can help ensure that management will not just cut out resources and expect the same services performed the same way. Environmental professionals will be able to show in black and white what their objectives are and what will and will not be done as a result of reengineering.</jats:p>",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1097/01445442-199503000-00011",
+      "title": [
+        "The Reengineering Handbook: A Step-by-Step Guide to Business Transformation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal For Healthcare Quality"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1068/a270425",
+      "title": [
+        "Algorithms for Reengineering 1991 Census Geography"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environment and Planning A: Economy and Space"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The availability of GIS technology and digital boundaries of census output areas now makes it possible for users to design their own census geography. Three algorithms are described that can be used for this purpose. An Arc/Info implementation is briefly outlined and case studies presented to demonstrate some of the results of explicitly designing zoning systems for use with 1991 Census data. </jats:p>",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1016/0263-2373(94)00054-b",
+      "title": [
+        "Reengineering and organizational change: Lessons from a comparative analysis of company experiences"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Management Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1021/cen-v073n013.p062",
+      "title": [
+        "Chemical Companies Discover A Weapon For Globalization And Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1016/0963-8687(95)80016-j",
+      "title": [
+        "Information technology enables business process reengineering at YCH DistriPark (Singapore)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Strategic Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-03"
+    },
+    {
+      "doi": "10.1142/s0218194095000022",
+      "title": [
+        "MULTI-VALUED CONSTANT PROPAGATION ANALYSIS FOR USER INTERFACE REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Software Engineering and Knowledge Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The definition and use of multi-valued constant propagation analysis (MVCP), which is an extension of simple constant propagation analysis, is presented in this paper in the context of a user interface reengineering process. </jats:p><jats:p> A brief description of the adopted COBOL/CICS user interface reengineering model, which makes use of an Abstract User Interface Description Language (AUIDL) to represent user interface structures and behavior, is also given. </jats:p><jats:p> The experimental context is described and results are shown and discussed. Suggestions for further directions of research and investigation are also presented. </jats:p>",
+      "publication_date": "1995-03"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1177/154193128402800519",
+      "title": [
+        "Scenario Analyses of Back Injuries in Industrial Accidents"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Human Factors Society Annual Meeting"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Scenario analyses were carried out on 229 back injuries occuring over two years in a large petro-chemical manufacturing complex. The patterns indicated that most injuries were a direct result of overexertion in performing a task. Materials handling was the most common task, accounting for 35% of the cases. Two other tasks also accounted for a substantial number of injuries: operating a valve (17%) and assembling or disassembling equipment (18%). A much less common but noteworthy set of scenarios indicated that many back injuries occur in situations where unexpected movement in the person-equipment interface takes place. Age and sex were not significant factors in back injury rates. A higher proportion of injuries were major (OSHA recordable) than is usually found for industrial accidents in general. </jats:p>",
+      "publication_date": "1984-10"
+    }
+  ]
+}

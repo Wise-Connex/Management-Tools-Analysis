@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1287/mnsc.26.3.261",
+      "title": [
+        "A Competitive Scenario Modeling System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> A competitive decision support system that has been utilized in a pilot version in a corporate application is described and evaluated. The system is based on the combining of meta-game analysis with a number of mathematical market models. The system facilitates the testing of proposed competitive scenarios for stability and permits the consequences of scenarios to be predicted in the market share, profit and other terms that are familiar to manager users. Although the formal evaluation of the system is not clearly positive, both the system and the evaluation procedure appear to have substantial potential. </jats:p>",
+      "publication_date": "1980-03"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1525/9780520327405-020",
+      "title": [
+        "CHAPTER 18 Scenario for the Townshend Writ"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Writs of Assistance Case"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-12"
+    },
+    {
+      "doi": "10.1515/9780824886615-017",
+      "title": [
+        "Epilogue: Scenario for the Future"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Lands of Hawaii"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-12"
+    }
+  ]
+}

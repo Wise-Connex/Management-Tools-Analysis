@@ -1,0 +1,214 @@
+{
+  "term": "Reengineering",
+  "total_results": 16,
+  "processed_count": 16,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2118/191648-18rptc-ms",
+      "title": [
+        "Cost Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE Russian Petroleum Technology Conference"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>This article presents the method developed by Gazprom Neft to systematically improve efficiency of reserves of mature assets through the use of automated and integrated modules designed for comprehensive calculation of surface infrastructure construction and maintenance costs. A new and relevant for the oil and gas industry term – cost reengineering is suggested and its definition is given.</jats:p>\n               <jats:p>Best practices of cost engineering/reengineering are tested within the framework of some integrated reengineering projects implemented at Gazprom Neft's petroleum fields. The automation of the capital and operating costs estimation process contributed to the rapid consideration of a significant number of production optimization scenarios, and the high degree of decomposition of cost items and their formation parameters made it possible to manage costs in the context of individual elements of field infrastructure facilities.</jats:p>\n               <jats:p>The result of the efforts made by the multidisciplinary team was the development of a step-by-step workflow for reengineering projects which allows, in a systematic and integrated manner, to identify constraints and form the matrix of optimization measures.</jats:p>",
+      "publication_date": "2018-10"
+    },
+    {
+      "doi": "10.3390/designs2040042",
+      "title": [
+        "Data-Driven Process Reengineering and Optimization Using a Simulation and Verification Technique"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Designs"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Process reengineering (PR) in manufacturing organizations is a big challenge, as shown by the high rate of failure. This research investigated different approaches to process reengineering to identify limitations and propose a new strategy to increase the success rate. The proposed methodology integrates data as a procedure for process identification (PI) and mapping and incorporates process verification to analyze the changes made in a specific process. The study identifies interdependency within the manufacturing process (MP) and proposes a generic process reengineering approach that uses simulation and analysis of production line data as a method for understanding the changes required to optimize the process. The paper discusses the methodology implementation technique as well as process identification and the process mapping technique using simulation tools. It provides an improved data-driven process reengineering framework that incorporates process verification. Based on the proposed model, the study investigates a production line process using the WITNESS Horizon 21 simulation package and analyse the efficiency of data-driven process reengineering and process verification in terms of implementing changes.</jats:p>"
+    },
+    {
+      "doi": "10.1109/infocommst.2018.8632144",
+      "title": [
+        "Methods for Synthesis of Relational Data Model in Information Systems Reengineering Problems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 International Scientific-Practical Conference Problems of Infocommunications. Science and Technology (PIC S&amp;T)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-10"
+    },
+    {
+      "doi": "10.1109/icast1.2018.8751520",
+      "title": [
+        "Analysis and Design of Reengineering Academic Information System Astra Polytechnic of Manufacture in Interconnection Network"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2018 International Conference on Applied Science and Technology (iCAST)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-10"
+    },
+    {
+      "doi": "10.1007/978-3-319-98104-8_2",
+      "title": [
+        "Method"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "System Reengineering in Healthcare: Application for Hospital Emergency Departments"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-319-98104-8_3",
+      "title": [
+        "Results"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "System Reengineering in Healthcare: Application for Hospital Emergency Departments"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-319-98104-8_4",
+      "title": [
+        "Discussion"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "System Reengineering in Healthcare: Application for Hospital Emergency Departments"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-319-98104-8_1",
+      "title": [
+        "Background"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "System Reengineering in Healthcare: Application for Hospital Emergency Departments"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.21776/ub.jemis.2018.006.01.1",
+      "title": [
+        "BUSSINESS PROCESS REENGINEERING APPROACH FOR QUALITY REPORTING PROCESS (Case Study at PT D. Perdana, Pasuruan)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Engineering and Management in Industrial System"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-10"
+    },
+    {
+      "doi": "10.1080/24750158.2018.1537830",
+      "title": [
+        "Reengineering the library: issues in electronic resources management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Australian Library and Information Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-10"
+    },
+    {
+      "doi": "10.1145/3275245.3275265",
+      "title": [
+        "Reengineering for Accessibility"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the XVII Brazilian Symposium on Software Quality"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-10"
+    },
+    {
+      "doi": "10.1007/978-3-319-98104-8_5",
+      "title": [
+        "Conclusion and Future Research Directions"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "System Reengineering in Healthcare: Application for Hospital Emergency Departments"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.bej.2018.06.014",
+      "title": [
+        "Reengineering cell-free protein synthesis as a biosensor: Biosensing with transcription, translation, and protein-folding"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochemical Engineering Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-10"
+    },
+    {
+      "doi": "10.1007/978-3-030-00220-6_85",
+      "title": [
+        "BIM and Lean-Business Process Reengineering for Energy Management Optimization of Existing Building Stock"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Informatics and Computing in Civil and Construction Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/chem.201804416",
+      "title": [
+        "Reengineering Chemical Glycosylation: Direct, Metal‐Free Anomeric O‐Arylation of Unactivated Carbohydrates"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemistry – A European Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>To sustain innovation in glycobiology, effective routes to well‐defined carbohydrate probes must be developed. For over a century, glycosylation has been dominated by the formation of the anomeric Csp<jats:sup>3</jats:sup>−O acetal junction in glycostructures. A dissociative mechanistic spectrum spanning S<jats:sub>N</jats:sub>1 and S<jats:sub>N</jats:sub>2 is frequently operational thereby reducing the efficiency. By reengineering this fundamental process, an orthogonal disconnection allows the acetal to be formed directly from the reducing sugar without the need for substrate pre‐functionalisation. The use of stable aryliodonium salts facilitates a formal O−H functionalisation reaction. This allows lactols to undergo mild, metal‐free O‐arylation at ambient temperature. The efficiency of the transformation has been validated using a variety of pyranoside and furanoside monosaccharides in addition to biologically relevant di‐ and trisaccharides (up to 85 %). Fluorinated mechanistic probes that augment the anomeric effect were employed. It is envisaged that this strategy will prove expansive for the construction of complex acetals under substrate‐based stereocontrol.</jats:p>",
+      "publication_date": "2018-11"
+    },
+    {
+      "doi": "10.1016/j.bbagen.2018.07.009",
+      "title": [
+        "Reengineering the ligand sensitivity of the broadly tuned human bitter taste receptor TAS2R14"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biochimica et Biophysica Acta (BBA) - General Subjects"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2018-10"
+    }
+  ]
+}

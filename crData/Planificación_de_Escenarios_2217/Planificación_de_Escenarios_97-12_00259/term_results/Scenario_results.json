@@ -1,0 +1,112 @@
+{
+  "term": "Scenario",
+  "total_results": 8,
+  "processed_count": 8,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/s0166-3615(97)00062-6",
+      "title": [
+        "An intelligent scenario generator for strategic business planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers in Industry"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-12"
+    },
+    {
+      "doi": "10.1002/prs.680160410",
+      "title": [
+        "Batch runaway reaction relief: Re‐evaluation of “Credible” scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Process Safety Progress"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Many chemical reactions in the fine chemical and related industries are performed in a semi‐batch manner under isothermal conditions. Relief system design evaluation for runaway reactions, using DIERS methodology for example, is frequently studied adiabatically using data derived from batch mode testing. In many cases, however, evaluation of the process isothermally under the realistic semi‐batch mode can be extremely useful, often helping to greatly reduce the vent size as a result of a better understanding of the process. In some cases, it is even possible to eliminate runaway reaction as a viable case for relief sizing. Such evaluations of venting are fully consistent with DIERS methodology.</jats:p><jats:p>This paper presents the arguments for sizing vents for scenarios other than the very worst case, by objective evaluation of trips and interlocks, so that the level of risk is reduced to an acceptable level without the need for extremely large vents.</jats:p>",
+      "publication_date": "1997-12"
+    },
+    {
+      "doi": "10.54648/aila1997044",
+      "title": [
+        "Implications of International Aircraft Leasing: An Indian Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Air and Space Law"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-12"
+    },
+    {
+      "doi": "10.1111/j.1539-6924.1997.tb01284.x",
+      "title": [
+        "A Native American Exposure Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Risk Analysis"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>EPA's Risk Assessment Guidance for Superfund (RAGS) and later documents provide guidance for estimating exposures received from suburban and agricultural activity patterns and lifestyles. However, these methods are not suitable for typical tribal communities whose members pursue, at least in part, traditional lifestyles. These lifestyles are derived from a long association with all of the resources in a particular region. We interviewed 35 members of a Columbia River Basin tribe to develop a lifestyle‐based subsistence exposure scenario that represents a midrange exposure that a traditional tribal member would receive. This scenario provides a way to partially satisfy Executive Order 12898 on environmental justice, which requires a specific evaluation of impacts from federal actions to peoples with subsistence diets. Because a subsistence diet is only a portion of what is important to a traditional lifestyle, we also used information obtained from the interviews to identify parameters for evaluating impacts to environmental and sociocultural qualify of life.</jats:p>",
+      "publication_date": "1997-12"
+    },
+    {
+      "doi": "10.1016/s0040-1951(97)00149-2",
+      "title": [
+        "Modelling of active lineaments for predicting a possible earthquake scenario around Dehradun, Garhwal Himalaya, India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tectonophysics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-12"
+    },
+    {
+      "doi": "10.3109/10398569709082282",
+      "title": [
+        "The Limited Resources Debate: Changing the Rules of the Game to a Win—Win Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Australasian Psychiatry"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> On 21 August 1997, during the THEMHS annual meeting in Sydney, Australia, a lively debate ensued about the differential uses of limited funding for mental health care </jats:p>",
+      "publication_date": "1997-12"
+    },
+    {
+      "doi": "10.1111/0591-2385.00107",
+      "title": [
+        "Storytellers and Scenario Spinners: Some Reflections on Religion and Science in Light of a Pragmatic, Evolutionary Theory of Knowledge"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Zygon®"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Asserting that both scientists and religious thinkers are involved in telling stories about the past and spinning scenarios about the future, I first compare and contrast the purposes of scientific and religious storytelling. Then, in light of some recent work on brain and language evolution, I offer a possible story about how humans might have become storytellers. Finally, I discuss how religious stories might be evaluated pragmatically and even scientifically by developing Lakatosian‐type research programs.</jats:p>",
+      "publication_date": "1997-12"
+    },
+    {
+      "doi": "10.1016/s0029-5493(97)00193-3",
+      "title": [
+        "Analysis of the return to power scenario following a LBLOCA in a PWR"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-12"
+    }
+  ]
+}

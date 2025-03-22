@@ -1,0 +1,72 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/1171133",
+      "title": [
+        "IDC Reengineering Phase 2 Project Scope"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-02"
+    },
+    {
+      "doi": "10.1007/s13347-015-0189-8",
+      "title": [
+        "The ONLIFE Initiative—a Concept Reengineering Exercise"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Philosophy &amp; Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1145/2723742.2723746",
+      "title": [
+        "Reengineering Enterprise Wide Legacy BFSI Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 8th India Software Engineering Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-02"
+    },
+    {
+      "doi": "10.1117/12.2072270",
+      "title": [
+        "Reengineering for optimized control of DC networks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Advanced Topics in Optoelectronics, Microelectronics, and Nanotechnologies VII"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-02"
+    },
+    {
+      "doi": "10.1161/str.46.suppl_1.wp351",
+      "title": [
+        "Abstract W P351: A Stroke Above the Rest: A Reengineering of the Interdisciplinary Plan of Care"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Stroke"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n            <jats:bold>Background and Purpose:</jats:bold>\n            Patients who are newly diagnosed with a stroke are often overwhelmed due to the devastating nature of their condition. The post-acute phase frequently involves a significant amount of education regarding new medications, treatments, recovery and follow up. Ineffective education may be associated with poor outcomes; therefore information from healthcare professionals should be easily understood by patients and their families. The purpose of this evidence based nursing practice and quality enhancement initiative was to improve the patient outcomes and provide tools to assist patients for reentry into the community.\n          </jats:p>\n          <jats:p>\n            <jats:bold>Methods:</jats:bold>\n            The reengineered plan of care was implemented by the interdisciplinary Stroke Team. Individual education packets were developed based on diagnosis and specific comorbidities, and took into consideration the concept of health literacy. Communication with the primary care provider as well as providing patients with a thirty-day filled prescription prior to discharge assisted with continuity of care. Follow up phone calls reinforced education. Creation of a listserv provided notification of monthly stroke support group meetings and our yearly stroke retreat. Both programs are tailored to the stroke survivor and caregiver, and have been beneficial to the community.\n          </jats:p>\n          <jats:p>\n            <jats:bold>Results:</jats:bold>\n            This interdisciplinary initiative contributed to a steady increase in patient’s ratings of communication with doctors, and with a decrease in hospital length of stay for patients who were treated by the Interdisciplinary Stroke Team. In addition, patient participation in the annual Stroke Retreat and patient participation in community stroke programs have increased.Conclusions\n            <jats:bold>:</jats:bold>\n            Reengineering of the interdisciplinary plan of care improved not only the patient experience, but also better prepared patients and their caregivers for discharge. This quality enhancement initiative was vital in decreasing length of stay and quality of care in the stroke population.\n          </jats:p>",
+      "publication_date": "2015-02"
+    }
+  ]
+}

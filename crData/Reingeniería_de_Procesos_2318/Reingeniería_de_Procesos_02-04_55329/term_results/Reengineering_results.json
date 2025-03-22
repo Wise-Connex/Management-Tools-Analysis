@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/02635570210421336",
+      "title": [
+        "Business process reengineering for flexibility and innovation in manufacturing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Industrial Management &amp; Data Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In response to an increasingly global and competitive environment, the flexibility to adapt to changing market needs and develop innovative cross‐functional processes is quintessential to success. Emphasizes that, in order to succeed in BPR, the firm must make the organizational structure change from a hierarchical to a flat form, management goals must change from being functional sub‐optimized to global‐optimization, process‐oriented measurement, and employees’ work must change from being fragmented to team‐oriented. It is important that the firm combine core business process reengineering and holistic outsourcing and rethink its business from an integrated, systematic “whole” and value chain viewpoint to beat competition with flexibility and innovation.</jats:p>",
+      "publication_date": "2002-04"
+    },
+    {
+      "doi": "10.1076/ilee.10.1.39.3616",
+      "title": [
+        "Broadening the Learning in University Environment: Process Reengineering Through Information and Networking Technologies (BLUEPRINT 2000)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interactive Learning Environments"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-04"
+    }
+  ]
+}

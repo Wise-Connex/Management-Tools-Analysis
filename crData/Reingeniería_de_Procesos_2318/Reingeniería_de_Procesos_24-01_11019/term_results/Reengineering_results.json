@@ -1,0 +1,673 @@
+{
+  "term": "Reengineering",
+  "total_results": 55,
+  "processed_count": 55,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4135/9781071951354",
+      "title": [
+        "Reengineering: Starting from Scratch"
+      ],
+      "type": "other",
+      "container-title": [
+        "Quality Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/saner60148.2024",
+      "title": [
+        "2024 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/saner-c62648.2024",
+      "title": [
+        "2024 IEEE International Conference on Software Analysis, Evolution and Reengineering - Companion (SANER-C)"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.4951034",
+      "title": [
+        "Ambiguity in Business Process Reengineering: A Comprehensive Review of Trends, Challenges and Future Prospects"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.4985520",
+      "title": [
+        "Reengineering marketing strategies for higher education in Somaliland"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-031-67778-6_11",
+      "title": [
+        "Digital Twins and Their Role in Reengineering Engineering Education"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Digital Twin"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.4949952",
+      "title": [
+        "Reengineering Agro-Waste-Derived Nanolignin for the Development of Reusable Remediation-Ready Hydrogels"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.22219/repositor.v1i2.30384",
+      "title": [
+        "Business Process Reengineering Pada Kejaksaan Negeri Batu"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Repositor"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Setiap Instansi yang menyediakan sebuah pelayanan kepada masyarakat menginginkan sebuah layanan yang berkualitas. Meningkatkan sebuah kualitas pada pelayanan perlu memahami kekurangan selama ini. Kejaksaan Negeri Batu adalah sebuah instansi di Provinsi Jawa Timur yang pelayanan masih berjalan secara manual. Hal ini menimbulkan permasalahan dari segi pelayanan, kecepatan dan biaya kepada masyarakat. Berdasarkan masalah ini perlu dilakukan perubahan proses bisnis pada Kejaksasaan Negeri Batu dengan penerapan BPR (Business Process Reengineering). Business Process Reengineering adalah konsep untuk mengubah ulang proses bisnis yang memiliki kelemahan pada proses. Tujuanya untuk memperbaiki sebuah kinerja proses agar lebih efisien. Penelitian dimulai dengan mengumpulkan beberapa referensi yang berkaitan dengan Business Process Reengineering. Metode pengumpulan data dilakukan dengan cara observasi ke studi kasus, wawancara dengan pihak Kejaksaan Negeri Batu dan studi literatur sejenis. Memahami suatu proses bisnis digunakan peta proses standar ASME (American Society of Mechanical Engineers). Berdasarkan peta proses standar ASME dapat dihitung kinerja proses bisnis dengan menghitung efisiensi throughput. Langkah peningkatan dan penyempurnaan desain ulang proses dilakukan agar proses bisnis lebih efektif. Hasil akhir penelitian adalah sebuah rancangan ulang model bisnis proses rekomendasi yang meningkatkan efisiensi throughput dari 50,36% pada proses sebelumnya menjadi 85,77% dan menghasilkan sebuah aplikasi sebagai pendukung rancangan ulang model bisnis proses rekomendasi. </jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-031-51335-0_9",
+      "title": [
+        "Reverse and Reengineering for Old Systems is Seldom Complete"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Architectures"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.5010648",
+      "title": [
+        "Chemical Reengineering of Waste Polyester-Cotton Blend: Convert into Robust, Fire-Resistant Aerogel and Recycle Terephthalic Acid"
+      ],
+      "type": "posted-content",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.30525/978-9934-26-506-8-34",
+      "title": [
+        "Reengineering of metallurgical production: transition to “green” steel"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "MININGMETALTECH 2024 – THE MINING AND METALS SECTOR: INTEGRATION OF BUSINESS, TECHNOLOGY AND EDUCATION. Volume 1"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.22219/repositor.v2i5.30629",
+      "title": [
+        "Business Process Reengineering (BPR) Pada Perusahaan Pdam Kabupaten Mojokerto Untuk Meningkatkan Kinerja Bisnis Perusahaan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Repositor"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Semakin berkembangnya dunia bisnis dan semakin kompleksnya transaksi serta semakin luasnya jangkauan usaha sebuah perusahaan, maka kebutuhan perusahaan untuk mengoptimalkan setiap proses bisnis harus lebih efektif dan efisien di areanya [6]. Maka dari itu perubahan proses bisnis terkadang perlu dilakukan untuk mengganti sistem yang lama dengan sistem yang baru. Perubahan proses bisnis yang signifikan ini disebut Business Process Reenginering. Konsep BPR (Business Process Reengineering) sendiri adalah merupakan sebuah konsep rekontruksi ulang dengan melakukan tindakan secara dramatis dan radikal sehingga dapat menghasilkan perbaikan proses, penghematan biaya, serta peningkatan kecepatan [1]. Perusahaan Daerah Air Minum (PDAM) Kabupaten Mojokerto merupakan salah satu perusahaan yang bekerja dibidang jasa penyedia air untuk kebutuhan sehari-hari. Struktur organisasi secara umum terdiri dari Pimpinan/Direktur, Bagian Hubungan Langganan dan Pemasaran, Bagian Perencanaan, Bagian Produksi dan Distribusi, Bagian Umum dan Kepegawaian, dan Bagian Akuntansi dan Keuangan. Masalah yang terjadi adalah terlalu banyak proses yang tidak optimal, waktu yang terlalu lama untuk penanganan konsumen, pencatatan yang masih manual, dan terlalu banyak mengeluarkan biaya untuk sebagian proses. Berdasarkan masalah diatas, Bisnis proses PDAM Kab. Mojokerto yang perlu dirubah atau direengineering adalah proses bisnis pemasangan baru. Dengan Business Process Reenginering mampu merubah proses yang lama ke proses yang baru yaitu pada tahapan rekomendasi sehingga mendapatkan proses yang lebih efisien dalam hal pelayanan waktu. </jats:p>"
+    },
+    {
+      "doi": "10.1063/5.0181759",
+      "title": [
+        "Software reengineering: Effects on software reliability and stability: Review"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIP Conference Proceedings",
+        "WOMEN IN PHYSICS: 7th IUPAP International Conference on Women in Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijpmb.2024.10064911",
+      "title": [
+        "A Fresh Look at the History and Evolution of Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Process Management and Benchmarking"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/access.2024.3505035",
+      "title": [
+        "Enhancing Order Fulfillment Through Production Process Reengineering Using Manufacturing Execution System as a Reference Model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Access"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.30525/978-9934-26-437-5-10",
+      "title": [
+        "ORGANIZATIONAL AND ECONOMIC MECHANISM FOR REENGINEERING BUSINESS PROCESSES OF INDUSTRIAL ENTERPRISES"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Transformation of the economic system in the context of information technology challenges"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In the post-crisis context, enterprises face the challenge of ensuring sustainability and development. The key task is to create an effective change management mechanism. Reengineering includes a variety of means and methods, including modern information technologies, aimed at radically improving key performance indicators. The application of business process reengineering as an innovative approach to strategic change management is of great importance, especially in the conditions of unstable market conditions of domestic enterprises. The need to adapt to changes occurring both in macroeconomic level, and at the level of each enterprise, requires the use of special methods and tools to set up business processes enterprises regarding rapidly changing external and internal conditions, and as well as business rules. These funds must provide adequate information about the activities of the enterprise and form the basis for analyzing this information in the aspect of enterprise business processes, their bottlenecks and possible optimization.</jats:p>"
+    },
+    {
+      "doi": "10.2478/amns-2024-1803",
+      "title": [
+        "Research on Enterprise Management Process Reengineering Strategies for Integrating Innovation Ecosystems in the Age of Artificial Intelligence"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Mathematics and Nonlinear Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Innovation is the inexhaustible driving force for an enterprise to realize sustainable development, and enterprise management process reengineering within the innovation ecosystem is the key know-how for the growth of enterprise benefits. This paper focuses on the realization of enterprise management process reengineering within the innovation ecosystem. The study starts with the construction of an embedded innovation ecosystem model, and it is then analyzed for threshold effects. The hexadecimal structure of fuzzy Petri nets is used to establish a diagnostic model of enterprise management processes, and problems in enterprise management processes are supervised through fault tree analysis so as to improve and optimize the management processes and process reengineering of the enterprise. The research on enterprise management process reengineering in this paper employs F-cluster analysis and fuzzy C-mean cluster analysis to fully demonstrate the relationship between the activities of every management process in the enterprise. Through the study, it is concluded that the open innovation and shared cognitive capital variables designed in this paper in constructing the embedded innovation ecosystem model have successfully passed the reliability and validity test and play an important role in enterprise innovation. In the case study of enterprise management process reengineering, the management process of enterprise A that implemented process reengineering realized intelligent transformation. The resulting total share of production cost of enterprise A decreased to 91.2%, and the overall cost of energy saving was about 10% or so.</jats:p>",
+      "publication_date": "2024-01"
+    },
+    {
+      "doi": "10.31004/jutin.v7i1.24470",
+      "title": [
+        "Identifikasi Proses Bisnis Penerimaan Santri Baru di Pesantren Mahasiswa Miftahul Khoirot melalui Implementasi Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Teknik Industri Terintegrasi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study aims to propose identification to the business process of admitting new students at Miftahul Khoirot Student Boarding School by adopting the concept of Business Process Reengineering (BPR). The admission of new students is a critical stage in maintaining the quality of education in pesantren, and BPR can help in identifying, redesigning, and optimizing this process to achieve efficiency, productivity, and better service. The BPR method is used to analyze, redesign, and implement the process with a more effective and innovative approach. The results of this proposal include simplification of intake steps, use of information technology, reduction of bureaucracy, and improved coordination between departments. It is expected that the implementation of this proposal will result in significant improvements in the admission process, reduce the time required, and increase the satisfaction of prospective students and related parties. This proposal provides a foundation for Miftahul Khoirot Student Boarding School to become more responsive and competitive in accepting new students</jats:p>"
+    },
+    {
+      "doi": "10.52202/078172-0069",
+      "title": [
+        "A REVIEW OF POTENTIAL CHALLENGES AND OPPORTUNITIES OF BUSINESS PROCESS REENGINEERING IN THE ERA OF INDUSTRY 4.0"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "34th Annual Southern African Institute for Industrial Engineering Conference 2024 (SAIIE34)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.14569/ijacsa.2024.0151240",
+      "title": [
+        "A Hybrid Machine Learning Approach for Continuous Risk Management in Business Process Reengineering Projects"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Advanced Computer Science and Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.31410/eman.2024.267",
+      "title": [
+        "Business Process Reengineering in the Era of Global Digitalization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Scientific Conference EMAN – Economics and Management: How to Cope with Disrupted Times",
+        "International Scientific Conference – EMAN 2024: Vol 8. Conference Proceedings"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This article presents some key aspects of the application of busi­ness process reengineering in modern business organizations. The study is dedicated to some important concepts for both the reengineering of busi­ness processes and the fundamental changes in the digital transformation of enterprises. In its nature, business process reengineering represents the creation of fundamentally new processes that dramatically increase the efficiency of an enterprise. It is based on the general methodology of pro­cess management and has similar features to some of the methods of pro­cess improvement and quality improvement. But unlike improvement, re­engineering implies a radical change of processes, not their gradual im­provement. The main goal of the research is to propose a universal meth­odology for the effective reengineering of business processes, based on world experience and good practices, applicable in Bulgarian business or­ganizations. It provides a basic framework for future more detailed and extensive research in the field of modeling, measurement, management and reengineering of business processes in the organization and analysis of the practical results achieved.</jats:p>"
+    },
+    {
+      "doi": "10.12677/ojls.2024.125438",
+      "title": [
+        "Research on Reengineering of Supervision Mechanism of Audit Committee"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Open Journal of Legal Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.32782/2521-666x/2024-87-23",
+      "title": [
+        "MODERN TOOLS FOR REENGINEERING BUSINESS MODELS OF ENTERPRISES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Scientific opinion: Economics and Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The activity of every enterprise is constantly accompanied by challenges and threats from both the internal and external environment of its functioning. That is why effectively established processes are often a guarantee of its success and sustainability. The reengineering of business processes itself is the tool that allows you to significantly improve your work, due to a radical reassessment and transformation of the main business processes. This tool aims to achieve improvements in key indicators such as costs, quality, service and speed. The article establishes the relevance of transformations in business processes using reengineering. A retrospective of the evolution of approaches to reengineering was conducted. The experience of using it to improve the performance of the business giant Ford is presented. It has been determined what advantages enterprises receive from the reengineering of business processes. The main stages of reengineering are grouped: mapping the current state of business processes, analyzing them and identifying gaps, finding opportunities to improve business processes and their verification, developing a process map of the future state and implementing future changes. It was determined that these stages may vary depending on the specifics of the enterprise's activities. The principles of effective reengineering are presented, according to Hammer M. and Champy J. Modern business process reengineering tools are specified: IT, change management, value chains, benchmarking, model change, monitoring, active accounting, GAP analysis, Lean and Six Sigma, Business Process Management, design thinking and modeling and stimulation. Systematized recommendations for increasing the efficiency of the reorganization process, in particular, using only proven methodology, documenting the reasons for introducing changes, analyzing business needs, taking any actions taking into account the priority of customers, as well as effective change management. Further prospects of research in the chosen direction are outlined, taking into account the achievements of artificial intelligence.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-031-41371-1_30",
+      "title": [
+        "Reengineering Energy Sector SMEs to Marketing via Backlinks and Domains Strategy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Springer Proceedings in Business and Economics",
+        "Computational and Strategic Business Modelling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.procs.2024.11.052",
+      "title": [
+        "Reengineering of CRIS at University of Novi Sad"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia Computer Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1051/bioconf/202413803014",
+      "title": [
+        "RETRACTED: Reengineering of business processes for management reporting in the structural divisions of a multifunctional center"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BIO Web of Conferences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>See the retraction notice BIO Web of Conferences <jats:bold>138</jats:bold>, 00001 (2024), <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" ext-link-type=\"uri\" xlink:href=\"https://doi.org/10.1051/bioconf/202413800001\">https://doi.org/10.1051/bioconf/202413800001</jats:ext-link></jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-031-54383-8_22",
+      "title": [
+        "Transforming the Nigerian Insurance Sector: A Study on Business Process Reengineering (BPR) Impact"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Systems, Decision and Control",
+        "The AI Revolution: Driving Business Innovation and Research"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1063/5.0200583",
+      "title": [
+        "Using business intelligence in accounting information technology reengineering processes in order to achieve key success factors"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIP Conference Proceedings",
+        "2ND INTERNATIONAL CONFERENCE ON ENGINEERING AND SCIENCE TO ACHIEVE THE SUSTAINABLE DEVELOPMENT GOALS"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1063/5.0198861",
+      "title": [
+        "Business process reengineering of Praktek Kerja Nyata registration at department of informatics in UMM"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIP Conference Proceedings",
+        "PROCEEDINGS OF THE 4TH INTERNATIONAL CONFERENCE ON GREEN CIVIL AND ENVIRONMENTAL ENGINEERING (GCEE 2023)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-031-41371-1_31",
+      "title": [
+        "SMEs’ Reengineering to Marketing in Supply Chain Sector by Focusing on Website Improvement"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Springer Proceedings in Business and Economics",
+        "Computational and Strategic Business Modelling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.32782/2663-5941/2024.6.1/13",
+      "title": [
+        "INTEGRATION OF PRODUCTION AND ASSEMBLY DESIGN PRINCIPLES AND CONCESSIONING OF PRODUCTION PROCESS REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Scientific notes of Taurida National V.I. Vernadsky University. Series: Technical Sciences"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1063/5.0185275",
+      "title": [
+        "Modeling business process reengineering in the digital era of industry 4.0"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIP Conference Proceedings",
+        "PROCEEDINGS OF THE INTERNATIONAL CONFERENCE ON MATHEMATICAL SCIENCES AND TECHNOLOGY 2022 (MATHTECH 2022): Navigating the Everchanging Norm with Mathematics and Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijass.2024.10068131",
+      "title": [
+        "Evaluating relationship amongst soluble solids content and twist in soft drinks for modelling technical variability and system reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Applied Systemic Studies"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.30525/978-9934-26-462-7-3",
+      "title": [
+        "Conceptualization of the implementation of benchmarking and reengineering in ensuring legal protection of trade secret and confidential information of business in Ukraine"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "TRANSFORMATION OF THE LEGAL SYSTEM AND HUMAN RIGHTS PROTECTION UNDER THE INFLUENCE OF MARTIAL LAW"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.33545/26648792.2024.v6.i1a.122",
+      "title": [
+        "Process reengineering role in achieving competitive primacy a case study in Al-Kufa ancient cement plant"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Research in Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-01"
+    },
+    {
+      "doi": "10.30525/978-9934-26-442-9-3",
+      "title": [
+        "SECTION 3. Conceptualization of the implementation of benchmarking and reengineering in ensuring legal protection of trade secret and confidential information of business in Ukraine"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "TRANSFORMATION OF THE LEGAL SYSTEM AND HUMAN RIGHTS PROTECTION UNDER THE INFLUENCE OF MARTIAL LAW"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.32782/2710-4656/2024.6/52",
+      "title": [
+        "REENGINEERING OF THE PUBLISHING INDUSTRY AS A RESULT OF THE INTRODUCTION OF ARTIFICIAL INTELLIGENCE TECHNOLOGIES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "\"Scientific notes of V. I. Vernadsky Taurida National University\", Series: \"Philology. Journalism\""
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.36994/2707-4110-2024-11-38-11",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING: THEORETICAL FOUNDATIONS AND METHODOLOGICAL APPROACHES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Visnyk Universytetu “Ukraina”"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This research paper reviews the theoretical foundations and \nmethodological approaches of Business Process Reengineering (BPR), \nemphasizing its instrumental role in organizational transformation. Through \na retrospective analysis, the study traces the theoretical evolution of BPR \nfrom its initial conceptualization by Hammer and Champy in the 1990s to its current applications, showing its paradigmatic shift from incremental \nimprovement methodologies toward radical organizational restructuring.\nThe methodology highlights the empirical value of integrating \nquantitative methods (statistical analysis, simulation modelling) with \nqualitative approaches (structured interviews, focus groups) in BPR \nimplementation. The research presents a systematic analysis of BPR \nmethodologies applicable in the Ukrainian business context: process \nanalysis and modelling, value chain analysis, activity-based costing (ABC), \n5S methodology, Six Sigma, total quality management (TQM), rapid \napplication development (RAD) and Lean approach. Each methodology is \ncritically evaluated on the basis of its objectives and implementation tools.\nThe study identifies significant barriers to the implementation of BPR \nin Ukrainian companies, including resource constraints, technical barriers, \norganizational resistance and insufficient theoretical understanding. \nParticular emphasis is placed on the emerging importance of \nEnvironmental, Social and Governance (ESG) paradigms in business \nreengineering, highlighting the imperative for Ukrainian companies to align \ntheir transformation initiatives with sustainable development principles.\nThe research concludes that while BPR is not new in economic theory, \nit remains the most viable tool for organizational adaptation to contemporary \nchallenges. The findings emphasize that effective implementation of BPR \nrequires a paradigm shift from incremental to revolutionary operational \nrestructuring, underpinned by systematic analysis and comprehensive \nreallocation of resources, while adhering to sustainable development \nprinciples.</jats:p>"
+    },
+    {
+      "doi": "10.21608/jes.2024.236725.1624",
+      "title": [
+        "THE EFFECT OF ADMINISTRATIVE PROCESSES REENGINEERING ON GREEN SUPPLY CHAIN MANAGEMENT A FIELD STUDY ON SOME RENEWABLE ENERGY COMPANIES IN SUEZ GULF"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Environmental Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-01"
+    },
+    {
+      "doi": "10.1007/978-3-031-37978-9_47",
+      "title": [
+        "Business Process Reengineering of the Existing Enterprise: Evolutionary and Radical Approaches"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Networks and Systems",
+        "Fundamental and Applied Scientific Research in the Development of Agriculture in the Far East (AFE-2022)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.36871/2618-9976.2024.04.006",
+      "title": [
+        "METHODS AND TOOLS FOR REENGINEERING BUSINESS PROCESSES OF ORGANIZATIONS IN THE CONSTRUCTION SECTOR"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SOFT MEASUREMENTS AND COMPUTING"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article reveals the concept of business process reengineering, defines the stages of its implementation within the framework of construction organizations, describes the methods of business process reengineering, conducts their comparative analysis aimed at identifying the advantages and disadvantages of each method, provides a description and comparative analysis of the most popular business process reengineering tools. Conclusions are drawn about the use of his methods and tools.</jats:p>"
+    },
+    {
+      "doi": "10.30525/978-9934-26-501-3-28",
+      "title": [
+        "HR BUSINESS PROCESS REENGINEERING: A STRATEGY FOR ADAPTING UKRAINIAN ENTERPRISES IN WARTIME"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Innovative educational technologies: European experience and its application in training in economics and management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/access.2024.3501392",
+      "title": [
+        "A Structural Anomaly-Trace Detection Approach and its Implications in Process Mining and Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Access"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.33979/2073-7432-2024-2-2(85)-26-31",
+      "title": [
+        "GLOBALTRADE AND ECONOMIC TRANSFORMATIONS - PREREQUISITES FOR THE REENGINEERING OF TRANSNATIONAL LOGISTICS COMMUNICATIONS IN RUSSIA (USING THE EXAMPLE OF THE EASTERN POLYGON)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "World of transport and technological machines"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article deals with topical issues of the modern national and transnational system of movement of goods and cargoes. Using the example of transportation of general raw materials along the Siberia - Far East latitudinal route, options for creating alternative cargo distribution hubs with a system of meridian corridors are proposed. Attempts have been made to integrate the tasks of stra-tegic development of the country's transport complex until 2030 with the tasks of economic diversification of the domestic economy and redistribution of commodity logistics.</jats:p>"
+    },
+    {
+      "doi": "10.36871/ek.up.p.r.2024.09.08.015",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING IN MARKETING AGENCY ACTIVITIES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EKONOMIKA I UPRAVLENIE: PROBLEMY, RESHENIYA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The activity of marketing agencies belongs to the sphere of services and consists in providing various marketing services to clients. The article characterises the activity of this agency, which includes conducting marketing research, developing marketing strategies, creating and promoting advertising campaigns, etc. This article considers the reengineering of business processes in the activities of the marketing agency. Business processes, business tasks of a marketing agency are described, their classification is given, organisational and logical and temporal links of business tasks solution, information flows and performance indicators are defined. The relevance of this study lies in the need for continuous improvement of marketing agency activities in the context of a rapidly changing market and technological innovation. Re-engineering of business processes in the activities of a marketing agency allows to increase the efficiency of work, optimise costs and improve the quality of services provided to customers. The results of the study can be useful for optimising the activities of marketing agencies and increasing their competitiveness in the service market.</jats:p>"
+    },
+    {
+      "doi": "10.1016/j.cclet.2023.108330",
+      "title": [
+        "Cost-effective natural graphite reengineering technology for lithium ion batteries"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chinese Chemical Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2024-01"
+    },
+    {
+      "doi": "10.18687/laccei2024.1.1.1609",
+      "title": [
+        "Reengineering in STEAM: Rehabilitation of a C3Tec Permanent Exhibition"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 22nd LACCEI International Multi-Conference for Engineering, Education and Technology (LACCEI 2024): “Sustainable Engineering for a Diverse, Equitable, and Inclusive Future at the Service of Education, Research, and Industry for a Society 5.0.”"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.36871/ek.up.p.r.2024.01.04.003",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING AS A TOOL OF MODERN MANAGEMENT IN BAKERY OPERATIONS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EKONOMIKA I UPRAVLENIE: PROBLEMY, RESHENIYA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article is devoted to the role of business process re-engineering as a tool of modern management in the activity of bakery. The article considers the relevance of reengineering methods, its practical significance for optimising business processes on the example of a bakery enterprise. This article also considers key aspects of effective marketing activity of a bakery. The article is of practical significance and can serve as a basis for the development and implementation of specific strategies and methods of reengineering in practice.</jats:p>"
+    },
+    {
+      "doi": "10.1039/d4re00313f",
+      "title": [
+        "Complete kinetic model and process reengineering of glyoxal oxidation by nitric acid in a capillary microreactor"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Reaction Chemistry &amp; Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The oxidation of glyoxal by nitric acid to glyoxylic acid is a complex process with parallel and consecutive side reactions.</jats:p>"
+    },
+    {
+      "doi": "10.2991/978-94-6463-570-6_133",
+      "title": [
+        "Study on Collaborative Governance Methods of University Research Projects Based on Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Economics, Business and Management Research",
+        "Proceedings of the 2024 5th International Conference on Management Science and Engineering Management (ICMSEM 2024)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.54708/2658-5014-siit-2024-no2-p3",
+      "title": [
+        "Reengineering of organization infrastructure on the example of a university department."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Systems Engineering and Information Technologies"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-031-31801-6_31",
+      "title": [
+        "Does Organizational Culture Moderate the Relationship Between Business Process Reengineering and Business Value in the UAE Banking Industry"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Studies in Big Data",
+        "Cyber Security Impact on Digitalization and Business Intelligence"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.36871/ek.up.p.r.2024.06.04.002",
+      "title": [
+        "CONCEPTUAL FOUNDATIONS OF REENGINEERING INFORMATION TECHNOLOGY AND BUSINESS PROCESSES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EKONOMIKA I UPRAVLENIE: PROBLEMY, RESHENIYA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article discusses the concepts of information technology (IT) reengineering and business process reengineering (BPR), their relationship and impact on organizational performance. The main stages and methods of reengineering are described, as well as examples of successful projects and problem solving in enterprises. It is shown that IT reengineering involves the analysis and redesign of existing IT systems and infrastructure to ensure they meet modern business requirements. The main stages of IT reengineering are explored, including analysis of the current state of IT systems, determination of business requirements, development of a new IT architecture, implementation and testing of new solutions, staff training and support for change.</jats:p>"
+    },
+    {
+      "doi": "10.36871/ek.up.p.r.2024.05.09.003",
+      "title": [
+        "MODERN APPROACHES TO BUSINESS PROCESS REENGINEERING PROJECT MANAGEMENT AT ENERGY INDUSTRY ENTERPRISES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EKONOMIKA I UPRAVLENIE: PROBLEMY, RESHENIYA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Business process re-engineering is a radical rethinking and restructuring of processes in an organisation to achieve significant improvements in their efficiency, productivity and quality. This approach allows energy companies to transform their operations to meet modern market requirements, changes in legislation and innovations. The article considers modern approaches of business process reengineering project management at the enterprises of the energy industry. The methods of business process re-engineering project management and the peculiarities of their application on the example of energy companies are analysed. Recommendations for realisation of the project of reengineering of business processes are developed.</jats:p>"
+    },
+    {
+      "doi": "10.36871/ek.up.p.r.2024.01.03.009",
+      "title": [
+        "REENGINEERING OF BUSINESS PROCESSES IN THE ACTIVITY OF A ROAD TRANSPORT ENTERPRISE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "EKONOMIKA I UPRAVLENIE: PROBLEMY, RESHENIYA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article is devoted to the analysis and application of the concept of business process reengineering in the activities of a road transport enterprise. The article discusses the main points of reengineering, its advantages and prospects in the context of the road transport industry. The article analyses current business processes at a road transport enterprise, identifies problem areas and obstacles that can be eliminated or optimised through the application of reengineering. The article offers practical recommendations for the successful implementation of business process reengineering to improve the efficiency of a road transport enterprise and may be useful for managers and specialists working in this field.</jats:p>"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.19030/rbis.v2i4.5472",
+      "title": [
+        "Reengineering as a Framework For Accounting Systems Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Review of Business Information Systems (RBIS)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p />"
+    },
+    {
+      "doi": "10.1108/09576059810234245",
+      "title": [
+        "Case study: business process reengineering in an international company"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Logistics Information Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Discusses a successful business process reengineering project that involved purchasing, receiving and accounts payable departments in an international firm in the USA. These three departments’ business processes, workflows and functions are described and analyzed. Methods for improving the existing workflows by developing an auto vouchering system and an electronic data interchange system are suggested. The cost and benefit analysis is applied to evaluate these methods. Implications and recommendations for the top management are discussed, including the insights of the cross‐functional design among departments, the empowerment of employees, the improvement of morale in the departments, the formulation of new policies and procedures for the new system, and the establishment of a separate database system for reference.</jats:p>",
+      "publication_date": "1998-10"
+    }
+  ]
+}

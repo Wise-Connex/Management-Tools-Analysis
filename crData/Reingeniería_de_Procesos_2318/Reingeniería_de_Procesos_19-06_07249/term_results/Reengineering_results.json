@@ -1,0 +1,122 @@
+{
+  "term": "Reengineering",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.33899/tanra.2019.163038",
+      "title": [
+        "Analysis of the Relationship Between Intellectual Capital and Process Reengineering: Field Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "TANMIYAT AL-RAFIDAIN"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-06"
+    },
+    {
+      "doi": "10.32689/2617-2224-2019-18-3-250-259",
+      "title": [
+        "Archetypical reengineering in the context of improving the activities of local self government bodies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Public management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.37134/jictie.vol6.7.2019",
+      "title": [
+        "Business Process Reengineering as the Current Best Methodology for Improving the Business Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal Of ICT In Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Currently, most companies or organizations can select a number of methodologies to improve their business processes, which include Six Sigma, Lean Thinking, Lean Six Sigma, Business Process Reengineering, Total Quality Management, Kaizen and Poka-Yoka. However, selecting an appropriate methodology has to be guided by the organization’s objectives. In this respect, the BPR is one of the best methodologies that can help organizations to ensure the continuity of their businesses so they will remain relevant for a long time. More importantly, the BPR can help members of organizations to rethink about their existing practices such as to introduce significant improvements to their business process. Based on a literature review, the researchers carried out a comparative analysis on four leading methodologies, namely BPR, Six Sigma, Lean Thinking, and Kaizen. The comparison of the methodologies were based on 11 aspects, namely the concept, effect, use of information technology, focus, involvement of workers, degree of change, level of risk, creation of a study, model, duration, and cost. In addition, the researchers elaborated the six phases of the implementation of BPR. The comparative analysis revealed that the BPR was the best among the four methodologies analysed, as it could help radically and holistically improve the overall business process of an organization. Thus, organizations that need such a change in their business processes can adopt the BPR as the most appropriate methodology than can help bring the intended improvements to their workplace.</jats:p>"
+    },
+    {
+      "doi": "10.11591/ijece.v9i3.pp2041-2048",
+      "title": [
+        "Reengineering framework for open source software using decision tree approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Electrical and Computer Engineering (IJECE)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>A Software engineering is an approach to software development. Once software gets developed and delivered, it needs maintenance. Changes in software incur due to new requirements of the end-user, identification of bug in software or failure to achieve system objective. It has been observed that successive maintenance in the developed software reduces software quality and degrades the performance of software system. Reengineering is an approach of retaining the software quality and improving maintainability of the software system. But the question arises “when to reengineer the software”. The paper proposed a framework for software reengineering process using decision tree approach which helps decision makers to decide whether to maintain or reengineer the software systems.</jats:p>"
+    },
+    {
+      "doi": "10.30837/2522-9818.2019.8.025",
+      "title": [
+        "ARCHITECTURE DEVELOPMENT OF SOFTWARE FOR MANAGING NETWORK PLANNING OF SOFTWARE PROJECT REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Innovative Technologies and Scientific Solutions for Industries"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5593/sgem2019/2.1/s07.082",
+      "title": [
+        "SPECIFIC ASPECTS OF THE OPTIMIZATION OF THE REENGINEERING PROCESSES OF THE DISTRIBUTED INFORMATION APPLICATIONS"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SGEM International Multidisciplinary Scientific GeoConference EXPO Proceedings",
+        "19th International Multidisciplinary Scientific GeoConference SGEM2019, Informatics, Geoinformatics and Remote Sensing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-06"
+    },
+    {
+      "doi": "10.23919/cisti.2019.8760700",
+      "title": [
+        "Proposal for the Reengineering of Processes in the Management of Information and Communication Technology"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2019 14th Iberian Conference on Information Systems and Technologies (CISTI)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-06"
+    },
+    {
+      "doi": "10.29331/jkraic.2019.6.19.3.67",
+      "title": [
+        "A Study on the Introduction Reengineering to Support Measures and Consulting method for FTA Utilization of SMEs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Korea Research Association of International Commerce"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-06"
+    },
+    {
+      "doi": "10.30929/1995-0519.2019.3.130-139",
+      "title": [
+        "РЕІНЖИНІРИНГ ГРАФІЧНИХ БАЗ ДАНИХ У СЕРЕДОВИЩІ ВІДКРИТОЇ СИСТЕМИ АВТОМАТИЗОВАНОГО ПРОЕКТУВАННЯ BRL-CAD. МОДЕЛЮВАННЯ СТРУКТУРНОЇ ЧАСТИНИ"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transactions of Kremenchuk Mykhailo Ostrohradskyi National University"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2019-06"
+    }
+  ]
+}

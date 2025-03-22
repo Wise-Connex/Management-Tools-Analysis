@@ -1,0 +1,33 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/978-90-481-3144-0_8",
+      "title": [
+        "Molecular Modeling and Reengineering of A3 Adenosine Receptors"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "A3 Adenosine Receptors from Cell Biology to Pharmacology and Therapeutics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/gsis.2009.5408114",
+      "title": [
+        "A study on Business Process Reengineering and organization models based on CAS theory"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2009 IEEE International Conference on Grey Systems and Intelligent Services (GSIS 2009)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-11"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0167-7136(85)90062-9",
+      "title": [
+        "Electronic publishing technical scenario: Implications for book, newspaper and periodical publishers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer Compacts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-06"
+    },
+    {
+      "doi": "10.1007/bf02705825",
+      "title": [
+        "Distortions, factor proportions and efficiency losses: Argentina in the latin american scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Weltwirtschaftliches Archiv"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-06"
+    },
+    {
+      "doi": "10.1016/0375-9601(85)90075-1",
+      "title": [
+        "The periodic-chaotic sequences in chemical reactions: A scenario close to homoclinic conditions?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1985-06"
+    }
+  ]
+}

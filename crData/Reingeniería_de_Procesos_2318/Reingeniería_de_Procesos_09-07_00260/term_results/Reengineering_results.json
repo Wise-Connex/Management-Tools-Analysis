@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1080/15507394.2009.10012439",
+      "title": [
+        "Reengineering the Teaching Machine: Big Questions from the Inside Out and the Outside In"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Religion &amp; Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-07"
+    },
+    {
+      "doi": "10.1109/tlt.2009.14",
+      "title": [
+        "Authoring and Reengineering of IMS Learning Design Units of Learning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Learning Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-07"
+    },
+    {
+      "doi": "10.1016/j.jfoodeng.2008.12.020",
+      "title": [
+        "Business process reengineering of a supply chain and a traceability system: A case study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Food Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-07"
+    }
+  ]
+}

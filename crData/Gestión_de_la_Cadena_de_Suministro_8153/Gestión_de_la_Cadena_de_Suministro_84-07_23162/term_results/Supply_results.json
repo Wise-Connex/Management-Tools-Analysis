@@ -1,0 +1,539 @@
+{
+  "term": "Supply",
+  "total_results": 41,
+  "processed_count": 41,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1017/cbo9781139167826.010",
+      "title": [
+        "How the lungs supply enough oxygen"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Scaling"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1016/0140-9883(84)90012-4",
+      "title": [
+        "Uncertainty in hydroelectric power supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.4286/ikakikaigaku.54.7_352",
+      "title": [
+        "Safety Consideration for Medical-gas Supply System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JAPANES JOURNAL OF MEDICAL INSTRUMENTATION"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1016/s1474-6670(17)61466-6",
+      "title": [
+        "Optimized Pumping in Water Supply Systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.3362/0262-8104.1984.026",
+      "title": [
+        "Shallow wells for low-cost water supply in Tanzania"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Waterlines"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0141-1187(84)90019-1",
+      "title": [
+        "Proceedings of the Twenty-Fourth Public Water Supply Engineers' Conference: Unconventional treatment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Ocean Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.3362/0262-8104.1984.022",
+      "title": [
+        "Reflections on the International Drinking Water Supply and Sanitation Decade"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Waterlines"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1111/j.1748-121x.1984.tb00440.x",
+      "title": [
+        "The doctor and the Supply of Goods and Services Act 1982"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Legal Studies"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Down the centuries, it has been considered that in general a doctor is only under a duty to exercise reasonable care in treating a patient. While the latter is entitled to a high standard of treatment, results are not guaranteed. In the United States, courts have imposed more onerous obligations, but in England there has been no real challenge to this position until now. The doctor's liability in contract has always had the potential of going beyond mere negligence, but the general concentration on tort actions and understandable uncertainties as to the scope of contractual liability meant that this potential was never explored.</jats:p>",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1016/0250-6874(84)85012-x",
+      "title": [
+        "Integrated cascade of photovoltaic cells as a power supply for integrated circuits"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Sensors and Actuators"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1016/0014-2921(84)90008-4",
+      "title": [
+        "Supply shocks and the interdependence of macroeconomic stability under flexible exchange rates"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Economic Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1021/cen-v062n029.p018",
+      "title": [
+        "Business"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1172/jci111396",
+      "title": [
+        "Iron supply for erythropoiesis in the rabbit."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Clinical Investigation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.2307/1349247",
+      "title": [
+        "Estimating Slaughter Supply Response for U.S. Cattle and Hogs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "North Central Journal of Agricultural Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1063/1.1137874",
+      "title": [
+        "Digital low noise dc power supply for tunneling spectrometers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Review of Scientific Instruments"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Digital control of a mercury battery low-noise dc power supply for an electron tunneling spectrometer is described. Advantages are reduced data accumulation time, fully automated spectrometer operation, and signal processing flexibility. Results are illustrated with an inelastic electron tunneling spectroscopic (IETS) study of n-propyltrichlorosilane [CH3–(CH2)2–Si–Cl3] adsorbed from vapor on a thin dc plasma-grown aluminum oxide film.</jats:p>",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1109/tia.1984.4504512",
+      "title": [
+        "Power Transistorized Uninterruptible Power Supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Industry Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1111/j.1468-0270.1984.tb01641.x",
+      "title": [
+        "Paul Craig Roberts and Supply‐Side Economics: U.S.A. and U.K."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economic Affairs"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1146/annurev.nu.04.070184.000245",
+      "title": [
+        "Government Regulation of the Integrity of the Food Supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annual Review of Nutrition"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1080/01603477.1984.11489465",
+      "title": [
+        "Involuntary Unemployment and the Respecified labor Supply Curve"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Post Keynesian Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1016/s1474-6670(17)61471-x",
+      "title": [
+        "Decomposition, Coordination and Aggregation in the Optimal Control of a Large Water Supply Network"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1007/bf00235287",
+      "title": [
+        "Sensory supply of the anterior uvea: A light and electron microscope study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Experimental Brain Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.2214/ajr.143.1.53",
+      "title": [
+        "Portal blood supply of liver metastases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Roentgenology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1057/jors.1984.122",
+      "title": [
+        "Gas Supply and Storage Planning: A Simulation Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Operational Research Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1007/bf01427683",
+      "title": [
+        "Multipurpose criteria of selecting the method of regulating the delivery of pumping stations of a water-supply canal"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hydrotechnical Construction"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1007/bf01287372",
+      "title": [
+        "Alternative approaches to the estimation of economic impacts resulting from supply constraints"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Annals of Regional Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1097/00006534-198407000-00024",
+      "title": [
+        "Use of the Greater Omentum as a Vascular Supply for Free-Flap Transfer"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Plastic and Reconstructive Surgery"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1152/ajpcell.1984.247.1.c83",
+      "title": [
+        "Effect of mitochondrial clustering on O2 supply in hepatocytes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Physiology-Cell Physiology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Isolated rat hepatocytes were treated with digitonin to selectively disrupt the plasma membrane and allow study of the O2 dependence of mitochondria within the cell cytoskeleton, but without cytosol. Half-maximal oxidation of cytochrome c occurred at 2.0 microM O2 in treated cells incubated under State 3 conditions, whereas in intact cells it was 6.0 microM and in isolated mitochondria (State 3) 0.69 microM. the intermediate value for treated cells indicates that both the geometry of mitochondrial packing and the intracellular diffusion coefficient are important in determining intracellular mitochondrial O2 dependence. Analysis of intracellular diffusion, assuming that the mitochondrial clustering increases the effective mitochondrial radius, indicates that an intracellular diffusion coefficient of between 10(-6) and 4 X 10(-6) cm2 . s-1 and an effective mitochondrial radius of approximately 2 micron would account for the observed intracellular O2 dependence of mitochondrial function. </jats:p>",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1057/jors.1984.129",
+      "title": [
+        "Determining the Optimal Reserve Capacity Margin in Electricity Supply: A Note"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Operational Research Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1016/0306-4565(84)90016-0",
+      "title": [
+        "Effects of acclimation temperature on routine metabolism muscle mitrochondrial volume density and capillary supply in the elver (Anguilla anguilla L.)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Thermal Biology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1111/j.1399-3054.1984.tb06340.x",
+      "title": [
+        "Gas and ion exchanges in wheat roots after nitrogen supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physiologia Plantarum"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Wheat (<jats:italic>Triticum aestivum</jats:italic> L. cv. Sicco) was grown for 10 days on CaSO<jats:sub>4</jats:sub> (0.5 mmol dm<jats:sup>−3</jats:sup>) and then exposed for 2 days to various nitrogenous salts in an apparatus designed to measure the exchange of O<jats:sub>2</jats:sub> and CO<jats:sub>2</jats:sub>, at constant pH and pNO<jats:sub>3</jats:sub>. Nitrate salts (KNO<jats:sub>3</jats:sub> at 0.5 and Ca(NO<jats:sub>3</jats:sub>)<jats:sub>2</jats:sub> at 0.25 and 1 mmol dm<jats:sup>−3</jats:sup>) caused a transient increase (40–50%) in both O<jats:sub>2</jats:sub>uptake and CO<jats:sub>2</jats:sub> release by the roots. The rate of gas exchange was nearly doubled by (NH<jats:sub>4</jats:sub>)<jats:sub>2</jats:sub>SO<jats:sub>4</jats:sub> (0.25 mmol dm<jats:sup>−3</jats:sup>). Respiration was constant in roots kept on CaSO<jats:sub>4</jats:sub> or given KCl. In CaSO<jats:sub>4</jats:sub> the content of water‐soluble sugars in roots fell by about 15% day<jats:sup>−1</jats:sup>. The pletion of soluble sugars was higher with NO<jats:sub>3</jats:sub><jats:sup>−</jats:sup> and NH<jats:sub>4</jats:sub><jats:sup>+</jats:sup>(40 and 30% day<jats:sup>−1</jats:sup>, respectively). At most 10 to 20% of the released CO<jats:sub>2</jats:sub> is involved in HCO<jats:sub>3</jats:sub>N<jats:sup>−</jats:sup>NO<jats:sub>3</jats:sub><jats:sup>−</jats:sup> exchange and this fraction represents at most 10% of the total carbon imported or 30% of the net carbon gain by the roots. The contribution of the non‐phosphorylating “alternative” route to total root respiration was 15% in CaSO<jats:sub>4</jats:sub>and over 40% with NH<jats:sub>4</jats:sub><jats:sup>+</jats:sup> In NO<jats:sub>3</jats:sub><jats:sup>−</jats:sup> the roots respired exclusively via the cytochrome route. Increased respiration at decreased efficiency in roots of NH<jats:sub>4</jats:sub><jats:sup>+</jats:sup>plants may be due to an overproduction of NADH. Our data support the contention that excess NADH as a “by‐product” of the formation of carboxylates in the citrate cycle can be disposed of in an alternative respiratory pathway during NH<jats:sub>4</jats:sub><jats:sup>+</jats:sup>nutrition.</jats:p>",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1177/109114218401200309",
+      "title": [
+        "Book Review : Supply-Side Economics: A Critical Appraisal. Edited by Richard H. Fink. Frederick, MD: University Publications of America, 1982. Pp. xxiv, 488"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Public Finance Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1002/bit.260260716",
+      "title": [
+        "Use of catalase from <i>Escherichia coli</i> in model experiments for oxygen supply of microorganisms with hydrogen peroxide"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biotechnology and Bioengineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>A catalase has been purified from aerobically grown <jats:italic>Escherichia coli</jats:italic> K12. The enzyme exhibits unorthodox properties compared with catalyse from bovine liver and seems to be identical to hydroperoxidase II from <jats:italic>E. coli</jats:italic>. A mathematical model is presented which makes it possible to calculate the steady‐state concentration of hydrogen peroxide in an open system. The model has been verified experimentally. It has been shown that the catalase from <jats:italic>E. coli</jats:italic> is better suited than the bovine liver enzyme for oxygen supply to cell suspensions using hydrogen peroxide.</jats:p>",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1136/hrt.52.1.72",
+      "title": [
+        "Use of radionuclide labelled microspheres to show the distribution of the pulmonary perfusion with multifocal pulmonary blood supply."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Heart"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1007/bf00346050",
+      "title": [
+        "Glucuronidation in rat intestinal epithelial cells"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Archives of Toxicology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1111/j.1365-2133.1984.tb15593.x",
+      "title": [
+        "Blood supply can be increased in rabbit skin by a stable prostacyclin derivative without potentiation of plasma extravasation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "British Journal of Dermatology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1007/bf01908138",
+      "title": [
+        "Cell size and capillary supply of the hypertensive rat heart: quantitative study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Basic Research in Cardiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1080/03680770.1983.11897286",
+      "title": [
+        "The effects of turbulence on phosphorus supply in a shallow bay of Lake Memphremagog"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SIL Proceedings, 1922-2010"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1093/oxfordjournals.aob.a086771",
+      "title": [
+        "Effects of Nutrient Supply on Seed Growth of Field Bean (Vicia faba L.). 1. Effects of Different Sulphur and Methionine Regimes on Cotyledon Growth, Protein and Uncombined Amino Acids In vivo"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of Botany"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1093/oxfordjournals.aob.a086770",
+      "title": [
+        "Effects of Nutrient Supply on Seed Growth of Field Bean (Vicia faba L.). 1. Effects of Different Sulphur and Methionine Regimes on Cotyledon Growth, Protein and Uncombined Amino Acids In vitro"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of Botany"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1111/j.1532-950x.1984.tb00787.x",
+      "title": [
+        "The Effect of 360° Gastric Volvulus on the Blood Supply of the Nondistended Normal Dog Stomach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Veterinary Surgery"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Eighteen dogs were divided into three groups, each containing three volvulus and three control dogs. The stomachs of the volvulus dogs were rotated 360°, sutured in position, and kept decompressed by a Foley catheter placed in the fundus. Control dogs underwent the same manipulation, except that the stomach was replaced to normal position. One dog in each group was evaluated at 4, 8, and 12 hours. Evaluation consisted of SC<jats:sup>46</jats:sup> microsphere injection to determine percent cardiac output to various stomach regions, and gross and microscopic changes in the stomach and other tissues drained by the portal system. Cardiac output to the control stomachs exceeded the volvulus stomachs by fivefold. Time was not a significant factor. Edema was present throughout the volvulus stomach. The most severe histologic changes, such as hemorrhage, were seen in the greater curvature of volvulus stomachs. Other portal tissues were grossly and histologically normal. Three additional dogs were evaluated 1 week after creation and reduction of a 12 hour volvulus; the stomachs were normal indicating reversibility of pathologic changes. This study demonstrates abnormal blood flow in rotated nondistended stomachs. Anatomic repositioning should take place as soon as possible in the treatment of gastric dilation volvulus.</jats:p>",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1021/i200026a007",
+      "title": [
+        "Structuring of optimal solution space in a certain class of system synthesis. A case study of heat and power supply systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Industrial &amp; Engineering Chemistry Process Design and Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1177/32.7.6736625",
+      "title": [
+        "Quantification of the intestinal peptide-containing innervation: length density of nerve fibers and total length of nerve supply to the single villus/crypt unit."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Histochemistry &amp; Cytochemistry"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The application of a morphometric method to the quantification of peptide-containing nerves in the gut is described. It allows a simple estimation of the nerve fiber supply per unit volume of tissue (length density) and the calculation of the total nerve fiber supply per unit of intestinal mucosa (villus/crypt unit). </jats:p>",
+      "publication_date": "1984-07"
+    }
+  ]
+}

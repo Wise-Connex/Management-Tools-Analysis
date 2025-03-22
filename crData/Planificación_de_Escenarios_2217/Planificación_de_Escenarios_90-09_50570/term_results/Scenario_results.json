@@ -1,0 +1,99 @@
+{
+  "term": "Scenario",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/bf02127036",
+      "title": [
+        "A scenario on the evolving road service informatics in Europe"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-09"
+    },
+    {
+      "doi": "10.4324/9780203013052.ch13",
+      "title": [
+        "Innovation rate and change of economic systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Theory of Technological Change and Economic Growth"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-09"
+    },
+    {
+      "doi": "10.1111/j.1095-8312.1990.tb00833.x",
+      "title": [
+        "Robertsonian chromosome formation and fixation: the genomic scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biological Journal of the Linnean Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-09"
+    },
+    {
+      "doi": "10.1111/j.1540-5915.1990.tb00332.x",
+      "title": [
+        "An Information‐Maximizing Interactive Procedure for Scenario Probability Elicitation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Decision Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>ABSTRACT</jats:title><jats:p>Various approaches have been proposed for determining scenario probabilities to facilitate long‐range planning and decision making. These include microlevel approaches based on the analysis of relevant underlying events and their interrelations and direct macrolevel examination of the scenarios. The determination of a unique solution demands excessive consistency and time requirements on the part of the expert and often is not guaranteed by these procedures. We propose an interactive information maximizing scenario probability query procedure (IMQP) that exploits the desirable features of existing methods while circumventing their drawbacks. The approach requires elicitation of cardinal probability assessments and bounds for only marginal and first‐order conditional events, as well as ordinal probability comparisons (probability orderings or rankings) of carefully selected scenario subsets determined using concepts of information theory. Guidelines for implementation based on simulation results are also developed. A goal program for handling inconsistent ordinal probability responses is also integrated into the procedure. The results of behavioral experimentation (which compared our approach to Expert Choice and showed that the IMQP was viable) compared favorably in terms of ease of use and time requirements, and works best for problems with a large number of scenarios. Design modifications to IMQP learned from the experiments, such as incorporating interactive graphics, are also in progress.</jats:p>",
+      "publication_date": "1990-09"
+    },
+    {
+      "doi": "10.1016/0029-5493(90)90212-g",
+      "title": [
+        "A two-dimensional analysis of in-vessel buoyancy driven flows during a degraded core scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-09"
+    },
+    {
+      "doi": "10.1016/0377-2217(90)90373-j",
+      "title": [
+        "Choice of a long-term strategy for the national electricity supply via scenario analysis and multi-criteria analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-09"
+    },
+    {
+      "doi": "10.1016/0737-6782(90)90014-6",
+      "title": [
+        "Long-range scenario research as a factor in long-range consumer marketing planning Kenneth Traynor and Susan C. Traynor, The journal of consumer marketing (Winter 1990), pp. 5–14 (GPL)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Product Innovation Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-09"
+    }
+  ]
+}

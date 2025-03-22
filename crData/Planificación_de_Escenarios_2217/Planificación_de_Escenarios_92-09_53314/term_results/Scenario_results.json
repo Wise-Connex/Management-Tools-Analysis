@@ -1,0 +1,68 @@
+{
+  "term": "Scenario",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/7033025",
+      "title": [
+        "A pore-level scenario for the development of mixed-wettability in oil reservoirs"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/10174572",
+      "title": [
+        "A pore-level scenario for the development of mixed-wettability in oil reservoirs"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5860/choice.30-0207",
+      "title": [
+        "Cosmography: a posthumous scenario for the future of humanity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Choice Reviews Online"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-09"
+    },
+    {
+      "doi": "10.1117/12.137837",
+      "title": [
+        "Electron gun IR scenario simulator"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Characterization, Propagation, and Simulation of Sources and Backgrounds II"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-09"
+    },
+    {
+      "doi": "10.1016/0038-1098(92)90907-q",
+      "title": [
+        "Cooper pairing in the van hove singularity scenario of high-temperature superconductivity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Solid State Communications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-09"
+    }
+  ]
+}

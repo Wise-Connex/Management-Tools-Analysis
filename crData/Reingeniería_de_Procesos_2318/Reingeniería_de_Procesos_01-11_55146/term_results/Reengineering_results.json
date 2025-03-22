@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/02686900110403163",
+      "title": [
+        "Reengineering the internal auditing organization"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Managerial Auditing Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Internal auditing has during the 1990s become a dynamic discipline. Most of this change has been the result of the progressive approach taken by the leaders of the profession in applying the technological and behavioral innovations and advances in thinking to an operation that has tended in the past to be conservative and reactionary. The new approaches are substantial in number and individual in context. The trend is to group the following areas: philosophical, methodological and operational. The constantly evolving changes require that internal auditing itself be constantly evaluated to ensure that it is functioning efficiently and effectively.</jats:p>",
+      "publication_date": "2001-11"
+    },
+    {
+      "doi": "10.1016/s0360-8352(01)00048-1",
+      "title": [
+        "Process analysis and reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Industrial Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-11"
+    }
+  ]
+}

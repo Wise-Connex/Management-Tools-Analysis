@@ -1,0 +1,472 @@
+{
+  "term": "Planning",
+  "total_results": 36,
+  "processed_count": 36,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ad0410891",
+      "title": [
+        "PLANNING AND ORGANIZING SHELTER NON-OPERATIONAL ACTIVITY PROGRAMS"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.21236/ad0415040",
+      "title": [
+        "PLANNING FOR SHELTER USE IN SAN DIEGO"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1088/0031-9112/14/6/016",
+      "title": [
+        "Laboratory Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Bulletin"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/3007365",
+      "title": [
+        "Planning for an Expanding Electricity Supply System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "OR"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/3007381",
+      "title": [
+        "Elements of Production Planning and Control"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "OR"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1038/1981238a0",
+      "title": [
+        "Planning a New Laboratory"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1080/00221473.1963.10621709",
+      "title": [
+        "Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Health, Physical Education, Recreation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/973167",
+      "title": [
+        "Power Structure and Decision Making in City Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Public Administration Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/1423846",
+      "title": [
+        "Site Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Architectural Education (1947-1974)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/2146139",
+      "title": [
+        "Central Planning in Poland, <i>by John Michael Montias</i>"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Political Science Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1175/1520-0477-44.6.355",
+      "title": [
+        "Flight Planning with a Digital Computer"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bulletin of the American Meteorological Society"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Safety, passenger comfort, and operating economy require that commercial airline flights be preflight planned. There are many route and altitude combinations between origination and destination. Manual selection of the best is tedious, costly in man-hours, and never perfect. A digital computer can do the job quickly, using few man-hours, with a higher order of perfection. American Airlines contracted with IBM to develop jointly a flight planning program for a 60,000 digit IBM 1620 computer. The program was placed into operation on 4 February 1962 and quickly expanded to produce 5000 lines of flight plans for over 200 trips daily. Operating cost savings are on the order of several million dollars annually. The program continuously surrounds an aircraft with a set of prognostic temperatures and winds valid by the craft's clocks at the plane's altitude. The program also selects the optimum route and the optimum altitude profile on the selected route. Flight plans on the optimum route at the optimum altitude are automatically delivered to the flight crew and the controlling dispatchers.</jats:p>",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/1169728",
+      "title": [
+        "Curriculum Planning and Development: A Review of Reviews"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Review of Educational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1111/j.1467-9574.1963.tb00315.x",
+      "title": [
+        "Project‐planning methoden"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Statistica Neerlandica"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Summary.</jats:title><jats:p>Project planning methods</jats:p><jats:p>The purport of the article is to give a general survey of methods of project planning such as Pert, Critical path method, etc. In the first place a definition is given of what is understood by project in this respect.</jats:p><jats:p>The possibility to represent such a project by a network of certain characteristics is specified more closely and it is examined what restrictions this imposes in practice.</jats:p><jats:p>With regard to the planning of such projects three possibilities, dependent on the available data for and the objectives of the planning, are to be distinguished, i.e.:</jats:p><jats:p>\n<jats:list list-type=\"explicit-label\">\n<jats:list-item><jats:p>The activity durations are supposed to be fixed and given numbers and the planning aims at minimal total project duration.</jats:p></jats:list-item>\n<jats:list-item><jats:p>The activity durations are supposed to be stochastic variables having given distributions and the planning aims at a total project duration which is to be realised with satisfactory probability.</jats:p></jats:list-item>\n<jats:list-item><jats:p>The activity durations are supposed to be variables that can move within certain given limits and a cost function for each of these variables is given; this time the planning aims at activity durations which are such that the total project cost is minimal.</jats:p></jats:list-item>\n</jats:list>\n</jats:p><jats:p>For each of these three possibilities we discussed solution methods. Some flow‐diagrams are added as a demonstration of the fact that the numerical procedures are greatly apt to be executed with the help of an electronic computer.</jats:p>",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1080/00325481.1963.11692932",
+      "title": [
+        "Your Finances: Financial Planning for the Medical Practitioner"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Postgraduate Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2136/sh1963.2.0008",
+      "title": [
+        "National Technical Work‐Planning Conference"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Soil Survey Horizons"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1126/science.140.3573.1291",
+      "title": [
+        "Population Planning: Missions Told That U.S. Is Now Receptive To Requests for Some Assistance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2753/pet1061-1991060211",
+      "title": [
+        "The Use of the Balance Method in Economic Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Problems in Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1007/bf01935577",
+      "title": [
+        "Requirements planning of production components and spare parts at a farm equipment manufacturing company"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BIT"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1080/00185868.1963.12082552",
+      "title": [
+        "<i>Trends in food service</i>: Food Service Facilities Require Careful Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hospital Topics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1080/00185868.1963.12082548",
+      "title": [
+        "association of western hospitals: Coordinating Care, Planning for Continuity Recurring Topics at 33rd AWH Convention"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hospital Topics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1086/641450",
+      "title": [
+        "<i>Planning Theory</i>. Preston P. Le Breton , Dale A. Henning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Social Service Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.3102/00346543033003330",
+      "title": [
+        "Chapter X: Curriculum Planning and Development: A Review of Reviews"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Review of Educational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1111/j.1467-8543.1963.tb00978.x",
+      "title": [
+        "PLANNING AND INCOMES POLICY IN FRANCE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "British Journal of Industrial Relations"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1126/science.140.3573.1291.a",
+      "title": [
+        "Population Planning: Missions Told That U.S. Is Now Receptive To Requests for Some Assistance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1126/science.140.3573.1291-a",
+      "title": [
+        "Population Planning: Missions Told That U.S. Is Now Receptive To Requests for Some Assistance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1111/j.1467-8500.1963.tb02156.x",
+      "title": [
+        "ECONOMIC PLANNING—SOME STRUCTURAL AND PROCEDURAL ASPECTS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Australian Journal of Public Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1057/jors.1963.35",
+      "title": [
+        "Elements of Production Planning and Control"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Operational Research Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1057/jors.1963.19",
+      "title": [
+        "Planning for an Expanding Electricity Supply System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Operational Research Society"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1111/j.1813-6982.1963.tb02954.x",
+      "title": [
+        "AN APPLICATION OF LINEAR PROGRAMMING TO FARM PLANNING*"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "South African Journal of Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/3000708",
+      "title": [
+        "John Michael Montias, Central Planning in Poland. New Haven and London: Yale University Press, 1962. xv + 410 pp. $7.50."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Slavic Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1016/s0002-8223(21)18983-7",
+      "title": [
+        "Long-Range Planning for Food Service Layouts"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Dietetic Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1177/003693306300800603",
+      "title": [
+        "A Critique of the Use of Patient-Movement Studies in the Planning of Mental Health Services"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Scottish Medical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1259/0007-1285-36-426-426",
+      "title": [
+        "Megavoltage Treatment Planning and the Use of Xeroradiography"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The British Journal of Radiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.2307/621065",
+      "title": [
+        "Soils, Slopes and Land Use in a Part of South-Western Nigeria: Some Implications for the Planning of Agricultural Development in Inter-Tropical Africa"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transactions and Papers (Institute of British Geographers)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.1017/s0041977x00065289",
+      "title": [
+        "Albert Waterston Planning in Morocco: organization and implementation. (The Economic Development Institute, International Bank for Reconstruction and Development.) viii, 72 pp., map. Baltimore: Johns Hopkins Press, 1962. (Distributed in G.B. by Oxford University Press. 20s.)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bulletin of the School of Oriental and African Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    },
+    {
+      "doi": "10.3138/cmlr.19.4.44",
+      "title": [
+        "Quelques Livres Sur L’enseignement Des Langues Vivantes; Didactique Des Langues Vivantes; Language and Language Learning; How to Teach Foreign Languages Effectively; Audio-Visual Techniques in Teaching Foreign Languages; Audio-Visual Techniques in Teaching Foreign Languages; The Language Laboratory and Modern Language Teaching; Teaching French: An Introduction to Applied Linguistics; The Teaching of Modern Languages; Learning Modern Languages; A Language Teacher’s Guide; Teaching a Modern Language; How to Teach a Foreign Language; Modern Languages for Modern Schools; Twentieth Century Modern Language Teaching; Planning the Modern Language Lesson"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Canadian Modern Language Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1963-06"
+    }
+  ]
+}

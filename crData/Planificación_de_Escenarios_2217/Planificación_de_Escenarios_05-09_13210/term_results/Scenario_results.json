@@ -1,0 +1,513 @@
+{
+  "term": "Scenario",
+  "total_results": 40,
+  "processed_count": 40,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/mitp.2005.123",
+      "title": [
+        "Scenario management from reactivity to proactivity"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IT Professional"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.21236/ada445202",
+      "title": [
+        "Scenario-Based Projections of Wounded-in-Action Patient Condition Code Distributions"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.2172/925358",
+      "title": [
+        "Initial VHTR accident scenario classification: models and data."
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.chs.2005.07.003",
+      "title": [
+        "Scenario planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical Health &amp; Safety"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1142/9789812701749_0039",
+      "title": [
+        "NUCLEOSYNTHESIS AND SEARCH FOR SUPERHEAVY ELEMENTS IN NATURE: THE POSSIBLE SCENARIO"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Exotic Nuclei Exon2004"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.2118/96552-ms",
+      "title": [
+        "Biodiversity Management in Oil and Gas Sector—Indian Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE Asia Pacific Health, Safety and Environment Conference and Exhibition"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Biodiversity management is a fast emerging challenging issue shaping the future of global exploration of oil and gas industry. The objective of the paper is to envision this \"highly sensitive challenge\" as an \" appealing sustainable opportunity\" and thereby balance the scales of ‘environment’ and ‘development’ in this sector. This paper is based on experiences of a global oil and gas major, Oil and Natural Gas Corporation Limited (ONGC), India in operating in such sensitive areas and an in-depth study of various International case studies, policies and publications.</jats:p>\n               <jats:p>The paper highlights the increasing need for factoring biodiversity management as a key corporate issue in the risk management of E&amp;P business, gives a broad overview of experiences /constraints/critical issues of operation in such environments, relevant National legal framework and upcoming revisions, ONGC's Corporate HSE policies, best administrative and operational Management practices and attempts to chart a roadmap in dealing with the biodiversity issues faced by the oil and gas sector in the Indian context.</jats:p>\n               <jats:p>Though various global initiatives have called for \"multi stakeholder partnerships\", \"Impact mitigation strategies\" and \"Integrated Environment &amp; Social Impact Assessment process\", this paper strongly advocates the following two strategies The need for development of tailor made \"performance rating\" matrix model for Biodiversity Management for oil and gas sector to assess/measure the actual strategies adopted by a company in its attempt to reduce its operational footprints in sensitive environments. In the absence such rating systems, the Government, Industry and Conservation organizations shall continue to grapple over a series of bargains over accessibility, funding and conservation options in these areasFormation of \"Merger initiatives\" in India as \"Sustainable Development Partnerships\" under aegis of Ministry with various stakeholders as members</jats:p>\n               <jats:p>These shall Pave way for a consistent policy in dealing with bio diversity management in this sectorEnsure transparent workable relationships between industry/government/public to achieve sustainable equitable sharing of benefits.</jats:p>",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.2523/96552-ms",
+      "title": [
+        "Biodiversity Management in Oil and Gas Sector-Indian Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE Asia Pacific Health, Safety and Environment Conference and Exhibition"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/s11253-006-0005-9",
+      "title": [
+        "Smoothing Problem in Anticipating Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ukrainian Mathematical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1103/physrevd.72.066013",
+      "title": [
+        "Kalb-Ramond field interactions in a braneworld scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4028/www.scientific.net/kem.293-294.635",
+      "title": [
+        "Multidisciplinary Software Developments in a Power Transformers Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Key Engineering Materials"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Power transformers’ failures carry great costs to electric companies. To diminish this problem in four working 40 MVA transformers, the authors have implemented the measurement system of a failure prediction tool, which is the basis of a predictive maintenance infrastructure. The prediction models obtain their inputs from sensors, whose values must be conditioned, sampled and filtered before feeding the forecasting algorithms. Applying Data Warehouse tech- niques, the models have been provided with an abstraction of sensors the authors have called Virtual Cards. By means of these virtual devices, models have access to clean data, both fresh and historic, from the set of sensors they need. Besides, several characteristics of the data flow coming from the Virtual Cards, such as the sample rate or the set of sensors itself, can be dynamically reconfigured. A replication scheme was implemented to allow the distribution of demanding processing tasks and the remote management of the prediction applications.</jats:p>"
+    },
+    {
+      "doi": "10.1038/laban0905-19a",
+      "title": [
+        "Response to Protocol Review Scenario: Agree to disagree"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1038/laban0905-19b",
+      "title": [
+        "Response to Protocol Review Scenario: A word from USDA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1002/chin.200540217",
+      "title": [
+        "The Spanish Presence in the Molecular Sieve Technology Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ChemInform"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>For Abstract see ChemInform Abstract in Full Text.</jats:p>",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1038/laban0905-17b",
+      "title": [
+        "Response to Protocol Review Scenario: Training opportunity missed"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1088/6102/44/3/573",
+      "title": [
+        "Statefinder Parameters for Coupled Quintessence Scenario in a Power Law Case"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communications in Theoretical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1590/s0066-782x2005001600001",
+      "title": [
+        "What is the current scenario for heart failure in Brazil?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Arquivos Brasileiros de Cardiologia"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4028/0-87849-976-8.635",
+      "title": [
+        "Multidisciplinary Software Developments in a Power Transformers Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Key Engineering Materials",
+        "Damage Assessment of Structures VI"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1038/laban0905-18",
+      "title": [
+        "Response to Protocol Review Scenario: Stand your ground"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1109/mcom.2005.1509973",
+      "title": [
+        "An end-to-end service provisioning scenario for the residential environment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Communications Magazine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1007/bf03187130",
+      "title": [
+        "Nitrogen use scenario in India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science in China Series C Life Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1103/physrevd.72.066012",
+      "title": [
+        "Observable signals in a string inspired axion-dilaton background and Randall-Sundrum scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1063/1.2031978",
+      "title": [
+        "Basic structures of the Shilnikov homoclinic bifurcation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chaos: An Interdisciplinary Journal of Nonlinear Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>We find numerically small scale basic structures of homoclinic bifurcation curves in the parameter space of the Chua circuit. The distribution of these basic structures in the parameter space and their geometrical properties constitute a complete homoclinic bifurcation scenario of this system. Furthermore, these structures and the scenario are theoretically demonstrated to be generic to a large class of dynamical systems that presents, as the Chua circuit, Shilnikov homoclinic orbits. We classify the complexity of primary and subsidiary homoclinic orbits by their order given by the number of their returning loops. Our results confirm previous predictions of structures of homoclinic bifurcation curves and extend this study to high order primary orbits. Furthermore, we identify accumulations of bifurcation curves of subsidiary homoclinic orbits into bifurcation curves of both primary and subsidiary orbits.</jats:p>",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1103/physrevd.72.053007",
+      "title": [
+        "Neutrino masses and lepton-number violation in the littlest Higgs scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.21437/interspeech.2005-706",
+      "title": [
+        "The Swedish NICE corpus - spoken dialogues between children and embodied characters in a computer game scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Interspeech 2005"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/1086297.1086321",
+      "title": [
+        "Intra-task scenario-aware voltage scheduling"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2005 international conference on Compilers, architectures and synthesis for embedded systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/j.nucengdes.2005.03.003",
+      "title": [
+        "Effect of ventilation procedures on the behaviour of a fire compartment scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1007/s00186-005-0444-3",
+      "title": [
+        "Worst-Case Scenario Portfolio Optimization: a New Stochastic Control Approach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Mathematical Methods of Operations Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/j.conengprac.2004.12.011",
+      "title": [
+        "A knowledge-based approach for retrieving scenario-specific medical text documents"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Control Engineering Practice"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/j.techfore.2005.01.001",
+      "title": [
+        "Scenarios and the growth of knowledge: Notes on the epistemic element in scenario building"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/j.limno.2005.06.006",
+      "title": [
+        "Land use scenario development and stakeholder involvement as tools for watershed management within the Havel River Basin"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Limnologica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1002/ange.200500955",
+      "title": [
+        "Lewis Base Promoters in the Pauson–Khand Reaction: A Different Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Angewandte Chemie"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/j.physleta.2005.05.105",
+      "title": [
+        "Quantum critical scenario from an effective classical renormalization group treatment close to and below four dimensions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1007/bf03187134",
+      "title": [
+        "Emission scenario of non-CO2 gases from energy activities and other sources in China"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science in China Series C Life Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1142/s0217732305017470",
+      "title": [
+        "LEPTON FLAVOR VIOLATING SIGNALS OF THE NEUTRAL SCALARS FROM TOPCOLOR SCENARIO AT HADRON COLLIDERS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Modern Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> In the context of topcolor-assisted techicolor (TC2) models, we study the lepton flavor violating (LFV) signals of the neutral scalars (the top-pion and the top-Higgs boson) at hadron colliders via considering their contribution to the processes [Formula: see text] (l = μ or e). We find that the LFV signals of these new particles cannot be detected at the Tevatron with [Formula: see text], while might be observable in the future LHC with [Formula: see text]. </jats:p>",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1002/anie.200500955",
+      "title": [
+        "Lewis Base Promoters in the Pauson–Khand Reaction: A Different Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Angewandte Chemie International Edition"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.1016/j.atmosenv.2005.05.039",
+      "title": [
+        "Spatial and temporal variability of PM levels and composition in a complex summer atmospheric scenario in Barcelona (NE Spain)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Atmospheric Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    },
+    {
+      "doi": "10.22146/gamaijb.5580",
+      "title": [
+        "Influence of Employee Involvement in Total Productive Maintenance Practices on Job Characteristics: The Malaysian Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gadjah Mada International Journal of Business"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The main goal of this study is to examine whether the extent of involvement in Total Productive Maintenance (TPM) practices has a positive effect on job characteristics. Data was gathered from a sample of 184 respondents derived from manufacturing companies in Malaysia. Results from the regression analyses revealed that the extent of employee’s involvement in TPM practices is positively related to the five core job dimensions (skill variety, task identity, task significance, autonomy, and feedback). Theoretical and managerial implications of the findings are discussed.</jats:p>"
+    },
+    {
+      "doi": "10.1088/1475-7516/2005/09/006",
+      "title": [
+        "Secular increase of the astronomical unit and perihelion precessions as tests of the Dvali–Gabadadze–Porrati multi-dimensional braneworld scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Cosmology and Astroparticle Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1103/physreve.72.031402",
+      "title": [
+        "Change in relaxation scenario at the order-disorder transition of a colloidal fluid of hard spheres seen from the Gaussian limit of the self-intermediate scattering function"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review E"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/01596300500200086",
+      "title": [
+        "Split Frame Thinking and Multiple Scenario Awareness: How boys’ game expertise reshapes possible structures of sense in a digital world"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Discourse: Studies in the Cultural Politics of Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-09"
+    }
+  ]
+}

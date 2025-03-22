@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1093/screen/16.3.29",
+      "title": [
+        "Writing as Auto-Visualisation: Notes on a Scenario and Film of Peter Pan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Screen"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1975-09"
+    },
+    {
+      "doi": "10.1086/181901",
+      "title": [
+        "On the lower mass limit for the carbon detonation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1975-09"
+    }
+  ]
+}

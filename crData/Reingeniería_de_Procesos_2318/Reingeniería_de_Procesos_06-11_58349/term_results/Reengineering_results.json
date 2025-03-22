@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.12987/yale/9780300110753.003.0015",
+      "title": [
+        "Reengineering JPL"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Into the Black"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-11"
+    },
+    {
+      "doi": "10.1016/j.autcon.2005.10.014",
+      "title": [
+        "Construction management process reengineering: Organizational human resource planning for multiple projects"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Automation in Construction"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-11"
+    },
+    {
+      "doi": "10.1016/j.preteyeres.2006.08.001",
+      "title": [
+        "Maculoplasty for age-related macular degeneration: Reengineering Bruch's membrane and the human macula"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Progress in Retinal and Eye Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-11"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "term": "Scenario",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1515/9780804766296-013",
+      "title": [
+        "Chapter Nine. California in 2030: The Best-Case Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Burden of Support"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-03"
+    },
+    {
+      "doi": "10.1515/9780804766296-005",
+      "title": [
+        "Chapter One. California in 2030: The Worst-Case Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Burden of Support"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-03"
+    },
+    {
+      "doi": "10.1007/bf01254117",
+      "title": [
+        "U.S. population in the 21st century: Which scenario is reasonable?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Population and Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-03"
+    },
+    {
+      "doi": "10.1017/s0140525x00078286",
+      "title": [
+        "“Small” gender differences on the SAT: A scenario about social origins"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Behavioral and Brain Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-03"
+    },
+    {
+      "doi": "10.1103/physrevd.41.1698",
+      "title": [
+        "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>τ</mml:mi></mml:math>decay in the massive-neutrino scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

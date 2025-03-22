@@ -1,0 +1,59 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.11113/jt.v77.6047",
+      "title": [
+        "THE INFLUENCE OF IT INFRASTRUCTURE IN BUSINESS PROCESS REENGINEERING PROJECT PERFORMANCE IN ISLAMIC BANKING."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Teknologi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The purpose of this study is to investigate the relationship between IT infrastructure and performance of Islamic banking branches in Kedah from the perspective of Maqasid al-Shari’ah. IT infrastructure is critical factor to Business Process Re-Engineering (BPR). Maqasid al-Shari’ah is defined in terms of educating individual, establishing justice and promoting public interest. The questionnaires were sent directly to banks’ branches and collected by hand. 59 questionnaires were returned; however, only 54 samples were used for further data analysis. The data were analyzed using the simple regression analysis. Collectively, the result showed that IT infrastructure significantly influences the overall performance of Islamic banking branches in Kedah from the perspective of Maqasid al-Shari’ah as well as in terms of educating individual, establishing justice and promoting the public interest. The outcomes of this study provide an important understanding to both managers and researchers about the relationship between IT infrastructure and bank performance from the perspective of Maqasid al-Shari’ah. </jats:p>"
+    },
+    {
+      "doi": "10.1145/2816839.2816880",
+      "title": [
+        "A Framework for Reengineering Web applications into Linked Data based on MDA"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the International Conference on Intelligent Information Processing, Security and Advanced Communication"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-11"
+    },
+    {
+      "doi": "10.17265/1548-6591/2015.11.002",
+      "title": [
+        "Factors Influencing Performance of Business Process Reengineering Projects in Banks in Kenya: Case of Kenya Commercial Bank"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of US-China Public Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-11"
+    },
+    {
+      "doi": "10.1061/(asce)me.1943-5479.0000335",
+      "title": [
+        "Matrix Organization Process Reengineering for Construction Firms"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management in Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-11"
+    }
+  ]
+}

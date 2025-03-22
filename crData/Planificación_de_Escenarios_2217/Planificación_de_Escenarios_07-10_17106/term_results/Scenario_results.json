@@ -1,0 +1,631 @@
+{
+  "term": "Scenario",
+  "total_results": 48,
+  "processed_count": 48,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.17487/rfc5026",
+      "title": [
+        "Mobile IPv6 Bootstrapping in Split Scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1201/9781498712859-9",
+      "title": [
+        "Enzyme Applications in Leather Processing: Current Scenario and Future Outlook"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Enzyme Mixtures and Complex Biosynthesis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/re.2007.50",
+      "title": [
+        "Persona-Scenario-Goal Methodology for User-Centered Requirements Engineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "15th IEEE International Requirements Engineering Conference (RE 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/rev.2007.5",
+      "title": [
+        "Scenario Similarity Map for Visualizing Classified Scenarios"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Second International Workshop on Requirements Engineering Visualization (REV 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1016/s0262-4079(07)62692-x",
+      "title": [
+        "“Scary” scenario as CO2 levels increase more rapidly than predicted"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New Scientist"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/re.2007.42",
+      "title": [
+        "Localisation and Requirement Engineering in Context to Indian Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "15th IEEE International Requirements Engineering Conference (RE 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/milcom.2007.4454802",
+      "title": [
+        "Next-Generation Mobility for Advanced Scenario Roaming"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "MILCOM 2007 - IEEE Military Communications Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/milcom.2007.4454750",
+      "title": [
+        "A Performance Study of ±1 Steganalysis Employing a Realistic Operating Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "MILCOM 2007 - IEEE Military Communications Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/cw.2007.60",
+      "title": [
+        "A Generic Stochastic Method to Arrange Virtual Creatures in a 3D-Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 International Conference on Cyberworlds (CW'07)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.59962/9780774854627-008",
+      "title": [
+        "Life in 2030: The Sustainability Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Life in 2030"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/bibe.2007.4375735",
+      "title": [
+        "Reducing Folding Scenario Candidates in Pseudoknots Detection Using PLMM_DPSS Algorithm Integrated With Energy Filters"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE 7th International Symposium on BioInformatics and BioEngineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/ictai.2007.106",
+      "title": [
+        "Detection of Negative Emotional States in Real-World Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "19th IEEE International Conference on Tools with Artificial Intelligence(ICTAI 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/iscit.2007.4392251",
+      "title": [
+        "Adaptive radio scenario evaluation and FMW generation methods for cognitive UWB radio systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 International Symposium on Communications and Information Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1016/j.ejor.2006.07.045",
+      "title": [
+        "Robust simulation with a base environmental scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1080/10131750701456288",
+      "title": [
+        "Percy Baneshik Memorial Lecture Measure for Measure: a very South African scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "English Academy Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/re.2007.27",
+      "title": [
+        "The Mobile Scenario Presenter: A Tool for in situ Requirements Discovery with Scenarios"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "15th IEEE International Requirements Engineering Conference (RE 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1177/0019466220070310",
+      "title": [
+        "The Emerging Poverty Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Indian Economic Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1063/1.2800997",
+      "title": [
+        "Scenario of electropoling on the molecular scale within a stoichiometric lithium niobate"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Physics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Macroscopic formation scenario of periodically poled lithium niobates (PPLNs) had been evidenced through various in situ optical means, though with their molecular details remaining unclear. The traditional charge pumping model does not naturally correlate to the observed coercive field or to the molecular-level physics. Here, numerical efforts based on the first-principles quantum mechanics were launched from the energetic perspective and morphologies of energy barriers on the molecular scale were exposed. It appeared that to achieve a stoichiometric PPLN at observed low coercive field strength of 200V∕mm, the expanding inversion front ought to possess a domain wall width of the order of 20 primitive cells (or on the order of 10nm).</jats:p>",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/have.2007.4371600",
+      "title": [
+        "Evaluation of an haptic Step-Guidance algorithm through a teaching 2D/3D path scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Workshop on Haptic, Audio and Visual Environments and Games"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1177/0019556120070403",
+      "title": [
+        "Tribal Scenario in the Context of Economic Liberalisation and Globalisation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Indian Journal of Public Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1016/j.enpol.2007.04.034",
+      "title": [
+        "The 2°C scenario—A sustainable world energy perspective"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1017/s1355770x07003841",
+      "title": [
+        "Infectious disease, development, and climate change: a scenario analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environment and Development Economics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>We study the effects of development and climate change on infectious diseases in Sub-Saharan Africa. Infant mortality and infectious disease are closely related, but there are better data for the former. In an international cross-section, per capita income, literacy, and absolute poverty significantly affect infant mortality. We use scenarios of these three determinants and of climate change to project the future incidence of malaria, assuming it to change proportionally to infant mortality. Malaria deaths will first increase, because of population growth and climate change, but then fall, because of development. This pattern is robust to the choice of scenario, parameters, and starting conditions; and it holds for diarrhoea, schistosomiasis, and dengue fever as well. However, the timing and level of the mortality peak is very sensitive to assumptions. Climate change is important in the medium term, but dominated in the long term by development. As climate can only be changed with a substantial delay, development is the preferred strategy to reduce infectious diseases even if they are exacerbated by climate change. Development can, in particular, support the needed strengthening of disease control programs in the short run and thereby increase the capacity to cope with projected increases in infectious diseases over the medium to long term. This conclusion must, however, be viewed with caution, because development, even of the sort envisioned in the underlying socio-economic scenarios, is by no means certain.</jats:p>",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1016/j.physleta.2007.05.055",
+      "title": [
+        "-supersymmetric quantum mechanics in a scenario with Lorentz-symmetry violation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1007/s10750-007-0756-9",
+      "title": [
+        "Impact scenario for the invasive red king crab Paralithodes camtschaticus (Tilesius, 1815) (Reptantia, Lithodidae) on Norwegian, native, epibenthic prey"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hydrobiologia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/re.2007.48",
+      "title": [
+        "Exploring Scenario Forms and Ways of Use to Discover Requirements on Airports that Minimize Environmental Impact"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "15th IEEE International Requirements Engineering Conference (RE 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.5109/9332",
+      "title": [
+        "Water Quality Conservation in an Agricultural Pond using an Ecosystem Model and Scenario Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Faculty of Agriculture, Kyushu University"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/iswcs.2007.4392445",
+      "title": [
+        "Iterative Joint Channel Estimation and Multiuser Detection for Wireless MIMO-OFDM Systems: Performance in a Real Indoor Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 4th International Symposium on Wireless Communication Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1016/j.enpol.2007.04.024",
+      "title": [
+        "Energy saving and CO2 mitigation through restructuring Jordan's transportation sector: The diesel passenger cars scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1109/fie.2007.4417818",
+      "title": [
+        "A scenario for collaborative learning in virtual engineering laboratories"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 37th annual frontiers in education conference - global engineering: knowledge without borders, opportunities without passports"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1142/9789812770318_0028",
+      "title": [
+        "COMPARISON OF TECHNOLOGY FORECASTING METHODS FOR MULTI-NATIONAL ENTERPRISES: THE CASE FOR A DECISION-FOCUSED SCENARIO APPROACH"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Management of Technology",
+        "Challenges in the Management of New Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1142/9789812770318_0008",
+      "title": [
+        "THE USE OF SCENARIO ANALYSIS IN STUDYING EMERGING TECHNOLOGIES — CASE GRID COMPUTING"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Management of Technology",
+        "Challenges in the Management of New Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1142/s0218126607003915",
+      "title": [
+        "ANALYSIS AND TOOLS FOR THE DESIGN OF VLIW EMBEDDED SYSTEMS IN A MULTI-OBJECTIVE SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Circuits, Systems and Computers"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The use of Application-Specific Instruction-set Processors (ASIP) in embedded systems is a solution to the problem of increasing complexity in the functions these systems have to implement. Architectures based on Very Long Instruction Word (VLIW) have found fertile ground in multimedia electronic appliances thanks to their ability to exploit high degrees of Instruction Level Parallelism (ILP) with a reasonable trade-off in complexity and silicon costs. In this case the ASIP specialization involves a complex interaction between hardware- and software-related issues. In this paper we propose tools and methodologies to cope efficiently with this complexity from a multi-objective perspective. We present EPIC-Explorer, an open platform for estimation and system-level exploration of an EPIC/VLIW architecture. We first analyze the possible design objectives, showing that it is necessary, given the fundamental role played by the VLIW compiler in instruction scheduling, to evaluate the appropriateness of ILP-oriented compilation on a case-by-case basis. Then, in the architecture exploration phase, we will use a multi-objective genetic approach to obtain a set of Pareto-optimal configurations. Finally, by clustering the configurations thus obtained, we extract those representing possible trade-offs between the objectives, which are used as a starting point for evaluation via more accurate estimation models at a subsequent stage in the design flow. </jats:p>",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1159/000110487",
+      "title": [
+        "7,528 Patients Treated with PCI – A Scandinavian Real-Life Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cardiology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>&lt;i&gt;Aim:&lt;/i&gt; Analyze clinical, temporal and procedural characteristics from 7,528 consecutive percutaneous coronary intervention (PCI) patients in one of the largest published contemporary European PCI-database during a 6-year period. &lt;i&gt;Method:&lt;/i&gt; Retrospective study design. Period: 1998–2004. Temporal and referral changes in a Danish PCI-registry were analyzed. Demographic and angiographic variables were compared with data from randomized clinical trials, US-registries and current guidelines. &lt;i&gt;Results:&lt;/i&gt; 22,214 patients were examined with coronary angiography and 7,528 patients were treated with PCI. The annual number of PCI’s increased by 15%. Over time, the fraction of patients with risk factors increased, median age increased from 61 to 64 years and the coronary pathology was significantly worsened. ST-elevation myocardial infarction patients primarily admitted to hospitals without facilities for primary angioplasty, were less likely to receive primary PCI. Baseline-data were in general in par with randomized clinical trial study populations and large-scale US data-registries. Interestingly, 14% of all PCI-procedures were performed on patients with a clinical presentation, for which coronary artery bypass grafting would be recommended by guidelines. &lt;i&gt;Conclusion:&lt;/i&gt; PCI is performed in an increasingly sicker population, but generally in accordance with randomized trials and similar to US tradition. However, 14% were treated with PCI even though coronary artery bypass grafting was recommended by guidelines.</jats:p>"
+    },
+    {
+      "doi": "10.1007/s10509-007-9638-x",
+      "title": [
+        "A new evolutionary scenario of intermediate-mass star-formation revealed by multi-wavelength observations of OMC-2/3"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astrophysics and Space Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-01"
+    },
+    {
+      "doi": "10.1002/zamm.200710348",
+      "title": [
+        "Von Kármán equations with uncertain input data and the worst scenario method"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ZAMM - Journal of Applied Mathematics and Mechanics / Zeitschrift für Angewandte Mathematik und Mechanik"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>A general coercive boundary value problem for the von Kármán system is considered. Both the perpendicular and in‐plane loading of the plate is uncertain, being contained in some compact set of admissible input data. Then the worst scenario problem is defined, taking the possible nonuniqueness of the solution of the von Kármán system into consideration. A proof is presented for the existence of the worst scenario.</jats:p>",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1007/s00464-007-9605-1",
+      "title": [
+        "Three different types of surgeon-specific stress reactions identified by laparoscopic simulation in a virtual scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Surgical Endoscopy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1177/154193120705100210",
+      "title": [
+        "Cognitive Task Analysis of Future Air Traffic Control Concepts: The TCAS Downlink Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Human Factors and Ergonomics Society Annual Meeting"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Traffic Collision Avoidance System (TCAS) is a flightdeck-based technology aimed at helping aircraft avoid proximate traffic. TCAS information has traditionally not been presented to the air traffic controller. A 2002 German midair collision was triggered, in part, by incompatible air traffic control (ATC) and TCAS clearances. Largely in response to this accident, attention has focused in recent years on the potential benefits of “downlinking” to the controller TCAS Resolution Advisories (RAs) in near real time. Such presentations, it is thought, could benefit situation awareness and joint decision making between controller and pilot. </jats:p><jats:p> A cognitive task analysis (CTA) was recently conducted into the present-day and future RA Downlink (RAD) operational concepts. On the basis of functional task description and cognitive walkthroughs, CTA assessed the impact of various specific non-nominal events (e.g. pilot reports RA, but does not initiate an evasive maneuver). Finally, a set of cognitive elements and potential error mechanisms was identified. </jats:p>",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1117/12.736646",
+      "title": [
+        "A multi-sensor scenario for coastal surveillance"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Unmanned/Unattended Sensors and Sensor Networks IV"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1086/521215",
+      "title": [
+        "The Width of a Solar Coronal Mass Ejection and the Source of the Driving Magnetic Explosion: A Test of the Standard Scenario for CME Production"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.2175/193864707786619378",
+      "title": [
+        "Definition of a Natural Condition Baseline Scenario for the Klamath River of Oregon and California"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Water Environment Federation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.5394/kinpr.2007.31.8.629",
+      "title": [
+        "Development of Collision Scenario-Based Evaluation System for the Cognitive Performance of Marine Officers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Korean navigation and port research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1378/chest.132.4_meetingabstracts.571a",
+      "title": [
+        "OUTCOME OF BAG-VALVE MASK (BVM) VENTILATION PERFORMED BY MEDICAL HOUSE STAFF TRAINED USING A COMPUTERIZED PATIENT SIMULATOR (CPS) WITH SCENARIO-BASED TRAINING (SBT) DURING EMERGENCY ENDOTRACHEAL INTUBATION (EEI)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chest"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1016/j.jog.2007.02.002",
+      "title": [
+        "A new fault rupture scenario for the 2003 Mw 6.6 Bam earthquake, SE Iran: Insights from the high-resolution QuickBird imagery and field observations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Geodynamics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1016/j.techfore.2006.12.002",
+      "title": [
+        "An integrated scenario analysis for the metal coating sector in Europe"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1086/521013",
+      "title": [
+        "Flame Evolution During Type Ia Supernovae and the Deflagration Phase in the Gravitationally Confined Detonation Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1177/154193120705101832",
+      "title": [
+        "Effect of Audio-Visual Alerts on Situation Awareness and Workload in a Net-Centric Warfare Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Human Factors and Ergonomics Society Annual Meeting"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The goal of net-centric warfare (NCW) is to give soldiers an information advantage that leads to a war-fighting advantage. However, the inherent nature of NCW systems is often quite complex and dynamic, which leads to impaired situation awareness (SA) and heightened levels of mental workload for the human operator. The following study investigated the moderating effects of automated audio-visual alerts on user SA and perceived workload while using a net-centric warfare system. Twenty-six participants observed battlefield scenarios on a simulation of the common NCW system, Force XXI Battle Command Brigade and Below (FBCB2), and were required to pay attention and remember critical events (e.g., the appearance of an enemy unit). The system was presented with or without an automated alerting aid that provided combined auditory and visual alerts when certain critical events occurred (i.e., System to Help Implement and Empower Leader Decisions; SHIELD). Results revealed that contrary to current assumptions the use of an automated alerting aid did not impact user SA; however, perceived workload was significantly lower with the addition of the alerting aid. This work demonstrates that the automated alerts used in this NCW experiment do not affect SA (either positively or negatively) and decreased perceived workload. </jats:p>",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.1029/2007jd008753",
+      "title": [
+        "Climate response to projected changes in short‐lived species under an A1B scenario from 2000–2050 in the GISS climate model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Geophysical Research: Atmospheres"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>We investigate the climate forcing from and response to projected changes in short‐lived species and methane under an A1B scenario from 2000‐2050 in the GISS climate model. We present a meta‐analysis of new simulations of the full evolution of gas and aerosol species and other existing experiments with variations of the same model. The comparison highlights the importance of several physical processes in determining radiative forcing, especially the effect of climate change on stratosphere‐troposphere exchange, heterogeneous sulfate‐nitrate‐dust chemistry, and changes in methane oxidation and natural emissions. However, the impact of these fairly uncertain physical effects is substantially less than the difference between alternative emission scenarios for all short‐lived species. The net global mean annual average direct radiative forcing from the short‐lived species is .02 W/m<jats:sup>2</jats:sup> or less in our projections, as substantial positive ozone forcing is largely offset by negative aerosol direct forcing. Since aerosol reductions also lead to a reduced indirect effect, the global mean surface temperature warms by ∼0.07°C by 2030 and ∼0.13°C by 2050, adding 19% and 17%, respectively, to the warming induced by long‐lived greenhouse gases. Regional direct forcings are large, up to 3.8 W/m<jats:sup>2</jats:sup>. The ensemble‐mean climate response shows little regional correlation with the spatial pattern of the forcing, however, suggesting that oceanic and atmospheric mixing generally overwhelms the effect of even large localized forcings. Exceptions are the polar regions, where ozone and aerosols may induce substantial seasonal climate changes.</jats:p>",
+      "publication_date": "2007-10"
+    },
+    {
+      "doi": "10.14358/pers.73.10.1179",
+      "title": [
+        "River Floodplain Vegetation Scenario Development Using Imaging Spectroscopy Derived Products as Input Variables in a Dynamic Vegetation Model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Photogrammetric Engineering &amp; Remote Sensing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-10"
+    }
+  ]
+}

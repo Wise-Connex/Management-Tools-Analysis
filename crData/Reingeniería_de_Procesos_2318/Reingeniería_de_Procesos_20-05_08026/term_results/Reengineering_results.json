@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/dessert50317.2020.9125059",
+      "title": [
+        "Probabilistic approach for evaluation of organization of enterprise reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2020 IEEE 11th International Conference on Dependable Systems, Services and Technologies (DESSERT)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-05"
+    },
+    {
+      "doi": "10.1109/usbereit48449.2020.9117622",
+      "title": [
+        "Application Of Business Process Reengineering And Simulation Methods"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2020 Ural Symposium on Biomedical Engineering, Radioelectronics and Information Technology (USBEREIT)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-05"
+    },
+    {
+      "doi": "10.34925/eip.2020.115.2.216",
+      "title": [
+        "The role of information technologies in reengineering business processes of agro-industrial enterprises"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Экономика и предпринимательство"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>В статье представлены результаты исследования современных концепций совершенствования бизнес-процессов, которые позволяют сделать вывод о их возможности взаимоинтеграции, схожим функционале и инструментарии. Ведущая роль отводится реинжинирингу бизнеспроцессов, который является синтезом методов совершенствования деятельности большинства субъектов предпринимательства агропромышленного комплекса РФ. В целях оптимизации бизнеспроцессов предприятиям АПК следует большее внимание уделять автоматизации и стандартизации административных процессов посредством использования ERP-систем, позволяющих достичь высокого уровня функционирования бизнес-процессов путем минимизации материальных и временных издержек предприятия. Основным инструментарием для крупных агропромышленных холдингов видится внедрение функционала BPM-систем. Решения этого класса призваны решать стратегические задачи бизнеса и позволяют углубиться в бизнес-процессы, гибко менять их в соответствии с изменениями конъюнктуры рынка. Результаты анализа могут быть использованы в процессах разработки и реализации системы управления бизнес-процессами предприятий агропромышленного сектора экономики Российской Федерации.</jats:p>\n                                                                                            <jats:p>The article presents the results of research on modern concepts of improving business processes, which allow us to conclude that they can be integrated, with similar functionality and tools. The leading role is assigned to business process reengineering, which is a synthesis of methods for improving the activities of most business entities in the agro-industrial complex of the Russian Federation. In order to optimize business processes, agribusiness enterprises should pay more attention to automation and standardization of administrative processes through the use of ERP systems that allow them to achieve a high level of business processes functioning by minimizing material and time costs of the enterprise. The main tool for large agro-industrial holdings is the introduction of BPM systems functionality. Solutions of this class are designed to solve strategic business problemsand allow you to delve into business processes, flexibly change them in accordance with changes in market conditions. The results of the analysis can be used in the development and implementation of a business processmanagement system for enterprises in the agro-industrial sector of the Russian economy.</jats:p>",
+      "publication_date": "2020-05"
+    },
+    {
+      "doi": "10.1108/tg-01-2020-0017",
+      "title": [
+        "Reengineering as a strategic stance for e-governance success - mediating role of core competencies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transforming Government: People, Process and Policy"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-subheading\">Purpose</jats:title><jats:p>The purpose of this paper is to investigate how to strategically reengineer the government processes in e-governance to ensure the implementation of future-oriented and sustainable e-governance across developing countries.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title><jats:p>This study has used learning from the theory of strategic intent. The present study has been conducted using exploratory sequential mixed method research. The findings of exploratory study, supported by extant literature on reengineering, core competencies and e-governance success, forms the basis for proposed research framework, which is empirically tested with 359 respondents from the two government departments in India using partial least square technique.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Findings</jats:title><jats:p>The findings of this study suggested that it is needed to reengineer the government processes with a view to develop the core competencies to ensure the long-term success of e-governance implementation in terms of future-orientation and sustainability. The reengineering transformations are found to have significant positive effect on the core competencies development that, in turn, has a positive effect on the success of e-governance.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Research limitations/implications</jats:title><jats:p>The limitation of this study is the small sample size of qualitative and quantitative study owing to the missing willingness of government officials to respond to the research instruments.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Practical implications</jats:title><jats:p>The findings of this study would help e-governance practitioners to focus on the key strategic areas which will ensure the long-term success of e-governance and make the same valuable for the current and upcoming generations.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-subheading\">Originality/value</jats:title><jats:p>This study made an original contribution to e-governance literature by developing and validating a theoretical model for empirically assessing the strategic effect of business process reengineering changes on e-governance success (in terms of future orientation and sustainability) through mediating variable, core competencies.</jats:p></jats:sec>",
+      "publication_date": "2020-06"
+    }
+  ]
+}

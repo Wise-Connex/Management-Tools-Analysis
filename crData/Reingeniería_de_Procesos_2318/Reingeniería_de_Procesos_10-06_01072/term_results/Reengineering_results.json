@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/j.is.2009.06.003",
+      "title": [
+        "Semantic reengineering of business processes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-06"
+    },
+    {
+      "doi": "10.1108/17506161011047361",
+      "title": [
+        "Gaming and simulation for transforming and reengineering government"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transforming Government: People, Process and Policy"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>In the process of transformation, governments have to deal with a host of stakeholders and complex organizational and technical issues. In this viewpoint paper, an argument is made in favour of using gaming and simulation as tools designed to aid the transformation and reengineering of government. Based on the argument, a research agenda is proposed.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The approach taken is a combination of literature research, argumentation and illustrations.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>Simulation and gaming have the potential to be used to activate and involve stakeholders at all layers of government in transformational efforts. These tools should be closely connected to visualization and interaction options, to facilitate communication and participation. Because the various stakeholders involved have different views and different approaches, it is both necessary and difficult to involve them in identifying problems and developing solutions. Given the considerable potential of these tools, more research is needed on the use and development of participative simulation and gaming tools.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>Although gaming and simulation have been used in many domains, they have yet to be tried in the area of e‐government. More research is needed into the instruments that can help governments in their transformation processes.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>E‐government projects should be supported by tools such as gaming and simulation to facilitate the participation, involvement of and communication among the various relevant stakeholders, to create a shared understanding of the problems and of future scenarios.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The primary value of this viewpoint lies in the analysis of the potential opportunities of gaming and simulation in terms of transforming and reengineering government and the research agenda that follows from this analysis.</jats:p></jats:sec>",
+      "publication_date": "2010-06"
+    },
+    {
+      "doi": "10.1111/j.1745-6622.2010.00287.x",
+      "title": [
+        "Thoughts on <i>The Squam Lake Report</i>: Reengineering the Financial System to Better Withstand Extreme Volatility"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Corporate Finance"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The most important contributions of <jats:italic>The Squam Lake Report</jats:italic> are its analysis and recommendations not for eliminating the possibility of future crises, but for enabling the financial system to better withstand the bouts of volatility that are a natural outcome of market forces. In this regard, the Report's most promising proposal is its prescription that systemically important financial firms issue “contingent capital” that converts from debt to equity when a financial firm's solvency is at risk.</jats:p><jats:p>But if contingent capital is a good idea, the author argues that the Squam Lake proposal should be complemented by three features not addressed by the report. First, systemically important financials must be <jats:italic>required</jats:italic>, not just encouraged, to issue contingent capital. Second, contingent capital should not count toward normal regulatory capital requirements but function as a supplemental cushion against the possibility of crisis. Third, financial institutions should be prohibited from holding contingent capital securities issued by other financials so that losses are channeled outside of the financial system. In addition, the actual conversion of contingent capital should not depend on regulators' declaration of a financial crisis, but should occur once critical capital thresholds are breached.</jats:p>",
+      "publication_date": "2010-06"
+    },
+    {
+      "doi": "10.1038/nm.2170",
+      "title": [
+        "Organ reengineering through development of a transplantable recellularized liver graft using decellularized liver matrix"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nature Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-07"
+    }
+  ]
+}

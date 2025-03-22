@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/13527599910288993",
+      "title": [
+        "Organizational culture, TQM, and business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Team Performance Management: An International Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study explores organizational culture by examining the relationship between total quality management (TQM) and culture, and specifically three elements of a culture related to quality improvement: customer focus, employee involvement, and continuous improvement. Process reengineering is used as an alternative management initiative. A survey of 220 mid‐level professionals in 123 organizations was conducted to determine the extent to which there is a relation between the presence of these cultural elements, and the presence of TQM reengineering. The success of process improvement through either TQM or reengineering is used as a vehicle for examining the importance of these cultural elements. The importance of organizational culture and the implications for managers are discussed.</jats:p>",
+      "publication_date": "1999-08"
+    },
+    {
+      "doi": "10.1097/00001786-199908000-00006",
+      "title": [
+        "Reengineering the Role of a Nurse Manager in a Patient-Centered Care Organization"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Nursing Care Quality"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-08"
+    },
+    {
+      "doi": "10.2308/iace.1999.14.3.465",
+      "title": [
+        "ITT Automotive North America: A Case Study Requiring Use of Benchmarking, Activity/Process Analysis, and Reengineering Concepts"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Issues in Accounting Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Managerial and cost accounting textbook discussions of the “process view” of activity-based costing (ABC) often fail to communicate how companies use activity-based accounting, benchmarking, continuous improvement and reengineering techniques to improve their business processes. Such knowledge is valuable to students who will enter globally competitive markets. ITT Automotive North America is a business case that gives the reader the benchmark figures, cost and other process-performance data, and activity descriptions necessary to complete a project to improve a company's process to acquire and pay for small-dollar goods and services. Because of the cross-functional nature of the issues involved in process improvement, the case would also fit well in either an auditing or information systems course.</jats:p>",
+      "publication_date": "1999-08"
+    },
+    {
+      "doi": "10.1073/pnas.96.16.8949",
+      "title": [
+        "Structural basis of the conversion of T4 lysozyme into a transglycosidase by reengineering the active site"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the National Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In contrast to hen egg-white lysozyme, which retains the β-configuration of the substrate in the product, T4 lysozyme (T4L) is an inverting glycosidase. The substitution Thr-26 → His, however, converts T4L from an inverting to a retaining enzyme. It is shown here that the Thr-26 → His mutant is also a transglycosidase. Indeed, the transglycosylation reaction can be more effective than hydrolysis. In contrast, wild-type T4L has no detectable transglycosidase activity. The results support the prior hypothesis that catalysis by the Thr-26 → His mutant proceeds via a covalent intermediate. Further mutations (Glu-11 → His, Asp-20 → Cys) of the T26H mutant lysozyme indicate that the catalytic mechanism of this mutant requires Glu-11 as a general acid but Asp-20 is not essential. The results help provide an overall rationalization for the activity of glycosidases, in which a highly conserved acid group (Glu-11 in T4L, Glu-35 in hen egg-white lysozyme) on the β-side of the substrate acts as a proton donor, whereas alterations in the placement and chemical identity of residues on the α-side of the substrate can lead to catalysis with or without retention of the configuration, to transglycosidase activity, or to the formation of a stable enzyme-substrate adduct.</jats:p>",
+      "publication_date": "1999-08"
+    }
+  ]
+}

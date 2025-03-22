@@ -1,0 +1,484 @@
+{
+  "term": "Supply",
+  "total_results": 38,
+  "processed_count": 38,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/6227103",
+      "title": [
+        "Power supply requirements for a tokamak fusion reactor"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/12036311",
+      "title": [
+        "Scientific and engineering manpower for fossil energy: Supply - demand - quality"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/6224376",
+      "title": [
+        "Water supply/demand alternatives for electric generation in the Colorado Basin"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1093/chromsci/17.2.g50",
+      "title": [
+        "Laboratory Supply Dealer Directory"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Chromatographic Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.2172/6275805",
+      "title": [
+        "Energy supply and demand balances and financing requirements in non-OPEC developing nations. Final report. [Projections to 1990 and 2020]"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.2172/6372716",
+      "title": [
+        "National Environmental Impact Projection No. 1. [Energy supply and demand and environmental and economic impacts projected to the year 1990]"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1016/0360-5442(79)90055-0",
+      "title": [
+        "The environmental and public health consequences of replacement electricity supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1016/0305-750x(79)90033-0",
+      "title": [
+        "Commercial bank lending to developing countries: Supply constraints"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "World Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.2523/7721-ms",
+      "title": [
+        "LOWER-48 NATURAL GAS SUPPLY POTENTIAL FROM CONVENTIONAL SOURCES"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE Hydrocarbon Economics and Evaluation Symposium"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2118/7721-ms",
+      "title": [
+        "Lower-48 Natural Gas Supply Potential From Conventional Sources"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE Hydrocarbon Economics and Evaluation Symposium"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n                  <jats:title>Abstract</jats:title>\n                  <jats:p>A forecasting model which projects natural gas production from conventional sources was developed to production from conventional sources was developed to analyze future domestic supplies. The model simulates the dynamics of gas supply systems from exploration through production. The cost of producing new discoveries is also calculated.</jats:p>\n                  <jats:p>Two projections of gas production through the year 2000 were developed to bracket the probably range of future supplies. In one case, exploratory drilling was continued at current levels and production fell significantly. In a second case, exploration was expanded until constrained by equipment availability. Production still fell, but eventually leveled off. Production still fell, but eventually leveled off. Production costs calculated for these projections suggest that anticipated future wellhead prices probably provide sufficient incentive to increase onshore probably provide sufficient incentive to increase onshore exploration to the limit allowed by available equipment But anticipated prices are not high enough to make offshore gas exploration commercially attractive.</jats:p>\n                  <jats:sec>\n                     <jats:title>Introduction</jats:title>\n                     <jats:p>The present natural gas supply-demand imbalance in the United States has aroused Federal interest in gas production from unconventional sources such as tight production from unconventional sources such as tight sands, shale, coal beds and geopressured aquifers. To provide a rational basis for supporting research and development in these areas, the Department of Energy ordered an analysis of gas production potential from conventional sources. That investigation, which was completed late in 1978, is summarized in this paper.</jats:p>\n                     <jats:p>Forcon, a forecasting model which projects natural gas production potential from conventional sources, was developed to assist in the analysis. Forcon simulates the dynamics of natural gas supply systems by modeling exploration, discovery, development of new reserves, and production from existing reserves and new discoveries.</jats:p>\n                  </jats:sec>\n                  <jats:sec>\n                     <jats:title>FORECASTING NEW DISCOVERIES</jats:title>\n                     <jats:p>The model postulates that as exploratory drilling increases within a producing region, cumulative gas discoveries approach the ultimate recoverable resources of the region in an inverse exponential manner. That is, reserves found are related to exploratory footage drilled through the expression:</jats:p>\n                     <jats:p>(1)</jats:p>\n                     <jats:p>where Gi = cumulative recoverable gas-in-place discovered from some initial year through year i</jats:p>\n                     <jats:p>R = present undiscovered recoverable resources</jats:p>\n                     <jats:p>Di = cumulative exploratory gas footage drilled from initial year through year i</jats:p>\n                     <jats:p>b = scaling constant, in units of reciprocal footage.</jats:p>\n                     <jats:p>Such a formulation is compatible with the finite nature of fossil fuel resources, with studies that show that there is a rapid drop-off in size in the world's sedimentary basins from the largest field to the smaller ones, and with the common observation that in general the larger reservoirs in a basin are discovered first.</jats:p>\n                     <jats:p>We propose that for mature producing regions, the best indicator of future behavior is a comprehensive analysis of the past. Therefore, we determine the equation of the discovery curve for each region by regressing on historical data of cumulative reserves discovered versus cumulative exploratory footage drilled. An example of such a cumulative discovery curve is shown in Figure 1.</jats:p>\n                  </jats:sec>\n               </jats:sec>",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.4271/791068",
+      "title": [
+        "Air Supply System Approach for the Boeing Model 767 Airplane"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2307/1072648",
+      "title": [
+        "The Role of Supply Substitutability in Defining the Relevant Product Market"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Virginia Law Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1016/0022-0531(79)90066-8",
+      "title": [
+        "Correction to “a note on market equilibrium with fixed supply”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Economic Theory"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1016/s0002-9149(79)80404-x",
+      "title": [
+        "Myocardial supply-demand factors and metabolism in isoproterenol treated dogs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Cardiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1016/s0022-3468(79)80608-9",
+      "title": [
+        "Malformation of bronchopulmonary foregut with systemic and pulmonary arterial blood supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Pediatric Surgery"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.2307/1991675",
+      "title": [
+        "Do Money Supply Announcements Affect Short-Term Interest Rates?: Note"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Money, Credit and Banking"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1109/tieci.1979.351605",
+      "title": [
+        "A Pulsed Power Supply for Injection Bump Magnets"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Industrial Electronics and Control Instrumentation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.2307/1991671",
+      "title": [
+        "Money Supply Theory with Competitively Determined Deposit Rates and Activity Charges"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Money, Credit and Banking"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.2172/6168013",
+      "title": [
+        "Energy-supply options for Soldier&amp;#x27;s Grove, Wisconsin. A summary of recommendations"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/0006-8993(79)90066-0",
+      "title": [
+        "A multiwire proportional chamber study of axoplasmic transport in frog sciatic nerve involving interruption of somatic supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Brain Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1080/09595237900185071",
+      "title": [
+        "Population mobility and labour supply in rural regions: North Norfolk and the Galway Gaeltacht"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Regional Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1016/0022-4804(79)90088-x",
+      "title": [
+        "Hepatic oxygen supply in reversible and irreversible hemorrhagic shock"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Surgical Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.18174/njas.v27i1.17075",
+      "title": [
+        "Nitrogen uptake by rice plants from a dry soil at maintained water supply from a greater depth."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Netherlands Journal of Agricultural Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In a pot trial in the Netherlands with sunflower and an upland rice cv., multiple-compartment systems with N and water supplied from different compartments were used to demonstrate that plant availability of N from a dry soil horizon was low. The separation of N and water in different soil horizons along with a decreasing input of irrigation water reduced the uptake of N more than the plant DM production was reduced by the decrease in the amount of water supplied to the plants. (Abstract retrieved from CAB Abstracts by CABI’s permission)</jats:p>"
+    },
+    {
+      "doi": "10.1016/0304-4211(79)90051-8",
+      "title": [
+        "Regulation of nitrate reduction in wheat and rice leaves by oxygen and NADH supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Plant Science Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1139/z79-033",
+      "title": [
+        "Effects of the food supply on the life history of Simuliidae (Diptera)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Canadian Journal of Zoology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Data are presented from laboratory experiments to show the effect on the life history of Simulium vittatum and the S. verecundum complex of reducing available food supply. These experiments showed that development time was extended, survival declined, size decreased, and fecundity markedly reduced when food supply was reduced beyond a certain level. Differences between the two species may have an ecological basis. It is argued that such effects occur in natural populations of simuliids and that they have implications for studies of vectors and their control. </jats:p>",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1061/jeegav.0000881",
+      "title": [
+        "Cost of Water Supply: Selected Case Studies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Environmental Engineering Division"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1007/bf00833964",
+      "title": [
+        "Restoration of blood supply and intensity of phospholipid metabolism in various parts of the postischemic rat brain"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bulletin of Experimental Biology and Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.4049/jimmunol.122.2.379",
+      "title": [
+        "Suppression of Antibody-Sensitized Tumor Cells by Macrophages: Insufficient Supply or Activation of Macrophages within Large Tumors"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Immunology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Systemic administration of antibody against the C3H lymphosarcoma 6C3HED caused complete suppression of the growth of 105 tumor cells. When the size of the tumor inoculum was increased to 106 tumor cells, excess antibody was unable to cause complete suppression unless exogenous macrophages were added to the tumor inocula. The decreased effectiveness of antibody was shown to be caused by a local deficiency in the supply or activation of macrophages within the large tumor grafts and not by a systemic deficiency.</jats:p>",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1016/0002-9394(79)90149-1",
+      "title": [
+        "Terminal Course of Nerve Supply to MüLler's Muscle in the Rhesus Monkey and Its Clinical Significance"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Ophthalmology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1111/j.1467-999x.1979.tb00237.x",
+      "title": [
+        "AN AGGREGATE ANALYSIS OF THE EFFECTS OF TAXES IN A GROWTH MODEL WITH ENDOGENOUS SUPPLY OF SKILLED LABOUR"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Metroeconomica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1126/science.760209",
+      "title": [
+        "Carter Attempt to Limit Doctor Supply Faces Tough Going in Congress"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1061/jeegav.0000871",
+      "title": [
+        "Closure to “Trihalomethanes and Viruses in a Water Supply”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Environmental Engineering Division"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1080/00207727908941572",
+      "title": [
+        "A model to support decision making for the energy supply-system of a metropolitan area†"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Systems Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1152/ajpheart.1979.236.2.h231",
+      "title": [
+        "Regional oxygen consumption and supply in the dog heart: effect of atrial pacing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Physiology-Heart and Circulatory Physiology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> The effects of atrial pacing on the relationship of O2 supply to demand were studied on a regional basis in the dog heart. Experiments were conducted on fourteen hearts, seven in control pentobarbital-anesthetized, open-chest dogs and seven in dogs paced at 225 beats/min. Regional O2 extraction was determined by a microspectrophotometric method, and coronary blood flow was measured with radioactive microspheres. There was an 89% increase in coronary blood flow, a small but significant decrease in O2 extraction, and an increase in O2 consumption with atrial pacing. With pacing the increase in blood flow and the decrease in O2 extraction were uniform throughout the heart. In control hearts, right ventricular blood flow and O2 consumption were lower than the mean in the septal or left ventricular free wall. In the left ventricular free wall in control, the subepicardial region had a lower O2 consumption and O2 extraction than the subendocardial region. These differences were also preserved during pacing. Due to the large increase in coronary blood flow, the relationship of oxygen supply to demand was improved by atrial pacing. </jats:p>",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1002/cne.901830310",
+      "title": [
+        "Patterns of cell proliferation in the developing retina of the clawed frog in relation to blood supply and position of the choroidal fissure"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Comparative Neurology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The pattern of retinal vasculative is described and the position at which cell proliferation at the ventral retinal margin is maximal was shown to be at the point of entry of the ventral blood vessels. To test whether there is a causal relation between retinal blood supply and retinal cell production, surgical inversion of the eye, transplantations and excisions of retina were done to change the pattern of retinal vasculature. The growth pattern of inverted eyes was normal with respect to the internal axes of the eyes. After excision of part of the retina or after fusion of retinal fragments to form compound eyes, the pattern of retinal cell proliferation was not correlated with the distribution of retinal blood vessels, but was correlated with the position(s) of the choroidal fissure(s).</jats:p>",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1007/bf00612863",
+      "title": [
+        "Unified power-supply circuit for the SVD-120A mercury-quartz lamp for its use as a radiation source in photometric instruments"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Applied Spectroscopy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1111/j.1399-3054.1979.tb01695.x",
+      "title": [
+        "The Effect of Reduced Light Intensity and Sub‐optimal Potassium Supply on N<sub>2</sub> Fixation and N Turnover in <i>Rhizobium</i> Infected Lucerne"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physiologia Plantarum"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The effect of low light intensity and suboptimal potassium supply on the fixation of molecular nitrogen by root nodules and the nitrogen turnover in the host plant was studied in <jats:italic>Medicago sativa</jats:italic> using <jats:sup>15</jats:sup>N labelled molecular nitrogen. For the application of <jats:sup>15</jats:sup>N<jats:sub>2</jats:sub> labelled gas a special box was used. Both low light intensity and a low potassium supply resulted in a substantial growth depression. In particular the protein content of tops, roots and nodules was lower in the plants of the low light intensity treatment as compared with the control plants. Decreasing potassium supply had a similar but less‐pronounced effect on protein content. The low protein content was not a consequence of a lack of soluble amino nitrogen or NH<jats:sub>3</jats:sub>, since these fractions were influenced to a lesser degree by the reduced light intensity and by the low potassium supply. This observation is supported by the data obtained with <jats:sup>15</jats:sup>N. N<jats:sub>2</jats:sub> fixation and NH<jats:sub>3</jats:sub> assimilation were affected by both low light intensity and low K application to the same degree as the overall metabolism, thus showing no particular response to the treatments applied.</jats:p>",
+      "publication_date": "1979-02"
+    },
+    {
+      "doi": "10.1111/j.1752-1688.1979.tb00286.x",
+      "title": [
+        "REGIONAL WATER SUPPLY PLANNING STUDY FOR NORTHEASTERN ILLINOIS<sup>1</sup>"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JAWRA Journal of the American Water Resources Association"
+      ],
+      "subject": [],
+      "abstract": "<jats:p><jats:bold>ABSTRACT: </jats:bold> The development of a regional water supply system for the six‐county area of Northeastern Illinois is presented in this paper, including: 1) the establishment of regional water supply technical planning policies; 2) the development and utilization of a regional water supply computer model to identify the principal and secondary sources of water supply for each entity in the study area, based on an apparent cost‐effective source analysis; and 3) utilization of the study results to develop for the year 2010 a suggested preliminary regional water supply system. Using the findings from task 2 above, a proposed plan for overall Lake Michigan water use through the year 2010 was also developed. The effects of the proposed regional water supply system on future water levels in the deep aquifer were also discussed.</jats:p>",
+      "publication_date": "1979-02"
+    }
+  ]
+}

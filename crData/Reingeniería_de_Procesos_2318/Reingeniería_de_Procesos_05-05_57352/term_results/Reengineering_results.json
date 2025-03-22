@@ -1,0 +1,36 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.31399/asm.cp.itsc2005p0046",
+      "title": [
+        "Thermal Spray Based Rapid Manufacturing, Part Refurbishing and Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Thermal Spray Conference",
+        "Thermal Spray 2005: Proceedings from the International Thermal Spray Conference"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>The ability to respond timely and cost effectively is bringing rapid manufacturing techniques into the mainstream production/repair arena. The Army can benefit from such technologies to avoid long lead times and high costs of procuring and inventorying replacement parts. But, a technology that offers versatility in terms of product size, cost and the ability to fabricate production components rapidly is yet to be available. This paper describes thermal spray technologies as applied to rapid manufacturing, part refurbishing and reengineering. A hybrid thermal spray system that can deposit a variety of materials with high throughput and density has been developed. Several generic materials that can meet the functional requirements of many parts and at the same time can be easily deposited by a thermal spray technique are discussed. An expert system software assisting the operator from CAD information, reverse engineering to part refurbishing is presented. Examples on the use of multiple schemes to remanufacture a part are also discussed. These schemes offer new avenues to fabricate replacement parts and/or salvage damaged parts and can benefit the Army considerably.</jats:p>",
+      "publication_date": "2005-05"
+    },
+    {
+      "doi": "10.31399/asm.cp.itsc2005p0086",
+      "title": [
+        "Reengineering of Boiler Feed Pump using High Performance Coatings"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Thermal Spray Conference",
+        "Thermal Spray 2005: Proceedings from the International Thermal Spray Conference"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Boiler feed pumps (informally termed as mini turbine owing to its criticality) in thermal power plants are prone to normal wear and tear over a period of time, which leads to loss of pump efficiency and sometimes accidental failures resulting in heavy damages and prolonged shut downs. Re-engineering approach using High Performance Coatings by Plasma &amp; HVOF processes, has recently enabled to add new world-class dimensions by reclamation &amp; complete overhauling of Boiler Feed Pump Internal Cartridges (6“ LL Pacific Pumps Inc USA and 200 KHI, BHEL, India make), in order to obtain increased life cycle, maintain pump efficiency, De-accelerated wear rate. This was accomplished by establishing perfect interrelationship of cartridge assembly, providing exacting tolerances to meet functional and assembly requirement, and incorporating international standards for protective wear shielding by Plasma &amp; HVOF technology on wear prone critical components. This paper describes the Re-engineering methodology adopted to improve the performance of the Boiler Feed Pump with the help of surface modification using plasma and HVOF coatings on critical components showing wear patterns, which led to the development of proprietary ceramic and cermets coatings after extensive laboratory and field trials. The Reengineered Boiler Feed Pumps are showing superior performance at one of the major power generating unit in Central India.</jats:p>",
+      "publication_date": "2005-05"
+    }
+  ]
+}

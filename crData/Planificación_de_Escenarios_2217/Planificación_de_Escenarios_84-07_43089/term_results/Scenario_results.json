@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.23919/acc.1984.4788364",
+      "title": [
+        "An Expert System Scenario for Computer-Aided Control Engineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "1984 American Control Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    },
+    {
+      "doi": "10.1017/s0026318400014668",
+      "title": [
+        "The Gulf Scenario (A Novel), by Richard Bulliet. Pp. 260. St. Martin’s Press, New York1984. $12.95."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Middle East Studies Association Bulletin"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-07"
+    }
+  ]
+}

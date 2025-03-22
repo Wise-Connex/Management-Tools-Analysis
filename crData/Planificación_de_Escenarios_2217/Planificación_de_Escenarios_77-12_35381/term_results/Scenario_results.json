@@ -1,0 +1,31 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1029/eo058i012p01086",
+      "title": [
+        "Scenario B"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Eos, Transactions American Geophysical Union"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In July 1978 the Director of the U.S. Geological Survey (USGS) announces that a specified urban area of California is being designated as an area of intensive study of possible earthquake precursor data, anomalies having been detected there over the past 6 months. Timely notice will be given if there is a significant probability of an earthquake occurrence. The director makes it clear that this is not an earthquake prediction. When contacted, two reputable nongovernment seismologists say that their interpretation of the data convinces them that there is a 25% probability of a damaging earthquake in the designated area (along a major fault) in approximately 3 years (1981).</jats:p>",
+      "publication_date": "1977-12"
+    },
+    {
+      "doi": "10.2172/6872701",
+      "title": [
+        "Gas-cooled reactor commercialization study: introduction scenario and commercialization analyses for process heat applications. Final report, July 8, 1977--November 30, 1977"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

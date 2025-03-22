@@ -1,0 +1,135 @@
+{
+  "term": "Reengineering",
+  "total_results": 10,
+  "processed_count": 10,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.47939/mh.v2i7.20",
+      "title": [
+        "Discussion on Process Reengineering of Nurse-patient Communication under Humanistic Care"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Foreign Language Science and Technology Journal Database Medicine and Health"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2021-07"
+    },
+    {
+      "doi": "10.1126/science.abj5028",
+      "title": [
+        "Reengineering protein-phosphorylation switches"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Phosphorylation circuits operate as logic gates that rapidly toggle a system between two stable states</jats:p>",
+      "publication_date": "2021-07"
+    },
+    {
+      "doi": "10.21844/mijia.17.1.7",
+      "title": [
+        "Business Process Reengineering – A Review on Change Management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Insight"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>With today's highly competitive and rapidly changing world economic marketplace, firms must adopt business process reengineering tosustain their competitive advantages and increase profitability. BPR is one of the most popular ongoing change management theories as asolution for firms to improve their performance significantly, upraise their efficiencies, and gain a competitive advantage in thisconstantly developing and changing world. BPR usually leads to essential organizational changes in terms of structure and managementprocesses. This paper aims to explore the change management process through BPR implementation in Radiant OptoelectronicsCompany. At the same time, focusing on six interventions, including Open systems planning, Trans-organizational development (TD),Business process reengineering (BPR), Business Restructuring, Work Redesign, and Socio-technical Systems Approach (STS). Eachintervention is accompanied by its definitions, advantages and disadvantages, and comparison and contrast with other interventions.These interventions differ from each other primarily in terms of IT innovation, communication environment, and application in productdesign and performance. This report recommends BPR as the best intervention for Radiant Company to accomplish its goals because itemphasizes cost reduction, product and service quality, and organizational system speed. Besides, there is evidence that companies thatimplement BPR enjoy significant benefits in improved customer satisfaction, productivity, and profitability. However, this study suggeststhat the company must be keen on this strategy since it is time-consuming and may harm people's jobs if proper plans are not done beforeimplementation. Other issues that the company might experience due to poor planning include lack of sustained managementcommitment and leadership, unrealistic scope and expectations, resistance to change, and higher demands</jats:p>"
+    },
+    {
+      "doi": "10.1108/k-11-2020-0777",
+      "title": [
+        "Business process reengineering in health-care sector: application for the central sterilization unit"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Kybernetes"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Purpose</jats:title>\n<jats:p>In a rapidly changing environment, many health-care systems are forced to survive with rising costs and the need for proper resources utilization. To address the requirements for effective strategic planning, business process reengineering (BPR) is inevitable for health-care systems. This study aims to focus on the reengineering of central sterilization unit’s business processes to obtain performance improvement and efficiency. With the obtained new process design, it is expected to get standardization in all level of the central sterilization unit.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Design/methodology/approach</jats:title>\n<jats:p>This paper presents a BPR method for modeling the system in health-care sector to improve the productivity of the sterilization process of surgical equipment. The case study is conducted in a large hospital in Istanbul, Turkey. First, “as-is” process is modeled and the problems are determined. Then, solution methods are developed and the target system (to-be process) is redesigned and the workflows of each phase are remodeled by using ARIS tool. Enterprise resource planning (ERP)-driven BPR is used to reengineer the current processes and the future processes are operated through the modeled ERP system. Finally, by using a statistical analysis, performance of the new process is compared with the existing process using the first data obtained from the case hospital.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Findings</jats:title>\n<jats:p>In many sterilization services, the control procedures are rarely used. Thus, an ERP solution is developed to automate sterilization tasks and track down the information flow. With the ERP solution, it is possible to track in which dates, where and by whom the items are processed. On the other hand, in the sterilization process, the sets are used efficiently according to the last sterile dates of the items. Also, with the ERP system, it is possible to reduce unnecessary paper usage and this gives the hospitals the opportunity to be more ecological and sustainable. As a result, a centralized sterilization process with an IT support provides efficiency, economy and patient safety.</jats:p>\n</jats:sec>\n<jats:sec>\n<jats:title content-type=\"abstract-subheading\">Originality/value</jats:title>\n<jats:p>This study seeks for the potential benefits of an ERP implementation in health-care sector. As a result of this project, improvements in productivity, cost and quality are expected in sterilization processes because the new process design will bring automation, human-related error reduction and equipment tracking system. For this purpose, a business process management software is developed and implemented to the central sterilization unit so that the information flows more safely and the managers can track the results quickly by charts and reports.</jats:p>\n</jats:sec>",
+      "publication_date": "2022-02"
+    },
+    {
+      "doi": "10.1158/1538-7445.am2021-1872",
+      "title": [
+        "Abstract 1872: Generation of bispecific and trispecific T cell engagers (TCEs) and NK cell engagers (NKE)s without prior IgG reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Cancer Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>T cell and NK cell-redirecting antibodies are emerging as promising modalities in targeted immunotherapy. New technologies are overcoming the limitations of 1st generation immune cell-redirecting bispecifics, especially extending half-life, reducing immunogenicity and improving safety. For example, in the field of T cell engagers (TCEs), a plethora of molecular architectures has entered the clinic, the vast majority generated by genetic engineering of an IgG to bind both a tumor-associated antigen (TAA) and CD3 or 4-1BB. Similarly, recombinant DNA technology enables the C-terminal fusion of a cytokine (e.g. IL-2 or IL-15) to an IgG to obtain NK cell engagers (NKEs).</jats:p>\n               <jats:p>We have shown earlier that the native glycan of a monoclonal antibody provides a privileged site for attachment of cytotoxic payloads,1 providing antibody-drug conjugates (ADCs) with significantly enhanced therapeutic index. This technology, known as GlycoConnect™, has been adapted by various drug developers (e.g. ADC Therapeutics, Mersana Therapeutics and others) and is now applied in two (2) clinical programs as well as multiple late-stage preclinical programs.</jats:p>\n               <jats:p>Here we demonstrate how GlycoConnect™ technology can be applied to generate TCEs or NKEs by selective attachment of scFv (anti-CD3, anti-CD28) or cytokines (IL-15), with concomitant Fc-silencing. Moreover, an existing bispecific TCE (TAA/CD3) can be further boosted by attachment of anti-CD28 scFv for further T cell activation. Molecular architectures can be readily tailored to 2:2 or 2:1 ratio (TAA:scFv or cytokine) to mitigate adverse events like cytokine release syndrome, and even 2:1:1 formats. Structural and functional studies will be presented to corroborate the architecture and biological activity of these GlycoConnect™ bispecifics and trispecifics, in terms of binding, immune cell engagement and cell-killing potential.</jats:p>\n               <jats:p>1van Geel et al. Chemoenzymatic Conjugation of Toxic Payloads to the Globally Conserved N-Glycan of Native mAbs Provides Homogeneous and Highly Efficacious Antibody−Drug Conjugates. Bioconj. Chem. 2015, 26, 2233-2242.</jats:p>\n               <jats:p>Citation Format: Remon van Geel, Floris van Delft. Generation of bispecific and trispecific T cell engagers (TCEs) and NK cell engagers (NKE)s without prior IgG reengineering [abstract]. In: Proceedings of the American Association for Cancer Research Annual Meeting 2021; 2021 Apr 10-15 and May 17-21. Philadelphia (PA): AACR; Cancer Res 2021;81(13_Suppl):Abstract nr 1872.</jats:p>",
+      "publication_date": "2021-07"
+    },
+    {
+      "doi": "10.20473/ajim.v2i1.25759",
+      "title": [
+        "BUSINESS PROCESS REENGINEERING IN THE BUSINESS PROCESS OF HAJJ AND UMRAH REGISTRATION SERVICES (CASE STUDY: MINISTRY OF RELIGION IN BALIKPAPAN CITY)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Airlangga Journal of Innovation Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The Ministry of Religion of the Republic of Indonesia is the Ministry within the Indonesian Government in charge of religious affairs. The Ministry of Religion in Balikpapan can serve in the fields of Education, Marriage, Waqf, Consultants on Household Issues, Mosque Construction, Hajj and others. The Ministry of Religion in the Field of Hajj and Umrah (PHU) Administrators as community organizers and facilitators who of course must behave professionally in serving, accompanying and assisting everything that is needed and prepared by prospective pilgrims before departure until returning to worship. Hajj and Umrah organizers as institutions within the ministry of religion certainly need to fulfill the demands of providing guidance. In this practical work, the special task carried out at the Ministry of Religion of the City of Balikpapan is to carry out Business Process Reengineering in the business process for Hajj registration services during the COVID-19 pandemic, so that the business process becomes more effective and efficient. Preparation of a Business Process with a Business Process Reengineering by providing additional activities and reducing activities. The addition of this activity for prospective pilgrims is proposed to first check the haj registration information on the kemenag.go.id website or asramahajibalikpapan.co.id. The information on the website is complete for community needs. So with the prospective pilgrims who can check Hajj registration information online, it can eliminate misunderstandings and the quality of service provided by the Ministry of Religion is already very good.</jats:p>"
+    },
+    {
+      "doi": "10.3926/jiem.3403",
+      "title": [
+        "Implementation of business process reengineering (BPR): Case study of official trip procedures in higher education institutions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Industrial Engineering and Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Purpose: Official trip is one of the common business processes carried out by every organization, including educational institutions. However, in its implementation, there are various kinds of obstacles that have an impact on the lack of effectiveness and efficiency of the system, in terms of time, material and human resources. This study aims to evaluate existing business processes and design, and implement the results of business process re-engineering (BPR) in the official trip system which is supported by digitization and digitalization with a multi-unit integration approach at one of the private universities in Indonesia, Telkom University.Design/methodology/approach: This study uses a mixed-method with an embedded design approach. The quantitative method was carried out by calculating the performance of official trip procedures before and after the BPR. Meanwhile, the qualitative method was carried out by conducting interviews and Focus Group Discussions (FGD) with key informants in this study. Triangulation technique was used to validate the research results.Findings: The BPR process has resulted in radical changes to the official trip system at the university, namely from a mixed system of manual / offline &amp; online to completely online, from a very centralized to decentralized decision process, and the availability of a transparent monitoring system. These changes provide significant results by increasing the effectiveness and efficiency of business processes so as to speed up time, save paper (reduce paper waste and reduce costs) and optimize employee assignments.Originality/value: This study adds new insights into the implementation of BPR to the official trip system in higher education. This research implies that BPR can produce radical changes in business processes in higher education to become more effective and efficient. In addition, this study proposes several practical and academically useful recommendations for further research in this area.</jats:p>"
+    },
+    {
+      "doi": "10.24928/2021/0126",
+      "title": [
+        "Reengineering Construction Processes in the Era of Construction 4.0: A Lean-Based Framework"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Annual Conference of the International Group for Lean Construction",
+        "Proc. 29th Annual Conference of the International Group for Lean Construction (IGLC)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-981-16-2502-2_62",
+      "title": [
+        "Research on Reengineering the Corporation Under the Background of Big Data"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Intelligent Systems and Computing",
+        "Advances in Decision Science and Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.24143/2072-9502-2021-3-115-125",
+      "title": [
+        "REENGINEERING OF BUSINESS PROCESSES OF AGROINDUSTRIAL ENTERPRISES IN CONDITIONS OF THROUGH DIGITAL TRANSFORMATION"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vestnik of Astrakhan State Technical University. Series: Management, computer science and informatics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article describes the high dynamism and uncertainty of the external and internal envi-ronment, which actualize the implementation of innovative technologies in the management of business processes in the agro-industrial complex (AIC). Attention is focused on the strategic nature of the transformation of agricultural production within the digital ecosystem. The perspective technologies of collection and processing of remote sensing data obtained from various satellite sensors, unmanned vehicles, weather stations; geographic information systems; global positioning systems are considered. The fundamental elements of reengineering of business processes in the context of digital transformation, the creation of control systems to control the development of agricultural crops using streaming processing of remote sensing data are considered. The factors of restraining and catalyzing production processes in AIC are substantiated, the features of the elements of the organization of the digital spatial environment are revealed, which largely determine the transition to a unified information support system for an agro-industrial enterprise. A structural and functional model of reengineering of business processes is proposed, aimed at ensuring sustainability in making managerial decisions. As part of the reengineering process, it is planned to create an information environment for an agricultural enterprise, consisting of interconnected procedures for merging information of its component functional systems: an automated monitoring system, a system for automated recognition of the specifics of the state of plant surface elements and an automated analytical decision support system for selecting agrotechnological techniques. Reengineering of business processes according to the proposed model will reduce risks in terms of compliance with time factors, increase production volumes and profitability of an agricultural enterprise due to the transition to digital technologies for automated collection and processing of big data, the ability to make decisions based on automated analytical systems and the ability to store in the knowledge base the generated chains of agro-technological operations for the needs of future periods</jats:p>",
+      "publication_date": "2021-07"
+    }
+  ]
+}

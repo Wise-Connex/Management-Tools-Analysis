@@ -1,0 +1,164 @@
+{
+  "term": "Reengineering",
+  "total_results": 12,
+  "processed_count": 12,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0363-8111(95)90008-x",
+      "title": [
+        "Successful reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Public Relations Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1016/0024-6301(95)91618-0",
+      "title": [
+        "Marketing's core role in strategic reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Long Range Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1287/inte.25.3.72",
+      "title": [
+        "Services and Technology: Reengineering the Railroads"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interfaces"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> In the service-sector, productivity improvements due to technology investments are difficult to measure and document. Measuring productivity in this sector is problematic and many service-related technology investments have not generated major productivity gains. The railroad industry may be making such an investment. Advanced train control systems (ATCS) and their associated control algorithms have the potential to revolutionize this industry or to become yet another statistic in the low-productivity saga of services. One railroad’s experience with this technology highlights the need to carefully match the technology with the strategic direction of the firm and its services delivery processes and operations. </jats:p>",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1016/0024-6301(95)91612-1",
+      "title": [
+        "Will participative makeovers of business processes succeed where reengineering failed?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Long Range Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1016/0090-2616(95)90040-3",
+      "title": [
+        "The reengineering handbook: A step-by-step guide to business transformation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Organizational Dynamics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1287/inte.25.3.22",
+      "title": [
+        "Reengineering at American Express: The Travel Services Group’s Work in Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interfaces"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> American Express became involved in reengineering when we found that we could not close our major gaps in cost, quality, and speed through continuous improvement. While embarking on a series of margin improvements to bring our short-term economics back into line, we also selected two major processes for strategic reengineering, to make fundamental longer-term changes in the way we do business. Although we have just begun to implement the major redesigns, we have already learned the following lessons that could help you in your reengineering efforts: set up a group to enable reengineering, beware of the “reengineering” label, start small, start all projects with the customer, agree on your redesign before you set cost-savings targets, include key functions as early as possible, highlight linkages between projects, challenge the status quo, use a structured approach to managing the changes, and people will not believe it until it happens to them. </jats:p>",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1177/0885713x9501000201",
+      "title": [
+        "Editorial: Reengineering Quality for Health Care Reform"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Medical Quality"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1080/10429247.1995.11414836",
+      "title": [
+        "Reengineering and the Insanity of Right-Sizing"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engineering Management Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1142/s0218194095000150",
+      "title": [
+        "REVERSE ENGINEERING, REENGINEERING, AND CONCURRENT ENGINEERING OF SOFTWARE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Software Engineering and Knowledge Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This survey reviews four classes of reengineering of software systems: code restructuring and translation of code into a new language, design recovery for corrective maintenance, design recovery for software enhancement, and software reengineering as part of radical business process reengineering. Special attention is given to the reengineering of data bases and user interfaces. We also consider concurrent software engineering, its place in the software reengineering process, and groupware in support of this process. </jats:p>",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1080/07421222.1995.11518072",
+      "title": [
+        "The Implementation of Business Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1080/07421222.1995.11518069",
+      "title": [
+        "Strategies for Business Process Reengineering: Evidence from Field Studies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1995-06"
+    },
+    {
+      "doi": "10.1142/s0218843095000056",
+      "title": [
+        "FROM E-R TO “A-R” — MODELLING STRATEGIC ACTOR RELATIONSHIPS FOR BUSINESS PROCESS REENGINEERING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Cooperative Information Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> As information systems are increasingly expected to work with humans cooperatively in complex organizational contexts, conceptual modelling techniques need to be extended to relate information structures and processes to business and organizational objectives. We propose a framework which focuses on the modelling of strategic actor relationships (“A-R”) for a richer conceptual model of business processes in their organizational settings. Organizations are viewed as being made up of social actors who are intentional — have motivations, wants, and beliefs — and strategic — they evaluate their relationships to each other in terms of opportunities and vulnerabilities. The framework supports formal modelling of the network of dependency relationships among actors, and the systematic exploration and assessment of alternative process designs in reengineering. The semantics of the modelling concepts are axiomatically characterized. By embedding the framework in the Telos language, the framework can also potentially serve as an early-requirements phase tool in a comprehensive information system development environment. </jats:p>",
+      "publication_date": "1995-06"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1002/9780470061572.eqr389",
+      "title": [
+        "Process Reengineering"
+      ],
+      "type": "other",
+      "container-title": [
+        "Encyclopedia of Statistics in Quality and Reliability"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n          <jats:p>\n            In this article, we first define business process reengineering (BPR) as the\n            <jats:italic>fundamental</jats:italic>\n            rethinking and\n            <jats:italic>radical</jats:italic>\n            redesign of\n            <jats:italic>business processes</jats:italic>\n            , with the purpose of achieving\n            <jats:italic>drastic</jats:italic>\n            improvement over current performance. We then examine the conditions that are conducive to its application. Among the key concepts and methods of reengineering, its nine basic principles are presented and the enabling role of information technology is discussed.\n          </jats:p>\n          <jats:p>The discussion on the implementation of reengineering includes a description of the human infrastructure, and the recommended budgetary arrangements.</jats:p>\n          <jats:p>As one of its strengths, reengineering provides the solution to the two known dilemmas of process management: (1) variation and dispersion and (2) scale and complexity.</jats:p>\n          <jats:p>\n            The article cites a number of factors that can cause BPR initiatives fail to reach their initial objectives, and discusses three known weaknesses of the methodology, including the\n            <jats:italic>process paradox.</jats:italic>\n          </jats:p>",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1172/jci34252",
+      "title": [
+        "Structural reengineering of imatinib to decrease cardiac risk in cancer therapy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Clinical Investigation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1109/ieem.2007.4419410",
+      "title": [
+        "A case study of obsolete part procurement process reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Conference on Industrial Engineering and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1002/he.279",
+      "title": [
+        "Top to bottom reengineering: University System of Maryland enhances productivity, improves accountability, and maintains quality"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New Directions for Higher Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This chapter examines how the University System of Maryland repositioned itself as a state system able to thrive in an era of permanently diminished resources and perpetually escalating demands.</jats:p>",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1080/00207540600854992",
+      "title": [
+        "Development and validation of business process reengineering (BPR) variables: a survey research in Slovenian companies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    }
+  ]
+}

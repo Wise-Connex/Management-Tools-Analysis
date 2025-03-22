@@ -1,0 +1,136 @@
+{
+  "term": "Scenario",
+  "total_results": 10,
+  "processed_count": 10,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1093/ajhp/48.10.2176",
+      "title": [
+        "Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Health-System Pharmacy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.21236/ada242575",
+      "title": [
+        "Target Prioritization to Optimize Expected Utility for a Simple Battle Scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1111/j.1365-246x.1991.tb01166.x",
+      "title": [
+        "An alternative scenario for earthquake prediction experiments"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geophysical Journal International"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1088/0253-6102/16/3/363",
+      "title": [
+        "A Scenario with Tolerable Strong CP"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communications in Theoretical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1002/net.3230210603",
+      "title": [
+        "Solving multistage stochastic networks: An application of scenario aggregation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Networks"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The scenario aggregation algorithm is specialized for stochastic networks. The algorithm determines a solution that does not depend on hindsight and accounts for the uncertain environment depicted by a number of appropriately weighted scenarios. The solution procedure decomposes the stochastic program to its constituent scenario subproblems, thus preserving the network structure. Computational results are reported demonstrating the algorithm's convergence behavior. Acceleration schemes are discussed along with termination criteria. The algorithm's potential for execution on parallel multiprocessors is discussed.</jats:p>",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1145/126729.1056077",
+      "title": [
+        "AN AFTER-SCENARIO QUESTIONNAIRE FOR USABILITY STUDIES"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGCHI Bulletin"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The purpose of this report is to (1) describe a psychometric evaluation of a printer scenario questionnaire (PSQ) that was used to assess user satisfaction during scenario-based usability studies of printers and (2) compare the psychometric properties of the PSQ with those of the After-Scenario Questionnaire (ASQ) (Lewis, 1991b). The PSQ is similar to the ASQ, but is composed of three five-point scales rather than three seven-point scales.</jats:p>",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1007/bf02336448",
+      "title": [
+        "‘Soviet’ higher education in a changing political, social and economic context"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Prospects"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1086/170519",
+      "title": [
+        "Baryon isocurvature scenario in inflationary cosmology - A particle physics model and its astrophysical implications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1111/j.1746-1561.1991.tb07416.x",
+      "title": [
+        "School Health Education and a National Curriculum: One Disconcerting Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of School Health"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1991-10"
+    },
+    {
+      "doi": "10.1080/00207599108247150",
+      "title": [
+        "Rise in the Population of the Elderly, Familial Changes and their Psychosocial Implications: The Scenario of the Developing Countries"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Psychology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The rapid rise in the elderly population and the structural changes in the family and the support system that are a result of “modernization” constitute an important social dimension of global changes. Their psychosocial impacts are far‐reaching especially in the developing countries. Changes in the demographic profile of the aged, the nature of familial changes and their implications with regard to support systems for the elderly, their health, role in socialisation, economic dependency, overall lifestyle, satisfaction, cognitive capacities, attitudes and aspirations are discussed in this paper.</jats:p>",
+      "publication_date": "1991-10"
+    }
+  ]
+}

@@ -1,0 +1,453 @@
+{
+  "term": "Reengineering",
+  "total_results": 36,
+  "processed_count": 36,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/978-1-4471-2300-2_11",
+      "title": [
+        "Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Guide to Software Development"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-8349-6605-6_16",
+      "title": [
+        "Business Process Reengineering (BPR)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Top 100 Management Tools"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-8274-2246-0_32",
+      "title": [
+        "Reengineering (Teil 2)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lehrbuch der Softwaretechnik: Entwurf, Implementierung, Installation und Betrieb"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-8274-2246-0_31",
+      "title": [
+        "Reengineering (Teil 1)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lehrbuch der Softwaretechnik: Entwurf, Implementierung, Installation und Betrieb"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-8274-2246-0_33",
+      "title": [
+        "Reengineering (Teil 3)"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lehrbuch der Softwaretechnik: Entwurf, Implementierung, Installation und Betrieb"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-61692-852-0.ch113",
+      "title": [
+        "Data Reengineering of Legacy Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Enterprise Information Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Legacy systems, from a data-centric view, could be defined as old, business-critical, and standalone systems that have been built around legacy databases, such as IMS or CODASYL, or legacy database management systems, such as ISAM (Brodie &amp; Stonebraker, 1995). Because of the huge scope of legacy systems in the business world (it is estimated that there are 100 billion lines of COBOL code alone for legacy business systems; Bianchi, 2000), data reengineering, along with its related step of program reengineering, of legacy systems and their data constitute a significant part of the software reengineering market. Data reengineering of legacy systems focuses on two parts. The first step involves recognizing the data structures and semantics followed by the second step where the data are converted to the new or converted system. Usually, the second step involves substantial changes not only to the data structures but to the data values of the legacy data themselves (Aebi &amp; Largo, 1994).</jats:p>"
+    },
+    {
+      "doi": "10.2507/daaam.scibook.2011.45",
+      "title": [
+        "The Experiences with Reengineering Using Computer Simulation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "DAAAM International scientific book 2011"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5220/0003629003540360",
+      "title": [
+        "ON ESTABLISHING AN ONTOLOGY REENGINEERING FRAMEWORK"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the International Conference on Knowledge Engineering and Ontology Development"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5771/9783845269108-156",
+      "title": [
+        "D.1 Reengineering oder Evolution. Wissensverwertung, Macht und Innovation in Unternehmen"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Nachhaltige Innovation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/jgc.2011010101",
+      "title": [
+        "Reengineering a Green Business"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Green Computing"
+      ],
+      "subject": [],
+      "abstract": "<p>A green environment is a social as well as business issue. Business enterprises, as a large part of the global community, are obliged to make endeavours toward an environmentally sustainable operation that reflects their corporate social responsibility. One of the effective approaches of making business operations more environmental friendly is to undertake business process reengineering with the strategic focus on green perspective. This paper discusses the reengineering of a green business from its process viewpoint. This reengineering of business processes is undertaken in the context of five areas of green business characteristics (necessary, effective, efficient, agile, and measureable) and their corresponding life cycles. This analysis paves the path for an in-depth research agenda for developing and operating green business processes in organizations. The framework is explained with five key phases namely, 1) examining business processes with green process characteristics, 2) integrating business processes with the environmental standards, 3) green business process redesign, 4) training programs development and change management, and 5) performance monitoring and process improvement. The paper concludes with a suggestion of the framework validation and future research directions.</p>",
+      "publication_date": "2011-01"
+    },
+    {
+      "doi": "10.1057/9780230354258_10",
+      "title": [
+        "Merging, Downsizing and Reengineering: The Change Agent"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Where Have All the Senior Women Gone?"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.proeng.2011.03.118",
+      "title": [
+        "A functional analysis approach for product reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Procedia Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5220/0003595305910594",
+      "title": [
+        "THE BUSINESS PROCESS REENGINEERING STUDY OF STEEL INDUSTRY BASED ON ERP"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 13th International Conference on Enterprise Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijiem.2011.039914",
+      "title": [
+        "Factors affecting Business Process Reengineering in China"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Internet and Enterprise Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1115/1.859933.paper102",
+      "title": [
+        "Research on Picking Process Reengineering for One Prescription Filled by Multiple Pharmacists"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "International Conference on Advanced Computer Theory and Engineering, 4th (ICACTE 2011)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijbex.2011.040107",
+      "title": [
+        "A performance-based decision-making tool for supply chain reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Business Excellence"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-23993-9_59",
+      "title": [
+        "The Process Reengineering of Accounting Information System"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Communications in Computer and Information Science",
+        "Innovative Computing and Information"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijkwi.2011.045165",
+      "title": [
+        "Reengineering PDF-based documents targeting complex software specifications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Knowledge and Web Intelligence"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-61779-197-0_1",
+      "title": [
+        "Bacterial Genome Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Methods in Molecular Biology",
+        "Strain Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-23993-9_78",
+      "title": [
+        "A Study of Business Process Reengineering Based on Petri Net"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Communications in Computer and Information Science",
+        "Innovative Computing and Information"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijbpscm.2011.043822",
+      "title": [
+        "Reengineering a reverse supply chain for product returns services"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Business Performance and Supply Chain Modelling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-24358-5_33",
+      "title": [
+        "A Meta-model Integrating Software Reengineering in the Context of BPR Projects"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Communications in Computer and Information Science",
+        "ENTERprise Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1039/c1cc14944j",
+      "title": [
+        "Reengineering of a fluorescent zinc sensor protein yields the first genetically encoded cadmium probe"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical Communications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-23208-4_10",
+      "title": [
+        "Process Analysis and Reengineering in the Health Sector"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Information Technology in Bio- and Medical Informatics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-19542-6_24",
+      "title": [
+        "ReeRisk –A Decisional Risk Engineering Framework for Legacy System Rejuvenation through Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Communications in Computer and Information Science",
+        "Computer Networks and Information Technologies"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/wremsd.2011.039306",
+      "title": [
+        "'E-banking' initiatives in Indian banks &amp;ndash; a case of business process reengineering (BPR) implementation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "World Review of Entrepreneurship, Management and Sustainable Development"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijlsm.2011.042051",
+      "title": [
+        "Reengineering in-plant logistics: a case study of Cement Manufacturing Plant in India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Logistics Systems and Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1186/2190-5983-1-6",
+      "title": [
+        "Efficient reengineering of meso-scale topologies for functional networks in biomedical applications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Mathematics in Industry"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijcat.2011.045410",
+      "title": [
+        "Feasibility study of software reengineering towards role-based access control"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications in Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-21347-2_10",
+      "title": [
+        "Recovering Object-Oriented Framework for Software Product Line Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Top Productivity through Software Reuse"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-19423-8_39",
+      "title": [
+        "Inside Story of Business Process Reengineering in State Bank of Patiala (SBOP): Straight from the Horses’ Mouth"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Communications in Computer and Information Science",
+        "Information Intelligence, Systems, Technology and Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1155/2011/154798",
+      "title": [
+        "Reengineering Aircraft Structural Life Prediction Using a Digital Twin"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Aerospace Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Reengineering of the aircraft structural life prediction process to fully exploit advances in very high performance digital computing is proposed. The proposed process utilizes an ultrahigh fidelity model of individual aircraft by tail number, a Digital Twin, to integrate computation of structural deflections and temperatures in response to flight conditions, with resulting local damage and material state evolution. A conceptual model of how the Digital Twin can be used for predicting the life of aircraft structure and assuring its structural integrity is presented. The technical challenges to developing and deploying a Digital Twin are discussed in detail.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-642-19394-1_20",
+      "title": [
+        "Towards Green Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Service-Oriented Computing"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-25676-9_1",
+      "title": [
+        "Reengineering University: Modeling Business Processes to Achieve Strategic Goals"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Business Information Processing",
+        "Research in Systems Analysis and Design: Models and Methods"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-23447-7_14",
+      "title": [
+        "An Architecture and Methodology for a Four-Phased Approach to Green Business Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Information and Communication on Technology for the Fight against Global Warming"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-642-21064-8_29",
+      "title": [
+        "Mining for Reengineering: An Application to Semantic Wikis Using Formal and Relational Concept Analysis"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "The Semanic Web: Research and Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

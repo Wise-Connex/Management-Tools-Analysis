@@ -1,0 +1,34 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1038/248725a0",
+      "title": [
+        "The Strangelove scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1974-04"
+    },
+    {
+      "doi": "10.1080/03932727408457897",
+      "title": [
+        "Political scenario and cooperation for development"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lo Spettatore Internazionale"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1974-04"
+    }
+  ]
+}

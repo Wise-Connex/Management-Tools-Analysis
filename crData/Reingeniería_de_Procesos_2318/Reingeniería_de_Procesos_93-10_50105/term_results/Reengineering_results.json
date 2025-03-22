@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1057/bm.1993.11",
+      "title": [
+        "Brand reengineering — why and how?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Brand Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-10"
+    },
+    {
+      "doi": "10.1177/088636879302500506",
+      "title": [
+        "Compensation Support for the Reengineering Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Compensation &amp; Benefits Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-10"
+    },
+    {
+      "doi": "10.1097/00005110-199310000-00006",
+      "title": [
+        "Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JONA: The Journal of Nursing Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-10"
+    },
+    {
+      "doi": "10.1057/gpp.1993.31",
+      "title": [
+        "Reengineering and Insurance: Solving Problems, Seizing Opportunities"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Geneva Papers on Risk and Insurance - Issues and Practice"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-10"
+    }
+  ]
+}

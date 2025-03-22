@@ -1,0 +1,42 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/7323205",
+      "title": [
+        "Scenario group summary"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2307/302709",
+      "title": [
+        "Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "boundary 2"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5962/p.345065",
+      "title": [
+        "Survival 2001. Scenario from the future, by Henry E. Voegeli and John J. Tarrant  [Review]"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Canadian field-naturalist"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

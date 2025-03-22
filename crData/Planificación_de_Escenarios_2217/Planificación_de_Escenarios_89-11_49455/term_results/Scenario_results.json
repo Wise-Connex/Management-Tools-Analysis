@@ -1,0 +1,47 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/mper.1989.4310390",
+      "title": [
+        "Scenario Building for Operator Training Simulators Using a Transient Stability Program"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Power Engineering Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-11"
+    },
+    {
+      "doi": "10.1117/12.7977122",
+      "title": [
+        "Modeling Human Search And Target Acquisition Performance: I. First Detection Probability In A Realistic Multitarget Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Optical Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-11"
+    },
+    {
+      "doi": "10.1007/bf02800350",
+      "title": [
+        "Scenario for cold fusion by free quark catalysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Il Nuovo Cimento A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-11"
+    }
+  ]
+}

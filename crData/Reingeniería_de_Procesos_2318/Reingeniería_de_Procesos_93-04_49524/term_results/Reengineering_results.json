@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/eb054429",
+      "title": [
+        "Reengineering in action"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Planning Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The first conference featuring presentations by line managers implementing reengineering was held in Orlando, Florida, in January by The Manufacturing Institute, a division of the Institute for International Research.</jats:p>",
+      "publication_date": "1993-04"
+    },
+    {
+      "doi": "10.5860/choice.30-4486",
+      "title": [
+        "Process innovation: reengineering work through information technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Choice Reviews Online"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-04"
+    },
+    {
+      "doi": "10.1145/260304.260313",
+      "title": [
+        "Reengineering legacy systems using GUI and client/server technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGPLAN OOPS Messenger"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1994-04"
+    },
+    {
+      "doi": "10.1145/260303.260313",
+      "title": [
+        "Reengineering legacy systems using GUI and client/server technology"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Addendum to the proceedings on Object-oriented programming systems, languages, and applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-04"
+    }
+  ]
+}

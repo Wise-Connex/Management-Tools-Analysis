@@ -1,0 +1,305 @@
+{
+  "term": "Scenario",
+  "total_results": 23,
+  "processed_count": 23,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1126/science.306.5700.1278",
+      "title": [
+        "Iceland's Doomsday Scenario?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1038/laban1104-16b",
+      "title": [
+        "Response to Protocol Review Scenario: No Authority"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1038/laban1104-17a",
+      "title": [
+        "Response to Protocol Review Scenario: Inappropriate Actions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1038/laban1104-17b",
+      "title": [
+        "Response to Protocol Review Scenario: Bad choices"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1115/1.1799614",
+      "title": [
+        "Scenario-Based Failure Modes and Effects Analysis Using Expected Cost"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Mechanical Design"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Failure modes and effects analysis (FMEA) uses the product of three ranked factors to compute the risk priority number (RPN). Unfortunately, the RPN components have ambiguous definitions, and multiplying ranked values is not a valid operation. As a result, the RPN produces inconsistent risk priorities. In addition, FMEA uses distinct analyses for each system level and life cycle phase, making it difficult to consolidate interrelated risk information. The goal of scenario-based FMEA is to delineate and evaluate risk events more accurately. Probability and cost provide a consistent basis for risk analysis and decision making, and failure scenarios provide continuity across system levels and life cycle phases.</jats:p>",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1023/b:matg.0000048801.30621.04",
+      "title": [
+        "Response Surface Designs for Scenario Management and Uncertainty Quantification in Reservoir Production"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Mathematical Geology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1109/mcom.2004.1362554",
+      "title": [
+        "Policy-based dynamic provision of IP services in a secure VPN coalition scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Communications Magazine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1007/s00766-004-0199-z",
+      "title": [
+        "Supporting scenario evolution"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Requirements Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-05"
+    },
+    {
+      "doi": "10.4337/9781845423582.00010",
+      "title": [
+        "A sustainable-development scenario in detail"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Achieving a Sustainable Global Energy System"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1145/1029036.1029037",
+      "title": [
+        "The blind men and the elephant"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interactions"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Six blind men encounter an elephant. Each of them touches a different part of the elephant and expresses what the elephant is. Although they are touching the same elephant, each man's description is completely different from that of the others. We have been using this story as a metaphor for understanding different views of scenario-based system design.</jats:p>",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1386/ejac.23.3.201/0",
+      "title": [
+        "From Little Big Man to little green men: the captivity scenario in American culture"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of American Culture"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This paper seeks to link the seemingly diverse genres of the Indian captivity narrative and the alien abduction scenario. Whilst the Indian captivity narrative is plainly derived from first-hand accounts and can demonstrate a historical development based on the actuality of the experiences it describes, the alien abduction scenario though protesting its objective basis cannot. Rather than rejecting the validity of the alien abduction scenario on this account, the following attempts to account for the claims to reality of the alien abduction narrative by arguing that it exists in a historical continuum with the Indian captivity narrative. The narrative functions as part of a greater historical myth system in which national values of community safety and security, national progress and vitality and the preservation of core values against hostile enemies are central components. I argue that in the twentieth century the alien abduction narrative re-imagines these core concerns and in the context of exploration of the new frontier of space, provides for a re-energizing of the traditional captivity narrative, one in which abductees are positioned as colonists in perilous existence on the ‘final frontier’.</jats:p>",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1103/physrevd.70.095002",
+      "title": [
+        "Fermion masses in supersymmetric SO(10) with type II seesaw mechanism: A nonminimal predictive scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1111/j.1365-2648.2004.03233.x",
+      "title": [
+        "Developing concept maps from problem‐based learning scenario discussions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Advanced Nursing"
+      ],
+      "subject": [],
+      "abstract": "<jats:p><jats:bold>Aims. </jats:bold> This paper reports a study examining the effects of adopting concept mapping in problem‐based learning scenario discussions on the improvement of students’ learning outcomes in a nursing course.</jats:p><jats:p><jats:bold>Background. </jats:bold> Students in Taiwan usually have a high degree of anxiety about whether or not they have learned enough. Problem‐based learning is a method of teaching that uses a patient situation or scenario to stimulate students to acquire and apply information to solve problems. Concept mapping can promote problem‐solving and critical thinking to help students organize complex patient data, process complex relationships and offer holistic care to patients.</jats:p><jats:p><jats:bold>Methods. </jats:bold> An experimental design was used, with participants randomly assigned either to a control or experimental group. The experimental group participated in six problem‐based learning scenario discussions during the 16‐week semester, while the control group attended a traditional course.</jats:p><jats:p><jats:bold>Results. </jats:bold> The experimental group had significantly higher proposition and hierarchy scores for their concept maps compared with the control group. There were no significant differences in the cross‐link and example scores between the two groups. In general, the total score difference between the groups did not reach statistical significance levels. Only one student in the experimental group obtained a high score; most participants in both groups (over 50%) obtained low scores.</jats:p><jats:p><jats:bold>Conclusions. </jats:bold> Concept mapping strategies may be useful for analysis of individual student's thinking processes for (1) emphasizing key concepts or main ideas, (2) understanding relationships between different concepts, including cause–effect and part–whole relationships, (3) reviewing propositions, hierarchies and cross‐links in a logically scientific way, and (4) revising concept structures to agree with theory and experience.</jats:p>",
+      "publication_date": "2004-12"
+    },
+    {
+      "doi": "10.1016/s0140-6701(04)80639-8",
+      "title": [
+        "04/02834 Fuel prices scenario generation based on amultivariate GARCH model for risk analysis in a wholesale electricity market"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fuel and Energy Abstracts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1051/0004-6361:20041410",
+      "title": [
+        "A top-down scenario for the formation of massive Tidal Dwarf Galaxies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astronomy &amp; Astrophysics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-12"
+    },
+    {
+      "doi": "10.1016/j.revpalbo.2004.04.004",
+      "title": [
+        "Mosaic v1.1: landscape scenario creation software for simulation of pollen dispersal and deposition"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Review of Palaeobotany and Palynology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1103/physrevb.70.174402",
+      "title": [
+        "Nonequilibrium dynamics of spin glasses: Examination of the ghost domain scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s0040-1625(03)00069-6",
+      "title": [
+        "Technological diversification and assimilation of spillover technology: Canon's scenario for sustainable growth"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1016/j.jlp.2004.08.001",
+      "title": [
+        "Comparison of techniques for accident scenario analysis in hazardous systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Loss Prevention in the Process Industries"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1002/jsc.690",
+      "title": [
+        "Managing the concept of strategic change within a higher education institution: the role of strategic and scenario planning techniques"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Strategic Change"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>\n<jats:list list-type=\"bullet\">\n<jats:list-item><jats:p>Many higher education institutions in the UK develop strategies based on traditional strategic planning techniques and environmental scanning methods. The case study of the University of Glamorgan presented here illustrates and supports the notion that the reliance on these traditional techniques may not be enough to enable higher education institutions to plan strategically and also balance the pressures of change within the current higher education environment.</jats:p></jats:list-item>\n<jats:list-item><jats:p>The case study focuses on the introduction and use of scenario planning as an additional strategic planning and environmental scanning tool. The outcomes demonstrate that the tool is useful as a means of enabling institutions to evaluate the external environment against their core mission and strengths to ensure that they respond only to those external changes that will either enhance business or represent a significant threat to it.</jats:p></jats:list-item>\n<jats:list-item><jats:p>Specifically the study also illustrates the effectiveness of scenario planning in involving all staff across the organization and encouraging their imaginations and ideas about future strategies and priorities for that organization.</jats:p></jats:list-item>\n</jats:list>\n</jats:p><jats:p>Copyright © 2004 John Wiley &amp; Sons, Ltd.</jats:p>",
+      "publication_date": "2004-11"
+    },
+    {
+      "doi": "10.1002/fam.879",
+      "title": [
+        "New data for sandwich panels on the correlation between the SBI test method and the room corner reference scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fire and Materials"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Assessment of the fire behaviour of sandwich panels is continuously under discussion. The fire behaviour of these panels is a combination of material characteristics such as the core material and mechanical behaviour of the panels such as joints, dilations etc. The use of small or intermediate scale tests can be questioned for such types of products.</jats:p><jats:p>Within the proposed European product standard for sandwich panels (prEN 14509) the intermediate scale test method SBI (EN 13823) has been suggested as the fire test method to certify panels. The standard does, however, use quite an artificial mounting procedure, which does not fully reflect the end‐use conditions of the panels.</jats:p><jats:p>In a previous research project conducted by Nordtest it was shown that the correlation between the SBI test method and both the ISO 9705 and ISO 13784 part 1 was insufficient. The test data produced for the SBI test method, however, did not use the above mentioned mounting technique.</jats:p><jats:p>In this article new data for a number of products are added to the database using the mounting procedure of the product standard. The data are compared with the previous data and show that the mounting method of the product standard results in slightly more severe conditions but that there are still discrepancies with the full‐scale test results. The data also show an unacceptable level of repeatability due to the fact that small dilations result in a wide variation of classification result. The new data together with the old data show once more that it is dangerous to make a fire safety assessment of a sandwich panel based on small or intermediate scale tests. Copyright © 2004 John Wiley &amp; Sons, Ltd.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1111/j.1469-8137.2004.01243.x",
+      "title": [
+        "Lethal effects of experimental warming approximating a future climate scenario on southern African quartz‐field succulents: a pilot study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New Phytologist"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-02"
+    },
+    {
+      "doi": "10.15407/knit2004.05.221",
+      "title": [
+        "Microbial community in a precursory scenario of growing tagetes patula in a lunar greenhouse"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Kosmìčna nauka ì tehnologìâ"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-11"
+    }
+  ]
+}

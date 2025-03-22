@@ -1,0 +1,566 @@
+{
+  "term": "Scenario",
+  "total_results": 43,
+  "processed_count": 43,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1093/ww/9780199540884.013.u234538",
+      "title": [
+        "Baum, Vicki, (24 Jan. 1896–29 Aug. 1960), novelist, play and scenario writer"
+      ],
+      "type": "reference-entry",
+      "container-title": [
+        "Who Was Who"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1093/ww/9780199540884.013.u224128",
+      "title": [
+        "de Cordova, Rudolph, (died 11 Jan. 1941), author, journalist, dramatist, motion picture scenario writer"
+      ],
+      "type": "reference-entry",
+      "container-title": [
+        "Who Was Who"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1093/ww/9780199540884.013.u210714",
+      "title": [
+        "Hamon, Count Louis, (1 Nov. 1866–8 Oct. 1936), author and scenario writer in Hollywood, California"
+      ],
+      "type": "reference-entry",
+      "container-title": [
+        "Who Was Who"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.4304/jcm.2.7.20-27",
+      "title": [
+        "Superposition Modulated Cooperative Diversity for Half-duplex Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Communications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1097/01.eem.0000302950.52044.6b",
+      "title": [
+        "Disaster Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Emergency Medicine News"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1109/cis.2007.21",
+      "title": [
+        "Scenario Discovery Using Abstracted Correlation Graph"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 International Conference on Computational Intelligence and Security (CIS 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1109/rtss.2007.22",
+      "title": [
+        "Scenario Aware Analysis for Complex Event Models and Distributed Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "28th IEEE International Real-Time Systems Symposium (RTSS 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1109/apscc.2007.4414436",
+      "title": [
+        "Scenario-Based Petri Net Approach for Collaborative Business Process Modelling"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 2nd IEEE Asia-Pacific Service Computing Conference (APSCC 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1086/522820",
+      "title": [
+        "GRB Precursors in the Fallback Collapsar Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/s1063-4584(07)61629-x",
+      "title": [
+        "ANIMAL MODELS OF OSTEOARTHRITIS: NOT A ONE-SIZE-FITS-ALL SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Osteoarthritis and Cartilage"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1109/apscc.2007.39",
+      "title": [
+        "Scenario-Based Petri Net Approach for Collaborative Business Process Modelling"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 2nd IEEE Asia-Pacific Service Computing Conference (APSCC 2007)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1145/1314690.1314693",
+      "title": [
+        "A testing scenario for probabilistic processes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the ACM"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n            We introduce a notion of finite testing, based on statistical hypothesis tests, via a variant of the well-known trace machine. Under this scenario, two processes are deemed observationally equivalent if they cannot be distinguished by any finite test. We consider processes modeled as image finite probabilistic automata and prove that our notion of observational equivalence coincides with the trace distribution equivalence proposed by Segala. Along the way, we give an explicit characterization of the set of probabilistic generalize the\n            <jats:italic>Approximation Induction Principle</jats:italic>\n            by defining an also prove limit and convex closure properties of trace distributions in an appropriate metric space.\n          </jats:p>",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1109/icves.2007.4456396",
+      "title": [
+        "Fusing ladar and color image for detection grass off-road scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Conference on Vehicular Electronics and Safety"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1145/1329469.1329477",
+      "title": [
+        "Qualitative scenario analysis of mobile peer-to-peer"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 6th international conference on Mobile and ubiquitous multimedia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/j.nuclphysbps.2007.08.121",
+      "title": [
+        "Rare B decays in a single Universal Extra Dimension scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Physics B - Proceedings Supplements"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/j.resuscitation.2007.05.020",
+      "title": [
+        "Advanced life support cardiac arrest scenario test evaluation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Resuscitation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/s1672-0229(08)60001-7",
+      "title": [
+        "A Scenario on the Stepwise Evolution of the Genetic Code"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Genomics, Proteomics &amp; Bioinformatics"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>It is believed that in the RNA world the operational (ribozymes) and the informational (riboscripts) RNA molecules were created with only three (adenosine, uridine, and guanosine) and two (adenosine and uridine) nucleosides, respectively, so that the genetic code started uncomplicated. Ribozymes subsequently evolved to be able to cut and paste themselves and riboscripts were acceptive to rigorous editing (adenosine to inosine); the intensive diversification of RNA molecules shaped novel cellular machineries that are capable of polymerizing amino acids—a new type of cellular building materials for life. Initially, the genetic code, encoding seven amino acids, was created only to distinguish purine and pyrimidine; it was later expanded in a stepwise way to encode 12, 15, and 20 amino acids through the relief of guanine from its roles as operational signals and through the recruitment of cytosine. Therefore, the maturation of the genetic code also coincided with (1) the departure of aminoacyl-tRNA synthetases (AARSs) from the primordial translation machinery, (2) the replacement of informational RNA by DNA, and (3) the co-evolution of AARSs and their cognate tRNAs. This model predicts gradual replacements of RNA-made molecular mechanisms, cellular processes by proteins, and informational exploitation by DNA.</jats:p>",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/j.enpol.2007.08.026",
+      "title": [
+        "Scenario analysis on CO2 emissions reduction potential in China's electricity sector"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1007/s10714-007-0567-3",
+      "title": [
+        "Emergent universe in brane world scenario with Schwarzschild–de Sitter bulk"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "General Relativity and Gravitation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-08"
+    },
+    {
+      "doi": "10.1590/s0104-07072007000400005",
+      "title": [
+        "User satisfaction from the perspective of acceptability in the family health scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Texto &amp; Contexto - Enfermagem"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The purpose of this study was to assess users' acceptability of the care offered and delivered by Family Health teams in Ribeirão Preto, São Paulo, Brazil. This exploratory-descriptive study was based on a quantitative-qualitative approach method. The sample consisted of 171 users, registered at the four Family Health Units that cover the basic area of a secondary service. The study used semi structured interviews with analytical dimensions: infrastructure, accessibility, and team-user relationships. Descriptive statistics was used for calculations of standard deviation, mean and median, assisted by Statistical Package for Social Science, and thematic analysis. The results show predomination of the female gender (87,7%), age older than 60 years old (31.0%), and monthly income inferior to two minimum monthly salaries (34%). Users indicated considerate and affective interpersonal relations as one point of satisfaction and one of the aspects that differentiates health care. Dissatisfaction predominated in terms of environment, a long time spent in the waiting room, and organizational accessibility, impairing care longitudinality and continuity. Studies within this theme give opportunities to users, strengthening their participation in the planning processes and exercising social control.</jats:p>",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1108/17427370710863149",
+      "title": [
+        "A scenario‐based approach for direct interruptability prediction on wearable devices"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Pervasive Computing and Communications"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>People are subjected to a multitude of interruptions. In order to manage these interruptions it is imperative to predict a person's interruptability – his/her current readiness or inclination to be interrupted. This paper aims to introduce the approach of direct interruptability inference from sensor streams (accelerometer and audio data) in a ubiquitous computing setup and to show that it provides highly accurate and robust predictions.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The authors argue that scenarios are central for evaluating the performance of ubiquitous computing devices (and interruptability predicting devices in particular) and prove this on the setup employed, which was based on that of Kern and Schiele.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The paper demonstrates that scenarios provide the foundation for avoiding misleading results, and provide the basis for a stratified scenario‐based learning model, which greatly speeds up the training of such devices.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>The direct prediction seems to be competitive or even superior to indirect prediction methods and no drawbacks have been observed yet.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>The paper introduces a method for accurately predicting a person's interruptability directly from simple sensors without any intermediate steps/symbols.</jats:p></jats:sec>",
+      "publication_date": "2008-04"
+    },
+    {
+      "doi": "10.1007/s10668-007-9131-2",
+      "title": [
+        "Economic liabilities of environmental pollution by coal mining: Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environment, Development and Sustainability"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-06"
+    },
+    {
+      "doi": "10.1109/aemc.2007.4638006",
+      "title": [
+        "The selection of MIMO antennas in a fading scenario and performance evaluation of MIMO and SISO systems in an indoor office environment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE Applied Electromagnetics Conference (AEMC)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.4000/jda.902",
+      "title": [
+        "Anthropologies du monde",
+        "World Anthropologies: Cosmopolitics for a New Global Scenario in Anthropology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal des anthropologues"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1007/bf03256533",
+      "title": [
+        "Entry, descent, and landing scenario for the mars exploration rover mission"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of the Astronautical Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1007/s11227-007-0161-1",
+      "title": [
+        "Scenario-focused development method for a pen-based user interface: model and applications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Supercomputing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-11"
+    },
+    {
+      "doi": "10.1007/bf03063081",
+      "title": [
+        "De relatie tussen de positie van het hoofd en nekpijn"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Stimulus"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1080/14790530701736598",
+      "title": [
+        "Limits to Tourism? A Backcasting Scenario for Sustainable Tourism Mobility in 2050"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tourism and Hospitality Planning &amp; Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1080/10519990701616901",
+      "title": [
+        "Simulations of ITER Scenario 2 with different schemes of current ramp-up"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Plasma Devices and Operations"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1007/s12070-007-0105-3",
+      "title": [
+        "Bilateral aggressive inverted papillomas: A changing scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Indian Journal of Otolaryngology and Head &amp; Neck Surgery"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.4016/4417.01",
+      "title": [
+        "D1.3.3.-v1-CARLINK::UMA scenario VanetMobiSim/ns2 Simulation"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "SciVee"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.3233/isu-2007-27404",
+      "title": [
+        "APE 2007: Pre-conference day – “Embracing Change” Scenario: “The European Journal for Nuclear Sinus Treatments”. Journal Marketing Workshop"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Services &amp; Use"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1093/icesjms/fsm161",
+      "title": [
+        "Scenario testing of fisheries management strategies using a high resolution ERSEM–POM ecosystem model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ICES Journal of Marine Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Petihakis, G., Smith, C. J., Triantafyllou, G., Sourlantzis, G., Papadopoulou, K-N., Pollani, A., and Korres, G. 2007. Scenario testing of fisheries management strategies using a high resolution ERSEM–POM ecosystem model. – ICES Journal of Marine Science, 64: 1627–1640.</jats:p>\n               <jats:p>Ecosystem models are just beginning to be considered as management tools. In terms of fishery impacts, dynamic ecosystem models provide an opportunity to make advances because they can both evaluate the state of the system and make predictions about the ecosystem under various fishing scenarios. In the framework of the Cost Impact project, a complex high-resolution (500 × 500 m grid) ecosystem model was implemented in Iraklion Bay, Crete. Several management scenarios were simulated to investigate the impacts of trawling on this particular ecosystem (reductions in fishing area, effort, and mortality). Introducing trawling impacts into the model led to increases in pelagic production. All scenarios also resulted in net increases in pelagic production, the level of which, and the degree of spatial variability, was dependent on the particular scenario. Changes in pelagic variables were often noted in areas well away from trawled areas. It was also clear that for pelagic variables and processes, depth of trawling is more important than reduction in trawling area, i.e. a scenario banning fishing in waters shallower than 100 m seems to lead to less change in the pelagic system than a scenario that reduces direct mortality to the benthos.</jats:p>",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/j.enpol.2007.07.027",
+      "title": [
+        "Welfare distribution effect of a price reduction in the Dutch gas transport market: A scenario analysis of regulatory policy, market form and rent allocation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1080/13511610701760721",
+      "title": [
+        "KNOWLEDGE POLITICS OF INTERDISCIPLINARITY"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Innovation: The European Journal of Social Science Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.5392/jkca.2007.7.12.283",
+      "title": [
+        "Design of U-School Framework Based on User-Centric Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of the Korea Contents Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/j.gene.2007.09.001",
+      "title": [
+        "Satellite-DNA evolutionary patterns under a complex evolutionary scenario: The case of Acrolophus subgroup (Centaurea L., Compositae) from the western Mediterranean"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Gene"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.3741/jkwra.2007.40.12.921",
+      "title": [
+        "Outlook on Variation of Water Resources in Korea under SRES A2 Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Korea Water Resources Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1007/s10040-007-0242-5",
+      "title": [
+        "Integrated methods and scenario development for urban groundwater management and protection during tunnel road construction: a case study of urban hydrogeology in the city of Basel, Switzerland"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hydrogeology Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1016/j.soildyn.2007.08.003",
+      "title": [
+        "Corrigendum to “An earthquake scenario for the microzonation of Sofia and the vulnerability of structures designed by use of the Eurocodes”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Soil Dynamics and Earthquake Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1016/j.nucengdes.2007.03.022",
+      "title": [
+        "Experimental interpretation and code validation based on the PHEBUS-FP programme: Lessons learnt from the analysis of the containment scenario of FPT1 and FPT2 tests"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1002/j.0022-0337.2007.71.12.tb04433.x",
+      "title": [
+        "PBL Core Skills Faculty Development Workshop 3: Understanding PBL Process Assessment and Feedback via Scenario‐Based Discussions, Observation, and Role‐Play"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Dental Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:label /><jats:p>Tutorial assessment in PBL is thought to be a valid assessment approach and is believed to exert a positive impact on the learning process. Reports, however, have demonstrated that assessment by the facilitator can be unreliable. Training of faculty to conduct this type of assessment has tended to be lacking and is a likely contributor to this inconsistency. This report describes the final in a series of foundation‐building faculty development workshops focused on the instructional methodology of PBL. The PBL Assessment and Feedback workshop reported here introduced the theory and practice of conducting process‐based assessment accompanied by formative feedback. Scenario‐based discussions, mock group demonstration, role‐modeling, and role‐play were utilized as adult learning‐appropriate strategies to familiarize participants with process‐based assessment and feedback. Evaluation of the workshop by participants provided evidence that the majority of participants were satisfied with the methods and content of the workshop. Suggestions for additional training in these assessment methods included additional examples, practice, workshops, or observation and mentoring.</jats:p></jats:sec>",
+      "publication_date": "2007-12"
+    },
+    {
+      "doi": "10.1103/physrevb.76.224419",
+      "title": [
+        "Cluster-glass percolative scenario in<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mrow><mml:mi mathvariant=\"normal\">Ce</mml:mi><mml:msub><mml:mi mathvariant=\"normal\">Ni</mml:mi><mml:mrow><mml:mn>1</mml:mn><mml:mo>−</mml:mo><mml:mi>x</mml:mi></mml:mrow></mml:msub><mml:msub><mml:mi mathvariant=\"normal\">Cu</mml:mi><mml:mi>x</mml:mi></mml:msub></mml:mrow></mml:math>studied by very low-temperature ac susceptibility and dc magnetization"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.3280/spe2014-001007",
+      "title": [
+        "Reengineering the Confindustria Research Department: Guido Carli's Chairmanship of the Italian Industrial Association (Confindustria)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "HISTORY OF ECONOMIC THOUGHT AND POLICY"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-05"
+    },
+    {
+      "doi": "10.1109/pic.2014.6972398",
+      "title": [
+        "Research on the reengineering of warehousing process based on Internet of Things"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2014 IEEE International Conference on Progress in Informatics and Computing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2014-05"
+    },
+    {
+      "doi": "10.5755/j01.ee.25.2.4590",
+      "title": [
+        "Implementation of Business Process Reengineering in Human Resource Management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Engineering Economics"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

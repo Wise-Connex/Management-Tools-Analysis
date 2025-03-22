@@ -1,0 +1,332 @@
+{
+  "term": "Scenario",
+  "total_results": 26,
+  "processed_count": 26,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/mc.2004.1274014",
+      "title": [
+        "Agent hell: a scenario of worst practices"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1001/virtualmentor.2004.6.3.oped2-0403",
+      "title": [
+        "Lessons from the Worst-Case Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AMA Journal of Ethics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/822342",
+      "title": [
+        "Saltstone Disposal Facility Closure Cap Configuration and Degradation Base Case: Institutional Control to Pine Forest Scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2172/822302",
+      "title": [
+        "Saltstone Disposal Facility Mechanically Stabilized Earth Vault Closure Cap Degradation Base Case: Institutional Control To Pine Forest Scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s0140-6701(04)93179-7",
+      "title": [
+        "04/00797 Scenario planning for electricity supply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fuel and Energy Abstracts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1142/9789812702753_0042",
+      "title": [
+        "MOBILITY IN MEGACITIES: INDIAN SCENARIO"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "International Seminar on Nuclear War and Planetary Emergencies — 30th Session"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1103/physrevd.69.063502",
+      "title": [
+        "Inflationary attractor in the braneworld scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s0140-6701(04)93359-0",
+      "title": [
+        "04/00977 A lifestyle-based scenario for US buildings: implications for energy use"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fuel and Energy Abstracts"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1080/1367886032000099044",
+      "title": [
+        "The opportunities for HRD in scenario planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Human Resource Development International"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1016/j.inffus.2003.08.001",
+      "title": [
+        "Control based sensor management for a multiple radar monitoring scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Fusion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1209/epl/i2003-10167-2",
+      "title": [
+        "Gravitational redshift in Einstein-Kalb-Ramond spacetime and Randall-Sundrum scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Europhysics Letters (EPL)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1590/s0103-97332004000200042",
+      "title": [
+        "Particle ratio fluctuations and isobaric ensemble for chemical freeze-out scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Brazilian Journal of Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/1028174.971394",
+      "title": [
+        "Raising motivation in real-time laboratories"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGCSE Bulletin"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Real-time systems is a topic that one cannot overlook in an engineer's education. However, teaching real-time systems in an undergraduate syllabus is a challenging experience due to conflicting constraints placed on such a course. In this paper we present a new setup for laboratories in the real-time systems course that successfully meets the constraints of mass education, stable environment management, short time span for the labs, and still enables deep involvement of students in the central topic of resource allocation with high motivation.</jats:p>",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.2514/6.2004-242-93",
+      "title": [
+        "Emergency Response to a Major Crisis through the International Charter on Space and Major Disasters - A Practical Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Space OPS 2004 Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-05"
+    },
+    {
+      "doi": "10.1002/scj.10429",
+      "title": [
+        "Computing scenario from knowledge with preferentially ordered hypotheses"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Systems and Computers in Japan"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>A method of computing scenario for knowledge including preferentially ordered hypotheses is proposed. Minimum conflict sets are found for competing hypothesis sets, and acceptable hypothesis sets are then found by applying preference relation to the minimum conflict sets; the disjunction of all elements of the acceptable hypothesis set thus obtained can be added to the fact set without contradiction. A fact set combined with all such disjunctions is considered a scenario, and is used for reasoning. Basically, the acceptability of hypothesis subsets for their minimal conflict sets is to be checked in order to obtain a scenario, which requires combinatorial calculations. A method is proposed to simplify such calculations; namely, acceptability is first checked for the single‐element hypothesis sets, and then set operations are employed to check the acceptability of an arbitrary hypothesis set. © 2004 Wiley Periodicals, Inc. Syst Comp Jpn, 35(4): 19–26, 2004; Published online in Wiley InterScience (<jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"http://www.interscience.wiley.com\">www.interscience.wiley.com</jats:ext-link>). DOI 10.1002/scj.10429</jats:p>",
+      "publication_date": "2004-04"
+    },
+    {
+      "doi": "10.1103/physrevd.69.064022",
+      "title": [
+        "Small brane black holes in the Randall-Sundrum type I scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/971300.971394",
+      "title": [
+        "Raising motivation in real-time laboratories"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 35th SIGCSE technical symposium on Computer science education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.17665/1676-4285.20044928",
+      "title": [
+        "Knowledge and practice of beginner and veteran (men and women) nurses in the hospital scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Online Brazilian Journal of Nursing"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The survey compares the care of nursing in the hospital scenario between the perspectives of beginners and veteran nurses, being its objectives: to identify the distinctive characteristics of this care for these professionals and to analyze the implications of these characteristics for the knowledge and practice of nurses who work in the hospital scenario. From the “Nightingalean’s” principles associated to the contemporary perspectives on the care in nursing, the study of the qualitative nature was subsidized by quantitative techniques for the treatment, classification and categorization of the individual information according to the method of content associations and as collective results it has emerged four dimensions of the caring, namely: professional, knowledge, affection and practice, which interrelate in the professional working of the study’s subjects. It is concluded that during the professional development of beginners and veteran nurses there are characteristics related to the care in nursing that are kept during the graduation and the professional practice. Other characteristics suffer a movement of transformation since the beginning of the professional work, configuring a process that is kept during the practice within the hospital scenario. Thus, the knowledge and the practice of these  (men and women) nurses presented a dynamic of accommodation that although preserves the “Nightingalean’s” principles of the profession, involves other characteristics that are determined by the institutions and are incorporated during the professional practice.</jats:p>"
+    },
+    {
+      "doi": "10.1093/molbev/msh119",
+      "title": [
+        "Coenzyme A Biosynthesis: Reconstruction of the Pathway in Archaea and an Evolutionary Scenario Based on Comparative Genomics"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Molecular Biology and Evolution"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1017/s002211200300781x",
+      "title": [
+        "Nonlinear adjustment of density fronts. Part 1. The Rossby scenario and the experimental reality"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Fluid Mechanics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1186/1471-2105-5-25",
+      "title": [
+        "A web services choreography scenario for interoperating bioinformatics applications"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BMC Bioinformatics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1088/1475-7516/2004/03/006",
+      "title": [
+        "The inhomogeneous reheating scenario with low scale inflation and/or minimal supersymmetric standard model flat directions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Cosmology and Astroparticle Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s0040-1625(02)00371-2",
+      "title": [
+        "Exploring e-government futures through the application of scenario planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1061/(asce)0733-9488(2004)130:1(2)",
+      "title": [
+        "Scenario Planning for Strategic Regional Transportation Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Urban Planning and Development"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    },
+    {
+      "doi": "10.1002/ps.876",
+      "title": [
+        "Exposure to sulfosulfuron in agricultural drainage ditches: field monitoring and scenario‐based modelling"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Pest Management Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Field monitoring and scenario‐based modelling were used to assess exposure of small ditches in the UK to the herbicide sulfosulfuron following transport via field drains. A site in central England on a high pH, clay soil was treated with sulfosulfuron, and concentrations were monitored in the single drain outfall and in the receiving ditch 1 km downstream. Drainflow in the nine months following application totalled 283 mm. Pesticide lost in the first 12.5 mm of flow was 99% of the total loading to drains (0.5% of applied). Significant dilution was observed in the receiving ditch and quantifiable residues were only detected in one sample (0.06 µg litre<jats:sup>−1</jats:sup>). The MACRO model was evaluated against the field data with minimal calibration. The parameterisation over‐estimated the importance of macropore flow at the site. As a consequence, the maximum concentration in drainflow (2.3 µg litre<jats:sup>−1</jats:sup>) and the total loading to drains (0.76 g) were over‐estimated by factors of 2.4 and 5, respectively. MACRO was then used to simulate long‐term fate of the herbicide for each of 20 environmental scenarios. Resulting estimates for concentrations of sulfosulfuron in a receiving ditch were weighted according to the prevalence of each scenario to produce a probability distribution of daily exposure. Copyright © 2004 Society of Chemical Industry</jats:p>",
+      "publication_date": "2004-08"
+    },
+    {
+      "doi": "10.1088/0029-5515/44/3/010",
+      "title": [
+        "MHD activity in Tore Supra gigajoule scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Fusion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2004-03"
+    }
+  ]
+}

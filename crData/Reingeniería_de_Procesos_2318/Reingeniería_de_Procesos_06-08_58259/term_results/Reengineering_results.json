@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2307/j.ctvr0qsgk.12",
+      "title": [
+        "The Nature of Representation in Andean Legislatures and Attempts at Institutional Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Crisis of Democratic Representation in the Andes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-08"
+    },
+    {
+      "doi": "10.11126/stanford/9780804752787.003.0007",
+      "title": [
+        "The Nature of Representation in Andean Legislatures and Attempts at Institutional Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Crisis of Democratic Representation in the Andes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-08"
+    },
+    {
+      "doi": "10.3745/kipstd.2006.13d.4.573",
+      "title": [
+        "Reengineering Black-box Test Cases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The KIPS Transactions:PartD"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-08"
+    },
+    {
+      "doi": "10.1515/9780804767910-010",
+      "title": [
+        "7. The Nature of Representation in Andean Legislatures and Attempts at Institutional Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Crisis of Democratic Representation in the Andes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-08"
+    },
+    {
+      "doi": "10.1073/pnas.0601188103",
+      "title": [
+        "Notch/Delta signaling constrains reengineering of pro-T cells by PU.1"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the National Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>PU.1 is essential for early stages of mouse T cell development but antagonizes it if expressed constitutively. Two separable mechanisms are involved: attenuation and diversion. Dysregulated PU.1 expression inhibits pro-T cell survival, proliferation, and passage through β-selection by blocking essential T cell transcription factors, signaling molecules, and<jats:italic>Rag</jats:italic>gene expression, which expression of a rearranged T cell antigen receptor transgene cannot rescue. However, Bcl2 transgenic cells are protected from this attenuation and may even undergo β-selection, as shown by PU.1 transduction of defined subsets of Bcl2 transgenic fetal thymocytes with differentiation in OP9-DL1 and OP9 control cultures. The outcome of PU.1 expression in these cells depends on Notch/Delta signaling. PU.1 can efficiently divert thymocytes toward a myeloid-like state with multigene regulatory changes, but Notch/Delta signaling vetoes diversion. Gene expression analysis distinguishes sets of critical T lineage regulatory genes with different combinatorial responses to PU.1 and Notch/Delta signals, suggesting particular importance for inhibition of E proteins, Myb, and/or Gfi1 (growth factor independence 1) in diversion. However, Notch signaling only protects against diversion of cells that have undergone T lineage specification after Thy-1 and CD25 up-regulation. The results imply that in T cell precursors, Notch/Delta signaling normally acts to modulate and channel PU.1 transcriptional activities during the stages from T lineage specification until commitment.</jats:p>",
+      "publication_date": "2006-08"
+    }
+  ]
+}

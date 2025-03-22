@@ -1,0 +1,71 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4018/978-1-93177-712-4",
+      "title": [
+        "Successful Software Reengineering"
+      ],
+      "type": "monograph",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-07"
+    },
+    {
+      "doi": "10.1097/00005110-200107000-00009",
+      "title": [
+        "Simulation Software"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JONA: The Journal of Nursing Administration"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-07"
+    },
+    {
+      "doi": "10.1300/j045v13n03_03",
+      "title": [
+        "Quality, CQI, and Reengineering in Health Services Organizations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Health &amp; Social Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-07"
+    },
+    {
+      "doi": "10.1002/j.2334-5837.2001.tb02272.x",
+      "title": [
+        "2.1.2 Practical Experience Applying Business Process Reengineering to US ARMY Airworthiness Qualification"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INCOSE International Symposium"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This paper relates the experiences of the US Army Aviation &amp; Missile Command team chartered to reengineer the Airworthiness Release and Qualification Process. Specifically, it reviews the processes the team used to identify issues and problems with the current process; development of recommended approaches for changes; definition and modeling of the current and “to be” processes; and lessons learned selling the new and improved process to the leadership and to the action officers.</jats:p>",
+      "publication_date": "2001-07"
+    },
+    {
+      "doi": "10.1080/15228053.2001.10855980",
+      "title": [
+        "Mobile e-Medicine: Reengineering, Telemedicine and the Art of War"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Information Technology Case and Application Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-07"
+    }
+  ]
+}

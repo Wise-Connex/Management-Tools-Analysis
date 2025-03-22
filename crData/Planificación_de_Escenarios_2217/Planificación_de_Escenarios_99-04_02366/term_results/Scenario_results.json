@@ -1,0 +1,86 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1097/00149078-199904150-00014",
+      "title": [
+        "Power Out, Generators Fail"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biomedical Safety &amp; Standards"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-04"
+    },
+    {
+      "doi": "10.1016/s0094-5765(99)00084-3",
+      "title": [
+        "The family of italian pressurized structures for the international space station scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Astronautica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-04"
+    },
+    {
+      "doi": "10.1086/517235",
+      "title": [
+        "<i>Clostridium difficile–</i>Associated Diarrhea in Human Immunodeficiency Virus Infection–A Changing Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Clinical Infectious Diseases"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-04"
+    },
+    {
+      "doi": "10.1145/306363.306408",
+      "title": [
+        "Test scenario and regression test suite generation from Object-Z formal specification for object-oriented program testing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 37th annual Southeast regional conference (CD-ROM)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-04"
+    },
+    {
+      "doi": "10.1142/s0217732399000729",
+      "title": [
+        "INFRARED QUASI FIXED POINTS AND MASS PREDICTIONS IN THE MSSM II: LARGE <font>tan</font> β SCENARIO"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Modern Physics Letters A"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> We consider the infrared quasi fixed point solutions of the renormalization group equations for the Yukawa couplings and soft supersymmetry breaking parameters in the MSSM in the large tan β regime. The existence of ir quasi fixed points together with the values of gauge couplings, third generation quarks, lepton and Z-boson masses allows one to predict masses of the Higgs bosons and SUSY particles as functions of the only free parameter, m<jats:sub>1/2</jats:sub>, or the gluino mass. The lightest Higgs boson mass for M<jats:sub> SUSY </jats:sub>≈1 TeV is found to be m<jats:sub>h</jats:sub>=128.2-0.4-7.1± 5 GeV for μ&gt;0 and m<jats:sub>h</jats:sub>= 120.6-0.1-3.8±5 GeV for μ&lt;0. </jats:p>",
+      "publication_date": "1999-04"
+    },
+    {
+      "doi": "10.1086/517233",
+      "title": [
+        "<i>Clostridium difficile–</i>Associated Diarrhea in Human Immunodeficiency Virus Infection–A Changing Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Clinical Infectious Diseases"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-04"
+    }
+  ]
+}

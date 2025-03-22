@@ -1,0 +1,86 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/bf02744487",
+      "title": [
+        "Manufacturing supply chain modelling and reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Sadhana"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-04"
+    },
+    {
+      "doi": "10.1093/ajcp/107.4.385",
+      "title": [
+        "Reference Laboratory Administrative Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Clinical Pathology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-04"
+    },
+    {
+      "doi": "10.1108/19355181199700001",
+      "title": [
+        "Information Systems in Business Process Reengineering: An Exploratory Survey of Issues"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Business"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Business Process Reengineering (BPR) is the radical, cross‐functional redesign of the operating practices usedby organizations to achieve certain outcomes. While BPR has received considerable attention from practitioners and consultants, there has been little empirical research published on BPR. This study explores why and how organizations are using business process re‐engineering and identifies problems that effect re‐engineering success.The results showed that organizations generally considered themselves successful at re‐engineering.  However,while they achieved significant improvement in process operation, they were not achieving the order of magnitude improvements ascribed to re‐engineering.</jats:p>",
+      "publication_date": "1997-04"
+    },
+    {
+      "doi": "10.1016/s0957-4174(96)00106-6",
+      "title": [
+        "A model for reengineering legacy expert systems to object-oriented architecture"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Expert Systems with Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-04"
+    },
+    {
+      "doi": "10.1016/s1070-3241(16)30310-8",
+      "title": [
+        "Reengineering a Cardiovascular Surgery Service"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Joint Commission Journal on Quality Improvement"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-04"
+    },
+    {
+      "doi": "10.1145/271159.606011",
+      "title": [
+        "Book Review: Upsizing the Individual in the Downsized Organization: Managing in the wake of reengineering, globalization and overwhelming technological change by Robert Johansen and Rob Swigart"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGGROUP Bulletin"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-04"
+    }
+  ]
+}

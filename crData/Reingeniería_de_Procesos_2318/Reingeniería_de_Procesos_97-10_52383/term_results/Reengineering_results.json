@@ -1,0 +1,83 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/623023",
+      "title": [
+        "Implementation plan for waste management reengineering at Oak Ridge National Laboratory"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1201/b15235-7",
+      "title": [
+        "FRONTIERS BEYOND TQM AND REENGINEERING"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Total Productivity Management (TPmgt)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-10"
+    },
+    {
+      "doi": "10.1016/s0925-5273(97)00052-2",
+      "title": [
+        "Reengineering the new product introduction process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-10"
+    },
+    {
+      "doi": "10.1016/s0360-8352(97)00064-8",
+      "title": [
+        "Selecting business process reengineering projects strategically"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Industrial Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-10"
+    },
+    {
+      "doi": "10.1016/s0360-8352(97)00069-7",
+      "title": [
+        "SATORC: A system analysis tool for reengineering complex systems"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computers &amp; Industrial Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-10"
+    },
+    {
+      "doi": "10.1300/j115v16n04_08",
+      "title": [
+        "Surviving Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Medical Reference Services Quarterly"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-10"
+    }
+  ]
+}

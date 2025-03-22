@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1093/nass/nrm191",
+      "title": [
+        "Reengineering aninvitroevolved ribozyme."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nucleic Acids Symposium Series"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-11"
+    },
+    {
+      "doi": "10.1109/gsis.2007.4443289",
+      "title": [
+        "Study on the evaluation of production process reengineering performances based on grey-clustering principle"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 IEEE International Conference on Grey Systems and Intelligent Services"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-11"
+    },
+    {
+      "doi": "10.1109/mdso.2007.65",
+      "title": [
+        "Reengineering J2EE Servers for Automated Management in Distributed Environments"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Distributed Systems Online"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-11"
+    },
+    {
+      "doi": "10.1364/ao.47.000c49",
+      "title": [
+        "In situ optical characterization and reengineering of interference coatings"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Optics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-05"
+    },
+    {
+      "doi": "10.1002/9780470696569.ch15",
+      "title": [
+        "Cultures on the Brink: Reengineering the Soul of Capitalism — On a Global Scale"
+      ],
+      "type": "other",
+      "container-title": [
+        "Global Assemblages"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-11"
+    }
+  ]
+}

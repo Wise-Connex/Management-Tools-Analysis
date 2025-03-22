@@ -1,0 +1,73 @@
+{
+  "term": "Planning",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1136/bmj.2.4795.1190-a",
+      "title": [
+        "Planning for Battle Casualties"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BMJ"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1952-11"
+    },
+    {
+      "doi": "10.2307/2551132",
+      "title": [
+        "Industry and Planning in Stepney."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1952-11"
+    },
+    {
+      "doi": "10.1002/j.1551-8833.1952.tb15903.x",
+      "title": [
+        "Long‐Range Water Supply Planning for Wichita"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal AWWA"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1952-11"
+    },
+    {
+      "doi": "10.2307/2126453",
+      "title": [
+        "<i>British Planning and Nationalization.</i>Ben Lewis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Politics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1952-11"
+    },
+    {
+      "doi": "10.1086/221164",
+      "title": [
+        "<i>Community Planning for Human Services.</i>Bradley Buell and Associates"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Sociology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1952-11"
+    }
+  ]
+}

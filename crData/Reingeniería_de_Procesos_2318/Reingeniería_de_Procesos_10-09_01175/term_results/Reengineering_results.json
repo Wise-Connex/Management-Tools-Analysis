@@ -1,0 +1,73 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/quatic.2010.57",
+      "title": [
+        "Quality in ICT Reengineering and Refactoring"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 Seventh International Conference on the Quality of Information and Communications Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-09"
+    },
+    {
+      "doi": "10.1108/14637151011076476",
+      "title": [
+        "Simulation for emergency care process reengineering in hospitals"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>Using computer simulation, this paper seeks to model the emergency care process in a hospital and evaluate the effects of some proposed changes to improve patient wait times in the process.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>The paper is based upon a case study conducted at the hospital and uses historical data provided by the hospital to simulate the emergency care process.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The simulation results demonstrate that the changes proposed can shorten patient wait times in the emergency care process. The proposed changes involve adding another payment station and a new short‐stay ward in the process. Based upon the results, the paper supports the implementation of the changes proposed.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>A couple of limitations are recognized in this paper. First, the simulation does not consider varying the capacity of resources and locations involved in the emergency care process. Second, the simulation does not consider patients by clinical disciplines in which they are treated.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>The simulation results show that computer simulation can be an effective decision support tool in modelling the emergency care process and evaluating the effects of changes in the process. The results would be helpful to those who are considering reengineering and improving emergency care or other similar processes in hospitals.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>Based upon a case study using real‐world data, this paper extends the line of studies on computer simulation in healthcare by considering not only patient wait times in the emergency care process but also some ways to improve patient wait times and their effects on the process.</jats:p></jats:sec>",
+      "publication_date": "2010-09"
+    },
+    {
+      "doi": "10.1109/quatic.2010.62",
+      "title": [
+        "Reengineering IT Infrastructures: A Method for Topology Discovery"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2010 Seventh International Conference on the Quality of Information and Communications Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-09"
+    },
+    {
+      "doi": "10.26634/jse.5.1.1210",
+      "title": [
+        "UML Based Visualization of Objects for Partial Software Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "i-manager's Journal on Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-09"
+    },
+    {
+      "doi": "10.2307/j.ctv1q69gt7.21",
+      "title": [
+        "Agiles Software-Reengineering mit Erfolg"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Unternehmenskybernetik 2020."
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2010-09"
+    }
+  ]
+}

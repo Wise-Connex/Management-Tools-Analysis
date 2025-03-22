@@ -1,0 +1,60 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0048-7333(95)00827-6",
+      "title": [
+        "Beyond business process reengineering: Towards the holonic enterprise"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Research Policy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-05"
+    },
+    {
+      "doi": "10.1109/52.493019",
+      "title": [
+        "Cash cow in the tar pit: reengineering a legacy system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Software"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-05"
+    },
+    {
+      "doi": "10.1002/tie.5060380307",
+      "title": [
+        "Changes of control and business reengineering in Russian privatized companies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The International Executive"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The success of societal transformation in Russia depends on the ingenuity of Russian managers to link the legacy of the communist regime and the national patterns of industrial organization with the prerequisites of a modern economy. This article reports on a study of management in organizational transformation for 20 privatized industrial companies in Russia and describes the changes in their control structures and strategies. Organizational and economic factors determining the establishing of specific control arrangements and their impact on business reengineering are analyzed by synthesis of surveys and case studies. Implications for western partners and suggestions for further research are drawn.</jats:p>",
+      "publication_date": "1996-05"
+    },
+    {
+      "doi": "10.1145/229459.229470",
+      "title": [
+        "A reengineering framework for evaluating a financial imaging system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communications of the ACM"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1996-05"
+    }
+  ]
+}

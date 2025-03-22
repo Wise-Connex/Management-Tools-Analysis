@@ -1,0 +1,278 @@
+{
+  "term": "Scenario",
+  "total_results": 21,
+  "processed_count": 21,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada412663",
+      "title": [
+        "Reconstructing Iraq: Insights, Challenges, and Missions for Military Forces in a Post-Conflict Scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1038/laban0203-20b",
+      "title": [
+        "Response to Protocol Review Scenario: Check the Records"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.2118/79703-ms",
+      "title": [
+        "Better Field Development Decisions from Multi-Scenario, Interdependent Reservoir, Well, and Facility Simulations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE Reservoir Simulation Symposium"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Making better decisions, which take into account uncertainty in all the components of an exploration and production (E&amp;P) asset's value chain, continues to be a significant challenge for the industry. The literature of the last few years has emphasized the importance of workflows that integrate and include formal quantification of uncertainties across subsurface, well locations, well configurations and operations, surface interconnections, and economics. Much of the effort has focused on scenario and probabilistic analysis decision support techniques. The industry continues to make many field development decisions from flow simulation ‘sensitivity cases’ or from simplified models, which can have the effect of underestimating the full uncertainty and adding unnecessary constraints.</jats:p>\n               <jats:p>This paper presents an integrated system that can assist field development decisions. The complex relationships between the earth models, the development strategy and the economics are retained in the development decision process. A full-physics reservoir simulator is used to maintain high fidelity to the physics of both the subsurface and surface components. The interdependencies of underlying uncertainties can affect the choices to be made. The system described can be implemented for project decisions at any stage within an asset's life cycle.</jats:p>\n               <jats:p>In this paper, we illustrate the application of the system on a single, significant reservoir unit, taken through a development-planning exercise. The exercise includes coupled well and facility scenarios and evaluates economic outputs that are fully coupled with the flow simulation outputs. The reservoir is a faulted structure covering about 30 square miles and has around a 450 feet thick oil column. Uncertainties in the earth model were present in the static properties, faulting, and fluid-rock dynamic properties. Uncertainties included both distinct scenarios and continuous distributions. multiple choices around well placement, drainage strategies with and without injection, and scheduling are included. Ultimate recoveries, profiles, and ultimate economics for the range of possibilities are evaluated.</jats:p>",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1038/laban0203-19b",
+      "title": [
+        "Response to Protocol Review Scenario: Take It Slowly"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1093/icb/43.1.137",
+      "title": [
+        "The Segmented Urbilateria: A Testable Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Integrative and Comparative Biology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.2523/79703-ms",
+      "title": [
+        "Better Field Development Decisions from Multi-Scenario, Interdependent Reservoir, Well, and Facility Simulations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE Reservoir Simulation Symposium"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1108/10878570310455024",
+      "title": [
+        "Scenarios and strategies: making the scenario about the business"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Strategy &amp; Leadership"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Scenario development has traditionally been an outward looking process designed to enhance awareness of potential change in the external business environment. A set of techniques is presented here for bringing the business and its internal issues directly into the scenario development effort from the beginning. By casting strategies as scenarios, companies can gain many of the benefits of traditional scenario planning while accelerating the strategic decision making for organizations in high change environments.</jats:p>",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1038/laban0203-20a",
+      "title": [
+        "Response to Protocol Review Scenario: A Change Is in Order"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1109/tse.2003.1178051",
+      "title": [
+        "A scenario-driven approach to trace dependency analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Transactions on Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1016/s0370-2693(02)03269-0",
+      "title": [
+        "Logarithmic correction to Newton potential in Randall–Sundrum scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics Letters B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1017/9789048505067.007",
+      "title": [
+        "Transfiguring the Urban Gray: László Moholy-Nagy’s Film Scenario ‘Dynamic of the Metropolis’"
+      ],
+      "type": "other",
+      "container-title": [
+        "Camera Obscura, Camera Lucida"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1108/10878570310455006",
+      "title": [
+        "Scenario planning after 9/11: managing the impact of a catastrophic event"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Strategy &amp; Leadership"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Managers need a framework for assessing various kinds of risk and uncertainty that will continue to confront corporate decision makers as the 9/11 event plays out over the following months and years. The authors suggest an innovative scenario process, one that provides business continuity planning and medium‐term operational planning with a more rigorous analytical grounding, but without overburdening the process with excessive and ultimately counter‐productive complexity. The authors have introduced alternative scenario‐based tools to respond to this specific need for continuity assurance and near‐term operations planning. Case one: business continuity planning (BCP) for the management of one leading global financial services firm committed to a process of identifying and remedying gaps in the recoverability of its key assets. Workshops developed strategies that would close unacceptable asset recovery gaps in two scenarios. Case two: medium term operational planning for a professional services firm in the weeks that followed 9/11 evaluated the plausible range of impacts on their business and operations as the USA and the world took action and terrorist groups responded further. Case three: three years ago the US Coast Guard developed scenarios for very long range strategic planning for their long view project. The Coast Guard developed ten basic strategies from these scenarios. The fourth strategy was “Acquire full maritime domain awareness”. The goal was to give the Coast Guard the ability to acquire, track, and identify in real time any vessel or aircraft entering America’s maritime domain. Maritime domain awareness (MDA) turned out to be highly relevant for USCG decision making both before and after 9/11. Of all the major US federal services involved in the 9/11 response operation, the Coast Guard was singled out for its agility and preparedness.</jats:p>",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1067/men.2003.23",
+      "title": [
+        "A 3-month-old with blood in the stool: A case scenario (CE)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Emergency Nursing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1080/03081060309910",
+      "title": [
+        "A multi-layer scenario analysis for sustainable international transport"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Planning and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1111/1467-8624.00532",
+      "title": [
+        "The Infant as Onlooker: Learning From Emotional Reactions Observed in a Television Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Child Development"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Two studies investigated whether 10– and 12–month–olds can use televised emotional reactions to guide their behavior. Infants watched an actress orient toward 1 of 2 novel objects and react with neutral affect during baseline and with positive or negative affect during test. Infants then had 30 s to interact with the objects. In Study 1, 12–month–olds (N = 32) avoided the target object and showed increases in negative affect after observing the negative–emotion scenario. Twelve–month–olds’ responses to positive vs. neutral signals did not differ significantly. In Study 2, 10–month–olds (N = 32) attended to the televised presentations but showed no consistent changes in their object interactions or affect. Thus, 12–month–olds used social information presented on television and associated emotional signals with the intended target.</jats:p>",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.3233/thc-2003-11203",
+      "title": [
+        "A scenario for a web-based radiation treatment planning structure: A new tool for quality assurance procedure?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technology and Health Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1088/0305-4470/36/8/310",
+      "title": [
+        "Unfolding a diabolic point: a generalized crossing scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics A: Mathematical and General"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1016/s0378-4274(02)00373-9",
+      "title": [
+        "Application of physiologically based toxicokinetic modelling to study the impact of the exposure scenario on the toxicokinetics and the behavioural effects of toluene in rats"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Toxicology Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1002/ajmg.a.20014",
+      "title": [
+        "Screening of families with autosomal recessive non‐syndromic hearing impairment (ARNSHI) for mutations in GJB2 gene: Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Medical Genetics Part A"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Several studies have reported that mutations in the GJB2 gene (coding for connexin26) are a common cause of recessive non‐syndromic hearing impairment. A GJB2 mutant allele, 35delG, has been found to have a high prevalence in most ethnic groups. Though mutations in the GJB2 gene have been shown to cause autosomal recessive deafness in Indian families, the frequencies of the various mutations are still unknown. In the present study, we analyzed 45 Indian families belonging to three different states, namely, Karnataka, Tamil Nadu, and Delhi with non‐syndromic hearing impairment and an apparently autosomal recessive mode of inheritance. All the families were initially screened for three mutations (W24X, W77X, and Q124X) by using allele‐specific PCR primers; mutations were confirmed by DNA sequencing. Families that were heterozygous or negative for tested mutations of the GJB2 gene were sequenced directly to identify the complementary mutation and other mutations in GJB2. Four families were homozygous for W24X, constituting around 8.8%. In two families, the affected individuals were compound heterozygotes for W24X; one family (DKB16) carried 35delG with W24X while the other family (DKB7) carried R143W with W24X. We suggest that W24X is a common allele among the mutations screened, causing autosomal recessive non‐syndromic hearing impairment (ARNSHI) in the Indian population. © 2003 Wiley‐Liss, Inc.</jats:p>",
+      "publication_date": "2003-07"
+    },
+    {
+      "doi": "10.1016/s1571-0661(04)80612-1",
+      "title": [
+        "Scenario Views for Visual Behavior Models in GenGED* *This work is supported by the German-Brazilian Cooperation for Graphical Support of Formal and Semi-Formal Methods for Software Specification and Development (GRAPHIT)."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Electronic Notes in Theoretical Computer Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    },
+    {
+      "doi": "10.1016/s0022-3697(02)00302-5",
+      "title": [
+        "In situ pressure-induced solid-state amorphization in Sm2(MoO4)3, Eu2(MoO4)3 and Gd2(MoO4)3 crystals: chemical decomposition scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics and Chemistry of Solids"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2003-02"
+    }
+  ]
+}

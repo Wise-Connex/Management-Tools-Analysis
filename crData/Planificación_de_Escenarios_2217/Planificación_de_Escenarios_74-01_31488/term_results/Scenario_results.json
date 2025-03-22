@@ -1,0 +1,32 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1007/978-94-009-8582-7_24",
+      "title": [
+        "SCENARIO — GAME"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Urban Simulation: Models for Public Policy Analysis"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1017/s0020818300005907",
+      "title": [
+        "Quebec and the North American Subsystem: One Possible Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Organization"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>For a majority of Québécois whose mother tongue is French, transnational relations with the United States are like palm trees. They are known to exist elsewhere but are rarely talked about and much less seen. This apparent neglect, which contrasts markedly with the almost frantic attention now accorded to Canadian-American relations in anglophone Canada, does not imply that Québécois are unaware of the economic, cultural, and political proximity of the United States or that significant transactions across the Québec-American border do not take place. They do occur, but they are not always readily apparent.</jats:p>"
+    }
+  ]
+}

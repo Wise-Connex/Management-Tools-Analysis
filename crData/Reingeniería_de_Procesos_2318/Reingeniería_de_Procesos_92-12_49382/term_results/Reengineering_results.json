@@ -1,0 +1,47 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1002/npr.4040120107",
+      "title": [
+        "How reengineering transforms organizations to satisfy customers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "National Productivity Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Reengineering is a radically new process of organizational change that many companies are using to renew their commitment to customer service. By focusing on making improvements in all dimensions of the service organization—the human dimension, the work process dimension, and the technological dimension—reengineering helps companies overcome the systemic work barriers that interfere with efforts to achieve higher levels of customer satisfaction. Though reengineering is a long and sometimes difficult process that requires strong leadership, extensive participation, and a three‐phased approach, it often results in dramatic improvements in how the organization responds to customer needs and expectations.</jats:p><jats:p>Following this introductory article on the reengineering process are case studies from three organizations—an insurance company, a bank, and a telephone company—that have achieved significant productivity and quality breakthroughs by reengineering their processes and various departments.</jats:p>",
+      "publication_date": "1992-12"
+    },
+    {
+      "doi": "10.1002/npr.4040120109",
+      "title": [
+        "Reengineering commercial loan servicing at first Chicago"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "National Productivity Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-12"
+    },
+    {
+      "doi": "10.1002/npr.4040120108",
+      "title": [
+        "The principal insures a better future by reengineering its individual insurance department"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "National Productivity Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-12"
+    }
+  ]
+}

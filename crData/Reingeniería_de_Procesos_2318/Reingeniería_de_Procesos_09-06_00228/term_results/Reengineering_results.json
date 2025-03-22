@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/ecbi.2009.94",
+      "title": [
+        "Assembly Process Reengineering Applied to Production Line Balancing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2009 International Conference on Electronic Commerce and Business Intelligence"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-06"
+    },
+    {
+      "doi": "10.1177/1062860609338131",
+      "title": [
+        "Reengineering Hospital Discharge: A Protocol to Improve Patient Safety, Reduce Costs, and Boost Patient Satisfaction"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Medical Quality"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-07"
+    }
+  ]
+}

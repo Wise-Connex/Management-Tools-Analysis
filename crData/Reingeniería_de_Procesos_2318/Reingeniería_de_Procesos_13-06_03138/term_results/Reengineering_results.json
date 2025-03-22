@@ -1,0 +1,59 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4324/9780080496238-16",
+      "title": [
+        "Strategic aspects of business process reengineering (BPR) – UK experiences"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "IT in Business: A Business Manager's Casebook"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-06"
+    },
+    {
+      "doi": "10.4324/9780080481135-21",
+      "title": [
+        "Strategies in Response to the Potential of Electronic Commerce Market process reengineering through electronic market systems: opportunities and challenges"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Strategic Information Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-06"
+    },
+    {
+      "doi": "10.4028/www.scientific.net/amr.709.699",
+      "title": [
+        "Structural Equation Analysis of Major Factors of Chinese Commercial Banks Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advanced Materials Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>On the basis of relative literature studies, this paper puts forward the conceptual schema of major factors of reengineering in Chinese commercial banks and research hypothesis, then proceeds empirical tests. The results show that market competition pressure affects reengineering performance indirectly by client oriented strategy, leading factors and information technology capabilities. Not only information technology capabilities have impact on reconstruction performance directly,but also client oriented strategy, organization and coordination degree influence that indirectly. Despite training and inspiration, information technology capabilities and organization and coordination degree also indirectly affect reengineering performance. Leading factors, together with training and inspiration, affect reengineering performance directly and indirectly. Organization and coordination degree affect reengineering performance directly. Finally, corrected conceptual schema of Chinese commercial banks reengineering influencing factors are got by analyzing the function from influencing factors to reengineering performance.</jats:p>"
+    },
+    {
+      "doi": "10.1186/1472-6963-13-215",
+      "title": [
+        "Incremental analysis of the reengineering of an outpatient billing process: an empirical study in a public hospital"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BMC Health Services Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-12"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada372340",
+      "title": [
+        "The Effects of Reengineering Operating Room Case Scheduling at Madigan Army Medical Center."
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-04"
+    },
+    {
+      "doi": "10.1145/276203.276224",
+      "title": [
+        "Reengineering for learning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGGROUP Bulletin"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Knowledge is of paramount importance in order to keep organizations on the right track. In times of fast changes, where knowledge is becoming an ever more crucial production factor, organizations need a systematic way in order to deal with knowledge: knowledge management therefore is of great importance. How do you manage knowledge? By implementing a knowledge infrastructure which tits to organizational goals and culture. In this article will be dealt with the design of a knowledge infrastructure, using the approach developed by the Knowledge Management Consulting Group of Kenniscentrum CIBIT, for an organization which aims at developing products 1 against the best price possible.</jats:p>",
+      "publication_date": "1998-04"
+    },
+    {
+      "doi": "10.1108/09544789810211353",
+      "title": [
+        "Performance improvement: the rise and fall of reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The TQM Magazine"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Suggests that organizational improvement methodologies have a life cycle. This takes them through the stages of being the “in” thing to do, then into a decline because they are no longer exciting or have failed to produce results. Ultimately they are left being pursued by only a few committed individuals before the arrival of a champion to revive the approach with a new twist. Notes that process reengineering is now falling out of favor and looks at the reasons for its rapid rise and failure. Suggests factors such as its negative impact on the organization which was not clearly defined and the project cycle time which was too long. Concludes that the approach still has a role to play.</jats:p>",
+      "publication_date": "1998-04"
+    },
+    {
+      "doi": "10.2214/ajr.170.4.9530022",
+      "title": [
+        "Reengineering a radiology department in an academic institution."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Roentgenology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-04"
+    },
+    {
+      "doi": "10.1093/protein/11.4.303",
+      "title": [
+        "Reengineering immunoglobulin domain interactions by introduction of charged residues"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Protein Engineering Design and Selection"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1998-04"
+    }
+  ]
+}

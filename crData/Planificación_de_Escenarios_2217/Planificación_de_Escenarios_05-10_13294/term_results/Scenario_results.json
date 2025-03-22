@@ -1,0 +1,398 @@
+{
+  "term": "Scenario",
+  "total_results": 30,
+  "processed_count": 30,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1525/an.2005.46.7.5",
+      "title": [
+        "A Different Global Scenario in Anthropology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Anthropology News"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1109/mmul.2005.78",
+      "title": [
+        "MPEG-21 in a Backpack Journalism Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Multimedia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1038/laban1005-20b",
+      "title": [
+        "Response to Protocol Review Scenario: Change the procedure"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1016/j.eupc.2005.08.110",
+      "title": [
+        "A Female Doctor's Career in Austria? Is this a Non-Future-Scenario?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Europace"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1088/6102/44/4/762",
+      "title": [
+        "An Interacting Two-Fluid Scenario for Quintom Dark Energy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Communications in Theoretical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1108/00220410510625831",
+      "title": [
+        "Effects of foreign language and task scenario on relevance assessment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Documentation"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>This paper aims to investigate how readers assess relevance of retrieved documents in a foreign language they know well compared with their native language, and whether work‐task scenario descriptions have effect on the assessment process.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>Queries, test collections, and relevance assessments were used from the 2002 Interactive CLEF. Swedish first‐language speakers, fluent in English, were given simulated information‐seeking scenarios and presented with retrieval results in both languages. Twenty‐eight subjects in four groups were asked to rate the retrieved text documents by relevance. A two‐level work‐task scenario description framework was developed and applied to facilitate the study of context effects on the assessment process.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>Relevance assessment takes longer in a foreign language than in the user first language. The quality of assessments by comparison with pre‐assessed results is inferior to those made in the users' first language. Work‐task scenario descriptions had an effect on the assessment process, both by measured access time and by self‐report by subjects. However, effects on results by traditional relevance ranking were detectable. This may be an argument for extending the traditional IR experimental topical relevance measures to cater for context effects.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>An extended two‐level work‐task scenario description framework was developed and applied. Contextual aspects had an effect on the relevance assessment process. English texts took longer to assess than Swedish and were assessed less well, especially for the most difficult queries. The IR research field needs to close this gap and to design information access systems with users' language competence in mind.</jats:p></jats:sec>",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1145/1095714.1095775",
+      "title": [
+        "Scenario based method for teaching, learning and assessment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 6th conference on Information technology education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.3905/jwm.2005.598424",
+      "title": [
+        "Anticipating the Future"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Wealth Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1038/laban1005-20a",
+      "title": [
+        "Response to Protocol Review Scenario: The answer is 'C'"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1063/1.2084907",
+      "title": [
+        "Beam plasma electromagnetic instabilities in a smooth density gradient: Application to the fast ignition scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physics of Plasmas"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The integrated growth rate of various relativistic beam∕plasma instabilities in a weakly varying plasma density gradient is calculated using a WKB-like approximation. It is proven that such an assumption can be made in fast ignition scenario conditions. The formalism is applied to the two-stream, the filamentation, and the two-stream∕filamentation instabilities, the latter instability being a mixture of the former two, and is the fastest growing one. The results are restricted to collisionless plasmas and nonrelativistic beam and plasma temperatures. Filamentation instability is reduced by the density gradient and eventually does not develop in the core, whereas two-stream and two-stream∕filamentation instabilities should saturate even before they feel the gradient. Various effects connected to the density gradient are discussed. It is found they should be negligible as long as these later instabilities remain in their respective linear regime.</jats:p>",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1038/laban1005-19b",
+      "title": [
+        "Response to Protocol Review Scenario: USDA pain categories do not apply"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Lab Animal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1088/0951-7715/19/1/001",
+      "title": [
+        "A codimension-two scenario of sliding solutions in grazing–sliding bifurcations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nonlinearity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-01"
+    },
+    {
+      "doi": "10.2307/41166329",
+      "title": [
+        "Three Decades of Scenario Planning in Shell"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "California Management Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1086/498136",
+      "title": [
+        "Precursors and Main Bursts of Gamma-Ray Bursts in a Hypernova Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1016/j.futures.2005.01.003",
+      "title": [
+        "The origins and evolution of scenario techniques in long range business planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1007/s00382-005-0068-6",
+      "title": [
+        "A scenario of European climate change for the late twenty-first century: seasonal means and interannual variability"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Climate Dynamics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1177/097492840506100409",
+      "title": [
+        "Post-Soviet Religio-Cultural Scenario in Central Asia"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "India Quarterly: A Journal of International Affairs"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1007/s10666-005-9016-4",
+      "title": [
+        "Simulation of PM10 concentration patterns for a 2010 traffic scenario in Bologna, Italy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Modeling &amp; Assessment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.1007/s00271-005-0011-y",
+      "title": [
+        "Water requirements of olive orchards: I simulation of daily evapotranspiration for scenario analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Irrigation Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2006-01"
+    },
+    {
+      "doi": "10.1016/j.ympev.2005.04.022",
+      "title": [
+        "Molecular phylogeography of Dolichopoda cave crickets (Orthoptera, Rhaphidophoridae): A scenario suggested by mitochondrial DNA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Molecular Phylogenetics and Evolution"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1080/07408170591008082",
+      "title": [
+        "A stochastic linear goal programming approach to multistage portfolio management based on scenario generation via linear programming"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IIE Transactions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1016/j.ecoenv.2005.04.012",
+      "title": [
+        "Scenario-based simulation of runoff-related pesticide entries into small streams on a landscape level"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecotoxicology and Environmental Safety"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1002/j.1551-8833.2005.tb07495.x",
+      "title": [
+        "Scenario Planning: A Tool to Manage Future Water Utility Uncertainty"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal AWWA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This article, the fourth in a six‐part series, takes a timely look at scenario planning. This powerful tool can be used by strategic planners to frame the future and is useful in guiding representatives of the public water supply community when planning for future uncertainty. This article presents five scenarios that were discussed at a 2002 AWWA Research Foundation workshop in which participants evaluated societal, business, and utility trends and used scenario planning to craft a water utility strategy for future success. A complete scenario regarding global warming is presented in the article, along with four condensed scenarios dealing with how utilities will assimilate developing technology, the effects of changes in the population on demands exerted on utilities, the development of creative partnering and regionalization, and water utility response to catastrophic events.</jats:p>",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.26634/jfet.1.1.944",
+      "title": [
+        "Technology Management, Assesment and Forecasting: A Perspective Scenario for Indian Strategic Policy Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "i-manager's Journal on Future Engineering and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1145/1094855.1094965",
+      "title": [
+        "Service-oriented architecture and business process choreography in an order management scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Companion to the 20th annual ACM SIGPLAN conference on Object-oriented programming, systems, languages, and applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1086/497824",
+      "title": [
+        "Do Observed Metallicity Gradients of Early-Type Galaxies Support a Hybrid Formation Scenario?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astrophysical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1145/1107548.1107581",
+      "title": [
+        "User requirements for intelligent home environments"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2005 joint conference on Smart objects and ambient intelligence: innovative context-aware services: usages and technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1103/physrevb.72.132503",
+      "title": [
+        "Composite quasiparticles and the hidden quantum critical point in the topological transition scenario of high-<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:msub><mml:mi>T</mml:mi><mml:mi>c</mml:mi></mml:msub></mml:math>cuprates"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.13182/fst05-a1071",
+      "title": [
+        "Hybrid Scenario Development in DIII-D"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Science and Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    },
+    {
+      "doi": "10.1117/12.638185",
+      "title": [
+        "Protecting civil aircraft from the MANPAD threat: is this a practical scenario?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Technologies for Optical Countermeasures II; Femtosecond Phenomena II; and Passive Millimetre-Wave and Terahertz Imaging II"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-10"
+    }
+  ]
+}

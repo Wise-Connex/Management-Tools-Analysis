@@ -1,0 +1,162 @@
+{
+  "term": "Reengineering",
+  "total_results": 12,
+  "processed_count": 12,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4324/9781003077121-14",
+      "title": [
+        "Process Management and Process Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "MacrologisticsSM Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-08"
+    },
+    {
+      "doi": "10.30534/ijeter/2020/22882020",
+      "title": [
+        "Reengineering of the Construction Companies Based on BIM-technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Emerging Trends in Engineering Research"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3390/app10165590",
+      "title": [
+        "Productivity Improvement through Reengineering and Simulation: A Case Study in a Footwear-Industry"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Process reengineering is a very useful tool, specifically in industrial engineering where technological advances, information systems, customer requirements, and more have led to the need for radical change in some or all areas of an organization. The objective of this work is to show the usefulness of applying reengineering in the case of the footwear industry to make a proposal to change the problem area and the production decoration line as well as compare it with the current process using models of simulation performed in the Arena™ software. The proposal consisted of merging two production lines and comparing the current design with the proposal as well as comparing different parameters such as the use of resources and the production rate. The results indicated that the production rate increases by approximately 29% with the new design, using the same resources. In addition, using the OptQuest tool of the Arena™ software, it was found that with the new process, the production rate could be increased by up to 41% compared to the current process.</jats:p>"
+    },
+    {
+      "doi": "10.3233/jifs-179921",
+      "title": [
+        "Social network visual simulation for process reengineering of construction change management under building information modelling technology"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Intelligent &amp; Fuzzy Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Construction change management is an important part of construction project management. Previous studies usually focus on the various steps of construction change control: analyzing the causes of change, avoiding the risk of change, tracking the process of change, management and feedback of change. This study focused on improving the information flow and organizational relationship of the participants in the process of construction change management, which was reengineered with the use of Building Information Modelling (BIM) technology for better information integration. As BIM technology provides technical means for information transaction and management, a reengineered construction change management process based on BIM technology was proposed to form a more effective way of putting forward, examine, issuing, updating and archiving the information. Both the workflow and the organizational units involved in each work step were reengineered to improve the information flow. To verify the effect of process reengineering, Uncinet, a visual analysis tool for Social network analysis (SNA) was applied to quantitatively analyze and compare the traditional and BIM based organizational structure. The research results demonstrated that BIM was helpful to strengthen organizational coordination and information exchange in construction change management process.</jats:p>",
+      "publication_date": "2020-08"
+    },
+    {
+      "doi": "10.14738/abr.88.8832",
+      "title": [
+        "Factors Affecting the Use of Online Applications for Business Process Reengineering (BPR) Acceleration in Micro, Small and Medium Enterprises (MSMEs) as a Consequence of Covid-19 Pandemic"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Archives of Business Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The aim of this research is testing the factors that affect the use of online applications for the acceleration of Business Process Reengineering (BPR) system in Micro, Small, and Medium Enterprises during Covid-19 pandemic will be the next question. This study used primary data from a web-based survey—Google  Form—to  keep up with current technology and to comply with COVID-19 Social Distancing protocol and to stay alert. We make observation of MSMEs was conducted in Yogyakarta. The results of analysis presented earlier have led us to conclude that (1) personal factors do not affect the use of online application, (2) organizational factors do not affect the use of online application, (3) online application success affects the use of online application, and (4) emotional Reaction affects the use of online application.&#x0D;\n </jats:p>"
+    },
+    {
+      "doi": "10.1186/s12915-020-00827-y",
+      "title": [
+        "Reengineering anthrax toxin protective antigen for improved receptor-specific protein delivery"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BMC Biology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:sec>\n<jats:title>Background</jats:title>\n<jats:p>To increase the size of the druggable proteome, it would be highly desirable to devise efficient methods to translocate designed binding proteins to the cytosol, as they could specifically target flat and hydrophobic protein-protein interfaces. If this could be done in a manner dependent on a cell surface receptor, two layers of specificity would be obtained: one for the cell type and the other for the cytosolic target. Bacterial protein toxins have naturally evolved such systems. Anthrax toxin consists of a pore-forming translocation unit (protective antigen (PA)) and a separate protein payload. When engineering PA to ablate binding to its own receptor and instead binding to a receptor of choice, by fusing a designed ankyrin repeat protein (DARPin), uptake in new cell types can be achieved.</jats:p>\n</jats:sec><jats:sec>\n<jats:title>Results</jats:title>\n<jats:p>Prepore-to-pore conversion of redirected PA already occurs at the cell surface, limiting the amount of PA that can be administered and thus limiting the amount of delivered payload. We hypothesized that the reason is a lack of a stabilizing interaction with wild-type PA receptor. We have now reengineered PA to incorporate the binding domain of the anthrax receptor CMG2, followed by a DARPin, binding to the receptor of choice. This construct is indeed stabilized, undergoes prepore-to-pore conversion only in late endosomes, can be administered to much higher concentrations without showing toxicity, and consequently delivers much higher amounts of payload to the cytosol.</jats:p>\n</jats:sec><jats:sec>\n<jats:title>Conclusion</jats:title>\n<jats:p>We believe that this reengineered system is an important step forward to addressing efficient cell-specific delivery of proteins to the cytosol.</jats:p>\n</jats:sec>",
+      "publication_date": "2020-12"
+    },
+    {
+      "doi": "10.1002/tbio.202000011",
+      "title": [
+        "Reengineering a falloposcope imaging system for clinical use"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Translational Biophotonics"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>High‐grade serous carcinoma of the ovary is believed to originate in the fallopian tubes (FTs). A submillimeter diameter endoscope with advanced imaging capabilities may take advantage of the natural pathway of the female reproductive tract to image the FTs in a minimally invasive procedure for early detection of cancer. Our lab previously built a prototype benchtop FT endoscope with pseudowhite light imaging, multispectral fluorescence imaging and optical coherence tomography. This endoscope was approximately 0.9 mm in diameter, flexible and steerable in one direction. Several modifications have been made to create a falloposcope imaging system which is ready for clinical use. This new design includes a multilumen extrusion, a revised handle design, simplified lens design and redesigned subsystems resulting in improved mechanical characteristics, biocompatibility and portability while maintaining image quality. Additionally, these clinical endoscopes are single use, considerably less expensive and faster to build as compared to the prototype.<jats:inline-graphic xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"graphic/tbio202000011-gra-0001.png\" xlink:title=\"image\" /></jats:p>",
+      "publication_date": "2020-11"
+    },
+    {
+      "doi": "10.21833/ijaas.2020.08.005",
+      "title": [
+        "Developing appropriate pricing models for workflow and workflow reengineering in case of federated ERP system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of ADVANCED AND APPLIED SCIENCES"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-08"
+    },
+    {
+      "doi": "10.26389/ajsrp.h100220",
+      "title": [
+        "Reengineering Leadership Competencies According to Some Contemporary Leadership Trends: Field Study on Leaders in the Ministry of Education – Kuwait: هندرة الكفايات القيادية تبعاً لبعض اتجاهات القيادة المعاصرة: دراسة ميدانية على القياديين في وزارة التربية – الكويت"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "مجلة العلوم التربوية و النفسية",
+        "Journal of Educational and Psychological Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The study aims to reveal the leadership competencies reengineering according to some contemporary leadership trends – a field study on the ministry of education leaders– Kuwait. The study adopted the evolutionary survey method since it’s suitable for the purposes of the present study, and the study based on the questionnaire to collect data. The study sample consisted of (260) individuals; all administrators, department heads, officials, and school headmasters working in Kuwaiti Ministry of Education. The study found that the degree of Reengineering Leadership Competencies in the Managers of Kuwaiti Ministry of Education according to some leadership was (2.71 out of 5.00) which of medium level. On the dimensional level; the dimension of the elements of reengineering is the highest mean (2.83), followed by the performance rate rise with mean of (2.70) and finally the infrastructure engineering dimension with mean of (2.60), and all dimensions were in the (medium level). The results showed that there were statistically significant differences at the level of (0.05≥α) in the degree of leadership competencies availability in the Kuwaiti Ministry of Education managers attributed to the educational qualification and the variance was in favor of PhD category. The study recommended that innovation should be activated among managers and decision-makers to form modern strategic plans in the Kuwaiti Ministry of Education.</jats:p>",
+      "publication_date": "2020-08"
+    },
+    {
+      "doi": "10.34671/sch.bsr.2020.0403.0016",
+      "title": [
+        "TAX MANEUVER AS A REENGINEERING MEASURE FOR THE OIL REFINING INDUSTRY"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Balkan Scientific Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-08"
+    },
+    {
+      "doi": "10.1126/sciadv.abc6378",
+      "title": [
+        "Reengineering biocatalysts: Computational redesign of chondroitinase ABC improves efficacy and stability"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science Advances"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Computational redesign of chondroitinase ABC introduces 37 point mutations to improve enzyme stability and activity.</jats:p>",
+      "publication_date": "2020-08"
+    },
+    {
+      "doi": "10.1007/s12015-020-10022-9",
+      "title": [
+        "Reengineering Bone-Implant Interfaces for Improved Mechanotransduction and Clinical Outcomes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Stem Cell Reviews and Reports"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-12"
+    }
+  ]
+}

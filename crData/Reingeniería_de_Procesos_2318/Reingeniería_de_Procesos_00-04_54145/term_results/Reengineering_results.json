@@ -1,0 +1,56 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada376502",
+      "title": [
+        "Munitions Reengineering Initiatives"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-04"
+    },
+    {
+      "doi": "10.21236/ada377189",
+      "title": [
+        "Business Reengineering - Government Viability"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-04"
+    },
+    {
+      "doi": "10.1177/009286150003400232",
+      "title": [
+        "Emerging Technologies and Business Pressure: The Driving Forces for an Information Management Reengineering Strategy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Drug Information Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-04"
+    },
+    {
+      "doi": "10.1177/105678790000900206",
+      "title": [
+        "School Reengineering and SAT-I Performance: A Case Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Educational Reform"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-04"
+    }
+  ]
+}

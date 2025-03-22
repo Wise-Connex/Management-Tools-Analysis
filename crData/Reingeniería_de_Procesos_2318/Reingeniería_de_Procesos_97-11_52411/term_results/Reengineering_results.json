@@ -1,0 +1,59 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.5860/crl.58.6.499",
+      "title": [
+        "The Library Department Head in the Context of Matrix Management and Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "College &amp; Research Libraries"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Academic libraries are experiencing significant organizational changes that are having an impact on the library department head. The library department head’s job has undergone a dramatic shift from what was, until relatively recently, the typical middle manager’s line command position in the bureaucratic hierarchy. Literature analyzing these changes has been reviewed and is discussed in the context of a specific effort to reengineer library technical service operations.</jats:p>"
+    },
+    {
+      "doi": "10.1061/(asce)0742-597x(1997)13:6(29)",
+      "title": [
+        "TQM . . . Reengineering . . . What Now?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management in Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-11"
+    },
+    {
+      "doi": "10.1061/(asce)0742-597x(1997)13:6(84)",
+      "title": [
+        "Business Process Reengineering for Small Building Products Manufacturer"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management in Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1997-11"
+    },
+    {
+      "doi": "10.1111/j.1399-3011.1997.tb01194.x",
+      "title": [
+        "Reengineering a type II β‐turn as a potential helix nucleator. Part I. Crystal structure of Boc‐Val‐Pro‐(D)Asp‐Asp‐Val‐OMe monohydrate"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Peptide Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The crystal structure of Boc‐Val<jats:sub>1</jats:sub>‐Pro<jats:sub>2</jats:sub>‐(D)Asp<jats:sub>3</jats:sub>‐Asp<jats:sub>4</jats:sub>‐Val<jats:sub>5</jats:sub>‐OMe is described as a type II β‐turn reengineered into a potential helix nucleator. (o)Asp<jats:sub>3</jats:sub> in the peptide is responsible for the configurationally guided LD chiral type n β‐turn centered at Pro<jats:sub>2</jats:sub>‐(D)Asp<jats:sub>3</jats:sub>, as well as the partially developed LL chiral type I β‐turn centered at Asp<jats:sub>4</jats:sub>‐Val<jats:sub>5</jats:sub> by acceptance of a conformation nucleating H‐bond from Val<jats:sub>5</jats:sub>NH to its carboxylic oxygen.</jats:p>",
+      "publication_date": "1997-11"
+    }
+  ]
+}

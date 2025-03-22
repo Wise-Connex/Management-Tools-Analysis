@@ -1,0 +1,21 @@
+{
+  "term": "Scenario",
+  "total_results": 1,
+  "processed_count": 1,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0031-8663(75)90048-4",
+      "title": [
+        "The photogrammetric scenario: A comment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Photogrammetria"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1975-07"
+    }
+  ]
+}

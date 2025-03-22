@@ -1,0 +1,47 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1017/s0252921100116707",
+      "title": [
+        "Observations and Evolutionary Scenario For Be/X-Ray Binaries"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Astronomical Union Colloquium"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Rappaport &amp; Van den Heuvel (1982) suggested the following formation scenario for B emission (Be)/X-ray binaries: the progenitor of the neutron star is the initial primary star with mass M<jats:sub>1</jats:sub> = 10-20 M<jats:sub>⊙</jats:sub>, which during hydrogen-shell burning transfers mass to the companion (with M<jats:sub>2</jats:sub> &lt; M<jats:sub>1</jats:sub>). The secondary is spun up due to disk-accretion (e.g. Packet 1981) and has become a rapidly rotating Be star (M ≃ 10-20 M<jats:sub>⊙</jats:sub>).</jats:p><jats:p>With this scenario the observed orbital periods (P<jats:sub>orb</jats:sub> &gt; 15 d) of the Be/X-ray binaries can be explained. This was shown by van den Heuvel (1983) by adopting an idealized period distribution for unevolved O- and B-type close binaries with P<jats:sub>orb</jats:sub>, &lt; 30 d (see Fig. 1) and assuming conservative evolution, i.e. that mass and angular momentum are conserved during mass transfer.</jats:p>",
+      "publication_date": "1987-08"
+    },
+    {
+      "doi": "10.1016/0024-6301(87)90152-x",
+      "title": [
+        "Scenario planning—What style should you use?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Long Range Planning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1987-08"
+    },
+    {
+      "doi": "10.1143/ptp.78.184",
+      "title": [
+        "Unification Scenario of the Gravitational and Gauge Forces via the Higher Dimensional Soliton"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Progress of Theoretical Physics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1987-08"
+    }
+  ]
+}

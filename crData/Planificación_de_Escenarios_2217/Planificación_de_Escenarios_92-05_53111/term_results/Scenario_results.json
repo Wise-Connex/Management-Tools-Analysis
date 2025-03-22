@@ -1,0 +1,47 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1080/02564602.1992.11438877",
+      "title": [
+        "Satellite Broadcasting—Present and Future Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IETE Technical Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-05"
+    },
+    {
+      "doi": "10.1109/5.137225",
+      "title": [
+        "Heuristic Scenario Builder for power system operator training"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the IEEE"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-05"
+    },
+    {
+      "doi": "10.1080/03768359208439632",
+      "title": [
+        "The role of pension funds in housing finance: The South African scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Development Southern Africa"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1992-05"
+    }
+  ]
+}

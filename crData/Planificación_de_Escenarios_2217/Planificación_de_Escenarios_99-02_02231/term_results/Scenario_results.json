@@ -1,0 +1,109 @@
+{
+  "term": "Scenario",
+  "total_results": 8,
+  "processed_count": 8,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1103/physrevlett.82.1335",
+      "title": [
+        "Comment on “Dynamics of Glass-Forming Polymers: `Homogeneous' versus `Heterogeneous' Scenario”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review Letters"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1103/physrevd.59.064029",
+      "title": [
+        "Complete constraints on a nonminimally coupled chaotic inflationary scenario from the cosmic microwave background"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1046/j.1525-1497.1999.00298.x",
+      "title": [
+        "Impact of a clinical scenario on accuracy of electrocardiogram interpretation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of General Internal Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-02"
+    },
+    {
+      "doi": "10.1111/1467-9663.00047",
+      "title": [
+        "Welfare Effects of Spatial Deconcentration: A Scenario for the Netherlands"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tijdschrift voor Economische en Sociale Geografie"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This paper examines whether a deconcentration policy between a core and a peripheral region within a country may increase national welfare. The type of cost and benefits involved and the type of models needed to specify them are first discussed theoretically, and then estimated empirically by means of a comprehensive scenario study for two regions of the Netherlands. The empirical study concludes that a deconcentration scenario might result in net national benefits of several tens of billions of guilders. For this reason a spatial deconcentration policy may well improve the welfare of nations.</jats:p>",
+      "publication_date": "1999-02"
+    },
+    {
+      "doi": "10.2307/1478889",
+      "title": [
+        "Scenario modeling for conservation management in the En Afeq Nature Reserve, Israel"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Vegetation Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p><jats:bold>Abstract. </jats:bold> Conservation management has significant gaps between (1) collection and storage of biological data, (2) data analysis, and (3) application of results. In order to improve management decision‐making, it is necessary to bridge these gaps. One of the most promising approaches uses computer‐based decision support systems (DSS): interactive models of the system in question—for example, a nature reserve. One kind of DSS is scenario modeling: spatially‐based models which (1) use expert opinion and data on vegetation, geology, hydrology, and management, (2) to project changes in landscape through time, (3) on the basis of changes in driving environmental factors. Scenario models are essentially graphic hypotheses, predicting changes in landscape with a specified change in driving factors, which can then be verified or falsified by monitoring.</jats:p><jats:p>This paper presents an application of this approach to an Israeli nature reserve, the En Afeq Reserve in western Galilee. Our project tests the possibility of improving Israeli conservation management by using methods now standard for nature reserves in the Netherlands.</jats:p>",
+      "publication_date": "1999-05"
+    },
+    {
+      "doi": "10.1016/s0304-3800(98)00200-2",
+      "title": [
+        "Modeling potential future individual tree-species distributions in the eastern United States under a climate change scenario: a case study with Pinus virginiana"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecological Modelling"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-02"
+    },
+    {
+      "doi": "10.1016/s0305-0483(98)00026-7",
+      "title": [
+        "Judgemental modelling as an aid to scenario planning and analysis1The co-authors dedicate the paper to the memory of Geoff Lockett, with gratitude for his support and guidance over many years as mentor, colleague and friend. He died unexpectedly in July 1997 and is greatly missed.1"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Omega"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1999-02"
+    },
+    {
+      "doi": "10.1103/physrevb.59.4475",
+      "title": [
+        "Fluctuation specific heat in multilayered superconductors: Bilayered Gaussian-Ginzburg-Landau scenario for the thermal fluctuations of Cooper pairs around<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mrow><mml:msub><mml:mrow><mml:mi>T</mml:mi></mml:mrow><mml:mrow><mml:mi>c</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math>in<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant=\"normal\">YBa</mml:mi></mml:mrow><mml:mrow><mml:mn>2</mml:mn></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant=\"normal\">Cu</mml:mi></mml:mrow><mml:mrow><mml:mn>3</mml:mn></mml:mrow></mml:msub></mml:mrow><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant=\"normal\">O</mml:mi></mml:mrow><mml:mrow><mml:mn>7</mml:mn><mml:mi>−</mml:mi><mml:mi>δ</mml:mi></mml:mrow></mml:msub></mml:mrow></mml:math>single crystals"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review B"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

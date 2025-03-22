@@ -1,0 +1,98 @@
+{
+  "term": "Scenario",
+  "total_results": 7,
+  "processed_count": 7,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1093/ajhp/46.4.738a",
+      "title": [
+        "Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Health-System Pharmacy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-04"
+    },
+    {
+      "doi": "10.4271/891015",
+      "title": [
+        "Beech Starship Occupant Protection Evaluation in Emergency Landing Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SAE Technical Paper Series"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/bf02845988",
+      "title": [
+        "Quark-lepton compositeness: A three-body scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Pramana"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-04"
+    },
+    {
+      "doi": "10.1145/75200.75231",
+      "title": [
+        "The requirements apprentice: an initial scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-05"
+    },
+    {
+      "doi": "10.1007/bf02845983",
+      "title": [
+        "The changing scenario of the atomic nucleus—from nucleons and mesons to quarks and gluons"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Pramana"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-04"
+    },
+    {
+      "doi": "10.1002/for.3980080209",
+      "title": [
+        "Response to ‘a new method of scenario analysis for strategic planning’"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Forecasting"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-04"
+    },
+    {
+      "doi": "10.1002/for.3980080208",
+      "title": [
+        "Comment on ‘a new method of scenario analysis for strategic planning’"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Forecasting"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-04"
+    }
+  ]
+}

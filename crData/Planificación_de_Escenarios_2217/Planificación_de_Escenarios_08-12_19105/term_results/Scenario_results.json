@@ -1,0 +1,789 @@
+{
+  "term": "Scenario",
+  "total_results": 60,
+  "processed_count": 60,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1525/9780520933279-019",
+      "title": [
+        "4. L'incoronazione di Poppea: Argomento, Scenario, Preface"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Monteverdi's Last Operas: A Venetian Trilogy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/icit.2008.52",
+      "title": [
+        "Automated Scenario Generation Based on UML Activity Diagrams"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 International Conference on Information Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1525/9780520933279-017",
+      "title": [
+        "2. Argomento et Scenario delle Nozze d'Enea in Lavinia"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Monteverdi's Last Operas: A Venetian Trilogy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/ieem.2008.4738131",
+      "title": [
+        "Business engineering with Scenario Technique"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE International Conference on Industrial Engineering and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/wsc.2008.4736073",
+      "title": [
+        "Empowering decision support with simulation technology - Scenario Navigator"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 Winter Simulation Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.15820/khjss.2008.34.3.005",
+      "title": [
+        "The Prospects of UNFCCC and Negotiation Scenario Study"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of  Social Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1061/9780784409633.ch04",
+      "title": [
+        "Fire Scenario Development"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Performance-Based Design of Structural Steel for Fire Conditions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1525/9780520933279-021",
+      "title": [
+        "6. Le nozze d'Enea e Lavinia: Scenario Compared with Dolce's Allegorie"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Monteverdi's Last Operas: A Venetian Trilogy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/apscc.2008.29",
+      "title": [
+        "Scenario Analysis of the Mobile Voice Services Market"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE Asia-Pacific Services Computing Conference"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1161/circulationaha.107.743237",
+      "title": [
+        "Stroke"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Circulation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1097/aco.0b013e3283184435",
+      "title": [
+        "Recent advances in scenario-based training for medical education"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Current Opinion in Anaesthesiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.energy.2008.07.008",
+      "title": [
+        "ECLIPSE: An integrated energy-economy model for climate policy and scenario analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Energy"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.3383/es.1.2.8",
+      "title": [
+        "Seismic Moment-Felt Area Relation for Damage Scenario Characterization."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Semeiotics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/icit.2008.43",
+      "title": [
+        "A Novel Approach for Scenario-Based Test Case Generation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 International Conference on Information Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.2523/iptc-12633-ms",
+      "title": [
+        "Overview and Outlook of Natural Gas Scenario in India: A Case Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of International Petroleum Technology Conference"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/s10287-008-0087-y",
+      "title": [
+        "Scenario tree reduction for multistage stochastic programs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computational Management Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-05"
+    },
+    {
+      "doi": "10.1109/csse.2008.1048",
+      "title": [
+        "Verification of Scenario-Based Safety Requirement Specification on Components Composition"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 International Conference on Computer Science and Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1201/9781420081923.ch8",
+      "title": [
+        "Scenario-Generation Methods for an Optimal Public Debt Strategy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Chapman &amp; Hall/CRC Financial Mathematics Series",
+        "Quantitative Fund Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1088/1126-6708/2008/12/005",
+      "title": [
+        "Two-loop β-functions for the baryon number violating scenario of the MSSM"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of High Energy Physics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.nuclphysbps.2008.10.020",
+      "title": [
+        "Status of the CKM Matrix and a simple New Physics scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Physics B - Proceedings Supplements"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1080/13504850600993705",
+      "title": [
+        "Consumer sentiment and business cycles: a Neimark–Sacker bifurcation scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Economics Letters"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/s0976-0016(11)60153-1",
+      "title": [
+        "Liver Transplantation–Indian Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Apollo Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/ieem.2008.4737912",
+      "title": [
+        "Formulating a robust strategy using scenario programming with a fuzzy logic approach"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE International Conference on Industrial Engineering and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/issnip.2008.4762002",
+      "title": [
+        "AWSum - applying data mining in a health care scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 International Conference on Intelligent Sensors, Sensor Networks and Information Processing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.ejor.2007.01.059",
+      "title": [
+        "Robust portfolio selection based on a multi-stage scenario tree"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "European Journal of Operational Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1109/euc.2008.72",
+      "title": [
+        "A Scenario-based Directional Communication Performance in Wireless Ad hoc Networks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2008 IEEE/IFIP International Conference on Embedded and Ubiquitous Computing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1177/0976001620080403",
+      "title": [
+        "Liver Transplantation -Indian Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Apollo Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.vaccine.2008.09.067",
+      "title": [
+        "Progress in development of vaccine against Hyalomma anatolicum anatolicum—Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vaccine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1007/s10492-008-0043-8",
+      "title": [
+        "On the worst scenario method: A modified convergence theorem and its application to an uncertain differential equation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applications of Mathematics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1007/s10531-008-9541-y",
+      "title": [
+        "Scenario-based assessment of future land use change on butterfly species distributions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biodiversity and Conservation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-05"
+    },
+    {
+      "doi": "10.1002/hrdq.1245",
+      "title": [
+        "The effects of scenario planning on participant decision‐making style"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Human Resource Development Quarterly"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This research examines changes in decision‐making styles as a result of participation in scenario planning. A quasi‐experimental pretest‐posttest design and several nonparametric tests were used to analyze data gathered from research participants in a technology firm in the Northeastern United States. Results show that participants tend to transition toward more intuitive‐based decision‐making styles after participation in scenario planning. Limitations are examined and conclusions are drawn concerning the effects of scenario planning on participation decision‐making styles as measured by the General Decision‐Making Style Survey.</jats:p>",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1086/591391",
+      "title": [
+        "Scenario 1: A Patient with Mild Community‐Acquired Pneumonia—Introduction to Clinical Trial Design Issues"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Clinical Infectious Diseases"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1201/9780203881637.ch24",
+      "title": [
+        "Earthquake damage scenario software for urban areas"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Structures and Infrastructures",
+        "Computational Structural Dynamics and Earthquake Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1086/591402",
+      "title": [
+        "Scenario 2: Community‐Acquired Pneumonia Requiring Hospitalization but Not Requiring Admission to an Intensive Care Unit"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Clinical Infectious Diseases"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.ijid.2008.05.548",
+      "title": [
+        "Clinical Presentation and Blood Culture Scenario of Typhoid Fever among Urban Children of Bangladesh"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Infectious Diseases"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1007/bf03077609",
+      "title": [
+        "De kosteneffectiviteit van groepstraining bij patiënten met chronische lage rugklachten"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Stimulus"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1111/j.1440-1843.2008.01451.x",
+      "title": [
+        "Quality of life and autonomy preferences in stable asthmatics: A developing country scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Respirology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>ABSTRACT</jats:title><jats:p><jats:bold>Background and objective: </jats:bold> The quality of life (QOL) and autonomy preferences of asthmatics in developing countries have been sparingly researched, with a resulting lack of management strategies. This study determined the asthma‐specific QOL and autonomy preferences of a population of asthmatics in a developing country and their association with relevant sociodemographic and clinical characteristics.</jats:p><jats:p><jats:bold>Methods: </jats:bold> A cross‐sectional study using the Asthma Quality of Life Questionnaire and the Asthma Autonomy Questionnaire was performed on a population of stable asthmatics recruited from a tertiary care centre in India. Severity of the disease was assessed by spirometry.</jats:p><jats:p><jats:bold>Results: </jats:bold> The study population comprised 80 asthmatics. The mean (SD) overall QOL score was 5.04 (0.97). This was significantly associated with history of hospitalization during the previous year for an asthma attack (<jats:italic>P</jats:italic> &lt; 0.01) and with FEV<jats:sub>1</jats:sub> (<jats:italic>P</jats:italic> &lt; 0.05) on univariate analysis; on multivariate analysis, only history of hospitalization was significant. Autonomy preferences of the patients showed higher scores for information‐seeking (mean (SD) = 78.95 (16.35) ) than decision‐making (mean (SD) = 38.21 (14.6)). The information‐seeking preferences had a negative correlation with age (<jats:italic>P</jats:italic> &lt; 0.01) and a positive correlation with education status (<jats:italic>P</jats:italic> &lt; 0.01) and decision‐making correlated with education status (<jats:italic>P</jats:italic> &lt; 0.05). A minority of patients (19%) indicated a preference for a greater say in decision‐making than their physicians. There was a lower tendency for decision‐making when given a ‘severe exacerbation’ scenario than in ‘mild exacerbation’ (<jats:italic>P</jats:italic> &lt; 0.001) or ‘stable disease’ (<jats:italic>P</jats:italic> &lt; 0.001).</jats:p><jats:p><jats:bold>Conclusions: </jats:bold> Hospitalization history and FEV<jats:sub>1</jats:sub> values are the parameters having the most significant impact on the QOL of asthmatics. There is a clear desire to obtain more information about the disease but most patients do not endorse the idea of making independent disease‐related decisions.</jats:p>",
+      "publication_date": "2009-01"
+    },
+    {
+      "doi": "10.1038/sj.bdj.2008.1026",
+      "title": [
+        "Tools to share good chairside teaching practice: a clinical scenario and appreciative questionnaire"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "British Dental Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.ijid.2008.05.1362",
+      "title": [
+        "Spectrum of Clinical Presentation and Opportunistic Infections in HIV: An Indian Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Infectious Diseases"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1097/ta.0b013e318173f803",
+      "title": [
+        "Reconstructive Surgery Including Free Flap Transfers Can Be Performed in Low-Resource Settings: Experiences From a Wartime Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Trauma: Injury, Infection &amp; Critical Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1145/1462735.1462748",
+      "title": [
+        "Exploiting extreme heterogeneity in a flood warning scenario using the Gridkit middleware"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the ACM/IFIP/USENIX Middleware '08 Conference Companion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1177/1094670508329421",
+      "title": [
+        "Evolutionary Changes in Service Attribute Importance in a Crisis Scenario The Uruguayan Financial Crisis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Service Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article attempts to identify and assess the evolution of consumers' differential reactions to major service attribute classes that resulted from and were propagated by a severe financial crisis. The authors perform a longitudinal analysis, using correspondence analysis of square asymmetric matrices, on data generated from three different postcrisis time periods. The first period encompasses data during the 2 weeks after the crisis occurred, the second period assesses data 1 year later, and the third period refers to 5 years later. The results from the first and second periods both indicate the growing importance of credence attributes rather than search attributes compared with during the precrisis period. The third-period analysis indicates a reversal and greater importance of the search attributes that were important in the precrisis period. The results also reveal correlations with the type of banking organization. These findings point to important managerial implications; bank management's inability to realize the shift in consumers' attitudes failed to facilitate and expedite a resolution to the crisis. </jats:p>",
+      "publication_date": "2009-05"
+    },
+    {
+      "doi": "10.1016/j.jmateco.2008.07.009",
+      "title": [
+        "Inductive game theory: A basic scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Mathematical Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1201/9780203881637-34",
+      "title": [
+        "Earthquake damage scenario software for urban areas Atilla Ansal, Bogaziçi University, Istanbul, Turkey Aslı Kurtulus¸, Bogaziçi University, Istanbul, Turkey Gökçe Tönük, Bogaziçi University, Istanbul, Turkey"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Computational Structural Dynamics and Earthquake Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.3991/ijim.v3i2.737",
+      "title": [
+        "Pervasive Learning System Based on a Scenario Model Integrating Web Service Retrieval and Orchestration"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Interactive Mobile Technologies (iJIM)"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>We are interested in learning and working scenarios integrating web service retrieval and orchestration in pervasive TEL systems in a learning situation at workplace. This paper proposes a context-aware model of corporate learning and working scenarios in e-retail environment such as shops and hypermarkets. This scenario model enables us to select how to achieve activities according to the current situation. We outline the semantic description of web services to enable the selection, composition and execution of web services to achieve objectives specified by learning and working activities. We propose a context-aware and adaptive model for pervasive learning systems. This model enables the selection of the relevant methods or services to realize activities according to the current situation. Moreover, we also build and develop an Intelligent Selling Space (ISS) architecture that serves as an infrastructure for service management and execution in e-retail environment.</jats:p>"
+    },
+    {
+      "doi": "10.4324/9780203884256.ch5",
+      "title": [
+        "Transport and Tourism in Scotland"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Routledge Advances in Tourism",
+        "Sustainable Tourism Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1196/annals.1428.078",
+      "title": [
+        "The Little‐known Scenario of Anthelmintic Resistance in Equine Cyathostomes in Italy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Cyathostomes (Nematoda, Cyathostominae) cause colic, decreased performance and growth, peripheral edema, and dysorexia in equids. Also, the synchronous emergence of cyathostome larvae encysted in the colon and cecal wall causes larval cyathostominosis, which is characterized by protein‐depriving enteropathy, chronic diarrhea, edema, weight loss, colitis, and may be fatal. In the past few decades, drug resistance in cyathostomes has become widespread, especially for benzimidazoles. Resistance to tetrahydropyrimidines is still confined to a few areas, and the recent reports of reduced efficacy in macrocyclic lactones are of great concern. Although cyathostomes are widely distributed in Italy, with a prevalence up to 100%, information on the presence of drug‐resistant cyathostomes is scarce. The first study investigating drug resistance was conducted on a few farms in 1992 and showed the presence of cyathostome populations resistant to the (pro)benzimidazoles in northern Italy. A second survey was carried out 14 years later, with the focus on farms in central and southern regions. Cyathostomes resistant to fenbendazole and pyrantel pamoate were found, while macrocyclic lactones remained 98–100% effective. Recently, the efficacy of oxibendazole (97%) and moxidectin (100%) in removing fenbendazole‐resistant cyathostomes in Italy has also been demonstrated. These few studies indicate that drug‐resistant cyathostomes are present in multiple regions of Italy, but geographically and numerically broader investigations of farms are necessary. Finally, there is the undoubted need to use the remaining fully effective drugs (such as moxidectin) in a proper way to preserve their efficacy as much as possible.</jats:p>",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.4000/edc.778",
+      "title": [
+        "La méthode des scénarios : un outil d’analyse et d’expertise des formes de communication dans les organisations",
+        "The Scenario Method: A Survey Tool for Assessing Types of Communication within Organizations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Études de communication"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1145/2043603.2043606",
+      "title": [
+        "Bimodal task-facilitation in a virtual traffic scenario through spatialized sound rendering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM Transactions on Applied Perception"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Audio rendering is generally used to increase the realism of virtual environments (VE). In addition, audio rendering may also improve the performance in specific tasks carried out in interactive applications such as games or simulators. In this article we investigate the effect of the quality of sound rendering on task performance in a task which is inherently vision-dominated. The task is a virtual traffic gap-crossing scenario with two elements: first, to discriminate crossable and uncrossable gaps in oncoming traffic, and second, to find the right timing to start crossing the street without an accident. A study was carried out with 48 participants in an immersive virtual environment setup with a large screen and headphones. Participants were grouped into three different scenarios. In the first one, spatialized audio rendering with head-related transfer function (HRTF) filtering was used. The second group was tested with conventional stereo rendering, and the remaining group ran the experiment in a mute condition. Our results give a clear evidence that spatialized audio improves task performance compared to the unimodal mute condition. Since all task-relevant information was in the participants' field-of-view, we conclude that an enhancement of task performance results from a bimodal advantage due to the integration of visual and auditory spatial cues.</jats:p>",
+      "publication_date": "2011-11"
+    },
+    {
+      "doi": "10.1002/asmb.748",
+      "title": [
+        "A scenario‐based stochastic programming model for the control or dummy wafers downgrading problem"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Applied Stochastic Models in Business and Industry"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The subject of this paper is to study a realistic planning environment in wafer fabrication for the control or dummy (C/D) wafers problem with uncertain demand. The demand of each product is assumed with a geometric Brownian motion and approximated by a finite discrete set of scenarios. A two‐stage stochastic programming model is developed based on scenarios and solved by a deterministic equivalent large linear programming model. The model explicitly considers the objective to minimize the total cost of C/D wafers. A real‐world example is given to illustrate the practicality of a stochastic approach. The results are better in comparison with deterministic linear programming by using expectation instead of stochastic demands. The model improved the performance of control and dummy wafers management and the flexibility of determining the downgrading policy. Copyright © 2008 John Wiley &amp; Sons, Ltd.</jats:p>",
+      "publication_date": "2009-05"
+    },
+    {
+      "doi": "10.5334/2008-22",
+      "title": [
+        "The added value of implementing the Planet Game scenario with Collage and Gridcole"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Interactive Media in Education"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/cbdv.200890228",
+      "title": [
+        "Synthesis of Polycyclic Aromatic Hydrocarbons and Acetylene Polymers in Ice: A Prebiotic Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemistry &amp; Biodiversity"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>The recent evidences of presence of subsurface oceans of liquid water and ice on Saturn's moons, and the possible presence and astrobiological importance of polycyclic aromatic hydrocarbons (PAHs) in these environments, provide strong motivation for the exploration of the prebiotic chemistry in ice and to test if PAHs could be experimentally synthesized in ice surfaces under atmospheres containing methane as carbon source. In this work, we present a new design for prebiotic‐chemistry experiments in ice matrix. Using this design, a mixture of products including PAHs, polar aromatic compounds, and hydrophilic acetylene‐based polymers was obtained. We propose that acetylene generation in a methane/nitrogen atmosphere and subsequent polymerization to PAHs and polyynes could be a favored pathway in the presence of water freeze–melt cycles. These results shed light on the processes involved in PAH synthesis in icy environments and on the physical factors that drive the different competing pathways in methane/nitrogen atmospheres.</jats:p>",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.fusengdes.2008.06.058",
+      "title": [
+        "Assessment of EM loads on the EU HCPB TBM during plasma disruption and normal operating scenario including the ferromagnetic effect"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fusion Engineering and Design"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1007/bf03449234",
+      "title": [
+        "Scenario Evaluation for Subsea Production System"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Marine Systems &amp; Ocean Technology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1196/annals.1428.005",
+      "title": [
+        "Epidemiological Scenario of Giardiosis in Dogs from Central Italy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Annals of the New York Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In order to update and implement the data on the epidemiological situation of giardiosis in the Italian arena, stool samples from 240 dogs living in the Abruzzo region (central Italy) were examined for prevalence, risk factors, and genotypes. <jats:italic>Giardia duodenalis</jats:italic> cysts were detected in 26.6% of the dogs and kennel dogs tested. Dogs younger than 12 months (38%) and with diarrhea (46%) were statistically more affected. Species‐specific <jats:italic>G. duodenalis</jats:italic> assemblages (C and D) were identified in kennel and in privately owned dogs, while the zoonotic assemblage A was identified in privately owned dogs. In light of these results, giardiosis in dogs, and mainly in well‐cared dogs, is still a problem of concern and may pose a public health risk.</jats:p>",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1080/13614560802624241",
+      "title": [
+        "The perception of accessibility in Web development by academy, industry and government: a survey of the Brazilian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New Review of Hypermedia and Multimedia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.jvolgeores.2007.11.022",
+      "title": [
+        "Reconstruction and analysis of sub-plinian tephra dispersal during the 1530 A.D. Soufrière (Guadeloupe) eruption: Implications for scenario definition and hazards assessment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Volcanology and Geothermal Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1103/physrevd.78.114016",
+      "title": [
+        "Consistent scenario for<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>B</mml:mi><mml:mo>→</mml:mo><mml:mi>P</mml:mi><mml:mi>S</mml:mi></mml:math>decays"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1075/is.9.3.10ote",
+      "title": [
+        "Naturally occurring gestures in a human–robot teaching scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Interaction Studies. Social Behaviour and Communication in Biological and Artificial Systems",
+        "Interaction Studies / Social Behaviour and Communication in Biological and Artificial Systems",
+        "Interaction Studies"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This paper describes our general framework for the investigation of how human gestures can be used to facilitate the interaction and communication between humans and robots. Two studies were carried out to reveal which “naturally occurring” gestures can be observed in a scenario where users had to explain to a robot how to perform a home task. Both studies followed a within-subjects design: participants had to demonstrate how to lay a table to a robot using two different methods — utilizing only <jats:italic>gestures</jats:italic> or <jats:italic>gestures and speech</jats:italic>. The first study enabled the validation of the COGNIRON coding scheme for human gestures in Human–Robot Interaction (HRI). Based on the data collected in both studies, an annotated video corpus was produced and characteristics such as frequency and duration of the different gestural classes have been gathered to help capture requirements for the designers of HRI systems. The results from the first study regarding the frequencies of the gestural types suggest an interaction between the order of presentation of the two methods and the actual type of gestures produced. However, the analysis of the speech produced along with the gestures did not reveal differences due to ordering of the experimental conditions. The second study expands the issues addressed by the first study: we aimed at extending the role of the interaction partner (the robot) by introducing some positive acknowledgement of the participants’ activity. The results show no significant differences in the distribution of gestures (frequency and duration) between the two explanation methods, in contrast to the previous study. Implications for HRI are discussed focusing on issues relevant for the design of the robot’s communication skills to support the interaction loop with humans in home scenarios.</jats:p>",
+      "publication_date": "2008-12"
+    },
+    {
+      "doi": "10.1016/j.jvolgeores.2008.03.006",
+      "title": [
+        "A new scenario for the last magmatic eruption of La Soufrière of Guadeloupe (Lesser Antilles) in 1530 A.D. Evidence from stratigraphy radiocarbon dating and magmatic evolution of erupted products"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Volcanology and Geothermal Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2008-12"
+    }
+  ]
+}

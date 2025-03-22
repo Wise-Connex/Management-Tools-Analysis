@@ -1,0 +1,45 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada267117",
+      "title": [
+        "Reengineering: An Engineering Problem"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-07"
+    },
+    {
+      "doi": "10.1145/154183.154196",
+      "title": [
+        "Metric-driven reengineering for static concurrency analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 1993 ACM SIGSOFT international symposium on Software testing and analysis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-07"
+    },
+    {
+      "doi": "10.1145/174146.154196",
+      "title": [
+        "Metric-driven reengineering for static concurrency analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ACM SIGSOFT Software Engineering Notes"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>An approach to statically analyzing a concurrent program not suited for analysis is described. The program is reengineered to reduce the complexity of concurrency-related activities, thereby reducing the size of the concurrency state space. The key to the reengineering process is a metric set that characterizes program task interaction complexity and provides guidance for restructuring. An initial version of a metric set is proposed and applied to two examples to demonstrate the utility of the reengineering-for-analysis process. The reengineering has potential benefits apart from supporting analyzability, following the dictum that if it is hard to analyze, it is hard to understand and maintain.</jats:p>",
+      "publication_date": "1993-07"
+    }
+  ]
+}

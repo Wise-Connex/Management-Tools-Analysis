@@ -1,0 +1,59 @@
+{
+  "term": "Reengineering",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.22219/repositor.v2i5.514",
+      "title": [
+        "Business Process Reengineering (BPR) Pada Perusahaan Pdam Kabupaten Mojokerto Untuk Meningkatkan Kinerja Bisnis Perusahaan"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Repositor"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Semakin berkembangnya dunia bisnis dan semakin kompleksnya transaksi serta semakin luasnya jangkauan usaha sebuah perusahaan, maka kebutuhan perusahaan untuk mengoptimalkan setiap proses bisnis harus lebih efektif dan efisien di areanya [6]. Maka dari itu perubahan proses bisnis terkadang perlu dilakukan untuk mengganti sistem yang lama dengan sistem yang baru. Perubahan proses bisnis yang signifikan ini disebut Business Process Reenginering. Konsep BPR (Business Process Reengineering) sendiri adalah merupakan sebuah konsep rekontruksi ulang dengan melakukan tindakan secara dramatis dan radikal sehingga dapat menghasilkan perbaikan proses, penghematan biaya, serta peningkatan kecepatan [1]. Perusahaan Daerah Air Minum (PDAM) Kabupaten Mojokerto merupakan salah satu perusahaan yang bekerja dibidang jasa penyedia air untuk kebutuhan sehari-hari. Struktur organisasi secara umum terdiri dari Pimpinan/Direktur, Bagian Hubungan Langganan dan Pemasaran, Bagian Perencanaan, Bagian Produksi dan Distribusi, Bagian Umum dan Kepegawaian, dan Bagian Akuntansi dan Keuangan. Masalah yang terjadi adalah terlalu banyak proses yang tidak optimal, waktu yang terlalu lama untuk penanganan konsumen, pencatatan yang masih manual, dan terlalu banyak mengeluarkan biaya untuk sebagian proses. Berdasarkan masalah diatas, Bisnis proses PDAM Kab. Mojokerto yang perlu dirubah atau direengineering adalah proses bisnis pemasangan baru. Dengan Business Process Reenginering mampu merubah proses yang lama ke proses yang baru yaitu pada tahapan rekomendasi sehingga mendapatkan proses yang lebih efisien dalam hal pelayanan waktu. </jats:p>"
+    },
+    {
+      "doi": "10.1109/icmcecs47690.2020.246989",
+      "title": [
+        "Knowledge Discovery and Analytics in Process Reengineering: A Study of Port Clearance Processes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2020 International Conference in Mathematics, Computer Engineering and Computer Science (ICMCECS)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-03"
+    },
+    {
+      "doi": "10.1145/3386723.3387868",
+      "title": [
+        "Role of Reengineering in Training of Specialists"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 3rd International Conference on Networking, Information Systems &amp; Security"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2020-03"
+    },
+    {
+      "doi": "10.24143/2073-5537-2020-1-37-47",
+      "title": [
+        "Planning business process reengineering as business management tool"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vestnik of Astrakhan State Technical University. Series: Economics"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The article presents the methodical recommendations on planning the reengineering procedure of industrial enterprises. The industrial enterprise reengineering is defined as an effective management tool to overcome the inertia that arises in the process of managing industrial enterprises, to optimize the management system and to rebuild ineffective business processes.  It has been stated that reengineering makes it possible for any economic system to function successfully, to adapt to changing environmental conditions, to increase manageability and to achieve goals in the shortest possible time and with the least expenditure of resources. The planning stage is the key in the development of a reengineering project for an industrial enterprise. The tasks of planning the reengineering procedure, the stages of implementation and their content are determined. In the context of the description of the first two stages, the criteria are given for determining the stage of the crisis, at which the industrial enterprise currently is, and the typology of business process reengineering, according to three classification criteria: depending on the extent of transformations, on the size of the industrial enterprise, on the initiator. The third stage contains recommendations for choosing a reengineering technique depending on the stage of the crisis and the type of reengineering. A classification of the reengineering methods recommended for use in carrying out radical (crisis) reengineering and reengineering of development has been developed. Recommendations are given on the formation of a system of targets for an industrial enterprise reengineering project. It is advisable to use the system of balanced indicators (Balanced Scorecard) and the system of target indicators KPI as effective tools for creating a system of targets. Both of these approaches are elements of targeted management or management by goals, and make it possible to evaluate the economic, resource and functional effectiveness of a reengineering project</jats:p>",
+      "publication_date": "2020-03"
+    }
+  ]
+}

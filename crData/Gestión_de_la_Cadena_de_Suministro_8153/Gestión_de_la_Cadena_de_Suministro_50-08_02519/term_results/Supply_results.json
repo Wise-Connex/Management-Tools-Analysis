@@ -1,0 +1,73 @@
+{
+  "term": "Supply",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0016-0032(50)90457-1",
+      "title": [
+        "Emergency gas supply from stored liquid"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Franklin Institute"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-08"
+    },
+    {
+      "doi": "10.1049/pi-2.1950.0143",
+      "title": [
+        "Discussion on “A phase-calibrated variable-frequency supply for the testing of servo mechanisms”"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the IEE - Part II: Power Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-08"
+    },
+    {
+      "doi": "10.1029/tr031i004p00566",
+      "title": [
+        "The sources of heat and water supply of thermal springs, with particular reference to Steamboat Springs, Nevada"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Eos, Transactions American Geophysical Union"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Thermal springs are classified as: (1) non‐volcanic (heat and water supply are not immediately related to volcanism); (2) intermediate (excess heat is due to abnormally high geothermal gradients resulting from volcanism, but the water is entirely meteoric); (3) volcanic (excess heat, much of the mineral content, and part of the water are from a volcanic source).</jats:p><jats:p>Lines of evidence indicating the origin of a thermal spring system are (1) temperature relations, including surface temperatures of springs, geothermal gradients of the spring system, and possible sources of excess heat; (2) mineral content of the thermal water and its possible sources, with attention focused on the more soluble components that are seldom deposited in veins (Chlorine, boron, and to a lesser extent sulphur and carbon dioxide in their various chemical combinations are critical indicators, particularly when considered together.); (3) composition of associated gases; (4) variations in spring discharges and water levels, as related to variations in meteoric water supply; (5) isotopic composition of spring and meteoric waters; and (6) regional and local geology, and in particular the age and extent of any volcanic rocks. These lines of evidence, when applied to Steamboat Springs and evaluated, definitely indicate a volcanic origin.</jats:p><jats:p>The three‐dimensional picture of the Steamboat Springs system is described. Meteoric water migrates downward and toward the core of the system, with stratigraphic and structural control, and mixes with rising volcanic water. This migration is caused by differences in density related largely to temperature; artesian conditions are not essential.</jats:p>",
+      "publication_date": "1950-08"
+    },
+    {
+      "doi": "10.14219/jada.archive.1950.0147",
+      "title": [
+        "Dentists Take Leading Role in Defeat of Reorganization Plan Twenty-Seven / Chaos Marks Planning for 1950 White House Conference on Children and Youth / Fluoridation of Public Water Supply Now Urged by Research Scientists"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of the American Dental Association"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-08"
+    },
+    {
+      "doi": "10.1021/cen-v028n033.p2852",
+      "title": [
+        "BEHIND THE MARKETS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chemical &amp; Engineering News Archive"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1950-08"
+    }
+  ]
+}

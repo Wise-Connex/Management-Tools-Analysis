@@ -1,0 +1,84 @@
+{
+  "term": "Scenario",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1515/9781685858919-005",
+      "title": [
+        "3 Scenario Construction and Hong Kong"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Economic Future of Hong Kong"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-12"
+    },
+    {
+      "doi": "10.1515/9781685858919-008",
+      "title": [
+        "6 The Trend Scenario for the Hong Kong Economy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Economic Future of Hong Kong"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-12"
+    },
+    {
+      "doi": "10.1515/9781685858919-007",
+      "title": [
+        "5 The Pessimistic Scenario for the Hong Kong Economy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Economic Future of Hong Kong"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-12"
+    },
+    {
+      "doi": "10.1515/9781685858919-006",
+      "title": [
+        "4 The Optimistic Scenario for the Hong Kong Economy"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Economic Future of Hong Kong"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-12"
+    },
+    {
+      "doi": "10.2172/138024",
+      "title": [
+        "Estimating the Economic Impact of a Repository from Scenario-Based Surveys: Models of the Relation of Stated Intent to Actual Behavior"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-12"
+    },
+    {
+      "doi": "10.1007/bf00728504",
+      "title": [
+        "The Zeebrugge ferry disaster"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Contemporary Crises"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1990-12"
+    }
+  ]
+}

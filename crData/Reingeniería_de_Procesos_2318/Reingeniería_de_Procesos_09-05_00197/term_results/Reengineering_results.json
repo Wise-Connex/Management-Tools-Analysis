@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/wikis4se.2009.5069993",
+      "title": [
+        "Wiki-based requirements management for Business Process Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2009 ICSE Workshop on Wikis for Software Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2009-05"
+    },
+    {
+      "doi": "10.5172/jmo.837.15.2.170",
+      "title": [
+        "Exploring the relationships between information technology adoption and business process reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management &amp; Organization"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This study investigates the impacts of information technology on business process reengineering from intra- and extra-organizational perspectives. This research proposes a framework for facilitating business process reengineering efforts towards competitive organizations. The framework was tested using data from a sample of 382 chief information officers or senior information systems managers, each of whom completed a survey. The survey results indicate that organizational innovation, market pressure and competitive intensity positively affect information technology adoption, which in turn trigger changes or business process in terms of workplace, workforce and business structure.</jats:p>",
+      "publication_date": "2009-05"
+    }
+  ]
+}

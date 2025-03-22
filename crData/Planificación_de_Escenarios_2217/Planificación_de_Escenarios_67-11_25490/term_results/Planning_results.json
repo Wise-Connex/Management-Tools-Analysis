@@ -1,0 +1,539 @@
+{
+  "term": "Planning",
+  "total_results": 41,
+  "processed_count": 41,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1038/216632a0",
+      "title": [
+        "Planning Families"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nature"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1016/0041-1647(67)90026-3",
+      "title": [
+        "An optimization mode for transportation planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2307/2552114",
+      "title": [
+        "Economics, Town Planning and Traffic."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2118/1974-ms",
+      "title": [
+        "Use of Basic Geological and Engineering Data in Evaluating and Planning Recovery Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPE Eastern Regional Meeting"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The initial portion of this paper is reprinted from THE JOURNAL OF CANADIAN PETROLEUM TECHNOLOGY, October-December, 1966, Montreal. The addendum was prepared for presentation with the paper at the SPE Fourth Annual Eastern Regional Meeting to be held in Pittsburgh, Pa., Nov. 2–3, 1967. Permission to publish any portion of this paper must be secured from the author.</jats:p>\n               <jats:sec>\n                  <jats:title>Abstract</jats:title>\n                  <jats:p>The purpose of this paper is to emphasize that the taking, assembling and averaging of the basic data for further use in an analysis of a reservoir requires a profound knowledge of many of the specialized disciplines of modern geology and petroleum engineering.</jats:p>\n                  <jats:p>The various aspects of \"Static Data,\" as presented in this paper, analyze that problem and specifically discuss the following major subheadings:Porosity,Permeability,Facies Mapping,Connate Water,Relative Permeabilities and Capillary Pressures, andMethod of Least Squares.</jats:p>\n                  <jats:p>This paper is essentially a general and philosophical discussion on the necessity for obtaining data quality and of the need for an integrated approach to be applied in a detailed analysis of any reservoir.</jats:p>\n                  <jats:sec>\n                     <jats:title>INTRODUCTION AND OBJECTIVES</jats:title>\n                     <jats:p>The correct taking, interpretation and usage of reservoir data are among the most important tasks of the petroleum engineer, and particularly of the reservoir engineer and geologist. On the quality, and to a much lesser degree on the quantity, of this information depends the success as well as the accuracy of all the subsequent geological and engineering studies and finally of the economic evaluations. Despite this paramount importance, very little is found on this subject either in petroleum literature or in university curricula. There are exceptions - e.g., the normal types of pressure build-up curves and the determination of the areal and volumetric average pressures, without explaining when to use which and why. At the present stage of knowledge of the science of reservoir physics, it appears that the analytical methods of solution (equations) are normally, from a mathematical and physical standpoint, much more exact than the basic data and particularly the \"averages which are fed\" into them. In layman&amp;apos;s terms, the reservoir analyst often performs an exact multiplication of doubtfully reliable numbers. This lack of interest in the accuracy and representativeness of the basic data and in the methods of averaging them is usually explained by the simplicity of this problem, which can be solved by \"common engineering sense;\" this explanation is correct if it is backed by a thorough and uniform theoretical, as well as practical, understanding of this complex problem.</jats:p>\n                     <jats:p>During the last fifteen years, many scientists, be they mathematicians, physicists, geologists, engineers, programmers, etc., advanced tremendously the understanding of reservoir mechanics and put it on firm theoretical, scientific foundations. Unfortunately, nearly nothing has been done in securing more representative data; most of the methods presently applied in obtaining, interpreting and averaging the basic data are still the same as those used when reservoir engineering was in its infancy and when an experienced reservoir analyst had only to compute the initial oil in place by volumetric methods.</jats:p>\n                     <jats:p>In this paper, an attempt is made to show that the taking and assembling of some of the \"GIVEN\" is a real challenge and not a mundane task of obtaining some answer for any price. Great discretion and judgement has to be exercised in working with the basic data in order to obtain the most probable and physically logical answer to a specific reservoir problem. Because of its idiosyncratic nature, it is impossible to prepare a \"universal cookbook\" which satisfies all conditions: each reservoir and even each well presents a specific problem to be considered separately when planning, taking, interpreting and finally using the surface and subsurface data.</jats:p>\n                     <jats:p>It is hoped that, by this \"scratching of the surface,\" the industry, and particularly its technical personnel, will realize the magnitude and importance of proper and systematic data collecting, of their interpretation and of the averaging problems.</jats:p>\n                  </jats:sec>\n               </jats:sec>",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2307/1294036",
+      "title": [
+        "Family Planning and Oral Contraceptives"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BioScience"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2523/1974-ms",
+      "title": [
+        "Use of Basic Geological and Engineering Data in Evaluating and Planning Recovery Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of SPE Eastern Regional Meeting"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1126/science.158.3801.677",
+      "title": [
+        "Behavioral Sciences and Family Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1016/0041-1647(67)90036-6",
+      "title": [
+        "An optimization model for transportation planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1111/j.1467-6435.1967.tb00883.x",
+      "title": [
+        "HEALTH PLANNING"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Kyklos"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2753/pet1061-1991100711",
+      "title": [
+        "Price and Optimal Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Problems in Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1097/00005650-196711000-00003",
+      "title": [
+        "An Aggregate Planning Model of the Health Care Sector"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Medical Care"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/21548331.1967.11707788",
+      "title": [
+        "Family Practice Research Center: Action Put Off, Planning Continued"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Hospital Practice"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1056/nejm196711022771812",
+      "title": [
+        "Planning: Appetite vs. Logic"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "New England Journal of Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.5860/crl_28_06_446",
+      "title": [
+        "Metropolitan Public Library Planning Throughout the World (Book Review)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "College &amp; Research Libraries"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1111/j.0033-0124.1967.00352.x",
+      "title": [
+        "URBAN PLANNING IN BRITAIN"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Professional Geographer"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2307/3310999",
+      "title": [
+        "The Comprehensive Planning Requirement in Urban Renewal"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "University of Pennsylvania Law Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00224496709550543",
+      "title": [
+        "Chile: Family planning in Chile"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Sex Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00224496709550541",
+      "title": [
+        "India: Family planning in India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Sex Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00345334.1967.11755878",
+      "title": [
+        "R&amp;D Planning in the Decentralized Organization"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Research Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1061/jhcea2.0000247",
+      "title": [
+        "Land-Use Planning Design Models"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Highway Division"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00193089.1967.10532655",
+      "title": [
+        "Planning a Normal Curve Again"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Improving College and University Teaching"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2307/3391199",
+      "title": [
+        "Planning for Junior High School General Music"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Music Educators Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00325481.1967.11696353",
+      "title": [
+        "Your Finances"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Postgraduate Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1177/002194366700400207",
+      "title": [
+        "Collaboratively Planning the Formal Training of Technical Communication Specialists"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Business Communication"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> In this article Dr. Light raises some provocative questions of concern to all who teach and practice communication arts. After examining typical cur ricula and courses, he outlines deficiencies and suggests some first steps which depend on inter-society cooperation. </jats:p>",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/01619566709537514",
+      "title": [
+        "The inservice education potential of team planning‐teaching"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Peabody Journal of Education"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1061/jyceaj.0001715",
+      "title": [
+        "Environmental Aspects of River Basin Planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Hydraulics Division"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1007/bf00559987",
+      "title": [
+        "Planning of electronic medical apparatus for supplies with frequencies of 60 Hz"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biomedical Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00224496709550540",
+      "title": [
+        "England: Family planning in England and India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Sex Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00420986720080481",
+      "title": [
+        "A Systemic View of Regional Development and Planning: a Review Article"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Urban Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.5694/j.1326-5377.1967.tb22019.x",
+      "title": [
+        "MEETING OF THE NATIONAL MEDICAL WAR PLANNING COMMITTEE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Medical Journal of Australia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2753/pet1061-199110073",
+      "title": [
+        "Methods of Mathematical Economics and the Theory of Planning and Administering the Economy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Problems in Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00224496709550542",
+      "title": [
+        "China: The changing status of women, literacy and education and family planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Sex Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1126/science.158.3802.730",
+      "title": [
+        "Population Policy: Will Current Programs Succeed?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00420986720080651",
+      "title": [
+        "Book Review: Greenheart Metropolis : Planning the Western Netherlands by Gerald L. Burke, Macmillan, 1966, pp. 172, 50/-"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Urban Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/01944366708977204",
+      "title": [
+        "A Sketch of The Planning-Building Process for Columbia, Maryland"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American Institute of Planners"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1061/jwheau.0000522",
+      "title": [
+        "Berth Planning by Evaluation of Congestion and Cost"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Waterways and Harbors Division"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1111/j.1467-9663.1967.tb01081.x",
+      "title": [
+        "WATER RESOURCE PLANNING IN AUSTRALIA"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tijdschrift voor Economische en Sociale Geografie"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2214/ajr.101.3.656",
+      "title": [
+        "ROLE OF SPLEEN SCANNING IN PLANNING THE TREATMENT AND ASSESSMENT OF SPLENIC RESPONSE IN BLOOD DYSCRASIAS"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "American Journal of Roentgenology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.2307/2128788",
+      "title": [
+        "<i>Soviet Economic Controversies: The Emerging Marketing Concept and Changes in Planning, 1960-1965.</i>Jere L. Felker<i>Managerial Power and Soviet Politics.</i>Jeremy R. Azrael"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Politics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1080/00420986720080491",
+      "title": [
+        "Book Review: The Lothians Regional Survey and Plan: Volume One: Social and Economic Aspects by University of Glasgow (ed. D. J. Robertson), H.M.S.O., 1966, pp. 289, 75/The Lothians Regional Survey and Plan : Volume Two : Physical Planning Aspects by R. H. Matthew and P. E. A. Johnson-Marshall, H.M.S.O., 1966, pp. 360, 75/-"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Urban Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    },
+    {
+      "doi": "10.1111/j.1467-954x.1967.tb01287.x",
+      "title": [
+        "Book Reviews: Social Relations in a Secondary School, A Sociology of English Religion, Rôleplaying in Psychotherapy: A Manual, Political Systems: Some Sociological Approaches, A Social Geography of Zambia, The Changing Social Structure of England and Wales 1871—1961, Group Conflict and Co-Operation: Their Social Psychology, Approaches to Cross-Cultural Psychiatry, Communities in Britain: Social Life in Town and Country, Mental Health and Contemporary Thought, Supervision in Social Work, Psychological Needs and Cultural Systems: A Case Study, Education and Social Work, The Lazy South, The Political Economy of Slavery, Intelligible Fields in the Social Sciences, Passing On: The Social Organization of Dying, Dilemmas of Social Reform: Poverty and Community Action in the United States, Poverty in Canada and the United States, The Government of Associations: Selections from the Behavioral Sciences, Wages and Work Allocation: A Study of Social Relations in a Garment Workshop, The Origins of Modern Town Planning, Basic Thinking in Regional Planning, Land and People, The City Region in Western Europe, Kinship and Casework"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Sociological Review"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1967-11"
+    }
+  ]
+}

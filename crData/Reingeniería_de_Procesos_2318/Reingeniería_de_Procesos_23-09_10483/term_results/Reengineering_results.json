@@ -1,0 +1,70 @@
+{
+  "term": "Reengineering",
+  "total_results": 5,
+  "processed_count": 5,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.37839/mar2652-550x15.8",
+      "title": [
+        "Social reengineering in the name of security in the Xinjiang Uyghur Autonomous Region"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Melbourne Asia Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.29379/jedem.v15i1.736",
+      "title": [
+        "Application of business process modelling and reengineering to law making process in Poland"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JeDEM - eJournal of eDemocracy and Open Government"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Effectiveness of services provided by the governmental institutions is determined by the quality of established law. The number of the adopted regulations is increasing but their quality is going down. Improvement of existing legislation is a time-consuming and difficult task. We propose to apply techniques of business process modeling and reengineering to im-prove quality of law in the course of law-making. The main contribution of the article is a me-thod based on application of Business Process Model and Notation (BPMN) to design processes introduced by the legal acts. Due to application of this method, processes regulated by legisla-tions could be failure-free and effective. This method permits to indicate how proposed amend-ments affect the regulated processes. The method was practically implemented and validated during process of law-making in Poland. This case empirically confirmed that application of our method could enhance the quality of public processes regulated by legislation.</jats:p>"
+    },
+    {
+      "doi": "10.1145/3614321.3614336",
+      "title": [
+        "An algorithmic method for business process reengineering and service automation in the public sector"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 16th International Conference on Theory and Practice of Electronic Governance"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2023-09"
+    },
+    {
+      "doi": "10.33271/ebdut/83.101",
+      "title": [
+        "Business process reengineering as a modern approach to managing strategic changes at an industrial enterprise"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Economic Bulletin of Dnipro University of Technology"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Methods. The results of the study were obtained by applying scientific research methods, namely: abstraction – to determine the essence of the concepts of «fixed assets» and «management of fixed assets of an enterprise»; methods of analysis, grouping – to systematize scientific and methodological approaches, identify key methods and indicators for assessing the effectiveness of management of fixed assets of an enterprise. Results. The main theoretical approaches to the evaluation of fixed assets are summarized and indicators characterizing the status of fixed asset management are defined, which can be divided into the following groups: availability of fixed assets at an enterprise; technical assessment of the efficiency of fixed assets; intensity of movement of fixed assets; use and evaluation of the active part of fixed assets; expediency and efficient use of fixed assets; indicators used in management activities. The main purpose and tasks of the efficiency of fixed assets management at an industrial enterprise at three levels are highlighted: strategic changes, tactical and operational changes, respectively. Novelty. The scientific novelty of the research results lies in the consideration of a set of methods and techniques of managerial influence that ensure the rate of reproduction in accordance with the development of science and technology, form the optimal structure of fixed assets and ensure the intensification of business processes and allow directing an efficiently organized process of using fixed assets to ensure the production of competitive products in the required volume that meet market requirements in terms of quality. Practical value. The results of the study actualize the business processes inherent in the modern economy, which is increasingly becoming globalized. The identified modern approaches to assessing the effectiveness of fixed asset management allow industrial enterprises to build and implement more efficient business functions.</jats:p>",
+      "publication_date": "2023-09"
+    },
+    {
+      "doi": "10.3390/w15183203",
+      "title": [
+        "Reengineering and Its Reliability: An Analysis of Water Projects and Watershed Management under a Digital Twin Scheme in China"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Water"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Water project and watershed management is currently being reengineered under digital twin schemes in China through pilot projects. An evaluation on pilot reengineering is important for its further implementation and improvement. This paper investigates national legislation and pilot projects’ implementations of a digital twin watershed and digital twin water project from the perspectives of design, policy, technology, investment, personnel, cyberspace security, co-construction, and sharing through interviews and expert review, and it uses a Bayesian network to study their reliability. First, the design of the digital twin watershed and digital twin water project is reasonable with regard to system architecture and business management. Second, although there are some national legislations on cyberspace security and geospatial data, they are incomplete for policy making and are probably infeasible for some technology. Third, there are insufficient mechanisms to sustainably support investment, personnel, and cyberspace security. Forth, co-construction and sharing are required for both inside and outside water departments. Fifth, the Bayesian network is useful for investigating the reliability of weak nodes, and it is helpful for the design and further implementation of the digital twin watershed and digital twin water project, as will be demonstrated with an anonymous example. This study could provide useful insights into the further reengineering of water projects and watershed management under a digital twin scheme in the world.</jats:p>"
+    }
+  ]
+}

@@ -1,0 +1,2136 @@
+{
+  "term": "Reengineering",
+  "total_results": 164,
+  "processed_count": 164,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/saner53432.2022.00002",
+      "title": [
+        "Proceedings 2022 IEEE International Conference on Software Analysis, Evolution and Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00001",
+      "title": [
+        "Proceedings"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00010",
+      "title": [
+        "Steering Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00009",
+      "title": [
+        "Program Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00003",
+      "title": [
+        "Copyright Page"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00008",
+      "title": [
+        "Organizing Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00157",
+      "title": [
+        "Author Index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00004",
+      "title": [
+        "Table of Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00011",
+      "title": [
+        "Sponsors and Supporters"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00007",
+      "title": [
+        "Journal-First Papers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00005",
+      "title": [
+        "SANER: History SANER 2022"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00038",
+      "title": [
+        "Extracting Vulnerabilities from GitHub Commits"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00029",
+      "title": [
+        "Adapting Software Architectures to Machine Learning Challenges"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00006",
+      "title": [
+        "Message from the General Chair and Program Co-Chairs SANER 2022"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00139",
+      "title": [
+        "Blockchain-Oriented Software Variant Forks: A Preliminary Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00112",
+      "title": [
+        "Assemble Foundation Models for Automatic Code Summarization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00022",
+      "title": [
+        "Lifelong Dynamic Optimization for Self-Adaptive Systems: Fact or Fiction?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00148",
+      "title": [
+        "1-2-3 Reproducibility for Quantum Software Experiments"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00137",
+      "title": [
+        "ProPy: Prolog-based Fault Localization Tool for Python"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00040",
+      "title": [
+        "Kuber: Cost-Efficient Microservice Deployment Planner"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00126",
+      "title": [
+        "A Simple Retrieval-based Method for Code Comment Generation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00144",
+      "title": [
+        "Can Solana be the Solution to the Blockchain Scalability Problem?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00100",
+      "title": [
+        "Towards Attribute Grammar Mining by Symbolic Execution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00110",
+      "title": [
+        "Detect, Fix, and Verify TensorFlow API Misuses"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00143",
+      "title": [
+        "Analysis Of The Relationship Between Smart Contracts' Categories and Vulnerabilities"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00071",
+      "title": [
+        "How and Why Developers Migrate Python Tests"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00028",
+      "title": [
+        "Generating Clarifying Questions for Query Refinement in Source Code Search"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00095",
+      "title": [
+        "Rebot: An Automatic Multi-modal Requirements Review Bot"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00156",
+      "title": [
+        "Knowledge Management Challenges for AI Quality"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00119",
+      "title": [
+        "Searching for Technical Debt - An Empirical, Exploratory, and Descriptive Case Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00031",
+      "title": [
+        "Exploring API Deprecation Evolution in JavaScript"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00140",
+      "title": [
+        "A Tool to check the Ownership of Solana's Smart Contracts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00125",
+      "title": [
+        "Automatically Generating Code Comment Using Heterogeneous Graph Neural Networks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.33884/jif.v10i01.4598",
+      "title": [
+        "IMPLEMENTASI METODE BUSINESS PROCESS REENGINEERING (BPR) PADA SISTEM PELAYANAN DATA PENDUDUK"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JURNAL ILMIAH INFORMATIKA"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Kelurahan Kalimas saat ini masih menggunakan metode konvensional dalam memberikan pelayanan data penduduk sehingga proses pencatatan memakan waktu yang lama. Solusi untuk mengatasi hal tersebut ialah dengan menciptakan suatu program berbasis web yang memiliki fitur pencatatan dan pelaporan data penduduk. Dengan adanya web ini, maka pegawai tidak memerlukan buku dan microsoft word untuk melakukan pencatatan yang sifatnya terjadi dua kali. Business Process Reengineering (BPR) merupakan suatu pendekatan bisnis yang berfokus pada analisis alur kerja atau proses bisnis yang terjadi dalam suatu lembaga atau organsiasi. Penulis menerapkan metode BPR untuk mengidentifikasi alur kerja sistem yang sedang berjalan di kantor Kelurahan Kalimas dan mendapatkan gambaran untuk menciptakan aplikasi berbasis web guna membantu mempercepat proses pelayanan data penduduk di Kelurahan Kalimas. Hasil penelitian ini yaitu berupa sistem administrasi kependudukan untuk mendata SKTM, KTP, KK, Surat Kelahiran, Surat Kematian, Surat Pindah, dan Surat Pindah Datang. Pihak yang dapat menggunakan aplikasi ini yaitu pegawai kelurahan, lurah, dan admin. Aplikasi yang dihasilkan dari penelitian ini memiliki manfaat untuk mempermudah pegawai Kelurahan Kalimas dalam mengelola data kependudukan dan mempermudah lurah dapat memonitor data kependudukan Kelurahan Kalimas.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00145",
+      "title": [
+        "Goal and Policy Based Code Generation and Deployment of Smart Contracts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00155",
+      "title": [
+        "MLOps for evolvable AI intensive software systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.22227/1997-0935.2022.3.365-376",
+      "title": [
+        "Reengineering of territories and built-up areas: a conceptual framework"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Vestnik MGSU"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Introduction. The development of built-up urban areas, aimed at improving the living arrangements and standards, is implemented within the boundaries of an element of a structural plan, as well as related elements. It is important, since it affects the interests of a substantial part of the country’s population. The achievement of the goals, pursued by the national projects and programmes as socio-economic development tools, depends directly on the effective development of built-up areas. The effective development of built-up areas involves comprehensive transformation and modernization of territories and buildings on the basis of the concept of reengineering of territories and built-up areas, including methods of effective and high-quality change management.&#x0D;\nMaterials and methods. The subject of the study is a set of measures that ensure the qualitative transformation of engineering (technological) solutions and serve as the backbone structure of reengineering in construction. The object of the study is the process of qualitative transformation of technological (technical) solutions and business processes (management decisions). It is noted that the actual focus of transformation of territories and built-up areas is implemented in the course of actions, taken within the framework of reengineering of technological processes (technical solutions), including the stages of reconstruction, renovation, technical retooling, repurposing, and reclamation. The factors, influencing the reengineering of management solutions, are provided. Features of the composition and properties of the reengineering of territories and built-up areas, characteristic of its practical implementation, are presented. Research methods include structural and functional analyses.&#x0D;\nResults. Current fundamental differences in the nature of regulatory impacts accompanying the traditional type of restoration (modernization), as well as impacts, made within the framework of reengineering of territories and built-up areas, are described. The authors suggest that the integrated approach of impacts, made in the process of reengineering of territories and built-up areas, is conveyed in the relationship between “property development – capital construction facilities – a technological solution”, as well as the scope and intensity of impacts. The general framework for the concept, underlying the implementation of the reengineering of territories and built-up areas, is presented.</jats:p>",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00021",
+      "title": [
+        "Efficient Search of Live-Coding Screencasts from Online Videos"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00051",
+      "title": [
+        "LoGenText: Automatically Generating Logging Texts Using Neural Machine Translation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00026",
+      "title": [
+        "Evolution of GitHub Action Workflows"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00041",
+      "title": [
+        "PANDORA: Continuous Mining Software Repository and Dataset Generation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00067",
+      "title": [
+        "JISDLab: A web-based interactive literate debugging environment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00136",
+      "title": [
+        "Type Profiling to the Rescue: Test Amplification in Python and Smalltalk"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00131",
+      "title": [
+        "Fault Localization in Server-Side Applications Using Spectrum-Based Fault Localization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00035",
+      "title": [
+        "Uncovering Library Features from API Usage on Stack Overflow"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00142",
+      "title": [
+        "On the use of Petri Nets in Smart Contracts modeling, generation and verification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00097",
+      "title": [
+        "How Do Injected Bugs Affect Deep Learning?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00147",
+      "title": [
+        "A Comprehensive Study of Bug Fixes in Quantum Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00107",
+      "title": [
+        "On the Importance of Performing App Analysis Within Peer Groups"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00050",
+      "title": [
+        "An Investigation into Inconsistency of Software Vulnerability Severity across Data Sources"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00098",
+      "title": [
+        "Static Analysis Warnings and Automatic Fixing: A Replication for C# Projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00092",
+      "title": [
+        "Towards a Fine-grained Analysis of Cognitive Load During Program Comprehension"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00105",
+      "title": [
+        "Variant Forks - Motivations and Impediments"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00046",
+      "title": [
+        "What really is software design?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00123",
+      "title": [
+        "Web Element Identification by Combining NLP and Heuristic Search for Web Testing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00079",
+      "title": [
+        "Gelato: Feedback-driven and Guided Security Analysis of Client-side Web Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00020",
+      "title": [
+        "Program Transformations for Precise Analysis of Enterprise Information Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00012",
+      "title": [
+        "PR-SZZ: How pull requests can support the tracing of defects in software repositories"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00066",
+      "title": [
+        "ReSplit: Improving the Structure of Jupyter Notebooks by Re-Splitting Their Cells"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00101",
+      "title": [
+        "Investigating the Effectiveness of Clustering for Story Point Estimation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00108",
+      "title": [
+        "Removing Decorator to Improve Energy Efficiency"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00127",
+      "title": [
+        "Method Name Generation Based on Code Structure Guidance"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00150",
+      "title": [
+        "Prioritization of Compiled Quantum Circuits for Different Quantum Computers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00115",
+      "title": [
+        "Characterizing and Improving Bug-Finders with Synthetic Bugs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00063",
+      "title": [
+        "desync-cc: An Automatic Disassembly-Desynchronization Obfuscator"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00023",
+      "title": [
+        "An Exploratory Study on Self-Fixed Software Vulnerabilities in OSS Projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00146",
+      "title": [
+        "A Blockchain-based Data Notarization System for Smart Mobility Services"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00044",
+      "title": [
+        "Automating Test Oracle Generation in DevOps for Industrial Elevators"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00068",
+      "title": [
+        "Phrase2Set: Phrase-to-Set Machine Translation and Its Software Engineering Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00153",
+      "title": [
+        "Accessing the Presentation of Causal Graphs and an Application of Gestalt Principles with Eye Tracking"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00033",
+      "title": [
+        "DAPSTEP: Deep Assignee Prediction for Stack Trace Error rePresentation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00059",
+      "title": [
+        "A Preliminary Analysis of GPL-Related License Violations in Docker Images"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00094",
+      "title": [
+        "Automatic Detection and Analysis of Technical Debts in Peer-Review Documentation of R Packages"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00019",
+      "title": [
+        "Lessons from Research to Practice on Writing Better Quality Puppet Scripts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00135",
+      "title": [
+        "What Do We Know About Readability of Test Code? - A Systematic Mapping Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00116",
+      "title": [
+        "Phishing Kits Source Code Similarity Distribution: A Case Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00083",
+      "title": [
+        "Identifying Relevant Changes for Incremental Verification of Evolving Software Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00102",
+      "title": [
+        "Kraken 2.0: A platform-agnostic and cross-device interaction testing tool"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00122",
+      "title": [
+        "A Bytecode-based Approach for Smart Contract Classification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00015",
+      "title": [
+        "Towards a Robust Approach to Analyze Time-Dependent Data in Software Engineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00049",
+      "title": [
+        "ClusterCommit: A Just-in-Time Defect Prediction Approach Using Clusters of Projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00151",
+      "title": [
+        "Towards using focus groups to identify software developer's interests regarding their development process"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00082",
+      "title": [
+        "HyDRa: A Framework for Modeling, Manipulating and Evolving Hybrid Polystores"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00062",
+      "title": [
+        "Bunk8s: Enabling Easy Integration Testing of Microservices in Kubernetes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00121",
+      "title": [
+        "Where Should I Look at? Recommending Lines that Reviewers Should Pay Attention To"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.55164/ajstr.v25i1.244708",
+      "title": [
+        "Production Line Process Improvement with Process Reengineering – A Case Study In Garment Factory"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ASEAN Journal of Scientific and Technological Reports"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>ABC is struggling to reach daily production objectives and has low productivity, which is one of the productline line process problem. Business Process Reengineering (BPR) employs process redesign heuristics to enhance an existing production line process using an assessment technique and fit-gap analysis. The simulation tool is used to model the production line process redesign. After adopting the provided approach and conducting the simulation, the company's production productivity and service level increased by about 45%. The required simulation resulted in critical measurements such as manufacturing capacity and lead-time. This research demonstrates the redesign production line process that must be followed to archive this artefact.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00149",
+      "title": [
+        "How to Approximate any Objective Function via Quadratic Unconstrained Binary Optimization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00072",
+      "title": [
+        "Towards the Isolation of Failure-Inducing Inputs in Cyber-Physical Systems: is Delta Debugging Enough?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00060",
+      "title": [
+        "Recommending Base Image for Docker Containers based on Deep Configuration Comprehension"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.3390/healthcare10040602",
+      "title": [
+        "COVID-19 Hurricane: Recovering the Worldwide Health System with the RE.RE.RE. (REsponse–REstoration–REengineering) Approach—Who Will Get There First?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Healthcare"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In 2007, I was (LV) attending to a one-month period of my pediatric residency at the Children’s Hospital in New Orleans [...]</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00154",
+      "title": [
+        "Humans in Empirical Software Engineering Studies: An Experience Report"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00096",
+      "title": [
+        "Can We Automatically Fix Bugs by Learning Edit Operations?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00061",
+      "title": [
+        "A Preliminary Study on Accessibility of Augmented Reality Features in Mobile Apps"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00091",
+      "title": [
+        "Common Programming Mistakes Leading to Information Disclosure: A Preliminary Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00152",
+      "title": [
+        "Exploring Relevant Artifacts of Release Notes: The Practitioners' Perspective"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00024",
+      "title": [
+        "A Study on Screen Logging Risks of Secure Keyboards of Android Financial Apps"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00106",
+      "title": [
+        "Flexible semi-automatic support for type migration of primitives for C/C++ programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00057",
+      "title": [
+        "KGSecConfig: A Knowledge Graph Based Approach for Secured Container Orchestrator Configuration"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00085",
+      "title": [
+        "FUM - A Framework for API Usage constraint and Misuse Classification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00056",
+      "title": [
+        "Revisiting Neuron Coverage Metrics and Quality of Deep Neural Networks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00080",
+      "title": [
+        "Recommending Code Reviewers for Proprietary Software Projects: A Large Scale Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00104",
+      "title": [
+        "ExcePy: A Python Benchmark for Bugs with Python Built-in Types"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00064",
+      "title": [
+        "Crème de la crème. Investigating Metadata and Survivability of Top Android Apps"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00141",
+      "title": [
+        "Stone: A Privacy Policy Enforcement System for Smart Contracts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00130",
+      "title": [
+        "Can Identifier Splitting Improve Open-Vocabulary Language Model of Code?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00081",
+      "title": [
+        "RIBDetector: an RFC-guided Inconsistency Bug Detecting Approach for Protocol Implementations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00025",
+      "title": [
+        "DIComP: Lightweight Data-Driven Inference of Binary Compiler Provenance with High Accuracy"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00087",
+      "title": [
+        "Detecting Connectivity Issues in Android Apps"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00084",
+      "title": [
+        "On the rise and fall of CI services in GitHub"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00042",
+      "title": [
+        "FuzzingDriver: the Missing Dictionary to Increase Code Coverage in Fuzzers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00111",
+      "title": [
+        "Static Analysis of Database Accesses in MongoDB Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00128",
+      "title": [
+        "NeuRecover: Regression-Controlled Repair of Deep Neural Networks with Training History"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00039",
+      "title": [
+        "Evaluating the Use of Semantics for Identifying Task-relevant Textual Information"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00016",
+      "title": [
+        "First-class artifacts as building blocks for live in-IDE documentation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00075",
+      "title": [
+        "SOTitle: A Transformer-based Post Title Generation Approach for Stack Overflow"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00133",
+      "title": [
+        "iTest: Using coverage measurements to improve test efficiency"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00078",
+      "title": [
+        "CoolTeD: A Web-based Collaborative Labeling Tool for the Textual Dataset"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.33889/ijmems.2022.7.2.012",
+      "title": [
+        "Simulation for Decision Support in Process Reengineering in the Automotive Industry"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Mathematical, Engineering and Management Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>With globalization and the high competitiveness faced in a business environment, adopting technological solutions to satisfactory respond to an increasingly demanding customer is the watchword for organizations. With technological advances and an increasingly volatile society, it is mandatory for industries to ensure agile production processes capable of responding quickly and assertively to consumer expectations. Industry 4.0 with its technological pillars comes up to boost company to have more flexible and agile processes. This work results of a project developed in an automotive factory that will be producing a new mechanical part. The definition of the best layout of the production line was carried in an instable environment characterized by budget limitations, security and space restrictions that forced the company to study and discuss four possible layouts to define the future line. The goal was to ensure that the line was able to produce 3625 parts/week with an Operational Income of 87%. Moreover, it was also important to consider the cost of implementing a new line in the company. With this study it is proven that in an automotive industry where flexibility is required in an unpredictable environment during a decision-making process, analyzing the impact and possible consequences of every change in a layout definition phase is a great asset, where alteration like adding a conveyor, Automated Guided Vehicle or Robots can be made easy and quickly, and important conclusions can be taken from this analyze with less effort. Finally, 2 criteria were created to examine every variant and a decision was made.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00103",
+      "title": [
+        "An Empirical Study on the Impact of Deep Parameters on Mobile App Energy Usage"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00120",
+      "title": [
+        "BinMLM: Binary Authorship Verification with Flow-aware Mixture-of-Shared Language Model"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00117",
+      "title": [
+        "When They Go Low: Automated Replacement of Low-level Functions in Ethereum Smart Contracts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00032",
+      "title": [
+        "Hits and Misses: Newcomers' ability to identify Skills needed for OSS tasks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00124",
+      "title": [
+        "Well Begun is Half Done: An Empirical Study of Exploitability &amp; Impact of Base-Image Vulnerabilities"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00129",
+      "title": [
+        "Analyzing Offline Social Engagements: An Empirical Study of Meetup Events Related to Software Development"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00043",
+      "title": [
+        "Gender Diversity and Community Smells: A Double-Replication Study on Brazilian Software Teams"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00065",
+      "title": [
+        "Isolating Compiler Optimization Faults via Differentiating Finer-grained Options"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00074",
+      "title": [
+        "ArchTacRV: Detecting and Runtime Verifying Architectural Tactics in Code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00030",
+      "title": [
+        "Cost-effective Simulation-based Test Selection in Self-driving Cars Software with SDC-Scissor"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00118",
+      "title": [
+        "Learning CI Configuration Correctness for Early Build Feedback"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00138",
+      "title": [
+        "Visualizing Web Application Execution Logs to Improve Software Security Defect Localization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00132",
+      "title": [
+        "Using Source Code Metrics for Predicting Metamorphic Relations at Method Level"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00086",
+      "title": [
+        "DeepAnna: Deep Learning based Java Annotation Recommendation and Misuse Detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00036",
+      "title": [
+        "Identifying Software Engineering Challenges in Software SMEs: A Case Study in Thailand"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00058",
+      "title": [
+        "On the Way to Microservices: Exploring Problems and Solutions from Online Q&amp;A Community"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1155/2022/4539125",
+      "title": [
+        "Analysis of the Management Effect of Cancer Patients after Oral Chemotherapy Based on Nursing Process Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Healthcare Engineering"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>With the pollution of the environment and the acceleration of the social rhythm, the prevalence of tumors has increased year by year, and tumors have brought huge pain and inconvenience to patients. However, traditional nursing work consumes a lot of manpower and material resources, but it is difficult to improve the happiness of cancer patients, and it also brings a lot of troubles to many nursing workers. Based on the above reasons, we reengineered the traditional nursing process based on the BPR theory and applied the new process to the analysis of the management effect of cancer patients after oral chemotherapy drugs. The data shows that there are 23 patients with no pressure ulcer risk (score greater than 19) before care, 27 patients with low risk (15–19 points), 32 patients with moderate risk (13–14 points), and 18 people at high risk (less than 12 points). After nursing, there were 82 patients with no pressure ulcer risk, 10 patients with low risk, 7 patients with moderate risk, and 1 patient with high risk. This shows that the risk of pressure ulcers in patients with cancer after the use of chemotherapy drugs is significantly reduced compared with those without nursing. Nursing intervention can improve the psychological state of cancer patients during the recovery period, and nursing intervention can promote the compliance of cancer patients in various aspects of rehabilitation.</jats:p>",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00134",
+      "title": [
+        "An Exploratory Study on the Usage of Gherkin Features in Open-Source Projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00014",
+      "title": [
+        "Do Developers Refactor Data Access Code? An Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00047",
+      "title": [
+        "A Lightweight Approach of Human-Like Playtest for Android Apps"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00053",
+      "title": [
+        "Detecting Runtime Exceptions by Deep Code Representation Learning with Attention-Based Graph Neural Networks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00109",
+      "title": [
+        "Mining Software Information Sites to Recommend Cross-Language Analogical Libraries"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00027",
+      "title": [
+        "On the Influence of Biases in Bug Localization: Evaluation and Benchmark"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00088",
+      "title": [
+        "A Replication Study on Predicting Metamorphic Relations at Unit Testing Level"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00048",
+      "title": [
+        "An Empirical Investigation into the Reproduction of Bug Reports for Android Apps"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00099",
+      "title": [
+        "Endowing third-party libraries recommender systems with explicit user feedback mechanisms"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00077",
+      "title": [
+        "Cross-Language Binary-Source Code Matching with Intermediate Representations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00093",
+      "title": [
+        "On the Influential Interactive Factors on Degrees of Design Decay: A Multi-Project Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00052",
+      "title": [
+        "DualSC: Automatic Generation and Summarization of Shellcode via Transformer and Dual Learning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00069",
+      "title": [
+        "An Empirical Investigation into the Use of Image Captioning for Automated Software Documentation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00055",
+      "title": [
+        "Fine-grained Co-Attentive Representation Learning for Semantic Code Search"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00114",
+      "title": [
+        "VELVET: a noVel Ensemble Learning approach to automatically locate VulnErable sTatements"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00113",
+      "title": [
+        "On the Evolution of Inheritance and Delegation Mechanisms and Their Impact on Code Quality"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00013",
+      "title": [
+        "Source Code Summarization with Structural Relative Position Guided Transformer"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00018",
+      "title": [
+        "HERMES: Using Commit-Issue Linking to Detect Vulnerability-Fixing Commits"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00070",
+      "title": [
+        "Semantic Robustness of Models of Source Code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00076",
+      "title": [
+        "VCMatch: A Ranking-based Approach for Automatic Security Patches Localization for OSS Vulnerabilities"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00034",
+      "title": [
+        "Machine Learning Regression Techniques for Test Case Prioritization in Continuous Integration Environment"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00017",
+      "title": [
+        "On the Benefits of the Accelerate Metrics: An Industrial Survey at Vendasta"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.34140/bjbv4n1-034",
+      "title": [
+        "Análisis del impacto de la reingeniería de los sistemas de información en la competitividad de las pymes / Analysis of the reengineering impact of information systems on the competitiveness of SMEs"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Brazilian Journal of Business"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>El concepto de reingeniería no es nuevo, desde mediados de los años 90 y en la década del 2000 en que se concretaron los principios sobre los que se rige la misma, está se aplica de manera continua en los procesos empresas, pero no sólo puede aplicarse en los procesos, también se aplica ahora en los sistemas de información automatizados tiempo atrás, éstos, pueden entorpecer en lugar de ayudar a los procesos, al haber sido diseñados  para otras condiciones tecnológicas diferentes a las que rigen en la actualidad. Con los cambios continuos en la tecnología y a través de los años, se ha llegado al punto en las empresas, en que las primeras automatizaciones concretadas, ahora son obsoletas y/o requieren de actualización en tecnología y en los sistemas en sí. Para realizar lo anterior deben aplicarse metodologías de desarrollo lo suficientemente ágiles para que los cambios causen el menor impacto posible en aspectos relacionados con la competitividad de las empresas como es la presencia en medios o mantener una ventaja competitiva. El objetivo de este artículo es evidenciar los aspectos relevantes que afectan la competitividad en una pyme al realizar una reingeniería a los sistemas de información.</jats:p>"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00089",
+      "title": [
+        "State Selection Algorithms and Their Impact on The Performance of Stateful Network Protocol Fuzzing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00073",
+      "title": [
+        "Learning Program Semantics with Code Representations: An Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00090",
+      "title": [
+        "Toward Understanding the Impact of Refactoring on Program Comprehension"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00045",
+      "title": [
+        "BCL-FL: A Data Augmentation Approach with Between-Class Learning for Fault Localization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.1109/saner53432.2022.00054",
+      "title": [
+        "Aspect-Based API Review Classification: How Far Can Pre-Trained Transformer Model Go?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2022 IEEE International Conference on Software Analysis, Evolution and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2022-03"
+    },
+    {
+      "doi": "10.26389/ajsrp.d170821",
+      "title": [
+        "The reality of business process reengineering at Palestine private university and Gaza private university from the point of view of academics and administrators in both universities: واقع إعادة هندسة العمليات الإدارية في جامعتي فلسطين وغزة الخاصتين من وجهة نظر الأكاديميين والإداريين فيهما"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "مجلة العلوم الإقتصادية و الإدارية و القانونية",
+        "Journal of Economic, Administrative and Legal Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This study aims to identify the reality of business process reengineering at Palestine private university and Gaza private university from the point of view of academics and administrators in both universities, and the study applied the analytical survey descriptive method depending on primary and secondary sources of data, and the questionnaire was used as a main tool for collecting data, that questionnaire was distributed over a sample consists of (186) employees of academic and administrative employees who are working at that both universities, and the study revealed that the applying of business process reengineering by Palestine private university and Gaza private university –from point of view of the sample- got total average of (3.91 out of 5) with a large degree of application, and on the level of the four dimensions we find; the dimension of information technology got the highest average (3.98), then total quality standards with an average of (3.90), and third and fourth there exist the two dimensions of the organizational structures and the university operations and both of it with an average of (3.87), and all the dimensions are applied with a large degree, the results also showed that there are no statistically significant differences; at the level of (α ≤.05) between the respondents' answers about the reality of business process reengineering in the two universities due to the variables (gender, age, educational qualification, job title, place of work, years of experience). Based on the results, the researcher presented a set of recommendations and suggestions; the need for optimal employment of information technology, and keeping abreast of all that is new in the approach of business process reengineering, and benefit from the successful experiences in it, provided that what mentioned before is among the first priorities of the university, and establishing an independent department to continuously reengineer business processes, and remove any obstacle that may face the application of the business process reengineering approach, the researcher also suggests conducting future studies related to identifying the impact of the use of computerized artificial intelligence on the effectiveness of business process reengineering in private Palestinian universities, in addition to trying to build a proposed model for developing the management of the public university in Palestine in light of the approach of business process reengineering.</jats:p>",
+      "publication_date": "2022-03"
+    }
+  ]
+}

@@ -1,0 +1,2269 @@
+{
+  "term": "Scenario",
+  "total_results": 181,
+  "processed_count": 181,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4135/9781412983907.n1752",
+      "title": [
+        "Scenario"
+      ],
+      "type": "reference-entry",
+      "container-title": [
+        "Dictionary of Statistics &amp; Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1017/upo9788175968769.006",
+      "title": [
+        "Pesticide Consumption Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Perils of Pesticides"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1002/wilm.42820050105",
+      "title": [
+        "The vector autoregressive approach in scenario generation after his recent foray into China dr Z returns to questions of scenario generation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Wilmott"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/11552413_74",
+      "title": [
+        "Human-Based Annotation of Data-Based Scenario Flow on Scenario Map for Understanding Hepatitis Scenarios"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Knowledge-Based Intelligent Information and Engineering Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4018/978-1-59140-555-9.ch241",
+      "title": [
+        "A Scenario-Based Instructional Design Model"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Encyclopedia of Distance Learning"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Instructional design models address important issues of learning, content, and context during the development of instruction. The prescriptive premise behind instructional design is that if an instructional design is followed, the learning outcomes identified in the design will occur. As one evaluates the extent to which learners achieve learning outcomes, changes in the instructional design may be warranted. Documenting these changes provides designers and users of the model with feedback on its efficiency and effectiveness. Despite these attributes, the merits of instructional design have not been achieved in some settings, and some users, including teachers and product developers, are looking elsewhere for instructional development guidance. But should they? The premise of this chapter is to propose a scenario-based ID model that addresses a major shortcoming of instructional design; namely, the gap between formative design decisions and design review. Scenarios are used to keep people designing, reflecting, redesigning. </jats:p>"
+    },
+    {
+      "doi": "10.2139/ssrn.1626713",
+      "title": [
+        "Export Scenario of Uttar Pradesh"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-075066075-4/50012-1",
+      "title": [
+        "Scenario-Based Analysis and Evaluation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Software Design Methodology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/1-4020-2978-0",
+      "title": [
+        "Scenario Logic and Probabilistic Management of Risk in Business and Engineering"
+      ],
+      "type": "book",
+      "container-title": [
+        "Applied Optimization"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5220/0002525600500057",
+      "title": [
+        "SCENARIO MANAGEMENT: PROCESS AND SUPPORT"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Seventh International Conference on Enterprise Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3997/2214-4609-pdb.257.11",
+      "title": [
+        "Scenario-based Velocity Modeling for&lt;br&gt;Depth Conversion Uncertainty"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "PGCE 2005"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1063/1.2149674",
+      "title": [
+        "A Bottom-Up Approach to Moduli Dynamics in Heavy Gravitino Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "AIP Conference Proceedings"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1115/imece2005-81331",
+      "title": [
+        "Automated Risk Scenario Generation Using System Functional and Structural Knowledge"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Engineering/Technology Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Simulation may be the most practical way to assess the risk of systems with complex behaviors such as those that include hardware, software and human elements. However, since under normal design conditions human-designed systems generally perform in familiar and expected ways, a typical simulation will frequently lead to known and anticipated results. As such, the simulation program wastes a lot of time on familiar results without generating new knowledge about the system’s vulnerabilities. In order to increase our knowledge of risk, it would be preferable to push the system toward its limits to test the system’s ability to handle more difficult situations. Such an approach can help system designers to better understand risky situations and close the vulnerability gaps in their design. The primary objective of this study is to develop a risk simulation Planner (SimpraPlan) which generates scenarios that can explore the system’s vulnerabilities and offer a superior assessment of the risks involved. The Planner uses high level engineering knowledge (including the functional requirements and physical structure of the system) to generate scenarios that can exploit the system’s vulnerabilities. In this paper, the scenario generation process is explained in detail and scenarios generated by the SimpraPlan are compared with those generated by classical approaches to risk assessment.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.5005/jp/books/10706_17",
+      "title": [
+        "Polio Eradication: Current Scenario and End Game Strategies"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Recent Advances in Pediatrics—15"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-0-387-27586-4_5",
+      "title": [
+        "Scenario Optimization: Addressing Non-normality"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Introduction to Modern Portfolio optimization with NUOPT and S-PLUS"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1037/e559172006-001",
+      "title": [
+        "Developing a Scenario-Based Training Program: Giving Officers a Tactical Advantage"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "PsycEXTRA Dataset"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-663-05626-3_33",
+      "title": [
+        "Cross-Cultural Expert Teams in the Scenario Development Process"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Cross-Cultural Innovation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/dac.2005.193781",
+      "title": [
+        "Automatic scenario detection for improved WCET estimation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings. 42nd Design Automation Conference, 2005."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-008044379-9/50175-8",
+      "title": [
+        "Adaptation Effects in an Automated Car-Following Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Traffic and Transport Psychology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1103/physrevd.71.027505",
+      "title": [
+        "Modified Friedmann scenario from the Wheeler-DeWitt equation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/aero.2005.1559748",
+      "title": [
+        "Space mission scenario development and performance analysis tool"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2005 IEEE Aerospace Conference"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1137/1.9780898718799.ch27",
+      "title": [
+        "27. Scenario-Based Risk Management Tools"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Applications of Stochastic Programming"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1109/aero.2005.1559456",
+      "title": [
+        "Response of circuit and packet-switching satellite networks to a sudden-attack scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2005 IEEE Aerospace Conference"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1103/physrevd.71.024006",
+      "title": [
+        "Wilsonian renormalization group in the Randall-Sundrum 1 scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/ird.176",
+      "title": [
+        "ICID's perception on basin assessment for scenario development"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Irrigation and Drainage"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-07"
+    },
+    {
+      "doi": "10.1016/j.actaastro.2004.09.015",
+      "title": [
+        "Possible scenario for future mission in Earth observation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Acta Astronautica"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.14236/ewic/el2005.20",
+      "title": [
+        "A bootstrapping scenario for elicitating CSCL services within a GRID virtual community"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Electronic Workshops in Computing"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/1186954.1187012",
+      "title": [
+        "A tile/scenario algorithm for real-time 3D environments"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "ACM SIGGRAPH 2005 Posters on   - SIGGRAPH '05"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2749/222137805796270568",
+      "title": [
+        "Tsunami Construction Risks in The Mediterranean – Outling Malta's Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "IABSE Symposium, Lisbon 2005: Structures and Extreme Events"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1037/e633942013-562",
+      "title": [
+        "The effect of victim information on causality judgments in a rape trial scenario"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "PsycEXTRA Dataset"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1238/physica.topical.117a00076",
+      "title": [
+        "Beyond Inflation: A Cyclic Universe Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physica Scripta"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Inflation has been the leading early universe scenario for two decades, and has become an accepted element of the successful `cosmic concordance' model. However, there are many puzzling features of the resulting theory. It requires both high energy and low energy inflation, with energy densities differing by a hundred orders of magnitude. The questions of why the universe started out undergoing high energy inflation, and why it will end up in low energy inflation, are unanswered. Rather than resort to anthropic arguments, we have developed an alternative cosmology, the cyclic universe, in which the universe exists in a very long-lived attractor state determined by the laws of physics. The model shares inflation's phenomenological successes <jats:italic>without</jats:italic> requiring an epoch of high energy inflation. Instead, the universe is made homogeneous and flat, and scale-invariant adiabatic perturbations are generated during an epoch of low energy acceleration like that seen today, but preceding the last big bang. Unlike inflation, the model <jats:italic>requires</jats:italic> low energy acceleration in order for a periodic attractor state to exist. The key challenge facing the scenario is that of passing through the cosmic singularity at <jats:italic>t</jats:italic> = 0. Substantial progress has been made at the level of linearised gravity, which is reviewed here. The challenge of extending this to nonlinear gravity and string theory remains.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1109/icact.2005.246161",
+      "title": [
+        "Scenario based network infrastructure planning"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 7th International Conference on Advanced Communication Technology, 2005, ICACT 2005."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1057/9781403981790_12",
+      "title": [
+        "Gisaro and the Opposition Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Sorrow of the Lonely and the Burning of the Dancers"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.665724",
+      "title": [
+        "Business Cycle Effects on Portfolio Credit Risk: Scenario Generation through Dynamic Factor Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-008044704-9/50139-7",
+      "title": [
+        "Long-term safety assessment of CO2 storageThe scenario approach"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Greenhouse Gas Control Technologies 7"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/097324700500100112",
+      "title": [
+        "Business Education in Changing Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Asia Pacific Business Review"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Very rarely one can find a business education faculty up to the mark. The statement does not imply non-availability of good faculties; but the available resources are very less to their commensurate requirement. Since the ‘Business Education’ has been transformed in a “dream-selling profitable business”, the proprietors of such business organizations are always effortful to maximize their profit. They avoid appointing full-time faculties. Barring a few, BEIs are not adopting any mechanism to evaluate the performances. Dynamic courses offering institutions are very few. Most of the business education institutions offer traditional courses i.e. marketing management, financial management, corporate accounting, etc. In many cases, BEIs themselves are very much reluctant in making efforts for good liaison with industries and business world in the wake of practical exposure. Placement is a crucial component of management education. The Universities do not give any consideration to placements. The AICTE recognized institutes, barring a few, toe the university line. Most of the AICTE recognized institutes are not able to offer jobs to all their students. Looking to the prevailing poor condition of the business education system, an altogether new business education system is required to be evolved. This paper is an effort in such evolution. </jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1002/bies.20182",
+      "title": [
+        "A new evolutionary scenario for the vertebrate jaw"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "BioEssays"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-03"
+    },
+    {
+      "doi": "10.1109/icip.2005.1529712",
+      "title": [
+        "Semi-fragile watermarking for video quality evaluation in broadcast scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "IEEE International Conference on Image Processing 2005"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2749/222137805796271378",
+      "title": [
+        "Column Failure as a Hazard Scenario for Flat Slab Structures"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "IABSE Symposium, Lisbon 2005: Structures and Extreme Events"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.21236/ada430837",
+      "title": [
+        "OCTAVE(Federal Registration)-S Implementation Guide, Version 1.0, Volume 10: Example Scenario"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1016/s0022-510x(05)81968-9",
+      "title": [
+        "1611 Neurological scenario in the behcet disease: case report"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Neurological Sciences"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/3-540-26963-0_2",
+      "title": [
+        "The Scenario for EU Accession by Southeast European Countries"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "EU Accession — Financial Sector Opportunities and Challenges for Southeast Europe"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1057/9781403981790_6",
+      "title": [
+        "The Unseen World and the Opposition Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "The Sorrow of the Lonely and the Burning of the Dancers"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.asr.2005.05.063",
+      "title": [
+        "High energy emission from pulsars: Outer gap scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Advances in Space Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1109/re.2005.50",
+      "title": [
+        "Persona-and-scenario based requirements engineering for software embedded in digital consumer products"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "13th IEEE International Conference on Requirements Engineering (RE'05)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/1-84628-052-4_13",
+      "title": [
+        "Scenario Approach for Probabilistic Robust Design"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Communications and Control Engineering",
+        "Randomized Algorithms for Analysis and Control of Uncertain Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3354/cr028183",
+      "title": [
+        "Forecasting local daily precipitation patterns in a climate change scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Climate Research"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2139/ssrn.683160",
+      "title": [
+        "Credit Default Swap Calibration and Counterparty Risk Valuation with a Scenario based First Passage Model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SSRN Electronic Journal"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5040/9781350222458.ch-019",
+      "title": [
+        "Exploring food and farming futures in Zimbabwe: a citizens’ jury and scenario workshop experiment"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Science and citizens"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1079/9780851990187.0131",
+      "title": [
+        "US oil and gas markets: a scenario for future strong inter-fuel competition."
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Agriculture as a producer and consumer of energy"
+      ],
+      "subject": [],
+      "abstract": "<title>Abstract</title><p>This chapter looks at the volatility in both the world oil and North American natural gas markets. It is suggested that despite the greater degree of volatility, both markets appear set to remain at higher price levels for the foreseeable future. While oil prices are likely to recede from the recent very high levels experienced in 2004, North American natural gas prices are likely to remain much higher than the prices experienced prior to 2000 and higher relative to oil prices. It is argued that the emerging price dynamic between oil and natural gas in North America will reshape the demand for oil and gas and potentially have an important impact on the future energy market in the USA. Implications for the agricultural industry are also briefly discussed.</p>"
+    },
+    {
+      "doi": "10.1109/glocom.2005.1577962",
+      "title": [
+        "Single packet IP traceback in AS-level partial deployment scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "GLOBECOM '05. IEEE Global Telecommunications Conference, 2005."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1159/000083257",
+      "title": [
+        "Malnutrition in the Developing World: The Lack of Food Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Nestl� Nutrition Workshop Series: Clinical &amp; Performance Program",
+        "Home Care Enteral Feeding"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijkl.2005.008355",
+      "title": [
+        "Scenario-oriented reusable learning object characterisations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Knowledge and Learning"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.54395/jot-mm6ek",
+      "title": [
+        "From Word to Scenario: The Influence of Linguistic Theories upon Models of Translation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Translation"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In the late twentieth century any given model of translation was constrained by the code model of communication and by the theory of linguistics upon which it was based. Whereas the code model supplied the notion of equivalence as the standard by which a translation was evaluated, the linguistic theory supplied what was regarded as the minimal unit of translation. Accordingly, as linguistic theories were formulated to account for increasingly larger units of text, translation models were redesigned so that the notion of equivalence mirrored the size of these linguistic units. Ultimately, the notion of equivalence became so broad that attempts to achieve it were regarded as illusionary. The result was a Kuhnian revolution of sorts, with two claimants: relevance theory and cognitive linguistics. The remainder of the paper highlights how recent insights of cognitive linguistics are important in the translation praxis.</jats:p>"
+    },
+    {
+      "doi": "10.1007/11526841_29",
+      "title": [
+        "Verifying Scenario-Based Aspect Specifications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "FM 2005: Formal Methods"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icact.2005.246026",
+      "title": [
+        "Developing MVNO market scenarios and strategies through a scenario planning approach"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 7th International Conference on Advanced Communication Technology, 2005, ICACT 2005."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1115/imece2005-82360",
+      "title": [
+        "Assessment of Efficiency for a Hybrid Explicit/Implicit Code Simulation of a Multiple Impact Crash Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Engineering/Technology Management"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Sandia National Laboratories has developed a new explicit nonlinear transient dynamic finite element code called Presto and an associated implicit code called Adagio. This paper describes a process used to assess the ability and efficiency for sharing the computational workload of a multiple impact crash simulation between the explicit (Presto) and the implicit (Adagio) codes to minimize computation time. A numeric example of this hybrid simulation process is given that applies to a dynamic beam impact scenario. Results from simulations using each code will be compared with the hybrid simulation and discussed.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1016/j.fertnstert.2004.10.017",
+      "title": [
+        "Uterine anomalies ascertained before pregnancy—a more frequent and challenging scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Fertility and Sterility"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1016/s0040-1625(03)00137-9",
+      "title": [
+        "Studying scenario planning: Theory, research suggestions, and hypotheses"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.2172/949156",
+      "title": [
+        "Dungeness Crab Dredging Entrainment Studies in the Lower Columbia River, 2002 ? 2004: Loss Projections, Salinity Model, and Scenario Analysis"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11424628_6",
+      "title": [
+        "Chapter 6 The Barmerzige Schwestern Reference Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Universal Access in Health Telematics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11540007_18",
+      "title": [
+        "Representing and Recognizing Scenario Patterns"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Fuzzy Systems and Knowledge Discovery"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijnt.2005.006980",
+      "title": [
+        "The Spanish presence in the molecular sieve technology scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Nanotechnology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4103/0970-0218.42860",
+      "title": [
+        "Changing Scenario of Child Health due to Pulse Polio Immunisation Campaigns"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Indian Journal of Community Medicine"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.nuclphysb.2004.11.025",
+      "title": [
+        "MSLED: a minimal supersymmetric large extra dimensions scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Physics B"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/11424628_4",
+      "title": [
+        "Chapter 4 The HYGEIAnet Reference Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Universal Access in Health Telematics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/sys.20030",
+      "title": [
+        "A scenario-based approach for requirements engineering: Experience in a telecommunication software development project"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Systems Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11424628_7",
+      "title": [
+        "Chapter 7 The ClinicCoach Reference Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Universal Access in Health Telematics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/1062455.1062527",
+      "title": [
+        "Monitoring and control in scenario-based requirements analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 27th international conference on Software engineering  - ICSE '05"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/1065579.1065610",
+      "title": [
+        "Automatic scenario detection for improved WCET estimation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 42nd annual conference on Design automation  - DAC '05"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijtip.2005.006516",
+      "title": [
+        "Advantages and disadvantages of scenario approaches for strategic foresight"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Technology Intelligence and Planning"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.techfore.2003.11.003",
+      "title": [
+        "Studying scenario planning: Theory, research suggestions, and hypotheses"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.5220/0002517301300137",
+      "title": [
+        "SCENARIO-BASED EVALUATION OF ENTERPRISE ARCHITECTURE - A top-down approach for chief information officer decision making"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Seventh International Conference on Enterprise Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-31810-1_9",
+      "title": [
+        "Scenario Synthesis from Imprecise Requirements"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "System Analysis and Modeling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.58799/ofr-491",
+      "title": [
+        "Oil and gas resource development Eastern Valle Vidal Unit - A twenty year reasonable foreseeable development scenario (RFDS), Carson National Forest"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/ccst.2005.1594819",
+      "title": [
+        "Scenario based threat detection and attack analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings 39th Annual 2005 International Carnahan Conference on Security Technology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/ismar.2005.46",
+      "title": [
+        "Product associated displays in a shopping scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Fourth IEEE and ACM International Symposium on Mixed and Augmented Reality (ISMAR'05)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1049/cp:20050222",
+      "title": [
+        "A fuzzy neural joint radio resource management in a multi-cell scenario supporting a multiservice architecture"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "6th IEE International Conference on 3G and Beyond (05/11182)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11573036_46",
+      "title": [
+        "Scenario Networks: Specifying User Interfaces with Extended Use Cases"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Advances in Informatics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/isie.2005.1529168",
+      "title": [
+        "Experiments in Vision-Guided Robot Walking in a Structured Scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the IEEE International Symposium on Industrial Electronics, 2005. ISIE 2005."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icws.2005.65",
+      "title": [
+        "Fully automated Web services orchestration in a resource retrieval scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "IEEE International Conference on Web Services (ICWS'05)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/oceanse.2005.1513234",
+      "title": [
+        "Ships confining an oil spill over: a scenario for automatized cooperation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Europe Oceans 2005"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/1083217.1083229",
+      "title": [
+        "Sensitivity analysis for a scenario-based reliability prediction model"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2005 workshop on Architecting dependable systems  - WADS '05"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11526841_28",
+      "title": [
+        "Synthesis of Distributed Processes from Scenario-Based Specifications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "FM 2005: Formal Methods"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2208/journalip.22.53",
+      "title": [
+        "Development of Petri Net Simulation for Evacuation Scenario in Building on Its Background Image"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INFRASTRUCTURE PLANNING REVIEW"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11495628_9",
+      "title": [
+        "Scenario-Based Statistical Testing of Quality of Service Requirements"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Scenarios: Models, Transformations and Tools"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1108/97279810580000372",
+      "title": [
+        "Indian garment business response: perceptions on the emerging issues the post‐MFA scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Advances in Management Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Garments industry is important for developing countries as well as developed countries as it contributes significantly to the employment generation and economic growth. This industry has long been regulated by consecutive international agreements such as Multi Fiber Arrangement (MFA), which is scheduled to be phased out by 2005. Thje dismantling of MFA (quota) regime seems to bring more threats to developing countries. Emerging issues related to environmental and social compliance (e.g. minimum legal wage, employee’s work life, health), technology requirements etc. have been brought into surface by the importing countries fiz. developed countries. Although it is too early to predict, the adverse effect has been felt by India since the beginning of MFA phase out. The aim of this study is to assess the understanding and responses of the garment exporters in India towards the emerging issues. Factor analysis was used in this analysis. Construct validity and sample adequacy were performed using KMO value. Six factors have emerged from the analysis. On the basis of these six factors, the perceptions of the importers in India were also analyzed and subsequently compared the same with the exporters’ perception. Under Radar Diagram the results of the difference have been analyzed.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1103/physreva.71.014302",
+      "title": [
+        "Nonadiabatic geometric quantum computation using a single-loop scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review A"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/pbc.20390",
+      "title": [
+        "Twinning: A rewarding scenario for development of oncology services in transitional countries"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Pediatric Blood &amp; Cancer"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1108/00251740510572524",
+      "title": [
+        "Dealing with the uncertainties of environmental change by adding scenario planning to the strategy reformulation equation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Management Decision"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>This paper serves to discuss the benefit of applying scenario‐planning techniques to more traditional approaches to strategy development in helping firms deal with uncertainty and evolutionary change in their surrounding environment. Assessing this environment provides insight into the unique changes, the implications these changes have on a firm's strategies, and the creation of special techniques required to understand them. One of these special techniques is scenario planning. Any study of the relationship between strategy, environment and performance must include variables that involve business scope and resource commitments.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>A review of the research literature on the use and benefits of both the traditional approaches and the scenario approach to constructing the future strategy of a firm in a changing environment is undertaken.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The results suggest that a better understanding of the performance of firms within a changed environment can be achieved using the combination of a PESTEL analysis, internal resource analysis and the use of scenarios. This reformulation equation creates a model of a possible environment in which the firm must operate and an investigation of the strategic implications of various scenarios to the firm.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>This paper is unique in that it marries the traditional approaches to strategy development with the application of scenario planning. It is of benefit to managers and strategic planners by illustrating how a firm may better develop insight into how it should formulate and implement its strategy in order to retain or create a competitive advantage in the changed environment in which it operates.</jats:p></jats:sec>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/11596981_49",
+      "title": [
+        "Attack Scenario Construction Based on Rule and Fuzzy Clustering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Computational Intelligence and Security"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11424628_9",
+      "title": [
+        "Chapter 9 Patients and EHRs Tele Home Monitoring Reference Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Universal Access in Health Telematics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/pd.1212",
+      "title": [
+        "Prenatal diagnosis of spinal muscular atrophy: Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Prenatal Diagnosis"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-08"
+    },
+    {
+      "doi": "10.1109/icact.2005.245959",
+      "title": [
+        "Design of attack generation test-suite based scenario for security solutions testing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "The 7th International Conference on Advanced Communication Technology, 2005, ICACT 2005."
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4103/0028-3886.16927",
+      "title": [
+        "Hyperhomocysteinemia as a risk factor for ischemic stroke: An Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Neurology India"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11495628_10",
+      "title": [
+        "Lightweight Formal Methods for Scenario-Based Software Engineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Scenarios: Models, Transformations and Tools"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11590361_17",
+      "title": [
+        "Managing a Non-linear Scenario – A Narrative Evolution"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Virtual Storytelling. Using Virtual Reality Technologies for Storytelling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1145/1083274.1083284",
+      "title": [
+        "Environment behavior models for scenario generation and testing automation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the first international workshop on Advances in model-based testing  - A-MOST '05"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.jemermed.2004.10.005",
+      "title": [
+        "A child’s hand caught in a bathtub plughole—anesthetic implications of an unusual clinical scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of Emergency Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.5630/jans1981.25.2_37",
+      "title": [
+        "Performing Their Own Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Japan Academy of Nursing Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijmcp.2005.008513",
+      "title": [
+        "Creating future capabilities: scenario process in inter-industrial knowledge networks"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Management Concepts and Philosophy"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2208/journalip.22.89",
+      "title": [
+        "Development of the scenario simulation for the emergency and refuge planning in the intermediate and mountainous area"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "INFRASTRUCTURE PLANNING REVIEW"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.foreco.2004.07.070",
+      "title": [
+        "Evaluation of the growth function of an empirical forest scenario model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Forest Ecology and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/s10666-005-3799-1",
+      "title": [
+        "A scenario optimization model for dynamic reserve site selection"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Modeling &amp; Assessment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.3392/sociotechnica.3.1",
+      "title": [
+        "Analysis of Energy Crises in East Asia Using a Scenario Planning Method and It's Implications for Japan's Science and Technology Policy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "SOCIOTECHNICA"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3115/1149293.1149364",
+      "title": [
+        "Local and distributed interaction in a collaborative knowledge building scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the 2005 conference on Computer support for collaborative learning learning 2005: the next 10 years! - CSCL '05"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11552413_167",
+      "title": [
+        "Extracting High Quality Scenario for Consensus on Specifications of New Products"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Knowledge-Based Intelligent Information and Engineering Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11557432_31",
+      "title": [
+        "Scenario Construction Tool Based on Extended UML Metamodel"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Model Driven Engineering Languages and Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-31847-7_18",
+      "title": [
+        "Synthesis Revisited: Generating Statechart Models from Scenario-Based Requirements"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Formal Methods in Software and Systems Modeling"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1017/s1539299600015999",
+      "title": [
+        "A New Scenario for the Formation of Massive Stellar Clusters"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Highlights of Astronomy"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>A new scenario is proposed, in which the continuous creation of stars results into a highly concentrated massive (globular cluster-like) stellar system. We assume that the collapse of a massive cloud leads to the formation of first stars. Their winds and terminal supernova explosions create a standing, small radius, cold and dense shell, where the next stars form. The shell is in steady state location, which is due to a detailed balance established between the ram pressure from the collapsing cloud, the gravitational force exerted on the shell and the ram pressure of the stellar wind from the forming cluster. In this contribution we show that the standing shell remains stable against Rayleigh -Taylor instability, and discuss future prospects of this work.</jats:p>"
+    },
+    {
+      "doi": "10.1007/11510154_14",
+      "title": [
+        "ParIS – Visualizing Ideas and Information in a Resource-Based Learning Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Knowledge and Information Visualization"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1037/e459482006-001",
+      "title": [
+        "Disaster Preparedness: Anticipating the Worst Case Scenario Issue Paper Volume 05-05, March 2005"
+      ],
+      "type": "dataset",
+      "container-title": [
+        "PsycEXTRA Dataset"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/apsec.2005.30",
+      "title": [
+        "An analysis method with failure scenario matrix for specifying unexpected obstacles in embedded systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "12th Asia-Pacific Software Engineering Conference (APSEC'05)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11527923_30",
+      "title": [
+        "Scenario Based Performance Optimisation in Face Verification Using Smart Cards"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Audio- and Video-Based Biometric Person Authentication"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11506843_21",
+      "title": [
+        "Consistency Checking of Concurrent Models for Scenario-Based Specifications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "SDL 2005: Model Driven"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3176/phys.math.2005.2.04",
+      "title": [
+        "Two-component scenario, cuprate related gaps, and superconducting density"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Estonian Academy of Sciences. Physics. Mathematics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.ijar.2004.05.002",
+      "title": [
+        "Fuzzy control with limited control opportunities and response delay––a production-inventory control scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Approximate Reasoning"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/11590323_29",
+      "title": [
+        "Balancing Narrative Control and Autonomy for Virtual Characters in a Game Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Intelligent Technologies for Interactive Entertainment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11552413_75",
+      "title": [
+        "A Scenario Elicitation Method in Cooperation with Requirements Engineering and Chance Discovery"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Knowledge-Based Intelligent Information and Engineering Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11573548_106",
+      "title": [
+        "Scenario-Based Interactive Intention Understanding in Pen-Based User Interfaces"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Affective Computing and Intelligent Interaction"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1162/1088198054084572",
+      "title": [
+        "Economic and Societal Changes in China and their Effects onWater Use A Scenario Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Industrial Ecology"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Summary</jats:title><jats:p>China's development over the last few decades has been characterized by high rates of economic growth, large‐scale migration from rural areas to the fast‐growing cities accompanied by changes in lifestyles, and steady population growth. These developments have left deep marks on resource availability and quality. In this article we conduct a scenario analysis of how lifestyle changes and other major developments might affect water resources.</jats:p><jats:p>China has the longest tradition in river and water resource management in the world. Its civilization has sought to control the effects of floods and drought for thousands of years and has utilized water flows for irrigation and navigation. In the last century, competing uses such as domestic, municipal, and industrial water consumption have also become reasons for the regulation of and large‐scale abstraction of water.</jats:p><jats:p>To investigate the major changes in economy and society and their effects on the water situation in China, a set of scenarios is developed and analyzed within a structural economics framework. A hydrological model that represents water flows in the major watersheds is linked to a regional input‐output model that represents socioeconomic activities in the major economic‐administrative regions of China. The regional analysis shows that the North and Northwest regions are water‐scarce and that lifestyle changes and technical shifts are the most important factors driving future water consumption.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1201/9780203970829-18",
+      "title": [
+        "Arsenic in groundwater and contamination of the food chain: Bangladesh scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Natural Arsenic in Groundwater"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.2480/agrmet.1223",
+      "title": [
+        "Estimation of Net Primary Production in Japan under Nitrogen-Limited Scenario Using BGGC Model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Agricultural Meteorology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4103/0971-6866.16804",
+      "title": [
+        "Contribution of genomics, proteomics, and single-nucleotide polymorphism in toxicology research and Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Indian Journal of Human Genetics"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11423270_18",
+      "title": [
+        "Cooperative Scenario Mining from Blood Test Data of Hepatitis B and C"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Active Mining"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11569510_6",
+      "title": [
+        "A Simulation Model for the Dynamic Allocation of Network Resources in a Competitive Wireless Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Mobility Aware Technologies and Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/02508281.2005.11081486",
+      "title": [
+        "The Effectiveness of Convention and Exhibition Websites A Transatlantic Comparison and Future Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tourism Recreation Research"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/11495628_8",
+      "title": [
+        "Traceability and Evaluation in Scenario Analysis by Use Case Maps"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Scenarios: Models, Transformations and Tools"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.chinastron.2005.01.006",
+      "title": [
+        "A scenario of the X4.8 flare of 2002 July 23 based on RHESSI and TRACE observations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Chinese Astronomy and Astrophysics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1145/1083183.1083187",
+      "title": [
+        "Reconciling scenario-centered controller design with state-based system models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the fourth international workshop on Scenarios and state machines: models, algorithms and tools  - SCESM '05"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1897/03-547.1",
+      "title": [
+        "Effects of the pyrethroid esfenvalerate on life-cycle traits and population dynamics of <i>Chironomus riparius</i>—importance of exposure scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Environmental Toxicology and Chemistry"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Field populations of aquatic organisms, particularly those inhabiting flowing waters, likely are exposed to short pulses of pesticides following periods of spray drift, surface runoff, or drain flow. In the present study, we investigated the effect of pulse exposures of a pyrethroid insecticide, esfenvalerate, on survival, development, and reproduction of the midge, Chironomus riparius. The first experiment was designed to simulate the exposure of settling larvae to a waterborne pulse of esfenvalerate. A second experiment simulated exposure of larvae entering a sediment that had been exposed previously to a waterborne pulse of esfenvalerate. A third experiment simulated exposure of sediment-inhabiting larval populations to a waterborne pulse of esfenvalerate and examined whether population density influenced the response of C. riparius. Our results indicate that even very brief (i.e., 1-h) exposures to environmentally realistic concentrations of esfenvalerate during early larval life can have measurable effects on larval survival and developmental rates. For those individuals that survived a pulse exposure early in life, however, there appeared to be no lasting effects of esfenvalerate on their subsequent egg laying or egg viability. Thus, brief exposure to environmentally realistic concentrations of pesticides can have measurable effects on freshwater invertebrate populations, but whether such effects occur depends on the details of the exposure regime. In addition, population density may influence the responses of life-cycle traits and, thereby, population-level impacts of pesticides.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/978-3-540-31980-1_29",
+      "title": [
+        "Temporal Logic for Scenario-Based Specifications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Tools and Algorithms for the Construction and Analysis of Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.22488/okstate.18.100332",
+      "title": [
+        "Scenario-Based Private/Instrument Syllabus versus Traditional Maneuver-Based Syllabi: A Preliminary Descriptive Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Collegiate Aviation Review International"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1155/ddns.2005.235",
+      "title": [
+        "A new chaotic attractor from 2D discrete mappingvia border‐collision period‐doubling scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Discrete Dynamics in Nature and Society"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The following map is studied:\n(<jats:italic>x</jats:italic>, <jats:italic>y</jats:italic>) → (1 + <jats:italic>a</jats:italic>(|<jats:italic>x</jats:italic>| − <jats:italic>y</jats:italic><jats:sup>2</jats:sup>) + <jats:italic>y</jats:italic>, <jats:italic>b</jats:italic><jats:italic>x</jats:italic>). It is proved numerically\nthat this model can   display two different chaotic\n attractors, one is new\nand the other is a Lozi‐type attractor. The new chaotic attractor\nis allowed via a border‐collision period‐doubling scenario, which\nis different from the classical period‐doubling bifurcation.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1071/ar04195",
+      "title": [
+        "The Avon River Basin in 2050: scenario planning in the Western Australian Wheatbelt"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Australian Journal of Agricultural Research"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n\nScenario planning was used to identify issues and drivers of change that are relevant to community efforts to improve regional prospects in the Western Australian Wheatbelt. The region, some 20 million hectares in area, is under pressure to respond to a variety of environmental (salinity, erosion, acidification, biodiversity decline), economic (declining agricultural terms of trade), and social forces (rural decline, isolation). Regional strategic plans have been increasingly seen as the means of achieving sustainability in the face of these challenges, but until recently typically had single-activity outlook and timeframes of up to a decade into the future. Systematic futures-based research has been used in various regions to avoid reliance on business-as-usual as the default strategy, and to identify opportunities and challenges not presently apparent. The Avon River Basin, the central region of the Wheatbelt, was selected as the geographic focus of the project, and the time horizon was set at 2050. The project was developed by a group of 50 stakeholders from the basin, with expertise and strategic interests across a wide range of economic, social, and environmental themes. Through a series of workshops the stakeholders identified critical issues and their attendant drivers, then documented relevant past trends. Four regional scenarios, Saline Growth, Grain and Drain, Landcare Bounty, and Harmony with Prosperity, were developed based on positive and negative combinations of 2 clusters of uncertain and important drivers: environmental change and access to new markets. Common opportunities, threats, and critical success factors for the Avon River Basin region out to 2050 were also identified. We also found that the stakeholders have a tendency to strive for positive outcomes despite negative initial conditions. This resulted in 4 scenarios that were superficially similar due to the regional scale of analysis and the continuation of agricultural industries as significant shapers of economy, society, and environment. However, each scenario represents profoundly different outcomes for the residents and communities of the Avon River Basin in 2050. The triple-bottom line outcomes for the Avon River Basin in 2050 were estimated to be in the range 4.9–9.7 Mt of wheat (currently 4.0), 46 000–66 000 people (currently 43 000), and 10–30% of farmland salinised (currently 6). The application of these results to other regions in Australia is discussed.\n</jats:p>"
+    },
+    {
+      "doi": "10.2480/agrmet.609",
+      "title": [
+        "Crop Model-Based Evaluation of Rice Yield under Climate Scenario in Korea"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Agricultural Meteorology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11545156_27",
+      "title": [
+        "Personalized Access to Multi-version Norm Texts in an eGovernment Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Electronic Government"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11520153_19",
+      "title": [
+        "An Audio-Visual Imposture Scenario by Talking Face Animation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Nonlinear Speech Modeling and Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3233/ajw-2005-2_2_04",
+      "title": [
+        "Assessing Drought Scenario in the Vidarbha Region, India"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Asian Journal of Water, Environment and Pollution"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> An attempt has been made in this study to assess drought scenario in the Vidarbha region utilizing long period (1901–1996) monsoon rainfall (June-September) data of the region. The analysis reveals that in Vidarbha drought may occur once in every six years. The probability of its occurrence for the two consecutive years is hardly 2% while that for the three consecutive years does not exist at all. During the drought years the region receives average seasonal rainfall of 64.8 cm, 30% less than the normal rainfall, while rainfall in the years prior to and succeeding the drought years is found to be 5–7% more than the normal rainfall. August is found to be the most dependable month during drought years associated with El nino as well as Enso, while September happens to be the worst month with −50% rainfall departure during the drought years associated with El nino. In good monsoon years, in spite of El nino, June happens to be the worst month with a rainfall departure of −27%. Despite reasonably high inter-annual variability, monsoon rainfall over the region has periodicities ranging from 6 to 24 years. Of great interest are the oscillations, which approximately are analogous to double sunspot cycle. Planners/farmers are interested to know the prospects of seasonal rainfall as the monsoon advances, particularly so during the initial period of the monsoon season. Study on this aspect reveals that when June rainfall is below normal there are 37% chances that the season too will receive below normal rainfall; this probability increases to 50% if cumulative rainfall till July end is below normal. Cumulative rainfall till August end generally foretells the possible seasonal rainfall pattern over the region. </jats:p>",
+      "publication_date": "2005-11"
+    },
+    {
+      "doi": "10.1007/11596356_98",
+      "title": [
+        "The Performance Estimation of the Situation Awareness RFID System from Ubiquitous Environment Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Embedded and Ubiquitous Computing – EUC 2005"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1639/0044-7447(2005)034[0533:ppithm]2.0.co;2",
+      "title": [
+        "Parameter Precision in the HBV-NP Model and Impacts on Nitrogen Scenario Simulations in the Rönneå River, Southern Sweden"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "AMBIO: A Journal of the Human Environment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3182/20050703-6-cz-1902.01948",
+      "title": [
+        "A COOPERATION SCENARIO IN THE MARINE ENVIRONMENT: FIRST OUTLOOK"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/icas-icns.2005.48",
+      "title": [
+        "Emulator Implementation of Service Scenario Description Framework for Home Networked Appliances"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Joint International Conference on Autonomic and Autonomous Systems and International Conference on Networking and Services - (icas-isns'05)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.agee.2004.05.007",
+      "title": [
+        "Scenario-based environmental assessment of farming systems: the case of pig production in France"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Agriculture, Ecosystems &amp; Environment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1016/b978-008044570-0/50118-5",
+      "title": [
+        "Cost and Feasibility Study on the Praxair Advanced Boiler for the CO2 Capture Project's Refinery Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Carbon Dioxide Capture for Storage in Deep Geologic Formations"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/10913406_16",
+      "title": [
+        "Peptide Emergence, Evolution and Selection on the Primitive Earth"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Astrobiology and Biogeophysics",
+        "Lectures in Astrobiology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-31966-5_16",
+      "title": [
+        "Measurement Based Analysis of the Handover in a WLAN MIPv6 Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Passive and Active Network Measurement"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11596042_46",
+      "title": [
+        "Performance Analysis of IP Micro-mobility Protocols in Single and Simultaneous Movements Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Embedded and Ubiquitous Computing – EUC 2005 Workshops"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1177/0361198105192100106",
+      "title": [
+        "Travel Demand Modeling for Regional Visioning and Scenario Analysis"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Research Record: Journal of the Transportation Research Board"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Regional visioning and scenario analysis projects are becoming an increasingly important focus in the modeling of regional travel demand. This report summarizes model enhancements that have proved useful in these types of projects from experience in the regions of Baltimore, Maryland; Chicago, Illinois; and Austin, Texas. The enhancements focus on key goals in regional visioning and scenario analysis projects, including increasing sensitivity to microscale effects on land use, that affect a response by choice riders to high-quality transit service and that account for induced travel from increased roadway capacity. </jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1016/s1569-4860(04)07129-3",
+      "title": [
+        "The impact on man and the environment from the military use of depleted uranium: worst-case scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Radioactivity in the Environment",
+        "The Natural Radiation Environment VII: VIIth Int. Symp. On the NRE"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.4103/0019-509x.17058",
+      "title": [
+        "Validation of quality of life questionnaire for patients with cancer - Indian scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Indian Journal of Cancer"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/1468385042000328402",
+      "title": [
+        "The controversy over the terms ‘M<i>acedonians’</i>and<i>‘Macedonian’</i>: a probable exit scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Southeast European and Black Sea Studies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/11550617_12",
+      "title": [
+        "A Knowledge-Based Scenario Framework to Support Intelligent Planning Characters"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Intelligent Virtual Agents"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.52842/conf.caadria.2005.233",
+      "title": [
+        "Integrating scenario-based design and case-based design for user participation in Apartment plan design process"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "CAADRIA proceedings",
+        "Proceedings of the 10th Conference on Computer Aided Architectural Design Research in Asia (CAADRIA) [Volume 2]"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-25974-9_23",
+      "title": [
+        "The Biodegradation Network, a New Scenario for Computational Systems Biology Research"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Computational Methods in Systems Biology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.ecoleng.2004.12.007",
+      "title": [
+        "Scenario for undirected progression of extremely acidic streams in the Lusatian post-mining landscape, Germany"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecological Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1002/rra.830",
+      "title": [
+        "Jackie King, Cate Brown and Hossein Sabet, ‘A scenario-based holistic approach to environmental flow assessments for rivers’.River Research and Applications19(5-6) 1999, 619-639"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "River Research and Applications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-06"
+    },
+    {
+      "doi": "10.1007/11596356_41",
+      "title": [
+        "Checking Component-Based Embedded Software Designs for Scenario-Based Timing Specifications"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Embedded and Ubiquitous Computing – EUC 2005"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11556992_14",
+      "title": [
+        "IPSec Support in NAT-PT Scenario for IPv6 Transition"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Information Security"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/isaf.257",
+      "title": [
+        "Constructing a knowledge-based system to aid scenario-based strategic planning: an application to the European airline industry"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Intelligent Systems in Accounting, Finance and Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-06"
+    },
+    {
+      "doi": "10.1201/9780203970829.sec2",
+      "title": [
+        "Arsenic in groundwater and contamination of the food chain"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Natural Arsenic in Groundwater"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1029/2004jb003199",
+      "title": [
+        "A seismic hazard scenario in the Sikkim Himalaya from seismotectonics, spectral amplification, source parameterization, and spectral attenuation laws using strong motion seismometry"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Geophysical Research: Solid Earth"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>In this paper, we present a seismic hazard map of the Indian Himalayan State of Sikkim, lying between Nepal and Bhutan Himalaya, in terms of horizontal peak ground accelerations with 10% exceedance probability over the next 50 years. These figures, the first for the region, were calculated through a stepwise process based on (1) an estimation of the maximum credible earthquake (MCE) from the seismicity of the region and Global Seismic Hazard Assessment Program considerations and (2) four seismotectonic parameters abstracted from accelerograms recorded at nine stations of the Sikkim Strong Motion Array, specifically installed for this study. The latter include (1) the frequency‐dependent power law for the shear wave quality factor, <jats:italic>Q</jats:italic><jats:sub><jats:italic>S</jats:italic></jats:sub>, (2) the site response function at each station using receiver function analysis and generalized inversion, (3) source parameterization of various events recorded by the array and application of the resulting relationships between <jats:italic>M</jats:italic><jats:sub>0</jats:sub> and <jats:italic>M</jats:italic><jats:sub><jats:italic>W</jats:italic></jats:sub>, and corner frequency, <jats:italic>f</jats:italic><jats:sub>c</jats:sub> and <jats:italic>M</jats:italic><jats:sub><jats:italic>W</jats:italic></jats:sub> to simulate spectral accelerations due to higher‐magnitude events corresponding to the estimated MCE, and (4) abstraction of regional as well as site specific local spectral attenuation laws at different geometrically central frequencies in low‐, moderate‐, and high‐frequency bands.</jats:p>",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1007/11494744_17",
+      "title": [
+        "Can I Execute My Scenario in Your Net?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Applications and Theory of Petri Nets 2005"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijep.2005.007653",
+      "title": [
+        "Dispersion modelling of radioactive pollutants: application of the 'Demokritos' Transport code system for Complex Terrain (DETRACT) to the Hanford Purex scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Environment and Pollution"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11590323_36",
+      "title": [
+        "Bringing Hollywood to the Driving School: Dynamic Scenario Generation in Simulations and Games"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Intelligent Technologies for Interactive Entertainment"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/11580072_11",
+      "title": [
+        "Using SWRL and OWL to Capture Domain Knowledge for a Situation Awareness Application Applied to a Supply Logistics Scenario"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Rules and Rule Markup Languages for the Semantic Web"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/0-387-26274-1_9",
+      "title": [
+        "Regulation of Vertebrate Sensory Organ Development: A Scenario for Growth Hormone and Insulin-Like Growth Factors Action"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Advances in Experimental Medicine and Biology",
+        "The Growth Hormone/Insulin-Like Growth Factor Axis During Development"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/j.ipm.2004.04.004",
+      "title": [
+        "Applying scenario-based design and claims analysis to the design of a digital library of geography examination resources"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information Processing &amp; Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1016/j.jenvrad.2004.05.021",
+      "title": [
+        "Identifying optimal agricultural countermeasure strategies for a hypothetical contamination scenario using the strategy model"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Environmental Radioactivity"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1103/physrevd.71.016007",
+      "title": [
+        "<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>B</mml:mi><mml:mo>→</mml:mo><mml:mi>J</mml:mi><mml:mo>/</mml:mo><mml:mi>ψ</mml:mi><mml:msup><mml:mi>K</mml:mi><mml:mo>*</mml:mo></mml:msup></mml:math>in a supersymmetric right-handed flavor mixing scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-30585-9_54",
+      "title": [
+        "A Scalable, Ordered Scenario-Based Network Security Simulator"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Systems Modeling and Simulation: Theory and Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1071/bt04106",
+      "title": [
+        "Vegetation state change and consequent carbon dynamics in savanna woodlands of Australia in response to grazing, drought and fire: a scenario approach using 113 years of synthetic annual fire and grassland growth"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Australian Journal of Botany"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n\n\t\t\t\tA spatially explicit state and transition model for assessing the interactive effects of grazing, fire and climate on carbon dynamics in Australian savannas is described. The model runs on a yearly time step. It is based on a sequential treatment of events within each year, involving, in order, growth of biomass, consumption of biomass by livestock and burning of the remaining fuel (growth minus consumption). The major drivers are 113 years of annual rainfall data, annual modelled rangeland growth, synthetic fire incidence and timing data, and data describing stocking rates in dry sheep equivalents. Baseline carbon stocks are derived from pre-settlement estimates from the VAST steady-state carbon model. State and transition models for nine vegetation zones define vegetation condition and consequent carbon stock. Change is mediated by key indices of driver variables such as grazing, growth and fire, a series of parameters and default thresholds, and a set of rules. The model is run for three 113-year spin-up cycles to establish a set of initial condition grids that represent a plausible synthetic current state. Sensitivity analyses on selected parameters and index thresholds showed that fire and growth thresholds were most important for woodland zones, and utilisation rates and degradation and recovery periods were most important for grassland zones. The model was used to examine a series of scenarios involving changes to grazing pressure and suppression of fire for different climate sequences. Changes to a few parameters enabled simulation of low and high levels of encroachment of woody weeds, and hence carbon accumulation, in the Astrebla (Mitchell) grasslands; and effective capture of the climate-induced variation in grassland condition, and hence potential for soil carbon loss, within Heteropogon spp.-dominated grasslands in northern Queensland. The scenario results suggest that this simple state and transition model with an annual time step provides a potentially useful and flexible scenario model framework for exploration of vegetation and consequent carbon dynamics of the Australian tropical savanna region.\n\t\t\t</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-540-25974-9_20",
+      "title": [
+        "Combining State-Based and Scenario-Based Approaches in Modeling Biological Systems"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Computational Methods in Systems Biology"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/s1570-7946(05)80001-x",
+      "title": [
+        "A framework for the mixed integer dynamic optimisation of waste water treatment plants using scenario-dependent optimal control"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Computer Aided Chemical Engineering",
+        "European Symposium on Computer-Aided Process Engineering-15, 38th European Symposium of the Working Party on Computer Aided Process Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1117/12.579275",
+      "title": [
+        "Architecture vision and technologies for post-NPOESS weather prediction system: two-way interactive observing and modeling: Part II. Use case scenario"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "SPIE Proceedings",
+        "Enabling Sensor and Platform Technologies for Spaceborne Remote Sensing"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1002/pssc.200460132",
+      "title": [
+        "Low temperature structural transformations of dilute KTa\n            <sub>1–x</sub>\n            Nb\n            <sub>x</sub>\n            O\n            <sub>3</sub>\n            : x = 0.018, quantum superparaelectric or reentrant glass scenario?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "physica status solidi (c)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.1299/jsmedsd.2005.15.102",
+      "title": [
+        "1215 Development of Life Cycle Scenario Description Tool for Determining Life Cycle Strategy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Proceedings of Design &amp; Systems Conference"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5935/1809-2667.20050002",
+      "title": [
+        "O cenário muda, mas a cena se repete...: considerações sobre o processo político-eleitoral de 2004 e as eleições de 2006, em Campos dos Goytacazes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Revista Vértices"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>This essay results from the research being developed at UCAM Campos with financial support from FAPERJ. It has two objectives. First, to analyze the mechanisms and political formulas that led to the annulment of the 2004 election’s result adopted by the two major political groups originated in the same political machine organized and strongly controlled by Anthony Garotinho for two decades. The other goal is to examine the conditions that allow us to predict the continuity of the scenario, the forms of domination and policy making which have characterized local politics since the creation of that political class.</jats:p>"
+    },
+    {
+      "doi": "10.1007/978-3-540-30583-5_41",
+      "title": [
+        "Automated Cyber-attack Scenario Generation Using the Symbolic Simulation"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Artificial Intelligence and Simulation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1586/17434440.2.1.33",
+      "title": [
+        "The fully automatic external cardioverter defibrillator: reality of a new meaningful scenario for in-hospital cardiac arrests"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Expert Review of Medical Devices"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-01"
+    },
+    {
+      "doi": "10.3169/itej.59.559",
+      "title": [
+        "Development of Cyber Theater Scenario Language and Creative Lesson"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Journal of the Institute of Image Information and Television Engineers"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1299/jsmeenv.2005.15.174",
+      "title": [
+        "218 Scenario making for effective utilization system of woody biomass in local community At Shinshiro and Horai areas in Aichi Prefecture"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Proceedings of the Symposium on Environmental Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

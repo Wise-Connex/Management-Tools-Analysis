@@ -1,0 +1,84 @@
+{
+  "term": "Reengineering",
+  "total_results": 6,
+  "processed_count": 6,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ada468588",
+      "title": [
+        "Performance Analysis and Training for Digital Command Staff: Training for the Battle Command Reengineering III"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1515/piko.2000.104",
+      "title": [
+        "Business Reengineering in der Telekommunikationsbranche"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "PIK - Praxis der Informationsverarbeitung und Kommunikation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1051/larsg:2000010",
+      "title": [
+        "Reengineering : la confiance introuvable ?"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "La Revue des Sciences de Gestion, Direction et Gestion"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1016/s0925-5273(99)00080-8",
+      "title": [
+        "The integration of activity based costing and enterprise modeling for reengineering purposes"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Production Economics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1080/07421222.2000.11045634",
+      "title": [
+        "Business Process Reengineering in the Public Sector: The Case of the Housing Development Board in Singapore"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Management Information Systems"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    },
+    {
+      "doi": "10.1207/s15327744joce1002_1",
+      "title": [
+        "Reengineering IS Research and Its Intellectual Infrastructure for the Electronic Economy"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Organizational Computing and Electronic Commerce"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2000-06"
+    }
+  ]
+}

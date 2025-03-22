@@ -1,0 +1,61 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1016/0016-3287(84)90129-0",
+      "title": [
+        "Techniques of scenario planning"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Futures"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-12"
+    },
+    {
+      "doi": "10.1016/0261-5177(84)90021-9",
+      "title": [
+        "Forecasting leisure and tourism - scenario projections for 2000–2010"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Tourism Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-12"
+    },
+    {
+      "doi": "10.9783/9781512808209-027",
+      "title": [
+        "16. IN SEARCH OF AN OPTIMISTIC SCENARIO FOR THE 1980s"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Removing Obstacles to Economic Growth"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-12"
+    },
+    {
+      "doi": "10.1007/bf02744226",
+      "title": [
+        "Möglichkeiten und Grenzen des Einsatzes der Szenario-Technik zur Abschätzung der Auswirkungen des Waldsterbens",
+        "Possibilities and limitations of applying scenario-writing for estimating the effects of forest dieback"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Forstwissenschaftliches Centralblatt"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1984-12"
+    }
+  ]
+}

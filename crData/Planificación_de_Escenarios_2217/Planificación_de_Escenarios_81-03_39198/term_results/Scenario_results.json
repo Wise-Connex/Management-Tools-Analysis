@@ -1,0 +1,59 @@
+{
+  "term": "Scenario",
+  "total_results": 4,
+  "processed_count": 4,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1111/j.1460-2466.1981.tb01211.x",
+      "title": [
+        "Television and Leisure Time: A New Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Communication"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1981-03"
+    },
+    {
+      "doi": "10.1016/0040-1625(81)90013-5",
+      "title": [
+        "A compatibility approach to scenario evaluation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technological Forecasting and Social Change"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1981-03"
+    },
+    {
+      "doi": "10.1177/107808748101600307",
+      "title": [
+        "The School Desegregation- Resegregation Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Urban Affairs Quarterly"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This article suggests that resegregation is likely to be a common \"second-generation\" school desegregation problem. Once a desegregation plan is implemented, changes in housing patterns can bring about the need for adjustments in the pupil assignments plan in order to reduce emerging racial imbalance in schools. An investigation of Charlotte- Mecklenburg's past desegregation experience revealed a frequently reoccurring desegre gation-resegregation cycle. On three occasions since 1970 Charlotte school officials have made changes in the pupil-assignment plan in order to keep schools racially balanced. The resegregation of schools was due to intradistrict residential shifts and inmigration. The future desegregation status of school systems may hinge upon the position of the courts on the resegregation issue. It is clear that desegregation is a continuing process and not a one-time event. </jats:p>",
+      "publication_date": "1981-03"
+    },
+    {
+      "doi": "10.1103/physrevlett.46.691",
+      "title": [
+        "Horizontal Flavor Chirality, the Canonical Fermion Mass Matrix, and an Alternative<mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\" display=\"inline\"><mml:mi>CP</mml:mi></mml:math>-Nonconservation Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review Letters"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

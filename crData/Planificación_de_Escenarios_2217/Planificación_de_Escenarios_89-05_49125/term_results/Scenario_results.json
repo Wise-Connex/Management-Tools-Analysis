@@ -1,0 +1,47 @@
+{
+  "term": "Scenario",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.58680/rte198915522",
+      "title": [
+        "Models of Competence: Responses to a Scenario Writing Assignment"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Research in the Teaching of English"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-05"
+    },
+    {
+      "doi": "10.1016/0002-9149(89)90111-2",
+      "title": [
+        "Atherosclerosis and aging: A scenario in flux"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The American Journal of Cardiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-05"
+    },
+    {
+      "doi": "10.1016/0168-9002(89)91131-5",
+      "title": [
+        "Beam intensity losses in the storage rings of the heavy-ion inertial fusion scenario HIBALL II due to ion-ion collisions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1989-05"
+    }
+  ]
+}

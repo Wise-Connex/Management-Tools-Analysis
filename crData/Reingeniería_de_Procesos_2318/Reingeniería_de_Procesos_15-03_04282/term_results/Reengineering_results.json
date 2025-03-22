@@ -1,0 +1,1266 @@
+{
+  "term": "Reengineering",
+  "total_results": 97,
+  "processed_count": 97,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/saner34924.2015",
+      "title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081805",
+      "title": [
+        "Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081803",
+      "title": [
+        "[Front cover]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081804",
+      "title": [
+        "[Title pages]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081807",
+      "title": [
+        "SANER 2015 committees"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081809",
+      "title": [
+        "Checkpoint alpha (keynote)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081886",
+      "title": [
+        "SKilLed communication for toolchains"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081808",
+      "title": [
+        "On whose shoulders? (Keynote)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081885",
+      "title": [
+        "Software architecture reconstruction: Why? What? How?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081883",
+      "title": [
+        "TXL source transformation in practice"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081893",
+      "title": [
+        "Investigating modern release engineering practices"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081870",
+      "title": [
+        "Evolution of dynamic feature usage in PHP"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081880",
+      "title": [
+        "Efficiently identifying object production sites"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081888",
+      "title": [
+        "Improving the integration process of large software systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081891",
+      "title": [
+        "Towards a framework for automatic correction of anti-patterns"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081825",
+      "title": [
+        "Code review: Veni, ViDI, vici"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081867",
+      "title": [
+        "On implementational variations in static analysis tools"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/educon.2015.7096044",
+      "title": [
+        "Reengineering of computer science curriculum according to technology changes and market needs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE Global Engineering Education Conference (EDUCON)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081854",
+      "title": [
+        "CEL: Touching software modeling in essence"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081852",
+      "title": [
+        "Protecting web applications via Unicode extension"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081890",
+      "title": [
+        "Towards a framework for analysis, transformation, and manipulation of Makefiles"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081812",
+      "title": [
+        "Mining Multi-level API Usage Patterns"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081859",
+      "title": [
+        "ClonePacker: A tool for clone set visualization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081864",
+      "title": [
+        "Assessing the bus factor of Git repositories"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081818",
+      "title": [
+        "Evolution analysis for Accessibility Excessiveness in Java"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081839",
+      "title": [
+        "MG++: Memory graphs for analyzing dynamic data structures"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081838",
+      "title": [
+        "Precision vs. scalability: Context sensitive analysis with prefix approximation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081860",
+      "title": [
+        "GiLA: GitHub label analyzer"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1001/jama.2015.0569",
+      "title": [
+        "Reengineering Advance Care Planning to Create Scalable, Patient- and Family-Centered Interventions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "JAMA"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081833",
+      "title": [
+        "A framework for cost-effective dependence-based dynamic impact analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081815",
+      "title": [
+        "Measuring the quality of design pattern detection results"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081892",
+      "title": [
+        "Towards an ontology-based context-aware meta-model for the software domain"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081819",
+      "title": [
+        "A software quality model for RPG"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081862",
+      "title": [
+        "TRACERJD: Generic trace-based dynamic dependence analysis with fine-grained logging"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081873",
+      "title": [
+        "TextRank based search term identification for software change tasks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081844",
+      "title": [
+        "Untangling fine-grained code changes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081848",
+      "title": [
+        "CloCom: Mining existing source code for automatic comment generation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081887",
+      "title": [
+        "The impact of column-orientation on the quality of class inheritance mapping specifications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081868",
+      "title": [
+        "Tracking known security vulnerabilities in proprietary software systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081872",
+      "title": [
+        "Understanding software performance regressions using differential flame graphs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081857",
+      "title": [
+        "RbG: A documentation generator for scientific and engineering software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081816",
+      "title": [
+        "Are PHP applications ready for Hack?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081871",
+      "title": [
+        "Towards incremental model slicing for delta-oriented software product lines"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081822",
+      "title": [
+        "Automated extraction of failure reproduction steps from user interaction traces"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081876",
+      "title": [
+        "Explore the evolution of development topics via on-line LDA"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081823",
+      "title": [
+        "Misery loves company: CrowdStacking traces to aid problem detection"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081855",
+      "title": [
+        "NIRMAL: Automatic identification of software relevant tweets leveraging language model"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081889",
+      "title": [
+        "Handling the differential evolution of software artefacts: A framework for consistency management"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081841",
+      "title": [
+        "Cross-project build co-change prediction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081881",
+      "title": [
+        "Where was this SQL query executed? a static concept location approach"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081836",
+      "title": [
+        "Library functions identification in binary code by using graph isomorphism testings"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081829",
+      "title": [
+        "Optimized feature selection towards functional and non-functional requirements in Software Product Lines"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081835",
+      "title": [
+        "An empirical study of work fragmentation in software evolution tasks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081814",
+      "title": [
+        "Improving pattern tracking with a language-aware tree differencing algorithm"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081865",
+      "title": [
+        "Old habits die hard: Why refactoring for understandability does not give immediate benefits"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081813",
+      "title": [
+        "An observational study on API usage constraints and their documentation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081837",
+      "title": [
+        "A non-convex abstract domain for the value analysis of binaries"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081817",
+      "title": [
+        "Does JavaScript software embrace classes?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.5539/gjhs.v7n5p272",
+      "title": [
+        "Reengineering NHS Hospitals in Greece: Redistribution Leads to Rational Mergers"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Global Journal of Health Science"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/saner.2015.7081874",
+      "title": [
+        "Query expansion via WordNet for effective code search"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081830",
+      "title": [
+        "Threshold-free code clone detection for a large-scale heterogeneous Java repository"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081834",
+      "title": [
+        "Circular dependencies and change-proneness: An empirical study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081856",
+      "title": [
+        "A static code analysis tool for control system software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081828",
+      "title": [
+        "Scaling up evaluation of code search tools through developer usage metrics"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081842",
+      "title": [
+        "The influence of App churn on App success and StackOverflow discussions"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081866",
+      "title": [
+        "Bash2py: A bash to Python translator"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081878",
+      "title": [
+        "Detection of violation causes in reflexion models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081826",
+      "title": [
+        "Would static analysis tools help developers with code reviews?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081810",
+      "title": [
+        "Modeling the evolution of development topics using Dynamic Topic Models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081843",
+      "title": [
+        "Beyond support and confidence: Exploring interestingness measures for rule-based specification mining"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081858",
+      "title": [
+        "Historef: A tool for edit history refactoring"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081879",
+      "title": [
+        "A comparative study on the effectiveness of part-of-speech tagging techniques on bug reports"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081863",
+      "title": [
+        "Umple: A framework for Model Driven Development of Object-Oriented Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081884",
+      "title": [
+        "Software risk management in practice: Shed light on your software product"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081882",
+      "title": [
+        "Taint analysis of manual service compositions using Cross-Application Call Graphs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081811",
+      "title": [
+        "Understanding developers' natural language queries with interactive clarification"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081845",
+      "title": [
+        "A comprehensive and scalable method for analyzing fine-grained source code change patterns"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081847",
+      "title": [
+        "Identifying the exact fixing actions of static rule violation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081846",
+      "title": [
+        "Summarizing Evolutionary Trajectory by Grouping and Aggregating relevant code changes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081832",
+      "title": [
+        "Impact analysis based on a global hierarchical Object Graph"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081840",
+      "title": [
+        "SQA-Profiles: Rule-based activity profiles for Continuous Integration environments"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081853",
+      "title": [
+        "A search-based approach to multi-view clustering of software systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081850",
+      "title": [
+        "Reverse engineering time-series interaction data from screen-captured videos"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081831",
+      "title": [
+        "Detecting duplicate bug reports with software engineering domain knowledge"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081827",
+      "title": [
+        "Do code review practices impact design quality? A case study of the Qt, VTK, and ITK projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081820",
+      "title": [
+        "JCHARMING: A bug reproduction approach using crash traces and directed model checking"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081851",
+      "title": [
+        "Niche vs. breadth: Calculating expertise over time through a fine-grained analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081877",
+      "title": [
+        "Code coverage and test suite effectiveness: Empirical study with real bugs in large systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081869",
+      "title": [
+        "Trusting a library: A study of the latency to adopt the latest Maven release"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081861",
+      "title": [
+        "SPCP-Miner: A tool for mining code clones that are important for refactoring or tracking"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081821",
+      "title": [
+        "Towards a common metamodel for traces of high performance computing systems to enable software analysis tasks"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081849",
+      "title": [
+        "amAssist: In-IDE ambient search of online programming resources"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081875",
+      "title": [
+        "Exploring the use of labels to categorize issues in Open-Source Software projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.13005/bbra/1609",
+      "title": [
+        "The Challenges of Implementing Business Process Reengineering in Social Security Organization: The Impact of Structural Features and Human Resource Management"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biosciences Biotechnology Research Asia"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081824",
+      "title": [
+        "Who should review my code? A file location-based code-reviewer recommendation approach for Modern Code Review"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1109/saner.2015.7081806",
+      "title": [
+        "Message from the chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2015 IEEE 22nd International Conference on Software Analysis, Evolution, and Reengineering (SANER)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    },
+    {
+      "doi": "10.1016/j.jacr.2014.11.022",
+      "title": [
+        "Reengineering the Radiology Enterprise: A Summary of the 2014 Intersociety Committee Summer Conference"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the American College of Radiology"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2015-03"
+    }
+  ]
+}

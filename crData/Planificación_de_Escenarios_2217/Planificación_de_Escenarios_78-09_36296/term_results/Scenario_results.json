@@ -1,0 +1,31 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/6483485",
+      "title": [
+        "Transportation energy scenario analysis technical memorandum No. 2: historical rates of change in the transportation stock"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/00050326.1978.10441502",
+      "title": [
+        "E.D.M. calibration — a scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Australian Surveyor"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1978-09"
+    }
+  ]
+}

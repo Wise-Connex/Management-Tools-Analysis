@@ -1,0 +1,205 @@
+{
+  "term": "Reengineering",
+  "total_results": 15,
+  "processed_count": 15,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.4414/saez.2001.08614",
+      "title": [
+        "Reengineering (RE) TARMED"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Schweizerische Ärztezeitung"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1201/9781420000191-35",
+      "title": [
+        "Organizational Pitfalls of Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Making Supply Chain Management Work"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.4414/bms.2001.08614",
+      "title": [
+        "Reengineering (RE) TARMED"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Bulletin des Médecins Suisses"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1201/9781420000191-39",
+      "title": [
+        "Reengineering the Supply Chain: The Next Hurdle"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Making Supply Chain Management Work"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1108/bpmj.2001.15707eaa.001",
+      "title": [
+        "Business process reengineering is very much well and alive!"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1016/s0378-7206(01)00087-8",
+      "title": [
+        "A survey of business process reengineering practices in Singapore"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Information &amp; Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1108/14637150110406812",
+      "title": [
+        "Business process reengineering: a survey of international experience"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Business Process Management Journal"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Despite the widespread adoption of business process re‐engineering (BPR), it has in many cases repeatedly failed to deliver its promised results. The lack of integrated implementation approach to exploiting BPR is seen as one of the important reasons amongst others, behind BPR failures. Yet, a relative void in the literature remains the scarcity of suitable models and frameworks that address the implementation issues surrounding BPR. This motivates the presented study to attempt to provide a “frame of reference” with which current practices can be re‐positioned. A survey was therefore designed to collect data from a sample of organizations in the USA and Europe. The survey assesses the level of importance placed on the essential elements of integrated BPR implementation. In doing so, the study was also able to identify the level of maturity of BPR concepts within organisations. Empirical findings are then discussed in the context of other studies.</jats:p>",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1108/eum0000000006517",
+      "title": [
+        "Changing the New Product Development Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Measuring Business Excellence"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1142/9789812389718_0009",
+      "title": [
+        "REENGINEERING AND PROCESSES"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Handbook of Software Engineering and Knowledge Engineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1201/9781420000191.ch27",
+      "title": [
+        "Organizational Pitfalls of Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Resource Management",
+        "Making Supply Chain Management Work"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1016/s1386-5056(01)00201-5",
+      "title": [
+        "Medical knowledge reengineering—converting major portions of the UMLS into a terminological knowledge base"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Medical Informatics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1201/9781420000191.ch30",
+      "title": [
+        "Reengineering the Supply Chain"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Resource Management",
+        "Making Supply Chain Management Work"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1108/02635570110410672",
+      "title": [
+        "Planning enterprise resources by use of a reengineering approach to build a global logistics management system"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Industrial Management &amp; Data Systems"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Theoretically and ideally, enterprise resource planning (ERP) seeks to streamline and integrate operation processes and information flow within a company. Practically, ERP system implementation involves a much broader scope and in‐depth consideration within an organization as a whole. Concurrently, in response to this need for resource optimization, the impact of globalization has caused the emergence of a new business operation format, global logistics management (GLM). This pertains to the overall management system of a corporation’s undertaking of worldwide market distribution, product design, customer satisfaction, production, procurement, logistics, suppliers and inventory. Suggests building an ERP as the backbone for implementation of a GLM system, while minimizing the impact of changes by use of information system reengineering technology (ISRT). Proposes a novel development framework that applies ISRT and ERP to developing a GLM system to economize on the system implementation cost and minimize the impact of changes within the corporation as a whole.</jats:p>",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1177/107937390102300402",
+      "title": [
+        "Hospital Reengineering: An Evolving Management Innovation - History, Current Status and Future Direction"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Health and Human Services Administration"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> This paper summarizes six years of research on reengineering in hospitals. It is the result of two national surveys and eighteen site visits to hospitals that engaged in reengineering in the 1990's. The research shows that actual hospital reengineering differs substantially from that which was initially proposed by early promoters of reengineering. However, this evolved reengineering continues to be implemented by the majority of hospitals in the U.S. We illustrate how extensive reductions of managers and changes of nursing care models have been in the past six years. Data comparing financial and cost competitiveness changes is also shared. We then explore the continued experience of two early proponents of reengineering and find that their competitive outcomes to be in contrast with their early statements. Last, we suggest a number of reasons that may impact on the success or failure of reengineering. </jats:p>",
+      "publication_date": "2001-12"
+    },
+    {
+      "doi": "10.1007/3-540-45588-4_23",
+      "title": [
+        "Implementing Large-Scale COTS Reengineering within the United States Department of Defense"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "COTS-Based Software Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

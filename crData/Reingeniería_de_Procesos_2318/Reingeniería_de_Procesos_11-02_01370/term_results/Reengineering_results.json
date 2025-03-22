@@ -1,0 +1,45 @@
+{
+  "term": "Reengineering",
+  "total_results": 3,
+  "processed_count": 3,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.51257/a-v1-c3020",
+      "title": [
+        "Éco-conception - Marqueur d’un reengineering de la construction"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Droit et organisation générale de la construction"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5120/1985-2674",
+      "title": [
+        "SysRisk A Decisional Framework to Measure System Dimensions of Legacy Application for Rejuvenation through Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Computer Applications"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/cae.20527",
+      "title": [
+        "Reengineering the SLEEP simulator in a concurrent and distributed programming course"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer Applications in Engineering Education"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>This article presents laboratory exercises and project assignments developed to teach concepts of concurrent and distributed programming in Java. The exercises and assignments cover important topics determined after an analysis of topics that are often taught in different universities. During the exercises, students reengineer the general purpose discrete event simulator named SLEEP (Simulation, Logic, Execution, prEsentation, Physics). A multilayer organization of the SLEEP simulator enables coverage of the important topics in a coherent manner. In order to support parallel execution in SLEEP students start to reengineer the simulator layers with an exercise related to concurrent programming, followed by two exercises related to distributed programming, and finish with an exercise related to grid computing. The exercises follow the principles of error management training and teach students what common errors are and how to overcome them. The article also describes a practical experience with the use of SLEEP on a concurrent and distributed programming course over a 3‐year period. The results show a positive impact on both students' satisfaction and performance. © 2011 Wiley Periodicals, Inc. Comput Appl Eng Educ 22: 39–51, 2014</jats:p>",
+      "publication_date": "2014-03"
+    }
+  ]
+}

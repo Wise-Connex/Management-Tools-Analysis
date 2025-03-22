@@ -1,0 +1,1149 @@
+{
+  "term": "Reengineering",
+  "total_results": 88,
+  "processed_count": 88,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/csmr.2013.1",
+      "title": [
+        "Proceedings of the 2013 17th European Conference on Software Maintenance and Reengineering (CSMR 2013)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr31173.2013",
+      "title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.76",
+      "title": [
+        "Reviewers"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.80",
+      "title": [
+        "[Front cover]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.3",
+      "title": [
+        "[Copyright notice]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.10",
+      "title": [
+        "Conference Organization"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.74",
+      "title": [
+        "Author index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.75",
+      "title": [
+        "[Roster page]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.2",
+      "title": [
+        "[Title page iii]"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.4",
+      "title": [
+        "Table of Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.78",
+      "title": [
+        "Keynote Talk 2"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.5",
+      "title": [
+        "Welcome from the Conference Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.79",
+      "title": [
+        "Welcome from the Workshop Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.77",
+      "title": [
+        "Keynote Talk 1"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.9",
+      "title": [
+        "Welcome from the Tool Demonstrations Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.6",
+      "title": [
+        "Welcome from the Doctoral Symposium Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.7",
+      "title": [
+        "Welcome from the Early Research Achievements Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.8",
+      "title": [
+        "Welcome from the European Projects Track Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.66",
+      "title": [
+        "Static Analysis of Data-Intensive Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.59",
+      "title": [
+        "Metric Attitude"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.65",
+      "title": [
+        "Facts and Fallacies of Reuse in Practice"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.35",
+      "title": [
+        "Automated Identifier Completion and Replacement"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.17",
+      "title": [
+        "Finding Duplicates of Your Yet Unwritten Bug Report"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.49",
+      "title": [
+        "Pattern-Based Refactoring Process of Sequential Source Code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.18",
+      "title": [
+        "Analyzing Networks of Issue Reports"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.11",
+      "title": [
+        "Understanding Widespread Changes: A Taxonomic Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.70",
+      "title": [
+        "Quality Assessment in the Cloud: Is It Worthwhile?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.42",
+      "title": [
+        "Predicting Reassignments of Bug Reports - An Exploratory Investigation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.24",
+      "title": [
+        "Software Analytics for Mobile Applications--Insights &amp;amp; Lessons Learned"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.50",
+      "title": [
+        "Reordering Program Statements for Improving Readability"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.58",
+      "title": [
+        "Extraction of Documentation from Fortran 90 Source Code: An Industrial Experience"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.45",
+      "title": [
+        "Changes, Defects and Polymorphism: Is There Any Correlation?"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.4324/9780203157572-26",
+      "title": [
+        "Reengineering Social Institutions for Peace and Development: The Case of Postgenocide Rwanda WANJALA S. NASONG’O"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Development, Modernism and Modernity in Africa"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.31",
+      "title": [
+        "Search-Based Refactoring Using Recorded Code Changes"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.25",
+      "title": [
+        "Feature Detection in Ajax-Enabled Web Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.34",
+      "title": [
+        "Quasi-controlled Experimentations on the Impact of AOP on Software Comprehensibility"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.60",
+      "title": [
+        "Visualization of Component-Based Applications Structure Using AIVA"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.16",
+      "title": [
+        "Leveraging Crowd Knowledge for Software Comprehension and Development"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.41",
+      "title": [
+        "Network Structure of Social Coding in GitHub"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.67",
+      "title": [
+        "SBSE4VM: Search Based Software Engineering for Variability Management"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.30",
+      "title": [
+        "Rule-Based Impact Analysis for Heterogeneous Software Artifacts"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.61",
+      "title": [
+        "Migrating Android Applications towards Service-centric Architectures with Sip2Share"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.56",
+      "title": [
+        "A Study of Web Maintenance in an Industrial Setting"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.32",
+      "title": [
+        "Migrating AS400-COBOL to Java: A Report from the Field"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.47",
+      "title": [
+        "Detecting Cross-Language Dependencies Generically"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.33",
+      "title": [
+        "The Evolution of the R Software Ecosystem"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.64",
+      "title": [
+        "Co-evolution of the Eclipse SDK Framework and Its Third-Party Plug-Ins"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.68",
+      "title": [
+        "MIMOS, System Model-Driven Migration Project"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.63",
+      "title": [
+        "Linking E-Mails and Source Code with LASCO"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.19",
+      "title": [
+        "Empirical Evaluation of Bug Linking"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.57",
+      "title": [
+        "A Pilot Study on Software Quality Practices in Belgian Industry"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/educon.2013.6530272",
+      "title": [
+        "A teaching experience on software reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 IEEE Global Engineering Education Conference (EDUCON)"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.20",
+      "title": [
+        "Change-Based Test Selection in the Presence of Developer Tests"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.37",
+      "title": [
+        "Extracting and Analyzing the Implemented Security Architecture of Business Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.53",
+      "title": [
+        "Supplying Compiler's Static Compatibility Checks by the Analysis of Third-Party Libraries"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.32722/pt.v9i3.120",
+      "title": [
+        "Penerapan Konsep Reengineering Untuk Mengidentifikasi Kebutuhan Teknologi Informasi (Studi Kasus: Progam Studi Teknik Energi di Politeknik Negeri)"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Jurnal Poli-Teknologi"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>To maintaining the sustainability of its activities, the Polytechnic should take steps of reengineering. This research intends to interpret the use of information technology (IT) as enabler steps. The method used of this research is a case studiy of PS.Education Energy Engineering at the Polytechnic. The research methodology was adopted from a combination of several concepts and arguments to the researchers / professionals. The study conducted by literature study that begins with recognizing the power of IT and be able to find the academic requirements for conformance to the problem can be solved by such capabilities. After assessing their performance, the framework concludes with an action plan. Research conclusions are several technologies that can provide high added value to the academic core Polytechnic Education.&#x0D;\nKeywords: IT as an enabler of change; Reengineering; Academic core.&#x0D;\n&#x0D;\nAbstrak&#x0D;\nDemi menjaga keberlanjutan kegiatannya, Politeknik selayaknya mengambil langkah reengineering. Riset ini bermaksud menafsirkan pemanfaatan teknologi informasi (TI) sebagai enabler langkah tersebut. Metode yang digunakan adalah studi kasus terhadap PS. Teknik Energi di Pendidikan Politeknik. Metodologi penelitian diadopsi dari kombinasi beberapa konsep dan argumen para peneliti/profesional. Kajian dilakukan melalui studi literatur yang dimulai dengan mengenali daya mampu TI dan menemukan kesesuaiannya terhadap masalah kebutuhan akademik yang dapat dipecahkan oleh kemampuan tersebut. Setelah menilai performanya, framework diakhiri dengan sebuah rencana aksi. Kesimpulan penelitian adalah beberapa teknologi yang mampu memberikan nilai tambah tinggi terhadap akademik core Pendidikan Politeknik.&#x0D;\nKata Kunci: TI sebagai enabler perubahan; Reengineering; Akademik core.</jats:p>"
+    },
+    {
+      "doi": "10.1109/csmr.2013.46",
+      "title": [
+        "Relating Clusterization Measures and Software Quality"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.22",
+      "title": [
+        "ACRE: An Automated Aspect Creator for Testing C++ Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.39",
+      "title": [
+        "A Framework for Classifying and Comparing Architecture-centric Software Evolution Research"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.15",
+      "title": [
+        "Predicting Project Outcome Leveraging Socio-Technical Network Patterns"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.27",
+      "title": [
+        "Enhancing the Detection of Code Anomalies with Architecture-Sensitive Strategies"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.14",
+      "title": [
+        "Analyzing the Eclipse API Usage: Putting the Developer in the Loop"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.55",
+      "title": [
+        "Using the GPU to Green an Intensive and Massive Computation System"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.36",
+      "title": [
+        "An Approach for Optimization of Object Queries on Collections Using Annotations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.40",
+      "title": [
+        "Using Version Control History to Follow the Changes of Source Code Elements"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.62",
+      "title": [
+        "Maintainability-Based Requirements Prioritization by Using Artifacts Traceability and Code Metrics"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.28",
+      "title": [
+        "A New Family of Software Anti-patterns: Linguistic Anti-patterns"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.44",
+      "title": [
+        "A History Querying Tool and Its Application to Detect Multi-version Refactorings"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.51",
+      "title": [
+        "An Early Investigation on the Contribution of Class and Sequence Diagrams in Source Code Comprehension"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.23",
+      "title": [
+        "An Empirical Analysis of Bug Reports and Bug Fixing in Open Source Android Apps"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.38",
+      "title": [
+        "Recovering Component Dependencies Hidden by Frameworks--Experiences from Analyzing OSGi and Qt"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.13",
+      "title": [
+        "An Exploratory Study of Cloning in Industrial Software Product Lines"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.48",
+      "title": [
+        "Adoption of Software Testing in Open Source Projects--A Preliminary Study on 50,000 Projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.12",
+      "title": [
+        "On the Relationship between Program Evolution and Fault-Proneness: An Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.26",
+      "title": [
+        "A Study on the Relation between Antipatterns and the Cost of Class Unit Testing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.54",
+      "title": [
+        "Profile-Based, Load-Independent Anomaly Detection and Analysis in Performance Regression Testing of Software Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.69",
+      "title": [
+        "MDO: Framework for Context-Aware Process Mobility in Building-Maintenance Domain"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.52",
+      "title": [
+        "Incremental Feature Location and Identification in Source Code"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.43",
+      "title": [
+        "A Comparative Study of Supervised Learning Algorithms for Re-opened Bug Prediction"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.2478/auom-2013-0005",
+      "title": [
+        "Model for implementing a reengineering solution of the production process in a printing house"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Analele Universitatii \"Ovidius\" Constanta - Seria Matematica"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p> The main objective of the present paper is to highlight the importance and impact of the concept of reengineering, both by identifying certain opportunities to improve the performance of Romanian printing companies and some strategies of total redesign of the production process based on highlighting some of their effective combinations as well as the integration of some proper mathematical models. First of all, this study will focus on achieving results that are based on identifying some specific problems that companies have faced at a certain point and on concrete problem solving solutions. Second, there should be emphasized that reengineering works in almost any situation related to a big or small company or the production area or NGOs. Specific objectives: designing and testing a mathematical model that can be adapted to the specific activities of the printing organization, providing the best solution of variable allocation to increase performance.</jats:p>",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.29",
+      "title": [
+        "When and How Using Structural Information to Improve IR-Based Traceability Recovery"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.71",
+      "title": [
+        "The OMG UML Testing Profile in Use--An Industrial Case Study for the Future Internet Testing"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1016/j.biotechadv.2012.11.008",
+      "title": [
+        "Metabolic reengineering invoked by microbial systems to decontaminate aluminum: Implications for bioremediation technologies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Biotechnology Advances"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.21",
+      "title": [
+        "What Do the Asserts in a Unit Test Tell Us about Code Quality? A Study on Open Source and Industrial Projects"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.73",
+      "title": [
+        "Migrating Legacy Software to the Cloud with ARTIST"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.1109/csmr.2013.72",
+      "title": [
+        "PINCETTE - Validating Changes and Upgrades in Networked Software"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2013 17th European Conference on Software Maintenance and Reengineering"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.11127/ijammc.2013.02.078",
+      "title": [
+        "Analysis and Optimization of Ball Valve for Reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Advanced Materials Manufacturing and Characterization"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    },
+    {
+      "doi": "10.12812/ksms.2013.15.1.21",
+      "title": [
+        "Study on the strengthening of community safety Network through volunteer fire department training program reengineering"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of the Korea Safety Management and Science"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2013-03"
+    }
+  ]
+}

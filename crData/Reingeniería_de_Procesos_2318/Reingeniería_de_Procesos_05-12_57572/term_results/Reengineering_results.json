@@ -1,0 +1,34 @@
+{
+  "term": "Reengineering",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1108/09544780510627633",
+      "title": [
+        "The application of business process reengineering in the UK"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The TQM Magazine"
+      ],
+      "subject": [],
+      "abstract": "<jats:sec><jats:title content-type=\"abstract-heading\">Purpose</jats:title><jats:p>The purpose of this research was to identify the key factors for success of business process reengineering (BPR) applications in the UK‐based companies.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Design/methodology/approach</jats:title><jats:p>A questionnaire survey was used to gather primary research data from the UK‐based companies that have applied BPR to investigate the triggers for BPR, identify the main barriers, and enable the authors' to propose key factors for success.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Findings</jats:title><jats:p>The survey found that the main reasons for applying the technique were external competitive pressures, internal cost reduction, and productivity improvements. The main barriers to successful implementation were reported as tactical short‐term solution driven approaches, which inadequately considered the people issues, and an over reliance on IT‐based technology. It is proposed that the factors for success include adopting a strategic approach, which prioritises business processes for BPR projects. This should include the establishment of appropriate company‐wide targets and measures that emphasise continuous improvement for the long term. Finally, management needs to motivate and involve employees as a key enabler by removing their fears that BPR is really a “downsizing” exercise, and emphasising improved co‐ordination of people and technology.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Research limitations/implications</jats:title><jats:p>The research has limitations in that the respondent companies are UK‐based and therefore the internationalisation of the findings requires further validity.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Practical implications</jats:title><jats:p>The discussion and conclusions from this work are made in a practical manner.</jats:p></jats:sec><jats:sec><jats:title content-type=\"abstract-heading\">Originality/value</jats:title><jats:p>Some useful primary data from the UK industry which makes the work original and of value to both academics and practising managers.</jats:p></jats:sec>",
+      "publication_date": "2005-12"
+    },
+    {
+      "doi": "10.3745/kipstd.2005.12d.7.947",
+      "title": [
+        "Component-Based Systematic Reengineering Process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The KIPS Transactions:PartD"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2005-12"
+    }
+  ]
+}

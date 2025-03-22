@@ -1,0 +1,176 @@
+{
+  "term": "Scenario",
+  "total_results": 13,
+  "processed_count": 13,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.7228/manchester/9780719064289.003.0002",
+      "title": [
+        "The political scenario in 1760"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "George III"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1103/physrevd.66.076003",
+      "title": [
+        "Constraints on the bulk standard model in the Randall-Sundrum scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Physical Review D"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1002/1521-4001(200210)82:10<671::aid-zamm671>3.0.co;2-2",
+      "title": [
+        "Worst Scenario Approach for Elastoplasticity with Hardening and Uncertain Input Data"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "ZAMM"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1109/mwc.2002.1043859",
+      "title": [
+        "Reliable RSVP path reservation for multimedia communications under an IP micromobility scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IEEE Wireless Communications"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1145/572020.572022",
+      "title": [
+        "Using 'endowed props' in scenario-based design"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the second Nordic conference on Human-computer interaction"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.4337/9781035304875.00021",
+      "title": [
+        "The Role of Alpine Agriculture and Forestry in Climate Change Mitigation - a Scenario Analysis"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Global Environmental Change in Alpine Regions"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.2466/pr0.2002.91.2.533",
+      "title": [
+        "Effects of Sex of Judge and Sex of Victim on Recommended Punishment of a Male Murderer in a Mock Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Psychological Reports"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> Two samples of undergraduates (36 women, 7 men; 44 women, 45 men) read a mock transcript in which a murderer's victim was a man or a woman, after which they made prison sentence and death penalty judgments. Female judges gave longer sentences for the female victim than for the male victim, whereas male judges gave longer sentences for the male victim than for the female victim. This same-sex bias suggests that extralegal factors can affect judgments about sentencing. </jats:p>",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1142/s0129054102001370",
+      "title": [
+        "COMPLEXITY OF SCENARIO-BASED PORTFOLIO OPTIMIZATION PROBLEM WITH VaR OBJECTIVE"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Foundations of Computer Science"
+      ],
+      "subject": [],
+      "abstract": "<jats:p> In this paper we discuss the VaR-related portfolio optimization problems. We give a scenario-based formulation of the portfolio optimization problem with VaR objective and show that the problem is NP-hard. </jats:p>",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1088/0953-8984/14/44/432",
+      "title": [
+        "A possible phase separation scenario observed in perovskite manganites under high pressure"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Physics: Condensed Matter"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1016/s0968-090x(02)00031-1",
+      "title": [
+        "The impact of real-time information in a two-route scenario using agent-based simulation"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Research Part C: Emerging Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1051/0004-6361:20021248",
+      "title": [
+        "Spectroscopic analyses of the “blue hook” stars in<i>ω</i>Centauri: A test of the late hot flasher scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Astronomy &amp; Astrophysics"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-11"
+    },
+    {
+      "doi": "10.1016/s0968-090x(02)00027-x",
+      "title": [
+        "Using BDI agents to improve driver modelling in a commuter scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Transportation Research Part C: Emerging Technologies"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2002-10"
+    },
+    {
+      "doi": "10.1002/pat.279",
+      "title": [
+        "ATR‐FTIR studies on the effect of strong salting‐out salts on the phase separation scenario in aqueous solutions of poly(<i>N</i>‐isopropylacrylamide) [PNIPA]"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Polymers for Advanced Technologies"
+      ],
+      "subject": [],
+      "abstract": "<jats:title>Abstract</jats:title><jats:p>Attenuated total reflectance (ATR) FTIR spectroscopy was used to investigate the effect of two strong salting‐out salts (Na<jats:sub>2</jats:sub>SO<jats:sub>4</jats:sub> and K<jats:sub>2</jats:sub>SO<jats:sub>4</jats:sub>) on the temperature‐induced phase separation process in aqueous solutions of poly(<jats:italic>N</jats:italic>‐isopropylacrylamide) [PNIPA]. It was found that the addition of these salts not only depresses the phase transition temperature (as was pointed out by other groups in the past) but, in fact, changes the whole scenario below, at, and above the aggregation temperature. Deconvolution of the amide II peak into three sub‐bands reflecting three types of populations that differ by their hydrogen bonding types revealed that the sulfate ions decreased the amount of amide–water hydrogen bonds, while increasing the amount of amide–amide intramolecular H‐bond population. This led to a relatively compact structure even at low temperatures. Based on the behavior of the hydrophobic IR peaks it is suggested that addition of sulfate ions increases the importance of hydrophobic interactions below the phase separation temperature. This study demonstrates the potential of ATR‐FTIR in providing information at a molecular level on phase separation phenomena in aqueous solutions of hydrophobic polymers and, in particular, on the effects of co‐solutes in such systems. Copyright © 2003 John Wiley &amp; Sons, Ltd.</jats:p>",
+      "publication_date": "2002-10"
+    }
+  ]
+}

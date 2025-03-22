@@ -1,0 +1,735 @@
+{
+  "term": "Reengineering",
+  "total_results": 60,
+  "processed_count": 60,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.1109/csmr.2007.1",
+      "title": [
+        "11th European Conference on Software Maintenance and Reengineering - Copyright"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.2",
+      "title": [
+        "11th European Conference on Software Maintenance and Reengineering - Cover"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.4",
+      "title": [
+        "11th European Conference on Software Maintenance and Reengineering - Title"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.3",
+      "title": [
+        "11th European Conference on Software Maintenance and Reengineering - Table of Contents"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr12540.2007",
+      "title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "type": "proceedings",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1016/b978-0-7506-7996-1.50015-5",
+      "title": [
+        "Reengineering the Training Department Assessment Instrument"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Human Performance Improvement"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.19",
+      "title": [
+        "Committees"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.38",
+      "title": [
+        "Organizing Committees"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.39",
+      "title": [
+        "Program Committee"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.14",
+      "title": [
+        "Author Index"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.55",
+      "title": [
+        "Welcome from the Conference Chairs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.30",
+      "title": [
+        "Keynote Speech"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.56",
+      "title": [
+        "Welcome from the Workshop and Special Session Chair"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.35",
+      "title": [
+        "Model-Driven Evolution of Software Architectures"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.49",
+      "title": [
+        "The Sisyphus Continuous Integration System"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.37",
+      "title": [
+        "Online Construction of Dynamic Object Process Graphs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.17",
+      "title": [
+        "BugCrawler: Visualizing Evolving Software Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.45",
+      "title": [
+        "Supporting Reliable Software Evolution through Program Analysis"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2507/daaam.scibook.2007.39",
+      "title": [
+        "Web oriented applications generator development through reengineering process"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "DAAAM International Scientific Book 2007"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.43",
+      "title": [
+        "Software Quality Attribute Analysis by Architecture Reconstruction (SQUA3RE)"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/mc.2007.32",
+      "title": [
+        "Reengineering the internet for better security"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Computer"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-01"
+    },
+    {
+      "doi": "10.1109/csmr.2007.44",
+      "title": [
+        "Static Analysis of Programs with Graphical User Interface"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.41",
+      "title": [
+        "Sizing Maintenance Tasks for Web Applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.31",
+      "title": [
+        "Metamodel-Based Inference of Inter-Model Correspondence"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1353/tech.2007.0048",
+      "title": [
+        "Reengineering Engineers: Management Philosophies at JPL in the 1990s"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Technology and Culture"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-01"
+    },
+    {
+      "doi": "10.1109/csmr.2007.51",
+      "title": [
+        "Towards Automated Restructuring of Object Oriented Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.24",
+      "title": [
+        "Exploring Inter-Module Relationships in Evolving Software Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.20",
+      "title": [
+        "Consistently Incorporating Changes to Evolve Transition-based Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.5220/0002381901380143",
+      "title": [
+        "BUSINESS PROCESS PRIORISATION WITH MULTICRITERIA METHODS - Case of Business Process Reengineering"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the Ninth International Conference on Enterprise Information Systems"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-1-84628-976-7_16",
+      "title": [
+        "Steps Towards Pervasive Software: Does Software Engineering Need Reengineering?"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Complex Systems Concurrent Engineering"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.8",
+      "title": [
+        "A Multi-view Toolkit to Assist Software Integration and Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.25",
+      "title": [
+        "High-impact Refactoring Based on Architecture Violations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.42",
+      "title": [
+        "Software Configuration Management, Fundament for Evolution of Large Existing Code Bases"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/hicss.2007.479",
+      "title": [
+        "Service-Oriented Software Reengineering: SoSR"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "2007 40th Annual Hawaii International Conference on System Sciences (HICSS'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.21",
+      "title": [
+        "Dynamic Object Process Graph Extraction for Program Understanding and Protocol Recovery"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.3182/20070903-3-fr-2921.00047",
+      "title": [
+        "REENGINEERING THE PAPARAZZI AUTOPILOT NAVIGATION SYSTEM"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "IFAC Proceedings Volumes"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.12",
+      "title": [
+        "An Experience in Introducing a New Control Platform on a Legacy System"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.23",
+      "title": [
+        "Example-Driven Reconstruction of Software Models"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.26",
+      "title": [
+        "How Clones are Maintained: An Empirical Study"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.6",
+      "title": [
+        "A Feature-Oriented Adaptive Component Model for Dynamic Evolution"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.33",
+      "title": [
+        "Migrating Multi-page Web Applications to Single-page AJAX Interfaces"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.34",
+      "title": [
+        "Migration of Common Lisp Programs to the Java Platform -The Linj Approach"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.9",
+      "title": [
+        "A Probabilistic Approach to Predict Changes in Object-Oriented Software Systems"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.40",
+      "title": [
+        "Restructuring Variability in Software Product Lines using Concept Analysis of Product Configurations"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.10",
+      "title": [
+        "A Two Phase Approach to Design Pattern Recovery"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.53",
+      "title": [
+        "Verifying the Concept of Union Slices on Java Programs"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijttc.2007.014546",
+      "title": [
+        "Towards a unified perspective of Business Process Reengineering methodologies"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Technology Transfer and Commercialisation"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.11",
+      "title": [
+        "An approach for mining services in database oriented applications"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.29",
+      "title": [
+        "Integrating and Testing a System-Wide Feature in a Legacy System: An Experience Report"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1504/ijiscm.2007.013879",
+      "title": [
+        "The complementary role of business process reengineering and information technology to total quality management practices"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Information Systems and Change Management"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-0-387-38429-0_12",
+      "title": [
+        "Supply Chain Reengineering in Agri-Business"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "International Series in Operations Research &amp; Management Science",
+        "Building Supply Chain Excellence in Emerging Economies"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1109/csmr.2007.5",
+      "title": [
+        "A Case Study of Defect-Density and Change-Density and their Progress over Time"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1080/17509653.2007.10671010",
+      "title": [
+        "Information modeling and reengineering for product development process"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "International Journal of Management Science and Engineering Management"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-01"
+    },
+    {
+      "doi": "10.1109/csmr.2007.52",
+      "title": [
+        "Using The Meta-Environment for Maintenance and Renovation"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "11th European Conference on Software Maintenance and Reengineering (CSMR'07)"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-71774-4_8",
+      "title": [
+        "Object-Oriented Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Object-Oriented Technology. ECOOP 2006 Workshop Reader"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.18848/1447-9524/cgp/v07i02/50328",
+      "title": [
+        "Competitiveness Redefined in Networked Organizations: The Driving Forces behind the Reengineering Endeavours of Indian Organizations"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The International Journal of Knowledge, Culture, and Change Management: Annual Review"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1007/978-3-540-72988-4_34",
+      "title": [
+        "ReeF: Defining a Customizable Reengineering Framework"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Notes on Numerical Fluid Mechanics and Multidisciplinary Design",
+        "Active Flow and Combustion Control 2018"
+      ],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.2175/193864707787974706",
+      "title": [
+        "USING A WORK AND ASSET MANAGEMENT SYSTEM AS A UTILITY REENGINEERING PLATFORM TO IMPLEMENT BALANCED SCORECARDS, SKILL BASED PAY AND IMPROVE ASSET MANAGEMENT"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the Water Environment Federation"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "2007-01"
+    },
+    {
+      "doi": "10.1073/pnas.0606961104",
+      "title": [
+        "Reengineering CCA-adding enzymes to function as (U,G)- or dCdCdA-adding enzymes or poly(C,A) and poly(U,G) polymerases"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Proceedings of the National Academy of Sciences"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>\n            CCA-adding enzymes build and repair the 3′-terminal CCA sequence of tRNA. These unusual RNA polymerases use either a ribonucleoprotein template (class I) or pure protein template (class II) to form mock base pairs with the Watson–Crick edges of incoming CTP and ATP. Guided by the class II\n            <jats:italic>Bacillus stearothermophilus</jats:italic>\n            CCA-adding enzyme structure, we introduced mutations designed to reverse the polarity of hydrogen bonds between the nucleobases and protein template. We were able to transform the CCA-adding enzyme into a (U,G)-adding enzyme that incorporates UTP and GTP instead of CTP and ATP; we transformed the related\n            <jats:italic>Aquifex aeolicus</jats:italic>\n            CC- and A-adding enzymes into UU- and G-adding enzymes and\n            <jats:italic>Escherichia coli</jats:italic>\n            poly(A) polymerase into a poly(G) polymerase; and we transformed the\n            <jats:italic>B. stearothermophilus</jats:italic>\n            CCA-adding enzyme into a poly(C,A) polymerase by mutations in helix J that appear, based on the apoenzyme structure, to sterically limit addition to CCA. We also transformed the\n            <jats:italic>B. stearothermophilus</jats:italic>\n            CCA-adding enzyme into a dCdCdA-adding enzyme by mutating an arginine that interacts with the incoming ribose 2′ hydroxyl. Most importantly, we found that mutations in helix J can affect the specificity of the nucleotide binding site some 20 Å away, suggesting that the specificity of both class I and II enzymes may be dictated by an intricate network of hydrogen bonds involving the protein, incoming nucleotide, and 3′ end of the tRNA. Collaboration between RNA and protein in the form of a ribonucleoprotein template may help to explain the evolutionary diversity of the nucleotidyltransferase family.\n          </jats:p>",
+      "publication_date": "2007-01"
+    },
+    {
+      "doi": "10.1007/978-3-540-77010-7_36",
+      "title": [
+        "A Tool for Statistical Analysis of Navigational Modelling for Web Site Personalization and Reengineering"
+      ],
+      "type": "book-chapter",
+      "container-title": [
+        "Lecture Notes in Computer Science",
+        "Web Information Systems Engineering – WISE 2007 Workshops"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}

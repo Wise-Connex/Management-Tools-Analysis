@@ -1,0 +1,122 @@
+{
+  "term": "Scenario",
+  "total_results": 9,
+  "processed_count": 9,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.2172/181516",
+      "title": [
+        "Hawaii Energy Strategy Project 2: Fossil Energy Review. Task IV. Scenario development and analysis"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": ""
+    },
+    {
+      "doi": "10.1108/09588689310048650",
+      "title": [
+        "Optimising property portfolio holdings: a scenario‐assisted\napproach"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Journal of Property Finance"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>Suggests that in a climate of uncertainty, property investment\ndecisions need to be undertaken within a quantifiable risk and return\nframework. Offers an analytical framework, considering a portfolio of\nproperties as an entity, to arrive at optimum risk and return trade‐offs\nwithin the portfolio. Concludes that a scenario‐type approach can obtain\ninputs and outlines its many uses. </jats:p>",
+      "publication_date": "1993-12"
+    },
+    {
+      "doi": "10.1515/corrrev.1993.11.3-4.17",
+      "title": [
+        "From Niche to Commodity, 3CR12 - a Ten Year Scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Corrosion Reviews"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-12"
+    },
+    {
+      "doi": "10.1007/bf02780603",
+      "title": [
+        "Study of a test facility scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Il Nuovo Cimento A"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-12"
+    },
+    {
+      "doi": "10.1145/168466.168494",
+      "title": [
+        "Design strategies for scenario-based hypermedia"
+      ],
+      "type": "proceedings-article",
+      "container-title": [
+        "Proceedings of the ACM conference on Hypertext"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-12"
+    },
+    {
+      "doi": "10.1086/116809",
+      "title": [
+        "Chromospherically active stars. 11: Giant with compact hot companions and the barium star scenario"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Astronomical Journal"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-12"
+    },
+    {
+      "doi": "10.1136/oem.50.12.1119",
+      "title": [
+        "Plumboporphyria (ALAD deficiency) in a lead worker: a scenario for potential diagnostic confusion."
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Occupational and Environmental Medicine"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-12"
+    },
+    {
+      "doi": "10.1016/0304-3800(93)90057-y",
+      "title": [
+        "A procedure for generating synthetic weather records in conjunction of climatic scenario for modelling of ecological impacts of changing climate in boreal conditions"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Ecological Modelling"
+      ],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1993-12"
+    },
+    {
+      "doi": "10.1029/93gl03260",
+      "title": [
+        "A new scenario for the measurement of the auroral plasma parameters in the non‐Maxwellian state"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "Geophysical Research Letters"
+      ],
+      "subject": [],
+      "abstract": "<jats:p>The O<jats:sup>+</jats:sup> and NO<jats:sup>+</jats:sup> ion velocity distributions in the presence of a large electric field are analytically calculated for the auroral F region, taking into account the collisions with atomic and molecular neutral constituents. We have found an angle of 21°± 1° with respect to the magnetic field direction where the O<jats:sup>+</jats:sup> one‐dimensional line‐of‐sight velocity distributions display a Maxwellian shape while the NO<jats:sup>+</jats:sup> distribution function is nearly a Maxwellian. A scenario for the measurement of the auroral plasma parameters is discussed. The radar spectrum obtained for the specific angle of 21° depends on five parameters : electron density, electron temperature, ion composition, and two ion line‐of‐sight temperatures. With this reduced number of plasma parameters the fit from radar spectra is nevertheless ambiguous. To resolve this dilemma it is necessary to get an independent measurement of one of these five parameters. The plasma line observation is shown to provide a simultaneous measurement of the electron temperature. From simultaneous measurements of the ion line‐of‐sight temperatures, made at an angle away from 21° the termodynamical temperature, as well as the ion temperature anisotropies, would be determined.</jats:p>",
+      "publication_date": "1993-12"
+    }
+  ]
+}

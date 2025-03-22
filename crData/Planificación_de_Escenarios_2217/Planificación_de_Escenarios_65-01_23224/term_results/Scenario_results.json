@@ -1,0 +1,31 @@
+{
+  "term": "Scenario",
+  "total_results": 2,
+  "processed_count": 2,
+  "discarded_count": 0,
+  "items": [
+    {
+      "doi": "10.21236/ad0457987",
+      "title": [
+        "THE CIVIL DEFENSE COUNTERPART TO A 1973 NUCLEAR WAR SCENARIO"
+      ],
+      "type": "report",
+      "container-title": [],
+      "subject": [],
+      "abstract": "",
+      "publication_date": "1965-01"
+    },
+    {
+      "doi": "10.4992/jjpsy.35.297",
+      "title": [
+        "STUDIES ON SCENARIO-TEST"
+      ],
+      "type": "journal-article",
+      "container-title": [
+        "The Japanese journal of psychology"
+      ],
+      "subject": [],
+      "abstract": ""
+    }
+  ]
+}
