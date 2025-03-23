@@ -2301,6 +2301,67 @@ def check_tool_completion(tool_name):
         logger.error(f"Error checking tool completion: {str(e)}")
         return False
 
+def check_csv_files_existence():
+    """
+    Check if all files listed in CRIndex.csv exist in output/csv_reports directory
+    
+    Returns:
+        dict: Dictionary with missing files and their status
+    """
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Get project root and paths
+        project_root = get_project_root()
+        crindex_path = os.path.join(project_root, 'NewDBase', 'CRIndex.csv')
+        csv_reports_dir = os.path.join(project_root, 'output', 'csv_reports')
+        
+        # Check if directories exist
+        if not os.path.exists(csv_reports_dir):
+            logger.error(f"CSV reports directory not found: {csv_reports_dir}")
+            return {"error": "CSV reports directory not found"}
+        
+        if not os.path.exists(crindex_path):
+            logger.error(f"CRIndex.csv not found: {crindex_path}")
+            return {"error": "CRIndex.csv not found"}
+        
+        # Get list of files in csv_reports directory
+        existing_files = set(os.listdir(csv_reports_dir))
+        
+        # Read CRIndex.csv and check each file
+        missing_files = []
+        with open(crindex_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                filename = row.get('Filename', '').strip()
+                if filename and filename not in existing_files:
+                    missing_files.append({
+                        'tool': row.get('Keyword', 'Unknown'),
+                        'filename': filename,
+                        'complete': row.get('Complete', 'False')
+                    })
+        
+        # Print results
+        if missing_files:
+            print("\nMissing CSV files:")
+            print("-" * 50)
+            for item in missing_files:
+                print(f"Tool: {item['tool']}")
+                print(f"File: {item['filename']}")
+                print(f"Status: {'Complete' if item['complete'].lower() == 'true' else 'Incomplete'}")
+                print("-" * 50)
+        else:
+            print("\nAll CSV files listed in CRIndex.csv exist in output/csv_reports directory")
+        
+        return {
+            "total_checked": len(existing_files),
+            "missing_files": missing_files
+        }
+        
+    except Exception as e:
+        logger.error(f"Error checking CSV files: {str(e)}")
+        return {"error": str(e)}
+
 def main():
     """Main entry point"""
     # Set up logging
@@ -2312,6 +2373,7 @@ def main():
     parser.add_argument('--date', help='Specific date in YY-MM format')
     parser.add_argument('--year', help='Specific year in YYYY format')
     parser.add_argument('--year-range', help='Year range in YYYY-YYYY format (e.g., 2010-2015)')
+    parser.add_argument('--check-files', action='store_true', help='Check if CSV files exist')
     parser.add_argument('--version', action='version', version=f'{APP_NAME} {APP_VERSION}')
     args = parser.parse_args()
     
@@ -2320,6 +2382,11 @@ def main():
         print(f"\nWelcome to {APP_NAME} v{APP_VERSION}")
         print("Management Tool Data Extraction Application\n")
         
+        if args.check_files:
+            # Check CSV files existence
+            check_csv_files_existence()
+            return 0
+            
         if args.tool:
             # Command line mode
             if sum(bool(x) for x in [args.date, args.year, args.year_range]) != 1:

@@ -1,24 +1,24 @@
 Keyword,Filename,Complete
 Reingeniería de Procesos,CR_ReingenieríadeProcesos_monthly_relative.csv,True
 Gestión de la Cadena de Suministro,CR_GestióndelaCadenadeSuministro_monthly_relative.csv,True
-Planificación de Escenarios,CR_Planificación_de_Escenarios_2541.csv,False
-Planificación Estratégica,CR_PlanificaciónEstratégica_monthly_relative.csv,False
-Benchmarking,CR_Benchmarking_7938.csv,False
-Competencias Centrales,CR_Competencias_Centrales_2569.csv,False
-Experiencia del Cliente,CR_Experiencia_del_Cliente_5075.csv,False
-Calidad Total,CR_Calidad_Total_1222.csv,False
-Alianzas y Capital de Riesgo,CR_Alianzas_y_Capital_de_Riesgo_4974.csv,False
+Planificación de Escenarios,CR_PlanificacióndeEscenarios_monthly_relative.csv,True
+Planificación Estratégica,CR_PlanificaciónEstratégica_monthly_relative.csv,True
+Benchmarking,CR_Benchmarking_monthly_relative.csv,True
+Competencias Centrales,CR_CompetenciasCentrales_monthly_relative.csv,True
+Experiencia del Cliente,CR_ExperienciadelCliente_monthly_relative.csv,True
+Calidad Total,CR_CalidadTotal_monthly_relative.csv,True
+Alianzas y Capital de Riesgo,CR_AlianzasyCapitaldeRiesgo_monthly_relative.csv,True
 Segmentación de Clientes,CR_SegmentacióndeClientes_monthly_relative.csv,True
 Gestión de Costos,CR_GestióndeCostos_monthly_relative.csv,True
-Propósito y Visión,CR_Propósito_y_Visión_3068.csv,False
+Propósito y Visión,CR_PropósitoyVisión_monthly_relative.csv,True
 Fusiones y Adquisiciones,CR_FusionesyAdquisiciones_monthly_relative.csv,True
-Optimización de Precios,CR_Optimización_de_Precios_8468.csv,False
-Talento y Compromiso,CR_Talento_y_Compromiso_6392.csv,False
-Cuadro de Mando Integral,CR_Cuadro_de_Mando_Integral_5772.csv,False
-Presupuesto Base Cero,CR_PresupuestoBaseCero_monthly_relative.csv,False
+Optimización de Precios,CR_OptimizacióndePrecios_monthly_relative.csv,True
+Talento y Compromiso,CR_TalentoyCompromiso_monthly_relative.csv,True
+Cuadro de Mando Integral,CR_CuadrodeMandoIntegral_monthly_relative.csv,True
+Presupuesto Base Cero,CR_PresupuestoBaseCero_monthly_relative.csv,True
 Outsourcing,CR_Outsourcing_monthly_relative.csv,True
-Estrategias de Crecimiento,CR_Estrategias_de_Crecimiento_8545.csv,False
-Innovación Colaborativa,CR_Innovación_Colaborativa_4414.csv,False
-Lealtad del Cliente,CR_Lealtad_del_Cliente_3273.csv,False
-Gestión del Cambio,CR_Gestión_del_Cambio_3352.csv,False
-Gestión del Conocimiento,CR_Gestión_del_Conocimiento_5294.csv,False
+Estrategias de Crecimiento,CR_EstrategiasdeCrecimiento_monthly_relative.csv,True
+Innovación Colaborativa,CR_InnovaciónColaborativa_monthly_relative.csv,True
+Lealtad del Cliente,CR_LealtaddelCliente_monthly_relative.csv,True
+Gestión del Cambio,CR_GestióndelCambio_monthly_relative.csv,True
+Gestión del Conocimiento,CR_GestióndelConocimiento_monthly_relative.csv,True
