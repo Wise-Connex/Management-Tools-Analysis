@@ -2543,6 +2543,9 @@ def ai_analysis():
     global gem_summary_sp
     global csv_all_data
 
+    if total_years > 20:
+        csv_all_data = ""
+
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
 
     if top_choice == 1:
