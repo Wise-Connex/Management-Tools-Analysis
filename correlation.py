@@ -2760,20 +2760,20 @@ def ai_analysis():
                                                     csv_correlation=csv_corr_for_prompt)        
             print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
 
-            print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-            gem_seasonal=gemini_prompt(f_system_prompt,p_5)
-            
-            # Only proceed with translation if we got a valid response
-            if not gem_seasonal.startswith("[API"):
-                prompt_spanish=f'{p_sp} {gem_seasonal}'
-                print("Traduciendo respuesta...")
-                gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-            else:
-                # If there was an API error, don't try to translate the error message
-                gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
-            
-            #display(Markdown(gem_seasonal_sp))
-            print(gem_seasonal_sp)
+        print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
+        gem_seasonal=gemini_prompt(f_system_prompt,p_5)
+        
+        # Only proceed with translation if we got a valid response
+        if not gem_seasonal.startswith("[API"):
+            prompt_spanish=f'{p_sp} {gem_seasonal}'
+            print("Traduciendo respuesta...")
+            gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+        else:
+            # If there was an API error, don't try to translate the error message
+            gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
+        
+        #display(Markdown(gem_seasonal_sp))
+        print(gem_seasonal_sp)
 
     n+=1
     if top_choice == 1:
@@ -3472,18 +3472,19 @@ def report_pdf():
     # Continue with the rest of the HTML content
     html_content += f"""
         <!-- Main Content - Convert markdown sections to HTML -->
-        <div id="resumen-ejecutivo">
-            <h1>Resumen Ejecutivo</h1>
-            {markdown.markdown(gem_summary_sp, extensions=["tables"])}
-        </div>
-        <div class="page-break"></div>
-        
-        <div id="tendencias-temporales">
-            <h1>Tendencias Temporales</h1>
-            {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
-        </div>
-        <div class="page-break"></div>
-        """
+        <div class="main-content">
+            <div id="resumen-ejecutivo" style="counter-reset: page 32;">
+                <h1>Resumen Ejecutivo</h1>
+                {markdown.markdown(gem_summary_sp, extensions=["tables"])}
+            </div>
+            <div class="page-break"></div>
+            
+            <div id="tendencias-temporales">
+                <h1>Tendencias Temporales</h1>
+                {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
+            </div>
+            <div class="page-break"></div>
+            """
     
     if not one_keyword:
         html_content += f"""
@@ -3589,7 +3590,7 @@ def report_pdf():
                 font-size: 8pt;
             }}
             @bottom-right {{ 
-                content: counter(page); 
+                content: "Página " counter(page) ""; 
                 font-size: 8pt;
             }}
             @bottom-left {{ 
@@ -3608,85 +3609,12 @@ def report_pdf():
             margin: 0;
             padding: 0;
             background-color: #ffffff;
-            counter-reset: page;
-            width: 100%;
-        }}
-        
-        /* Title page */
-        .title-page {{
-            text-align: center;
-            margin-top: 5cm;
-            margin-bottom: 5cm;
-        }}
-
-        .title-page h1 {{
-            font-size: 18pt;
-            margin-bottom: 1cm;
-        }}
-
-        .title-page .subtitle {{
-            font-size: 14pt;
-            margin-bottom: 2cm;
-        }}
-
-        .title-page .authors {{
-            font-size: 12pt;
-            margin-bottom: 1cm;
-        }}
-
-        .title-page .date {{
-            font-size: 12pt;
-            margin-bottom: 1cm;
-        }}
-
-        /* Content sections */
-        .toc, #resumen-ejecutivo, #tendencias-temporales,
-        #analisis-cruzado-de-palabras-clave, #analisis-especifico-de-la-industria,
-        #analisis-arima, #analisis-estacional, #analisis-de-fourier,
-        #conclusiones, #graficos, #datos {{
-            padding: 0;
-            margin: 0;
             width: 100%;
         }}
 
-        /* Table of contents */
-        .toc {{
-            margin: 2cm 0;
-        }}
-
-        .toc h2 {{
-            text-align: center;
-            font-size: 14pt;
-            margin-bottom: 1cm;
-        }}
-
-        /* Headings */
-        h1, h2, h3, h4, h5, h6 {{
-            font-family: "Times New Roman", Times, serif;
-            font-weight: bold;
-            margin-top: 1em;
-            margin-bottom: 0.5em;
-        }}
-
-        h1 {{
-            font-size: 16pt;
-            text-align: center;
-            margin-top: 2em;
-        }}
-
-        h2 {{
-            font-size: 14pt;
-        }}
-
-        h3 {{
-            font-size: 12pt;
-        }}
-
-        /* Paragraphs */
-        p {{
-            text-align: justify;
-            margin-bottom: 1em;
-            width: 100%;
+        /* Page numbering */
+        @page :first {{
+            counter-reset: page 33;  /* Start at 33 */
         }}
 
         /* Page breaks */
@@ -3695,6 +3623,22 @@ def report_pdf():
             counter-increment: page;
             height: 0;
             display: block;
+        }}
+
+        /* Title page */
+        .title-page {{
+            counter-increment: none;
+        }}
+
+        /* Table of contents */
+        .toc {{
+            counter-reset: page 5;  /* Set to 6 (5 + 1) */
+            counter-increment: none;
+        }}
+
+        /* Main content */
+        #resumen-ejecutivo {{
+            counter-reset: page 32;  /* Start at 33 (32 + 1) */
         }}
 
         /* Tables */
