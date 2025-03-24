@@ -3264,6 +3264,7 @@ def report_pdf():
             /* Set TOC page number */
             .toc {{
                 counter-reset: page 5;  /* Set to 6 (5 + 1) */
+                counter-increment: page 0;  /* Ensure it stays at 6 */
             }}
 
             /* Tables */
@@ -4153,17 +4154,23 @@ def generate_pdf_toc(input_pdf_path, output_pdf_path):
         if not final_headings:
             print("Warning: No headings found in the document. Creating default TOC entries.")
             final_headings = [
-                (1, "Resumen Ejecutivo", 2),
-                (1, "Tendencias Temporales", 5),
-                (1, "Análisis Cruzado", 10),
-                (1, "Análisis ARIMA", 15),
-                (1, "Análisis Estacional", 20),
-                (1, "Análisis de Fourier", 25),
-                (1, "Conclusiones", 30),
-                (1, "Gráficos", 35),
-                (1, "Datos", 40)
+                (1, "Resumen Ejecutivo", 33),  # Start at page 33
+                (1, "Tendencias Temporales", 35),
+                (1, "Análisis Cruzado", 40),
+                (1, "Análisis ARIMA", 45),
+                (1, "Análisis Estacional", 50),
+                (1, "Análisis de Fourier", 55),
+                (1, "Conclusiones", 60),
+                (1, "Gráficos", 65),
+                (1, "Datos", 70)
             ]
-        
+        else:
+            # Adjust all page numbers to start at 33
+            adjusted_headings = []
+            for level, title, page_num in final_headings:
+                adjusted_headings.append((level, title, page_num + 32))  # Add 32 to start at 33
+            final_headings = adjusted_headings
+
         # Create a TOC page with text in left column and page numbers in right column
         from reportlab.lib.pagesizes import letter
         from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
