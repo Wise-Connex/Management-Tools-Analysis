@@ -2030,7 +2030,7 @@ A continuacion se presentan las conclusiones de los analisis anteriores realizad
 {analisis_arima_ai}
 ## Analisis de Estacionalidad:
 * Conclusiones:
-{analisis_estacionalidad_ai}
+{analisis_estacional_ai}
 ****** FIN DE LOS ANALISIS ANTERIORES ******
 
 Esquema Propuesto de salida
