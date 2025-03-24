@@ -2692,87 +2692,95 @@ def ai_analysis():
     #display(Markdown(gem_industry_specific_sp))
     print(gem_industry_specific_sp)
 
-    n+=1
-    if top_choice == 1:
-      p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima, csv_means_trends=csv_means_trends, \
-                                        analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific)
-      print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
-    else:
-      # Optimize ARIMA results if they're too large
-      if len(csv_arima) > 50000:
-          print(f"\x1b[33mWarning: ARIMA results are large ({len(csv_arima)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
-          csv_lines = csv_arima.split('\n')
-          header = csv_lines[0]
-          data_lines = csv_lines[1:]
-          subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
-          truncated_arima = header + '\n' + '\n'.join(data_lines[:subset_size])
-          csv_arima_for_prompt = truncated_arima
-      else:
-          csv_arima_for_prompt = csv_arima
-          
-      p_4 = arima_analysis_prompt_2.format(selected_sources=sel_sources, selected_keyword=actual_menu, arima_results=csv_arima_for_prompt)        
-      print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
+    if skip_arima[0]==False:
+        n+=1
+        if top_choice == 1:
+            p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima, csv_means_trends=csv_means_trends, \
+                                                analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific)
+            print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
+        else:
+            # Optimize ARIMA results if they're too large
+            if len(csv_arima) > 50000:
+                print(f"\x1b[33mWarning: ARIMA results are large ({len(csv_arima)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+                csv_lines = csv_arima.split('\n')
+                header = csv_lines[0]
+                data_lines = csv_lines[1:]
+                subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+                truncated_arima = header + '\n' + '\n'.join(data_lines[:subset_size])
+                csv_arima_for_prompt = truncated_arima
+            else:
+                csv_arima_for_prompt = csv_arima
+                
+            p_4 = arima_analysis_prompt_2.format(selected_sources=sel_sources, selected_keyword=actual_menu, arima_results=csv_arima_for_prompt)        
+            print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
 
-    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_arima=gemini_prompt(f_system_prompt,p_4)
-    
-    # Only proceed with translation if we got a valid response
-    if not gem_arima.startswith("[API"):
-        prompt_spanish=f'{p_sp} {gem_arima}'
-        print("Traduciendo respuesta...")
-        gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-    else:
-        # If there was an API error, don't try to translate the error message
-        gem_arima_sp = f"Error en el análisis: {gem_arima}"
+        print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
+        gem_arima=gemini_prompt(f_system_prompt,p_4)
         
-    #display(Markdown(gem_arima_sp))
-    print(gem_arima_sp)
+        # Only proceed with translation if we got a valid response
+        if not gem_arima.startswith("[API"):
+            prompt_spanish=f'{p_sp} {gem_arima}'
+            print("Traduciendo respuesta...")
+            gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+        else:
+            # If there was an API error, don't try to translate the error message
+            gem_arima_sp = f"Error en el análisis: {gem_arima}"
+            
+        #display(Markdown(gem_arima_sp))
+        print(gem_arima_sp)
+
+    if skip_seasonal[0]==False:
+        n+=1
+        if top_choice == 1:
+            if skip_arima[0]==True:
+                gem_arima=""
+            p_5 = seasonal_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_seasonal=csv_seasonal, \
+                                                    analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
+                                                    analisis_arima_ai=gem_arima)
+            print(f'\n\n\n{n}. Interpretando patrones estacionales...')
+        else:
+        # Optimize seasonal data if it's too large
+            if len(csv_seasonal) > 50000:
+                print(f"\x1b[33mWarning: Seasonal analysis data is large ({len(csv_seasonal)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+                csv_lines = csv_seasonal.split('\n')
+                header = csv_lines[0]
+                data_lines = csv_lines[1:]
+                subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+                truncated_seasonal = header + '\n' + '\n'.join(data_lines[:subset_size])
+                csv_seasonal_for_prompt = truncated_seasonal
+            else:
+                csv_seasonal_for_prompt = csv_seasonal
+                
+            # Reuse the optimized correlation matrix from earlier
+            if 'csv_corr_for_prompt' not in locals():
+                csv_corr_for_prompt = csv_correlation
+                
+            p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, \
+                                                    csv_seasonal=csv_seasonal_for_prompt, \
+                                                    csv_correlation=csv_corr_for_prompt)        
+            print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
+
+            print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
+            gem_seasonal=gemini_prompt(f_system_prompt,p_5)
+            
+            # Only proceed with translation if we got a valid response
+            if not gem_seasonal.startswith("[API"):
+                prompt_spanish=f'{p_sp} {gem_seasonal}'
+                print("Traduciendo respuesta...")
+                gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+            else:
+                # If there was an API error, don't try to translate the error message
+                gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
+            
+            #display(Markdown(gem_seasonal_sp))
+            print(gem_seasonal_sp)
 
     n+=1
     if top_choice == 1:
-      p_5 = seasonal_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_seasonal=csv_seasonal, \
-                                               analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
-                                            analisis_arima_ai=gem_arima)
-      print(f'\n\n\n{n}. Interpretando patrones estacionales...')
-    else:
-      # Optimize seasonal data if it's too large
-      if len(csv_seasonal) > 50000:
-          print(f"\x1b[33mWarning: Seasonal analysis data is large ({len(csv_seasonal)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
-          csv_lines = csv_seasonal.split('\n')
-          header = csv_lines[0]
-          data_lines = csv_lines[1:]
-          subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
-          truncated_seasonal = header + '\n' + '\n'.join(data_lines[:subset_size])
-          csv_seasonal_for_prompt = truncated_seasonal
-      else:
-          csv_seasonal_for_prompt = csv_seasonal
-          
-      # Reuse the optimized correlation matrix from earlier
-      if 'csv_corr_for_prompt' not in locals():
-          csv_corr_for_prompt = csv_correlation
-          
-      p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, \
-                                            csv_seasonal=csv_seasonal_for_prompt, \
-                                            csv_correlation=csv_corr_for_prompt)        
-      print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
-
-    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_seasonal=gemini_prompt(f_system_prompt,p_5)
-    
-    # Only proceed with translation if we got a valid response
-    if not gem_seasonal.startswith("[API"):
-        prompt_spanish=f'{p_sp} {gem_seasonal}'
-        print("Traduciendo respuesta...")
-        gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-    else:
-        # If there was an API error, don't try to translate the error message
-        gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
-        
-    #display(Markdown(gem_seasonal_sp))
-    print(gem_seasonal_sp)
-
-    n+=1
-    if top_choice == 1:
+      if skip_arima[0]==True:
+          gem_arima=""
+      if skip_seasonal[0]==True:
+          gem_seasonal=""
       p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier, \
                                     analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
                                     analisis_arima_ai=gem_arima, analisis_estacional_ai=gem_seasonal)
@@ -3484,8 +3492,8 @@ def report_pdf():
         """
     
     html_content += f"""
-        <div id="analisis-especifico-de-la-industria">
-            <h1>Análisis Específico de la Industria</h1>
+        <div id="tendencias-generales-y-contextuales">
+            <h1>Tendencias Generales y Contextuales</h1>
             {markdown.markdown(gem_industry_specific_sp, extensions=["tables"])}
         </div>
         <div class="page-break"></div>
@@ -3511,6 +3519,13 @@ def report_pdf():
         <div id="conclusiones">
             <h1>Conclusiones</h1>
             {markdown.markdown(gem_conclusions_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <!-- Anexos Page -->
+        <div class="title-page">
+            <h1>ANEXOS</h1>
+            <div class="subtitle">* Gráficos *</br>* Datos *</div>
         </div>
         <div class="page-break"></div>
         
