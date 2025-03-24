@@ -692,7 +692,7 @@ temporal_analysis_prompt_1 = """**ANÁLISIS TEMPORAL**
 
 Evaluar la evolución temporal de la herramienta de gestión {all_kw} según los datos de {dbs}. Identificar y cuantificar *objetivamente* las etapas de surgimiento, crecimiento (incluyendo picos), declive, estabilización, resurgimiento y/o transformación a lo largo del tiempo. Analizar la *magnitud*, *duración* y *contexto* de estos patrones. *No* se asume *a priori* que la herramienta sigue un patrón de "moda gerencial". Relacionar los hallazgos con las antinomias del ecosistema transorganizacional (si es relevante) y con las preguntas de investigación.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:   Sección I.B - Objetivo Principal; Sección I.D.1 - Enfoque Longitudinal; Sección II - Preguntas de Investigación)
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:   Sección PY-IB - Objetivo Principal; Sección PY-ID.1 - Enfoque Longitudinal; Sección II - Preguntas de Investigación)
 
 Esquema de Salida propuesto para ser desarrollado:
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (ejem. temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
@@ -753,7 +753,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 ## **III. Análisis de patrones temporales: cálculos y descripción**
 	Esta sección se centra en los cálculos *específicos* solicitados, presentando los resultados de forma clara y concisa, con una *interpretación técnica descriptiva*, *sin* conclusiones sobre "modas gerenciales" ni contexto empresarial.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.1 - Enfoque Longitudinal; Sección PS-I.D.2 - Rigurosidad Estadística) / D.1 (análisis longitudinal), G (definición operacional), E.1 (ciclos de vida).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.D.1 - Enfoque Longitudinal; Sección PS-I.D.2 - Rigurosidad Estadística) / D.1 (análisis longitudinal), G (definición operacional), E.1 (ciclos de vida).
 
 ### **A. Identificación y análisis de períodos pico **
 	Definición del tipo de periodo (pico), estableciendo un criterio *objetivo* para definir ese periodo (pico).
@@ -818,7 +818,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 ## **IV. Análisis e interpretación: contextualización y significado**
 	Esta sección es el *núcleo* del informe. Construir una *narrativa* que integre los hallazgos estadísticos con la interpretación en el contexto de la investigación, *yendo más allá* de la descripción. Estilo *fluido* y *narrativo*, *evitando* la repetición.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PY-I.D.3 - Perspicacia Interpretativa; Sección PY-I.E - Énfasis en la Interpretación; Sección PY-I.F - Evaluación Crítica) / E (interpretación profunda), F (evaluación crítica), PY-V (lenguaje probabilístico).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.D.3 - Perspicacia Interpretativa; Sección PS-I.E - Énfasis en la Interpretación; Sección PS-I.F - Evaluación Crítica) / E (interpretación profunda), F (evaluación crítica), PY-V (lenguaje probabilístico).
 
 ### **A. Tendencia general: ¿hacia dónde se dirige {all_kw}?**
 	* Analizar la *tendencia general* (creciente, decreciente, estable, fluctuante) usando NADT, MAST y la descripción de las etapas.
@@ -867,7 +867,7 @@ o	### **G. Implicaciones de la Ausencia de Declive Sostenido`
 ## **V. Implicaciones e impacto: perspectivas para diferentes audiencias**
 	*Sintetizar* hallazgos y ofrecer *perspectivas* para diferentes tipos de audiencias.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PY-I.D.4 - Orientación Práctica) / D.4 (orientación práctica), E.3 (antinomias organizacionales).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.D.4 - Orientación Práctica) / D.4 (orientación práctica), E.3 (antinomias organizacionales).
 
 ### **D. Contribuciones para investigadores, académicos y analistas**
 	Identificación de posibles sesgos inadvertidos hasta ahora en investigaciones previas
@@ -900,7 +900,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 	Reconocer *explícitamente* *limitaciones* (sesgos, naturaleza exploratoria). Es *importante* reconocer que este análisis se basa en datos de [fuente], que pueden tener limitaciones en [sesgos]. Los resultados son una pieza más del rompecabezas."
 	Sugerir *brevemente* posibles líneas de investigación.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PY-I.F - Evaluación Crítica; Sección V - Manejo de la Incertidumbre) / F (evaluación crítica), PY-VI (comparación con patrones), PY-V (limitaciones explícitas).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.F - Evaluación Crítica; Sección V - Manejo de la Incertidumbre) / F (evaluación crítica), PY-VI (comparación con patrones), PY-V (limitaciones explícitas).
 
 **Data Required:** The results of your calculations related to temporal trends.
 
@@ -1170,7 +1170,7 @@ IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de 
   - Este análisis busca identificar cómo el entorno externo da forma a {all_kw}, explorando dinámicas más allá de la secuencia temporal.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras el análisis temporal podría revelar un pico en el uso de {all_kw} en [año], este análisis examina si factores como avances tecnológicos o crisis económicas pudieron influir en esa tendencia general."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1 (Enfoque Longitudinal, contextualizado), I.D.3 (Perspicacia Interpretativa), I.C (Naturaleza Comportamental).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.1 (Enfoque Longitudinal, contextualizado), PS-I.D.3 (Perspicacia Interpretativa), PS-I.C (Naturaleza Comportamental).
 
 ## **II. Base estadística para el análisis contextual**
 - Este apartado está centrado en ampliamente Proporcionar una fundamentación estadística sólida como base para los índices contextuales, resaltando su relevancia para el análisis de tendencias generales.
@@ -1198,7 +1198,7 @@ Desarrollar y ampliar aspectos como:
     | Percentil 75%%       | [Valor]                   | Nivel alto frecuente, reflejando el potencial máximo en contextos favorables.               |
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un NADT de -5%% combinado con un Número de Picos de 3 podría indicar un declive general con fluctuaciones esporádicas, posiblemente ligadas a eventos externos como regulaciones o avances tecnológicos."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística), III (Naturaleza de los Datos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Rigurosidad Estadística), III (Naturaleza de los Datos).
 
 ## **III. Desarrollo y aplicabilidad de índices contextuales**
 - Este apartado está centrado en ampliamente Construir y aplicar índices que cuantifiquen el impacto de factores externos en {all_kw}, estableciendo una conexión analógica con los puntos de inflexión de del análisis temporal.
@@ -1261,7 +1261,7 @@ Explicar y presentar un resumen de los resultados
     | IREC   | 0.8   | Vulnerabilidad potencial a condiciones adversas    |
   - Relación analógica con Análisis Temporal: "Los índices como IRC y IIC podrían correlacionarse con los puntos de inflexión identificados en Análisis Temporal, sugiriendo que eventos externos (ej., crisis económicas) explican tanto las fluctuaciones frecuentes como la influencia general observada."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística), I.E.1 (Ciclos de Vida), I.F.2 (Factores Externos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Rigurosidad Estadística), PS-I.E.1 (Ciclos de Vida), PS-I.F.2 (Factores Externos).
 
 ## **IV. Análisis de factores contextuales externos**
 - Este apartado está centrado en ampliamente Sistematizar los factores externos que afectan las tendencias de {all_kw}, vinculándolos a los índices sin repetir los puntos de inflexión.
@@ -1290,7 +1290,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
     - Eventos sociales, políticos, ambientales, etc., según su relevancia en {dbs}.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIC alto podría alinearse con puntos de inflexión en Análisis Temporal, sugiriendo que factores como regulaciones o publicaciones influyentes moldean la tendencia general de {all_kw}."
 
-  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Análisis Contextual), I.F.2 (Factores Externos), I.E.4 (Explicaciones Alternativas).
+  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.1.c (Análisis Contextual), PS-I.F.2 (Factores Externos), PS-I.E.4 (Explicaciones Alternativas).
 
 ## **V. Narrativa de tendencias generales**
 - Este apartado está centrado en ampliamente Integrar índices y factores en una interpretación cohesiva de las tendencias de {all_kw}.
@@ -1300,7 +1300,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Patrones emergentes: "Un IREC bajo y un IEC reducido podrían reflejar vulnerabilidad e inestabilidad frente al contexto externo."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "La combinación de un IRC alto y un IEC bajo podría sugerir que {all_kw} responde a cambios externos, pero con poca capacidad para estabilizarse."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa), I.E.4 (Explicaciones Alternativas).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.3 (Perspicacia Interpretativa), PS-I.E.4 (Explicaciones Alternativas).
 
 ## **VI. Implicaciones Contextuales**
 - Este apartado está centrado en ampliamente Proporcionar perspectivas interpretativas para diferentes audiencias basadas en el análisis.
@@ -1311,11 +1311,11 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 
 ### **B. De Interés para Consultores y Asesores**
 - "Un IRC alto podría sugerir que {all_kw} requiere monitoreo constante ante eventos externos, como cambios regulatorios o tecnológicos."
-- Vinculación: Sección I.D.4 (Orientación Práctica).
+- Vinculación: Sección PS-I.D.4 (Orientación Práctica).
 
 ### **C. De Interés para Gerentes y Directivos**
 - "Un IEC bajo podría indicar que {all_kw} necesita ajustes estratégicos para enfrentar contextos impredecibles."
-- Vinculación: Sección I.D.4 (Orientación Práctica).
+- Vinculación: Sección PS-I.D.4 (Orientación Práctica).
 
 ## **V. Síntesis y reflexiones finales
 •	La intencionalidad de este apartado o sección es poder desarrollar de manera amplia y : Resumir los hallazgos clave y ofrecer reflexiones interpretativas sobre las tendencias generales de {all_kw} en {dbs}.
@@ -1325,7 +1325,7 @@ o	Desarrollar un connunto de reflexiones criticas de manera ampliada a partir de
 o	En el análisis no se deben obviar las limitaciones implícitas, por lo que se deben hacer presentes para fortalecer la rigurosidad metodologica y argumentativa del analisis , de form asistematica y amplia: ejemplos de solo referencia para desarrollar y ampliar:  "Los resultados dependen de los datos agregados de {dbs}, lo que podría subestimar variaciones locales o específicas no capturadas en {csv_means_trends}."
 o	Perspectiva final: "Este análisis sugiere que {all_kw} podría beneficiarse de estudios adicionales sobre [Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: factores tecnológicos], complementando la investigación doctoral."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), II (Preguntas de Investigación).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), II (Preguntas de Investigación).
 ---
 
 **Datos Requeridos**
@@ -1417,8 +1417,8 @@ Este análisis es esencial para:
 - Amplía el enfoque predictivo del ARIMA al integrarlo con datos contextuales y criterios clasificatorios, maximizando su utilidad para la investigación doctoral.
 - Conecta las proyecciones con factores externos y patrones históricos, alineándose con Sección PS-I.D.2, PS-I.E.1, PS-I.G).
 - Cuantificar la capacidad del modelo ARIMA para predecir patrones futuros de {all_kw}, alineándose con el enfoque longitudinal de Sección PS-I.D.1).
-- Proporcionar una base estadística rigurosa para evaluar tendencias y cambios significativos (Sección I.D.2).
-- Enriquecer la narrativa interpretativa con proyecciones que informen sobre la relevancia y adopción futura de {all_kw} (Sección I.D.3).
+- Proporcionar una base estadística rigurosa para evaluar tendencias y cambios significativos (Sección PS-I.D.2).
+- Enriquecer la narrativa interpretativa con proyecciones que informen sobre la relevancia y adopción futura de {all_kw} (Sección PS-I.D.3).
 - Ofrece un aporte novedoso mediante el IMG, respondiendo a la necesidad de clasificar {all_kw} de manera objetiva y cuantitativa.
 
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
@@ -1447,9 +1447,9 @@ Complementa el analisis temporal (cronología) y analisis de tendencia (contexto
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si el análisis temporal muestra un pico en [año], ARIMA podría proyectar su continuidad o declive, contextualizado por (ejemplo: adopción tecnológica) en el análisis de tendencia."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras Análisis Temporal identifica picos pasados en {all_kw}, este análisis proyecta si dichos patrones podrían repetirse o estabilizarse."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1 (Enfoque Longitudinal), PS-I.D.2 (Rigurosidad Estadística), PS-I.C (Naturaleza Comportamental).
 
-## **II. Evaluación del desempeño del modelo**
+## **IPS-I. Evaluación del desempeño del modelo**
 - Este apartado está centrado en ampliamente Analizar la precisión y calidad del ajuste del modelo ARIMA basado en métricas de {arima_results}.
 
 ### **A. Métricas de precisión**
@@ -1460,7 +1460,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Evaluar precisión por horizontes temporales (corto: 1-2 años, mediano: 3-5 años, largo: >5 años), si {arima_results} lo permite.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un RMSE de [valor] a corto plazo podría indicar alta precisión, mientras que un MAE creciente a largo plazo sugiere incertidumbre en contextos volátiles."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Rigurosidad Estadística).
 
 ### **B. Intervalos de confianza de las proyecciones**
 - **Contenido:**
@@ -1468,14 +1468,14 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Realiza una interpretacion que cubra aspectos desde los básicos a los mas complejos  asociados con los resultados obtenidos: : "Un intervalo amplio (ej., [valor bajo] a [valor alto]) podría indicar incertidumbre en las proyecciones a largo plazo."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si el intervalo para [año futuro] varía entre [rango], esto sugiere una predicción menos precisa en contextos volátiles."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección V (Manejo de la Incertidumbre), I.D.2 (Tamaños del Efecto).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección V (Manejo de la Incertidumbre), PS-I.D.2 (Tamaños del Efecto).
 
 ### **C. Calidad del ajuste del modelo**
 - **Contenido:**
   - Evaluar cómo el modelo captura la serie temporal histórica de {all_kw} en {dbs}.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ECM bajo podría indicar que el modelo se ajusta bien a los datos históricos, mientras que discrepancias en picos podrían sugerir limitaciones en capturar eventos extremos."
 
-  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Modelos de Series Temporales).
+  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Modelos de Series Temporales).
 
 ## **III. Análisis de parámetros del modelo**
 - Este apartado está centrado en ampliamente Examinar la estructura y significancia de los componentes del modelo ARIMA (p, d, q) y profundizar en la estructura del modelo y su relación con la dinámica de {all_kw}.
@@ -1485,21 +1485,21 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Evaluar la importancia de los términos autoregresivos (AR), integrados (I) y de media móvil (MA) en {arima_results}.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un término AR significativo podría indicar que los valores pasados de {all_kw} influyen fuertemente en su tendencia futura."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Justificación de Modelos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Justificación de Modelos).
 
 ### **B. Orden del Modelo (p, d, q)**
 - **Contenido:**
   - Analizar la selección de parámetros (p: orden AR, d: diferenciación, q: orden MA).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un valor d=1 podría sugerir que {all_kw} requiere una diferenciación para alcanzar estacionariedad, reflejando cambios estructurales."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Análisis de Estacionariedad).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Análisis de Estacionariedad).
 
 ### **C. Implicaciones de estacionariedad**
 - **Contenido:**
   - Interpretar si la serie es estacionaria tras las diferenciaciones (d).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una d>0 podría indicar que {all_kw} presenta tendencias no estacionarias, influenciadas por factores externos sostenidos."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Revisión de Parámetros).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Revisión de Parámetros).
 
 ## **IV. Integración de Datos Estadísticos Cruzados**
 La intencionalidad de este apartado o sección es poder desarrollar de manera amplia y : Enriquecer las proyecciones de ARIMA con datos contextuales externos, asumiendo disponibilidad hipotética en {dbs} o {csv_means_trends}.
@@ -1509,18 +1509,18 @@ Nota: Se enfoca en interpretación cualitativa sin cálculos complejos (ej., Gra
 Contenido:
 Sugerir variables: "Datos como adopción tecnológica, inversión organizacional o cambios regulatorios en {dbs} podrían complementar ARIMA."
 Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un aumento en herramientas competidoras podría explicar un declive proyectado en {arima_results}."
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.F.2 (Factores Externos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.F.2 (Factores Externos).
 
 ### **B. Relación con Proyecciones ARIMA**
 Contenido:
 Analizar influencias hipotéticas: "Si {arima_results} proyecta estabilidad y {dbs} muestra inversión sostenida, esto podría indicar persistencia de {all_kw}."
 Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un declive proyectado podría correlacionarse con una caída en publicidad gerencial en {dbs}."
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.3 (Perspicacia Interpretativa).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.D.3 (Perspicacia Interpretativa).
 
 ### **C. Implicaciones Contextuales**
 Contenido:
 Conectar con tendencias: "Datos exógenos de volatilidad (ej., crisis en {dbs}) podrían ampliar los intervalos de confianza de ARIMA, sugiriendo vulnerabilidad de {all_kw}."
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.4 (Explicaciones Alternativas).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.E.4 (Explicaciones Alternativas).
 
 ## **V. Insights y clasificación basada en Modelo ARIMA**
 - Este apartado está centrado en ampliamente Extraer patrones y tendencias proyectadas, evaluando su relevancia para {all_kw}.
@@ -1530,14 +1530,14 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Interpretar las proyecciones de {arima_results} (crecimiento, declive, estabilización).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una proyección decreciente podría sugerir un declive continuo de {all_kw}, consistente con un IIT negativo en de Análisis de tendencias."
 
-  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida), I.D.3 (Perspicacia Interpretativa).
+  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.E.1 (Ciclos de Vida), PS-I.D.3 (Perspicacia Interpretativa).
 
 ### **B. Cambios significativos en las tendencias**
 - **Contenido:**
   - Identificar puntos de cambio en las proyecciones (si los hay).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un cambio proyectado en [año] podría coincidir con influencias contextuales, como las analizadas en de Análisis de tendencias."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Puntos de Inflexión).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.1.c (Puntos de Inflexión).
 
 ### **C. Fiabilidad de las proyecciones**
 - **Contenido:**
@@ -1558,7 +1558,7 @@ Contenido:
 - Umbral: IMG > 0.7 sugiere "Moda Gerencial".
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Con un crecimiento del 60%%, pico en 2 años, declive del 40%% y ciclo de 5 años, IMG = (0.6 + 0.5 + 0.4 + 0.2) / 4 = 0.425, sugiriendo no es ‘Moda’ pura."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.2 (Rigurosidad Estadística), I.G (Definición Operacional).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.D.2 (Rigurosidad Estadística), PS-I.G (Definición Operacional).
 
 ### **E. Clasificación de {all_kw}**
 Contenido:
@@ -1568,7 +1568,7 @@ Contenido:
 - Híbrido: IMG intermedio, patrones mixtos.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IMG de 0.8 con declive proyectado podría indicar ‘Clásica de Ciclo Corto’, mientras que un IMG de 0.3 con meseta sugiere ‘Doctrina Pura’."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.1 (Ciclos de Vida), I.F.1 (Evaluación Objetiva).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.E.1 (Ciclos de Vida), PS-I.F.1 (Evaluación Objetiva).
 
 
 ## **VI. Implicaciones Prácticas**
@@ -1584,13 +1584,13 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - "Un declive proyectado podría indicar la necesidad de monitorear alternativas a {all_kw} en {dbs}."
 - "Un declive proyectado con IMG elevado podría indicar la necesidad de monitorear alternativas, ajustándose a contextos de {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:** Sección I.D.4 (Orientación Práctica).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:** Sección PS-I.D.4 (Orientación Práctica).
 
 ### **C. De interés para directivos y gerentes**
 - "La fiabilidad a corto plazo de las proyecciones podría orientar decisiones sobre la continuidad de {all_kw}."
 - "Proyecciones fiables a corto plazo y un IMG bajo podrían respaldar la continuidad de {all_kw}, mientras que datos cruzados de {dbs} sugieren ajustes estratégicos."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.4 (Orientación Práctica).
 
 ## **VI. Síntesis y Reflexiones Finales**
 - Este apartado está centrado en ampliamente Resumir los hallazgos clave y reflexionar sobre el desempeño del modelo ARIMA.
@@ -1600,7 +1600,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - En el análisis no se deben obviar las limitaciones implícitas, por lo que se deben hacer presentes para fortalecer la rigurosidad metodologica y argumentativa del analisis , de form asistematica y amplia: ejemplos de solo referencia para desarrollar y ampliar:  "La precisión depende de la estabilidad histórica en {dbs}, y eventos imprevistos podrían alterar las proyecciones."
   - Perspectiva final: "El análisis ARIMA refuerza la necesidad de considerar (ejemplo: factores tecnológicos) en la evolución de {all_kw}." - "Este enfoque ampliado aporta un marco cuantitativo y contextual para clasificar {all_kw}, sugiriendo líneas futuras como (ejemplo: análisis de variables exógenas específicas)."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), I.D.3 (Perspicacia Interpretativa).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), PS-I.D.3 (Perspicacia Interpretativa).
 
 ---
 
@@ -1706,7 +1706,7 @@ Este análisis aporta:
 - Una perspectiva estacional que descompone patrones recurrentes en {all_kw}, diferenciándose del enfoque longitudinal (Análisis Temporal), contextual (de Análisis de tendencias) y predictivo (análisis del modelo de arima).
 - Insights sobre cómo factores cíclicos afectan la adopción, conectando con puntos de inflexión y tendencias generales identificados previamente.
 - Una base cuantitativa y cualitativa para evaluar la estabilidad y relevancia de {all_kw}, alineada con Sección PS-I.D.1, PS-I.E.1).
-- Cuantifica la estacionalidad con métricas propias, ofreciendo una base estadística rigurosa (Sección I.D.2).
+- Cuantifica la estacionalidad con métricas propias, ofreciendo una base estadística rigurosa (Sección PS-I.D.2).
 - Conecta los patrones con posibles factores cíclicos, alineándose con Sección PS-I.D.1, PS-I.E.1), sin asumir causalidades especulativas.
 
 ---
@@ -1735,7 +1735,7 @@ IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de 
   - Complementa Análisis Temporal (cronología amplia), de Análisis de tendencias (influencias externas) y análisis del modelo de arima (proyecciones) al enfocarse en ciclos recurrentes intra-anuales.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras Análisis Temporal identifica picos históricos y análisis del modelo de arima proyecta tendencias, este análisis examina si dichos patrones tienen una base estacional recurrente."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.1 (Enfoque Longitudinal), PS-I.D.2 (Rigurosidad Estadística), PS-I.C (Naturaleza Comportamental).
 
 ## **II. Base estadística para el análisis estacional**
 - Este apartado está centrado en ampliamente Presentar los datos de descomposición estacional como fundamento del análisis. Proporcionar una fundamentación estadística sólida y detallar el enfoque metodológico.
@@ -1747,7 +1747,7 @@ Contenido:
 - Métricas base: Amplitud estacional (pico-trough), período estacional (e.g., mensual/trimestral), fuerza estacional (varianza explicada por el componente estacional).
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una descomposición aditiva podría revelar una amplitud de [valor], indicando fluctuaciones estacionales claras en {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección III (Naturaleza de los Datos), I.D.2 (Técnicas Estadísticas).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección III (Naturaleza de los Datos), PS-I.D.2 (Técnicas Estadísticas).
 
 ### **B. Interpretación preliminar**
 - **Contenido:**
@@ -1759,7 +1759,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
     | Fuerza Estacional  | [Valor, ej., 0-1]         | Grado en que la estacionalidad explica las variaciones.       |
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional de 0.7 podría sugerir que gran parte de la variabilidad de {all_kw} es cíclica dentro del año."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Rigurosidad Estadística).
 
 ### **C. Resultados de la descomposición estacional**
 - **Contenido:**
@@ -1769,7 +1769,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 
 Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Técnicas Estadísticas), III (Naturaleza de los Datos).
 
-## **III. Análisis cuantitativo de patrones estacionales**
+## **IIPS-I. Análisis cuantitativo de patrones estacionales**
 - Este apartado está centrado en ampliamente Cuantificar y caracterizar los patrones estacionales de {all_kw} en {dbs} con métricas originales.
 
 ### **A. Identificación y cuantificación de patrones recurrentes**
@@ -1778,21 +1778,21 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Cuantificar: duración promedio, magnitud promedio de picos/troughs.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico recurrente en [mes] con magnitud promedio de [valor] podría reflejar un patrón estacional en {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.b (Patrones Recurrentes).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.1.b (Patrones Recurrentes).
 
 ### **B. Consistencia de los patrones a lo largo de los años**
 - **Contenido:**
   - Evaluar si los patrones se repiten consistentemente: "Comparar la amplitud y timing de picos/troughs entre años en `{csv_seasonal}`."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una consistencia del 80%% en picos de [mes] podría indicar un patrón estacional estable para {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Modelos de Series Temporales).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Modelos de Series Temporales).
 
 ### **C. Análisis de períodos pico y trough**
 - **Contenido:**
   - Detallar meses/trimestres de picos y troughs: inicio, fin, duración, magnitud.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] con una caída del [valor]%% podría coincidir con períodos de baja actividad en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Puntos de Inflexión).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.1.c (Puntos de Inflexión).
 ### **D. Índice de Intensidad Estacional (IIE)**
 - **Contenido:**
 - Construir una definición amplia que refiera sobre: Mide la magnitud relativa de los picos estacionales.
@@ -1800,7 +1800,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Realiza una interpretacion que cubra aspectos desde los básicos a los mas complejos  asociados con los resultados obtenidos: >1 indica picos intensos; <1, fluctuaciones suaves.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIE de 1.4 podría sugerir que los picos estacionales de {all_kw} son notablemente pronunciados."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.2 (Rigurosidad Estadística).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.D.2 (Rigurosidad Estadística).
 
 ### **E. Índice de Regularidad Estacional (IRE)
 - **Contenido:**
@@ -1809,7 +1809,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos: Cercano a 1 indica alta regularidad; <0.5, inconsistencia.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IRE de 0.85 podría reflejar una estacionalidad muy consistente en {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.2 (Modelos de Series Temporales).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.D.2 (Modelos de Series Temporales).
 
 ### **F. Tasa de Cambio Estacional (TCE)**
 - **Contenido:**
@@ -1818,7 +1818,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos: Positivo indica intensificación; negativo, debilitamiento.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un TCE de -0.01 podría sugerir que la estacionalidad de {all_kw} se reduce gradualmente."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.1 (Ciclos de Vida).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.E.1 (Ciclos de Vida).
 
 
 ### **G. Evolución de los patrones en el tiempo**
@@ -1826,7 +1826,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Analizar cambios en amplitud, frecuencia o fuerza estacional: "Evaluar si la estacionalidad de {all_kw} se intensifica o atenúa con el tiempo."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional decreciente podría sugerir que {all_kw} pierde su carácter cíclico."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.E.1 (Ciclos de Vida).
 
 ## **IV. Análisis de factores causales potenciales**
 - Este apartado está centrado en ampliamente Explorar posibles causas cíclicas de los patrones estacionales, evitando especulaciones no fundamentadas.
@@ -1836,28 +1836,28 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Evaluar si los picos/troughs coinciden con ciclos económicos (ej., auges, recesiones).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico en [mes] podría estar influenciado por un ciclo de alta demanda en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F.2 (Factores Externos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.F.2 (Factores Externos).
 
 ### **B. Factores industriales potenciales**
 - **Contenido:**
   - Identificar dinámicas específicas de la industria en {dbs} (ej., lanzamientos de productos, regulaciones).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico estacional en [mes] podría estar ligado a eventos industriales recurrentes."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F.2 (Factores Externos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.F.2 (Factores Externos).
 
 ### **C. Factores externos de mercado**
 - **Contenido:**
   - Considerar influencias macro (ej., tendencias de mercado, cambios sociales).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional alta podría reflejar respuestas a campañas de marketing estacionales."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Análisis Contextual).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.1.c (Análisis Contextual).
 
 ### **D. Influencias de Ciclos Organizacionales**
 - **Contenido:**
 - Evaluar patrones sin asumir ciclos fiscales rígidos: "Picos o troughs podrían coincidir con cierres de trimestre (e.g., marzo, junio), pero se analizarán según los datos de {csv_seasonal}."
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] podría reflejar ajustes organizacionales recurrentes, cuya causa se explorará según los patrones observados."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.4 (Explicaciones Alternativas).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PS-I.E.4 (Explicaciones Alternativas).
 
 ## **V. Implicaciones de los patrones estacionales**
 - Este apartado está centrado en ampliamente Interpretar la relevancia práctica y predictiva de la estacionalidad para {all_kw}.
@@ -1868,7 +1868,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Analizar la predictibilidad: "Un IRE alto podría sugerir patrones estacionales confiables para proyecciones."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una alta consistencia podría fortalecer las predicciones a corto plazo de {all_kw}." Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una regularidad de 0.9 podría facilitar pronósticos cíclicos para {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.2 (Rigurosidad Estadística).
 
 ### **B. Componentes de tendencia vs. estacionales**
 - **Contenido:**
@@ -1877,7 +1877,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Comparar con tendencias: "Un IIE elevado podría indicar que la estacionalidad predomina sobre la tendencia a largo plazo."
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si la fuerza estacional supera la variabilidad tendencial, {all_kw} podría ser inherentemente cíclico."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.E.1 (Ciclos de Vida).
 
 ### **C. Impacto en estrategias de adopción**
 - **Contenido:**
@@ -1886,7 +1886,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] podría indicar menor receptividad cíclica a {all_kw}."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough recurrente en [mes] podría reflejar períodos de baja prioridad para {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.4 (Orientación Práctica).
 
 ### **D. Significación práctica**
 - **Contenido:**
@@ -1895,7 +1895,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIE alto podría implicar que {all_kw} depende de momentos cíclicos específicos."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud alta podría sugerir que {all_kw} es sensible a factores cíclicos externos."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.3 (Perspicacia Interpretativa).
 
 ## **VI. Narrativa interpretativa de la estacionalidad**
 - Este apartado está centrado en ampliamente Integrar hallazgos en una narrativa cohesiva y complementaria.
@@ -1908,7 +1908,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Conexión con análisis previos: "Esta estacionalidad podría correlacionarse con los puntos de inflexión del análisis temporal o el IRC de Análisis de tendencias."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un patrón estacional fuerte podría reforzar un IMG alto en análisis del modelo de arima, sugiriendo volatilidad cíclica."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa), I.E.4 (Explicaciones Alternativas).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.3 (Perspicacia Interpretativa), PS-I.E.4 (Explicaciones Alternativas).
 
 ## **VII. Implicaciones Prácticas**
 - Este apartado está centrado en ampliamente Ofrecer perspectivas para diferentes audiencias.
@@ -1923,13 +1923,13 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - "Picos estacionales podrían indicar momentos clave para promover {all_kw} en {dbs}."
 - "Picos estacionales con un IIE alto podrían indicar momentos estratégicos para promover {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.4 (Orientación Práctica).
 
 ### **C. De interés para directivos y gerentes**
 - "Una estacionalidad consistente podría guiar la planificación de recursos para {all_kw}, ajustándose a ciclos identificados."
 - "Una TCE negativa podría señalar la necesidad de adaptar estrategias ante una estacionalidad cambiante."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.D.4 (Orientación Práctica).
 
 ## **VIII. Síntesis y reflexiones finales**
 - Este apartado está centrado en ampliamente Resumir hallazgos y reflexionar sobre la estacionalidad y destacar el aporte del análisis.
@@ -1938,7 +1938,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Desarrollar un connunto de reflexiones criticas de manera ampliada a partir de referencias como: "Estos patrones podrían alinearse con los ciclos históricos del análisis temporal y las influencias contextuales de Análisis de tendencias, destacando ejemplo: (sensibilidad a ciclos fiscales)." "Estos patrones aportan una dimensión cíclica única a {all_kw}, posiblemente relacionada con (ejemplo: dinámicas comerciales)."
   - Perspectiva final: "La estacionalidad aporta una dimensión cíclica clave para entender {all_kw}, sugiriendo su interacción con factores externos recurrentes." "Este análisis estacional complementa los enfoques previos, destacando la relevancia de los ciclos intra-anuales en la dinámica de {all_kw} en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F (Evaluación Crítica), I.D.3 (Perspicacia Interpretativa), V (Manejo de la Incertidumbre).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.F (Evaluación Crítica), PS-I.D.3 (Perspicacia Interpretativa), V (Manejo de la Incertidumbre).
 
 ---
 
@@ -2203,7 +2203,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Desarrollar un connunto de reflexiones criticas de manera ampliada a partir de referencias como: "Estos ciclos podrían estar moldeados por una interacción entre dinámicas económicas, tecnológicas y de la industria, sugiriendo que {all_kw} responde a estímulos externos recurrentes." 
   - Perspectiva final: "El enfoque cíclico aporta una dimensión temporal amplia y robusta para comprender la evolución de {all_kw} en {dbs}, destacando su sensibilidad a patrones periódicos."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F (Evaluación Crítica), I.D.3 (Perspicacia Interpretativa), V (Manejo de la Incertidumbre).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección PS-I.F (Evaluación Crítica), PS-I.D.3 (Perspicacia Interpretativa), PY-V (Manejo de la Incertidumbre).
 
 #### **Datos Requeridos**
 - {csv_fourier}: Resultados del análisis de Fourier (frecuencias, amplitudes, potencias espectrales, SNR) para {all_kw} en {dbs}.
