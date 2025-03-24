@@ -3135,7 +3135,7 @@ def report_pdf():
                 margin: 0; /* Remove body margin since @page handles it */
                 padding: 0;
                 background-color: #ffffff;
-                counter-reset: page;
+                counter-reset: page 32;  /* Start at 33 (32 + 1) */
                 width: 100%;
             }}
 
@@ -3156,6 +3156,7 @@ def report_pdf():
                 box-sizing: border-box;
                 left: -1.25in; /* Shift left by 1.25 inches */
                 top: -1.25in; /* Shift up by 1.25 inch */
+                counter-increment: page 0;  /* Ensure title page doesn't increment counter */
             }}
             
             /* Title positioning */
@@ -3219,6 +3220,8 @@ def report_pdf():
             /* Table of contents */
             .toc {{
                 margin: 2cm 0;
+                counter-reset: page 5;  /* Set to 6 (5 + 1) */
+                counter-increment: page 0;  /* Ensure it stays at 6 */
             }}
 
             .toc h2 {{
