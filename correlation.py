@@ -3480,7 +3480,7 @@ def report_pdf():
             {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
         </div>
         <div class="page-break"></div>
-"""
+        """
     
     if not one_keyword:
         html_content += f"""
@@ -3497,19 +3497,27 @@ def report_pdf():
             {markdown.markdown(gem_industry_specific_sp, extensions=["tables"])}
         </div>
         <div class="page-break"></div>
+        """
         
+    if skip_arima[0]==False:
+        html_content += f"""
         <div id="analisis-arima">
             <h1>Análisis ARIMA</h1>
             {markdown.markdown(gem_arima_sp, extensions=["tables"])}
         </div>
         <div class="page-break"></div>
+        """
         
+    if skip_seasonal[0]==False:
+        html_content += f"""
         <div id="analisis-estacional">
             <h1>Análisis Estacional</h1>
             {markdown.markdown(gem_seasonal_sp, extensions=["tables"])}
         </div>
         <div class="page-break"></div>
-        
+        """
+    
+    html_content += f"""            
         <div id="analisis-de-fourier">
             <h1>Análisis de Fourier</h1>
             {markdown.markdown(gem_fourier_sp, extensions=["tables"])}
