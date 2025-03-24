@@ -705,7 +705,7 @@ Contenido esperado que se debe presentar:
 	¿Cuál es la relevancia en cuanto al tipo de información que puede ofrecer?
 	Establecer el período de análisis total de los datos, y los periodos de análisis seccionados que se han establecidos para la valoración de las series temporales a corto, mediano y largo plazo dentro de un análisis longitudinal
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:   Sección I.C - Contexto de la Investigación; Sección III - Naturaleza de los Datos) / III (naturaleza de datos), D.1 (enfoque longitudinal), II (preguntas de investigación).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:   Sección PS-I.C - Contexto de la Investigación; Sección III - Naturaleza de los Datos) / PS-III (naturaleza de datos), D.1 (enfoque longitudinal), PS-II (preguntas de investigación).
 
 ### **A. Naturaleza de la fuente de datos: {dbs}**
 	Explicar cuál es el alance de la Naturaleza del tipo de información que recoge la base de datos
@@ -714,7 +714,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 	Abordar cuáles son las principales Fortalezas que ofrece el análisis de la herramienta gerencial vista desde la base de datos
 	Presentar cuales son los lineamientos fundamentales que deben tenerse presente para una adecuada interpretación.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  (Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección III - Naturaleza de los Datos, subsecciones específicas por fuente) / III (detalles específicos por fuente), V (limitaciones y sesgos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: Sección PY-III - Naturaleza de los Datos, subsecciones específicas por fuente) / PY-III (detalles específicos por fuente), PS-V (limitaciones y sesgos).
 
 ### **B. Posibles implicaciones del análisis de los datos**
 
@@ -723,17 +723,18 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 	Identificar puntos de inflexión clave, *posiblemente* relacionados con factores externos (económicos, tecnológicos, sociales).
 	Proporcionar información para la toma de decisiones sobre la adopción o abandono de la herramienta.
 	Sugerir nuevas líneas de investigación sobre los factores que influyen en la dinámica temporal.
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  (Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.1 - Enfoque Longitudinal; Sección I.D.2 - Rigurosidad Estadística)
+
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: Sección PS-I.D.1 - Enfoque Longitudinal; Sección PS-I.D.2 - Rigurosidad Estadística)
 
 ## **II. Datos en bruto y estadísticas descriptivas**
 	Presentar los datos *brutos* de la serie temporal de {all_kw} en {dbs}, *sin ninguna interpretación*.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  (D.2 (rigurosidad estadística), VII (formato y fundamentación).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  (D.2 (rigurosidad estadística), PS-VII (formato y fundamentación).
 
 ### **A. Serie temporal completa y segmentada (muestra)**
 	Se incluirá una muestra representativa (inicio, fin, puntos intermedios) y una referencia a la ubicación de los datos completos (al final del informe).
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  D.1.a (tendencias detalladas), III (estructura de datos).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  D.1.a (tendencias detalladas), PS-III (estructura de datos).
 
 ### **B. Estadísticas descriptivas**
 	Resumen *cuantitativo* de la serie temporal. Calcular y presentar *para cada segmento de datos
@@ -747,12 +748,12 @@ o	Patrón Cíclico
 o	Tendencia Sostenida
 o	Estabilidad
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  D.1.b (patrones recurrentes), V (lenguaje cauteloso).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  D.1.b (patrones recurrentes), PS-V (lenguaje cauteloso).
 
 ## **III. Análisis de patrones temporales: cálculos y descripción**
 	Esta sección se centra en los cálculos *específicos* solicitados, presentando los resultados de forma clara y concisa, con una *interpretación técnica descriptiva*, *sin* conclusiones sobre "modas gerenciales" ni contexto empresarial.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.1 - Enfoque Longitudinal; Sección I.D.2 - Rigurosidad Estadística) / D.1 (análisis longitudinal), G (definición operacional), E.1 (ciclos de vida).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.1 - Enfoque Longitudinal; Sección PS-I.D.2 - Rigurosidad Estadística) / D.1 (análisis longitudinal), G (definición operacional), E.1 (ciclos de vida).
 
 ### **A. Identificación y análisis de períodos pico **
 	Definición del tipo de periodo (pico), estableciendo un criterio *objetivo* para definir ese periodo (pico).
@@ -817,7 +818,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 ## **IV. Análisis e interpretación: contextualización y significado**
 	Esta sección es el *núcleo* del informe. Construir una *narrativa* que integre los hallazgos estadísticos con la interpretación en el contexto de la investigación, *yendo más allá* de la descripción. Estilo *fluido* y *narrativo*, *evitando* la repetición.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.3 - Perspicacia Interpretativa; Sección I.E - Énfasis en la Interpretación; Sección I.F - Evaluación Crítica) / E (interpretación profunda), F (evaluación crítica), V (lenguaje probabilístico).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PY-I.D.3 - Perspicacia Interpretativa; Sección PY-I.E - Énfasis en la Interpretación; Sección PY-I.F - Evaluación Crítica) / E (interpretación profunda), F (evaluación crítica), PY-V (lenguaje probabilístico).
 
 ### **A. Tendencia general: ¿hacia dónde se dirige {all_kw}?**
 	* Analizar la *tendencia general* (creciente, decreciente, estable, fluctuante) usando NADT, MAST y la descripción de las etapas.
@@ -854,6 +855,7 @@ o	*   Influencia de "gurús" o consultores.
 o	*   Efecto de "contagio" o imitación.
 o	*    Presiones institucionales.
 o	*   Cambios en la percepción de riesgo.
+
 Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  D.1.c (análisis contextual), F.2 (factores externos).
 
 ### **D. Subsecciones temáticas adicionales (opcional)**
@@ -865,13 +867,13 @@ o	### **G. Implicaciones de la Ausencia de Declive Sostenido`
 ## **V. Implicaciones e impacto: perspectivas para diferentes audiencias**
 	*Sintetizar* hallazgos y ofrecer *perspectivas* para diferentes tipos de audiencias.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.4 - Orientación Práctica) / D.4 (orientación práctica), E.3 (antinomias organizacionales).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PY-I.D.4 - Orientación Práctica) / D.4 (orientación práctica), E.3 (antinomias organizacionales).
 
 ### **D. Contribuciones para investigadores, académicos y analistas**
 	Identificación de posibles sesgos inadvertidos hasta ahora en investigaciones previas
 	Contribución a nuevas líneas de investigación, sugerencias para futuro sobre zonas por explorar.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  II (preguntas de investigación), F.1 (líneas futuras)
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  PY-II (preguntas de investigación), F.1 (líneas futuras)
 
 ### **D. Recomendaciones y sugerencias para asesores y consultores**
 	Consejos y recomendaciones técnicas a tener presente sobre la herramienta ({all_kw}).
@@ -880,7 +882,7 @@ o	Ámbito estratégico,
 o	Ámbito táctico
 o	Ámbito operativo.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  D.4 (hallazgos prácticos), VII (lenguaje no prescriptivo).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  D.4 (hallazgos prácticos), PY-VII (lenguaje no prescriptivo).
 
 ### **D. Consideraciones para directivos y gerentes de organizaciones**
 	Hacerlo según cada una de las tipología de las *Organizaciones:*
@@ -898,7 +900,7 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 	Reconocer *explícitamente* *limitaciones* (sesgos, naturaleza exploratoria). Es *importante* reconocer que este análisis se basa en datos de [fuente], que pueden tener limitaciones en [sesgos]. Los resultados son una pieza más del rompecabezas."
 	Sugerir *brevemente* posibles líneas de investigación.
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.F - Evaluación Crítica; Sección V - Manejo de la Incertidumbre) / F (evaluación crítica), VI (comparación con patrones), V (limitaciones explícitas).
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección PY-I.F - Evaluación Crítica; Sección V - Manejo de la Incertidumbre) / F (evaluación crítica), PY-VI (comparación con patrones), PY-V (limitaciones explícitas).
 
 **Data Required:** The results of your calculations related to temporal trends.
 
@@ -914,6 +916,29 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
     - Date: Monthly data
     - Keywords: Management tool identifiers from {all_kw}
     - Usage Metrics: Relative usage/adoption values
+
+    1. **Identify Peak Periods:** 
+    - Determine peak adoption/usage periods for each management tool
+    - Analyze the context and potential drivers of these peaks
+    - Quantify the magnitude and duration of peak periods
+
+2. **Analyze Decline Phases:**
+    - Identify significant decreases in tool usage/adoption
+    - Evaluate the rate and pattern of decline
+    - Assess potential causes of declining interest
+    - Calculate decline velocities and patterns
+
+3. **Evaluate Pattern Changes:**
+    - Detect any revival patterns after decline periods
+    - Identify tool evolution patterns (e.g., rebranding, methodology updates)
+    - Analyze adaptation patterns to changing business needs
+    - Quantify the significance of pattern changes
+
+4. **Analyze Lifecycle Patterns:**
+    - Assess the overall lifecycle stage of each tool
+    - Compare lifecycle durations across different tools
+    - Identify common patterns in tool evolution
+    - Calculate lifecycle metrics (duration, intensity, stability)
 
 2. **Contextual Data:**
 - Trends and means for tools over last 20 years: {csv_means_trends}
