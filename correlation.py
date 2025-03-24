@@ -3256,6 +3256,16 @@ def report_pdf():
                 display: block;
             }}
 
+            /* Reset page counter for main content */
+            #resumen-ejecutivo {{
+                counter-reset: page 32;  /* Start at 33 (32 + 1) */
+            }}
+
+            /* Set TOC page number */
+            .toc {{
+                counter-reset: page 5;  /* Set to 6 (5 + 1) */
+            }}
+
             /* Tables */
             table {{
                 border-collapse: collapse;
