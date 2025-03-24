@@ -2730,7 +2730,9 @@ def ai_analysis():
 
     n+=1
     if top_choice == 1:
-      p_5 = seasonal_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_seasonal=csv_seasonal)
+      p_5 = seasonal_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_seasonal=csv_seasonal, \
+                                               analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
+                                            analisis_arima_ai=gem_arima)
       print(f'\n\n\n{n}. Interpretando patrones estacionales...')
     else:
       # Optimize seasonal data if it's too large
@@ -2751,8 +2753,7 @@ def ai_analysis():
           
       p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, \
                                             csv_seasonal=csv_seasonal_for_prompt, \
-                                            csv_correlation=csv_corr_for_prompt, analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
-                                            analisis_arima_ai=gem_arima)        
+                                            csv_correlation=csv_corr_for_prompt)        
       print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
 
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
@@ -2772,7 +2773,9 @@ def ai_analysis():
 
     n+=1
     if top_choice == 1:
-      p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier)
+      p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier, \
+                                    analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
+                                    analisis_arima_ai=gem_arima, analisis_estacional_ai=gem_seasonal)
       print(f'\n\n\n{n}. Analizando patrones cíclicos...')
     else:
       # Optimize Fourier analysis data if it's too large
@@ -2804,9 +2807,7 @@ def ai_analysis():
       
       p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, \
                                       selected_sources=sel_sources, \
-                                      csv_fourier=csv_fourier_for_prompt, csv_combined_data=csv_data_for_prompt, \
-                                    analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
-                                    analisis_arima_ai=gem_arima, analisis_estacional_ai=gem_seasonal)        
+                                      csv_fourier=csv_fourier_for_prompt, csv_combined_data=csv_data_for_prompt)        
       print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
