@@ -2543,7 +2543,7 @@ def ai_analysis():
     global gem_summary_sp
     global csv_all_data
 
-    if total_years > 20:
+    if total_years < 20:
         csv_all_data = ""
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
@@ -2649,7 +2649,7 @@ def ai_analysis():
 
     n+=1
     if top_choice == 1:
-      p_3 = trend_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_means_trends=csv_means_trends, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
+      p_3 = trend_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_means_trends=csv_means_trends, analisis_temporal_ai=gem_temporal_trends)
       print(f'\n\n\n{n}. Investigando Patrones de Tendencia General...')
     else:
       # Optimize the prompt to reduce its size and complexity
@@ -2694,7 +2694,8 @@ def ai_analysis():
 
     n+=1
     if top_choice == 1:
-      p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima)
+      p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima, csv_means_trends=csv_means_trends, \
+                                        analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific)
       print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA...')
     else:
       # Optimize ARIMA results if they're too large
@@ -2748,9 +2749,10 @@ def ai_analysis():
       if 'csv_corr_for_prompt' not in locals():
           csv_corr_for_prompt = csv_correlation
           
-      p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, 
-                                            csv_seasonal=csv_seasonal_for_prompt, 
-                                            csv_correlation=csv_corr_for_prompt)        
+      p_5 = seasonal_analysis_prompt_2.format(selected_keyword=actual_menu, selected_sources=sel_sources, \
+                                            csv_seasonal=csv_seasonal_for_prompt, \
+                                            csv_correlation=csv_corr_for_prompt, analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
+                                            analisis_arima_ai=gem_arima)        
       print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
 
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
@@ -2800,10 +2802,11 @@ def ai_analysis():
           else:
               csv_data_for_prompt = csv_combined_data
       
-      p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, 
-                                      selected_sources=sel_sources, 
-                                      csv_fourier=csv_fourier_for_prompt, 
-                                      csv_combined_data=csv_data_for_prompt)        
+      p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, \
+                                      selected_sources=sel_sources, \
+                                      csv_fourier=csv_fourier_for_prompt, csv_combined_data=csv_data_for_prompt, \
+                                    analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
+                                    analisis_arima_ai=gem_arima, analisis_estacional_ai=gem_seasonal)        
       print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")

@@ -255,13 +255,13 @@ Para sistematizar la redacción, estas son las preguntas guías organizadas por 
 La reingeniería constituye un enfoque estratégico que propugna la reconstrucción fundamental de los procesos organizacionales, desafiando paradigmas establecidos con el propósito de optimizar la eficiencia operativa en su máxima expresión.
 
 ### Mecanismos de Implementación
-Se caracteriza por su vocación transformadora radical: no se limita a la modificación incremental, sino que propone una deconstrucción analítica y posterior reconfiguración sistémica, apoyándose en tecnologías de la información como catalizadores de la innovación disruptiva. Los análisis longitudinales revelan tasas de adopción que superaron el 40% anual durante sus fases iniciales de implementación (Google Trends, década de 1990), aunque su sostenibilidad se ve comprometida precipitadamente ante la ausencia de una gestión del cambio metodológicamente robusta.
+Se caracteriza por su vocación transformadora radical: no se limita a la modificación incremental, sino que propone una deconstrucción analítica y posterior reconfiguración sistémica, apoyándose en tecnologías de la información como catalizadores de la innovación disruptiva. Los análisis longitudinales revelan tasas de adopción que superaron el 40%% anual durante sus fases iniciales de implementación (Google Trends, década de 1990), aunque su sostenibilidad se ve comprometida precipitadamente ante la ausencia de una gestión del cambio metodológicamente robusta.
 
 ### Beneficios Estratégicos
-Ofrece metamorfosis organizacionales significativas—reducciones presupuestarias cercanas al 30% en períodos relativamente acotados, optimizaciones sustanciales en ciclos temporales y parámetros cualitativos—cuando se implementa con rigurosidad metodológica. Representa un instrumento de transformación estratégica para entidades dispuestas a asumir riesgos calibrados con precisión.
+Ofrece metamorfosis organizacionales significativas—reducciones presupuestarias cercanas al 30%% en períodos relativamente acotados, optimizaciones sustanciales en ciclos temporales y parámetros cualitativos—cuando se implementa con rigurosidad metodológica. Representa un instrumento de transformación estratégica para entidades dispuestas a asumir riesgos calibrados con precisión.
 
 ### Limitaciones y Obstáculos
-Su materialización confronta resistencias institucionales profundamente arraigadas, con índices de fracaso que trascienden el 50% en contextos donde la transformación cultural no recibe atención prioritaria (Hammer & Champy, 1993). La inversión inicial, por otra parte, demanda una asignación de recursos considerable, circunscribiendo su viabilidad en entornos organizacionales con limitaciones presupuestarias.
+Su materialización confronta resistencias institucionales profundamente arraigadas, con índices de fracaso que trascienden el 50%% en contextos donde la transformación cultural no recibe atención prioritaria (Hammer & Champy, 1993). La inversión inicial, por otra parte, demanda una asignación de recursos considerable, circunscribiendo su viabilidad en entornos organizacionales con limitaciones presupuestarias.
 
 ### Ámbito de Aplicación
 Concebida para directivos de alta jerarquía y responsables operacionales en organizaciones caracterizadas por la complejidad o obsolescencia de sus procesos—desde conglomerados manufactureros multinacionales hasta entidades gubernamentales en crisis de productividad.
@@ -277,10 +277,10 @@ Aspira a una reconfiguración profunda que erradique ineficiencias sistémicas y
 Constituye un marco estratégico integral que articula el flujo sincronizado de bienes tangibles, información multidimensional y recursos financieros a lo largo del continuum de la cadena de valor, desde los proveedores primarios hasta los consumidores finales.
 
 ### Mecanismos de Implementación
-Su esencia radica en la orquestación sistemática: integra a múltiples actores interconectados—proveedores, fabricantes, distribuidores—mediante la utilización intensiva de analítica de datos y sistemas tecnológicos avanzados. Investigaciones contemporáneas (SCM World, década de 2020) documentan mejoras promedio del 20% en velocidad de respuesta al mercado, aunque su eficacia depende inexorablemente de una sincronización meticulosa entre componentes del ecosistema.
+Su esencia radica en la orquestación sistemática: integra a múltiples actores interconectados—proveedores, fabricantes, distribuidores—mediante la utilización intensiva de analítica de datos y sistemas tecnológicos avanzados. Investigaciones contemporáneas (SCM World, década de 2020) documentan mejoras promedio del 20%% en velocidad de respuesta al mercado, aunque su eficacia depende inexorablemente de una sincronización meticulosa entre componentes del ecosistema.
 
 ### Beneficios Estratégicos
-Cuando se implementa con rigor metodológico, optimiza la asignación de recursos con precisión excepcional: reducción de inventarios entre 15-25%, disminución de costos logísticos en rangos del 10-15%, y una experiencia de cliente caracterizada por mayor agilidad y confiabilidad. Constituye un vector estratégico de competitividad en entornos caracterizados por la volatilidad.
+Cuando se implementa con rigor metodológico, optimiza la asignación de recursos con precisión excepcional: reducción de inventarios entre 15-25%%, disminución de costos logísticos en rangos del 10-15%%, y una experiencia de cliente caracterizada por mayor agilidad y confiabilidad. Constituye un vector estratégico de competitividad en entornos caracterizados por la volatilidad.
 
 ### Limitaciones y Obstáculos
 La interdependencia sistémica representa su principal vulnerabilidad. Perturbaciones exógenas—crisis en infraestructuras logísticas o eventos catastróficos naturales—pueden comprometer su funcionalidad, y su complejidad inicial exige inversiones significativas en infraestructura tecnológica y mecanismos colaborativos, representando un desafío substancial para organizaciones con limitada capacidad de integración.
@@ -1115,30 +1115,38 @@ Note:
 - Avoid a section about Analisys Limitations.
 """
 
+# Segundo Prompt
 trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
 trend_analysis_prompt_1
 
 **Nota Inicial:** Este análisis se rige por las Instrucciones Generales, Restricciones Generales (Sección VIII), Requisitos de Salida (Sección IX) y Notas (Sección X) del `system_prompt_1`, disponibles en su versión traducida al español. Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
 **Objetivo Principal**
-Analizar las tendencias generales de la herramienta de gestión `{all_kw}` en `{dbs}`, evaluando cómo los factores contextuales externos (microeconómicos, tecnológicos, de mercado, sociales, políticos, ambientales y organizacionales) configuran su dinámica de adopción, uso y relevancia a lo largo del tiempo. Desarrollar índices simples y compuestos basados en datos estadísticos para cuantificar estas influencias, generando una narrativa interpretativa que complemente el análisis temporal de `temporal_analysis_prompt_1` y enriquezca la comprensión de los patrones en el marco de la investigación doctoral.
+Analizar las tendencias generales de la herramienta de gestión {all_kw} en {dbs}, evaluando cómo los factores contextuales externos (microeconómicos, tecnológicos, de mercado, sociales, políticos, ambientales y organizacionales) configuran su dinámica de adopción, uso y relevancia a lo largo del tiempo. Desarrollar índices simples y compuestos basados en datos estadísticos para cuantificar estas influencias, generando una narrativa interpretativa que complemente el análisis temporal de `temporal_analysis_prompt_1` y enriquezca la comprensión de los patrones en el marco de la investigación doctoral.
 
 **Justificación**
 Este análisis aporta una perspectiva contextual que:
-- Explora el impacto de factores externos en las tendencias generales de `{all_kw}`, diferenciándose del enfoque cronológico de `temporal_analysis_prompt_1`.
+- Explora el impacto de factores externos en las tendencias generales de {all_kw}, diferenciándose del enfoque cronológico de `temporal_analysis_prompt_1`.
 - Vincula los índices con posibles influencias externas, estableciendo una analogía con los puntos de inflexión analizados en `temporal_analysis_prompt_1`, sin duplicar su contenido.
 - Cumple con `system_prompt_1` (Sección I.B), ofreciendo evidencia rigurosa y perspicacias interpretativas para la investigación doctoral.
 
-Esquema propuesto para ser desarrollado por el prompt 2
+# Analisis Anteriores:
+A continuacion se presentan las conclusiones de los analisis anteriores realizados:
+## Analisis Temporal:
+* Conclusiones:
+{analisis_temporal_ai}
+****** FIN DE LOS ANALISIS ANTERIORES ******
+
+Esquema de Salida propuesto para ser desarrollado
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
 
 # **Tendencias generales y factores contextuales de {all_kw} en {dbs}**
 
 ## **I. Direccionamiento en el análisis de las tendencias generales**
 - Este apartado está centrado en ampliamente Establecer el enfoque contextual y su diferenciación con el análisis temporal, orientando el análisis hacia las tendencias generales influenciadas por el entorno externo.
-  - Las tendencias generales se definen como patrones amplios de adopción, uso o relevancia de `{all_kw}` en `{dbs}`, moldeados por factores contextuales externos, a diferencia del enfoque longitudinal detallado de `temporal_analysis_prompt_1`.
-  - Este análisis busca identificar cómo el entorno externo da forma a `{all_kw}`, explorando dinámicas más allá de la secuencia temporal.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras `temporal_analysis_prompt_1` podría revelar un pico en el uso de `{all_kw}` en [año], este análisis examina si factores como avances tecnológicos o crisis económicas pudieron influir en esa tendencia general."
+  - Las tendencias generales se definen como patrones amplios de adopción, uso o relevancia de {all_kw} en {dbs}, moldeados por factores contextuales externos, a diferencia del enfoque longitudinal detallado de `temporal_analysis_prompt_1`.
+  - Este análisis busca identificar cómo el entorno externo da forma a {all_kw}, explorando dinámicas más allá de la secuencia temporal.
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras `temporal_analysis_prompt_1` podría revelar un pico en el uso de {all_kw} en [año], este análisis examina si factores como avances tecnológicos o crisis económicas pudieron influir en esa tendencia general."
 
 Vinculación con `system_prompt_1`:** Sección I.D.1 (Enfoque Longitudinal, contextualizado), I.D.3 (Perspicacia Interpretativa), I.C (Naturaleza Comportamental).
 
@@ -1148,10 +1156,10 @@ Vinculación con `system_prompt_1`:** Sección I.D.1 (Enfoque Longitudinal, cont
 ### **A. Datos estadísticos disponibles**
 Presentación y explicación del resumen de los principales datos estadísticos base.
 - **Contenido:**
-  - Fuente: `{csv_means_trends}` (tendencias y medias de `{all_kw}` en `{dbs}`), con datos en formato Fecha-Valor (ej., 2023-01, 50).
-  - Estadísticas clave: Media (nivel promedio), Desviación Estándar (variabilidad), NADT (tasa de cambio anual), Número de Picos (fluctuaciones), Rango (amplitud), Percentiles 25% y 75% (distribución).
+  - Fuente: {csv_means_trends} (tendencias y medias de {all_kw} en {dbs}), con datos en formato Fecha-Valor (ej., 2023-01, 50).
+  - Estadísticas clave: Media (nivel promedio), Desviación Estándar (variabilidad), NADT (tasa de cambio anual), Número de Picos (fluctuaciones), Rango (amplitud), Percentiles 25%% y 75%% (distribución).
   - Nota: Los datos son agregados, reflejando tendencias generales sin segmentación temporal específica, a diferencia de los segmentos detallados en `temporal_analysis_prompt_1`.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una media de 60 en `{dbs}` podría indicar un nivel sostenido de interés en `{all_kw}`, mientras que un NADT de -5% anual sugiere una tendencia decreciente influenciada por el contexto externo."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una media de 60 en {dbs} podría indicar un nivel sostenido de interés en {all_kw}, mientras que un NADT de -5%% anual sugiere una tendencia decreciente influenciada por el contexto externo."
 
 ### **B. Interpretación preliminar**
 Desarrollar y ampliar aspectos como:
@@ -1161,38 +1169,38 @@ Desarrollar y ampliar aspectos como:
     |---------------------|---------------------------|---------------------------------------------------------------------------------------------|
     | Media               | [Valor]                   | Nivel promedio de interés/uso, reflejando la intensidad general en el contexto externo.     |
     | Desviación Estándar | [Valor]                   | Grado de variabilidad, sugiriendo posible sensibilidad a cambios contextuales externos.     |
-    | NADT                | [Valor] (% anual)         | Tendencia anual promedio, indicando dirección general influenciada por factores externos.  |
+    | NADT                | [Valor] (%% anual)         | Tendencia anual promedio, indicando dirección general influenciada por factores externos.  |
     | Número de Picos     | [Valor]                   | Frecuencia de fluctuaciones, pudiendo reflejar reactividad a eventos externos significativos.|
-    | Rango               | [Valor]                   | Amplitud de variación, indicando el alcance de las influencias externas en `{all_kw}`.      |
-    | Percentil 25%       | [Valor]                   | Nivel bajo frecuente, sugiriendo umbral mínimo de interés/uso en contextos adversos.        |
-    | Percentil 75%       | [Valor]                   | Nivel alto frecuente, reflejando el potencial máximo en contextos favorables.               |
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un NADT de -5% combinado con un Número de Picos de 3 podría indicar un declive general con fluctuaciones esporádicas, posiblemente ligadas a eventos externos como regulaciones o avances tecnológicos."
+    | Rango               | [Valor]                   | Amplitud de variación, indicando el alcance de las influencias externas en {all_kw}.      |
+    | Percentil 25%%       | [Valor]                   | Nivel bajo frecuente, sugiriendo umbral mínimo de interés/uso en contextos adversos.        |
+    | Percentil 75%%       | [Valor]                   | Nivel alto frecuente, reflejando el potencial máximo en contextos favorables.               |
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un NADT de -5%% combinado con un Número de Picos de 3 podría indicar un declive general con fluctuaciones esporádicas, posiblemente ligadas a eventos externos como regulaciones o avances tecnológicos."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística), III (Naturaleza de los Datos).
 
 ## **III. Desarrollo y aplicabilidad de índices contextuales**
-- Este apartado está centrado en ampliamente Construir y aplicar índices que cuantifiquen el impacto de factores externos en `{all_kw}`, estableciendo una conexión analógica con los puntos de inflexión de `temporal_analysis_prompt_1`.
+- Este apartado está centrado en ampliamente Construir y aplicar índices que cuantifiquen el impacto de factores externos en {all_kw}, estableciendo una conexión analógica con los puntos de inflexión de `temporal_analysis_prompt_1`.
 
 ### **A. Construcción de índices simples**
-- Este apartado está centrado en ampliamente Transformar datos estadísticos en métricas que cuantifiquen el impacto de factores externos en `{all_kw}`.
+- Este apartado está centrado en ampliamente Transformar datos estadísticos en métricas que cuantifiquen el impacto de factores externos en {all_kw}.
 - **Contenido:**
  
 #### **(i) Índice de Volatilidad Contextual (IVC):**
-    - **Construir una definición amplia que refiera sobre:** Mide la sensibilidad de `{all_kw}` a cambios externos en función de su variabilidad relativa.
+    - **Construir una definición amplia que refiera sobre:** Mide la sensibilidad de {all_kw} a cambios externos en función de su variabilidad relativa.
     - **Explicar de manera amplia los aspectos metodológicos a partir de:** IVC = Desviación Estándar / Media, normalizando la variabilidad respecto al nivel promedio.
-    - **Aplicabilidad:** Identifica cuán susceptible es `{all_kw}` a fluctuaciones externas en `{dbs}`. Valores >1 sugieren alta volatilidad; <1, estabilidad.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IVC de 1.3 podría indicar que `{all_kw}` experimenta variaciones significativas ante eventos externos, como cambios económicos o tecnológicos."
+    - **Aplicabilidad:** Identifica cuán susceptible es {all_kw} a fluctuaciones externas en {dbs}. Valores >1 sugieren alta volatilidad; <1, estabilidad.
+    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IVC de 1.3 podría indicar que {all_kw} experimenta variaciones significativas ante eventos externos, como cambios económicos o tecnológicos."
 
 #### **(ii) Índice de Intensidad Tendencial (IIT):**
-    - **Construir una definición amplia que refiera sobre:** Cuantifica la fuerza y dirección de la tendencia general de `{all_kw}` influenciada por el contexto.
+    - **Construir una definición amplia que refiera sobre:** Cuantifica la fuerza y dirección de la tendencia general de {all_kw} influenciada por el contexto.
     - **Explicar de manera amplia los aspectos metodológicos a partir de:** IIT = NADT × Media, combinando la tasa de cambio con el nivel promedio.
-    - **Aplicabilidad:** Refleja si `{all_kw}` crece o declina en respuesta a factores externos. Valores positivos indican crecimiento; negativos, declive.
+    - **Aplicabilidad:** Refleja si {all_kw} crece o declina en respuesta a factores externos. Valores positivos indican crecimiento; negativos, declive.
     - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IIT de -40 podría sugerir un declive moderado, posiblemente vinculado a factores como obsolescencia tecnológica."
 
 #### **(iii) Índice de Reactividad Contextual (IRC):**
-    - **Construir una definición amplia que refiera sobre:** Evalúa la frecuencia de fluctuaciones relativas a la amplitud de `{all_kw}`.
+    - **Construir una definición amplia que refiera sobre:** Evalúa la frecuencia de fluctuaciones relativas a la amplitud de {all_kw}.
     - **Explicar de manera amplia los aspectos metodológicos a partir de:** IRC = Número de Picos / (Rango / Media), ajustando las fluctuaciones por la escala de variación.
-    - **Aplicabilidad:** Mide la capacidad de `{all_kw}` para responder a eventos externos. Valores >1 indican alta reactividad.
+    - **Aplicabilidad:** Mide la capacidad de {all_kw} para responder a eventos externos. Valores >1 indican alta reactividad.
     - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRC de 1.5 podría reflejar una alta respuesta a eventos como lanzamientos tecnológicos o crisis económicas."
 
 ### **B. Estimaciones de índices compuestos**
@@ -1200,22 +1208,22 @@ Explicar y desarrollar:
 - **Contenido:**
 
 #### **(i) Índice de Influencia Contextual (IIC):**
-    - **Construir una definición amplia que refiera sobre:** Evalúa la influencia global de factores externos en `{all_kw}`.
+    - **Construir una definición amplia que refiera sobre:** Evalúa la influencia global de factores externos en {all_kw}.
     - **Explicar de manera amplia los aspectos metodológicos a partir de:** IIC = (IVC + |IIT| + IRC) / 3, promediando los índices simples (usando valor absoluto de IIT para consistencia).
-    - **Aplicabilidad:** Indica el grado en que el contexto externo moldea las tendencias de `{all_kw}`. Valores >1 sugieren fuerte influencia.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IIC de 1.6 podría señalar que `{all_kw}` está marcadamente influenciada por factores externos, como los analizados en los puntos de inflexión de `temporal_analysis_prompt_1`."
+    - **Aplicabilidad:** Indica el grado en que el contexto externo moldea las tendencias de {all_kw}. Valores >1 sugieren fuerte influencia.
+    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IIC de 1.6 podría señalar que {all_kw} está marcadamente influenciada por factores externos, como los analizados en los puntos de inflexión de `temporal_analysis_prompt_1`."
 
 #### **(ii) Índice de Estabilidad Contextual (IEC):**
-    - **Construir una definición amplia que refiera sobre:** Mide la estabilidad de `{all_kw}` frente a variaciones externas.
+    - **Construir una definición amplia que refiera sobre:** Mide la estabilidad de {all_kw} frente a variaciones externas.
     - **Explicar de manera amplia los aspectos metodológicos a partir de:** IEC = Media / (Desviación Estándar × Número de Picos), inversamente proporcional a la variabilidad y fluctuaciones.
     - **Aplicabilidad:** Valores altos indican resistencia a factores externos; bajos, inestabilidad.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IEC de 0.03 podría sugerir que `{all_kw}` es inestable ante cambios contextuales, como crisis o regulaciones."
+    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IEC de 0.03 podría sugerir que {all_kw} es inestable ante cambios contextuales, como crisis o regulaciones."
 
 #### **(iii) Índice de Resiliencia Contextual (IREC):**
-    - **Construir una definición amplia que refiera sobre:** Cuantifica la capacidad de `{all_kw}` para mantener niveles altos de interés/uso pese a condiciones externas adversas.
-    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IREC = Percentil 75% / (Percentil 25% + Desviación Estándar), comparando el nivel alto con la base y la variabilidad.
+    - **Construir una definición amplia que refiera sobre:** Cuantifica la capacidad de {all_kw} para mantener niveles altos de interés/uso pese a condiciones externas adversas.
+    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IREC = Percentil 75%% / (Percentil 25%% + Desviación Estándar), comparando el nivel alto con la base y la variabilidad.
     - **Aplicabilidad:** Valores >1 indican resiliencia; <1, vulnerabilidad a factores externos.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IREC de 0.8 podría indicar que `{all_kw}` tiende a debilitarse en contextos adversos, como los identificados en puntos de inflexión."
+    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IREC de 0.8 podría indicar que {all_kw} tiende a debilitarse en contextos adversos, como los identificados en puntos de inflexión."
 
 ### **C. Análisis y presentación de resultados**
 Explicar y presentar un resumen de los resultados
@@ -1234,41 +1242,41 @@ Explicar y presentar un resumen de los resultados
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística), I.E.1 (Ciclos de Vida), I.F.2 (Factores Externos).
 
 ## **IV. Análisis de factores contextuales externos**
-- Este apartado está centrado en ampliamente Sistematizar los factores externos que afectan las tendencias de `{all_kw}`, vinculándolos a los índices sin repetir los puntos de inflexión.
+- Este apartado está centrado en ampliamente Sistematizar los factores externos que afectan las tendencias de {all_kw}, vinculándolos a los índices sin repetir los puntos de inflexión.
 
 ### **A. Factores microeconómicos**
 - **Contenido:**
   - **Construir una definición amplia que refiera sobre:** Factores relacionados con costos, recursos y dinámica económica a nivel organizacional.
-  - **Justificación:** Su inclusión se basa en su impacto potencial en el uso de `{all_kw}`, reflejado en `{dbs}` (ej., aumento de costos operativos puede reducir adopción).
+  - **Justificación:** Su inclusión se basa en su impacto potencial en el uso de {all_kw}, reflejado en {dbs} (ej., aumento de costos operativos puede reducir adopción).
   - **Factores Prevalecientes:** Costos operativos, acceso a financiamiento, sensibilidad al costo-beneficio.
-  - **Análisis:** "Un contexto de costos crecientes podría elevar el IVC, indicando mayor volatilidad en `{all_kw}`."
-  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IVC alto podría sugerir que `{all_kw}` es sensible a restricciones financieras, afectando su tendencia general."
+  - **Análisis:** "Un contexto de costos crecientes podría elevar el IVC, indicando mayor volatilidad en {all_kw}."
+  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IVC alto podría sugerir que {all_kw} es sensible a restricciones financieras, afectando su tendencia general."
 
 ### **B. Factores tecnológicos**
 - **Contenido:**
   - **Construir una definición amplia que refiera sobre:** Factores asociados con innovaciones, obsolescencia y adopción tecnológica.
-  - **Justificación:** Relevantes por su influencia en la relevancia de `{all_kw}`, capturada en `{dbs}` (ej., nuevas tecnologías pueden desplazar herramientas existentes).
+  - **Justificación:** Relevantes por su influencia en la relevancia de {all_kw}, capturada en {dbs} (ej., nuevas tecnologías pueden desplazar herramientas existentes).
   - **Factores Prevalecientes:** Nuevas tecnologías, obsolescencia, digitalización.
   - **Análisis:** "La introducción de tecnologías disruptivas podría incrementar el IRC, reflejando reactividad."
-  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRC elevado podría indicar que `{all_kw}` fluctúa con avances tecnológicos, como la digitalización masiva."
+  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRC elevado podría indicar que {all_kw} fluctúa con avances tecnológicos, como la digitalización masiva."
 
 ### **C. Índices simples y compuestos en el análisis contextual**
 - **Contenido:**
   - Analizar cómo los índices reflejan influencias externas, estableciendo una analogía con los puntos de inflexión de `temporal_analysis_prompt_1`:
     - Eventos económicos (ej., crisis podrían elevar IVC y reducir IIT).
     - Eventos tecnológicos (ej., avances en IA podrían aumentar IRC).
-    - Eventos sociales, políticos, ambientales, etc., según su relevancia en `{dbs}`.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIC alto podría alinearse con puntos de inflexión en `temporal_analysis_prompt_1`, sugiriendo que factores como regulaciones o publicaciones influyentes moldean la tendencia general de `{all_kw}`."
+    - Eventos sociales, políticos, ambientales, etc., según su relevancia en {dbs}.
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIC alto podría alinearse con puntos de inflexión en `temporal_analysis_prompt_1`, sugiriendo que factores como regulaciones o publicaciones influyentes moldean la tendencia general de {all_kw}."
 
   Vinculación con `system_prompt_1`:** Sección I.D.1.c (Análisis Contextual), I.F.2 (Factores Externos), I.E.4 (Explicaciones Alternativas).
 
 ## **V. Narrativa de tendencias generales**
-- Este apartado está centrado en ampliamente Integrar índices y factores en una interpretación cohesiva de las tendencias de `{all_kw}`.
+- Este apartado está centrado en ampliamente Integrar índices y factores en una interpretación cohesiva de las tendencias de {all_kw}.
 - **Contenido:**
   - Tendencia dominante: "Un IIT negativo y un IIC alto podrían indicar un declive influenciado por factores externos."
   - Factores clave: "El IRC y el IVC sugieren que eventos tecnológicos y económicos son determinantes."
   - Patrones emergentes: "Un IREC bajo y un IEC reducido podrían reflejar vulnerabilidad e inestabilidad frente al contexto externo."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "La combinación de un IRC alto y un IEC bajo podría sugerir que `{all_kw}` responde a cambios externos, pero con poca capacidad para estabilizarse."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "La combinación de un IRC alto y un IEC bajo podría sugerir que {all_kw} responde a cambios externos, pero con poca capacidad para estabilizarse."
 
 Vinculación con `system_prompt_1`:** Sección I.D.3 (Perspicacia Interpretativa), I.E.4 (Explicaciones Alternativas).
 
@@ -1276,15 +1284,15 @@ Vinculación con `system_prompt_1`:** Sección I.D.3 (Perspicacia Interpretativa
 - Este apartado está centrado en ampliamente Proporcionar perspectivas interpretativas para diferentes audiencias basadas en el análisis.
 
 ### **A. De Interés para Académicos e Investigadores**
-- "Un IIC elevado podría indicar la necesidad de explorar más a fondo cómo factores tecnológicos y sociales afectan `{all_kw}`, complementando los puntos de inflexión de `temporal_analysis_prompt_1`."
+- "Un IIC elevado podría indicar la necesidad de explorar más a fondo cómo factores tecnológicos y sociales afectan {all_kw}, complementando los puntos de inflexión de `temporal_analysis_prompt_1`."
 - Vinculación: Sección II (Preguntas de Investigación).
 
 ### **B. De Interés para Consultores y Asesores**
-- "Un IRC alto podría sugerir que `{all_kw}` requiere monitoreo constante ante eventos externos, como cambios regulatorios o tecnológicos."
+- "Un IRC alto podría sugerir que {all_kw} requiere monitoreo constante ante eventos externos, como cambios regulatorios o tecnológicos."
 - Vinculación: Sección I.D.4 (Orientación Práctica).
 
 ### **C. De Interés para Gerentes y Directivos**
-- "Un IEC bajo podría indicar que `{all_kw}` necesita ajustes estratégicos para enfrentar contextos impredecibles."
+- "Un IEC bajo podría indicar que {all_kw} necesita ajustes estratégicos para enfrentar contextos impredecibles."
 - Vinculación: Sección I.D.4 (Orientación Práctica).
 
 ## **V. Síntesis y reflexiones finales
@@ -1299,7 +1307,8 @@ Vinculación con system_prompt_1: Sección I.F (Evaluación Crítica), V (Manejo
 ---
 
 **Datos Requeridos**
-- `{csv_means_trends}`: Tendencias y medias de `{all_kw}` en `{dbs}` (Fecha, Valor).
+- {csv_means_trends}: Tendencias y medias de {all_kw} en {dbs} (Fecha, Valor).
+- Trends and means for tools: {csv_means_trends}
 
 IMPORTANT: 
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -1372,6 +1381,7 @@ Data Sources: {selected_sources}
 Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
 """
 
+# Tercer prompt
 # No reconoce en el siguiente prompt el nombre de la variable, por lo que se debe incluir en el prompt {csv_means_trends} 
 arima_analysis_prompt_1 = """### **Analyze ARIMA Model Performance**
 
@@ -1386,30 +1396,42 @@ Evaluar e interpretar exhaustivamente el desempeño del modelo ARIMA aplicado a 
 Este análisis es esencial para:
 - Amplía el enfoque predictivo del ARIMA al integrarlo con datos contextuales y criterios clasificatorios, maximizando su utilidad para la investigación doctoral.
 - Conecta las proyecciones con factores externos y patrones históricos, alineándose con system_prompt_1 (Sección I.D.2, I.E.1, I.G).
-- Cuantificar la capacidad del modelo ARIMA para predecir patrones futuros de `{all_kw}`, alineándose con el enfoque longitudinal de `system_prompt_1` (Sección I.D.1).
+- Cuantificar la capacidad del modelo ARIMA para predecir patrones futuros de {all_kw}, alineándose con el enfoque longitudinal de `system_prompt_1` (Sección I.D.1).
 - Proporcionar una base estadística rigurosa para evaluar tendencias y cambios significativos (Sección I.D.2).
-- Enriquecer la narrativa interpretativa con proyecciones que informen sobre la relevancia y adopción futura de `{all_kw}` (Sección I.D.3).
+- Enriquecer la narrativa interpretativa con proyecciones que informen sobre la relevancia y adopción futura de {all_kw} (Sección I.D.3).
 - Ofrece un aporte novedoso mediante el IMG, respondiendo a la necesidad de clasificar {all_kw} de manera objetiva y cuantitativa.
 
-Esquema Propuesto para `arima_analysis_prompt_1`**
+ para `arima_analysis_prompt_1`**
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
+
+# Analisis Anteriores:
+A continuacion se presentan las conclusiones de los analisis anteriores realizados:
+## Analisis Temporal:
+* Conclusiones:
+{analisis_temporal_ai}
+## Analisis de Tendencias:
+* Conclusiones:
+{analisis_tendencias_ai}
+****** FIN DE LOS ANALISIS ANTERIORES ******
+
+Esquema de Salida Propuesto:
 
 # **Análisis predictivo ARIMA de {all_kw} en {dbs}**
 
 ## **I. Direccionamiento en el análisis del Modelo ARIMA**
-- Este apartado está centrado en ampliamente Establecer el enfoque del análisis del modelo ARIMA y su relevancia para `{all_kw}` en `{dbs}` como un enfoque ampliado del análisis ARIMA, destacando su rol predictivo y clasificatorio
+- Este apartado está centrado en ampliamente Establecer el enfoque del análisis del modelo ARIMA y su relevancia para {all_kw} en {dbs} como un enfoque ampliado del análisis ARIMA, destacando su rol predictivo y clasificatorio
 - **Contenido:**
-  - El análisis evalúa el desempeño del modelo ARIMA en la predicción de patrones de adopción/uso de `{all_kw}`, utilizando los resultados proporcionados en `{arima_results}`.
+  - El análisis evalúa el desempeño del modelo ARIMA en la predicción de patrones de adopción/uso de {all_kw}, utilizando los resultados proporcionados en {arima_results}.
   - Este enfoque complementa `temporal_analysis_prompt_1` (evolución histórica) y `trend_analysis_prompt_1` (influencias contextuales) al proyectar tendencias futuras.
 - Evalúa el desempeño del modelo ARIMA en {arima_results} para proyectar la adopción/uso de {all_kw} en {dbs} y clasificar su dinámica (moda, doctrina, híbrido).
 Complementa temporal_analysis_prompt_1 (cronología) y trend_analysis_prompt_1 (contexto) al integrar proyecciones con datos cruzados y criterios operacionales.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si temporal_analysis_prompt_1 muestra un pico en [año], ARIMA podría proyectar su continuidad o declive, contextualizado por [ejemplo: adopción tecnológica] en trend_analysis_prompt_1."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras `temporal_analysis_prompt_1` identifica picos pasados en `{all_kw}`, este análisis proyecta si dichos patrones podrían repetirse o estabilizarse."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras `temporal_analysis_prompt_1` identifica picos pasados en {all_kw}, este análisis proyecta si dichos patrones podrían repetirse o estabilizarse."
 
 Vinculación con `system_prompt_1`:** Sección I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
 
 ## **II. Evaluación del desempeño del modelo**
-- Este apartado está centrado en ampliamente Analizar la precisión y calidad del ajuste del modelo ARIMA basado en métricas de `{arima_results}`.
+- Este apartado está centrado en ampliamente Analizar la precisión y calidad del ajuste del modelo ARIMA basado en métricas de {arima_results}.
 
 ### **A. Métricas de precisión**
 - **Contenido:**
@@ -1423,7 +1445,7 @@ Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística).
 
 ### **B. Intervalos de confianza de las proyecciones**
 - **Contenido:**
-  - Analizar los intervalos de confianza reportados en `{arima_results}` (ej., 95%).
+  - Analizar los intervalos de confianza reportados en {arima_results} (ej., 95%%).
   - Realiza una interpretacion que cubra aspectos desde los básicos a los mas complejos  asociados con los resultados obtenidos: : "Un intervalo amplio (ej., [valor bajo] a [valor alto]) podría indicar incertidumbre en las proyecciones a largo plazo."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si el intervalo para [año futuro] varía entre [rango], esto sugiere una predicción menos precisa en contextos volátiles."
 
@@ -1431,7 +1453,7 @@ Vinculación con `system_prompt_1`:** Sección V (Manejo de la Incertidumbre), I
 
 ### **C. Calidad del ajuste del modelo**
 - **Contenido:**
-  - Evaluar cómo el modelo captura la serie temporal histórica de `{all_kw}` en `{dbs}`.
+  - Evaluar cómo el modelo captura la serie temporal histórica de {all_kw} en {dbs}.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ECM bajo podría indicar que el modelo se ajusta bien a los datos históricos, mientras que discrepancias en picos podrían sugerir limitaciones en capturar eventos extremos."
 - **Vinculación con `system_prompt_1`:** Sección I.D.2 (Modelos de Series Temporales).
 
@@ -1440,22 +1462,22 @@ Vinculación con `system_prompt_1`:** Sección V (Manejo de la Incertidumbre), I
 
 ### **A. Significancia de componentes AR, I y MA**
 - **Contenido:**
-  - Evaluar la importancia de los términos autoregresivos (AR), integrados (I) y de media móvil (MA) en `{arima_results}`.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un término AR significativo podría indicar que los valores pasados de `{all_kw}` influyen fuertemente en su tendencia futura."
+  - Evaluar la importancia de los términos autoregresivos (AR), integrados (I) y de media móvil (MA) en {arima_results}.
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un término AR significativo podría indicar que los valores pasados de {all_kw} influyen fuertemente en su tendencia futura."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Justificación de Modelos).
 
 ### **B. Orden del Modelo (p, d, q)**
 - **Contenido:**
   - Analizar la selección de parámetros (p: orden AR, d: diferenciación, q: orden MA).
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un valor d=1 podría sugerir que `{all_kw}` requiere una diferenciación para alcanzar estacionariedad, reflejando cambios estructurales."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un valor d=1 podría sugerir que {all_kw} requiere una diferenciación para alcanzar estacionariedad, reflejando cambios estructurales."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Análisis de Estacionariedad).
 
 ### **C. Implicaciones de estacionariedad**
 - **Contenido:**
   - Interpretar si la serie es estacionaria tras las diferenciaciones (d).
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una d>0 podría indicar que `{all_kw}` presenta tendencias no estacionarias, influenciadas por factores externos sostenidos."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una d>0 podría indicar que {all_kw} presenta tendencias no estacionarias, influenciadas por factores externos sostenidos."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Revisión de Parámetros).
 
@@ -1481,12 +1503,12 @@ Conectar con tendencias: "Datos exógenos de volatilidad (ej., crisis en {dbs}) 
 Vinculación con system_prompt_1: Sección I.E.4 (Explicaciones Alternativas).
 
 ## **V. Insights y clasificación basada en Modelo ARIMA**
-- Este apartado está centrado en ampliamente Extraer patrones y tendencias proyectadas, evaluando su relevancia para `{all_kw}`.
+- Este apartado está centrado en ampliamente Extraer patrones y tendencias proyectadas, evaluando su relevancia para {all_kw}.
 
 ### **A. Tendencias y patrones proyectados**
 - **Contenido:**
-  - Interpretar las proyecciones de `{arima_results}` (crecimiento, declive, estabilización).
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una proyección decreciente podría sugerir un declive continuo de `{all_kw}`, consistente con un IIT negativo en `trend_analysis_prompt_1`."
+  - Interpretar las proyecciones de {arima_results} (crecimiento, declive, estabilización).
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una proyección decreciente podría sugerir un declive continuo de {all_kw}, consistente con un IIT negativo en `trend_analysis_prompt_1`."
 - **Vinculación con `system_prompt_1`:** Sección I.E.1 (Ciclos de Vida), I.D.3 (Perspicacia Interpretativa).
 
 ### **B. Cambios significativos en las tendencias**
@@ -1508,12 +1530,12 @@ Contenido:
 - Definir IMG simple (sin cálculos complejos):
 - Fórmula: IMG = (Tasa Crecimiento Inicial + Tiempo al Pico + Tasa Declive + Duración Ciclo) / 4
 - Componentes estimados de {arima_results}:
-- Tasa Crecimiento Inicial: % aumento en primeros 2 períodos proyectados (ej., 60% = 0.6).
+- Tasa Crecimiento Inicial: %% aumento en primeros 2 períodos proyectados (ej., 60%% = 0.6).
 - Tiempo al Pico: Períodos hasta máximo (ej., 2 años = 0.5, normalizado).
-- Tasa Declive: % caída en 3 períodos post-pico (ej., 40% = 0.4).
+- Tasa Declive: %% caída en 3 períodos post-pico (ej., 40%% = 0.4).
 - Duración Ciclo: Períodos hasta estabilización (ej., 5 años = 0.2, normalizado).
 - Umbral: IMG > 0.7 sugiere "Moda Gerencial".
-- Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Con un crecimiento del 60%, pico en 2 años, declive del 40% y ciclo de 5 años, IMG = (0.6 + 0.5 + 0.4 + 0.2) / 4 = 0.425, sugiriendo no es ‘Moda’ pura."
+- Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Con un crecimiento del 60%%, pico en 2 años, declive del 40%% y ciclo de 5 años, IMG = (0.6 + 0.5 + 0.4 + 0.2) / 4 = 0.425, sugiriendo no es ‘Moda’ pura."
 
 Vinculación con system_prompt_1: Sección I.D.2 (Rigurosidad Estadística), I.G (Definición Operacional).
 
@@ -1532,19 +1554,19 @@ Vinculación con system_prompt_1: Sección I.E.1 (Ciclos de Vida), I.F.1 (Evalua
 - Este apartado está centrado en ampliamente Ofrecer perspectivas basadas en las proyecciones para diferentes audiencias.
 
 ### **A. De interés para académicos e investigadores**
-- "Las proyecciones podrían sugerir áreas de estudio futuro, como la influencia de [ejemplo: factores tecnológicos] en la tendencia de `{all_kw}`."
+- "Las proyecciones podrían sugerir áreas de estudio futuro, como la influencia de [ejemplo: factores tecnológicos] en la tendencia de {all_kw}."
 - "Un IMG alto podría sugerir explorar factores de volatilidad en {dbs}, mientras que proyecciones estables invitan a estudiar persistencia estructural."
 
 Vinculación con `system_prompt_1`:** Sección II (Preguntas de Investigación).
 
 ### **B. De interés para asesores y consultores**
-- "Un declive proyectado podría indicar la necesidad de monitorear alternativas a `{all_kw}` en `{dbs}`."
+- "Un declive proyectado podría indicar la necesidad de monitorear alternativas a {all_kw} en {dbs}."
 - "Un declive proyectado con IMG elevado podría indicar la necesidad de monitorear alternativas, ajustándose a contextos de {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica).
 
 ### **C. De interés para directivos y gerentes**
-- "La fiabilidad a corto plazo de las proyecciones podría orientar decisiones sobre la continuidad de `{all_kw}`."
+- "La fiabilidad a corto plazo de las proyecciones podría orientar decisiones sobre la continuidad de {all_kw}."
 - "Proyecciones fiables a corto plazo y un IMG bajo podrían respaldar la continuidad de {all_kw}, mientras que datos cruzados de {dbs} sugieren ajustes estratégicos."
 
 Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica).
@@ -1552,17 +1574,17 @@ Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica).
 ## **VI. Síntesis y Reflexiones Finales**
 - Este apartado está centrado en ampliamente Resumir los hallazgos clave y reflexionar sobre el desempeño del modelo ARIMA.
 - **Contenido:**
-  - Síntesis: "El modelo ARIMA proyecta [tendencia, ej., declive] para `{all_kw}` en `{dbs}`, con un RMSE de [valor] que sugiere precisión aceptable a corto plazo."
+  - Síntesis: "El modelo ARIMA proyecta [tendencia, ej., declive] para {all_kw} en {dbs}, con un RMSE de [valor] que sugiere precisión aceptable a corto plazo."
   - Reflexión: "Estas proyecciones podrían alinearse con los patrones históricos de `temporal_analysis_prompt_1` y las influencias contextuales de `trend_analysis_prompt_1`, destacando [ejemplo: vulnerabilidad a factores externos]."
-  - Limitaciones implícitas: "La precisión depende de la estabilidad histórica en `{dbs}`, y eventos imprevistos podrían alterar las proyecciones."
-  - Perspectiva final: "El análisis ARIMA refuerza la necesidad de considerar [ejemplo: factores tecnológicos] en la evolución de `{all_kw}`." - "Este enfoque ampliado aporta un marco cuantitativo y contextual para clasificar {all_kw}, sugiriendo líneas futuras como [ejemplo: análisis de variables exógenas específicas]."
+  - Limitaciones implícitas: "La precisión depende de la estabilidad histórica en {dbs}, y eventos imprevistos podrían alterar las proyecciones."
+  - Perspectiva final: "El análisis ARIMA refuerza la necesidad de considerar [ejemplo: factores tecnológicos] en la evolución de {all_kw}." - "Este enfoque ampliado aporta un marco cuantitativo y contextual para clasificar {all_kw}, sugiriendo líneas futuras como [ejemplo: análisis de variables exógenas específicas]."
 
 Vinculación con `system_prompt_1`:** Sección I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), I.D.3 (Perspicacia Interpretativa).
 
 ---
 
 *Datos Requeridos*
-- `{arima_results}`: Resultados del modelo ARIMA (métricas de precisión, parámetros p,d,q, proyecciones, intervalos de confianza).
+- {arima_results}: Resultados del modelo ARIMA (métricas de precisión, parámetros p,d,q, proyecciones, intervalos de confianza).
 - {arima_results}: Métricas (RMSE, MAE, ECM), parámetros (p,d,q), proyecciones, intervalos de confianza.
 - {dbs} o csv_means_trends (hipotético): Variables exógenas sugeridas (ej., adopción tecnológica, inversión).
 
@@ -1650,6 +1672,7 @@ Note:
 - Avoid a section about Analisys Limitations.
 """
 
+# Cuarto prompt
 seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
 
 `seasonal_analysis_prompt_1`
@@ -1657,19 +1680,31 @@ seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
 **Nota Inicial:** Este análisis se rige por las Instrucciones Generales, Restricciones Generales (Sección VIII), Requisitos de Salida (Sección IX) y Notas (Sección X) del `system_prompt_1`, disponibles en su versión traducida al español. Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
 **Objetivo Principal**
-Analizar exhaustivamente la significancia, características y evolución de los patrones estacionales en la adopción de la herramienta de gestión `{all_kw}` según los datos de `{dbs}`, evaluando su consistencia, picos/troughs, y posibles factores causales (ciclos de negocio, impactos fiscales, dinámicas industriales y externas) mediante estimaciones cuantitativas originales y la identificación de factores causales cíclicos potenciales. Generar una narrativa interpretativa que cuantifique la influencia estacional, explore sus implicaciones para la adopción y complemente los análisis de `temporal_analysis_prompt_1` (evolución histórica), `trend_analysis_prompt_1` (contexto externo) y `arima_analysis_prompt_1` (proyecciones), enriqueciendo la comprensión de `{all_kw}` en el marco de la investigación con una perspectiva cíclica intra-anual.
+Analizar exhaustivamente la significancia, características y evolución de los patrones estacionales en la adopción de la herramienta de gestión {all_kw} según los datos de {dbs}, evaluando su consistencia, picos/troughs, y posibles factores causales (ciclos de negocio, impactos fiscales, dinámicas industriales y externas) mediante estimaciones cuantitativas originales y la identificación de factores causales cíclicos potenciales. Generar una narrativa interpretativa que cuantifique la influencia estacional, explore sus implicaciones para la adopción y complemente los análisis de `temporal_analysis_prompt_1` (evolución histórica), `trend_analysis_prompt_1` (contexto externo) y `arima_analysis_prompt_1` (proyecciones), enriqueciendo la comprensión de {all_kw} en el marco de la investigación con una perspectiva cíclica intra-anual.
 
 **Justificación**
 Este análisis aporta:
-- Una perspectiva estacional que descompone patrones recurrentes en `{all_kw}`, diferenciándose del enfoque longitudinal (`temporal_analysis_prompt_1`), contextual (`trend_analysis_prompt_1`) y predictivo (`arima_analysis_prompt_1`).
+- Una perspectiva estacional que descompone patrones recurrentes en {all_kw}, diferenciándose del enfoque longitudinal (`temporal_analysis_prompt_1`), contextual (`trend_analysis_prompt_1`) y predictivo (`arima_analysis_prompt_1`).
 - Insights sobre cómo factores cíclicos afectan la adopción, conectando con puntos de inflexión y tendencias generales identificados previamente.
-- Una base cuantitativa y cualitativa para evaluar la estabilidad y relevancia de `{all_kw}`, alineada con `system_prompt_1` (Sección I.D.1, I.E.1).
+- Una base cuantitativa y cualitativa para evaluar la estabilidad y relevancia de {all_kw}, alineada con `system_prompt_1` (Sección I.D.1, I.E.1).
 - Cuantifica la estacionalidad con métricas propias, ofreciendo una base estadística rigurosa (Sección I.D.2).
 - Conecta los patrones con posibles factores cíclicos, alineándose con system_prompt_1 (Sección I.D.1, I.E.1), sin asumir causalidades especulativas.
 
 ---
+# Analisis Anteriores:
+A continuacion se presentan las conclusiones de los analisis anteriores realizados:
+## Analisis Temporal:
+* Conclusiones:
+{analisis_temporal_ai}
+## Analisis de Tendencias:
+* Conclusiones:
+{analisis_tendencias_ai}
+## Analisis ARIMA:
+* Conclusiones:
+{analisis_arima_ai}
+****** FIN DE LOS ANALISIS ANTERIORES ******
 
-Esquema Propuesto para `seasonal_analysis_prompt_1`
+Esquema Propuesto de salida
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
 
 # **Patrones estacionales en la adopción de {all_kw} en {dbs}**
@@ -1677,7 +1712,7 @@ IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de 
 ## **I. Direccionamiento en el análisis de patrones estacionales**
 - Este apartado está centrado en ampliamente Establecer el enfoque del análisis estacional y su relación con los análisis previos, destacando su aporte diferencial. Establecer el enfoque del análisis estacional como una exploración de ciclos intra-anuales en {all_kw} y su rol complementario.
 - **Contenido:**
-  - Evalúa la presencia, consistencia y evolución de patrones estacionales en la adopción/uso de `{all_kw}` en `{dbs}`, utilizando `{csv_seasonal}`.
+  - Evalúa la presencia, consistencia y evolución de patrones estacionales en la adopción/uso de {all_kw} en {dbs}, utilizando `{csv_seasonal}`.
   - Complementa `temporal_analysis_prompt_1` (cronología amplia), `trend_analysis_prompt_1` (influencias externas) y `arima_analysis_prompt_1` (proyecciones) al enfocarse en ciclos recurrentes intra-anuales.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras `temporal_analysis_prompt_1` identifica picos históricos y `arima_analysis_prompt_1` proyecta tendencias, este análisis examina si dichos patrones tienen una base estacional recurrente."
 
@@ -1703,7 +1738,7 @@ Vinculación con system_prompt_1: Sección III (Naturaleza de los Datos), I.D.2 
     | Amplitud Estacional| [Valor]                   | Magnitud de las fluctuaciones estacionales en adopción/uso.   |
     | Período Estacional | [Mes/Trimestre]           | Frecuencia de los ciclos recurrentes intra-anuales.           |
     | Fuerza Estacional  | [Valor, ej., 0-1]         | Grado en que la estacionalidad explica las variaciones.       |
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional de 0.7 podría sugerir que gran parte de la variabilidad de `{all_kw}` es cíclica dentro del año."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional de 0.7 podría sugerir que gran parte de la variabilidad de {all_kw} es cíclica dentro del año."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística).
 
@@ -1711,32 +1746,32 @@ Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística).
 - **Contenido:**
   - Resumir los componentes de `{csv_seasonal}`: tendencia, estacionalidad, residuo.
   - Estadísticas clave: amplitud estacional (diferencia pico-trough), período estacional (ej., mensual, trimestral), fuerza estacional (proporción de varianza explicada por estacionalidad).
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud estacional de [valor] podría indicar fluctuaciones marcadas en `{all_kw}` dentro de un año."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud estacional de [valor] podría indicar fluctuaciones marcadas en {all_kw} dentro de un año."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Técnicas Estadísticas), III (Naturaleza de los Datos).
 
 ## **III. Análisis cuantitativo de patrones estacionales**
-- Este apartado está centrado en ampliamente Cuantificar y caracterizar los patrones estacionales de `{all_kw}` en `{dbs}` con métricas originales.
+- Este apartado está centrado en ampliamente Cuantificar y caracterizar los patrones estacionales de {all_kw} en {dbs} con métricas originales.
 
 ### **A. Identificación y cuantificación de patrones recurrentes**
 - **Contenido:**
   - Identificar ciclos intra-anuales (ej., picos en verano, troughs en invierno).
   - Cuantificar: duración promedio, magnitud promedio de picos/troughs.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico recurrente en [mes] con magnitud promedio de [valor] podría reflejar un patrón estacional en `{all_kw}`."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico recurrente en [mes] con magnitud promedio de [valor] podría reflejar un patrón estacional en {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.1.b (Patrones Recurrentes).
 
 ### **B. Consistencia de los patrones a lo largo de los años**
 - **Contenido:**
   - Evaluar si los patrones se repiten consistentemente: "Comparar la amplitud y timing de picos/troughs entre años en `{csv_seasonal}`."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una consistencia del 80% en picos de [mes] podría indicar un patrón estacional estable para `{all_kw}`."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una consistencia del 80%% en picos de [mes] podría indicar un patrón estacional estable para {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Modelos de Series Temporales).
 
 ### **C. Análisis de períodos pico y trough**
 - **Contenido:**
   - Detallar meses/trimestres de picos y troughs: inicio, fin, duración, magnitud.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] con una caída del [valor]% podría coincidir con períodos de baja actividad en `{dbs}`."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] con una caída del [valor]%% podría coincidir con períodos de baja actividad en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.1.c (Puntos de Inflexión).
 ### **D. Índice de Intensidad Estacional (IIE)**
@@ -1769,8 +1804,8 @@ Vinculación con system_prompt_1: Sección I.E.1 (Ciclos de Vida).
 
 ### **G. Evolución de los patrones en el tiempo**
 - **Contenido:**
-  - Analizar cambios en amplitud, frecuencia o fuerza estacional: "Evaluar si la estacionalidad de `{all_kw}` se intensifica o atenúa con el tiempo."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional decreciente podría sugerir que `{all_kw}` pierde su carácter cíclico."
+  - Analizar cambios en amplitud, frecuencia o fuerza estacional: "Evaluar si la estacionalidad de {all_kw} se intensifica o atenúa con el tiempo."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional decreciente podría sugerir que {all_kw} pierde su carácter cíclico."
 
 Vinculación con `system_prompt_1`:** Sección I.E.1 (Ciclos de Vida).
 
@@ -1780,13 +1815,13 @@ Vinculación con `system_prompt_1`:** Sección I.E.1 (Ciclos de Vida).
 ### **A. Influencias del ciclo de negocio**
 - **Contenido:**
   - Evaluar si los picos/troughs coinciden con ciclos económicos (ej., auges, recesiones).
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico en [mes] podría estar influenciado por un ciclo de alta demanda en `{dbs}`."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico en [mes] podría estar influenciado por un ciclo de alta demanda en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.F.2 (Factores Externos).
 
 ### **B. Factores industriales potenciales**
 - **Contenido:**
-  - Identificar dinámicas específicas de la industria en `{dbs}` (ej., lanzamientos de productos, regulaciones).
+  - Identificar dinámicas específicas de la industria en {dbs} (ej., lanzamientos de productos, regulaciones).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico estacional en [mes] podría estar ligado a eventos industriales recurrentes."
 
 Vinculación con `system_prompt_1`:** Sección I.F.2 (Factores Externos).
@@ -1806,20 +1841,20 @@ Vinculación con `system_prompt_1`:** Sección I.D.1.c (Análisis Contextual).
 Vinculación con system_prompt_1: Sección I.E.4 (Explicaciones Alternativas).
 
 ## **V. Implicaciones de los patrones estacionales**
-- Este apartado está centrado en ampliamente Interpretar la relevancia práctica y predictiva de la estacionalidad para `{all_kw}`.
+- Este apartado está centrado en ampliamente Interpretar la relevancia práctica y predictiva de la estacionalidad para {all_kw}.
 
 ### **A. Estabilidad de los patrones para pronósticos**
 - **Contenido:**
   - Evaluar si la consistencia estacional mejora las proyecciones: "Patrones estables podrían alinearse con la fiabilidad de `arima_analysis_prompt_1`."
 - Analizar la predictibilidad: "Un IRE alto podría sugerir patrones estacionales confiables para proyecciones."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una alta consistencia podría fortalecer las predicciones a corto plazo de `{all_kw}`." Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una regularidad de 0.9 podría facilitar pronósticos cíclicos para {all_kw}."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una alta consistencia podría fortalecer las predicciones a corto plazo de {all_kw}." Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una regularidad de 0.9 podría facilitar pronósticos cíclicos para {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística).
 
 ### **B. Componentes de tendencia vs. estacionales**
 - **Contenido:**
-  - Comparar la fuerza de la estacionalidad con la tendencia general: "Evaluar si la variabilidad de `{all_kw}` es más cíclica que estructural."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional dominante podría indicar que `{all_kw}` depende más de ciclos que de tendencias sostenidas."
+  - Comparar la fuerza de la estacionalidad con la tendencia general: "Evaluar si la variabilidad de {all_kw} es más cíclica que estructural."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional dominante podría indicar que {all_kw} depende más de ciclos que de tendencias sostenidas."
 - Comparar con tendencias: "Un IIE elevado podría indicar que la estacionalidad predomina sobre la tendencia a largo plazo."
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si la fuerza estacional supera la variabilidad tendencial, {all_kw} podría ser inherentemente cíclico."
 
@@ -1830,16 +1865,16 @@ Vinculación con `system_prompt_1`:** Sección I.E.1 (Ciclos de Vida).
   - Analizar cómo la estacionalidad afecta la adopción: "Picos estacionales podrían señalar ventanas óptimas de uso."
 - Explorar efectos: "Picos estacionales podrían señalar ventanas óptimas para implementar {all_kw}."
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] podría indicar menor receptividad cíclica a {all_kw}."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough recurrente en [mes] podría reflejar períodos de baja prioridad para `{all_kw}`."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough recurrente en [mes] podría reflejar períodos de baja prioridad para {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica).
 
 ### **D. Significación práctica**
 - **Contenido:**
-  - Evaluar la relevancia práctica: "Una estacionalidad marcada podría influir en la percepción de `{all_kw}` como herramienta estable o volátil."
+  - Evaluar la relevancia práctica: "Una estacionalidad marcada podría influir en la percepción de {all_kw} como herramienta estable o volátil."
   - Evaluar importancia: "Un TCE negativo podría sugerir una estacionalidad decreciente con implicaciones para {all_kw}."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIE alto podría implicar que {all_kw} depende de momentos cíclicos específicos."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud alta podría sugerir que `{all_kw}` es sensible a factores cíclicos externos."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud alta podría sugerir que {all_kw} es sensible a factores cíclicos externos."
 
 Vinculación con `system_prompt_1`:** Sección I.D.3 (Perspicacia Interpretativa).
 
@@ -1860,19 +1895,19 @@ Vinculación con `system_prompt_1`:** Sección I.D.3 (Perspicacia Interpretativa
 - Este apartado está centrado en ampliamente Ofrecer perspectivas para diferentes audiencias.
 
 ### **A. De interés para académicos e investigadores**
-- "Una estacionalidad marcada podría sugerir explorar cómo factores cíclicos afectan la adopción de `{all_kw}`, complementando `temporal_analysis_prompt_1`."
+- "Una estacionalidad marcada podría sugerir explorar cómo factores cíclicos afectan la adopción de {all_kw}, complementando `temporal_analysis_prompt_1`."
 - "Un IRE elevado podría sugerir estudiar cómo los ciclos estacionales interactúan con factores externos en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección II (Preguntas de Investigación).
 
 ### **B. De interés para asesores y consultores**
-- "Picos estacionales podrían indicar momentos clave para promover `{all_kw}` en `{dbs}`."
+- "Picos estacionales podrían indicar momentos clave para promover {all_kw} en {dbs}."
 - "Picos estacionales con un IIE alto podrían indicar momentos estratégicos para promover {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica).
 
 ### **C. De interés para directivos y gerentes**
-- "Una estacionalidad consistente podría guiar la planificación de recursos para `{all_kw}`, ajustándose a ciclos identificados."
+- "Una estacionalidad consistente podría guiar la planificación de recursos para {all_kw}, ajustándose a ciclos identificados."
 - "Una TCE negativa podría señalar la necesidad de adaptar estrategias ante una estacionalidad cambiante."
 
 Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica).
@@ -1880,16 +1915,16 @@ Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica).
 ## **VIII. Síntesis y reflexiones finales**
 - Este apartado está centrado en ampliamente Resumir hallazgos y reflexionar sobre la estacionalidad y destacar el aporte del análisis.
 - **Contenido:**
-  - Síntesis: "El análisis revela una estacionalidad [fuerte/débil] en `{all_kw}`, con picos en [mes] y una fuerza estacional de [valor]." "El análisis revela una estacionalidad [característica] en {all_kw}, con un IIE de [valor] y un IRE de [valor], sugiriendo ciclos [intensos/regulares]."
+  - Síntesis: "El análisis revela una estacionalidad [fuerte/débil] en {all_kw}, con picos en [mes] y una fuerza estacional de [valor]." "El análisis revela una estacionalidad [característica] en {all_kw}, con un IIE de [valor] y un IRE de [valor], sugiriendo ciclos [intensos/regulares]."
   - Reflexión: "Estos patrones podrían alinearse con los ciclos históricos de `temporal_analysis_prompt_1` y las influencias contextuales de `trend_analysis_prompt_1`, destacando [ejemplo: sensibilidad a ciclos fiscales]." "Estos patrones aportan una dimensión cíclica única a {all_kw}, posiblemente relacionada con [ejemplo: dinámicas comerciales]."
-  - Perspectiva final: "La estacionalidad aporta una dimensión cíclica clave para entender `{all_kw}`, sugiriendo su interacción con factores externos recurrentes." "Este análisis estacional complementa los enfoques previos, destacando la relevancia de los ciclos intra-anuales en la dinámica de {all_kw} en {dbs}."
+  - Perspectiva final: "La estacionalidad aporta una dimensión cíclica clave para entender {all_kw}, sugiriendo su interacción con factores externos recurrentes." "Este análisis estacional complementa los enfoques previos, destacando la relevancia de los ciclos intra-anuales en la dinámica de {all_kw} en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.F (Evaluación Crítica), I.D.3 (Perspicacia Interpretativa), V (Manejo de la Incertidumbre).
 
 ---
 
 #### **Datos Requeridos**
-- `{csv_seasonal}`: Resultados de la descomposición estacional (tendencia, estacionalidad, residuo) para `{all_kw}` en `{dbs}`.
+- `{csv_seasonal}`: Resultados de la descomposición estacional (tendencia, estacionalidad, residuo) para {all_kw} en {dbs}.
 
 IMPORTANT: 
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -1966,13 +2001,14 @@ Note:
 - Avoid a section about Analisys Limitations.
 """
 
+# Quinto Prompt
 prompt_6_single_analysis = """### **Cyclical Pattern Analysis for Management Tools**
 `cyclical_pattern_analysis_prompt_1`
 
 **Nota Inicial:** Este análisis se rige por las Instrucciones Generales, Restricciones Generales (Sección VIII), Requisitos de Salida (Sección IX) y Notas (Sección X) del `system_prompt_1`, disponibles en su versión traducida al español. Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
 **Objetivo Principal**
-Analizar exhaustivamente los patrones temporales y ciclos amplios en la adopción e interés por la herramienta de gestión `{all_kw}` según los datos de `{dbs}`, evaluando su fuerza, periodicidad, consistencia y evolución mediante métricas cuantitativas originales derivadas de `{csv_fourier}`. Explorar su relación con factores contextuales del entorno empresarial, tecnológico e industrial, e interpretar sus implicaciones para la estabilidad, predictibilidad y dinámica futura de `{all_kw}` en el marco de la investigación, aportando una perspectiva cíclica distintiva sobre su comportamiento. Explorar la influencia de factores contextuales del entorno empresarial, tecnológico e industrial, e interpretar las implicaciones de estos ciclos para la estabilidad, predictibilidad y dinámica futura de {all_kw}. Este análisis complementa temporal_analysis_prompt_1 (evolución histórica), trend_analysis_prompt_1 (contexto externo), arima_analysis_prompt_1 (proyecciones) y seasonal_analysis_prompt_1 (estacionalidad intra-anual) al enfocarse en ciclos plurianuales, enriqueciendo el marco doctoral con una perspectiva cíclica de mayor escala.
+Analizar exhaustivamente los patrones temporales y ciclos amplios en la adopción e interés por la herramienta de gestión {all_kw} según los datos de {dbs}, evaluando su fuerza, periodicidad, consistencia y evolución mediante métricas cuantitativas originales derivadas de {csv_fourier}. Explorar su relación con factores contextuales del entorno empresarial, tecnológico e industrial, e interpretar sus implicaciones para la estabilidad, predictibilidad y dinámica futura de {all_kw} en el marco de la investigación, aportando una perspectiva cíclica distintiva sobre su comportamiento. Explorar la influencia de factores contextuales del entorno empresarial, tecnológico e industrial, e interpretar las implicaciones de estos ciclos para la estabilidad, predictibilidad y dinámica futura de {all_kw}. Este análisis complementa temporal_analysis_prompt_1 (evolución histórica), trend_analysis_prompt_1 (contexto externo), arima_analysis_prompt_1 (proyecciones) y seasonal_analysis_prompt_1 (estacionalidad intra-anual) al enfocarse en ciclos plurianuales, enriqueciendo el marco doctoral con una perspectiva cíclica de mayor escala.
 
 **Justificación**
 Este análisis:
@@ -1981,13 +2017,29 @@ Este análisis:
 - Conecta los ciclos con factores externos, alineándose con system_prompt_1 (Sección I.F.2), para profundizar en la dinámica de {all_kw} en {dbs}.
 ---
 
-Esquema Propuesto para `cyclical_pattern_analysis_prompt_1`
+# Analisis Anteriores:
+A continuacion se presentan las conclusiones de los analisis anteriores realizados:
+## Analisis Temporal:
+* Conclusiones:
+{analisis_temporal_ai}
+## Analisis de Tendencias:
+* Conclusiones:
+{analisis_tendencias_ai}
+## Analisis ARIMA:
+* Conclusiones:
+{analisis_arima_ai}
+## Analisis de Estacionalidad:
+* Conclusiones:
+{analisis_estacionalidad_ai}
+****** FIN DE LOS ANALISIS ANTERIORES ******
+
+Esquema Propuesto de salida
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
 
 # **Patrones cíclicos plurianuales de {all_kw} en {dbs}: Un enfoque de Fourier**
 
 ## **I. Direccionamiento en el análisis de patrones cíclicos**
-- Este apartado está centrado en ampliamente Cuantificar la significancia, periodicidad y robustez de los ciclos temporales en `{all_kw}` con un enfoque metodológico riguroso basado en análisis de Fourier. Establecer el enfoque en ciclos amplios y su rol complementario dentro del marco de análisis previo.
+- Este apartado está centrado en ampliamente Cuantificar la significancia, periodicidad y robustez de los ciclos temporales en {all_kw} con un enfoque metodológico riguroso basado en análisis de Fourier. Establecer el enfoque en ciclos amplios y su rol complementario dentro del marco de análisis previo.
 Contenido:
   - Evalúa la presencia, fuerza y evolución de ciclos plurianuales en {all_kw} usando {csv_fourier}, diferenciándose de la estacionalidad intra-anual de seasonal_analysis_prompt_1.
   - Complementa temporal_analysis_prompt_1 (cronología), trend_analysis_prompt_1 (tendencias externas), arima_analysis_prompt_1 (predicciones) y seasonal_analysis_prompt_1 (ciclos cortos) al enfocarse en periodicidades de mayor escala.
@@ -2000,14 +2052,14 @@ Propósito: Cuantificar la significancia y consistencia de los ciclos usando an�
 
 ### **A. Base estadística del análisis cíclico**
 - **Contenido:**
-  - Fuente: `{csv_fourier}` (espectro de frecuencias, amplitudes y potencias para `{all_kw}` en `{dbs}`).
+  - Fuente: {csv_fourier} (espectro de frecuencias, amplitudes y potencias para {all_kw} en {dbs}).
   - Método: Transformada de Fourier para identificar componentes cíclicos, separando señal de ruido y considerando armónicos.
   - Métricas base: 
-    - Amplitud del ciclo (magnitud de oscilaciones en unidades de `{all_kw}`).
+    - Amplitud del ciclo (magnitud de oscilaciones en unidades de {all_kw}).
     - Período del ciclo (duración en años/meses).
     - Potencia espectral (energía relativa de cada frecuencia).
     - Relación señal-ruido (SNR) para evaluar claridad de los ciclos.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud de 50 en un ciclo de 4 años con SNR de 3 podría indicar un patrón cíclico claro frente al ruido de fondo en `{dbs}`.""Un ciclo de 4 años con potencia espectral de [valor] y SNR de 2.5 podría indicar una oscilación clara en {all_kw}."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud de 50 en un ciclo de 4 años con SNR de 3 podría indicar un patrón cíclico claro frente al ruido de fondo en {dbs}.""Un ciclo de 4 años con potencia espectral de [valor] y SNR de 2.5 podría indicar una oscilación clara en {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística), III (Naturaleza de los Datos).
 
@@ -2015,16 +2067,16 @@ Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística),
 - **Contenido:**
   - Identificar los dos ciclos más fuertes según potencia espectral (dominante y secundario).
   - Cuantificar: Período (ej., 3 años), Amplitud promedio, Porcentaje de varianza explicada.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo dominante de 5 años explicando el 40% de la varianza podría reflejar una adopción cíclica ligada a renovaciones estratégicas en `{dbs}`." "Un ciclo de 5 años con 35% de varianza podría reflejar una periodicidad dominante en {all_kw}."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo dominante de 5 años explicando el 40%% de la varianza podría reflejar una adopción cíclica ligada a renovaciones estratégicas en {dbs}." "Un ciclo de 5 años con 35%% de varianza podría reflejar una periodicidad dominante en {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.1.b (Patrones Recurrentes).
 
 ### **C. Índice de Fuerza Cíclica Total (IFCT)**
 - **Contenido:**
-  - **Construir una definición amplia que refiera sobre:** Mide la intensidad global de los ciclos en `{all_kw}`.
+  - **Construir una definición amplia que refiera sobre:** Mide la intensidad global de los ciclos en {all_kw}.
   - **Explicar de manera amplia los aspectos metodológicos a partir de:** IFCT = Σ(Amplitud de Ciclos Significativos) / Media Anual, sumando amplitudes de ciclos con SNR > 1.
   - **Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos:** >1 indica ciclos fuertes; <0.5, ciclos débiles.
-  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IFCT de 1.5 podría sugerir que los ciclos combinados tienen un impacto sustancial en la dinámica de `{all_kw}`." "Un IFCT de 1.3 podría sugerir que los ciclos combinados dominan la dinámica de {all_kw}."
+  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IFCT de 1.5 podría sugerir que los ciclos combinados tienen un impacto sustancial en la dinámica de {all_kw}." "Un IFCT de 1.3 podría sugerir que los ciclos combinados dominan la dinámica de {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística).
 
@@ -2033,7 +2085,7 @@ Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística).
   - **Construir una definición amplia que refiera sobre:** Evalúa la consistencia conjunta de los ciclos dominantes y secundarios.
   - **Explicar de manera amplia los aspectos metodológicos a partir de:** IRCC = Promedio(Potencia Espectral Dominante / Suma Potencias) × SNR, ponderando regularidad por claridad.
   - **Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos:** >0.7 indica alta regularidad; <0.4, ciclos erráticos.
-  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRCC de 0.85 podría reflejar que los ciclos de 3 y 6 años en `{all_kw}` son altamente predecibles en `{dbs}`." "Un IRCC de 0.8 podría reflejar ciclos predecibles en {all_kw}."
+  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRCC de 0.85 podría reflejar que los ciclos de 3 y 6 años en {all_kw} son altamente predecibles en {dbs}." "Un IRCC de 0.8 podría reflejar ciclos predecibles en {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Modelos de Series Temporales).
 
@@ -2042,7 +2094,7 @@ Vinculación con `system_prompt_1`:** Sección I.D.2 (Modelos de Series Temporal
   - **Construir una definición amplia que refiera sobre:** Mide cambios en la fuerza cíclica a lo largo del tiempo.
   - **Explicar de manera amplia los aspectos metodológicos a partir de:** TEC = (Potencia Final - Potencia Inicial del Ciclo Dominante) / Número de Años.
   - **Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos:** Positivo indica intensificación; negativo, debilitamiento.
-  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un TEC de -0.02 podría indicar que el ciclo de 4 años en `{all_kw}` pierde relevancia gradualmente." "Un TEC de -0.01 podría sugerir que el ciclo de 3 años en {all_kw} se atenúa."
+  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un TEC de -0.02 podría indicar que el ciclo de 4 años en {all_kw} pierde relevancia gradualmente." "Un TEC de -0.01 podría sugerir que el ciclo de 3 años en {all_kw} se atenúa."
 
 Vinculación con `system_prompt_1`:** Sección I.E.1 (Ciclos de Vida).
 
@@ -2052,28 +2104,28 @@ Vinculación con `system_prompt_1`:** Sección I.E.1 (Ciclos de Vida).
 ### **A. Factores del entorno empresarial**
 - **Contenido:**
   - Analizar coincidencias con ciclos económicos (ej., recuperación post-crisis, auges de inversión).
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 7 años podría estar vinculado a períodos de expansión económica que incentivan la adopción de `{all_kw}` en `{dbs}`." "Un ciclo de 6 años podría estar vinculado a períodos de recuperación económica en {dbs}."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 7 años podría estar vinculado a períodos de expansión económica que incentivan la adopción de {all_kw} en {dbs}." "Un ciclo de 6 años podría estar vinculado a períodos de recuperación económica en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.F.2 (Factores Externos).
 
 ### **B. Relación con patrones de adopción tecnológica**
 - **Contenido:**
-  - Evaluar si los ciclos reflejan innovaciones (ej., nuevas versiones de `{all_kw}`) o desplazamientos por tecnologías competidoras.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 2 años podría coincidir con actualizaciones tecnológicas bianuales que renuevan el interés en `{all_kw}`." "Un ciclo de 3 años podría reflejar renovaciones tecnológicas que impulsan {all_kw}."
+  - Evaluar si los ciclos reflejan innovaciones (ej., nuevas versiones de {all_kw}) o desplazamientos por tecnologías competidoras.
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 2 años podría coincidir con actualizaciones tecnológicas bianuales que renuevan el interés en {all_kw}." "Un ciclo de 3 años podría reflejar renovaciones tecnológicas que impulsan {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.1.c (Análisis Contextual).
 
 ### **C. Influencias específicas de la industria**
 - **Contenido:**
   - Identificar eventos recurrentes (ej., ferias comerciales, cambios regulatorios cíclicos).
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 3 años podría estar influenciado por convenciones trienales de la industria captadas en `{dbs}`." "Un ciclo de 4 años podría estar influenciado por eventos trienales en {dbs}."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 3 años podría estar influenciado por convenciones trienales de la industria captadas en {dbs}." "Un ciclo de 4 años podría estar influenciado por eventos trienales en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.E.4 (Explicaciones Alternativas).
 
 ### **D. Factores sociales o de mercado**
 - **Contenido:**
   - Considerar dinámicas macro como cambios en preferencias organizacionales o campañas de marketing.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 4 años podría reflejar tendencias de mercado que promueven periódicamente `{all_kw}`."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 4 años podría reflejar tendencias de mercado que promueven periódicamente {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.F.2 (Factores Externos).
 
@@ -2082,44 +2134,44 @@ Vinculación con `system_prompt_1`:** Sección I.F.2 (Factores Externos).
 
 ### **A. Estabilidad y evolución de los patrones cíclicos**
 - **Contenido:**
-  - Analizar cambios en amplitud y potencia: "Un TEC negativo podría indicar una estabilización de `{all_kw}`." "Un TEC positivo podría indicar una creciente dependencia cíclica de {all_kw}."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una potencia espectral creciente en un ciclo de 5 años podría sugerir que `{all_kw}` responde cada vez más a factores cíclicos externos." "Una potencia creciente en un ciclo de 5 años podría sugerir una intensificación de patrones en {all_kw}."
+  - Analizar cambios en amplitud y potencia: "Un TEC negativo podría indicar una estabilización de {all_kw}." "Un TEC positivo podría indicar una creciente dependencia cíclica de {all_kw}."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una potencia espectral creciente en un ciclo de 5 años podría sugerir que {all_kw} responde cada vez más a factores cíclicos externos." "Una potencia creciente en un ciclo de 5 años podría sugerir una intensificación de patrones en {all_kw}."
 
 Vinculación con `system_prompt_1`:** Sección I.E.1 (Ciclos de Vida).
 
 ### **B. Valor predictivo para la adopción futura**
 - **Contenido:**
   - Evaluar la utilidad de los ciclos para proyecciones: "Un IRCC alto podría facilitar anticipar picos futuros." "Un IRCC alto podría respaldar proyecciones cíclicas."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 3 años con IRCC de 0.9 podría prever un próximo aumento en el interés por `{all_kw}` en [año futuro]."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 3 años con IRCC de 0.9 podría prever un próximo aumento en el interés por {all_kw} en [año futuro]."
 
 Vinculación con `system_prompt_1`:** Sección I.D.2 (Rigurosidad Estadística).
 
 ### **C. Identificación de puntos potenciales de saturación**
 - **Contenido:**
   - Explorar si la disminución de amplitud o potencia señala límites: "Un IFCT decreciente podría indicar saturación."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 6 años con TEC negativo podría sugerir que `{all_kw}` ha alcanzado un techo de adopción en `{dbs}`."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 6 años con TEC negativo podría sugerir que {all_kw} ha alcanzado un techo de adopción en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.3 (Perspicacia Interpretativa).
 
 ### **D. Narrativa interpretativa de los ciclos**
 - **Contenido:**
   - Integrar hallazgos: "Un IFCT de [valor] y un IRCC de [valor] indican ciclos [intensos/regulares] de [período] años, posiblemente impulsados por [ejemplo: innovaciones tecnológicas]."
-  - Factores clave: "La coincidencia con ciclos económicos o industriales sugiere que `{all_kw}` responde a dinámicas externas recurrentes."
-  - Implicaciones: "La estabilidad cíclica podría reflejar una dependencia de `{all_kw}` a contextos específicos, mientras que un TEC negativo apunta a una posible transición."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 4 años con alta regularidad podría indicar que `{all_kw}` se revitaliza periódicamente tras lanzamientos tecnológicos o auges económicos en `{dbs}`."
+  - Factores clave: "La coincidencia con ciclos económicos o industriales sugiere que {all_kw} responde a dinámicas externas recurrentes."
+  - Implicaciones: "La estabilidad cíclica podría reflejar una dependencia de {all_kw} a contextos específicos, mientras que un TEC negativo apunta a una posible transición."
+  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 4 años con alta regularidad podría indicar que {all_kw} se revitaliza periódicamente tras lanzamientos tecnológicos o auges económicos en {dbs}."
 
 Vinculación con `system_prompt_1`:** Sección I.D.3 (Perspicacia Interpretativa), I.E.4 (Explicaciones Alternativas).
 
 ### **E. Perspectivas para diferentes audiencias**
 - **Contenido:**
 ### **A. De interés para académicos e investigadores**
-"Ciclos regulares podrían sugerir explorar cómo factores tecnológicos o económicos sustentan la dinámica de {all_kw}.""Ciclos consistentes podrían invitar a explorar cómo factores como la adopción tecnológica o cambios regulatorios sustentan la dinámica de `{all_kw}`."
+"Ciclos regulares podrían sugerir explorar cómo factores tecnológicos o económicos sustentan la dinámica de {all_kw}.""Ciclos consistentes podrían invitar a explorar cómo factores como la adopción tecnológica o cambios regulatorios sustentan la dinámica de {all_kw}."
 
 Vinculación con system_prompt_1: Sección II (Preguntas de Investigación).
 
 ### **B. De interés para asesores y consultores**
 "Un IFCT alto podría señalar oportunidades cíclicas para posicionar {all_kw} en momentos clave."
-Vinculación con system_prompt_1: Sección I.D.4 (Orientación Práctica). "Un IFCT elevado podría señalar oportunidades cíclicas para posicionar `{all_kw}` en momentos de alta receptividad."
+Vinculación con system_prompt_1: Sección I.D.4 (Orientación Práctica). "Un IFCT elevado podría señalar oportunidades cíclicas para posicionar {all_kw} en momentos de alta receptividad."
 
 ### **C. De interés para directivos y gerentes**
 "Un IRCC elevado podría guiar la planificación estratégica ajustada a ciclos de [período] años." "Un IRCC alto podría respaldar la planificación estratégica a mediano plazo, ajustándose a ciclos de [período] años."
@@ -2129,14 +2181,14 @@ Vinculación con `system_prompt_1`:** Sección I.D.4 (Orientación Práctica), I
 ## **V. Síntesis y reflexiones finales**
 - Este apartado está centrado en ampliamente Resumir los hallazgos clave y ofrecer una perspectiva integradora y perspicaz.
 - **Contenido:**
-  - Síntesis: "El análisis revela ciclos de [período] años en `{all_kw}`, con un IFCT de [valor] y un IRCC de [valor], indicando patrones [fuertes/regulares] que explican [porcentaje]% de la varianza." "El análisis identifica ciclos de [período] años en {all_kw}, con un IFCT de [valor] y un IRCC de [valor], indicando patrones [fuertes/regulares]."
-  - Reflexión: "Estos ciclos podrían estar moldeados por una interacción entre dinámicas económicas, tecnológicas y de la industria, sugiriendo que `{all_kw}` responde a estímulos externos recurrentes." 
-  - Perspectiva final: "El enfoque cíclico aporta una dimensión temporal amplia y robusta para comprender la evolución de `{all_kw}` en `{dbs}`, destacando su sensibilidad a patrones periódicos."
+  - Síntesis: "El análisis revela ciclos de [período] años en {all_kw}, con un IFCT de [valor] y un IRCC de [valor], indicando patrones [fuertes/regulares] que explican [porcentaje]%% de la varianza." "El análisis identifica ciclos de [período] años en {all_kw}, con un IFCT de [valor] y un IRCC de [valor], indicando patrones [fuertes/regulares]."
+  - Reflexión: "Estos ciclos podrían estar moldeados por una interacción entre dinámicas económicas, tecnológicas y de la industria, sugiriendo que {all_kw} responde a estímulos externos recurrentes." 
+  - Perspectiva final: "El enfoque cíclico aporta una dimensión temporal amplia y robusta para comprender la evolución de {all_kw} en {dbs}, destacando su sensibilidad a patrones periódicos."
 
 Vinculación con `system_prompt_1`:** Sección I.F (Evaluación Crítica), I.D.3 (Perspicacia Interpretativa), V (Manejo de la Incertidumbre).
 
 #### **Datos Requeridos**
-- `{csv_fourier}`: Resultados del análisis de Fourier (frecuencias, amplitudes, potencias espectrales, SNR) para `{all_kw}` en `{dbs}`.
+- {csv_fourier}: Resultados del análisis de Fourier (frecuencias, amplitudes, potencias espectrales, SNR) para {all_kw} en {dbs}.
 
 IMPORTANT: 
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -2207,6 +2259,7 @@ Notes:
 - Avoid a section about Analisys Limitations.
 """
 
+# Conclusiones
 
 prompt_conclusions_standalone = """## Synthesize Findings and Draw Conclusions - {all_kw} Analysis
 
@@ -2263,12 +2316,6 @@ IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de 
     {seasonal_analysis}
     # Cyclical Patterns
     {cyclical_patterns}
-
-    **Datos Requeridos:**
-*   Resultados de *todos* los prompts anteriores para {all_kw} en {dbs}.
-**Resultados Anteriores:**
-## Conexiones con Análisis Previos`**
-    *   Referencia y discusión *explícita* de cómo los resultados de este prompt se optimizan o mejoran con los resultados de los prompts anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
 
 **Key Considerations:**
 - Focus on practical implications for organizations
