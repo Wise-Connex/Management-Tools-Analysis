@@ -685,7 +685,457 @@ Note:
 # {csv_corr_matrix} = Matriz de correlación entre las diferentes fuentes de datos. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
 # {arima_result} = Resultados del modelo ARIMA.
 
-temporal_analysis_prompt_1 = """**Investigate General Trend Patterns**
+temporal_analysis_prompt_1 = """**ANÁLISIS TEMPORAL**
+
+**Nota Inicial:** Este análisis se rige por las siguientes directrices:
+
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **XI. NOTAS (Recordatorios Finales)**
+
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
+
+**Objetivo principal**
+
+Evaluar la evolución temporal de la herramienta de gestión {all_kw} según los datos de {dbs}. Identificar y cuantificar *objetivamente* las etapas de surgimiento, crecimiento (incluyendo picos), declive, estabilización, resurgimiento y/o transformación a lo largo del tiempo. Analizar la *magnitud*, *duración* y *contexto* de estos patrones. *No* se asume *a priori* que la herramienta sigue un patrón de "moda gerencial". Relacionar los hallazgos con las antinomias del ecosistema transorganizacional (si es relevante) y con las preguntas de investigación.
+
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: Sección IB - Objetivo Principal; Sección ID.1 - Enfoque Longitudinal; Sección II - Preguntas de Investigación.
+
+**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
+
+- **I. Contexto del Análisis Temporal**: Vincular con: I.C, III, D.1, II.
+- **I.A. Naturaleza de la fuente de datos: {dbs}**: Vincular con: III, V.
+- **I.B. Posibles implicaciones del análisis**: Vincular con: I.D.1, I.D.2.
+- **II. Datos en Bruto y Estadísticas Descriptivas**: Vincular con: D.2, VII.
+- **II.A. Serie temporal completa/segmentada**: Vincular con: D.1.a, III.
+- **II.B. Estadísticas descriptivas**: Vincular con: D.2.
+- **II.C. Interpretación Técnica Preliminar**: Vincular con: D.1.b, V.
+- **III. Análisis de Patrones Temporales**: Vincular con: I.D.1, I.D.2, D.1, G, E.1.
+- **III.A. Identificación de períodos pico**: Vincular con: D.1.c, D.2.
+- **III.B. Fases de declive**: Vincular con: D.1.c, D.2.
+- **III.C. Cambios de patrón (resurgimientos/transformaciones)**: Vincular con: D.1.b, E.1.
+- **III.D. Patrones de ciclo de vida**: Vincular con: G, E.1, D.2.
+- **III.E. Clasificación de ciclo de vida**: Vincular con: G, E.1.
+- **IV. Análisis e Interpretación**: Vincular con: I.D.3, I.E, I.F, E, F, V.
+- **IV.A. Tendencia general**: Vincular con: E.4, D.3.
+- **IV.B. Ciclo de vida**: Vincular con: G, F.1.
+- **IV.C. Puntos de inflexión (contexto y factores)**: Vincular con: D.1.c, F.2.
+- **V. Implicaciones e Impacto**: Vincular con: I.D.4, D.4, E.3.
+- **V.A. Contribuciones para investigadores/académicos**: Vincular con: II, F.1.
+- **V.B. Recomendaciones para asesores/consultores**: Vincular con: D.4, VII.
+- **V.C. Consideraciones para directivos/gerentes**: Vincular con: D.4.
+- **VI. Síntesis y Reflexiones Finales**: Vincular con: I.F, VI, V.
+
+**Esquema de Salida propuesto para ser desarrollado:**
+
+IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (ejem. temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad").
+
+# **Evolución y análisis temporal en {dbs}: Patrones y puntos de inflexión**
+
+## **I. Contexto del análisis temporal**
+
+Contenido esperado que se debe presentar:
+- Definición de los diferentes tipos de estadísticos que se van a analizar.
+- ¿Cuál es la relevancia en cuanto al tipo de información que puede ofrecer?
+- Establecer el período de análisis total de los datos, y los periodos de análisis seccionados que se han establecidos para la valoración de las series temporales a corto, mediano y largo plazo dentro de un análisis longitudinal.
+
+### **A. Naturaleza de la fuente de datos: {dbs}**
+- Explicar cuál es el alcance de la naturaleza del tipo de información que recoge la base de datos.
+- Establecer cuál es la metodología que utiliza la base de datos para la presentación de sus datos.
+- Advertir cuáles son las limitaciones que presenta la base de datos.
+- Abordar cuáles son las principales fortalezas que ofrece el análisis de la herramienta gerencial vista desde la base de datos.
+- Presentar cuáles son los lineamientos fundamentales que deben tenerse presente para una adecuada interpretación.
+
+### **B. Posibles implicaciones del análisis de los datos**
+- Determinar si {all_kw} muestra un patrón temporal consistente con la definición operacional de "moda gerencial".
+- Revelar patrones de adopción y uso más complejos (ciclos con resurgimiento, estabilización, etc.).
+- Identificar puntos de inflexión clave, *posiblemente* relacionados con factores externos (económicos, tecnológicos, sociales).
+- Proporcionar información para la toma de decisiones sobre la adopción o abandono de la herramienta.
+- Sugerir nuevas líneas de investigación sobre los factores que influyen en la dinámica temporal.
+
+## **II. Datos en bruto y estadísticas descriptivas**
+- Presentar los datos *brutos* de la serie temporal de {all_kw} en {dbs}, *sin ninguna interpretación*.
+
+### **A. Serie temporal completa y segmentada (muestra)**
+- Se incluirá una muestra representativa (inicio, fin, puntos intermedios) y una referencia a la ubicación de los datos completos (al final del informe).
+
+### **B. Estadísticas descriptivas**
+- Resumen *cuantitativo* de la serie temporal. Calcular y presentar *para cada segmento de datos*.
+
+### **C. Interpretación Técnica Preliminar**
+- Presentar comentarios analíticos *descriptivos* e *interpretativos* que relacionen las estadísticas descriptivas con patrones generales *observables* en la serie temporal.
+  - Picos Aislados
+  - Patrón Cíclico
+  - Tendencia Sostenida
+  - Estabilidad
+
+## **III. Análisis de patrones temporales: cálculos y descripción**
+- Esta sección se centra en los cálculos *específicos* solicitados, presentando los resultados de forma clara y concisa, con una *interpretación técnica descriptiva*, *sin* conclusiones sobre "modas gerenciales" ni contexto empresarial.
+
+### **A. Identificación y análisis de períodos pico**
+- Definición del tipo de periodo (pico), estableciendo un criterio *objetivo* para definir ese periodo (pico).
+- Justificar la elección del criterio del periodo (pico), advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
+- Identificación de los periodos (pico) propiamente aplicando el criterio para identificar *todos* los períodos (pico) en la serie temporal.
+- Cálculos (para cada pico) y presentación de los datos marcando fechas de inicio, fin, duración (en meses y años), valor de magnitud máxima, valor de magnitud promedio.
+- Tabla de resumen de resultados.
+- Contexto de los períodos (pico), analizando en cada uno de los periodos (pico) identificados, la posible incidencia de factores externos.
+
+### **B. Identificación y análisis de fases de declive**
+- Definición del tipo de periodo (declive), estableciendo un criterio *objetivo* para definir ese periodo (declive).
+- Justificar la elección del criterio del periodo (declive), advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
+- Identificación de los periodos (declive) propiamente aplicando el criterio para identificar *todos* los períodos (declive) en la serie temporal.
+- Cálculos (para cada declive) y presentación de los datos marcando fechas de inicio, fin, duración (en meses y años), Tasa de Declive Promedio (Porcentaje anual) (calculada como la disminución porcentual promedio por unidad de tiempo).
+- Patrón de Declive, describiendo cualitativamente el patrón (ej., lineal, exponencial, escalonado).
+- Tabla de resumen de resultados.
+- Contexto de los períodos (declive), analizando en cada uno de los periodos (declive) identificados, la posible incidencia de factores externos.
+
+### **C. Evaluación de cambios de patrón: resurgimientos y transformaciones**
+- Definición del tipo de periodo (resurgimientos y transformaciones), estableciendo un criterio *objetivo* para definir ese periodo (resurgimientos y transformaciones).
+- Justificar la elección del criterio del periodo (resurgimientos y transformaciones), advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
+- Identificación de los periodos (resurgimientos y transformaciones) propiamente aplicando el criterio para identificar *todos* los períodos (resurgimientos y transformaciones) en la serie temporal.
+- Cálculos (para cada resurgimiento y transformación) y presentación de los datos marcando fechas de inicio, Descripción Cualitativa del cambio observado, Cuantificación del cambio, para resurgimiento mostrar Tasa de crecimiento promedio, para Transformación mostrar la Magnitud del cambio en la métrica relevante (ej., cambio en la media, cambio en la desviación estándar).
+- Tabla de resumen de resultados.
+- Contexto de los períodos (resurgimientos y transformaciones), analizando en cada uno de los periodos (resurgimientos y transformaciones) identificados, la posible incidencia de factores externos.
+
+### **D. Patrones de ciclo de vida**
+- Evaluación de la Etapa del Ciclo de Vida basándose en *todos* los análisis anteriores (picos, declives, resurgimientos, transformaciones, tendencia general), *evaluando* la etapa general del ciclo de vida en la que se encuentra la herramienta ({all_kw}) *actualmente*.
+- *Justificar* los criterios de la evaluación y la selección de las métricas del ciclo de vida, especialmente de la métrica de estabilidad.
+- Cálculo de Métricas del Ciclo de Vida, especificando la duración Total del Ciclo de Vida (si es posible estimarla) en número de meses y años, el valor de la Intensidad (Magnitud Promedio del Uso/Interés), la Estabilidad (Medida de la Variabilidad) entendida como ej., desviación estándar, coeficiente de variación.
+- Indicar las revelaciones que revelan los datos sobre el estadio actual de la herramienta ({all_kw}) y el pronóstico de tendencia comportamental que va mostrando (basado en el principio de Ceteris Paribus).
+
+### **E. Clasificación de ciclo de vida**
+- Basado en el análisis clasificar el ciclo de vida de la herramienta en una de las siguientes categorías:
+  - **a) Modas Gerenciales**. Criterio clave: Auge rápido, volatilidad, declive predominante, falta de persistencia a largo plazo.
+    1. Clásica de Ciclo Corto: Auge abrupto seguido de declive inmediato, sin persistencia notable.
+    2. Efímera: Pico breve y aislado, seguido de desaparición rápida.
+    3. Declive Prolongado: Auge inicial con declive gradual, pero ciclo aún breve.
+    4. Recurrente: Picos repetitivos de corta duración, sin estabilidad prolongada.
+  - **b) Doctrinas**. Criterio clave: Estabilidad sostenida, relevancia a largo plazo, influencia estructural, uso recurrente sin obsolescencia.
+    5. Pura: Estabilidad estructural sin picos ni declives notables.
+    6. Clásico Extrapolado: Persistencia sostenida con adopción más allá de la gerencia.
+    7. Fundacional: Influencia duradera con derivadas claras y resurgimientos ocasionales.
+  - **c) Híbridos**. Criterio clave: muestran características transitorias o evolutivas. Son especie de zonas grises.
+    8. Auge sin Declive: Crecimiento rápido estabilizado en meseta sostenida.
+    9. Ciclos Largos: Oscilaciones amplias y prolongadas, sin declive definitivo.
+    10. Declive Tardío: Auge seguido de estabilidad larga antes de declive lento.
+    11. Superada: Auge inicial seguido de declive prolongado tras relevancia sostenida.
+    12. Moda Transformada: Auge rápido que evoluciona hacia estabilidad estructural.
+- Descripción clara y concisa de la etapa actual del ciclo de vida, y las métricas calculadas.
+
+## **IV. Análisis e interpretación: contextualización y significado**
+- Esta sección es el *núcleo* del informe. Construir una *narrativa* que integre los hallazgos estadísticos con la interpretación en el contexto de la investigación, *yendo más allá* de la descripción. Estilo *fluido* y *narrativo*, *evitando* la repetición.
+
+### **A. Tendencia general: ¿hacia dónde se dirige {all_kw}?**
+- Analizar la *tendencia general* (creciente, decreciente, estable, fluctuante) usando NADT, MAST y la descripción de las etapas.
+- Interpretar la tendencia: ¿Qué *podría* sugerir sobre la popularidad, uso o relevancia a largo plazo?
+- Considerar *explicaciones alternativas* (además de "moda gerencial"). *Considerar múltiples explicaciones* al menos 2 que estén vinculadas con las antinomias del ecosistema transorganizacional.
+
+### **B. Ciclo de vida: ¿moda pasajera, herramienta duradera u otro patrón?**
+- *Evaluar* si el ciclo es *consistente* con la definición operacional de "moda gerencial".
+  - **Definición Operacional de "Moda Gerencial" (Criterios):**
+    1. **Adopción Rápida:** Aumento significativo y *rápido*.
+    2. **Pico Pronunciado:** Período de máxima adopción, *claramente distinguible*.
+    3. **Declive Posterior:** Disminución significativa y *rápida* después del pico.
+    4. **Ciclo de Vida Corto:** Duración total *corta* (< 5 años, a menos que se justifique otro umbral).
+    5. **Ausencia de Transformación:** No hay evidencia de transformación.
+- *Justificar exhaustivamente* esta evaluación, usando la evidencia.
+- *Si *no* es consistente con "moda gerencial", *proponer y discutir explicaciones alternativas*.
+- *Comparar con patrones teóricos (ej., curva en S de Rogers, ciclo abreviado, sostenido, con resurgimiento, fluctuante).
+
+### **C. Puntos de inflexión: contexto y posibles factores**
+- Analizar los *puntos de inflexión* (picos, declives, resurgimientos, transformaciones).
+- *Considerar para cada punto de inflexión la *posible* influencia de *factores externos*:
+  - Eventos económicos (crisis, auges, cambios en tasas).
+  - Eventos tecnológicos (lanzamiento de tecnologías, avances en IA).
+  - Eventos sociales (cambios demográficos, movimientos sociales).
+  - Eventos políticos (elecciones, cambios de gobierno, regulaciones).
+  - Eventos ambientales (desastres, pandemias, regulaciones).
+  - Eventos específicos de la industria (cambios regulatorios, fusiones).
+  - Publicaciones influyentes (libros, artículos).
+  - Influencia de "gurús" o consultores.
+  - Efecto de "contagio" o imitación.
+  - Presiones institucionales.
+  - Cambios en la percepción de riesgo.
+
+### **D. Subsecciones temáticas adicionales (opcional)**
+- Si se justifica, añadir subsecciones. Ejemplos:
+  - **E. Análisis Específico del Resurgimiento de {all_kw}**
+  - **F. Variabilidad Temporal y Factores Desencadenantes**
+  - **G. Implicaciones de la Ausencia de Declive Sostenido**
+
+## **V. Implicaciones e impacto: perspectivas para diferentes audiencias**
+- *Sintetizar* hallazgos y ofrecer *perspectivas* para diferentes tipos de audiencias.
+
+### **A. Contribuciones para investigadores, académicos y analistas**
+- Identificación de posibles sesgos inadvertidos hasta ahora en investigaciones previas.
+- Contribución a nuevas líneas de investigación, sugerencias para futuro sobre zonas por explorar.
+
+### **B. Recomendaciones y sugerencias para asesores y consultores**
+- Consejos y recomendaciones técnicas a tener presente sobre la herramienta ({all_kw}).
+- Factores que deben anticiparse y considerarse para lineamientos de apoyo técnico dentro del contexto de la consultoría para el:
+  - Ámbito estratégico
+  - Ámbito táctico
+  - Ámbito operativo
+
+### **C. Consideraciones para directivos y gerentes de organizaciones**
+- Hacerlo según cada una de las tipología de las *Organizaciones*:
+  - **Públicas:** Consideraciones *específicas* (eficiencia, transparencia).
+  - **Privadas:** Consideraciones *específicas* (rentabilidad, competitividad).
+  - **PYMES:** Consideraciones *específicas* (recursos limitados, adaptación).
+  - **Multinacionales:** Consideraciones *específicas* (complejidad, gestión del cambio).
+  - **ONGs:** Consideraciones *específicas* (misión social, sostenibilidad).
+
+## **VI. Síntesis y reflexiones finales**
+- Sintetizar *principales hallazgos* en un párrafo breve.
+- Evaluar críticamente si los patrones son *más consistentes* con "moda gerencial" u *otras* explicaciones. *Justificar*.
+- Reconocer *explícitamente* *limitaciones* (sesgos, naturaleza exploratoria). Es *importante* reconocer que este análisis se basa en datos de [fuente], que pueden tener limitaciones en [sesgos]. Los resultados son una pieza más del rompecabezas.
+- Sugerir *brevemente* posibles líneas de investigación.
+
+**Data Required:** The results of your calculations related to temporal trends.
+
+**Data Requirements:**
+
+1. **Management Tool Data:**
+- For the all years: {csv_all_data}
+- For the last 20 years: {csv_last_20_data}
+- For the last 15 years: {csv_last_15_data}
+- For the last 10 years: {csv_last_10_data}
+- For the last 5 years: {csv_last_5_data}
+- For the last year: {csv_last_year_data}
+  - Date: Monthly data
+  - Keywords: Management tool identifiers from {all_kw}
+  - Usage Metrics: Relative usage/adoption values
+
+1. **Identify Peak Periods:**
+  - Determine peak adoption/usage periods for each management tool.
+  - Analyze the context and potential drivers of these peaks.
+  - Quantify the magnitude and duration of peak periods.
+
+2. **Analyze Decline Phases:**
+  - Identify significant decreases in tool usage/adoption.
+  - Evaluate the rate and pattern of decline.
+  - Assess potential causes of declining interest.
+  - Calculate decline velocities and patterns.
+
+3. **Evaluate Pattern Changes:**
+  - Detect any revival patterns after decline periods.
+  - Identify tool evolution patterns (e.g., rebranding, methodology updates).
+  - Analyze adaptation patterns to changing business needs.
+  - Quantify the significance of pattern changes.
+
+4. **Analyze Lifecycle Patterns:**
+  - Assess the overall lifecycle stage of each tool.
+  - Compare lifecycle durations across different tools.
+  - Identify common patterns in tool evolution.
+  - Calculate lifecycle metrics (duration, intensity, stability).
+
+2. **Contextual Data:**
+- Trends and means for tools over last 20 years: {csv_means_trends}
+- Statistical significance indicators
+
+IMPORTANT:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+
+**INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
+  - Rol e Identidad (experto consultor).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
+  - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
+  - Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
+  - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
+  - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
+  - Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
+- **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión).
+- **No**es necesario repetir los datos completos al final del informe.
+- Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
+- **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
+- **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
+- **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
+- **Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
+
+"""
+
+temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
+
+**Objective:** To analyze and compare the temporal patterns of {all_kw} management tool across different data sources: {selected_sources}, identifying relationships and discrepancies between public interest, academic coverage, and industry implementation.
+Management Tool: {all_kw}
+Data Sources: {selected_sources}
+
+**Tasks:**
+
+1. **Cross-Source Peak Analysis:**
+    - Compare peak timing across different sources
+    - Identify lead-lag relationships between sources
+    - Analyze peak intensity variations
+    - Calculate cross-source peak alignment metrics
+
+2. **Pattern Consistency Analysis:**
+    - Evaluate decline patterns across sources
+    - Identify discrepancies in adoption reporting
+    - Analyze time lags between different metrics
+    - Quantify pattern consistency scores
+
+3. **Source-Specific Characteristics:**
+    - Compare revival patterns across sources
+    - Analyze source-specific reporting biases
+    - Identify systematic differences between sources
+    - Calculate source reliability metrics
+
+4. **Integrated Trend Analysis:**
+    - Compare lifecycle representations across sources
+    - Analyze correlation between different metrics
+    - Identify potential causality patterns
+    - Calculate cross-source synchronization scores
+
+**Data Required:** The results of your calculations related to temporal trends.
+
+**Data Requirements:**
+
+1. **Multi-Source Data:**
+{csv_combined_data}
+    - Date: Monthly data (yearly when Google Books Ngram is included)
+    - Source-specific metrics
+    - Cross-source correlation indicators
+- General Publications Data: from Google Books Ngram
+- Specialized Publications Data: from Crossref.org
+- General Interest Data: from Google Trends
+- Industry Usability Data: from Bain - Usabilidad
+- Industry Satisfaction Data: from Bain - Satisfacción
+
+2. **Cross-Source Metrics:**
+- Trends and means across sources: 
+{csv_means_trends}
+- Cross-source correlation matrices: 
+{csv_corr_matrix}
+- Time-lag indicators
+- Source reliability scores
+
+IMPORTANT:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
+"""
+
+cross_relationship_prompt_1 = """### **Explore Cross-Tool Relationships**
+# Análisis de Relaciones Cruzadas - {all_kw} ({dbs})
+
+Herramienta: {all_kw}
+Fuente: {dbs}
+
+**Objetivo:** Explorar las relaciones entre {all_kw} y otras herramientas de gestión en {dbs}, identificar patrones de interacción (complementariedad, sustitución, coexistencia, etc.), y *evaluar cómo estas relaciones pueden influir en la adopción, difusión y ciclo de vida de {all_kw}, así como su capacidad para abordar las antinomias organizacionales*.
+
+**Tareas Específicas e Inferencias:**
+
+1.  **Análisis de Correlación:**
+    *   **Tarea:** Calcular la correlación (ej., coeficiente de correlación de Pearson) entre la serie temporal de {all_kw} y las series temporales de *otras herramientas de gestión* (si están disponibles en {dbs}).  Identificar correlaciones *significativas* (tanto positivas como negativas). Evaluar la *estabilidad temporal* de las correlaciones (¿cambian a lo largo del tiempo?).
+    *   **Inferencias y Relevancia:**
+        *   **Correlación Positiva:** Podría indicar:
+            *   **Complementariedad:** Las herramientas se utilizan juntas para lograr un objetivo común.
+            *   **Tendencia Compartida:** Ambas herramientas se ven afectadas por los mismos factores externos.
+            *   **Adopción Secuencial:** Una herramienta "allana el camino" para la otra.
+        *   **Correlación Negativa:** Podría indicar:
+            *   **Sustitución:** Una herramienta reemplaza a la otra.
+            *   **Competencia:** Las herramientas compiten por la atención y los recursos de las organizaciones.
+            *   **Tendencias Opuestas:** Las herramientas responden a necesidades o filosofías de gestión diferentes.
+        *   **Estabilidad Temporal:**
+            *   **Correlaciones Estables:** Sugieren una relación *duradera* entre las herramientas.
+            *   **Correlaciones Cambiantes:** Podrían indicar una *evolución* en la relación entre las herramientas (ej., una herramienta que inicialmente era complementaria se vuelve sustituta).
+        *   **Aporte a la Investigación:** Las correlaciones ayudan a identificar el "ecosistema" de herramientas de gestión en el que se inserta {all_kw} y cómo este ecosistema influye en su trayectoria.
+
+2.  **Análisis de Patrones de Herramientas:**
+    *   **Tarea:** Identificar *grupos* de herramientas que muestren patrones de adopción/interés *similares* a {all_kw} (ej., crecimiento/declive simultáneo, picos en los mismos períodos).  Identificar también herramientas con patrones *opuestos*.
+    *   **Inferencias y Relevancia:**
+        *   **Patrones Similares:** Podría indicar:
+            *   Herramientas que abordan *necesidades similares* o complementarias.
+            *   Herramientas que se ven afectadas por los *mismos factores externos*.
+            *   Herramientas que forman parte de una *misma "ola"* de innovación gerencial.
+        *   **Patrones Opuestos:** Podría indicar:
+            *   Herramientas que compiten por la atención.
+            *   Herramientas que representan *enfoques diferentes* o incluso *contradictorios*.
+        *   **Aporte a la Investigación:**  La identificación de grupos de herramientas ayuda a comprender cómo las modas gerenciales se agrupan y evolucionan juntas, y cómo las tensiones entre innovación y ortodoxia podrían manifestarse a nivel de *conjuntos* de herramientas.
+
+3.  **Análisis de Impacto Empresarial (Sinergias y Conflictos):**
+* **Tarea:** Basado en el análisis de correlaciones y patrones, *inferir* posibles *sinergias* (combinaciones de herramientas que potencian mutuamente su efectividad) y *conflictos* (combinaciones que disminuyen la efectividad o son redundantes).
+    *   **Inferencias y Relevancia:**
+        *  **Sinergias:** Identificar si la combinación de herramientas produce resultados superiores.
+        *   **Conflictos:** Identificar si la adopción conjunta de ciertas herramientas es *contraproducente* o *innecesaria*.
+        *   **Adopción Secuencial:**  ¿Hay herramientas que *típicamente* se adoptan *antes* o *después* de {all_kw}? ¿Esto sugiere una secuencia lógica de implementación?
+    *   **Aporte a la Investigación:**  Este análisis ayuda a comprender cómo las organizaciones *combinan* herramientas de gestión y cómo estas combinaciones pueden afectar su capacidad para abordar las antinomias organizacionales (ej., ¿una combinación de herramientas promueve la estabilidad *y* la innovación, o solo una de ellas?).
+
+**Data Required:**
+- Correlation matrix: {csv_corr_matrix}
+- Regression analysis results: {csv_regression}
+**Resultados Anteriores:**
+**## Conexiones con Análisis Previos** (Solo si están disponibles)
+* Referencia y discusión *explícita* de cómo los resultados de esta sección se optimizan o mejoran con los resultados de las secciones anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
+
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
+"""
+
+cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
+
+**Objective:** To analyze relationships between different data sources tracking {all_kw} management tool adoption and validate trend consistency for {dbs}.
+
+**Tasks:**
+
+1. **Source Correlation Analysis:**
+    - Compare trends across all data sources:
+        * General Publications (Google Books Ngram)
+        * Specialized Publications (Crossref.org)
+        * General Interest (Google Trends)
+        * Industry Usability (Bain - Usabilidad)
+        * Industry Satisfaction (Bain - Satisfacción)
+    - Analyze correlation patterns between sources
+    - Identify potential leading/lagging relationships
+    - Compare relative trend strengths
+
+2. **Pattern Validation:**
+    - Analyze consistency of trends across sources
+    - Identify source-specific patterns or anomalies
+    - Compare trend directions and magnitudes
+    - Detect systematic differences between sources
+
+3. **Impact Analysis:**
+    - Evaluate relationships between sources
+    - Identify notable disconnects between perception and reality
+    - Compare public interest versus industry metrics
+    - Assess practical implications of observed patterns
+
+**Data Required:**
+- Cross-source correlation matrix: {csv_corr_matrix}
+- Combined source trends data: {csv_combined_data}
+
+Note: 
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
+- Avoid to give Recomendations for better or aditional analysis.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
+- Avoid a section about Analisys Limitations.
+"""
+
+# Segundo Prompt
+trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
 
 **Nota Inicial:** Este análisis se rige por las siguientes directrices:
 
@@ -884,6 +1334,7 @@ o Desarrollar un conjunto de reflexiones críticas de manera ampliada a partir d
 o En el análisis no se deben obviar las limitaciones implícitas, por lo que se deben hacer presentes para fortalecer la rigurosidad metodológica y argumentativa del análisis , de forma asistemática y amplia: ejemplos de solo referencia para desarrollar y ampliar:  "Los resultados dependen de los datos agregados de {dbs}, lo que podría subestimar variaciones locales o específicas no capturadas en {csv_means_trends}."
 o Perspectiva final: "Este análisis sugiere que {all_kw} podría beneficiarse de estudios adicionales sobre [Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: factores tecnológicos], complementando la investigación doctoral."
 
+
 **Datos Requeridos**
 - {csv_means_trends}: Tendencias y medias de {all_kw} en {dbs} (Fecha, Valor).
 - Trends and means for tools: {csv_means_trends}
@@ -893,6 +1344,7 @@ IMPORTANT:
 - Avoid to give Recomendations for better or aditional analysis.
 - Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
 - Avoid a section about Analisys Limitations.
+
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
 - **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
@@ -918,396 +1370,6 @@ IMPORTANT:
 - **Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados.
 - **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
 - **IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
-
-"""
-
-temporal_analysis_prompt_2 = """### **Analyze Temporal Trends**
-
-**Objective:** To analyze and compare the temporal patterns of {all_kw} management tool across different data sources: {selected_sources}, identifying relationships and discrepancies between public interest, academic coverage, and industry implementation.
-Management Tool: {all_kw}
-Data Sources: {selected_sources}
-
-**Tasks:**
-
-1. **Cross-Source Peak Analysis:**
-    - Compare peak timing across different sources
-    - Identify lead-lag relationships between sources
-    - Analyze peak intensity variations
-    - Calculate cross-source peak alignment metrics
-
-2. **Pattern Consistency Analysis:**
-    - Evaluate decline patterns across sources
-    - Identify discrepancies in adoption reporting
-    - Analyze time lags between different metrics
-    - Quantify pattern consistency scores
-
-3. **Source-Specific Characteristics:**
-    - Compare revival patterns across sources
-    - Analyze source-specific reporting biases
-    - Identify systematic differences between sources
-    - Calculate source reliability metrics
-
-4. **Integrated Trend Analysis:**
-    - Compare lifecycle representations across sources
-    - Analyze correlation between different metrics
-    - Identify potential causality patterns
-    - Calculate cross-source synchronization scores
-
-**Data Required:** The results of your calculations related to temporal trends.
-
-**Data Requirements:**
-
-1. **Multi-Source Data:**
-{csv_combined_data}
-    - Date: Monthly data (yearly when Google Books Ngram is included)
-    - Source-specific metrics
-    - Cross-source correlation indicators
-- General Publications Data: from Google Books Ngram
-- Specialized Publications Data: from Crossref.org
-- General Interest Data: from Google Trends
-- Industry Usability Data: from Bain - Usabilidad
-- Industry Satisfaction Data: from Bain - Satisfacción
-
-2. **Cross-Source Metrics:**
-- Trends and means across sources: 
-{csv_means_trends}
-- Cross-source correlation matrices: 
-{csv_corr_matrix}
-- Time-lag indicators
-- Source reliability scores
-
-IMPORTANT:
-- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
-- Avoid to give Recomendations for better or aditional analysis.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Avoid a section about Analisys Limitations.
-"""
-
-cross_relationship_prompt_1 = """### **Explore Cross-Tool Relationships**
-# Análisis de Relaciones Cruzadas - {all_kw} ({dbs})
-
-Herramienta: {all_kw}
-Fuente: {dbs}
-
-**Objetivo:** Explorar las relaciones entre {all_kw} y otras herramientas de gestión en {dbs}, identificar patrones de interacción (complementariedad, sustitución, coexistencia, etc.), y *evaluar cómo estas relaciones pueden influir en la adopción, difusión y ciclo de vida de {all_kw}, así como su capacidad para abordar las antinomias organizacionales*.
-
-**Tareas Específicas e Inferencias:**
-
-1.  **Análisis de Correlación:**
-    *   **Tarea:** Calcular la correlación (ej., coeficiente de correlación de Pearson) entre la serie temporal de {all_kw} y las series temporales de *otras herramientas de gestión* (si están disponibles en {dbs}).  Identificar correlaciones *significativas* (tanto positivas como negativas). Evaluar la *estabilidad temporal* de las correlaciones (¿cambian a lo largo del tiempo?).
-    *   **Inferencias y Relevancia:**
-        *   **Correlación Positiva:** Podría indicar:
-            *   **Complementariedad:** Las herramientas se utilizan juntas para lograr un objetivo común.
-            *   **Tendencia Compartida:** Ambas herramientas se ven afectadas por los mismos factores externos.
-            *   **Adopción Secuencial:** Una herramienta "allana el camino" para la otra.
-        *   **Correlación Negativa:** Podría indicar:
-            *   **Sustitución:** Una herramienta reemplaza a la otra.
-            *   **Competencia:** Las herramientas compiten por la atención y los recursos de las organizaciones.
-            *   **Tendencias Opuestas:** Las herramientas responden a necesidades o filosofías de gestión diferentes.
-        *   **Estabilidad Temporal:**
-            *   **Correlaciones Estables:** Sugieren una relación *duradera* entre las herramientas.
-            *   **Correlaciones Cambiantes:** Podrían indicar una *evolución* en la relación entre las herramientas (ej., una herramienta que inicialmente era complementaria se vuelve sustituta).
-        *   **Aporte a la Investigación:** Las correlaciones ayudan a identificar el "ecosistema" de herramientas de gestión en el que se inserta {all_kw} y cómo este ecosistema influye en su trayectoria.
-
-2.  **Análisis de Patrones de Herramientas:**
-    *   **Tarea:** Identificar *grupos* de herramientas que muestren patrones de adopción/interés *similares* a {all_kw} (ej., crecimiento/declive simultáneo, picos en los mismos períodos).  Identificar también herramientas con patrones *opuestos*.
-    *   **Inferencias y Relevancia:**
-        *   **Patrones Similares:** Podría indicar:
-            *   Herramientas que abordan *necesidades similares* o complementarias.
-            *   Herramientas que se ven afectadas por los *mismos factores externos*.
-            *   Herramientas que forman parte de una *misma "ola"* de innovación gerencial.
-        *   **Patrones Opuestos:** Podría indicar:
-            *   Herramientas que compiten por la atención.
-            *   Herramientas que representan *enfoques diferentes* o incluso *contradictorios*.
-        *   **Aporte a la Investigación:**  La identificación de grupos de herramientas ayuda a comprender cómo las modas gerenciales se agrupan y evolucionan juntas, y cómo las tensiones entre innovación y ortodoxia podrían manifestarse a nivel de *conjuntos* de herramientas.
-
-3.  **Análisis de Impacto Empresarial (Sinergias y Conflictos):**
-* **Tarea:** Basado en el análisis de correlaciones y patrones, *inferir* posibles *sinergias* (combinaciones de herramientas que potencian mutuamente su efectividad) y *conflictos* (combinaciones que disminuyen la efectividad o son redundantes).
-    *   **Inferencias y Relevancia:**
-        *  **Sinergias:** Identificar si la combinación de herramientas produce resultados superiores.
-        *   **Conflictos:** Identificar si la adopción conjunta de ciertas herramientas es *contraproducente* o *innecesaria*.
-        *   **Adopción Secuencial:**  ¿Hay herramientas que *típicamente* se adoptan *antes* o *después* de {all_kw}? ¿Esto sugiere una secuencia lógica de implementación?
-    *   **Aporte a la Investigación:**  Este análisis ayuda a comprender cómo las organizaciones *combinan* herramientas de gestión y cómo estas combinaciones pueden afectar su capacidad para abordar las antinomias organizacionales (ej., ¿una combinación de herramientas promueve la estabilidad *y* la innovación, o solo una de ellas?).
-
-**Data Required:**
-- Correlation matrix: {csv_corr_matrix}
-- Regression analysis results: {csv_regression}
-**Resultados Anteriores:**
-**## Conexiones con Análisis Previos** (Solo si están disponibles)
-* Referencia y discusión *explícita* de cómo los resultados de esta sección se optimizan o mejoran con los resultados de las secciones anteriores, identificando convergencias, divergencias, o nuevas perspectivas.
-
-Note: 
-- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
-- Avoid to give Recomendations for better or aditional analysis.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Avoid a section about Analisys Limitations.
-"""
-
-cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
-
-**Objective:** To analyze relationships between different data sources tracking {all_kw} management tool adoption and validate trend consistency for {dbs}.
-
-**Tasks:**
-
-1. **Source Correlation Analysis:**
-    - Compare trends across all data sources:
-        * General Publications (Google Books Ngram)
-        * Specialized Publications (Crossref.org)
-        * General Interest (Google Trends)
-        * Industry Usability (Bain - Usabilidad)
-        * Industry Satisfaction (Bain - Satisfacción)
-    - Analyze correlation patterns between sources
-    - Identify potential leading/lagging relationships
-    - Compare relative trend strengths
-
-2. **Pattern Validation:**
-    - Analyze consistency of trends across sources
-    - Identify source-specific patterns or anomalies
-    - Compare trend directions and magnitudes
-    - Detect systematic differences between sources
-
-3. **Impact Analysis:**
-    - Evaluate relationships between sources
-    - Identify notable disconnects between perception and reality
-    - Compare public interest versus industry metrics
-    - Assess practical implications of observed patterns
-
-**Data Required:**
-- Cross-source correlation matrix: {csv_corr_matrix}
-- Combined source trends data: {csv_combined_data}
-
-Note: 
-- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
-- Avoid to give Recomendations for better or aditional analysis.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Avoid a section about Analisys Limitations.
-"""
-
-# Segundo Prompt
-trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
-
-**Nota Inicial:** Este análisis se rige por las I. INSTRUCCIONES BASE (CONSTANTES), II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas), III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente), IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado), V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna), VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado), VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance), IX. RESTRICCIONES GENERALES (Formato y Estilo), X. REQUISITOS DE SALIDA (Formato del Informe), XI. NOTAS (Recordatorios Finales). Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
-**Objetivo Principal**
-Analizar las tendencias generales de la herramienta de gestión {all_kw} en {dbs}, evaluando cómo los factores contextuales externos (microeconómicos, tecnológicos, de mercado, sociales, políticos, ambientales y organizacionales) configuran su dinámica de adopción, uso y relevancia a lo largo del tiempo. Desarrollar índices simples y compuestos basados en datos estadísticos para cuantificar estas influencias, generando una narrativa interpretativa que complemente el análisis temporal del análisis temporal y enriquezca la comprensión de los patrones en el marco de la investigación doctoral.
-
-**Justificación**
-Este análisis aporta una perspectiva contextual que:
-- Explora el impacto de factores externos en las tendencias generales de {all_kw}, diferenciándose del enfoque cronológico del análisis temporal.
-- Vincula los índices con posibles influencias externas, estableciendo una analogía con los puntos de inflexión analizados en el análisis temporal, sin duplicar su contenido.
-- Cumple con Sección I.B), ofreciendo evidencia rigurosa y perspicacias interpretativas para la investigación doctoral.
-
-# Analisis Anteriores:
-A continuacion se presentan las conclusiones de los analisis anteriores realizados:
-## Analisis Temporal:
-* Conclusiones:
-{analisis_temporal_ai}
-****** FIN DE LOS ANALISIS ANTERIORES ******
-
-Esquema de Salida propuesto para ser desarrollado:
-IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
-
-# **Tendencias generales y factores contextuales de {all_kw} en {dbs}**
-
-## **I. Direccionamiento en el análisis de las tendencias generales**
-- Este apartado está centrado en ampliamente Establecer el enfoque contextual y su diferenciación con el análisis temporal, orientando el análisis hacia las tendencias generales influenciadas por el entorno externo.
-  - Las tendencias generales se definen como patrones amplios de adopción, uso o relevancia de {all_kw} en {dbs}, moldeados por factores contextuales externos, a diferencia del enfoque longitudinal detallado del análisis temporal.
-  - Este análisis busca identificar cómo el entorno externo da forma a {all_kw}, explorando dinámicas más allá de la secuencia temporal.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras el análisis temporal podría revelar un pico en el uso de {all_kw} en [año], este análisis examina si factores como avances tecnológicos o crisis económicas pudieron influir en esa tendencia general."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1 (Enfoque Longitudinal, contextualizado), I.D.3 (Perspicacia Interpretativa), I.C (Naturaleza Comportamental).
-
-## **II. Base estadística para el análisis contextual**
-- Este apartado está centrado en ampliamente Proporcionar una fundamentación estadística sólida como base para los índices contextuales, resaltando su relevancia para el análisis de tendencias generales.
-
-### **A. Datos estadísticos disponibles**
-Presentación y explicación del resumen de los principales datos estadísticos base.
-- **Contenido:**
-  - Fuente: {csv_means_trends} (tendencias y medias de {all_kw} en {dbs}), con datos en formato Fecha-Valor (ej., 2023-01, 50).
-  - Estadísticas clave: Media (nivel promedio), Desviación Estándar (variabilidad), NADT (tasa de cambio anual), Número de Picos (fluctuaciones), Rango (amplitud), Percentiles 25%% y 75%% (distribución).
-  - Nota: Los datos son agregados, reflejando tendencias generales sin segmentación temporal específica, a diferencia de los segmentos detallados en el análisis temporal.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una media de 60 en {dbs} podría indicar un nivel sostenido de interés en {all_kw}, mientras que un NADT de -5%% anual sugiere una tendencia decreciente influenciada por el contexto externo."
-
-### **B. Interpretación preliminar**
-Desarrollar y ampliar aspectos como:
-- **Contenido:**
-  - Tabla ampliada con interpretaciones cualitativas:
-    | Estadística         | Valor ({all_kw} en {dbs}) | Interpretación Preliminar Contextual                                                                 |
-    |---------------------|---------------------------|---------------------------------------------------------------------------------------------|
-    | Media               | [Valor]                   | Nivel promedio de interés/uso, reflejando la intensidad general en el contexto externo.     |
-    | Desviación Estándar | [Valor]                   | Grado de variabilidad, sugiriendo posible sensibilidad a cambios contextuales externos.     |
-    | NADT                | [Valor] (%% anual)         | Tendencia anual promedio, indicando dirección general influenciada por factores externos.  |
-    | Número de Picos     | [Valor]                   | Frecuencia de fluctuaciones, pudiendo reflejar reactividad a eventos externos significativos.|
-    | Rango               | [Valor]                   | Amplitud de variación, indicando el alcance de las influencias externas en {all_kw}.      |
-    | Percentil 25%%       | [Valor]                   | Nivel bajo frecuente, sugiriendo umbral mínimo de interés/uso en contextos adversos.        |
-    | Percentil 75%%       | [Valor]                   | Nivel alto frecuente, reflejando el potencial máximo en contextos favorables.               |
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un NADT de -5%% combinado con un Número de Picos de 3 podría indicar un declive general con fluctuaciones esporádicas, posiblemente ligadas a eventos externos como regulaciones o avances tecnológicos."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística), III (Naturaleza de los Datos).
-
-## **III. Desarrollo y aplicabilidad de índices contextuales**
-- Este apartado está centrado en ampliamente Construir y aplicar índices que cuantifiquen el impacto de factores externos en {all_kw}, estableciendo una conexión analógica con los puntos de inflexión de del análisis temporal.
-
-### **A. Construcción de índices simples**
-- Este apartado está centrado en ampliamente Transformar datos estadísticos en métricas que cuantifiquen el impacto de factores externos en {all_kw}.
-- **Contenido:**
- 
-#### **(i) Índice de Volatilidad Contextual (IVC):**
-    - **Construir una definición amplia que refiera sobre:** Mide la sensibilidad de {all_kw} a cambios externos en función de su variabilidad relativa.
-    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IVC = Desviación Estándar / Media, normalizando la variabilidad respecto al nivel promedio.
-    - **Aplicabilidad:** Identifica cuán susceptible es {all_kw} a fluctuaciones externas en {dbs}. Valores >1 sugieren alta volatilidad; <1, estabilidad.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IVC de 1.3 podría indicar que {all_kw} experimenta variaciones significativas ante eventos externos, como cambios económicos o tecnológicos."
-
-#### **(ii) Índice de Intensidad Tendencial (IIT):**
-    - **Construir una definición amplia que refiera sobre:** Cuantifica la fuerza y dirección de la tendencia general de {all_kw} influenciada por el contexto.
-    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IIT = NADT × Media, combinando la tasa de cambio con el nivel promedio.
-    - **Aplicabilidad:** Refleja si {all_kw} crece o declina en respuesta a factores externos. Valores positivos indican crecimiento; negativos, declive.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IIT de -40 podría sugerir un declive moderado, posiblemente vinculado a factores como obsolescencia tecnológica."
-
-#### **(iii) Índice de Reactividad Contextual (IRC):**
-    - **Construir una definición amplia que refiera sobre:** Evalúa la frecuencia de fluctuaciones relativas a la amplitud de {all_kw}.
-    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IRC = Número de Picos / (Rango / Media), ajustando las fluctuaciones por la escala de variación.
-    - **Aplicabilidad:** Mide la capacidad de {all_kw} para responder a eventos externos. Valores >1 indican alta reactividad.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRC de 1.5 podría reflejar una alta respuesta a eventos como lanzamientos tecnológicos o crisis económicas."
-
-### **B. Estimaciones de índices compuestos**
-Explicar y desarrollar:
-- **Contenido:**
-
-#### **(i) Índice de Influencia Contextual (IIC):**
-    - **Construir una definición amplia que refiera sobre:** Evalúa la influencia global de factores externos en {all_kw}.
-    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IIC = (IVC + |IIT| + IRC) / 3, promediando los índices simples (usando valor absoluto de IIT para consistencia).
-    - **Aplicabilidad:** Indica el grado en que el contexto externo moldea las tendencias de {all_kw}. Valores >1 sugieren fuerte influencia.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IIC de 1.6 podría señalar que {all_kw} está marcadamente influenciada por factores externos, como los analizados en los puntos de inflexión del análisis temporal."
-
-#### **(ii) Índice de Estabilidad Contextual (IEC):**
-    - **Construir una definición amplia que refiera sobre:** Mide la estabilidad de {all_kw} frente a variaciones externas.
-    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IEC = Media / (Desviación Estándar × Número de Picos), inversamente proporcional a la variabilidad y fluctuaciones.
-    - **Aplicabilidad:** Valores altos indican resistencia a factores externos; bajos, inestabilidad.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IEC de 0.03 podría sugerir que {all_kw} es inestable ante cambios contextuales, como crisis o regulaciones."
-
-#### **(iii) Índice de Resiliencia Contextual (IREC):**
-    - **Construir una definición amplia que refiera sobre:** Cuantifica la capacidad de {all_kw} para mantener niveles altos de interés/uso pese a condiciones externas adversas.
-    - **Explicar de manera amplia los aspectos metodológicos a partir de:** IREC = Percentil 75%% / (Percentil 25%% + Desviación Estándar), comparando el nivel alto con la base y la variabilidad.
-    - **Aplicabilidad:** Valores >1 indican resiliencia; <1, vulnerabilidad a factores externos.
-    - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IREC de 0.8 podría indicar que {all_kw} tiende a debilitarse en contextos adversos, como los identificados en puntos de inflexión."
-
-### **C. Análisis y presentación de resultados**
-Explicar y presentar un resumen de los resultados
-- **Contenido:**
-  - Tabla de resultados con interpretaciones abiertas:
-    | Índice | Valor | Interpretación Orientativa                          |
-    |--------|-------|----------------------------------------------------|
-    | IVC    | 1.3   | Posible alta volatilidad ante eventos externos     |
-    | IIT    | -40   | Tendencia a declive influenciada por el contexto   |
-    | IRC    | 1.5   | Alta reactividad a cambios externos                |
-    | IIC    | 1.6   | Fuerte influencia contextual probable              |
-    | IEC    | 0.03  | Baja estabilidad frente a factores externos        |
-    | IREC   | 0.8   | Vulnerabilidad potencial a condiciones adversas    |
-  - Relación analógica con Análisis Temporal: "Los índices como IRC y IIC podrían correlacionarse con los puntos de inflexión identificados en Análisis Temporal, sugiriendo que eventos externos (ej., crisis económicas) explican tanto las fluctuaciones frecuentes como la influencia general observada."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística), I.E.1 (Ciclos de Vida), I.F.2 (Factores Externos).
-
-## **IV. Análisis de factores contextuales externos**
-- Este apartado está centrado en ampliamente Sistematizar los factores externos que afectan las tendencias de {all_kw}, vinculándolos a los índices sin repetir los puntos de inflexión.
-
-### **A. Factores microeconómicos**
-- **Contenido:**
-  - **Construir una definición amplia que refiera sobre:** Factores relacionados con costos, recursos y dinámica económica a nivel organizacional.
-  - **Justificación:** Su inclusión se basa en su impacto potencial en el uso de {all_kw}, reflejado en {dbs} (ej., aumento de costos operativos puede reducir adopción).
-  - **Factores Prevalecientes:** Costos operativos, acceso a financiamiento, sensibilidad al costo-beneficio.
-  - **Análisis:** "Un contexto de costos crecientes podría elevar el IVC, indicando mayor volatilidad en {all_kw}."
-  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IVC alto podría sugerir que {all_kw} es sensible a restricciones financieras, afectando su tendencia general."
-
-### **B. Factores tecnológicos**
-- **Contenido:**
-  - **Construir una definición amplia que refiera sobre:** Factores asociados con innovaciones, obsolescencia y adopción tecnológica.
-  - **Justificación:** Relevantes por su influencia en la relevancia de {all_kw}, capturada en {dbs} (ej., nuevas tecnologías pueden desplazar herramientas existentes).
-  - **Factores Prevalecientes:** Nuevas tecnologías, obsolescencia, digitalización.
-  - **Análisis:** "La introducción de tecnologías disruptivas podría incrementar el IRC, reflejando reactividad."
-  - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRC elevado podría indicar que {all_kw} fluctúa con avances tecnológicos, como la digitalización masiva."
-
-### **C. Índices simples y compuestos en el análisis contextual**
-- **Contenido:**
-  - Analizar cómo los índices reflejan influencias externas, estableciendo una analogía con los puntos de inflexión del análisis temporal:
-    - Eventos económicos (ej., crisis podrían elevar IVC y reducir IIT).
-    - Eventos tecnológicos (ej., avances en IA podrían aumentar IRC).
-    - Eventos sociales, políticos, ambientales, etc., según su relevancia en {dbs}.
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIC alto podría alinearse con puntos de inflexión en Análisis Temporal, sugiriendo que factores como regulaciones o publicaciones influyentes moldean la tendencia general de {all_kw}."
-
-  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Análisis Contextual), I.F.2 (Factores Externos), I.E.4 (Explicaciones Alternativas).
-
-## **V. Narrativa de tendencias generales**
-- Este apartado está centrado en ampliamente Integrar índices y factores en una interpretación cohesiva de las tendencias de {all_kw}.
-- **Contenido:**
-  - Tendencia dominante: "Un IIT negativo y un IIC alto podrían indicar un declive influenciado por factores externos."
-  - Factores clave: "El IRC y el IVC sugieren que eventos tecnológicos y económicos son determinantes."
-  - Patrones emergentes: "Un IREC bajo y un IEC reducido podrían reflejar vulnerabilidad e inestabilidad frente al contexto externo."
-  - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "La combinación de un IRC alto y un IEC bajo podría sugerir que {all_kw} responde a cambios externos, pero con poca capacidad para estabilizarse."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa), I.E.4 (Explicaciones Alternativas).
-
-## **VI. Implicaciones Contextuales**
-- Este apartado está centrado en ampliamente Proporcionar perspectivas interpretativas para diferentes audiencias basadas en el análisis.
-
-### **A. De Interés para Académicos e Investigadores**
-- "Un IIC elevado podría indicar la necesidad de explorar más a fondo cómo factores tecnológicos y sociales afectan {all_kw}, complementando los puntos de inflexión del análisis temporal."
-- Vinculación: Sección II (Preguntas de Investigación).
-
-### **B. De Interés para Consultores y Asesores**
-- "Un IRC alto podría sugerir que {all_kw} requiere monitoreo constante ante eventos externos, como cambios regulatorios o tecnológicos."
-- Vinculación: Sección I.D.4 (Orientación Práctica).
-
-### **C. De Interés para Gerentes y Directivos**
-- "Un IEC bajo podría indicar que {all_kw} necesita ajustes estratégicos para enfrentar contextos impredecibles."
-- Vinculación: Sección I.D.4 (Orientación Práctica).
-
-## **V. Síntesis y reflexiones finales
-•	La intencionalidad de este apartado o sección es poder desarrollar de manera amplia y : Resumir los hallazgos clave y ofrecer reflexiones interpretativas sobre las tendencias generales de {all_kw} en {dbs}.
-•	Contenido: 
-o	Se debe estructurar un resumen que sea capaz de compilar las ideas fuerzas mas relevantes que lleven a la construccion de nuevas teorías y modelos y fortalezcan nuevas fronteras del conocimeinto. Para ello, se debe ampliar y desarrollar a partir de referentes como:  "El análisis revela que {all_kw} muestra [tendencia dominante, ej., declive influenciado por factores externos], con un IIC de [valor] que sugiere una fuerte influencia contextual y un IEC de [valor] que indica baja estabilidad."
-o	Desarrollar un connunto de reflexiones criticas de manera ampliada a partir de referencias como: "Estos patrones podrían correlacionarse con los puntos de inflexión identificados en el análisis temporal, destacando la sensibilidad de {all_kw} a eventos externos como [Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: avances tecnológicos]."
-o	En el análisis no se deben obviar las limitaciones implícitas, por lo que se deben hacer presentes para fortalecer la rigurosidad metodologica y argumentativa del analisis , de form asistematica y amplia: ejemplos de solo referencia para desarrollar y ampliar:  "Los resultados dependen de los datos agregados de {dbs}, lo que podría subestimar variaciones locales o específicas no capturadas en {csv_means_trends}."
-o	Perspectiva final: "Este análisis sugiere que {all_kw} podría beneficiarse de estudios adicionales sobre [Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: factores tecnológicos], complementando la investigación doctoral."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), II (Preguntas de Investigación).
----
-
-**Datos Requeridos**
-- {csv_means_trends}: Tendencias y medias de {all_kw} en {dbs} (Fecha, Valor).
-- Trends and means for tools: {csv_means_trends}
-
-IMPORTANT: 
-- Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
-- Avoid to give Recomendations for better or aditional analysis.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Avoid a section about Analisys Limitations.
-
-**INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-*   **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
-    *   Rol e Identidad (experto consultor).
-    *   Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
-    *   Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
-    *   Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
-    *   Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
-    *   Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
-    *   Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-    *   Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-    *   Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
-    *   Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
-*   **No** incluir referencias a nombres de prompts en el texto del informe.
-*   **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
-*   **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión)
-*   **No**es necesario repetir los datos completos al final del informe. 
-*   Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
-* **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
-*   **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
-* **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
-* **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
-**Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados. 
-**Extensión de los parrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
-**IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
 
 """
 
