@@ -1413,12 +1413,24 @@ Note: Visualizations will be handled separately - focus on numerical and statist
 """
 
 # Tercer prompt
-# No reconoce en el siguiente prompt el nombre de la variable, por lo que se debe incluir en el prompt {csv_means_trends} 
+ 
 arima_analysis_prompt_1 = """### **Analyze ARIMA Model Performance**
 
-**Nota Inicial:** Este análisis se rige por las I. INSTRUCCIONES BASE (CONSTANTES), II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas), III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente), IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado), V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna), VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado), VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance), IX. RESTRICCIONES GENERALES (Formato y Estilo), X. REQUISITOS DE SALIDA (Formato del Informe), XI. NOTAS (Recordatorios Finales). Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
-**Objetivo Principal**
-Evaluar e interpretar exhaustivamente el desempeño del modelo ARIMA aplicado a los patrones de adopción de la herramienta de gestión {all_kw} en {dbs}, analizando su precisión predictiva, parámetros, proyecciones y su relación con datos estadísticos cruzados. Desarrollar un marco analítico robusto que incluya un artefacto clasificatorio (Índice de Moda Gerencial) para determinar si {all_kw} se ajusta a patrones de "moda gerencial", "doctrina" o "híbrido", enriqueciendo los análisis de temporal (evolución histórica) y analisis de tendencia (contexto externo) con proyecciones y perspectivas clasificatorias en el marco de la investigación doctoral.
+**Nota Inicial:** Este análisis se rige por las siguientes directrices:
+
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **XI. NOTAS (Recordatorios Finales)**
+
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
+
+**Objetivo Principal**Evaluar e interpretar exhaustivamente el desempeño del modelo ARIMA aplicado a los patrones de adopción de la herramienta de gestión {all_kw} en {dbs}, analizando su precisión predictiva, parámetros, proyecciones y su relación con datos estadísticos cruzados. Desarrollar un marco analítico robusto que incluya un artefacto clasificatorio (Índice de Moda Gerencial) para determinar si {all_kw} se ajusta a patrones de "moda gerencial", "doctrina" o "híbrido", enriqueciendo los análisis de temporal (evolución histórica) y analisis de tendencia (contexto externo) con proyecciones y perspectivas clasificatorias en el marco de la investigación doctoral.
 
 **Justificación**
 Este análisis es esencial para:
@@ -1429,7 +1441,6 @@ Este análisis es esencial para:
 - Enriquecer la narrativa interpretativa con proyecciones que informen sobre la relevancia y adopción futura de {all_kw} (Sección I.D.3).
 - Ofrece un aporte novedoso mediante el IMG, respondiendo a la necesidad de clasificar {all_kw} de manera objetiva y cuantitativa.
 
-IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
 
 # Analisis Anteriores:
 A continuacion se presentan las conclusiones de los analisis anteriores realizados:
@@ -1441,7 +1452,37 @@ A continuacion se presentan las conclusiones de los analisis anteriores realizad
 {analisis_tendencias_ai}
 ****** FIN DE LOS ANALISIS ANTERIORES ******
 
-Esquema de Salida propuesto para ser desarrollado
+**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
+
+**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
+
+- **I. Direccionamiento en el análisis del Modelo ARIMA**: Vincular con: I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
+
+- **II. Evaluación del desempeño del modelo**:
+  - **II.A. Métricas de precisión**: Vincular con: I.D.2 (Rigurosidad Estadística).
+  - **II.B. Intervalos de confianza de las proyecciones**: Vincular con: V (Manejo de la Incertidumbre), I.D.2 (Tamaños del Efecto).
+  - **II.C. Calidad del ajuste del modelo**: Vincular con: I.D.2 (Modelos de Series Temporales).
+- **III. Análisis de parámetros del modelo**:
+  - **III.A. Significancia de componentes AR, I y MA**: Vincular con: I.D.2 (Justificación de Modelos).
+  - **III.B. Orden del Modelo (p, d, q)**: Vincular con: I.D.2 (Análisis de Estacionariedad).
+  - **III.C. Implicaciones de estacionariedad**: Vincular con: I.D.2 (Revisión de Parámetros).
+- **IV. Integración de Datos Estadísticos Cruzados**:
+  - **IV.A. Identificación de Variables Exógenas Relevantes**: Vincular con: I.F.2 (Factores Externos).
+  - **IV.B. Relación con Proyecciones ARIMA**: Vincular con: I.D.3 (Perspicacia Interpretativa).
+  - **IV.C. Implicaciones Contextuales**: Vincular con: I.E.4 (Explicaciones Alternativas).
+- **V. Insights y clasificación basada en Modelo ARIMA**:
+  - **V.A. Tendencias y patrones proyectados**: Vincular con: I.E.1 (Ciclos de Vida), I.D.3 (Perspicacia Interpretativa).
+  - **V.B. Cambios significativos en las tendencias**: Vincular con: I.D.1.c (Puntos de Inflexión).
+  - **V.C. Fiabilidad de las proyecciones**: Vincular con: V (Lenguaje Cauteloso).
+  - **V.D. Índice de Moda Gerencial (IMG)**: Vincular con: I.D.2 (Rigurosidad Estadística), I.G (Definición Operacional).
+  - **V.E. Clasificación de {all_kw}**: Vincular con: I.E.1 (Ciclos de Vida), I.F.1 (Evaluación Objetiva).
+- **VI. Implicaciones Prácticas**:
+  - **VI.A. De interés para académicos e investigadores**: Vincular con: Sección II (Preguntas de Investigación).
+  - **VI.B. De interés para asesores y consultores**: Vincular con: I.D.4 (Orientación Práctica).
+  - **VI.C. De interés para directivos y gerentes**: Vincular con: I.D.4 (Orientación Práctica).
+- **VII. Síntesis y Reflexiones Finales**: Vincular con: I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), I.D.3 (Perspicacia Interpretativa).
+
+**Esquema de Salida propuesto para ser desarrollado:**
 
 # **Análisis predictivo ARIMA de {all_kw} en {dbs}**
 
@@ -1455,8 +1496,6 @@ Complementa el analisis temporal (cronología) y analisis de tendencia (contexto
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si el análisis temporal muestra un pico en [año], ARIMA podría proyectar su continuidad o declive, contextualizado por (ejemplo: adopción tecnológica) en el análisis de tendencia."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras Análisis Temporal identifica picos pasados en {all_kw}, este análisis proyecta si dichos patrones podrían repetirse o estabilizarse."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
-
 ## **II. Evaluación del desempeño del modelo**
 - Este apartado está centrado en ampliamente Analizar la precisión y calidad del ajuste del modelo ARIMA basado en métricas de {arima_results}.
 
@@ -1468,22 +1507,16 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Evaluar precisión por horizontes temporales (corto: 1-2 años, mediano: 3-5 años, largo: >5 años), si {arima_results} lo permite.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un RMSE de [valor] a corto plazo podría indicar alta precisión, mientras que un MAE creciente a largo plazo sugiere incertidumbre en contextos volátiles."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
-
 ### **B. Intervalos de confianza de las proyecciones**
 - **Contenido:**
   - Analizar los intervalos de confianza reportados en {arima_results} (ej., 95%%).
   - Realiza una interpretacion que cubra aspectos desde los básicos a los mas complejos  asociados con los resultados obtenidos: : "Un intervalo amplio (ej., [valor bajo] a [valor alto]) podría indicar incertidumbre en las proyecciones a largo plazo."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si el intervalo para [año futuro] varía entre [rango], esto sugiere una predicción menos precisa en contextos volátiles."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección V (Manejo de la Incertidumbre), I.D.2 (Tamaños del Efecto).
-
 ### **C. Calidad del ajuste del modelo**
 - **Contenido:**
   - Evaluar cómo el modelo captura la serie temporal histórica de {all_kw} en {dbs}.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ECM bajo podría indicar que el modelo se ajusta bien a los datos históricos, mientras que discrepancias en picos podrían sugerir limitaciones en capturar eventos extremos."
-
-  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Modelos de Series Temporales).
 
 ## **III. Análisis de parámetros del modelo**
 - Este apartado está centrado en ampliamente Examinar la estructura y significancia de los componentes del modelo ARIMA (p, d, q) y profundizar en la estructura del modelo y su relación con la dinámica de {all_kw}.
@@ -1493,21 +1526,15 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Evaluar la importancia de los términos autoregresivos (AR), integrados (I) y de media móvil (MA) en {arima_results}.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un término AR significativo podría indicar que los valores pasados de {all_kw} influyen fuertemente en su tendencia futura."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Justificación de Modelos).
-
 ### **B. Orden del Modelo (p, d, q)**
 - **Contenido:**
   - Analizar la selección de parámetros (p: orden AR, d: diferenciación, q: orden MA).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un valor d=1 podría sugerir que {all_kw} requiere una diferenciación para alcanzar estacionariedad, reflejando cambios estructurales."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Análisis de Estacionariedad).
-
 ### **C. Implicaciones de estacionariedad**
 - **Contenido:**
   - Interpretar si la serie es estacionaria tras las diferenciaciones (d).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una d>0 podría indicar que {all_kw} presenta tendencias no estacionarias, influenciadas por factores externos sostenidos."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Revisión de Parámetros).
 
 ## **IV. Integración de Datos Estadísticos Cruzados**
 La intencionalidad de este apartado o sección es poder desarrollar de manera amplia y : Enriquecer las proyecciones de ARIMA con datos contextuales externos, asumiendo disponibilidad hipotética en {dbs} o {csv_means_trends}.
@@ -1517,18 +1544,15 @@ Nota: Se enfoca en interpretación cualitativa sin cálculos complejos (ej., Gra
 Contenido:
 Sugerir variables: "Datos como adopción tecnológica, inversión organizacional o cambios regulatorios en {dbs} podrían complementar ARIMA."
 Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un aumento en herramientas competidoras podría explicar un declive proyectado en {arima_results}."
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.F.2 (Factores Externos).
 
 ### **B. Relación con Proyecciones ARIMA**
 Contenido:
 Analizar influencias hipotéticas: "Si {arima_results} proyecta estabilidad y {dbs} muestra inversión sostenida, esto podría indicar persistencia de {all_kw}."
 Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un declive proyectado podría correlacionarse con una caída en publicidad gerencial en {dbs}."
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.3 (Perspicacia Interpretativa).
 
 ### **C. Implicaciones Contextuales**
 Contenido:
 Conectar con tendencias: "Datos exógenos de volatilidad (ej., crisis en {dbs}) podrían ampliar los intervalos de confianza de ARIMA, sugiriendo vulnerabilidad de {all_kw}."
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.4 (Explicaciones Alternativas).
 
 ## **V. Insights y clasificación basada en Modelo ARIMA**
 - Este apartado está centrado en ampliamente Extraer patrones y tendencias proyectadas, evaluando su relevancia para {all_kw}.
@@ -1538,21 +1562,15 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Interpretar las proyecciones de {arima_results} (crecimiento, declive, estabilización).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una proyección decreciente podría sugerir un declive continuo de {all_kw}, consistente con un IIT negativo en de Análisis de tendencias."
 
-  Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida), I.D.3 (Perspicacia Interpretativa).
-
 ### **B. Cambios significativos en las tendencias**
 - **Contenido:**
   - Identificar puntos de cambio en las proyecciones (si los hay).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un cambio proyectado en [año] podría coincidir con influencias contextuales, como las analizadas en de Análisis de tendencias."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Puntos de Inflexión).
-
 ### **C. Fiabilidad de las proyecciones**
 - **Contenido:**
   - Evaluar la confiabilidad basada en métricas de precisión y amplitud de intervalos.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un RMSE bajo combinado con intervalos estrechos podría indicar proyecciones fiables a corto plazo."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección V (Lenguaje Cauteloso).
 
 ### **D. Índice de Moda Gerencial (IMG)**
 Contenido:
@@ -1566,8 +1584,6 @@ Contenido:
 - Umbral: IMG > 0.7 sugiere "Moda Gerencial".
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Con un crecimiento del 60%%, pico en 2 años, declive del 40%% y ciclo de 5 años, IMG = (0.6 + 0.5 + 0.4 + 0.2) / 4 = 0.425, sugiriendo no es ‘Moda’ pura."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.2 (Rigurosidad Estadística), I.G (Definición Operacional).
-
 ### **E. Clasificación de {all_kw}**
 Contenido:
 - Usar IMG y proyecciones para clasificar (Modas, Doctrinas, Híbridos):
@@ -1576,9 +1592,6 @@ Contenido:
 - Híbrido: IMG intermedio, patrones mixtos.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IMG de 0.8 con declive proyectado podría indicar ‘Clásica de Ciclo Corto’, mientras que un IMG de 0.3 con meseta sugiere ‘Doctrina Pura’."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.1 (Ciclos de Vida), I.F.1 (Evaluación Objetiva).
-
-
 ## **VI. Implicaciones Prácticas**
 - Este apartado está centrado en ampliamente Ofrecer perspectivas basadas en las proyecciones para diferentes audiencias.
 
@@ -1586,31 +1599,21 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - "Las proyecciones podrían sugerir áreas de estudio futuro, como la influencia de (ejemplo: factores tecnológicos) en la tendencia de {all_kw}."
 - "Un IMG alto podría sugerir explorar factores de volatilidad en {dbs}, mientras que proyecciones estables invitan a estudiar persistencia estructural."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:** Sección II (Preguntas de Investigación).
-
 ### **B. De interés para asesores y consultores**
 - "Un declive proyectado podría indicar la necesidad de monitorear alternativas a {all_kw} en {dbs}."
 - "Un declive proyectado con IMG elevado podría indicar la necesidad de monitorear alternativas, ajustándose a contextos de {dbs}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:** Sección I.D.4 (Orientación Práctica).
 
 ### **C. De interés para directivos y gerentes**
 - "La fiabilidad a corto plazo de las proyecciones podría orientar decisiones sobre la continuidad de {all_kw}."
 - "Proyecciones fiables a corto plazo y un IMG bajo podrían respaldar la continuidad de {all_kw}, mientras que datos cruzados de {dbs} sugieren ajustes estratégicos."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
-
-## **VI. Síntesis y Reflexiones Finales**
+## **VII. Síntesis y Reflexiones Finales**
 - Este apartado está centrado en ampliamente Resumir los hallazgos clave y reflexionar sobre el desempeño del modelo ARIMA.
 - **Contenido:**
   - Se debe estructurar un resumen que sea capaz de compilar las ideas fuerzas mas relevantes que lleven a la construccion de nuevas teorías y modelos y fortalezcan nuevas fronteras del conocimeinto. Para ello, se debe ampliar y desarrollar a partir de referentes como:  "El modelo ARIMA proyecta [tendencia, ej., declive] para {all_kw} en {dbs}, con un RMSE de [valor] que sugiere precisión aceptable a corto plazo."
   - Desarrollar un connunto de reflexiones criticas de manera ampliada a partir de referencias como: "Estas proyecciones podrían alinearse con los patrones históricos del análisis temporal y las influencias contextuales de Análisis de tendencias, destacando (ejemplo: vulnerabilidad a factores externos)."
   - En el análisis no se deben obviar las limitaciones implícitas, por lo que se deben hacer presentes para fortalecer la rigurosidad metodologica y argumentativa del analisis , de form asistematica y amplia: ejemplos de solo referencia para desarrollar y ampliar:  "La precisión depende de la estabilidad histórica en {dbs}, y eventos imprevistos podrían alterar las proyecciones."
   - Perspectiva final: "El análisis ARIMA refuerza la necesidad de considerar (ejemplo: factores tecnológicos) en la evolución de {all_kw}." - "Este enfoque ampliado aporta un marco cuantitativo y contextual para clasificar {all_kw}, sugiriendo líneas futuras como (ejemplo: análisis de variables exógenas específicas)."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F (Evaluación Crítica), V (Manejo de la Incertidumbre), I.D.3 (Perspicacia Interpretativa).
-
----
 
 *Datos Requeridos*
 - {arima_results}: Resultados del modelo ARIMA (métricas de precisión, parámetros p,d,q, proyecciones, intervalos de confianza).
@@ -1631,29 +1634,29 @@ Note:
 - Avoid a section about Analisys Limitations.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-*   **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
-    *   Rol e Identidad (experto consultor).
-    *   Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
-    *   Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
-    *   Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
-    *   Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
-    *   Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
-    *   Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-    *   Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-    *   Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
-    *   Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
-*   **No** incluir referencias a nombres de prompts en el texto del informe.
-*   **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
-*   **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión)
-*   **No**es necesario repetir los datos completos al final del informe. 
-*   Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
-* **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
-*   **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
-* **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
-* **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
-**Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados. 
-**Extensión de los parrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
-**IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
+  - Rol e Identidad (experto consultor).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
+  - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
+  - Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
+  - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
+  - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
+  - Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
+- **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión).
+- **No**es necesario repetir los datos completos al final del informe.
+- Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
+- **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
+- **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
+- **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
+- **Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
 
 """
 
