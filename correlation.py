@@ -3778,7 +3778,7 @@ def report_pdf():
     content_with_toc_path = os.path.join(unique_folder, f'{filename}_with_toc.pdf')
     try:
         print(f"DEBUG: Generating TOC from content PDF")
-        generate_pdf_toc(content_pdf_path, content_with_toc_path)
+        generate_pdf_toc(content_pdf_path, content_with_toc_path, has_cover)
         # If successful, use the content with TOC
         if os.path.exists(content_with_toc_path):
             print(f"DEBUG: Successfully generated PDF with TOC")
@@ -4016,8 +4016,14 @@ def top_level_menu():
         except ValueError:
             print(f"{YELLOW}Por favor, ingrese un número válido.{RESET}")
 
-def generate_pdf_toc(input_pdf_path, output_pdf_path):
-    """Generate a table of contents for a PDF and add it to the beginning of the document."""
+def generate_pdf_toc(input_pdf_path, output_pdf_path, has_cover=False):
+    """Generate a table of contents for a PDF and add it to the beginning of the document.
+    
+    Args:
+        input_pdf_path (str): Path to the input PDF file
+        output_pdf_path (str): Path where the output PDF will be saved
+        has_cover (bool): Whether the document has a cover page
+    """
     try:
         print(f"Attempting to generate TOC for {input_pdf_path}")
         
@@ -4200,6 +4206,21 @@ def generate_pdf_toc(input_pdf_path, output_pdf_path):
 
         # Create table data for two-column layout (text and page number)
         table_data = []
+        
+        # Add the new items at the beginning of the TOC only if there is a cover
+        if has_cover:
+            table_data.extend([
+                [Paragraph("Marco conceptual y metodológico", entry_text_style),
+                 Paragraph("7", page_num_style)],
+                [Paragraph("Alcances metodológicos del análisis", entry_text_style),
+                 Paragraph("16", page_num_style)],
+                [Paragraph("Base de datos analizada en el informe técnico", entry_text_style),
+                 Paragraph("24", page_num_style)],
+                [Paragraph("Grupo de herramientas analizadas: informe técnico", entry_text_style),
+                 Paragraph("27", page_num_style)],
+                [Paragraph("Parametrización para el análisis y extracción de datos", entry_text_style),
+                 Paragraph("30", page_num_style)]
+            ])
 
         # Add each TOC entry as a row in the table
         for level, title, page_num in final_headings:
