@@ -232,7 +232,7 @@ Cuando analices la información proporcionada, ten en cuenta la naturaleza espec
 
 Notas: 
  - Todas las fuentes de datos estan en Inglés. i.e Google Books Ngrams use el corpus en Inglés.
- - Las Herramientas Gerenciales aparecen en las fuentes de datos con sus nombres en inglés, no es español.
+ - Las Herramientas Gerenciales aparecen en las fuentes de datos con sus nombres en inglés, no en español.
 
 ## **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
 
@@ -577,12 +577,14 @@ Comparar *activamente* y *de forma detallada* los patrones observados con:
 ## **X. REQUISITOS DE SALIDA (Formato del Informe)**
 *	Respaldar todas las conclusiones con puntos de datos específicos, reportando tamaños del efecto e intervalos de confianza cuando sea aplicable.
 *	Resaltar la significancia práctica para tomadores de decisiones empresariales, más allá de la significancia estadística.
+* Las Tablas de resumen de resultados, no deben exceder de 7 columnas. 
+* Todas las tablas tendrán un máximo de 7 columnas
 *	Seguir el formato Markdown:
-*	Usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
-*	Insertar una línea en blanco tras títulos/subtítulos y entre párrafos.
-*	Priorizar párrafos cortos, sintéticos y específicos; usar viñetas (-) o listas numeradas solo si la claridad lo exige.
-*	Incluir tablas para comparar datos cuando sea adecuado (e.g., entre años o métricas).
-*	Formatear correctamente valores estadísticos y ecuaciones.
+  *	Usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
+  *	Insertar una línea en blanco tras títulos/subtítulos y entre párrafos.
+  *	Priorizar párrafos cortos, sintéticos y específicos; usar viñetas (-) o listas numeradas solo si la claridad lo exige.
+  *	Incluir tablas para comparar datos cuando sea adecuado (e.g., entre años o métricas).
+  *	Formatear correctamente valores estadísticos y ecuaciones.
 *	Usar "herramienta de gestión" como terminología estándar y consistente.
 *	El estilo de redacción debe ser fluido, natural y atractivo, evitando la repetición, las frases cliché y la voz pasiva innecesaria. 
 *	Variar la estructura de las oraciones y utilizar conectores lógicos para mantener el interés del lector.
@@ -776,29 +778,29 @@ Contenido esperado que se debe presentar:
 - Esta sección se centra en los cálculos *específicos* solicitados, presentando los resultados de forma clara y concisa, con una *interpretación técnica descriptiva*, *sin* conclusiones sobre "modas gerenciales" ni contexto empresarial.
 
 ### **A. Identificación y análisis de períodos pico**
-- Definición del tipo de periodo (pico), estableciendo un criterio *objetivo* para definir ese periodo (pico).
-- Justificar la elección del criterio del periodo (pico), advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
-- Identificación de los periodos (pico) propiamente aplicando el criterio para identificar *todos* los períodos (pico) en la serie temporal.
-- Cálculos (para cada pico) y presentación de los datos marcando fechas de inicio, fin, duración (en meses y años), valor de magnitud máxima, valor de magnitud promedio.
+- Definición del tipo de periodo pico, estableciendo un criterio *objetivo* para definir ese periodo pico.
+- Justificar la elección del criterio del periodo pico, advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
+- Identificación de los periodos pico propiamente aplicando el criterio para identificar *todos* los períodos pico en la serie temporal.
+- Cálculos para cada pico y presentación de los datos marcando fechas de inicio, fin, duración en meses y años, valor de magnitud máxima, valor de magnitud promedio.
 - Tabla de resumen de resultados.
 - Contexto de los períodos (pico), analizando en cada uno de los periodos (pico) identificados, la posible incidencia de factores externos.
 
 ### **B. Identificación y análisis de fases de declive**
-- Definición del tipo de periodo (declive), estableciendo un criterio *objetivo* para definir ese periodo (declive).
-- Justificar la elección del criterio del periodo (declive), advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
-- Identificación de los periodos (declive) propiamente aplicando el criterio para identificar *todos* los períodos (declive) en la serie temporal.
+- Definición del tipo de periodo declive, estableciendo un criterio *objetivo* para definir ese periodo declive.
+- Justificar la elección del criterio del periodo declive, advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
+- Identificación de los periodos declive propiamente aplicando el criterio para identificar *todos* los períodos declive en la serie temporal.
 - Cálculos (para cada declive) y presentación de los datos marcando fechas de inicio, fin, duración (en meses y años), Tasa de Declive Promedio (Porcentaje anual) (calculada como la disminución porcentual promedio por unidad de tiempo).
 - Patrón de Declive, describiendo cualitativamente el patrón (ej., lineal, exponencial, escalonado).
 - Tabla de resumen de resultados.
-- Contexto de los períodos (declive), analizando en cada uno de los periodos (declive) identificados, la posible incidencia de factores externos.
+- Contexto de los períodos declive, analizando en cada uno de los periodos declive identificados, la posible incidencia de factores externos.
 
 ### **C. Evaluación de cambios de patrón: resurgimientos y transformaciones**
-- Definición del tipo de periodo (resurgimientos y transformaciones), estableciendo un criterio *objetivo* para definir ese periodo (resurgimientos y transformaciones).
-- Justificar la elección del criterio del periodo (resurgimientos y transformaciones), advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
-- Identificación de los periodos (resurgimientos y transformaciones) propiamente aplicando el criterio para identificar *todos* los períodos (resurgimientos y transformaciones) en la serie temporal.
+- Definición del tipo de periodo resurgimientos y transformaciones, estableciendo un criterio *objetivo* para definir ese periodo resurgimientos y transformaciones.
+- Justificar la elección del criterio del periodo resurgimientos y transformaciones, advirtiendo de la posibilidad de otros escenarios, pero argumentando la preferencia de la elección del criterio.
+- Identificación de los periodos resurgimientos y transformaciones propiamente aplicando el criterio para identificar *todos* los períodos resurgimientos y transformaciones en la serie temporal.
 - Cálculos (para cada resurgimiento y transformación) y presentación de los datos marcando fechas de inicio, Descripción Cualitativa del cambio observado, Cuantificación del cambio, para resurgimiento mostrar Tasa de crecimiento promedio, para Transformación mostrar la Magnitud del cambio en la métrica relevante (ej., cambio en la media, cambio en la desviación estándar).
 - Tabla de resumen de resultados.
-- Contexto de los períodos (resurgimientos y transformaciones), analizando en cada uno de los periodos (resurgimientos y transformaciones) identificados, la posible incidencia de factores externos.
+- Contexto de los períodos resurgimientos y transformaciones, analizando en cada uno de los periodos resurgimientos y transformaciones identificados, la posible incidencia de factores externos.
 
 ### **D. Patrones de ciclo de vida**
 - Evaluación de la Etapa del Ciclo de Vida basándose en *todos* los análisis anteriores (picos, declives, resurgimientos, transformaciones, tendencia general), *evaluando* la etapa general del ciclo de vida en la que se encuentra la herramienta ({all_kw}) *actualmente*.

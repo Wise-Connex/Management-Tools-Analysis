@@ -2111,10 +2111,70 @@ def check_trends2(kw):
     # NEW: Store the captured output in the global variable
     trend_analysis_text[kw] = '\n'.join(trend_output)
     
+    try:
+        # Convert data to numpy array for calculations
+        data = np.array(trends_results['last_20_years_data'][kw], dtype=float)
+        
+        # Calculate standard deviation
+        std_dev = float(np.std(data))
+        
+        # Find peaks using scipy.signal.find_peaks
+        from scipy.signal import find_peaks
+        peaks, _ = find_peaks(data, distance=20, prominence=0.5)
+        
+        # Get top 3 peaks by value
+        peak_values = data[peaks]
+        peak_indices = peaks[np.argsort(peak_values)[-3:]]
+        
+        # Store peak information
+        peak_info = []
+        for idx in peak_indices:
+            peak_info.append({
+                'value': float(data[idx]),
+                'index': int(idx)
+            })
+        
+        # Calculate range and percentiles
+        data_range = float(np.max(data) - np.min(data))
+        percentiles = {
+            'p25': float(np.percentile(data, 25)),
+            'p50': float(np.percentile(data, 50)),
+            'p75': float(np.percentile(data, 75))
+        }
+        
+        # Create AI-readable structured text
+        ai_structured_text = f"""
+[STATISTICAL_ANALYSIS]
+Standard_Deviation: {std_dev:.4f}
+
+Peaks_Information:
+{chr(10).join(f"Peak_{i+1}: value={p['value']:.4f}, index={p['index']}" for i, p in enumerate(peak_info))}
+
+Range_Analysis:
+- Total_Range: {data_range:.4f}
+- Min_Value: {float(np.min(data)):.4f}
+- Max_Value: {float(np.max(data)):.4f}
+
+Percentile_Distribution:
+- P25: {percentiles['p25']:.4f}
+- P50: {percentiles['p50']:.4f}
+- P75: {percentiles['p75']:.4f}
+[END_STATISTICAL_ANALYSIS]
+"""
+        # Append the structured text to existing analysis_text
+        trend_analysis_text[kw] += "\n" + ai_structured_text
+        
+    except Exception as e:
+        trend_analysis_text[kw] += f"\nError in statistical analysis: {str(e)}"
+    
     return {
         'means': means[kw],
         'trends': trends[kw],
-        'analysis_text': trend_analysis_text[kw]  # Also include the text in the return value
+        'analysis_text': trend_analysis_text[kw],
+        'standard_deviation': std_dev,
+        'peaks': peak_info,
+        'range': data_range,
+        'percentiles': percentiles
     }
 
 def create_unique_filename(keywords, max_length=20):
@@ -2905,7 +2965,6 @@ def csv2table(csv_data, header_line=0):
 def report_pdf():
     global data_txt
     global charts
-    global report
     global csv_means_trends
     global image_markdown
     global all_keywords
