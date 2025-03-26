@@ -2112,69 +2112,131 @@ def check_trends2(kw):
     trend_analysis_text[kw] = '\n'.join(trend_output)
     
     try:
-        # Convert data to numpy array for calculations
-        data = np.array(trends_results['last_20_years_data'][kw], dtype=float)
+        # Initialize statistics dictionary for all ranges
+        statistics = {}
         
-        # Calculate standard deviation
-        std_dev = float(np.std(data))
-        
-        # Find peaks using scipy.signal.find_peaks
-        from scipy.signal import find_peaks
-        peaks, _ = find_peaks(data, distance=20, prominence=0.5)
-        
-        # Get top 3 peaks by value
-        peak_values = data[peaks]
-        peak_indices = peaks[np.argsort(peak_values)[-3:]]
-        
-        # Store peak information
-        peak_info = []
-        for idx in peak_indices:
-            peak_info.append({
-                'value': float(data[idx]),
-                'index': int(idx)
-            })
-        
-        # Calculate range and percentiles
-        data_range = float(np.max(data) - np.min(data))
-        percentiles = {
-            'p25': float(np.percentile(data, 25)),
-            'p50': float(np.percentile(data, 50)),
-            'p75': float(np.percentile(data, 75))
+        # Define the ranges to analyze
+        ranges = {
+            'last_20': trends_results['last_20_years_data'][kw],
+            'last_15': trends_results['last_15_years_data'][kw],
+            'last_10': trends_results['last_10_years_data'][kw],
+            'last_5': trends_results['last_5_years_data'][kw]
         }
         
+        # Add all_data only if total_years > 20
+        if total_years > 20 and 'all_data' in trends_results and kw in trends_results['all_data']:
+            ranges['all_data'] = trends_results['all_data'][kw]
+        
+        # Calculate statistics for each range
+        for range_name, data in ranges.items():
+            if data is not None:
+                data_array = np.array(data, dtype=float)
+                
+                # Calculate standard deviation
+                std_dev = float(np.std(data_array))
+                
+                # Find peaks using scipy.signal.find_peaks
+                from scipy.signal import find_peaks
+                peaks, _ = find_peaks(data_array, distance=20, prominence=0.5)
+                
+                # Get top 3 peaks by value
+                peak_values = data_array[peaks]
+                peak_indices = peaks[np.argsort(peak_values)[-3:]]
+                
+                # Store peak information
+                peak_info = []
+                for idx in peak_indices:
+                    peak_info.append({
+                        'value': float(data_array[idx]),
+                        'index': int(idx)
+                    })
+                
+                # Calculate range and percentiles
+                data_range = float(np.max(data_array) - np.min(data_array))
+                percentiles = {
+                    'p25': float(np.percentile(data_array, 25)),
+                    'p50': float(np.percentile(data_array, 50)),
+                    'p75': float(np.percentile(data_array, 75))
+                }
+                
+                statistics[range_name] = {
+                    'standard_deviation': std_dev,
+                    'peaks': peak_info,
+                    'range': data_range,
+                    'min_value': float(np.min(data_array)),
+                    'max_value': float(np.max(data_array)),
+                    'percentiles': percentiles
+                }
+        
         # Create AI-readable structured text
-        ai_structured_text = f"""
-[STATISTICAL_ANALYSIS]
-Standard_Deviation: {std_dev:.4f}
-
-Peaks_Information:
-{chr(10).join(f"Peak_{i+1}: value={p['value']:.4f}, index={p['index']}" for i, p in enumerate(peak_info))}
-
-Range_Analysis:
-- Total_Range: {data_range:.4f}
-- Min_Value: {float(np.min(data)):.4f}
-- Max_Value: {float(np.max(data)):.4f}
-
-Percentile_Distribution:
-- P25: {percentiles['p25']:.4f}
-- P50: {percentiles['p50']:.4f}
-- P75: {percentiles['p75']:.4f}
-[END_STATISTICAL_ANALYSIS]
-"""
+        ai_structured_text = "\n[STATISTICAL_ANALYSIS]\n"
+        
+        # Display the analysis header
+        capture_print("\nStatistical Analysis:")
+        capture_print("=" * 50)
+        
+        for range_name, stats in statistics.items():
+            # Format range name for display
+            display_name = range_name.replace('_', ' ').title()
+            
+            # Display section header
+            capture_print(f"\n{display_name} Analysis:")
+            capture_print("-" * 30)
+            
+            # Display standard deviation
+            capture_print(f"Standard Deviation: {stats['standard_deviation']:.4f}")
+            
+            # Display peaks
+            capture_print("\nPeaks Information:")
+            for i, peak in enumerate(stats['peaks'], 1):
+                capture_print(f"Peak {i}: value={peak['value']:.4f}, index={peak['index']}")
+            
+            # Display range analysis
+            capture_print("\nRange Analysis:")
+            capture_print(f"Total Range: {stats['range']:.4f}")
+            capture_print(f"Min Value: {stats['min_value']:.4f}")
+            capture_print(f"Max Value: {stats['max_value']:.4f}")
+            
+            # Display percentiles
+            capture_print("\nPercentile Distribution:")
+            capture_print(f"P25: {stats['percentiles']['p25']:.4f}")
+            capture_print(f"P50: {stats['percentiles']['p50']:.4f}")
+            capture_print(f"P75: {stats['percentiles']['p75']:.4f}")
+            
+            capture_print("\n" + "=" * 50)
+            
+            # Add to AI-readable text
+            ai_structured_text += f"\n{range_name.upper()} Analysis:\n"
+            ai_structured_text += f"Standard_Deviation: {stats['standard_deviation']:.4f}\n\n"
+            ai_structured_text += "Peaks_Information:\n"
+            ai_structured_text += chr(10).join(f"Peak_{i+1}: value={p['value']:.4f}, index={p['index']}" 
+                                             for i, p in enumerate(stats['peaks']))
+            ai_structured_text += "\n\n"
+            ai_structured_text += "Range_Analysis:\n"
+            ai_structured_text += f"- Total_Range: {stats['range']:.4f}\n"
+            ai_structured_text += f"- Min_Value: {stats['min_value']:.4f}\n"
+            ai_structured_text += f"- Max_Value: {stats['max_value']:.4f}\n\n"
+            ai_structured_text += "Percentile_Distribution:\n"
+            ai_structured_text += f"- P25: {stats['percentiles']['p25']:.4f}\n"
+            ai_structured_text += f"- P50: {stats['percentiles']['p50']:.4f}\n"
+            ai_structured_text += f"- P75: {stats['percentiles']['p75']:.4f}\n"
+            ai_structured_text += "-" * 50 + "\n"
+        
+        ai_structured_text += "[END_STATISTICAL_ANALYSIS]"
+        
         # Append the structured text to existing analysis_text
         trend_analysis_text[kw] += "\n" + ai_structured_text
         
     except Exception as e:
-        trend_analysis_text[kw] += f"\nError in statistical analysis: {str(e)}"
+        error_msg = f"\nError in statistical analysis: {str(e)}"
+        capture_print(error_msg)
+        trend_analysis_text[kw] += error_msg
     
     return {
         'means': means[kw],
         'trends': trends[kw],
         'analysis_text': trend_analysis_text[kw],
-        'standard_deviation': std_dev,
-        'peaks': peak_info,
-        'range': data_range,
-        'percentiles': percentiles
+        'statistics': statistics
     }
 
 def create_unique_filename(keywords, max_length=20):
@@ -2948,16 +3010,19 @@ def csv2table(csv_data, header_line=0):
         return ""
     
     headers = csv_lines[header_line].split(',')
-    # Create HTML table with proper structure
-    table = "<div class='table-wrapper'>\n<table class='data-table'>\n<thead>\n"
+    # Create HTML table with proper structure and CSS for page flow
+    table = "<div class='table-wrapper' style='page-break-inside: auto;'>\n"
+    table += "<table class='data-table' style='page-break-inside: auto; page-break-after: auto;'>\n"
+    table += "<thead style='display: table-header-group;'>\n"
     table += "<tr>" + "".join([f"<th>{h}</th>" for h in headers]) + "</tr>\n"
-    table += "</thead>\n<tbody>\n"
+    table += "</thead>\n"
+    table += "<tbody style='display: table-row-group;'>\n"
     
     # Add data rows
     for i, line in enumerate(csv_lines):
         if i != header_line:  # Skip the header line
             values = line.split(',')
-            table += "<tr>" + "".join([f"<td>{v}</td>" for v in values]) + "</tr>\n"
+            table += "<tr style='page-break-inside: avoid; page-break-after: auto;'>" + "".join([f"<td>{v}</td>" for v in values]) + "</tr>\n"
     
     table += "</tbody>\n</table>\n</div>\n\n"
     return table
