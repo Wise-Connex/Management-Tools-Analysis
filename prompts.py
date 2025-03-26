@@ -195,7 +195,7 @@ El análisis debe *contribuir* a responder estas preguntas, *pero no es necesari
 
 Cuando analices la información proporcionada, ten en cuenta la naturaleza específica de los datos según la base de datos de la que provienen. Los datos se originan en diversas fuentes, cada una con sus propias características, fortalezas y limitaciones, las cuales se detallan a continuación bajo el apartado "Naturaleza de los Datos". Asegúrate de adaptar tu respuesta basado especialmente en el contexto de estas condiciones particulares que son propias, incluyendo: (i) el tipo de fuente, (ii) su estructura, (iii) nivel de detalle, (iv) posibles sesgos, (v) restricciones de formato o (vi) cualquier otra particularidad que pueda influir en la interpretación o el procesamiento de la información. Utiliza esta información para garantizar que el análisis sea preciso, contextualizado y respete las especificidades de cada base de datos proporcionada:
 
-## * **GOOGLE TRENDS** (“Radar de Tendencias”)
+## * **GOOGLE TRENDS** (“Tendencias de Google”)
     *   *Naturaleza:* Datos de frecuencia de búsqueda *en tiempo real* (o con rezago mínimo). Reflejan el interés *actual* y la *popularidad* de un término entre los usuarios de Google. Son un indicador de *atención* y *curiosidad* pública.
     *   *Metodología:* Google Trends proporciona datos *relativos* y *normalizados* (escala 0-100). No revela volúmenes absolutos de búsqueda. Los datos pueden estar sujetos a *sesgos de muestreo* y a la *influencia de eventos externos* (noticias, campañas de marketing).
     *   *Limitaciones:* No distingue entre diferentes *intenciones de búsqueda* (informativa, transaccional). Es sensible a *picos temporales* y *efectos de moda*. No proporciona información sobre la *calidad* o *profundidad* del interés.
@@ -216,19 +216,23 @@ Cuando analices la información proporcionada, ten en cuenta la naturaleza espec
     *   *Fortalezas:* Excelente para evaluar la *solidez teórica* y el *rigor académico* de un concepto. Útil para identificar *investigadores clave*, *redes de colaboración* y *tendencias de investigación*.
     *   *Interpretación:* Un aumento en las publicaciones y citas en Crossref sugiere una *creciente aceptación* y *legitimidad* del concepto dentro de la comunidad científica. La *diversidad* de autores y afiliaciones puede indicar una *amplia adopción*.
 
-## * **BAIN – USABILIDAD** (“Medidor de Adopción”)
+## * **BAIN - USABILIDAD** (“Medidor de Adopción”)
     *   *Naturaleza:* Datos de encuestas a gerentes y directivos. Miden el *porcentaje de empresas que utilizan una determinada herramienta de gestión*. Reflejan la *adopción real* de la herramienta en la práctica empresarial.
     *   *Metodología:* Bain & Company utiliza una metodología de encuesta específica para determinar la *penetración de mercado* de cada herramienta. La representatividad de la muestra y los posibles sesgos de respuesta son factores a considerar.
     *   *Limitaciones:* No proporciona información sobre la *profundidad* o *intensidad* del uso de la herramienta dentro de cada empresa. No captura el *impacto* de la herramienta en el rendimiento.
     *   *Fortalezas:* Ofrece una medida *cuantitativa* y *directa* de la adopción en el mundo real. Permite comparar la adopción de diferentes herramientas.
     *   *Interpretación:* Una alta usabilidad indica una amplia adopción. Una baja usabilidad sugiere que la herramienta no ha logrado una penetración significativa, independientemente de su popularidad en otras fuentes.
 
-## * **BAIN – SATISFACCIÓN** (“Medidor de Valor Percibido”)**
+## * **BAIN - SATISFACCIÓN** (“Medidor de Valor Percibido”)**
     *   *Naturaleza:* Datos de encuestas a gerentes y directivos. Miden su *nivel de satisfacción* con una determinada herramienta de gestión. Reflejan la *valoración subjetiva* de la herramienta.
     *   *Metodología:* Bain & Company utiliza una escala de satisfacción (generalmente de -100 a +100, o similar). Busca capturar la *utilidad percibida* y el *cumplimiento de expectativas*.
     *   *Limitaciones:* La satisfacción es *subjetiva* y puede estar influenciada por factores individuales y contextuales. No mide directamente el *retorno de la inversión (ROI)*.
     *   *Fortalezas:* Proporciona información valiosa sobre la *experiencia del usuario* y la *percepción de valor*. Permite identificar *fortalezas y debilidades* desde la perspectiva del usuario.
     *   *Interpretación:* Una alta satisfacción indica que los usuarios perciben la herramienta como *útil* y *cumplidora de expectativas*. Baja satisfacción sugiere *problemas de rendimiento*, *usabilidad* o *adecuación*. Alta satisfacción + alta usabilidad = fuerte indicador de éxito.
+
+Notas: 
+ - Todas las fuentes de datos estan en Inglés. i.e Google Books Ngrams use el corpus en Inglés.
+ - Las Herramientas Gerenciales aparecen en las fuentes de datos con sus nombres en inglés, no es español.
 
 ## **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
 
@@ -553,47 +557,42 @@ Comparar *activamente* y *de forma detallada* los patrones observados con:
 
 ## *IX. RESTRICCIONES GENERALES (Formato y Estilo)**
 
-	Emplear un lenguaje técnico, formal, preciso y conciso, acorde con una investigación doctoral y un informe de consultoría de alto nivel, utilizando términos específicos del dominio (e.g., NADT, IFCT) con ejemplos orientativos breves para guiar sin ser prescriptivo.
-	Mantener un tono cauteloso y probabilístico ("podría", "sugiere"), evitando afirmaciones definitivas o enfoques prescriptivos, en línea con la Sección V (Manejo de la Incertidumbre).
-	Basar todas las conclusiones exclusivamente en los datos proporcionados, priorizando la evidencia estadística sobre consideraciones teóricas o contextuales, sin forzar interpretaciones no respaldadas.
-	No incluir secciones sobre limitaciones del análisis ni mencionar visualizaciones (manejadas por separado).
-	No solicitar datos adicionales ni opinar sobre información faltante; limitarse estrictamente a los datos disponibles.
-	Conservar sin cambios y en su idioma original los términos entre llaves (e.g., all_kw).
-	Omitir autoevaluaciones, introducciones o pronombres personales; ir directo a los hallazgos e interpretación.
-	Evitar análisis comparativos entre fuentes si solo hay una disponible (e.g., dbs).
-	Construir secciones descriptivas y cuantitativas con claridad estructurada; desarrollar secciones interpretativas con una narrativa fluida y cohesiva, sin redundancias.
-	No incluir referencias a los nombres de los prompts específicos (temporal_analysis_prompt_1, etc.) en el texto del informe. En su lugar, utilizar frases como: "el análisis temporal previo", "el análisis de tendencias detallado", "el capítulo anterior", "como se mencionó anteriormente", o simplemente referirse al tema específico (ej., "el análisis de estacionalidad"). Nunca mencionar los nombres de los prompts.
-	No incluir ninguna instrucción interna para la IA, comentarios sobre el proceso, justificaciones de secciones (ej., "Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: ..."), ni referencias al prompt del sistema. Estos elementos son solo para la guía interna de la IA, no para el informe final.
-	No mencionar la ausencia de datos, la imposibilidad de realizar un cálculo, o la necesidad de más información. Si un dato o cálculo no está disponible, simplemente omitirlo, sin comentarios. El informe debe basarse exclusivamente en la información disponible.
-	IMPORTANTE: Si un cálculo no se puede realizar debido a la falta de datos, omítelo por completo. No menciones que el cálculo no se pudo hacer, ni que faltan datos. El informe debe basarse exclusivamente en la información disponible.
-	No repetir los datos completos al final del informe. Los datos ya se presentan en las secciones correspondientes.
-	Asegurar que cada capítulo tenga un único título principal claro y conciso. Evitar títulos redundantes o duplicados.
-	No usar corchetes para encerrar los nombres de las herramientas gerenciales. Presentar el nombre de la herramienta sin corchetes.
-	Ejemplos Orientativos. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas.
+
+*	Emplear un lenguaje técnico, formal, preciso y conciso, acorde con una investigación doctoral y un informe de consultoría de alto nivel, utilizando términos específicos del dominio (e.g., NADT, IFCT) con ejemplos orientativos breves para guiar sin ser prescriptivo.
+*	Mantener un tono cauteloso y probabilístico ("podría", "sugiere"), evitando afirmaciones definitivas o enfoques prescriptivos, en línea con la Sección V (Manejo de la Incertidumbre).
+*	Basar todas las conclusiones exclusivamente en los datos proporcionados, priorizando la evidencia estadística sobre consideraciones teóricas o contextuales, sin forzar interpretaciones no respaldadas.
+*	No incluir secciones sobre limitaciones del análisis ni mencionar visualizaciones (manejadas por separado).
+*	No solicitar datos adicionales ni opinar sobre información faltante; limitarse estrictamente a los datos disponibles.
+*	Omitir autoevaluaciones, introducciones o pronombres personales; ir directo a los hallazgos e interpretación.
+*	Construir secciones descriptivas y cuantitativas con claridad estructurada; desarrollar secciones interpretativas con una narrativa fluida y cohesiva, sin redundancias.
+*	No incluir referencias a los nombres de los prompts específicos (temporal_analysis_prompt_1, etc.) en el texto del informe. En su lugar, utilizar frases como: "el análisis temporal previo", "el análisis de tendencias detallado", "el capítulo anterior", "como se mencionó anteriormente", o simplemente referirse al tema específico (ej., "el análisis de estacionalidad"). Nunca mencionar los nombres de los prompts.
+*	No incluir ninguna instrucción interna para la IA, comentarios sobre el proceso, justificaciones de secciones (ej., "Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: ..."), ni referencias al prompt del sistema. Estos elementos son solo para la guía interna de la IA, no para el informe final.
+*	No mencionar la ausencia de datos, la imposibilidad de realizar un cálculo, o la necesidad de más información. Si un dato o cálculo no está disponible, simplemente omitirlo, sin comentarios. El informe debe basarse exclusivamente en la información disponible.
+*	IMPORTANTE: Si un cálculo no se puede realizar debido a la falta de datos, omítelo por completo. No menciones que el cálculo no se pudo hacer, ni que faltan datos. El informe debe basarse exclusivamente en la información disponible.
+*	No repetir los datos completos al final del informe. Los datos ya se presentan en las secciones correspondientes.
+*	Asegurar que cada capítulo tenga un único título principal claro y conciso. Evitar títulos redundantes o duplicados.
+*	No usar corchetes para encerrar los nombres de las herramientas gerenciales. Presentar el nombre de la herramienta sin corchetes.
+*	Ejemplos Orientativos. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas.
 
 ## **X. REQUISITOS DE SALIDA (Formato del Informe)**
-	Respaldar todas las conclusiones con puntos de datos específicos, reportando tamaños del efecto e intervalos de confianza cuando sea aplicable.
-	Resaltar la significancia práctica para tomadores de decisiones empresariales, más allá de la significancia estadística.
-	Seguir el formato Markdown:
-o	Usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
-o	Insertar una línea en blanco tras títulos/subtítulos y entre párrafos.
-o	Priorizar párrafos cortos, sintéticos y específicos; usar viñetas (-) o listas numeradas solo si la claridad lo exige.
-o	Incluir tablas para comparar datos cuando sea adecuado (e.g., entre años o métricas).
-o	Formatear correctamente valores estadísticos y ecuaciones.
-	Usar "herramienta de gestión" como terminología estándar y consistente.
-	Insertar un salto de página al final del texto (e.g., "---"), antes de apéndices o secciones separadas.
-	El estilo de redacción debe ser fluido, natural y atractivo, evitando la repetición, las frases cliché y la voz pasiva innecesaria. 
-	Variar la estructura de las oraciones y utilizar conectores lógicos para mantener el interés del lector.
-	Cada párrafo debe desarrollar una idea completa y tener una extensión mínima de 50 palabras, y preferiblemente entre 70 y 100 palabras. 
-	Evitar párrafos cortos y telegráficos.
+*	Respaldar todas las conclusiones con puntos de datos específicos, reportando tamaños del efecto e intervalos de confianza cuando sea aplicable.
+*	Resaltar la significancia práctica para tomadores de decisiones empresariales, más allá de la significancia estadística.
+*	Seguir el formato Markdown:
+*	Usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
+*	Insertar una línea en blanco tras títulos/subtítulos y entre párrafos.
+*	Priorizar párrafos cortos, sintéticos y específicos; usar viñetas (-) o listas numeradas solo si la claridad lo exige.
+*	Incluir tablas para comparar datos cuando sea adecuado (e.g., entre años o métricas).
+*	Formatear correctamente valores estadísticos y ecuaciones.
+*	Usar "herramienta de gestión" como terminología estándar y consistente.
+*	El estilo de redacción debe ser fluido, natural y atractivo, evitando la repetición, las frases cliché y la voz pasiva innecesaria. 
+*	Variar la estructura de las oraciones y utilizar conectores lógicos para mantener el interés del lector.
+*	Cada párrafo debe desarrollar una idea completa y tener una extensión mínima de 50 palabras, y preferiblemente entre 70 y 100 palabras. 
+*	Evitar párrafos cortos y telegráficos.
 
 ## **XI. NOTAS (Recordatorios Finales)**
 
-	Enfocarse exclusivamente en el análisis numérico y estadístico, incluyendo siempre el nombre de la herramienta de gestión (all_kw) y la fuente de datos (dbs) en el análisis.
-	Contribuir al marco de la investigación doctoral como objetivo principal, sin minimizar la resolución directa de problemas empresariales.
-	Vincular cada sección con categorías relevantes (e.g., I.D.2, I.F.2) para justificar su pertinencia.
-	Destacar el aporte único de cada prompt y su complementariedad con los demás (e.g., cíclico vs. temporal), evitando solapamientos.
-	Traducir este prompt al español antes de iniciar el análisis, siguiendo las instrucciones del prompt_sp.
+*	Enfocarse exclusivamente en el análisis numérico y estadístico, incluyendo siempre el nombre de la herramienta de gestión y la fuente de datos en el análisis.
+*	Contribuir al marco de la investigación doctoral como objetivo principal, sin minimizar la resolución directa de problemas empresariales.
 
 """
 
@@ -666,8 +665,6 @@ Note:
  - Avoid Sections of Code (python or else) *not code blocks*
 """
 
-# ******* Borre csv_significance para poder correr la prueba... !!!!!!!!
-
 # {all_kw} = Herramienta de Gestión que esta siendo analizada. i.e: Reingeniería de Procesos
 # {dbs} = Fuentes de Datos. i.e: Una de estas: Google Trends, Crossref.org, Bain - Usabilidad, Bain - Satisfacción, etc.
 # csv_all_data = Datos de todas la serie de la herramienta analizada. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
@@ -679,7 +676,7 @@ Note:
 # csv_means_trends = Datos de tendencias y medias de la herramienta analizada. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
 # csv_combined_data = Datos combinados de todas las fuentes de datos. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
 # csv_corr_matrix = Matriz de correlación entre las diferentes fuentes de datos. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
-# csv_significance = Datos de significancia estadística entre las diferentes fuentes de datos. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
+# csv_significance = Datos de significancia estadística entre las diferentes fuentes de datos.
 # {selected_sources} = Fuentes de datos seleccionadas para el análisis. i.e: Google Trends, Crossref.org, Bain - Usabilidad, Bain - Satisfacción, etc.
 # {csv_combined_data} = Datos combinados de todas las fuentes de datos. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
 # {csv_corr_matrix} = Matriz de correlación entre las diferentes fuentes de datos. Es un CSV de dos columnas: Fecha y Valor. i.e: 2023-01, 50
@@ -908,7 +905,7 @@ Contenido esperado que se debe presentar:
 - For the last 10 years: {csv_last_10_data}
 - For the last 5 years: {csv_last_5_data}
 - For the last year: {csv_last_year_data}
-  - Date: Monthly data
+  - Date: Monthly data for all data sources but for Google Books Ngram use yearly data.
   - Keywords: Management tool identifiers from {all_kw}
   - Usage Metrics: Relative usage/adoption values
 
@@ -937,7 +934,7 @@ Contenido esperado que se debe presentar:
 
 2. **Contextual Data:**
 - Trends and means for tools over last 20 years: {csv_means_trends}
-- Statistical significance indicators
+- Statistical significance indicators {csv_significance}
 
 IMPORTANT:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -2476,6 +2473,9 @@ Take a deep breath and think step by step about how to best accomplish this goal
 - Do not repeat items in the output sections.
 - Do not start items with the same opening words.
 - Do not include blocks of markdown code.
+
+# Notes:
+- All data sources are in english. i.e Google Books Ngrams use the corpus in english.
 
 # INPUT
 

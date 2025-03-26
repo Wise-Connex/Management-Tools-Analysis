@@ -139,6 +139,7 @@ global keycharts
 global csv_combined_dataset
 global skip_seasonal
 global skip_arima
+global csv_significance
 keycharts = []
 csv_arimaA = []
 csv_arimaB = []
@@ -2457,6 +2458,7 @@ def results():
     global csv_means_trendsA
     global combined_dataset
     global combined_dataset2
+    global csv_significance
     
     # *************************************************************************************
     # Part 1 - Tendencias y Medias
@@ -2476,6 +2478,7 @@ def results():
     csv_data = csv_string.getvalue()
     csv_means_trendsA = "Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n"
     csv_means_trends = csv_data
+    csv_significance = results['analysis_text']
 
     # *************************************************************************************
     # Part 2 - Comparación a lo largo del tiempo
@@ -2563,7 +2566,7 @@ def ai_analysis():
 
     if top_choice == 1:
         p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \
-                          csv_all_data=csv_all_data, trend_analysis_text=trend_analysis_text, \
+                          csv_all_data=csv_all_data, csv_significance=csv_significance, \
                           csv_last_20_data=csv_last_20_data, csv_last_15_data=csv_last_15_data, csv_last_10_data=csv_last_10_data, \
                           csv_last_5_data=csv_last_5_data, csv_last_year_data=csv_last_year_data, \
                           csv_means_trends=csv_means_trends)        
@@ -2865,7 +2868,7 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Generando Resumén...\n')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_summary=gemini_prompt("",p_summary)
+    gem_summary=gemini_prompt(f_system_prompt,p_summary)
     
     # Only proceed with translation if we got a valid response
     if not gem_summary.startswith("[API"):
