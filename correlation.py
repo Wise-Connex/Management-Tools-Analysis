@@ -3105,28 +3105,26 @@ def report_pdf():
     
     if top_choice == 1:
         year_adjust = 0
+        period = "Mensual"
         if menu == 2:
-            year_adjust = 2
-            data_txt += f"<h3>72 años (Mensual) ({current_year-70+year_adjust} - {current_year-year_adjust})</h3>\n"
+            period = "Anual"
+        if total_years > 20:
+            data_txt += f"<h3>{total_years} años ({period}) ({earliest_year} - {latest_year})</h3>\n"
             data_txt += csv2table(csv_all_data)
-        elif menu == 4:
-            year_adjust = 2
-            data_txt += f"<h3>74 años (Mensual) ({current_year-74} - {current_year})</h3>\n"
-            data_txt += csv2table(csv_all_data)
-        data_txt += f"<h3>20 años (Mensual) ({current_year-20} - {current_year})</h3>\n"
+        data_txt += f"<h3>20 años ({period}) ({latest_year-20} - {latest_year})</h3>\n"
         data_txt += csv2table(csv_last_20_data)
-        data_txt += f"<h3>15 años (Mensual) ({current_year-15} - {current_year})</h3>\n"
+        data_txt += f"<h3>15 años ({period}) ({latest_year-15} - {latest_year})</h3>\n"
         data_txt += csv2table(csv_last_15_data)
-        data_txt += f"<h3>10 años (Mensual) ({current_year-10} - {current_year})</h3>\n"
+        data_txt += f"<h3>10 años ({period}) ({latest_year-10} - {latest_year})</h3>\n"
         data_txt += csv2table(csv_last_10_data)
-        data_txt += f"<h3>5 años (Mensual) ({current_year-5} - {current_year})</h3>\n"
+        data_txt += f"<h3>5 años ({period}) ({latest_year-5} - {latest_year})</h3>\n"
         data_txt += csv2table(csv_last_5_data)
     else:
         data_txt += csv2table(csv_combined_data)     
     data_txt += "\n\n\n"
     data_txt += "<div class='page-break'></div>\n"  # Add page break here
     data_txt += "<h2>Datos Medias y Tendencias</h2>\n"
-    data_txt += f"<h3>Medias y Tendencias ({current_year-20} - {current_year})</h3>\n"
+    data_txt += f"<h3>Medias y Tendencias ({latest_year-20} - {latest_year})</h3>\n"
     data_txt += csv_means_trendsA
     data_txt += csv2table(csv_means_trends)
     if not one_keyword:
@@ -3134,12 +3132,14 @@ def report_pdf():
         data_txt += csv2table(csv_correlation)        
         data_txt += f"<h3>Regresión</h3>\n"
         data_txt += csv2table(csv_regression)
-    data_txt += f"<h2>ARIMA</h2>\n"
-    for n in range(len(csv_arimaA)):
-        data_txt += csv_arimaA[n]
-        data_txt += csv2table(csv_arimaB[n])
-    data_txt += f"<h2>Estacional</h2>\n"
-    data_txt += csv2table(csv_seasonal)
+    if not skip_arima:
+        data_txt += f"<h2>ARIMA</h2>\n"
+        for n in range(len(csv_arimaA)):
+            data_txt += csv_arimaA[n]
+            data_txt += csv2table(csv_arimaB[n])
+    if not skip_seasonal:
+        data_txt += f"<h2>Estacional</h2>\n"
+        data_txt += csv2table(csv_seasonal)
     data_txt += f"<h2>Fourier</h2>\n"
     data_txt += csv2table(csv_fourier)
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
