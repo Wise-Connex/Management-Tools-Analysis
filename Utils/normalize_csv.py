@@ -2,23 +2,18 @@
 """
 CSV Value Normalization Utility
 
-This script normalizes the values in CSV files to a 0-100 scale while preserving
-the relative relationships between values. It processes all CSV files in a specified
-folder, overwriting the original files with normalized values while keeping the exact
-original column names.
+This script normalizes the values in CSV files using Google Trends style indexation
+where the maximum value becomes 100 and other values are scaled proportionally.
+It reads CSV files from 'dbase-non-indexed' folder and saves normalized values to
+corresponding files in 'dbase' folder while keeping the exact original column names.
 
 Usage:
-    python normalize_csv.py [folder_path]
-
-Arguments:
-    folder_path (optional): Path to the folder containing CSV files.
-                          Defaults to 'dbase' if not specified.
+    python Utils/normalize_csv.py
 """
 
 import pandas as pd
 import os
 import sys
-from typing import Optional
 import logging
 
 # Configure logging
@@ -30,7 +25,8 @@ logger = logging.getLogger(__name__)
 
 def normalize_to_100(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Normalize the values column to a 0-100 scale using min-max normalization.
+    Normalize the values column using Google Trends style indexation where
+    the maximum value becomes 100 and other values are scaled proportionally.
     
     Args:
         df (pd.DataFrame): Input dataframe with dates in first column and values in second column
@@ -51,17 +47,19 @@ def normalize_to_100(df: pd.DataFrame) -> pd.DataFrame:
     # Get the values column (second column)
     values = df.iloc[:, 1]
     
-    # Calculate min and max
-    min_val = values.min()
+    # Calculate maximum value
     max_val = values.max()
     
-    # Handle case where all values are the same
-    if max_val == min_val:
-        logger.warning("All values are identical. Setting all normalized values to 50.")
+    # Handle case where all values are zero
+    if max_val == 0:
+        logger.warning("All values are zero. Setting all normalized values to 50.")
         normalized_values = pd.Series(50, index=values.index)
     else:
-        # Normalize to 0-100 scale using the formula: ((x - min) / (max - min)) * 100
-        normalized_values = ((values - min_val) / (max_val - min_val)) * 100
+        # Normalize to 0-100 scale using the formula: (x / max) * 100
+        normalized_values = (values / max_val) * 100
+    
+    # Round to integers like in Google Trends
+    normalized_values = normalized_values.round().astype(int)
     
     # Create new dataframe with original column names
     result = pd.DataFrame({
@@ -71,26 +69,33 @@ def normalize_to_100(df: pd.DataFrame) -> pd.DataFrame:
     
     return result
 
-def process_csv_files(folder_path: str) -> None:
+def process_csv_files() -> None:
     """
-    Process all CSV files in the specified folder.
+    Process all CSV files from dbase-non-indexed and save normalized versions to dbase.
     
-    Args:
-        folder_path (str): Path to the folder containing CSV files
-        
     Raises:
-        ValueError: If the folder doesn't exist
+        ValueError: If either folder doesn't exist
         Exception: For any other processing errors
     """
-    # Ensure the folder exists
-    if not os.path.exists(folder_path):
-        raise ValueError(f"Folder {folder_path} does not exist")
+    # Define source and destination folders (relative to project root)
+    source_folder = 'dbase-non-indexed'
+    dest_folder = 'dbase'
     
-    # Get list of CSV files
-    csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
+    # Log the paths being used
+    logger.info(f"Source folder: {source_folder}")
+    logger.info(f"Destination folder: {dest_folder}")
+    
+    # Ensure both folders exist
+    if not os.path.exists(source_folder):
+        raise ValueError(f"Source folder {source_folder} does not exist")
+    if not os.path.exists(dest_folder):
+        raise ValueError(f"Destination folder {dest_folder} does not exist")
+    
+    # Get list of CSV files from source folder
+    csv_files = [f for f in os.listdir(source_folder) if f.endswith('.csv')]
     
     if not csv_files:
-        logger.warning(f"No CSV files found in {folder_path}")
+        logger.warning(f"No CSV files found in {source_folder}")
         return
     
     logger.info(f"Found {len(csv_files)} CSV files to process")
@@ -98,43 +103,35 @@ def process_csv_files(folder_path: str) -> None:
     # Process each CSV file
     for filename in csv_files:
         try:
-            # Full path to the file
-            file_path = os.path.join(folder_path, filename)
+            # Full paths to source and destination files
+            source_path = os.path.join(source_folder, filename)
+            dest_path = os.path.join(dest_folder, filename)
             
-            # Read the CSV file
+            # Read the CSV file from source
             logger.info(f"Processing {filename}...")
-            df = pd.read_csv(file_path)
+            df = pd.read_csv(source_path)
             
             # Normalize the values
             normalized_df = normalize_to_100(df)
             
-            # Save the normalized data back to the original file
-            normalized_df.to_csv(file_path, index=False)
-            logger.info(f"Successfully normalized and saved {filename}")
+            # Save the normalized data to destination
+            normalized_df.to_csv(dest_path, index=False)
+            logger.info(f"Successfully normalized and saved {filename} to {dest_folder}")
             
         except Exception as e:
             logger.error(f"Error processing {filename}: {str(e)}")
             continue
 
-def main(folder_path: Optional[str] = None) -> None:
+def main() -> None:
     """
     Main function to run the normalization process.
-    
-    Args:
-        folder_path (Optional[str]): Path to the folder containing CSV files
     """
-    # Use default folder if none specified
-    if folder_path is None:
-        folder_path = 'dbase'
-    
     try:
-        process_csv_files(folder_path)
+        process_csv_files()
         logger.info("Normalization process completed successfully")
     except Exception as e:
         logger.error(f"Error during normalization process: {str(e)}")
         sys.exit(1)
 
 if __name__ == "__main__":
-    # Get folder path from command line argument if provided
-    folder_path = sys.argv[1] if len(sys.argv) > 1 else None
-    main(folder_path) 
+    main() 
