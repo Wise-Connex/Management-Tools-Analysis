@@ -408,8 +408,9 @@ def bspline_interpolation(df, column):
     x = actual_data.index.astype(int) / 10**9  # Convert to Unix timestamp
     y = actual_data[column].values
 
-    # Create a B-spline interpolator
-    tck = interp.splrep(x, y, k=3)  # k=3 for a cubic B-spline
+    # Create a B-spline interpolator that passes through all points
+    # Set s=0 to force the spline to pass through all points
+    tck = interp.splrep(x, y, k=3, s=0)  # s=0 ensures curve passes through all points
 
     # Generate interpolated values only between first and last actual data points
     start_date = actual_data.index.min()
@@ -418,23 +419,39 @@ def bspline_interpolation(df, column):
     # Create a list to store interpolated data
     interpolated_data = []
     
-    # Generate monthly points only between first and last actual data points
-    x_interp = pd.date_range(start=start_date, end=end_date, freq='MS')
+    # Generate daily points for maximum smoothness
+    x_interp = pd.date_range(start=start_date, end=end_date, freq='D')
     x_interp_unix = x_interp.astype(int) / 10**9
     y_interp = interp.splev(x_interp_unix, tck)
     
+    # Handle near-zero values smoothly
+    min_threshold = 0.001  # Minimum value to prevent exact zeros
+    y_interp = np.where(y_interp < min_threshold, min_threshold + (y_interp * 0.1), y_interp)
+    
     # Add the interpolated data
     for date, value in zip(x_interp, y_interp):
-        interpolated_data.append((date, value))
+        # Only add points up to the last actual data point
+        if date <= end_date:
+            interpolated_data.append((date, value))
 
     # Create a new DataFrame with the interpolated values
     df_interpolated = pd.DataFrame(interpolated_data, columns=['date', column])
     df_interpolated.set_index('date', inplace=True)
 
-    # Preserve all original data points from the original dataset
+    # Carefully preserve all original data points
     for idx in actual_data.index:
         if idx in df_interpolated.index:
             df_interpolated.loc[idx, column] = actual_data.loc[idx, column]
+        else:
+            # If the original point's date doesn't align with our interpolation,
+            # add it explicitly to preserve it
+            df_interpolated.loc[idx] = actual_data.loc[idx]
+
+    # Sort the index to ensure proper ordering after adding original points
+    df_interpolated.sort_index(inplace=True)
+    
+    # Ensure we don't have any points after the last actual data point
+    df_interpolated = df_interpolated[df_interpolated.index <= end_date]
 
     return df_interpolated
 
