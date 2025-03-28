@@ -32,6 +32,7 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     - 5 maps to 100
     - 3 maps to 60
     - The minimum value in the series maps proportionally
+    - The maximum value in the series maps proportionally
     - Values > 5 are capped at 100
     
     Args:
@@ -53,22 +54,28 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     # Get the values column (second column)
     values = df.iloc[:, 1]
     
-    # Find the actual minimum value in the series
+    # Find the actual minimum and maximum values in the series
     min_val = values.min()
+    max_val = values.max()
     
     # Calculate what the minimum value should map to in the 0-100 scale
     # Using the same proportion as the 3->60 mapping
     min_scaled = ((min_val - 3) * 40 / 2) + 60
+    
+    # Calculate what the maximum value should map to
+    # If max_val > 5, it should map to 100
+    # If max_val < 5, it should map proportionally
+    max_scaled = 100 if max_val >= 5 else ((max_val - 3) * 40 / 2) + 60
     
     # Initialize normalized values
     normalized_values = pd.Series(index=values.index)
     
     # Handle different ranges
     # 1. Values > 5 become 100
-    # 2. Values between min_val and 5 use linear interpolation
+    # 2. Values between min_val and max_val use linear interpolation
     normalized_values = values.apply(lambda x: 
         100 if x >= 5 else (
-            ((x - min_val) * (100 - min_scaled) / (5 - min_val) + min_scaled)
+            ((x - min_val) * (max_scaled - min_scaled) / (max_val - min_val) + min_scaled)
         )
     )
     
@@ -83,6 +90,7 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     
     # Log the scaling information
     logger.info(f"Series min value: {min_val:.2f} -> scaled to: {min_scaled:.0f}")
+    logger.info(f"Series max value: {max_val:.2f} -> scaled to: {max_scaled:.0f}")
     logger.info(f"Reference point: 3.00 -> 60")
     logger.info(f"Series max cap: 5.00 -> 100")
     
