@@ -299,7 +299,48 @@ def linear_interpolation(df, kw):
     #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
     return df_interpolated
 
-# Create a cubic interpolation function
+def smooth_transition(value, min_val, max_val, transition_range=0.2):
+    """
+    Smoothly transition values back within bounds using a modified sigmoid function.
+    transition_range determines how far from the bounds the transition starts (as a fraction of the range)
+    """
+    range_val = max_val - min_val
+    transition_width = range_val * transition_range
+    
+    # Calculate the center of the valid range
+    center = (max_val + min_val) / 2
+    
+    # Use a more gradual sigmoid curve (reduced steepness factor from 5 to 3)
+    sigmoid = lambda x: 1 / (1 + np.exp(-3 * x))
+    
+    # Smooth transition for values approaching min
+    if value < min_val + transition_width:
+        # Calculate distance from minimum as a proportion of transition width
+        dist_from_min = (value - min_val) / transition_width
+        # Apply sigmoid scaling to make transition more gradual
+        smooth_factor = sigmoid(2 * dist_from_min - 1)  # Shift sigmoid to center
+        # Gradually blend between min_val and the original value
+        return min_val + (transition_width * smooth_factor)
+    
+    # Smooth transition for values approaching max
+    if value > max_val - transition_width:
+        # Calculate distance from maximum as a proportion of transition width
+        dist_from_max = (max_val - value) / transition_width
+        # Apply sigmoid scaling to make transition more gradual
+        smooth_factor = sigmoid(2 * dist_from_max - 1)  # Shift sigmoid to center
+        # Gradually blend between max_val and the original value
+        return max_val - (transition_width * smooth_factor)
+    
+    # Additional smoothing for values in the middle range
+    # This helps prevent sudden transitions at the boundaries of the transition zones
+    dist_from_center = abs(value - center) / (range_val / 2)
+    if dist_from_center > 0.7:  # Start subtle smoothing earlier
+        smooth_factor = sigmoid(3 * (1 - dist_from_center))
+        target = center + np.sign(value - center) * (range_val / 2 * 0.95)  # 95% of the half-range
+        return value * smooth_factor + target * (1 - smooth_factor)
+    
+    return value
+
 def cubic_interpolation(df, kw):
     # Extract actual data points (non-NaN values)
     actual_data = df[~df[kw].isna()]
@@ -307,29 +348,67 @@ def cubic_interpolation(df, kw):
     if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
         return linear_interpolation(df, kw)  # Fall back to linear interpolation if not enough points
     
-    x = actual_data.index
-    y = actual_data[kw].values
-
-    # Create a Cubic Spline interpolator
-    spline = CubicSpline(x, y)
+    # Get the min and max values from original data
+    original_min = actual_data[kw].min()
+    original_max = actual_data[kw].max()
+    range_val = original_max - original_min
     
-    # Generate interpolated values only between first and last actual data points
-    start_date = actual_data.index.min().date()
-    end_date = actual_data.index.max().date()
-    x_interp = pd.date_range(start_date, end_date, freq='MS')
+    # Ensure index is sorted
+    actual_data = actual_data.sort_index()
+    
+    # Get the full date range from the original DataFrame
+    earliest_date = df.index.min()
+    latest_date = df.index.max()
+    
+    # Convert dates to numerical values for interpolation
+    x = actual_data.index.astype(np.int64)
+    y = actual_data[kw].values
+    
+    # Create a Cubic Spline interpolator with natural boundary conditions
+    # This will create smoother transitions at the endpoints
+    spline = CubicSpline(x, y, bc_type='natural')
+    
+    # Generate interpolated values with finer granularity
+    # Use monthly intervals for smooth transitions
+    x_interp = pd.date_range(earliest_date, latest_date, freq='M')
+    x_interp_int = x_interp.astype(np.int64)
     
     # Evaluate the spline at the interpolated points
-    y_interp = spline(x_interp)
-
+    y_interp = spline(x_interp_int)
+    
+    # Apply a gentler constraint to keep values within original bounds
+    def soft_clip(x, min_val, max_val):
+        range_val = max_val - min_val
+        margin = range_val * 0.15  # Allow 15% margin for smoother transition
+        extended_min = min_val - margin
+        extended_max = max_val + margin
+        
+        # Use a single pass with a gentler tanh function
+        range_half = (max_val - min_val) / 2
+        mid = (max_val + min_val) / 2
+        scaled_x = (x - mid) / (range_half * 1.5)  # Increase the scaling factor for smoother transition
+        return mid + range_half * np.tanh(scaled_x)
+    
+    y_interp = soft_clip(y_interp, original_min, original_max)
+    
     # Create a new DataFrame with the interpolated values
     df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
     
-    # Preserve original values at actual data points to ensure accuracy
+    # Add original values, overwriting interpolated values where they exist
     for idx in actual_data.index:
-        if idx in df_interpolated.index:
-            df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
-
-    #PPRINT(f'DF INTERPOLATED:\n{df_interpolated}')
+        df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
+    
+    # Sort index and ensure it's monotonic
+    df_interpolated = df_interpolated.sort_index()
+    
+    # Apply a final smoothing pass using rolling mean with small window
+    window = 3  # 3-month window for final smoothing
+    df_interpolated[kw] = df_interpolated[kw].rolling(window=window, center=True, min_periods=1).mean()
+    
+    # Ensure original points are preserved after smoothing
+    for idx in actual_data.index:
+        df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
+    
     return df_interpolated
 
 def main_menu():
@@ -405,6 +484,10 @@ def bspline_interpolation(df, column):
         else:
             return df.copy()  # Return original if not enough points
     
+    # Get the min and max values from original data
+    original_min = actual_data[column].min()
+    original_max = actual_data[column].max()
+    
     x = actual_data.index.astype(int) / 10**9  # Convert to Unix timestamp
     y = actual_data[column].values
 
@@ -423,6 +506,9 @@ def bspline_interpolation(df, column):
     x_interp = pd.date_range(start=start_date, end=end_date, freq='D')
     x_interp_unix = x_interp.astype(int) / 10**9
     y_interp = interp.splev(x_interp_unix, tck)
+    
+    # Apply smooth transition instead of hard clipping
+    y_interp = np.array([smooth_transition(val, original_min, original_max) for val in y_interp])
     
     # Handle near-zero values smoothly
     min_threshold = 0.001  # Minimum value to prevent exact zeros
@@ -482,7 +568,8 @@ def get_file_data(filename, menu):
         # Apply bspline interpolation for menus 3 and 5
         interpolated_data = pd.DataFrame()
         for column in df.columns:
-            interpolated = bspline_interpolation(df, column)
+            #interpolated = bspline_interpolation(df, column)
+            interpolated = cubic_interpolation(df, column)
             interpolated_data[column] = interpolated[column]
         
         # Set the index to datetime format
@@ -1283,6 +1370,25 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
     if top_choice == 2:
         menu = 1
         
+    # Calculate global min and max across all series
+    global_min = float('inf')
+    global_max = float('-inf')
+    
+    for i, kw in enumerate(all_keywords):
+        #series_data = data[kw]
+        if menu == 2:
+            series_data = data[kw]
+        else:
+            series_data = smooth_data(data[kw], window_size)
+            
+        global_min = min(global_min, series_data.min())
+        global_max = max(global_max, series_data.max())
+        
+    # Add 10% buffer to min and max
+    buffer = (global_max - global_min) * 0.1
+    y_min = max(0, global_min - buffer)  # Ensure minimum doesn't go below 0
+    y_max = global_max + buffer
+    
     for i, kw in enumerate(all_keywords):
         if menu == 2:
             ax.plot(data[kw].index, data[kw], label=kw, color=colors[i])
@@ -1337,9 +1443,8 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
     # Grid lines for major ticks only
     ax.grid(True, which='major', linestyle='--', linewidth=0.3, color='grey', alpha=0.1)
 
-    # Set y-axis to start at 0
-    y_min, y_max = ax.get_ylim()
-    ax.set_ylim(bottom=0, top=y_max)
+    # Set y-axis limits with buffer
+    ax.set_ylim(bottom=y_min, top=y_max)
 
     ax.set_ylabel(ylabel, fontsize=14)
     ax.set_title(title, fontsize=16)
@@ -1367,8 +1472,10 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
         ax.xaxis.set_minor_formatter(mdates.DateFormatter('%m'))
         ax.xaxis.set_minor_formatter(FuncFormatter(format_month2))
     else:
-        # For other periods, years as major and months as minor
-        ax.xaxis.set_major_locator(mdates.YearLocator())
+        # For other periods, show every year
+        years = sorted(data.index.year.unique())
+        year_locator = mdates.YearLocator(base=1)  # Show every year
+        ax.xaxis.set_major_locator(year_locator)
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
         ax.xaxis.set_minor_locator(mdates.MonthLocator())
         ax.xaxis.set_minor_formatter(FuncFormatter(format_month))
