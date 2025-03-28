@@ -3,10 +3,11 @@
 CSV Value Normalization Utility for BS_ Files
 
 This script normalizes the values in CSV files using a custom scale where:
-- 5 maps to 100
-- 3 maps to 60
+- 5 maps to 1000
+- 3 maps to 600
 - The minimum value in the series maps proportionally
-- Values > 5 are capped at 100
+- The maximum value in the series maps proportionally
+- Values > 5 are capped at 1000
 It only processes files starting with 'BS_' in the dbase-non-indexed folder
 and saves normalized values to corresponding files in dbase folder.
 
@@ -29,11 +30,12 @@ logger = logging.getLogger(__name__)
 def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     """
     Normalize the values column using custom scale where:
-    - 5 maps to 100
-    - 3 maps to 60
+    - 5 maps to 1000
+    - 3 maps to 600
     - The minimum value in the series maps proportionally
     - The maximum value in the series maps proportionally
-    - Values > 5 are capped at 100
+    - Values > 5 are capped at 1000
+    - Values stay within the actual range of the series
     
     Args:
         df (pd.DataFrame): Input dataframe with dates in first column and values in second column
@@ -58,26 +60,29 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     min_val = values.min()
     max_val = values.max()
     
-    # Calculate what the minimum value should map to in the 0-100 scale
-    # Using the same proportion as the 3->60 mapping
-    min_scaled = ((min_val - 3) * 40 / 2) + 60
+    # Calculate what the minimum value should map to in the 0-1000 scale
+    # Using the same proportion as the 3->600 mapping
+    min_scaled = ((min_val - 3) * 400 / 2) + 600
     
     # Calculate what the maximum value should map to
-    # If max_val > 5, it should map to 100
+    # If max_val > 5, it should map to 1000
     # If max_val < 5, it should map proportionally
-    max_scaled = 100 if max_val >= 5 else ((max_val - 3) * 40 / 2) + 60
+    max_scaled = 1000 if max_val >= 5 else ((max_val - 3) * 400 / 2) + 600
     
     # Initialize normalized values
     normalized_values = pd.Series(index=values.index)
     
     # Handle different ranges
-    # 1. Values > 5 become 100
+    # 1. Values > 5 become 1000
     # 2. Values between min_val and max_val use linear interpolation
     normalized_values = values.apply(lambda x: 
-        100 if x >= 5 else (
+        1000 if x >= 5 else (
             ((x - min_val) * (max_scaled - min_scaled) / (max_val - min_val) + min_scaled)
         )
     )
+    
+    # Ensure values stay within the actual range of the series
+    normalized_values = normalized_values.clip(min_scaled, max_scaled)
     
     # Round to integers
     normalized_values = normalized_values.round().astype(int)
@@ -91,8 +96,8 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     # Log the scaling information
     logger.info(f"Series min value: {min_val:.2f} -> scaled to: {min_scaled:.0f}")
     logger.info(f"Series max value: {max_val:.2f} -> scaled to: {max_scaled:.0f}")
-    logger.info(f"Reference point: 3.00 -> 60")
-    logger.info(f"Series max cap: 5.00 -> 100")
+    logger.info(f"Reference point: 3.00 -> 600")
+    logger.info(f"Series max cap: 5.00 -> 1000")
     
     return result
 
