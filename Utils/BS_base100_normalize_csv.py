@@ -29,10 +29,11 @@ logger = logging.getLogger(__name__)
 
 def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Normalize the values column using Google Trends style indexation where:
-    - The maximum value becomes 100
-    - All other values are scaled proportionally
-    - Values stay within the actual range of the series
+    Normalize the values column using a base-100 scale where:
+    - 5 maps to 100
+    - All other values are scaled proportionally relative to 5
+    - Values > 5 will be scaled above 100
+    - Values < 5 will be scaled below 100
     
     Args:
         df (pd.DataFrame): Input dataframe with dates in first column and values in second column
@@ -62,8 +63,9 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
         logger.warning("All values are zero. Setting all normalized values to 50.")
         normalized_values = pd.Series(50, index=values.index)
     else:
-        # Normalize to 0-100 scale using the formula: (x / max) * 100
-        normalized_values = (values / max_val) * 100
+        # Normalize to base-100 scale using 5 as reference point
+        # Formula: (x / 5) * 100
+        normalized_values = (values / 5) * 100
     
     # Round to integers like in Google Trends
     normalized_values = normalized_values.round().astype(int)
@@ -77,6 +79,7 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     # Log the scaling information
     logger.info(f"Series min value: {min_val:.2f} -> scaled to: {normalized_values.min():.0f}")
     logger.info(f"Series max value: {max_val:.2f} -> scaled to: {normalized_values.max():.0f}")
+    logger.info(f"Reference point: 5.00 -> 100")
     
     return result
 
