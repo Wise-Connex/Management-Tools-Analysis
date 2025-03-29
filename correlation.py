@@ -3542,6 +3542,7 @@ def report_pdf():
                 width: 100%;
                 margin: 1.5em 0;
                 page-break-inside: avoid;
+                font-size: 9px;  /* Added this line to make all tables have smaller font */
             }}
 
             th, td {{
