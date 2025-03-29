@@ -28,6 +28,7 @@ logger = logging.getLogger(__name__)
 def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     """
     Normalize the values column using Z-scores and scale to 0-100 range.
+    Only uses 0 in the output if it was present in the original data.
     
     Args:
         df (pd.DataFrame): Input dataframe with dates in first column and values in second column
@@ -48,6 +49,9 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     # Get the values column (second column)
     values = df.iloc[:, 1]
     
+    # Check if zero exists in original data
+    has_zero = 0 in values.values
+    
     # Calculate Z-scores
     z_scores = (values - values.mean()) / values.std()
     
@@ -62,6 +66,11 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
         normalized_values = pd.Series(50, index=values.index)
     else:
         normalized_values = ((z_scores - min_z) / (max_z - min_z)) * 100
+        
+        # If original data had no zeros, adjust the range to avoid 0
+        if not has_zero:
+            # Scale to 1-100 range instead of 0-100
+            normalized_values = 1 + (normalized_values * 99 / 100)
     
     # Round to integers like in Google Trends
     normalized_values = normalized_values.round().astype(int)
@@ -76,6 +85,7 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     logger.info(f"Original values - Mean: {values.mean():.2f}, Std: {values.std():.2f}")
     logger.info(f"Z-scores - Min: {min_z:.2f}, Max: {max_z:.2f}")
     logger.info(f"Normalized values - Min: {normalized_values.min():.0f}, Max: {normalized_values.max():.0f}")
+    logger.info(f"Zero values in original data: {'Yes' if has_zero else 'No'}")
     
     return result
 
