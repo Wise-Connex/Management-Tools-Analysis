@@ -341,6 +341,9 @@ def smooth_transition(value, min_val, max_val, transition_range=0.2):
     
     return value
 
+# Global variable to store original values
+original_values = {}
+
 def cubic_interpolation(df, kw):
     # Extract actual data points (non-NaN values)
     actual_data = df[~df[kw].isna()]
@@ -348,10 +351,12 @@ def cubic_interpolation(df, kw):
     if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
         return linear_interpolation(df, kw)  # Fall back to linear interpolation if not enough points
     
+    # Store original values in global variable
+    original_values[kw] = actual_data[kw].copy()
+    
     # Get the min and max values from original data
     original_min = actual_data[kw].min()
     original_max = actual_data[kw].max()
-    range_val = original_max - original_min
     
     # Ensure index is sorted
     actual_data = actual_data.sort_index()
@@ -365,7 +370,6 @@ def cubic_interpolation(df, kw):
     y = actual_data[kw].values
     
     # Create a Cubic Spline interpolator with natural boundary conditions
-    # This will create smoother transitions at the endpoints
     spline = CubicSpline(x, y, bc_type='natural')
     
     # Generate interpolated values with finer granularity
@@ -376,38 +380,27 @@ def cubic_interpolation(df, kw):
     # Evaluate the spline at the interpolated points
     y_interp = spline(x_interp_int)
     
-    # Apply a gentler constraint to keep values within original bounds
-    def soft_clip(x, min_val, max_val):
-        range_val = max_val - min_val
-        margin = range_val * 0.15  # Allow 15% margin for smoother transition
-        extended_min = min_val - margin
-        extended_max = max_val + margin
-        
-        # Use a single pass with a gentler tanh function
-        range_half = (max_val - min_val) / 2
-        mid = (max_val + min_val) / 2
-        scaled_x = (x - mid) / (range_half * 1.5)  # Increase the scaling factor for smoother transition
-        return mid + range_half * np.tanh(scaled_x)
-    
-    y_interp = soft_clip(y_interp, original_min, original_max)
+    # Clip values to be within 0.1 of the original min and max
+    margin = (original_max - original_min) * 0.1
+    y_interp = np.clip(y_interp, original_min - margin, original_max + margin)
     
     # Create a new DataFrame with the interpolated values
     df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
     
-    # Add original values, overwriting interpolated values where they exist
-    for idx in actual_data.index:
-        df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
+    # Create a mask for original data points
+    original_mask = df_interpolated.index.isin(actual_data.index)
+    
+    # Replace interpolated values with original values where they exist
+    df_interpolated.loc[original_mask, kw] = actual_data.loc[df_interpolated.index[original_mask], kw]
     
     # Sort index and ensure it's monotonic
     df_interpolated = df_interpolated.sort_index()
     
-    # Apply a final smoothing pass using rolling mean with small window
-    window = 3  # 3-month window for final smoothing
-    df_interpolated[kw] = df_interpolated[kw].rolling(window=window, center=True, min_periods=1).mean()
-    
-    # Ensure original points are preserved after smoothing
+    # Verify that original points are preserved exactly
     for idx in actual_data.index:
-        df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
+        if idx in df_interpolated.index:
+            assert abs(df_interpolated.loc[idx, kw] - actual_data.loc[idx, kw]) < 1e-10, \
+                f"Original point at {idx} was not preserved correctly"
     
     return df_interpolated
 

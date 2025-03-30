@@ -3,7 +3,9 @@
 CSV Value Normalization Utility for BS_ Files using Z-scores
 
 This script normalizes the values in CSV files using Z-scores where:
-- Each value is transformed to its Z-score: (x - mean) / standard_deviation
+- Each value is transformed to its Z-score using fixed population parameters:
+  - Population mean = 3
+  - Population standard deviation = 0.891609
 - The Z-scores are then scaled to a 0-100 range for consistency
 - Only processes files starting with 'BS_' in the dbase-non-indexed folder
 - Saves normalized values to corresponding files in dbase folder.
@@ -25,10 +27,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Fixed population parameters for Z-score calculation
+POPULATION_MEAN = 3.0
+POPULATION_STD = 0.891609
+
 def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Normalize the values column using Z-scores and scale to 0-100 range.
-    Only uses 0 in the output if it was present in the original data.
+    Normalize the values column using Z-scores with fixed population parameters
+    and scale to a moderate range for better amplitude. Only uses 0 in the output 
+    if it was present in the original data.
     
     Args:
         df (pd.DataFrame): Input dataframe with dates in first column and values in second column
@@ -52,27 +59,21 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     # Check if zero exists in original data
     has_zero = 0 in values.values
     
-    # Calculate Z-scores
-    z_scores = (values - values.mean()) / values.std()
+    # Calculate Z-scores using fixed population parameters
+    z_scores = (values - POPULATION_MEAN) / POPULATION_STD
     
-    # Scale Z-scores to 0-100 range
-    # Formula: (z_score - min_z) / (max_z - min_z) * 100
-    min_z = z_scores.min()
-    max_z = z_scores.max()
+    # Scale Z-scores with factor of 22 for better amplitude
+    normalized_values = 50 + (z_scores * 22)  # Each std dev = 22 points
     
-    # Handle case where all values are identical (std = 0)
-    if max_z == min_z:
-        logger.warning("All values are identical. Setting all normalized values to 50.")
-        normalized_values = pd.Series(50, index=values.index)
-    else:
-        normalized_values = ((z_scores - min_z) / (max_z - min_z)) * 100
-        
-        # If original data had no zeros, adjust the range to avoid 0
-        if not has_zero:
-            # Scale to 1-100 range instead of 0-100
-            normalized_values = 1 + (normalized_values * 99 / 100)
+    # Clip values to ensure they stay within 0-100
+    normalized_values = np.clip(normalized_values, 0, 100)
     
-    # Round to integers like in Google Trends
+    # If no zeros in original data and min value would be 0, shift up slightly
+    if not has_zero and normalized_values.min() < 1:
+        shift = 1 - normalized_values.min()
+        normalized_values = normalized_values + shift
+    
+    # Round to integers
     normalized_values = normalized_values.round().astype(int)
     
     # Create new dataframe with original column names
@@ -82,8 +83,10 @@ def normalize_bs_scale(df: pd.DataFrame) -> pd.DataFrame:
     })
     
     # Log the transformation information
-    logger.info(f"Original values - Mean: {values.mean():.2f}, Std: {values.std():.2f}")
-    logger.info(f"Z-scores - Min: {min_z:.2f}, Max: {max_z:.2f}")
+    logger.info(f"Using fixed population parameters - Mean: {POPULATION_MEAN}, Std: {POPULATION_STD}")
+    logger.info(f"Using scaling factor: 22 (each std dev = 22 points)")
+    logger.info(f"Original values - Min: {values.min():.2f}, Max: {values.max():.2f}")
+    logger.info(f"Z-scores - Min: {z_scores.min():.2f}, Max: {z_scores.max():.2f}")
     logger.info(f"Normalized values - Min: {normalized_values.min():.0f}, Max: {normalized_values.max():.0f}")
     logger.info(f"Zero values in original data: {'Yes' if has_zero else 'No'}")
     
