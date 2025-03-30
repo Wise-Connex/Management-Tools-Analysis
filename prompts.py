@@ -229,6 +229,9 @@ Cuando analices la información proporcionada, ten en cuenta la naturaleza espec
     *   *Limitaciones:* La satisfacción es *subjetiva* y puede estar influenciada por factores individuales y contextuales. No mide directamente el *retorno de la inversión (ROI)*.
     *   *Fortalezas:* Proporciona información valiosa sobre la *experiencia del usuario* y la *percepción de valor*. Permite identificar *fortalezas y debilidades* desde la perspectiva del usuario.
     *   *Interpretación:* Una alta satisfacción indica que los usuarios perciben la herramienta como *útil* y *cumplidora de expectativas*. Baja satisfacción sugiere *problemas de rendimiento*, *usabilidad* o *adecuación*. Alta satisfacción + alta usabilidad = fuerte indicador de éxito.
+    *   *Normalización de Datos:* Los datos originales en una escala del 1 al 5 (donde 1 representa el nivel menos satisfactorio, 5 el más satisfactorio, y 3 el valor de indiferencia) fueron ajustados mediante Z-scores. Para este cálculo se utilizó una media poblacional de 3 y una desviación estándar poblacional de 0.891609. Posteriormente, los valores fueron normalizados aplicando la fórmula 50 + (Z-score × 22), lo cual sitúa al valor original 5 aproximadamente en 100 en la nueva escala.
+
+
 
 Notas: 
  - Todas las fuentes de datos estan en Inglés. i.e Google Books Ngrams use el corpus en Inglés.
