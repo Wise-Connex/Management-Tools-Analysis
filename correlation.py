@@ -140,6 +140,8 @@ global csv_combined_dataset
 global skip_seasonal
 global skip_arima
 global csv_significance
+global original_values
+original_values = {}
 keycharts = []
 csv_arimaA = []
 csv_arimaB = []
@@ -349,60 +351,132 @@ def cubic_interpolation(df, kw):
     actual_data = df[~df[kw].isna()]
     
     if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
-        return linear_interpolation(df, kw)  # Fall back to linear interpolation if not enough points
+        print(f"[Debug] Falling back to linear interpolation for {kw} (points: {len(actual_data)})")
+        return linear_interpolation(df, kw)
     
-    # Store original values in global variable
-    original_values[kw] = actual_data[kw].copy()
+    # Store original values if not already stored
+    if kw not in original_values:
+         original_values[kw] = actual_data[kw].copy()
     
-    # Get the min and max values from original data
+    # Get the min and max values from original data for STRICT clipping
     original_min = actual_data[kw].min()
     original_max = actual_data[kw].max()
+    # NO MARGIN - Clip strictly to original data range
+    clip_min = original_min
+    clip_max = original_max 
     
-    # Ensure index is sorted
+    # Ensure index is sorted AND has correct type (datetime64[ns])
     actual_data = actual_data.sort_index()
+    actual_data.index = pd.to_datetime(actual_data.index)
     
-    # Get the full date range from the original DataFrame
-    earliest_date = df.index.min()
-    latest_date = df.index.max()
-    
-    # Convert dates to numerical values for interpolation
-    x = actual_data.index.astype(np.int64)
+    # Convert dates to numerical values (days since epoch)
+    x = (actual_data.index - pd.Timestamp('1970-01-01')).days.values.astype(float)
     y = actual_data[kw].values
     
-    # Create a Cubic Spline interpolator with natural boundary conditions
-    spline = CubicSpline(x, y, bc_type='natural')
+    # Create Cubic Spline
+    cs = CubicSpline(x, y, bc_type='natural')
+
+    # --- 1. Interpolate at Daily frequency --- 
+    daily_date_range = pd.date_range(
+        start=actual_data.index.min(), 
+        end=actual_data.index.max(), 
+        freq='D' 
+    )
+    if daily_date_range.empty and not actual_data.empty:
+         daily_date_range = pd.date_range(start=actual_data.index.min(), periods=1, freq='D')
+    if daily_date_range.empty:
+        print(f"[Debug] Warning: Could not generate date range for {kw}. Returning empty DataFrame.")
+        return pd.DataFrame(columns=df.columns, index=pd.to_datetime([]))
+        
+    x_interp_daily = (daily_date_range - pd.Timestamp('1970-01-01')).days.values.astype(float)
+    y_interp_daily = cs(x_interp_daily)
     
-    # Generate interpolated values with finer granularity
-    # Use monthly intervals for smooth transitions
-    x_interp = pd.date_range(earliest_date, latest_date, freq='M')
-    x_interp_int = x_interp.astype(np.int64)
-    
-    # Evaluate the spline at the interpolated points
-    y_interp = spline(x_interp_int)
-    
-    # Clip values to be within 0.1 of the original min and max
-    margin = (original_max - original_min) * 0.1
-    y_interp = np.clip(y_interp, original_min - margin, original_max + margin)
-    
-    # Create a new DataFrame with the interpolated values
-    df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
-    
-    # Create a mask for original data points
-    original_mask = df_interpolated.index.isin(actual_data.index)
-    
-    # Replace interpolated values with original values where they exist
-    df_interpolated.loc[original_mask, kw] = actual_data.loc[df_interpolated.index[original_mask], kw]
-    
-    # Sort index and ensure it's monotonic
-    df_interpolated = df_interpolated.sort_index()
-    
-    # Verify that original points are preserved exactly
-    for idx in actual_data.index:
-        if idx in df_interpolated.index:
-            assert abs(df_interpolated.loc[idx, kw] - actual_data.loc[idx, kw]) < 1e-10, \
-                f"Original point at {idx} was not preserved correctly"
-    
-    return df_interpolated
+    # --- 2. Clip daily values STRICTLY --- 
+    y_interp_daily_clipped = np.clip(y_interp_daily, clip_min, clip_max) # Use strict min/max
+    df_daily_clipped = pd.DataFrame(y_interp_daily_clipped, index=daily_date_range, columns=[kw])
+
+    # --- 3. Force original points into DAILY data --- 
+    for idx, val in actual_data[kw].items():
+         # Ensure idx is a Timestamp before checking
+         idx_ts = pd.Timestamp(idx)
+         if idx_ts in df_daily_clipped.index:
+              df_daily_clipped.loc[idx_ts, kw] = val # Overwrite daily value with exact original
+         else:
+              # Add original point if its exact date wasn't in the daily range
+              print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to DAILY data for {kw}")
+              new_row = pd.DataFrame({kw: [val]}, index=[idx_ts])
+              df_daily_clipped = pd.concat([df_daily_clipped, new_row])
+              
+    df_daily_clipped = df_daily_clipped.sort_index()
+
+    # --- Debug Print (Optional Daily Data) --- 
+    # print(f"\n--- [Debug] Intermediate Daily Data for {kw} (Originals Forced) ---")
+    # print(df_daily_clipped.to_string()) 
+    # print("---------------------------------------------------------------------")
+
+    # --- 4. Resample to MONTH START ('MS') --- 
+    df_monthly = df_daily_clipped[[kw]].resample('MS').mean()
+
+    # --- 5. Force original points into MONTHLY data (Final Pass) --- 
+    for idx, val in actual_data[kw].items():
+        # Ensure idx is Timestamp for consistent indexing
+        idx_ts = pd.Timestamp(idx).normalize() # Normalize to YYYY-MM-01 00:00:00
+        
+        # Check if the exact YYYY-MM-01 exists in the monthly index
+        if idx_ts in df_monthly.index:
+             print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact monthly index.")
+             df_monthly.loc[idx_ts, kw] = val
+        else:
+             # If the exact start-of-month date isn't there after resampling, add it.
+             print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to MONTHLY data for {kw} as exact index missing.")
+             df_monthly.loc[idx_ts] = val
+
+    df_monthly = df_monthly.sort_index()
+
+    # --- Debug Print (Optional Monthly Data) --- 
+    # print(f"\n--- [Debug] Final Monthly Data for {kw} (Originals Forced) ---")
+    # print(df_monthly.to_string())
+    # print("=====================================================================")
+
+    return df_monthly
+
+def smooth_data(data, window_size=5, transition_points=10):
+    """
+    Applies a weighted moving average to smooth the data, with increased smoothness
+    for the first and last few data points, preserving the very first and last data points.
+
+    Args:
+    data: A list or NumPy array of data points.
+    window_size: The number of data points to include in the moving average (default: 5).
+    transition_points: The number of points over which to gradually increase/decrease smoothness (default: 10).
+
+    Returns:
+    A NumPy array of smoothed data points with the same shape as the original data.
+    """
+    data = np.array(data)
+    weights = np.arange(1, window_size + 1)
+
+    # Create a padded version of the data to handle edge cases
+    padded_data = np.pad(data, (window_size // 2, window_size - 1 - window_size // 2), mode='edge')
+
+    # Apply the weighted moving average
+    smoothed_data = np.convolve(padded_data, weights / weights.sum(), mode='valid')
+
+    # Ensure the first and last points are preserved
+    smoothed_data[0] = data[0]
+    smoothed_data[-1] = data[-1]
+
+    # Create a gradual transition between original and smoothed data for the first 'transition_points'
+    for i in range(1, min(transition_points, len(data) // 2)):
+        alpha = (i / transition_points) ** 2  # Using a quadratic function for smoother transition
+        smoothed_data[i] = (1 - alpha) * data[i] + alpha * smoothed_data[i]
+
+        # Mirror the transition for the end of the data
+        smoothed_data[-i-1] = (1 - alpha) * data[-i-1] + alpha * smoothed_data[-i-1]
+
+    #PPRINT(f"original data\n{data}")
+    #PPRINT(f"smothed data\n{smoothed_data}")
+    return smoothed_data
 
 def main_menu():
     banner_msg(" Menú principal ", YELLOW, WHITE)
@@ -1355,125 +1429,175 @@ def relative_comparison():
 
 def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is_last_year=False):
     global menu
-    
+    global top_choice
+    global all_keywords
+    global original_values # Ensure original_values is accessible
+
     if colors is None:
         colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
-    
-    # Plot data
-    if top_choice == 2:
-        menu = 1
-        
-    # Calculate global min and max across all series
+
+    # Calculate global min and max across all series (use raw data before any potential extra smoothing)
     global_min = float('inf')
     global_max = float('-inf')
-    
+    plot_min_max = {} # Store min/max of plotted data for y-axis limits
+
     for i, kw in enumerate(all_keywords):
-        #series_data = data[kw]
-        if menu == 2:
-            series_data = data[kw]
-        else:
-            series_data = smooth_data(data[kw], window_size)
-            
-        global_min = min(global_min, series_data.min())
-        global_max = max(global_max, series_data.max())
-        
-    # Add 10% buffer to min and max
-    buffer = (global_max - global_min) * 0.1
-    y_min = max(0, global_min - buffer)  # Ensure minimum doesn't go below 0
-    y_max = global_max + buffer
-    
+         if kw in data and not data[kw].empty:
+             try:
+                 plot_min = data[kw].min()
+                 plot_max = data[kw].max()
+                 plot_min_max[kw] = (plot_min, plot_max)
+                 global_min = min(global_min, plot_min)
+                 global_max = max(global_max, plot_max)
+             except Exception as e:
+                 print(f"[Warning] Could not calculate plot min/max for {kw}: {e}")
+         else:
+             print(f"[Warning] Data for {kw} is missing or empty when calculating global min/max.")
+
+    if not plot_min_max: 
+         print("[Warning] No valid data found to determine plot limits. Using default 0-100.")
+         global_min, global_max = 0, 100
+             
+    buffer = (global_max - global_min) * 0.1 if global_max > global_min else 10
+    y_min_limit = max(0, global_min - buffer)  
+    y_max_limit = global_max + buffer * 1.5 
+
+    # Plot the data and original points
     for i, kw in enumerate(all_keywords):
-        if menu == 2:
-            ax.plot(data[kw].index, data[kw], label=kw, color=colors[i])
-        else:
-            smoothed_data = smooth_data(data[kw], window_size)
-            ax.plot(data[kw].index, smoothed_data, label=kw, color=colors[i])
+        plot_label = kw 
+        min_orig, max_orig = None, None
+        if kw in original_values and not original_values[kw].empty:
+             try:
+                  min_orig = original_values[kw].min()
+                  max_orig = original_values[kw].max()
+                  plot_label = f"{kw} (Orig Min: {min_orig:.1f}, Orig Max: {max_orig:.1f})"
+             except Exception as e:
+                  print(f"[Warning] Could not get original min/max for legend for {kw}: {e}")
+
+        if kw in data and not data[kw].empty:
+            series_data_to_plot = data[kw]
+            ax.plot(series_data_to_plot.index, series_data_to_plot, label=plot_label, color=colors[i])
             
-            # Only show yearly calculations if top_choice != 2
-            if top_choice != 2:
+            # Add original points and their labels
+            if kw in original_values:
+                orig_data = original_values[kw]
+                mask = (orig_data.index >= data.index.min()) & (orig_data.index <= data.index.max())
+                filtered_data = orig_data[mask]
+                if not filtered_data.empty:
+                    ax.scatter(filtered_data.index, filtered_data, color=colors[i], s=60, alpha=0.5, zorder=5)
+                    # Add labels to points
+                    label_offset = (y_max_limit - y_min_limit) * 0.015 
+                    for idx, val in filtered_data.items():
+                         # --- Add Reverse Calculation for Labels (ONLY Menu 5) --- 
+                         label_text = f'{val:.1f}' # Default label is just the plotted value
+                         if menu == 5: # Check if it's Bain - Satisfaction
+                              try:
+                                   # Reverse normalization: z = (val - 50) / 22
+                                   z_score = (val - 50) / 22.0 
+                                   # Reverse z-score: fundamental = (z * std_dev) + mean
+                                   fundamental_value = (z_score * 0.891609) + 3.0
+                                   # Use new format with Z: and SV: prefixes
+                                   label_text = f'{val:.1f} (Z:{z_score:.2f}, SV:{fundamental_value:.2f})'
+                              except Exception as calc_e:
+                                   print(f"[Warning] Could not reverse calculate values for label at {idx}: {calc_e}")
+                                   # Fallback to default label if calculation fails
+                         # --------------------------------------------------------- 
+                         ax.text(idx, val + label_offset, label_text, fontsize=7, ha='center', va='bottom', color=colors[i], zorder=6)
+            
+            # --- Yearly Calculations --- 
+            if top_choice != 2 and menu != 2:
                 if menu == 4:
-                    # Calculate yearly sum of previous 12 months
                     yearly_sums = []
                     years = data.index.year.unique()
-                    for year in years[1:]:  # Start from the second year
+                    for year in years[1:]:
                         end_date = f"{year}-01-01"
                         start_date = f"{year-1}-01-01"
-                        yearly_sum = data[kw].loc[start_date:end_date].sum()
-                        yearly_sums.append((pd.Timestamp(year, 1, 1), yearly_sum))
+                        sum_data = data[kw][(data.index >= start_date) & (data.index < end_date)]
+                        yearly_sum = sum_data.sum() if not sum_data.empty else 0
+                        if not pd.isna(yearly_sum):
+                             yearly_sums.append((pd.Timestamp(f'{year}-01-01'), yearly_sum))
                     
-                    # Create secondary y-axis for yearly sums
-                    ax2 = ax.twinx()
-                    
-                    # Create bar plot for yearly sums on secondary y-axis
-                    bar_positions, bar_heights = zip(*yearly_sums)
-                    ax2.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
-                    
-                    # Set label for secondary y-axis
-                    ax2.set_ylabel('Suma anual', color='red', fontsize=12)
-                    ax2.tick_params(axis='y', labelcolor='red')
+                    if yearly_sums:
+                        ax2 = ax.twinx()
+                        bar_positions, bar_heights = zip(*yearly_sums)
+                        ax2.bar(bar_positions, bar_heights, width=300, alpha=0.05, color='red', align='edge') # Reduced alpha
+                        ax2.set_ylabel('Suma anual', color='red', fontsize=10)
+                        ax2.tick_params(axis='y', labelcolor='red', labelsize=8)
+                        ax2.set_ylim(bottom=0)
                 else:
-                    # Original yearly mean calculation
                     yearly_means = []
                     years = data.index.year.unique()
-                    for idx, year in enumerate(years):
-                        if idx == 0:  # First year
-                            start_date = f"{year}-01-01"
-                            end_date = f"{year}-06-30"
-                        elif idx == len(years) - 1:  # Last year
-                            start_date = f"{year}-07-01"
-                            end_date = f"{year}-12-31"
-                        else:  # All other years
-                            start_date = f"{year-1}-07-01"
-                            end_date = f"{year}-06-30"
-                        
-                        yearly_mean = data[kw].loc[start_date:end_date].mean()
-                        yearly_means.append((pd.Timestamp(year, 1, 1), yearly_mean))
+                    for idx_yr, year in enumerate(years):
+                        start_date = f"{year-1}-07-01"
+                        end_date = f"{year}-07-01"
+                        if idx_yr == 0:
+                            start_date = data.index.min().strftime('%Y-%m-%d')
+                        mean_data = data[kw][(data.index >= start_date) & (data.index < end_date)]
+                        yearly_mean = mean_data.mean() if not mean_data.empty else np.nan
+                        if not pd.isna(yearly_mean):
+                             yearly_means.append((pd.Timestamp(f'{year}-01-01'), yearly_mean))
                     
-                    # Create bar plot for yearly means
-                    bar_positions, bar_heights = zip(*yearly_means)
-                    ax.bar(bar_positions, bar_heights, width=365, alpha=0.1, color='red', align='center')
+                    if yearly_means:
+                         bar_positions, bar_heights = zip(*yearly_means)
+                         ax.bar(bar_positions, bar_heights, width=300, alpha=0.05, color='red', align='edge') # Reduced alpha
+        else:
+             print(f"[Warning] Data for plotting keyword '{kw}' is missing or empty.")
 
-    # Grid lines for major ticks only
+    # Grid lines 
     ax.grid(True, which='major', linestyle='--', linewidth=0.3, color='grey', alpha=0.1)
 
-    # Set y-axis limits with buffer
-    ax.set_ylim(bottom=y_min, top=y_max)
+    # Set y-axis limits using calculated limits
+    ax.set_ylim(bottom=y_min_limit, top=y_max_limit)
 
     ax.set_ylabel(ylabel, fontsize=14)
     ax.set_title(title, fontsize=16)
 
+    # --- X-Axis formatting remains the same --- 
     def format_month(x, pos):
-      if mdates.num2date(x).month == 7:
+      dt = mdates.num2date(x)
+      if dt.month == 1:
+           return '' 
+      elif dt.month == 7:
           ax.axvline(x, color='lightgrey',linestyle ='--', linewidth=0.3)
           return '|'
       else:
           return ''
 
     def format_month2(x, pos):
-      if mdates.num2date(x).month != 1:
-          ax.axvline(x, color='lightgrey',linestyle ='dotted', linewidth=0.3)
-          return str(mdates.num2date(x).month)
-      else:
-          return ''
+        dt = mdates.num2date(x)
+        if dt.month != 1: 
+             ax.axvline(x, color='lightgrey',linestyle ='dotted', linewidth=0.3)
+             return str(dt.month)
+        else:
+            return ''
 
-    # X-axis formatting based on time period
     if is_last_year:
-        year_locator = mdates.YearLocator()
+        year_locator = mdates.YearLocator() 
         ax.xaxis.set_major_locator(year_locator)
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
-        ax.xaxis.set_minor_locator(mdates.MonthLocator())
-        ax.xaxis.set_minor_formatter(mdates.DateFormatter('%m'))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y')) 
+        ax.xaxis.set_minor_locator(mdates.MonthLocator()) 
         ax.xaxis.set_minor_formatter(FuncFormatter(format_month2))
+        start_dt = pd.Timestamp(f'{data.index.year.min()}-01-01')
+        end_dt = pd.Timestamp(f'{data.index.year.max()}-12-31')
+        ax.set_xlim(mdates.date2num(start_dt), mdates.date2num(end_dt))
     else:
-        # For other periods, show every year
         years = sorted(data.index.year.unique())
-        year_locator = mdates.YearLocator(base=1)  # Show every year
+        year_locator = mdates.YearLocator(base=1)
         ax.xaxis.set_major_locator(year_locator)
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
-        ax.xaxis.set_minor_locator(mdates.MonthLocator())
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y')) 
+        ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=[1, 7]))
         ax.xaxis.set_minor_formatter(FuncFormatter(format_month))
+        start_dt = pd.Timestamp(f'{data.index.year.min()}-01-01')
+        end_dt = pd.Timestamp(f'{data.index.year.max()}-12-31')
+        ax.set_xlim(mdates.date2num(start_dt), mdates.date2num(end_dt))
 
-    ax.tick_params(axis='both', which='both', labelsize=8, labelrotation=45)
+    ax.tick_params(axis='both', which='major', labelsize=8)
+    ax.tick_params(axis='x', which='major', labelrotation=45)
+    ax.tick_params(axis='both', which='minor', labelsize=6) 
+    ax.tick_params(axis='x', which='minor', labelrotation=45)
+
+    # Add legend (using the modified labels)
+    ax.legend(loc='best', fontsize='small')
 
     return ax
 
