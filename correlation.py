@@ -20,6 +20,9 @@ import io
 import sys
 import math
 import warnings
+import shutil # Make sure shutil is imported at the top of the file
+import pandas as pd # Make sure pandas is imported
+import os # Make sure os is imported
 
 # Suppress the specific scikit-learn deprecation warning about force_all_finite
 warnings.filterwarnings("ignore", message=".*force_all_finite.*")
@@ -191,7 +194,7 @@ def get_unique_filename(base_filename, unique_folder):
         counter += 1
     return filename
 
-def gemini_prompt(system_prompt, prompt, m='flash', max_retries=5, initial_backoff=1):
+def gemini_prompt(system_prompt, prompt, m='pro', max_retries=5, initial_backoff=1):
   """
   Send a prompt to the Gemini API with retry logic for handling timeouts and service issues.
   
@@ -211,9 +214,9 @@ def gemini_prompt(system_prompt, prompt, m='flash', max_retries=5, initial_backo
   #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
 
   if m == 'pro':
-    model = 'gemini-2.0-flash-thinking-exp-01-21' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model = 'gemini-2.5-pro-exp-03-25' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
   else:
-    model = 'gemini-2.0-pro-exp-02-05' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model = 'gemini-2.0-flash' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
   temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
   stop_sequence = '*** END ANALYSIS ***'
 
@@ -2758,94 +2761,77 @@ def analyze_trends(trend):
 # INIT VARIABLES
 # *************************************************************************************
 def init_variables():
-    global menu
-    global actual_menu
-    global actual_opt
-    global title_odd_charts
-    global title_even_charts
-    global wider
-    global all_keywords
-    global filename
-    global unique_folder
-    global csv_last_20_data
-    global csv_last_15_data
-    global csv_last_10_data
-    global csv_last_5_data
-    global csv_last_year_data
-    global csv_all_data
-    global csv_means_trends  # Added the missing global variable
-    global trends_results
-    global all_kw
-    global current_year
-    global charts
-    global image_markdown
-    global one_keyword
-    global menu
-    global current_year
-    global combined_dataset
-    global combined_dataset2  # Add the new global variable
-    global datasets_norm_full  # Add the new global variable
-    global all_datasets_full  # Add the new global variable
-    # NEW: Add global variable for storing text output
+    # Declare all necessary globals that were set *before* this call
+    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder
+    global top_choice, wider, one_keyword, data_filename # data_filename needed for option 1
+    global csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data
+    global csv_last_year_data, csv_all_data, csv_means_trends, trends_results
+    global all_kw, current_year, charts, image_markdown
+    global combined_dataset, combined_dataset2, datasets_norm_full, all_datasets_full
     global trend_analysis_text
-    # --- ADD RESET HERE ---
-    global original_values
-    global original_calc_details # <-- Declare new global
+    global original_values, original_calc_details 
+    
+    # Reset dictionaries
     original_values = {}
-    original_calc_details = {} # <-- Reset new global
-    # ----------------------
+    original_calc_details = {}
     
     image_markdown = "\n\n# Gráficos\n\n"
-    
     plt.style.use('ggplot')
-    # Get current year
     current_year = datetime.now().year
-    # pytrends = TrendReq(hl='en-US')
-    wider = True
-    one_keyword = False
-    all_keywords= []
     charts=""
     
-    if top_choice == 1:
-        one_keyword=False
-        # MAIN - KEYWORDS MENU
-        all_keywords = []
-        menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
-        menu_opt = ["GT","GB","BR","CR","BS"]
-        menu = main_menu()
-        actual_menu = menu_options[menu-1]
-        actual_opt = menu_opt[menu-1]
-        # *****************************************************************************************************************
-        data_filename, all_keywords = get_user_selections(tool_file_dic, menu)
-        print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
-        print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
-
-        # Set the flag based on the count of keywords
-        wider = True if len(all_keywords) <= 2 else False
-        if len(all_keywords) < 2:
-            one_keyword = True # Set one keyword
-        trends_results = process_file_data(all_keywords, data_filename)
-        print(all_keywords)
-        if total_years > 20:
-          csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-        csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-        csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-        csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-        csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-        csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-        all_kw = ", ".join(all_keywords)    
+    # --- REMOVE User Selection Logic --- 
+    # menu = main_menu() # REMOVED
+    # data_filename, all_keywords = get_user_selections(...) # REMOVED
+    # -----------------------------------
+    
+    # Set flags based on all_keywords (which is now set *before* calling init_variables)
+    if all_keywords:
+         wider = True if len(all_keywords) <= 2 else False
+         one_keyword = True if len(all_keywords) < 2 else False
+         all_kw = ", ".join(all_keywords)
     else:
-        all_keywords = get_all_keywords()
-        
+         # Handle cases where all_keywords might be empty (e.g., error state)
+         wider = True
+         one_keyword = True
+         all_kw = "N/A"
+         print("[Warning] all_keywords is empty during init_variables.")
+
+    # Process file data - This needs the globals set *before* this call
+    # For option 1, data_filename is set in main().
+    # For option 2 and 3, process_file_data might behave differently or not be needed here.
+    # Let's only call it if top_choice == 1, as option 2/3 might handle data differently.
+    if top_choice == 1:
+         if data_filename:
+              trends_results = process_file_data(all_keywords, data_filename)
+              if trends_results:
+                   # Save CSV data (moved from the end of the removed block)
+                   if total_years > 20:
+                       csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                   else: 
+                       csv_all_data = None # Ensure it's None if condition not met
+                   csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                   csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                   csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                   csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                   csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+              else:
+                   print(f"{RED}[Error] process_file_data failed for {data_filename}.{RESET}")
+                   # Handle error state, maybe exit or skip further processing
+         else:
+              print(f"{RED}[Error] data_filename not set for top_choice 1 in init_variables.{RESET}")
+              # Handle error state
+    # else: # For top_choice 2 or 3, trends_results might be set elsewhere or not needed yet.
+         # trends_results = None # Or handle as needed by options 2/3
+
+    # Create unique filename and folder (uses all_keywords)
     filename = create_unique_filename(all_keywords)
-    # unique_folder = os.path.join(gtrends_folder, filename)
     unique_folder = os.path.join(data_folder, filename)
     if not os.path.exists(unique_folder):
         os.makedirs(unique_folder)
-        # Make the unique folder writable
         os.chmod(unique_folder, 0o777)
     
-    # NEW: Initialize the trend analysis text dictionary
+    # Initialize trend analysis text dictionary
     trend_analysis_text = {}
 
 # *************************************************************************************
@@ -4411,7 +4397,8 @@ def top_level_menu():
     options = {
         1: "Generar Informe Individual",
         2: "Comparar Herramienta de Gestión entre Fuentes de Datos",
-        3: "Reservado para función futura",
+        # Change option 3 text
+        3: "Generar TODOS los Informes Individuales (Batch)",
         4: "Salir"
     }
     for index, option in enumerate(options.values(), 1):
@@ -5229,14 +5216,25 @@ def main():
             break
             
         elif top_choice == 1:
-            # Flujo existente para informe individual
+            # --- ADD User Selection Logic Here for Option 1 --- 
+            global menu, actual_menu, actual_opt, all_keywords, data_filename
+            menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
+            menu_opt = ["GT","GB","BR","CR","BS"]
+            menu = main_menu() # Get data source choice
+            actual_menu = menu_options[menu-1]
+            actual_opt = menu_opt[menu-1]
+            data_filename, all_keywords = get_user_selections(tool_file_dic, menu) # Get tool choice
+            print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
+            print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
+            # -------------------------------------------------
+            # Now call init and the rest, which will use the globals set above
             init_variables()
             results()
             ai_analysis()
             report_pdf()
             
         elif top_choice == 2:
-            # Nuevo flujo para comparación entre fuentes de datos
+            # ... (existing option 2 logic) ...
             init_variables()
             
             # Process datasets with common date range
@@ -5262,10 +5260,175 @@ def main():
             report_pdf()
             
         elif top_choice == 3:
-            print(f"{YELLOW}Esta función estará disponible próximamente.{RESET}")
+            # --- Call the new batch function --- 
+            generate_all_reports() 
+            # ------------------------------------
+            
     # Cerrar el archivo null y restaurar stderr al finalizar
     null.close()
     sys.stderr = stderr
+
+def generate_all_reports():
+    """
+    Generates individual reports for all tools across all data sources.
+    Saves a copy of each report to the 'Informes' folder with Nro-Cod-DataSource naming.
+    """
+    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
+    global tool_file_dic, trends_results # Ensure these are accessible
+    global data_filename # <-- Declare data_filename as global here
+
+    print("\n" + "="*60)
+    print(" Iniciando Generación de Todos los Informes Individuales (Batch)")
+    print("="*60 + "\n")
+
+    # Define data source mapping (menu index to details)
+    data_sources = {
+        1: {"name": "Google Trends", "code": "GT", "opt": "GT"},
+        2: {"name": "Google Books Ngrams", "code": "GB", "opt": "GB"},
+        3: {"name": "Bain - Usability", "code": "BU", "opt": "BR"}, # Note: opt is BR for Bain Uso
+        4: {"name": "Crossref.org", "code": "CR", "opt": "CR"},
+        5: {"name": "Bain - Satisfaction", "code": "BS", "opt": "BS"}
+    }
+
+    # Create the 'Informes' directory if it doesn't exist
+    informes_folder = "Informes"
+    if not os.path.exists(informes_folder):
+        os.makedirs(informes_folder)
+        os.chmod(informes_folder, 0o777)
+        print(f"[Info] Carpeta '{informes_folder}' creada.")
+
+    # Loop through each defined data source
+    for source_menu_index, source_info in data_sources.items():
+        print(f"\n--- Procesando Fuente de Datos: {source_info['name']} (Menu {source_menu_index}) ---")
+
+        # --- Read the CORRECT metadata CSV for THIS data source ---
+        portada_csv_path = f"pub-assets/{source_info['code']}-Portada.csv"
+        portada_df = None
+        if os.path.exists(portada_csv_path):
+            try:
+                portada_df = pd.read_csv(portada_csv_path, sep=';', quotechar='"', skipinitialspace=True)
+                portada_df.columns = portada_df.columns.str.strip()
+                print(f"  [Info] Metadata cargada desde {portada_csv_path}")
+                if 'Nro.' in portada_df.columns:
+                     portada_df['Nro.'] = portada_df['Nro.'].astype(str)
+                if 'Cód' in portada_df.columns:
+                     portada_df['Cód'] = portada_df['Cód'].astype(str)
+            except Exception as e:
+                print(f"  {YELLOW}[Warning] No se pudo cargar el archivo de metadatos {portada_csv_path}: {e}. Se continuará sin metadatos para esta fuente.{RESET}")
+                portada_df = None # Ensure df is None if loading failed
+        else:
+            print(f"  {YELLOW}[Warning] No se encontró el archivo de metadatos: {portada_csv_path}. Se continuará sin metadatos para esta fuente.{RESET}")
+            portada_df = None # Ensure df is None if file is missing
+        # ---------------------------------------------------------
+
+        menu = source_menu_index
+        actual_menu = source_info['name']
+        actual_opt = source_info['opt']
+        top_choice = 1 # Simulate selecting option 1
+
+        processed_tools_for_source = 0
+        for tool_code, tool_data in tool_file_dic.items():
+            tool_keywords = tool_data[1] # The list of keywords/tools
+            data_file_index = 0 # Determine index based on menu
+            if menu == 1: data_file_index = 0
+            elif menu == 2: data_file_index = 2
+            elif menu == 3: data_file_index = 3
+            elif menu == 4: data_file_index = 4
+            elif menu == 5: data_file_index = 5
+
+            # --- Assign to GLOBAL data_filename BEFORE calling init_variables ---
+            data_filename = tool_data[data_file_index]
+            # ------------------------------------------------------------------
+
+            # Check if data file actually exists for this tool/source combo
+            full_data_path = os.path.join("dbase", data_filename)
+            if not os.path.exists(full_data_path):
+                 # print(f"  [Skipping] Archivo de datos no encontrado para '{tool_keywords[0]}' en {source_info['name']}: {data_filename}") # Less verbose skipping
+                 continue # Skip to the next tool if data file is missing
+
+            print(f"\n  Procesando Herramienta(s): {', '.join(tool_keywords)} con fuente {source_info['name']}")
+            all_keywords = tool_keywords
+
+            try:
+                # Now call init_variables, which can access the global data_filename
+                init_variables()
+                
+                # Check if init_variables successfully processed data (trends_results should exist and not be None)
+                # Also check if the specific keyword data exists within trends_results
+                trends_data_available = False
+                if 'trends_results' in globals() and trends_results is not None:
+                    # Check if 'all_data' exists and the keyword is a column
+                     if 'all_data' in trends_results and not trends_results['all_data'].empty and tool_keywords[0] in trends_results['all_data'].columns:
+                         trends_data_available = True
+                     # Fallback check in case 'all_data' isn't the primary check
+                     elif 'last_20_years_data' in trends_results and not trends_results['last_20_years_data'].empty and tool_keywords[0] in trends_results['last_20_years_data'].columns:
+                          trends_data_available = True
+
+
+                if not trends_data_available:
+                     print(f"    {YELLOW}[Skipping] No se encontraron datos válidos después de la inicialización para {', '.join(all_keywords)} / {source_info['name']}.{RESET}")
+                     continue
+
+
+                # 2. Run Results Generation (includes plotting etc.)
+                print(f"    Generando resultados y gráficos para: {unique_folder}...")
+                results()
+
+                # 3. Run AI Analysis
+                print("    Generando análisis AI...")
+                ai_analysis()
+
+                # 4. Generate PDF Report
+                print("    Generando reporte PDF...")
+                report_pdf()
+
+                # === Post-generation: Copy and Rename ===
+                original_pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
+
+                if os.path.exists(original_pdf_path):
+                    nro_val = "XXX"
+                    cod_val = "XX"
+                    tool_name_for_lookup = tool_keywords[0]
+
+                    # --- Use the portada_df loaded for the CURRENT source ---
+                    if portada_df is not None:
+                         match = portada_df[portada_df['Herramienta'] == tool_name_for_lookup]
+                         if not match.empty:
+                              # Get Nro and Cód directly from the first match
+                              nro_val = match.iloc[0].get('Nro.', nro_val)
+                              cod_val = match.iloc[0].get('Cód', cod_val)
+                         else:
+                              print(f"    {YELLOW}[Warning] No se encontró metadatos (Nro, Cód) para la herramienta: '{tool_name_for_lookup}' en {portada_csv_path}{RESET}")
+                    else:
+                         print(f"    {YELLOW}[Warning] Saltando búsqueda de metadatos porque el archivo no se cargó: {portada_csv_path}{RESET}")
+                    # --------------------------------------------------------
+
+                    # Construct the new filename using only Nro and Cód (which includes source)
+                    new_filename = f"{str(nro_val).strip()}-{str(cod_val).strip()}.pdf"
+                    new_pdf_path = os.path.join(informes_folder, new_filename)
+
+                    # Copy the PDF
+                    try:
+                        shutil.copy2(original_pdf_path, new_pdf_path) # copy2 preserves metadata
+                        print(f"    {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
+                        processed_tools_for_source += 1
+                    except Exception as copy_e:
+                        print(f"    {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
+
+                else:
+                    print(f"    {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
+
+            except Exception as e:
+                print(f"  {RED}[Error General] Ocurrió un error procesando {', '.join(all_keywords)} / {source_info['name']}: {e}{RESET}")
+                import traceback
+                traceback.print_exc() # Print detailed traceback for debugging
+            # === End replication of Option 1 logic ===
+
+        print(f"--- Fuente de Datos {source_info['name']} completada. {processed_tools_for_source} informes generados. ---")
+
+    print("\n" + "="*60)
+    print(" Generación de Todos los Informes Completada")
+    print("="*60 + "\n")
 
     
 if __name__ == "__main__":
