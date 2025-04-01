@@ -5412,10 +5412,31 @@ def generate_all_reports():
                     new_filename = f"{str(nro_val).strip()}-{str(cod_val).strip()}.pdf"
                     new_pdf_path = os.path.join(informes_folder, new_filename)
                     
+                    # Copy the PDF
                     try:
-                        shutil.copy2(original_pdf_path, new_pdf_path)
+                        shutil.copy2(original_pdf_path, new_pdf_path) # copy2 preserves metadata
                         print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
                         processed_sources_for_tool += 1
+
+                        # --- Call README Update --- 
+                        if portada_df is not None and not match.empty:
+                             # Construct the full title (use .get with default values)
+                             titulo_prefix = match.iloc[0].get('Título', 'Título No Encontrado')
+                             herramienta_name = match.iloc[0].get('Herramienta', tool_name_for_lookup) 
+                             full_titulo = f"{str(titulo_prefix).strip()} {str(herramienta_name).strip()}"
+                             
+                             # Ensure Nro and Informe Code are strings for dictionary key safety if needed later
+                             report_readme_info = {
+                                 'nro': str(nro_val).strip(), 
+                                 'informe_code': str(cod_val).strip(), 
+                                 'titulo': full_titulo,
+                                 'pdf_filename': new_filename # The actual filename used
+                             }
+                             update_readme(report_readme_info)
+                        else:
+                             print(f"      {YELLOW}[Warning README] No se actualizará README.MD porque faltan metadatos para '{tool_name_for_lookup}'.{RESET}")
+                        # ------------------------
+
                     except Exception as copy_e:
                         print(f"      {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
                 else:
