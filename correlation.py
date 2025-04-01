@@ -418,17 +418,30 @@ def cubic_interpolation(df, kw):
     df_monthly = df_daily_clipped[[kw]].resample('MS').mean()
 
     # --- 5. Force original points into MONTHLY data (Final Pass) --- 
+    # ---    AND calculate/store Z-score & SV for Menu 5 --- 
+    if kw not in original_calc_details:
+         original_calc_details[kw] = {} # Initialize dict for this keyword
+         
     for idx, val in actual_data[kw].items():
-        # Ensure idx is Timestamp for consistent indexing
-        idx_ts = pd.Timestamp(idx).normalize() # Normalize to YYYY-MM-01 00:00:00
+        idx_ts = pd.Timestamp(idx).normalize() 
         
-        # Check if the exact YYYY-MM-01 exists in the monthly index
+        # Calculate Z-score and SV *before* forcing into monthly data
+        if menu == 5:
+             try:
+                  z_score = (val - 50) / 22.0 
+                  fundamental_value = (z_score * 0.891609) + 3.0
+                  # Store calculated values globally, keyed by timestamp
+                  original_calc_details[kw][idx_ts] = {'z_score': z_score, 'sv': fundamental_value}
+             except Exception as calc_e:
+                  print(f"[Warning] Could not calculate Z/SV values for {kw} at {idx_ts}: {calc_e}")
+                  original_calc_details[kw][idx_ts] = {'z_score': np.nan, 'sv': np.nan} # Store NaN on error
+        
+        # Force original value into monthly data
         if idx_ts in df_monthly.index:
-             print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact monthly index.")
+             # print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact monthly index.") # Optional debug
              df_monthly.loc[idx_ts, kw] = val
         else:
-             # If the exact start-of-month date isn't there after resampling, add it.
-             print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to MONTHLY data for {kw} as exact index missing.")
+             # print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to MONTHLY data for {kw} as exact index missing.") # Optional debug
              df_monthly.loc[idx_ts] = val
 
     df_monthly = df_monthly.sort_index()
@@ -1432,6 +1445,7 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
     global top_choice
     global all_keywords
     global original_values # Ensure original_values is accessible
+    global original_calc_details # <-- Access the new global
 
     if colors is None:
         colors = plt.cm.rainbow(np.linspace(0, 1, len(all_keywords)))
@@ -1444,6 +1458,7 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
     for i, kw in enumerate(all_keywords):
          if kw in data and not data[kw].empty:
              try:
+                 # Min/max of the data actually being plotted (interpolated/resampled)
                  plot_min = data[kw].min()
                  plot_max = data[kw].max()
                  plot_min_max[kw] = (plot_min, plot_max)
@@ -1454,30 +1469,48 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
          else:
              print(f"[Warning] Data for {kw} is missing or empty when calculating global min/max.")
 
-    if not plot_min_max: 
+    if not plot_min_max: # If no valid data was found at all
          print("[Warning] No valid data found to determine plot limits. Using default 0-100.")
          global_min, global_max = 0, 100
-             
-    buffer = (global_max - global_min) * 0.1 if global_max > global_min else 10
-    y_min_limit = max(0, global_min - buffer)  
-    y_max_limit = global_max + buffer * 1.5 
+
+    buffer = (global_max - global_min) * 0.1 if global_max > global_min else 10 # Add buffer, handle flat data
+    y_min_limit = max(0, global_min - buffer)
+    y_max_limit = global_max + buffer * 1.5 # Extra buffer top for labels
 
     # Plot the data and original points
     for i, kw in enumerate(all_keywords):
-        plot_label = kw 
+        plot_label = kw # Default label
         min_orig, max_orig = None, None
         if kw in original_values and not original_values[kw].empty:
              try:
                   min_orig = original_values[kw].min()
                   max_orig = original_values[kw].max()
+                  # Add original min/max to legend label
                   plot_label = f"{kw} (Orig Min: {min_orig:.1f}, Orig Max: {max_orig:.1f})"
              except Exception as e:
                   print(f"[Warning] Could not get original min/max for legend for {kw}: {e}")
 
         if kw in data and not data[kw].empty:
-            series_data_to_plot = data[kw]
+            # --- Apply smoothing CONDITIONALLY based on menu --- 
+            series_data = data[kw]
+            if menu in [1, 2, 4]: # Apply smoothing for GT, GB, CR
+                # Ensure data is numpy array for smoothing function
+                data_array = np.array(series_data)
+                # Check if enough data points exist for the smoothing window
+                if len(data_array) >= window_size: 
+                     smoothed_array = smooth_data(data_array, window_size)
+                     # Ensure smoothed data retains the original index for plotting
+                     series_data_to_plot = pd.Series(smoothed_array, index=series_data.index)
+                else:
+                     print(f"[Warning] Not enough data points ({len(data_array)}) to apply smoothing with window {window_size} for {kw}. Plotting raw interpolated data.")
+                     series_data_to_plot = series_data # Plot raw interpolated if not enough points
+            else: # For menus 3 and 5 (Bain), plot the interpolated data directly
+                series_data_to_plot = series_data
+            # ----------------------------------------------------
+
+            # Use the potentially smoothed data for plotting the line
             ax.plot(series_data_to_plot.index, series_data_to_plot, label=plot_label, color=colors[i])
-            
+
             # Add original points and their labels
             if kw in original_values:
                 orig_data = original_values[kw]
@@ -1485,26 +1518,27 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
                 filtered_data = orig_data[mask]
                 if not filtered_data.empty:
                     ax.scatter(filtered_data.index, filtered_data, color=colors[i], s=60, alpha=0.5, zorder=5)
-                    # Add labels to points
-                    label_offset = (y_max_limit - y_min_limit) * 0.015 
+                    label_offset = (y_max_limit - y_min_limit) * 0.015
                     for idx, val in filtered_data.items():
-                         # --- Add Reverse Calculation for Labels (ONLY Menu 5) --- 
-                         label_text = f'{val:.1f}' # Default label is just the plotted value
-                         if menu == 5: # Check if it's Bain - Satisfaction
-                              try:
-                                   # Reverse normalization: z = (val - 50) / 22
-                                   z_score = (val - 50) / 22.0 
-                                   # Reverse z-score: fundamental = (z * std_dev) + mean
-                                   fundamental_value = (z_score * 0.891609) + 3.0
-                                   # Use new format with Z: and SV: prefixes
-                                   label_text = f'{val:.1f} (Z:{z_score:.2f}, SV:{fundamental_value:.2f})'
-                              except Exception as calc_e:
-                                   print(f"[Warning] Could not reverse calculate values for label at {idx}: {calc_e}")
-                                   # Fallback to default label if calculation fails
-                         # --------------------------------------------------------- 
+                         # --- Use Pre-calculated Z/SV values for Labels (Menu 5) ---
+                         idx_ts = pd.Timestamp(idx).normalize() # Use normalized timestamp for lookup
+                         label_text = f'{val:.1f}' # Default label
+
+                         # Retrieve pre-calculated Z/SV values if available
+                         if menu == 5 and kw in original_calc_details and idx_ts in original_calc_details.get(kw, {}):
+                              calc_data = original_calc_details[kw][idx_ts]
+                              z_score = calc_data.get('z_score', np.nan)
+                              sv = calc_data.get('sv', np.nan)
+                              # Check if values are valid (not NaN) before formatting
+                              if not pd.isna(z_score) and not pd.isna(sv):
+                                   label_text = f'{val:.1f} (Z:{z_score:.2f}, SV:{sv:.2f})'
+                              else:
+                                   # Optionally print warning if values were expected but are NaN
+                                   print(f"[Warning] Z/SV data missing or NaN for {kw} at {idx_ts}, using default label.")
+                         # ---------------------------------------------------------
                          ax.text(idx, val + label_offset, label_text, fontsize=7, ha='center', va='bottom', color=colors[i], zorder=6)
-            
-            # --- Yearly Calculations --- 
+
+            # --- Yearly Calculations ---
             if top_choice != 2 and menu != 2:
                 if menu == 4:
                     yearly_sums = []
@@ -1516,7 +1550,7 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
                         yearly_sum = sum_data.sum() if not sum_data.empty else 0
                         if not pd.isna(yearly_sum):
                              yearly_sums.append((pd.Timestamp(f'{year}-01-01'), yearly_sum))
-                    
+
                     if yearly_sums:
                         ax2 = ax.twinx()
                         bar_positions, bar_heights = zip(*yearly_sums)
@@ -1536,14 +1570,15 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
                         yearly_mean = mean_data.mean() if not mean_data.empty else np.nan
                         if not pd.isna(yearly_mean):
                              yearly_means.append((pd.Timestamp(f'{year}-01-01'), yearly_mean))
-                    
+
                     if yearly_means:
                          bar_positions, bar_heights = zip(*yearly_means)
                          ax.bar(bar_positions, bar_heights, width=300, alpha=0.05, color='red', align='edge') # Reduced alpha
         else:
              print(f"[Warning] Data for plotting keyword '{kw}' is missing or empty.")
 
-    # Grid lines 
+
+    # Grid lines
     ax.grid(True, which='major', linestyle='--', linewidth=0.3, color='grey', alpha=0.1)
 
     # Set y-axis limits using calculated limits
@@ -1552,11 +1587,11 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
     ax.set_ylabel(ylabel, fontsize=14)
     ax.set_title(title, fontsize=16)
 
-    # --- X-Axis formatting remains the same --- 
+    # --- X-Axis formatting remains the same ---
     def format_month(x, pos):
       dt = mdates.num2date(x)
       if dt.month == 1:
-           return '' 
+           return ''
       elif dt.month == 7:
           ax.axvline(x, color='lightgrey',linestyle ='--', linewidth=0.3)
           return '|'
@@ -1565,17 +1600,17 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
 
     def format_month2(x, pos):
         dt = mdates.num2date(x)
-        if dt.month != 1: 
+        if dt.month != 1:
              ax.axvline(x, color='lightgrey',linestyle ='dotted', linewidth=0.3)
              return str(dt.month)
         else:
             return ''
 
     if is_last_year:
-        year_locator = mdates.YearLocator() 
+        year_locator = mdates.YearLocator()
         ax.xaxis.set_major_locator(year_locator)
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y')) 
-        ax.xaxis.set_minor_locator(mdates.MonthLocator()) 
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+        ax.xaxis.set_minor_locator(mdates.MonthLocator())
         ax.xaxis.set_minor_formatter(FuncFormatter(format_month2))
         start_dt = pd.Timestamp(f'{data.index.year.min()}-01-01')
         end_dt = pd.Timestamp(f'{data.index.year.max()}-12-31')
@@ -1584,16 +1619,17 @@ def setup_subplot(ax, data, mean, title, ylabel, window_size=10, colors=None, is
         years = sorted(data.index.year.unique())
         year_locator = mdates.YearLocator(base=1)
         ax.xaxis.set_major_locator(year_locator)
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y')) 
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
         ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=[1, 7]))
         ax.xaxis.set_minor_formatter(FuncFormatter(format_month))
         start_dt = pd.Timestamp(f'{data.index.year.min()}-01-01')
         end_dt = pd.Timestamp(f'{data.index.year.max()}-12-31')
         ax.set_xlim(mdates.date2num(start_dt), mdates.date2num(end_dt))
 
+
     ax.tick_params(axis='both', which='major', labelsize=8)
     ax.tick_params(axis='x', which='major', labelrotation=45)
-    ax.tick_params(axis='both', which='minor', labelsize=6) 
+    ax.tick_params(axis='both', which='minor', labelsize=6)
     ax.tick_params(axis='x', which='minor', labelrotation=45)
 
     # Add legend (using the modified labels)
@@ -2752,6 +2788,12 @@ def init_variables():
     global all_datasets_full  # Add the new global variable
     # NEW: Add global variable for storing text output
     global trend_analysis_text
+    # --- ADD RESET HERE ---
+    global original_values
+    global original_calc_details # <-- Declare new global
+    original_values = {}
+    original_calc_details = {} # <-- Reset new global
+    # ----------------------
     
     image_markdown = "\n\n# Gráficos\n\n"
     
