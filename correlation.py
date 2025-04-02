@@ -21,8 +21,6 @@ import sys
 import math
 import warnings
 import shutil # Make sure shutil is imported at the top of the file
-import pandas as pd # Make sure pandas is imported
-import os # Make sure os is imported
 import traceback
 
 # Suppress the specific scikit-learn deprecation warning about force_all_finite
@@ -55,6 +53,7 @@ from scipy.interpolate import CubicSpline
 #from mpl_toolkits.axes_grid1 import make_axes_locatable
 import base64
 from datetime import datetime
+from urllib.parse import quote # Add this import for URL encoding filenames
 #from sklearn.preprocessing import StandardScaler
 #from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -5268,6 +5267,109 @@ def main():
     # Cerrar el archivo null y restaurar stderr al finalizar
     null.close()
     sys.stderr = stderr
+
+# <<< Add this function definition >>>
+def update_readme(report_info):
+    """
+    Updates the Informes/README.md file with a new report entry, keeping the list sorted by Nro.
+
+    Args:
+        report_info (dict): A dictionary containing keys: 'nro', 'informe_code', 'titulo', 'pdf_filename'
+    """
+    readme_path = "Informes/README.md"
+    # Corrected base URL - Use blob for viewing files directly on GitHub usually
+    github_base_url = "https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/"
+    header = "# Índice de Informes\n\n| Nro | Informe | Título | Enlace |\n|---|---|---|---|\n"
+    # Regex to capture existing rows, ignoring header/separator, making groups non-greedy
+    row_pattern = re.compile(r"^\s*\|\s*(\d+)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*\[([^]]+?)\]\(([^)]+?)\)\s*\|\s*$", re.MULTILINE)
+
+    entries = []
+    if os.path.exists(readme_path):
+        try:
+            with open(readme_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                # Find all existing valid rows using regex
+                matches = row_pattern.findall(content)
+                for match in matches:
+                    nro, informe, titulo, link_text, link_url = match
+                    # Extract filename from URL for robustness
+                    # Handle potential URL encoding in existing links if needed, but assume base for now
+                    pdf_filename_from_link = os.path.basename(link_url) # Get just the filename part
+                    try:
+                         entries.append({
+                             'nro': int(nro.strip()), # Convert Nro to int for sorting
+                             'informe_code': informe.strip(),
+                             'titulo': titulo.strip(),
+                             'pdf_filename': pdf_filename_from_link # Store decoded filename
+                         })
+                    except ValueError:
+                         print(f"  {YELLOW}[Warning README] Skipping invalid row in README: Nro='{nro}' is not an integer.{RESET}")
+        except Exception as e:
+            print(f"  {YELLOW}[Warning README] Error al leer {readme_path}: {e}. Se creará uno nuevo.{RESET}")
+            entries = [] # Start fresh if read error
+
+    # --- Add or Update the new entry ---
+    new_nro_str = report_info['nro']
+    try:
+        new_nro = int(new_nro_str) # Convert incoming Nro to int
+    except ValueError:
+         print(f"  {RED}[Error README] Invalid Nro received: '{new_nro_str}'. Cannot update README entry.{RESET}")
+         return # Stop if Nro isn't a valid integer
+
+    new_informe_code = report_info['informe_code']
+    new_pdf_filename = report_info['pdf_filename']
+    new_titulo = report_info['titulo']
+    updated = False
+    for entry in entries:
+        # Update if Nro and Informe code match (using int for Nro comparison)
+        if entry['nro'] == new_nro and entry['informe_code'] == new_informe_code:
+            entry['titulo'] = new_titulo
+            entry['pdf_filename'] = new_pdf_filename # Ensure filename is updated
+            updated = True
+            print(f"    [Info README] Entrada actualizada: Nro={new_nro}, Informe={new_informe_code}")
+            break
+
+    if not updated:
+        # Check for duplicate Nro before adding (optional but good practice)
+        if any(entry['nro'] == new_nro for entry in entries):
+             print(f"  {YELLOW}[Warning README] Duplicate Nro {new_nro} found. Adding entry anyway, but consider checking metadata.{RESET}")
+
+        entries.append({
+            'nro': new_nro,
+            'informe_code': new_informe_code,
+            'titulo': new_titulo,
+            'pdf_filename': new_pdf_filename
+        })
+        print(f"    [Info README] Nueva entrada añadida: Nro={new_nro}, Informe={new_informe_code}")
+
+    # --- Sort entries numerically by 'nro' ---
+    entries.sort(key=lambda x: x['nro'])
+
+    # --- Generate new Markdown content ---
+    markdown_content = header
+    for entry in entries:
+        # URL encode the filename for the link
+        encoded_filename = quote(entry['pdf_filename'])
+        link_url = f"{github_base_url}{encoded_filename}"
+        # Display the decoded filename as the link text for readability
+        link_text = entry['pdf_filename']
+        markdown_content += f"| {entry['nro']} | {entry['informe_code']} | {entry['titulo']} | [{link_text}]({link_url}) |\n"
+
+    # --- Write back to README.md ---
+    try:
+        # Ensure the Informes directory exists before writing
+        informes_dir = os.path.dirname(readme_path)
+        if not os.path.exists(informes_dir):
+             os.makedirs(informes_dir)
+             print(f"  [Info README] Directory created: {informes_dir}")
+
+        with open(readme_path, 'w', encoding='utf-8') as f:
+            f.write(markdown_content)
+        print(f"    [Info README] {readme_path} actualizado correctamente.")
+    except Exception as e:
+        print(f"  {RED}[Error README] No se pudo escribir en {readme_path}: {e}{RESET}")
+
+# <<< End of update_readme function definition >>>
 
 def generate_all_reports():
     """
