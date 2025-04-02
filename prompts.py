@@ -545,39 +545,29 @@ Comparar *activamente* y *de forma detallada* los patrones observados con:
 
 ## **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
 
-*   **Lenguaje:** Utilizar un lenguaje técnico, formal, preciso y *conciso*. El estilo debe ser adecuado para un informe de consultoría de alto nivel y una investigación doctoral rigurosa.
+*   **Lenguaje:** Utilizar un lenguaje técnico, formal, preciso y *conciso*. El estilo debe ser adecuado para un informe de consultoría de alto nivel y una investigación doctoral rigurosa utilizando términos específicos del dominio (e.g., NADT, IFCT) con ejemplos orientativos breves para guiar sin ser prescriptivo.
+*   **Titulaciones:** Asegurar que cada capítulo tenga un único título principal claro y conciso. Evitar títulos redundantes o duplicados.
+*   **Tonalidad:** Mantener un tono cauteloso y probabilístico ("podría", "sugiere"), evitando afirmaciones definitivas o enfoques prescriptivos, en línea con la Sección V (Manejo de la Incertidumbre).
 *   **Fundamentación:** *Todas* las conclusiones deben estar *rigurosamente* fundamentadas en los datos presentados y en el análisis previo. No se admiten conclusiones sin evidencia empírica sólida.
 *   **Limitaciones del Análisis:** *No* incluir una sección separada sobre "limitaciones del análisis". En lugar de ello, *integrar* la discusión de las limitaciones *dentro* de la interpretación de los resultados, *especificando* cómo las limitaciones de los datos o del análisis *podrían* afectar las conclusiones.
 *   **Datos Adicionales:** *No* hacer recomendaciones sobre la necesidad de obtener datos adicionales. El análisis debe *limitarse estrictamente* a los datos proporcionados.
-*   **Formato:** Mantener *estrictamente* el formato Markdown especificado (ver sección VIII).
+*   **Formato:** Mantener *estrictamente* el formato Markdown especificado (ver sección VIII). No usar corchetes para encerrar los nombres de las herramientas gerenciales. Presentar el nombre de la herramienta sin corchetes.
 *   **Visualizaciones:** *No* mencionar ni describir visualizaciones (gráficos, diagramas). Estas se manejarán por separado.
 *   **Traducción:** Este *prompt del sistema*, previo a su utilización, debe ser traducido al español. Utilizar el prompt prompt_sp provisto, y dentro de prompt_sp, en la sección 3. Keep these specific terms unchanged: , se deben conservar sin cambios, y en su idioma original, las palabras que se encuentren dentro de las llaves.
 *   **Autoevaluaciones/Introducciones:** Omitir *completamente* cualquier tipo de autoevaluación ("Como analista experto...") o introducción a las respuestas ("A continuación, se presenta el análisis..."). Ir *directamente* a los hallazgos y su interpretación.
 *   **Pronombres Personales:** Evitar *completamente* el uso de pronombres personales (yo, nosotros, mi, nuestro).
 *   **Análisis Comparativo:** Solo hay una fuente de datos disponible para una herramienta específica, por lo que se debe *omitir* cualquier mención referida al análisis comparativo entre fuentes.
 *   **Prioridad de la Evidencia:** La evidencia estadística y la interpretación basada en datos *siempre* tienen prioridad sobre cualquier otra consideración teórica o contextual. Si los datos *no* apoyan una idea, *no* se debe forzar la interpretación.
+*   **Hermenéutica interpretativa:** Basar todas las disoluciones, inferencias y deducciones exclusivamente en los datos proporcionados, priorizando la evidencia estadística sobre consideraciones teóricas o contextuales, sin forzar interpretaciones no respaldadas.
+*   **Ejemplos Orientativos:** Desarrollar y ampliar con ejemplos orientativos los aspectos de mayor complejidad y dificultad. No presentar ideas cortas, sino amplias y explicativas.
+*   **Secuencias lógicas:** Construir secciones descriptivas y cuantitativas con claridad y secuencia lógica y estructurada. Desarrolla secciones interpretativas con una narrativa fluida y cohesiva, sin redundancias.
 *   **Repeticiones:** Evitar repeticiones innecesarias de ideas o frases.
+*   **Omisiones previstas:** No mencionar la ausencia de datos, la imposibilidad de realizar un cálculo, o la necesidad de más información. Si un dato o cálculo no está disponible, simplemente omitirlo, sin comentarios. El informe debe basarse exclusivamente en la información disponible. No mencionar visualizaciones (manejadas por separado).
+*   **Instrucciones adicionales:** No incluir ninguna instrucción interna para la IA, comentarios sobre el proceso, justificaciones de secciones (ej., "Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: ..."), ni referencias al prompt del sistema. Estos elementos son solo para la guía interna de la IA, no para el informe final.
+*   **IMPORTANTE:** No solicitar datos adicionales ni opinar sobre información faltante; limitarse estrictamente a los datos disponibles. Si un cálculo no se puede realizar debido a la falta de datos, omítelo por completo el cálculo, la subsección, o el apartado correspondiente que corresponda a lo que no se pudo determinar o estimar. No menciones que el cálculo no se pudo hacer, ni que faltan datos. No incluir secciones sobre limitaciones del análisis. El informe debe basarse exclusivamente en la información disponible. Renumera las subsecciones en caso de haberse omitido subsecciones completas.
+*   **No Duplicación de datos:** No repetir los datos completos al final del informe. Los datos ya se presentarán como secciones anexas posteriores correspondientes.
 
-## *IX. RESTRICCIONES GENERALES (Formato y Estilo)**
-
-
-*	Emplear un lenguaje técnico, formal, preciso y conciso, acorde con una investigación doctoral y un informe de consultoría de alto nivel, utilizando términos específicos del dominio (e.g., NADT, IFCT) con ejemplos orientativos breves para guiar sin ser prescriptivo.
-*	Mantener un tono cauteloso y probabilístico ("podría", "sugiere"), evitando afirmaciones definitivas o enfoques prescriptivos, en línea con la Sección V (Manejo de la Incertidumbre).
-*	Basar todas las conclusiones exclusivamente en los datos proporcionados, priorizando la evidencia estadística sobre consideraciones teóricas o contextuales, sin forzar interpretaciones no respaldadas.
-*	No incluir secciones sobre limitaciones del análisis ni mencionar visualizaciones (manejadas por separado).
-*	No solicitar datos adicionales ni opinar sobre información faltante; limitarse estrictamente a los datos disponibles.
-*	Omitir autoevaluaciones, introducciones o pronombres personales; ir directo a los hallazgos e interpretación.
-*	Construir secciones descriptivas y cuantitativas con claridad estructurada; desarrollar secciones interpretativas con una narrativa fluida y cohesiva, sin redundancias.
-*	No incluir referencias a los nombres de los prompts específicos (temporal_analysis_prompt_1, etc.) en el texto del informe. En su lugar, utilizar frases como: "el análisis temporal previo", "el análisis de tendencias detallado", "el capítulo anterior", "como se mencionó anteriormente", o simplemente referirse al tema específico (ej., "el análisis de estacionalidad"). Nunca mencionar los nombres de los prompts.
-*	No incluir ninguna instrucción interna para la IA, comentarios sobre el proceso, justificaciones de secciones (ej., "Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: ..."), ni referencias al prompt del sistema. Estos elementos son solo para la guía interna de la IA, no para el informe final.
-*	No mencionar la ausencia de datos, la imposibilidad de realizar un cálculo, o la necesidad de más información. Si un dato o cálculo no está disponible, simplemente omitirlo, sin comentarios. El informe debe basarse exclusivamente en la información disponible.
-*	IMPORTANTE: Si un cálculo no se puede realizar debido a la falta de datos, omítelo por completo. No menciones que el cálculo no se pudo hacer, ni que faltan datos. El informe debe basarse exclusivamente en la información disponible.
-*	No repetir los datos completos al final del informe. Los datos ya se presentan en las secciones correspondientes.
-*	Asegurar que cada capítulo tenga un único título principal claro y conciso. Evitar títulos redundantes o duplicados.
-*	No usar corchetes para encerrar los nombres de las herramientas gerenciales. Presentar el nombre de la herramienta sin corchetes.
-*	Ejemplos Orientativos. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas.
-
-## **X. REQUISITOS DE SALIDA (Formato del Informe)**
+## **IX. REQUISITOS DE SALIDA (Formato del Informe)**
 *	Respaldar todas las conclusiones con puntos de datos específicos, reportando tamaños del efecto e intervalos de confianza cuando sea aplicable.
 *	Resaltar la significancia práctica para tomadores de decisiones empresariales, más allá de la significancia estadística.
 * Las Tablas de resumen de resultados, no deben exceder de 7 columnas. 
@@ -585,19 +575,20 @@ Comparar *activamente* y *de forma detallada* los patrones observados con:
 *	Seguir el formato Markdown:
   *	Usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
   *	Insertar una línea en blanco tras títulos/subtítulos y entre párrafos.
-  *	Priorizar párrafos cortos, sintéticos y específicos; usar viñetas (-) o listas numeradas solo si la claridad lo exige.
+  *	Priorizar la presentación de párrafos sintéticos y específicos, densos en información relevante. 
+  *	Usar viñetas (-) o listas numeradas solo si la claridad lo exige.
+  *	Cada párrafo debe desarrollar una idea completa y tener una extensión mínima de 50 palabras, y preferiblemente entre 70 y 100 palabras. 
+  *	Evitar párrafos cortos y telegráficos
   *	Incluir tablas para comparar datos cuando sea adecuado (e.g., entre años o métricas).
   *	Formatear correctamente valores estadísticos y ecuaciones.
 *	Usar "herramienta de gestión" como terminología estándar y consistente.
-*	El estilo de redacción debe ser fluido, natural y atractivo, evitando la repetición, las frases cliché y la voz pasiva innecesaria. 
-*	Variar la estructura de las oraciones y utilizar conectores lógicos para mantener el interés del lector.
-*	Cada párrafo debe desarrollar una idea completa y tener una extensión mínima de 50 palabras, y preferiblemente entre 70 y 100 palabras. 
-*	Evitar párrafos cortos y telegráficos.
+*	El estilo de redacción debe ser fluido, natural y atractivo, evitando la repetición, las frases cliché y la voz pasiva innecesaria.
 
-## **XI. NOTAS (Recordatorios Finales)**
+## **X. NOTAS (Recordatorios Finales)**
 
-*	Enfocarse exclusivamente en el análisis numérico y estadístico, incluyendo siempre el nombre de la herramienta de gestión y la fuente de datos en el análisis.
 *	Contribuir al marco de la investigación doctoral como objetivo principal, sin minimizar la resolución directa de problemas empresariales.
+*	Enfocarse exclusivamente en el análisis numérico y estadístico, incluyendo siempre el nombre de la herramienta de gestión y la fuente de datos en el análisis.
+*	Todo análisis debe estar referenciado a datos cuantitativos que lo soporten, justifiquen, y amplíen el alcance de su significado y aplicabilidad directa o implicada. 
 
 """
 
@@ -696,10 +687,11 @@ temporal_analysis_prompt_1 = """**ANÁLISIS TEMPORAL**
 - **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
 - **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
 - **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
 - **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
 - **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
 - **IX. REQUISITOS DE SALIDA (Formato del Informe)**
-- **XI. NOTAS (Recordatorios Finales)**
+- **X. NOTAS (Recordatorios Finales)**
 
 Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
@@ -946,7 +938,7 @@ IMPORTANT:
 - Avoid to give Recomendations for better or aditional analysis.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
   - Rol e Identidad (experto consultor).
   - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
   - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
@@ -954,8 +946,8 @@ IMPORTANT:
   - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
   - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
   - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-  - Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse, pero está presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
   - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
 - **No** incluir referencias a nombres de prompts en el texto del informe.
 - **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
@@ -1146,10 +1138,11 @@ trend_analysis_prompt_1 = """### **Investigate General Trend Patterns**
 - **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
 - **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
 - **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
 - **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
 - **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
 - **IX. REQUISITOS DE SALIDA (Formato del Informe)**
-- **XI. NOTAS (Recordatorios Finales)**
+- **X. NOTAS (Recordatorios Finales)**
 
 Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
@@ -1349,7 +1342,7 @@ IMPORTANT:
 
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
   - Rol e Identidad (experto consultor).
   - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
   - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
@@ -1357,8 +1350,8 @@ IMPORTANT:
   - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
   - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
   - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-  - Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse, pero está presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
   - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
 - **No** incluir referencias a nombres de prompts en el texto del informe.
 - **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
@@ -1425,10 +1418,11 @@ arima_analysis_prompt_1 = """### **Analyze ARIMA Model Performance**
 - **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
 - **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
 - **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
 - **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
 - **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
 - **IX. REQUISITOS DE SALIDA (Formato del Informe)**
-- **XI. NOTAS (Recordatorios Finales)**
+- **X. NOTAS (Recordatorios Finales)**
 
 Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
@@ -1456,10 +1450,7 @@ A continuacion se presentan las conclusiones de los analisis anteriores realizad
 
 **Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
 
-**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
-
 - **I. Direccionamiento en el análisis del Modelo ARIMA**: Vincular con: I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
-
 - **II. Evaluación del desempeño del modelo**:
   - **II.A. Métricas de precisión**: Vincular con: I.D.2 (Rigurosidad Estadística).
   - **II.B. Intervalos de confianza de las proyecciones**: Vincular con: V (Manejo de la Incertidumbre), I.D.2 (Tamaños del Efecto).
@@ -1636,7 +1627,7 @@ Note:
 - Avoid a section about Analisys Limitations.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
   - Rol e Identidad (experto consultor).
   - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
   - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
@@ -1644,8 +1635,8 @@ Note:
   - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
   - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
   - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-  - Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse, pero está presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
   - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
 - **No** incluir referencias a nombres de prompts en el texto del informe.
 - **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
@@ -1710,7 +1701,21 @@ Note:
 # Cuarto prompt
 seasonal_analysis_prompt_1 = """### **Interpret Seasonal Patterns**
 
-**Nota Inicial:** Este análisis se rige por las I. INSTRUCCIONES BASE (CONSTANTES), II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas), III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente), IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado), V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna), VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado), VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance), IX. RESTRICCIONES GENERALES (Formato y Estilo), X. REQUISITOS DE SALIDA (Formato del Informe), XI. NOTAS (Recordatorios Finales). Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
+**Nota Inicial:** Este análisis se rige por las siguientes directrices:
+
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **X. NOTAS (Recordatorios Finales)**
+
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
+
 **Objetivo Principal**
 Analizar exhaustivamente la significancia, características y evolución de los patrones estacionales en la adopción de la herramienta de gestión {all_kw} según los datos de {dbs}, evaluando su consistencia, picos/troughs, y posibles factores causales (ciclos de negocio, impactos fiscales, dinámicas industriales y externas) mediante estimaciones cuantitativas originales y la identificación de factores causales cíclicos potenciales. Generar una narrativa interpretativa que cuantifique la influencia estacional, explore sus implicaciones para la adopción y complemente los análisis del análisis temporal (evolución histórica), de Análisis de tendencias (contexto externo) y análisis del modelo de arima (proyecciones), enriqueciendo la comprensión de {all_kw} en el marco de la investigación con una perspectiva cíclica intra-anual.
 
@@ -1736,7 +1741,40 @@ A continuacion se presentan las conclusiones de los analisis anteriores realizad
 {analisis_arima_ai}
 ****** FIN DE LOS ANALISIS ANTERIORES ******
 
-Esquema de Salida propuesto para ser desarrollado
+
+**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
+
+- **I. Direccionamiento en el análisis de patrones estacionales**: Vincular con: **I.D.1 (Enfoque Longitudinal)**, **I.D.2 (Rigurosidad Estadística)**, **I.C (Naturaleza Comportamental)**.
+- **II. Base estadística para el análisis estacional**  
+- **A. Naturaleza y método de los datos**: Vincular con: **III (Naturaleza de los Datos)**, **I.D.2 (Técnicas Estadísticas)**.  
+- **B. Interpretación preliminar**: Vincular con: **I.D.2 (Rigurosidad Estadística)**.  
+- **C. Resultados de la descomposición estacional**: Vincular con: **I.D.2 (Técnicas Estadísticas)**, **III (Naturaleza de los Datos)**.  
+- **III. Análisis cuantitativo de patrones estacionales**  
+- **A. Identificación y cuantificación de patrones recurrentes**: Vincular con: **I.D.1.b (Patrones Recurrentes)**.  
+- **B. Consistencia de los patrones a lo largo de los años**: Vincular con: **I.D.2 (Modelos de Series Temporales)**.  
+- **C. Análisis de períodos pico y trough**: Vincular con: **I.D.1.c (Puntos de Inflexión)**.  
+- **D. Índice de Intensidad Estacional (IIE)**: Vincular con: **I.D.2 (Rigurosidad Estadística)**.  
+- **E. Índice de Regularidad Estacional (IRE)**: Vincular con: **I.D.2 (Modelos de Series Temporales)**.  
+- **F. Tasa de Cambio Estacional (TCE)**: Vincular con: **I.E.1 (Ciclos de Vida)**.  
+- **G. Evolución de los patrones en el tiempo**: Vincular con: **I.E.1 (Ciclos de Vida)**.  
+- **IV. Análisis de factores causales potenciales**  
+- **A. Influencias del ciclo de negocio**: Vincular con: **I.F.2 (Factores Externos)**.  
+- **B. Factores industriales potenciales**: Vincular con: **I.F.2 (Factores Externos)**.  
+- **C. Factores externos de mercado**: Vincular con: **I.D.1.c (Análisis Contextual)**.  
+- **D. Influencias de Ciclos Organizacionales**: Vincular con: **I.E.4 (Explicaciones Alternativas)**.  
+- **V. Implicaciones de los patrones estacionales**  
+- **A. Estabilidad de los patrones para pronósticos**: Vincular con: **I.D.2 (Rigurosidad Estadística)**.  
+- **B. Componentes de tendencia vs. estacionales**: Vincular con: **I.E.1 (Ciclos de Vida)**.  
+- **C. Impacto en estrategias de adopción**: Vincular con: **I.D.4 (Orientación Práctica)**.  
+- **D. Significación práctica**: Vincular con: **I.D.3 (Perspicacia Interpretativa)**.  
+- **VI. Narrativa interpretativa de la estacionalidad**: Vincular con: **I.D.3 (Perspicacia Interpretativa)**, **I.E.4 (Explicaciones Alternativas)**.  
+- **VII. Implicaciones Prácticas**  
+- **A. De interés para académicos e investigadores**: Vincular con: **II (Preguntas de Investigación)**.  
+- **B. De interés para asesores y consultores**: Vincular con: **I.D.4 (Orientación Práctica)**.  
+- **C. De interés para directivos y gerentes**: Vincular con: **I.D.4 (Orientación Práctica)**.  
+- **VIII. Síntesis y reflexiones finales**: Vincular con: **I.F (Evaluación Crítica)**, **I.D.3 (Perspicacia Interpretativa)**, **V (Manejo de la Incertidumbre)**.  
+
+**Esquema de Salida propuesto para ser desarrollado**
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
 
 # **Patrones estacionales en la adopción de {all_kw} en {dbs}**
@@ -1748,8 +1786,6 @@ IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de 
   - Complementa Análisis Temporal (cronología amplia), de Análisis de tendencias (influencias externas) y análisis del modelo de arima (proyecciones) al enfocarse en ciclos recurrentes intra-anuales.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras Análisis Temporal identifica picos históricos y análisis del modelo de arima proyecta tendencias, este análisis examina si dichos patrones tienen una base estacional recurrente."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
-
 ## **II. Base estadística para el análisis estacional**
 - Este apartado está centrado en ampliamente Presentar los datos de descomposición estacional como fundamento del análisis. Proporcionar una fundamentación estadística sólida y detallar el enfoque metodológico.
 
@@ -1759,8 +1795,6 @@ Contenido:
 - Método: Descomposición clásica (aditiva o multiplicativa, según {csv_seasonal}), separando tendencia, estacionalidad y residuo.
 - Métricas base: Amplitud estacional (pico-trough), período estacional (e.g., mensual/trimestral), fuerza estacional (varianza explicada por el componente estacional).
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una descomposición aditiva podría revelar una amplitud de [valor], indicando fluctuaciones estacionales claras en {all_kw}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección III (Naturaleza de los Datos), I.D.2 (Técnicas Estadísticas).
 
 ### **B. Interpretación preliminar**
 - **Contenido:**
@@ -1772,15 +1806,11 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
     | Fuerza Estacional  | [Valor, ej., 0-1]         | Grado en que la estacionalidad explica las variaciones.       |
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional de 0.7 podría sugerir que gran parte de la variabilidad de {all_kw} es cíclica dentro del año."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
-
 ### **C. Resultados de la descomposición estacional**
 - **Contenido:**
   - Resumir los componentes de {csv_seasonal}: tendencia, estacionalidad, residuo.
   - Estadísticas clave: amplitud estacional (diferencia pico-trough), período estacional (ej., mensual, trimestral), fuerza estacional (proporción de varianza explicada por estacionalidad).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud estacional de [valor] podría indicar fluctuaciones marcadas en {all_kw} dentro de un año."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Técnicas Estadísticas), III (Naturaleza de los Datos).
 
 ## **III. Análisis cuantitativo de patrones estacionales**
 - Este apartado está centrado en ampliamente Cuantificar y caracterizar los patrones estacionales de {all_kw} en {dbs} con métricas originales.
@@ -1791,14 +1821,10 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Cuantificar: duración promedio, magnitud promedio de picos/troughs.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico recurrente en [mes] con magnitud promedio de [valor] podría reflejar un patrón estacional en {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.b (Patrones Recurrentes).
-
 ### **B. Consistencia de los patrones a lo largo de los años**
 - **Contenido:**
   - Evaluar si los patrones se repiten consistentemente: "Comparar la amplitud y timing de picos/troughs entre años en {csv_seasonal}."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una consistencia del 80%% en picos de [mes] podría indicar un patrón estacional estable para {all_kw}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Modelos de Series Temporales).
 
 ### **C. Análisis de períodos pico y trough**
 - **Contenido:**
@@ -1813,16 +1839,12 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Realiza una interpretacion que cubra aspectos desde los básicos a los mas complejos  asociados con los resultados obtenidos: >1 indica picos intensos; <1, fluctuaciones suaves.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIE de 1.4 podría sugerir que los picos estacionales de {all_kw} son notablemente pronunciados."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.2 (Rigurosidad Estadística).
-
 ### **E. Índice de Regularidad Estacional (IRE)
 - **Contenido:**
 - Construir una definición amplia que refiera sobre: Evalúa la consistencia de los patrones año tras año.
 - Explicar de manera amplia los aspectos metodológicos a partir de: IRE = Proporción de años con picos/troughs en el mismo mes (e.g., 9/10 años = 0.9).
 - Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos: Cercano a 1 indica alta regularidad; <0.5, inconsistencia.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IRE de 0.85 podría reflejar una estacionalidad muy consistente en {all_kw}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.2 (Modelos de Series Temporales).
 
 ### **F. Tasa de Cambio Estacional (TCE)**
 - **Contenido:**
@@ -1831,15 +1853,10 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos: Positivo indica intensificación; negativo, debilitamiento.
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un TCE de -0.01 podría sugerir que la estacionalidad de {all_kw} se reduce gradualmente."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.1 (Ciclos de Vida).
-
-
 ### **G. Evolución de los patrones en el tiempo**
 - **Contenido:**
   - Analizar cambios en amplitud, frecuencia o fuerza estacional: "Evaluar si la estacionalidad de {all_kw} se intensifica o atenúa con el tiempo."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional decreciente podría sugerir que {all_kw} pierde su carácter cíclico."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida).
 
 ## **IV. Análisis de factores causales potenciales**
 - Este apartado está centrado en ampliamente Explorar posibles causas cíclicas de los patrones estacionales, evitando especulaciones no fundamentadas.
@@ -1849,28 +1866,20 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Evaluar si los picos/troughs coinciden con ciclos económicos (ej., auges, recesiones).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico en [mes] podría estar influenciado por un ciclo de alta demanda en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F.2 (Factores Externos).
-
 ### **B. Factores industriales potenciales**
 - **Contenido:**
   - Identificar dinámicas específicas de la industria en {dbs} (ej., lanzamientos de productos, regulaciones).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un pico estacional en [mes] podría estar ligado a eventos industriales recurrentes."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F.2 (Factores Externos).
 
 ### **C. Factores externos de mercado**
 - **Contenido:**
   - Considerar influencias macro (ej., tendencias de mercado, cambios sociales).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional alta podría reflejar respuestas a campañas de marketing estacionales."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Análisis Contextual).
-
 ### **D. Influencias de Ciclos Organizacionales**
 - **Contenido:**
 - Evaluar patrones sin asumir ciclos fiscales rígidos: "Picos o troughs podrían coincidir con cierres de trimestre (e.g., marzo, junio), pero se analizarán según los datos de {csv_seasonal}."
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] podría reflejar ajustes organizacionales recurrentes, cuya causa se explorará según los patrones observados."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.E.4 (Explicaciones Alternativas).
 
 ## **V. Implicaciones de los patrones estacionales**
 - Este apartado está centrado en ampliamente Interpretar la relevancia práctica y predictiva de la estacionalidad para {all_kw}.
@@ -1881,16 +1890,12 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Analizar la predictibilidad: "Un IRE alto podría sugerir patrones estacionales confiables para proyecciones."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una alta consistencia podría fortalecer las predicciones a corto plazo de {all_kw}." Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una regularidad de 0.9 podría facilitar pronósticos cíclicos para {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
-
 ### **B. Componentes de tendencia vs. estacionales**
 - **Contenido:**
   - Comparar la fuerza de la estacionalidad con la tendencia general: "Evaluar si la variabilidad de {all_kw} es más cíclica que estructural."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una fuerza estacional dominante podría indicar que {all_kw} depende más de ciclos que de tendencias sostenidas."
 - Comparar con tendencias: "Un IIE elevado podría indicar que la estacionalidad predomina sobre la tendencia a largo plazo."
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Si la fuerza estacional supera la variabilidad tendencial, {all_kw} podría ser inherentemente cíclico."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida).
 
 ### **C. Impacto en estrategias de adopción**
 - **Contenido:**
@@ -1899,16 +1904,12 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough en [mes] podría indicar menor receptividad cíclica a {all_kw}."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un trough recurrente en [mes] podría reflejar períodos de baja prioridad para {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
-
 ### **D. Significación práctica**
 - **Contenido:**
   - Evaluar la relevancia práctica: "Una estacionalidad marcada podría influir en la percepción de {all_kw} como herramienta estable o volátil."
   - Evaluar importancia: "Un TCE negativo podría sugerir una estacionalidad decreciente con implicaciones para {all_kw}."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un IIE alto podría implicar que {all_kw} depende de momentos cíclicos específicos."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud alta podría sugerir que {all_kw} es sensible a factores cíclicos externos."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa).
 
 ## **VI. Narrativa interpretativa de la estacionalidad**
 - Este apartado está centrado en ampliamente Integrar hallazgos en una narrativa cohesiva y complementaria.
@@ -1921,8 +1922,6 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Conexión con análisis previos: "Esta estacionalidad podría correlacionarse con los puntos de inflexión del análisis temporal o el IRC de Análisis de tendencias."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un patrón estacional fuerte podría reforzar un IMG alto en análisis del modelo de arima, sugiriendo volatilidad cíclica."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa), I.E.4 (Explicaciones Alternativas).
-
 ## **VII. Implicaciones Prácticas**
 - Este apartado está centrado en ampliamente Ofrecer perspectivas para diferentes audiencias.
 
@@ -1930,19 +1929,13 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - "Una estacionalidad marcada podría sugerir explorar cómo factores cíclicos afectan la adopción de {all_kw}, complementando Análisis Temporal."
 - "Un IRE elevado podría sugerir estudiar cómo los ciclos estacionales interactúan con factores externos en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección II (Preguntas de Investigación).
-
 ### **B. De interés para asesores y consultores**
 - "Picos estacionales podrían indicar momentos clave para promover {all_kw} en {dbs}."
 - "Picos estacionales con un IIE alto podrían indicar momentos estratégicos para promover {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
-
 ### **C. De interés para directivos y gerentes**
 - "Una estacionalidad consistente podría guiar la planificación de recursos para {all_kw}, ajustándose a ciclos identificados."
 - "Una TCE negativa podría señalar la necesidad de adaptar estrategias ante una estacionalidad cambiante."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica).
 
 ## **VIII. Síntesis y reflexiones finales**
 - Este apartado está centrado en ampliamente Resumir hallazgos y reflexionar sobre la estacionalidad y destacar el aporte del análisis.
@@ -1951,11 +1944,9 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Desarrollar un connunto de reflexiones criticas de manera ampliada a partir de referencias como: "Estos patrones podrían alinearse con los ciclos históricos del análisis temporal y las influencias contextuales de Análisis de tendencias, destacando ejemplo: (sensibilidad a ciclos fiscales)." "Estos patrones aportan una dimensión cíclica única a {all_kw}, posiblemente relacionada con (ejemplo: dinámicas comerciales)."
   - Perspectiva final: "La estacionalidad aporta una dimensión cíclica clave para entender {all_kw}, sugiriendo su interacción con factores externos recurrentes." "Este análisis estacional complementa los enfoques previos, destacando la relevancia de los ciclos intra-anuales en la dinámica de {all_kw} en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F (Evaluación Crítica), I.D.3 (Perspicacia Interpretativa), V (Manejo de la Incertidumbre).
-
 ---
 
-#### **Datos Requeridos**
+**DATOS REQUERIDOS**
 - {csv_seasonal}: Resultados de la descomposición estacional (tendencia, estacionalidad, residuo) para {all_kw} en {dbs}.
 
 IMPORTANT: 
@@ -1965,31 +1956,32 @@ IMPORTANT:
 - Avoid a section about Analisys Limitations.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-*   **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
-    *   Rol e Identidad (experto consultor).
-    *   Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
-    *   Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
-    *   Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
-    *   Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
-    *   Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
-    *   Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-    *   Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-    *   Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
-    *   Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
-*   **No** incluir referencias a nombres de prompts en el texto del informe.
-*   **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
-*   **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión)
-*   **No**es necesario repetir los datos completos al final del informe. 
-*   Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
-* **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
-*   **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
-* **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
-* **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
-**Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados. 
-**Extensión de los parrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
-**IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
+  - Rol e Identidad (experto consultor).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
+  - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
+  - Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
+  - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
+  - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse, pero está presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
+- **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión).
+- **No**es necesario repetir los datos completos al final del informe.
+- Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
+- **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
+- **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
+- **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
+- **Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
 
 """
+
 
 seasonal_analysis_prompt_2 = """### **Interpret Cross-Source Seasonal Patterns**
 
@@ -2037,7 +2029,21 @@ Note:
 # Quinto Prompt
 prompt_6_single_analysis = """### **Cyclical Pattern Analysis for Management Tools**
 
-**Nota Inicial:** Este análisis se rige por las I. INSTRUCCIONES BASE (CONSTANTES), II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas), III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente), IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado), V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna), VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado), VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance), IX. RESTRICCIONES GENERALES (Formato y Estilo), X. REQUISITOS DE SALIDA (Formato del Informe), XI. NOTAS (Recordatorios Finales). Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
+**Nota Inicial:** Este análisis se rige por las siguientes directrices:
+
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **X. NOTAS (Recordatorios Finales)**
+
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
+
 **Objetivo Principal**
 Analizar exhaustivamente los patrones temporales y ciclos amplios en la adopción e interés por la herramienta de gestión {all_kw} según los datos de {dbs}, evaluando su fuerza, periodicidad, consistencia y evolución mediante métricas cuantitativas originales derivadas de {csv_fourier}. Explorar su relación con factores contextuales del entorno empresarial, tecnológico e industrial, e interpretar sus implicaciones para la estabilidad, predictibilidad y dinámica futura de {all_kw} en el marco de la investigación, aportando una perspectiva cíclica distintiva sobre su comportamiento. Explorar la influencia de factores contextuales del entorno empresarial, tecnológico e industrial, e interpretar las implicaciones de estos ciclos para la estabilidad, predictibilidad y dinámica futura de {all_kw}. Este análisis complementa el análisis temporal (evolución histórica), el análisis de tendencia (contexto externo), análisis del modelo de arima (proyecciones) y análisis de estacionalidad (estacionalidad intra-anual) al enfocarse en ciclos plurianuales, enriqueciendo el marco doctoral con una perspectiva cíclica de mayor escala.
 
@@ -2064,7 +2070,32 @@ A continuacion se presentan las conclusiones de los analisis anteriores realizad
 {analisis_estacional_ai}
 ****** FIN DE LOS ANALISIS ANTERIORES ******
 
-Esquema de Salida propuesto para ser desarrollado:
+**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
+
+- **I. Direccionamiento en el análisis de patrones cíclicos**: Vincular con: **I.D.1 (Enfoque Longitudinal)**, **I.D.2 (Rigurosidad Estadística)**, **I.C (Naturaleza Comportamental)**.
+- **II. Evaluación de la fuerza de los patrones cíclicos**
+  - **A. Base estadística del análisis cíclico**: Vincular con: **I.D.2 (Rigurosidad Estadística)**, **III (Naturaleza de los Datos)**.
+  - **B. Identificación de ciclos dominantes y secundarios**: Vincular con: **I.D.1.b (Patrones Recurrentes)**.
+  - **C. Índice de Fuerza Cíclica Total (IFCT)**: Vincular con: **I.D.2 (Rigurosidad Estadística)**.
+  - **D. Índice de Regularidad Cíclica Compuesta (IRCC)**: Vincular con: **I.D.2 (Modelos de Series Temporales)**.
+  - **E. Tasa de Evolución Cíclica (TEC)**: Vincular con: **I.E.1 (Ciclos de Vida)**.
+- **III. Análisis contextual de los ciclos**
+  - **A. Factores del entorno empresarial**: Vincular con: **I.F.2 (Factores Externos)**.
+  - **B. Relación con patrones de adopción tecnológica**: Vincular con: **I.D.1.c (Análisis Contextual)**.
+  - **C. Influencias específicas de la industria**: Vincular con: **I.E.4 (Explicaciones Alternativas)**.
+  - **D. Factores sociales o de mercado**: Vincular con: **I.F.2 (Factores Externos)**.
+- **IV. Implicaciones de las tendencias cíclicas**
+  - **A. Estabilidad y evolución de los patrones cíclicos**: Vincular con: **I.E.1 (Ciclos de Vida)**.
+  - **B. Valor predictivo para la adopción futura**: Vincular con: **I.D.2 (Rigurosidad Estadística)**.
+  - **C. Identificación de puntos potenciales de saturación**: Vincular con: **I.D.3 (Perspicacia Interpretativa)**.
+  - **D. Narrativa interpretativa de los ciclos**: Vincular con: **I.D.3 (Perspicacia Interpretativa)**, **I.E.4 (Explicaciones Alternativas)**.
+- **V. Perspectivas para diferentes audiencias**
+  - **A. De interés para académicos e investigadores**: Vincular con: **II (Preguntas de Investigación)**.
+  - **B. De interés para asesores y consultores**: Vincular con: **I.D.4 (Orientación Práctica)**.
+  - **C. De interés para directivos y gerentes**: Vincular con: **I.D.4 (Orientación Práctica)**, **II (Preguntas de Investigación)**.
+- **VI. Síntesis y reflexiones finales**: Vincular con: **I.F (Evaluación Crítica)**, **I.D.3 (Perspicacia Interpretativa)**, **V (Manejo de la Incertidumbre)**.
+
+**Esquema de Salida propuesto para ser desarrollado:**
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
 
 # **Patrones cíclicos plurianuales de {all_kw} en {dbs}: Un enfoque de Fourier**
@@ -2075,8 +2106,6 @@ Contenido:
   - Evalúa la presencia, fuerza y evolución de ciclos plurianuales en {all_kw} usando {csv_fourier}, diferenciándose de la estacionalidad intra-anual del analisis estacional.
   - Complementa el analisis temporal (cronología), tendencias externas, analisis arima (predicciones) y analissis estacional (ciclos cortos) al enfocarse en periodicidades de mayor escala.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Mientras el analisis estacional detecta picos anuales en [mes], este análisis podría revelar si ciclos de 3-5 años subyacen a la dinámica de {all_kw}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.1 (Enfoque Longitudinal), I.D.2 (Rigurosidad Estadística), I.C (Naturaleza Comportamental).
 
 ## **II. Evaluación de la fuerza de los patrones cíclicos**
 La intencionalidad de este apartado o sección es poder desarrollar de manera amplia y : Cuantificar la significancia y consistencia de los ciclos usando análisis de Fourier.
@@ -2092,15 +2121,11 @@ La intencionalidad de este apartado o sección es poder desarrollar de manera am
     - Relación señal-ruido (SNR) para evaluar claridad de los ciclos.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una amplitud de 50 en un ciclo de 4 años con SNR de 3 podría indicar un patrón cíclico claro frente al ruido de fondo en {dbs}.""Un ciclo de 4 años con potencia espectral de [valor] y SNR de 2.5 podría indicar una oscilación clara en {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística), III (Naturaleza de los Datos).
-
 ### **B. Identificación de ciclos dominantes y secundarios**
 - **Contenido:**
   - Identificar los dos ciclos más fuertes según potencia espectral (dominante y secundario).
   - Cuantificar: Período (ej., 3 años), Amplitud promedio, Porcentaje de varianza explicada.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo dominante de 5 años explicando el 40%% de la varianza podría reflejar una adopción cíclica ligada a renovaciones estratégicas en {dbs}." "Un ciclo de 5 años con 35%% de varianza podría reflejar una periodicidad dominante en {all_kw}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.b (Patrones Recurrentes).
 
 ### **C. Índice de Fuerza Cíclica Total (IFCT)**
 - **Contenido:**
@@ -2109,8 +2134,6 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - **Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos:** >1 indica ciclos fuertes; <0.5, ciclos débiles.
   - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IFCT de 1.5 podría sugerir que los ciclos combinados tienen un impacto sustancial en la dinámica de {all_kw}." "Un IFCT de 1.3 podría sugerir que los ciclos combinados dominan la dinámica de {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
-
 ### **D. Índice de Regularidad Cíclica Compuesta (IRCC)**
 - **Contenido:**
   - **Construir una definición amplia que refiera sobre:** Evalúa la consistencia conjunta de los ciclos dominantes y secundarios.
@@ -2118,16 +2141,12 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - **Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos:** >0.7 indica alta regularidad; <0.4, ciclos erráticos.
   - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un IRCC de 0.85 podría reflejar que los ciclos de 3 y 6 años en {all_kw} son altamente predecibles en {dbs}." "Un IRCC de 0.8 podría reflejar ciclos predecibles en {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Modelos de Series Temporales).
-
 ### **E. Tasa de Evolución Cíclica (TEC)**
 - **Contenido:**
   - **Construir una definición amplia que refiera sobre:** Mide cambios en la fuerza cíclica a lo largo del tiempo.
   - **Explicar de manera amplia los aspectos metodológicos a partir de:** TEC = (Potencia Final - Potencia Inicial del Ciclo Dominante) / Número de Años.
   - **Realiza una interpretacion que cubra aspectos desde los básicos a los más complejos  asociados con los resultados obtenidos:** Positivo indica intensificación; negativo, debilitamiento.
   - **Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa:** "Un TEC de -0.02 podría indicar que el ciclo de 4 años en {all_kw} pierde relevancia gradualmente." "Un TEC de -0.01 podría sugerir que el ciclo de 3 años en {all_kw} se atenúa."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida).
 
 ## **III. Análisis contextual de los ciclos**
 - Este apartado está centrado en ampliamente Explorar factores contextuales potenciales que coincidan con los ciclos, con mayor diversidad y detalle.
@@ -2137,28 +2156,20 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Analizar coincidencias con ciclos económicos (ej., recuperación post-crisis, auges de inversión).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 7 años podría estar vinculado a períodos de expansión económica que incentivan la adopción de {all_kw} en {dbs}." "Un ciclo de 6 años podría estar vinculado a períodos de recuperación económica en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F.2 (Factores Externos).
-
 ### **B. Relación con patrones de adopción tecnológica**
 - **Contenido:**
   - Evaluar si los ciclos reflejan innovaciones (ej., nuevas versiones de {all_kw}) o desplazamientos por tecnologías competidoras.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 2 años podría coincidir con actualizaciones tecnológicas bianuales que renuevan el interés en {all_kw}." "Un ciclo de 3 años podría reflejar renovaciones tecnológicas que impulsan {all_kw}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.1.c (Análisis Contextual).
 
 ### **C. Influencias específicas de la industria**
 - **Contenido:**
   - Identificar eventos recurrentes (ej., ferias comerciales, cambios regulatorios cíclicos).
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 3 años podría estar influenciado por convenciones trienales de la industria captadas en {dbs}." "Un ciclo de 4 años podría estar influenciado por eventos trienales en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.4 (Explicaciones Alternativas).
-
 ### **D. Factores sociales o de mercado**
 - **Contenido:**
   - Considerar dinámicas macro como cambios en preferencias organizacionales o campañas de marketing.
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 4 años podría reflejar tendencias de mercado que promueven periódicamente {all_kw}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F.2 (Factores Externos).
 
 ## **IV. Implicaciones de las tendencias cíclicas**
 - Este apartado está centrado en ampliamente Interpretar la estabilidad, valor predictivo y relevancia de los ciclos con una narrativa rica y detallada. Interpretar la relevancia de los ciclos para la dinámica de {all_kw}.
@@ -2168,21 +2179,15 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Analizar cambios en amplitud y potencia: "Un TEC negativo podría indicar una estabilización de {all_kw}." "Un TEC positivo podría indicar una creciente dependencia cíclica de {all_kw}."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Una potencia espectral creciente en un ciclo de 5 años podría sugerir que {all_kw} responde cada vez más a factores cíclicos externos." "Una potencia creciente en un ciclo de 5 años podría sugerir una intensificación de patrones en {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.E.1 (Ciclos de Vida).
-
 ### **B. Valor predictivo para la adopción futura**
 - **Contenido:**
   - Evaluar la utilidad de los ciclos para proyecciones: "Un IRCC alto podría facilitar anticipar picos futuros." "Un IRCC alto podría respaldar proyecciones cíclicas."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 3 años con IRCC de 0.9 podría prever un próximo aumento en el interés por {all_kw} en [año futuro]."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.2 (Rigurosidad Estadística).
-
 ### **C. Identificación de puntos potenciales de saturación**
 - **Contenido:**
   - Explorar si la disminución de amplitud o potencia señala límites: "Un IFCT decreciente podría indicar saturación."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 6 años con TEC negativo podría sugerir que {all_kw} ha alcanzado un techo de adopción en {dbs}."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa).
 
 ### **D. Narrativa interpretativa de los ciclos**
 - **Contenido:**
@@ -2191,23 +2196,16 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Implicaciones: "La estabilidad cíclica podría reflejar una dependencia de {all_kw} a contextos específicos, mientras que un TEC negativo apunta a una posible transición."
   - Desarrolla ampliamente a partir del ejemplo presentado como únicamente referencia orientativa: "Un ciclo de 4 años con alta regularidad podría indicar que {all_kw} se revitaliza periódicamente tras lanzamientos tecnológicos o auges económicos en {dbs}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.3 (Perspicacia Interpretativa), I.E.4 (Explicaciones Alternativas).
-
 ### **E. Perspectivas para diferentes audiencias**
 - **Contenido:**
 ### **A. De interés para académicos e investigadores**
 "Ciclos regulares podrían sugerir explorar cómo factores tecnológicos o económicos sustentan la dinámica de {all_kw}.""Ciclos consistentes podrían invitar a explorar cómo factores como la adopción tecnológica o cambios regulatorios sustentan la dinámica de {all_kw}."
 
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección II (Preguntas de Investigación).
-
 ### **B. De interés para asesores y consultores**
-"Un IFCT alto podría señalar oportunidades cíclicas para posicionar {all_kw} en momentos clave."
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  Sección I.D.4 (Orientación Práctica). "Un IFCT elevado podría señalar oportunidades cíclicas para posicionar {all_kw} en momentos de alta receptividad."
+"Un IFCT alto podría señalar oportunidades cíclicas para posicionar {all_kw} en momentos clave. "Un IFCT elevado podría señalar oportunidades cíclicas para posicionar {all_kw} en momentos de alta receptividad.""
 
 ### **C. De interés para directivos y gerentes**
 "Un IRCC elevado podría guiar la planificación estratégica ajustada a ciclos de [período] años." "Un IRCC alto podría respaldar la planificación estratégica a mediano plazo, ajustándose a ciclos de [período] años."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.D.4 (Orientación Práctica), II (Preguntas de Investigación).
 
 ## **V. Síntesis y reflexiones finales**
 - Este apartado está centrado en ampliamente Resumir los hallazgos clave y ofrecer una perspectiva integradora y perspicaz.
@@ -2215,8 +2213,6 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
   - Se debe estructurar un resumen que sea capaz de compilar las ideas fuerzas mas relevantes que lleven a la construccion de nuevas teorías y modelos y fortalezcan nuevas fronteras del conocimeinto. Para ello, se debe ampliar y desarrollar a partir de referentes como:  "El análisis revela ciclos de [período] años en {all_kw}, con un IFCT de [valor] y un IRCC de [valor], indicando patrones [fuertes/regulares] que explican [porcentaje]%% de la varianza." "El análisis identifica ciclos de [período] años en {all_kw}, con un IFCT de [valor] y un IRCC de [valor], indicando patrones [fuertes/regulares]."
   - Desarrollar un connunto de reflexiones criticas de manera ampliada a partir de referencias como: "Estos ciclos podrían estar moldeados por una interacción entre dinámicas económicas, tecnológicas y de la industria, sugiriendo que {all_kw} responde a estímulos externos recurrentes." 
   - Perspectiva final: "El enfoque cíclico aporta una dimensión temporal amplia y robusta para comprender la evolución de {all_kw} en {dbs}, destacando su sensibilidad a patrones periódicos."
-
-Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con:  ** Sección I.F (Evaluación Crítica), I.D.3 (Perspicacia Interpretativa), V (Manejo de la Incertidumbre).
 
 #### **Datos Requeridos**
 - {csv_fourier}: Resultados del análisis de Fourier (frecuencias, amplitudes, potencias espectrales, SNR) para {all_kw} en {dbs}.
@@ -2228,29 +2224,29 @@ IMPORTANT:
 - Avoid a section about Analisys Limitations.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-*   **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
-    *   Rol e Identidad (experto consultor).
-    *   Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
-    *   Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
-    *   Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
-    *   Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
-    *   Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
-    *   Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-    *   Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-    *   Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
-    *   Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
-*   **No** incluir referencias a nombres de prompts en el texto del informe.
-*   **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
-*   **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión)
-*   **No**es necesario repetir los datos completos al final del informe. 
-*   Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
-* **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
-*   **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
-* **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
-* **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
-**Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados. 
-**Extensión de los parrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
-**IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
+  - Rol e Identidad (experto consultor).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
+  - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
+  - Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
+  - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
+  - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse, pero está presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
+- **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión).
+- **No**es necesario repetir los datos completos al final del informe.
+- Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
+- **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
+- **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
+- **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
+- **Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
 
 """
 
@@ -2295,7 +2291,20 @@ Notes:
 
 prompt_conclusions_standalone = """## Synthesize Findings and Draw Conclusions - {all_kw} Analysis
 
-IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt (temporal_analysis_prompt_1, etc.) en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "en el capítulo anterior", "el análisis de estacionalidad")
+**Nota Inicial:** Este análisis se rige por las siguientes directrices:
+
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado)**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **X. NOTAS (Recordatorios Finales)**
+
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
 # **Síntesis de Hallazgos y Conclusiones - Análisis de [{all_kw}] en {dbs}**
 
@@ -2362,29 +2371,29 @@ Notes:
 - Avoid a section about Analisys Limitations.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
-*   **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX, X, y XI (traducido al español), incluyendo, pero no limitándose a:
-    *   Rol e Identidad (experto consultor).
-    *   Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
-    *   Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
-    *   Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
-    *   Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
-    *   Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
-    *   Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
-    *   Énfasis en la Interpretación (*análisis hermenéutico* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
-    *   Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse pero esta presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
-    *   Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
-*   **No** incluir referencias a nombres de prompts en el texto del informe.
-*   **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
-*   **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión)
-*   **No**es necesario repetir los datos completos al final del informe. 
-*   Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
-* **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
-*   **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
-* **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
-* **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
-**Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados. 
-**Extensión de los parrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
-**IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
+  - Rol e Identidad (experto consultor).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
+  - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
+  - Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
+  - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
+  - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse, pero está presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
+- **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión).
+- **No**es necesario repetir los datos completos al final del informe.
+- Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
+- **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
+- **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
+- **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
+- **Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
 
 """
 
