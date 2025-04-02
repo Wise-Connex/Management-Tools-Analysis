@@ -149,36 +149,46 @@ La interpretación de los resultados estadísticos debe ser *profunda*, *crític
 
     *Importante:*  El análisis debe ser *exploratorio* y *cauteloso*. *Sugerir* posibles conexiones, *sin* afirmar causalidad. Debe tenerse siempre presente la naturaleza de la base de datos analizada.
 
+    
 ## **G. DEFINICIÓN OPERACIONAL DE "MODA GERENCIAL" (Criterios Observables y Rígidos)**
 
-Para este análisis, los datos *sugieren fuertemente* una "moda gerencial" *si y solo si* se observan *simultáneamente* las 4 siguientes características:
+Para este análisis, los datos *sugieren fuertemente* una "moda gerencial" *si y solo si* se observan *simultáneamente* las 4 siguientes características en la métrica analizada:
 
-A.  **Adopción Rápida:** Aumento significativo y *rápido* en el uso o interés (según la fuente).
-B.  **Pico Pronunciado:** Período de máxima adopción o interés, *claramente distinguible*.
-C.  **Declive Posterior:** Disminución significativa y *rápida* después del pico.
-D.  **Ciclo de Vida Corto:** Duración total del ciclo *corta* (< 5 años u otro umbral. Justificar*).
+**A. Adopción Rápida:** Aumento significativo y *rápido* en el uso o interés (según la fuente o nivel de indicador).
+    *   **a. Solo para datos de Bain Satisfacción:** Dada su menor volatilidad, se interpreta como una **tendencia de aumento sostenida y discernible**, más que un salto necesariamente abrupto. *(Ej. operacional: cambio acumulado > 5-8 pts en 2-4 años, O pendiente media consistente > +0.5 pts/año)*. El énfasis está en la **consistencia** de la tendencia.
 
-1.  **Patrón de clasificación:** Definir siguiendo los criterios propuestos.
+**B. Pico Pronunciado:** Período identificable de máximo nivel del indicador, *claramente distinguible* como punto de inflexión superior.
+    *   **a. Solo para datos de Bain Satisfacción:** Se interpreta como un **máximo relativo claro** que actúa como punto de inflexión, distinguible de fluctuaciones menores, incluso si la diferencia absoluta de nivel respecto a puntos cercanos es moderada.
 
-a) Modas Gerenciales. Criterio clave: Auge rápido, volatilidad, declive predominante, falta de persistencia a largo plazo.
-1.	Clásica de Ciclo Corto: Auge abrupto seguido de declive inmediato, sin persistencia notable.
-2.	Efímera: Pico breve y aislado, seguido de desaparición rápida.
-3.	Declive Prolongado: Auge inicial con declive gradual, pero ciclo aún breve.
-4.	Recurrente: Picos repetitivos de corta duración, sin estabilidad prolongada.
+**C. Declive Posterior:** Disminución significativa y *rápida* después del pico.
+    *   **a. Solo para datos de Bain Satisfacción:** Dada su menor volatilidad, se interpreta como una **tendencia de disminución sostenida y discernible**, más que un salto necesariamente abrupto. *(Ej. operacional: cambio acumulado < -5 a -8 pts en 2-4 años, O pendiente media consistente < -0.5 pts/año)*. El énfasis está en la **consistencia** de la tendencia.
 
-b) Doctrinas. Criterio clave: Estabilidad sostenida, relevancia a largo plazo, influencia estructural, uso recurrente sin obsolescencia.
-5.	Pura: Estabilidad estructural sin picos ni declives notables.
-6.	Clásico Extrapolado: Persistencia sostenida con adopción más allá de la gerencia.Innovación 
-7.	Fundacional: Influencia duradera con derivadas claras y resurgimientos ocasionales.
+**D. Ciclo de Vida Corto:** Duración total del ciclo (Auge A - Pico B - Declive C) observable y **relativamente contenida**. *(El umbral temporal exacto debe definirse y justificarse según la métrica, ej., < 5 años para métricas volátiles como Google Trends)*.
+    *   **a. Solo para datos de Bain Satisfacción:** El umbral temporal aceptable para "contenido" **puede ser mayor** (ej., < 7-10 años) que para métricas más volátiles, siempre que el patrón A-B-C sea claramente identificable.
 
-c) Híbridos. Criterio clave: muestran características transitorias o evolutivas. Son especie de zonas grises.
-8.	Auge sin Declive: Crecimiento rápido estabilizado en meseta sostenida.
-9.	Ciclos Largos: Oscilaciones amplias y prolongadas, sin declive definitivo.
-10.	Declive Tardío: Auge seguido de estabilidad larga antes de declive lento.
-11.	Superada: Auge inicial seguido de declive prolongado tras relevancia sostenida.
-12.	Moda Transformada: Auge rápido que evoluciona hacia estabilidad estructural.
+**1. Patrón de clasificación:** Definir siguiendo los criterios propuestos (A, B, C, D), aplicando las interpretaciones específicas de la sub-sección 'a.' de cada criterio **exclusivamente** cuando se analicen los datos de **Bain Satisfacción**. Para todas las demás fuentes (Google Trends, Ngram, Crossref, Bain Usabilidad), se aplica la interpretación general del criterio principal.
 
-*Importante:* La ausencia de *cualquiera* de estos criterios *no* implica que *no* sea una "moda" (podría serlo en un sentido más amplio), pero *sí* implica que los datos *no apoyan fuertemente* esa conclusión según *esta* definición operacional.
+**a) Modas Gerenciales (Cumplen A, B, C y D):**
+    *   *Criterio clave:* Auge discernible, pico claro, declive posterior, ciclo temporalmente contenido, falta de persistencia estable a largo plazo.
+    1.  **Clásica de Ciclo Corto:** A, B, C ocurren de forma clara y relativamente rápida dentro del umbral D.
+    2.  **Efímera:** Pico B muy breve, rodeado por A y C claros.
+    3.  **Declive Prolongado:** A y B claros, pero el declive C es más gradual (aunque sostenido y cumple D).
+    4.  **Recurrente:** Se observan múltiples ciclos A-B-C-D.
+
+**b) Doctrinas (NO cumplen patrón A-B-C-D completo):**
+    *   *Criterio clave:* Alta estabilidad relativa, relevancia a largo plazo, ausencia de ciclos claros de auge y caída definidos.
+    5.  **Pura:** Estabilidad alta; fluctuación mínima. No cumple A ni C significativamente.
+    6.  **Clásico Extrapolado / Fundacional:** Persistencia muy larga; posibles derivas muy lentas o ciclos que exceden ampliamente D. *(Nota: Pueden agruparse si la distinción fina no es crítica para el análisis cuantitativo principal)*.
+
+**c) Híbridos (Cumplen algunos criterios A/B/C/D pero no todos):**
+    *   *Criterio clave:* Muestran patrones transitorios o evolutivos; combinan elementos de modas y doctrinas.
+    8.  **Auge sin Declive:** Cumple A (y quizás B), pero luego se estabiliza (falla C).
+    9.  **Ciclos Largos:** Cumple A, B, C pero excede el umbral D.
+    10. **Declive Tardío:** Estabilidad inicial o auge lento, seguido por declive C claro.
+    11. **Superada:** Auge A y estabilidad/pico B largos, seguidos por declive C (puede exceder D por duración previa).
+    12. **Moda Transformada:** Cumple A y B, pero luego se estabiliza estructuralmente (falla C).
+
+***Importante:*** *Esta clasificación se basa estrictamente en el cumplimiento de los criterios operacionales A-B-C-D según la métrica y su interpretación específica (general o ajustada para Satisfacción). Una herramienta clasificada fuera de "Moda Gerencial" bajo esta definición rígida aún podría ser considerada una moda en un sentido conceptual más amplio.*
 
 ## **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
 
