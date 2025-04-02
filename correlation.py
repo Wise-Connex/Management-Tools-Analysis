@@ -5511,7 +5511,7 @@ def generate_all_reports():
                     else:
                          print(f"      {YELLOW}[Warning] Saltando búsqueda de metadatos (archivo no cargado).{RESET}")
 
-                    new_filename = f"{str(nro_val).strip()}-{str(cod_val).strip()}.pdf"
+                    new_filename = f"Informe_{str(cod_val).strip()}.pdf"
                     new_pdf_path = os.path.join(informes_folder, new_filename)
                     
                     # Copy the PDF
