@@ -3531,7 +3531,7 @@ def report_pdf():
                 margin: 0; /* Remove body margin since @page handles it */
                 padding: 0;
                 background-color: #ffffff;
-                counter-reset: page 32;  /* Start at 33 (32 + 1) */
+                counter-reset: page 39;  /* Start at 40 (39 + 1) */
                 width: 100%;
             }}
 
@@ -3672,7 +3672,7 @@ def report_pdf():
 
             /* Reset page counter for main content */
             #resumen-ejecutivo {{
-                counter-reset: page 32;  /* Start at 33 (32 + 1) */
+                counter-reset: page 39;  /* Start at 40 (39 + 1) */
             }}
 
             /* Set TOC page number */
@@ -4011,7 +4011,7 @@ def report_pdf():
 
         /* Page numbering */
         @page :first {{
-            counter-reset: page 33;  /* Start at 33 */
+            counter-reset: page 40;  /* Start at 40 */
         }}
 
         /* Page breaks */
@@ -4035,7 +4035,7 @@ def report_pdf():
 
         /* Main content */
         #resumen-ejecutivo {{
-            counter-reset: page 32;  /* Start at 33 (32 + 1) */
+            counter-reset: page 39;  /* Start at 40 (39 + 1) */
         }}
 
         /* Tables */
@@ -4546,10 +4546,10 @@ def generate_pdf_toc(input_pdf_path, output_pdf_path, has_cover=False):
                 (1, "Datos", 70)
             ]
         else:
-            # Adjust all page numbers to start at 33
+            # Adjust all page numbers to start at 40
             adjusted_headings = []
             for level, title, page_num in final_headings:
-                adjusted_headings.append((level, title, page_num + 32))  # Add 32 to start at 33
+                adjusted_headings.append((level, title, page_num + 39))  # Add 39 to start at 40
             final_headings = adjusted_headings
 
         # Create a TOC page with text in left column and page numbers in right column
@@ -4613,11 +4613,11 @@ def generate_pdf_toc(input_pdf_path, output_pdf_path, has_cover=False):
                 [Paragraph("Alcances metodológicos del análisis", entry_text_style),
                  Paragraph("16", page_num_style)],
                 [Paragraph("Base de datos analizada en el informe técnico", entry_text_style),
-                 Paragraph("24", page_num_style)],
+                 Paragraph("31", page_num_style)],
                 [Paragraph("Grupo de herramientas analizadas: informe técnico", entry_text_style),
-                 Paragraph("27", page_num_style)],
+                 Paragraph("34", page_num_style)],
                 [Paragraph("Parametrización para el análisis y extracción de datos", entry_text_style),
-                 Paragraph("30", page_num_style)]
+                 Paragraph("37", page_num_style)]
             ])
 
         # Add each TOC entry as a row in the table
