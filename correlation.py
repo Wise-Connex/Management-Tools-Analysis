@@ -21,8 +21,7 @@ import sys
 import math
 import warnings
 import shutil # Make sure shutil is imported at the top of the file
-import pandas as pd # Make sure pandas is imported
-import os # Make sure os is imported
+import traceback
 
 # Suppress the specific scikit-learn deprecation warning about force_all_finite
 warnings.filterwarnings("ignore", message=".*force_all_finite.*")
@@ -54,6 +53,7 @@ from scipy.interpolate import CubicSpline
 #from mpl_toolkits.axes_grid1 import make_axes_locatable
 import base64
 from datetime import datetime
+from urllib.parse import quote # Add this import for URL encoding filenames
 #from sklearn.preprocessing import StandardScaler
 #from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -5268,24 +5268,134 @@ def main():
     null.close()
     sys.stderr = stderr
 
+# <<< Add this function definition >>>
+def update_readme(report_info):
+    """
+    Updates the Informes/README.md file with a new report entry, keeping the list sorted by Nro.
+
+    Args:
+        report_info (dict): A dictionary containing keys: 'nro', 'informe_code', 'titulo', 'pdf_filename'
+    """
+    readme_path = "Informes/README.md"
+    # Corrected base URL - Use blob for viewing files directly on GitHub usually
+    github_base_url = "https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/"
+    header = "# Índice de Informes\n\n| Nro | Informe | Título | Enlace |\n|---|---|---|---|\n"
+    # Regex to capture existing rows, ignoring header/separator, making groups non-greedy
+    row_pattern = re.compile(r"^\s*\|\s*(\d+)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*\[([^]]+?)\]\(([^)]+?)\)\s*\|\s*$", re.MULTILINE)
+
+    entries = []
+    if os.path.exists(readme_path):
+        try:
+            with open(readme_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                # Find all existing valid rows using regex
+                matches = row_pattern.findall(content)
+                for match in matches:
+                    nro, informe, titulo, link_text, link_url = match
+                    # Extract filename from URL for robustness
+                    # Handle potential URL encoding in existing links if needed, but assume base for now
+                    pdf_filename_from_link = os.path.basename(link_url) # Get just the filename part
+                    try:
+                         entries.append({
+                             'nro': int(nro.strip()), # Convert Nro to int for sorting
+                             'informe_code': informe.strip(),
+                             'titulo': titulo.strip(),
+                             'pdf_filename': pdf_filename_from_link # Store decoded filename
+                         })
+                    except ValueError:
+                         print(f"  {YELLOW}[Warning README] Skipping invalid row in README: Nro='{nro}' is not an integer.{RESET}")
+        except Exception as e:
+            print(f"  {YELLOW}[Warning README] Error al leer {readme_path}: {e}. Se creará uno nuevo.{RESET}")
+            entries = [] # Start fresh if read error
+
+    # --- Add or Update the new entry ---
+    new_nro_str = report_info['nro']
+    try:
+        new_nro = int(new_nro_str) # Convert incoming Nro to int
+    except ValueError:
+         print(f"  {RED}[Error README] Invalid Nro received: '{new_nro_str}'. Cannot update README entry.{RESET}")
+         return # Stop if Nro isn't a valid integer
+
+    new_informe_code = report_info['informe_code']
+    new_pdf_filename = report_info['pdf_filename']
+    new_titulo = report_info['titulo']
+    updated = False
+    for entry in entries:
+        # Update if Nro and Informe code match (using int for Nro comparison)
+        if entry['nro'] == new_nro and entry['informe_code'] == new_informe_code:
+            entry['titulo'] = new_titulo
+            entry['pdf_filename'] = new_pdf_filename # Ensure filename is updated
+            updated = True
+            print(f"    [Info README] Entrada actualizada: Nro={new_nro}, Informe={new_informe_code}")
+            break
+
+    if not updated:
+        # Check for duplicate Nro before adding (optional but good practice)
+        if any(entry['nro'] == new_nro for entry in entries):
+             print(f"  {YELLOW}[Warning README] Duplicate Nro {new_nro} found. Adding entry anyway, but consider checking metadata.{RESET}")
+
+        entries.append({
+            'nro': new_nro,
+            'informe_code': new_informe_code,
+            'titulo': new_titulo,
+            'pdf_filename': new_pdf_filename
+        })
+        print(f"    [Info README] Nueva entrada añadida: Nro={new_nro}, Informe={new_informe_code}")
+
+    # --- Sort entries numerically by 'nro' ---
+    entries.sort(key=lambda x: x['nro'])
+
+    # --- Generate new Markdown content ---
+    markdown_content = header
+    for entry in entries:
+        # URL encode the filename for the link
+        encoded_filename = quote(entry['pdf_filename'])
+        link_url = f"{github_base_url}{encoded_filename}"
+        # Display the decoded filename as the link text for readability
+        link_text = entry['pdf_filename']
+        markdown_content += f"| {entry['nro']} | {entry['informe_code']} | {entry['titulo']} | [{link_text}]({link_url}) |\n"
+
+    # --- Write back to README.md ---
+    try:
+        # Ensure the Informes directory exists before writing
+        informes_dir = os.path.dirname(readme_path)
+        if not os.path.exists(informes_dir):
+             os.makedirs(informes_dir)
+             print(f"  [Info README] Directory created: {informes_dir}")
+
+        with open(readme_path, 'w', encoding='utf-8') as f:
+            f.write(markdown_content)
+        print(f"    [Info README] {readme_path} actualizado correctamente.")
+    except Exception as e:
+        print(f"  {RED}[Error README] No se pudo escribir en {readme_path}: {e}{RESET}")
+
+# <<< End of update_readme function definition >>>
+
 def generate_all_reports():
     """
     Generates individual reports for all tools across all data sources.
+    Iterates TOOL first, then SOURCE.
     Saves a copy of each report to the 'Informes' folder with Nro-Cod-DataSource naming.
     """
     global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
-    global tool_file_dic, trends_results # Ensure these are accessible
-    global data_filename # <-- Declare data_filename as global here
+    global tool_file_dic, trends_results, data_filename # Ensure required globals are declared
 
+    # Colors (ensure these are defined globally elsewhere or define them here)
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    RED = "\033[91m"
+    RESET = "\033[0m"
+    
     print("\n" + "="*60)
     print(" Iniciando Generación de Todos los Informes Individuales (Batch)")
+    print(" (Iterando por Herramienta -> Fuente de Datos)")
     print("="*60 + "\n")
 
     # Define data source mapping (menu index to details)
     data_sources = {
         1: {"name": "Google Trends", "code": "GT", "opt": "GT"},
         2: {"name": "Google Books Ngrams", "code": "GB", "opt": "GB"},
-        3: {"name": "Bain - Usability", "code": "BU", "opt": "BR"}, # Note: opt is BR for Bain Uso
+        3: {"name": "Bain - Usability", "code": "BU", "opt": "BR"},
         4: {"name": "Crossref.org", "code": "CR", "opt": "CR"},
         5: {"name": "Bain - Satisfaction", "code": "BS", "opt": "BS"}
     }
@@ -5297,138 +5407,157 @@ def generate_all_reports():
         os.chmod(informes_folder, 0o777)
         print(f"[Info] Carpeta '{informes_folder}' creada.")
 
-    # Loop through each defined data source
-    for source_menu_index, source_info in data_sources.items():
-        print(f"\n--- Procesando Fuente de Datos: {source_info['name']} (Menu {source_menu_index}) ---")
+    # --- OUTER LOOP: Iterate through Tools --- 
+    for tool_code, tool_data in tool_file_dic.items():
+        current_tool_keywords = tool_data[1] # Keywords for the tool being processed
+        print(f"\n{YELLOW}>>> Procesando Informes para Herramienta(s): {', '.join(current_tool_keywords)} <<< {RESET}")
+        print("="*60)
+        processed_sources_for_tool = 0
 
-        # --- Read the CORRECT metadata CSV for THIS data source ---
-        portada_csv_path = f"pub-assets/{source_info['code']}-Portada.csv"
-        portada_df = None
-        if os.path.exists(portada_csv_path):
-            try:
-                portada_df = pd.read_csv(portada_csv_path, sep=';', quotechar='"', skipinitialspace=True)
-                portada_df.columns = portada_df.columns.str.strip()
-                print(f"  [Info] Metadata cargada desde {portada_csv_path}")
-                if 'Nro.' in portada_df.columns:
-                     portada_df['Nro.'] = portada_df['Nro.'].astype(str)
-                if 'Cód' in portada_df.columns:
-                     portada_df['Cód'] = portada_df['Cód'].astype(str)
-            except Exception as e:
-                print(f"  {YELLOW}[Warning] No se pudo cargar el archivo de metadatos {portada_csv_path}: {e}. Se continuará sin metadatos para esta fuente.{RESET}")
-                portada_df = None # Ensure df is None if loading failed
-        else:
-            print(f"  {YELLOW}[Warning] No se encontró el archivo de metadatos: {portada_csv_path}. Se continuará sin metadatos para esta fuente.{RESET}")
-            portada_df = None # Ensure df is None if file is missing
-        # ---------------------------------------------------------
+        # --- INNER LOOP: Iterate through Data Sources for the current tool --- 
+        for source_menu_index, source_info in data_sources.items():
+            print(f"\n  -- Intentando Fuente: {source_info['name']} --")
 
-        menu = source_menu_index
-        actual_menu = source_info['name']
-        actual_opt = source_info['opt']
-        top_choice = 1 # Simulate selecting option 1
+            # --- Load Metadata for THIS data source ---
+            portada_csv_path = f"pub-assets/{source_info['code']}-Portada.csv"
+            portada_df = None
+            if os.path.exists(portada_csv_path):
+                try:
+                    portada_df = pd.read_csv(portada_csv_path, sep=';', quotechar='"', skipinitialspace=True)
+                    portada_df.columns = portada_df.columns.str.strip()
+                    # print(f"    [Info] Metadata cargada desde {portada_csv_path}") # Less verbose
+                    if 'Nro.' in portada_df.columns:
+                         portada_df['Nro.'] = portada_df['Nro.'].astype(str)
+                    if 'Cód' in portada_df.columns:
+                         portada_df['Cód'] = portada_df['Cód'].astype(str)
+                except Exception as e:
+                    print(f"    {YELLOW}[Warning] No se pudo cargar {portada_csv_path}: {e}. Se continuará sin metadatos.{RESET}")
+                    portada_df = None
+            else:
+                print(f"    {YELLOW}[Warning] No se encontró {portada_csv_path}. Se continuará sin metadatos.{RESET}")
+                portada_df = None
+            # ------------------------------------------
 
-        processed_tools_for_source = 0
-        for tool_code, tool_data in tool_file_dic.items():
-            tool_keywords = tool_data[1] # The list of keywords/tools
-            data_file_index = 0 # Determine index based on menu
+            # --- Set variables for this specific Tool/Source combo --- 
+            menu = source_menu_index
+            actual_menu = source_info['name']
+            actual_opt = source_info['opt']
+            all_keywords = current_tool_keywords # Use tool keywords from outer loop
+            top_choice = 1 # Simulate selecting option 1
+
+            # --- Determine correct data_filename --- 
+            data_file_index = 0 
             if menu == 1: data_file_index = 0
             elif menu == 2: data_file_index = 2
             elif menu == 3: data_file_index = 3
             elif menu == 4: data_file_index = 4
             elif menu == 5: data_file_index = 5
+            current_data_filename = tool_data[data_file_index] # Local name for clarity
 
-            # --- Assign to GLOBAL data_filename BEFORE calling init_variables ---
-            data_filename = tool_data[data_file_index]
-            # ------------------------------------------------------------------
-
-            # Check if data file actually exists for this tool/source combo
-            full_data_path = os.path.join("dbase", data_filename)
+            # --- Check if data file exists --- 
+            full_data_path = os.path.join("dbase", current_data_filename)
             if not os.path.exists(full_data_path):
-                 # print(f"  [Skipping] Archivo de datos no encontrado para '{tool_keywords[0]}' en {source_info['name']}: {data_filename}") # Less verbose skipping
-                 continue # Skip to the next tool if data file is missing
+                 print(f"    {YELLOW}[Skipping] Archivo de datos no encontrado: {current_data_filename}{RESET}")
+                 continue 
+            
+            # --- Assign to GLOBAL data_filename REQUIRED by init_variables --- 
+            data_filename = current_data_filename
+            # ------------------------------------------------------------------
+            
+            print(f"    Procesando con archivo: {data_filename}")
 
-            print(f"\n  Procesando Herramienta(s): {', '.join(tool_keywords)} con fuente {source_info['name']}")
-            all_keywords = tool_keywords
-
+            # --- Generate Report for this Tool/Source --- 
             try:
-                # Now call init_variables, which can access the global data_filename
+                # 1. Initialize variables 
                 init_variables()
-                
-                # Check if init_variables successfully processed data (trends_results should exist and not be None)
-                # Also check if the specific keyword data exists within trends_results
+
+                # 2. Check data availability after init
                 trends_data_available = False
                 if 'trends_results' in globals() and trends_results is not None:
-                    # Check if 'all_data' exists and the keyword is a column
-                     if 'all_data' in trends_results and not trends_results['all_data'].empty and tool_keywords[0] in trends_results['all_data'].columns:
+                     if 'all_data' in trends_results and not trends_results['all_data'].empty and all_keywords[0] in trends_results['all_data'].columns:
                          trends_data_available = True
-                     # Fallback check in case 'all_data' isn't the primary check
-                     elif 'last_20_years_data' in trends_results and not trends_results['last_20_years_data'].empty and tool_keywords[0] in trends_results['last_20_years_data'].columns:
+                     elif 'last_20_years_data' in trends_results and not trends_results['last_20_years_data'].empty and all_keywords[0] in trends_results['last_20_years_data'].columns:
                           trends_data_available = True
-
-
                 if not trends_data_available:
-                     print(f"    {YELLOW}[Skipping] No se encontraron datos válidos después de la inicialización para {', '.join(all_keywords)} / {source_info['name']}.{RESET}")
+                     print(f"      {YELLOW}[Skipping] No se encontraron datos válidos post-inicialización.{RESET}")
                      continue
 
-
-                # 2. Run Results Generation (includes plotting etc.)
-                print(f"    Generando resultados y gráficos para: {unique_folder}...")
+                # 3. Run Results Generation
+                print(f"      Generando resultados y gráficos ({unique_folder})...")
                 results()
 
-                # 3. Run AI Analysis
-                print("    Generando análisis AI...")
+                # 4. Run AI Analysis
+                print("      Generando análisis AI...")
                 ai_analysis()
 
-                # 4. Generate PDF Report
-                print("    Generando reporte PDF...")
+                # 5. Generate PDF Report
+                print("      Generando reporte PDF...")
                 report_pdf()
 
-                # === Post-generation: Copy and Rename ===
+                # 6. Copy and Rename PDF
                 original_pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
-
                 if os.path.exists(original_pdf_path):
                     nro_val = "XXX"
                     cod_val = "XX"
-                    tool_name_for_lookup = tool_keywords[0]
+                    tool_name_for_lookup = all_keywords[0]
 
-                    # --- Use the portada_df loaded for the CURRENT source ---
                     if portada_df is not None:
                          match = portada_df[portada_df['Herramienta'] == tool_name_for_lookup]
                          if not match.empty:
-                              # Get Nro and Cód directly from the first match
                               nro_val = match.iloc[0].get('Nro.', nro_val)
                               cod_val = match.iloc[0].get('Cód', cod_val)
                          else:
-                              print(f"    {YELLOW}[Warning] No se encontró metadatos (Nro, Cód) para la herramienta: '{tool_name_for_lookup}' en {portada_csv_path}{RESET}")
+                              print(f"      {YELLOW}[Warning] Metadatos no encontrados para '{tool_name_for_lookup}' en {portada_csv_path}{RESET}")
                     else:
-                         print(f"    {YELLOW}[Warning] Saltando búsqueda de metadatos porque el archivo no se cargó: {portada_csv_path}{RESET}")
-                    # --------------------------------------------------------
+                         print(f"      {YELLOW}[Warning] Saltando búsqueda de metadatos (archivo no cargado).{RESET}")
 
-                    # Construct the new filename using only Nro and Cód (which includes source)
                     new_filename = f"{str(nro_val).strip()}-{str(cod_val).strip()}.pdf"
                     new_pdf_path = os.path.join(informes_folder, new_filename)
-
+                    
                     # Copy the PDF
                     try:
                         shutil.copy2(original_pdf_path, new_pdf_path) # copy2 preserves metadata
-                        print(f"    {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
-                        processed_tools_for_source += 1
-                    except Exception as copy_e:
-                        print(f"    {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
+                        print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
+                        processed_sources_for_tool += 1
 
+                        # --- Call README Update --- 
+                        if portada_df is not None and not match.empty:
+                             # Construct the full title (use .get with default values)
+                             titulo_prefix = match.iloc[0].get('Título', 'Título No Encontrado')
+                             herramienta_name = match.iloc[0].get('Herramienta', tool_name_for_lookup) 
+                             full_titulo = f"{str(titulo_prefix).strip()} {str(herramienta_name).strip()}"
+                             
+                             # Ensure Nro and Informe Code are strings for dictionary key safety if needed later
+                             report_readme_info = {
+                                 'nro': str(nro_val).strip(), 
+                                 'informe_code': str(cod_val).strip(), 
+                                 'titulo': full_titulo,
+                                 'pdf_filename': new_filename # The actual filename used
+                             }
+                             update_readme(report_readme_info)
+                        else:
+                             print(f"      {YELLOW}[Warning README] No se actualizará README.MD porque faltan metadatos para '{tool_name_for_lookup}'.{RESET}")
+                        # ------------------------
+
+                    except Exception as copy_e:
+                        print(f"      {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
                 else:
-                    print(f"    {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
+                    print(f"      {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
 
             except Exception as e:
-                print(f"  {RED}[Error General] Ocurrió un error procesando {', '.join(all_keywords)} / {source_info['name']}: {e}{RESET}")
-                import traceback
-                traceback.print_exc() # Print detailed traceback for debugging
-            # === End replication of Option 1 logic ===
-
-        print(f"--- Fuente de Datos {source_info['name']} completada. {processed_tools_for_source} informes generados. ---")
-
+                print(f"    {RED}[Error General] Procesando {source_info['name']}: {e}{RESET}")
+                traceback.print_exc()
+            # --- End Report Generation Try/Except ---
+            
+        # --- End Inner Loop (Sources) ---
+        print("="*60)
+        print(f"<<< Herramienta(s) {', '.join(current_tool_keywords)} completada. {processed_sources_for_tool} informes generados. >>>")
+        
+    # --- End Outer Loop (Tools) ---
     print("\n" + "="*60)
-    print(" Generación de Todos los Informes Completada")
+    print(" Generación de Todos los Informes (Batch) Completada")
     print("="*60 + "\n")
+# <<< End of generate_all_reports function >>>
 
     
 if __name__ == "__main__":
