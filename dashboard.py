@@ -2594,10 +2594,10 @@ def create_seasonal_decomposition(source_column, data):
         )
         
         # Update y-axes titles
-        fig.update_yaxes(title_text="Original", row=1, col=1, titlefont=dict(size=10))
-        fig.update_yaxes(title_text="Tendencia", row=2, col=1, titlefont=dict(size=10))
-        fig.update_yaxes(title_text="Estacional", row=3, col=1, titlefont=dict(size=10))
-        fig.update_yaxes(title_text="Residuos", row=4, col=1, titlefont=dict(size=10))
+        fig.update_yaxes(title_text="Original", row=1, col=1, title_font=dict(size=10))
+        fig.update_yaxes(title_text="Tendencia", row=2, col=1, title_font=dict(size=10))
+        fig.update_yaxes(title_text="Estacional", row=3, col=1, title_font=dict(size=10))
+        fig.update_yaxes(title_text="Residuos", row=4, col=1, title_font=dict(size=10))
         
         # Update x-axes
         for i in range(1, 5):

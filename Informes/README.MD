@@ -2,6 +2,7 @@
 
 | Nro | Informe | Título | Enlace |
 |---|---|---|---|
+| 2 | 02-GT | Análisis de Tendencias de Búsqueda en Google Trends para Gestión de la Cadena de Suministro | [Informe_02-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_02-GT.pdf) |
 | 5 | 05-GT | Análisis de Tendencias de Búsqueda en Google Trends para Experiencia del Cliente | [Informe_05-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_05-GT.pdf) |
 | 6 | 06-GT | Análisis de Tendencias de Búsqueda en Google Trends para Calidad Total | [Informe_06-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_06-GT.pdf) |
 | 8 | 08-GT | Análisis de Tendencias de Búsqueda en Google Trends para Benchmarking | [Informe_08-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_08-GT.pdf) |
@@ -9,7 +10,9 @@
 | 10 | 10-GT | Análisis de Tendencias de Búsqueda en Google Trends para Cuadro de Mando Integral | [Informe_10-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_10-GT.pdf) |
 | 11 | 11-GT | Análisis de Tendencias de Búsqueda en Google Trends para Alianzas y Capital de Riesgo | [Informe_11-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_11-GT.pdf) |
 | 14 | 14-GT | Análisis de Tendencias de Búsqueda en Google Trends para Fusiones y Adquisiciones | [Informe_14-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_14-GT.pdf) |
+| 15 | 15-GT | Análisis de Tendencias de Búsqueda en Google Trends para Gestión de Costos | [Informe_15-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_15-GT.pdf) |
 | 17 | 17-GT | Análisis de Tendencias de Búsqueda en Google Trends para Estrategias de Crecimiento | [Informe_17-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_17-GT.pdf) |
+| 25 | 02-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Gestión de la Cadena de Suministro | [Informe_02-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_02-GB.pdf) |
 | 28 | 05-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Experiencia del Cliente | [Informe_05-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_05-GB.pdf) |
 | 29 | 06-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Calidad Total | [Informe_06-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_06-GB.pdf) |
 | 31 | 08-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Benchmarking | [Informe_08-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_08-GB.pdf) |
@@ -17,6 +20,7 @@
 | 33 | 10-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Cuadro de Mando Integral | [Informe_10-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_10-GB.pdf) |
 | 34 | 11-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Alianzas y Capital de Riesgo | [Informe_11-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_11-GB.pdf) |
 | 37 | 14-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Fusiones y Adquisiciones | [Informe_14-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_14-GB.pdf) |
+| 38 | 15-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Gestión de Costos | [Informe_15-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_15-GB.pdf) |
 | 40 | 17-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Estrategias de Crecimiento | [Informe_17-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_17-GB.pdf) |
 | 51 | 05-CR | Análisis bibliométrico de Publicaciones Académicas Indexadas en Crossref.org para Experiencia del Cliente | [Informe_05-CR.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_05-CR.pdf) |
 | 52 | 06-CR | Análisis bibliométrico de Publicaciones Académicas Indexadas en Crossref.org para Calidad Total | [Informe_06-CR.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_06-CR.pdf) |
@@ -25,6 +29,7 @@
 | 56 | 10-CR | Análisis bibliométrico de Publicaciones Académicas Indexadas en Crossref.org para Cuadro de Mando Integral | [Informe_10-CR.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_10-CR.pdf) |
 | 57 | 11-CR | Análisis bibliométrico de Publicaciones Académicas Indexadas en Crossref.org para Alianzas y Capital de Riesgo | [Informe_11-CR.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_11-CR.pdf) |
 | 60 | 14-CR | Análisis bibliométrico de Publicaciones Académicas Indexadas en Crossref.org para Fusiones y Adquisiciones | [Informe_14-CR.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_14-CR.pdf) |
+| 61 | 15-CR | Análisis bibliométrico de Publicaciones Académicas Indexadas en Crossref.org para Gestión de Costos | [Informe_15-CR.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_15-CR.pdf) |
 | 63 | 17-CR | Análisis bibliométrico de Publicaciones Académicas Indexadas en Crossref.org para Estrategias de Crecimiento | [Informe_17-CR.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_17-CR.pdf) |
 | 74 | 05-BU | Análisis estadístico de la Tasa de adopción y usabilidad - Bain & Co - para Experiencia del Cliente | [Informe_05-BU.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_05-BU.pdf) |
 | 75 | 06-BU | Análisis estadístico de la Tasa de adopción y usabilidad - Bain & Co - para Calidad Total | [Informe_06-BU.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_06-BU.pdf) |
@@ -33,6 +38,7 @@
 | 79 | 10-BU | Análisis estadístico de la Tasa de adopción y usabilidad - Bain & Co - para Cuadro de Mando Integral | [Informe_10-BU.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_10-BU.pdf) |
 | 80 | 11-BU | Análisis estadístico de la Tasa de adopción y usabilidad - Bain & Co - para Alianzas y Capital de Riesgo | [Informe_11-BU.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_11-BU.pdf) |
 | 83 | 14-BU | Análisis estadístico de la Tasa de adopción y usabilidad - Bain & Co - para Fusiones y Adquisiciones | [Informe_14-BU.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_14-BU.pdf) |
+| 84 | 15-BU | Análisis estadístico de la Tasa de adopción y usabilidad - Bain & Co - para Gestión de Costos | [Informe_15-BU.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_15-BU.pdf) |
 | 86 | 17-BU | Análisis estadístico de la Tasa de adopción y usabilidad - Bain & Co - para Estrategias de Crecimiento | [Informe_17-BU.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_17-BU.pdf) |
 | 97 | 05-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Experiencia del Cliente | [Informe_05-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_05-BS.pdf) |
 | 98 | 06-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Calidad Total | [Informe_06-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_06-BS.pdf) |
@@ -41,4 +47,5 @@
 | 102 | 10-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Cuadro de Mando Integral | [Informe_10-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_10-BS.pdf) |
 | 103 | 11-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Alianzas y Capital de Riesgo | [Informe_11-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_11-BS.pdf) |
 | 106 | 14-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Fusiones y Adquisiciones | [Informe_14-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_14-BS.pdf) |
+| 107 | 15-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Gestión de Costos | [Informe_15-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_15-BS.pdf) |
 | 109 | 17-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Estrategias de Crecimiento | [Informe_17-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_17-BS.pdf) |

@@ -349,67 +349,60 @@ def smooth_transition(value, min_val, max_val, transition_range=0.2):
 # Global variable to store original values
 original_values = {}
 
-def cubic_interpolation(df, kw):
-    # Extract actual data points (non-NaN values)
+def cubic_interpolation(df, kw, menu): # Add menu parameter
+    # --- 1. Extract actual data points (non-NaN values) --- 
     actual_data = df[~df[kw].isna()]
     
-    if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
-        print(f"[Debug] Falling back to linear interpolation for {kw} (points: {len(actual_data)})")
-        return linear_interpolation(df, kw)
-    
-    # Store original values if not already stored
-    if kw not in original_values:
-         original_values[kw] = actual_data[kw].copy()
-    
-    # Get the min and max values from original data for STRICT clipping
+    if actual_data.empty or len(actual_data) < 2:
+        print(f"[Warning] Insufficient data points ({len(actual_data)}) for interpolation on {kw}. Returning original DataFrame.")
+        return df.copy()
+
+    # --- 2. Generate Daily Index & Interpolate --- 
+    start_date = actual_data.index.min()
+    end_date = actual_data.index.max()
+    daily_index = pd.date_range(start=start_date, end=end_date, freq='D')
+
+    # Convert index to numeric for interpolation (Unix timestamps)
+    x_actual = actual_data.index.astype(int) / 10**9
+    y_actual = actual_data[kw].values
+    x_daily = daily_index.astype(int) / 10**9
+
+    # Create Cubic Spline interpolator
+    try:
+        cs = interp.CubicSpline(x_actual, y_actual, bc_type='natural')
+        y_daily = cs(x_daily)
+    except ValueError as e:
+        print(f"[Error] Cubic Spline interpolation failed for {kw}: {e}. Falling back to linear.")
+        # Fallback to linear interpolation if CubicSpline fails
+        f_linear = interp.interp1d(x_actual, y_actual, kind='linear', fill_value="extrapolate")
+        y_daily = f_linear(x_daily)
+
+    # Create DataFrame with daily interpolated data
+    df_daily = pd.DataFrame({kw: y_daily}, index=daily_index)
+
+    # --- 3. Clip interpolated values smoothly to original min/max --- 
     original_min = actual_data[kw].min()
     original_max = actual_data[kw].max()
-    # NO MARGIN - Clip strictly to original data range
-    clip_min = original_min
-    clip_max = original_max 
+    # Apply smooth transition clipping
+    df_daily[kw] = df_daily[kw].apply(lambda val: smooth_transition(val, original_min, original_max))
+    # Handle near-zero values smoothly
+    min_threshold = 0.001 
+    df_daily[kw] = df_daily[kw].apply(lambda val: min_threshold + (val * 0.1) if val < min_threshold else val)
     
-    # Ensure index is sorted AND has correct type (datetime64[ns])
-    actual_data = actual_data.sort_index()
-    actual_data.index = pd.to_datetime(actual_data.index)
-    
-    # Convert dates to numerical values (days since epoch)
-    x = (actual_data.index - pd.Timestamp('1970-01-01')).days.values.astype(float)
-    y = actual_data[kw].values
-    
-    # Create Cubic Spline
-    cs = CubicSpline(x, y, bc_type='natural')
+    # Create a copy for forcing original points
+    df_daily_clipped = df_daily.copy()
 
-    # --- 1. Interpolate at Daily frequency --- 
-    daily_date_range = pd.date_range(
-        start=actual_data.index.min(), 
-        end=actual_data.index.max(), 
-        freq='D' 
-    )
-    if daily_date_range.empty and not actual_data.empty:
-         daily_date_range = pd.date_range(start=actual_data.index.min(), periods=1, freq='D')
-    if daily_date_range.empty:
-        print(f"[Debug] Warning: Could not generate date range for {kw}. Returning empty DataFrame.")
-        return pd.DataFrame(columns=df.columns, index=pd.to_datetime([]))
-        
-    x_interp_daily = (daily_date_range - pd.Timestamp('1970-01-01')).days.values.astype(float)
-    y_interp_daily = cs(x_interp_daily)
-    
-    # --- 2. Clip daily values STRICTLY --- 
-    y_interp_daily_clipped = np.clip(y_interp_daily, clip_min, clip_max) # Use strict min/max
-    df_daily_clipped = pd.DataFrame(y_interp_daily_clipped, index=daily_date_range, columns=[kw])
-
-    # --- 3. Force original points into DAILY data --- 
+    # --- Force original points back into DAILY data (Pre-Resampling Pass) --- 
     for idx, val in actual_data[kw].items():
-         # Ensure idx is a Timestamp before checking
-         idx_ts = pd.Timestamp(idx)
-         if idx_ts in df_daily_clipped.index:
-              df_daily_clipped.loc[idx_ts, kw] = val # Overwrite daily value with exact original
-         else:
-              # Add original point if its exact date wasn't in the daily range
-              print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to DAILY data for {kw}")
-              new_row = pd.DataFrame({kw: [val]}, index=[idx_ts])
-              df_daily_clipped = pd.concat([df_daily_clipped, new_row])
-              
+        idx_ts = pd.Timestamp(idx).normalize()
+        if idx_ts in df_daily_clipped.index:
+            # print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact daily index (pre-resample).") # Optional debug
+            df_daily_clipped.loc[idx_ts, kw] = val
+        else:
+            # print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to DAILY data for {kw} (pre-resample) as exact index missing.") # Optional debug
+            new_row = pd.DataFrame({kw: [val]}, index=[idx_ts])
+            df_daily_clipped = pd.concat([df_daily_clipped, new_row])
+            
     df_daily_clipped = df_daily_clipped.sort_index()
 
     # --- Debug Print (Optional Daily Data) --- 
@@ -423,29 +416,34 @@ def cubic_interpolation(df, kw):
     # --- 5. Force original points into MONTHLY data (Final Pass) --- 
     # ---    AND calculate/store Z-score & SV for Menu 5 --- 
     if kw not in original_calc_details:
-         original_calc_details[kw] = {} # Initialize dict for this keyword
-         
+        original_calc_details[kw] = {} # Initialize dict for this keyword
+        
     for idx, val in actual_data[kw].items():
         idx_ts = pd.Timestamp(idx).normalize() 
         
         # Calculate Z-score and SV *before* forcing into monthly data
         if menu == 5:
-             try:
-                  z_score = (val - 50) / 22.0 
-                  fundamental_value = (z_score * 0.891609) + 3.0
-                  # Store calculated values globally, keyed by timestamp
-                  original_calc_details[kw][idx_ts] = {'z_score': z_score, 'sv': fundamental_value}
-             except Exception as calc_e:
-                  print(f"[Warning] Could not calculate Z/SV values for {kw} at {idx_ts}: {calc_e}")
-                  original_calc_details[kw][idx_ts] = {'z_score': np.nan, 'sv': np.nan} # Store NaN on error
+            try:
+                z_score = (val - 50) / 22.0 
+                fundamental_value = (z_score * 0.891609) + 3.0
+                # Store calculated values globally, keyed by timestamp
+                original_calc_details[kw][idx_ts] = {'z_score': z_score, 'sv': fundamental_value}
+            except Exception as calc_e:
+                print(f"[Warning] Could not calculate Z/SV values for {kw} at {idx_ts}: {calc_e}")
+                original_calc_details[kw][idx_ts] = {'z_score': np.nan, 'sv': np.nan} # Store NaN on error
+        elif menu == 3: # Handle Bain - Usability (Menu 3)
+            # If specific calculations aren't needed for Usability,
+            # ensure the entry exists with NaNs to prevent NameError later.
+            if idx_ts not in original_calc_details.get(kw, {}):
+                 original_calc_details[kw][idx_ts] = {'z_score': np.nan, 'sv': np.nan}
         
         # Force original value into monthly data
         if idx_ts in df_monthly.index:
-             # print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact monthly index.") # Optional debug
-             df_monthly.loc[idx_ts, kw] = val
+            # print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact monthly index.") # Optional debug
+            df_monthly.loc[idx_ts, kw] = val
         else:
-             # print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to MONTHLY data for {kw} as exact index missing.") # Optional debug
-             df_monthly.loc[idx_ts] = val
+            # print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to MONTHLY data for {kw} as exact index missing.") # Optional debug
+            df_monthly.loc[idx_ts] = val
 
     df_monthly = df_monthly.sort_index()
 
@@ -652,7 +650,7 @@ def get_file_data(filename, menu):
         interpolated_data = pd.DataFrame()
         for column in df.columns:
             #interpolated = bspline_interpolation(df, column)
-            interpolated = cubic_interpolation(df, column)
+            interpolated = cubic_interpolation(df, column, menu)
             interpolated_data[column] = interpolated[column]
         
         # Set the index to datetime format
