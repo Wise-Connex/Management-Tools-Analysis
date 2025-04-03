@@ -152,43 +152,80 @@ La interpretación de los resultados estadísticos debe ser *profunda*, *crític
     
 ## **G. DEFINICIÓN OPERACIONAL DE "MODA GERENCIAL" (Criterios Observables y Rígidos)**
 
-Para este análisis, los datos *sugieren fuertemente* una "moda gerencial" *si y solo si* se observan *simultáneamente* las 4 siguientes características en la métrica analizada:
+**1. OBJETIVO:**
+Clasificar la dinámica de la herramienta gerencial analizada en *este informe específico*, basándose rigurosamente en los criterios operacionales (A, B, C, D) y aplicando la interpretación **específica y diferenciada** según la **fuente de datos particular** de este informe (GT, GB, CR, BU, o BS, definidas en G.2). Para este análisis, los datos *sugieren fuertemente* una "moda gerencial" *si y solo si* se observan *simultáneamente* las 4 características clave según la interpretación específica de la fuente.
 
-**A. Adopción Rápida:** Aumento significativo y *rápido* en el uso o interés (según la fuente o nivel de indicador).
-    *   **a. Solo para datos de Bain Satisfacción:** Dada su menor volatilidad, se interpreta como una **tendencia de aumento sostenida y discernible**, más que un salto necesariamente abrupto. *(Ej. operacional: cambio acumulado > 5-8 pts en 2-4 años, O pendiente media consistente > +0.5 pts/año)*. El énfasis está en la **consistencia** de la tendencia.
+**2. DEFINICIÓN DE FUENTES DE DATOS:**
+*   **(GT) = Google Trends:** Indicador de Interés Público/Atención Mediática - Alta volatilidad esperada.
+*   **(GB) = Google Books Ngram Viewer:** Indicador de Discurso Académico/Profesional en Libros - Menor volatilidad, tendencias más lentas.
+*   **(CR) = CrossRef.org:** Indicador de Producción Académica Formal - Menor volatilidad, tendencias más lentas, posible influencia de ciclos de publicación.
+*   **(BU) = Bain & Company Usability:** Indicador de Adopción Declarada por Directivos - Volatilidad moderada, posible efecto meseta.
+*   **(BS) = Bain & Company Satisfaction:** Indicador de Valoración Percibida por Directivos - MUY BAJA volatilidad inherente, mide percepción subjetiva.
 
-**B. Pico Pronunciado:** Período identificable de máximo nivel del indicador, *claramente distinguible* como punto de inflexión superior.
-    *   **a. Solo para datos de Bain Satisfacción:** Se interpreta como un **máximo relativo claro** que actúa como punto de inflexión, distinguible de fluctuaciones menores, incluso si la diferencia absoluta de nivel respecto a puntos cercanos es moderada.
+**3. CRITERIOS OPERACIONALES (A, B, C, D) Y SU INTERPRETACIÓN ORIENTATIVA POR FUENTE:**
 
-**C. Declive Posterior:** Disminución significativa y *rápida* después del pico.
-    *   **a. Solo para datos de Bain Satisfacción:** Dada su menor volatilidad, se interpreta como una **tendencia de disminución sostenida y discernible**, más que un salto necesariamente abrupto. *(Ej. operacional: cambio acumulado < -5 a -8 pts en 2-4 años, O pendiente media consistente < -0.5 pts/año)*. El énfasis está en la **consistencia** de la tendencia.
+**A. Adopción Rápida / Auge Inicial:** Aumento significativo y relativamente rápido en la métrica.
+    *   *Interpretación Orientativa:* Evaluar "rápido" y "significativo" en relación a la línea base y volatilidad típica de **cada fuente**. Un aumento rápido en GT es mucho más abrupto que en GB/CR. Para BU puede ser un aumento consistente en 2-3 encuestas. Para BS, dada su baja volatilidad, buscar una **tendencia de aumento sostenida y discernible**, incluso si la pendiente numérica es pequeña, que marque un cambio claro respecto a la fase anterior, enfatizando la **consistencia**. *(Nota: Se elimina redundancia, la guía incluye el caso BS).*
 
-**D. Ciclo de Vida Corto:** Duración total del ciclo (Auge A - Pico B - Declive C) observable y **relativamente contenida**. *(El umbral temporal exacto debe definirse y justificarse según la métrica, ej., < 5 años para métricas volátiles como Google Trends)*.
-    *   **a. Solo para datos de Bain Satisfacción:** El umbral temporal aceptable para "contenido" **puede ser mayor** (ej., < 7-10 años) que para métricas más volátiles, siempre que el patrón A-B-C sea claramente identificable.
+**B. Pico Pronunciado:** Período identificable de máximo nivel, *claramente distinguible* como punto de inflexión superior.
+    *   *Interpretación Orientativa:* Puede ser un pico agudo (GT) o una meseta (común en BU, BS, GB, CR). Debe ser un máximo local/global *claro* antes de un cambio de tendencia. Para BS, debe ser distinguible de fluctuaciones menores dentro de su baja volatilidad general y actuar como punto de inflexión claro. *(Nota: Se elimina redundancia).*
 
-**1. Patrón de clasificación:** Definir siguiendo los criterios propuestos (A, B, C, D), aplicando las interpretaciones específicas de la sub-sección 'a.' de cada criterio **exclusivamente** cuando se analicen los datos de **Bain Satisfacción**. Para todas las demás fuentes (Google Trends, Ngram, Crossref, Bain Usabilidad), se aplica la interpretación general del criterio principal.
+**C. Declive Posterior:** Disminución significativa y relativamente rápida después del pico.
+    *   *Interpretación Orientativa:* Evaluar "rápido" y "significativo" en relación a la fuente. Un declive en GT es más abrupto que en GB/CR. Para BU puede ser un descenso consistente en 2-3 encuestas. Para BS, dada su baja volatilidad, buscar una **tendencia de disminución sostenida y discernible**, incluso si es muy gradual numéricamente. *(Nota: Se elimina redundancia).*
+
+**D. Ciclo de Vida Corto:** Duración total del ciclo (Auge A - Pico B - Declive C) observable y **relativamente contenida**.
+    *   *Interpretación Orientativa:* El umbral para "contenido" es **relativo a la fuente**. Indicativamente: MUY CORTO para GT (< 3-5 años); CORTO-MEDIO para GB/CR/BU (< 7-10 años); EXTENDIDO para BS (< 7-10 años). **Crucial:** El patrón A-B-C debe ser **completo y claramente identificable** dentro de su umbral orientativo para clasificar como Moda.
+
+**4. PATRÓN DE CLASIFICACIÓN Y DEFINICIONES CONCEPTUALES:**
+Clasificar la herramienta en UNA de las siguientes categorías principales (a, b, o c) y su subtipo correspondiente, basándose en el cumplimiento de los criterios A, B, C, D según la fuente (G.3) y las definiciones conceptuales provistas.
 
 **a) Modas Gerenciales (Cumplen A, B, C y D):**
-    *   *Criterio clave:* Auge discernible, pico claro, declive posterior, ciclo temporalmente contenido, falta de persistencia estable a largo plazo.
-    1.  **Clásica de Ciclo Corto:** A, B, C ocurren de forma clara y relativamente rápida dentro del umbral D.
-    2.  **Efímera:** Pico B muy breve, rodeado por A y C claros.
-    3.  **Declive Prolongado:** A y B claros, pero el declive C es más gradual (aunque sostenido y cumple D).
-    4.  **Recurrente:** Se observan múltiples ciclos A-B-C-D.
+    *   *Definición Conceptual Concisa:* Herramientas con ciclo de atención/adopción relativamente corto (< umbral D), auge, pico y declive significativos, sin persistencia estructural a largo plazo. Enfoques pasajeros. *(Nota: Se unifica la definición eliminando duplicados)*.
+    *   **SUBTIPOS:**
+        1.  **Clásica de Ciclo Corto:** Patrón A-B-C claro y rápido dentro del umbral D.
+        2.  **Efímera:** Pico B muy breve, A y C cortos/poco definidos. Desaparición rápida.
+        3.  **Declive Prolongado:** A y B claros, declive C más gradual pero completado dentro del umbral D.
+        4.  **Recurrente:** Múltiples ciclos cortos A-B-C-D, sin establecimiento duradero entre ciclos.
 
-**b) Doctrinas (NO cumplen patrón A-B-C-D completo):**
-    *   *Criterio clave:* Alta estabilidad relativa, relevancia a largo plazo, ausencia de ciclos claros de auge y caída definidos.
-    5.  **Pura:** Estabilidad alta; fluctuación mínima. No cumple A ni C significativamente.
-    6.  **Clásico Extrapolado / Fundacional:** Persistencia muy larga; posibles derivas muy lentas o ciclos que exceden ampliamente D. *(Nota: Pueden agruparse si la distinción fina no es crítica para el análisis cuantitativo principal)*.
+**b) Prácticas Fundamentales (NO cumplen patrón A-B-C-D completo; Alta Persistencia):**
+    *   *Definición Conceptual Concisa:* Herramientas con alta persistencia (>20-25 años), relevancia y legitimidad a largo plazo, integradas en el corpus central de la gestión. Valoración general estable o con ciclos muy largos. Resisten obsolescencia. *(Nota: Se unifica la definición)*.
+    *   **SUBTIPOS:**
+        5.  **Estable (Pura):** Alta estabilidad estructural, fluctuación mínima. No cumple A ni C significativamente. Aplicación principalmente gerencial. *(Nota: Se elimina frase contradictoria)*.
+        6.  **Persistente (Clásico Extrapolado):** Persistencia muy larga + adaptación/uso en otras disciplinas. Demuestra amplia aplicabilidad/universalidad.
+        7.  **Pilar (Fundacional):** Influencia estructural profunda, soporte para otras herramientas/prácticas. A menudo con resurgimientos claros por adaptación/habilitación.
 
-**c) Híbridos (Cumplen algunos criterios A/B/C/D pero no todos):**
-    *   *Criterio clave:* Muestran patrones transitorios o evolutivos; combinan elementos de modas y doctrinas.
-    8.  **Auge sin Declive:** Cumple A (y quizás B), pero luego se estabiliza (falla C).
-    9.  **Ciclos Largos:** Cumple A, B, C pero excede el umbral D.
-    10. **Declive Tardío:** Estabilidad inicial o auge lento, seguido por declive C claro.
-    11. **Superada:** Auge A y estabilidad/pico B largos, seguidos por declive C (puede exceder D por duración previa).
-    12. **Moda Transformada:** Cumple A y B, pero luego se estabiliza estructuralmente (falla C).
+**c) Patrones Evolutivos / Cíclicos Persistentes (NO cumplen A+B+C+D ni son PF Estable/Pura; muestran dinámicas complejas de largo plazo):**
+    *   *Definición Conceptual Concisa:* Herramientas con dinámicas complejas de largo plazo (> umbral D de Moda), sin la estabilidad de las Prácticas Fundamentales Puras. En transición, consolidación, o con ciclicidad inherente de largo plazo. Combinan elementos de modas y prácticas fundamentales. *(Nota: Se unifica la definición)*.
+    *   **SUBTIPOS:**
+        8.  **Trayectoria de Consolidación (Auge sin Declive):** Cumple A (+B), pero falla C claro (estabiliza/transforma post-pico). Posible paso hacia Práctica Fundamental. *(Incluye antigua Moda Transformada)*.
+        9.  **Dinámica Cíclica Persistente (Ciclos Largos):** Cumple A+B+C pero excede *significativamente* umbral D. Relevancia mantenida a través de oscilaciones recurrentes de largo plazo.
+        10. **Fase de Erosión Estratégica (Declive Tardío / Superada):** Período largo inicial de auge/estabilidad, seguido por declive C claro y sostenido. Posible pérdida de relevancia estructural. *(Incluye antiguas 10 y 11)*.
 
-***Importante:*** *Esta clasificación se basa estrictamente en el cumplimiento de los criterios operacionales A-B-C-D según la métrica y su interpretación específica (general o ajustada para Satisfacción). Una herramienta clasificada fuera de "Moda Gerencial" bajo esta definición rígida aún podría ser considerada una moda en un sentido conceptual más amplio.*
+***Importante:*** *Clasificación basada estrictamente en criterios operacionales y fuente. No implica juicio de valor absoluto fuera de este marco.*
+
+**5. ASIGNACIÓN DE CLASIFICACIÓN PRIMARIA (Aplicar lógica secuencial):**
+
+*   **Paso 1: ¿Moda Gerencial?** Evaluar si cumple **A+B+C+D simultáneamente** (según interpretación G.3). Si SÍ -> Asignar **Moda Gerencial (subtipo 1-4)** y proceder a G.6.
+*   **Paso 2: Si NO es Moda, ¿Práctica Fundamental Estable (Pura)?** Evaluar si falla A y C significativamente (alta estabilidad, mínima fluctuación). Si SÍ -> Asignar **Práctica Fundamental: Estable (5)** y proceder a G.6.
+*   **Paso 3: Si NO es Moda ni PF Estable, Evaluar Patrones Evolutivos/Cíclicos Persistentes:**
+    *   Si cumple A+B pero falla C claro -> Asignar **PECP: Trayectoria de Consolidación (8)**.
+    *   Si cumple A+B+C pero excede D significativamente -> Asignar **PECP: Dinámica Cíclica Persistente (9)**.
+    *   Si tuvo estabilidad/pico largo inicial y ahora muestra Declive C claro -> Asignar **PECP: Fase de Erosión Estratégica (10)**.
+    *   Si encaja en uno de estos (8, 9, 10), asignar y proceder a G.6.
+*   **Paso 4: Si NO es Moda, ni PF Estable, ni encaja claramente en PECP (8, 9, 10):** Entonces, por defecto (dada la alta persistencia implícita al no ser Moda ni PF Estable), clasificar como **Práctica Fundamental: Persistente (6) o Pilar (7)**. Proceder a G.6 y justificar la elección entre 6 y 7 basándose en evidencia de extrapolación, rol fundacional o dinámica cíclica/adaptativa observada. *(Nota: Lógica corregida y justificación añadida)*.
+
+**6. INTERPRETACIÓN PROFUNDA, CRÍTICA Y DIFERENCIADA (Sección Narrativa Obligatoria):**
+*Instrucción:* Elaborar una narrativa coherente y profunda que integre la clasificación asignada (G.5) con los hallazgos detallados de TODOS los análisis realizados (Temporal, Contextual/Tendencias, ARIMA, Estacional, Cíclico) para *esta fuente de datos específica*. La interpretación debe ir más allá de la etiqueta, enfocándose en la singularidad de la dinámica observada y su significado en el contexto de la fuente y la naturaleza de la herramienta. La narrativa debe abordar los siguientes aspectos de forma integrada y reflexiva, no como un cuestionario:
+
+*   **a) Justificación Específica de la Fuente:** Argumentar por qué la clasificación asignada es la más apropiada para los patrones observados en *esta fuente*, refiriéndose a los criterios y la naturaleza de la métrica. Analizar críticamente por qué esta fuente tiende a mostrar este patrón para esta herramienta (considerando naturaleza estratégica, sesgo de métrica, adaptación real, etc., especialmente si es PF o PECP).
+*   **b) Descripción de la "Firma Dinámica":** Caracterizar la trayectoria completa revelada por *esta fuente* usando lenguaje preciso (estable, volátil, tendencial [fuerza IIT], cíclica [períodos Fourier], reactiva [IRC], en madurez, etc.). Utilizar los Arquetipos (PF7: Resiliente Cíclica, Adaptativa Evolutiva) o los subtipos PECP (8, 9, 10) para detallar la dinámica específica.
+*   **c) Diferenciación y Singularidad:** Resaltar los matices *únicos* del patrón de esta herramienta en *esta fuente*. Comparar su "firma dinámica" con otras herramientas (si es contextualmente relevante) o con la teoría. Contextualizar cómo esta visión (derivada de *esta* fuente) complementa o contrasta con otras perspectivas.
+*   **d) Integración y Síntesis:** Construir una narrativa final coherente que sintetice la clasificación y la firma dinámica, integrando los hallazgos de *todos* los análisis relevantes de *esta fuente*. Ofrecer una interpretación rica de la *historia que cuentan estos datos específicos* sobre la evolución y naturaleza de la herramienta como práctica de gestión.
+*   **e) Implicaciones:** Discutir brevemente las implicaciones de *esta perspectiva específica* para la investigación doctoral y/o la práctica gerencial.
+
+*(Nota: Se reestructuran los puntos de G.6 para mayor claridad y fluidez narrativa, eliminando redundancias y convirtiendo las preguntas implícitas en instrucciones directas para el análisis a realizar en la narrativa).*
+
+**Meta:** Producir una clasificación rigurosa y, fundamentalmente, una interpretación rica y específica de la fuente que capture la singularidad de la dinámica de la herramienta, permitiendo conclusiones diferenciadas y académicamente sólidas para cada informe.
 
 ## **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
 
