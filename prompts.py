@@ -155,12 +155,31 @@ La interpretación de los resultados estadísticos debe ser *profunda*, *crític
 **1. OBJETIVO:**
 Clasificar la dinámica de la herramienta gerencial analizada en *este informe específico*, basándose rigurosamente en los criterios operacionales (A, B, C, D) y aplicando la interpretación **específica y diferenciada** según la **fuente de datos particular** de este informe (GT, GB, CR, BU, o BS, definidas en G.2). Para este análisis, los datos *sugieren fuertemente* una "moda gerencial" *si y solo si* se observan *simultáneamente* las 4 características clave según la interpretación específica de la fuente.
 
-**2. DEFINICIÓN DE FUENTES DE DATOS:**
-*   **(GT) = Google Trends:** Indicador de Interés Público/Atención Mediática - Alta volatilidad esperada.
-*   **(GB) = Google Books Ngram Viewer:** Indicador de Discurso Académico/Profesional en Libros - Menor volatilidad, tendencias más lentas.
-*   **(CR) = CrossRef.org:** Indicador de Producción Académica Formal - Menor volatilidad, tendencias más lentas, posible influencia de ciclos de publicación.
-*   **(BU) = Bain & Company Usability:** Indicador de Adopción Declarada por Directivos - Volatilidad moderada, posible efecto meseta.
-*   **(BS) = Bain & Company Satisfaction:** Indicador de Valoración Percibida por Directivos - MUY BAJA volatilidad inherente, mide percepción subjetiva.
+**2. DEFINICIÓN DE FUENTES DE DATOS Y NATURALEZA DEL DATO INTERPRETADO:**
+*   **(GT) = Google Trends:**
+    *   *Descripción:* Indicador de **Interés Público/Atención Mediática** relativa.
+    *   *Naturaleza del Dato:* Refleja la **curiosidad o búsqueda activa de información** por parte del público general en internet. No distingue intención (académica, comercial, personal). Es un indicador **adelantado** de atención, **altamente volátil** y sensible a eventos mediáticos, noticias y búsquedas no directamente relacionadas con la aplicación gerencial profunda. *Interpretar como un proxy de notoriedad o "hype" inicial.*
+
+*   **(GB) = Google Books Ngram Viewer:**
+    *   *Descripción:* Indicador de **Discurso Académico/Profesional en Libros**.
+    *   *Naturaleza del Dato:* Refleja la frecuencia relativa de un término en un **corpus masivo de libros digitalizados** a lo largo del tiempo. Es un indicador **rezagado** de la consolidación de un concepto en la literatura publicada (principalmente académica y profesional). Muestra **tendencias lentas**, menor volatilidad que GT, y está sujeto a sesgos del corpus (idioma, tipo de libro). *Interpretar como un proxy de la penetración y legitimación conceptual en el discurso escrito formal.*
+
+*   **(CR) = CrossRef.org:**
+    *   *Descripción:* Indicador de **Producción Académica Formal** (artículos, libros, actas indexadas con DOI).
+    *   *Naturaleza del Dato:* Refleja el **volumen o la proporción de publicaciones académicas** formales que mencionan la herramienta. Es un indicador de la **actividad investigadora y el interés académico formalizado**. Muestra tendencias lentas, menor volatilidad, y puede estar influenciado por ciclos de publicación, financiación de investigación y la emergencia de subcampos específicos. *Interpretar como un proxy de la legitimidad y actividad dentro de la comunidad científica/académica.*
+
+*   **(BU) = Bain & Company Usabilidad:**
+    *   *Descripción:* Indicador de **Adopción Declarada por Directivos** (% de encuestados que reportan usar la herramienta).
+    *   *Naturaleza del Dato:* Refleja la **penetración de mercado percibida o declarada** entre una muestra de directivos. Es una **métrica de comportamiento reportado**, no necesariamente de uso efectivo o profundo. Tiene **volatilidad moderada**, puede mostrar efectos meseta (saturación de adopción) y está sujeta a la composición de la muestra y la definición exacta de "uso" en la encuesta. *Interpretar como un proxy de la difusión y aceptación declarada en la práctica gerencial.*
+
+*   **(BS) = Bain & Company Satisfacción:**
+    *   *Descripción:* Indicador de **Valoración Percibida por Directivos** (nivel de satisfacción reportado con la herramienta, en escala normalizada ~0-100).
+    *   *Naturaleza del Dato:* Refleja la **opinión subjetiva** de los directivos usuarios sobre la **utilidad, efectividad o cumplimiento de expectativas** de la herramienta. Es una métrica de percepción de valor, influenciada por experiencia, implementación y contexto.
+    *   *Características Clave para Interpretación:*
+        *   **MUY BAJA Volatilidad Inherente:** Comparada con otras métricas (GT, BU), los cambios numéricos absolutos son pequeños. La desviación estándar suele ser baja.
+        *   **ALTA SENSIBILIDAD REQUERIDA EN EL ANÁLISIS:** Debido a la baja volatilidad, **cambios pequeños pero consistentes (incluso de décimas o pocos puntos acumulados) deben considerarse potencialmente significativos** al aplicar los criterios A (Auge) y C (Declive). El énfasis debe estar en la **dirección sostenida y discernible** de la tendencia, más que en la magnitud absoluta del cambio.
+        *   **Indicador de Valor Percibido Estable:** Generalmente refleja una visión más estable y menos sensible a la "novedad" o "hype" que GT o BU. Un patrón persistente aquí sugiere una valoración estratégica/operativa consolidada.
+    *   *Interpretación General:* Interpretar como un proxy de la **satisfacción y el valor estratégico/operativo percibido** por los usuarios clave. *Analizar con alta sensibilidad a cambios direccionales consistentes, aunque sean numéricamente pequeños.*
 
 **3. CRITERIOS OPERACIONALES (A, B, C, D) Y SU INTERPRETACIÓN ORIENTATIVA POR FUENTE:**
 
@@ -240,7 +259,7 @@ El análisis debe *contribuir* a responder estas preguntas, *pero no es necesari
 
 ## **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente)**
 
-Cuando analices la información proporcionada, ten en cuenta la naturaleza específica de los datos según la base de datos de la que provienen. Los datos se originan en diversas fuentes, cada una con sus propias características, fortalezas y limitaciones, las cuales se detallan a continuación bajo el apartado "Naturaleza de los Datos". Asegúrate de adaptar tu respuesta basado especialmente en el contexto de estas condiciones particulares que son propias, incluyendo: (i) el tipo de fuente, (ii) su estructura, (iii) nivel de detalle, (iv) posibles sesgos, (v) restricciones de formato o (vi) cualquier otra particularidad que pueda influir en la interpretación o el procesamiento de la información. Utiliza esta información para garantizar que el análisis sea preciso, contextualizado y respete las especificidades de cada base de datos proporcionada:
+**IMPORTANNTE:** Cuando analices la información proporcionada, ten en cuenta la naturaleza específica de los datos según la base de datos de la que provienen. Los datos se originan en diversas fuentes, cada una con sus propias características, fortalezas y limitaciones, las cuales se detallan a continuación bajo el apartado "Naturaleza de los Datos". Asegúrate de adaptar tu respuesta basado especialmente en el contexto de estas condiciones particulares que son propias, incluyendo: (i) el tipo de fuente, (ii) su estructura, (iii) nivel de detalle, (iv) posibles sesgos, (v) restricciones de formato o (vi) cualquier otra particularidad que pueda influir en la interpretación o el procesamiento de la información. Utiliza esta información para garantizar que el análisis sea preciso, contextualizado y respete las especificidades de cada base de datos proporcionada:
 
 ## * **GOOGLE TRENDS** (“Tendencias de Google”)
     *   *Naturaleza:* Datos de frecuencia de búsqueda *en tiempo real* (o con rezago mínimo). Reflejan el interés *actual* y la *popularidad* de un término entre los usuarios de Google. Son un indicador de *atención* y *curiosidad* pública.
