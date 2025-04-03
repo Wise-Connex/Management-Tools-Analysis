@@ -349,60 +349,67 @@ def smooth_transition(value, min_val, max_val, transition_range=0.2):
 # Global variable to store original values
 original_values = {}
 
-def cubic_interpolation(df, kw, menu): # Add menu parameter
-    # --- 1. Extract actual data points (non-NaN values) --- 
+def cubic_interpolation(df, kw):
+    # Extract actual data points (non-NaN values)
     actual_data = df[~df[kw].isna()]
     
-    if actual_data.empty or len(actual_data) < 2:
-        print(f"[Warning] Insufficient data points ({len(actual_data)}) for interpolation on {kw}. Returning original DataFrame.")
-        return df.copy()
-
-    # --- 2. Generate Daily Index & Interpolate --- 
-    start_date = actual_data.index.min()
-    end_date = actual_data.index.max()
-    daily_index = pd.date_range(start=start_date, end=end_date, freq='D')
-
-    # Convert index to numeric for interpolation (Unix timestamps)
-    x_actual = actual_data.index.astype(int) / 10**9
-    y_actual = actual_data[kw].values
-    x_daily = daily_index.astype(int) / 10**9
-
-    # Create Cubic Spline interpolator
-    try:
-        cs = interp.CubicSpline(x_actual, y_actual, bc_type='natural')
-        y_daily = cs(x_daily)
-    except ValueError as e:
-        print(f"[Error] Cubic Spline interpolation failed for {kw}: {e}. Falling back to linear.")
-        # Fallback to linear interpolation if CubicSpline fails
-        f_linear = interp.interp1d(x_actual, y_actual, kind='linear', fill_value="extrapolate")
-        y_daily = f_linear(x_daily)
-
-    # Create DataFrame with daily interpolated data
-    df_daily = pd.DataFrame({kw: y_daily}, index=daily_index)
-
-    # --- 3. Clip interpolated values smoothly to original min/max --- 
+    if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
+        print(f"[Debug] Falling back to linear interpolation for {kw} (points: {len(actual_data)})")
+        return linear_interpolation(df, kw)
+    
+    # Store original values if not already stored
+    if kw not in original_values:
+         original_values[kw] = actual_data[kw].copy()
+    
+    # Get the min and max values from original data for STRICT clipping
     original_min = actual_data[kw].min()
     original_max = actual_data[kw].max()
-    # Apply smooth transition clipping
-    df_daily[kw] = df_daily[kw].apply(lambda val: smooth_transition(val, original_min, original_max))
-    # Handle near-zero values smoothly
-    min_threshold = 0.001 
-    df_daily[kw] = df_daily[kw].apply(lambda val: min_threshold + (val * 0.1) if val < min_threshold else val)
+    # NO MARGIN - Clip strictly to original data range
+    clip_min = original_min
+    clip_max = original_max 
     
-    # Create a copy for forcing original points
-    df_daily_clipped = df_daily.copy()
+    # Ensure index is sorted AND has correct type (datetime64[ns])
+    actual_data = actual_data.sort_index()
+    actual_data.index = pd.to_datetime(actual_data.index)
+    
+    # Convert dates to numerical values (days since epoch)
+    x = (actual_data.index - pd.Timestamp('1970-01-01')).days.values.astype(float)
+    y = actual_data[kw].values
+    
+    # Create Cubic Spline
+    cs = CubicSpline(x, y, bc_type='natural')
 
-    # --- Force original points back into DAILY data (Pre-Resampling Pass) --- 
+    # --- 1. Interpolate at Daily frequency --- 
+    daily_date_range = pd.date_range(
+        start=actual_data.index.min(), 
+        end=actual_data.index.max(), 
+        freq='D' 
+    )
+    if daily_date_range.empty and not actual_data.empty:
+         daily_date_range = pd.date_range(start=actual_data.index.min(), periods=1, freq='D')
+    if daily_date_range.empty:
+        print(f"[Debug] Warning: Could not generate date range for {kw}. Returning empty DataFrame.")
+        return pd.DataFrame(columns=df.columns, index=pd.to_datetime([]))
+        
+    x_interp_daily = (daily_date_range - pd.Timestamp('1970-01-01')).days.values.astype(float)
+    y_interp_daily = cs(x_interp_daily)
+    
+    # --- 2. Clip daily values STRICTLY --- 
+    y_interp_daily_clipped = np.clip(y_interp_daily, clip_min, clip_max) # Use strict min/max
+    df_daily_clipped = pd.DataFrame(y_interp_daily_clipped, index=daily_date_range, columns=[kw])
+
+    # --- 3. Force original points into DAILY data --- 
     for idx, val in actual_data[kw].items():
-        idx_ts = pd.Timestamp(idx).normalize()
-        if idx_ts in df_daily_clipped.index:
-            # print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact daily index (pre-resample).") # Optional debug
-            df_daily_clipped.loc[idx_ts, kw] = val
-        else:
-            # print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to DAILY data for {kw} (pre-resample) as exact index missing.") # Optional debug
-            new_row = pd.DataFrame({kw: [val]}, index=[idx_ts])
-            df_daily_clipped = pd.concat([df_daily_clipped, new_row])
-            
+         # Ensure idx is a Timestamp before checking
+         idx_ts = pd.Timestamp(idx)
+         if idx_ts in df_daily_clipped.index:
+              df_daily_clipped.loc[idx_ts, kw] = val # Overwrite daily value with exact original
+         else:
+              # Add original point if its exact date wasn't in the daily range
+              print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to DAILY data for {kw}")
+              new_row = pd.DataFrame({kw: [val]}, index=[idx_ts])
+              df_daily_clipped = pd.concat([df_daily_clipped, new_row])
+              
     df_daily_clipped = df_daily_clipped.sort_index()
 
     # --- Debug Print (Optional Daily Data) --- 
@@ -416,34 +423,29 @@ def cubic_interpolation(df, kw, menu): # Add menu parameter
     # --- 5. Force original points into MONTHLY data (Final Pass) --- 
     # ---    AND calculate/store Z-score & SV for Menu 5 --- 
     if kw not in original_calc_details:
-        original_calc_details[kw] = {} # Initialize dict for this keyword
-        
+         original_calc_details[kw] = {} # Initialize dict for this keyword
+         
     for idx, val in actual_data[kw].items():
         idx_ts = pd.Timestamp(idx).normalize() 
         
         # Calculate Z-score and SV *before* forcing into monthly data
         if menu == 5:
-            try:
-                z_score = (val - 50) / 22.0 
-                fundamental_value = (z_score * 0.891609) + 3.0
-                # Store calculated values globally, keyed by timestamp
-                original_calc_details[kw][idx_ts] = {'z_score': z_score, 'sv': fundamental_value}
-            except Exception as calc_e:
-                print(f"[Warning] Could not calculate Z/SV values for {kw} at {idx_ts}: {calc_e}")
-                original_calc_details[kw][idx_ts] = {'z_score': np.nan, 'sv': np.nan} # Store NaN on error
-        elif menu == 3: # Handle Bain - Usability (Menu 3)
-            # If specific calculations aren't needed for Usability,
-            # ensure the entry exists with NaNs to prevent NameError later.
-            if idx_ts not in original_calc_details.get(kw, {}):
-                 original_calc_details[kw][idx_ts] = {'z_score': np.nan, 'sv': np.nan}
+             try:
+                  z_score = (val - 50) / 22.0 
+                  fundamental_value = (z_score * 0.891609) + 3.0
+                  # Store calculated values globally, keyed by timestamp
+                  original_calc_details[kw][idx_ts] = {'z_score': z_score, 'sv': fundamental_value}
+             except Exception as calc_e:
+                  print(f"[Warning] Could not calculate Z/SV values for {kw} at {idx_ts}: {calc_e}")
+                  original_calc_details[kw][idx_ts] = {'z_score': np.nan, 'sv': np.nan} # Store NaN on error
         
         # Force original value into monthly data
         if idx_ts in df_monthly.index:
-            # print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact monthly index.") # Optional debug
-            df_monthly.loc[idx_ts, kw] = val
+             # print(f"[Debug] Forcing original {kw} point {idx_ts} ({val}) onto exact monthly index.") # Optional debug
+             df_monthly.loc[idx_ts, kw] = val
         else:
-            # print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to MONTHLY data for {kw} as exact index missing.") # Optional debug
-            df_monthly.loc[idx_ts] = val
+             # print(f"[Debug] Adding original point {idx_ts} ({val}) explicitly to MONTHLY data for {kw} as exact index missing.") # Optional debug
+             df_monthly.loc[idx_ts] = val
 
     df_monthly = df_monthly.sort_index()
 
@@ -650,7 +652,7 @@ def get_file_data(filename, menu):
         interpolated_data = pd.DataFrame()
         for column in df.columns:
             #interpolated = bspline_interpolation(df, column)
-            interpolated = cubic_interpolation(df, column, menu)
+            interpolated = cubic_interpolation(df, column)
             interpolated_data[column] = interpolated[column]
         
         # Set the index to datetime format
@@ -2760,80 +2762,19 @@ def analyze_trends(trend):
 # *************************************************************************************
 def init_variables():
     # Declare all necessary globals that were set *before* this call
-    global gem_temporal_trends_sp, gem_cross_keyword_sp, gem_industry_specific_sp
-    global gem_arima_sp, gem_seasonal_sp, gem_fourier_sp, gem_conclusions_sp
-    global csv_fourier, csv_fourierA, csv_means_trends, csv_means_trendsA
-    global csv_correlation, csv_regression, csv_arima, csv_arimaA, csv_arimaB
-    global csv_seasonal, csv_seasonalA, menu, actual_menu, actual_opt
-    global title_odd_charts, title_even_charts, wider, all_keywords, filename
-    global unique_folder, csv_last_20_data, csv_last_15_data, csv_last_10_data
-    global csv_last_5_data, csv_last_year_data, csv_all_data, trends_results
-    global all_kw, current_year, charts, one_keyword, dbase_options, top_choice
-    global combined_dataset, selected_keyword, selected_sources
-    global earliest_date, latest_date, earliest_year, latest_year, total_years
-    global keycharts, csv_combined_dataset, skip_seasonal, skip_arima
-    global csv_significance, original_values, original_calc_details # Add original_calc_details back here
-
-    # Initialize or reset variables specific to a run
-    gem_temporal_trends_sp = ""
-    gem_cross_keyword_sp = ""
-    gem_industry_specific_sp = ""
-    gem_arima_sp = ""
-    gem_seasonal_sp = ""
-    gem_fourier_sp = ""
-    gem_conclusions_sp = ""
-    csv_fourier = []
-    csv_fourierA = []
-    csv_means_trends = ""
-    csv_means_trendsA = ""
-    csv_correlation = ""
-    csv_regression = ""
-    csv_arima = ""
-    csv_arimaA = []
-    csv_arimaB = []
-    csv_seasonal = ""
-    csv_seasonalA = ""
-    menu = None
-    actual_menu = None
-    actual_opt = None
-    title_odd_charts = ""
-    title_even_charts = ""
-    wider = False
-    all_keywords = []
-    filename = ""
-    unique_folder = ""
-    csv_last_20_data = ""
-    csv_last_15_data = ""
-    csv_last_10_data = ""
-    csv_last_5_data = ""
-    csv_last_year_data = ""
-    csv_all_data = ""
-    trends_results = {}
-    all_kw = ""
-    current_year = None
-    charts = ""
-    one_keyword = False
-    dbase_options = {}
-    top_choice = None
-    combined_dataset = None
-    selected_keyword = None
-    selected_sources = []
-    earliest_date = None
-    latest_date = None
-    earliest_year = None
-    latest_year = None
-    total_years = None
-    keycharts = []
-    csv_combined_dataset = []
-    skip_seasonal = False
-    skip_arima = False
-    csv_significance = []
+    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder
+    global top_choice, wider, one_keyword, data_filename # data_filename needed for option 1
+    global csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data
+    global csv_last_year_data, csv_all_data, csv_means_trends, trends_results
+    global all_kw, current_year, charts, image_markdown
+    global combined_dataset, combined_dataset2, datasets_norm_full, all_datasets_full
+    global trend_analysis_text
+    global original_values, original_calc_details 
+    
+    # Reset dictionaries
     original_values = {}
-    original_calc_details = {} # Ensure initialization is here
-
-    # Reinitialize lists (if needed, depends on logic)
-    csv_fourier = []
-
+    original_calc_details = {}
+    
     image_markdown = "\n\n# Gráficos\n\n"
     plt.style.use('ggplot')
     current_year = datetime.now().year
@@ -4798,35 +4739,11 @@ def get_filenames_for_keyword(keyword, selected_sources):
     
     for source in selected_sources:
         index = source_index_map[source]
-        found = False # Flag to track if keyword was found for this source
         for key, value in tool_file_dic.items():
-            # Check if value[1] exists and is iterable before checking 'in'
-            if len(value) > 1 and isinstance(value[1], (list, tuple, set)) and keyword in value[1]:
-                # Also check if the filename index exists
-                if index < len(value):
-                    # Ensure the value at the index is a string (path)
-                    if isinstance(value[index], str) and value[index].strip():
-                        filenames[source] = value[index]
-                        found = True
-                        break # Found the keyword, move to the next source
-                    else:
-                        print(f"[Warning] Invalid or empty filename path at index {index} for tool '{key}' and source {source}.")
-                        filenames[source] = None # Indicate invalid path
-                        found = True
-                        break
-                else:
-                    print(f"[Warning] Filename index {index} out of range for tool '{key}' and source {source}.")
-                    filenames[source] = None # Indicate missing filename
-                    found = True
-                    break
-            elif len(value) <= 1 or not isinstance(value[1], (list, tuple, set)):
-                 print(f"[Warning] Invalid structure for tool_file_dic entry '{key}': keywords list missing or not iterable.")
-                 # No break here, continue checking other entries just in case
-
-        if not found:
-            print(f"[Warning] Keyword '{keyword}' not found in tool_file_dic for source {source}. Assigning None.")
-            filenames[source] = None # Assign None if keyword wasn't found for this source
-
+            if keyword in value[1]:
+                filenames[source] = value[index]
+                break
+    
     return filenames
 
 def process_dataset(df, source, all_datasets, selected_sources):
@@ -5103,58 +5020,31 @@ def process_and_normalize_datasets_full(allKeywords):
     return datasets_norm_full, selected_sources
 
 def get_file_data2(selected_keyword, selected_sources):
-    init_variables()  # Call init_variables here to ensure globals are set
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
+    global menu  # Declare menu as global
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
-    
+
     datasets = {}
     all_raw_datasets = {}
 
     for source in selected_sources:
         #print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
         menu = source  # This now sets the global menu variable
-        
-        # Get the filename for the current source
-        data_filename = filenames.get(source) 
-        
-        # --- Check if filename is valid --- 
-        if not data_filename or not isinstance(data_filename, str) or not data_filename.strip():
-            print(f"{YELLOW}[Warning] No valid data filename found for source {source} ({dbase_options.get(source, 'Unknown')}). Skipping this source.{RESET}")
-            continue # Skip to the next source
-            
-        # --- Attempt to read the file --- 
-        try:
-            df = get_file_data(data_filename, menu)
-        except FileNotFoundError:
-            print(f"{RED}[Error] Data file not found: {data_filename} for source {source}. Skipping this source.{RESET}")
-            continue # Skip to the next source
-        except Exception as e:
-            print(f"{RED}[Error] Failed to read or process data file {data_filename} for source {source}: {e}. Skipping this source.{RESET}")
-            continue # Skip to the next source
-            
-        # --- Check if DataFrame is empty --- 
+        df = get_file_data(filenames.get(source, 'Archivo no encontrado'), menu)
         if df.empty or (df == 0).all().all():
-            print(f"{YELLOW}[Warning] Dataset for source {source} ({data_filename}) is empty or contains only zeros. Skipping.{RESET}")
+            print(f"Warning: Dataset for source {source} is empty or contains only zeros.")
             continue
-            
         all_raw_datasets[source] = df
 
-    # --- Check if any valid datasets were loaded --- 
-    if not all_raw_datasets:
-        print(f"{RED}[Error] No valid datasets could be loaded for the selected sources and keyword. Aborting further processing.{RESET}")
-        return {}, selected_sources # Return empty dict and original sources
-        
     for source in selected_sources:
         if source in all_raw_datasets:
-            try:
-                datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
-                print(f"\nConjunto de datos procesado: {source}")
-                print(datasets[source].head())
-                print(f"Dimensiones: {datasets[source].shape}\n\n")
-            except Exception as e:
-                print(f"Error processing dataset for source {source}: {str(e)}")
-                continue # Skip to the next source
+            datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
+            print(f"\nConjunto de datos procesado: {source}")
+            print(datasets[source].head())
+            print(f"Dimensiones: {datasets[source].shape}\n\n")
 
+    print(datasets)
+    
     # Normalize each dataset in datasets
     datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
 
