@@ -5,6 +5,7 @@ Statistical Analysis tool, of Management Tools best ranked
 
 - Author: Diomar Anez
 - Python Coder Assistant: Dimar Anez
+
   This tools are used to analyze the best ranked management tools in the market. They were created to support the Doctoral Thesis of Diomar Anez "Ontological Dichotomy in 'Management Fads'" (c)
   2024, about the Managerial Fads.
 
