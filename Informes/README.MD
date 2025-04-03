@@ -12,6 +12,7 @@
 | 14 | 14-GT | Análisis de Tendencias de Búsqueda en Google Trends para Fusiones y Adquisiciones | [Informe_14-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_14-GT.pdf) |
 | 15 | 15-GT | Análisis de Tendencias de Búsqueda en Google Trends para Gestión de Costos | [Informe_15-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_15-GT.pdf) |
 | 17 | 17-GT | Análisis de Tendencias de Búsqueda en Google Trends para Estrategias de Crecimiento | [Informe_17-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_17-GT.pdf) |
+| 18 | 18-GT | Análisis de Tendencias de Búsqueda en Google Trends para Gestión del Conocimiento | [Informe_18-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_18-GT.pdf) |
 | 19 | 19-GT | Análisis de Tendencias de Búsqueda en Google Trends para Gestión del Cambio | [Informe_19-GT.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_19-GT.pdf) |
 | 25 | 02-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Gestión de la Cadena de Suministro | [Informe_02-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_02-GB.pdf) |
 | 28 | 05-GB | Análisis de Frecuencia en el Corpus Literario de Google Books Ngram para Experiencia del Cliente | [Informe_05-GB.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_05-GB.pdf) |
@@ -56,3 +57,4 @@
 | 106 | 14-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Fusiones y Adquisiciones | [Informe_14-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_14-BS.pdf) |
 | 107 | 15-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Gestión de Costos | [Informe_15-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_15-BS.pdf) |
 | 109 | 17-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Estrategias de Crecimiento | [Informe_17-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_17-BS.pdf) |
+| 111 | 19-BS | Análisis cuantitativo del Índice Perceptivo de Satisfacción - Bain & Co - para Gestión del Cambio | [Informe_19-BS.pdf](https://github.com/Wise-Connex/Management-Tools-Analysis/blob/main/Informes/Informe_19-BS.pdf) |
