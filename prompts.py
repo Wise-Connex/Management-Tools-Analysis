@@ -201,37 +201,37 @@ Clasificar la herramienta en UNA de las siguientes categorías principales (a, b
 **a) Modas Gerenciales (Cumplen A, B, C y D):**
     *   *Definición Conceptual Concisa:* Herramientas con ciclo de atención/adopción relativamente corto (< umbral D), auge, pico y declive significativos, sin persistencia estructural a largo plazo. Enfoques pasajeros. *(Nota: Se unifica la definición eliminando duplicados)*.
     *   **SUBTIPOS:**
-        1.  **Clásica de Ciclo Corto:** Patrón A-B-C claro y rápido dentro del umbral D.
-        2.  **Efímera:** Pico B muy breve, A y C cortos/poco definidos. Desaparición rápida.
-        3.  **Declive Prolongado:** A y B claros, declive C más gradual pero completado dentro del umbral D.
-        4.  **Recurrente:** Múltiples ciclos cortos A-B-C-D, sin establecimiento duradero entre ciclos.
+        **Clásica de Ciclo Corto:** Patrón A-B-C claro y rápido dentro del umbral D.
+        **Efímera:** Pico B muy breve, A y C cortos/poco definidos. Desaparición rápida.
+        **Declive Prolongado:** A y B claros, declive C más gradual pero completado dentro del umbral D.
+        **Recurrente:** Múltiples ciclos cortos A-B-C-D, sin establecimiento duradero entre ciclos.
 
 **b) Prácticas Fundamentales (NO cumplen patrón A-B-C-D completo; Alta Persistencia):**
     *   *Definición Conceptual Concisa:* Herramientas con alta persistencia (>20-25 años), relevancia y legitimidad a largo plazo, integradas en el corpus central de la gestión. Valoración general estable o con ciclos muy largos. Resisten obsolescencia. *(Nota: Se unifica la definición)*.
     *   **SUBTIPOS:**
-        5.  **Estable (Pura):** Alta estabilidad estructural, fluctuación mínima. No cumple A ni C significativamente. Aplicación principalmente gerencial. *(Nota: Se elimina frase contradictoria)*.
-        6.  **Persistente (Clásico Extrapolado):** Persistencia muy larga + adaptación/uso en otras disciplinas. Demuestra amplia aplicabilidad/universalidad.
-        7.  **Pilar (Fundacional):** Influencia estructural profunda, soporte para otras herramientas/prácticas. A menudo con resurgimientos claros por adaptación/habilitación.
+        **Estable (Pura):** Alta estabilidad estructural, fluctuación mínima. No cumple A ni C significativamente. Aplicación principalmente gerencial. *(Nota: Se elimina frase contradictoria)*.
+        **Persistente (Clásico Extrapolado):** Persistencia muy larga + adaptación/uso en otras disciplinas. Demuestra amplia aplicabilidad/universalidad.
+        **Pilar (Fundacional):** Influencia estructural profunda, soporte para otras herramientas/prácticas. A menudo con resurgimientos claros por adaptación/habilitación.
 
 **c) Patrones Evolutivos / Cíclicos Persistentes (NO cumplen A+B+C+D ni son PF Estable/Pura; muestran dinámicas complejas de largo plazo):**
     *   *Definición Conceptual Concisa:* Herramientas con dinámicas complejas de largo plazo (> umbral D de Moda), sin la estabilidad de las Prácticas Fundamentales Puras. En transición, consolidación, o con ciclicidad inherente de largo plazo. Combinan elementos de modas y prácticas fundamentales. *(Nota: Se unifica la definición)*.
     *   **SUBTIPOS:**
-        8.  **Trayectoria de Consolidación (Auge sin Declive):** Cumple A (+B), pero falla C claro (estabiliza/transforma post-pico). Posible paso hacia Práctica Fundamental. *(Incluye antigua Moda Transformada)*.
-        9.  **Dinámica Cíclica Persistente (Ciclos Largos):** Cumple A+B+C pero excede *significativamente* umbral D. Relevancia mantenida a través de oscilaciones recurrentes de largo plazo.
-        10. **Fase de Erosión Estratégica (Declive Tardío / Superada):** Período largo inicial de auge/estabilidad, seguido por declive C claro y sostenido. Posible pérdida de relevancia estructural. *(Incluye antiguas 10 y 11)*.
+        **Trayectoria de Consolidación (Auge sin Declive):** Cumple A (+B), pero falla C claro (estabiliza/transforma post-pico). Posible paso hacia Práctica Fundamental. *(Incluye antigua Moda Transformada)*.
+        **Dinámica Cíclica Persistente (Ciclos Largos):** Cumple A+B+C pero excede *significativamente* umbral D. Relevancia mantenida a través de oscilaciones recurrentes de largo plazo.
+        **Fase de Erosión Estratégica (Declive Tardío / Superada):** Período largo inicial de auge/estabilidad, seguido por declive C claro y sostenido. Posible pérdida de relevancia estructural. *(Incluye antiguas 10 y 11)*.
 
 ***Importante:*** *Clasificación basada estrictamente en criterios operacionales y fuente. No implica juicio de valor absoluto fuera de este marco.*
 
 **5. ASIGNACIÓN DE CLASIFICACIÓN PRIMARIA (Aplicar lógica secuencial):**
 
-*   **Paso 1: ¿Moda Gerencial?** Evaluar si cumple **A+B+C+D simultáneamente** (según interpretación G.3). Si SÍ -> Asignar **Moda Gerencial (subtipo 1-4)** y proceder a G.6.
-*   **Paso 2: Si NO es Moda, ¿Práctica Fundamental Estable (Pura)?** Evaluar si falla A y C significativamente (alta estabilidad, mínima fluctuación). Si SÍ -> Asignar **Práctica Fundamental: Estable (5)** y proceder a G.6.
-*   **Paso 3: Si NO es Moda ni PF Estable, Evaluar Patrones Evolutivos/Cíclicos Persistentes:**
-    *   Si cumple A+B pero falla C claro -> Asignar **PECP: Trayectoria de Consolidación (8)**.
-    *   Si cumple A+B+C pero excede D significativamente -> Asignar **PECP: Dinámica Cíclica Persistente (9)**.
-    *   Si tuvo estabilidad/pico largo inicial y ahora muestra Declive C claro -> Asignar **PECP: Fase de Erosión Estratégica (10)**.
-    *   Si encaja en uno de estos (8, 9, 10), asignar y proceder a G.6.
-*   **Paso 4: Si NO es Moda, ni PF Estable, ni encaja claramente en PECP (8, 9, 10):** Entonces, por defecto (dada la alta persistencia implícita al no ser Moda ni PF Estable), clasificar como **Práctica Fundamental: Persistente (6) o Pilar (7)**. Proceder a G.6 y justificar la elección entre 6 y 7 basándose en evidencia de extrapolación, rol fundacional o dinámica cíclica/adaptativa observada. *(Nota: Lógica corregida y justificación añadida)*.
+*   **Paso 1: ¿Moda Gerencial?** Evaluar si cumple **A+B+C+D simultáneamente** (según interpretación G.3). Si SÍ -> Asignar **Moda Gerencial (subtipos: Clásica de Ciclo Corto, Efímera, Declive Prolongado y Recurrente)** y proceder a G.6.
+*   **Paso 2: Si NO es Moda, ¿Práctica Fundamental Estable (Pura)?** Evaluar si falla A y C significativamente (alta estabilidad, mínima fluctuación). Si SÍ -> Asignar **Práctica Fundamental: Estable** y proceder a G.6.
+*   **Paso 3: Si NO es Moda ni Prácticas Fundamentales Estable, Evaluar Patrones Evolutivos/Cíclicos Persistentes:**
+    *   Si cumple A+B pero falla C claro -> Asignar **PATRONES EVOLUTIVOS / CÍCLICOS PERSISTENTES: Trayectoria de Consolidación**.
+    *   Si cumple A+B+C pero excede D significativamente -> Asignar **PATRONES EVOLUTIVOS / CÍCLICOS PERSISTENTES: Dinámica Cíclica Persistente**.
+    *   Si tuvo estabilidad/pico largo inicial y ahora muestra Declive C claro -> Asignar **PATRONES EVOLUTIVOS / CÍCLICOS PERSISTENTES: Fase de Erosión Estratégica**.
+    *   Si encaja en uno de estos (Trayectoria de Consolidación (Auge sin Declive), Dinámica Cíclica Persistente (Ciclos Largos), Fase de Erosión Estratégica (Declive Tardío)), asignar y proceder a G.6.
+*   **Paso 4: Si NO es Moda, ni Prácticas Fundamentales Estable, ni encaja claramente en PATRONES EVOLUTIVOS / CÍCLICOS PERSISTENTES ((Trayectoria de Consolidación (Auge sin Declive), Dinámica Cíclica Persistente (Ciclos Largos)):** Entonces, por defecto (dada la alta persistencia implícita al no ser Moda ni Prácticas Fundamentales Estable), clasificar como **Práctica Fundamental: Persistente o Pilar**. Proceder a G.6 y justificar la elección entre Persistente (Clásico Extrapolado) y Pilar (Fundacional) basándose en evidencia de extrapolación, rol fundacional o dinámica cíclica/adaptativa observada. *(Nota: Lógica corregida y justificación añadida)*.
 
 **6. INTERPRETACIÓN PROFUNDA, CRÍTICA Y DIFERENCIADA (Sección Narrativa Obligatoria):**
 *Instrucción:* Elaborar una narrativa coherente y profunda que integre la clasificación asignada (G.5) con los hallazgos detallados de TODOS los análisis realizados (Temporal, Contextual/Tendencias, ARIMA, Estacional, Cíclico) para *esta fuente de datos específica*. La interpretación debe ir más allá de la etiqueta, enfocándose en la singularidad de la dinámica observada y su significado en el contexto de la fuente y la naturaleza de la herramienta. La narrativa debe abordar los siguientes aspectos de forma integrada y reflexiva, no como un cuestionario:
