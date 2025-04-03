@@ -2760,19 +2760,80 @@ def analyze_trends(trend):
 # *************************************************************************************
 def init_variables():
     # Declare all necessary globals that were set *before* this call
-    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder
-    global top_choice, wider, one_keyword, data_filename # data_filename needed for option 1
-    global csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data
-    global csv_last_year_data, csv_all_data, csv_means_trends, trends_results
-    global all_kw, current_year, charts, image_markdown
-    global combined_dataset, combined_dataset2, datasets_norm_full, all_datasets_full
-    global trend_analysis_text
-    global original_values, original_calc_details 
-    
-    # Reset dictionaries
+    global gem_temporal_trends_sp, gem_cross_keyword_sp, gem_industry_specific_sp
+    global gem_arima_sp, gem_seasonal_sp, gem_fourier_sp, gem_conclusions_sp
+    global csv_fourier, csv_fourierA, csv_means_trends, csv_means_trendsA
+    global csv_correlation, csv_regression, csv_arima, csv_arimaA, csv_arimaB
+    global csv_seasonal, csv_seasonalA, menu, actual_menu, actual_opt
+    global title_odd_charts, title_even_charts, wider, all_keywords, filename
+    global unique_folder, csv_last_20_data, csv_last_15_data, csv_last_10_data
+    global csv_last_5_data, csv_last_year_data, csv_all_data, trends_results
+    global all_kw, current_year, charts, one_keyword, dbase_options, top_choice
+    global combined_dataset, selected_keyword, selected_sources
+    global earliest_date, latest_date, earliest_year, latest_year, total_years
+    global keycharts, csv_combined_dataset, skip_seasonal, skip_arima
+    global csv_significance, original_values, original_calc_details # Add original_calc_details back here
+
+    # Initialize or reset variables specific to a run
+    gem_temporal_trends_sp = ""
+    gem_cross_keyword_sp = ""
+    gem_industry_specific_sp = ""
+    gem_arima_sp = ""
+    gem_seasonal_sp = ""
+    gem_fourier_sp = ""
+    gem_conclusions_sp = ""
+    csv_fourier = []
+    csv_fourierA = []
+    csv_means_trends = ""
+    csv_means_trendsA = ""
+    csv_correlation = ""
+    csv_regression = ""
+    csv_arima = ""
+    csv_arimaA = []
+    csv_arimaB = []
+    csv_seasonal = ""
+    csv_seasonalA = ""
+    menu = None
+    actual_menu = None
+    actual_opt = None
+    title_odd_charts = ""
+    title_even_charts = ""
+    wider = False
+    all_keywords = []
+    filename = ""
+    unique_folder = ""
+    csv_last_20_data = ""
+    csv_last_15_data = ""
+    csv_last_10_data = ""
+    csv_last_5_data = ""
+    csv_last_year_data = ""
+    csv_all_data = ""
+    trends_results = {}
+    all_kw = ""
+    current_year = None
+    charts = ""
+    one_keyword = False
+    dbase_options = {}
+    top_choice = None
+    combined_dataset = None
+    selected_keyword = None
+    selected_sources = []
+    earliest_date = None
+    latest_date = None
+    earliest_year = None
+    latest_year = None
+    total_years = None
+    keycharts = []
+    csv_combined_dataset = []
+    skip_seasonal = False
+    skip_arima = False
+    csv_significance = []
     original_values = {}
-    original_calc_details = {}
-    
+    original_calc_details = {} # Ensure initialization is here
+
+    # Reinitialize lists (if needed, depends on logic)
+    csv_fourier = []
+
     image_markdown = "\n\n# Gráficos\n\n"
     plt.style.use('ggplot')
     current_year = datetime.now().year
@@ -4737,11 +4798,35 @@ def get_filenames_for_keyword(keyword, selected_sources):
     
     for source in selected_sources:
         index = source_index_map[source]
+        found = False # Flag to track if keyword was found for this source
         for key, value in tool_file_dic.items():
-            if keyword in value[1]:
-                filenames[source] = value[index]
-                break
-    
+            # Check if value[1] exists and is iterable before checking 'in'
+            if len(value) > 1 and isinstance(value[1], (list, tuple, set)) and keyword in value[1]:
+                # Also check if the filename index exists
+                if index < len(value):
+                    # Ensure the value at the index is a string (path)
+                    if isinstance(value[index], str) and value[index].strip():
+                        filenames[source] = value[index]
+                        found = True
+                        break # Found the keyword, move to the next source
+                    else:
+                        print(f"[Warning] Invalid or empty filename path at index {index} for tool '{key}' and source {source}.")
+                        filenames[source] = None # Indicate invalid path
+                        found = True
+                        break
+                else:
+                    print(f"[Warning] Filename index {index} out of range for tool '{key}' and source {source}.")
+                    filenames[source] = None # Indicate missing filename
+                    found = True
+                    break
+            elif len(value) <= 1 or not isinstance(value[1], (list, tuple, set)):
+                 print(f"[Warning] Invalid structure for tool_file_dic entry '{key}': keywords list missing or not iterable.")
+                 # No break here, continue checking other entries just in case
+
+        if not found:
+            print(f"[Warning] Keyword '{keyword}' not found in tool_file_dic for source {source}. Assigning None.")
+            filenames[source] = None # Assign None if keyword wasn't found for this source
+
     return filenames
 
 def process_dataset(df, source, all_datasets, selected_sources):
@@ -5018,31 +5103,58 @@ def process_and_normalize_datasets_full(allKeywords):
     return datasets_norm_full, selected_sources
 
 def get_file_data2(selected_keyword, selected_sources):
+    init_variables()  # Call init_variables here to ensure globals are set
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
-    global menu  # Declare menu as global
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
-
+    
     datasets = {}
     all_raw_datasets = {}
 
     for source in selected_sources:
         #print(f"- {dbase_options[source]}: {filenames.get(source, 'Archivo no encontrado')}")
         menu = source  # This now sets the global menu variable
-        df = get_file_data(filenames.get(source, 'Archivo no encontrado'), menu)
+        
+        # Get the filename for the current source
+        data_filename = filenames.get(source) 
+        
+        # --- Check if filename is valid --- 
+        if not data_filename or not isinstance(data_filename, str) or not data_filename.strip():
+            print(f"{YELLOW}[Warning] No valid data filename found for source {source} ({dbase_options.get(source, 'Unknown')}). Skipping this source.{RESET}")
+            continue # Skip to the next source
+            
+        # --- Attempt to read the file --- 
+        try:
+            df = get_file_data(data_filename, menu)
+        except FileNotFoundError:
+            print(f"{RED}[Error] Data file not found: {data_filename} for source {source}. Skipping this source.{RESET}")
+            continue # Skip to the next source
+        except Exception as e:
+            print(f"{RED}[Error] Failed to read or process data file {data_filename} for source {source}: {e}. Skipping this source.{RESET}")
+            continue # Skip to the next source
+            
+        # --- Check if DataFrame is empty --- 
         if df.empty or (df == 0).all().all():
-            print(f"Warning: Dataset for source {source} is empty or contains only zeros.")
+            print(f"{YELLOW}[Warning] Dataset for source {source} ({data_filename}) is empty or contains only zeros. Skipping.{RESET}")
             continue
+            
         all_raw_datasets[source] = df
 
+    # --- Check if any valid datasets were loaded --- 
+    if not all_raw_datasets:
+        print(f"{RED}[Error] No valid datasets could be loaded for the selected sources and keyword. Aborting further processing.{RESET}")
+        return {}, selected_sources # Return empty dict and original sources
+        
     for source in selected_sources:
         if source in all_raw_datasets:
-            datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
-            print(f"\nConjunto de datos procesado: {source}")
-            print(datasets[source].head())
-            print(f"Dimensiones: {datasets[source].shape}\n\n")
+            try:
+                datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
+                print(f"\nConjunto de datos procesado: {source}")
+                print(datasets[source].head())
+                print(f"Dimensiones: {datasets[source].shape}\n\n")
+            except Exception as e:
+                print(f"Error processing dataset for source {source}: {str(e)}")
+                continue # Skip to the next source
 
-    print(datasets)
-    
     # Normalize each dataset in datasets
     datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
 

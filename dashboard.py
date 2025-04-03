@@ -101,10 +101,10 @@ sidebar = html.Div(
                 src='assets/Management-Tools-Analysis-logo.png',
                 style={
                     'width': '80%',
-                    'margin-bottom': '20px',
+                    'marginBottom': '20px',  # Changed from margin-bottom
                     'display': 'block',
-                    'margin-left': 'auto',
-                    'margin-right': 'auto'
+                    'marginLeft': 'auto',    # Changed from margin-left
+                    'marginRight': 'auto'   # Changed from margin-right
                 }
             ),
             
@@ -279,7 +279,7 @@ sidebar = html.Div(
                 "Desarrollado por: ",
                 html.A("Wise Connex", href="http://wiseconnex.com", target="_blank"),
                 " - (c)2024"
-            ], style={'marginBottom': '2px', 'fontSize': '10px', 'textAlign': 'center'}),
+            ], style={'marginBottom': '2px', 'fontSize': '10px', 'textAlign': 'center'}), # Changed from margin-bottom
             html.P([
                 "Código: ",
                 html.A(
@@ -293,13 +293,13 @@ sidebar = html.Div(
             'bottom': 0,
             'left': 0,
             'right': 0,
-            'backgroundColor': '#f3f4f6',
+            'backgroundColor': '#f3f4f6', # Changed from background-color
             'padding': '10px 20px',
             'borderTop': '1px solid #dee2e6'
         })
     ],
     style={
-        'background-color': '#f3f4f6',
+        'backgroundColor': '#f3f4f6', # Changed from background-color
         'padding': '20px',
         'height': '100vh',
         'position': 'fixed',
@@ -425,6 +425,14 @@ def update_main_content(*args):
     # Filter out rows where any selected source has NaN values
     data_columns = [dbase_options[src_id] for src_id in selected_sources]
     combined_dataset = combined_dataset.dropna(subset=data_columns)
+    
+    # --- Debug Print: Check DataFrame after dropna --- 
+    print("--- DataFrame Info after dropna ---")
+    combined_dataset.info()
+    print("--- DataFrame Head after dropna ---")
+    print(combined_dataset.head())
+    print("------------------------------------")
+    # -----------------------------------------------
     
     # Filter the dataset based on the current date range
     if global_date_range['start'] and global_date_range['end']:
@@ -639,7 +647,7 @@ def update_main_content(*args):
             ], style={
                 'width': '80%',
                 'display': 'inline-block',
-                'vertical-align': 'top'
+                'verticalAlign': 'top'
             }),
             # Bar chart container
             html.Div([
@@ -652,7 +660,7 @@ def update_main_content(*args):
             ], style={
                 'width': '20%',
                 'display': 'inline-block',
-                'vertical-align': 'top'
+                'verticalAlign': 'top'
             }),
         ], style={
             'display': 'flex',
@@ -3146,7 +3154,7 @@ def toggle_notes_section(selected_keyword, *button_states):
 if __name__ == '__main__':
     app.run_server(
         debug=True,
-        host='0.0.0.0',  # Makes the server externally visible
+        host='127.0.0.1',  # Makes the server externally visible
         port=8050,        # You can change this port if needed
         use_reloader=True
     )
