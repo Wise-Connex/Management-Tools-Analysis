@@ -345,31 +345,31 @@ This section details the technical aspects of the interactive web dashboard buil
 
 ### Data Flow & Processing
 
-1.  **Initialization:** Keyword list fetched via `get_all_keywords()`.
-2.  **User Selection:** User selects a keyword and one or more data sources.
-3.  **`update_main_content` Callback:**
-    - Triggers on keyword or source selection change.
-    - Calls `get_file_data2` to fetch normalized data for the selected keyword and sources.
-    - Calls `create_combined_dataset` to merge data into a single pandas DataFrame (`combined_dataset`).
-    - Formats date column, handles potential Bain/Crossref alignment, drops NaNs for selected sources.
-    - Applies filtering based on `global_date_range` (if set).
-    - Generates the initial layout for the `main-content` div, including initial states for line and bar charts.
-4.  **`update_graphs` Callback:**
-    - Triggers on time range button clicks, line graph zoom/pan (`relayoutData`), keyword, or source changes.
-    - Re-fetches and combines data (similar to `update_main_content`).
-    - Determines the target `visible_start` and `visible_end` based on trigger (button or slider).
-    - Updates `global_date_range`.
-    - Filters `combined_dataset` based on the visible range.
-    - Recalculates means for the bar chart (`bar_fig`).
-    - Updates the line chart (`line_fig`) `xaxis.range` and `xaxis.rangeslider.range`.
-    - Calculates means and relative percentages for different historical periods (`periods_bar_fig`).
-    - Returns updated figures for `line-graph`, `bar-graph`, and `periods-bar-graph`.
-5.  **Other Graph Callbacks (`update_*`):**
-    - Trigger on relevant inputs (keyword, sources, axis selections).
-    - Fetch/combine data as needed.
-    - Perform specific analysis (correlation, regression, ARIMA, seasonal, Fourier).
-    - Handle potential errors (e.g., insufficient data) and return appropriate figures or error messages.
-    - Utilize helper functions (`create_arima_forecast`, `create_seasonal_decomposition`, `create_fourier_analysis`) to encapsulate plotting logic.
+1. **Initialization:** Keyword list fetched via `get_all_keywords()`.
+2. **User Selection:** User selects a keyword and one or more data sources.
+3. **`update_main_content` Callback:**
+   - Triggers on keyword or source selection change.
+   - Calls `get_file_data2` to fetch normalized data for the selected keyword and sources.
+   - Calls `create_combined_dataset` to merge data into a single pandas DataFrame (`combined_dataset`).
+   - Formats date column, handles potential Bain/Crossref alignment, drops NaNs for selected sources.
+   - Applies filtering based on `global_date_range` (if set).
+   - Generates the initial layout for the `main-content` div, including initial states for line and bar charts.
+4. **`update_graphs` Callback:**
+   - Triggers on time range button clicks, line graph zoom/pan (`relayoutData`), keyword, or source changes.
+   - Re-fetches and combines data (similar to `update_main_content`).
+   - Determines the target `visible_start` and `visible_end` based on trigger (button or slider).
+   - Updates `global_date_range`.
+   - Filters `combined_dataset` based on the visible range.
+   - Recalculates means for the bar chart (`bar_fig`).
+   - Updates the line chart (`line_fig`) `xaxis.range` and `xaxis.rangeslider.range`.
+   - Calculates means and relative percentages for different historical periods (`periods_bar_fig`).
+   - Returns updated figures for `line-graph`, `bar-graph`, and `periods-bar-graph`.
+5. **Other Graph Callbacks (`update_*`):**
+   - Trigger on relevant inputs (keyword, sources, axis selections).
+   - Fetch/combine data as needed.
+   - Perform specific analysis (correlation, regression, ARIMA, seasonal, Fourier).
+   - Handle potential errors (e.g., insufficient data) and return appropriate figures or error messages.
+   - Utilize helper functions (`create_arima_forecast`, `create_seasonal_decomposition`, `create_fourier_analysis`) to encapsulate plotting logic.
 
 ### Statistical Methods Implemented
 
