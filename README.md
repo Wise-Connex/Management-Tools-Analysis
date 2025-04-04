@@ -80,7 +80,7 @@ pip install -r requirements.txt
 ```
 
 ## Project Structure
-
+```text
 ├── analisis.py # Core analysis functions
 ├── dashboard.py # Web dashboard implementation
 ├── tools.py # Tool definitions and mappings
@@ -90,7 +90,7 @@ pip install -r requirements.txt
 │ └── processed/ # Processed data
 ├── prompts/ # AI analysis prompts
 └── venv/ # Virtual environment
-
+```
 ## Databases
 
 - dbase: This folder contains the CSV files with the data of the toll from the different sources databases.
