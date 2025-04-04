@@ -401,7 +401,7 @@ def update_main_content(*args):
         return html.Div("Por favor, seleccione una Herramienta y al menos una Fuente de Datos.")
     
     datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
-    combined_dataset = create_combined_dataset(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
     
     # Reset index and format date
     combined_dataset = combined_dataset.reset_index()

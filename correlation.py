@@ -156,6 +156,27 @@ if not os.path.exists(data_folder):
     # Make the folder writable (0o777 is octal for rwxrwxrwx)
     os.chmod(data_folder, 0o777)
 
+# Global variable to store the last menu option selected
+last_menu_option = None
+
+# Initialize global dictionaries and variables at the module level
+original_values = {}
+original_calc_details = {}
+trend_analysis_text = {}
+combined_dataset = None
+combined_dataset2 = None
+datasets_norm_full = None
+all_datasets_full = None
+csv_means_trendsA = None
+csv_means_trends = None
+csv_significance = None
+csv_correlation = None
+csv_regression = None
+csv_arima = None
+csv_seasonal = None
+csv_fourier = None
+
+# ... existing code ...
 
 # *************************************************************************************
 #   FUNCTIONS
@@ -2762,20 +2783,66 @@ def analyze_trends(trend):
 # *************************************************************************************
 def init_variables():
     # Declare all necessary globals that were set *before* this call
+    # Note: Initialization now happens at module level
+    global combined_dataset, combined_dataset2, datasets_norm_full, all_datasets_full
+    global trend_analysis_text
+    global original_values, original_calc_details
+    # Also declare other globals that will be modified/cleared here
+    global csv_means_trendsA, csv_means_trends, csv_significance, csv_correlation, csv_regression, csv_arima, csv_seasonal, csv_fourier
+    # Add any other globals reset within this function
     global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder
     global top_choice, wider, one_keyword, data_filename # data_filename needed for option 1
     global csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data
     global csv_last_year_data, csv_all_data, csv_means_trends, trends_results
     global all_kw, current_year, charts, image_markdown
-    global combined_dataset, combined_dataset2, datasets_norm_full, all_datasets_full
-    global trend_analysis_text
-    global original_values, original_calc_details 
-    
-    # Reset dictionaries
-    original_values = {}
-    original_calc_details = {}
-    
-    image_markdown = "\n\n# Gráficos\n\n"
+
+
+    # Clear dictionaries instead of reassigning
+    if original_values is not None: original_values.clear()
+    if original_calc_details is not None: original_calc_details.clear()
+    if trend_analysis_text is not None: trend_analysis_text.clear()
+
+    # Reset other global data structures to None or default empty state
+    combined_dataset = None
+    combined_dataset2 = None
+    datasets_norm_full = None
+    all_datasets_full = None
+    csv_means_trendsA = None
+    csv_means_trends = None
+    csv_significance = None
+    csv_correlation = None
+    csv_regression = None
+    csv_arima = None
+    csv_seasonal = None
+    csv_fourier = None
+    trends_results = None # Ensure trends_results is also reset
+    csv_last_20_data = None
+    csv_last_15_data = None
+    csv_last_10_data = None
+    csv_last_5_data = None
+    csv_last_year_data = None
+    csv_all_data = None
+    # Reset other variables as needed
+    menu = None
+    actual_menu = None
+    actual_opt = None
+    # all_keywords is often passed in or set before calling, handle carefully
+    # filename = None # Usually generated later
+    # unique_folder = None # Usually generated later
+    top_choice = None
+    wider = None
+    one_keyword = None
+    data_filename = None
+    all_kw = None
+    current_year = None
+    charts = None
+    image_markdown = None
+
+    # Reset dictionaries (Commented out - Initialization moved to module level and cleared above)
+    # original_values = {} # COMMENTED OUT
+    # original_calc_details = {} # COMMENTED OUT
+
+    image_markdown = "\n\n# Gráficos\n\n" # Re-initialize specific strings if needed
     plt.style.use('ggplot')
     current_year = datetime.now().year
     charts=""
