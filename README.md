@@ -146,7 +146,6 @@ The dashboard will be available at `http://localhost:8050`
 Create a `.env` file with:
 
 GOOGLE_API_KEY=your_api_key
-CROSSREF_EMAIL=your_email
 
 ## Development
 
