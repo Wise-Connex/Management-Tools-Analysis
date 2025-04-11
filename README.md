@@ -3,7 +3,7 @@
 A Python-based statistical analysis system for tracking and forecasting management tool adoption patterns across multiple data sources.
 Statistical Analysis tool, of Management Tools best ranked
 
-- Author: Diomar Anez
+- Researcher: Diomar Anez
 - Python Coder Assistant: Dimar Anez
 
   
