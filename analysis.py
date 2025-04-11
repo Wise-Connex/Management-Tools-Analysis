@@ -2519,7 +2519,7 @@ def check_trends2(kw):
         'statistics': statistics
     }
 
-def create_unique_filename(keywords, max_length=20):
+def create_unique_filename(keywords, top_choice, max_length=20):
     global actual_opt
     # Concatenate keywords
     shorter = [keyword[:3] for keyword in keywords if len(keyword) >= 3]
@@ -2762,77 +2762,38 @@ def analyze_trends(trend):
 # *************************************************************************************
 def init_variables():
     # Declare all necessary globals that were set *before* this call
-    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder
-    global top_choice, wider, one_keyword, data_filename # data_filename needed for option 1
+    global top_choice # Still needed for conditional logic perhaps? Review usage.
     global csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data
     global csv_last_year_data, csv_all_data, csv_means_trends, trends_results
-    global all_kw, current_year, charts, image_markdown
-    global combined_dataset, combined_dataset2, datasets_norm_full, all_datasets_full
-    global trend_analysis_text
-    global original_values, original_calc_details 
-    
+    global current_year, charts, image_markdown # General resets
+    global trend_analysis_text # Reset dictionary
+    global original_values, original_calc_details # Reset dictionaries
+
     # Reset dictionaries
     original_values = {}
     original_calc_details = {}
-    
+
     image_markdown = "\n\n# Gráficos\n\n"
     plt.style.use('ggplot')
     current_year = datetime.now().year
     charts=""
-    
-    # --- REMOVE User Selection Logic --- 
-    # menu = main_menu() # REMOVED
-    # data_filename, all_keywords = get_user_selections(...) # REMOVED
-    # -----------------------------------
-    
-    # Set flags based on all_keywords (which is now set *before* calling init_variables)
-    if all_keywords:
-         wider = True if len(all_keywords) <= 2 else False
-         one_keyword = True if len(all_keywords) < 2 else False
-         all_kw = ", ".join(all_keywords)
-    else:
-         # Handle cases where all_keywords might be empty (e.g., error state)
-         wider = True
-         one_keyword = True
-         all_kw = "N/A"
-         print("[Warning] all_keywords is empty during init_variables.")
 
-    # Process file data - This needs the globals set *before* this call
-    # For option 1, data_filename is set in main().
-    # For option 2 and 3, process_file_data might behave differently or not be needed here.
-    # Let's only call it if top_choice == 1, as option 2/3 might handle data differently.
-    if top_choice == 1:
-         if data_filename:
-              trends_results = process_file_data(all_keywords, data_filename)
-              if trends_results:
-                   # Save CSV data (moved from the end of the removed block)
-                   if total_years > 20:
-                       csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-                   else: 
-                       csv_all_data = None # Ensure it's None if condition not met
-                   csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-                   csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-                   csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-                   csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-                   csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
-              else:
-                   print(f"{RED}[Error] process_file_data failed for {data_filename}.{RESET}")
-                   # Handle error state, maybe exit or skip further processing
-         else:
-              print(f"{RED}[Error] data_filename not set for top_choice 1 in init_variables.{RESET}")
-              # Handle error state
-    # else: # For top_choice 2 or 3, trends_results might be set elsewhere or not needed yet.
-         # trends_results = None # Or handle as needed by options 2/3
-
-    # Create unique filename and folder (uses all_keywords)
-    filename = create_unique_filename(all_keywords)
-    unique_folder = os.path.join(data_folder, filename)
-    if not os.path.exists(unique_folder):
-        os.makedirs(unique_folder)
-        os.chmod(unique_folder, 0o777)
-    
-    # Initialize trend analysis text dictionary
+    # Reset analysis text dictionary
     trend_analysis_text = {}
+
+    # Reset potential results from previous runs (important!)
+    trends_results = None
+    csv_last_20_data = None
+    csv_last_15_data = None
+    csv_last_10_data = None
+    csv_last_5_data = None
+    csv_last_year_data = None
+    csv_all_data = None
+    csv_means_trends = None
+
+    # REMOVED the logic dependent on all_keywords
+    # REMOVED the conditional call to process_file_data
+    # REMOVED the filename/folder creation
 
 # *************************************************************************************
 # RESULTS
@@ -4961,62 +4922,80 @@ def process_and_normalize_datasets(allKeywords):
     
     return datasets_norm, selected_sources
 
-def process_and_normalize_datasets_full(allKeywords):
+def process_and_normalize_datasets_full():
     """
     Process and normalize datasets without trimming to common date range.
     Similar to process_and_normalize_datasets but preserves all dates.
     
-    Args:
-        allKeywords (list): List of keywords to process
-        
+    Relies on global selected_keyword and selected_sources set previously.
+
     Returns:
         tuple: (datasets_norm_full, selected_sources) - Normalized datasets with all dates and selected sources
     """
     global datasets_norm_full
     global all_datasets_full
-    global selected_keyword
-    global selected_sources
-    
+    global selected_keyword # Ensure globals are declared
+    global selected_sources # Ensure globals are declared
+    global menu             # Ensure global menu is declared
+    global dbase_options    # Ensure dbase_options is accessible
+
     # Use the same keyword and sources as in the regular function
-    # to avoid asking the user twice
-    
+    # which are expected to be set globally before calling this.
+
     # Initialize dictionaries to store datasets
     all_datasets_full = {}
     datasets_norm_full = {}
-    
+
+    # Check if selected_keyword and selected_sources are set globally
+    keyword_missing = "selected_keyword" not in globals() or not selected_keyword
+    sources_missing = "selected_sources" not in globals() or not selected_sources
+    dbase_options_missing = "dbase_options" not in globals() or not dbase_options
+
+    # Combined check for clarity (Fixes SyntaxError)
+    if keyword_missing or sources_missing:
+        print(f"{RED}Error: Keyword and sources must be selected before processing full datasets.{RESET}")
+        # Return empty dicts and an empty list or handle error appropriately
+        return {}, []
+
+    if dbase_options_missing:
+         print(f"{RED}Error: dbase_options not available globally.{RESET}")
+         return {}, [] # Return empty results
+
+
     # Get file data for each source
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
-    
+
     # Get raw data for each source
     for source in selected_sources:
-        menu = source  # Set the global menu variable
-        df = get_file_data(filenames.get(source, 'Archivo no encontrado'), menu)
-        if df.empty or (df == 0).all().all():
-            print(f"Warning: Full dataset for source {source} is empty or contains only zeros.")
+        menu = source # Set the global menu variable for get_file_data compatibility
+        file_path = filenames.get(source, None)
+        if file_path is None:
+             # Use dbase_options for clearer warning messages
+             print(f"Warning: No file found for source {dbase_options.get(source, f'ID {source}')} and keyword {selected_keyword}.")
+             continue
+
+        # Use menu global set above for get_file_data
+        df = get_file_data(file_path, menu)
+
+        if df is None or df.empty or (df == 0).all().all():
+            print(f"Warning: Full dataset for source {dbase_options.get(source, f'ID {source}')} is empty or contains only zeros.")
             continue
         all_datasets_full[source] = df
-    
+
     # Process each dataset without trimming
     for source in selected_sources:
         if source in all_datasets_full:
-            datasets_full = process_dataset_full(all_datasets_full[source], source, selected_sources)
-            all_datasets_full[source] = datasets_full
-            print(f"\nConjunto de datos completo procesado: {source}")
-            print(all_datasets_full[source].head())
-            print(f"Dimensiones: {all_datasets_full[source].shape}\n\n")
-    
-    print("Full datasets (without trimming):")
-    print(all_datasets_full)
-    
+            # Pass selected_sources to process_dataset_full
+            # Check if process_dataset_full exists and expects these args, assume it does for now based on prior context
+            processed_df = process_dataset_full(all_datasets_full[source], source, selected_sources)
+            all_datasets_full[source] = processed_df
+            print(f"\nConjunto de datos completo procesado: {dbase_options.get(source, f'ID {source}')}")
+            # print(all_datasets_full[source].head()) # Keep output concise unless debugging
+            print(f"Dimensiones: {all_datasets_full[source].shape}\n")
+
     # Normalize each dataset
-    datasets_norm_full = {source: normalize_dataset_full(df) for source, df in all_datasets_full.items()}
-    
-    # Print the normalized datasets for verification
-    for source, df_norm in datasets_norm_full.items():
-        print(f"\nNormalized full dataset for source {source}:")
-        print(df_norm)
-        print("\n")
-    
+    datasets_norm_full = {source: normalize_dataset_full(df) for source, df in all_datasets_full.items() if df is not None and not df.empty}
+
     return datasets_norm_full, selected_sources
 
 def get_file_data2(selected_keyword, selected_sources):
@@ -5192,12 +5171,14 @@ def display_combined_datasets():
     input(f"\n{YELLOW}Press Enter to continue...{RESET}")
 
 def main():
-    global top_choice
-    global combined_dataset
-    global combined_dataset2
-    global trends_results
-    global csv_combined_dataset
-    global menu  # Ensure menu is declared as global here
+    global combined_dataset2, trends_results, csv_combined_dataset, menu
+    global all_keywords, selected_keyword, selected_sources
+    global datasets_norm, datasets_norm_full, dbase_options
+    global combined_dataset, filename, unique_folder, all_kw
+    global wider, one_keyword, actual_menu, actual_opt, data_filename
+    global csv_all_data, csv_last_20_data, csv_last_15_data, csv_last_10_data
+    global csv_last_5_data, csv_last_year_data
+
     
     # Redirigir stderr a /dev/null
     import os
@@ -5216,48 +5197,144 @@ def main():
             break
             
         elif top_choice == 1:
-            # --- ADD User Selection Logic Here for Option 1 --- 
-            global menu, actual_menu, actual_opt, all_keywords, data_filename
+            # --- Analysis for ONE tool on ONE data source ---
             menu_options = ["Google Trends", "Google Book Ngrams", "Bain - Uso", "Crossref.org", "Bain - Satisfacción"]
             menu_opt = ["GT","GB","BR","CR","BS"]
+
+            # --- General Initialization (Reset state) ---
+            init_variables()
+            # --------------------------------------------
+
+            # --- User Selection for Option 1 ---
             menu = main_menu() # Get data source choice
             actual_menu = menu_options[menu-1]
             actual_opt = menu_opt[menu-1]
-            data_filename, all_keywords = get_user_selections(tool_file_dic, menu) # Get tool choice
+            data_filename, all_keywords = get_user_selections(tool_file_dic, menu) # Get tool choice(s)
             print(f'Comenzaremos el análisis de las siguiente(s) herramienta(s) gerencial(es): \n{GREEN}{all_keywords}{RESET}')
             print(f'Buscando la data en: {YELLOW}{data_filename}{RESET}')
-            # -------------------------------------------------
-            # Now call init and the rest, which will use the globals set above
-            init_variables()
+            # -----------------------------------
+
+            # --- Keyword-Dependent Setup (Moved from init_variables) ---
+            if not all_keywords or not data_filename:
+                print(f"{RED}Error: No se seleccionó ninguna herramienta o archivo de datos.{RESET}")
+                continue # Go back to main menu if selection failed
+
+            wider = True if len(all_keywords) <= 2 else False
+            one_keyword = True if len(all_keywords) < 2 else False
+            all_kw = ", ".join(all_keywords)
+
+            filename = create_unique_filename(all_keywords, top_choice)
+            unique_folder = os.path.join(data_folder, filename)
+            if not os.path.exists(unique_folder):
+                os.makedirs(unique_folder)
+                os.chmod(unique_folder, 0o777)
+
+            trends_results = process_file_data(all_keywords, data_filename)
+            if trends_results:
+                # Save CSV data only if processing was successful
+                total_years = trends_results.get('total_years', 0) # Assuming process_file_data returns this
+                if total_years > 20:
+                    csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                else:
+                    csv_all_data = None
+                csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+            else:
+                print(f"{RED}[Error] process_file_data falló para {data_filename}. Saltando análisis.{RESET}")
+                continue # Go back to main menu if data processing failed
+            # ---------------------------------------------------------
+
+            # --- Run Analysis for Option 1 ---
             results()
             ai_analysis()
             report_pdf()
-            
+            # ----------------------------------
+
         elif top_choice == 2:
-            # ... (existing option 2 logic) ...
+            # --- Analysis for ONE tool across MULTIPLE data sources ---
+
+            # --- General Initialization (Reset state) ---
             init_variables()
-            
-            # Process datasets with common date range
-            datasets_norm, selected_sources = process_and_normalize_datasets(all_keywords)
+            # --------------------------------------------
+
+            # 1. Get all available tools/keywords
+            all_tool_keywords = get_all_keywords()
+            if not all_tool_keywords:
+                print(f"{RED}No se encontraron herramientas de gestión. Verifique los archivos de datos.{RESET}")
+                continue # Go back to main menu
+
+            # 2. Prompt user to select ONE tool and MULTIPLE sources
+            #    This function handles user selection, fetches, processes, and normalizes
+            #    data for the common date range. It also sets global variables:
+            #    selected_keyword, selected_sources, all_keywords=[selected_keyword], dbase_options
+            datasets_norm, selected_sources_list = process_and_normalize_datasets(all_tool_keywords)
+
+            # Check if selection was successful (user didn't cancel, data was found)
+            if not selected_sources_list or not datasets_norm:
+                 print(f"{YELLOW}No se seleccionaron fuentes válidas o no se encontraron datos para la herramienta seleccionada en el rango común.{RESET}")
+                 continue # Go back to main menu
+
+            # We now rely on the global 'selected_sources' and 'dbase_options' set by the function above.
+            if "selected_sources" not in globals() or not selected_sources:
+                 print(f"{RED}Error Fatal: selected_sources no fue establecido globalmente.{RESET}")
+                 continue
+            if "dbase_options" not in globals() or not dbase_options:
+                 print(f"{RED}Error Fatal: dbase_options no fue establecido globalmente.{RESET}")
+                 continue
+
+            # --- Keyword-Dependent Setup (Moved from init_variables) ---
+            # Note: process_and_normalize_datasets sets global all_keywords = [selected_keyword]
+            if not all_keywords:
+                 print(f"{RED}Error Fatal: all_keywords no fue establecido por process_and_normalize_datasets.{RESET}")
+                 continue
+
+            wider = True # Option 2 compares sources for ONE tool, so wider layout is suitable
+            one_keyword = True # Option 2 focuses on one keyword
+            all_kw = selected_keyword # Use the single selected keyword
+
+            filename = create_unique_filename(all_keywords, top_choice) # Use the list with one keyword
+            unique_folder = os.path.join(data_folder, filename)
+            if not os.path.exists(unique_folder):
+                os.makedirs(unique_folder)
+                os.chmod(unique_folder, 0o777)
+            # ---------------------------------------------------------
+
+            # Confirm selection to the user
+            print(f"\n{CYAN}Analizando '{selected_keyword}' usando fuentes: {', '.join([dbase_options.get(s, str(s)) for s in selected_sources])}{RESET}")
+
+            # 3. Create the combined dataset for the common date range
             combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
-            
-            # Process datasets with full date range (using the same selected_sources)
-            datasets_norm_full, _ = process_and_normalize_datasets_full(all_keywords)
+
+            # 4. Process datasets with full date range (using the same selections via globals)
+            datasets_norm_full, _ = process_and_normalize_datasets_full() # Call modified function
+
+            # Check if full range processing yielded results
+            if not datasets_norm_full:
+                 print(f"{YELLOW}No se pudieron procesar los datos completos para las fuentes seleccionadas.{RESET}")
+                 if combined_dataset is not None and not combined_dataset.empty:
+                    print(f"\n{YELLOW}Mostrando solo el conjunto de datos combinado para el rango de fechas común:{RESET}")
+                    with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+                        print(combined_dataset)
+                 else:
+                    print(f"{YELLOW}No hay datos combinados para mostrar.{RESET}")
+                 continue # Go back to main menu
+
+            # 5. Create the combined dataset for the full date range
             combined_dataset2 = create_combined_dataset2(datasets_norm_full, selected_sources, dbase_options)
-            
-            # Save the combined dataset to CSV
-            csv_combined_dataset = combined_dataset.to_csv(index=True)
-            
-            # Display both datasets for comparison
-            display_combined_datasets()
-            
-            # Set menu to a default value if it's not already set
-            if 'menu' not in globals() or menu is None:
-                menu = 1  # Default value, adjust as needed based on your application logic
-            trends_results = process_file_data(all_keywords, "")
-            results()
-            ai_analysis()
-            report_pdf()
+
+            # 6. Display both datasets for comparison (if both were created successfully)
+            if combined_dataset is not None and combined_dataset2 is not None:
+                display_combined_datasets() # This function should handle printing
+            elif combined_dataset is not None:
+                 print(f"\n{YELLOW}Mostrando solo el conjunto de datos combinado para el rango de fechas común (datos de rango completo no disponibles):{RESET}")
+                 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+                     print(combined_dataset)
+            else:
+                 print(f"{YELLOW}No se pudieron generar los conjuntos de datos combinados.{RESET}")
+
             
         elif top_choice == 3:
             # --- Call the new batch function --- 
