@@ -4890,7 +4890,8 @@ def normalize_dataset_full(df):
         else:
             # If all values are the same, set to 50 (middle of range)
             df_norm[col] = 50
-    
+    # Return df instead of df_norm since the data is already normalaize in the sources
+    df_norm = df
     return df_norm
 
 def process_and_normalize_datasets(allKeywords):
@@ -5025,14 +5026,15 @@ def get_file_data2(selected_keyword, selected_sources):
     print(datasets)
     
     # Normalize each dataset in datasets
-    datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
-
+    # datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
+    datasets_norm = {source: df for source, df in datasets.items()}
     # Print the normalized datasets for verification
-    for source, df_norm in datasets_norm.items():
-        print(f"Normalized dataset for source {source}:")
-        print(df_norm)
-        print("\n")
+    # for source, df_norm in datasets_norm.items():
+    #     print(f"Normalized dataset for source {source}:")
+    #     print(df_norm)
+    #     print("\n")
     
+    # Return df instead of datasets_norm, since the normalization is done already in the data source.
     return datasets_norm, selected_sources
 
 def create_combined_dataset(datasets_norm, selected_sources, dbase_options):
@@ -5273,7 +5275,7 @@ def main():
             datasets_norm, selected_sources_list = process_and_normalize_datasets(all_tool_keywords)
 
             # Check if selection was successful (user didn't cancel, data was found)
-            if not selected_sources_list or not datasets_norm:
+            if not selected_sources_list or datasets_norm is None or not datasets_norm:
                  print(f"{YELLOW}No se seleccionaron fuentes válidas o no se encontraron datos para la herramienta seleccionada en el rango común.{RESET}")
                  continue # Go back to main menu
 
