@@ -7,7 +7,7 @@ Statistical Analysis tool, of Management Tools best ranked
 - Python Coder Assistant: Dimar Anez
 
   
-  These resources have been designed and managed to analyze highly valued management tools in the market. They were developed as part of the documentary bibliographic corpus supporting the doctoral research of Diomar Áñez, titled "Ontological Dichotomy in Management Fashions" (c) 2024, under the supervision of Dr. Elizabeth Pereira. The research focuses on the critical analysis of management tools within the context of managerial fashions, providing a reflective perspective on their evolution and impact on contemporary organizational structures and strategies. This study enhances the critical understanding of current management practices, offering an innovative perspective on how these managerial fashions influence the shaping of organizational strategies and institutional dynamics.
+  These resources have been designed and managed to analyze highly valued management tools in the market. They were developed as part of the documentary bibliographic corpus supporting the doctoral research of Diomar Anez, titled "Ontological Dichotomy in Management Fashions" (c) 2024, under the supervision of Dr. Elizabeth Pereira. The research focuses on the critical analysis of management tools within the context of managerial fashions, providing a reflective perspective on their evolution and impact on contemporary organizational structures and strategies. This study enhances the critical understanding of current management practices, offering an innovative perspective on how these managerial fashions influence the shaping of organizational strategies and institutional dynamics.
 
 ## Overview
 
