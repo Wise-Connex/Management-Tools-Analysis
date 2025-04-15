@@ -1,13 +1,18 @@
 # Management Tools Lifecycle Analysis
 
-A Python-based statistical analysis system for tracking and forecasting management tool adoption patterns across multiple data sources.
-Statistical Analysis tool, of Management Tools best ranked
+How do management tools evolve in contemporary organizations? This project conducts longitudinal statistical analyses using Python to examine the life cycle of prominent management tools. The methodology enables the tracking and forecasting of adoption patterns by integrating data from multiple heterogeneous sources to generate a rigorous and reliable quantitative assessment.
 
-- Researcher: Diomar Anez
-- Python Coder Assistant: Dimar Anez
+*   **Principal Investigator:** Diomar Añez
+*   **Python Programming:** Dimar Añez
 
-  
-  These resources have been designed and managed to analyze highly valued management tools in the market. They were developed as part of the documentary bibliographic corpus supporting the doctoral research of Diomar Anez, titled "Ontological Dichotomy in Management Fashions" (c) 2024, under the supervision of Dr. Elizabeth Pereira. The research focuses on the critical analysis of management tools within the context of managerial fashions, providing a reflective perspective on their evolution and impact on contemporary organizational structures and strategies. This study enhances the critical understanding of current management practices, offering an innovative perspective on how these managerial fashions influence the shaping of organizational strategies and institutional dynamics.
+This analytical system constitutes an essential component of the research corpus for Diomar Añez's doctoral dissertation, titled *Ontological Dichotomy in "Management Fads"* (© 2023-2025), conducted under the academic supervision of **Dr. Elizabeth Pereira.**
+
+The research undertakes a critical analysis of the temporal dynamics of management tools, problematizing the practical and discursive phenomenon of "management fads." It empirically examines their life cycle—emergence, diffusion, and eventual persistence or obsolescence—and evaluates their implications for the strategic and structural configuration of contemporary organizations. The study aims to contribute to theoretical development by providing a profound understanding of the interaction between administrative innovations and the organizational context.
+
+The analysis results are relevant to:
+*   **Executives and Managers (Public, private, and NGO organizations):** Informing strategic decisions regarding the selection, implementation, and evaluation of management tools.
+*   **Academics and Researchers (Graduate programs and business schools):** Providing a robust empirical basis for studies on organizational dynamics, diffusion of practices, and strategic management theory.
+*   **Consultants and Advisors (Strategic management and organizational transformation):** Offering contextual and trend-based insights into the life cycle and relevance of management tools, supporting their professional praxis and strategic recommendations.
 
 ## Overview
 
