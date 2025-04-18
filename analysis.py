@@ -22,6 +22,8 @@ import math
 import warnings
 import shutil # Make sure shutil is imported at the top of the file
 import traceback
+from scipy import signal
+from matplotlib import ticker
 
 # Suppress the specific scikit-learn deprecation warning about force_all_finite
 warnings.filterwarnings("ignore", message=".*force_all_finite.*")
@@ -716,51 +718,280 @@ def fourier_analisys(period='last_year_data'):
   char='*'
   title=' Análisis de Fourier '
   qty=len(title)
-  print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
+  print(f'\x1b[33m\\n\\n{char*qty}\\n{title}\\n{char*qty}\x1b[0m')
   banner_msg("Análisis de Fourier",margin=1,color1=YELLOW,color2=WHITE)
-  csv_fourier="\nAnálisis de Fourier,Frequency,Magnitude\n"
+  csv_fourier="\\nAnálisis de Fourier,Frequency,Magnitude\\n"
   for keyword in all_keywords:
       # Extract data for the current keyword
       data = trends_results[period][keyword]
-      print(f"\nPalabra clave: {keyword} ({actual_menu})\n")
-      csv_fourier += f"\nPalabra clave: {keyword}\n\n"
+      print(f"\\nPalabra clave: {keyword} ({actual_menu})\\n")
+      csv_fourier += f"\\nPalabra clave: {keyword}\\n\\n"
       # Create time vector
       time_vector = np.arange(len(data))
-      #csv_fourier += f"Vector de tiempo: \n{time_vector}\n"
+      #csv_fourier += f"Vector de tiempo: \\n{time_vector}\\n"
       # Ensure data is a properly aligned NumPy array
       data = np.asarray(data, dtype=float).copy()
       # Perform Fourier transform
       fourier_transform = fftpack.fft(data)
-      # Calculate frequency axis
-      freq = fftpack.fftfreq(len(data))
-      # Create DataFrame with time_vector as index and both magnitude and frequency as columns
-      fourierT = pd.DataFrame({
-          'frequency': freq,
-          'magnitude': np.abs(fourier_transform)
-      }, index=time_vector)
-      print(fourierT)      
-      csv_fourier += fourierT.to_csv(index=True)
-      # Plot the magnitude of the Fourier transform
-      plt.figure(figsize=(12, 10))  # Create a new figure for each keyword
-      plt.plot(freq, np.abs(fourier_transform), color='#66B2FF')
-      plt.xlabel('Frecuencia (ciclos/año)')
-      #plt.yscale('log')
-      plt.ylabel('Magnitud')  # Update label to reflect 1/2 log scale
-      plt.title(f'Transformada de Fourier para {keyword} ({actual_menu})', pad=20)
-      if top_choice == 2:
-          plt.title(f'Transformada de Fourier para {actual_menu} ({keyword})', pad=20)
-      # Save the plot to the unique folder
-      base_filename = f'{filename}_fourier_{keyword[:3]}.png'
-      image_filename=get_unique_filename(base_filename, unique_folder)
-      plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
-      add_image_to_report(f'Transformada de Fourier para {keyword}', image_filename)
-      charts += f'Transformada de Fourier para {keyword} ({image_filename})\n\n'
-      # Remove plt.show() to prevent graph windows from appearing
-      plt.close()
-  csv_fourier="".join(csv_fourier)
-  return csv_fourier
+      # Calculate corresponding frequencies
+      frequencies = fftpack.fftfreq(len(data))
+      # Calculate magnitude (absolute value)
+      magnitudes = np.abs(fourier_transform)
+      # Filter for positive frequencies (and non-zero)
+      positive_mask = frequencies > 0
+      positive_frequencies = frequencies[positive_mask]
+      positive_magnitudes = magnitudes[positive_mask]
+      # Find dominant frequencies
+      dominant_indices = np.argsort(positive_magnitudes)[::-1] # Sort descending
+      print("Frecuencias dominantes:")
+      csv_fourier += "Frecuencia,Magnitud\\n"
+      for i in range(min(5, len(dominant_indices))): # Print top 5
+          idx = dominant_indices[i]
+          freq = positive_frequencies[idx]
+          mag = positive_magnitudes[idx]
+          print(f"  Frecuencia: {freq:.4f}, Magnitud: {mag:.4f}")
+          csv_fourier += f"{freq:.4f},{mag:.4f}\\n"
+      csv_fourier += "\\n"
 
-# Seasonal Analysis
+  # Save the CSV data
+  csv_filename = os.path.join(unique_folder, 'fourier_analysis.csv')
+  try:
+      with open(csv_filename, 'w', newline='', encoding='utf-8') as f:
+          f.write(csv_fourier)
+      print(f"\\nDatos del análisis de Fourier guardados en: {csv_filename}")
+  except Exception as e:
+      print(f"Error al guardar el archivo CSV del análisis de Fourier: {e}")
+
+# Fourier Analysis with Periodogram Plot
+def fourier_analysis2(period='last_20_years_data'):
+    """
+    Performs Fourier analysis on time series data for specified keywords,
+    generates periodogram-like bar plots, adds them to the report,
+    and returns the frequency/magnitude data as a CSV-formatted string.
+
+    Args:
+        period (str): The key for the period data in trends_results
+                      (e.g., 'last_20_years_data').
+
+    Returns:
+        str: A CSV-formatted string containing the frequency and magnitude data
+             for all processed keywords, or None if an error occurs.
+    """
+    global charts
+    global image_markdown
+    global unique_folder
+    global all_keywords
+    global trends_results
+    global actual_menu # Assuming this holds the source name
+
+    if period not in trends_results:
+        print(f"Error: Period '{period}' not found in trends_results.")
+        return None # Return None on error
+    if not all_keywords:
+        print("Error: No keywords selected for analysis.")
+        return None # Return None on error
+
+    char = '*'
+    title = f' Análisis de Fourier ({period}) '
+    qty = len(title)
+    print(f'\x1b[33m\\n\\n{char*qty}\\n{title}\\n{char*qty}\\x1b[0m')
+    banner_msg(f"Análisis de Fourier y Periodograma ({period})", margin=1, color1=YELLOW, color2=WHITE)
+
+    # Initialize csv_fourier string
+    csv_fourier = "\\nAnálisis de Fourier (Datos),Frequency,Magnitude\\n"
+
+    for keyword in all_keywords:
+        # Extract data for the current keyword and period
+        if keyword not in trends_results[period]:
+            print(f"Advertencia: Palabra clave '{keyword}' no encontrada para el período '{period}'. Omitiendo.")
+            continue
+        data = trends_results[period][keyword]
+
+        # Ensure data is a NumPy array and handle potential NaNs or Infs
+        data = np.asarray(data, dtype=float).copy()
+        data = data[np.isfinite(data)] # Remove NaNs/Infs which break FFT
+
+        if len(data) < 2: # Need at least 2 points for FFT
+            print(f"Advertencia: Datos insuficientes ({len(data)} puntos finitos) para el análisis de Fourier de '{keyword}'. Omitiendo.")
+            continue
+
+        print(f"\\nProcesando Palabra clave: {keyword} ({actual_menu}) - {len(data)} puntos\\n")
+        # Add keyword header to csv_fourier
+        csv_fourier += f"\\nPalabra clave: {keyword}\\nFrequency,Magnitude\\n"
+
+        # Perform Fourier transform
+        fourier_transform = fftpack.fft(data)
+        # Calculate corresponding frequencies
+        frequencies = fftpack.fftfreq(len(data), d=1)
+        # Calculate magnitude (absolute value)
+        magnitudes = np.abs(fourier_transform)
+
+        # Filter for positive frequencies
+        positive_mask = (frequencies > 0) & (frequencies <= 0.5)
+        positive_frequencies = frequencies[positive_mask]
+        positive_magnitudes = magnitudes[positive_mask]
+
+        if len(positive_frequencies) == 0:
+            print(f"Advertencia: No se encontraron frecuencias positivas para \'{keyword}\'. Omitiendo análisis y gráfico.")
+            continue
+
+        # --- Find and Print Dominant Periods --- 
+        dominant_indices = np.argsort(positive_magnitudes)[::-1]
+        print("Periodos dominantes (Top 5):")
+        for i in range(min(5, len(dominant_indices))):
+            idx = dominant_indices[i]
+            freq = positive_frequencies[idx]
+            mag = positive_magnitudes[idx]
+            period_val = 1.0 / freq if freq > 1e-9 else np.inf 
+            time_unit = "meses" if "month" in period.lower() else "años" if "year" in period.lower() else "unidades"
+            if period_val == np.inf:
+                 print(f"  Periodo: Infinito (Tendencia?), Magnitud: {mag:.4f}")
+            else:
+                 print(f"  Periodo: {period_val:.2f} {time_unit}, Magnitud: {mag:.4f}")
+        print("-"*20)
+        # -------------------------------------
+
+        # --- Populate csv_fourier --- 
+        for freq, mag in zip(positive_frequencies, positive_magnitudes):
+            csv_fourier += f",{freq:.6f},{mag:.4f}\\n"
+        csv_fourier += "\\n"
+        # ---------------------------
+
+        # --- Generate Enhanced Periodogram Plot --- 
+        try:
+            # 1. Detrend Data
+            detrended_data = signal.detrend(data)
+
+            # 2. Perform FFT on detrended data
+            fft_detrended = fftpack.fft(detrended_data)
+            magnitudes_detrended = np.abs(fft_detrended)
+            
+            # Use existing positive frequencies, get corresponding detrended magnitudes
+            positive_magnitudes_detrended = magnitudes_detrended[positive_mask]
+
+            # 3. Calculate Periods in Months
+            periods_in_units = 1.0 / positive_frequencies[positive_frequencies > 1e-9] # Avoid division by zero
+            valid_magnitudes = positive_magnitudes_detrended[positive_frequencies > 1e-9]
+
+            if len(periods_in_units) == 0:
+                 print(f"Advertencia: No se encontraron períodos finitos para graficar para '{keyword}'.")
+                 continue
+
+            # 4. Determine base unit and convert to months
+            if menu == 2 or menu == 4: # Google Books (Annual), Crossref (Annual)
+                periods_in_months = periods_in_units * 12
+            else: # Assume Monthly (Google Trends, Bain)
+                periods_in_months = periods_in_units
+
+            # 5. Filter Periods (Keep <= 240 months)
+            period_filter_mask = periods_in_months <= 240
+            filtered_periods = periods_in_months[period_filter_mask]
+            filtered_magnitudes = valid_magnitudes[period_filter_mask]
+
+            if len(filtered_periods) == 0:
+                print(f"Advertencia: No se encontraron períodos <= 240 meses para graficar para '{keyword}'.")
+                continue
+            
+            # 6. Calculate Significance Threshold (e.g., 95th percentile)
+            # Using detrended magnitudes for threshold calculation
+            threshold = np.percentile(filtered_magnitudes, 95) 
+            
+            # Identify significant peaks
+            significant_mask = filtered_magnitudes >= threshold
+            significant_periods = filtered_periods[significant_mask]
+            significant_magnitudes = filtered_magnitudes[significant_mask]
+
+            # --- Setup Plot --- 
+            fig, ax = plt.subplots(figsize=(15, 7)) # Wider figure
+            plt.style.use('ggplot') # Use ggplot style for better visuals
+
+            # --- Plot Data using Stem Plot --- 
+            # Plot non-significant points
+            markerline, stemlines, baseline = ax.stem(
+                filtered_periods[~significant_mask], 
+                filtered_magnitudes[~significant_mask],
+                linefmt='grey', markerfmt='o', basefmt='k-', 
+                label='Componentes no Significativos'
+            )
+            plt.setp(markerline, markersize=4, color='grey')
+            plt.setp(stemlines, linewidth=0.5, color='grey')
+
+            # Plot significant points
+            markerline_sig, stemlines_sig, baseline_sig = ax.stem(
+                significant_periods, 
+                significant_magnitudes,
+                linefmt='r-', markerfmt='ro', basefmt='k-', 
+                label=f'Componentes Significativos (>{threshold:.2f})'
+            )
+            plt.setp(markerline_sig, markersize=6, color='red')
+            plt.setp(stemlines_sig, linewidth=1, color='red')
+
+            # --- X-axis Log Scale and Limits --- 
+            ax.set_xscale('log')
+            ax.set_xlim(left=2, right=240) # Limit from 2 to 240 months
+            
+            # Use LogFormatter for better tick labels on log scale
+            ax.xaxis.set_major_formatter(ticker.ScalarFormatter())
+            # Optional: Customize ticks for clarity
+            ax.set_xticks([3, 6, 12, 24, 36, 60, 120, 240])
+            ax.get_xaxis().set_minor_formatter(ticker.NullFormatter())
+
+            # --- Highlight Expected Periods --- 
+            expected_periods = {
+                3: 'Trimestral', 
+                6: 'Semestral', 
+                12: 'Anual'
+            }
+            for p, label in expected_periods.items():
+                if p >= ax.get_xlim()[0] and p <= ax.get_xlim()[1]:
+                     ax.axvline(x=p, color='blue', linestyle='--', linewidth=0.8, label=f'{label} ({p} meses)')
+
+            # --- Plot Noise Threshold --- 
+            ax.axhline(y=threshold, color='purple', linestyle=':', linewidth=1, label=f'Umbral Significancia (95%: {threshold:.2f})')
+
+            # --- Adjust Y-axis (Optional: Log scale or limit if needed) ---
+            # Example: Limit Y axis if highest peak is too dominant
+            # max_y = np.max(filtered_magnitudes)
+            # if max_y > threshold * 10: # If max peak is 10x threshold
+            #      ax.set_ylim(top=threshold * 5) # Limit Y to 5x threshold
+            # Or use log scale for Y:
+            # ax.set_yscale('log')
+
+            # --- Add Peak Labels --- 
+            for p, m in zip(significant_periods, significant_magnitudes):
+                ax.text(p, m, f' {p:.1f}m', va='bottom', ha='center', fontsize=8, color='red')
+
+            # --- Improve Titles and Labels --- 
+            ax.set_title(f'Periodograma Mejorado: "{keyword}" ({actual_menu} - {period})', fontsize=14)
+            ax.set_xlabel('Período del Ciclo (Meses) - Escala Logarítmica', fontsize=10)
+            ax.set_ylabel('Magnitud Espectral (Datos Detrended)', fontsize=10)
+            ax.grid(True, which='major', axis='y', linestyle='--', alpha=0.6)
+            ax.grid(True, which='major', axis='x', linestyle=':', alpha=0.4)
+            plt.xticks(rotation=45, ha='right')
+
+            # --- Add Legend --- 
+            ax.legend(fontsize=8)
+
+            plt.tight_layout()
+            plot_title = f'Periodograma Mejorado para {keyword} ({actual_menu})'
+            plot_filename_base = f"periodogram_enhanced_{keyword}_{period}.png" # New filename
+            plot_filename = get_unique_filename(plot_filename_base, unique_folder)
+            full_plot_path = os.path.join(unique_folder, plot_filename)
+            plt.savefig(full_plot_path)
+            print(f"Gráfico del periodograma mejorado guardado en: {full_plot_path}")
+            add_image_to_report(plot_title, plot_filename)
+            plt.close(fig)
+        except Exception as e:
+            print(f"Error al generar o guardar el gráfico del periodograma mejorado para '{keyword}': {e}")
+            import traceback
+            traceback.print_exc()
+            if 'fig' in locals() and plt.fignum_exists(fig.number):
+                 plt.close(fig)
+        # -------------------------------------
+
+    # Return the accumulated CSV data string
+    return csv_fourier
+
 def seasonal_analysis(period='last_20_years_data'):
     global charts
     global csv_seasonal
@@ -2887,7 +3118,7 @@ def results():
     # *************************************************************************************
 
     banner_msg(' Part 6 - Análisis de Fourier ', color2=GREEN)
-    csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
+    csv_fourier=fourier_analysis2('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
     # to chage Y axis to log fo to line 131 in all functions
 
     
@@ -2911,6 +3142,18 @@ def ai_analysis():
         csv_all_data = ""
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
+
+    gem_temporal_trends_sp = ""
+    gem_cross_keyword_sp = ""
+    gem_industry_specific_sp = ""
+    gem_arima_sp = ""
+    gem_seasonal_sp = ""
+    gem_fourier_sp = ""
+    gem_conclusions_sp = ""
+    gem_summary_sp = ""
+
+
+'''
 
     if top_choice == 1:
         f_system_prompt = system_prompt_1.format(dbs=actual_menu)
@@ -3035,8 +3278,8 @@ def ai_analysis():
           csv_for_prompt = csv_combined_data
       
       # 2. Create the optimized prompt
-      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, 
-                                          csv_corr_matrix=csv_correlation, 
+      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, \
+                                          csv_corr_matrix=csv_correlation, \
                                           csv_combined_data=csv_for_prompt)
       print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
     
@@ -3243,6 +3486,8 @@ def ai_analysis():
     #display(Markdown(gem_conclusions_sp))
     print(gem_summary_sp)    
 
+'''
+
 def csv2table(csv_data, header_line=0):
     csv_lines = csv_data.strip().split('\n')
     if not csv_lines:
@@ -3436,12 +3681,12 @@ def report_pdf():
         data_txt += csv2table(csv_correlation)        
         data_txt += f"<h3>Regresión</h3>\n"
         data_txt += csv2table(csv_regression)
-    if not skip_arima:
+    if not skip_arima[0]:
         data_txt += f"<h2>ARIMA</h2>\n"
         for n in range(len(csv_arimaA)):
             data_txt += csv_arimaA[n]
             data_txt += csv2table(csv_arimaB[n])
-    if not skip_seasonal:
+    if not skip_seasonal[0]:
         data_txt += f"<h2>Estacional</h2>\n"
         data_txt += csv2table(csv_seasonal)
     data_txt += f"<h2>Fourier</h2>\n"
@@ -5193,7 +5438,7 @@ def main():
     global combined_dataset, filename, unique_folder, all_kw
     global wider, one_keyword, actual_menu, actual_opt, data_filename
     global csv_all_data, csv_last_20_data, csv_last_15_data, csv_last_10_data
-    global csv_last_5_data, csv_last_year_data
+    global csv_last_5_data, csv_last_year_data, top_choice
 
     
     # Redirigir stderr a /dev/null
@@ -5462,196 +5707,7 @@ def update_readme(report_info):
     except Exception as e:
         print(f"  {RED}[Error README] No se pudo escribir en {readme_path}: {e}{RESET}")
 
-# <<< End of update_readme function definition >>>
+# <<< End of generate_all_reports function definition >>>
 
-def generate_all_reports():
-    """
-    Generates individual reports for all tools across all data sources.
-    Iterates TOOL first, then SOURCE.
-    Saves a copy of each report to the 'Informes' folder with Nro-Cod-DataSource naming.
-    """
-    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
-    global tool_file_dic, trends_results, data_filename # Ensure required globals are declared
-
-    # Colors (ensure these are defined globally elsewhere or define them here)
-    GREEN = "\033[92m"
-    YELLOW = "\033[93m"
-    RED = "\033[91m"
-    RESET = "\033[0m"
-    
-    print("\n" + "="*60)
-    print(" Iniciando Generación de Todos los Informes Individuales (Batch)")
-    print(" (Iterando por Herramienta -> Fuente de Datos)")
-    print("="*60 + "\n")
-
-    # Define data source mapping (menu index to details)
-    data_sources = {
-        1: {"name": "Google Trends", "code": "GT", "opt": "GT"},
-        2: {"name": "Google Books Ngrams", "code": "GB", "opt": "GB"},
-        3: {"name": "Bain - Usability", "code": "BU", "opt": "BR"},
-        4: {"name": "Crossref.org", "code": "CR", "opt": "CR"},
-        5: {"name": "Bain - Satisfaction", "code": "BS", "opt": "BS"}
-    }
-
-    # Create the 'Informes' directory if it doesn't exist
-    informes_folder = "Informes"
-    if not os.path.exists(informes_folder):
-        os.makedirs(informes_folder)
-        os.chmod(informes_folder, 0o777)
-        print(f"[Info] Carpeta '{informes_folder}' creada.")
-
-    # --- OUTER LOOP: Iterate through Tools --- 
-    for tool_code, tool_data in tool_file_dic.items():
-        current_tool_keywords = tool_data[1] # Keywords for the tool being processed
-        print(f"\n{YELLOW}>>> Procesando Informes para Herramienta(s): {', '.join(current_tool_keywords)} <<< {RESET}")
-        print("="*60)
-        processed_sources_for_tool = 0
-
-        # --- INNER LOOP: Iterate through Data Sources for the current tool --- 
-        for source_menu_index, source_info in data_sources.items():
-            print(f"\n  -- Intentando Fuente: {source_info['name']} --")
-
-            # --- Load Metadata for THIS data source ---
-            portada_csv_path = f"pub-assets/{source_info['code']}-Portada.csv"
-            portada_df = None
-            if os.path.exists(portada_csv_path):
-                try:
-                    portada_df = pd.read_csv(portada_csv_path, sep=';', quotechar='"', skipinitialspace=True)
-                    portada_df.columns = portada_df.columns.str.strip()
-                    # print(f"    [Info] Metadata cargada desde {portada_csv_path}") # Less verbose
-                    if 'Nro.' in portada_df.columns:
-                         portada_df['Nro.'] = portada_df['Nro.'].astype(str)
-                    if 'Cód' in portada_df.columns:
-                         portada_df['Cód'] = portada_df['Cód'].astype(str)
-                except Exception as e:
-                    print(f"    {YELLOW}[Warning] No se pudo cargar {portada_csv_path}: {e}. Se continuará sin metadatos.{RESET}")
-                    portada_df = None
-            else:
-                print(f"    {YELLOW}[Warning] No se encontró {portada_csv_path}. Se continuará sin metadatos.{RESET}")
-                portada_df = None
-            # ------------------------------------------
-
-            # --- Set variables for this specific Tool/Source combo --- 
-            menu = source_menu_index
-            actual_menu = source_info['name']
-            actual_opt = source_info['opt']
-            all_keywords = current_tool_keywords # Use tool keywords from outer loop
-            top_choice = 1 # Simulate selecting option 1
-
-            # --- Determine correct data_filename --- 
-            data_file_index = 0 
-            if menu == 1: data_file_index = 0
-            elif menu == 2: data_file_index = 2
-            elif menu == 3: data_file_index = 3
-            elif menu == 4: data_file_index = 4
-            elif menu == 5: data_file_index = 5
-            current_data_filename = tool_data[data_file_index] # Local name for clarity
-
-            # --- Check if data file exists --- 
-            full_data_path = os.path.join("dbase", current_data_filename)
-            if not os.path.exists(full_data_path):
-                 print(f"    {YELLOW}[Skipping] Archivo de datos no encontrado: {current_data_filename}{RESET}")
-                 continue 
-            
-            # --- Assign to GLOBAL data_filename REQUIRED by init_variables --- 
-            data_filename = current_data_filename
-            # ------------------------------------------------------------------
-            
-            print(f"    Procesando con archivo: {data_filename}")
-
-            # --- Generate Report for this Tool/Source --- 
-            try:
-                # 1. Initialize variables 
-                init_variables()
-
-                # 2. Check data availability after init
-                trends_data_available = False
-                if 'trends_results' in globals() and trends_results is not None:
-                     if 'all_data' in trends_results and not trends_results['all_data'].empty and all_keywords[0] in trends_results['all_data'].columns:
-                         trends_data_available = True
-                     elif 'last_20_years_data' in trends_results and not trends_results['last_20_years_data'].empty and all_keywords[0] in trends_results['last_20_years_data'].columns:
-                          trends_data_available = True
-                if not trends_data_available:
-                     print(f"      {YELLOW}[Skipping] No se encontraron datos válidos post-inicialización.{RESET}")
-                     continue
-
-                # 3. Run Results Generation
-                print(f"      Generando resultados y gráficos ({unique_folder})...")
-                results()
-
-                # 4. Run AI Analysis
-                print("      Generando análisis AI...")
-                ai_analysis()
-
-                # 5. Generate PDF Report
-                print("      Generando reporte PDF...")
-                report_pdf()
-
-                # 6. Copy and Rename PDF
-                original_pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
-                if os.path.exists(original_pdf_path):
-                    nro_val = "XXX"
-                    cod_val = "XX"
-                    tool_name_for_lookup = all_keywords[0]
-
-                    if portada_df is not None:
-                         match = portada_df[portada_df['Herramienta'] == tool_name_for_lookup]
-                         if not match.empty:
-                              nro_val = match.iloc[0].get('Nro.', nro_val)
-                              cod_val = match.iloc[0].get('Cód', cod_val)
-                         else:
-                              print(f"      {YELLOW}[Warning] Metadatos no encontrados para '{tool_name_for_lookup}' en {portada_csv_path}{RESET}")
-                    else:
-                         print(f"      {YELLOW}[Warning] Saltando búsqueda de metadatos (archivo no cargado).{RESET}")
-
-                    new_filename = f"Informe_{str(cod_val).strip()}.pdf"
-                    new_pdf_path = os.path.join(informes_folder, new_filename)
-                    
-                    # Copy the PDF
-                    try:
-                        shutil.copy2(original_pdf_path, new_pdf_path) # copy2 preserves metadata
-                        print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
-                        processed_sources_for_tool += 1
-
-                        # --- Call README Update --- 
-                        if portada_df is not None and not match.empty:
-                             # Construct the full title (use .get with default values)
-                             titulo_prefix = match.iloc[0].get('Título', 'Título No Encontrado')
-                             herramienta_name = match.iloc[0].get('Herramienta', tool_name_for_lookup) 
-                             full_titulo = f"{str(titulo_prefix).strip()} {str(herramienta_name).strip()}"
-                             
-                             # Ensure Nro and Informe Code are strings for dictionary key safety if needed later
-                             report_readme_info = {
-                                 'nro': str(nro_val).strip(), 
-                                 'informe_code': str(cod_val).strip(), 
-                                 'titulo': full_titulo,
-                                 'pdf_filename': new_filename # The actual filename used
-                             }
-                             update_readme(report_readme_info)
-                        else:
-                             print(f"      {YELLOW}[Warning README] No se actualizará README.MD porque faltan metadatos para '{tool_name_for_lookup}'.{RESET}")
-                        # ------------------------
-
-                    except Exception as copy_e:
-                        print(f"      {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
-                else:
-                    print(f"      {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
-
-            except Exception as e:
-                print(f"    {RED}[Error General] Procesando {source_info['name']}: {e}{RESET}")
-                traceback.print_exc()
-            # --- End Report Generation Try/Except ---
-            
-        # --- End Inner Loop (Sources) ---
-        print("="*60)
-        print(f"<<< Herramienta(s) {', '.join(current_tool_keywords)} completada. {processed_sources_for_tool} informes generados. >>>")
-        
-    # --- End Outer Loop (Tools) ---
-    print("\n" + "="*60)
-    print(" Generación de Todos los Informes (Batch) Completada")
-    print("="*60 + "\n")
-# <<< End of generate_all_reports function >>>
-
-    
 if __name__ == "__main__":
     main()
