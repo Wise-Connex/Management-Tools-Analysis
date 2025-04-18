@@ -2768,6 +2768,15 @@ def init_variables():
     global current_year, charts, image_markdown # General resets
     global trend_analysis_text # Reset dictionary
     global original_values, original_calc_details # Reset dictionaries
+    global dbase_options
+    
+    dbase_options = {
+        1: "Google Trends",
+        2: "Google Books Ngrams",
+        3: "Bain - Usabilidad",
+        4: "Crossref.org",
+        5: "Bain - Satisfacción"
+    }
 
     # Reset dictionaries
     original_values = {}
@@ -4643,13 +4652,6 @@ def select_multiple_data_sources():
     global dbase_options
     
     banner_msg(" Fuentes de Datos Disponibles ", YELLOW, WHITE)
-    dbase_options = {
-        1: "Google Trends",
-        2: "Google Books Ngrams",
-        3: "Bain - Usabilidad",
-        4: "Crossref.org",
-        5: "Bain - Satisfacción"
-    }
     for index, option in enumerate(dbase_options.values(), 1):
         print(f"{index}. {option}")
     
@@ -4772,12 +4774,14 @@ def process_dataset(df, source, all_datasets, selected_sources):
     else:
         # For monthly data, simply trim to the common date range
         df_resampled = df.loc[earliest_date:latest_date]
-
+    
+    df_resampled_monthly = df.loc[earliest_date:latest_date]
+    
     print(f"Final dataframe shape: {df_resampled.shape}")
     print(f"Final dataframe head:\n{df_resampled.head()}")
     print(f"Final frequency: {df_resampled.index.freq}")
     
-    return df_resampled
+    return df_resampled, df_resampled_monthly
 
 def process_dataset_full(df, source, selected_sources):
     """
@@ -4832,11 +4836,13 @@ def process_dataset_full(df, source, selected_sources):
         # For monthly data, keep as is
         df_resampled = df.copy()
 
+    df_resampled_monthly = df.copy()
+    
     print(f"Final full dataframe shape: {df_resampled.shape}")
     print(f"Final full dataframe head:\n{df_resampled.head()}")
     print(f"Final frequency: {df_resampled.index.freq}")
     
-    return df_resampled
+    return df_resampled, df_resampled_monthly
 
 def normalize_dataset(df):
     """
@@ -4935,6 +4941,7 @@ def process_and_normalize_datasets_full():
     """
     global datasets_norm_full
     global all_datasets_full
+    global all_datasets_full_monthly
     global selected_keyword # Ensure globals are declared
     global selected_sources # Ensure globals are declared
     global menu             # Ensure global menu is declared
@@ -4946,6 +4953,8 @@ def process_and_normalize_datasets_full():
     # Initialize dictionaries to store datasets
     all_datasets_full = {}
     datasets_norm_full = {}
+    all_datasets_full_monthly = {}
+    datasets_norm_full_monthly = {} 
 
     # Check if selected_keyword and selected_sources are set globally
     keyword_missing = "selected_keyword" not in globals() or not selected_keyword
@@ -4988,16 +4997,21 @@ def process_and_normalize_datasets_full():
         if source in all_datasets_full:
             # Pass selected_sources to process_dataset_full
             # Check if process_dataset_full exists and expects these args, assume it does for now based on prior context
-            processed_df = process_dataset_full(all_datasets_full[source], source, selected_sources)
+            processed_df, processed_df_monthly = process_dataset_full(all_datasets_full[source], source, selected_sources)
             all_datasets_full[source] = processed_df
             print(f"\nConjunto de datos completo procesado: {dbase_options.get(source, f'ID {source}')}")
             # print(all_datasets_full[source].head()) # Keep output concise unless debugging
             print(f"Dimensiones: {all_datasets_full[source].shape}\n")
+            all_datasets_full_monthly[source] = processed_df_monthly
+            print(f"\nConjunto de datos completo procesado: {dbase_options.get(source, f'ID {source}')}")
+            # print(all_datasets_full[source].head()) # Keep output concise unless debugging
+            print(f"Dimensiones: {all_datasets_full_monthly[source].shape}\n")
 
     # Normalize each dataset
     datasets_norm_full = {source: normalize_dataset_full(df) for source, df in all_datasets_full.items() if df is not None and not df.empty}
+    datasets_norm_full_monthly = {source: normalize_dataset_full(df) for source, df in all_datasets_full_monthly.items() if df is not None and not df.empty}
 
-    return datasets_norm_full, selected_sources
+    return datasets_norm_full, datasets_norm_full_monthly, selected_sources
 
 def get_file_data2(selected_keyword, selected_sources):
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
