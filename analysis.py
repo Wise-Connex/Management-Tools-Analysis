@@ -720,12 +720,12 @@ def fourier_analisys(period='last_year_data'):
   qty=len(title)
   print(f'\x1b[33m\\n\\n{char*qty}\\n{title}\\n{char*qty}\x1b[0m')
   banner_msg("Análisis de Fourier",margin=1,color1=YELLOW,color2=WHITE)
-  csv_fourier="\\nAnálisis de Fourier,Frequency,Magnitude\\n"
+  csv_fourier="\nAnálisis de Fourier,Frequency,Magnitude\n"
   for keyword in all_keywords:
       # Extract data for the current keyword
       data = trends_results[period][keyword]
       print(f"\\nPalabra clave: {keyword} ({actual_menu})\\n")
-      csv_fourier += f"\\nPalabra clave: {keyword}\\n\\n"
+      csv_fourier += f"\nPalabra clave: {keyword}\n\n"
       # Create time vector
       time_vector = np.arange(len(data))
       #csv_fourier += f"Vector de tiempo: \\n{time_vector}\\n"
@@ -798,7 +798,7 @@ def fourier_analysis2(period='last_20_years_data'):
     banner_msg(f"Análisis de Fourier y Periodograma ({period})", margin=1, color1=YELLOW, color2=WHITE)
 
     # Initialize csv_fourier string
-    csv_fourier = "\\nAnálisis de Fourier (Datos),Frequency,Magnitude\\n"
+    csv_fourier = "\nAnálisis de Fourier (Datos),,\n" # Keep initial header generic
 
     for keyword in all_keywords:
         # Extract data for the current keyword and period
@@ -815,9 +815,10 @@ def fourier_analysis2(period='last_20_years_data'):
             print(f"Advertencia: Datos insuficientes ({len(data)} puntos finitos) para el análisis de Fourier de '{keyword}'. Omitiendo.")
             continue
 
-        print(f"\\nProcesando Palabra clave: {keyword} ({actual_menu}) - {len(data)} puntos\\n")
+        print(f"\nProcesando Palabra clave: {keyword} ({actual_menu}) - {len(data)} puntos\n")
         # Add keyword header to csv_fourier
-        csv_fourier += f"\\nPalabra clave: {keyword}\\nFrequency,Magnitude\\n"
+        # Include Period in the header now
+        csv_fourier += f"\nHG: {keyword},,\nPeriodo (Meses),Frecuencia,Magnitud (sin tendencia)\n"
 
         # Perform Fourier transform
         fourier_transform = fftpack.fft(data)
@@ -843,32 +844,39 @@ def fourier_analysis2(period='last_20_years_data'):
             freq = positive_frequencies[idx]
             mag = positive_magnitudes[idx]
             period_val = 1.0 / freq if freq > 1e-9 else np.inf 
-            time_unit = "meses" if "month" in period.lower() else "años" if "year" in period.lower() else "unidades"
-            if period_val == np.inf:
+            time_unit = "meses" if menu != 2 else "años"
+            period_in_months = period_val * 12 if menu == 2 else period_val
+            if period_in_months == np.inf:
                  print(f"  Periodo: Infinito (Tendencia?), Magnitud: {mag:.4f}")
             else:
-                 print(f"  Periodo: {period_val:.2f} {time_unit}, Magnitud: {mag:.4f}")
+                 print(f"  Periodo: {period_in_months:.2f} meses, Magnitud: {mag:.4f}")
         print("-"*20)
         # -------------------------------------
 
-        # --- Populate csv_fourier --- 
-        for freq, mag in zip(positive_frequencies, positive_magnitudes):
-            csv_fourier += f",{freq:.6f},{mag:.4f}\\n"
-        csv_fourier += "\\n"
-        # ---------------------------
+        # 1. Detrend Data
+        detrended_data = signal.detrend(data)
+
+        # 2. Perform FFT on detrended data
+        fft_detrended = fftpack.fft(detrended_data)
+        magnitudes_detrended = np.abs(fft_detrended)
+        
+        # Use existing positive frequencies, get corresponding detrended magnitudes
+        positive_magnitudes_detrended = magnitudes_detrended[positive_mask]
+
+        # --- Populate csv_fourier (including Period) --- 
+        for freq, mag_detrended in zip(positive_frequencies, positive_magnitudes_detrended):
+            period_val = 1.0 / freq if freq > 1e-9 else np.inf
+            # Convert period to months based on data source
+            period_in_months = period_val * 12 if menu == 2 else period_val
+            # Format period for CSV (handle Inf)
+            period_str = f"{period_in_months:.2f}" if period_in_months != np.inf else "Inf"
+            # Append Period, Frequency, Magnitude
+            csv_fourier += f"{period_str},{freq:.6f},{mag_detrended:.4f}\n"
+        csv_fourier += "\n"
+        # -------------------------------------------
 
         # --- Generate Enhanced Periodogram Plot --- 
         try:
-            # 1. Detrend Data
-            detrended_data = signal.detrend(data)
-
-            # 2. Perform FFT on detrended data
-            fft_detrended = fftpack.fft(detrended_data)
-            magnitudes_detrended = np.abs(fft_detrended)
-            
-            # Use existing positive frequencies, get corresponding detrended magnitudes
-            positive_magnitudes_detrended = magnitudes_detrended[positive_mask]
-
             # 3. Calculate Periods in Months
             periods_in_units = 1.0 / positive_frequencies[positive_frequencies > 1e-9] # Avoid division by zero
             valid_magnitudes = positive_magnitudes_detrended[positive_frequencies > 1e-9]
@@ -878,9 +886,10 @@ def fourier_analysis2(period='last_20_years_data'):
                  continue
 
             # 4. Determine base unit and convert to months
-            if menu == 2 or menu == 4: # Google Books (Annual), Crossref (Annual)
+            # Only Google Books (menu==2) is annual, others assumed monthly
+            if menu == 2: # Google Books (Annual)
                 periods_in_months = periods_in_units * 12
-            else: # Assume Monthly (Google Trends, Bain)
+            else: # Assume Monthly (Google Trends, Crossref, Bain)
                 periods_in_months = periods_in_units
 
             # 5. Filter Periods (Keep <= 240 months)
@@ -927,13 +936,13 @@ def fourier_analysis2(period='last_20_years_data'):
             plt.setp(stemlines_sig, linewidth=1, color='red')
 
             # --- X-axis Log Scale and Limits --- 
-            ax.set_xscale('log')
+            ax.set_xscale('log') # Apply logarithmic scale
             ax.set_xlim(left=2, right=240) # Limit from 2 to 240 months
             
             # Use LogFormatter for better tick labels on log scale
             ax.xaxis.set_major_formatter(ticker.ScalarFormatter())
-            # Optional: Customize ticks for clarity
-            ax.set_xticks([3, 6, 12, 24, 36, 60, 120, 240])
+            # Remove explicit tick setting - let log scale handle it
+            # ax.set_xticks([3, 6, 12, 24, 36, 60, 120, 240]) 
             ax.get_xaxis().set_minor_formatter(ticker.NullFormatter())
 
             # --- Highlight Expected Periods --- 
@@ -5707,7 +5716,194 @@ def update_readme(report_info):
     except Exception as e:
         print(f"  {RED}[Error README] No se pudo escribir en {readme_path}: {e}{RESET}")
 
-# <<< End of generate_all_reports function definition >>>
+def generate_all_reports():
+    """
+    Generates individual reports for all tools across all data sources.
+    Iterates TOOL first, then SOURCE.
+    Saves a copy of each report to the 'Informes' folder with Nro-Cod-DataSource naming.
+    """
+    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
+    global tool_file_dic, trends_results, data_filename # Ensure required globals are declared
+
+    # Colors (ensure these are defined globally elsewhere or define them here)
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    RED = "\033[91m"
+    RESET = "\033[0m"
+    
+    print("\n" + "="*60)
+    print(" Iniciando Generación de Todos los Informes Individuales (Batch)")
+    print(" (Iterando por Herramienta -> Fuente de Datos)")
+    print("="*60 + "\n")
+
+    # Define data source mapping (menu index to details)
+    data_sources = {
+        1: {"name": "Google Trends", "code": "GT", "opt": "GT"},
+        2: {"name": "Google Books Ngrams", "code": "GB", "opt": "GB"},
+        3: {"name": "Bain - Usability", "code": "BU", "opt": "BR"},
+        4: {"name": "Crossref.org", "code": "CR", "opt": "CR"},
+        5: {"name": "Bain - Satisfaction", "code": "BS", "opt": "BS"}
+    }
+
+    # Create the 'Informes' directory if it doesn't exist
+    informes_folder = "Informes"
+    if not os.path.exists(informes_folder):
+        os.makedirs(informes_folder)
+        os.chmod(informes_folder, 0o777)
+        print(f"[Info] Carpeta '{informes_folder}' creada.")
+
+    # --- OUTER LOOP: Iterate through Tools --- 
+    for tool_code, tool_data in tool_file_dic.items():
+        current_tool_keywords = tool_data[1] # Keywords for the tool being processed
+        print(f"\n{YELLOW}>>> Procesando Informes para Herramienta(s): {', '.join(current_tool_keywords)} <<< {RESET}")
+        print("="*60)
+        processed_sources_for_tool = 0
+
+        # --- INNER LOOP: Iterate through Data Sources for the current tool --- 
+        for source_menu_index, source_info in data_sources.items():
+            print(f"\n  -- Intentando Fuente: {source_info['name']} --")
+
+            # --- Load Metadata for THIS data source ---
+            portada_csv_path = f"pub-assets/{source_info['code']}-Portada.csv"
+            portada_df = None
+            if os.path.exists(portada_csv_path):
+                try:
+                    portada_df = pd.read_csv(portada_csv_path, sep=';', quotechar='"', skipinitialspace=True)
+                    portada_df.columns = portada_df.columns.str.strip()
+                    # print(f"    [Info] Metadata cargada desde {portada_csv_path}") # Less verbose
+                    if 'Nro.' in portada_df.columns:
+                         portada_df['Nro.'] = portada_df['Nro.'].astype(str)
+                    if 'Cód' in portada_df.columns:
+                         portada_df['Cód'] = portada_df['Cód'].astype(str)
+                except Exception as e:
+                    print(f"    {YELLOW}[Warning] No se pudo cargar {portada_csv_path}: {e}. Se continuará sin metadatos.{RESET}")
+                    portada_df = None
+            else:
+                print(f"    {YELLOW}[Warning] No se encontró {portada_csv_path}. Se continuará sin metadatos.{RESET}")
+                portada_df = None
+            # ------------------------------------------
+
+            # --- Set variables for this specific Tool/Source combo --- 
+            menu = source_menu_index
+            actual_menu = source_info['name']
+            actual_opt = source_info['opt']
+            all_keywords = current_tool_keywords # Use tool keywords from outer loop
+            top_choice = 1 # Simulate selecting option 1
+
+            # --- Determine correct data_filename --- 
+            data_file_index = 0 
+            if menu == 1: data_file_index = 0
+            elif menu == 2: data_file_index = 2
+            elif menu == 3: data_file_index = 3
+            elif menu == 4: data_file_index = 4
+            elif menu == 5: data_file_index = 5
+            current_data_filename = tool_data[data_file_index] # Local name for clarity
+
+            # --- Check if data file exists --- 
+            full_data_path = os.path.join("dbase", current_data_filename)
+            if not os.path.exists(full_data_path):
+                 print(f"    {YELLOW}[Skipping] Archivo de datos no encontrado: {current_data_filename}{RESET}")
+                 continue 
+            
+            # --- Assign to GLOBAL data_filename REQUIRED by init_variables --- 
+            data_filename = current_data_filename
+            # ------------------------------------------------------------------
+            
+            print(f"    Procesando con archivo: {data_filename}")
+
+            # --- Generate Report for this Tool/Source --- 
+            try:
+                # 1. Initialize variables 
+                init_variables()
+
+                # 2. Check data availability after init
+                trends_data_available = False
+                if 'trends_results' in globals() and trends_results is not None:
+                     if 'all_data' in trends_results and not trends_results['all_data'].empty and all_keywords[0] in trends_results['all_data'].columns:
+                         trends_data_available = True
+                     elif 'last_20_years_data' in trends_results and not trends_results['last_20_years_data'].empty and all_keywords[0] in trends_results['last_20_years_data'].columns:
+                          trends_data_available = True
+                if not trends_data_available:
+                     print(f"      {YELLOW}[Skipping] No se encontraron datos válidos post-inicialización.{RESET}")
+                     continue
+
+                # 3. Run Results Generation
+                print(f"      Generando resultados y gráficos ({unique_folder})...")
+                results()
+
+                # 4. Run AI Analysis
+                print("      Generando análisis AI...")
+                ai_analysis()
+
+                # 5. Generate PDF Report
+                print("      Generando reporte PDF...")
+                report_pdf()
+
+                # 6. Copy and Rename PDF
+                original_pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
+                if os.path.exists(original_pdf_path):
+                    nro_val = "XXX"
+                    cod_val = "XX"
+                    tool_name_for_lookup = all_keywords[0]
+
+                    if portada_df is not None:
+                         match = portada_df[portada_df['Herramienta'] == tool_name_for_lookup]
+                         if not match.empty:
+                              nro_val = match.iloc[0].get('Nro.', nro_val)
+                              cod_val = match.iloc[0].get('Cód', cod_val)
+                         else:
+                              print(f"      {YELLOW}[Warning] Metadatos no encontrados para '{tool_name_for_lookup}' en {portada_csv_path}{RESET}")
+                    else:
+                         print(f"      {YELLOW}[Warning] Saltando búsqueda de metadatos (archivo no cargado).{RESET}")
+
+                    new_filename = f"Informe_{str(cod_val).strip()}.pdf"
+                    new_pdf_path = os.path.join(informes_folder, new_filename)
+                    
+                    # Copy the PDF
+                    try:
+                        shutil.copy2(original_pdf_path, new_pdf_path) # copy2 preserves metadata
+                        print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
+                        processed_sources_for_tool += 1
+
+                        # --- Call README Update --- 
+                        if portada_df is not None and not match.empty:
+                             # Construct the full title (use .get with default values)
+                             titulo_prefix = match.iloc[0].get('Título', 'Título No Encontrado')
+                             herramienta_name = match.iloc[0].get('Herramienta', tool_name_for_lookup) 
+                             full_titulo = f"{str(titulo_prefix).strip()} {str(herramienta_name).strip()}"
+                             
+                             # Ensure Nro and Informe Code are strings for dictionary key safety if needed later
+                             report_readme_info = {
+                                 'nro': str(nro_val).strip(), 
+                                 'informe_code': str(cod_val).strip(), 
+                                 'titulo': full_titulo,
+                                 'pdf_filename': new_filename # The actual filename used
+                             }
+                             update_readme(report_readme_info)
+                        else:
+                             print(f"      {YELLOW}[Warning README] No se actualizará README.MD porque faltan metadatos para '{tool_name_for_lookup}'.{RESET}")
+                        # ------------------------
+
+                    except Exception as copy_e:
+                        print(f"      {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
+                else:
+                    print(f"      {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
+
+            except Exception as e:
+                print(f"    {RED}[Error General] Procesando {source_info['name']}: {e}{RESET}")
+                traceback.print_exc()
+            # --- End Report Generation Try/Except ---
+            
+        # --- End Inner Loop (Sources) ---
+        print("="*60)
+        print(f"<<< Herramienta(s) {', '.join(current_tool_keywords)} completada. {processed_sources_for_tool} informes generados. >>>")
+        
+    # --- End Outer Loop (Tools) ---
+    print("\n" + "="*60)
+    print(" Generación de Todos los Informes (Batch) Completada")
+    print("="*60 + "\n")
+    
+# <<< End of generate_all_reports function >>>
 
 if __name__ == "__main__":
     main()
