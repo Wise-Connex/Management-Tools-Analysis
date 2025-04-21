@@ -626,6 +626,107 @@ def bspline_interpolation(df, column):
 
     return df_interpolated
 
+def seasonal_distribution(df, column):
+    '''
+    Interpolates annual data to monthly data based on a predefined 
+    percentage distribution profile loaded from a CSV file.
+
+    Args:
+        df (pd.DataFrame): Input DataFrame with annual data. Must contain 
+                           a datetime index (representing the year, e.g., YYYY-01-01)
+                           and the specified data column.
+        column (str): The name of the column containing the annual values 
+                      to interpolate.
+
+    Returns:
+        pd.DataFrame: A new DataFrame with monthly interpolated data, 
+                      indexed by date (YYYY-MM-01), containing the 
+                      interpolated values in the specified column.
+                      Returns an empty DataFrame if the profile is not found.
+    '''
+    # Construct the profile filename based on the column name
+    profile_filename_base = f"CR_{column.replace(' ', '')}_monthly_relative.csv"
+    profile_path = os.path.join("interpolation_profiles", profile_filename_base)
+
+    # Load the profile data
+    try:
+        profile_df = pd.read_csv(profile_path)
+        # Ensure PercentageDistribution is numeric and handle potential errors
+        profile_df['PercentageDistribution'] = pd.to_numeric(profile_df['PercentageDistribution'], errors='coerce')
+        # Normalize percentages if they don't sum to 100
+        total_percentage = profile_df['PercentageDistribution'].sum()
+        if not np.isclose(total_percentage, 100.0):
+            print(f"Warning: Percentages in {profile_path} sum to {total_percentage}. Normalizing.")
+            profile_df['PercentageDistribution'] = (profile_df['PercentageDistribution'] / total_percentage) * 100
+            
+        profile_df.set_index('Month', inplace=True) # Index by month number (1-12)
+    except FileNotFoundError:
+        print(f"Error: Interpolation profile not found at {profile_path}. Cannot perform sample interpolation for '{column}'.")
+        # Return an empty DataFrame or handle as appropriate
+        return pd.DataFrame(columns=['Date', column]).set_index('Date')
+    except Exception as e:
+        print(f"Error loading or processing profile {profile_path}: {e}")
+        return pd.DataFrame(columns=['Date', column]).set_index('Date')
+        
+    # Ensure the input DataFrame index is datetime
+    if not pd.api.types.is_datetime64_any_dtype(df.index):
+         try:
+             # Attempt to convert assuming 'YYYY-01' format initially leads to YYYY-01-01
+             df.index = pd.to_datetime(df.index)
+         except Exception as e:
+             print(f"Error converting index to datetime: {e}. Cannot perform sample interpolation.")
+             return pd.DataFrame(columns=['Date', column]).set_index('Date')
+
+    # Prepare data for interpolation
+    interpolated_data = []
+    
+    # Iterate through each year in the input data
+    for year_date, row in df.iterrows():
+        annual_value = row[column]
+        year = year_date.year
+
+        # Check if annual_value is NaN or None, skip if so
+        if pd.isna(annual_value):
+             print(f"Warning: Skipping year {year} for column '{column}' due to NaN value.")
+             continue
+
+        # Iterate through months 1 to 12
+        for month in range(1, 13):
+            try:
+                # Get the percentage for the current month from the profile
+                percentage = profile_df.loc[month, 'PercentageDistribution']
+                
+                # Check if percentage is NaN (e.g., due to coerce failure)
+                if pd.isna(percentage):
+                    print(f"Warning: Invalid percentage for month {month} in profile {profile_path}. Using 0.")
+                    percentage = 0.0
+
+                # Calculate the interpolated monthly value
+                monthly_value = annual_value * (percentage / 100.0)
+
+                # Create the date for the interpolated month
+                monthly_date = pd.Timestamp(year=year, month=month, day=1)
+
+                # Append the result
+                interpolated_data.append({'Date': monthly_date, column: monthly_value})
+            except KeyError:
+                 print(f"Warning: Month {month} not found in profile {profile_path}. Skipping month.")
+                 continue # Skip if month is missing in profile
+            except Exception as e:
+                 print(f"Error during interpolation for {year}-{month} in column '{column}': {e}")
+                 continue # Skip this month/year if calculation fails
+
+    # Create the output DataFrame
+    if not interpolated_data: # Handle case where no data could be interpolated
+        print(f"Warning: No data was interpolated for column '{column}'.")
+        return pd.DataFrame(columns=['Date', column]).set_index('Date')
+        
+    df_interpolated = pd.DataFrame(interpolated_data)
+    df_interpolated.set_index('Date', inplace=True)
+    df_interpolated.sort_index(inplace=True) # Ensure chronological order
+
+    return df_interpolated
+    
 def get_file_data(filename, menu):
     # Path to the local 'dbase' folder
     local_path = "dbase/"
@@ -643,8 +744,25 @@ def get_file_data(filename, menu):
     
     # Convert the index to datetime format
     if menu == 2:
-        # For Google Books Ngrams, assume the index is just the year
-        df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
+        if top_choice == 1 or top_choice == 3:
+            # For Google Books Ngrams, assume the index is just the year
+            df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
+        else:
+            # For Google Trends, assume the index is just the year
+            interpolated_data = pd.DataFrame()
+            for column in df.columns:
+                #interpolated = bspline_interpolation(df, column)
+                interpolated = seasonal_distribution(df, column)
+                interpolated_data[column] = interpolated[column]
+                # Set the index to datetime format
+                interpolated_data.index = pd.to_datetime(interpolated_data.index)
+                
+                # Ensure the index is in the correct format
+                interpolated_data.index = interpolated_data.index.strftime('%Y-%m-%d')
+                interpolated_data.index = pd.to_datetime(interpolated_data.index)
+                
+                df = interpolated_data           
+            
     else:
         # For other data sources, assume 'Year-Month' format
         df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
@@ -5273,6 +5391,7 @@ def get_file_data2(selected_keyword, selected_sources):
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
 
     datasets = {}
+    datasets_monthly = {}
     all_raw_datasets = {}
 
     for source in selected_sources:
@@ -5286,10 +5405,13 @@ def get_file_data2(selected_keyword, selected_sources):
 
     for source in selected_sources:
         if source in all_raw_datasets:
-            datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
+            datasets[source], datasets_monthly[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
             print(f"\nConjunto de datos procesado: {source}")
             print(datasets[source].head())
             print(f"Dimensiones: {datasets[source].shape}\n\n")
+            print(f"\nConjunto de datos procesado (monthly): {source}")
+            print(datasets_monthly[source].head())
+            print(f"Dimensiones: {datasets_monthly[source].shape}\n\n")
 
     print(datasets)
     
@@ -5604,6 +5726,12 @@ def main():
                      print(combined_dataset)
             else:
                  print(f"{YELLOW}No se pudieron generar los conjuntos de datos combinados.{RESET}")
+                 
+            # --- Run Analysis for Option 2 ---
+            results()
+            #ai_analysis()
+            #report_pdf()
+            # ----------------------------------
 
             
         elif top_choice == 3:
