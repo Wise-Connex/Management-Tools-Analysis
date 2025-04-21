@@ -22,6 +22,8 @@ import math
 import warnings
 import shutil # Make sure shutil is imported at the top of the file
 import traceback
+from scipy import signal
+from matplotlib import ticker
 
 # Suppress the specific scikit-learn deprecation warning about force_all_finite
 warnings.filterwarnings("ignore", message=".*force_all_finite.*")
@@ -624,6 +626,107 @@ def bspline_interpolation(df, column):
 
     return df_interpolated
 
+def seasonal_distribution(df, column):
+    '''
+    Interpolates annual data to monthly data based on a predefined 
+    percentage distribution profile loaded from a CSV file.
+
+    Args:
+        df (pd.DataFrame): Input DataFrame with annual data. Must contain 
+                           a datetime index (representing the year, e.g., YYYY-01-01)
+                           and the specified data column.
+        column (str): The name of the column containing the annual values 
+                      to interpolate.
+
+    Returns:
+        pd.DataFrame: A new DataFrame with monthly interpolated data, 
+                      indexed by date (YYYY-MM-01), containing the 
+                      interpolated values in the specified column.
+                      Returns an empty DataFrame if the profile is not found.
+    '''
+    # Construct the profile filename based on the column name
+    profile_filename_base = f"CR_{column.replace(' ', '')}_monthly_relative.csv"
+    profile_path = os.path.join("interpolation_profiles", profile_filename_base)
+
+    # Load the profile data
+    try:
+        profile_df = pd.read_csv(profile_path)
+        # Ensure PercentageDistribution is numeric and handle potential errors
+        profile_df['PercentageDistribution'] = pd.to_numeric(profile_df['PercentageDistribution'], errors='coerce')
+        # Normalize percentages if they don't sum to 100
+        total_percentage = profile_df['PercentageDistribution'].sum()
+        if not np.isclose(total_percentage, 100.0):
+            print(f"Warning: Percentages in {profile_path} sum to {total_percentage}. Normalizing.")
+            profile_df['PercentageDistribution'] = (profile_df['PercentageDistribution'] / total_percentage) * 100
+            
+        profile_df.set_index('Month', inplace=True) # Index by month number (1-12)
+    except FileNotFoundError:
+        print(f"Error: Interpolation profile not found at {profile_path}. Cannot perform sample interpolation for '{column}'.")
+        # Return an empty DataFrame or handle as appropriate
+        return pd.DataFrame(columns=['Date', column]).set_index('Date')
+    except Exception as e:
+        print(f"Error loading or processing profile {profile_path}: {e}")
+        return pd.DataFrame(columns=['Date', column]).set_index('Date')
+        
+    # Ensure the input DataFrame index is datetime
+    if not pd.api.types.is_datetime64_any_dtype(df.index):
+         try:
+             # Attempt to convert assuming 'YYYY-01' format initially leads to YYYY-01-01
+             df.index = pd.to_datetime(df.index)
+         except Exception as e:
+             print(f"Error converting index to datetime: {e}. Cannot perform sample interpolation.")
+             return pd.DataFrame(columns=['Date', column]).set_index('Date')
+
+    # Prepare data for interpolation
+    interpolated_data = []
+    
+    # Iterate through each year in the input data
+    for year_date, row in df.iterrows():
+        annual_value = row[column]
+        year = year_date.year
+
+        # Check if annual_value is NaN or None, skip if so
+        if pd.isna(annual_value):
+             print(f"Warning: Skipping year {year} for column '{column}' due to NaN value.")
+             continue
+
+        # Iterate through months 1 to 12
+        for month in range(1, 13):
+            try:
+                # Get the percentage for the current month from the profile
+                percentage = profile_df.loc[month, 'PercentageDistribution']
+                
+                # Check if percentage is NaN (e.g., due to coerce failure)
+                if pd.isna(percentage):
+                    print(f"Warning: Invalid percentage for month {month} in profile {profile_path}. Using 0.")
+                    percentage = 0.0
+
+                # Calculate the interpolated monthly value
+                monthly_value = annual_value * (percentage / 100.0)
+
+                # Create the date for the interpolated month
+                monthly_date = pd.Timestamp(year=year, month=month, day=1)
+
+                # Append the result
+                interpolated_data.append({'Date': monthly_date, column: monthly_value})
+            except KeyError:
+                 print(f"Warning: Month {month} not found in profile {profile_path}. Skipping month.")
+                 continue # Skip if month is missing in profile
+            except Exception as e:
+                 print(f"Error during interpolation for {year}-{month} in column '{column}': {e}")
+                 continue # Skip this month/year if calculation fails
+
+    # Create the output DataFrame
+    if not interpolated_data: # Handle case where no data could be interpolated
+        print(f"Warning: No data was interpolated for column '{column}'.")
+        return pd.DataFrame(columns=['Date', column]).set_index('Date')
+        
+    df_interpolated = pd.DataFrame(interpolated_data)
+    df_interpolated.set_index('Date', inplace=True)
+    df_interpolated.sort_index(inplace=True) # Ensure chronological order
+
+    return df_interpolated
+    
 def get_file_data(filename, menu):
     # Path to the local 'dbase' folder
     local_path = "dbase/"
@@ -641,8 +744,25 @@ def get_file_data(filename, menu):
     
     # Convert the index to datetime format
     if menu == 2:
-        # For Google Books Ngrams, assume the index is just the year
-        df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
+        if top_choice == 1 or top_choice == 3:
+            # For Google Books Ngrams, assume the index is just the year
+            df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
+        else:
+            # For Google Trends, assume the index is just the year
+            interpolated_data = pd.DataFrame()
+            for column in df.columns:
+                #interpolated = bspline_interpolation(df, column)
+                interpolated = seasonal_distribution(df, column)
+                interpolated_data[column] = interpolated[column]
+                # Set the index to datetime format
+                interpolated_data.index = pd.to_datetime(interpolated_data.index)
+                
+                # Ensure the index is in the correct format
+                interpolated_data.index = interpolated_data.index.strftime('%Y-%m-%d')
+                interpolated_data.index = pd.to_datetime(interpolated_data.index)
+                
+                df = interpolated_data           
+            
     else:
         # For other data sources, assume 'Year-Month' format
         df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
@@ -716,51 +836,289 @@ def fourier_analisys(period='last_year_data'):
   char='*'
   title=' Análisis de Fourier '
   qty=len(title)
-  print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
+  print(f'\x1b[33m\\n\\n{char*qty}\\n{title}\\n{char*qty}\x1b[0m')
   banner_msg("Análisis de Fourier",margin=1,color1=YELLOW,color2=WHITE)
   csv_fourier="\nAnálisis de Fourier,Frequency,Magnitude\n"
   for keyword in all_keywords:
       # Extract data for the current keyword
       data = trends_results[period][keyword]
-      print(f"\nPalabra clave: {keyword} ({actual_menu})\n")
+      print(f"\\nPalabra clave: {keyword} ({actual_menu})\\n")
       csv_fourier += f"\nPalabra clave: {keyword}\n\n"
       # Create time vector
       time_vector = np.arange(len(data))
-      #csv_fourier += f"Vector de tiempo: \n{time_vector}\n"
+      #csv_fourier += f"Vector de tiempo: \\n{time_vector}\\n"
       # Ensure data is a properly aligned NumPy array
       data = np.asarray(data, dtype=float).copy()
       # Perform Fourier transform
       fourier_transform = fftpack.fft(data)
-      # Calculate frequency axis
-      freq = fftpack.fftfreq(len(data))
-      # Create DataFrame with time_vector as index and both magnitude and frequency as columns
-      fourierT = pd.DataFrame({
-          'frequency': freq,
-          'magnitude': np.abs(fourier_transform)
-      }, index=time_vector)
-      print(fourierT)      
-      csv_fourier += fourierT.to_csv(index=True)
-      # Plot the magnitude of the Fourier transform
-      plt.figure(figsize=(12, 10))  # Create a new figure for each keyword
-      plt.plot(freq, np.abs(fourier_transform), color='#66B2FF')
-      plt.xlabel('Frecuencia (ciclos/año)')
-      #plt.yscale('log')
-      plt.ylabel('Magnitud')  # Update label to reflect 1/2 log scale
-      plt.title(f'Transformada de Fourier para {keyword} ({actual_menu})', pad=20)
-      if top_choice == 2:
-          plt.title(f'Transformada de Fourier para {actual_menu} ({keyword})', pad=20)
-      # Save the plot to the unique folder
-      base_filename = f'{filename}_fourier_{keyword[:3]}.png'
-      image_filename=get_unique_filename(base_filename, unique_folder)
-      plt.savefig(os.path.join(unique_folder, image_filename), bbox_inches='tight')
-      add_image_to_report(f'Transformada de Fourier para {keyword}', image_filename)
-      charts += f'Transformada de Fourier para {keyword} ({image_filename})\n\n'
-      # Remove plt.show() to prevent graph windows from appearing
-      plt.close()
-  csv_fourier="".join(csv_fourier)
-  return csv_fourier
+      # Calculate corresponding frequencies
+      frequencies = fftpack.fftfreq(len(data))
+      # Calculate magnitude (absolute value)
+      magnitudes = np.abs(fourier_transform)
+      # Filter for positive frequencies (and non-zero)
+      positive_mask = frequencies > 0
+      positive_frequencies = frequencies[positive_mask]
+      positive_magnitudes = magnitudes[positive_mask]
+      # Find dominant frequencies
+      dominant_indices = np.argsort(positive_magnitudes)[::-1] # Sort descending
+      print("Frecuencias dominantes:")
+      csv_fourier += "Frecuencia,Magnitud\\n"
+      for i in range(min(5, len(dominant_indices))): # Print top 5
+          idx = dominant_indices[i]
+          freq = positive_frequencies[idx]
+          mag = positive_magnitudes[idx]
+          print(f"  Frecuencia: {freq:.4f}, Magnitud: {mag:.4f}")
+          csv_fourier += f"{freq:.4f},{mag:.4f}\\n"
+      csv_fourier += "\\n"
 
-# Seasonal Analysis
+  # Save the CSV data
+  csv_filename = os.path.join(unique_folder, 'fourier_analysis.csv')
+  try:
+      with open(csv_filename, 'w', newline='', encoding='utf-8') as f:
+          f.write(csv_fourier)
+      print(f"\\nDatos del análisis de Fourier guardados en: {csv_filename}")
+  except Exception as e:
+      print(f"Error al guardar el archivo CSV del análisis de Fourier: {e}")
+
+# Fourier Analysis with Periodogram Plot
+def fourier_analysis2(period='last_20_years_data'):
+    """
+    Performs Fourier analysis on time series data for specified keywords,
+    generates periodogram-like bar plots, adds them to the report,
+    and returns the frequency/magnitude data as a CSV-formatted string.
+
+    Args:
+        period (str): The key for the period data in trends_results
+                      (e.g., 'last_20_years_data').
+
+    Returns:
+        str: A CSV-formatted string containing the frequency and magnitude data
+             for all processed keywords, or None if an error occurs.
+    """
+    global charts
+    global image_markdown
+    global unique_folder
+    global all_keywords
+    global trends_results
+    global actual_menu # Assuming this holds the source name
+
+    if period not in trends_results:
+        print(f"Error: Period '{period}' not found in trends_results.")
+        return None # Return None on error
+    if not all_keywords:
+        print("Error: No keywords selected for analysis.")
+        return None # Return None on error
+
+    char = '*'
+    title = f' Análisis de Fourier ({period}) '
+    qty = len(title)
+    print(f'\x1b[33m\\n\\n{char*qty}\\n{title}\\n{char*qty}\\x1b[0m')
+    banner_msg(f"Análisis de Fourier y Periodograma ({period})", margin=1, color1=YELLOW, color2=WHITE)
+
+    # Initialize csv_fourier string
+    csv_fourier = "\nAnálisis de Fourier (Datos),,\n" # Keep initial header generic
+
+    for keyword in all_keywords:
+        # Extract data for the current keyword and period
+        if keyword not in trends_results[period]:
+            print(f"Advertencia: Palabra clave '{keyword}' no encontrada para el período '{period}'. Omitiendo.")
+            continue
+        data = trends_results[period][keyword]
+
+        # Ensure data is a NumPy array and handle potential NaNs or Infs
+        data = np.asarray(data, dtype=float).copy()
+        data = data[np.isfinite(data)] # Remove NaNs/Infs which break FFT
+
+        if len(data) < 2: # Need at least 2 points for FFT
+            print(f"Advertencia: Datos insuficientes ({len(data)} puntos finitos) para el análisis de Fourier de '{keyword}'. Omitiendo.")
+            continue
+
+        print(f"\nProcesando Palabra clave: {keyword} ({actual_menu}) - {len(data)} puntos\n")
+        # Add keyword header to csv_fourier
+        # Include Period in the header now
+        csv_fourier += f"\nHG: {keyword},,\nPeriodo (Meses),Frecuencia,Magnitud (sin tendencia)\n"
+
+        # Perform Fourier transform
+        fourier_transform = fftpack.fft(data)
+        # Calculate corresponding frequencies
+        frequencies = fftpack.fftfreq(len(data), d=1)
+        # Calculate magnitude (absolute value)
+        magnitudes = np.abs(fourier_transform)
+
+        # Filter for positive frequencies
+        positive_mask = (frequencies > 0) & (frequencies <= 0.5)
+        positive_frequencies = frequencies[positive_mask]
+        positive_magnitudes = magnitudes[positive_mask]
+
+        if len(positive_frequencies) == 0:
+            print(f"Advertencia: No se encontraron frecuencias positivas para \'{keyword}\'. Omitiendo análisis y gráfico.")
+            continue
+
+        # --- Find and Print Dominant Periods --- 
+        dominant_indices = np.argsort(positive_magnitudes)[::-1]
+        print("Periodos dominantes (Top 5):")
+        for i in range(min(5, len(dominant_indices))):
+            idx = dominant_indices[i]
+            freq = positive_frequencies[idx]
+            mag = positive_magnitudes[idx]
+            period_val = 1.0 / freq if freq > 1e-9 else np.inf 
+            time_unit = "meses" if menu != 2 else "años"
+            period_in_months = period_val * 12 if menu == 2 else period_val
+            if period_in_months == np.inf:
+                 print(f"  Periodo: Infinito (Tendencia?), Magnitud: {mag:.4f}")
+            else:
+                 print(f"  Periodo: {period_in_months:.2f} meses, Magnitud: {mag:.4f}")
+        print("-"*20)
+        # -------------------------------------
+
+        # 1. Detrend Data
+        detrended_data = signal.detrend(data)
+
+        # 2. Perform FFT on detrended data
+        fft_detrended = fftpack.fft(detrended_data)
+        magnitudes_detrended = np.abs(fft_detrended)
+        
+        # Use existing positive frequencies, get corresponding detrended magnitudes
+        positive_magnitudes_detrended = magnitudes_detrended[positive_mask]
+
+        # --- Populate csv_fourier (including Period) --- 
+        for freq, mag_detrended in zip(positive_frequencies, positive_magnitudes_detrended):
+            period_val = 1.0 / freq if freq > 1e-9 else np.inf
+            # Convert period to months based on data source
+            period_in_months = period_val * 12 if menu == 2 else period_val
+            # Format period for CSV (handle Inf)
+            period_str = f"{period_in_months:.2f}" if period_in_months != np.inf else "Inf"
+            # Append Period, Frequency, Magnitude
+            csv_fourier += f"{period_str},{freq:.6f},{mag_detrended:.4f}\n"
+        csv_fourier += "\n"
+        # -------------------------------------------
+
+        # --- Generate Enhanced Periodogram Plot --- 
+        try:
+            # 3. Calculate Periods in Months
+            periods_in_units = 1.0 / positive_frequencies[positive_frequencies > 1e-9] # Avoid division by zero
+            valid_magnitudes = positive_magnitudes_detrended[positive_frequencies > 1e-9]
+
+            if len(periods_in_units) == 0:
+                 print(f"Advertencia: No se encontraron períodos finitos para graficar para '{keyword}'.")
+                 continue
+
+            # 4. Determine base unit and convert to months
+            # Only Google Books (menu==2) is annual, others assumed monthly
+            if menu == 2: # Google Books (Annual)
+                periods_in_months = periods_in_units * 12
+            else: # Assume Monthly (Google Trends, Crossref, Bain)
+                periods_in_months = periods_in_units
+
+            # 5. Filter Periods (Keep <= 240 months)
+            period_filter_mask = periods_in_months <= 240
+            filtered_periods = periods_in_months[period_filter_mask]
+            filtered_magnitudes = valid_magnitudes[period_filter_mask]
+
+            if len(filtered_periods) == 0:
+                print(f"Advertencia: No se encontraron períodos <= 240 meses para graficar para '{keyword}'.")
+                continue
+            
+            # 6. Calculate Significance Threshold (e.g., 95th percentile)
+            # Using detrended magnitudes for threshold calculation
+            threshold = np.percentile(filtered_magnitudes, 95) 
+            
+            # Identify significant peaks
+            significant_mask = filtered_magnitudes >= threshold
+            significant_periods = filtered_periods[significant_mask]
+            significant_magnitudes = filtered_magnitudes[significant_mask]
+
+            # --- Setup Plot --- 
+            fig, ax = plt.subplots(figsize=(15, 7)) # Wider figure
+            plt.style.use('ggplot') # Use ggplot style for better visuals
+
+            # --- Plot Data using Stem Plot --- 
+            # Plot non-significant points
+            markerline, stemlines, baseline = ax.stem(
+                filtered_periods[~significant_mask], 
+                filtered_magnitudes[~significant_mask],
+                linefmt='grey', markerfmt='o', basefmt='k-', 
+                label='Componentes no Significativos'
+            )
+            plt.setp(markerline, markersize=4, color='grey')
+            plt.setp(stemlines, linewidth=0.5, color='grey')
+
+            # Plot significant points
+            markerline_sig, stemlines_sig, baseline_sig = ax.stem(
+                significant_periods, 
+                significant_magnitudes,
+                linefmt='r-', markerfmt='ro', basefmt='k-', 
+                label=f'Componentes Significativos (>{threshold:.2f})'
+            )
+            plt.setp(markerline_sig, markersize=6, color='red')
+            plt.setp(stemlines_sig, linewidth=1, color='red')
+
+            # --- X-axis Log Scale and Limits --- 
+            ax.set_xscale('log') # Apply logarithmic scale
+            ax.set_xlim(left=2, right=240) # Limit from 2 to 240 months
+            
+            # Use LogFormatter for better tick labels on log scale
+            ax.xaxis.set_major_formatter(ticker.ScalarFormatter())
+            # Remove explicit tick setting - let log scale handle it
+            # ax.set_xticks([3, 6, 12, 24, 36, 60, 120, 240]) 
+            ax.get_xaxis().set_minor_formatter(ticker.NullFormatter())
+
+            # --- Highlight Expected Periods --- 
+            expected_periods = {
+                3: 'Trimestral', 
+                6: 'Semestral', 
+                12: 'Anual'
+            }
+            for p, label in expected_periods.items():
+                if p >= ax.get_xlim()[0] and p <= ax.get_xlim()[1]:
+                     ax.axvline(x=p, color='blue', linestyle='--', linewidth=0.8, label=f'{label} ({p} meses)')
+
+            # --- Plot Noise Threshold --- 
+            ax.axhline(y=threshold, color='purple', linestyle=':', linewidth=1, label=f'Umbral Significancia (95%: {threshold:.2f})')
+
+            # --- Adjust Y-axis (Optional: Log scale or limit if needed) ---
+            # Example: Limit Y axis if highest peak is too dominant
+            # max_y = np.max(filtered_magnitudes)
+            # if max_y > threshold * 10: # If max peak is 10x threshold
+            #      ax.set_ylim(top=threshold * 5) # Limit Y to 5x threshold
+            # Or use log scale for Y:
+            # ax.set_yscale('log')
+
+            # --- Add Peak Labels --- 
+            for p, m in zip(significant_periods, significant_magnitudes):
+                ax.text(p, m, f' {p:.1f}m', va='bottom', ha='center', fontsize=8, color='red')
+
+            # --- Improve Titles and Labels --- 
+            ax.set_title(f'Periodograma Mejorado: "{keyword}" ({actual_menu} - {period})', fontsize=14)
+            ax.set_xlabel('Período del Ciclo (Meses) - Escala Logarítmica', fontsize=10)
+            ax.set_ylabel('Magnitud Espectral (Datos Detrended)', fontsize=10)
+            ax.grid(True, which='major', axis='y', linestyle='--', alpha=0.6)
+            ax.grid(True, which='major', axis='x', linestyle=':', alpha=0.4)
+            plt.xticks(rotation=45, ha='right')
+
+            # --- Add Legend --- 
+            ax.legend(fontsize=8)
+
+            plt.tight_layout()
+            plot_title = f'Periodograma Mejorado para {keyword} ({actual_menu})'
+            plot_filename_base = f"periodogram_enhanced_{keyword}_{period}.png" # New filename
+            plot_filename = get_unique_filename(plot_filename_base, unique_folder)
+            full_plot_path = os.path.join(unique_folder, plot_filename)
+            plt.savefig(full_plot_path)
+            print(f"Gráfico del periodograma mejorado guardado en: {full_plot_path}")
+            add_image_to_report(plot_title, plot_filename)
+            plt.close(fig)
+        except Exception as e:
+            print(f"Error al generar o guardar el gráfico del periodograma mejorado para '{keyword}': {e}")
+            import traceback
+            traceback.print_exc()
+            if 'fig' in locals() and plt.fignum_exists(fig.number):
+                 plt.close(fig)
+        # -------------------------------------
+
+    # Return the accumulated CSV data string
+    return csv_fourier
+
 def seasonal_analysis(period='last_20_years_data'):
     global charts
     global csv_seasonal
@@ -2768,6 +3126,15 @@ def init_variables():
     global current_year, charts, image_markdown # General resets
     global trend_analysis_text # Reset dictionary
     global original_values, original_calc_details # Reset dictionaries
+    global dbase_options
+    
+    dbase_options = {
+        1: "Google Trends",
+        2: "Google Books Ngrams",
+        3: "Bain - Usabilidad",
+        4: "Crossref.org",
+        5: "Bain - Satisfacción"
+    }
 
     # Reset dictionaries
     original_values = {}
@@ -2878,7 +3245,7 @@ def results():
     # *************************************************************************************
 
     banner_msg(' Part 6 - Análisis de Fourier ', color2=GREEN)
-    csv_fourier=fourier_analisys('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
+    csv_fourier=fourier_analysis2('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
     # to chage Y axis to log fo to line 131 in all functions
 
     
@@ -2902,6 +3269,18 @@ def ai_analysis():
         csv_all_data = ""
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
+
+    gem_temporal_trends_sp = ""
+    gem_cross_keyword_sp = ""
+    gem_industry_specific_sp = ""
+    gem_arima_sp = ""
+    gem_seasonal_sp = ""
+    gem_fourier_sp = ""
+    gem_conclusions_sp = ""
+    gem_summary_sp = ""
+
+
+'''
 
     if top_choice == 1:
         f_system_prompt = system_prompt_1.format(dbs=actual_menu)
@@ -3026,8 +3405,8 @@ def ai_analysis():
           csv_for_prompt = csv_combined_data
       
       # 2. Create the optimized prompt
-      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, 
-                                          csv_corr_matrix=csv_correlation, 
+      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, \
+                                          csv_corr_matrix=csv_correlation, \
                                           csv_combined_data=csv_for_prompt)
       print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
     
@@ -3234,6 +3613,8 @@ def ai_analysis():
     #display(Markdown(gem_conclusions_sp))
     print(gem_summary_sp)    
 
+'''
+
 def csv2table(csv_data, header_line=0):
     csv_lines = csv_data.strip().split('\n')
     if not csv_lines:
@@ -3427,12 +3808,12 @@ def report_pdf():
         data_txt += csv2table(csv_correlation)        
         data_txt += f"<h3>Regresión</h3>\n"
         data_txt += csv2table(csv_regression)
-    if not skip_arima:
+    if not skip_arima[0]:
         data_txt += f"<h2>ARIMA</h2>\n"
         for n in range(len(csv_arimaA)):
             data_txt += csv_arimaA[n]
             data_txt += csv2table(csv_arimaB[n])
-    if not skip_seasonal:
+    if not skip_seasonal[0]:
         data_txt += f"<h2>Estacional</h2>\n"
         data_txt += csv2table(csv_seasonal)
     data_txt += f"<h2>Fourier</h2>\n"
@@ -4643,13 +5024,6 @@ def select_multiple_data_sources():
     global dbase_options
     
     banner_msg(" Fuentes de Datos Disponibles ", YELLOW, WHITE)
-    dbase_options = {
-        1: "Google Trends",
-        2: "Google Books Ngrams",
-        3: "Bain - Usabilidad",
-        4: "Crossref.org",
-        5: "Bain - Satisfacción"
-    }
     for index, option in enumerate(dbase_options.values(), 1):
         print(f"{index}. {option}")
     
@@ -4772,12 +5146,14 @@ def process_dataset(df, source, all_datasets, selected_sources):
     else:
         # For monthly data, simply trim to the common date range
         df_resampled = df.loc[earliest_date:latest_date]
-
+    
+    df_resampled_monthly = df.loc[earliest_date:latest_date]
+    
     print(f"Final dataframe shape: {df_resampled.shape}")
     print(f"Final dataframe head:\n{df_resampled.head()}")
     print(f"Final frequency: {df_resampled.index.freq}")
     
-    return df_resampled
+    return df_resampled, df_resampled_monthly
 
 def process_dataset_full(df, source, selected_sources):
     """
@@ -4832,11 +5208,13 @@ def process_dataset_full(df, source, selected_sources):
         # For monthly data, keep as is
         df_resampled = df.copy()
 
+    df_resampled_monthly = df.copy()
+    
     print(f"Final full dataframe shape: {df_resampled.shape}")
     print(f"Final full dataframe head:\n{df_resampled.head()}")
     print(f"Final frequency: {df_resampled.index.freq}")
     
-    return df_resampled
+    return df_resampled, df_resampled_monthly
 
 def normalize_dataset(df):
     """
@@ -4935,6 +5313,7 @@ def process_and_normalize_datasets_full():
     """
     global datasets_norm_full
     global all_datasets_full
+    global all_datasets_full_monthly
     global selected_keyword # Ensure globals are declared
     global selected_sources # Ensure globals are declared
     global menu             # Ensure global menu is declared
@@ -4946,6 +5325,8 @@ def process_and_normalize_datasets_full():
     # Initialize dictionaries to store datasets
     all_datasets_full = {}
     datasets_norm_full = {}
+    all_datasets_full_monthly = {}
+    datasets_norm_full_monthly = {} 
 
     # Check if selected_keyword and selected_sources are set globally
     keyword_missing = "selected_keyword" not in globals() or not selected_keyword
@@ -4988,16 +5369,21 @@ def process_and_normalize_datasets_full():
         if source in all_datasets_full:
             # Pass selected_sources to process_dataset_full
             # Check if process_dataset_full exists and expects these args, assume it does for now based on prior context
-            processed_df = process_dataset_full(all_datasets_full[source], source, selected_sources)
+            processed_df, processed_df_monthly = process_dataset_full(all_datasets_full[source], source, selected_sources)
             all_datasets_full[source] = processed_df
             print(f"\nConjunto de datos completo procesado: {dbase_options.get(source, f'ID {source}')}")
             # print(all_datasets_full[source].head()) # Keep output concise unless debugging
             print(f"Dimensiones: {all_datasets_full[source].shape}\n")
+            all_datasets_full_monthly[source] = processed_df_monthly
+            print(f"\nConjunto de datos completo procesado: {dbase_options.get(source, f'ID {source}')}")
+            # print(all_datasets_full[source].head()) # Keep output concise unless debugging
+            print(f"Dimensiones: {all_datasets_full_monthly[source].shape}\n")
 
     # Normalize each dataset
     datasets_norm_full = {source: normalize_dataset_full(df) for source, df in all_datasets_full.items() if df is not None and not df.empty}
+    datasets_norm_full_monthly = {source: normalize_dataset_full(df) for source, df in all_datasets_full_monthly.items() if df is not None and not df.empty}
 
-    return datasets_norm_full, selected_sources
+    return datasets_norm_full, datasets_norm_full_monthly, selected_sources
 
 def get_file_data2(selected_keyword, selected_sources):
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
@@ -5005,6 +5391,7 @@ def get_file_data2(selected_keyword, selected_sources):
     filenames = get_filenames_for_keyword(selected_keyword, selected_sources)
 
     datasets = {}
+    datasets_monthly = {}
     all_raw_datasets = {}
 
     for source in selected_sources:
@@ -5018,10 +5405,13 @@ def get_file_data2(selected_keyword, selected_sources):
 
     for source in selected_sources:
         if source in all_raw_datasets:
-            datasets[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
+            datasets[source], datasets_monthly[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
             print(f"\nConjunto de datos procesado: {source}")
             print(datasets[source].head())
             print(f"Dimensiones: {datasets[source].shape}\n\n")
+            print(f"\nConjunto de datos procesado (monthly): {source}")
+            print(datasets_monthly[source].head())
+            print(f"Dimensiones: {datasets_monthly[source].shape}\n\n")
 
     print(datasets)
     
@@ -5179,7 +5569,7 @@ def main():
     global combined_dataset, filename, unique_folder, all_kw
     global wider, one_keyword, actual_menu, actual_opt, data_filename
     global csv_all_data, csv_last_20_data, csv_last_15_data, csv_last_10_data
-    global csv_last_5_data, csv_last_year_data
+    global csv_last_5_data, csv_last_year_data, top_choice
 
     
     # Redirigir stderr a /dev/null
@@ -5336,6 +5726,12 @@ def main():
                      print(combined_dataset)
             else:
                  print(f"{YELLOW}No se pudieron generar los conjuntos de datos combinados.{RESET}")
+                 
+            # --- Run Analysis for Option 2 ---
+            results()
+            #ai_analysis()
+            #report_pdf()
+            # ----------------------------------
 
             
         elif top_choice == 3:
@@ -5447,8 +5843,6 @@ def update_readme(report_info):
         print(f"    [Info README] {readme_path} actualizado correctamente.")
     except Exception as e:
         print(f"  {RED}[Error README] No se pudo escribir en {readme_path}: {e}{RESET}")
-
-# <<< End of update_readme function definition >>>
 
 def generate_all_reports():
     """
@@ -5636,8 +6030,8 @@ def generate_all_reports():
     print("\n" + "="*60)
     print(" Generación de Todos los Informes (Batch) Completada")
     print("="*60 + "\n")
+    
 # <<< End of generate_all_reports function >>>
 
-    
 if __name__ == "__main__":
     main()
