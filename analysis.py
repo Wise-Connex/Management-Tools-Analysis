@@ -10,7 +10,6 @@ import seaborn as sns
 import itertools
 import google.generativeai as genai
 import statsmodels.api as sm
-#import altair as alt
 import scipy.fftpack as fftpack
 import markdown
 import weasyprint
@@ -24,6 +23,9 @@ import shutil # Make sure shutil is imported at the top of the file
 import traceback
 from scipy import signal
 from matplotlib import ticker
+from datetime import datetime, timedelta # Ensure timedelta is imported
+from scipy.stats import linregress # For trend calculation
+from sklearn.linear_model import LinearRegression # For potential regression/trend calculation
 
 # Suppress the specific scikit-learn deprecation warning about force_all_finite
 warnings.filterwarnings("ignore", message=".*force_all_finite.*")
@@ -146,6 +148,8 @@ global skip_seasonal
 global skip_arima
 global csv_significance
 global original_values
+global source_trends_results
+source_trends_results = {}
 original_values = {}
 keycharts = []
 csv_arimaA = []
@@ -1573,6 +1577,290 @@ def smooth_data(data, window_size=5, transition_points=10):
     #PPRINT(f"smothed data\n{smoothed_data}")
     return smoothed_data
 
+# --- Prerequisite: Assume 'source_trends_results' is populated before calling ---
+# Example structure for source_trends_results (needs to be created elsewhere):
+# source_trends_results = {
+#     'all_data': {'Google Trends': pd.Series(...), 'Google Books': pd.Series(...), ...},
+#     'mean_all': {'Google Trends': 15.5, 'Google Books': 0.8, ...},
+#     'last_20_years_data': {'Google Trends': pd.Series(...), 'Google Books': pd.Series(...), ...},
+#     'mean_last_20': {'Google Trends': 18.2, 'Google Books': 0.7, ...},
+#     # ... other periods (15, 10, 5 years)
+# }
+# Assume selected_keyword, selected_sources, filename, unique_folder,
+# earliest_date, latest_date are also available globally.
+
+# --- NEW Helper function for source-based line plots ---
+def setup_source_subplot(ax, data_dict, mean_dict, title, ylabel, colors, source_list):
+    """
+    Sets up a subplot showing time series data for multiple sources.
+
+    Args:
+        ax: Matplotlib axes object.
+        data_dict: Dictionary mapping source names to pandas Series (time series data).
+        mean_dict: Dictionary mapping source names to mean values (potentially unused here, but good practice).
+        title: Plot title.
+        ylabel: Y-axis label.
+        colors: Dictionary mapping source names to colors.
+        source_list: List of source names in the desired order.
+    """
+    print(f"  Setting up source line plot: {title} - {ylabel}")
+    global_min = float('inf')
+    global_max = float('-inf')
+    plot_min_max = {}
+
+    # Calculate global min/max across sources for this period
+    for source in source_list:
+        if source in data_dict and not data_dict[source].empty:
+            series = data_dict[source]
+            try:
+                plot_min = series.min()
+                plot_max = series.max()
+                plot_min_max[source] = (plot_min, plot_max)
+                global_min = min(global_min, plot_min)
+                global_max = max(global_max, plot_max)
+            except Exception as e:
+                print(f"[Warning] Could not calculate plot min/max for source {source}: {e}")
+        else:
+             print(f"[Warning] Data for source {source} is missing or empty for min/max calc.")
+
+    if not plot_min_max:
+         print("[Warning] No valid source data found for plot limits. Using default 0-100.")
+         global_min, global_max = 0, 100 # Fallback
+
+    buffer = (global_max - global_min) * 0.1 if global_max > global_min else 10
+    y_min_limit = global_min - buffer # Allow slightly below zero if data goes negative
+    y_max_limit = global_max + buffer * 1.5
+
+    # --- Plotting logic for each source ---
+    legend_handles = []
+    legend_labels = []
+    for source in source_list:
+        if source in data_dict and not data_dict[source].empty:
+            series_data_to_plot = data_dict[source]
+            color = colors.get(source, 'grey') # Get color or default
+            # Plot the line for the source
+            line, = ax.plot(series_data_to_plot.index, series_data_to_plot, label=source, color=color)
+            legend_handles.append(line)
+            legend_labels.append(source)
+
+            # --- Optional: Add original points (requires more data structure) ---
+            # if source in original_values_by_source:
+            #    # ... logic to plot original points for this source ...
+            #    pass
+        else:
+            print(f"[Warning] Data for plotting source '{source}' is missing or empty.")
+
+    # --- Formatting ---
+    ax.grid(True, which='major', linestyle='--', linewidth=0.3, color='grey', alpha=0.1)
+    ax.set_ylim(bottom=y_min_limit, top=y_max_limit)
+    ax.set_ylabel(ylabel, fontsize=14)
+    ax.set_title(title, fontsize=16)
+
+    # --- X-Axis date formatting (similar to setup_subplot) ---
+    years = sorted(data_dict[source_list[0]].index.year.unique()) # Use first source for years
+    start_dt = pd.Timestamp(f'{years[0]}-01-01')
+    end_dt = pd.Timestamp(f'{years[-1]}-12-31')
+
+    year_locator = mdates.YearLocator(base=1)
+    ax.xaxis.set_major_locator(year_locator)
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+
+    # Add month locators/formatters if needed (adjust detail based on period length)
+    if (end_dt - start_dt).days < 3 * 365: # More detail for shorter periods
+         ax.xaxis.set_minor_locator(mdates.MonthLocator())
+         ax.xaxis.set_minor_formatter(mdates.DateFormatter('%b')) # Abbreviated month name
+    elif (end_dt - start_dt).days < 10 * 365:
+         ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=[1, 7]))
+         ax.xaxis.set_minor_formatter(FuncFormatter(lambda x, pos: '|' if mdates.num2date(x).month==7 else '')) # Just tick marks
+    else: # Less detail for long periods
+        ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=[1]))
+        ax.xaxis.set_minor_formatter(FuncFormatter(lambda x, pos: '')) # No minor labels
+
+    ax.set_xlim(mdates.date2num(start_dt), mdates.date2num(end_dt))
+
+    ax.tick_params(axis='both', which='major', labelsize=8)
+    ax.tick_params(axis='x', which='major', labelrotation=45)
+    ax.tick_params(axis='both', which='minor', labelsize=6)
+    ax.tick_params(axis='x', which='minor', labelrotation=45)
+
+    # Return handles and labels for the main legend
+    return ax, legend_handles, legend_labels
+
+
+# --- NEW Helper function for source-based bar plots ---
+def setup_source_bar_subplot(ax, mean_dict, title, y_max, x_pos, colors, source_list):
+    """
+    Sets up a subplot showing bar chart comparison of mean values for multiple sources.
+
+    Args:
+        ax: Matplotlib axes object.
+        mean_dict: Dictionary mapping source names to mean values.
+        title: Plot title.
+        y_max: The maximum y-value for consistent axis scaling.
+        x_pos: Numpy array for bar positions.
+        colors: Dictionary mapping source names to colors.
+        source_list: List of source names in the desired order.
+    """
+    print(f"  Setting up source bar plot: {title}")
+    means_to_plot = []
+    colors_to_plot = []
+    labels_to_plot = []
+
+    for source in source_list:
+        mean_val = mean_dict.get(source, 0) # Get mean or default to 0 if missing
+        means_to_plot.append(mean_val)
+        colors_to_plot.append(colors.get(source, 'grey')) # Get color or default
+        labels_to_plot.append(source.replace(" ", "\n")) # Prepare label for x-axis
+
+    # --- Plotting ---
+    ax.grid(True, which='major', linestyle='--', linewidth=0.5, color='grey', alpha=0.1)
+    bar_container = ax.bar(x_pos, means_to_plot, align='center', color=colors_to_plot)
+    ax.bar_label(bar_container, fmt='%.2f') # Adjust format as needed (e.g., eng_format)
+
+    # --- Formatting ---
+    ax.set_title(title, fontsize=16)
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(labels_to_plot, rotation=0, ha='center', fontsize=8)
+    ax.tick_params(axis='y', which='major', labelsize=8)
+
+    buffer = y_max * 0.1 if y_max > 0 else 1 # 10% buffer or 1 if max is 0
+    ax.set_ylim(0, y_max + buffer)
+
+    plt.setp(ax.get_yticklabels(), rotation=45, ha='right')
+    # plt.tight_layout() # Apply tight_layout at the end in the main function
+
+    return ax
+
+# --- The new main comparison function ---
+def relative_comparison2():
+    global charts
+    global source_trends_results # Assumed to be populated
+    global selected_sources     # List of source names
+    global selected_keyword     # The keyword being analyzed
+    global filename             # Base filename for output
+    global unique_folder        # Folder for saving plots
+    global earliest_date        # Earliest date in combined data
+    global latest_date          # Latest date in combined data
+
+    # Basic check
+    if not source_trends_results or not selected_sources:
+        print("Error: source_trends_results or selected_sources not available for relative_comparison2.")
+        return
+
+    print(f"\nCreating source comparison charts for keyword: '{selected_keyword}'...")
+
+    fig = plt.figure(figsize=(24, 30)) # Adjust size as needed
+
+    # Determine number of sources and periods
+    num_sources = len(selected_sources)
+    x_pos = np.arange(num_sources)
+    periods = [p for p in source_trends_results if p.endswith('_data')] # e.g., ['all_data', 'last_20_years_data', ...]
+    num_periods = len(periods)
+
+    if num_periods == 0:
+        print("Error: No data periods found in source_trends_results.")
+        return
+
+    # Assign colors to sources
+    source_colors = {source: color for source, color in zip(selected_sources, plt.cm.rainbow(np.linspace(0, 1, num_sources)))}
+
+    # Calculate the overall maximum mean value for consistent bar chart scaling
+    max_y_value = 0
+    for period_key in source_trends_results:
+        if period_key.startswith('mean_'):
+            means = source_trends_results[period_key]
+            if means: # Check if the dictionary is not empty
+                 current_max = max(means.values()) if means else 0
+                 max_y_value = max(max_y_value, current_max)
+
+    # Create grid spec
+    total_rows = num_periods + 1 # +1 for the title row/space
+    gs = fig.add_gridspec(total_rows, 10, height_ratios=[0.2] + [1] * num_periods) # Title space + rows for periods
+
+    # Define slices for odd and even subplots
+    axODD = slice(0, 7)  # Line graph
+    axEVEN = slice(8, 10) # Bar graph
+
+    # --- Define Titles ---
+    title_odd_base = f'Comparison of Sources for "{selected_keyword}"\nOver Time'
+    title_even_base = f'Average Value per Source for "{selected_keyword}"\nFor the Period'
+
+    # --- Loop through defined periods ---
+    plot_row_index = 1 # Start plotting from the second row in gridspec
+    legend_handles, legend_labels = [], [] # To store legend items from the first plot
+
+    # Define the order of periods to plot
+    period_order = ['all_data', 'last_20_years_data', 'last_15_years_data', 'last_10_years_data', 'last_5_years_data']
+
+    for period_data_key in period_order:
+        period_mean_key = period_data_key.replace('_data', '').replace('last_', 'mean_last_')
+        if period_data_key == 'all_data':
+            period_mean_key = 'mean_all'
+
+        # Check if data for this period exists
+        if period_data_key in source_trends_results and period_mean_key in source_trends_results:
+            print(f" Processing period: {period_data_key}")
+            period_data = source_trends_results[period_data_key]
+            period_means = source_trends_results[period_mean_key]
+
+            # Define Y-label based on period
+            if period_data_key == 'all_data':
+                 total_years = latest_date.year - earliest_date.year
+                 ylabel = f'Full Period ({total_years} years)\n{earliest_date.year}-{latest_date.year}'
+            else:
+                 years = int(period_data_key.split('_')[1])
+                 ylabel = f'{years}-Year Period\n{latest_date.year - years}-{latest_date.year}'
+
+            # Add subplots
+            ax_line = fig.add_subplot(gs[plot_row_index, axODD])
+            ax_bar = fig.add_subplot(gs[plot_row_index, axEVEN])
+
+            # Use first row's titles, clear for subsequent rows
+            current_title_odd = title_odd_base if plot_row_index == 1 else ''
+            current_title_even = title_even_base if plot_row_index == 1 else ''
+
+            # Call helper functions
+            _, handles, labels = setup_source_subplot(
+                ax_line, period_data, period_means, current_title_odd, ylabel, source_colors, selected_sources
+            )
+            setup_source_bar_subplot(
+                ax_bar, period_means, current_title_even, max_y_value, x_pos, source_colors, selected_sources
+            )
+
+            # Store legend info from the first plot created
+            if plot_row_index == 1:
+                legend_handles, legend_labels = handles, labels
+
+            plot_row_index += 1 # Move to the next row in the grid
+        else:
+            print(f" Skipping period: {period_data_key} (data or means not found in source_trends_results)")
+
+
+    # --- Add overall Legend ---
+    if legend_handles:
+        fig.legend(legend_handles, legend_labels, loc='lower center', bbox_to_anchor=(0.5, 0.02),
+                   ncol=min(num_sources, 5), fontsize=10) # Adjust ncol and position
+
+    # --- Final Layout and Save ---
+    plt.tight_layout(rect=[0, 0.05, 1, 0.97]) # Adjust rect to prevent legend overlap [left, bottom, right, top]
+    plt.subplots_adjust(hspace=0.4, wspace=0.3) # Adjust spacing as needed
+
+    # Save the plot
+    base_filename = f'{selected_keyword}_source_comparison_overtime.png'
+    image_filename = get_unique_filename(base_filename, unique_folder)
+    save_path = os.path.join(unique_folder, image_filename)
+    plt.savefig(save_path, bbox_inches='tight')
+    print(f" Source comparison plot saved to: {save_path}")
+
+    # --- Update charts global ---
+    chart_title = f"Comparison of Data Sources for '{selected_keyword}'"
+    add_image_to_report(chart_title, image_filename) # Assumes this function updates image_markdown
+    charts += f"{chart_title} ({image_filename})\n\n" # Add to the main charts list
+
+    plt.close(fig) # Close the figure to free memory
+    print(f"\nSource comparison charts created for '{selected_keyword}'.")
+
+
 # Create Charts
 def relative_comparison():
     global charts
@@ -2041,6 +2329,490 @@ def calculate_yearly_average(data):
   else:
       overall_average = round(np.mean(yearly_averages), 2)
   return overall_average
+
+# --- Helper function definitions (inserted here) ---
+
+def calculate_period_averages(series, periods_years=[1, 5, 10, 15, 20]):
+    """Calculates mean averages for the last N years for a series."""
+    results = {}
+    # Return NaNs if series is empty or index isn't datetime
+    if series.empty or not isinstance(series.index, pd.DatetimeIndex):
+        for p in periods_years:
+             results[f'{p} Year Avg'] = np.nan
+        results['Overall Avg'] = np.nan # Add Overall Avg key even if empty
+        return results
+
+    end_date = series.index.max()
+    # Ensure periods don't go beyond the data range
+    # Handle case where index might not be sorted (though it should be)
+    min_date = series.index.min()
+    max_years_in_data = (end_date - min_date).days / 365.25
+
+    for p in periods_years:
+        if p > max_years_in_data + 1: # Add buffer for year boundary
+            mean_val = np.nan # Not enough data for this period
+        else:
+            start_date = end_date - pd.DateOffset(years=p) + pd.Timedelta(days=1) # Inclusive start
+            # Select data within the period
+            period_data = series[series.index >= start_date]
+            # Calculate mean, handles NaNs internally. Returns NaN for empty slice.
+            mean_val = period_data.mean()
+        results[f'{p} Year Avg'] = mean_val
+    # Add overall average
+    results['Overall Avg'] = series.mean()
+
+    return results
+
+def calculate_combined_trend_metrics(series, mast_years=3, nadt_years=5):
+    """
+    Calculates trend metrics (NADT, MAST) for a series, adapted from check_trends2 logic.
+
+    Args:
+        series (pd.Series): Input time series data with a DatetimeIndex.
+        mast_years (int): Number of recent years to use for MAST calculation.
+        nadt_years (int): Number of recent years to use for NADT calculation.
+
+    Returns:
+        dict: Dictionary with 'Trend NADT' and 'Trend MAST'.
+    """
+    trends = {'Trend NADT': np.nan, 'Trend MAST': np.nan}
+    series_clean = series.dropna()
+    series_name = str(series.name) # Ensure name is string
+
+    if series_clean.shape[0] < 3 or not isinstance(series_clean.index, pd.DatetimeIndex):
+        return trends # Not enough data or wrong index type
+
+    end_date = series_clean.index.max()
+
+    # --- Trend NADT (Normalized Annual Deviation) ---
+    # Based on Std Dev / Mean over the last 'nadt_years' years
+    try:
+        start_date_nadt = end_date - pd.DateOffset(years=nadt_years) + pd.Timedelta(days=1)
+        nadt_data = series_clean[series_clean.index >= start_date_nadt]
+
+        if nadt_data.shape[0] > 1: # Need at least 2 points for std dev
+            mean_nadt = nadt_data.mean()
+            std_nadt = nadt_data.std()
+            if not pd.isna(mean_nadt) and not pd.isna(std_nadt) and abs(mean_nadt) > 1e-9: # Avoid division by zero/small number
+                trends['Trend NADT'] = std_nadt / abs(mean_nadt)
+            elif abs(mean_nadt) <= 1e-9 and std_nadt == 0:
+                trends['Trend NADT'] = 0.0 # No deviation, zero mean -> NADT is 0
+            # else: remains np.nan if mean is near zero but std dev exists, or if calculation failed
+
+    except Exception as e:
+        print(f"  - Warning: Could not calculate NADT trend for '{series_name}': {e}")
+
+    # --- Trend MAST (Moving Average Smoothed Trend) ---
+    # Based on slope of linear regression on smoothed data over last 'mast_years' years
+    try:
+        start_date_mast = end_date - pd.DateOffset(years=mast_years) + pd.Timedelta(days=1)
+        mast_data = series_clean[series_clean.index >= start_date_mast]
+
+        # Apply smoothing (e.g., 3-point rolling average, adjust window as needed)
+        smoothed = mast_data.rolling(window=3, center=True, min_periods=1).mean().dropna()
+
+        if smoothed.shape[0] >= 2: # Need at least 2 points for regression
+            # Use numerical representation of time for regression (e.g., days since start)
+            x = (smoothed.index - smoothed.index.min()).days.values
+            y = smoothed.values
+
+            # Using scipy's linregress for simplicity (returns slope directly)
+            slope, intercept, r_value, p_value, std_err = linregress(x, y)
+
+            trends['Trend MAST'] = slope # Storing slope per day as calculated
+        # else: remains np.nan if not enough points after smoothing
+
+    except Exception as e:
+        print(f"  - Warning: Could not calculate MAST trend for '{series_name}': {e}")
+
+    return trends
+
+
+def format_analysis_to_csv(analysis_results):
+    """Helper function to format the list of dicts into a CSV string."""
+    global top_choice # Need top_choice to determine header Key name
+    if not analysis_results:
+        return None
+    try:
+        output = io.StringIO()
+        # Ensure consistent header order, including 'Keyword'/'Source' first
+        # Determine if keys are keywords or sources based on top_choice
+        key_header = 'Fuente de Datos' if top_choice == 2 else 'Keyword'
+        base_headers = [key_header, 'Overall Avg']
+        period_headers = [f'{p} Year Avg' for p in [20, 15, 10, 5, 1]] # Specific order
+        trend_headers = ['Trend NADT', 'Trend MAST']
+        headers = base_headers + period_headers + trend_headers
+
+        # Create a temporary list to hold renamed dicts
+        processed_results = []
+        if analysis_results: # Check if list is not empty
+             for item in analysis_results:
+                  temp_item = item.copy()
+                  if 'Keyword' in temp_item and key_header != 'Keyword':
+                       temp_item[key_header] = temp_item.pop('Keyword')
+                  processed_results.append(temp_item)
+        else: # Handle empty analysis_results case
+            # No rows to write, but write header
+            pass # Header written below
+
+        writer = csv.DictWriter(output, fieldnames=headers, quoting=csv.QUOTE_MINIMAL, extrasaction='ignore')
+        writer.writeheader()
+        if processed_results: # Only write rows if there are any
+             writer.writerows(processed_results) # Use the processed list
+
+        csv_data = output.getvalue()
+        print("Combined analysis results formatted to CSV.")
+        return csv_data
+    except Exception as e:
+        print(f"Error: Could not format combined analysis results to CSV: {e}")
+        return f"Error creating combined analysis CSV: {e}" # Return error string
+
+# --- End of inserted helper functions ---
+
+def plot_and_analyze_combined_trends(combined_df, title="Comparative Trends Analysis", apply_smoothing=False, window_size=5, filename_prefix="combined_trends"):
+    """
+    Plots trends of all columns in a DataFrame, handling NaNs, and calculates
+    period averages and trend metrics similar to check_trends2. Saves plot and
+    returns plot filename and analysis CSV.
+
+    Args:
+        combined_df (pd.DataFrame): DataFrame with a datetime index and columns to plot.
+        title (str): The title for the plot and analysis.
+        apply_smoothing (bool): Whether to apply smoothing to the data before plotting.
+        window_size (int): The window size for smoothing if apply_smoothing is True.
+        filename_prefix (str): Prefix for the output plot filename.
+
+
+    Returns:
+        tuple: (str, str) - Short path to the saved plot image (for reporting), CSV string of analysis results.
+               Returns (None, None) if fundamental errors occur.
+               Returns (None, csv_output) if plotting fails but analysis succeeded.
+    """
+    # Access global unique_folder for saving plots
+    # Make sure these globals are accessible where this function is called
+    global unique_folder
+    global charts # To add plot filename to list
+    global image_markdown # To add plot markdown link
+
+    # --- Input Validation ---
+    if not isinstance(combined_df, pd.DataFrame) or combined_df.empty:
+         print("Error plot_analyze_combined: Input must be a non-empty pandas DataFrame.")
+         return None, None
+
+    if not isinstance(combined_df.index, pd.DatetimeIndex):
+        try:
+            combined_df.index = pd.to_datetime(combined_df.index)
+            print("Info plot_analyze_combined: Converted DataFrame index to DatetimeIndex.")
+        except Exception as e:
+            print(f"Error plot_analyze_combined: DataFrame index is not DatetimeIndex and conversion failed: {e}")
+            return None, None
+
+    # --- Initialization ---
+    fig, ax = plt.subplots(figsize=(14, 7))
+    analysis_results = []
+    # Use a perceptually uniform colormap
+    colors = plt.cm.viridis(np.linspace(0, 1, len(combined_df.columns)))
+    any_data_plotted = False
+    plot_filename_short = None # Initialize short plot filename
+
+
+    print("Analyzing and plotting combined trends...")
+    # --- Loop through Columns ---
+    for i, column_name in enumerate(combined_df.columns):
+        # Ensure column_name is a string for safety
+        col_name_str = str(column_name)
+        series = combined_df[column_name]
+        series.name = col_name_str # Set name for warnings/calculations
+
+        # --- Analysis (uses original series with NaNs) ---
+        print(f"  Analyzing: {col_name_str}")
+        # Calculate averages for standard periods + overall
+        averages = calculate_period_averages(series, periods_years=[1, 5, 10, 15, 20])
+        # Calculate specific trends
+        trends = calculate_combined_trend_metrics(series)
+        analysis_results.append({
+            'Keyword': col_name_str, # Use string name ('Keyword' or 'Fuente de Datos' handled in format_analysis_to_csv)
+            **averages,
+            **trends
+        })
+
+        # --- Plotting (uses dropna() specifically for plot) ---
+        series_for_plot = series.dropna()
+
+        if series_for_plot.empty:
+            print(f"  - Skipping plot for column with no valid data: {col_name_str}")
+            continue # Skip plotting but keep analysis results
+
+        print(f"  - Plotting: {col_name_str}")
+        any_data_plotted = True
+        plot_label = col_name_str
+        data_to_plot = series_for_plot # Default to raw data
+
+        if apply_smoothing:
+            try:
+                smoothed_series = series_for_plot.rolling(window=window_size, center=True, min_periods=1).mean()
+                data_to_plot = smoothed_series
+                plot_label = f"{col_name_str} (Smoothed {window_size})"
+            except Exception as e:
+                 print(f"  - Warning: Could not smooth data for {col_name_str}: {e}. Plotting raw data.")
+
+        ax.plot(data_to_plot.index, data_to_plot.values, label=plot_label, color=colors[i], linewidth=1.5)
+
+
+    # --- Finalize Plot ---
+    if any_data_plotted:
+        ax.set_title(title, fontsize=16)
+        ax.set_xlabel("Date", fontsize=12)
+        # Assuming the combined data is normalized if sources are mixed
+        y_label = "Value / Trend"
+        if top_choice == 2:
+             y_label += " (Normalized)"
+        ax.set_ylabel(y_label, fontsize=12)
+        ax.grid(True, which='both', linestyle='--', linewidth=0.5)
+        ax.legend(loc='best', fontsize='small')
+        try:
+            fig.autofmt_xdate() # Auto-format date labels for better readability
+            # Optional: Add specific date formatting if needed
+            # ax.xaxis.set_major_locator(mdates.YearLocator(5)) # Example: Major tick every 5 years
+            # ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+            # ax.xaxis.set_minor_locator(mdates.YearLocator(1)) # Example: Minor tick every year
+        except Exception as e:
+            print(f"Warning: Could not auto-format date axis: {e}")
+
+        plt.tight_layout()
+
+        # --- Save Plot ---
+        try:
+            # Create a somewhat readable but unique part for the filename
+            cols_part = "_".join([str(c).replace(' ','_').replace('/','-') for c in combined_df.columns])[:50] # Limit length
+            base_filename = f"{filename_prefix}_{cols_part}.png"
+
+            # Ensure get_unique_filename exists and uses unique_folder
+            plot_filename_short = get_unique_filename(base_filename, unique_folder) # Get short filename
+            full_plot_path = os.path.join(unique_folder, plot_filename_short) # Construct full path for saving
+            plt.savefig(full_plot_path)
+            print(f"Combined trend plot saved to: {full_plot_path}")
+
+            # Add image to report structure using the short filename
+            add_image_to_report(title, plot_filename_short) # Use the short filename for report markdown
+            # Update charts list (assuming 'charts' is a global string or list)
+            if isinstance(charts, str):
+                 charts += f'{title} ({plot_filename_short})\n\n'
+            elif isinstance(charts, list):
+                 charts.append({'title': title, 'filename': plot_filename_short})
+            # Update image_markdown (assuming global string)
+            image_markdown += f"![{title}]({quote(plot_filename_short)})\n\n" # Use URL encoding for filename
+
+        except NameError as ne:
+             print(f"Error: Global variable like 'unique_folder', 'charts', or 'image_markdown' not found. Cannot save plot or update report variables. {ne}")
+             plot_filename_short = None # Ensure filename is None if save fails
+        except Exception as e:
+            print(f"Error: Could not save plot or update report variables: {e}")
+            plot_filename_short = None # Ensure filename is None if save fails
+        finally:
+            plt.close(fig) # Always close the figure
+    else:
+         print("Error: No data available to plot after handling NaNs.")
+         plt.close(fig) # Close the empty figure
+         plot_filename_short = None # No plot generated
+
+    # --- Format Analysis Results ---
+    csv_output = format_analysis_to_csv(analysis_results)
+
+    # Return short filename (for report list) or None, and the CSV data
+    return plot_filename_short, csv_output, analysis_results
+
+# --- End of plot_and_analyze_combined_trends ---
+
+# Replace the previous plot_combined_averages_bars function with this one
+
+def plot_combined_averages_bars(analysis_results_list, title="Análisis Comparativo de Medias por Periodo"):
+    """
+    Creates a grouped bar chart comparing period averages across different sources/keywords,
+    with group widths proportional to the period length and overlapping trend lines.
+    All text elements are in Spanish.
+
+    Args:
+        analysis_results_list (list): List of dictionaries with averages and trends.
+        title (str): The title for the plot (should ideally be passed in Spanish).
+
+    Returns:
+        str: The short filename of the saved plot image, or None if plotting fails.
+    """
+    global unique_folder, charts, image_markdown, top_choice, total_years # Need globals
+
+    if not analysis_results_list:
+        print("Error plot_combined_bars: No analysis results provided.")
+        return None
+
+    try:
+        # --- Data Preparation ---
+        df = pd.DataFrame(analysis_results_list)
+        key_column = 'Fuente de Datos' if top_choice == 2 else 'Keyword' # Keep original key names for data lookup
+
+        if key_column not in df.columns:
+             print(f"Error plot_combined_bars: Key column '{key_column}' not found.")
+             if top_choice == 2 and 'Keyword' in df.columns:
+                  key_column = 'Keyword'
+                  print(f"Warning: Falling back to use 'Keyword' column.")
+             else: return None
+        df = df.set_index(key_column)
+
+        # --- Define Periods and Relative Widths ---
+        overall_period_years = total_years if 'total_years' in globals() and total_years > 0 else 20
+
+        # English names used internally for mapping and data lookup
+        period_map_en = {
+            'Overall Avg': overall_period_years,
+            '20 Year Avg': 20, '15 Year Avg': 15, '10 Year Avg': 10, '5 Year Avg': 5, '1 Year Avg': 1
+        }
+        # Spanish names for display on the chart
+        period_map_es = {
+            'Overall Avg': 'Media Total',
+            '20 Year Avg': 'Media 20 Años', '15 Year Avg': 'Media 15 Años', '10 Year Avg': 'Media 10 Años',
+            '5 Year Avg': 'Media 5 Años', '1 Year Avg': 'Media 1 Año'
+        }
+
+        # Order columns based on period_map_en keys for plotting logic
+        ordered_avg_columns = [col for col in period_map_en.keys() if col in df.columns]
+        if not ordered_avg_columns:
+             print("Error plot_combined_bars: No average columns matching period_map found.")
+             return None
+
+        df_avg = df[ordered_avg_columns]
+        df_plot = df_avg.transpose().loc[ordered_avg_columns] # Ensure transpose keeps order
+
+        num_sources = len(df_plot.columns)
+        num_periods = len(df_plot.index)
+        if num_sources == 0 or num_periods == 0: return None
+
+        # --- Calculate Bar Positions and Widths Manually ---
+        max_period_width_years = max(period_map_en.values())
+        # Total available width on x-axis for all groups (adjust if needed)
+        total_groups_x_width = 0.95 # Use slightly more width maybe
+        # Define how much influence the proportional width has (0=uniform, 1=fully proportional)
+        proportionality_factor = 0.7 # e.g., 70% proportional, 30% uniform tendency
+
+        x_centers_per_source = {source: [] for source in df_plot.columns}
+        group_center_ticks = []
+        current_x_position = 0
+
+        fig, ax = plt.subplots(figsize=(max(16, num_periods * num_sources * 0.4), 7))
+        colors = plt.cm.viridis(np.linspace(0, 1, num_sources))
+
+        # Calculate the width if all groups were uniform
+        uniform_group_width = total_groups_x_width / num_periods if num_periods > 0 else 0
+
+        for period_name_en in df_plot.index:
+            years = period_map_en.get(period_name_en, 1)
+
+            # Calculate the purely proportional width component
+            proportional_group_width = total_groups_x_width * (years / max_period_width_years)
+
+            # Blend proportional and uniform widths
+            blended_group_width = (proportionality_factor * proportional_group_width +
+                                   (1 - proportionality_factor) * uniform_group_width)
+
+            # Calculate width for each bar within this blended group width
+            bar_width = blended_group_width / num_sources if num_sources > 0 else 0
+
+            # --- Sanity check: ensure bar_width is reasonable ---
+            # Avoid excessively small or large widths that might cause rendering issues
+            min_sensible_bar_width = 0.005 # Adjust as needed
+            max_sensible_bar_width = 0.2   # Adjust as needed
+            bar_width = max(min_sensible_bar_width, min(bar_width, max_sensible_bar_width))
+            # Recalculate blended_group_width based on clamped bar_width if needed for gaps
+            blended_group_width = bar_width * num_sources
+
+            # Calculate the center of the current group
+            group_center = current_x_position + blended_group_width / 2
+            group_center_ticks.append(group_center)
+
+            # Calculate starting x position for the first bar in this group
+            start_bar_pos = current_x_position # Bars start at the beginning of the group space now
+
+            for i, source_name in enumerate(df_plot.columns):
+                 # Center of the bar is start + half_width + index*width
+                bar_center = start_bar_pos + (i + 0.5) * bar_width
+                x_centers_per_source[source_name].append(bar_center)
+
+                value = pd.to_numeric(df_plot.loc[period_name_en, source_name], errors='coerce')
+                value = 0 if pd.isna(value) else value
+
+                # Plot bar centered at bar_center
+                ax.bar(bar_center, value, width=bar_width * 0.95, label=source_name if period_name_en == df_plot.index[0] else "", color=colors[i], align='center') # Use slight gap within bars
+
+            # Update the starting position for the next group, adding a gap
+            # Gap can be relative to the base width or a fixed small value
+            group_gap = total_groups_x_width * 0.20 # Small gap between groups
+            current_x_position += blended_group_width + group_gap
+
+        # --- Plot Trend Lines ---
+        line_colors = plt.cm.cool(np.linspace(0, 1, num_sources))
+        for i, source_name in enumerate(df_plot.columns):
+            x_coords = x_centers_per_source[source_name]
+            y_coords = pd.to_numeric(df_plot[source_name], errors='coerce')
+            valid_indices = ~y_coords.isna()
+            if valid_indices.any():
+                 ax.plot(np.array(x_coords)[valid_indices], y_coords[valid_indices],
+                         color=colors[i], linestyle='--', marker='o', markersize=4,
+                         linewidth=1.5, alpha=0.7)
+
+        # --- Formatting (Spanish) ---
+        y_label_es = 'Valor Promedio'
+        if top_choice == 2:
+             y_label_es += ' (Normalizado)'
+        ax.set_ylabel(y_label_es, fontsize=12)
+        ax.set_title(title, fontsize=16, pad=20)
+        ax.set_xticks(group_center_ticks)
+        x_tick_labels_es = [period_map_es.get(en_name, en_name) for en_name in df_plot.index]
+        ax.set_xticklabels(x_tick_labels_es, rotation=45, ha='right')
+        handles, labels = ax.get_legend_handles_labels()
+        by_label = dict(zip(labels, handles))
+        legend_title_es = "Fuentes" if top_choice == 2 else "Palabras Clave"
+        ax.legend(by_label.values(), by_label.keys(), title=legend_title_es, loc='best', fontsize='small')
+        ax.grid(True, which='major', axis='y', linestyle='--', linewidth=0.5, alpha=0.7)
+        ax.axhline(0, color='grey', linewidth=0.8)
+        # Adjust x-axis limits slightly to give padding
+        # Use total_groups_x_width which is defined earlier
+        ax.set_xlim(group_center_ticks[0] - total_groups_x_width*0.6, current_x_position)
+        fig.tight_layout()
+
+
+        # --- Save Plot ---
+        plot_filename_short = None
+        try:
+            cols_part = "_".join([str(c).replace(' ','_').replace('/','-') for c in df_plot.columns])[:50]
+            base_filename = f"combined_avg_bars_blendwidth_es_{cols_part}.png" # Add _es to filename
+            plot_filename_short = get_unique_filename(base_filename, unique_folder)
+            full_plot_path = os.path.join(unique_folder, plot_filename_short)
+            plt.savefig(full_plot_path)
+            print(f"Combined averages variable width bar chart (ES) saved to: {full_plot_path}")
+
+            report_title = title + " (Barras Ancho Variable)" # Add note for report list
+            add_image_to_report(report_title, plot_filename_short)
+            if isinstance(charts, str): charts += f'{report_title} ({plot_filename_short})\n\n'
+            elif isinstance(charts, list): charts.append({'title': report_title, 'filename': plot_filename_short})
+            image_markdown += f"![{report_title}]({quote(plot_filename_short)})\n\n"
+
+        except NameError as ne:
+             print(f"Error plot_combined_bars_varwidth: Globals missing. {ne}")
+             plot_filename_short = None
+        except Exception as e:
+            print(f"Error plot_combined_bars_varwidth: Could not save plot/update report. {e}")
+            plot_filename_short = None
+        finally:
+            plt.close(fig)
+
+        return plot_filename_short
+
+    except Exception as e:
+        print(f"Error generating combined averages variable width bar chart (ES): {e}")
+        traceback.print_exc()
+        if 'fig' in locals() and plt.fignum_exists(fig.number): plt.close(fig)
+        return None
+
+# --- End of plot_combined_averages_bars (Variable Width Version - Spanish) ---
 
 # Check Trends
 def check_trends2(kw):
@@ -2550,7 +3322,7 @@ def check_trends2(kw):
                 if avg is not None:
                     label = f'Media {year} Años ({current_year-year} - {current_year}): {eng_notation(avg)}'
                     rects.append(ax.bar(pos, avg, width, label=label, color=color))
-                
+        
     # Create the bar graph - MOVED HERE before any bar creation
 
         # ... existing code ...
@@ -3173,80 +3945,334 @@ def results():
     global csv_regression
     global csv_arima
     global csv_seasonal
-    global all_keywords
-    global csv_means_trendsA
-    global combined_dataset
-    global combined_dataset2
-    global csv_significance
-    
+    global all_keywords # List of keywords or sources
+    global csv_means_trendsA # Header/Title for Means/Trends section
+    global combined_dataset # Input for combined analysis
+    global combined_dataset2 # Seems unused here? Keep for now.
+    global csv_significance # Text analysis from check_trends2
+    global csv_combined_analysis # New global for combined results CSV
+    global top_choice # To know if single or combined mode
+    global actual_menu # Used for plot titles etc.
+    global trends_results # Needed for single keyword check_trends2 call
+    global selected_keyword
+
+    # Initialize new global
+    csv_combined_analysis = None
+
     # *************************************************************************************
     # Part 1 - Tendencias y Medias
     # *************************************************************************************
 
     banner_msg(' Part 1 - Tendencias y Medias ', color2=GREEN)
-    csv_string = io.StringIO()
-    csv_writer = csv.writer(csv_string)
-    csv_writer.writerow(['Keyword', '20 Years Average', '15 Years Average', '10 Years Average', '5 Years Average', '1 Year Average', 'Trend NADT', 'Trend MAST'])
-    
-    if top_choice == 2:
-        all_keywords = combined_dataset2.columns.tolist()
-    for kw in all_keywords:
-        results = check_trends2(kw)
-        csv_writer.writerow([kw] + results['means'] + results['trends'])
 
-    csv_data = csv_string.getvalue()
-    csv_means_trendsA = "Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n"
-    csv_means_trends = csv_data
-    csv_significance = results['analysis_text']
+    if top_choice == 2:
+        # --- Combined Dataset Analysis ---
+        print("Performing combined dataset analysis (Means & Trends)...")
+        # Ensure selected_keyword is defined before use
+        current_selected_keyword = ""
+        if 'selected_keyword' in globals() and selected_keyword:
+            current_selected_keyword = selected_keyword
+        else:
+            print("Warning: Global 'selected_keyword' not found or empty for combined analysis title.")
+
+        if combined_dataset is not None and not combined_dataset.empty:
+                # 1. Generate Line plot and Calculate Averages/Trends
+                line_plot_title = f"Análisis Comparativo de Tendencias para '{current_selected_keyword}'" if current_selected_keyword else "Análisis Comparativo de Tendencias"
+                # Capture all 3 return values now
+                line_plot_filename, csv_combined_analysis_data, analysis_results_raw = plot_and_analyze_combined_trends(
+                    combined_dataset,
+                    title=line_plot_title,
+                    apply_smoothing=True, # Optionally apply smoothing to the line plot
+                    window_size=3
+                )
+                # Store the calculated CSV data
+                csv_combined_analysis = csv_combined_analysis_data # Assign to global
+
+                # 2. Generate Bar plot using the calculated results
+                if analysis_results_raw:
+                    bar_plot_title = f"Comparativo de Medias por Periodo para '{current_selected_keyword}'" if current_selected_keyword else "Comparativo de Medias por Periodo"
+                    # Call the new bar plot function
+                    plot_combined_averages_bars(analysis_results_raw, title=bar_plot_title)
+                else:
+                    print("Warning: No raw analysis results returned from trends function; cannot generate bar chart.")
+
+
+                # Set the header/title for the combined analysis section in reports
+                csv_means_trendsA = "Combined Analysis - Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n"
+                # Indicate that detailed CSV is in csv_combined_analysis
+                csv_means_trends = "# Combined analysis performed. See Combined Analysis CSV below.\n"
+                csv_significance = "# Combined analysis doesn't generate single-keyword significance text.\n"
+                all_keywords = combined_dataset.columns.tolist() # Store the list of sources/columns
+        else:
+                print("Error: Combined dataset is empty or not loaded. Skipping combined analysis.")
+                csv_combined_analysis = "# Error: Combined dataset empty.\n"
+                csv_means_trends = "# Error: Combined dataset empty.\n"
+                csv_means_trendsA = "Error: Combined dataset empty.\n"
+                csv_significance = "# Error: Combined dataset empty.\n"
+                all_keywords = []
+
+    else:
+        # --- Single Keyword Analysis ---
+        print("Performing single keyword analysis (Means & Trends)...")
+        csv_string = io.StringIO()
+        csv_writer = csv.writer(csv_string)
+        # Define header matching the expected output from check_trends2's results dict
+        # IMPORTANT: Ensure check_trends2 returns 'means' and 'trends' in this order
+        # Example header: Check check_trends2 return dict keys/order if issues arise
+        header = ['Keyword', 'Overall Avg', '20 Year Avg', '15 Year Avg', '10 Year Avg', '5 Year Avg', '1 Year Avg', 'Trend NADT', 'Trend MAST']
+        csv_writer.writerow(header)
+
+        all_analysis_text = []
+        if not all_keywords:
+             print("Warning: No keywords selected for single keyword analysis.")
+        else:
+            for kw in all_keywords:
+                try:
+                    # check_trends2 calculates averages, trends (NADT/MAST) and returns them
+                    results_check = check_trends2(kw) # Assuming this returns a dict
+
+                    # Extract means and trends safely, providing defaults
+                    # Ensure the order matches the header defined above!
+                    means_row = results_check.get('means', [np.nan]*6) # Default to NaNs if key missing
+                    trends_row = results_check.get('trends', [np.nan]*2) # Default to NaNs if key missing
+
+                    # Combine keyword, means, and trends for the row
+                    row_data = [kw] + means_row + trends_row
+                    csv_writer.writerow(row_data)
+
+                    # Append analysis text
+                    all_analysis_text.append(f"--- {kw} ---\n{results_check.get('analysis_text', 'No analysis text available.')}")
+
+                except Exception as e:
+                    print(f"Error processing keyword '{kw}' in check_trends2: {e}")
+                    # Write a row indicating error for this keyword
+                    csv_writer.writerow([kw] + ['Error'] * (len(header) - 1))
+                    all_analysis_text.append(f"--- {kw} ---\nError during analysis: {e}")
+
+
+        csv_data = csv_string.getvalue()
+        csv_means_trendsA = "Means and Trends (Single Keywords)\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n"
+        csv_means_trends = csv_data # This now holds the CSV for single keywords
+        csv_significance = "\n\n".join(all_analysis_text)
+        # csv_combined_analysis remains None as it's single keyword mode
+
 
     # *************************************************************************************
     # Part 2 - Comparación a lo largo del tiempo
     # *************************************************************************************
 
     banner_msg(' Part 2 - Comparación a lo largo del tiempo ', color2=GREEN)
-    relative_comparison()
+    if top_choice == 2:
+    #******
+        print("\nCalculating trends across sources using combined_dataset...")
+        source_trends_results = {} # Initialize/clear it here as well
+
+        # Make sure combined_dataset is a global or passed correctly
+        global earliest_date
+        global latest_date
+        global selected_sources
+        global source_mapping_inverted # You need this mapping
+
+        if combined_dataset is not None and not combined_dataset.empty:
+            # Ensure index is datetime
+            if not pd.api.types.is_datetime64_any_dtype(combined_dataset.index):
+                try:
+                    combined_dataset.index = pd.to_datetime(combined_dataset.index)
+                    print("Converted combined_dataset index to datetime.")
+                except Exception as e:
+                    print(f"Error converting combined_dataset index to datetime: {e}")
+                    # Handle error appropriately, maybe return or raise
+
+            # Recalculate date range from the actual combined_dataset being used
+            earliest_date = combined_dataset.index.min()
+            latest_date = combined_dataset.index.max()
+            current_year = latest_date.year
+            earliest_year_in_data = earliest_date.year
+
+            print(f" Combined dataset date range: {earliest_date.date()} to {latest_date.date()}")
+
+            # Define periods based on available data range
+            available_periods_years = []
+            total_years_available = current_year - earliest_year_in_data
+            if total_years_available >= 1: available_periods_years.append('all') # Represent 'all' data
+            if total_years_available >= 5: available_periods_years.append(5)
+            if total_years_available >= 10: available_periods_years.append(10)
+            if total_years_available >= 15: available_periods_years.append(15)
+            if total_years_available >= 20: available_periods_years.append(20)
+
+            # --- Calculate for each period ---
+            for period_years in available_periods_years:
+                if period_years == 'all':
+                    start_date = earliest_date
+                    end_date = latest_date
+                    data_key = 'all_data'
+                    mean_key = 'mean_all'
+                else:
+                    # Ensure we don't go earlier than the actual data start
+                    start_year = max(earliest_year_in_data, current_year - period_years)
+                    start_date = pd.Timestamp(f"{start_year}-01-01") # Adjust if data is monthly/daily
+                    end_date = latest_date # Use the actual latest date
+                    data_key = f'last_{period_years}_years_data'
+                    mean_key = f'mean_last_{period_years}'
+
+                print(f"  Calculating for period: {period_years} years ({start_date.year}-{end_date.year})")
+
+                # Slice the data for the period
+                period_data_full = combined_dataset[(combined_dataset.index >= start_date) & (combined_dataset.index <= end_date)]
+
+                period_data_by_source = {}
+                period_means_by_source = {}
+
+                if not period_data_full.empty:
+                    # Iterate through selected sources (using user-friendly names)
+                    for source_name in selected_sources:
+                        # Map user-friendly name to actual column name in combined_dataset
+                        # *** Make sure source_mapping_inverted is correct ***
+                        actual_column_name = source_mapping_inverted.get(source_name, source_name)
+
+                        if actual_column_name in period_data_full.columns:
+                            source_series = period_data_full[actual_column_name].dropna()
+                            if not source_series.empty:
+                                period_data_by_source[source_name] = source_series
+                                # Calculate mean, handle potential NaNs or empty series after dropna
+                                try:
+                                    mean_val = source_series.mean()
+                                    period_means_by_source[source_name] = mean_val if not pd.isna(mean_val) else 0.0
+                                except Exception as e:
+                                    print(f"    Warning: Could not calculate mean for {source_name} (col: {actual_column_name}) in period {period_years}: {e}")
+                                    period_means_by_source[source_name] = 0.0 # Default to 0 on error
+                            else:
+                                print(f"    Warning: No non-NaN data for source '{source_name}' (col: {actual_column_name}) in period {period_years}.")
+                                period_data_by_source[source_name] = pd.Series(dtype='float64') # Empty series
+                                period_means_by_source[source_name] = 0.0
+                        else:
+                            print(f"    Warning: Column '{actual_column_name}' (for source '{source_name}') not found in combined dataset for period {period_years}.")
+                            period_data_by_source[source_name] = pd.Series(dtype='float64') # Empty series
+                            period_means_by_source[source_name] = 0.0
+
+                # Store results for the period
+                source_trends_results[data_key] = period_data_by_source
+                source_trends_results[mean_key] = period_means_by_source
+
+            print("Finished calculating trends across sources from combined_dataset.")
+            # print("DEBUG: source_trends_results keys:", source_trends_results.keys()) # Optional debug print
+            # if 'mean_all' in source_trends_results: print("DEBUG: mean_all values:", source_trends_results['mean_all'])
+        else:
+            print("Error: combined_dataset is empty or None. Cannot calculate source trends.")
+            # Handle this case gracefully, maybe skip calling relative_comparison2
+
+        # --- NOW you can safely call relative_comparison2 ---
+        if source_trends_results: # Only call if data was successfully processed
+            print("\nCalling relative_comparison2...")
+            relative_comparison2()
+        else:
+            print("\nSkipping relative_comparison2 due to missing source trend data.")
+    #******
+    else:
+        try:
+            relative_comparison()
+        except Exception as e:
+            print(f"Error during relative comparison: {e}")
+            traceback.print_exc()
+
 
     # *************************************************************************************
     # Part 3 - Correlación - Regresión
     # *************************************************************************************
 
     banner_msg(' Part 3 - Correlación - Regresión ', color2=GREEN)
-    analysis = analyze_trends(trends_results)
-    if one_keyword:
-      csv_correlation = None
-      csv_regression = None
-      print('Se requieren al menos dos variables para realizar los cálculos de correlación y regresión')
+    # Ensure trends_results is available; might need recalculation or loading if not persistent
+    if 'trends_results' in globals() and trends_results:
+        # analyze_trends expects the 'trends_results' structure
+        # It calculates correlation/regression based on 'last_20_years_data' within trends_results
+        analysis = analyze_trends(trends_results)
+        if top_choice == 2 or (top_choice == 1 and len(all_keywords) < 2) : # Check if combined or single keyword mode < 2 keywords
+             one_keyword = True # Treat combined mode or single < 2 keywords as 'one_keyword' for this section
+             csv_correlation = None
+             csv_regression = None
+             print('Análisis de Correlación y Regresión requiere al menos dos variables (keywords/fuentes). Omitido.')
+        else:
+             one_keyword = False
+             csv_correlation = analysis.get('correlation') # Safely get results
+             csv_regression = analysis.get('regression')
     else:
-      csv_correlation = analysis['correlation']
-      csv_regression = analysis['regression']
-      
+        print("Warning: 'trends_results' not found or empty. Skipping Correlation/Regression.")
+        csv_correlation = None
+        csv_regression = None
+
     # *************************************************************************************
     # Part 4 - Modelo ARIMA
     # *************************************************************************************
 
     banner_msg(' Part 4 - Modelo ARIMA ', color2=GREEN)
-    # Call the arima_model function with the best parameters
-    # mb: months back. Past
-    # mf: months foward. future
-    # ts: test size. Size of test in months
-    # p, d, q: ARIMA parameters
-    # auto = True: Calculate p,d,q. False: use given p, d, q values.
-    csv_arima=arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0)
+    try:
+        # Ensure arima_model can handle combined data (might need adaptation)
+        # Currently seems designed for single keyword; might need kw loop or adaptation
+        if top_choice == 1 and all_keywords:
+            # Example: Run ARIMA for the first keyword if in single mode
+            # Or loop through all_keywords if desired
+            print(f"Running ARIMA for first keyword: {all_keywords[0]}")
+            csv_arima = arima_model(kw=all_keywords[0], mb=120, mf=36, ts=18, p=2, d=1, q=0) # Pass kw
+        elif top_choice == 2:
+             print("ARIMA model execution skipped in combined data source mode.")
+             csv_arima = "# ARIMA skipped in combined mode.\n"
+        else:
+             print("ARIMA model skipped (no keywords or combined mode).")
+             csv_arima = "# ARIMA skipped.\n"
+    except Exception as e:
+        print(f"Error during ARIMA modeling: {e}")
+        traceback.print_exc()
+        csv_arima = f"# Error during ARIMA: {e}\n"
+
 
     # *************************************************************************************
     # Part 5 - Análisis Estacional
     # *************************************************************************************
 
     banner_msg(' Part 5 - Análisis estacional ', color2=GREEN)
-    seasonal_analysis('last_10_years_data')
+    try:
+        # Similar to ARIMA, check if seasonal_analysis needs adaptation for combined mode
+        if top_choice == 1 and all_keywords:
+            print(f"Running Seasonal Analysis for first keyword: {all_keywords[0]}")
+            seasonal_analysis('last_10_years_data', kw=all_keywords[0]) # Pass kw
+        elif top_choice == 2:
+             print("Seasonal Analysis skipped in combined data source mode.")
+             # csv_seasonal might need to be handled/set here if it's expected later
+             global csv_seasonal # Ensure it's global if setting
+             csv_seasonal = "# Seasonal analysis skipped in combined mode.\n"
+        else:
+             print("Seasonal Analysis skipped (no keywords or combined mode).")
+             csv_seasonal = "# Seasonal analysis skipped.\n"
+
+    except Exception as e:
+        print(f"Error during seasonal analysis: {e}")
+        traceback.print_exc()
+        # Handle csv_seasonal setting on error if necessary
+
 
     # *************************************************************************************
     # Part 6 - Fourier Analisys
     # *************************************************************************************
 
     banner_msg(' Part 6 - Análisis de Fourier ', color2=GREEN)
-    csv_fourier=fourier_analysis2('last_20_years_data') #'last_20_years_data','last_15_years_data', ... , 'last_year_data'
-    # to chage Y axis to log fo to line 131 in all functions
+    try:
+        # Check if fourier_analysis2 needs adaptation for combined mode
+        if top_choice == 1 and all_keywords:
+            print(f"Running Fourier Analysis for first keyword: {all_keywords[0]}")
+            csv_fourier=fourier_analysis2('last_20_years_data', kw=all_keywords[0]) # Pass kw
+        elif top_choice == 2:
+             print("Fourier Analysis skipped in combined data source mode.")
+             csv_fourier = "# Fourier skipped in combined mode.\n"
+        else:
+             print("Fourier Analysis skipped (no keywords or combined mode).")
+             csv_fourier = "# Fourier skipped.\n"
+    except Exception as e:
+        print(f"Error during Fourier analysis: {e}")
+        traceback.print_exc()
+        csv_fourier = f"# Error during Fourier: {e}\n"
+
+    print("\n--- Results function finished ---")
+
 
     
 # *************************************************************************************
@@ -5245,8 +6271,8 @@ def normalize_dataset(df):
 
 def normalize_dataset_full(df):
     """
-    Normalize a dataset without assuming common date ranges.
-    Similar to normalize_dataset but works with any date range.
+    Normalize a dataset without assuming common date ranges, scaling to 
+    0-100 if the original minimum is 0, and 1-100 otherwise.
     
     Args:
         df (pd.DataFrame): The dataset to normalize
@@ -5257,19 +6283,30 @@ def normalize_dataset_full(df):
     # Create a copy to avoid modifying the original
     df_norm = df.copy()
     
-    # Normalize each column to 0-100 range
+    # Normalize each column
     for col in df_norm.columns:
         min_val = df_norm[col].min()
         max_val = df_norm[col].max()
         
         # Check if min and max are the same to avoid division by zero
         if max_val != min_val:
-            df_norm[col] = 100 * (df_norm[col] - min_val) / (max_val - min_val)
+            # Check if the original minimum value was zero
+            if min_val == 0:
+                # Scale to 0-100 range if original min was 0
+                df_norm[col] = 100 * (df_norm[col] - min_val) / (max_val - min_val)
+            else:
+                # Scale to 1-100 range if original min was not 0
+                df_norm[col] = 1 + 99 * (df_norm[col] - min_val) / (max_val - min_val)
         else:
-            # If all values are the same, set to 50 (middle of range)
-            df_norm[col] = 50
-    # Return df instead of df_norm since the data is already normalaize in the sources
-    df_norm = df
+            # If all values are the same, set based on original value
+            # If original value was 0, set normalized to 0 (or 1 if using 1-100 scale implicitly)
+            # If original value > 0, set normalized to 50 (mid-range for 1-100)
+            # Let's simplify and just set to 50 for constant non-zero, 0 for constant zero.
+            if min_val == 0:
+                 df_norm[col] = 0 
+            else:
+                 df_norm[col] = 50 # Represents a constant non-zero value in the scaled range
+
     return df_norm
 
 def process_and_normalize_datasets(allKeywords):
@@ -5383,7 +6420,7 @@ def process_and_normalize_datasets_full():
     datasets_norm_full = {source: normalize_dataset_full(df) for source, df in all_datasets_full.items() if df is not None and not df.empty}
     datasets_norm_full_monthly = {source: normalize_dataset_full(df) for source, df in all_datasets_full_monthly.items() if df is not None and not df.empty}
 
-    return datasets_norm_full, datasets_norm_full_monthly, selected_sources
+    return datasets_norm_full, datasets_norm_full_monthly
 
 def get_file_data2(selected_keyword, selected_sources):
     # Obtener los nombres de archivo para la palabra clave y fuentes seleccionadas
@@ -5405,19 +6442,19 @@ def get_file_data2(selected_keyword, selected_sources):
 
     for source in selected_sources:
         if source in all_raw_datasets:
-            datasets[source], datasets_monthly[source] = process_dataset(all_raw_datasets[source], source, all_raw_datasets, selected_sources)
+            datasets[source] = all_raw_datasets[source]
             print(f"\nConjunto de datos procesado: {source}")
             print(datasets[source].head())
             print(f"Dimensiones: {datasets[source].shape}\n\n")
-            print(f"\nConjunto de datos procesado (monthly): {source}")
-            print(datasets_monthly[source].head())
-            print(f"Dimensiones: {datasets_monthly[source].shape}\n\n")
+            # print(f"\nConjunto de datos procesado (monthly): {source}")
+            # print(datasets_monthly[source].head())
+            # print(f"Dimensiones: {datasets_monthly[source].shape}\n\n")
 
     print(datasets)
     
     # Normalize each dataset in datasets
     # datasets_norm = {source: normalize_dataset(df) for source, df in datasets.items()}
-    datasets_norm = {source: df for source, df in datasets.items()}
+    datasets_norm = {source: normalize_dataset_full(df) for source, df in datasets.items()}
     # Print the normalized datasets for verification
     # for source, df_norm in datasets_norm.items():
     #     print(f"Normalized dataset for source {source}:")
@@ -5500,7 +6537,7 @@ def create_combined_dataset2(datasets_norm, selected_sources, dbase_options):
             
             # Add columns from this source to the combined dataset
             for col in source_data.columns:
-                combined_dataset2[f"{source_name}_{col}"] = source_data[col]
+                combined_dataset2[f"{source_name}"] = source_data[col]
     
     # Sort by date
     combined_dataset2.sort_index(inplace=True)
@@ -5698,34 +6735,9 @@ def main():
             print(f"\n{CYAN}Analizando '{selected_keyword}' usando fuentes: {', '.join([dbase_options.get(s, str(s)) for s in selected_sources])}{RESET}")
 
             # 3. Create the combined dataset for the common date range
-            combined_dataset = create_combined_dataset(datasets_norm, selected_sources, dbase_options)
+            combined_dataset = create_combined_dataset2(datasets_norm, selected_sources, dbase_options)
 
-            # 4. Process datasets with full date range (using the same selections via globals)
-            datasets_norm_full, _ = process_and_normalize_datasets_full() # Call modified function
-
-            # Check if full range processing yielded results
-            if not datasets_norm_full:
-                 print(f"{YELLOW}No se pudieron procesar los datos completos para las fuentes seleccionadas.{RESET}")
-                 if combined_dataset is not None and not combined_dataset.empty:
-                    print(f"\n{YELLOW}Mostrando solo el conjunto de datos combinado para el rango de fechas común:{RESET}")
-                    with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-                        print(combined_dataset)
-                 else:
-                    print(f"{YELLOW}No hay datos combinados para mostrar.{RESET}")
-                 continue # Go back to main menu
-
-            # 5. Create the combined dataset for the full date range
-            combined_dataset2 = create_combined_dataset2(datasets_norm_full, selected_sources, dbase_options)
-
-            # 6. Display both datasets for comparison (if both were created successfully)
-            if combined_dataset is not None and combined_dataset2 is not None:
-                display_combined_datasets() # This function should handle printing
-            elif combined_dataset is not None:
-                 print(f"\n{YELLOW}Mostrando solo el conjunto de datos combinado para el rango de fechas común (datos de rango completo no disponibles):{RESET}")
-                 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-                     print(combined_dataset)
-            else:
-                 print(f"{YELLOW}No se pudieron generar los conjuntos de datos combinados.{RESET}")
+            print (combined_dataset)
                  
             # --- Run Analysis for Option 2 ---
             results()
