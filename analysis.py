@@ -12,7 +12,7 @@ import google.generativeai as genai
 import statsmodels.api as sm
 import scipy.fftpack as fftpack
 import markdown
-import weasyprint
+#import weasyprint
 import os
 import csv
 import io
@@ -66,6 +66,7 @@ from plotly.subplots import make_subplots
 import random
 import google.api_core.exceptions
 import matplotlib.patches as mpatches
+import itertools
 
 # AI Prompts imports 
 from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, \
@@ -113,7 +114,6 @@ global gem_seasonal_sp
 global gem_fourier_sp
 global gem_conclusions_sp
 global csv_fourier
-global csv_fourierA
 global csv_means_trends
 global csv_means_trendsA
 global csv_correlation
@@ -122,7 +122,6 @@ global csv_arima
 global csv_arimaA
 global csv_arimaB
 global csv_seasonal
-global csv_seasonalA
 global menu
 global actual_menu
 global actual_opt
@@ -153,7 +152,6 @@ global latest_date
 global earliest_year
 global latest_year
 global total_years
-global keycharts
 global csv_combined_dataset
 global skip_seasonal
 global skip_arima
@@ -3946,6 +3944,345 @@ def analyze_trends(trend):
       'regression': csv_regression,
     }
 
+# Helper function to format polynomial equations
+def format_polynomial_equation(coeffs):
+    """Formats polynomial coefficients into a readable equation string."""
+    terms = []
+    degree = len(coeffs) - 1
+    for i, coeff in enumerate(coeffs):
+        power = degree - i
+        # Skip coefficients that are very close to zero
+        if abs(coeff) < 1e-6:
+            continue
+
+        # Format coefficient with sign and precision
+        if i == 0:
+            # First term doesn't need a leading '+' sign unless it's the only term
+            term = f"{coeff:.3f}"
+        else:
+            # Subsequent terms get a sign explicitly
+            term = f" {coeff:+.3f}" # Shows '+' for positive, '-' for negative
+
+        # Add variable 'x' and power if power > 0
+        if power > 0:
+            term += "x"
+            if power > 1:
+                term += f"^{power}"
+        terms.append(term)
+
+    # Handle the case where all coefficients are zero or near-zero
+    if not terms:
+        return "y = 0"
+
+    # Combine terms, ensure leading sign is handled if first term was negative
+    equation = "y = " + "".join(terms).strip()
+
+    # Optional: Nicer formatting like removing '1.000x' to 'x' can be added
+    # Be careful with replacing '1.000' as it might match parts of other numbers
+    equation = re.sub(r'(\s|\b)1\.000x', r'\1x', equation) # Replace ' 1.000x' or '1.000x' at start
+    equation = re.sub(r'\+ -', '- ', equation) # Clean up '+ -' combinations
+
+    return equation
+
+# Main analysis function
+def analyze_source_correlations_regressions(combined_datasets, selected_sources, keywords, output_dir="output/plots/regression", source_colors=None):
+    """
+    Performs correlation and regression analysis between pairs of data sources for given keywords.
+
+    Generates scatter plots with regression lines (linear, quadratic, cubic, polynomial deg 4)
+    and calculates correlation (R) and regression metrics (R-squared, equation coefficients).
+    Saves plots to the specified directory and returns results as DataFrames.
+
+    Args:
+        combined_datasets (dict): Dictionary where keys are keywords and values are pandas DataFrames.
+                                  Each DataFrame must have aligned time index and columns for selected sources.
+                                  Data in these columns should ideally be normalized.
+        selected_sources (list): List of source names to analyze (e.g., ['google_books', 'google_trends']).
+        keywords (list): List of keywords to analyze.
+        source_colors (dict, optional): Dictionary mapping source names to colors. Uses defaults if None.
+
+    Returns:
+        tuple: A tuple containing:
+            - list: Filenames of the generated plots.
+            - pd.DataFrame: DataFrame with correlation results (Keyword, Source_A, Source_B, Correlation_R).
+                                Name: csv_correlation
+            - pd.DataFrame: DataFrame with regression results (Keyword, Source_A, Source_B, Regression_Type,
+                                Degree, R_Squared, Coefficients, Equation). Name: csv_regression
+    """
+    print(f"\n--- Starting Correlation and Regression Analysis ---")
+    print(f"Sources to analyze: {selected_sources}")
+    print(f"Keywords: {keywords}")
+
+    all_plot_filenames = []
+    correlation_results = []
+    regression_results = []
+
+    # Use provided source_colors or setup defaults
+    if source_colors is None:
+        print("Warning: source_colors dictionary not provided. Using default matplotlib colors.")
+        # Fallback to default matplotlib cycle if needed, though passing fixed_source_colors is recommended
+        prop_cycle = plt.rcParams['axes.prop_cycle']
+        default_colors = prop_cycle.by_key()['color']
+        source_colors = {source: default_colors[i % len(default_colors)] for i, source in enumerate(selected_sources)}
+    elif not isinstance(source_colors, dict):
+        print("Warning: source_colors provided is not a dictionary. Using default colors.")
+        # Handle incorrect type passsed
+        prop_cycle = plt.rcParams['axes.prop_cycle']
+        default_colors = prop_cycle.by_key()['color']
+        source_colors = {source: default_colors[i % len(default_colors)] for i, source in enumerate(selected_sources)}
+
+
+    # 2. Ensure the global unique_folder exists
+    # Access the global variable directly
+    global unique_folder
+    if 'unique_folder' not in globals() or not unique_folder:
+        print(f"Error: Global variable 'unique_folder' is not defined. Plots cannot be saved.")
+        # Decide how to handle this - maybe return early or proceed without saving
+        can_save_plots = False
+    else:
+        try:
+            os.makedirs(unique_folder, exist_ok=True)
+            abs_output_dir = os.path.abspath(unique_folder) # Use unique_folder path
+            print(f"Output directory for plots: {abs_output_dir}")
+            can_save_plots = True
+        except OSError as e:
+            print(f"Error creating output directory '{unique_folder}': {e}. Plots will not be saved.")
+            can_save_plots = False
+
+    # 3. Generate all permutations of sources for A vs B plots
+    # Use permutations to get both A vs B and B vs A
+    source_pairs = list(itertools.permutations(selected_sources, 2))
+    print(f"Generated {len(source_pairs)} source pairs for analysis.")
+
+    # 4. Loop through each keyword
+    for keyword in keywords:
+        print(f"\nProcessing keyword: '{keyword}'")
+        if keyword not in combined_datasets:
+            print(f"  Warning: Keyword '{keyword}' not found in combined_datasets dictionary. Skipping.")
+            continue
+
+        # Ensure the value associated with the keyword is a DataFrame
+        if not isinstance(combined_datasets[keyword], pd.DataFrame):
+             print(f"  Warning: Data for keyword '{keyword}' is not a pandas DataFrame. Skipping.")
+             continue
+
+        df_keyword = combined_datasets[keyword]
+
+        # 5. Loop through each source pair (source_a -> x, source_b -> y)
+        for source_a, source_b in source_pairs:
+            # Use more descriptive names for clarity in logs/plots
+            x_source_name = source_a
+            y_source_name = source_b
+            print(f"  Analyzing pair: Y={y_source_name} vs X={x_source_name}")
+
+            # Check if both sources exist as columns in the DataFrame for this keyword
+            if x_source_name not in df_keyword.columns:
+                print(f"    Warning: Source '{x_source_name}' (X-axis) not found in data for keyword '{keyword}'. Skipping pair.")
+                continue
+            if y_source_name not in df_keyword.columns:
+                print(f"    Warning: Source '{y_source_name}' (Y-axis) not found in data for keyword '{keyword}'. Skipping pair.")
+                continue
+
+            # 6. Prepare data: Extract columns and drop rows with NaNs for the pair
+            # Ensure we don't modify the original DataFrame slice
+            df_pair = df_keyword[[x_source_name, y_source_name]].copy().dropna()
+
+            # Check if enough data points remain after dropping NaNs
+            # Minimum points needed is degree+1 for polyfit, let's set a practical minimum.
+            min_points_for_analysis = 5
+            if len(df_pair) < min_points_for_analysis:
+                print(f"    Warning: Not enough overlapping data points ({len(df_pair)} < {min_points_for_analysis}) for '{keyword}' between {x_source_name} and {y_source_name}. Skipping pair.")
+                continue
+
+            x_data = df_pair[x_source_name].values
+            y_data = df_pair[y_source_name].values
+
+            # Check for constant data which can cause issues in correlation/regression
+            if np.std(x_data) < 1e-6 or np.std(y_data) < 1e-6:
+                 print(f"    Warning: Data for '{x_source_name}' or '{y_source_name}' is constant or near-constant. Skipping regression/correlation for this pair.")
+                 continue
+
+            # 7. Calculate Pearson Correlation
+            try:
+                # Using pandas .corr() is robust
+                correlation_coefficient = df_pair[x_source_name].corr(df_pair[y_source_name])
+                # Check if correlation is NaN (can happen with very little variance or specific data patterns)
+                if pd.isna(correlation_coefficient):
+                     print(f"    Warning: Correlation calculation resulted in NaN for '{keyword}' ({y_source_name} vs {x_source_name}). Skipping pair.")
+                     continue
+
+                correlation_results.append({
+                    'Keyword': keyword,
+                    'Source_A': x_source_name, # Independent variable (X-axis)
+                    'Source_B': y_source_name, # Dependent variable (Y-axis)
+                    'Correlation_R': correlation_coefficient
+                })
+                print(f"    Correlation R: {correlation_coefficient:.4f}")
+            except Exception as e:
+                print(f"    Error calculating correlation for '{keyword}' ({y_source_name} vs {x_source_name}): {e}. Skipping correlation.")
+                correlation_coefficient = np.nan # Mark as failed
+
+
+            # 8. Set up Plot
+            fig, ax = plt.subplots(figsize=(12, 8))
+            # Use the color associated with the Y-axis source for the scatter points
+            scatter_color = source_colors.get(y_source_name, '#808080') # Default to grey if source not in dict
+            ax.scatter(x_data, y_data, alpha=0.6, label=f'Data Points ({len(x_data)})', color=scatter_color, s=25)
+
+            # Generate points for plotting regression lines smoothly
+            # Ensure range covers all data points
+            x_plot = np.linspace(np.min(x_data), np.max(x_data), 200)
+
+            # 9. Perform Regressions (Linear, Quadratic, Cubic, Poly deg 4)
+            regression_degrees = {'Linear': 1, 'Quadratic': 2, 'Cubic': 3, 'Polynomial(4)': 4}
+            # Use distinct colors for regression lines for better visibility
+            # Using a colormap like 'viridis' or 'plasma'
+            reg_colors = plt.cm.viridis(np.linspace(0.1, 0.9, len(regression_degrees))) # Avoid extreme ends
+
+            print("    Calculating regressions:")
+            regression_success = False # Flag to check if any regression was plotted
+            for i, (name, degree) in enumerate(regression_degrees.items()):
+                # Check if enough data points for the degree (polyfit needs > degree points)
+                if len(x_data) <= degree:
+                     print(f"      Skipping {name} regression (degree {degree}): requires > {degree} points, found {len(x_data)}.")
+                     continue
+
+                try:
+                    # Use warnings context manager to catch RankWarnings from polyfit
+                    with warnings.catch_warnings(record=True) as w:
+                        warnings.simplefilter("always")
+                        # Fit polynomial regression model
+                        coeffs = np.polyfit(x_data, y_data, degree)
+                        # Check for RankWarning (indicates ill-conditioned matrix, results might be unreliable)
+                        if any(issubclass(warn.category, np.RankWarning) for warn in w):
+                             print(f"      RankWarning encountered during {name} regression (degree {degree}). Results may be unreliable due to ill-conditioned matrix.")
+
+                    poly_eqn = np.poly1d(coeffs)
+                    y_pred = poly_eqn(x_data) # Predictions on original x data for R^2
+                    y_plot = poly_eqn(x_plot) # Predictions on smooth x range for plotting
+
+                    # Calculate R-squared using scikit-learn's r2_score
+                    r_squared = r2_score(y_data, y_pred)
+
+                    # Format equation string using the helper function
+                    equation_str = format_polynomial_equation(coeffs)
+                    print(f"      {name} (R²={r_squared:.4f}): {equation_str}")
+
+                    # Store regression results
+                    regression_results.append({
+                        'Keyword': keyword,
+                        'Source_A': x_source_name,
+                        'Source_B': y_source_name,
+                        'Regression_Type': name,
+                        'Degree': degree,
+                        'R_Squared': r_squared,
+                        'Coefficients': list(coeffs), # Store coefficients as a list
+                        'Equation': equation_str
+                    })
+
+                    # Plot regression line with R, R^2, and equation in label
+                    # Format Pearson R if it was calculated successfully
+                    pearson_r_text = f"R={correlation_coefficient:.3f}, " if not pd.isna(correlation_coefficient) else ""
+                    # Combine all parts for the label
+                    label_text = f'{name} ({pearson_r_text}R²={r_squared:.3f})\n{equation_str}'
+                    # Or on one line:
+                    # label_text = f'{name} ({pearson_r_text}R²={r_squared:.3f}) | {equation_str}'
+                    ax.plot(x_plot, y_plot, label=label_text, color=reg_colors[i], linewidth=2.5, alpha=0.9)
+                    regression_success = True
+
+                except np.linalg.LinAlgError as lae:
+                     print(f"      Error during {name} regression for '{keyword}' ({y_source_name} vs {x_source_name}): Linear algebra error - {lae}. Skipping this degree.")
+                except Exception as e:
+                    # Catch other potential errors during regression
+                    print(f"      Unexpected error during {name} regression for '{keyword}' ({y_source_name} vs {x_source_name}): {e}. Skipping this degree.")
+
+
+            # 10. Finalize and Save Plot (only if regressions were attempted)
+            if regression_success or not pd.isna(correlation_coefficient): # If we have something to show
+                plot_title = f'Regression Analysis: {y_source_name} vs {x_source_name}\nKeyword: "{keyword}"'
+                ax.set_title(plot_title, fontsize=14, wrap=True)
+                ax.set_xlabel(f'{x_source_name} (Normalized Value)', fontsize=12)
+                ax.set_ylabel(f'{y_source_name} (Normalized Value)', fontsize=12)
+                if regression_success: # Only show legend if regression lines were plotted
+                    ax.legend(loc='best', fontsize=9)
+                ax.grid(True, linestyle=':', alpha=0.6)
+
+                # Add overall correlation text to the plot if calculated
+                # if not pd.isna(correlation_coefficient):
+                #     ax.text(0.02, 0.98, f'Pearson R: {correlation_coefficient:.4f}',
+                #             transform=ax.transAxes, fontsize=11, verticalalignment='top',
+                #             bbox=dict(boxstyle='round,pad=0.4', fc='wheat', alpha=0.8))
+
+                plt.tight_layout(pad=1.5) # Adjust padding
+
+                # Generate unique filename for the plot
+                # Sanitize keyword for filename
+                sanitized_keyword = re.sub(r'[^\w\-]+', '_', keyword) # Replace non-alphanumeric chars with _
+                base_filename = f"regression_{sanitized_keyword}_{y_source_name}_vs_{x_source_name}.png"
+
+                # Save the plot if output directory is valid
+                # Use the global unique_folder and the can_save_plots flag
+                if can_save_plots:
+                    try:
+                        # Use the existing get_unique_filename function from analysis.py
+                        # This still returns just the base filename (e.g., "regression_...1.png")
+                        unique_filename_relative = get_unique_filename(base_filename, unique_folder)
+                        # *** Construct the FULL path for saving ***
+                        full_plot_path = os.path.join(unique_folder, unique_filename_relative)
+                        # *** Save using the full path ***
+                        plt.savefig(full_plot_path, bbox_inches='tight', dpi=150)
+                        # Append the RELATIVE filename for reporting purposes downstream
+                        all_plot_filenames.append(unique_filename_relative)
+                        print(f"    Plot saved: {os.path.basename(full_plot_path)}") # Or use unique_filename_relative
+                    except NameError:
+                         print(f"    Error saving plot: 'get_unique_filename' function not found.")
+                         # Fallback or define get_unique_filename if needed
+                    except Exception as e:
+                        print(f"    Error saving plot {base_filename}: {e}")
+                else:
+                     print("    Output directory invalid or not defined, plot not saved.")
+
+            else:
+                 print("    No valid correlation or regression results to plot.")
+
+            plt.close(fig) # Close plot figure to free memory
+
+        # End loop for source pairs
+    # End loop for keywords
+
+    # 11. Convert results lists to Pandas DataFrames
+    # Provide default empty DataFrames if no results were generated
+    if correlation_results:
+        df_correlation = pd.DataFrame(correlation_results)
+    else:
+        df_correlation = pd.DataFrame(columns=['Keyword', 'Source_A', 'Source_B', 'Correlation_R'])
+
+    if regression_results:
+        df_regression = pd.DataFrame(regression_results)
+    else:
+        df_regression = pd.DataFrame(columns=['Keyword', 'Source_A', 'Source_B', 'Regression_Type',
+                                              'Degree', 'R_Squared', 'Coefficients', 'Equation'])
+
+    # Assign to requested variable names
+    csv_correlation = df_correlation
+    csv_regression = df_regression
+
+    print(f"\n--- Correlation and Regression Analysis Complete ---")
+    print(f"Generated {len(all_plot_filenames)} plots.")
+    if not csv_correlation.empty:
+        print(f"Correlation results summary (first 5 rows):\n{csv_correlation.head().to_string()}")
+    else:
+        print("No correlation results generated.")
+
+    if not csv_regression.empty:
+        print(f"\nRegression results summary (first 5 rows):\n{csv_regression.head().to_string()}")
+    else:
+        print("No regression results generated.")
+
+    # 12. Return plot filenames and dataframes
+    return all_plot_filenames, csv_correlation, csv_regression
+
+
 # *************************************************************************************
 # INIT VARIABLES
 # *************************************************************************************
@@ -4115,7 +4452,6 @@ def results():
         csv_significance = "\n\n".join(all_analysis_text)
         # csv_combined_analysis remains None as it's single keyword mode
 
-
     # *************************************************************************************
     # Part 2 - Comparación a lo largo del tiempo
     # *************************************************************************************
@@ -4284,21 +4620,69 @@ def results():
 
     banner_msg(' Part 3 - Correlación - Regresión ', color2=GREEN)
     # Ensure trends_results is available; might need recalculation or loading if not persistent
-    if 'trends_results' in globals() and trends_results:
-        # analyze_trends expects the 'trends_results' structure
-        # It calculates correlation/regression based on 'last_20_years_data' within trends_results
-        analysis = analyze_trends(trends_results)
-        if top_choice == 2 or (top_choice == 1 and len(all_keywords) < 2) : # Check if combined or single keyword mode < 2 keywords
-             one_keyword = True # Treat combined mode or single < 2 keywords as 'one_keyword' for this section
-             csv_correlation = None
-             csv_regression = None
-             print('Análisis de Correlación y Regresión requiere al menos dos variables (keywords/fuentes). Omitido.')
+    # if 'trends_results' in globals() and trends_results:
+    #     # analyze_trends expects the 'trends_results' structure
+    #     # It calculates correlation/regression based on 'last_20_years_data' within trends_results
+    #     analysis = analyze_trends(trends_results)
+    #     if top_choice == 2 or (top_choice == 1 and len(all_keywords) < 2) : # Check if combined or single keyword mode < 2 keywords
+    #          one_keyword = True # Treat combined mode or single < 2 keywords as 'one_keyword' for this section
+    #          csv_correlation = None
+    #          csv_regression = None
+    #          print('Análisis de Correlación y Regresión requiere al menos dos variables (keywords/fuentes). Omitido.')
+    #     else:
+    #          one_keyword = False
+    #          csv_correlation = analysis.get('correlation') # Safely get results
+    #          csv_regression = analysis.get('regression')
+    # Check if combined_dataset is not None *and* not empty
+    if top_choice == 2 and (combined_dataset is not None and not combined_dataset.empty) and selected_sources and current_selected_keyword and dbase_options:
+        print("\nCalling analyze_source_correlations_regressions...")
+
+        # --- Prepare arguments for the function ---
+        # 1. Create list of source *names* from the numbers in selected_sources
+        source_names_to_analyze = [dbase_options[num] for num in selected_sources if num in dbase_options]
+        if not source_names_to_analyze:
+             print("  Error: Could not map selected source numbers to names. Skipping regression.")
         else:
-             one_keyword = False
-             csv_correlation = analysis.get('correlation') # Safely get results
-             csv_regression = analysis.get('regression')
+             # 2. Create the dictionary structure expected by combined_datasets argument
+             #    Key: the single selected keyword; Value: the combined DataFrame
+             # Ensure 'current_selected_keyword' is defined and holds the keyword string
+             datasets_for_analysis = {current_selected_keyword: combined_dataset}
+
+             # 3. Create a list containing the single keyword
+             keyword_list_for_analysis = [current_selected_keyword]
+             # --- End Argument Preparation ---
+
+             # Call the function with the correctly formatted arguments
+             regression_plot_files, df_corr, df_regr = analyze_source_correlations_regressions(
+                 combined_datasets=datasets_for_analysis,      # Pass the DICTIONARY
+                 selected_sources=source_names_to_analyze,     # Pass the LIST OF NAMES
+                 keywords=keyword_list_for_analysis,          # Pass the LIST WITH THE KEYWORD
+                 source_colors=fixed_source_colors           # Pass your color dictionary
+             )
+
+             # Store the results (e.g., assign DataFrames to global csv_correlation, csv_regression)
+             csv_correlation = df_corr
+             csv_regression = df_regr
+
+             # You can use regression_plot_files list later for adding to the report if needed
+             print(f"\nGenerated {len(regression_plot_files)} regression plots.")
+
+    elif top_choice == 2: # Add an else if to explain why it might be skipped
+         # Print reasons if the condition failed
+         print("\nSkipping source correlation/regression analysis because:")
+         if combined_dataset is None or combined_dataset.empty:
+              print(" - Combined dataset is missing or empty.")
+         if not selected_sources:
+              print(" - No sources were selected.")
+         if 'current_selected_keyword' not in globals() or not current_selected_keyword: # Check definition
+              print(" - Keyword ('current_selected_keyword') was not selected or defined.")
+         if 'dbase_options' not in globals() or not dbase_options:
+              print(" - dbase_options dictionary is not available.")
+
     else:
-        print("Warning: 'trends_results' not found or empty. Skipping Correlation/Regression.")
+        # This part handles the case where top_choice is not 2
+        print("Warning: Skipping source correlation/regression analysis (not applicable mode or missing data).")
+        # Assign None to prevent potential errors later if these vars are expected
         csv_correlation = None
         csv_regression = None
 
