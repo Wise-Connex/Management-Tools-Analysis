@@ -65,6 +65,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import random
 import google.api_core.exceptions
+import matplotlib.patches as mpatches
 
 # AI Prompts imports 
 from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, \
@@ -93,6 +94,16 @@ MAGENTA = '\033[35m'
 CYAN = '\033[36m'
 WHITE = '\033[37m'
 GRAY = '\033[30m'
+
+fixed_source_colors = {
+    "Google Trends": '#4B0082',         # Dark Purple / Indigo
+    "Google Books Ngrams": '#191970',   # Dark Blue / Midnight Blue
+    "Bain - Usabilidad": '#20B2AA',     # Teal / LightSeaGreen
+    "Crossref.org": '#3CB371',          # Green / MediumSeaGreen
+    "Bain - Satisfacción": '#FFD700'    # Yellow / Gold
+}
+# Default color for unknown sources
+default_color = '#808080' # Grey
 
 global gem_temporal_trends_sp
 global gem_cross_keyword_sp
@@ -1590,63 +1601,64 @@ def smooth_data(data, window_size=5, transition_points=10):
 # earliest_date, latest_date are also available globally.
 
 # --- NEW Helper function for source-based line plots ---
-def setup_source_subplot(ax, data_dict, mean_dict, title, ylabel, colors, source_list):
+def setup_source_subplot(ax, data_dict, mean_dict, title, ylabel, colors, source_list, period_start_date, period_end_date):
     """
     Sets up a subplot showing time series data for multiple sources.
-
-    Args:
-        ax: Matplotlib axes object.
-        data_dict: Dictionary mapping source names to pandas Series (time series data).
-        mean_dict: Dictionary mapping source names to mean values (potentially unused here, but good practice).
-        title: Plot title.
-        ylabel: Y-axis label.
-        colors: Dictionary mapping source names to colors.
-        source_list: List of source names in the desired order.
+    Uses provided start/end dates for accurate x-axis limits.
     """
     print(f"  Setting up source line plot: {title} - {ylabel}")
+    # --- Restore global min/max and plot_min_max calculation ---
     global_min = float('inf')
     global_max = float('-inf')
-    plot_min_max = {}
+    plot_min_max = {} # Initialize the dictionary
 
     # Calculate global min/max across sources for this period
     for source in source_list:
         if source in data_dict and not data_dict[source].empty:
             series = data_dict[source]
             try:
-                plot_min = series.min()
-                plot_max = series.max()
-                plot_min_max[source] = (plot_min, plot_max)
-                global_min = min(global_min, plot_min)
-                global_max = max(global_max, plot_max)
+                # Check if series contains numeric data before calculating min/max
+                if pd.api.types.is_numeric_dtype(series):
+                    plot_min = series.min()
+                    plot_max = series.max()
+                    # Ensure plot_min and plot_max are valid numbers
+                    if pd.notna(plot_min) and pd.notna(plot_max):
+                         plot_min_max[source] = (plot_min, plot_max)
+                         global_min = min(global_min, plot_min)
+                         global_max = max(global_max, plot_max)
+                    else:
+                         print(f"[Warning] Non-numeric or NaN values found in min/max for source {source}. Skipping min/max.")
+                else:
+                    print(f"[Warning] Non-numeric data type for source {source}. Cannot calculate min/max.")
+
             except Exception as e:
                 print(f"[Warning] Could not calculate plot min/max for source {source}: {e}")
         else:
              print(f"[Warning] Data for source {source} is missing or empty for min/max calc.")
+    # -------------------------------------------------------------
+
+    if not plot_min_max: # This check should now work correctly
+         print("[Warning] No valid source data found for plot limits. Using default 0-100.")
+         global_min, global_max = 0, 100 # Fallback    # ... (global min/max calculation remains the same) ...
 
     if not plot_min_max:
          print("[Warning] No valid source data found for plot limits. Using default 0-100.")
          global_min, global_max = 0, 100 # Fallback
 
     buffer = (global_max - global_min) * 0.1 if global_max > global_min else 10
-    y_min_limit = global_min - buffer # Allow slightly below zero if data goes negative
+    y_min_limit = global_min - buffer
     y_max_limit = global_max + buffer * 1.5
 
-    # --- Plotting logic for each source ---
     legend_handles = []
     legend_labels = []
     for source in source_list:
         if source in data_dict and not data_dict[source].empty:
             series_data_to_plot = data_dict[source]
-            color = colors.get(source, 'grey') # Get color or default
-            # Plot the line for the source
+            # Use fixed colors with a default fallback
+            color = colors.get(source, default_color)
             line, = ax.plot(series_data_to_plot.index, series_data_to_plot, label=source, color=color)
             legend_handles.append(line)
             legend_labels.append(source)
-
-            # --- Optional: Add original points (requires more data structure) ---
-            # if source in original_values_by_source:
-            #    # ... logic to plot original points for this source ...
-            #    pass
         else:
             print(f"[Warning] Data for plotting source '{source}' is missing or empty.")
 
@@ -1656,209 +1668,256 @@ def setup_source_subplot(ax, data_dict, mean_dict, title, ylabel, colors, source
     ax.set_ylabel(ylabel, fontsize=14)
     ax.set_title(title, fontsize=16)
 
-    # --- X-Axis date formatting (similar to setup_subplot) ---
-    years = sorted(data_dict[source_list[0]].index.year.unique()) # Use first source for years
-    start_dt = pd.Timestamp(f'{years[0]}-01-01')
-    end_dt = pd.Timestamp(f'{years[-1]}-12-31')
+    # --- X-Axis date formatting using PASSED DATES ---
+    # Ensure dates are valid Timestamps
+    if not isinstance(period_start_date, pd.Timestamp):
+        period_start_date = pd.Timestamp(period_start_date)
+    if not isinstance(period_end_date, pd.Timestamp):
+        period_end_date = pd.Timestamp(period_end_date)
 
-    year_locator = mdates.YearLocator(base=1)
-    ax.xaxis.set_major_locator(year_locator)
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+    # Set precise limits based on the period being plotted
+    ax.set_xlim(mdates.date2num(period_start_date), mdates.date2num(period_end_date))
 
-    # Add month locators/formatters if needed (adjust detail based on period length)
-    if (end_dt - start_dt).days < 3 * 365: # More detail for shorter periods
-         ax.xaxis.set_minor_locator(mdates.MonthLocator())
-         ax.xaxis.set_minor_formatter(mdates.DateFormatter('%b')) # Abbreviated month name
-    elif (end_dt - start_dt).days < 10 * 365:
-         ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=[1, 7]))
-         ax.xaxis.set_minor_formatter(FuncFormatter(lambda x, pos: '|' if mdates.num2date(x).month==7 else '')) # Just tick marks
-    else: # Less detail for long periods
-        ax.xaxis.set_minor_locator(mdates.MonthLocator(bymonth=[1]))
+    # Determine appropriate locators based on the period duration
+    period_duration_days = (period_end_date - period_start_date).days
+
+    if period_duration_days <= 3 * 365: # 1-3 years
+        year_locator = mdates.YearLocator(base=1)
+        month_locator = mdates.MonthLocator()
+        ax.xaxis.set_major_locator(year_locator)
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+        ax.xaxis.set_minor_locator(month_locator)
+        ax.xaxis.set_minor_formatter(mdates.DateFormatter('%b')) # Show month names
+    elif period_duration_days <= 10 * 365: # 4-10 years
+        year_locator = mdates.YearLocator(base=1) # Yearly major ticks
+        month_locator = mdates.MonthLocator(bymonth=[1, 7]) # Semi-annual minor ticks
+        ax.xaxis.set_major_locator(year_locator)
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+        ax.xaxis.set_minor_locator(month_locator)
+        ax.xaxis.set_minor_formatter(FuncFormatter(lambda x, pos: '|' if mdates.num2date(x).month==7 else '')) # Tick marks only
+    else: # > 10 years
+        year_locator = mdates.YearLocator(base=5) # 5-year major ticks
+        minor_year_locator = mdates.YearLocator(base=1) # Yearly minor ticks
+        ax.xaxis.set_major_locator(year_locator)
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+        ax.xaxis.set_minor_locator(minor_year_locator)
         ax.xaxis.set_minor_formatter(FuncFormatter(lambda x, pos: '')) # No minor labels
 
-    ax.set_xlim(mdates.date2num(start_dt), mdates.date2num(end_dt))
-
     ax.tick_params(axis='both', which='major', labelsize=8)
-    ax.tick_params(axis='x', which='major', labelrotation=45)
+    ax.tick_params(axis='x', which='major', labelrotation=45, pad=10) # Added padding
     ax.tick_params(axis='both', which='minor', labelsize=6)
     ax.tick_params(axis='x', which='minor', labelrotation=45)
 
-    # Return handles and labels for the main legend
     return ax, legend_handles, legend_labels
 
 
 # --- NEW Helper function for source-based bar plots ---
 def setup_source_bar_subplot(ax, mean_dict, title, y_max, x_pos, colors, source_list):
-    """
-    Sets up a subplot showing bar chart comparison of mean values for multiple sources.
-
-    Args:
-        ax: Matplotlib axes object.
-        mean_dict: Dictionary mapping source names to mean values.
-        title: Plot title.
-        y_max: The maximum y-value for consistent axis scaling.
-        x_pos: Numpy array for bar positions.
-        colors: Dictionary mapping source names to colors.
-        source_list: List of source names in the desired order.
-    """
+    """ Sets up bar subplot using fixed colors """
     print(f"  Setting up source bar plot: {title}")
     means_to_plot = []
     colors_to_plot = []
     labels_to_plot = []
 
     for source in source_list:
-        mean_val = mean_dict.get(source, 0) # Get mean or default to 0 if missing
+        mean_val = mean_dict.get(source, 0)
         means_to_plot.append(mean_val)
-        colors_to_plot.append(colors.get(source, 'grey')) # Get color or default
-        labels_to_plot.append(source.replace(" ", "\n")) # Prepare label for x-axis
+        # Use fixed colors with default fallback
+        colors_to_plot.append(colors.get(source, default_color))
+        labels_to_plot.append(source.replace(" ", "\n"))
 
-    # --- Plotting ---
+    # ... (rest of bar plot formatting remains the same) ...
     ax.grid(True, which='major', linestyle='--', linewidth=0.5, color='grey', alpha=0.1)
     bar_container = ax.bar(x_pos, means_to_plot, align='center', color=colors_to_plot)
-    ax.bar_label(bar_container, fmt='%.2f') # Adjust format as needed (e.g., eng_format)
+    ax.bar_label(bar_container, fmt='%.2f') # Adjust format as needed
 
-    # --- Formatting ---
+    # ... (formatting) ...
     ax.set_title(title, fontsize=16)
     ax.set_xticks(x_pos)
     ax.set_xticklabels(labels_to_plot, rotation=0, ha='center', fontsize=8)
     ax.tick_params(axis='y', which='major', labelsize=8)
 
-    buffer = y_max * 0.1 if y_max > 0 else 1 # 10% buffer or 1 if max is 0
+    buffer = y_max * 0.1 if y_max > 0 else 1
     ax.set_ylim(0, y_max + buffer)
 
     plt.setp(ax.get_yticklabels(), rotation=45, ha='right')
-    # plt.tight_layout() # Apply tight_layout at the end in the main function
 
     return ax
 
 # --- The new main comparison function ---
 def relative_comparison2():
+    global source_trends_results
+    global selected_sources # Contains numbers like [1, 2, 4]
+    global dbase_options  # Maps numbers to friendly names
     global charts
-    global source_trends_results # Assumed to be populated
-    global selected_sources     # List of source names
-    global selected_keyword     # The keyword being analyzed
-    global filename             # Base filename for output
-    global unique_folder        # Folder for saving plots
-    global earliest_date        # Earliest date in combined data
-    global latest_date          # Latest date in combined data
+    global selected_keyword
+    global filename
+    global unique_folder
+    global earliest_date
+    global latest_date
+    global fixed_source_colors
 
     # Basic check
     if not source_trends_results or not selected_sources:
         print("Error: source_trends_results or selected_sources not available for relative_comparison2.")
+        print("DEBUG: Failing the 'if not source_trends_results or not selected_sources' check.")
         return
 
-    print(f"\nCreating source comparison charts for keyword: '{selected_keyword}'...")
+    print(f"\nInside relative_comparison2: Starting source comparison charts for keyword: '{selected_keyword}'...")
 
-    fig = plt.figure(figsize=(24, 30)) # Adjust size as needed
+    fig = plt.figure(figsize=(24, 40))
 
-    # Determine number of sources and periods
     num_sources = len(selected_sources)
+    friendly_source_names = [dbase_options.get(key, f"Unknown Source {key}") for key in selected_sources]
     x_pos = np.arange(num_sources)
-    periods = [p for p in source_trends_results if p.endswith('_data')] # e.g., ['all_data', 'last_20_years_data', ...]
-    num_periods = len(periods)
 
-    if num_periods == 0:
+    # --- Define Full Period Order including 1 year ---
+    period_order = ['all_data', 'last_20_years_data', 'last_15_years_data', 'last_10_years_data', 'last_5_years_data', 'last_1_year_data']
+    # Filter based on available keys in source_trends_results to avoid errors
+    available_periods_data_keys = [p for p in period_order if p in source_trends_results]
+    num_periods_to_plot = len(available_periods_data_keys)
+    # -------------------------------------------------
+
+    if num_periods_to_plot == 0:
         print("Error: No data periods found in source_trends_results.")
+        plt.close(fig) # Close the figure if erroring out
         return
 
-    # Assign colors to sources
-    source_colors = {source: color for source, color in zip(selected_sources, plt.cm.rainbow(np.linspace(0, 1, num_sources)))}
+    # --- Use FIXED colors ---
+    source_colors = fixed_source_colors
+    # -----------------------
 
-    # Calculate the overall maximum mean value for consistent bar chart scaling
+    # Calculate the overall maximum mean value
     max_y_value = 0
     for period_key in source_trends_results:
         if period_key.startswith('mean_'):
             means = source_trends_results[period_key]
-            if means: # Check if the dictionary is not empty
-                 current_max = max(means.values()) if means else 0
-                 max_y_value = max(max_y_value, current_max)
+            if means:
+                 try: # Add try-except for safety if values aren't numbers
+                     current_max = max(means.values())
+                     max_y_value = max(max_y_value, current_max)
+                 except ValueError:
+                     print(f"Warning: Non-numeric value found in means for period {period_key}")
+                     pass # Or handle differently
 
-    # Create grid spec
-    total_rows = num_periods + 1 # +1 for the title row/space
-    gs = fig.add_gridspec(total_rows, 10, height_ratios=[0.2] + [1] * num_periods) # Title space + rows for periods
+    # --- Adjust Grid Spec ---
+    total_rows = num_periods_to_plot + 1 # +1 for title/space
+    gs = fig.add_gridspec(total_rows, 10, height_ratios=[0.1] + [1] * num_periods_to_plot) # Adjusted title height ratio
+    # ---
 
-    # Define slices for odd and even subplots
-    axODD = slice(0, 7)  # Line graph
-    axEVEN = slice(8, 10) # Bar graph
-
-    # --- Define Titles ---
+    axODD = slice(0, 7)
+    axEVEN = slice(8, 10)
     title_odd_base = f'Comparison of Sources for "{selected_keyword}"\nOver Time'
     title_even_base = f'Average Value per Source for "{selected_keyword}"\nFor the Period'
 
-    # --- Loop through defined periods ---
-    plot_row_index = 1 # Start plotting from the second row in gridspec
-    legend_handles, legend_labels = [], [] # To store legend items from the first plot
+    plot_row_index = 1
+    legend_handles, legend_labels = [], []
 
-    # Define the order of periods to plot
-    period_order = ['all_data', 'last_20_years_data', 'last_15_years_data', 'last_10_years_data', 'last_5_years_data']
+    # --- Loop through AVAILABLE periods ---
+    current_year = latest_date.year # Needed for date calculation
+    earliest_year_in_data = earliest_date.year # Needed for date calculation
 
-    for period_data_key in period_order:
-        period_mean_key = period_data_key.replace('_data', '').replace('last_', 'mean_last_')
+    for period_data_key in available_periods_data_keys: # Use the filtered list
+        # Determine mean key and period duration (handle 'all' and 'last_1_year')
+        period_years_str = 'all'
         if period_data_key == 'all_data':
-            period_mean_key = 'mean_all'
-
-        # Check if data for this period exists
-        if period_data_key in source_trends_results and period_mean_key in source_trends_results:
-            print(f" Processing period: {period_data_key}")
-            period_data = source_trends_results[period_data_key]
-            period_means = source_trends_results[period_mean_key]
-
-            # Define Y-label based on period
-            if period_data_key == 'all_data':
-                 total_years = latest_date.year - earliest_date.year
-                 ylabel = f'Full Period ({total_years} years)\n{earliest_date.year}-{latest_date.year}'
-            else:
+            mean_key = 'mean_all'
+            period_start = earliest_date
+            period_end = latest_date
+        elif period_data_key == 'last_1_year_data':
+            mean_key = 'mean_last_1'
+            start_year = max(earliest_year_in_data, current_year - 1)
+            period_start = pd.Timestamp(f"{start_year}-01-01")
+            period_end = latest_date # Or pd.Timestamp(f"{start_year}-12-31")
+            period_years_str = '1'
+        else: # 5, 10, 15, 20 years
+             try:
                  years = int(period_data_key.split('_')[1])
-                 ylabel = f'{years}-Year Period\n{latest_date.year - years}-{latest_date.year}'
+                 mean_key = f'mean_last_{years}'
+                 start_year = max(earliest_year_in_data, current_year - years)
+                 period_start = pd.Timestamp(f"{start_year}-01-01")
+                 period_end = latest_date
+                 period_years_str = str(years)
+             except (IndexError, ValueError):
+                 print(f" Skipping period: Could not parse years from key '{period_data_key}'")
+                 continue # Skip if key format is unexpected
 
-            # Add subplots
-            ax_line = fig.add_subplot(gs[plot_row_index, axODD])
-            ax_bar = fig.add_subplot(gs[plot_row_index, axEVEN])
+        # Check if mean key also exists
+        if mean_key not in source_trends_results:
+            print(f" Skipping period: Mean key '{mean_key}' not found for data key '{period_data_key}'")
+            continue
 
-            # Use first row's titles, clear for subsequent rows
-            current_title_odd = title_odd_base if plot_row_index == 1 else ''
-            current_title_even = title_even_base if plot_row_index == 1 else ''
+        print(f" Processing period: {period_data_key} (Row {plot_row_index})")
+        period_data = source_trends_results[period_data_key]
+        period_means = source_trends_results[mean_key]
 
-            # Call helper functions
-            _, handles, labels = setup_source_subplot(
-                ax_line, period_data, period_means, current_title_odd, ylabel, source_colors, selected_sources
-            )
-            setup_source_bar_subplot(
-                ax_bar, period_means, current_title_even, max_y_value, x_pos, source_colors, selected_sources
-            )
-
-            # Store legend info from the first plot created
-            if plot_row_index == 1:
-                legend_handles, legend_labels = handles, labels
-
-            plot_row_index += 1 # Move to the next row in the grid
+        # Define Y-label
+        if period_data_key == 'all_data':
+             total_years = period_end.year - period_start.year
+             ylabel = f'Full Period ({total_years} years)\n{period_start.year}-{period_end.year}'
         else:
-            print(f" Skipping period: {period_data_key} (data or means not found in source_trends_results)")
+             ylabel = f'{period_years_str}-Year Period\n{period_start.year}-{period_end.year}'
 
+        ax_line = fig.add_subplot(gs[plot_row_index, axODD])
+        ax_bar = fig.add_subplot(gs[plot_row_index, axEVEN])
+
+        current_title_odd = title_odd_base if plot_row_index == 1 else ''
+        current_title_even = title_even_base if plot_row_index == 1 else ''
+
+        # Call helpers with friendly names and period dates
+        try:
+            _, handles, labels = setup_source_subplot(
+                ax_line, period_data, period_means, current_title_odd, ylabel,
+                source_colors, friendly_source_names,
+                period_start, period_end # Pass calculated period dates
+            )
+            if plot_row_index == 1 and handles: # Store legend info only if successful
+                legend_handles, legend_labels = handles, labels
+        except Exception as e:
+             print(f"Error calling setup_source_subplot for {period_data_key}: {e}")
+
+        try:
+            # Use fixed colors in bar plot helper as well
+            setup_source_bar_subplot(
+                ax_bar, period_means, current_title_even, max_y_value, x_pos, source_colors, friendly_source_names
+            )
+        except Exception as e:
+             print(f"Error calling setup_source_bar_subplot for {period_data_key}: {e}")
+
+        plot_row_index += 1
+        print(f"  Finished processing row {plot_row_index-1}") # Debug print
 
     # --- Add overall Legend ---
-    if legend_handles:
-        fig.legend(legend_handles, legend_labels, loc='lower center', bbox_to_anchor=(0.5, 0.02),
-                   ncol=min(num_sources, 5), fontsize=10) # Adjust ncol and position
+    if friendly_source_names:
+        # Create legend handles manually using the fixed colors
+        legend_patch_handles = [mpatches.Patch(color=source_colors.get(name, default_color), label=name) for name in friendly_source_names]
+        fig.legend(handles=legend_patch_handles, loc='lower center', bbox_to_anchor=(0.5, 0.01), # Adjusted y position
+                   ncol=min(num_sources, 5), fontsize=10)
+    else:
+        print("Warning: No legend items generated for the plot.")
 
-    # --- Final Layout and Save ---
-    plt.tight_layout(rect=[0, 0.05, 1, 0.97]) # Adjust rect to prevent legend overlap [left, bottom, right, top]
-    plt.subplots_adjust(hspace=0.4, wspace=0.3) # Adjust spacing as needed
+    # ... (Final Layout and Save) ...
+    try:
+        # Use constrained_layout for better automatic spacing
+        fig.set_constrained_layout_pads(w_pad=0.1, h_pad=0.1, hspace=0.05, wspace=0.05) # Fine-tune padding
+        fig.set_constrained_layout(True)
 
-    # Save the plot
-    base_filename = f'{selected_keyword}_source_comparison_overtime.png'
-    image_filename = get_unique_filename(base_filename, unique_folder)
-    save_path = os.path.join(unique_folder, image_filename)
-    plt.savefig(save_path, bbox_inches='tight')
-    print(f" Source comparison plot saved to: {save_path}")
+        base_filename = f'{selected_keyword}_source_comparison_overtime.png'
+        image_filename = get_unique_filename(base_filename, unique_folder)
+        save_path = os.path.join(unique_folder, image_filename)
+        plt.savefig(save_path, bbox_inches='tight')
+        print(f" Source comparison plot saved to: {save_path}")
 
-    # --- Update charts global ---
-    chart_title = f"Comparison of Data Sources for '{selected_keyword}'"
-    add_image_to_report(chart_title, image_filename) # Assumes this function updates image_markdown
-    charts += f"{chart_title} ({image_filename})\n\n" # Add to the main charts list
+        chart_title = f"Comparison of Data Sources for '{selected_keyword}'"
+        add_image_to_report(chart_title, image_filename)
+        charts += f"{chart_title} ({image_filename})\n\n"
 
-    plt.close(fig) # Close the figure to free memory
-    print(f"\nSource comparison charts created for '{selected_keyword}'.")
+    except Exception as e:
+        print(f"Error during plot layout/saving/reporting: {e}")
+    finally:
+        plt.close(fig)
+
+    print(f"\nSource comparison charts attempted for '{selected_keyword}'. Check logs for warnings/errors.")
 
 
 # Create Charts
@@ -4065,15 +4124,16 @@ def results():
     if top_choice == 2:
     #******
         print("\nCalculating trends across sources using combined_dataset...")
+        global source_trends_results
         source_trends_results = {} # Initialize/clear it here as well
 
-        # Make sure combined_dataset is a global or passed correctly
+        # Make sure required globals are accessible
         global earliest_date
         global latest_date
-        global selected_sources
-        global source_mapping_inverted # You need this mapping
+        global selected_sources # Contains numbers like [1, 2, 4]
+        global dbase_options  # Maps numbers to friendly names like {1: "Google Trends", ...}
 
-        if combined_dataset is not None and not combined_dataset.empty:
+        if combined_dataset is not None and not combined_dataset.empty and dbase_options:
             # Ensure index is datetime
             if not pd.api.types.is_datetime64_any_dtype(combined_dataset.index):
                 try:
@@ -4081,7 +4141,7 @@ def results():
                     print("Converted combined_dataset index to datetime.")
                 except Exception as e:
                     print(f"Error converting combined_dataset index to datetime: {e}")
-                    # Handle error appropriately, maybe return or raise
+                    # Handle error appropriately
 
             # Recalculate date range from the actual combined_dataset being used
             earliest_date = combined_dataset.index.min()
@@ -4091,83 +4151,125 @@ def results():
 
             print(f" Combined dataset date range: {earliest_date.date()} to {latest_date.date()}")
 
+            # --- Calculate total_years_available FIRST ---
+            total_years_available = current_year - earliest_year_in_data + 1 # Add 1 to include start/end years
+            print(f" Total years available in data: {total_years_available}")
+            # ---------------------------------------------
+
             # Define periods based on available data range
             available_periods_years = []
-            total_years_available = current_year - earliest_year_in_data
-            if total_years_available >= 1: available_periods_years.append('all') # Represent 'all' data
+            # --- Now use the calculated variable ---
+            if total_years_available >= 1: available_periods_years.append('all')
+            if total_years_available >= 1: available_periods_years.append(1)
             if total_years_available >= 5: available_periods_years.append(5)
             if total_years_available >= 10: available_periods_years.append(10)
             if total_years_available >= 15: available_periods_years.append(15)
             if total_years_available >= 20: available_periods_years.append(20)
+            # --------------------------------------
+
+            print(f" Periods to calculate based on availability: {available_periods_years}")
 
             # --- Calculate for each period ---
             for period_years in available_periods_years:
+                start_date = None # Initialize
+                end_date = latest_date # Usually end at the latest date
+
                 if period_years == 'all':
                     start_date = earliest_date
-                    end_date = latest_date
                     data_key = 'all_data'
                     mean_key = 'mean_all'
-                else:
-                    # Ensure we don't go earlier than the actual data start
+                elif period_years == 1:                         # <<< ADD 1 YEAR Condition
+                    start_year = max(earliest_year_in_data, current_year - period_years) # Should calculate correctly
+                    start_date = pd.Timestamp(f"{start_year}-01-01") # Start of the last year
+                    # Optional: Set end_date for 1 year precisely if needed
+                    # end_date = pd.Timestamp(f"{start_year}-12-31") # End of the last year
+                    data_key = 'last_1_year_data'
+                    mean_key = 'mean_last_1'
+                else: # 5, 10, 15, 20 years
                     start_year = max(earliest_year_in_data, current_year - period_years)
-                    start_date = pd.Timestamp(f"{start_year}-01-01") # Adjust if data is monthly/daily
-                    end_date = latest_date # Use the actual latest date
+                    start_date = pd.Timestamp(f"{start_year}-01-01")
                     data_key = f'last_{period_years}_years_data'
                     mean_key = f'mean_last_{period_years}'
 
-                print(f"  Calculating for period: {period_years} years ({start_date.year}-{end_date.year})")
+                print(f"  Calculating for period: {period_years} years ({start_date.year if start_date else 'N/A'}-{end_date.year})")
 
                 # Slice the data for the period
+                # Ensure start_date is valid before slicing
+                if start_date is None:
+                    print(f"   Skipping period {period_years}, invalid start date.")
+                    continue
+
                 period_data_full = combined_dataset[(combined_dataset.index >= start_date) & (combined_dataset.index <= end_date)]
 
                 period_data_by_source = {}
                 period_means_by_source = {}
 
                 if not period_data_full.empty:
-                    # Iterate through selected sources (using user-friendly names)
-                    for source_name in selected_sources:
-                        # Map user-friendly name to actual column name in combined_dataset
-                        # *** Make sure source_mapping_inverted is correct ***
-                        actual_column_name = source_mapping_inverted.get(source_name, source_name)
+                    # Iterate through selected source KEYS (numbers, e.g., 1, 2, 4)
+                    for source_key in selected_sources:
+                        # Get the user-friendly name using the source_key from dbase_options
+                        # This friendly name IS the actual column name in combined_dataset
+                        actual_column_name = dbase_options.get(source_key, None)
 
+                        if actual_column_name is None:
+                            print(f"    Warning: Source key '{source_key}' not found in dbase_options. Skipping.")
+                            continue # Skip this source if the key is invalid
+
+                        # Use the friendly name (actual_column_name) to access the column
                         if actual_column_name in period_data_full.columns:
                             source_series = period_data_full[actual_column_name].dropna()
                             if not source_series.empty:
-                                period_data_by_source[source_name] = source_series
-                                # Calculate mean, handle potential NaNs or empty series after dropna
+                                # Store data using the friendly name (actual_column_name) as the key
+                                period_data_by_source[actual_column_name] = source_series
                                 try:
                                     mean_val = source_series.mean()
-                                    period_means_by_source[source_name] = mean_val if not pd.isna(mean_val) else 0.0
+                                    # Store mean using the friendly name (actual_column_name) as the key
+                                    period_means_by_source[actual_column_name] = mean_val if not pd.isna(mean_val) else 0.0
                                 except Exception as e:
-                                    print(f"    Warning: Could not calculate mean for {source_name} (col: {actual_column_name}) in period {period_years}: {e}")
-                                    period_means_by_source[source_name] = 0.0 # Default to 0 on error
+                                    print(f"    Warning: Could not calculate mean for {actual_column_name} in period {period_years}: {e}")
+                                    period_means_by_source[actual_column_name] = 0.0
                             else:
-                                print(f"    Warning: No non-NaN data for source '{source_name}' (col: {actual_column_name}) in period {period_years}.")
-                                period_data_by_source[source_name] = pd.Series(dtype='float64') # Empty series
-                                period_means_by_source[source_name] = 0.0
+                                print(f"    Warning: No non-NaN data for source '{actual_column_name}' in period {period_years}.")
+                                period_data_by_source[actual_column_name] = pd.Series(dtype='float64')
+                                period_means_by_source[actual_column_name] = 0.0
                         else:
-                            print(f"    Warning: Column '{actual_column_name}' (for source '{source_name}') not found in combined dataset for period {period_years}.")
-                            period_data_by_source[source_name] = pd.Series(dtype='float64') # Empty series
-                            period_means_by_source[source_name] = 0.0
+                            # This warning now means the friendly name wasn't found as a column
+                            print(f"    Warning: Column '{actual_column_name}' (derived from key '{source_key}') not found in combined dataset for period {period_years}.")
+                            period_data_by_source[actual_column_name] = pd.Series(dtype='float64') # Still store empty data under the expected name
+                            period_means_by_source[actual_column_name] = 0.0
 
                 # Store results for the period
                 source_trends_results[data_key] = period_data_by_source
                 source_trends_results[mean_key] = period_means_by_source
 
             print("Finished calculating trends across sources from combined_dataset.")
-            # print("DEBUG: source_trends_results keys:", source_trends_results.keys()) # Optional debug print
-            # if 'mean_all' in source_trends_results: print("DEBUG: mean_all values:", source_trends_results['mean_all'])
         else:
-            print("Error: combined_dataset is empty or None. Cannot calculate source trends.")
-            # Handle this case gracefully, maybe skip calling relative_comparison2
+            if combined_dataset is None or combined_dataset.empty:
+                print("Error: combined_dataset is empty or None.")
+            if not dbase_options:
+                print("Error: dbase_options is not available.")
+            print("Cannot calculate source trends.")
 
+        print("-" * 20) # Separator for clarity
+        print(f"DEBUG: Type of source_trends_results: {type(source_trends_results)}")
+        print(f"DEBUG: Value of source_trends_results: {source_trends_results}")
+        print(f"DEBUG: Type of selected_sources: {type(selected_sources)}")
+        print(f"DEBUG: Value of selected_sources: {selected_sources}")
+        print("-" * 20)
+        
         # --- NOW you can safely call relative_comparison2 ---
-        if source_trends_results: # Only call if data was successfully processed
+        if source_trends_results and selected_sources: # Check BOTH dict and list are not empty
             print("\nCalling relative_comparison2...")
             relative_comparison2()
         else:
-            print("\nSkipping relative_comparison2 due to missing source trend data.")
-    #******
+            print("\nSkipping relative_comparison2 due to:")
+            if not source_trends_results:
+                print(" - source_trends_results is empty.")
+            if not selected_sources:
+                print(" - selected_sources is empty.")
+                
+    #****** end of top_choice == 2
+    
     else:
         try:
             relative_comparison()
@@ -4212,7 +4314,7 @@ def results():
             # Example: Run ARIMA for the first keyword if in single mode
             # Or loop through all_keywords if desired
             print(f"Running ARIMA for first keyword: {all_keywords[0]}")
-            csv_arima = arima_model(kw=all_keywords[0], mb=120, mf=36, ts=18, p=2, d=1, q=0) # Pass kw
+            csv_arima = arima_model(mb=120, mf=36, ts=18, p=2, d=1, q=0) # Pass kw
         elif top_choice == 2:
              print("ARIMA model execution skipped in combined data source mode.")
              csv_arima = "# ARIMA skipped in combined mode.\n"
@@ -4234,7 +4336,7 @@ def results():
         # Similar to ARIMA, check if seasonal_analysis needs adaptation for combined mode
         if top_choice == 1 and all_keywords:
             print(f"Running Seasonal Analysis for first keyword: {all_keywords[0]}")
-            seasonal_analysis('last_10_years_data', kw=all_keywords[0]) # Pass kw
+            seasonal_analysis('last_10_years_data') # Pass kw
         elif top_choice == 2:
              print("Seasonal Analysis skipped in combined data source mode.")
              # csv_seasonal might need to be handled/set here if it's expected later
@@ -4259,7 +4361,7 @@ def results():
         # Check if fourier_analysis2 needs adaptation for combined mode
         if top_choice == 1 and all_keywords:
             print(f"Running Fourier Analysis for first keyword: {all_keywords[0]}")
-            csv_fourier=fourier_analysis2('last_20_years_data', kw=all_keywords[0]) # Pass kw
+            csv_fourier=fourier_analysis2('last_20_years_data') # Pass kw
         elif top_choice == 2:
              print("Fourier Analysis skipped in combined data source mode.")
              csv_fourier = "# Fourier skipped in combined mode.\n"
