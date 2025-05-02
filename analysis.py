@@ -96,15 +96,36 @@ CYAN = '\033[36m'
 WHITE = '\033[37m'
 GRAY = '\033[30m'
 
+# fixed_source_colors = {
+#     "Google Trends": '#4B0082',         # Dark Purple / Indigo
+#     "Google Books Ngrams": '#191970',   # Dark Blue / Midnight Blue
+#     "Bain - Usabilidad": '#20B2AA',     # Teal / LightSeaGreen
+#     "Crossref.org": '#3CB371',          # Green / MediumSeaGreen
+#     "Bain - Satisfacción": '#FFD700'    # Yellow / Gold
+# }
+
 fixed_source_colors = {
-    "Google Trends": '#4B0082',         # Dark Purple / Indigo
-    "Google Books Ngrams": '#191970',   # Dark Blue / Midnight Blue
-    "Bain - Usabilidad": '#20B2AA',     # Teal / LightSeaGreen
-    "Crossref.org": '#3CB371',          # Green / MediumSeaGreen
-    "Bain - Satisfacción": '#FFD700'    # Yellow / Gold
+    "Google Trends": '#1f77b4',         # Muted Blue
+    "Google Books Ngrams": '#ff7f0e',   # Safety Orange
+    "Bain - Usabilidad": '#2ca02c',     # Cooked Asparagus Green
+    "Crossref.org": '#d62728',          # Brick Red
+    "Bain - Satisfacción": '#9467bd'    # Muted Purple
 }
 # Default color for unknown sources
 default_color = '#808080' # Grey
+
+CONTRASTING_PALETTE = [
+    '#1f77b4',  # Muted Blue
+    '#ff7f0e',  # Safety Orange
+    '#2ca02c',  # Cooked Asparagus Green
+    '#d62728',  # Brick Red
+    '#9467bd',  # Muted Purple
+    '#8c564b',  # Chestnut Brown
+    '#e377c2',  # Raspberry Sorbet Pink
+    '#7f7f7f',  # Middle Gray
+    '#bcbd22',  # Curry Yellow-Green
+    '#17becf'   # Muted Cyan
+]
 
 global gem_temporal_trends_sp
 global gem_cross_keyword_sp
@@ -2547,9 +2568,7 @@ def plot_and_analyze_combined_trends(combined_df, title="Comparative Trends Anal
     """
     # Access global unique_folder for saving plots
     # Make sure these globals are accessible where this function is called
-    global unique_folder
-    global charts # To add plot filename to list
-    global image_markdown # To add plot markdown link
+    global unique_folder, charts, image_markdown, fixed_source_colors, default_color
 
     # --- Input Validation ---
     if not isinstance(combined_df, pd.DataFrame) or combined_df.empty:
@@ -2568,7 +2587,7 @@ def plot_and_analyze_combined_trends(combined_df, title="Comparative Trends Anal
     fig, ax = plt.subplots(figsize=(14, 7))
     analysis_results = []
     # Use a perceptually uniform colormap
-    colors = plt.cm.viridis(np.linspace(0, 1, len(combined_df.columns)))
+    # colors = plt.cm.viridis(np.linspace(0, 1, len(combined_df.columns)))
     any_data_plotted = False
     plot_filename_short = None # Initialize short plot filename
 
@@ -2613,7 +2632,9 @@ def plot_and_analyze_combined_trends(combined_df, title="Comparative Trends Anal
             except Exception as e:
                  print(f"  - Warning: Could not smooth data for {col_name_str}: {e}. Plotting raw data.")
 
-        ax.plot(data_to_plot.index, data_to_plot.values, label=plot_label, color=colors[i], linewidth=1.5)
+        source_color = fixed_source_colors.get(col_name_str, default_color)
+
+        ax.plot(data_to_plot.index, data_to_plot.values, label=plot_label, color=source_color, linewidth=1.5)
 
 
     # --- Finalize Plot ---
@@ -2755,7 +2776,7 @@ def plot_combined_averages_bars(analysis_results_list, title="Análisis Comparat
         current_x_position = 0
 
         fig, ax = plt.subplots(figsize=(max(16, num_periods * num_sources * 0.4), 7))
-        colors = plt.cm.viridis(np.linspace(0, 1, num_sources))
+        # colors = plt.cm.viridis(np.linspace(0, 1, num_sources))
 
         # Calculate the width if all groups were uniform
         uniform_group_width = total_groups_x_width / num_periods if num_periods > 0 else 0
@@ -2797,7 +2818,8 @@ def plot_combined_averages_bars(analysis_results_list, title="Análisis Comparat
                 value = 0 if pd.isna(value) else value
 
                 # Plot bar centered at bar_center
-                ax.bar(bar_center, value, width=bar_width * 0.95, label=source_name if period_name_en == df_plot.index[0] else "", color=colors[i], align='center') # Use slight gap within bars
+                source_color = fixed_source_colors.get(source_name, default_color)
+                ax.bar(bar_center, value, width=bar_width * 0.95, label=source_name if period_name_en == df_plot.index[0] else "", color=source_color, align='center') # Use slight gap within bars
 
             # Update the starting position for the next group, adding a gap
             # Gap can be relative to the base width or a fixed small value
@@ -2811,8 +2833,9 @@ def plot_combined_averages_bars(analysis_results_list, title="Análisis Comparat
             y_coords = pd.to_numeric(df_plot[source_name], errors='coerce')
             valid_indices = ~y_coords.isna()
             if valid_indices.any():
+                 source_color = fixed_source_colors.get(source_name, default_color)
                  ax.plot(np.array(x_coords)[valid_indices], y_coords[valid_indices],
-                         color=colors[i], linestyle='--', marker='o', markersize=4,
+                         color=source_color, linestyle='--', marker='o', markersize=4,
                          linewidth=1.5, alpha=0.7)
 
         # --- Formatting (Spanish) ---
@@ -3748,6 +3771,80 @@ def calculate_trend(trend_data, period):
   rdf = pd.DataFrame({'keyword': keywords, 'mean_kw': mean_kw, 'trend': trend_values})
   return rdf
 
+def plot_source_correlation_heatmap(combined_df, keyword, base_filename_prefix="source_correlation_heatmap"):
+    """
+    Generates and saves a correlation heatmap between data sources for a single keyword.
+
+    Args:
+        combined_df (pd.DataFrame): DataFrame with sources as columns and time index,
+                                     containing data for the specified keyword.
+        keyword (str): The keyword being analyzed.
+        base_filename_prefix (str): Prefix for the output image file name.
+    """
+    global charts, image_markdown, unique_folder, filename # Ensure globals are accessible
+
+    if combined_df is None or not isinstance(combined_df, pd.DataFrame) or combined_df.empty:
+        print("  [Warning] Combined dataset is empty or invalid. Skipping source heatmap.")
+        return
+
+    if len(combined_df.columns) < 2:
+        print("  [Info] Need at least two sources for a source correlation heatmap. Skipping.")
+        return
+
+    print(f"  Generating Source Correlation Heatmap for Keyword: '{keyword}'...")
+
+    try:
+        # 1. Calculate the correlation matrix between sources (columns)
+        # Ensure only numeric columns are used and handle potential NaNs before correlation
+        numeric_df = combined_df.select_dtypes(include=np.number)
+        # Drop rows where *any* source has NaN for fair comparison, or use pairwise?
+        # Using pairwise='complete.obs' handles NaNs more gracefully for correlation matrix
+        source_corr_matrix = numeric_df.corr(method='pearson', min_periods=10) # require 10 periods
+
+        if source_corr_matrix.empty or source_corr_matrix.isnull().all().all():
+             print(f"    {YELLOW}[Warning] Could not calculate valid source correlation matrix for '{keyword}'. Skipping heatmap.{RESET}")
+             return
+
+        # 2. Generate the heatmap
+        plt.figure(figsize=(8, 8))
+        sns.heatmap(source_corr_matrix, annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5,
+                    annot_kws={"size": 8}) # Using viridis colormap
+
+        num_sources = len(source_corr_matrix.columns)
+        tick_fontsize = 8 if num_sources < 7 else 6
+        plt.xticks(fontsize=tick_fontsize, rotation=45, ha='right')
+        plt.yticks(fontsize=tick_fontsize, rotation=0)
+
+        plt.title(f'Mapa de Calor de Correlación entre Fuentes\nKeyword: "{keyword}"', pad=20, fontsize=12)
+        plt.tight_layout()
+
+        # 3. Save the plot
+        # Sanitize keyword for filename
+        sanitized_keyword = re.sub(r'[^\w\-]+', '_', keyword)
+        base_filename = f'{filename}_{sanitized_keyword}_{base_filename_prefix}.png'
+        image_filename = get_unique_filename(base_filename, unique_folder)
+        full_path = os.path.join(unique_folder, image_filename)
+
+        plt.savefig(full_path, bbox_inches='tight', dpi=150)
+        print(f"    Source heatmap saved to: {image_filename}")
+
+        # 4. Add to report structures
+        report_title = f'Mapa de Calor de Correlación entre Fuentes ({keyword})'
+        add_image_to_report(report_title, image_filename)
+        if isinstance(charts, str):
+            charts += f'{report_title} ({image_filename})\n\n'
+        elif isinstance(charts, list):
+            charts.append({'title': report_title, 'filename': image_filename})
+
+    except Exception as e:
+        print(f"    {RED}[Error] Failed to generate or save source heatmap for '{keyword}': {e}{RESET}")
+        import traceback
+        traceback.print_exc()
+    finally:
+        if 'plt' in locals() and plt.get_fignums():
+             plt.close()
+
+
 # Performs various analysis on keyword trend data.
 def analyze_trends(trend):
     """
@@ -3985,7 +4082,7 @@ def format_polynomial_equation(coeffs):
     return equation
 
 # Main analysis function
-def analyze_source_correlations_regressions(combined_datasets, selected_sources, keywords, output_dir="output/plots/regression", source_colors=None):
+def analyze_source_correlations_regressions(combined_datasets, selected_sources, keywords, source_colors=None):
     """
     Performs correlation and regression analysis between pairs of data sources for given keywords.
 
@@ -4137,7 +4234,8 @@ def analyze_source_correlations_regressions(combined_datasets, selected_sources,
             regression_degrees = {'Linear': 1, 'Quadratic': 2, 'Cubic': 3, 'Polynomial(4)': 4}
             # Use distinct colors for regression lines for better visibility
             # Using a colormap like 'viridis' or 'plasma'
-            reg_colors = plt.cm.viridis(np.linspace(0.1, 0.9, len(regression_degrees))) # Avoid extreme ends
+            num_reg_lines = len(regression_degrees)
+            reg_colors = [CONTRASTING_PALETTE[i % len(CONTRASTING_PALETTE)] for i in range(num_reg_lines)]
 
             print("    Calculating regressions:")
             regression_success = False # Flag to check if any regression was plotted
@@ -4662,7 +4760,11 @@ def results():
 
              # Store the results (e.g., assign DataFrames to global csv_correlation, csv_regression)
              csv_correlation = df_corr
-             csv_regression = df_regr
+             csv_regression = df_regr             
+             
+             # Call the source correlation heatmap function
+             print("\nGenerating Source Correlation Heatmap...") # Optional: Add a print statement
+             plot_source_correlation_heatmap(combined_dataset, selected_keyword)
 
              # You can use regression_plot_files list later for adding to the report if needed
              print(f"\nGenerated {len(regression_plot_files)} regression plots.")
