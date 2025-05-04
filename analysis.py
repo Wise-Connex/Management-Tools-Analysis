@@ -113,8 +113,8 @@ fixed_source_colors = {
     "Google Trends": '#1f77b4',         # Muted Blue
     "Google Books Ngrams": '#ff7f0e',   # Safety Orange
     "Bain - Usabilidad": '#2ca02c',     # Cooked Asparagus Green
-    "Crossref.org": '#d62728',          # Brick Red
-    "Bain - Satisfacción": '#9467bd'    # Muted Purple
+    "Crossref.org": '#9467bd',          # Muted Purple
+    "Bain - Satisfacción": '#d62728'    # Brick Red
 }
 # Default color for unknown sources
 default_color = '#808080' # Grey
