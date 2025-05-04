@@ -67,6 +67,11 @@ import random
 import google.api_core.exceptions
 import matplotlib.patches as mpatches
 import itertools
+from sklearn.preprocessing import StandardScaler
+from sklearn.impute import SimpleImputer # Or KNNImputer, IterativeImputer
+from sklearn.decomposition import PCA
+import re
+
 
 # AI Prompts imports 
 from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, \
@@ -179,6 +184,7 @@ global skip_arima
 global csv_significance
 global original_values
 global source_trends_results
+global current_selected_keyword
 source_trends_results = {}
 original_values = {}
 keycharts = []
@@ -4081,6 +4087,14 @@ def format_polynomial_equation(coeffs):
 
     return equation
 
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.impute import SimpleImputer # Or KNNImputer, IterativeImputer
+from sklearn.decomposition import PCA
+import plotly.graph_objects as go
+import numpy as np
+import os
+import re# Main analysis function
 # Main analysis function
 def analyze_source_correlations_regressions(combined_datasets, selected_sources, keywords, source_colors=None):
     """
@@ -4106,9 +4120,9 @@ def analyze_source_correlations_regressions(combined_datasets, selected_sources,
             - pd.DataFrame: DataFrame with regression results (Keyword, Source_A, Source_B, Regression_Type,
                                 Degree, R_Squared, Coefficients, Equation). Name: csv_regression
     """
-    print(f"\n--- Starting Correlation and Regression Analysis ---")
-    print(f"Sources to analyze: {selected_sources}")
-    print(f"Keywords: {keywords}")
+    print(f"\n--- Iniciando Análisis de Correlación y Regresión ---") # Translated
+    print(f"Fuentes a analizar: {selected_sources}") # Translated
+    print(f"Palabras Clave: {keywords}") # Translated
 
     all_plot_filenames = []
     correlation_results = []
@@ -4116,157 +4130,130 @@ def analyze_source_correlations_regressions(combined_datasets, selected_sources,
 
     # Use provided source_colors or setup defaults
     if source_colors is None:
-        print("Warning: source_colors dictionary not provided. Using default matplotlib colors.")
-        # Fallback to default matplotlib cycle if needed, though passing fixed_source_colors is recommended
+        print("Advertencia: Diccionario source_colors no proporcionado. Usando colores por defecto de matplotlib.") # Translated warning
         prop_cycle = plt.rcParams['axes.prop_cycle']
         default_colors = prop_cycle.by_key()['color']
         source_colors = {source: default_colors[i % len(default_colors)] for i, source in enumerate(selected_sources)}
     elif not isinstance(source_colors, dict):
-        print("Warning: source_colors provided is not a dictionary. Using default colors.")
-        # Handle incorrect type passsed
+        print("Advertencia: source_colors proporcionado no es un diccionario. Usando colores por defecto.") # Translated warning
         prop_cycle = plt.rcParams['axes.prop_cycle']
         default_colors = prop_cycle.by_key()['color']
         source_colors = {source: default_colors[i % len(default_colors)] for i, source in enumerate(selected_sources)}
 
 
     # 2. Ensure the global unique_folder exists
-    # Access the global variable directly
     global unique_folder
     if 'unique_folder' not in globals() or not unique_folder:
-        print(f"Error: Global variable 'unique_folder' is not defined. Plots cannot be saved.")
-        # Decide how to handle this - maybe return early or proceed without saving
+        print(f"Error: Variable global 'unique_folder' no definida. Los gráficos no se pueden guardar.") # Translated error
         can_save_plots = False
     else:
         try:
             os.makedirs(unique_folder, exist_ok=True)
-            abs_output_dir = os.path.abspath(unique_folder) # Use unique_folder path
-            print(f"Output directory for plots: {abs_output_dir}")
+            abs_output_dir = os.path.abspath(unique_folder)
+            print(f"Directorio de salida para gráficos: {abs_output_dir}") # Translated
             can_save_plots = True
         except OSError as e:
-            print(f"Error creating output directory '{unique_folder}': {e}. Plots will not be saved.")
+            print(f"Error al crear directorio de salida '{unique_folder}': {e}. Los gráficos no se guardarán.") # Translated error
             can_save_plots = False
 
     # 3. Generate all permutations of sources for A vs B plots
-    # Use permutations to get both A vs B and B vs A
     source_pairs = list(itertools.permutations(selected_sources, 2))
-    print(f"Generated {len(source_pairs)} source pairs for analysis.")
+    print(f"Se generaron {len(source_pairs)} pares de fuentes para el análisis.") # Translated
 
     # 4. Loop through each keyword
     for keyword in keywords:
-        print(f"\nProcessing keyword: '{keyword}'")
+        print(f"\nProcesando palabra clave: '{keyword}'") # Translated
         if keyword not in combined_datasets:
-            print(f"  Warning: Keyword '{keyword}' not found in combined_datasets dictionary. Skipping.")
+            print(f"  Advertencia: Palabra clave '{keyword}' no encontrada en el diccionario combined_datasets. Omitiendo.") # Translated
             continue
 
         # Ensure the value associated with the keyword is a DataFrame
         if not isinstance(combined_datasets[keyword], pd.DataFrame):
-             print(f"  Warning: Data for keyword '{keyword}' is not a pandas DataFrame. Skipping.")
+             print(f"  Advertencia: Los datos para la palabra clave '{keyword}' no son un DataFrame de pandas. Omitiendo.") # Translated
              continue
 
         df_keyword = combined_datasets[keyword]
 
         # 5. Loop through each source pair (source_a -> x, source_b -> y)
         for source_a, source_b in source_pairs:
-            # Use more descriptive names for clarity in logs/plots
             x_source_name = source_a
             y_source_name = source_b
-            print(f"  Analyzing pair: Y={y_source_name} vs X={x_source_name}")
+            print(f"  Analizando par: Y={y_source_name} vs X={x_source_name}") # Translated
 
-            # Check if both sources exist as columns in the DataFrame for this keyword
+            # Check if both sources exist as columns
             if x_source_name not in df_keyword.columns:
-                print(f"    Warning: Source '{x_source_name}' (X-axis) not found in data for keyword '{keyword}'. Skipping pair.")
+                print(f"    Advertencia: Fuente '{x_source_name}' (Eje X) no encontrada en los datos para la palabra clave '{keyword}'. Omitiendo par.") # Translated
                 continue
             if y_source_name not in df_keyword.columns:
-                print(f"    Warning: Source '{y_source_name}' (Y-axis) not found in data for keyword '{keyword}'. Skipping pair.")
+                print(f"    Advertencia: Fuente '{y_source_name}' (Eje Y) no encontrada en los datos para la palabra clave '{keyword}'. Omitiendo par.") # Translated
                 continue
 
-            # 6. Prepare data: Extract columns and drop rows with NaNs for the pair
-            # Ensure we don't modify the original DataFrame slice
+            # 6. Prepare data
             df_pair = df_keyword[[x_source_name, y_source_name]].copy().dropna()
 
-            # Check if enough data points remain after dropping NaNs
-            # Minimum points needed is degree+1 for polyfit, let's set a practical minimum.
             min_points_for_analysis = 5
             if len(df_pair) < min_points_for_analysis:
-                print(f"    Warning: Not enough overlapping data points ({len(df_pair)} < {min_points_for_analysis}) for '{keyword}' between {x_source_name} and {y_source_name}. Skipping pair.")
+                print(f"    Advertencia: No hay suficientes puntos de datos superpuestos ({len(df_pair)} < {min_points_for_analysis}) para '{keyword}' entre {x_source_name} y {y_source_name}. Omitiendo par.") # Translated
                 continue
 
             x_data = df_pair[x_source_name].values
             y_data = df_pair[y_source_name].values
 
-            # Check for constant data which can cause issues in correlation/regression
             if np.std(x_data) < 1e-6 or np.std(y_data) < 1e-6:
-                 print(f"    Warning: Data for '{x_source_name}' or '{y_source_name}' is constant or near-constant. Skipping regression/correlation for this pair.")
+                 print(f"    Advertencia: Los datos para '{x_source_name}' o '{y_source_name}' son constantes o casi constantes. Omitiendo regresión/correlación para este par.") # Translated
                  continue
 
             # 7. Calculate Pearson Correlation
             try:
-                # Using pandas .corr() is robust
                 correlation_coefficient = df_pair[x_source_name].corr(df_pair[y_source_name])
-                # Check if correlation is NaN (can happen with very little variance or specific data patterns)
                 if pd.isna(correlation_coefficient):
-                     print(f"    Warning: Correlation calculation resulted in NaN for '{keyword}' ({y_source_name} vs {x_source_name}). Skipping pair.")
+                     print(f"    Advertencia: El cálculo de la correlación resultó en NaN para '{keyword}' ({y_source_name} vs {x_source_name}). Omitiendo par.") # Translated
                      continue
 
                 correlation_results.append({
                     'Keyword': keyword,
-                    'Source_A': x_source_name, # Independent variable (X-axis)
-                    'Source_B': y_source_name, # Dependent variable (Y-axis)
+                    'Source_A': x_source_name,
+                    'Source_B': y_source_name,
                     'Correlation_R': correlation_coefficient
                 })
-                print(f"    Correlation R: {correlation_coefficient:.4f}")
+                print(f"    Correlación R: {correlation_coefficient:.4f}") # Translated
             except Exception as e:
-                print(f"    Error calculating correlation for '{keyword}' ({y_source_name} vs {x_source_name}): {e}. Skipping correlation.")
-                correlation_coefficient = np.nan # Mark as failed
-
+                print(f"    Error al calcular la correlación para '{keyword}' ({y_source_name} vs {x_source_name}): {e}. Omitiendo correlación.") # Translated
+                correlation_coefficient = np.nan
 
             # 8. Set up Plot
             fig, ax = plt.subplots(figsize=(12, 8))
-            # Use the color associated with the Y-axis source for the scatter points
-            scatter_color = source_colors.get(y_source_name, '#808080') # Default to grey if source not in dict
-            ax.scatter(x_data, y_data, alpha=0.6, label=f'Data Points ({len(x_data)})', color=scatter_color, s=25)
+            scatter_color = source_colors.get(y_source_name, '#808080')
+            ax.scatter(x_data, y_data, alpha=0.6, label=f'Puntos de Datos ({len(x_data)})', color=scatter_color, s=25) # Translated label
 
-            # Generate points for plotting regression lines smoothly
-            # Ensure range covers all data points
             x_plot = np.linspace(np.min(x_data), np.max(x_data), 200)
 
-            # 9. Perform Regressions (Linear, Quadratic, Cubic, Poly deg 4)
+            # 9. Perform Regressions
             regression_degrees = {'Linear': 1, 'Quadratic': 2, 'Cubic': 3, 'Polynomial(4)': 4}
-            # Use distinct colors for regression lines for better visibility
-            # Using a colormap like 'viridis' or 'plasma'
             num_reg_lines = len(regression_degrees)
             reg_colors = [CONTRASTING_PALETTE[i % len(CONTRASTING_PALETTE)] for i in range(num_reg_lines)]
 
-            print("    Calculating regressions:")
-            regression_success = False # Flag to check if any regression was plotted
+            print("    Calculando regresiones:") # Translated
+            regression_success = False
             for i, (name, degree) in enumerate(regression_degrees.items()):
-                # Check if enough data points for the degree (polyfit needs > degree points)
                 if len(x_data) <= degree:
-                     print(f"      Skipping {name} regression (degree {degree}): requires > {degree} points, found {len(x_data)}.")
+                     print(f"      Omitiendo regresión {name} (grado {degree}): requiere > {degree} puntos, encontrados {len(x_data)}.") # Translated
                      continue
 
                 try:
-                    # Use warnings context manager to catch RankWarnings from polyfit
                     with warnings.catch_warnings(record=True) as w:
                         warnings.simplefilter("always")
-                        # Fit polynomial regression model
                         coeffs = np.polyfit(x_data, y_data, degree)
-                        # Check for RankWarning (indicates ill-conditioned matrix, results might be unreliable)
                         if any(issubclass(warn.category, np.RankWarning) for warn in w):
-                             print(f"      RankWarning encountered during {name} regression (degree {degree}). Results may be unreliable due to ill-conditioned matrix.")
+                             print(f"      RankWarning encontrado durante la regresión {name} (grado {degree}). Los resultados pueden no ser fiables debido a una matriz mal condicionada.") # Translated
 
                     poly_eqn = np.poly1d(coeffs)
-                    y_pred = poly_eqn(x_data) # Predictions on original x data for R^2
-                    y_plot = poly_eqn(x_plot) # Predictions on smooth x range for plotting
-
-                    # Calculate R-squared using scikit-learn's r2_score
+                    y_pred = poly_eqn(x_data)
+                    y_plot = poly_eqn(x_plot)
                     r_squared = r2_score(y_data, y_pred)
-
-                    # Format equation string using the helper function
                     equation_str = format_polynomial_equation(coeffs)
-                    print(f"      {name} (R²={r_squared:.4f}): {equation_str}")
+                    print(f"      {name} (R²={r_squared:.4f}): {equation_str}") # No translation needed for formula
 
-                    # Store regression results
                     regression_results.append({
                         'Keyword': keyword,
                         'Source_A': x_source_name,
@@ -4274,82 +4261,61 @@ def analyze_source_correlations_regressions(combined_datasets, selected_sources,
                         'Regression_Type': name,
                         'Degree': degree,
                         'R_Squared': r_squared,
-                        'Coefficients': list(coeffs), # Store coefficients as a list
+                        'Coefficients': list(coeffs),
                         'Equation': equation_str
                     })
 
-                    # Plot regression line with R, R^2, and equation in label
-                    # Format Pearson R if it was calculated successfully
                     pearson_r_text = f"R={correlation_coefficient:.3f}, " if not pd.isna(correlation_coefficient) else ""
-                    # Combine all parts for the label
-                    label_text = f'{name} ({pearson_r_text}R²={r_squared:.3f})\n{equation_str}'
-                    # Or on one line:
-                    # label_text = f'{name} ({pearson_r_text}R²={r_squared:.3f}) | {equation_str}'
+                    regression_type_es = {'Linear': 'Lineal', 'Quadratic': 'Cuadrática', 'Cubic': 'Cúbica', 'Polynomial(4)': 'Polinomial(4)'}.get(name, name) # Translate type for label
+                    label_text = f'{regression_type_es} ({pearson_r_text}R²={r_squared:.3f})\n{equation_str}' # Translated type
                     ax.plot(x_plot, y_plot, label=label_text, color=reg_colors[i], linewidth=2.5, alpha=0.9)
                     regression_success = True
 
                 except np.linalg.LinAlgError as lae:
-                     print(f"      Error during {name} regression for '{keyword}' ({y_source_name} vs {x_source_name}): Linear algebra error - {lae}. Skipping this degree.")
+                     print(f"      Error durante la regresión {name} para '{keyword}' ({y_source_name} vs {x_source_name}): Error de álgebra lineal - {lae}. Omitiendo este grado.") # Translated
                 except Exception as e:
-                    # Catch other potential errors during regression
-                    print(f"      Unexpected error during {name} regression for '{keyword}' ({y_source_name} vs {x_source_name}): {e}. Skipping this degree.")
+                    print(f"      Error inesperado durante la regresión {name} para '{keyword}' ({y_source_name} vs {x_source_name}): {e}. Omitiendo este grado.") # Translated
 
-
-            # 10. Finalize and Save Plot (only if regressions were attempted)
-            if regression_success or not pd.isna(correlation_coefficient): # If we have something to show
-                plot_title = f'Regression Analysis: {y_source_name} vs {x_source_name}\nKeyword: "{keyword}"'
+            # 10. Finalize and Save Plot
+            if regression_success or not pd.isna(correlation_coefficient):
+                plot_title = f'Análisis de Regresión: {y_source_name} vs {x_source_name}\nPalabra Clave: "{keyword}"' # Translated
                 ax.set_title(plot_title, fontsize=14, wrap=True)
-                ax.set_xlabel(f'{x_source_name} (Normalized Value)', fontsize=12)
-                ax.set_ylabel(f'{y_source_name} (Normalized Value)', fontsize=12)
-                if regression_success: # Only show legend if regression lines were plotted
+                ax.set_xlabel(f'{x_source_name} (Valor Normalizado)', fontsize=12) # Translated
+                ax.set_ylabel(f'{y_source_name} (Valor Normalizado)', fontsize=12) # Translated
+                if regression_success:
                     ax.legend(loc='best', fontsize=9)
                 ax.grid(True, linestyle=':', alpha=0.6)
+                plt.tight_layout(pad=1.5)
 
-                # Add overall correlation text to the plot if calculated
-                # if not pd.isna(correlation_coefficient):
-                #     ax.text(0.02, 0.98, f'Pearson R: {correlation_coefficient:.4f}',
-                #             transform=ax.transAxes, fontsize=11, verticalalignment='top',
-                #             bbox=dict(boxstyle='round,pad=0.4', fc='wheat', alpha=0.8))
-
-                plt.tight_layout(pad=1.5) # Adjust padding
-
-                # Generate unique filename for the plot
-                # Sanitize keyword for filename
-                sanitized_keyword = re.sub(r'[^\w\-]+', '_', keyword) # Replace non-alphanumeric chars with _
+                sanitized_keyword = re.sub(r'[^\w\-]+', '_', keyword)
                 base_filename = f"regression_{sanitized_keyword}_{y_source_name}_vs_{x_source_name}.png"
 
-                # Save the plot if output directory is valid
-                # Use the global unique_folder and the can_save_plots flag
                 if can_save_plots:
                     try:
-                        # Use the existing get_unique_filename function from analysis.py
-                        # This still returns just the base filename (e.g., "regression_...1.png")
                         unique_filename_relative = get_unique_filename(base_filename, unique_folder)
-                        # *** Construct the FULL path for saving ***
                         full_plot_path = os.path.join(unique_folder, unique_filename_relative)
-                        # *** Save using the full path ***
                         plt.savefig(full_plot_path, bbox_inches='tight', dpi=150)
-                        # Append the RELATIVE filename for reporting purposes downstream
                         all_plot_filenames.append(unique_filename_relative)
-                        print(f"    Plot saved: {os.path.basename(full_plot_path)}") # Or use unique_filename_relative
+                        print(f"    Gráfico guardado: {os.path.basename(full_plot_path)}") # Translated
+
+                        # Add image to report markdown
+                        add_image_to_report(plot_title, unique_filename_relative) # Added previously
+
                     except NameError:
-                         print(f"    Error saving plot: 'get_unique_filename' function not found.")
-                         # Fallback or define get_unique_filename if needed
+                         print(f"    Error al guardar gráfico: Función 'get_unique_filename' no encontrada.") # Translated
                     except Exception as e:
-                        print(f"    Error saving plot {base_filename}: {e}")
+                        print(f"    Error al guardar gráfico {base_filename}: {e}") # Translated
                 else:
-                     print("    Output directory invalid or not defined, plot not saved.")
-
+                     print("    Directorio de salida inválido o no definido, gráfico no guardado.") # Translated
             else:
-                 print("    No valid correlation or regression results to plot.")
+                 print("    No hay resultados válidos de correlación o regresión para graficar.") # Translated
 
-            plt.close(fig) # Close plot figure to free memory
+            plt.close(fig)
 
         # End loop for source pairs
     # End loop for keywords
 
     # 11. Convert results lists to Pandas DataFrames
-    # Provide default empty DataFrames if no results were generated
     if correlation_results:
         df_correlation = pd.DataFrame(correlation_results)
     else:
@@ -4361,24 +4327,296 @@ def analyze_source_correlations_regressions(combined_datasets, selected_sources,
         df_regression = pd.DataFrame(columns=['Keyword', 'Source_A', 'Source_B', 'Regression_Type',
                                               'Degree', 'R_Squared', 'Coefficients', 'Equation'])
 
-    # Assign to requested variable names
     csv_correlation = df_correlation
     csv_regression = df_regression
 
-    print(f"\n--- Correlation and Regression Analysis Complete ---")
-    print(f"Generated {len(all_plot_filenames)} plots.")
+    print(f"\n--- Análisis de Correlación y Regresión Completado ---") # Translated
+    print(f"Se generaron {len(all_plot_filenames)} gráficos.") # Translated
     if not csv_correlation.empty:
-        print(f"Correlation results summary (first 5 rows):\n{csv_correlation.head().to_string()}")
+        print(f"Resumen de resultados de correlación (primeras 5 filas):\n{csv_correlation.head().to_string()}") # Translated
     else:
-        print("No correlation results generated.")
+        print("No se generaron resultados de correlación.") # Translated
 
     if not csv_regression.empty:
-        print(f"\nRegression results summary (first 5 rows):\n{csv_regression.head().to_string()}")
+        print(f"\nResumen de resultados de regresión (primeras 5 filas):\n{csv_regression.head().to_string()}") # Translated
     else:
-        print("No regression results generated.")
+        print("No se generaron resultados de regresión.") # Translated
 
     # 12. Return plot filenames and dataframes
     return all_plot_filenames, csv_correlation, csv_regression
+
+
+def perform_pca_analysis(source_columns: list, keyword: str, unique_folder: str) -> tuple[str | None, str | None]: # Added keyword parameter
+    """
+    Performs Principal Component Analysis (PCA) on selected data sources for a specific keyword.
+    Uses global combined_dataset and fixed_source_colors.
+    Saves plots using get_unique_filename within unique_folder and
+    adds plots to the report using add_image_to_report.
+
+    Args:
+        source_columns: List of source *names* (column names) to analyze.
+        keyword: The specific keyword (management tool) being analyzed. # Added keyword arg description
+        unique_folder: The specific directory path where analysis outputs should be saved.
+
+    Returns:
+        A tuple containing:
+        - pca_csv_variable (str | None): PCA component scores as a CSV formatted string, or None on error.
+        - pca_explanation (str | None): Text explanation of the PCA results and file paths, or None on error.
+    """
+    # Declare intention to use necessary globals (only if needed for modification, read-only access is fine)
+    global combined_dataset, fixed_source_colors, get_unique_filename, add_image_to_report
+
+    analysis_type_name = "PCA" # Used for base filenames
+
+    # --- 1. Validate Input ---
+    if not isinstance(source_columns, list) or len(source_columns) < 2:
+        error_msg = "Error: PCA requires a list of at least two source names."
+        print(error_msg)
+        return None, error_msg
+    if not keyword or not isinstance(keyword, str): # Added validation for keyword
+        error_msg = "Error: A valid keyword string must be provided for PCA titles."
+        print(error_msg)
+        return None, error_msg
+
+    print(f"--- Iniciando PCA para Keyword '{keyword}': {', '.join(source_columns)} ---") # Updated print
+    print(f"    Output folder: {unique_folder}")
+
+    # --- Define output filenames using the utility ---
+    pca_data_filename_relative = ""
+    scree_plot_filename_relative = ""
+    loadings_plot_filename_relative = ""
+    pca_data_filepath = ""
+    scree_plot_filepath = ""
+    loadings_plot_filepath = ""
+    try:
+        # Clean source names for filename stability
+        cleaned_names = sorted([re.sub(r'[^\w\-]+', '_', name) for name in source_columns])
+        cleaned_keyword = re.sub(r'[^\w\-]+', '_', keyword) # Clean keyword for filename
+        base_csv_filename = f"{analysis_type_name}_{cleaned_keyword}_components_{'_'.join(cleaned_names)}.csv"
+        pca_data_filename_relative = get_unique_filename(base_csv_filename, unique_folder)
+        pca_data_filepath = os.path.join(unique_folder, pca_data_filename_relative)
+
+        base_scree_filename = f"{analysis_type_name}_{cleaned_keyword}_scree_plot_{'_'.join(cleaned_names)}.png"
+        scree_plot_filename_relative = get_unique_filename(base_scree_filename, unique_folder)
+        scree_plot_filepath = os.path.join(unique_folder, scree_plot_filename_relative)
+
+        base_loadings_filename = f"{analysis_type_name}_{cleaned_keyword}_loadings_plot_{'_'.join(cleaned_names)}.png"
+        loadings_plot_filename_relative = get_unique_filename(base_loadings_filename, unique_folder)
+        loadings_plot_filepath = os.path.join(unique_folder, loadings_plot_filename_relative)
+    except NameError:
+        error_msg = "Error: Utility function 'get_unique_filename' not defined."
+        print(error_msg)
+        return None, error_msg
+    except Exception as e:
+        error_msg = f"Error setting up filenames: {e}"
+        print(f"Error generating filenames: {e}")
+        return None, error_msg
+
+    # --- 2. Data Preparation ---
+    data_scaled_df = None # Initialize
+    try:
+        # Access global combined_dataset using the provided source_columns names
+        data_for_pca = combined_dataset[source_columns].copy()
+    except NameError:
+        error_msg = "Error: Global 'combined_dataset' not defined."
+        print(error_msg)
+        return None, error_msg
+    except KeyError as e:
+        error_msg = f"Error: Column '{e}' not found in combined_dataset."
+        print(error_msg)
+        return None, error_msg
+    except Exception as e:
+        error_msg = f"Error accessing data: {e}"
+        print(f"Error accessing data from combined_dataset: {e}")
+        return None, error_msg
+
+    # Handle Missing Values (Placeholder: Mean Imputation)
+    # !! Review this imputation strategy carefully for time series data !!
+    if data_for_pca.isnull().values.any():
+        print("    Advertencia: Se encontraron valores faltantes. Aplicando imputación de media.") # Translated
+        try:
+            imputer = SimpleImputer(strategy='mean')
+            data_imputed = imputer.fit_transform(data_for_pca)
+            data_imputed_df = pd.DataFrame(data_imputed, index=data_for_pca.index, columns=data_for_pca.columns)
+        except Exception as e:
+            error_msg = f"Error during imputation: {e}"
+            print(f"    Error durante la imputación: {e}")
+            return None, error_msg
+    else:
+        data_imputed_df = data_for_pca # No imputation needed
+
+    # Standardize the data
+    try:
+        scaler = StandardScaler()
+        data_scaled = scaler.fit_transform(data_imputed_df)
+        data_scaled_df = pd.DataFrame(data_scaled, index=data_imputed_df.index, columns=data_imputed_df.columns)
+    except Exception as e:
+        error_msg = f"Error during standardization: {e}"
+        print(f"    Error durante la estandarización: {e}")
+        return None, error_msg
+
+
+    # --- 3. PCA Execution ---
+    pca_df = None # Initialize
+    pca = None # Initialize
+    explained_variance_ratio = [] # Initialize
+    cumulative_variance = [] # Initialize
+    loadings = np.array([]) # Initialize
+    n_components = 0 # Initialize
+    try:
+        n_components = data_scaled_df.shape[1]
+        pca = PCA(n_components=n_components)
+        principal_components = pca.fit_transform(data_scaled_df)
+
+        pc_columns = [f'PC{i+1}' for i in range(n_components)]
+        pca_df = pd.DataFrame(data=principal_components, columns=pc_columns, index=data_scaled_df.index)
+
+        # Get results needed later
+        explained_variance_ratio = pca.explained_variance_ratio_
+        cumulative_variance = np.cumsum(explained_variance_ratio)
+        loadings = pca.components_
+
+    except Exception as e:
+        error_msg = f"Error during PCA execution: {e}"
+        print(f"    Error durante la ejecución de PCA: {e}")
+        return None, error_msg
+
+
+    # --- 4. Store PCA Results ---
+    pca_csv_variable = None
+    try:
+        # Save to CSV file using the generated path
+        pca_df.to_csv(pca_data_filepath)
+        print(f"    Datos de componentes PCA guardados en: {pca_data_filename_relative}") # Translated
+
+        # Store as CSV string variable
+        pca_csv_variable = pca_df.to_csv(index=True)
+    except Exception as e:
+        print(f"    Error guardando datos PCA: {e}") # Translated
+        # Mark data as potentially unsaved, but continue plotting
+
+
+    # --- 5. Analysis & Visualization ---
+    # Access global fixed_source_colors (or appropriate name)
+    local_source_colors_dict = {} # Default to empty dict
+    try:
+        # Ensure the global variable exists and is a dictionary
+        if 'fixed_source_colors' in globals() and isinstance(fixed_source_colors, dict):
+            local_source_colors_dict = fixed_source_colors
+        else:
+             print("    Advertencia: Global 'fixed_source_colors' no es un diccionario válido. Usando colores por defecto.") # Translated
+    except NameError:
+        print("    Advertencia: Global 'fixed_source_colors' no encontrada. Usando colores por defecto.") # Translated
+
+
+    # --- 5a. Scree Plot ---
+    scree_plot_title = f'PCA Varianza Explicada para "{keyword}"<br>({", ".join(source_columns)})' # Translated & updated
+    try:
+        fig_scree = go.Figure()
+        scree_bar_color = local_source_colors_dict.get(source_columns[0], '#1f77b4')
+        scree_line_color = local_source_colors_dict.get(source_columns[1] if n_components > 1 else source_columns[0], '#ff7f0e')
+
+        fig_scree.add_trace(go.Bar(
+            x=[f'PC{i+1}' for i in range(n_components)], y=explained_variance_ratio,
+            name='Varianza Individual', marker_color=scree_bar_color, # Translated
+            hovertemplate='PC%{x}: %{y:.2%}<extra></extra>'
+        ))
+        fig_scree.add_trace(go.Scatter(
+            x=[f'PC{i+1}' for i in range(n_components)], y=cumulative_variance,
+            name='Varianza Acumulada', mode='lines+markers', marker_color=scree_line_color, # Translated
+            yaxis='y2', hovertemplate='Hasta PC%{x}: %{y:.2%}<extra></extra>' # Translated
+        ))
+        fig_scree.update_layout(
+            title=scree_plot_title, # Use updated title
+            xaxis_title='Componente Principal', # Translated
+            yaxis_title='Ratio de Varianza Explicada', yaxis=dict(tickformat=".0%"), # Translated
+            yaxis2=dict(title='Ratio de Varianza Acumulada', overlaying='y', side='right', range=[0, 1.05], tickformat=".0%"), # Translated
+            legend=dict(yanchor="middle", y=0.5, xanchor="right", x=0.98), # Corrected 'center' to 'middle'
+            template='plotly_white', hovermode='x unified'
+        )
+        # Save plot using the generated path
+        fig_scree.write_image(scree_plot_filepath, width=800, height=500)
+        print(f"    Gráfico Scree guardado: {scree_plot_filename_relative}") # Translated
+        # Add to report markdown using the utility function
+        add_image_to_report(scree_plot_title, scree_plot_filename_relative)
+    except Exception as e:
+        print(f"    Error generando/guardando/añadiendo gráfico scree: {e}") # Adjusted error message
+
+    # --- 5b. Loadings Plot ---
+    loadings_plot_title = f'PCA Gráfico de Cargas PC1 vs PC2 para "{keyword}"<br>({", ".join(source_columns)})' # Translated & updated
+    try:
+        fig_loadings = go.Figure()
+        # Check if loadings is not empty before calculating max
+        if loadings.size > 0:
+             max_abs_loading = np.max(np.abs(loadings[:2, :]))
+             # Avoid division by zero or near-zero
+             loading_scale_factor = 1.5 / max_abs_loading if max_abs_loading > 1e-9 else 1
+             max_val = np.max(np.abs(loadings[:2, :] * loading_scale_factor)) * 1.15
+        else:
+             max_abs_loading = 1
+             loading_scale_factor = 1
+             max_val = 1.5 * 1.15 # Default range if no loadings
+
+        for i, var_name in enumerate(data_scaled_df.columns):
+            # Use .get() safely on the dictionary
+            color = local_source_colors_dict.get(var_name, '#000000')
+            # Ensure loadings has enough dimensions before accessing elements
+            loading_x = loadings[0, i] if loadings.shape[0] > 0 and loadings.shape[1] > i else 0
+            loading_y = loadings[1, i] if loadings.shape[0] > 1 and loadings.shape[1] > i else 0
+            scaled_x = loading_x * loading_scale_factor
+            scaled_y = loading_y * loading_scale_factor
+
+            fig_loadings.add_trace(go.Scatter(
+                x=[0, scaled_x], y=[0, scaled_y], mode='lines+markers+text',
+                name=var_name, text=['', var_name], textposition='middle right',
+                line=dict(color=color, width=2), marker=dict(color=color, size=10, symbol='arrow-bar-up', angleref='previous'),
+                hoverinfo='text', hovertext=f'{var_name}<br>Carga PC1: {loading_x:.3f}<br>Carga PC2: {loading_y:.3f}' # Translated
+            ))
+
+        fig_loadings.add_shape(type="line", x0=-max_val, y0=0, x1=max_val, y1=0, line=dict(color="rgba(0,0,0,0.3)", width=1, dash="dot"))
+        fig_loadings.add_shape(type="line", x0=0, y0=-max_val, x1=0, y1=max_val, line=dict(color="rgba(0,0,0,0.3)", width=1, dash="dot"))
+
+        pc1_var_str = f"{explained_variance_ratio[0]:.1%}" if n_components > 0 and len(explained_variance_ratio) > 0 else "N/A"
+        pc2_var_str = f"{explained_variance_ratio[1]:.1%}" if n_components > 1 and len(explained_variance_ratio) > 1 else "N/A"
+
+        fig_loadings.update_layout(
+            title=loadings_plot_title, # Use updated title
+            xaxis_title=f'Componente Principal 1 ({pc1_var_str} Varianza)', # Translated
+            yaxis_title=f'Componente Principal 2 ({pc2_var_str} Varianza)', # Translated
+            xaxis=dict(zeroline=False, range=[-max_val, max_val]),
+            yaxis=dict(zeroline=False, range=[-max_val, max_val]),
+            legend_title_text='Fuentes de Datos', template='plotly_white', width=800, height=700, # Translated
+            annotations=[dict(x=0, y=0, showarrow=False, text='')]
+        )
+        fig_loadings.update_yaxes(scaleanchor="x", scaleratio=1)
+
+        # Save plot using the generated path
+        fig_loadings.write_image(loadings_plot_filepath)
+        print(f"    Gráfico de Cargas guardado: {loadings_plot_filename_relative}") # Translated
+        # Add to report markdown using the utility function
+        add_image_to_report(loadings_plot_title, loadings_plot_filename_relative)
+    except Exception as e:
+        print(f"    Error generando/guardando/añadiendo gráfico de cargas: {e}") # Adjusted error message
+
+    # --- 6. Generate Explanation Text ---
+    # Safely access variance ratios
+    pc1_var_exp = explained_variance_ratio[0] if n_components > 0 and len(explained_variance_ratio) > 0 else 0
+    pc2_var_exp = explained_variance_ratio[1] if n_components > 1 and len(explained_variance_ratio) > 1 else 0
+    cum_var_pc2 = cumulative_variance[1] if n_components > 1 and len(cumulative_variance) > 1 else (cumulative_variance[0] if n_components > 0 and len(cumulative_variance) > 0 else 0)
+
+    # Use relative paths in the explanation
+    pca_explanation = f"""
+### Resultados del Análisis de Componentes Principales (PCA) para "{keyword}"
+
+Se realizó PCA sobre los datos estandarizados de las series temporales ({', '.join(source_columns)}) para identificar patrones subyacentes de variación relacionados con "{keyword}".
+
+*   **Varianza Explicada:** Consulte el gráfico de sedimentación (scree plot) `{scree_plot_filename_relative}`. Muestra que PC1 explica {pc1_var_exp:.1%} y PC2 explica {pc2_var_exp:.1%} de la varianza. La varianza acumulada hasta PC2 es {cum_var_pc2:.1%}.
+*   **Cargas (Loadings):** El gráfico de cargas `{loadings_plot_filename_relative}` (mostrado en el informe) visualiza cómo las fuentes de datos originales contribuyen a los dos primeros componentes principales. Las flechas que apuntan en direcciones similares sugieren fuentes que varían juntas en este espacio 2D. Las flechas más largas indican una mayor influencia en estos componentes.
+*   **Datos de Componentes:** Los datos transformados (puntuaciones de los componentes principales) se guardaron en `{pca_data_filename_relative}` y también están disponibles en la variable CSV devuelta por la función.
+""" # Updated explanation title and intro sentence
+
+    print(f"--- PCA para Keyword '{keyword}' ({', '.join(source_columns)}) completado ---") # Updated print
+    return pca_csv_variable, pca_explanation
 
 
 # *************************************************************************************
@@ -4768,7 +5006,43 @@ def results():
 
              # You can use regression_plot_files list later for adding to the report if needed
              print(f"\nGenerated {len(regression_plot_files)} regression plots.")
+             
+             # ***** PCA Analysis *****
 
+             keyword_for_pca = None # Variable to hold the keyword we'll use
+
+             # 1. Try to get keyword from 'selected_keyword' global if it exists and is valid
+             if 'selected_keyword' in globals() and selected_keyword:
+                 keyword_for_pca = selected_keyword
+             # 2. If not found above, try to get it from 'current_selected_keyword' global
+             elif 'current_selected_keyword' in globals() and current_selected_keyword:
+                 keyword_for_pca = current_selected_keyword
+
+             # 3. Now, check if we successfully found a keyword to use
+             if keyword_for_pca:
+                 print(f"    Iniciando análisis PCA para keyword: '{keyword_for_pca}'") # Info message
+                 pca_data_str, pca_expl = perform_pca_analysis(
+                    source_columns=source_names_to_analyze, # Pass the list of names
+                    keyword=keyword_for_pca,                # Pass the found keyword
+                    unique_folder=unique_folder
+                 )
+
+                 if pca_data_str is not None:
+                    # Store pca_data_str if needed (e.g., in memory or a database)
+                    # pca_expl already contains the explanation text
+                    # The plots have been added to the report via add_image_to_report
+                    # append_to_report_text(pca_expl) # Assuming a function to add text to the report
+                    print("Análisis PCA añadido al informe.") # Translated
+                 else:
+                    # Handle the error - pca_expl might contain the error message
+                    error_message = f"El análisis PCA falló para '{keyword_for_pca}' (fuentes: {source_names_to_analyze}): {pca_expl}" # Updated error message
+                    print(error_message)
+                    # append_to_report_text(f"\n**Error:** {error_message}\n") # Add error to report
+             else:
+                 # This else block now means neither global variable held a valid keyword
+                 print("Error: No se pudo realizar el análisis PCA porque falta una keyword válida ('selected_keyword' o 'current_selected_keyword').") # Updated error message
+
+       
     elif top_choice == 2: # Add an else if to explain why it might be skipped
          # Print reasons if the condition failed
          print("\nSkipping source correlation/regression analysis because:")
