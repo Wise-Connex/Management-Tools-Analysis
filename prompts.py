@@ -1988,45 +1988,182 @@ Note:
 - Avoid a section about Analisys Limitations.
 """
 
-cross_relationship_prompt_2 = """### **Explore Cross-Source Relationships**
+cross_relationship_prompt_2 = """**ANÁLISIS DE CORRELACIÓN INTER-FUENTES PARA UNA HERRAMIENTA GERENCIAL**
 
-**Objective:** To analyze relationships between different data sources tracking {all_kw} management tool adoption and validate trend consistency for {dbs}.
+**Nota Inicial:** Este análisis se rige por las siguientes directrices:
 
-**Tasks:**
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente, relevantes para la correlación)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio, especialmente al inferir causalidad de la correlación)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS (Contexto Comparativo, si aplica a patrones de correlación)**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **X. NOTAS (Recordatorios Finales)**
 
-1. **Source Correlation Analysis:**
-    - Compare trends across all data sources:
-        * General Publications (Google Books Ngram)
-        * Specialized Publications (Crossref.org)
-        * General Interest (Google Trends)
-        * Industry Usability (Bain - Usabilidad)
-        * Industry Satisfaction (Bain - Satisfacción)
-    - Analyze correlation patterns between sources
-    - Identify potential leading/lagging relationships
-    - Compare relative trend strengths
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
-2. **Pattern Validation:**
-    - Analyze consistency of trends across sources
-    - Identify source-specific patterns or anomalies
-    - Compare trend directions and magnitudes
-    - Detect systematic differences between sources
+**Objetivo principal**
 
-3. **Impact Analysis:**
-    - Evaluate relationships between sources
-    - Identify notable disconnects between perception and reality
-    - Compare public interest versus industry metrics
-    - Assess practical implications of observed patterns
+Analizar e interpretar las correlaciones entre las series temporales de la herramienta de gestión {all_kw}, tal como se manifiestan en cinco fuentes de datos distintas: Google Books Ngram, Crossref.org, Google Trends, Bain & Company Usability Data, y Bain & Company Satisfaction Ratings (en adelante, "las cinco fuentes designadas"). El objetivo es cuantificar la fuerza y dirección de las interrelaciones (sincronías, desfases, independencias) en la popularidad, mención o uso de {all_kw} entre estos diferentes contextos representados por las fuentes. Se busca comprender si las tendencias en una fuente se asocian con tendencias en otras, y qué implicaciones tienen estos patrones de correlación para la comprensión del ciclo de vida y la difusión de la herramienta. *No* se debe inferir causalidad directa de las correlaciones sin una justificación teórica robusta y cautela explícita.
+
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: Sección IB - Objetivo Principal; Sección ID.1 - Enfoque Longitudinal (en términos de cómo evolucionan conjuntamente las series); Sección II - Preguntas de Investigación.
+
+**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
+
+- **I. Contexto del Análisis de Correlación Inter-Fuentes**: Vincular con: I.C, III, D.1, II.
+- **I.A. Naturaleza de las Fuentes y su Impacto en la Correlación**: Vincular con: III, V.
+- **I.B. Posibles Implicaciones del Análisis de Correlación**: Vincular con: I.D.1, I.D.2.
+- **II. Presentación de Datos y Matriz de Correlación**: Vincular con: D.2, VII.
+- **II.A. Matriz de Correlación para {all_kw} entre las Cinco Fuentes**: Vincular con: D.1.a.
+- **II.B. Interpretación Técnica Preliminar de la Matriz**: Vincular con: D.1.b.
+- **III. Análisis Detallado de Correlaciones Significativas (o Ausencia de ellas)**: Vincular con: I.D.1, I.D.2, D.1, E.1.
+- **III.A. Correlaciones entre Pares de Fuentes Específicas**: Vincular con: D.1.c.
+- **IV. Interpretación Consolidada de Patrones de Correlación**: Vincular con: I.D.3, I.E, I.F, E, F, V.
+- **IV.A. Sincronicidad General, Desfases y Posibles Indicadores Líderes/Rezagados**: Vincular con: E.4, D.3.
+- **IV.B. Agrupaciones de Fuentes con Comportamiento Correlacional Similar**: Vincular con: F.1.
+- **IV.C. Interpretación de Correlaciones Débiles o Ausentes**: Vincular con: F.2.
+- **V. Implicaciones del Análisis de Correlación**: Vincular con: I.D.4, D.4, E.3.
+- **VI. Síntesis y Reflexiones Finales sobre la Correlación Inter-Fuentes**: Vincular con: I.F, VI, V.
+
+**Esquema de Salida propuesto para ser desarrollado:**
+
+IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "el análisis comparativo multi-fuente").
+
+# **Análisis de Correlación Inter-Fuentes para {all_kw}: Convergencias, Divergencias y Dinámicas de Influencia entre Dominios**
+
+## **I. Contexto del análisis de correlación inter-fuentes**
+
+Contenido esperado que se debe presentar:
+- Definición del concepto de correlación en el contexto de series temporales de herramientas gerenciales y su utilidad para este estudio.
+- ¿Cuál es la relevancia de analizar las interrelaciones entre cómo {all_kw} es reflejada en las cinco fuentes designadas? ¿Qué preguntas puede ayudar a responder este análisis?
+- Establecer que el análisis se basa en la matriz de correlación derivada de los datos combinados de las cinco fuentes para {all_kw}.
+
+### **A. Naturaleza de las fuentes de datos y sus potenciales implicaciones para la correlación**
+- Para cada una de las cinco fuentes designadas (Google Books Ngram, Crossref.org, Google Trends, Bain & Company Usability Data, y Bain & Company Satisfaction Ratings), recordar brevemente:
+    - Su naturaleza y el tipo de "señal" que captura sobre la herramienta gerencial (e.g., interés público general, discurso académico, adopción/satisfacción industrial).
+    - Cómo estas características podrían *a priori* influir en las correlaciones esperadas (o ausencia de ellas) con otras fuentes. Por ejemplo, ¿se espera que Google Trends preceda a Crossref? ¿Deberían las métricas de Bain correlacionarse fuertemente entre sí?
+
+### **B. Posibles implicaciones del análisis de correlación**
+- Validar si el interés o uso de {all_kw} evoluciona de manera similar o disimilar a través de diferentes sectores (público, académico, industrial).
+- Identificar posibles desfases temporales que podrían sugerir dinámicas de influencia o difusión (ej., si una fuente actúa como indicador líder o rezagado respecto a otras).
+- Entender la robustez de las tendencias de {all_kw}: ¿son fenómenos aislados en ciertos dominios o patrones más generalizados?
+- Aportar información para estrategias de comunicación, investigación o inversión relacionadas con {all_kw}, al comprender mejor cómo se interconectan sus distintas manifestaciones.
+
+## **II. Presentación de datos y matriz de correlación**
+- Indicar que el análisis se basa en los datos de series temporales combinadas para {all_kw} de las cinco fuentes (referencia a `{csv_combined_data}`) y la matriz de correlación calculada a partir de estos (`{csv_corr_matrix}`).
+
+### **A. Matriz de Correlación para {all_kw} entre las Cinco Fuentes Designadas**
+- Presentar la matriz de correlación (`{csv_corr_matrix}`) de forma clara, mostrando los coeficientes de correlación (ej. Pearson) entre cada par de las cinco fuentes de datos para la herramienta {all_kw}.
+- Mencionar el periodo temporal cubierto por los datos utilizados para calcular la matriz.
+- Especificar si se han considerado ajustes por lags temporales en el cálculo de la matriz presentada, o si son correlaciones contemporáneas.
+
+### **B. Interpretación Técnica Preliminar de la Matriz de Correlación**
+- Realizar una lectura inicial de la matriz, destacando:
+    - Las correlaciones más fuertes (positivas y negativas) y su posible significancia estadística (si se provee).
+    - Las correlaciones más débiles o cercanas a cero.
+    - Cualquier patrón evidente a primera vista (ej., si un grupo de fuentes parece correlacionar más entre sí).
+
+## **III. Análisis detallado de correlaciones significativas (o su ausencia)**
+- Esta sección profundiza en la interpretación de los coeficientes de correlación más relevantes (o la falta de correlación donde se esperaría).
+
+### **A. Análisis de Correlaciones entre Pares de Fuentes Específicas**
+- Para cada par de fuentes con una correlación notable (o ausencia notable de ella), discutir:
+    - **Ejemplo de Subsección: Correlación entre Google Trends y Crossref.org para {all_kw}**
+        - Valor del coeficiente de correlación y su significancia (si disponible).
+        - Interpretación de esta relación: ¿Sugiere que el interés público general (Google Trends) se mueve en sintonía con la producción académica (Crossref)? ¿Hay desfase?
+        - Contextualización: ¿Es esperable esta relación dada la naturaleza de ambas fuentes y el tipo de herramienta {all_kw}?
+        - Factores potenciales que podrían explicar esta correlación (o su ausencia). Por ejemplo, ¿eventos externos que impactan ambos dominios simultáneamente o con cierto retraso?
+- Organizar esta sección por pares de fuentes o por agrupaciones lógicas de fuentes (ej., fuentes de interés público, fuentes académicas, fuentes industriales).
+
+### **B. Discusión de Correlaciones Positivas Fuertes**
+- Identificar los pares de fuentes que muestran una fuerte correlación positiva.
+- Interpretar qué significa esta sincronicidad en el contexto de {all_kw}.
+
+### **C. Discusión de Correlaciones Negativas Fuertes (si existen)**
+- Identificar los pares de fuentes que muestran una fuerte correlación negativa.
+- Interpretar qué podría implicar esta relación inversa para la herramienta {all_kw}.
+
+### **D. Discusión de Correlaciones Débiles o Ausencia de Correlación**
+- Identificar pares de fuentes donde la correlación es débil o inexistente, especialmente si *a priori* se podría haber esperado alguna relación.
+- Interpretar qué podría significar esta independencia o baja asociación. ¿Operan en dominios completamente separados? ¿La herramienta tiene manifestaciones distintas en cada uno?
+
+## **IV. Interpretación consolidada de los patrones de correlación**
+- Sintetizar los hallazgos para obtener una visión global de las interrelaciones.
+
+### **A. Sincronicidad General, Desfases y Posibles Indicadores Líderes/Rezagados**
+- Evaluar el grado general de acuerdo o desacuerdo entre las fuentes en cuanto a las tendencias de {all_kw}.
+- Discutir si alguna(s) fuente(s) parecen consistentemente anticipar (líder) o seguir (rezagada) las tendencias en otra(s). Esto puede requerir análisis de correlaciones con desfase (lagged correlations), si los datos lo permiten y se indica. Si no, basarse en la interpretación lógica de las correlaciones contemporáneas.
+- *Advertir explícitamente que la identificación de líderes/rezagados basada solo en correlación es especulativa y no implica causalidad.*
+
+### **B. Agrupaciones de Fuentes con Comportamiento Correlacional Similar (Clusters)**
+- Identificar si existen "clusters" de fuentes que tienden a correlacionar fuertemente entre sí, pero débilmente con otras fuentes fuera del clúster.
+- Interpretar qué podrían significar estos agrupamientos en términos de cómo se percibe o utiliza {all_kw} en diferentes "esferas" (ej., esfera pública, esfera académica, esfera industrial).
+
+### **C. Interpretación de la Magnitud y Dispersión de las Correlaciones**
+- ¿Son las correlaciones generalmente altas, sugiriendo un fenómeno cohesivo, o son mayormente bajas y dispersas, sugiriendo una fragmentación en la evolución de la herramienta?
+
+## **V. Implicaciones del análisis de correlación inter-fuentes para {all_kw}**
+- Sintetizar los hallazgos y ofrecer perspectivas para diferentes audiencias, enfocándose en lo que las interrelaciones (o su ausencia) significan.
+
+### **A. Contribuciones para Investigadores, Académicos y Analistas**
+- ¿Cómo ayuda este análisis de correlación a entender la validez y el alcance de los estudios basados en una única fuente?
+- Sugerencias para futuras investigaciones que exploren las causas de las correlaciones observadas o la falta de ellas (ej. estudios cualitativos, análisis de causalidad).
+
+### **B. Recomendaciones y Sugerencias para Asesores y Consultores**
+- ¿Cómo pueden utilizar esta información sobre interconexiones (o desconexiones) entre dominios para asesorar sobre la adopción, adaptación o el "timing" de estrategias relacionadas con {all_kw}?
+- Advertencias sobre generalizar tendencias de un dominio a otro sin considerar sus correlaciones.
+
+### **C. Consideraciones para Directivos y Gerentes de Organizaciones**
+- ¿Cómo puede este análisis informar la toma de decisiones estratégicas sobre {all_kw}? Por ejemplo, si el interés público (Google Trends) está fuertemente correlacionado y adelanta a la adopción industrial (Bain), podría ser una señal a monitorear.
+- Considerar las implicaciones para diferentes tipos de organizaciones (Públicas, Privadas, PYMES, Multinacionales, ONGs) basadas en cuán conectadas están las tendencias que más les afectan.
+
+## **VI. Síntesis y reflexiones finales sobre la correlación inter-fuentes para {all_kw}**
+- Sintetizar los *principales patrones de correlación* (o ausencia de ellos) encontrados para {all_kw} entre las cinco fuentes.
+- Evaluar críticamente qué nos dice este entramado de relaciones sobre la naturaleza de {all_kw} y su ciclo de vida. ¿Es un fenómeno unificado o multifacético con dinámicas propias en cada dominio?
+- Reconocer *explícitamente* las *limitaciones* del análisis de correlación (ej., no implica causalidad, puede ser sensible a la elección del periodo, a la transformación de los datos, etc.).
+- Sugerir *brevemente* posibles líneas de investigación futuras que podrían construir sobre estos hallazgos correlacionales, como el análisis de causalidad de Granger o modelos de series de tiempo multivariados.
 
 **Data Required:**
-- Cross-source correlation matrix: {csv_corr_matrix}
-- Combined source trends data: {csv_combined_data}
 
-Note: 
+1.  **Cross-Source Correlation Matrix for {all_kw}:**
+    *   Una matriz (`{csv_corr_matrix}`) que muestre los coeficientes de correlación (ej., Pearson) entre las series temporales de la herramienta {all_kw} para cada par de las cinco fuentes de datos:
+        1.  Google Books Ngram
+        2.  Crossref.org
+        3.  Google Trends
+        4.  Bain & Company Usability Data
+        5.  Bain & Company Satisfaction Ratings
+    *   Es importante que se especifique el periodo temporal de los datos usados para calcular esta matriz y si se aplicaron transformaciones o consideraciones de desfase (lags).
+
+2.  **Combined Source Trends Data for {all_kw}:**
+    *   Los datos de series temporales subyacentes (`{csv_combined_data}`) para {all_kw} de cada una de las cinco fuentes, preferiblemente alineadas temporalmente y procesadas de manera que sean aptas para el cálculo de correlaciones (ej., misma frecuencia si es posible, manejo de datos faltantes). Este dato es el insumo para la `{csv_corr_matrix}` y puede ser útil para visualizaciones o interpretaciones contextuales.
+
+IMPORTANT:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 - Avoid to give Recomendations for better or aditional analysis.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Avoid a section about Analisys Limitations.
+
+**INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
+  - Rol e Identidad (experto consultor).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso de las correlaciones, *no* conclusiones definitivas sobre causalidad).
+  - Rigurosidad Estadística (interpretación adecuada de coeficientes de correlación, mención de significancia si está disponible).
+  - Perspicacia Interpretativa (explicaciones *profundas* de lo que las correlaciones significan, *múltiples* perspectivas, cuestionamientos críticos).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones* del análisis de correlación).
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* por las interrelaciones entre fuentes).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe.
+- **No** mencionar explícitamente la ausencia de datos si esto impide algún cálculo menor, simplemente omitir esa parte. Si la ausencia de datos es fundamental (ej. falta toda una serie para una fuente), el análisis de correlación para esa fuente no será posible y eso debe ser manejado en la presentación de la matriz.
+- **No**es necesario repetir los datos completos al final del informe.
+- Asegurar que haya un *único título principal* claro y conciso.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales en la redacción de los textos.
+- **Desarrollar y ampliar** los apartados, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo.
+- **Redactar el informe** como un consultor senior para una audiencia experta. Los datos cuantitativos (coeficientes de correlación) deben ser la base del informe.
+- **Énfasis en la Narrativa Interpretativa de las Correlaciones:** Desarrolla una narrativa *completa* y *perspicaz*. *No te límites a presentar solo la matriz*. Explica *qué significan* estas correlaciones (o su ausencia), *por qué* son importantes, y *cómo* se relacionan con el contexto de {all_kw} y las fuentes de datos.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** El informe debe basarse *exclusivamente* en la información y datos *disponibles* (`{csv_corr_matrix}`, `{csv_combined_data}`). No especular sobre correlaciones que no se pueden calcular con los datos provistos.
+
 """
 
 # Segundo Prompt
@@ -2269,43 +2406,184 @@ IMPORTANT:
 
 """
 
-trend_analysis_prompt_2 = """### **Investigate Cross-Source Trend Patterns**
+pca_prompt_2 = """**ANÁLISIS DE COMPONENTES PRINCIPALES (PCA) INTER-FUENTES PARA UNA HERRAMIENTA GERENCIAL**
 
-**Objective:** To analyze how different data sources reflect general patterns in {all_kw} management tool adoption across:
-1. General Publications (Google Books Ngram)
-2. Specialized Publications (Crossref.org)
-3. General Interest (Google Trends)
-4. Industry Usability (Bain - Usabilidad)
-5. Industry Satisfaction (Bain - Satisfacción)
-If they are in the list: {selected_sources}
-Management Tool: {all_kw}
-Data Sources: {selected_sources}
+**Nota Inicial:** Este análisis es de **máxima importancia** y se rige por las siguientes directrices:
 
-**Tasks:**
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente, relevantes para PCA)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado)**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna)**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS (Contexto Comparativo, si aplica a los componentes identificados)**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **X. NOTAS (Recordatorios Finales)**
 
-1. **Cross-Source Pattern Analysis:**
-    - Compare adoption patterns across sources
-    - Identify source-specific reporting biases
-    - Analyze temporal alignment between sources
-    - Calculate cross-source pattern correlations
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
-2. **Trend Validation Analysis:**
-    - Evaluate trend consistency across sources
-    - Identify significant pattern divergences
-    - Analyze source reliability patterns
-    - Calculate trend validation metrics
+**Objetivo principal**
 
-3. **Source Relationship Analysis:**
-    - Analyze lead-lag relationships
-    - Identify predictive indicators
-    - Evaluate source complementarity
-    - Calculate source alignment scores
+Realizar un Análisis de Componentes Principales (PCA) sobre las series temporales de la herramienta de gestión {all_kw} provenientes de cinco fuentes de datos distintas: Google Books Ngram, Crossref.org, Google Trends, Bain & Company Usability Data, y Bain & Company Satisfaction Ratings (en adelante, "las cinco fuentes designadas"). El objetivo es identificar las dimensiones subyacentes (componentes principales) que explican la mayor parte de la varianza conjunta en la evolución de {all_kw} a través de estas fuentes. Se busca interpretar estos componentes en términos de patrones comunes de tendencia, dinámicas de contraste, y la contribución relativa de cada fuente a estos patrones. Este análisis es crucial para sintetizar la información multi-fuente y obtener una comprensión más profunda y estructurada de la dinámica de la herramienta {all_kw}.
+
+Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: Sección IB - Objetivo Principal; Sección ID.1 - Enfoque Longitudinal (interpretando los componentes como dinámicas temporales subyacentes); Sección II - Preguntas de Investigación.
+
+**Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
+
+- **I. Fundamentos del Análisis de Componentes Principales (PCA) en este Contexto**: Vincular con: I.C, III, D.1, II.
+- **I.A. Adecuación de las Fuentes para PCA y Preparación de Datos**: Vincular con: III, V.
+- **I.B. Objetivos Específicos del PCA para {all_kw}**: Vincular con: I.D.1, I.D.2.
+- **II. Presentación e Interpretación de Resultados del PCA**: Vincular con: D.2, VII.
+- **II.A. Varianza Explicada y Selección del Número de Componentes**: Vincular con: D.1.a.
+- **II.B. Matriz de Cargas (Loadings) de los Componentes Principales**: Vincular con: D.1.b.
+- **II.C. Puntuaciones de los Componentes (Component Scores) - (si se proveen y son relevantes para la interpretación temporal)**: Vincular con D.1.c
+- **III. Interpretación Detallada de Cada Componente Principal Significativo**: Vincular con: I.D.1, I.D.2, D.1, E.1.
+- **IV. Discusión Integrada de los Hallazgos del PCA**: Vincular con: I.D.3, I.E, I.F, E, F, V.
+- **IV.A. Patrones Dominantes y Secundarios en la Evolución de {all_kw}**: Vincular con: E.4, D.3.
+- **IV.B. Contribución Diferencial de las Fuentes a los Patrones Comunes**: Vincular con: F.1.
+- **IV.C. Implicaciones de la Dimensionalidad Reducida**: Vincular con: F.2.
+- **V. Implicaciones Estratégicas del PCA para {all_kw}**: Vincular con: I.D.4, D.4, E.3.
+- **VI. Síntesis Conclusiva y Limitaciones del Análisis PCA**: Vincular con: I.F, VI, V.
+
+**Esquema de Salida propuesto para ser desarrollado:**
+
+IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "el análisis de correlación").
+
+# **Análisis de Componentes Principales para {all_kw}: Desvelando las Dinámicas Subyacentes a Través de Múltiples Fuentes de Datos**
+
+## **I. Fundamentos del Análisis de Componentes Principales (PCA) en este contexto**
+
+Contenido esperado que se debe presentar:
+- Explicación concisa de qué es el PCA y por qué es una técnica valiosa para analizar múltiples series temporales simultáneamente, como las de {all_kw} provenientes de las cinco fuentes.
+- Objetivos del PCA en este estudio: reducción de la dimensionalidad, identificación de patrones comunes de variación (tendencias latentes), y comprensión de la estructura de las interrelaciones entre las cinco perspectivas sobre {all_kw}.
+- Breve mención de los supuestos o consideraciones clave del PCA (ej. linealidad, importancia de la escala de los datos).
+
+### **A. Adecuación de las fuentes de datos para PCA y preparación de datos**
+- Discutir brevemente cómo las características de las cinco fuentes designadas (naturaleza de la métrica, frecuencia, longitud de la serie) se han considerado o preparado para el PCA.
+- Mencionar cualquier paso de preprocesamiento crucial aplicado a los datos de `{csv_pca_input_data}` antes del PCA (ej. estandarización/escalado de las series, manejo de datos faltantes, verificación de estacionariedad si aplica). *Es fundamental que las variables (series temporales de cada fuente) estén en una escala comparable o que se hayan estandarizado para que el PCA no sea dominado por variables con mayor varianza debido a su escala.*
+
+### **B. Objetivos específicos del PCA para la herramienta {all_kw}**
+- ¿Qué se espera aprender específicamente sobre {all_kw} mediante el PCA?
+    - Identificar si existe una tendencia general predominante que afecte a todas o la mayoría de las fuentes.
+    - Descubrir si hay dinámicas de contraste (ej. mientras unas fuentes suben, otras bajan) que formen patrones consistentes.
+    - Determinar qué fuentes son las más influyentes en la definición de estos patrones comunes o de contraste.
+    - Simplificar la comprensión de la evolución general de {all_kw} al reducir las cinco series a unos pocos componentes significativos.
+
+## **II. Presentación e interpretación de resultados del PCA**
+- Indicar que los resultados se basan en el PCA realizado sobre los datos de entrada (`{csv_pca_input_data}`).
+
+### **A. Varianza explicada y selección del número de componentes principales**
+- Presentar la proporción de varianza explicada por cada componente principal (eigenvalues).
+- Mostrar un gráfico de sedimentación (Scree Plot) si está disponible en `{pca_scree_plot_data_or_image}` o describir sus características.
+- Justificar el número de componentes principales seleccionados para la interpretación (ej. criterio de Kaiser -eigenvalue > 1, punto de inflexión en el scree plot, porcentaje acumulado de varianza explicada).
+- Declarar cuánta varianza total explican los componentes seleccionados.
+
+### **B. Matriz de Cargas (Loadings) de los Componentes Principales Seleccionados**
+- Presentar la matriz de cargas (loadings) (`{pca_loadings_matrix}`) para los componentes principales seleccionados. Las filas deben ser las variables originales (las cinco fuentes de datos) y las columnas los componentes principales.
+- Las cargas indican cómo cada variable original (fuente de datos) se correlaciona o contribuye a cada componente principal.
+
+### **C. Puntuaciones de los Componentes (Component Scores) - (Opcional, si se proveen y son relevantes)**
+- Si se dispone de las puntuaciones de los componentes (`{pca_component_scores_data}`) y se considera útil para la interpretación de la dinámica temporal de los patrones, presentar un resumen o visualización de las mismas.
+- Estas puntuaciones representan la evolución temporal de cada componente principal.
+
+## **III. Interpretación detallada de cada componente principal significativo**
+- Para cada uno de los componentes principales seleccionados (ej., PC1, PC2, etc.), proporcionar una interpretación detallada y temática:
+
+    - **Para Componente Principal X (ej. PC1):**
+        - **Varianza Explicada por PCX:** Indicar el porcentaje de varianza total que este componente explica.
+        - **Análisis de las Cargas (Loadings) para PCX:**
+            - Identificar qué fuentes de datos tienen cargas (positivas o negativas) más altas en este componente.
+            - Describir la dirección de la relación: ¿Qué fuentes se mueven juntas (mismo signo de carga) en este patrón? ¿Cuáles se mueven en oposición (signos opuestos)?
+        - **Interpretación Temática de PCX:**
+            - Basándose en las cargas, ¿qué representa este componente? ¿Es una "tendencia general de popularidad/discusión" si todas las fuentes cargan positivamente? ¿Representa un contraste entre "interés académico" (Crossref) y "atención pública" (Google Trends) si cargan con signos opuestos?
+            - Darle un nombre descriptivo a este patrón (ej., "Dimensión de Consenso General", "Eje de Adopción Académica vs. Popularidad Efímera").
+        - **Dinámica Temporal de PCX (si se analizan las puntuaciones):** Si se utilizan las `{pca_component_scores_data}`, describir brevemente cómo ha evolucionado este patrón subyacente a lo largo del tiempo.
+
+- Repetir esta estructura para todos los componentes principales seleccionados.
+
+## **IV. Discusión integrada de los hallazgos del PCA**
+- Sintetizar las interpretaciones de los componentes individuales para construir una imagen cohesiva de la dinámica de {all_kw}.
+
+### **A. Patrones dominantes y secundarios en la evolución de {all_kw}**
+- ¿Cuál es el patrón más importante (PC1) y qué nos dice sobre la evolución general de {all_kw}?
+- ¿Qué matices o dinámicas adicionales aportan los componentes secundarios (PC2, PC3, etc.)?
+- ¿Existen patrones de "auge y caída" comunes, crecimiento sostenido, o divergencias sectoriales que emergen de los componentes?
+
+### **B. Contribución diferencial de las fuentes a los patrones comunes**
+- ¿Qué fuentes de datos son las más "influyentes" o representativas de los patrones dominantes?
+- ¿Hay fuentes que muestren un comportamiento más idiosincrático (es decir, que contribuyan principalmente a componentes que explican menos varianza o que tengan cargas únicas)?
+- ¿Cómo se agrupan las fuentes en función de su contribución a los componentes? (ej. ¿Google Trends y Google Books tienden a moverse juntos en los componentes principales?)
+
+### **C. Implicaciones de la dimensionalidad reducida**
+- ¿Cómo simplifica el PCA nuestra comprensión de la compleja evolución de {all_kw} a través de cinco perspectivas diferentes?
+- ¿Permiten los componentes principales una narrativa más concisa sobre el ciclo de vida de {all_kw}?
+
+## **V. Implicaciones estratégicas del PCA para {all_kw}**
+- Traducir los hallazgos técnicos del PCA en implicaciones prácticas.
+
+### **A. Para Investigadores y Académicos**
+- ¿Cómo pueden los componentes identificados guiar futuras investigaciones sobre {all_kw}? (ej. investigar las causas de los patrones comunes o de contraste).
+- ¿Sugieren los componentes la necesidad de considerar diferentes "dimensiones" de la herramienta en los estudios?
+
+### **B. Para Asesores, Consultores y Analistas de Mercado**
+- ¿Cómo pueden utilizarse los patrones principales para caracterizar el estado actual o la trayectoria probable de {all_kw}?
+- Si un componente representa, por ejemplo, "innovación y adopción temprana", y otro "institucionalización", ¿en qué fase se encuentra la herramienta según la evolución de estos componentes?
+
+### **C. Para Directivos y Gerentes en Organizaciones**
+- ¿Cómo pueden las dimensiones principales identificadas por el PCA informar decisiones sobre la adopción, inversión o desinversión en {all_kw}?
+- Si diferentes fuentes importantes para la organización cargan en diferentes componentes con dinámicas distintas, ¿cómo navegar esta complejidad?
+
+## **VI. Síntesis conclusiva y limitaciones del análisis PCA**
+- Resumir los hallazgos más cruciales del PCA: las principales dimensiones subyacentes que caracterizan la evolución de {all_kw} a través de las cinco fuentes.
+- Evaluar críticamente qué aporta el PCA a la comprensión global de {all_kw}.
+- Reconocer *explícitamente* las *limitaciones* del análisis PCA en este contexto:
+    - La interpretación de los componentes es inherentemente subjetiva, aunque basada en datos.
+    - Los resultados pueden ser sensibles a la selección de variables (fuentes), el preprocesamiento de datos y el periodo analizado.
+    - PCA identifica correlaciones y patrones de variación, no necesariamente causalidad.
+    - Los componentes son construcciones lineales de las variables originales.
+- Sugerir *brevemente* posibles líneas de investigación o análisis complementarios.
 
 **Data Required:**
-- Combined source trends: {csv_combined_data}
-- Cross-source correlations: {csv_corr_matrix}
 
-Note: Visualizations will be handled separately - focus on numerical and statistical analysis only.
+1.  **PCA Input Data (`{csv_pca_input_data}`):**
+    *   Un archivo CSV que contenga las series temporales (numéricas, alineadas temporalmente y preprocesadas según sea necesario - ej. escaladas/estandarizadas) para la herramienta `{all_kw}` de cada una de las cinco fuentes. Las columnas deberían ser las fuentes (Google Books Ngram, Crossref.org, Google Trends, Bain Usability, Bain Satisfaction) y las filas las observaciones temporales.
+
+2.  **PCA Eigenvalues / Variance Explained (`{pca_eigenvalues_data}`):**
+    *   Datos que muestren el eigenvalue (valor propio) y el porcentaje de varianza explicada por cada componente principal calculado. Podría ser una tabla o los datos para generar un Scree Plot.
+
+3.  **PCA Loadings Matrix (`{pca_loadings_matrix}`):**
+    *   Una matriz donde las filas son las cinco fuentes de datos originales y las columnas son los componentes principales seleccionados. Cada celda contiene la carga (loading) de la fuente en el componente.
+
+4.  **PCA Scree Plot (Opcional - `{pca_scree_plot_data_or_image}`):**
+    *   Datos para generar un scree plot o una imagen del scree plot, si está disponible.
+
+5.  **PCA Component Scores (Opcional - `{pca_component_scores_data}`):**
+    *   Si se van a interpretar las dinámicas temporales de los componentes, un archivo con las puntuaciones (scores) de cada observación temporal en cada componente principal seleccionado. Las columnas serían los componentes (PC1, PC2, etc.) y las filas las observaciones temporales.
+
+IMPORTANT:
+- Since Charts and Visualizations will be included at the end of the report, please don't mention them here unless data for them is explicitly provided as an input (e.g., scree plot data).
+- Avoid giving recommendations for better or additional analysis beyond brief suggestions in the limitations/future research section.
+
+**INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español).
+- Dado que este es el análisis **más importante**, la profundidad de la interpretación, la claridad de la explicación de los componentes y la relevancia de las implicaciones son cruciales.
+- Rol e Identidad (experto consultor con alta capacidad analítica y de síntesis).
+- Objetivo Principal (interpretación profunda y significativa de los componentes principales de {all_kw}).
+- Rigurosidad Metodológica (interpretación correcta de las cargas, varianza explicada, etc.).
+- Perspicacia Interpretativa (ir más allá de la descripción técnica de los componentes para explicar *qué significan* en el contexto de la herramienta y las fuentes).
+- Manejo de la Incertidumbre (lenguaje *cauteloso* al interpretar componentes, reconocer limitaciones).
+- Énfasis en la Interpretación (análisis *hermenéutico profundo* de los patrones latentes que el PCA revela).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe.
+- Asegurar que haya un *único título principal* claro y conciso.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales en la redacción de los textos.
+- **Desarrollar y ampliar** los apartados, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo.
+- **Redactar el informe** como un consultor senior de alto nivel, presentando un análisis sofisticado pero comprensible.
+- **Énfasis en la Narrativa Interpretativa de los Componentes:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz* sobre cada componente y su conjunto. No te limites a listar cargas. Explica la *historia* detrás de cada componente.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** El informe debe basarse *exclusivamente* en la información y datos PCA *disponibles*. Si ciertos resultados de PCA (ej. scores) no se proveen, la interpretación debe ajustarse a los datos que sí están (ej. eigenvalues, loadings).
+
 """
 
 # Tercer prompt
@@ -3298,57 +3576,100 @@ Notes:
 
 """
 
-prompt_conclusions_comparative = """## Synthesize Findings and Draw Conclusions - Multi-Source {all_kw} Analysis
+prompt_conclusions_comparative = """## Synthesize Integrated Findings from PCA, Cross-Relationship, and Comparative Temporal Analyses for {all_kw}
 
-**Objective:** To analyze correlations and patterns across selected data sources measuring {all_kw} adoption and impact.
+**Nota Inicial:** Este análisis se rige por las siguientes directrices:
 
-**Data Sources Analyzed:**
-{selected_sources}
-If they are in the list: {selected_sources}
-Management Tool: {all_kw}
-Data Source: {selected_sources}
+- **I. INSTRUCCIONES BASE (CONSTANTES)**
+- **II. PREGUNTAS DE INVESTIGACIÓN (Guía para la Interpretación, No Respuestas Directas)**
+- **III. NATURALEZA DE LOS DATOS (Consideraciones Específicas y Detalladas por Fuente, relevantes a los análisis de entrada)**
+- **IV. NATURALEZA DE LAS HERRAMIENTAS GERENCIALES (Contexto de Aplicación Detallado para {all_kw})**
+- **V. CONFIGURACIÓN DE LAS HERRAMIENTAS GERENCIALES (Análisis Específico de los 23 Grupos y su Estructura Interna, relevante para {all_kw})**
+- **VI. MANEJO DE LA INCERTIDUMBRE Y LENGUAJE CAUTELOSO (Obligatorio)**
+- **VII. COMPARACIÓN CON PATRONES TÍPICOS Y OTRAS HERRAMIENTAS (Contexto Comparativo Detallado para {all_kw})**
+- **VIII. RESTRICCIONES GENERALES (Formato, Estilo y Alcance)**
+- **IX. REQUISITOS DE SALIDA (Formato del Informe)**
+- **X. NOTAS (Recordatorios Finales)**
 
-**Tasks:**
+Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
-1. **Cross-Source Pattern Analysis:**
-    - Compare trends across the selected data sources
+# **Síntesis de Conclusiones Integradas para [{all_kw}] a partir de Análisis PCA, de Correlaciones Cruzadas y Temporales Comparativos entre Fuentes ({data_sources_list})**
 
-2. **Correlation Analysis:**
-    - Evaluate relationships between available metrics
+**Objetivo:** Integrar los hallazgos de tres análisis multi-fuente previos (Análisis PCA, Análisis de Relaciones Cruzadas entre Herramientas/Fuentes, y Análisis Temporal Comparativo) para la herramienta {all_kw} a través de las fuentes de datos ({data_sources_list}). El fin es extraer conclusiones consolidadas y multifacéticas sobre la trayectoria, posicionamiento y patrones de comportamiento de {all_kw}, identificando cómo estas diferentes perspectivas analíticas se complementan o contrastan.
 
-3. **Time-Lag Analysis:**
-    - Identify lead/lag relationships between different metrics
-    - Analyze how different measures influence each other over time
-    - Evaluate predictive relationships between sources
+**Tareas:**
 
-4. **Synthesis and Recommendations:**
-    - Identify reliable indicators for tool success
-    - Suggest optimal timing for tool adoption
-    - Provide framework for evaluating new management tools
+1.  **Revisión de Resultados de Análisis Previos:** Revisar *cuidadosamente* los resultados completos proporcionados por los siguientes análisis multi-fuente, enfocándose en los aspectos relevantes para {all_kw}:
+    *   **Análisis PCA Multi-Fuente:** (proveniente de `pca_prompt_2`) Hallazgos sobre las principales componentes que explican la varianza en el conjunto de datos de herramientas y fuentes, y cómo se posiciona {all_kw} en relación a estas componentes.
+    *   **Análisis de Relaciones Cruzadas Multi-Fuente:** (proveniente de `cross_relationship_prompt_2`) Hallazgos sobre las correlaciones de {all_kw} con otras herramientas, y la consistencia o divergencia de las tendencias de {all_kw} entre las diferentes fuentes de datos.
+    *   **Análisis Temporal Comparativo Multi-Fuente:** (proveniente de `temporal_analysis_prompt_2`) Hallazgos sobre las tendencias temporales (crecimiento, declive, estabilidad, estacionalidad, ciclos) de {all_kw} comparadas a través de las distintas fuentes.
 
-**Data Integration:**
-    # Temporal Trends
-    {temporal_trends}
-    # Cross-Tool Relationships
-    {tool_relationships}
-    # ARIMA Predictions
-    {arima_predictions}
-    # Seasonal Analysis
-    {seasonal_analysis}
-    # Cyclical Patterns
-    {cyclical_patterns}
+2.  **Síntesis de Hallazgos Clave de Cada Análisis Específico para {all_kw}:**
+    *   **Desde el Análisis PCA:** ¿Cuáles son las dimensiones o patrones estructurales más importantes identificados por el PCA que ayudan a contextualizar o explicar el comportamiento de {all_kw}? ¿Se agrupa {all_kw} con otras herramientas en ciertas componentes?
+    *   **Desde el Análisis de Relaciones Cruzadas:** ¿Cuáles son las relaciones más significativas (positivas o negativas) de {all_kw} con otras herramientas gerenciales? ¿Qué tan consistentes son las señales sobre {all_kw} que emiten las diferentes fuentes de datos? ¿Existen fuentes que muestren patrones marcadamente diferentes para {all_kw}?
+    *   **Desde el Análisis Temporal Comparativo:** ¿Cuál es el perfil temporal consolidado de {all_kw} al comparar su evolución a través de las fuentes? ¿Hay consenso en su etapa del ciclo de vida, o las fuentes sugieren diferentes narrativas temporales? ¿Son los patrones de estacionalidad o ciclicidad consistentes?
+
+3.  **Análisis Integrado y Conclusiones Consolidadas para {all_kw}:** Combinar las perspectivas de los tres análisis para construir una narrativa integral:
+    *   ¿Cómo se complementan los hallazgos del PCA, el análisis de relaciones cruzadas y el análisis temporal comparativo para ofrecer una comprensión más profunda de {all_kw}?
+    *   Por ejemplo, si el PCA sitúa a {all_kw} en una componente con herramientas en declive, ¿esto se ve corroborado por el análisis temporal comparativo y sus relaciones con otras herramientas?
+    *   ¿Existen contradicciones o tensiones entre los hallazgos de los diferentes análisis? Si es así, ¿cómo pueden interpretarse estas divergencias (ej. diferentes facetas de la herramienta capturadas por distintos análisis o fuentes)?
+    *   ¿Cuál es la evaluación general de la trayectoria, la relevancia actual y las perspectivas futuras de {all_kw} basada en la síntesis de estos tres análisis multi-fuente?
+    *   ¿Cómo influye la naturaleza de las {data_sources_list} en la interpretación integrada de estos análisis?
+
+4.  **Implicaciones Integradas (Basadas en la Síntesis de los Tres Análisis):** Discutir las implicaciones de esta comprensión integrada de {all_kw} para:
+    *   **Investigadores:** ¿Qué nuevas líneas de investigación o enfoques metodológicos sugiere esta síntesis tripartita?
+    *   **Consultores:** ¿Qué recomendaciones estratégicas o tácticas se pueden ofrecer sobre {all_kw} con este nivel de análisis integrado?
+    *   **Organizaciones:** ¿Qué decisiones informadas pueden tomar las organizaciones respecto a {all_kw}?
+     *(Utilizar el formato de implicaciones integradas definido, dirigiéndose a cada audiencia dentro del flujo natural del texto).*
+
+5.  **Limitaciones Específicas de la Integración:** Además de las limitaciones inherentes a cada uno de los tres análisis de entrada, discutir las limitaciones y desafíos que surgen al *intentar sintetizar e integrar* estos tres tipos de análisis complejos. Por ejemplo, la dificultad de ponderar hallazgos de diferente naturaleza o la posible sobreinterpretación de correlaciones.
+
+**Data Integration (Resultados de los análisis previos para {all_kw} y {data_sources_list}):**
+    # Resultados del Análisis PCA Multi-Fuente (de pca_prompt_2)
+    {results_pca_analysis}
+
+    # Resultados del Análisis de Relaciones Cruzadas Multi-Fuente (de cross_relationship_prompt_2)
+    {results_cross_relationship_analysis}
+
+    # Resultados del Análisis Temporal Comparativo Multi-Fuente (de temporal_analysis_prompt_2)
+    {results_comparative_temporal_analysis}
 
 **Key Considerations:**
-- Focus on relationships between selected data sources
-- Identify leading indicators of tool success
-- Evaluate reliability of different data sources
-- Consider time delays between publication, interest, and adoption
+- Enfocarse en la sinergia y las tensiones entre los diferentes tipos de análisis.
+- Destacar cómo la combinación de estas perspectivas ofrece una visión más robusta o matizada que cada análisis por separado.
+- Ser explícito sobre cómo la diversidad de las {data_sources_list} se refleja o se maneja en esta síntesis integrada.
 
 Notes:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
-- Avoid to give Recomendations for better or aditional analysis.
+- Avoid to give Recomendations for better or aditional analysis beyond what the current data allows.
 - Not mention about more data or data features extra you would like to have to do a better analisys. Just use what you have.
-- Avoid a section about Analisys Limitations.
+- La sección sobre "Limitaciones Específicas de la Integración" *debe* ser incluida según la Tarea 5.
+
+**INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
+- **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
+  - Rol e Identidad (experto consultor).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso, *no* conclusiones definitivas).
+  - Enfoque Longitudinal (análisis de tendencias, puntos de inflexión, *no* solo descripción. Análisis comparativo longitudinal).
+  - Rigurosidad Estadística (justificación de métodos, reporte completo de resultados, vinculación de datos y análisis derivados).
+  - Perspicacia Interpretativa (explicaciones *profundas*, *múltiples* perspectivas, potenciales verdades emergentes, cuestionamientos críticos).
+  - Orientación Práctica (*hallazgos útiles*, *no* prescripciones con aplicabilidad sensible e identificable con ejemplos de alto nivel, pero comprensibles y universalmente replicables).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones*, apertura a factores y causas no evidentes en primera instancia o involuntariamente no consideradas por no presentarse correlaciones evidentes).
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* con los datos presentados y los cálculos estimados, exploración *abierta*, *múltiples* explicaciones, *no* solo "moda gerencial").
+  - Alta ponderación al *análisis hermenéutico* que revele la *historia que puede ser contada* con los datos presentados y los cálculos estimados, dando pistas sobre lo que no suele decirse, pero está presente en esa historia a través de la vida y voces de organizaciones y actores, personajes y anécdotas que validan suposiciones e inferencias.
+  - Evaluación Crítica (*imparcial*, afrontando, exponiendo y discutiendo los alcances de las posibles *limitaciones* y descifrando sus significados).
+- **No** incluir referencias a nombres de prompts en el texto del informe.
+- **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe, como instrucciones, justificaciones de secciones, ni referencias a prompt del sistema o a instrucciones internas de la IA.
+- **No** mencionar explícitamente la ausencia de datos, o sobre la imposibilidad de presentar análisis, comentarios, u observaciones por datos faltantes o ausencia de información. **No** mencionar la imposibilidad o incapacidad de realizar algún cálculo, o que para profundizar un tema se requiere la necesidad de más información no disponible. Si un dato o cálculo no está disponible, *simplemente omitir esa parte sin hacer alusión directa o indirecta sobre la omisión. **No** hacer explícita ni evidente la ausencia de datos, ni la inexistencia de cálculos, o falta de información. Omitir secciones completas si fuera necesario. En caso de suceder ajustar la secuencia de la numeración (Ejem. Si originalmente era “A”, “B”, “C”, “D”, y se necesita omitir “C”, pasaría a ser “A”, “B”, “C”, y no “A”, “B”, “D”. Así la “D” original pasa a ser la nueva “C” en la nueva versión).
+- **No**es necesario repetir los datos completos al final del informe.
+- Asegurar que haya un *único título principal* claro y conciso, que se ha identificado dentro del “Esquema de Salida propuesto para ser desarrollado” como el único que va presidido con un solo #.
+- **Ejemplos Orientativos**. Desarrollar y ampliar los ejemplos orientativos. No presentar ideas cortas. Son solo referentes que requieren ser desarrollados, ampliados y explicados con significación de calidad o aportes significativos.
+- **No** usar corchetes para encerrar los nombres de las herramientas gerenciales ni en la redacción de los textos. **Limitar** el uso de corchetes solo cuando fuera requerido, ejem. para fórmulas o presentación de datos técnicos, si se considera técnicamente recomendable.
+- **Desarrollar y ampliar**. Desarrollar y ampliar los apartados según el “Esquema de Salida propuesto para ser desarrollado”, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo, evitando la repetición y la redundancia y acompañando bajo una secuencia lógica argumentativa al lector.
+- **Redactar el informe**. Redactar el informe como si fuera un consultor senior que presenta los resultados a una comunidad estructurada por académicos expertos con titulaciones de postrado y valiosos clientes potenciales. Los datos cuantitativos deben ser la base que de validez, sustentabilidad y soporte objetivo y riguroso al informe.
+- **Énfasis en la Narrativa:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz*. *No te límites a presentar solo los datos y los cálculos*. Acompaña al lector para la comprensión de la traducción que se debe hacer de esos datos. Explica *qué significan* los resultados, *por qué* son importantes, y *cómo* se relacionan con el contexto de la investigación. La lógica del discurso debe tener la capacidad de acompañar a los lectores menos entendidos pero anhelantes de profundizar sobre estos contenidos, y también ofrecer aportes y perspectivas que hagan sorprender y maravillar a los lectores que son mucho más versados.
+- **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
+- **IMPORTANTE:** Si un cálculo *no se puede realizar* debido a la falta de datos, *omítelo por completo*. *No* menciones que el cálculo no se pudo hacer, ni que faltan datos, o que por falta de información no se puede presentar un mejor análisis o una mejor conclusión o una explicación mayor o mejor. El informe debe basarse *exclusivamente* en información certera y de calidad *disponible*.
+
 """
 
 prompt_sp = """

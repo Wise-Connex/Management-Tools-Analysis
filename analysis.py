@@ -75,7 +75,7 @@ import re
 
 # AI Prompts imports 
 from prompts import system_prompt_1, system_prompt_2, temporal_analysis_prompt_1, temporal_analysis_prompt_2, \
-    cross_relationship_prompt_1, cross_relationship_prompt_2, trend_analysis_prompt_1, trend_analysis_prompt_2, \
+    cross_relationship_prompt_1, cross_relationship_prompt_2, trend_analysis_prompt_1, pca_prompt_2, \
     arima_analysis_prompt_1, arima_analysis_prompt_2, seasonal_analysis_prompt_1, seasonal_analysis_prompt_2, \
     prompt_6_single_analysis, prompt_6_correlation, prompt_conclusions_standalone, prompt_conclusions_comparative, \
     prompt_sp, prompt_abstract
