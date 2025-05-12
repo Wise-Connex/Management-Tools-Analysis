@@ -71,6 +71,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer # Or KNNImputer, IterativeImputer
 from sklearn.decomposition import PCA
 import re
+import PIL.Image
+from IPython.display import display, Markdown, HTML
 
 
 # AI Prompts imports 
@@ -185,6 +187,7 @@ global csv_significance
 global original_values
 global source_trends_results
 global current_selected_keyword
+global pca_csv_variable
 source_trends_results = {}
 original_values = {}
 keycharts = []
@@ -236,89 +239,254 @@ def get_unique_filename(base_filename, unique_folder):
         counter += 1
     return filename
 
-def gemini_prompt(system_prompt, prompt, m='pro', max_retries=5, initial_backoff=1):
-  """
-  Send a prompt to the Gemini API with retry logic for handling timeouts and service issues.
-  
-  Args:
-      system_prompt: The system instructions for the model
-      prompt: The user prompt to send to the model
-      m: Model type ('pro' or 'flash')
-      max_retries: Maximum number of retry attempts
-      initial_backoff: Initial backoff time in seconds (will increase exponentially)
-      
-  Returns:
-      The text response from the model
-  """
-  system_instructions = system_prompt
+def gemini_prompt(system_prompt, prompt, image_path: str | None = None, m='pro', max_retries=5, initial_backoff=1):
+    """
+    Sends a prompt (optionally with an image) to the Gemini API and handles retries.
 
-  #print('\n**************************** INPUT ********************************\n')
-  #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
+    Args:
+        system_prompt (str): The system instruction or context.
+        prompt (str): The main user prompt text.
+        image_path (str | None, optional): Path to an image file to include. Defaults to None.
+        m (str, optional): Model type ('pro', '1.5-pro', 'vision'). Defaults to 'pro'.
+                           'vision' or '1.5-pro' is required if image_path is provided.
+        max_retries (int, optional): Maximum number of retry attempts. Defaults to 5.
+        initial_backoff (int, optional): Initial delay in seconds for retries. Defaults to 1.
 
-  if m == 'pro':
-    model = 'gemini-2.5-pro-preview-05-06' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
-  else:
-    model = 'gemini-2.5-flash-preview-04-17' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
-  temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
-  stop_sequence = '*** END ANALYSIS ***'
+    Returns:
+        str: The generated content from Gemini or an error message.
+    """
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return "[API Error] GEMINI_API_KEY environment variable not set."
 
-  if model == 'gemini-1.0-pro' and system_instructions is not None:
-    system_instructions = None
-    print('\x1b[31m(WARNING: System instructions ignored, gemini-1.0-pro does not support system instructions)\x1b[0m')
-  if model == 'gemini-1.0-pro' and temperature > 1:
-    temperature = 1
-    print('\x1b[34m(INFO: Temperature set to 1, gemini-1.0-pro does not support temperature > 1)\x1b[0m')
+    genai.configure(api_key=api_key)
 
-  if system_instructions == '':
-    system_instructions = None
+    # Determine the model name based on the 'm' parameter
+    if m == '1.5-pro':
+        model_name = 'gemini-1.5-pro-latest'
+    elif m == 'vision': # Added for explicit vision model check
+        # Although 1.5 Pro handles vision, keep this for potential specific use cases
+        # or if the user explicitly asks for the older vision model.
+        # NOTE: 'gemini-pro-vision' might be deprecated or less capable than 1.5 Pro.
+        # Recommend 'gemini-1.5-pro-latest' for vision tasks.
+        model_name = 'gemini-pro-vision'
+        print(f"{YELLOW}Warning: Using 'gemini-pro-vision'. Consider 'gemini-1.5-pro-latest' (m='1.5-pro') for better vision capabilities.{RESET}")
+    else: # Default to gemini-pro if not specified or 'pro'
+        model_name = 'gemini-pro'
 
-  # Load environment variables from a .env file (if using one)
-  load_dotenv()
+    # --- Image Handling ---
+    img_object = None
+    if image_path:
+        if m not in ['1.5-pro', 'vision']:
+             # Automatically upgrade model if an image is provided but a non-vision model was selected
+            print(f"{YELLOW}Warning: Image provided but model set to '{m}'. Switching to 'gemini-1.5-pro-latest' for vision capabilities.{RESET}")
+            model_name = 'gemini-1.5-pro-latest' # Default to the best vision model
+            # Or return an error:
+            # return f"[API Error] Image provided ('{image_path}') but a non-vision model ('{model_name}') was selected. Use m='1.5-pro' or m='vision'."
 
-  # Retrieve the API key
-  api_key = os.getenv('GOOGLE_API_KEY')
+        try:
+            # Ensure the image path is valid and accessible
+            if not os.path.exists(image_path):
+                 raise FileNotFoundError(f"Image file not found at path: {image_path}")
+            img_object = PIL.Image.open(image_path)
+            print(f"{GREEN}Successfully loaded image: {image_path}{RESET}")
+        except FileNotFoundError as e:
+            return f"[File Error] {e}"
+        except Exception as e:
+            # Catch other potential PIL errors (e.g., format issues)
+            return f"[Image Error] Failed to load image '{image_path}': {e}"
+    elif m in ['1.5-pro', 'vision'] and not image_path:
+        # If a vision model is selected but no image is provided, it's okay,
+        # just proceed with the text prompt. No warning needed unless behavior is unexpected.
+        pass
+    elif m not in ['1.5-pro', 'vision'] and image_path:
+         # This case should theoretically be handled by the auto-upgrade logic above,
+         # but adding a fallback check.
+         return f"[API Error] Logic error: Image path provided but model '{model_name}' does not support images."
 
-  if api_key is None:
-      raise ValueError("GOOGLE_API_KEY environment variable is not set")
-  
-  genai.configure(api_key=api_key)
-  model_instance = genai.GenerativeModel(model, system_instruction=system_instructions)
-  config = genai.GenerationConfig(temperature=temperature, stop_sequences=[stop_sequence])
-  
-  # Implement retry logic with exponential backoff
-  retry_count = 0
-  backoff_time = initial_backoff
-  
-  while retry_count < max_retries:
+
+    # --- Model Instantiation ---
     try:
-      # If this isn't the first attempt, log that we're retrying
-      if retry_count > 0:
-        print(f"\x1b[33m(Retry attempt {retry_count}/{max_retries} after waiting {backoff_time}s)\x1b[0m")
-      
-      # Try to generate content
-      response = model_instance.generate_content(contents=[prompt], generation_config=config)
-      return response.text
-      
-    except google.api_core.exceptions.DeadlineExceeded as e:
-      # Handle timeout errors specifically
-      retry_count += 1
-      
-      if retry_count >= max_retries:
-        print(f"\x1b[31mFailed after {max_retries} retries. Last error: {str(e)}\x1b[0m")
-        # Return a fallback message instead of raising an exception
-        return f"[API TIMEOUT ERROR: The request to the Gemini API timed out after {max_retries} attempts. The prompt may be too complex or the service may be experiencing issues.]"
-      
-      # Calculate exponential backoff with jitter
-      jitter = random.uniform(0, 0.1 * backoff_time)  # Add up to 10% jitter
-      wait_time = backoff_time + jitter
-      print(f"\x1b[33mAPI timeout occurred. Retrying in {wait_time:.2f} seconds...\x1b[0m")
-      time.sleep(wait_time)
-      backoff_time *= 2  # Exponential backoff
-      
+        # Use safety_settings to potentially reduce blocked prompts, adjust as needed
+        safety_settings = [
+            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+        ]
+        model = genai.GenerativeModel(model_name, safety_settings=safety_settings)
     except Exception as e:
-      # Handle other exceptions
-      print(f"\x1b[31mError calling Gemini API: {str(e)}\x1b[0m")
-      return f"[API ERROR: {str(e)}]"
+        return f"[API Error] Failed to initialize model '{model_name}': {e}"
+
+    # --- Construct Prompt Parts ---
+    # Combine system and user prompts for clarity, especially for non-vision models
+    # or when no image is present. For vision models, keep them potentially separate
+    # if the structure requires it, but a single text block often works well.
+    full_text_prompt = f"{system_prompt}\n\n{prompt}"
+
+    prompt_parts = []
+    if img_object:
+        # Structure for multimodal: text followed by image (or interspersed if needed)
+        prompt_parts.append(full_text_prompt)
+        prompt_parts.append(img_object)
+        # Example if you needed text after the image:
+        # prompt_parts.append("Analyze the trends shown in the image above.")
+    else:
+        # For text-only models or vision models without an image
+        prompt_parts.append(full_text_prompt)
+
+
+    # --- API Call with Retry Logic ---
+    retries = 0
+    backoff_time = initial_backoff
+    while retries < max_retries:
+        try:
+            print(f"Attempt {retries + 1}/{max_retries}: Sending request to {model_name}...")
+            # Use stream=False for simpler handling here, adjust if streaming needed
+            response = model.generate_content(prompt_parts, stream=False)
+
+            # Check for empty response or blocked content before accessing .text
+            if not response.parts:
+                 # Check candidate level for blocking reasons
+                 block_reason = response.prompt_feedback.block_reason if response.prompt_feedback else 'Unknown'
+                 finish_reason = response.candidates[0].finish_reason if response.candidates else 'Unknown'
+                 safety_ratings = response.candidates[0].safety_ratings if response.candidates else 'N/A'
+                 print(f"{RED}Warning: Gemini response blocked or empty.{RESET}")
+                 print(f"  Prompt Feedback Block Reason: {block_reason}")
+                 print(f"  Candidate Finish Reason: {finish_reason}")
+                 print(f"  Candidate Safety Ratings: {safety_ratings}")
+
+                 # Decide whether to retry based on the reason
+                 # For simplicity, retry on most empty/blocked responses unless explicitly 'SAFETY'
+                 if finish_reason == 'SAFETY' or block_reason == 'SAFETY':
+                     return f"[API Blocked] Response blocked due to safety settings. Reason: {finish_reason}/{block_reason}. Ratings: {safety_ratings}"
+                 # Fall through to retry for other reasons like 'RECITATION', 'OTHER', or empty parts
+
+            elif hasattr(response, 'text'):
+                print(f"{GREEN}Success: Received response from Gemini.{RESET}")
+                return response.text # Return the successful response
+            else:
+                # Handle cases where response exists but has no .text (might indicate errors/blocking)
+                 print(f"{YELLOW}Warning: Received response object without text content. Full response obj:{RESET}\n{response}")
+                 # Fall through to retry
+
+        except google.api_core.exceptions.ResourceExhausted as e:
+            print(f"{RED}API Error: Resource exhausted (likely rate limit). {e}{RESET}")
+            # This specific error usually requires waiting longer or reducing request frequency.
+            # Exponential backoff might still help.
+        except google.api_core.exceptions.DeadlineExceeded as e:
+            print(f"{RED}API Error: Request timed out. {e}{RESET}")
+            # Often retryable
+        except google.api_core.exceptions.InternalServerError as e:
+            print(f"{RED}API Error: Internal server error on Google's side. {e}{RESET}")
+            # Often retryable
+        except google.api_core.exceptions.ServiceUnavailable as e:
+             print(f"{RED}API Error: Service unavailable. {e}{RESET}")
+             # Often retryable
+        except Exception as e:
+            # Catch other potential exceptions during the API call
+            print(f"{RED}An unexpected error occurred during API call: {type(e).__name__} - {e}{RESET}")
+            # Depending on the error, might not be retryable
+            # For simplicity, we'll retry, but you might want finer control
+            # return f"[API Error] Unexpected: {type(e).__name__} - {e}" # Option to return immediately
+
+        # If we reached here, an error occurred or the response was empty/blocked (and retryable)
+        retries += 1
+        if retries < max_retries:
+            print(f"{YELLOW}Retrying in {backoff_time:.2f} seconds...{RESET}")
+            time.sleep(backoff_time)
+            backoff_time *= 2 # Exponential backoff
+        else:
+            print(f"{RED}Max retries ({max_retries}) reached. Failing request.{RESET}")
+            return f"[API Error] Max retries reached after encountering errors or blocked/empty responses."
+
+    # Should not be reached if logic is correct, but as a safeguard:
+    return "[API Error] Unknown state reached after retry loop."
+
+
+# def gemini_prompt(system_prompt, prompt, m='pro', max_retries=5, initial_backoff=1):
+#   """
+#   Send a prompt to the Gemini API with retry logic for handling timeouts and service issues.
+  
+#   Args:
+#       system_prompt: The system instructions for the model
+#       prompt: The user prompt to send to the model
+#       m: Model type ('pro' or 'flash')
+#       max_retries: Maximum number of retry attempts
+#       initial_backoff: Initial backoff time in seconds (will increase exponentially)
+      
+#   Returns:
+#       The text response from the model
+#   """
+#   system_instructions = system_prompt
+
+#   #print('\n**************************** INPUT ********************************\n')
+#   #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
+
+#   if m == 'pro':
+#     model = 'gemini-2.5-pro-preview-05-06' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+#   else:
+#     model = 'gemini-2.5-flash-preview-04-17' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+#   temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
+#   stop_sequence = '*** END ANALYSIS ***'
+
+#   if model == 'gemini-1.0-pro' and system_instructions is not None:
+#     system_instructions = None
+#     print('\x1b[31m(WARNING: System instructions ignored, gemini-1.0-pro does not support system instructions)\x1b[0m')
+#   if model == 'gemini-1.0-pro' and temperature > 1:
+#     temperature = 1
+#     print('\x1b[34m(INFO: Temperature set to 1, gemini-1.0-pro does not support temperature > 1)\x1b[0m')
+
+#   if system_instructions == '':
+#     system_instructions = None
+
+#   # Load environment variables from a .env file (if using one)
+#   load_dotenv()
+
+#   # Retrieve the API key
+#   api_key = os.getenv('GOOGLE_API_KEY')
+
+#   if api_key is None:
+#       raise ValueError("GOOGLE_API_KEY environment variable is not set")
+  
+#   genai.configure(api_key=api_key)
+#   model_instance = genai.GenerativeModel(model, system_instruction=system_instructions)
+#   config = genai.GenerationConfig(temperature=temperature, stop_sequences=[stop_sequence])
+  
+#   # Implement retry logic with exponential backoff
+#   retry_count = 0
+#   backoff_time = initial_backoff
+  
+#   while retry_count < max_retries:
+#     try:
+#       # If this isn't the first attempt, log that we're retrying
+#       if retry_count > 0:
+#         print(f"\x1b[33m(Retry attempt {retry_count}/{max_retries} after waiting {backoff_time}s)\x1b[0m")
+      
+#       # Try to generate content
+#       response = model_instance.generate_content(contents=[prompt], generation_config=config)
+#       return response.text
+      
+#     except google.api_core.exceptions.DeadlineExceeded as e:
+#       # Handle timeout errors specifically
+#       retry_count += 1
+      
+#       if retry_count >= max_retries:
+#         print(f"\x1b[31mFailed after {max_retries} retries. Last error: {str(e)}\x1b[0m")
+#         # Return a fallback message instead of raising an exception
+#         return f"[API TIMEOUT ERROR: The request to the Gemini API timed out after {max_retries} attempts. The prompt may be too complex or the service may be experiencing issues.]"
+      
+#       # Calculate exponential backoff with jitter
+#       jitter = random.uniform(0, 0.1 * backoff_time)  # Add up to 10% jitter
+#       wait_time = backoff_time + jitter
+#       print(f"\x1b[33mAPI timeout occurred. Retrying in {wait_time:.2f} seconds...\x1b[0m")
+#       time.sleep(wait_time)
+#       backoff_time *= 2  # Exponential backoff
+      
+#     except Exception as e:
+#       # Handle other exceptions
+#       print(f"\x1b[31mError calling Gemini API: {str(e)}\x1b[0m")
+#       return f"[API ERROR: {str(e)}]"
 
 def linear_interpolation(df, kw):
     # Extract actual data points (non-NaN values)
@@ -4364,7 +4532,7 @@ def perform_pca_analysis(source_columns: list, keyword: str, unique_folder: str)
         - pca_explanation (str | None): Text explanation of the PCA results and file paths, or None on error.
     """
     # Declare intention to use necessary globals (only if needed for modification, read-only access is fine)
-    global combined_dataset, fixed_source_colors, get_unique_filename, add_image_to_report
+    global combined_dataset, fixed_source_colors, get_unique_filename, add_image_to_report, psa_csv_variable, loadings_plot_filepath
 
     analysis_type_name = "PCA" # Used for base filenames
 
@@ -4490,7 +4658,7 @@ def perform_pca_analysis(source_columns: list, keyword: str, unique_folder: str)
         print(f"    Datos de componentes PCA guardados en: {pca_data_filename_relative}") # Translated
 
         # Store as CSV string variable
-        pca_csv_variable = pca_df.to_csv(index=True)
+        pca_csv_variable = pca_df.to_string()
     except Exception as e:
         print(f"    Error guardando datos PCA: {e}") # Translated
         # Mark data as potentially unsaved, but continue plotting
@@ -5215,7 +5383,7 @@ def ai_analysis():
     #display(Markdown(gem_temporal_trends_sp))
     print(gem_temporal_trends_sp)
     '''
-
+    '''
     if not one_keyword or top_choice == 2:
       n+=1
       if top_choice == 1:
@@ -5273,9 +5441,9 @@ def ai_analysis():
       gem_cross_keyword=""
       csv_correlation=""
       csv_regression=""
-'''
+    '''
     n+=1
-    if top_choice == 1:
+    if top_choice == 1 or top_choice == 3:
       p_3 = trend_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_means_trends=csv_means_trends, analisis_temporal_ai=gem_temporal_trends)
       print(f'\n\n\n{n}. Investigando Patrones de Tendencia General...')
     else:
@@ -5298,7 +5466,7 @@ def ai_analysis():
           csv_for_prompt = csv_combined_data
       
       # 2. Create the optimized prompt
-      p_3 = trend_analysis_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, \
+      p_3 = pca_prompt_2.format(all_kw=actual_menu, selected_sources=sel_sources, \
                                           csv_corr_matrix=csv_correlation, \
                                           csv_combined_data=csv_for_prompt)
       print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
