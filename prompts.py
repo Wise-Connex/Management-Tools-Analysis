@@ -1721,6 +1721,7 @@ Contenido esperado que se debe presentar:
 
 ## **III. Análisis comparativo de patrones temporales: cálculos y descripción**
 - Esta sección se centra en los cálculos *específicos* solicitados. Para cada subsección (A, B, C, D, E), primero se realizará el análisis detallado para cada una de las cinco fuentes de datos individualmente. Posteriormente, se presentará una síntesis comparativa que integre los hallazgos, destacando similitudes, diferencias, y patrones cruzados entre las fuentes. La interpretación técnica será descriptiva, *sin* conclusiones definitivas sobre "modas gerenciales" ni contexto empresarial en esta fase.
+- Construye tablas comparativas resumen que incluyan todas las fuentes y todas las metricas comparadas en cada una de las secciones.
 
 ### **A. Identificación y análisis de períodos pico (por fuente y comparado)**
 - **Análisis por Fuente de Datos:** Para cada una de las cinco fuentes designadas:
@@ -1801,6 +1802,7 @@ Contenido esperado que se debe presentar:
 
 ## **IV. Análisis e interpretación comparativa: contextualización y significado multi-fuente**
 - Esta sección es el *núcleo interpretativo* del informe. Construir una *narrativa* que integre los hallazgos estadísticos de *todas las fuentes*, contrastándolos y sintetizándolos para ofrecer una interpretación en el contexto de la investigación. Se debe ir *más allá* de la descripción de cada fuente, enfocándose en el significado de las convergencias y divergencias. Estilo *fluido* y *narrativo*, *evitando* la repetición innecesaria.
+- Construye tablas comparativas resumen que incluyan todas las fuentes y todas las metricas comparadas en cada una de las secciones.
 
 ### **A. Tendencia general: ¿hacia dónde se dirige {all_kw} según la visión consolidada y las divergencias?**
 - Analizar la *tendencia general* (creciente, decreciente, estable, fluctuante) de {all_kw} sintetizando los hallazgos de NADT, MAST y la descripción de las etapas *de todas las fuentes*.
