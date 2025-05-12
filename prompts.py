@@ -1983,124 +1983,139 @@ Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, t
 
 **Objetivo principal**
 
-Analizar e interpretar las correlaciones entre las series temporales de la herramienta de gestión {all_kw}, tal como se manifiestan en cinco fuentes de datos distintas: Google Books Ngram, Crossref.org, Google Trends, Bain & Company Usability Data, y Bain & Company Satisfaction Ratings (en adelante, "las cinco fuentes designadas"). El objetivo es cuantificar la fuerza y dirección de las interrelaciones (sincronías, desfases, independencias) en la popularidad, mención o uso de {all_kw} entre estos diferentes contextos representados por las fuentes. Se busca comprender si las tendencias en una fuente se asocian con tendencias en otras, y qué implicaciones tienen estos patrones de correlación para la comprensión del ciclo de vida y la difusión de la herramienta. *No* se debe inferir causalidad directa de las correlaciones sin una justificación teórica robusta y cautela explícita.
+Analizar e interpretar las correlaciones y relaciones de regresión entre las series temporales de la herramienta de gestión {all_kw}, tal como se manifiestan en cinco fuentes de datos distintas: Google Books Ngram, Crossref.org, Google Trends, Bain & Company Usability Data, y Bain & Company Satisfaction Ratings (en adelante, "las cinco fuentes designadas"). El objetivo es cuantificar la fuerza y dirección de las interrelaciones (sincronías, desfases, independencias) y la capacidad predictiva en la popularidad, mención o uso de {all_kw} entre estos diferentes contextos representados por las fuentes. Se busca comprender si las tendencias en una fuente se asocian con tendencias en otras, qué modelos de regresión describen mejor estas relaciones, y qué implicaciones tienen estos patrones para la comprensión del ciclo de vida y la difusión de la herramienta. *No* se debe inferir causalidad directa de las correlaciones o regresiones sin una justificación teórica robusta y cautela explícita.
 
 Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: Sección IB - Objetivo Principal; Sección ID.1 - Enfoque Longitudinal (en términos de cómo evolucionan conjuntamente las series); Sección II - Preguntas de Investigación.
 
 **Sobre las orientaciones analíticas siguientes:** Al desarrollar los siguientes segmentos del esquema propuesto de salida sería recomendable vincularlos o asociarlos con las secciones previas identificadas.
 
-- **I. Contexto del Análisis de Correlación Inter-Fuentes**: Vincular con: I.C, III, D.1, II.
-- **I.A. Naturaleza de las Fuentes y su Impacto en la Correlación**: Vincular con: III, V.
-- **I.B. Posibles Implicaciones del Análisis de Correlación**: Vincular con: I.D.1, I.D.2.
-- **II. Presentación de Datos y Matriz de Correlación**: Vincular con: D.2, VII.
+- **I. Contexto del Análisis de Correlación y Regresión Inter-Fuentes**: Vincular con: I.C, III, D.1, II.
+- **I.A. Naturaleza de las Fuentes y su Impacto en la Correlación y Regresión**: Vincular con: III, V.
+- **I.B. Posibles Implicaciones del Análisis de Correlación y Regresión**: Vincular con: I.D.1, I.D.2.
+- **II. Presentación de Datos, Matriz de Correlación y Modelos de Regresión**: Vincular con: D.2, VII.
 - **II.A. Matriz de Correlación para {all_kw} entre las Cinco Fuentes**: Vincular con: D.1.a.
-- **II.B. Interpretación Técnica Preliminar de la Matriz**: Vincular con: D.1.b.
-- **III. Análisis Detallado de Correlaciones Significativas (o Ausencia de ellas)**: Vincular con: I.D.1, I.D.2, D.1, E.1.
-- **III.A. Correlaciones entre Pares de Fuentes Específicas**: Vincular con: D.1.c.
-- **IV. Interpretación Consolidada de Patrones de Correlación**: Vincular con: I.D.3, I.E, I.F, E, F, V.
+- **II.B. Modelos de Regresión para {all_kw} entre Pares de Fuentes**: Incluir análisis de regresión lineal, cuadrática, cúbica y polinomial.
+- **II.C. Interpretación Técnica Preliminar de la Matriz y los Modelos**: Vincular con: D.1.b.
+- **III. Análisis Detallado de Correlaciones y Regresiones Significativas (o Ausencia de ellas)**: Vincular con: I.D.1, I.D.2, D.1, E.1.
+- **III.A. Correlaciones y Regresiones entre Pares de Fuentes Específicas**: Vincular con: D.1.c.
+- **IV. Interpretación Consolidada de Patrones de Correlación y Regresión**: Vincular con: I.D.3, I.E, I.F, E, F, V.
 - **IV.A. Sincronicidad General, Desfases y Posibles Indicadores Líderes/Rezagados**: Vincular con: E.4, D.3.
 - **IV.B. Agrupaciones de Fuentes con Comportamiento Correlacional Similar**: Vincular con: F.1.
-- **IV.C. Interpretación de Correlaciones Débiles o Ausentes**: Vincular con: F.2.
-- **V. Implicaciones del Análisis de Correlación**: Vincular con: I.D.4, D.4, E.3.
-- **VI. Síntesis y Reflexiones Finales sobre la Correlación Inter-Fuentes**: Vincular con: I.F, VI, V.
+- **IV.C. Interpretación de Correlaciones y Regresiones Débiles o Ausentes**: Vincular con: F.2.
+- **V. Implicaciones del Análisis de Correlación y Regresión Inter-Fuentes**: Vincular con: I.D.4, D.4, E.3.
+- **VI. Síntesis y Reflexiones Finales sobre la Correlación y Regresión Inter-Fuentes**: Vincular con: I.F, VI, V.
 
 **Esquema de Salida propuesto para ser desarrollado:**
 
 IMPORTANTE: Bajo ninguna circunstancia menciones el nombre de este prompt ni de ningún otro prompt en el texto del informe. Refiérete a otros análisis de forma genérica (ej., "el análisis temporal previo", "el análisis comparativo multi-fuente").
 
-# **Análisis de Correlación Inter-Fuentes para {all_kw}: Convergencias, Divergencias y Dinámicas de Influencia entre Dominios**
+# **Análisis de Correlación y Regresión Inter-Fuentes para {all_kw}: Convergencias, Divergencias, Dinámicas de Influencia y Capacidad Predictiva entre Dominios**
 
-## **I. Contexto del análisis de correlación inter-fuentes**
+## **I. Contexto del análisis de correlación y regresión inter-fuentes**
 
 Contenido esperado que se debe presentar:
-- Definición del concepto de correlación en el contexto de series temporales de herramientas gerenciales y su utilidad para este estudio.
-- ¿Cuál es la relevancia de analizar las interrelaciones entre cómo {all_kw} es reflejada en las cinco fuentes designadas? ¿Qué preguntas puede ayudar a responder este análisis?
-- Establecer que el análisis se basa en la matriz de correlación derivada de los datos combinados de las cinco fuentes para {all_kw}.
+- Definición de los conceptos de correlación y regresión en el contexto de series temporales de herramientas gerenciales y su utilidad para este estudio.
+- ¿Cuál es la relevancia de analizar las interrelaciones y la capacidad predictiva entre cómo {all_kw} es reflejada en las cinco fuentes designadas? ¿Qué preguntas puede ayudar a responder este análisis?
+- Establecer que el análisis se basa en la matriz de correlación y los modelos de regresión derivados de los datos combinados de las cinco fuentes para {all_kw}.
 
-### **A. Naturaleza de las fuentes de datos y sus potenciales implicaciones para la correlación**
+### **A. Naturaleza de las fuentes de datos y sus potenciales implicaciones para la correlación y regresión**
 - Para cada una de las cinco fuentes designadas (Google Books Ngram, Crossref.org, Google Trends, Bain & Company Usability Data, y Bain & Company Satisfaction Ratings), recordar brevemente:
     - Su naturaleza y el tipo de "señal" que captura sobre la herramienta gerencial (e.g., interés público general, discurso académico, adopción/satisfacción industrial).
-    - Cómo estas características podrían *a priori* influir en las correlaciones esperadas (o ausencia de ellas) con otras fuentes. Por ejemplo, ¿se espera que Google Trends preceda a Crossref? ¿Deberían las métricas de Bain correlacionarse fuertemente entre sí?
+    - Cómo estas características podrían *a priori* influir en las correlaciones y modelos de regresión esperados (o ausencia de ellos) con otras fuentes. Por ejemplo, ¿se espera que Google Trends preceda a Crossref? ¿Deberían las métricas de Bain correlacionarse fuertemente entre sí y ser buenos predictores mutuos?
 
-### **B. Posibles implicaciones del análisis de correlación**
-- Validar si el interés o uso de {all_kw} evoluciona de manera similar o disimilar a través de diferentes sectores (público, académico, industrial).
-- Identificar posibles desfases temporales que podrían sugerir dinámicas de influencia o difusión (ej., si una fuente actúa como indicador líder o rezagado respecto a otras).
-- Entender la robustez de las tendencias de {all_kw}: ¿son fenómenos aislados en ciertos dominios o patrones más generalizados?
-- Aportar información para estrategias de comunicación, investigación o inversión relacionadas con {all_kw}, al comprender mejor cómo se interconectan sus distintas manifestaciones.
+### **B. Posibles implicaciones del análisis de correlación y regresión**
+- Validar si el interés o uso de {all_kw} evoluciona de manera similar o disimilar a través de diferentes sectores (público, académico, industrial) y si estas relaciones pueden ser modeladas.
+- Identificar posibles desfases temporales que podrían sugerir dinámicas de influencia o difusión (ej., si una fuente actúa como indicador líder o rezagado respecto a otras) y cuantificar estas relaciones mediante regresión.
+- Entender la robustez de las tendencias de {all_kw}: ¿son fenómenos aislados en ciertos dominios o patrones más generalizados con interdependencias modelables?
+- Aportar información para estrategias de comunicación, investigación o inversión relacionadas con {all_kw}, al comprender mejor cómo se interconectan y predicen sus distintas manifestaciones.
 
-## **II. Presentación de datos y matriz de correlación**
-- Indicar que el análisis se basa en los datos de series temporales combinadas para {all_kw} de las cinco fuentes (referencia a `{csv_combined_data}`) y la matriz de correlación calculada a partir de estos (`{csv_corr_matrix}`).
+## **II. Presentación de datos, matriz de correlación y modelos de regresión**
+- Indicar que el análisis se basa en los datos de series temporales combinadas para {all_kw} de las cinco fuentes (referencia a `{csv_combined_data}`), la matriz de correlación calculada (`{csv_corr_matrix}`) y los resultados de los análisis de regresión (`{csv_regression}`).
 
 ### **A. Matriz de Correlación para {all_kw} entre las Cinco Fuentes Designadas**
 - Presentar la matriz de correlación (`{csv_corr_matrix}`) de forma clara, mostrando los coeficientes de correlación (ej. Pearson) entre cada par de las cinco fuentes de datos para la herramienta {all_kw}.
 - Mencionar el periodo temporal cubierto por los datos utilizados para calcular la matriz.
 - Especificar si se han considerado ajustes por lags temporales en el cálculo de la matriz presentada, o si son correlaciones contemporáneas.
 
-### **B. Interpretación Técnica Preliminar de la Matriz de Correlación**
-- Realizar una lectura inicial de la matriz, destacando:
+### **B. Análisis de Regresión entre Fuentes para {all_kw}**
+- Presentar los resultados de los análisis de regresión (`{csv_regression}`) para pares de fuentes relevantes.
+- Para cada par analizado, mostrar una tabla comparativa de los diferentes modelos de regresión:
+    - **Tipo de Regresión:** Lineal, Cuadrática, Cúbica, Polinomial (especificar grado si es mayor a 3).
+    - **R-cuadrado (R²):** Indicar el R² para cada modelo.
+    - **Coeficientes:** Presentar los coeficientes estimados para cada modelo.
+    - **Significancia (Valores p):** Si están disponibles, indicar la significancia de los coeficientes.
+    - **Estadísticas de Ajuste del Modelo:** (ej., AIC, BIC, si disponibles y relevantes).
+- Destacar el modelo de mejor ajuste para cada par de fuentes, justificando la elección (ej., mayor R², significancia de coeficientes, parsimonia).
+
+### **C. Interpretación Técnica Preliminar de la Matriz de Correlación y los Modelos de Regresión**
+- Realizar una lectura inicial de la matriz de correlación, destacando:
     - Las correlaciones más fuertes (positivas y negativas) y su posible significancia estadística (si se provee).
     - Las correlaciones más débiles o cercanas a cero.
-    - Cualquier patrón evidente a primera vista (ej., si un grupo de fuentes parece correlacionar más entre sí).
+- Realizar una lectura inicial de los resultados de regresión, destacando:
+    - Pares de fuentes donde se encontraron modelos de regresión con buen ajuste (alto R²).
+    - Tipos de relaciones funcionales identificadas (lineal, cuadrática, etc.).
+    - Cualquier patrón evidente a primera vista (ej., si un grupo de fuentes parece tener relaciones predictivas más fuertes entre sí).
 
-## **III. Análisis detallado de correlaciones significativas (o su ausencia)**
-- Esta sección profundiza en la interpretación de los coeficientes de correlación más relevantes (o la falta de correlación donde se esperaría).
+## **III. Análisis detallado de correlaciones y regresiones significativas (o su ausencia)**
+- Esta sección profundiza en la interpretación de los coeficientes de correlación y los parámetros de los modelos de regresión más relevantes (o la falta de relaciones significativas donde se esperarían).
 
-### **A. Análisis de Correlaciones entre Pares de Fuentes Específicas**
-- Para cada par de fuentes con una correlación notable (o ausencia notable de ella), discutir:
-    - **Ejemplo de Subsección: Correlación entre Google Trends y Crossref.org para {all_kw}**
-        - Valor del coeficiente de correlación y su significancia (si disponible).
-        - Interpretación de esta relación: ¿Sugiere que el interés público general (Google Trends) se mueve en sintonía con la producción académica (Crossref)? ¿Hay desfase?
-        - Contextualización: ¿Es esperable esta relación dada la naturaleza de ambas fuentes y el tipo de herramienta {all_kw}?
-        - Factores potenciales que podrían explicar esta correlación (o su ausencia). Por ejemplo, ¿eventos externos que impactan ambos dominios simultáneamente o con cierto retraso?
+### **A. Análisis de Correlaciones y Regresiones entre Pares de Fuentes Específicas**
+- Para cada par de fuentes con una correlación y/o regresión notable (o ausencia notable de ella), discutir:
+    - **Ejemplo de Subsección: Relación entre Google Trends y Crossref.org para {all_kw}**
+        - **Correlación:** Valor del coeficiente de correlación y su significancia (si disponible).
+        - **Regresión:** Resumen del modelo de mejor ajuste (tipo, R², coeficientes principales y su significancia). ¿Qué tan bien predice una fuente a la otra?
+        - **Interpretación conjunta:** ¿La relación sugiere que el interés público general (Google Trends) se mueve en sintonía con la producción académica (Crossref) y/o la predice? ¿Hay desfase?
+        - **Contextualización:** ¿Es esperable esta relación dada la naturaleza de ambas fuentes y el tipo de herramienta {all_kw}?
+        - **Factores potenciales:** ¿Qué podría explicar esta relación (o su ausencia)? Por ejemplo, ¿eventos externos que impactan ambos dominios simultáneamente o con cierto retraso?
 - Organizar esta sección por pares de fuentes o por agrupaciones lógicas de fuentes (ej., fuentes de interés público, fuentes académicas, fuentes industriales).
 
-### **B. Discusión de Correlaciones Positivas Fuertes**
-- Identificar los pares de fuentes que muestran una fuerte correlación positiva.
-- Interpretar qué significa esta sincronicidad en el contexto de {all_kw}.
+### **B. Discusión de Correlaciones Positivas Fuertes y Modelos Predictivos Robustos**
+- Identificar los pares de fuentes que muestran una fuerte correlación positiva y/o donde los modelos de regresión tienen un alto poder predictivo.
+- Interpretar qué significa esta sincronicidad y capacidad predictiva en el contexto de {all_kw}.
 
-### **C. Discusión de Correlaciones Negativas Fuertes (si existen)**
-- Identificar los pares de fuentes que muestran una fuerte correlación negativa.
+### **C. Discusión de Correlaciones Negativas Fuertes y Modelos Inversos (si existen)**
+- Identificar los pares de fuentes que muestran una fuerte correlación negativa y/o modelos de regresión con relaciones inversas significativas.
 - Interpretar qué podría implicar esta relación inversa para la herramienta {all_kw}.
 
-### **D. Discusión de Correlaciones Débiles o Ausencia de Correlación**
-- Identificar pares de fuentes donde la correlación es débil o inexistente, especialmente si *a priori* se podría haber esperado alguna relación.
-- Interpretar qué podría significar esta independencia o baja asociación. ¿Operan en dominios completamente separados? ¿La herramienta tiene manifestaciones distintas en cada uno?
+### **D. Discusión de Correlaciones Débiles, Ausencia de Correlación y Modelos de Regresión No Significativos**
+- Identificar pares de fuentes donde la correlación es débil o inexistente, y/o donde los modelos de regresión no son significativos o tienen bajo poder predictivo, especialmente si *a priori* se podría haber esperado alguna relación.
+- Interpretar qué podría significar esta independencia o baja asociación. ¿Operan en dominios completamente separados? ¿La herramienta tiene manifestaciones distintas en cada uno que no se predicen mutuamente?
 
-## **IV. Interpretación consolidada de los patrones de correlación**
-- Sintetizar los hallazgos para obtener una visión global de las interrelaciones.
+## **IV. Interpretación consolidada de los patrones de correlación y regresión**
+- Sintetizar los hallazgos para obtener una visión global de las interrelaciones y la predictibilidad.
 
-### **A. Sincronicidad General, Desfases y Posibles Indicadores Líderes/Rezagados**
+### **A. Sincronicidad General, Desfases y Posibles Indicadores Líderes/Rezagados (basados en Correlación y Regresión)**
 - Evaluar el grado general de acuerdo o desacuerdo entre las fuentes en cuanto a las tendencias de {all_kw}.
-- Discutir si alguna(s) fuente(s) parecen consistentemente anticipar (líder) o seguir (rezagada) las tendencias en otra(s). Esto puede requerir análisis de correlaciones con desfase (lagged correlations), si los datos lo permiten y se indica. Si no, basarse en la interpretación lógica de las correlaciones contemporáneas.
-- *Advertir explícitamente que la identificación de líderes/rezagados basada solo en correlación es especulativa y no implica causalidad.*
+- Discutir si alguna(s) fuente(s) parecen consistentemente anticipar (líder) o seguir (rezagada) las tendencias en otra(s), utilizando tanto la evidencia de correlaciones con desfase (si se analizaron) como la dirección de las relaciones en los modelos de regresión.
+- *Advertir explícitamente que la identificación de líderes/rezagados basada solo en correlación/regresión es especulativa y no implica causalidad.*
 
-### **B. Agrupaciones de Fuentes con Comportamiento Correlacional Similar (Clusters)**
-- Identificar si existen "clusters" de fuentes que tienden a correlacionar fuertemente entre sí, pero débilmente con otras fuentes fuera del clúster.
-- Interpretar qué podrían significar estos agrupamientos en términos de cómo se percibe o utiliza {all_kw} en diferentes "esferas" (ej., esfera pública, esfera académica, esfera industrial).
+### **B. Agrupaciones de Fuentes con Comportamiento Correlacional y Predictivo Similar (Clusters)**
+- Identificar si existen "clusters" de fuentes que tienden a correlacionar fuertemente y/o predecirse bien entre sí, pero débilmente con otras fuentes fuera del clúster.
+- Interpretar qué podrían significar estos agrupamientos en términos de cómo se percibe, utiliza y predice {all_kw} en diferentes "esferas" (ej., esfera pública, esfera académica, esfera industrial).
 
-### **C. Interpretación de la Magnitud y Dispersión de las Correlaciones**
-- ¿Son las correlaciones generalmente altas, sugiriendo un fenómeno cohesivo, o son mayormente bajas y dispersas, sugiriendo una fragmentación en la evolución de la herramienta?
+### **C. Interpretación de la Magnitud y Dispersión de las Correlaciones y la Calidad de los Modelos de Regresión**
+- ¿Son las correlaciones generalmente altas y los modelos de regresión robustos, sugiriendo un fenómeno cohesivo y predecible, o son mayormente bajos y dispersos, sugiriendo una fragmentación en la evolución de la herramienta con baja predictibilidad entre dominios?
 
-## **V. Implicaciones del análisis de correlación inter-fuentes para {all_kw}**
-- Sintetizar los hallazgos y ofrecer perspectivas para diferentes audiencias, enfocándose en lo que las interrelaciones (o su ausencia) significan.
+## **V. Implicaciones del análisis de correlación y regresión inter-fuentes para {all_kw}**
+- Sintetizar los hallazgos y ofrecer perspectivas para diferentes audiencias, enfocándose en lo que las interrelaciones, su modelización y predictibilidad (o su ausencia) significan.
 
 ### **A. Contribuciones para Investigadores, Académicos y Analistas**
-- ¿Cómo ayuda este análisis de correlación a entender la validez y el alcance de los estudios basados en una única fuente?
-- Sugerencias para futuras investigaciones que exploren las causas de las correlaciones observadas o la falta de ellas (ej. estudios cualitativos, análisis de causalidad).
+- ¿Cómo ayuda este análisis de correlación y regresión a entender la validez, el alcance de los estudios basados en una única fuente y la predictibilidad entre dominios?
+- Sugerencias para futuras investigaciones que exploren las causas de las relaciones observadas o la falta de ellas (ej. estudios cualitativos, análisis de causalidad).
 
 ### **B. Recomendaciones y Sugerencias para Asesores y Consultores**
-- ¿Cómo pueden utilizar esta información sobre interconexiones (o desconexiones) entre dominios para asesorar sobre la adopción, adaptación o el "timing" de estrategias relacionadas con {all_kw}?
-- Advertencias sobre generalizar tendencias de un dominio a otro sin considerar sus correlaciones.
+- ¿Cómo pueden utilizar esta información sobre interconexiones, modelos predictivos (o desconexiones) entre dominios para asesorar sobre la adopción, adaptación o el "timing" de estrategias relacionadas con {all_kw}?
+- Advertencias sobre generalizar tendencias o predicciones de un dominio a otro sin considerar sus correlaciones y la validez de los modelos de regresión.
 
 ### **C. Consideraciones para Directivos y Gerentes de Organizaciones**
-- ¿Cómo puede este análisis informar la toma de decisiones estratégicas sobre {all_kw}? Por ejemplo, si el interés público (Google Trends) está fuertemente correlacionado y adelanta a la adopción industrial (Bain), podría ser una señal a monitorear.
-- Considerar las implicaciones para diferentes tipos de organizaciones (Públicas, Privadas, PYMES, Multinacionales, ONGs) basadas en cuán conectadas están las tendencias que más les afectan.
+- ¿Cómo puede este análisis informar la toma de decisiones estratégicas sobre {all_kw}? Por ejemplo, si el interés público (Google Trends) está fuertemente correlacionado, predice y adelanta a la adopción industrial (Bain), podría ser una señal a monitorear.
+- Considerar las implicaciones para diferentes tipos de organizaciones (Públicas, Privadas, PYMES, Multinacionales, ONGs) basadas en cuán conectadas y predecibles son las tendencias que más les afectan.
 
-## **VI. Síntesis y reflexiones finales sobre la correlación inter-fuentes para {all_kw}**
-- Sintetizar los *principales patrones de correlación* (o ausencia de ellos) encontrados para {all_kw} entre las cinco fuentes.
-- Evaluar críticamente qué nos dice este entramado de relaciones sobre la naturaleza de {all_kw} y su ciclo de vida. ¿Es un fenómeno unificado o multifacético con dinámicas propias en cada dominio?
-- Reconocer *explícitamente* las *limitaciones* del análisis de correlación (ej., no implica causalidad, puede ser sensible a la elección del periodo, a la transformación de los datos, etc.).
-- Sugerir *brevemente* posibles líneas de investigación futuras que podrían construir sobre estos hallazgos correlacionales, como el análisis de causalidad de Granger o modelos de series de tiempo multivariados.
+## **VI. Síntesis y reflexiones finales sobre la correlación y regresión inter-fuentes para {all_kw}**
+- Sintetizar los *principales patrones de correlación y modelos de regresión* (o ausencia de ellos) encontrados para {all_kw} entre las cinco fuentes.
+- Evaluar críticamente qué nos dice este entramado de relaciones (y su modelización) sobre la naturaleza de {all_kw} y su ciclo de vida. ¿Es un fenómeno unificado, predecible entre dominios, o multifacético con dinámicas propias en cada uno?
+- Reconocer *explícitamente* las *limitaciones* del análisis de correlación y regresión (ej., no implica causalidad, puede ser sensible a la elección del periodo, a la transformación de los datos, a la multicolinealidad, etc.).
+- Sugerir *brevemente* posibles líneas de investigación futuras que podrían construir sobre estos hallazgos, como el análisis de causalidad de Granger o modelos de series de tiempo multivariados más complejos.
 
 # In the "Data Required" section, add:
 
@@ -2116,15 +2131,21 @@ Contenido esperado que se debe presentar:
     *   Es importante que se especifique el periodo temporal de los datos usados para calcular esta matriz y si se aplicaron transformaciones o consideraciones de desfase (lags).
 
 2.  **Combined Source Trends Data for {all_kw}:**
-    *   Los datos de series temporales subyacentes (`{csv_combined_data}`) para {all_kw} de cada una de las cinco fuentes, preferiblemente alineadas temporalmente y procesadas de manera que sean aptas para el cálculo de correlaciones (ej., misma frecuencia si es posible, manejo de datos faltantes). Este dato es el insumo para la `{csv_corr_matrix}` y puede ser útil para visualizaciones o interpretaciones contextuales.
+    *   Los datos de series temporales subyacentes (`{csv_combined_data}`) para {all_kw} de cada una de las cinco fuentes, preferiblemente alineadas temporalmente y procesadas de manera que sean aptas para el cálculo de correlaciones y regresiones (ej., misma frecuencia si es posible, manejo de datos faltantes). Este dato es el insumo para la `{csv_corr_matrix}` y `{csv_regression}` y puede ser útil para visualizaciones o interpretaciones contextuales.
 
 3.  **Regression Analysis Results for {all_kw}:**
-    *   Los resultados del análisis de regresión (`{csv_regression}`) que incluyen:
-        - Coeficientes de regresión para cada par de fuentes
-        - Valores de intersección
-        - Valores R-cuadrado
-        - Combinaciones de pares analizados
-    *   Esta información complementa el análisis de correlación al proporcionar una medida más robusta de las relaciones entre fuentes y su capacidad predictiva.
+    *   Los resultados del análisis de regresión (`{csv_regression}`) que deben incluir, para cada par de fuentes analizado y para cada tipo de regresión (lineal, cuadrática, cúbica, polinomial):
+        - Nombre de la variable dependiente e independiente.
+        - Tipo de modelo de regresión.
+        - Coeficientes de regresión (incluyendo la intersección).
+        - Errores estándar de los coeficientes.
+        - Valores t (o Z) para los coeficientes.
+        - Valores p para los coeficientes (significancia).
+        - Valor R-cuadrado (R²).
+        - Valor R-cuadrado ajustado (Adjusted R²).
+        - Estadístico F del modelo y su valor p (significancia general del modelo).
+        - Opcional: AIC (Akaike Information Criterion), BIC (Bayesian Information Criterion).
+    *   Es crucial presentar esta información en tablas comparativas claras para cada par de fuentes, mostrando los resultados de los distintos tipos de regresión lado a lado para facilitar la selección del mejor modelo.
     
 IMPORTANT:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -2133,22 +2154,26 @@ IMPORTANT:
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
 - **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español), incluyendo, pero no limitándose a:
   - Rol e Identidad (experto consultor).
-  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso de las correlaciones, *no* conclusiones definitivas sobre causalidad).
-  - Rigurosidad Estadística (interpretación adecuada de coeficientes de correlación, mención de significancia si está disponible).
-  - Perspicacia Interpretativa (explicaciones *profundas* de lo que las correlaciones significan, *múltiples* perspectivas, cuestionamientos críticos).
-  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones* del análisis de correlación).
-  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* por las interrelaciones entre fuentes).
+  - Objetivo Principal (análisis lógico, secuencial, sistemático, riguroso de las correlaciones y regresiones, *no* conclusiones definitivas sobre causalidad).
+  - Rigurosidad Estadística (interpretación adecuada de coeficientes, R², valores p, mención de significancia).
+  - Perspicacia Interpretativa (explicaciones *profundas* de lo que las correlaciones y regresiones significan, *múltiples* perspectivas, cuestionamientos críticos).
+  - Manejo de la Incertidumbre (lenguaje *cauteloso*, reconocimiento de *limitaciones* del análisis).
+  - Énfasis en la Interpretación (*análisis hermenéutico profundo* de la *historia que puede ser contada* por las interrelaciones y modelos predictivos entre fuentes).
 - **No** incluir referencias a nombres de prompts en el texto del informe.
 - **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe.
-- **No** mencionar explícitamente la ausencia de datos si esto impide algún cálculo menor, simplemente omitir esa parte. Si la ausencia de datos es fundamental (ej. falta toda una serie para una fuente), el análisis de correlación para esa fuente no será posible y eso debe ser manejado en la presentación de la matriz.
+- **No** mencionar explícitamente la ausencia de datos si esto impide algún cálculo menor, simplemente omitir esa parte. Si la ausencia de datos es fundamental (ej. falta toda una serie para una fuente), el análisis para esa fuente no será posible y eso debe ser manejado en la presentación de los resultados.
 - **No**es necesario repetir los datos completos al final del informe.
 - Asegurar que haya un *único título principal* claro y conciso.
 - **No** usar corchetes para encerrar los nombres de las herramientas gerenciales en la redacción de los textos.
 - **Desarrollar y ampliar** los apartados, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo.
-- **Redactar el informe** como un consultor senior para una audiencia experta. Los datos cuantitativos (coeficientes de correlación) deben ser la base del informe.
-- **Énfasis en la Narrativa Interpretativa de las Correlaciones:** Desarrolla una narrativa *completa* y *perspicaz*. *No te límites a presentar solo la matriz*. Explica *qué significan* estas correlaciones (o su ausencia), *por qué* son importantes, y *cómo* se relacionan con el contexto de {all_kw} y las fuentes de datos.
+- **Redactar el informe** como un consultor senior para una audiencia experta. Los datos cuantitativos (coeficientes, R², valores p) deben ser la base del informe.
+- **Énfasis en la Narrativa Interpretativa de las Correlaciones y Regresiones:** Desarrolla una narrativa *completa* y *perspicaz*. *No te límites a presentar solo las matrices o tablas*. Explica *qué significan* estas relaciones (o su ausencia), *por qué* son importantes, y *cómo* se relacionan con el contexto de {all_kw} y las fuentes de datos.
 - **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
-- **IMPORTANTE:** El informe debe basarse *exclusivamente* en la información y datos *disponibles* (`{csv_corr_matrix}`, `{csv_combined_data}`). No especular sobre correlaciones que no se pueden calcular con los datos provistos.
+- **Formato de Salida para Tablas de Regresión:**
+    - Cada sección de análisis de regresión para un par de fuentes debe incluir una tabla comparativa en Markdown que muestre claramente los resultados para los modelos lineal, cuadrático, cúbico y polinomial.
+    - La tabla debe incluir: Tipo de regresión, R-cuadrado, R-cuadrado ajustado, Coeficientes (con su significancia si es posible), Estadístico F del modelo (con su significancia).
+    - Incluir encabezados y etiquetas claras para todas las tablas.
+- **IMPORTANTE:** El informe debe basarse *exclusivamente* en la información y datos *disponibles* (`{csv_corr_matrix}`, `{csv_combined_data}`, `{csv_regression}`). No especular sobre relaciones que no se pueden calcular o modelar con los datos provistos.
 
 """
 
