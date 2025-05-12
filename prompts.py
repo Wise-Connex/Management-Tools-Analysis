@@ -2117,7 +2117,6 @@ Contenido esperado que se debe presentar:
 - Reconocer *explícitamente* las *limitaciones* del análisis de correlación y regresión (ej., no implica causalidad, puede ser sensible a la elección del periodo, a la transformación de los datos, a la multicolinealidad, etc.).
 - Sugerir *brevemente* posibles líneas de investigación futuras que podrían construir sobre estos hallazgos, como el análisis de causalidad de Granger o modelos de series de tiempo multivariados más complejos.
 
-# In the "Data Required" section, add:
 
 **Data Required:**
 

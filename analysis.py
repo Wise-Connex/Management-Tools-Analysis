@@ -5188,7 +5188,7 @@ def ai_analysis():
     n=0
     n+=1
     
-    '''
+    #'''
     if top_choice == 1:
         p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \
                           csv_all_data=csv_all_data, csv_significance=csv_significance, \
@@ -5214,7 +5214,7 @@ def ai_analysis():
     
     #display(Markdown(gem_temporal_trends_sp))
     print(gem_temporal_trends_sp)
-    '''
+    #'''
 
     if not one_keyword or top_choice == 2:
       n+=1
