@@ -5248,7 +5248,7 @@ def ai_analysis():
             csv_data_for_prompt = truncated_csv
         else:
             csv_data_for_prompt = csv_combined_data
-            csv_regression_for_prompt = csv_regression.to_csv(index=False)
+            csv_regression_for_prompt = csv_regression.to_string()
             
         p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=all_kw, 
                                                csv_corr_matrix=csv_correlation, 
