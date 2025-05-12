@@ -256,9 +256,9 @@ def gemini_prompt(system_prompt, prompt, m='pro', max_retries=5, initial_backoff
   #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
 
   if m == 'pro':
-    model = 'gemini-2.5-pro-exp-03-25' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model = 'gemini-2.5-pro-preview-05-06' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
   else:
-    model = 'gemini-2.0-flash' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
+    model = 'gemini-2.5-flash-preview-04-17' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
   temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
   stop_sequence = '*** END ANALYSIS ***'
 
@@ -4728,11 +4728,10 @@ def results():
                 else:
                     print("Warning: No raw analysis results returned from trends function; cannot generate bar chart.")
 
-
                 # Set the header/title for the combined analysis section in reports
                 csv_means_trendsA = "Combined Analysis - Means and Trends\n</br> Trend NADT: Normalized Annual Desviation\n</br> Trend MAST: Moving Average Smoothed Trend\n\n"
                 # Indicate that detailed CSV is in csv_combined_analysis
-                csv_means_trends = "# Combined analysis performed. See Combined Analysis CSV below.\n"
+                csv_means_trends = csv_combined_analysis
                 csv_significance = "# Combined analysis doesn't generate single-keyword significance text.\n"
                 all_keywords = combined_dataset.columns.tolist() # Store the list of sources/columns
         else:
@@ -5150,11 +5149,13 @@ def ai_analysis():
     global gem_conclusions_sp
     global csv_combined_data
     global csv_correlation
+    global csv_regression
     global gem_summary_sp
     global csv_all_data
 
-    if total_years < 20:
-        csv_all_data = ""
+    if top_choice == 1 or top_choice == 3:
+        if total_years < 20:
+            csv_all_data = ""
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
 
@@ -5167,22 +5168,27 @@ def ai_analysis():
     gem_conclusions_sp = ""
     gem_summary_sp = ""
 
-
-'''
-
-    if top_choice == 1:
+    if top_choice == 1 or top_choice == 3:
         f_system_prompt = system_prompt_1.format(dbs=actual_menu)
+    elif top_choice == 2:
+        sel_sources = ", ".join(dbase_options[source] for source in selected_sources)
+        f_system_prompt = system_prompt_2.format(selected_sources=sel_sources)
+        csv_combined_data = combined_dataset.to_csv(index=True)
     else:
         sel_sources = ", ".join(dbase_options[source] for source in selected_sources)
         f_system_prompt = system_prompt_2.format(selected_sources=sel_sources)
         csv_combined_data = combined_dataset.to_csv(index=True)
 
     # Add the selected_sources parameter to the format call
-    if top_choice == 1:
+    if top_choice == 1 or top_choice == 3:
         p_sp = prompt_sp.format(all_kws=all_keywords, selected_sources="")
     else:
-        p_sp = prompt_sp.format(all_kws=actual_menu, selected_sources=sel_sources)
+        p_sp = prompt_sp.format(all_kws=all_kw, selected_sources=sel_sources)
 
+    n=0
+    n+=1
+    
+    '''
     if top_choice == 1:
         p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \
                           csv_all_data=csv_all_data, csv_significance=csv_significance, \
@@ -5190,12 +5196,9 @@ def ai_analysis():
                           csv_last_5_data=csv_last_5_data, csv_last_year_data=csv_last_year_data, \
                           csv_means_trends=csv_means_trends)        
     else:
-        p_1 = temporal_analysis_prompt_2.format(selected_sources=sel_sources, all_kw=actual_menu, \
-                          csv_combined_data=csv_combined_data, csv_means_trends=csv_means_trends, \
-                          csv_corr_matrix=csv_correlation)
+        p_1 = temporal_analysis_prompt_2.format(selected_sources=sel_sources, all_kw=all_kw, \
+                          csv_combined_data=csv_combined_data, csv_means_trends=csv_means_trends)
     
-    n=0
-    n+=1
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
     gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
@@ -5211,8 +5214,9 @@ def ai_analysis():
     
     #display(Markdown(gem_temporal_trends_sp))
     print(gem_temporal_trends_sp)
+    '''
 
-    if not one_keyword:
+    if not one_keyword or top_choice == 2:
       n+=1
       if top_choice == 1:
         p_2 = cross_relationship_prompt_1.format(dbs=actual_menu, csv_corr_matrix=csv_correlation, csv_regression=csv_regression)
@@ -5244,10 +5248,11 @@ def ai_analysis():
             csv_data_for_prompt = truncated_csv
         else:
             csv_data_for_prompt = csv_combined_data
+            csv_regression_for_prompt = csv_regression.to_csv(index=False)
             
-        p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=actual_menu, 
-                                               csv_corr_matrix=csv_corr_for_prompt, 
-                                               csv_combined_data=csv_data_for_prompt)        
+        p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=all_kw, 
+                                               csv_corr_matrix=csv_correlation, 
+                                               csv_combined_data=csv_combined_data, csv_regression=csv_regression_for_prompt)        
         print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
       
       print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
@@ -5268,7 +5273,7 @@ def ai_analysis():
       gem_cross_keyword=""
       csv_correlation=""
       csv_regression=""
-
+'''
     n+=1
     if top_choice == 1:
       p_3 = trend_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, csv_means_trends=csv_means_trends, analisis_temporal_ai=gem_temporal_trends)
@@ -7603,7 +7608,7 @@ def main():
                  
             # --- Run Analysis for Option 2 ---
             results()
-            #ai_analysis()
+            ai_analysis()
             #report_pdf()
             # ----------------------------------
 

@@ -1785,6 +1785,20 @@ Contenido esperado que se debe presentar:
     - Intentar proponer una clasificación global sintetizada si hay suficiente convergencia, o describir el rango de clasificaciones si la divergencia es marcada, explicando qué significa este espectro.
 - Descripción clara y concisa de la etapa actual del ciclo de vida (por fuente y comparada), y las métricas calculadas.
 
+### **F. Análisis de tendencias (por fuente y comparativo)**
+- **Análisis por Fuente de Datos:** Para cada una de las cinco fuentes designadas:
+    - Definición del tipo de tendencia, estableciendo criterios *objetivos* para identificar tendencias significativas.
+    - Justificar la elección de los criterios de tendencia para cada fuente.
+    - Identificación de las tendencias principales aplicando los criterios establecidos.
+    - Cálculos para cada tendencia: fechas de inicio, fin, duración, magnitud del cambio, tasa de cambio promedio.
+    - Tabla de resumen de resultados para la fuente.
+    - Contexto de las tendencias para la fuente, analizando factores externos relevantes.
+- **Síntesis Comparativa de Tendencias:**
+    - Comparar las tendencias identificadas a través de las diferentes fuentes.
+    - Discutir similitudes y diferencias en la dirección, magnitud y duración de las tendencias.
+    - Analizar si las tendencias son consistentes o divergentes entre fuentes.
+    - Evaluar cómo el contexto de los factores externos se alinea o difiere entre las fuentes para las tendencias identificadas.
+
 ## **IV. Análisis e interpretación comparativa: contextualización y significado multi-fuente**
 - Esta sección es el *núcleo interpretativo* del informe. Construir una *narrativa* que integre los hallazgos estadísticos de *todas las fuentes*, contrastándolos y sintetizándolos para ofrecer una interpretación en el contexto de la investigación. Se debe ir *más allá* de la descripción de cada fuente, enfocándose en el significado de las convergencias y divergencias. Estilo *fluido* y *narrativo*, *evitando* la repetición innecesaria.
 
@@ -1847,55 +1861,15 @@ Contenido esperado que se debe presentar:
 1.  **Management Tool Data for {all_kw} (one tool):**
     Provide data for the management tool "{all_kw}" from each of the following five sources. For each source, provide data for the specified timeframes. Data should generally be monthly, except for Google Books Ngram (yearly). Metrics should be relative usage/adoption values as appropriate for each source.
 
-    *   **A. Google Books Ngram Data:**
-        *   All available years: {csv_google_books_all_data}
-        *   Last 20 years (if applicable): {csv_google_books_last_20_data}
-        *   Last 15 years (if applicable): {csv_google_books_last_15_data}
-        *   Last 10 years (if applicable): {csv_google_books_last_10_data}
-        *   Last 5 years (if applicable): {csv_google_books_last_5_data}
-        *   Last year (if applicable): {csv_google_books_last_year_data}
-
-    *   **B. Crossref.org Data:**
-        *   All available years: {csv_crossref_all_data}
-        *   Last 20 years: {csv_crossref_last_20_data}
-        *   Last 15 years: {csv_crossref_last_15_data}
-        *   Last 10 years: {csv_crossref_last_10_data}
-        *   Last 5 years: {csv_crossref_last_5_data}
-        *   Last year: {csv_crossref_last_year_data}
-
-    *   **C. Google Trends Data:**
-        *   All available years: {csv_google_trends_all_data}
-        *   Last 20 years: {csv_google_trends_last_20_data}
-        *   Last 15 years: {csv_google_trends_last_15_data}
-        *   Last 10 years: {csv_google_trends_last_10_data}
-        *   Last 5 years: {csv_google_trends_last_5_data}
-        *   Last year: {csv_google_trends_last_year_data}
-
-    *   **D. Bain & Company Usability Data:**
-        *   All available years: {csv_bain_usability_all_data}
-        *   Last 20 years: {csv_bain_usability_last_20_data}
-        *   Last 15 years: {csv_bain_usability_last_15_data}
-        *   Last 10 years: {csv_bain_usability_last_10_data}
-        *   Last 5 years: {csv_bain_usability_last_5_data}
-        *   Last year: {csv_bain_usability_last_year_data}
-
-    *   **E. Bain & Company Satisfaction Ratings Data:**
-        *   All available years: {csv_bain_satisfaction_all_data}
-        *   Last 20 years: {csv_bain_satisfaction_last_20_data}
-        *   Last 15 years: {csv_bain_satisfaction_last_15_data}
-        *   Last 10 years: {csv_bain_satisfaction_last_10_data}
-        *   Last 5 years: {csv_bain_satisfaction_last_5_data}
-        *   Last year: {csv_bain_satisfaction_last_year_data}
+    *   **Data Sources:**
+        *   Combined data from all sources: {csv_combined_data}
+        *   Trend analysis data: {csv_means_trends}
 
 2.  **Analytical Tasks (to be performed first for each source individually, then comparatively across the five sources):**
     *   **1. Identify Peak Periods:** For each source, determine peak adoption/usage periods. Then, compare these across sources, analyzing context, drivers, magnitude, and duration.
     *   **2. Analyze Decline Phases:** For each source, identify significant decreases. Then, compare rates, patterns, and potential causes across sources. Calculate decline velocities.
     *   **3. Evaluate Pattern Changes:** For each source, detect revival or evolution patterns. Then, compare these changes and their significance across sources.
     *   **4. Analyze Lifecycle Patterns:** For each source, assess the overall lifecycle stage. Then, compare lifecycle durations and common evolution patterns, and calculate relevant metrics (duration, intensity, stability) comparatively or for each source with a summary discussion.
-
-3.  **Contextual Data (if available and relevant for comparative analysis):**
-    *   Aggregated or source-specific trends and means for {all_kw} over various periods, with clear indication of data source if specific, or methodology if aggregated: {csv_comparative_means_trends}
-    *   Statistical significance indicators relevant to cross-source comparisons or individual source analyses that will be compared: {csv_comparative_significance}
 
 IMPORTANT:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
@@ -2126,6 +2100,8 @@ Contenido esperado que se debe presentar:
 - Reconocer *explícitamente* las *limitaciones* del análisis de correlación (ej., no implica causalidad, puede ser sensible a la elección del periodo, a la transformación de los datos, etc.).
 - Sugerir *brevemente* posibles líneas de investigación futuras que podrían construir sobre estos hallazgos correlacionales, como el análisis de causalidad de Granger o modelos de series de tiempo multivariados.
 
+# In the "Data Required" section, add:
+
 **Data Required:**
 
 1.  **Cross-Source Correlation Matrix for {all_kw}:**
@@ -2140,6 +2116,14 @@ Contenido esperado que se debe presentar:
 2.  **Combined Source Trends Data for {all_kw}:**
     *   Los datos de series temporales subyacentes (`{csv_combined_data}`) para {all_kw} de cada una de las cinco fuentes, preferiblemente alineadas temporalmente y procesadas de manera que sean aptas para el cálculo de correlaciones (ej., misma frecuencia si es posible, manejo de datos faltantes). Este dato es el insumo para la `{csv_corr_matrix}` y puede ser útil para visualizaciones o interpretaciones contextuales.
 
+3.  **Regression Analysis Results for {all_kw}:**
+    *   Los resultados del análisis de regresión (`{csv_regression}`) que incluyen:
+        - Coeficientes de regresión para cada par de fuentes
+        - Valores de intersección
+        - Valores R-cuadrado
+        - Combinaciones de pares analizados
+    *   Esta información complementa el análisis de correlación al proporcionar una medida más robusta de las relaciones entre fuentes y su capacidad predictiva.
+    
 IMPORTANT:
 - Since Charts and Visualizations will be included at the end of the report, please don't mention them here.
 - Avoid to give Recomendations for better or aditional analysis.
