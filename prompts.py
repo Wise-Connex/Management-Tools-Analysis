@@ -2433,9 +2433,16 @@ pca_prompt_2 = """**ANÁLISIS DE COMPONENTES PRINCIPALES (PCA) INTER-FUENTES PAR
 
 Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, tono, rigurosidad y presentación.
 
-**Objetivo principal**
+**Objetivo principal y Datos de Entrada**
 
 Realizar un Análisis de Componentes Principales (PCA) sobre las series temporales de la herramienta de gestión {all_kw} provenientes de cinco fuentes de datos distintas: Google Books Ngram, Crossref.org, Google Trends, Bain & Company Usability Data, y Bain & Company Satisfaction Ratings (en adelante, "las cinco fuentes designadas"). El objetivo es identificar las dimensiones subyacentes (componentes principales) que explican la mayor parte de la varianza conjunta en la evolución de {all_kw} a través de estas fuentes. Se busca interpretar estos componentes en términos de patrones comunes de tendencia, dinámicas de contraste, y la contribución relativa de cada fuente a estos patrones. Este análisis es crucial para sintetizar la información multi-fuente y obtener una comprensión más profunda y estructurada de la dinámica de la herramienta {all_kw}.
+Para las cargas solo se utilizaran los componentes PC1 y PC2.
+
+**Todo el análisis y la interpretación subsiguiente deben basarse exclusivamente en los resultados del PCA contenidos en el siguiente conjunto de datos CSV:**
+`{pca_csv_variable}`
+**(Fin de los Datos de Entrada)**
+
+**Además de los datos anteriores, se proporcionarán externamente dos gráficos para su análisis:** un Gráfico de Sedimentación (Scree Plot) y un Gráfico de Cargas (Loadings Plot).
 
 Para la realización de los análisis e interpretaciones ampliados y la presentación de los hallazgos y aportes, ten presente la vinculación o relación con: Sección IB - Objetivo Principal; Sección ID.1 - Enfoque Longitudinal (interpretando los componentes como dinámicas temporales subyacentes); Sección II - Preguntas de Investigación.
 
@@ -2448,8 +2455,8 @@ Para la realización de los análisis e interpretaciones ampliados y la presenta
 - **II.A. Varianza Explicada y Selección del Número de Componentes**: Vincular con: D.1.a.
 - **II.B. Matriz de Cargas (Loadings) de los Componentes Principales**: Vincular con: D.1.b.
 - **II.C. Puntuaciones de los Componentes (Component Scores) - (si se proveen y son relevantes para la interpretación temporal)**: Vincular con D.1.c
-- **III. Interpretación Detallada de Cada Componente Principal Significativo**: Vincular con: I.D.1, I.D.2, D.1, E.1.
-- **IV. Discusión Integrada de los Hallazgos del PCA**: Vincular con: I.D.3, I.E, I.F, E, F, V.
+- **III. Interpretación Detallada de Cada Componente Principal Significativo**: Vincular con: I.D.1, I.D.2, D.1, E.1. **Incluir Tabla Sinóptica al final.**
+- **IV. Discusión Integrada de los Hallazgos del PCA**: Vincular con: I.D.3, I.E, I.F, E, F, V. **Incluir Tabla Sinóptica al final.**
 - **IV.A. Patrones Dominantes y Secundarios en la Evolución de {all_kw}**: Vincular con: E.4, D.3.
 - **IV.B. Contribución Diferencial de las Fuentes a los Patrones Comunes**: Vincular con: F.1.
 - **IV.C. Implicaciones de la Dimensionalidad Reducida**: Vincular con: F.2.
@@ -2470,8 +2477,8 @@ Contenido esperado que se debe presentar:
 - Breve mención de los supuestos o consideraciones clave del PCA (ej. linealidad, importancia de la escala de los datos).
 
 ### **A. Adecuación de las fuentes de datos para PCA y preparación de datos**
-- Discutir brevemente cómo las características de las cinco fuentes designadas (naturaleza de la métrica, frecuencia, longitud de la serie) se han considerado o preparado para el PCA.
-- Mencionar cualquier paso de preprocesamiento crucial aplicado a los datos de `{csv_pca_input_data}` antes del PCA (ej. estandarización/escalado de las series, manejo de datos faltantes, verificación de estacionariedad si aplica). *Es fundamental que las variables (series temporales de cada fuente) estén en una escala comparable o que se hayan estandarizado para que el PCA no sea dominado por variables con mayor varianza debido a su escala.*
+- Discutir brevemente cómo las características de las cinco fuentes designadas (naturaleza de la métrica, frecuencia, longitud de la serie) se han considerado o preparado *antes* de realizar el PCA cuyos resultados se proporcionan.
+- Mencionar cualquier paso de preprocesamiento crucial que se asumirá fue aplicado a los datos originales antes del PCA (ej. estandarización/escalado de las series, manejo de datos faltantes, verificación de estacionariedad si aplica). *Es fundamental asumir que las variables (series temporales de cada fuente) fueron puestas en una escala comparable o estandarizadas para que el PCA no sea dominado por variables con mayor varianza debido a su escala.* Indicar que el análisis se basa en los resultados de este proceso, tal como se encuentran en los datos de entrada.
 
 ### **B. Objetivos específicos del PCA para la herramienta {all_kw}**
 - ¿Qué se espera aprender específicamente sobre {all_kw} mediante el PCA?
@@ -2481,53 +2488,84 @@ Contenido esperado que se debe presentar:
     - Simplificar la comprensión de la evolución general de {all_kw} al reducir las cinco series a unos pocos componentes significativos.
 
 ## **II. Presentación e interpretación de resultados del PCA**
-- Indicar que los resultados se basan en el PCA realizado sobre los datos de entrada (`{csv_pca_input_data}`).
+- Indicar que los resultados presentados a continuación se extraen directamente de los datos CSV proporcionados al inicio y de la interpretación de los gráficos externos (Scree Plot, Loadings Plot).
 
 ### **A. Varianza explicada y selección del número de componentes principales**
-- Presentar la proporción de varianza explicada por cada componente principal (eigenvalues).
-- Mostrar un gráfico de sedimentación (Scree Plot) si está disponible en `{pca_scree_plot_data_or_image}` o describir sus características.
-- Justificar el número de componentes principales seleccionados para la interpretación (ej. criterio de Kaiser -eigenvalue > 1, punto de inflexión en el scree plot, porcentaje acumulado de varianza explicada).
-- Declarar cuánta varianza total explican los componentes seleccionados.
+- Presentar la proporción de varianza explicada por cada componente principal (eigenvalues), según los datos de entrada.
+- Describir las características del gráfico de sedimentación (Scree Plot) proporcionado externamente, usando los eigenvalues de los datos de entrada como referencia cuantitativa.
+- **Justificar rigurosamente el número de componentes principales seleccionados para la interpretación.** Utilizar múltiples criterios si es posible (ej. criterio de Kaiser -eigenvalue > 1, punto de inflexión en el scree plot descrito, porcentaje acumulado de varianza explicada deseado). Detallar cómo cada criterio apoya la decisión. Se debe recordar que, según instrucción previa, solo se utilizarán PC1 y PC2, por lo que la justificación debe orientarse a validar esta elección, incluso si más componentes cumplen criterios técnicos.
+- Declarar cuánta varianza total explican los componentes seleccionados (PC1 y PC2), según los datos de entrada.
+- **Evaluar la "eficiencia" de la reducción de dimensionalidad al considerar solo PC1 y PC2:** ¿Se concentra una cantidad significativa de información en estos dos componentes? ¿Qué implica esto para la síntesis de información sobre {all_kw} al enfocarse en estas dos dimensiones principales?
 
 ### **B. Matriz de Cargas (Loadings) de los Componentes Principales Seleccionados**
-- Presentar la matriz de cargas (loadings) (`{pca_loadings_matrix}`) para los componentes principales seleccionados. Las filas deben ser las variables originales (las cinco fuentes de datos) y las columnas los componentes principales.
-- Las cargas indican cómo cada variable original (fuente de datos) se correlaciona o contribuye a cada componente principal.
+- Presentar la matriz de cargas (loadings) para los componentes principales seleccionados (PC1 y PC2), tal como se encuentra en los datos de entrada. Las filas deben ser las variables originales (las cinco fuentes de datos) y las columnas los componentes principales.
+- Explicar brevemente que las cargas indican cómo cada variable original (fuente de datos) se correlaciona o contribuye a cada componente principal.
+- **Análisis e interpretación detallada del gráfico de cargas (loadings plot) proporcionado externamente (PC1 vs PC2):**
+    - Utilizar la matriz de cargas de los datos de entrada como base numérica para la interpretación visual.
+    - **Relaciones entre Variables:**
+        - Identificar qué fuentes de datos tienen vectores apuntando en **direcciones similares**. ¿Qué sugiere esto sobre su correlación positiva en el espacio de PC1 y PC2?
+        - Identificar si hay fuentes con vectores apuntando en **direcciones opuestas**. ¿Qué sugiere esto sobre su correlación negativa o relación de contraste?
+        - Identificar si hay fuentes con vectores **casi ortogonales (90 grados)**. ¿Qué sugiere esto sobre su relativa independencia en el espacio de PC1 y PC2?
+    - **Magnitud de las Cargas (Longitud de los Vectores):** ¿Qué fuentes tienen los vectores más largos? ¿Qué indica esto sobre su influencia general en la definición de la varianza capturada por PC1 y PC2?
+    - **Agrupaciones (Clusters) de Variables:** ¿Se observan agrupaciones claras de ciertas fuentes? ¿Qué podría implicar esto sobre si miden constructos subyacentes similares para {all_kw}?
 
-### **C. Puntuaciones de los Componentes (Component Scores) - (Opcional, si se proveen y son relevantes)**
-- Si se dispone de las puntuaciones de los componentes (`{pca_component_scores_data}`) y se considera útil para la interpretación de la dinámica temporal de los patrones, presentar un resumen o visualización de las mismas.
-- Estas puntuaciones representan la evolución temporal de cada componente principal.
+### **C. Puntuaciones de los Componentes (Component Scores) - (Opcional, si se proveen en los datos de entrada y son relevantes)**
+- Si los datos de entrada contienen las puntuaciones de los componentes y se considera útil para la interpretación de la dinámica temporal de los patrones, presentar un resumen o interpretación de las mismas.
+- Estas puntuaciones representarían la evolución temporal de cada componente principal.
+- *Si se analizan las puntuaciones: ¿Cómo se diferencian las observaciones (ej. periodos de tiempo) con puntuaciones altas positivas en un PC de aquellas con puntuaciones altas negativas, en términos de los valores originales de las fuentes? ¿Revelan estas puntuaciones tendencias temporales o cambios en la dinámica de los patrones identificados por los PCs?*
 
 ## **III. Interpretación detallada de cada componente principal significativo**
-- Para cada uno de los componentes principales seleccionados (ej., PC1, PC2, etc.), proporcionar una interpretación detallada y temática:
+- Para cada uno de los componentes principales seleccionados (PC1 y PC2), proporcionar una interpretación detallada y temática basada en los datos de entrada:
 
-    - **Para Componente Principal X (ej. PC1):**
-        - **Varianza Explicada por PCX:** Indicar el porcentaje de varianza total que este componente explica.
-        - **Análisis de las Cargas (Loadings) para PCX:**
-            - Identificar qué fuentes de datos tienen cargas (positivas o negativas) más altas en este componente.
-            - Describir la dirección de la relación: ¿Qué fuentes se mueven juntas (mismo signo de carga) en este patrón? ¿Cuáles se mueven en oposición (signos opuestos)?
-        - **Interpretación Temática de PCX:**
-            - Basándose en las cargas, ¿qué representa este componente? ¿Es una "tendencia general de popularidad/discusión" si todas las fuentes cargan positivamente? ¿Representa un contraste entre "interés académico" (Crossref) y "atención pública" (Google Trends) si cargan con signos opuestos?
-            - Darle un nombre descriptivo a este patrón (ej., "Dimensión de Consenso General", "Eje de Adopción Académica vs. Popularidad Efímera").
-        - **Dinámica Temporal de PCX (si se analizan las puntuaciones):** Si se utilizan las `{pca_component_scores_data}`, describir brevemente cómo ha evolucionado este patrón subyacente a lo largo del tiempo.
+    - **Para Componente Principal 1 (PC1):**
+        - **Varianza Explicada por PC1:** Indicar el porcentaje de varianza total que este componente explica (según los datos de entrada).
+        - **Análisis de las Cargas (Loadings) para PC1:**
+            - Identificar qué fuentes de datos tienen las cargas (positivas o negativas) **más altas en valor absoluto** en este componente, según la matriz de cargas en los datos de entrada. Listarlas.
+            - Describir la **dirección (signo) de estas cargas dominantes.**
+            - Considerando las fuentes con cargas altas: ¿Qué fuentes se mueven juntas (mismo signo de carga) en este patrón? ¿Hay alguna fuente que se mueva en oposición (signo opuesto) de forma destacada dentro de este componente?
+        - **Interpretación Temática Profunda de PC1:**
+            - Basándose en la combinación específica de fuentes con cargas altas y sus signos, ¿qué **concepto subyacente, tema, dimensión latente o patrón de co-variación** representa este componente para {all_kw}? Ir más allá de una descripción superficial.
+            - Proponer un **nombre o etiqueta descriptiva y perspicaz** para PC1 que capture su esencia (ej., "Dimensión de Consenso General sobre la Relevancia de {all_kw}", "Eje de Tensión entre Adopción Académica e Interés Público para {all_kw}").
+            - ¿Este PC resalta principalmente un **consenso** entre las fuentes o un **contraste** fundamental?
+        - **Dinámica Temporal de PC1 (si se analizan las puntuaciones de los datos de entrada):** Si las puntuaciones están disponibles en los datos de entrada, describir brevemente cómo ha evolucionado este patrón subyacente a lo largo del tiempo.
 
-- Repetir esta estructura para todos los componentes principales seleccionados.
+    - **Para Componente Principal 2 (PC2):**
+        - **Varianza Explicada por PC2:** Indicar el porcentaje de varianza total que este componente explica (según los datos de entrada).
+        - **Análisis de las Cargas (Loadings) para PC2:**
+            - Identificar qué fuentes de datos tienen las cargas (positivas o negativas) **más altas en valor absoluto** en este componente. Listarlas.
+            - Describir la **dirección (signo) de estas cargas dominantes.**
+            - Considerando las fuentes con cargas altas: ¿Qué fuentes se mueven juntas? ¿Cuáles se mueven en oposición?
+        - **Interpretación Temática Profunda de PC2:**
+            - ¿Qué **concepto subyacente, tema, dimensión latente o patrón de co-variación diferente** representa PC2, recordando su ortogonalidad con PC1?
+            - Proponer un **nombre o etiqueta descriptiva y perspicaz** para PC2.
+            - ¿Cómo complementa o contrasta la "historia" contada por PC2 con la de PC1?
+        - **Dinámica Temporal de PC2 (si se analizan las puntuaciones de los datos de entrada):** Si las puntuaciones están disponibles en los datos de entrada, describir brevemente cómo ha evolucionado este patrón subyacente a lo largo del tiempo.
+
+- **Al final de esta sección, incluir una Tabla Sinóptica que resuma para PC1 y PC2:**
+    - Varianza explicada.
+    - Fuentes con cargas más altas (y su signo).
+    - **La interpretación temática detallada y el nombre propuesto para cada componente.**
 
 ## **IV. Discusión integrada de los hallazgos del PCA**
-- Sintetizar las interpretaciones de los componentes individuales para construir una imagen cohesiva de la dinámica de {all_kw}.
+- Sintetizar las interpretaciones de PC1 y PC2 para construir una imagen cohesiva de la dinámica de {all_kw}, basándose en el análisis de los datos de entrada y las interpretaciones previas.
 
 ### **A. Patrones dominantes y secundarios en la evolución de {all_kw}**
-- ¿Cuál es el patrón más importante (PC1) y qué nos dice sobre la evolución general de {all_kw}?
-- ¿Qué matices o dinámicas adicionales aportan los componentes secundarios (PC2, PC3, etc.)?
-- ¿Existen patrones de "auge y caída" comunes, crecimiento sostenido, o divergencias sectoriales que emergen de los componentes?
+- ¿Cuál es el patrón más importante (PC1) y qué nos dice sobre la evolución general y las fuerzas principales que mueven a {all_kw} a través de las fuentes?
+- ¿Qué matices, dinámicas adicionales o tensiones secundarias aporta PC2?
+- En conjunto, ¿estos dos componentes sugieren patrones de "auge y caída" comunes, crecimiento sostenido, divergencias sectoriales, o quizás una combinación de estos para {all_kw}?
 
-### **B. Contribución diferencial de las fuentes a los patrones comunes**
-- ¿Qué fuentes de datos son las más "influyentes" o representativas de los patrones dominantes?
-- ¿Hay fuentes que muestren un comportamiento más idiosincrático (es decir, que contribuyan principalmente a componentes que explican menos varianza o que tengan cargas únicas)?
-- ¿Cómo se agrupan las fuentes en función de su contribución a los componentes? (ej. ¿Google Trends y Google Books tienden a moverse juntos en los componentes principales?)
+### **B. Contribución diferencial y relación entre las fuentes a los patrones comunes**
+- ¿Qué fuentes de datos son las más "influyentes" o representativas de los patrones dominantes (PC1 y PC2) según las cargas en los datos de entrada?
+- ¿Hay fuentes que muestren un comportamiento más idiosincrático o que sean cruciales para definir un componente específico pero no el otro?
+- **Revisando el gráfico de cargas y las matrices:** ¿Cómo se agrupan las fuentes en función de su contribución a los componentes? (ej. ¿Google Trends y Google Books tienden a moverse juntos consistentemente? ¿Bain Usability y Bain Satisfaction se oponen o se complementan en estos patrones?)
+- ¿Sugiere el PCA alguna **redundancia** entre las fuentes (miden aspectos muy similares de {all_kw}) o, por el contrario, cada una aporta una perspectiva **única** a los patrones principales?
 
-### **C. Implicaciones de la dimensionalidad reducida**
-- ¿Cómo simplifica el PCA nuestra comprensión de la compleja evolución de {all_kw} a través de cinco perspectivas diferentes?
-- ¿Permiten los componentes principales una narrativa más concisa sobre el ciclo de vida de {all_kw}?
+### **C. Implicaciones de la dimensionalidad reducida para la comprensión de {all_kw}**
+- ¿Cómo simplifica el PCA (al enfocarse en PC1 y PC2) nuestra comprensión de la compleja evolución de {all_kw} a través de cinco perspectivas diferentes?
+- ¿Permiten PC1 y PC2 construir una narrativa más concisa y enfocada sobre el ciclo de vida o las dinámicas clave de {all_kw}?
+- ¿Qué "ruido" o varianza menos sistemática se está dejando de lado al enfocarse en estos dos componentes, y qué se gana en claridad?
+
+- **Al final de esta sección, incluir una Tabla Sinóptica que resuma los patrones dominantes y secundarios, la agrupación o influencia de las fuentes y las implicaciones clave de la reducción de dimensionalidad.**
 
 ## **V. Implicaciones estratégicas del PCA para {all_kw}**
 - Traducir los hallazgos técnicos del PCA en implicaciones prácticas.
@@ -2538,49 +2576,48 @@ Contenido esperado que se debe presentar:
 
 ### **B. Para Asesores, Consultores y Analistas de Mercado**
 - ¿Cómo pueden utilizarse los patrones principales para caracterizar el estado actual o la trayectoria probable de {all_kw}?
-- Si un componente representa, por ejemplo, "innovación y adopción temprana", y otro "institucionalización", ¿en qué fase se encuentra la herramienta según la evolución de estos componentes?
+- Si un componente representa, por ejemplo, "innovación y adopción temprana", y otro "institucionalización", ¿en qué fase se encuentra la herramienta según la evolución de estos componentes (si se analizan scores disponibles en los datos de entrada)?
 
 ### **C. Para Directivos y Gerentes en Organizaciones**
 - ¿Cómo pueden las dimensiones principales identificadas por el PCA informar decisiones sobre la adopción, inversión o desinversión en {all_kw}?
 - Si diferentes fuentes importantes para la organización cargan en diferentes componentes con dinámicas distintas, ¿cómo navegar esta complejidad?
 
 ## **VI. Síntesis conclusiva y limitaciones del análisis PCA**
-- Resumir los hallazgos más cruciales del PCA: las principales dimensiones subyacentes que caracterizan la evolución de {all_kw} a través de las cinco fuentes.
+- Resumir los hallazgos más cruciales del PCA: las principales dimensiones subyacentes (PC1 y PC2 y sus interpretaciones temáticas) que caracterizan la evolución de {all_kw} a través de las cinco fuentes, según los datos de entrada.
 - Evaluar críticamente qué aporta el PCA a la comprensión global de {all_kw}.
 - Reconocer *explícitamente* las *limitaciones* del análisis PCA en este contexto:
-    - La interpretación de los componentes es inherentemente subjetiva, aunque basada en datos.
-    - Los resultados pueden ser sensibles a la selección de variables (fuentes), el preprocesamiento de datos y el periodo analizado.
+    - La interpretación de los componentes es inherentemente subjetiva, aunque basada en los datos y buscando el mayor rigor.
+    - Los resultados dependen de la calidad y el preprocesamiento de los datos originales (realizado antes de generar los datos de entrada) y del periodo analizado.
     - PCA identifica correlaciones y patrones de variación, no necesariamente causalidad.
     - Los componentes son construcciones lineales de las variables originales.
-- Sugerir *brevemente* posibles líneas de investigación o análisis complementarios.
+    - El análisis se limita a los dos primeros componentes principales, por lo que se asume que capturan la dinámica más relevante y esencial, pero podría haber información útil en componentes subsiguientes (aunque con menor varianza explicada).
+    - La interpretación depende de la calidad y representatividad de los datos de entrada y las visualizaciones proporcionadas externamente.
+- Sugerir *brevemente* posibles líneas de investigación o análisis complementarios que podrían surgir de los patrones identificados.
 
-**Data Required:**
+**Data Required Summary:**
 
-1.  **PCA Input Data (`{csv_pca_input_data}`):**
-    *   Un archivo CSV que contenga las series temporales (numéricas, alineadas temporalmente y preprocesadas según sea necesario - ej. escaladas/estandarizadas) para la herramienta `{all_kw}` de cada una de las cinco fuentes. Las columnas deberían ser las fuentes (Google Books Ngram, Crossref.org, Google Trends, Bain Usability, Bain Satisfaction) y las filas las observaciones temporales.
+1.  **PCA Results CSV (`{pca_csv_variable}`):** (Provided at the beginning of the prompt)
+    *   This CSV is the **single source of numerical data** for the analysis. It must contain at least:
+        *   Eigenvalues and/or variance explained per component.
+        *   Loadings matrix (variables x components).
+    *   Optionally, it might contain component scores (observations x components).
+    *   Assumed to be based on preprocessed (e.g., standardized) data for `{all_kw}` across the five sources.
 
-2.  **PCA Eigenvalues / Variance Explained (`{pca_eigenvalues_data}`):**
-    *   Datos que muestren el eigenvalue (valor propio) y el porcentaje de varianza explicada por cada componente principal calculado. Podría ser una tabla o los datos para generar un Scree Plot.
+**External Assets (Provided Separately):**
 
-3.  **PCA Loadings Matrix (`{pca_loadings_matrix}`):**
-    *   Una matriz donde las filas son las cinco fuentes de datos originales y las columnas son los componentes principales seleccionados. Cada celda contiene la carga (loading) de la fuente en el componente.
-
-4.  **PCA Scree Plot (Opcional - `{pca_scree_plot_data_or_image}`):**
-    *   Datos para generar un scree plot o una imagen del scree plot, si está disponible.
-
-5.  **PCA Component Scores (Opcional - `{pca_component_scores_data}`):**
-    *   Si se van a interpretar las dinámicas temporales de los componentes, un archivo con las puntuaciones (scores) de cada observación temporal en cada componente principal seleccionado. Las columnas serían los componentes (PC1, PC2, etc.) y las filas las observaciones temporales.
+1.  **Scree Plot Image:** To visualize eigenvalue decay.
+2.  **Loadings Plot Image:** To visualize variable relationships in component space (e.g., PC1 vs PC2).
 
 IMPORTANT:
-- Since Charts and Visualizations will be included at the end of the report, please don't mention them here unless data for them is explicitly provided as an input (e.g., scree plot data).
+- Charts and Visualizations (Scree Plot, Loadings Plot) are provided externally and should be referenced and interpreted in the text, using data from the input CSV for quantitative support. Do not embed images or generate them.
 - Avoid giving recommendations for better or additional analysis beyond brief suggestions in the limitations/future research section.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
 - **Cumplir estrictamente** con *todas* las instrucciones dispuestas en la **Nota para la redacción del texto** y recogidas en I, II, III, IV, V, VI, VII y especialmente prestar mucha atención a las detalladas en VIII, IX y X (traducido al español).
 - Dado que este es el análisis **más importante**, la profundidad de la interpretación, la claridad de la explicación de los componentes y la relevancia de las implicaciones son cruciales.
 - Rol e Identidad (experto consultor con alta capacidad analítica y de síntesis).
-- Objetivo Principal (interpretación profunda y significativa de los componentes principales de {all_kw}).
-- Rigurosidad Metodológica (interpretación correcta de las cargas, varianza explicada, etc.).
+- Objetivo Principal (interpretación profunda y significativa de los componentes principales de {all_kw} basados en los datos CSV proporcionados y gráficos externos).
+- Rigurosidad Metodológica (interpretación correcta de las cargas, varianza explicada, etc., según los datos provistos).
 - Perspicacia Interpretativa (ir más allá de la descripción técnica de los componentes para explicar *qué significan* en el contexto de la herramienta y las fuentes).
 - Manejo de la Incertidumbre (lenguaje *cauteloso* al interpretar componentes, reconocer limitaciones).
 - Énfasis en la Interpretación (análisis *hermenéutico profundo* de los patrones latentes que el PCA revela).
@@ -2588,12 +2625,11 @@ IMPORTANT:
 - **No** incluir ninguna instrucción interna o comentarios interno sobre el proceso de realización del informe.
 - Asegurar que haya un *único título principal* claro y conciso.
 - **No** usar corchetes para encerrar los nombres de las herramientas gerenciales en la redacción de los textos.
-- **Desarrollar y ampliar** los apartados, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo.
+- **Desarrollar y ampliar** los apartados, presentando los resultados, análisis e interpretaciones de forma clara, rigurosa y utilizando un lenguaje narrativo atractivo. Incluir las **Tablas Sinópticas** requeridas.
 - **Redactar el informe** como un consultor senior de alto nivel, presentando un análisis sofisticado pero comprensible.
 - **Énfasis en la Narrativa Interpretativa de los Componentes:** Desarrolla una narrativa *completa*, *coherente* y *perspicaz* sobre cada componente y su conjunto. No te limites a listar cargas. Explica la *historia* detrás de cada componente.
 - **Extensión de los párrafos:** Cada párrafo debe tener *al menos 50 palabras*, y preferiblemente entre 70 y 100.
-- **IMPORTANTE:** El informe debe basarse *exclusivamente* en la información y datos PCA *disponibles*. Si ciertos resultados de PCA (ej. scores) no se proveen, la interpretación debe ajustarse a los datos que sí están (ej. eigenvalues, loadings).
-
+- **IMPORTANTE:** El informe debe basarse *exclusivamente* en la información contenida en los datos CSV proporcionados al inicio y en la interpretación de los gráficos proporcionados externamente (Scree Plot, Loadings Plot). Si ciertos resultados (ej. scores) no están en el archivo CSV, la interpretación debe ajustarse a los datos que sí están (ej. eigenvalues, loadings).
 """
 
 # Tercer prompt
