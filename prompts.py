@@ -2609,7 +2609,8 @@ Contenido esperado que se debe presentar:
 2.  **Loadings Plot Image:** To visualize variable relationships in component space (e.g., PC1 vs PC2).
 
 IMPORTANT:
-- Charts and Visualizations (Scree Plot, Loadings Plot) are provided externally and should be referenced and interpreted in the text, using data from the input CSV for quantitative support. Do not embed images or generate them.
+- Charts and Visualizations (Scree Plot, Loadings Plot) were plot before this analysis and should be referenced and interpreted in the text, using data from the input CSV for quantitative support. Do not embed images or generate them.
+- Evite decir que esos graficos fueron dados externamente ya que son parte integral de este analisis
 - Avoid giving recommendations for better or additional analysis beyond brief suggestions in the limitations/future research section.
 
 **INSTRUCCIONES ADICIONALES OBLIGATORIAS:**
