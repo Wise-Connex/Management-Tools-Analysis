@@ -5443,7 +5443,7 @@ def ai_analysis():
     
     #display(Markdown(gem_industry_specific_sp))
     print(gem_industry_specific_sp)
-'''
+
     if skip_arima[0]==False:
         n+=1
         if top_choice == 1:
@@ -5586,7 +5586,7 @@ def ai_analysis():
     print(gem_fourier_sp)
 
     n+=1
-    if top_choice == 1:
+    if top_choice == 1 or top_choice == 3:
       p_conclusions = prompt_conclusions_standalone.format(all_kw=all_keywords, dbs=actual_menu, \
           temporal_trends=gem_temporal_trends, tool_relationships=gem_cross_keyword, industry_patterns=gem_industry_specific, \
           arima_predictions=gem_arima, seasonal_analysis=gem_seasonal, cyclical_patterns=gem_fourier)
@@ -5631,7 +5631,7 @@ def ai_analysis():
     #display(Markdown(gem_conclusions_sp))
     print(gem_summary_sp)    
 
-'''
+
 
 def csv2table(csv_data, header_line=0):
     csv_lines = csv_data.strip().split('\n')
