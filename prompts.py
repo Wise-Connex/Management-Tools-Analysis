@@ -2593,6 +2593,7 @@ Contenido esperado que se debe presentar:
     - El análisis se limita a los dos primeros componentes principales, por lo que se asume que capturan la dinámica más relevante y esencial, pero podría haber información útil en componentes subsiguientes (aunque con menor varianza explicada).
     - La interpretación depende de la calidad y representatividad de los datos de entrada y las visualizaciones proporcionadas externamente.
 - Sugerir *brevemente* posibles líneas de investigación o análisis complementarios que podrían surgir de los patrones identificados.
+- En base al Loading Plot Image haz un análisis bien específico sobre las diferentes componentes y sus relaciones entre si, en cuanto a aliniemientos, congruencias, etc.
 
 **Data Required Summary:**
 
