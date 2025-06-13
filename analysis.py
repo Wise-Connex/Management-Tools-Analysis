@@ -244,7 +244,7 @@ def gemini_prompt(
     system_prompt: str,
     prompt: str,
     image_paths: list[str] | None = None,
-    m: str = 'flash',
+    m: str = 'pro',
     max_retries: int = 5,
     initial_backoff: int = 2
 ) -> str:

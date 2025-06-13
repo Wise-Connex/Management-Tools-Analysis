@@ -3738,6 +3738,24 @@ Translate the following Markdown text to Spanish, adhering to these guidelines:
 Text to translate:
 """
 
+prompt_en = """
+Translate the following Markdown text to English, adhering to these guidelines:
+1. Use formal academic English suitable for business reports
+2. Maintain technical and management terminology appropriate for enterprise contexts
+3. Keep these specific terms unchanged: {all_kws}
+4. Preserve all numerical values, dates, and data references
+5. Maintain all Markdown formatting
+6. Do not include any explanatory comments or suggestions
+7. Provide only the direct translation without additional markup or annotations
+8. Ensure consistent terminology throughout the translation
+9. Maintain the hierarchical structure of headings and subheadings
+10. Preserve all placeholder variables such as {selected_sources}
+11. Do *not* include comments like: Okay, here is the English translation following all guidelines
+12. Do not include blocks of markdown code.
+
+Text to translate:
+"""
+
 prompt_abstract = """
 # IDENTITY and PURPOSE
 You are an expert content summarizer. You take content in and output a Markdown formatted summary using the format below.
