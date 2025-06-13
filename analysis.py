@@ -240,124 +240,122 @@ def get_unique_filename(base_filename, unique_folder):
         counter += 1
     return filename
 
-def gemini_prompt(system_prompt, prompt, image_paths: list[str] | None = None, m='pro', max_retries=5, initial_backoff=1):
+def gemini_prompt(
+    system_prompt: str,
+    prompt: str,
+    image_paths: list[str] | None = None,
+    m: str = 'flash',
+    max_retries: int = 5,
+    initial_backoff: int = 2
+) -> str:
     """
-    Sends a prompt (optionally with one or more images) to the Gemini API and handles retries.
+    Sends a prompt, optionally with images, to the Gemini API with robust error handling and retries.
 
     Args:
-        system_prompt (str): The system instruction or context.
-        prompt (str): The main user prompt text.
-        image_paths (list[str] | None, optional): List of paths to image files to include. Defaults to None.
-        m (str, optional): Model type ('pro', '1.5-pro', 'vision'). Defaults to 'pro'.
-                           'vision' or '1.5-pro' is required if image_paths is provided.
-        max_retries (int, optional): Maximum number of retry attempts. Defaults to 5.
-        initial_backoff (int, optional): Initial delay in seconds for retries. Defaults to 1.
+        system_prompt: The system instruction or context for the model.
+        prompt: The main user prompt text.
+        image_paths: An optional list of local file paths for images to include.
+        m: The model to use ('flash' or 'pro'). Automatically upgrades to 'pro' if images are provided.
+        max_retries: Maximum number of retry attempts for transient API errors.
+        initial_backoff: The initial time in seconds to wait before retrying.
 
     Returns:
-        str: The generated content from Gemini or an error message.
+        The text response from the model or a descriptive error message.
     """
     api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
-        return "[API Error] GOOGLE_API_KEY environment variable not set."
+        return "[Config Error] GOOGLE_API_KEY environment variable not set."
 
     genai.configure(api_key=api_key)
 
-    model_name = 'gemini-1.5-pro-latest' # Defaulting to a strong vision model
-    if m == 'pro': # Retaining for consistency if user explicitly sets 'pro' without images
-        model_name = 'gemini-2.5-pro-preview-05-06' # Text only
-    elif m == 'flash':
-        model_name = 'gemini-2.5-flash-preview-04-17' # Text only, or if user explicitly wants flash
-    elif m == 'vision':
-        # This specific model might be older; 1.5 Pro is generally preferred for vision
-        model_name = 'gemini-pro-vision'
-        print(f"{YELLOW}Warning: Using 'gemini-pro-vision'. Consider 'gemini-1.5-pro-latest' (m='1.5-pro' or leave default) for better vision capabilities.{RESET}")
-    elif m == '1.5-pro': # Explicitly asking for 1.5 pro
-        model_name = 'gemini-1.5-pro-latest'
+    # --- 1. Determine Model and Prepare Images ---
+    use_vision_model = bool(image_paths)
+    if use_vision_model:
+        model_name = 'gemini-2.5-pro-preview-05-06' # Pro model is best for vision
+    else:
+        model_name = 'gemini-1.5-flash-latest' if m == 'flash' else 'gemini-2.5-pro-preview-05-06'
 
+    prompt_parts = [f"{system_prompt}\n\n{prompt}"]
+    loaded_image_count = 0
 
-    # --- Image Handling ---
-    loaded_images = []
-    if image_paths: # Check if the list is not None and not empty
+    if use_vision_model:
+        if not isinstance(image_paths, list):
+            return f"[Input Error] image_paths must be a list of strings, but got {type(image_paths).__name__}."
+            
         for image_path in image_paths:
             try:
                 if not os.path.exists(image_path):
-                    raise FileNotFoundError(f"Image file not found at path: {image_path}")
-                img_object = PIL.Image.open(image_path)
-                loaded_images.append(img_object)
-                print(f"{GREEN}Successfully loaded image: {image_path}{RESET}")
+                     raise FileNotFoundError(f"Image file not found at path: {image_path}")
+                prompt_parts.append(PIL.Image.open(image_path))
+                loaded_image_count += 1
             except FileNotFoundError as e:
-                return f"[File Error] {e} (while processing list of images)"
+                return f"[File Error] {e}"
             except Exception as e:
-                return f"[Image Error] Failed to load image '{image_path}': {e} (while processing list of images)"
-    elif m == 'vision' and not image_paths: # Vision model selected but no images
-        print(f"{YELLOW}Warning: Vision model ('{m}') selected, but no image_paths were provided.{RESET}")
-        # Proceed with text-only if this is intended.
+                return f"[Image Error] Failed to load image '{image_path}': {e}"
 
-    # --- Model Instantiation ---
+    # --- 2. Configure and Instantiate Model ---
     try:
-        safety_settings = [
-            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-        ]
+        # Safety settings to reduce the chance of prompts being blocked.
+        safety_settings = {
+            "HARM_CATEGORY_HARASSMENT": "BLOCK_MEDIUM_AND_ABOVE",
+            "HARM_CATEGORY_HATE_SPEECH": "BLOCK_MEDIUM_AND_ABOVE",
+            "HARM_CATEGORY_SEXUALLY_EXPLICIT": "BLOCK_MEDIUM_AND_ABOVE",
+            "HARM_CATEGORY_DANGEROUS_CONTENT": "BLOCK_MEDIUM_AND_ABOVE",
+        }
         model = genai.GenerativeModel(model_name, safety_settings=safety_settings)
     except Exception as e:
         return f"[API Error] Failed to initialize model '{model_name}': {e}"
 
-    # --- Construct Prompt Parts ---
-    full_text_prompt = f"{system_prompt}\n\n{prompt}"
-    prompt_parts = [full_text_prompt] # Start with the text prompt
-
-    if loaded_images:
-        prompt_parts.extend(loaded_images) # Add all loaded image objects
-
-    # --- API Call with Retry Logic ---
+    # --- 3. API Call with Retry Logic ---
     retries = 0
     backoff_time = initial_backoff
     while retries < max_retries:
         try:
-            print(f"Attempt {retries + 1}/{max_retries}: Sending request to {model_name} with {len(loaded_images)} image(s)...")
+            image_info = f"with {loaded_image_count} image(s)" if use_vision_model else ""
+            print(f"Attempt {retries + 1}/{max_retries}: Sending request to {model_name} {image_info}...")
+
             response = model.generate_content(prompt_parts, stream=False)
+            
+            # The most direct way to get the text. If the response was blocked
+            # for safety or other reasons, accessing .text will raise an exception
+            # which is caught below.
+            print(f"{GREEN}Success: Received response from Gemini.{RESET}")
+            return response.text
 
-            if not response.parts:
-                 block_reason = response.prompt_feedback.block_reason if response.prompt_feedback else 'Unknown'
-                 finish_reason = response.candidates[0].finish_reason if response.candidates else 'Unknown'
-                 safety_ratings = response.candidates[0].safety_ratings if response.candidates else 'N/A'
-                 print(f"{RED}Warning: Gemini response blocked or empty.{RESET}")
-                 print(f"  Prompt Feedback Block Reason: {block_reason}")
-                 print(f"  Candidate Finish Reason: {finish_reason}")
-                 print(f"  Candidate Safety Ratings: {safety_ratings}")
+        # Specific exception for blocked prompts (more reliable than parsing text)
+        except genai.types.generation_types.BlockedPromptError as e:
+            print(f"{RED}API Error: Prompt was blocked.{RESET}")
+            # This is a final state, no point in retrying.
+            return f"[API Blocked] The prompt was blocked by safety filters. Details: {e}"
+        
+        # Exception raised if response.text can't be accessed due to no valid candidate
+        except ValueError as e:
+             print(f"{RED}API Error: Invalid response - likely blocked or empty. {e}{RESET}")
+             # This can sometimes be transient, so we retry.
+             
+        # Standard transient network/server errors
+        except (google.api_core.exceptions.ResourceExhausted,
+                google.api_core.exceptions.DeadlineExceeded,
+                google.api_core.exceptions.InternalServerError,
+                google.api_core.exceptions.ServiceUnavailable) as e:
+            print(f"{RED}API Error: {type(e).__name__} - {e}{RESET}")
 
-                 if finish_reason == 'SAFETY' or block_reason == 'SAFETY':
-                     return f"[API Blocked] Response blocked due to safety settings. Reason: {finish_reason}/{block_reason}. Ratings: {safety_ratings}"
-
-            elif hasattr(response, 'text'):
-                print(f"{GREEN}Success: Received response from Gemini.{RESET}")
-                return response.text
-            else:
-                 print(f"{YELLOW}Warning: Received response object without text content. Full response obj:{RESET}\n{response}")
-
-        except google.api_core.exceptions.ResourceExhausted as e:
-            print(f"{RED}API Error: Resource exhausted (likely rate limit). {e}{RESET}")
-        except google.api_core.exceptions.DeadlineExceeded as e:
-            print(f"{RED}API Error: Request timed out. {e}{RESET}")
-        except google.api_core.exceptions.InternalServerError as e:
-            print(f"{RED}API Error: Internal server error on Google's side. {e}{RESET}")
-        except google.api_core.exceptions.ServiceUnavailable as e:
-             print(f"{RED}API Error: Service unavailable. {e}{RESET}")
         except Exception as e:
-            print(f"{RED}An unexpected error occurred during API call: {type(e).__name__} - {e}{RESET}")
+            # Catch any other unexpected errors during the API call
+            print(f"{RED}An unexpected error occurred: {type(e).__name__} - {e}{RESET}")
+            # Depending on the error, may not be retryable, but we try for robustness.
 
+        # If an exception occurred, proceed with backoff and retry
         retries += 1
         if retries < max_retries:
-            print(f"{YELLOW}Retrying in {backoff_time:.2f} seconds...{RESET}")
+            print(f"{YELLOW}Retrying in {backoff_time:.1f} seconds...{RESET}")
             time.sleep(backoff_time)
-            backoff_time *= 2
+            backoff_time *= 1.5 # Increase backoff
         else:
             print(f"{RED}Max retries ({max_retries}) reached. Failing request.{RESET}")
-            return f"[API Error] Max retries reached after encountering errors or blocked/empty responses."
+            return f"[API Error] Max retries reached after encountering repeated errors."
 
+    # This line should ideally not be reached
     return "[API Error] Unknown state reached after retry loop."
 
 
