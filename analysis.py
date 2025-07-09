@@ -271,9 +271,9 @@ def gemini_prompt(
     # --- 1. Determine Model and Prepare Images ---
     use_vision_model = bool(image_paths)
     if use_vision_model:
-        model_name = 'gemini-2.5-pro-preview-05-06' # Pro model is best for vision
+        model_name = 'gemini-2.5-pro' # Pro model is best for vision
     else:
-        model_name = 'gemini-1.5-flash-latest' if m == 'flash' else 'gemini-2.5-pro-preview-05-06'
+        model_name = 'gemini-1.5-flash-latest' if m == 'flash' else 'gemini-2.5-pro'
 
     prompt_parts = [f"{system_prompt}\n\n{prompt}"]
     loaded_image_count = 0
