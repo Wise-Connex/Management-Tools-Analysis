@@ -3648,9 +3648,9 @@ Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, t
 **Tareas:**
 
 1.  **Revisión de Resultados de Análisis Previos:** Revisar *cuidadosamente* los resultados completos proporcionados por los siguientes análisis multi-fuente, enfocándose en los aspectos relevantes para {all_kw}:
-    *   **Análisis PCA Multi-Fuente:** (proveniente de `pca_prompt_2`) Hallazgos sobre las principales componentes que explican la varianza en el conjunto de datos de herramientas y fuentes, y cómo se posiciona {all_kw} en relación a estas componentes.
-    *   **Análisis de Relaciones Cruzadas Multi-Fuente:** (proveniente de `cross_relationship_prompt_2`) Hallazgos sobre las correlaciones de {all_kw} con otras herramientas, y la consistencia o divergencia de las tendencias de {all_kw} entre las diferentes fuentes de datos.
-    *   **Análisis Temporal Comparativo Multi-Fuente:** (proveniente de `temporal_analysis_prompt_2`) Hallazgos sobre las tendencias temporales (crecimiento, declive, estabilidad, estacionalidad, ciclos) de {all_kw} comparadas a través de las distintas fuentes.
+    *   **Análisis PCA Multi-Fuente:** Hallazgos sobre las principales componentes que explican la varianza en el conjunto de datos de herramientas y fuentes, y cómo se posiciona {all_kw} en relación a estas componentes.
+    *   **Análisis de Relaciones Cruzadas Multi-Fuente:** Hallazgos sobre las correlaciones de {all_kw} con otras herramientas, y la consistencia o divergencia de las tendencias de {all_kw} entre las diferentes fuentes de datos.
+    *   **Análisis Temporal Comparativo Multi-Fuente:** Hallazgos sobre las tendencias temporales (crecimiento, declive, estabilidad, estacionalidad, ciclos) de {all_kw} comparadas a través de las distintas fuentes.
 
 2.  **Síntesis de Hallazgos Clave de Cada Análisis Específico para {all_kw}:**
     *   **Desde el Análisis PCA:** ¿Cuáles son las dimensiones o patrones estructurales más importantes identificados por el PCA que ayudan a contextualizar o explicar el comportamiento de {all_kw}? ¿Se agrupa {all_kw} con otras herramientas en ciertas componentes?
@@ -3673,13 +3673,13 @@ Seguir dichas directrices para todos los efectos de lenguaje, estilo, formato, t
 5.  **Limitaciones Específicas de la Integración:** Además de las limitaciones inherentes a cada uno de los tres análisis de entrada, discutir las limitaciones y desafíos que surgen al *intentar sintetizar e integrar* estos tres tipos de análisis complejos. Por ejemplo, la dificultad de ponderar hallazgos de diferente naturaleza o la posible sobreinterpretación de correlaciones.
 
 **Data Integration (Resultados de los análisis previos para {all_kw} y {data_sources_list}):**
-    # Resultados del Análisis PCA Multi-Fuente (de pca_prompt_2)
+    # Resultados del Análisis PCA Multi-Fuente
     {results_pca_analysis}
 
-    # Resultados del Análisis de Relaciones Cruzadas Multi-Fuente (de cross_relationship_prompt_2)
+    # Resultados del Análisis de Relaciones Cruzadas Multi-Fuente
     {results_cross_relationship_analysis}
 
-    # Resultados del Análisis Temporal Comparativo Multi-Fuente (de temporal_analysis_prompt_2)
+    # Resultados del Análisis Temporal Comparativo Multi-Fuente
     {results_comparative_temporal_analysis}
 
 **Key Considerations:**

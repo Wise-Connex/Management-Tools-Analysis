@@ -273,7 +273,7 @@ def gemini_prompt(
     if use_vision_model:
         model_name = 'gemini-2.5-pro' # Pro model is best for vision
     else:
-        model_name = 'gemini-1.5-flash-latest' if m == 'flash' else 'gemini-2.5-pro'
+        model_name = 'gemini-2.5-flash' if m == 'flash' else 'gemini-2.5-pro'
 
     prompt_parts = [f"{system_prompt}\n\n{prompt}"]
     loaded_image_count = 0
@@ -5332,7 +5332,7 @@ def ai_analysis():
     if not gem_temporal_trends.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_temporal_trends}'
         print("Traduciendo respuesta...")
-        gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+        gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_temporal_trends_sp = f"Error en el análisis: {gem_temporal_trends}"
@@ -5387,7 +5387,7 @@ def ai_analysis():
       if not gem_cross_keyword.startswith("[API"):
           prompt_spanish=f'{p_sp} {gem_cross_keyword}'
           print("Traduciendo respuesta...")
-          gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+          gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
       else:
           # If there was an API error, don't try to translate the error message
           gem_cross_keyword_sp = f"Error en el análisis: {gem_cross_keyword}"
@@ -5434,7 +5434,7 @@ def ai_analysis():
     if not gem_industry_specific.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_industry_specific}'
         print("Traduciendo respuesta...")
-        gem_industry_specific_sp=gemini_prompt(f_system_prompt, prompt_spanish)
+        gem_industry_specific_sp=gemini_prompt(f_system_prompt, prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_industry_specific_sp = f"Error en el análisis: {gem_industry_specific}"
@@ -5442,7 +5442,8 @@ def ai_analysis():
     #display(Markdown(gem_industry_specific_sp))
     print(gem_industry_specific_sp)
 
-    if skip_arima[0]==False:
+    if top_choice == 1 or top_choice == 3:
+      if skip_arima[0]==False:
         n+=1
         if top_choice == 1:
             p_4 = arima_analysis_prompt_1.format(all_kw=all_keywords, dbs=actual_menu, arima_results=csv_arima, csv_means_trends=csv_means_trends, \
@@ -5471,7 +5472,7 @@ def ai_analysis():
         if not gem_arima.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_arima}'
             print("Traduciendo respuesta...")
-            gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+            gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
         else:
             # If there was an API error, don't try to translate the error message
             gem_arima_sp = f"Error en el análisis: {gem_arima}"
@@ -5479,7 +5480,7 @@ def ai_analysis():
         #display(Markdown(gem_arima_sp))
         print(gem_arima_sp)
 
-    if skip_seasonal[0]==False:
+      if skip_seasonal[0]==False:
         n+=1
         if top_choice == 1:
             if skip_arima[0]==True:
@@ -5517,7 +5518,7 @@ def ai_analysis():
         if not gem_seasonal.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_seasonal}'
             print("Traduciendo respuesta...")
-            gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+            gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
         else:
             # If there was an API error, don't try to translate the error message
             gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
@@ -5525,19 +5526,19 @@ def ai_analysis():
         #display(Markdown(gem_seasonal_sp))
         print(gem_seasonal_sp)
 
-    n+=1
-    if top_choice == 1:
-      if skip_arima[0]==True:
+      n+=1
+      if top_choice == 1:
+        if skip_arima[0]==True:
           gem_arima=""
-      if skip_seasonal[0]==True:
+        if skip_seasonal[0]==True:
           gem_seasonal=""
-      p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier, \
+        p_6 = prompt_6_single_analysis.format(all_kw=all_keywords, dbs=actual_menu, csv_fourier=csv_fourier, \
                                     analisis_temporal_ai=gem_temporal_trends, analisis_tendencias_ai=gem_industry_specific, \
                                     analisis_arima_ai=gem_arima, analisis_estacional_ai=gem_seasonal)
-      print(f'\n\n\n{n}. Analizando patrones cíclicos...')
-    else:
-      # Optimize Fourier analysis data if it's too large
-      if len(csv_fourier) > 50000:
+        print(f'\n\n\n{n}. Analizando patrones cíclicos...')
+      else:
+        # Optimize Fourier analysis data if it's too large
+        if len(csv_fourier) > 50000:
           print(f"\x1b[33mWarning: Fourier analysis data is large ({len(csv_fourier)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
           csv_lines = csv_fourier.split('\n')
           header = csv_lines[0]
@@ -5545,43 +5546,43 @@ def ai_analysis():
           subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
           truncated_fourier = header + '\n' + '\n'.join(data_lines[:subset_size])
           csv_fourier_for_prompt = truncated_fourier
-      else:
+        else:
           csv_fourier_for_prompt = csv_fourier
-          
+        
       # Reuse the optimized combined dataset from earlier if available
       if 'csv_data_for_prompt' not in locals():
-          # If not already optimized, check if it needs optimization
-          if len(csv_combined_data) > 50000:
-              csv_lines = csv_combined_data.split('\n')
-              header = csv_lines[0]
-              data_lines = csv_lines[1:]
-              subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
-              first_chunk = data_lines[:subset_size//2]
-              last_chunk = data_lines[-(subset_size//2):]
-              truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
-              csv_data_for_prompt = truncated_csv
-          else:
-              csv_data_for_prompt = csv_combined_data
-      
+        # If not already optimized, check if it needs optimization
+        if len(csv_combined_data) > 50000:
+            csv_lines = csv_combined_data.split('\n')
+            header = csv_lines[0]
+            data_lines = csv_lines[1:]
+            subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+            first_chunk = data_lines[:subset_size//2]
+            last_chunk = data_lines[-(subset_size//2):]
+            truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
+            csv_data_for_prompt = truncated_csv
+        else:
+            csv_data_for_prompt = csv_combined_data
+    
       p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, \
-                                      selected_sources=sel_sources, \
-                                      csv_fourier=csv_fourier_for_prompt, csv_combined_data=csv_data_for_prompt)        
+                                    selected_sources=sel_sources, \
+                                    csv_fourier=csv_fourier_for_prompt, csv_combined_data=csv_data_for_prompt)        
       print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
-    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_fourier=gemini_prompt(f_system_prompt,p_6)
+      print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
+      gem_fourier=gemini_prompt(f_system_prompt,p_6)
     
-    # Only proceed with translation if we got a valid response
-    if not gem_fourier.startswith("[API"):
+      # Only proceed with translation if we got a valid response
+      if not gem_fourier.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_fourier}'
         print("Traduciendo respuesta...")
-        gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish)
-    else:
+        gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
+      else:
         # If there was an API error, don't try to translate the error message
         gem_fourier_sp = f"Error en el análisis: {gem_fourier}"
         
-    #display(Markdown(gem_fourier_sp))
-    print(gem_fourier_sp)
+      #display(Markdown(gem_fourier_sp))
+      print(gem_fourier_sp)
 
     n+=1
     if top_choice == 1 or top_choice == 3:
@@ -5589,9 +5590,8 @@ def ai_analysis():
           temporal_trends=gem_temporal_trends, tool_relationships=gem_cross_keyword, industry_patterns=gem_industry_specific, \
           arima_predictions=gem_arima, seasonal_analysis=gem_seasonal, cyclical_patterns=gem_fourier)
     else:
-      p_conclusions = prompt_conclusions_comparative.format(all_kw=actual_menu, selected_sources=sel_sources, \
-          temporal_trends=gem_temporal_trends, tool_relationships=gem_cross_keyword, industry_patterns=gem_industry_specific, \
-          arima_predictions=gem_arima, seasonal_analysis=gem_seasonal, cyclical_patterns=gem_fourier)          
+      p_conclusions = prompt_conclusions_comparative.format(all_kw=all_keywords, data_sources_list=sel_sources, \
+          results_pca_analysis=gem_industry_specific, results_cross_relationship_analysis=gem_cross_keyword, results_comparative_temporal_analysis=gem_temporal_trends)          
     
     print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
@@ -5601,7 +5601,7 @@ def ai_analysis():
     if not gem_conclusions.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_conclusions}'
         print("Traduciendo respuesta...")
-        gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish)
+        gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_conclusions_sp = f"Error en el análisis: {gem_conclusions}"
@@ -5610,8 +5610,12 @@ def ai_analysis():
     print(gem_conclusions_sp)
     
     n+=1
-    p_summary = f'{prompt_abstract} \n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
+    if top_choice == 1 or top_choice == 3:
+      p_summary = f'{prompt_abstract} \n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
         \n {gem_arima} \n {gem_seasonal} \n {gem_fourier} \n {gem_conclusions}'      
+    else:
+      p_summary = f'{prompt_abstract} \n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
+          \n {gem_conclusions}'      
     
     print(f'\n\n\n{n}. Generando Resumén...\n')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
@@ -5621,7 +5625,7 @@ def ai_analysis():
     if not gem_summary.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_summary}'
         print("Traduciendo respuesta...")
-        gem_summary_sp=gemini_prompt("",prompt_spanish)
+        gem_summary_sp=gemini_prompt("",prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_summary_sp = f"Error en el análisis: {gem_summary}"
