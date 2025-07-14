@@ -73,6 +73,8 @@ from sklearn.decomposition import PCA
 import re
 import PIL.Image
 from IPython.display import display, Markdown, HTML
+from openai import OpenAI
+from openai import APIConnectionError, RateLimitError, APIStatusError, APIError
 
 
 # AI Prompts imports 
@@ -240,7 +242,127 @@ def get_unique_filename(base_filename, unique_folder):
         counter += 1
     return filename
 
-def gemini_prompt(
+# --- Helper function for image encoding ---
+def _encode_image_to_base64(image_path: str) -> str:
+    """Encodes an image file to a Base64 string."""
+    with PIL.Image.open(image_path) as image:
+        # Convert image to a format that supports alpha, if necessary
+        if image.mode == 'RGBA' or 'A' in image.getbands():
+            image = image.convert('RGB')
+            
+        buffered = io.BytesIO()
+        image.save(buffered, format="JPEG")
+        img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
+        return f"data:image/jpeg;base64,{img_str}"
+
+# def ai_prompt(
+#     system_prompt: str,
+#     prompt: str,
+#     image_paths: list[str] | None = None,
+#     base_url: str = "http://192.168.0.252:1234/v1",
+#     model: str = "local-model",
+#     max_tokens: int = 2048,
+#     max_retries: int = 5,
+#     initial_backoff: int = 2
+# ) -> str:
+#     """
+#     Sends a prompt, optionally with images, to an LM Studio instance with robust error handling.
+
+#     Args:
+#         system_prompt: The system instruction or context for the model.
+#         prompt: The main user prompt text.
+#         image_paths: An optional list of local file paths for images to include.
+#         base_url: The URL of the LM Studio server.
+#         model: The model identifier to use (often a placeholder for LM Studio).
+#         max_tokens: The maximum number of tokens to generate in the response.
+#         max_retries: Maximum number of retry attempts for transient API errors.
+#         initial_backoff: The initial time in seconds to wait before retrying.
+
+#     Returns:
+#         The text response from the model or a descriptive error message.
+#     """
+#     try:
+#         # --- 1. Configure Client ---
+#         # LM Studio doesn't require a real API key, but the client expects a value.
+#         client = OpenAI(base_url=base_url, api_key="not-needed")
+#     except Exception as e:
+#         return f"[Config Error] Failed to initialize OpenAI client: {e}"
+
+#     # --- 2. Prepare Messages and Images ---
+#     messages = [
+#         {"role": "system", "content": system_prompt}
+#     ]
+#     user_content = [{"type": "text", "text": prompt}]
+    
+#     use_vision_model = bool(image_paths)
+#     loaded_image_count = 0
+    
+#     if use_vision_model:
+#         if not isinstance(image_paths, list):
+#             return f"[Input Error] image_paths must be a list of strings, but got {type(image_paths).__name__}."
+        
+#         for image_path in image_paths:
+#             try:
+#                 if not os.path.exists(image_path):
+#                     raise FileNotFoundError(f"Image file not found at path: {image_path}")
+                
+#                 base64_image = _encode_image_to_base64(image_path)
+#                 user_content.append({
+#                     "type": "image_url",
+#                     "image_url": {"url": base64_image}
+#                 })
+#                 loaded_image_count += 1
+#             except FileNotFoundError as e:
+#                 return f"[File Error] {e}"
+#             except Exception as e:
+#                 return f"[Image Error] Failed to load or encode image '{image_path}': {e}"
+
+#     messages.append({"role": "user", "content": user_content})
+
+#     # --- 3. API Call with Retry Logic ---
+#     retries = 0
+#     backoff_time = initial_backoff
+#     while retries < max_retries:
+#         try:
+#             image_info = f"with {loaded_image_count} image(s)" if use_vision_model else ""
+#             print(f"Attempt {retries + 1}/{max_retries}: Sending request to LM Studio {image_info}...")
+
+#             response = client.chat.completions.create(
+#                 model=model,
+#                 messages=messages,
+#                 max_tokens=max_tokens,
+#                 stream=False
+#             )
+            
+#             print(f"{GREEN}Success: Received response from LM Studio.{RESET}")
+#             return response.choices[0].message.content
+
+#         # Specific, common errors for network/server issues
+#         except APIConnectionError as e:
+#             print(f"{RED}API Error: Connection failed. Is LM Studio server running at {base_url}?{RESET}")
+#             print(f"{RED}Details: {e}{RESET}")
+#         except (RateLimitError, APIStatusError) as e:
+#             print(f"{RED}API Error: {type(e).__name__} - Status: {e.status_code} Body: {e.response.text}{RESET}")
+#         except APIError as e:
+#             print(f"{RED}API Error: A generic OpenAI API error occurred: {e}{RESET}")
+#         except Exception as e:
+#             # Catch any other unexpected errors
+#             print(f"{RED}An unexpected error occurred: {type(e).__name__} - {e}{RESET}")
+        
+#         # If an exception occurred, proceed with backoff and retry
+#         retries += 1
+#         if retries < max_retries:
+#             print(f"{YELLOW}Retrying in {backoff_time:.1f} seconds...{RESET}")
+#             time.sleep(backoff_time)
+#             backoff_time *= 1.5 # Increase backoff
+#         else:
+#             print(f"{RED}Max retries ({max_retries}) reached. Failing request.{RESET}")
+#             return f"[API Error] Max retries reached. Check LM Studio server logs and network connection."
+
+#     # This line should ideally not be reached
+#     return "[API Error] Unknown state reached after retry loop."
+
+def ai_prompt(
     system_prompt: str,
     prompt: str,
     image_paths: list[str] | None = None,
@@ -271,9 +393,9 @@ def gemini_prompt(
     # --- 1. Determine Model and Prepare Images ---
     use_vision_model = bool(image_paths)
     if use_vision_model:
-        model_name = 'gemini-2.5-pro' # Pro model is best for vision
+        model_name = 'gemini-2.5-flash' #'gemini-2.5-pro' # Pro model is best for vision
     else:
-        model_name = 'gemini-2.5-flash' if m == 'flash' else 'gemini-2.5-pro'
+        model_name = 'gemini-2.5-flash' if m == 'flash' else 'gemini-2.5-flash' # 'gemini-2.5-pro'
 
     prompt_parts = [f"{system_prompt}\n\n{prompt}"]
     loaded_image_count = 0
@@ -358,90 +480,6 @@ def gemini_prompt(
     # This line should ideally not be reached
     return "[API Error] Unknown state reached after retry loop."
 
-
-# def gemini_prompt(system_prompt, prompt, m='pro', max_retries=5, initial_backoff=1):
-#   """
-#   Send a prompt to the Gemini API with retry logic for handling timeouts and service issues.
-  
-#   Args:
-#       system_prompt: The system instructions for the model
-#       prompt: The user prompt to send to the model
-#       m: Model type ('pro' or 'flash')
-#       max_retries: Maximum number of retry attempts
-#       initial_backoff: Initial backoff time in seconds (will increase exponentially)
-      
-#   Returns:
-#       The text response from the model
-#   """
-#   system_instructions = system_prompt
-
-#   #print('\n**************************** INPUT ********************************\n')
-#   #print(f'System Instruction: \n{system_instructions} \nPrompt: \n{prompt}')
-
-#   if m == 'pro':
-#     model = 'gemini-2.5-pro-preview-05-06' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
-#   else:
-#     model = 'gemini-2.5-flash-preview-04-17' # @#param {type: "string"} ["gemini-1.0-pro", "gemini-1.5-pro", "gemini-1.5-flash"]
-#   temperature = 0.31 # @#param {type: "slider", min: 0, max: 2, step: 0.05}
-#   stop_sequence = '*** END ANALYSIS ***'
-
-#   if model == 'gemini-1.0-pro' and system_instructions is not None:
-#     system_instructions = None
-#     print('\x1b[31m(WARNING: System instructions ignored, gemini-1.0-pro does not support system instructions)\x1b[0m')
-#   if model == 'gemini-1.0-pro' and temperature > 1:
-#     temperature = 1
-#     print('\x1b[34m(INFO: Temperature set to 1, gemini-1.0-pro does not support temperature > 1)\x1b[0m')
-
-#   if system_instructions == '':
-#     system_instructions = None
-
-#   # Load environment variables from a .env file (if using one)
-#   load_dotenv()
-
-#   # Retrieve the API key
-#   api_key = os.getenv('GOOGLE_API_KEY')
-
-#   if api_key is None:
-#       raise ValueError("GOOGLE_API_KEY environment variable is not set")
-  
-#   genai.configure(api_key=api_key)
-#   model_instance = genai.GenerativeModel(model, system_instruction=system_instructions)
-#   config = genai.GenerationConfig(temperature=temperature, stop_sequences=[stop_sequence])
-  
-#   # Implement retry logic with exponential backoff
-#   retry_count = 0
-#   backoff_time = initial_backoff
-  
-#   while retry_count < max_retries:
-#     try:
-#       # If this isn't the first attempt, log that we're retrying
-#       if retry_count > 0:
-#         print(f"\x1b[33m(Retry attempt {retry_count}/{max_retries} after waiting {backoff_time}s)\x1b[0m")
-      
-#       # Try to generate content
-#       response = model_instance.generate_content(contents=[prompt], generation_config=config)
-#       return response.text
-      
-#     except google.api_core.exceptions.DeadlineExceeded as e:
-#       # Handle timeout errors specifically
-#       retry_count += 1
-      
-#       if retry_count >= max_retries:
-#         print(f"\x1b[31mFailed after {max_retries} retries. Last error: {str(e)}\x1b[0m")
-#         # Return a fallback message instead of raising an exception
-#         return f"[API TIMEOUT ERROR: The request to the Gemini API timed out after {max_retries} attempts. The prompt may be too complex or the service may be experiencing issues.]"
-      
-#       # Calculate exponential backoff with jitter
-#       jitter = random.uniform(0, 0.1 * backoff_time)  # Add up to 10% jitter
-#       wait_time = backoff_time + jitter
-#       print(f"\x1b[33mAPI timeout occurred. Retrying in {wait_time:.2f} seconds...\x1b[0m")
-#       time.sleep(wait_time)
-#       backoff_time *= 2  # Exponential backoff
-      
-#     except Exception as e:
-#       # Handle other exceptions
-#       print(f"\x1b[31mError calling Gemini API: {str(e)}\x1b[0m")
-#       return f"[API ERROR: {str(e)}]"
 
 def linear_interpolation(df, kw):
     # Extract actual data points (non-NaN values)
@@ -5326,13 +5364,13 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_temporal_trends=gemini_prompt(f_system_prompt,p_1)
+    gem_temporal_trends=ai_prompt(f_system_prompt,p_1)
     
     # Only proceed with translation if we got a valid response
     if not gem_temporal_trends.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_temporal_trends}'
         print("Traduciendo respuesta...")
-        gem_temporal_trends_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
+        gem_temporal_trends_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_temporal_trends_sp = f"Error en el análisis: {gem_temporal_trends}"
@@ -5381,13 +5419,13 @@ def ai_analysis():
         print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
       
       print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-      gem_cross_keyword=gemini_prompt(f_system_prompt,p_2)
+      gem_cross_keyword=ai_prompt(f_system_prompt,p_2)
       
       # Only proceed with translation if we got a valid response
       if not gem_cross_keyword.startswith("[API"):
           prompt_spanish=f'{p_sp} {gem_cross_keyword}'
           print("Traduciendo respuesta...")
-          gem_cross_keyword_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
+          gem_cross_keyword_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
       else:
           # If there was an API error, don't try to translate the error message
           gem_cross_keyword_sp = f"Error en el análisis: {gem_cross_keyword}"
@@ -5426,15 +5464,15 @@ def ai_analysis():
       p_3 = pca_prompt_2.format(all_kw=all_kw, pca_csv_variable=pca_csv_variable)
       print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
     
-    # Use the optimized gemini_prompt function with retry logic
+    # Use the optimized ai_prompt function with retry logic
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_industry_specific=gemini_prompt(f_system_prompt, p_3,image_paths=[loadings_plot_filepath, scree_plot_filepath])
+    gem_industry_specific=ai_prompt(f_system_prompt, p_3,image_paths=[loadings_plot_filepath, scree_plot_filepath])
     
     # Only proceed with translation if we got a valid response (not an error message)
     if not gem_industry_specific.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_industry_specific}'
         print("Traduciendo respuesta...")
-        gem_industry_specific_sp=gemini_prompt(f_system_prompt, prompt_spanish,m='flash')
+        gem_industry_specific_sp=ai_prompt(f_system_prompt, prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_industry_specific_sp = f"Error en el análisis: {gem_industry_specific}"
@@ -5466,13 +5504,13 @@ def ai_analysis():
             print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
 
         print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-        gem_arima=gemini_prompt(f_system_prompt,p_4)
+        gem_arima=ai_prompt(f_system_prompt,p_4)
         
         # Only proceed with translation if we got a valid response
         if not gem_arima.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_arima}'
             print("Traduciendo respuesta...")
-            gem_arima_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
+            gem_arima_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
         else:
             # If there was an API error, don't try to translate the error message
             gem_arima_sp = f"Error en el análisis: {gem_arima}"
@@ -5512,13 +5550,13 @@ def ai_analysis():
             print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
 
         print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-        gem_seasonal=gemini_prompt(f_system_prompt,p_5)
+        gem_seasonal=ai_prompt(f_system_prompt,p_5)
         
         # Only proceed with translation if we got a valid response
         if not gem_seasonal.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_seasonal}'
             print("Traduciendo respuesta...")
-            gem_seasonal_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
+            gem_seasonal_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
         else:
             # If there was an API error, don't try to translate the error message
             gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
@@ -5570,13 +5608,13 @@ def ai_analysis():
       print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
       print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-      gem_fourier=gemini_prompt(f_system_prompt,p_6)
+      gem_fourier=ai_prompt(f_system_prompt,p_6)
     
       # Only proceed with translation if we got a valid response
       if not gem_fourier.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_fourier}'
         print("Traduciendo respuesta...")
-        gem_fourier_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
+        gem_fourier_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
       else:
         # If there was an API error, don't try to translate the error message
         gem_fourier_sp = f"Error en el análisis: {gem_fourier}"
@@ -5595,13 +5633,13 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_conclusions=gemini_prompt(f_system_prompt,p_conclusions)
+    gem_conclusions=ai_prompt(f_system_prompt,p_conclusions)
     
     # Only proceed with translation if we got a valid response
     if not gem_conclusions.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_conclusions}'
         print("Traduciendo respuesta...")
-        gem_conclusions_sp=gemini_prompt(f_system_prompt,prompt_spanish,m='flash')
+        gem_conclusions_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_conclusions_sp = f"Error en el análisis: {gem_conclusions}"
@@ -5619,13 +5657,13 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Generando Resumén...\n')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_summary=gemini_prompt(f_system_prompt,p_summary)
+    gem_summary=ai_prompt(f_system_prompt,p_summary)
     
     # Only proceed with translation if we got a valid response
     if not gem_summary.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_summary}'
         print("Traduciendo respuesta...")
-        gem_summary_sp=gemini_prompt("",prompt_spanish,m='flash')
+        gem_summary_sp=ai_prompt("",prompt_spanish,m='flash')
     else:
         # If there was an API error, don't try to translate the error message
         gem_summary_sp = f"Error en el análisis: {gem_summary}"
