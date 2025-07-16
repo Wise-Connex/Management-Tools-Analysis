@@ -384,6 +384,9 @@ def ai_prompt(
     Returns:
         The text response from the model or a descriptive error message.
     """
+    
+    delay_with_progress()
+    
     api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
         return "[Config Error] GOOGLE_API_KEY environment variable not set."
@@ -5296,7 +5299,25 @@ def results():
     print("\n--- Results function finished ---")
 
 
+def delay_with_progress(delay_seconds=10, show_progress=True):
+    """
+    Wait for a specified number of seconds with optional progress display
     
+    Args:
+        delay_seconds (int/float): Number of seconds to wait
+        show_progress (bool): Whether to show countdown progress
+    """
+    if show_progress and delay_seconds >= 1:
+        for i in range(int(delay_seconds), 0, -1):
+            print(f"Waiting... {i} seconds remaining", end='\r')
+            time.sleep(1)
+        print("Delay completed!                    ")  # Clear the line
+    else:
+        print(f"Waiting {delay_seconds} seconds...")
+        time.sleep(delay_seconds)
+        print("Delay completed!")
+        
+            
 # *************************************************************************************
 # AI Analysis
 # *************************************************************************************
@@ -5344,9 +5365,11 @@ def ai_analysis():
 
     # Add the selected_sources parameter to the format call
     if top_choice == 1 or top_choice == 3:
-        p_sp = prompt_sp.format(all_kws=all_keywords, selected_sources="")
+        # p_sp = prompt_sp.format(all_kws=all_keywords, selected_sources="")
+        p_sp = prompt_sp
     else:
-        p_sp = prompt_sp.format(all_kws=all_kw, selected_sources=sel_sources)
+        # p_sp = prompt_sp.format(all_kws=all_kw, selected_sources=sel_sources)
+        p_sp = prompt_sp
 
     n=0
     n+=1
@@ -5649,11 +5672,11 @@ def ai_analysis():
     
     n+=1
     if top_choice == 1 or top_choice == 3:
-      p_summary = f'{prompt_abstract} \n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
-        \n {gem_arima} \n {gem_seasonal} \n {gem_fourier} \n {gem_conclusions}'      
+      p_summary = f'{prompt_abstract} \n"""\n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
+        \n {gem_arima} \n {gem_seasonal} \n {gem_fourier} \n {gem_conclusions} \n """ '      
     else:
-      p_summary = f'{prompt_abstract} \n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
-          \n {gem_conclusions}'      
+      p_summary = f'{prompt_abstract} \n"""\n {gem_temporal_trends} \n {gem_cross_keyword} \n {gem_industry_specific} \
+          \n {gem_conclusions} \n """ '      
     
     print(f'\n\n\n{n}. Generando Resumén...\n')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
