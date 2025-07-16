@@ -372,6 +372,7 @@ def ai_prompt(
 ) -> str:
     """
     Sends a prompt, optionally with images, to the Gemini API with robust error handling and retries.
+    Tracks token usage and costs, saving to tokens.csv file.
 
     Args:
         system_prompt: The system instruction or context for the model.
@@ -445,6 +446,37 @@ def ai_prompt(
             # for safety or other reasons, accessing .text will raise an exception
             # which is caught below.
             print(f"{GREEN}Success: Received response from Gemini.{RESET}")
+            
+            # --- 4. Token Usage and Cost Tracking ---
+            try:
+                # Extract token information from response
+                tokens_input = response.usage_metadata.prompt_token_count
+                tokens_output = response.usage_metadata.candidates_token_count
+                
+                # Calculate costs (rates per million tokens)
+                cost_input = (tokens_input / 1_000_000) * 2.5  # $2.5 per million input tokens
+                cost_output = (tokens_output / 1_000_000) * 15  # $15 per million output tokens
+                total_cost = cost_input + cost_output
+                
+                # Display token information in console
+                print(f"{CYAN}╔══════════════════════════════════════╗{RESET}")
+                print(f"{CYAN}║           TOKEN USAGE REPORT         ║{RESET}")
+                print(f"{CYAN}╠══════════════════════════════════════╣{RESET}")
+                print(f"{CYAN}║ Input Tokens:  {tokens_input:>8,} tokens     ║{RESET}")
+                print(f"{CYAN}║ Output Tokens: {tokens_output:>8,} tokens     ║{RESET}")
+                print(f"{CYAN}║ Input Cost:    ${cost_input:>10.6f}       ║{RESET}")
+                print(f"{CYAN}║ Output Cost:   ${cost_output:>10.6f}       ║{RESET}")
+                print(f"{CYAN}║ Total Cost:    ${total_cost:>10.6f}       ║{RESET}")
+                print(f"{CYAN}╚══════════════════════════════════════╝{RESET}")
+                
+                # Save to CSV file
+                save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output, total_cost)
+                
+            except AttributeError as e:
+                print(f"{YELLOW}Warning: Could not extract token usage information: {e}{RESET}")
+            except Exception as e:
+                print(f"{YELLOW}Warning: Error processing token usage: {e}{RESET}")
+            
             return response.text
 
         # Specific exception for blocked prompts (more reliable than parsing text)
@@ -482,6 +514,60 @@ def ai_prompt(
 
     # This line should ideally not be reached
     return "[API Error] Unknown state reached after retry loop."
+
+
+def save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output, total_cost):
+    """
+    Save token usage and cost information to tokens.csv file.
+    
+    Args:
+        tokens_input: Number of input tokens
+        tokens_output: Number of output tokens  
+        cost_input: Cost of input tokens
+        cost_output: Cost of output tokens
+        total_cost: Total transaction cost
+    """
+    import csv
+    from datetime import datetime
+    
+    # Get current date and time
+    now = datetime.now()
+    fecha = now.strftime("%Y-%m-%d")
+    hora = now.strftime("%H:%M:%S")
+    
+    # CSV file path
+    csv_file = "tokens.csv"
+    
+    # Check if file exists
+    file_exists = os.path.exists(csv_file)
+    
+    try:
+        # Open file in append mode
+        with open(csv_file, 'a', newline='', encoding='utf-8') as file:
+            fieldnames = ['Fecha', 'Hora', 'Tokens_Input', 'Tokens_Output', 
+                         'Total_Input', 'Total_Output', 'Total_Transaction']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            
+            # Write header if file is new
+            if not file_exists:
+                writer.writeheader()
+                print(f"{GREEN}Created new tokens.csv file{RESET}")
+            
+            # Write token usage data
+            writer.writerow({
+                'Fecha': fecha,
+                'Hora': hora,
+                'Tokens_Input': tokens_input,
+                'Tokens_Output': tokens_output,
+                'Total_Input': f"{cost_input:.6f}",
+                'Total_Output': f"{cost_output:.6f}",
+                'Total_Transaction': f"{total_cost:.6f}"
+            })
+            
+            print(f"{GREEN}Token usage saved to tokens.csv{RESET}")
+            
+    except Exception as e:
+        print(f"{RED}Error saving token usage to CSV: {e}{RESET}")
 
 
 def linear_interpolation(df, kw):
