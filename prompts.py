@@ -639,7 +639,8 @@ Comparar *activamente* y *de forma detallada* los patrones observados con:
 * Las Tablas de resumen de resultados, no deben exceder de 7 columnas. 
 * Todas las tablas tendrán un máximo de 7 columnas
 *	Seguir el formato Markdown:
-  *	Usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
+  * Para asegurar la consistencia, usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
+  * Aplicar la siguiente regla de capitalización en todos los títulos: usar mayúscula únicamente en la primera letra de la primera palabra, en los nombres propios y en las siglas (ej: ONU, NASA).
   *	Insertar una línea en blanco tras títulos/subtítulos y entre párrafos.
   *	Priorizar la presentación de párrafos sintéticos y específicos, densos en información relevante. 
   *	Usar viñetas (-) o listas numeradas solo si la claridad lo exige.
@@ -1308,7 +1309,8 @@ Comparar *activamente* y *de forma detallada* los patrones observados **en la s�
 * Las Tablas de resumen de resultados, no deben exceder de 7 columnas. 
 * Todas las tablas tendrán un máximo de 7 columnas
 *	Seguir el formato Markdown:
-  *	Usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
+  * Para asegurar la consistencia, usar # para títulos principales, ## para secciones y ### para subsecciones, sin caracteres adicionales.
+  * Aplicar la siguiente regla de capitalización en todos los títulos: usar mayúscula únicamente en la primera letra de la primera palabra, en los nombres propios y en las siglas (ej: ONU, NASA).
   *	Insertar una línea en blanco tras títulos/subtítulos y entre párrafos.
   *	Priorizar la presentación de párrafos sintéticos y específicos, densos en información relevante. 
   *	Usar viñetas (-) o listas numeradas solo si la claridad lo exige.
@@ -3758,12 +3760,12 @@ You are an expert content summarizer. You take content in and output a Markdown 
 Take a deep breath and think step by step about how to best accomplish this goal using the following steps.
 
 # OUTPUT SECTIONS
-- Combine all of your understanding of the content into a single, 20-word sentence in a section called #SUMMARY
-- Output the 10 most important points of the content as a list with no more than 15 words per point into a section called ###1. Main Points
-- Output a list of the 5 best takeaways from the content in a section called ###2. Key Points
+- Combine all of your understanding of the content into a single, 20-word sentence in a section called # SUMMARY
+- Output the 10 most important points of the content as a list with no more than 15 words per point into a section called ### 1. Main Points
+- Output a list of the 5 best takeaways from the content in a section called ### 2. Key Points
 
 # OUTPUT INSTRUCTIONS
-- First section name is also the same Title #SUMMARY
+- First section name is also the same Title # SUMMARY
 - Create the output using the formatting above.
 - You only output human readable Markdown.
 - Output numbered lists, not bullets.

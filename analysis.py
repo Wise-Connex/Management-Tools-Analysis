@@ -447,23 +447,38 @@ def ai_prompt(
             # which is caught below.
             print(f"{GREEN}Success: Received response from Gemini.{RESET}")
             
-            # --- 4. Token Usage and Cost Tracking ---
+            # --- 4. Token Usage and Cost Tracking with Tiered Pricing ---
             try:
                 # Extract token information from response
                 tokens_input = response.usage_metadata.prompt_token_count
                 tokens_output = response.usage_metadata.candidates_token_count
                 
-                # Calculate costs (rates per million tokens)
-                cost_input = (tokens_input / 1_000_000) * 2.5  # $2.5 per million input tokens
-                cost_output = (tokens_output / 1_000_000) * 15  # $15 per million output tokens
+                # Determine pricing tier based ONLY on input tokens
+                if tokens_input <= 200_000:
+                    # Tier 1: <=200K input tokens
+                    input_rate = 1.25   # $1.25 per million input tokens
+                    output_rate = 10    # $10 per million output tokens
+                    pricing_tier = "Standard (≤200K input)"
+                else:
+                    # Tier 2: >200K input tokens
+                    input_rate = 2.5    # $2.5 per million input tokens
+                    output_rate = 15    # $15 per million output tokens
+                    pricing_tier = "Premium (>200K input)"
+                
+                # Calculate costs with tiered pricing
+                cost_input = (tokens_input / 1_000_000) * input_rate
+                cost_output = (tokens_output / 1_000_000) * output_rate
                 total_cost = cost_input + cost_output
                 
                 # Display token information in console
                 print(f"{CYAN}╔══════════════════════════════════════╗{RESET}")
                 print(f"{CYAN}║           TOKEN USAGE REPORT         ║{RESET}")
                 print(f"{CYAN}╠══════════════════════════════════════╣{RESET}")
+                print(f"{CYAN}║ Pricing Tier:  {pricing_tier:<17} ║{RESET}")
                 print(f"{CYAN}║ Input Tokens:  {tokens_input:>8,} tokens     ║{RESET}")
                 print(f"{CYAN}║ Output Tokens: {tokens_output:>8,} tokens     ║{RESET}")
+                print(f"{CYAN}║ Input Rate:    ${input_rate:>4.2f}/M tokens     ║{RESET}")
+                print(f"{CYAN}║ Output Rate:   ${output_rate:>4.0f}/M tokens      ║{RESET}")
                 print(f"{CYAN}║ Input Cost:    ${cost_input:>10.6f}       ║{RESET}")
                 print(f"{CYAN}║ Output Cost:   ${cost_output:>10.6f}       ║{RESET}")
                 print(f"{CYAN}║ Total Cost:    ${total_cost:>10.6f}       ║{RESET}")
@@ -5415,7 +5430,7 @@ def ai_analysis():
     global gem_seasonal_sp
     global gem_fourier_sp
     global gem_conclusions_sp
-    global csv_combined_data
+    global csv_combined_dataset
     global csv_correlation
     global csv_regression
     global gem_summary_sp
@@ -5429,25 +5444,26 @@ def ai_analysis():
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
 
-    gem_temporal_trends_sp = ""
-    gem_cross_keyword_sp = ""
-    gem_industry_specific_sp = ""
-    gem_arima_sp = ""
-    gem_seasonal_sp = ""
-    gem_fourier_sp = ""
-    gem_conclusions_sp = ""
-    gem_summary_sp = ""
+    gem_temporal_trends_sp = "Análisis Temporal Comparativo de la Planificación Estratégica a través de Múltiples Fuentes de Datos: Patrones, Convergencias y Divergencias"
+    gem_cross_keyword_sp = "Análisis de Correlación y Regresión Inter-Fuentes para Planificación Estratégica: Convergencias, Divergencias, Dinámicas de Influencia y Capacidad Predictiva entre Dominios"
+    gem_industry_specific_sp = "Análisis de Componentes Principales para Planificación Estratégica: Desvelando las Dinámicas Subyacentes a Través de Múltiples Fuentes de Datos"
+    gem_arima_sp = "Análisis de Modelos ARIMA para Planificación Estratégica: Evaluando la Capacidad de Predicción y la Estabilidad de las Tendencias"
+    gem_seasonal_sp = "Análisis Estacional para Planificación Estratégica: Identificando Patrones Estacionales y sus Impactos en las Tendencias"
+    gem_fourier_sp = "Análisis de Fourier para Planificación Estratégica: Descomposición de Series Temporales para Identificar Componentes Estacionales y Cíclicos"
+    gem_conclusions_sp = "Síntesis de Conclusiones Integradas para Planificación Estratégica a partir de Análisis PCA, de Correlaciones Cruzadas y Temporales Comparativos"
+    gem_summary_sp = "RESUMEN"
 
+'''
     if top_choice == 1 or top_choice == 3:
         f_system_prompt = system_prompt_1.format(dbs=actual_menu)
     elif top_choice == 2:
         sel_sources = ", ".join(dbase_options[source] for source in selected_sources)
         f_system_prompt = system_prompt_2.format(selected_sources=sel_sources)
-        csv_combined_data = combined_dataset.to_csv(index=True)
+        csv_combined_dataset = combined_dataset.to_csv(index=True)
     else:
         sel_sources = ", ".join(dbase_options[source] for source in selected_sources)
         f_system_prompt = system_prompt_2.format(selected_sources=sel_sources)
-        csv_combined_data = combined_dataset.to_csv(index=True)
+        csv_combined_dataset = combined_dataset.to_csv(index=True)
 
     # Add the selected_sources parameter to the format call
     if top_choice == 1 or top_choice == 3:
@@ -5469,7 +5485,7 @@ def ai_analysis():
                           csv_means_trends=csv_means_trends)        
     else:
         p_1 = temporal_analysis_prompt_2.format(selected_sources=sel_sources, all_kw=all_kw, \
-                          csv_combined_data=csv_combined_data, csv_means_trends=csv_means_trends)
+                          csv_combined_data=csv_combined_dataset, csv_means_trends=csv_means_trends)
     
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
     print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
@@ -5508,9 +5524,9 @@ def ai_analysis():
             csv_corr_for_prompt = csv_correlation
             
         # Optimize the combined dataset if it's too large
-        if len(csv_combined_data) > 50000:
+        if len(csv_combined_dataset) > 50000:
             # Already handled in the next section, use the same approach
-            csv_lines = csv_combined_data.split('\n')
+            csv_lines = csv_combined_dataset.split('\n')
             header = csv_lines[0]
             data_lines = csv_lines[1:]
             subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
@@ -5519,12 +5535,12 @@ def ai_analysis():
             truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
             csv_data_for_prompt = truncated_csv
         else:
-            csv_data_for_prompt = csv_combined_data
+            csv_data_for_prompt = csv_combined_dataset
             csv_regression_for_prompt = csv_regression.to_string()
             
         p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=all_kw, 
                                                csv_corr_matrix=csv_correlation, 
-                                               csv_combined_data=csv_combined_data, csv_regression=csv_regression_for_prompt)        
+                                               csv_combined_data=csv_combined_dataset, csv_regression=csv_regression_for_prompt)        
         print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
       
       print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
@@ -5554,10 +5570,10 @@ def ai_analysis():
       # Optimize the prompt to reduce its size and complexity
       # 1. Limit the CSV data size by truncating if necessary
       max_csv_size = 100000  # Limit CSV size to ~100KB
-      if len(csv_combined_data) > max_csv_size:
-          print(f"\x1b[33mWarning: Combined dataset CSV is large ({len(csv_combined_data)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
+      if len(csv_combined_dataset) > max_csv_size:
+          print(f"\x1b[33mWarning: Combined dataset CSV is large ({len(csv_combined_dataset)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
           # Keep header row and truncate the rest
-          csv_lines = csv_combined_data.split('\n')
+          csv_lines = csv_combined_dataset.split('\n')
           header = csv_lines[0]
           # Take a subset of lines (first 20% and last 20% to maintain time series context)
           data_lines = csv_lines[1:]
@@ -5567,7 +5583,7 @@ def ai_analysis():
           truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
           csv_for_prompt = truncated_csv
       else:
-          csv_for_prompt = csv_combined_data
+          csv_for_prompt = csv_combined_dataset
       
       # 2. Create the optimized prompt
       p_3 = pca_prompt_2.format(all_kw=all_kw, pca_csv_variable=pca_csv_variable)
@@ -5779,7 +5795,7 @@ def ai_analysis():
         
     #display(Markdown(gem_conclusions_sp))
     print(gem_summary_sp)    
-
+'''
 
 
 def csv2table(csv_data, header_line=0):
@@ -5829,6 +5845,9 @@ def report_pdf():
     if top_choice == 1:
         current_tool = all_keywords[0] if isinstance(all_keywords, list) and all_keywords else ""
         print(f"DEBUG: Using tool from all_keywords: '{current_tool}'")
+    elif top_choice == 2:
+        current_tool = all_kw
+        print(f"DEBUG: Using tool from actual_menu: '{current_tool}'")
     else:
         current_tool = actual_menu
         print(f"DEBUG: Using tool from actual_menu: '{current_tool}'")
@@ -5938,19 +5957,22 @@ def report_pdf():
     if top_choice == 1:
         data_txt += "<h2>Herramientas Gerenciales:</h2>\n"
         data_txt += "<p>" + ", ".join(all_keywords) + "</p>\n"
+        data_txt += "\n"
+        data_txt += f"<h2>Datos de {actual_menu}</h2>\n"
     else:
         data_txt += "<h2>Herramientas Gerenciales:</h2>\n"
-        data_txt += "<p>" + actual_menu + "</p>\n"
+        if top_choice == 2:
+            data_txt += "<p>" + all_kw + "</p>\n"
+        else:
+            data_txt += "<p>" + actual_menu + "</p>\n"
         data_txt += "<h3>Fuentes de Datos:</h3>\n"
         data_txt += "<p>" + ", ".join(all_keywords) + "</p>\n"
-    data_txt += "\n"
-    data_txt += f"<h2>Datos de {actual_menu}</h2>\n"
-    
+
     if top_choice == 1:
         year_adjust = 0
         period = "Mensual"
-        if menu == 2:
-            period = "Anual"
+        # if menu == 2:
+            # period = "Anual"
         if total_years > 20:
             data_txt += f"<h3>{total_years} años ({period}) ({earliest_year} - {latest_year})</h3>\n"
             data_txt += csv2table(csv_all_data)
@@ -5963,7 +5985,7 @@ def report_pdf():
         data_txt += f"<h3>5 años ({period}) ({latest_year-5} - {latest_year})</h3>\n"
         data_txt += csv2table(csv_last_5_data)
     else:
-        data_txt += csv2table(csv_combined_data)     
+        data_txt += csv2table(csv_combined_dataset)     
     data_txt += "\n\n\n"
     data_txt += "<div class='page-break'></div>\n"  # Add page break here
     data_txt += "<h2>Datos Medias y Tendencias</h2>\n"
@@ -6434,6 +6456,1101 @@ def report_pdf():
         </div>
         <div class="page-break"></div>
         
+        <div id="conclusiones">
+            <h1>Conclusiones</h1>
+            {markdown.markdown(gem_conclusions_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        
+        <!-- Anexos Page -->
+        <div class="title-page">
+            <h1>ANEXOS</h1>
+            <div class="subtitle">* Gráficos *</br>* Datos *</div>
+        </div>
+        <div class="page-break"></div>
+        
+        <!-- Images -->
+        <div id="graficos">
+            <h1>Gráficos</h1>
+            {image_markdown}
+        </div>
+        
+        <!-- Data Section -->
+        <div id="datos">
+            {data_txt}
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>(c) 2024 - {current_year} Diomar Anez & Dimar Anez</p>
+            <p>Contacto: <a href="https://www.solidum360.com">SOLIDUM</a> & <a href="https://www.wiseconnex.com">WISE CONNEX</a></p>
+            <p>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. 
+            Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. 
+            Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta <a href="https://opensource.org/licenses/MIT/">https://opensource.org/licenses/MIT/</a></p>
+            <p>Reporte generado el {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
+        </div>
+    </body>
+    </html>
+    """
+
+    # No need to replace page breaks or add them after figures since we're now using proper HTML structure
+    
+    pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
+    content_pdf_path = os.path.join(unique_folder, f'{filename}_content.pdf')
+    print(f"Saving PDF to: {pdf_path}")
+    print(f"Number of figures in report: {html_content.count('<figure>')}")
+    
+    # Create custom CSS for page size and margins
+    from weasyprint import HTML, CSS
+    
+    # CSS for content pages only (no cover page)
+    content_css = CSS(string=f'''
+        /* Regular pages */
+        @page {{
+            size: 8.5in 11in;
+            margin: 0.75in;
+            @top-left {{ 
+                content: "{data_source_name}"; 
+                font-size: 8pt;
+            }}
+            @top-right {{ 
+                content: "{cod_value}"; 
+                font-size: 8pt;
+            }}
+            @bottom-right {{ 
+                content: "Página " counter(page) ""; 
+                font-size: 8pt;
+            }}
+            @bottom-left {{ 
+                content: "{current_tool}"; 
+                font-size: 8pt;
+                font-style: italic;
+            }}
+        }}
+        
+        /* Base document styles */
+        body {{
+            font-family: "Times New Roman", Times, serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            width: 100%;
+        }}
+
+        /* Page numbering */
+        @page :first {{
+            counter-reset: page 40;  /* Start at 40 */
+        }}
+
+        /* Page breaks */
+        .page-break {{
+            page-break-after: always;
+            counter-increment: page;
+            height: 0;
+            display: block;
+        }}
+
+        /* Title page */
+        .title-page {{
+            counter-increment: none;
+        }}
+
+        /* Table of contents */
+        .toc {{
+            counter-reset: page 5;  /* Set to 6 (5 + 1) */
+            counter-increment: none;
+        }}
+
+        /* Main content */
+        #resumen-ejecutivo {{
+            counter-reset: page 39;  /* Start at 40 (39 + 1) */
+        }}
+
+        /* Tables */
+        table {{
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1.5em 0;
+            page-break-inside: avoid;
+        }}
+
+        th, td {{
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }}
+
+        th {{
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }}
+
+        .table-wrapper {{
+            width: 100%;
+            max-width: none;
+            overflow-x: auto;
+            margin-bottom: 1em;
+            padding: 0;
+        }}
+
+        .data-table {{
+            font-size: 10pt;
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }}
+
+        .data-table th {{
+            padding: 5px 2px;
+            vertical-align: bottom;
+            text-align: left;
+            font-size: 10pt;
+            white-space: normal;
+            word-wrap: break-word;
+            max-height: 50px;
+        }}
+
+        .data-table td {{
+            padding: 5px 2px;
+            font-size: 9pt;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }}
+
+        /* Table captions */
+        .table-caption {{
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5em;
+            caption-side: bottom;
+            font-size: 10pt;
+        }}
+
+        /* Figures and images */
+        figure {{
+            text-align: center;
+            margin: 1.5em 0;
+            page-break-inside: avoid;
+        }}
+
+        img {{
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1.5em auto;
+            page-break-inside: avoid;
+        }}
+
+        figcaption {{
+            font-style: italic;
+            text-align: center;
+            margin-top: 0.5em;
+            font-size: 10pt;
+        }}
+
+        /* Footer */
+        .footer {{
+            margin-top: 2em;
+            border-top: 1px solid #000;
+            padding-top: 1em;
+            font-size: 9pt;
+        }}
+
+        /* Print-specific styles */
+        @media print {{
+            body {{
+                font-size: 12pt;
+            }}
+            
+            a {{
+                text-decoration: none;
+                color: #000000;
+            }}
+            
+            .table-wrapper {{
+                overflow-x: visible;
+            }}
+            
+            .data-table {{
+                font-size: 9pt;
+                page-break-inside: avoid;
+            }}
+            
+            img {{
+                max-width: 100% !important;
+            }}
+            
+            h1, h2, h3, h4, h5, h6 {{
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }}
+            
+            p {{
+                orphans: 3;
+                widows: 3;
+            }}
+        }}
+    ''')
+    
+    print(f"DEBUG: About to generate content PDF with WeasyPrint")
+    
+    # First generate the content PDF without cover
+    HTML(string=html_content).write_pdf(content_pdf_path, stylesheets=[content_css])
+    print(f"DEBUG: Content PDF generated at: {content_pdf_path}")
+    
+    # Generate a PDF with TOC based on the content PDF
+    content_with_toc_path = os.path.join(unique_folder, f'{filename}_with_toc.pdf')
+    try:
+        print(f"DEBUG: Generating TOC from content PDF")
+        generate_pdf_toc(content_pdf_path, content_with_toc_path, has_cover)
+        # If successful, use the content with TOC
+        if os.path.exists(content_with_toc_path):
+            print(f"DEBUG: Successfully generated PDF with TOC")
+            # Remove the original content PDF and use the one with TOC
+            os.remove(content_pdf_path)
+            content_pdf_path = content_with_toc_path
+    except Exception as e:
+        print(f"ERROR: Failed to generate TOC: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        # Continue with the original content PDF if TOC generation fails
+        print(f"DEBUG: Continuing with original content PDF without dynamic TOC")
+    
+    # Now create a separate cover PDF and merge them
+    if cover_image_path:
+        print(f"DEBUG: Creating cover PDF with image: {cover_image_path}")
+        # Check if image exists and is accessible
+        if os.path.exists(cover_image_path) and os.access(cover_image_path, os.R_OK):
+            try:
+                # Import necessary libraries for PDF manipulation
+                from reportlab.pdfgen import canvas
+                from reportlab.lib.pagesizes import letter
+                from PyPDF2 import PdfReader, PdfWriter
+                import io
+                
+                # Create a PDF with just the cover image
+                cover_pdf_buffer = io.BytesIO()
+                c = canvas.Canvas(cover_pdf_buffer, pagesize=letter)
+                
+                # Draw the image at full page size without margins
+                c.drawImage(cover_image_path, 0, 0, width=8.5*72, height=11*72)
+                c.save()
+                
+                print(f"DEBUG: Cover PDF created in memory")
+                
+                # Merge the cover with content PDF
+                cover_pdf = PdfReader(io.BytesIO(cover_pdf_buffer.getvalue()))
+                content_pdf = PdfReader(content_pdf_path)
+                
+                output = PdfWriter()
+                
+                # Add cover page first
+                output.add_page(cover_pdf.pages[0])
+                print(f"DEBUG: Added cover page to output PDF")
+                
+                # Set the flag to indicate the report has a cover
+                has_cover = True
+                
+                # If we have a cover, look for the intro PDF to add after the cover
+                if has_cover and 'cod_value' in locals():
+                    # Construct the path to the intro PDF using the report code
+                    intro_pdf_path = os.path.join('pub-assets', 'Intro-A', f'{cod_value}-INTRO-A.pdf')
+                    print(f"DEBUG: Looking for intro PDF: {intro_pdf_path}")
+                    
+                    # Check if the intro PDF exists and is accessible
+                    if os.path.exists(intro_pdf_path) and os.access(intro_pdf_path, os.R_OK):
+                        try:
+                            # Open the intro PDF
+                            intro_pdf = PdfReader(intro_pdf_path)
+                            
+                            # Add all pages from the intro PDF
+                            for page in intro_pdf.pages:
+                                output.add_page(page)
+                                
+                            print(f"DEBUG: Successfully added intro PDF: {intro_pdf_path} ({len(intro_pdf.pages)} pages)")
+                        except Exception as e:
+                            print(f"ERROR: Failed to add intro PDF: {str(e)}")
+                            import traceback
+                            traceback.print_exc()
+                    else:
+                        print(f"WARNING: Intro PDF not found or not accessible: {intro_pdf_path}")
+                
+                # If we have a TOC, add it after the cover (and intro if present) but before the content
+                if os.path.exists(content_with_toc_path):
+                    # The content_pdf already has the TOC at the beginning, so we need to:
+                    # 1. Extract just the TOC pages (typically just 1 page)
+                    # 2. Then add the content pages separately
+                    
+                    # Determine how many pages are in the TOC
+                    # We'll assume the first 1-2 pages are TOC (adjust if needed)
+                    toc_page_count = 1  # Default to 1 page for TOC
+                    
+                    # Add TOC pages after cover
+                    toc_pdf = PdfReader(content_with_toc_path)
+                    for i in range(min(toc_page_count, len(toc_pdf.pages))):
+                        output.add_page(toc_pdf.pages[i])
+                    print(f"DEBUG: Added {toc_page_count} TOC pages after cover")
+                    
+                    # After TOC is added, look for the intro-B PDF to add after the TOC
+                    if has_cover and 'cod_value' in locals():
+                        # Construct the path to the intro-B PDF using the report code
+                        intro_b_pdf_path = os.path.join('pub-assets', 'Intro-B', f'{cod_value}-INTRO-B.pdf')
+                        print(f"DEBUG: Looking for intro-B PDF: {intro_b_pdf_path}")
+                        
+                        # Check if the intro-B PDF exists and is accessible
+                        if os.path.exists(intro_b_pdf_path) and os.access(intro_b_pdf_path, os.R_OK):
+                            try:
+                                # Open the intro-B PDF
+                                intro_b_pdf = PdfReader(intro_b_pdf_path)
+                                
+                                # Add all pages from the intro-B PDF
+                                for page in intro_b_pdf.pages:
+                                    output.add_page(page)
+                                    
+                                print(f"DEBUG: Successfully added intro-B PDF: {intro_b_pdf_path} ({len(intro_b_pdf.pages)} pages)")
+                            except Exception as e:
+                                print(f"ERROR: Failed to add intro-B PDF: {str(e)}")
+                                import traceback
+                                traceback.print_exc()
+                        else:
+                            print(f"WARNING: Intro-B PDF not found or not accessible: {intro_b_pdf_path}")
+                    
+                    # Add content pages (skipping TOC pages)
+                    for i in range(toc_page_count, len(content_pdf.pages)):
+                        output.add_page(content_pdf.pages[i])
+                    print(f"DEBUG: Added {len(content_pdf.pages) - toc_page_count} content pages")
+                else:
+                    # No TOC was generated
+                    
+                    # Even without TOC, look for the intro-B PDF to add before content
+                    if has_cover and 'cod_value' in locals():
+                        # Construct the path to the intro-B PDF using the report code
+                        intro_b_pdf_path = os.path.join('pub-assets', 'Intro-B', f'{cod_value}-INTRO-B.pdf')
+                        print(f"DEBUG: Looking for intro-B PDF (no TOC case): {intro_b_pdf_path}")
+                        
+                        # Check if the intro-B PDF exists and is accessible
+                        if os.path.exists(intro_b_pdf_path) and os.access(intro_b_pdf_path, os.R_OK):
+                            try:
+                                # Open the intro-B PDF
+                                intro_b_pdf = PdfReader(intro_b_pdf_path)
+                                
+                                # Add all pages from the intro-B PDF
+                                for page in intro_b_pdf.pages:
+                                    output.add_page(page)
+                                    
+                                print(f"DEBUG: Successfully added intro-B PDF: {intro_b_pdf_path} ({len(intro_b_pdf.pages)} pages)")
+                            except Exception as e:
+                                print(f"ERROR: Failed to add intro-B PDF: {str(e)}")
+                                import traceback
+                                traceback.print_exc()
+                        else:
+                            print(f"WARNING: Intro-B PDF not found or not accessible: {intro_b_pdf_path}")
+                    
+                    # Add all content pages
+                    for page in content_pdf.pages:
+                        output.add_page(page)
+                    print(f"DEBUG: Added {len(content_pdf.pages)} content pages (no TOC)")
+                
+                # If we have a cover, extract data source code and append back PDF
+                if has_cover:
+                    # Use the data_source_code that's already defined in the function
+                    # (no need to extract it from the cover filename)
+                    
+                    # Correct path for back PDF files (using relative path)
+                    back_pdf_path = os.path.join('pub-assets/Back', f"{data_source_code}-BACK.pdf")
+                    
+                    print(f"DEBUG: Looking for back PDF: {back_pdf_path}")
+                    
+                    if os.path.exists(back_pdf_path) and os.access(back_pdf_path, os.R_OK):
+                        try:
+                            # Open the back PDF
+                            back_pdf = PdfReader(back_pdf_path)
+                            
+                            # Add all pages from the back PDF
+                            for page in back_pdf.pages:
+                                output.add_page(page)
+                                
+                            print(f"DEBUG: Successfully added back PDF: {back_pdf_path}")
+                        except Exception as e:
+                            print(f"ERROR: Failed to add back PDF: {str(e)}")
+                    else:
+                        print(f"WARNING: Back PDF not found or not accessible: {back_pdf_path}")
+                
+                # Write the final PDF
+                with open(pdf_path, "wb") as output_stream:
+                    output.write(output_stream)
+                
+                print(f"DEBUG: Final merged PDF saved to: {pdf_path}")
+                
+                # Remove the temporary content PDF
+                if os.path.exists(content_pdf_path):
+                    os.remove(content_pdf_path)
+                    print(f"DEBUG: Removed temporary content PDF")
+                
+            except Exception as e:
+                print(f"ERROR: Failed to create cover PDF: {str(e)}")
+                import traceback
+                traceback.print_exc()
+                
+                # If merging fails, just use the content PDF
+                if os.path.exists(content_pdf_path):
+                    import shutil
+                    shutil.move(content_pdf_path, pdf_path)
+                    print(f"DEBUG: Fallback - using content PDF as final output")
+        else:
+            print(f"ERROR: Cover image exists but cannot be read or accessed: {cover_image_path}")
+            # If cover image is inaccessible, just use the content PDF
+            if os.path.exists(content_pdf_path):
+                import shutil
+                shutil.move(content_pdf_path, pdf_path)
+                print(f"DEBUG: Fallback - using content PDF as final output")
+    else:
+        print("DEBUG: No cover image to add, using content PDF as final output")
+        # If no cover image, just rename the content PDF
+        if os.path.exists(content_pdf_path):
+            import shutil
+            shutil.move(content_pdf_path, pdf_path)
+    
+    char='*'
+    title='********** ' + filename + ' PDF REPORT SAVED **********'
+    qty=len(title)
+    print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
+
+def report_pdf2():
+    global data_txt
+    global charts
+    global csv_means_trends
+    global image_markdown
+    global all_keywords
+    global actual_menu
+    global top_choice
+    global earliest_year
+    global latest_year
+    global total_years
+    
+    # Find the cover image path from portada-combined.csv
+    cover_image_path = None
+    current_tool = ""
+    
+    # Add a boolean flag to track if the report has a cover
+    has_cover = False
+    
+    print("\n--- DEBUG: Report PDF Cover Page Generation ---")
+    
+    if top_choice == 1:
+        current_tool = all_keywords[0] if isinstance(all_keywords, list) and all_keywords else ""
+        print(f"DEBUG: Using tool from all_keywords: '{current_tool}'")
+    elif top_choice == 2:
+        current_tool = all_kw
+        print(f"DEBUG: Using tool from actual_menu: '{current_tool}'")
+    else:
+        current_tool = actual_menu
+        print(f"DEBUG: Using tool from actual_menu: '{current_tool}'")
+    
+    # Determine which data source we're using
+    data_source_code = ""
+    data_source_name = ""
+    if menu == 1:
+        data_source_code = "GT"  # Google Trends
+        data_source_name = "Google Trends"
+    elif menu == 2:
+        data_source_code = "GB"  # Google Books Ngrams
+        data_source_name = "Google Books Ngram"
+    elif menu == 3:
+        data_source_code = "BU"  # Bain - Usability
+        data_source_name = "Bain & Company - Usability"
+    elif menu == 4:
+        data_source_code = "CR"  # Crossref.org
+        data_source_name = "Crossref.org"
+    elif menu == 5:
+        data_source_code = "BS"  # Bain - Satisfaction
+        data_source_name = "Bain & Company - Satisfaction"
+    # Add other data sources as needed
+    
+    print(f"DEBUG: Using data source code: '{data_source_code}'")
+    print(f"DEBUG: Using data source name: '{data_source_name}'")
+    
+    # Read the CSV file to find the cover image
+    import pandas as pd
+    import os
+    
+    # Path to the CSV file
+    csv_path = 'pub-assets/portada-combined.csv'
+    
+    # Read the CSV file
+    if os.path.exists(csv_path):
+        print(f"DEBUG: CSV file exists at: {csv_path}")
+        try:
+            portada_df = pd.read_csv(csv_path)
+            print(f"DEBUG: CSV loaded, contains {len(portada_df)} rows")
+            print(f"DEBUG: CSV columns: {portada_df.columns.tolist()}")
+            
+            # Print a few sample tool names from CSV for verification
+            sample_tools = portada_df['Herramienta'].unique()[:5].tolist()
+            print(f"DEBUG: Sample tools in CSV: {sample_tools}")
+            
+            # Find the matching rows for the current tool
+            matching_rows = portada_df[portada_df['Herramienta'] == current_tool]
+            
+            print(f"DEBUG: Found {len(matching_rows)} matching rows for tool: '{current_tool}'")
+            
+            # Get the Cod value from the matching row
+            cod_value = ""
+            if not matching_rows.empty:
+                # Look for a row with the matching data source code
+                data_source_matches = matching_rows[matching_rows['Cód'].str.endswith(data_source_code, na=False)]
+                
+                if not data_source_matches.empty:
+                    # Get the Cod value from the first matching row
+                    cod_value = data_source_matches.iloc[0]['Cód']
+                    print(f"DEBUG: Found Cod value: {cod_value}")
+                    # Get the file path from the first matching row with the correct data source
+                    file_info = data_source_matches.iloc[0]['File']
+                    cover_image_path = os.path.join('pub-assets', file_info)
+                    print(f"DEBUG: Found cover image for data source '{data_source_code}': {cover_image_path}")
+                    # Set has_cover to True since we found a valid cover image
+                    has_cover = True
+                else:
+                    # If no specific match for the data source, fall back to the first matching row
+                    file_info = matching_rows.iloc[0]['File']
+                    cover_image_path = os.path.join('pub-assets', file_info)
+                    print(f"DEBUG: No specific cover for data source '{data_source_code}', using default: {cover_image_path}")
+                
+                # Check if the file exists
+                if not os.path.exists(cover_image_path):
+                    print(f"ERROR: Cover image not found at: {cover_image_path}")
+                    # Try with and without 'pub-assets' prefix
+                    alt_path = file_info
+                    if os.path.exists(alt_path):
+                        print(f"DEBUG: Found image at alternate path: {alt_path}")
+                        cover_image_path = alt_path
+                        # Set has_cover to True since we found a valid cover image
+                        has_cover = True
+                    else:
+                        print(f"ERROR: Also tried alternate path with no success: {alt_path}")
+                        cover_image_path = None
+                else:
+                    print(f"DEBUG: Found cover image at: {cover_image_path}")
+                    # Set has_cover to True since we found a valid cover image
+                    has_cover = True
+            else:
+                print(f"WARNING: No matching tool found in CSV. Available tools: {portada_df['Herramienta'].unique().tolist()[:10]}")
+        except Exception as e:
+            print(f"ERROR: Error finding cover image: {str(e)}")
+            import traceback
+            traceback.print_exc()
+    else:
+        print(f"ERROR: CSV file not found at: {csv_path}")
+    
+    # Create data section in HTML directly (not markdown)
+    data_txt = ''
+    
+    # We no longer need the CSS styles in data_txt since we're adding them directly to WeasyPrint
+    
+    data_txt += "<div class='page-break'></div>\n"
+    data_txt += "<h1>Datos</h1>\n"
+    if top_choice == 1:
+        data_txt += "<h2>Herramientas Gerenciales:</h2>\n"
+        data_txt += "<p>" + ", ".join(all_keywords) + "</p>\n"
+        data_txt += "\n"
+        data_txt += f"<h2>Datos de {actual_menu}</h2>\n"
+    else:
+        data_txt += "<h2>Herramientas Gerenciales:</h2>\n"
+        if top_choice == 2:
+            data_txt += "<p>" + all_kw + "</p>\n"
+        else:
+            data_txt += "<p>" + actual_menu + "</p>\n"
+        data_txt += "<h3>Fuentes de Datos:</h3>\n"
+        data_txt += "<p>" + ", ".join(all_keywords) + "</p>\n"
+
+    if top_choice == 1:
+        year_adjust = 0
+        period = "Mensual"
+        # if menu == 2:
+            # period = "Anual"
+        if total_years > 20:
+            data_txt += f"<h3>{total_years} años ({period}) ({earliest_year} - {latest_year})</h3>\n"
+            data_txt += csv2table(csv_all_data)
+        data_txt += f"<h3>20 años ({period}) ({latest_year-20} - {latest_year})</h3>\n"
+        data_txt += csv2table(csv_last_20_data)
+        data_txt += f"<h3>15 años ({period}) ({latest_year-15} - {latest_year})</h3>\n"
+        data_txt += csv2table(csv_last_15_data)
+        data_txt += f"<h3>10 años ({period}) ({latest_year-10} - {latest_year})</h3>\n"
+        data_txt += csv2table(csv_last_10_data)
+        data_txt += f"<h3>5 años ({period}) ({latest_year-5} - {latest_year})</h3>\n"
+        data_txt += csv2table(csv_last_5_data)
+    else:
+        data_txt += csv2table(csv_combined_dataset)     
+    data_txt += "\n\n\n"
+    data_txt += "<div class='page-break'></div>\n"  # Add page break here
+    data_txt += "<h2>Datos Medias y Tendencias</h2>\n"
+    # data_txt += f"<h3>Medias y Tendencias ({latest_year-20} - {latest_year})</h3>\n"
+    # data_txt += csv_means_trendsA
+    data_txt += csv2table(csv_means_trends)
+    data_txt += "<h2>Correlación y Regresión</h2>\n"
+    data_txt += f"<h3>Correlación</h3>\n"
+    csv_correlation_csv = csv_correlation.to_csv(index=False)        
+    data_txt += csv2table(csv_correlation_csv)        
+    data_txt += f"<h3>Regresión</h3>\n"
+    csv_regression_csv = csv_regression.to_csv(index=False)
+    data_txt += csv2table(csv_regression_csv)
+    data_txt += f"<h2>PCA</h2>\n"
+    pca_csv_variable_csv = pca_csv_variable.to_csv(index=True)
+    data_txt += csv2table(pca_csv_variable_csv)
+    data_txt += "<div class='page-break'></div>\n"  # Add another page break here
+    
+    # Set up years for title
+    # if menu == 2:
+    #     start_year = current_year-70+year_adjust
+    #     end_year = current_year-year_adjust
+    # elif menu == 4:
+    #     start_year = current_year-74
+    #     end_year = current_year
+    # else:
+    #     start_year = current_year-20
+    #     end_year = current_year
+    # start_year = earliest_year
+    # end_year = latest_year
+        
+    # Generate table of contents from markdown sections
+    # First, create a temporary markdown document with all the headings
+    # temp_markdown = ""
+    # temp_markdown += "# Resumen Ejecutivo\n"
+    # temp_markdown += "# Tendencias Temporales\n"
+    # if not one_keyword:
+    #     temp_markdown += "# Análisis Cruzado de Palabras Clave\n"
+    # temp_markdown += "# Análisis Específico de la Industria\n"
+    # temp_markdown += "# Análisis ARIMA\n"
+    # temp_markdown += "# Análisis Estacional\n"
+    # temp_markdown += "# Análisis de Fourier\n"
+    # temp_markdown += "# Conclusiones\n"
+    # temp_markdown += "# Datos\n"
+    
+    # # Generate TOC from the temporary markdown
+    # toc_html = generate_markdown_toc(temp_markdown)
+    
+    # Build the complete HTML document
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Análisis Estadístico de Herramientas Gerenciales</title>
+        <style>
+            /* Page size and margins */
+            @page {{
+                size: 8.5in 11in;
+                margin: 1.25in;
+            }}
+            
+            /* Base document styles */
+            body {{
+                font-family: "Times New Roman", Times, serif;
+                font-size: 12pt;
+                line-height: 1.5;
+                color: #000000;
+                margin: 0; /* Remove body margin since @page handles it */
+                padding: 0;
+                background-color: #ffffff;
+                counter-reset: page 39;  /* Start at 40 (39 + 1) */
+                width: 100%;
+            }}
+
+            /* Reset for title page elements */
+            .title-page * {{
+                margin: 0;
+                padding: 0;
+                position: static;
+            }}
+            
+            /* Title page as a container */
+            .title-page {{
+                position: relative;
+                height: 11in;
+                width: 8.5in;
+                padding: 0;
+                margin: 0 auto;
+                box-sizing: border-box;
+                left: -1.25in; /* Shift left by 1.25 inches */
+                top: -1.25in; /* Shift up by 1.25 inch */
+                counter-increment: page 0;  /* Ensure title page doesn't increment counter */
+            }}
+            
+            /* Title positioning */
+            .title-page h1 {{
+                position: absolute !important;
+                top: 5in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 24pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }}
+            
+            /* Subtitle positioning */
+            .title-page .subtitle {{
+                position: absolute !important;
+                top: 5.7in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 14pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }}
+            
+            /* Authors positioning */
+            .title-page .authors {{
+                position: absolute !important;
+                bottom: 2.5in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 14pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }}
+            
+            /* Date positioning */
+            .title-page .date {{
+                position: absolute !important;
+                bottom: 1.5in !important;
+                left: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 12pt !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }}
+            
+            /* Content sections */
+            .toc, #resumen-ejecutivo, #tendencias-temporales,
+            #analisis-cruzado-de-palabras-clave, #analisis-especifico-de-la-industria,
+            #analisis-arima, #analisis-estacional, #analisis-de-fourier,
+            #conclusiones, #graficos, #datos {{
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }}
+
+            /* Table of contents */
+            .toc {{
+                margin: 2cm 0;
+                counter-reset: page 5;  /* Set to 6 (5 + 1) */
+                counter-increment: page 0;  /* Ensure it stays at 6 */
+            }}
+
+            .toc h2 {{
+                text-align: center;
+                font-size: 14pt;
+                margin-bottom: 1cm;
+            }}
+
+            /* Headings */
+            h1, h2, h3, h4, h5, h6 {{
+                font-family: "Times New Roman", Times, serif;
+                font-weight: bold;
+                margin-top: 1em;
+                margin-bottom: 0.5em;
+            }}
+
+            h1 {{
+                font-size: 16pt;
+                text-align: center;
+                margin-top: 2em;
+            }}
+
+            h2 {{
+                font-size: 14pt;
+            }}
+
+            h3 {{
+                font-size: 12pt;
+            }}
+
+            /* Paragraphs */
+            p {{
+                text-align: justify;
+                margin-bottom: 1em;
+                width: 100%;
+            }}
+
+            /* Page numbering */
+            @page {{
+                @bottom-right {{
+                    content: counter(page);
+                }}
+            }}
+
+            /* Page breaks */
+            .page-break {{
+                page-break-after: always;
+                counter-increment: page;
+                height: 0;
+                display: block;
+            }}
+
+            /* Reset page counter for main content */
+            #resumen-ejecutivo {{
+                counter-reset: page 39;  /* Start at 40 (39 + 1) */
+            }}
+
+            /* Set TOC page number */
+            .toc {{
+                counter-reset: page 5;  /* Set to 6 (5 + 1) */
+                counter-increment: page 0;  /* Ensure it stays at 6 */
+            }}
+
+            /* Tables */
+            table {{
+                border-collapse: collapse;
+                width: 100%;
+                margin: 1.5em 0;
+                page-break-inside: avoid;
+                font-size: 9px;  /* Added this line to make all tables have smaller font */
+            }}
+
+            th, td {{
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }}
+
+            th {{
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }}
+
+            .table-wrapper {{
+                width: 100%;
+                max-width: none;
+                overflow-x: auto;
+                margin-bottom: 1em;
+                padding: 0;
+            }}
+
+            .data-table {{
+                font-size: 10pt;
+                width: 100%;
+                border-collapse: collapse;
+                table-layout: fixed;
+            }}
+
+            .data-table th {{
+                padding: 5px 2px;
+                vertical-align: bottom;
+                text-align: left;
+                font-size: 10pt;
+                /* Change white-space to normal to allow wrapping */
+                white-space: normal;
+                /* Add word-wrap for better control */
+                word-wrap: break-word;
+                /* Optional: add a max height if needed */
+                max-height: 50px;
+            }}
+
+            .data-table td {{
+                padding: 5px 2px;
+                font-size: 9pt;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }}
+
+            /* Table captions */
+            .table-caption {{
+                font-style: italic;
+                text-align: center;
+                margin-top: 0.5em;
+                caption-side: bottom;
+                font-size: 10pt;
+            }}
+
+            /* Figures and images */
+            figure {{
+                text-align: center;
+                margin: 1.5em 0;
+                page-break-inside: avoid;
+            }}
+
+            img {{
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 1.5em auto;
+                page-break-inside: avoid;
+            }}
+
+            figcaption {{
+                font-style: italic;
+                text-align: center;
+                margin-top: 0.5em;
+                font-size: 10pt;
+            }}
+
+            /* Abstract section */
+            .abstract {{
+                margin: 2em 0;
+                font-size: 11pt;
+            }}
+
+            .abstract h2 {{
+                text-align: center;
+                font-size: 12pt;
+                font-weight: bold;
+            }}
+
+            .abstract p {{
+                text-align: justify;
+            }}
+
+            /* References and citations */
+            .references {{
+                margin-top: 2em;
+            }}
+
+            .references h2 {{
+                text-align: center;
+            }}
+
+            .references ol {{
+                padding-left: 1em;
+            }}
+
+            .references li {{
+                text-indent: -1em;
+                padding-left: 1em;
+                margin-bottom: 0.5em;
+            }}
+
+            /* Footer */
+            .footer {{
+                margin-top: 2em;
+                border-top: 1px solid #000;
+                padding-top: 1em;
+                font-size: 9pt;
+            }}
+
+            /* Print-specific styles */
+            @media print {{
+                body {{
+                    font-size: 12pt;
+                }}
+                
+                a {{
+                    text-decoration: none;
+                    color: #000000;
+                }}
+                
+                .table-wrapper {{
+                    overflow-x: visible;
+                }}
+                
+                .data-table {{
+                    font-size: 9pt;
+                    page-break-inside: avoid;
+                }}
+                
+                img {{
+                    max-width: 100% !important;
+                }}
+                
+                h1, h2, h3, h4, h5, h6 {{
+                    page-break-after: avoid;
+                    page-break-inside: avoid;
+                }}
+                
+                p {{
+                    orphans: 3;
+                    widows: 3;
+                }}
+            }}
+        </style>
+    </head>
+    <body>
+"""
+
+    # Only include the title page if has_cover is False
+    if not has_cover:
+        html_content += f"""
+        <!-- Title Page -->
+        <div class="title-page">
+            <h1>Análisis de {', '.join(all_keywords)}</h1>
+            <div class="subtitle">({actual_menu}) ({str(start_year)} - {str(end_year)})</div>
+            <div class="authors">Diomar Anez & Dimar Anez</div>
+            <div class="date">{datetime.now().strftime("%d de %B de %Y")}</div>
+        </div>
+        <div class="page-break"></div>
+"""
+    else:
+        html_content += f"""
+"""
+
+    # Continue with the rest of the HTML content
+    html_content += f"""
+        <!-- Main Content - Convert markdown sections to HTML -->
+        <div class="main-content">
+            <div id="resumen-ejecutivo" style="counter-reset: page 32;">
+                <h1>Resumen Ejecutivo</h1>
+                {markdown.markdown(gem_summary_sp, extensions=["tables"])}
+            </div>
+            <div class="page-break"></div>
+            
+            <div id="tendencias-temporales">
+                <h1>Tendencias Temporales</h1>
+                {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
+            </div>
+            <div class="page-break"></div>
+            """
+    
+    if not one_keyword:
+        html_content += f"""
+        <div id="analisis-cruzado-de-palabras-clave">
+            <h1>Análisis Cruzado de Palabras Clave</h1>
+            {markdown.markdown(gem_cross_keyword_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        """
+    
+    html_content += f"""
+        <div id="tendencias-generales-y-contextuales">
+            <h1>Tendencias Generales y Contextuales</h1>
+            {markdown.markdown(gem_industry_specific_sp, extensions=["tables"])}
+        </div>
+        <div class="page-break"></div>
+        """
+        
+    # if skip_arima[0]==False:
+    #     html_content += f"""
+    #     <div id="analisis-arima">
+    #         <h1>Análisis ARIMA</h1>
+    #         {markdown.markdown(gem_arima_sp, extensions=["tables"])}
+    #     </div>
+    #     <div class="page-break"></div>
+    #     """
+        
+    # if skip_seasonal[0]==False:
+    #     html_content += f"""
+    #     <div id="analisis-estacional">
+    #         <h1>Análisis Estacional</h1>
+    #         {markdown.markdown(gem_seasonal_sp, extensions=["tables"])}
+    #     </div>
+    #     <div class="page-break"></div>
+    #     """
+    
+    # html_content += f"""            
+    #     <div id="analisis-de-fourier">
+    #         <h1>Análisis de Fourier</h1>
+    #         {markdown.markdown(gem_fourier_sp, extensions=["tables"])}
+    #     </div>
+    #     <div class="page-break"></div>
+    
+    html_content += f"""    
         <div id="conclusiones">
             <h1>Conclusiones</h1>
             {markdown.markdown(gem_conclusions_sp, extensions=["tables"])}
@@ -7877,13 +8994,15 @@ def main():
 
             # 3. Create the combined dataset for the common date range
             combined_dataset = create_combined_dataset2(datasets_norm, selected_sources, dbase_options)
+            
+            csv_combined_dataset = combined_dataset.to_csv(index=True)
 
             print (combined_dataset)
                  
             # --- Run Analysis for Option 2 ---
             results()
             ai_analysis()
-            #report_pdf()
+            report_pdf2()
             # ----------------------------------
 
             
