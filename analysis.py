@@ -191,6 +191,7 @@ global source_trends_results
 global current_selected_keyword
 global pca_csv_variable
 global scree_plot_filepath
+global pca_csv_variable_csv
 source_trends_results = {}
 original_values = {}
 keycharts = []
@@ -2950,7 +2951,7 @@ def plot_and_analyze_combined_trends(combined_df, title="Comparative Trends Anal
             elif isinstance(charts, list):
                  charts.append({'title': title, 'filename': plot_filename_short})
             # Update image_markdown (assuming global string)
-            image_markdown += f"![{title}]({quote(plot_filename_short)})\n\n" # Use URL encoding for filename
+            #image_markdown += f"![{title}]({quote(plot_filename_short)})\n\n" # Use URL encoding for filename
 
         except NameError as ne:
              print(f"Error: Global variable like 'unique_folder', 'charts', or 'image_markdown' not found. Cannot save plot or update report variables. {ne}")
@@ -3144,7 +3145,7 @@ def plot_combined_averages_bars(analysis_results_list, title="Análisis Comparat
             add_image_to_report(report_title, plot_filename_short)
             if isinstance(charts, str): charts += f'{report_title} ({plot_filename_short})\n\n'
             elif isinstance(charts, list): charts.append({'title': report_title, 'filename': plot_filename_short})
-            image_markdown += f"![{report_title}]({quote(plot_filename_short)})\n\n"
+            #image_markdown += f"![{report_title}]({quote(plot_filename_short)})\n\n"
 
         except NameError as ne:
              print(f"Error plot_combined_bars_varwidth: Globals missing. {ne}")
@@ -4629,7 +4630,7 @@ def perform_pca_analysis(source_columns: list, keyword: str, unique_folder: str)
         - pca_explanation (str | None): Text explanation of the PCA results and file paths, or None on error.
     """
     # Declare intention to use necessary globals (only if needed for modification, read-only access is fine)
-    global combined_dataset, fixed_source_colors, get_unique_filename, add_image_to_report, pca_csv_variable, loadings_plot_filepath, scree_plot_filepath
+    global combined_dataset, fixed_source_colors, get_unique_filename, add_image_to_report, pca_csv_variable, loadings_plot_filepath, scree_plot_filepath, pca_csv_variable_csv
 
     analysis_type_name = "PCA" # Used for base filenames
 
@@ -4756,6 +4757,7 @@ def perform_pca_analysis(source_columns: list, keyword: str, unique_folder: str)
 
         # Store as CSV string variable
         pca_csv_variable = pca_df.to_string()
+        pca_csv_variable_csv = pca_df.to_csv(index=True)
     except Exception as e:
         print(f"    Error guardando datos PCA: {e}") # Translated
         # Mark data as potentially unsaved, but continue plotting
@@ -4909,7 +4911,7 @@ def init_variables():
     original_values = {}
     original_calc_details = {}
 
-    image_markdown = "\n\n# Gráficos\n\n"
+    image_markdown = "\n\n"
     plt.style.use('ggplot')
     current_year = datetime.now().year
     charts=""
@@ -4974,7 +4976,7 @@ def results():
 
         if combined_dataset is not None and not combined_dataset.empty:
                 # 1. Generate Line plot and Calculate Averages/Trends
-                line_plot_title = f"Análisis Comparativo de Tendencias para '{current_selected_keyword}'" if current_selected_keyword else "Análisis Comparativo de Tendencias"
+                line_plot_title = f'Análisis Comparativo de Tendencias para "{current_selected_keyword}"' if current_selected_keyword else 'Análisis Comparativo de Tendencias'
                 # Capture all 3 return values now
                 line_plot_filename, csv_combined_analysis_data, analysis_results_raw = plot_and_analyze_combined_trends(
                     combined_dataset,
@@ -4987,7 +4989,7 @@ def results():
 
                 # 2. Generate Bar plot using the calculated results
                 if analysis_results_raw:
-                    bar_plot_title = f"Comparativo de Medias por Periodo para '{current_selected_keyword}'" if current_selected_keyword else "Comparativo de Medias por Periodo"
+                    bar_plot_title = f'Comparativo de Medias por Periodo para "{current_selected_keyword}"' if current_selected_keyword else 'Comparativo de Medias por Periodo'
                     # Call the new bar plot function
                     plot_combined_averages_bars(analysis_results_raw, title=bar_plot_title)
                 else:
@@ -6931,6 +6933,7 @@ def report_pdf2():
     global earliest_year
     global latest_year
     global total_years
+    global pca_csv_variable_csv
     
     # Find the cover image path from portada-combined.csv
     cover_image_path = None
@@ -6954,32 +6957,36 @@ def report_pdf2():
     # Determine which data source we're using
     data_source_code = ""
     data_source_name = ""
-    if menu == 1:
-        data_source_code = "GT"  # Google Trends
-        data_source_name = "Google Trends"
-    elif menu == 2:
-        data_source_code = "GB"  # Google Books Ngrams
-        data_source_name = "Google Books Ngram"
-    elif menu == 3:
-        data_source_code = "BU"  # Bain - Usability
-        data_source_name = "Bain & Company - Usability"
-    elif menu == 4:
-        data_source_code = "CR"  # Crossref.org
-        data_source_name = "Crossref.org"
-    elif menu == 5:
-        data_source_code = "BS"  # Bain - Satisfaction
-        data_source_name = "Bain & Company - Satisfaction"
-    # Add other data sources as needed
+    if top_choice == 1 or top_choice == 3:
+        if menu == 1:
+            data_source_code = "GT"  # Google Trends
+            data_source_name = "Google Trends"
+        elif menu == 2:
+            data_source_code = "GB"  # Google Books Ngrams
+            data_source_name = "Google Books Ngram"
+        elif menu == 3:
+            data_source_code = "BU"  # Bain - Usability
+            data_source_name = "Bain & Company - Usability"
+        elif menu == 4:
+            data_source_code = "CR"  # Crossref.org
+            data_source_name = "Crossref.org"
+        elif menu == 5:
+            data_source_code = "BS"  # Bain - Satisfaction
+            data_source_name = "Bain & Company - Satisfaction"
+    else:
+        # Add other data sources as needed
+        data_source_code = "IC"  # Informe Complementario
+        data_source_name = "Informe Complementario"
     
     print(f"DEBUG: Using data source code: '{data_source_code}'")
     print(f"DEBUG: Using data source name: '{data_source_name}'")
     
     # Read the CSV file to find the cover image
-    import pandas as pd
-    import os
+    # import pandas as pd
+    # import os
     
     # Path to the CSV file
-    csv_path = 'pub-assets/portada-combined.csv'
+    csv_path = 'pub-assets/portada-combined2.csv'
     
     # Read the CSV file
     if os.path.exists(csv_path):
@@ -7087,7 +7094,7 @@ def report_pdf2():
         data_txt += csv2table(csv_combined_dataset)     
     data_txt += "\n\n\n"
     data_txt += "<div class='page-break'></div>\n"  # Add page break here
-    data_txt += "<h2>Datos Medias y Tendencias</h2>\n"
+    data_txt += "<h2>Medias y Tendencias</h2>\n"
     # data_txt += f"<h3>Medias y Tendencias ({latest_year-20} - {latest_year})</h3>\n"
     # data_txt += csv_means_trendsA
     data_txt += csv2table(csv_means_trends)
@@ -7099,7 +7106,7 @@ def report_pdf2():
     csv_regression_csv = csv_regression.to_csv(index=False)
     data_txt += csv2table(csv_regression_csv)
     data_txt += f"<h2>PCA</h2>\n"
-    pca_csv_variable_csv = pca_csv_variable.to_csv(index=True)
+    # pca_csv_variable_csv = pca_csv_variable.to_csv(index=True)
     data_txt += csv2table(pca_csv_variable_csv)
     data_txt += "<div class='page-break'></div>\n"  # Add another page break here
     
@@ -7229,8 +7236,8 @@ def report_pdf2():
             }}
             
             /* Content sections */
-            .toc, #resumen-ejecutivo, #tendencias-temporales,
-            #analisis-cruzado-de-palabras-clave, #analisis-especifico-de-la-industria,
+            .toc, #resumen-ejecutivo, #analisis-temporal-comparativo,
+            #analisis-de-correlacion-y-regresion, #analisis-de-componentes-principales,
             #analisis-arima, #analisis-estacional, #analisis-de-fourier,
             #conclusiones, #graficos, #datos {{
                 padding: 0;
@@ -7481,7 +7488,6 @@ def report_pdf2():
         <!-- Title Page -->
         <div class="title-page">
             <h1>Análisis de {', '.join(all_keywords)}</h1>
-            <div class="subtitle">({actual_menu}) ({str(start_year)} - {str(end_year)})</div>
             <div class="authors">Diomar Anez & Dimar Anez</div>
             <div class="date">{datetime.now().strftime("%d de %B de %Y")}</div>
         </div>
@@ -7501,25 +7507,25 @@ def report_pdf2():
             </div>
             <div class="page-break"></div>
             
-            <div id="tendencias-temporales">
-                <h1>Tendencias Temporales</h1>
+            <div id="analisis-temporal-comparativo">
+                <h1>Análisis Temporal Comparativo</h1>
                 {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
             </div>
             <div class="page-break"></div>
             """
     
-    if not one_keyword:
-        html_content += f"""
-        <div id="analisis-cruzado-de-palabras-clave">
-            <h1>Análisis Cruzado de Palabras Clave</h1>
-            {markdown.markdown(gem_cross_keyword_sp, extensions=["tables"])}
-        </div>
-        <div class="page-break"></div>
-        """
+
+    html_content += f"""
+    <div id="analisis-de-correlacion-y-regresion">
+        <h1>Análisis de Correlación y Regresión Inter-Fuentes</h1>
+        {markdown.markdown(gem_cross_keyword_sp, extensions=["tables"])}
+    </div>
+    <div class="page-break"></div>
+    """
     
     html_content += f"""
-        <div id="tendencias-generales-y-contextuales">
-            <h1>Tendencias Generales y Contextuales</h1>
+        <div id="analisis-de-componentes-principales">
+            <h1>Análisis de Componentes Principales</h1>
             {markdown.markdown(gem_industry_specific_sp, extensions=["tables"])}
         </div>
         <div class="page-break"></div>
@@ -7582,7 +7588,7 @@ def report_pdf2():
             <p>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. 
             Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. 
             Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta <a href="https://opensource.org/licenses/MIT/">https://opensource.org/licenses/MIT/</a></p>
-            <p>Reporte generado el {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
+
         </div>
     </body>
     </html>
@@ -8070,7 +8076,8 @@ def generate_pdf_toc(input_pdf_path, output_pdf_path, has_cover=False):
         headings = []
         
         # Define main section patterns with word boundaries to avoid partial matches
-        main_sections = [
+        if top_choice == 1 or top_choice == 3:
+          main_sections = [
             (re.compile(r'(?:^|\n)(?:\s*)(Resumen Ejecutivo)(?:\s*$|\s+)', re.IGNORECASE), 1),
             (re.compile(r'(?:^|\n)(?:\s*)(Tendencias Temporales)(?:\s*$|\s+)', re.IGNORECASE), 1),
             (re.compile(r'(?:^|\n)(?:\s*)(Análisis Cruzado de Palabras Clave)(?:\s*$|\s+)', re.IGNORECASE), 1),
@@ -8081,7 +8088,17 @@ def generate_pdf_toc(input_pdf_path, output_pdf_path, has_cover=False):
             (re.compile(r'(?:^|\n)(?:\s*)(Conclusiones)(?:\s*$|\s+)', re.IGNORECASE), 1),
             (re.compile(r'(?:^|\n)(?:\s*)(Gráficos)(?:\s*$|\s+)', re.IGNORECASE), 1),
             (re.compile(r'(?:^|\n)(?:\s*)(Datos)(?:\s*$|\s+)', re.IGNORECASE), 1)
-        ]
+          ]
+        else:
+          main_sections = [
+            (re.compile(r'(?:^|\n)(?:\s*)(Resumen Ejecutivo)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis Temporal Comparativo)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis de Correlación y Regresión Inter-Fuentes)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Análisis de Componentes Principales)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Conclusiones)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Gráficos)(?:\s*$|\s+)', re.IGNORECASE), 1),
+            (re.compile(r'(?:^|\n)(?:\s*)(Datos)(?:\s*$|\s+)', re.IGNORECASE), 1)
+          ]      
         
         print(f"PDF has {len(reader.pages)} pages")
         
