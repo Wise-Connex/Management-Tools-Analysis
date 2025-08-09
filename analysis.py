@@ -9218,7 +9218,10 @@ def generate_all_reports():
             actual_menu = source_info['name']
             actual_opt = source_info['opt']
             all_keywords = current_tool_keywords # Use tool keywords from outer loop
-            top_choice = 1 # Simulate selecting option 1
+            if top_choice != 2:
+                top_choice = 1 # Simulate selecting option 1
+            else:
+                top_choice = 2 # Simulate selecting option 2
 
             # --- Determine correct data_filename --- 
             data_file_index = 0 
@@ -9267,7 +9270,10 @@ def generate_all_reports():
 
                 # 5. Generate PDF Report
                 print("      Generando reporte PDF...")
-                report_pdf()
+                if top_choice != 2:
+                    report_pdf()
+                else:
+                    report_pdf2()
 
                 # 6. Copy and Rename PDF
                 original_pdf_path = os.path.join(unique_folder, f'{filename}.pdf')
