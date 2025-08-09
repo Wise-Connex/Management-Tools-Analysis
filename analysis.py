@@ -9033,7 +9033,7 @@ def main():
         elif top_choice == 4:
             # --- Call the new batch function --- 
             top_choice = 2
-            generate_all_reports() 
+            generate_all_reports2() 
             # ------------------------------------
             
                         
@@ -9340,6 +9340,175 @@ def generate_all_reports():
     print("="*60 + "\n")
     
 # <<< End of generate_all_reports function >>>
+
+def generate_all_reports2() -> None:
+    """
+    Generates all Informes Complementarios (option 2) strictly from the IC-Portada.csv list.
+    For each 'Herramienta' listed in pub-assets/IC-Portada.csv:
+      - Fixes the menu to 'Informe Complementario' (IC) and top_choice=2
+      - Initializes variables and runs the standard pipeline
+      - Produces the complementary PDF via report_pdf2()
+      - Copies/renames into 'Informes/Informe_{Cód}.pdf'
+      - Updates README using portada metadata when available
+    """
+    # Globals used by the standard pipeline
+    global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
+    global tool_file_dic, trends_results, data_filename
+
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    RED = "\033[91m"
+    RESET = "\033[0m"
+
+    print("\n" + "=" * 60)
+    print(" Iniciando Generación de Informes Complementarios (Batch, Opción 2)")
+    print(" (Listado controlado por 'IC-Portada.csv')")
+    print("=" * 60 + "\n")
+
+    # Ensure output directory exists
+    informes_folder = "Informes"
+    if not os.path.exists(informes_folder):
+        os.makedirs(informes_folder)
+        os.chmod(informes_folder, 0o777)
+        print(f"[Info] Carpeta '{informes_folder}' creada.")
+
+    # Load IC portada once
+    ic_portada_path = "pub-assets/IC-Portada.csv"
+    if not os.path.exists(ic_portada_path):
+        print(f"{RED}[Error] No se encontró {ic_portada_path}. Abortando generación IC.{RESET}")
+        return
+
+    try:
+        ic_portada_df = pd.read_csv(ic_portada_path, sep=';', quotechar='"', skipinitialspace=True)
+        ic_portada_df.columns = ic_portada_df.columns.str.strip()
+        if 'Nro.' in ic_portada_df.columns:
+            ic_portada_df['Nro.'] = ic_portada_df['Nro.'].astype(str)
+        if 'Cód' in ic_portada_df.columns:
+            ic_portada_df['Cód'] = ic_portada_df['Cód'].astype(str)
+    except Exception as e:
+        print(f"{RED}[Error] No se pudo cargar {ic_portada_path}: {e}{RESET}")
+        return
+
+    # Helper: map herramienta name to tool entry in tool_file_dic
+    def find_tool_entry_for_herramienta(herramienta: str):
+        herramienta_norm = str(herramienta).strip().lower()
+        for tool_code, tool_data in tool_file_dic.items():
+            # tool_data[1] is expected to be the keywords list
+            keywords = [str(k).strip().lower() for k in tool_data[1]] if len(tool_data) > 1 else []
+            if herramienta_norm in keywords:
+                return tool_code, tool_data
+        return None, None
+
+    processed_count = 0
+
+    # Iterate exactly the tools listed in IC-Portada.csv
+    for _, row in ic_portada_df.iterrows():
+        herramienta_name = row.get('Herramienta')
+        if not herramienta_name or str(herramienta_name).strip() == "":
+            print(f"{YELLOW}[Skipping] Fila sin 'Herramienta' válida en {ic_portada_path}.{RESET}")
+            continue
+
+        tool_code, tool_data = find_tool_entry_for_herramienta(herramienta_name)
+        if tool_data is None:
+            print(f"{YELLOW}[Skipping] Herramienta '{herramienta_name}' no mapeada en tool_file_dic.{RESET}")
+            continue
+
+        print(f"\n{YELLOW}>>> Procesando IC para Herramienta: {herramienta_name} <<< {RESET}")
+        print("=" * 60)
+
+        # Fix IC-specific globals
+        menu = 6
+        actual_menu = "Informe Complementario"
+        actual_opt = "IC"
+        all_keywords = tool_data[1]  # keywords for this tool
+        top_choice = 2               # force second option
+
+        # Choose a data file for init_variables; default to index 0 as in original flow
+        # (IC does not define a distinct data file index)
+        if len(tool_data) > 0:
+            current_data_filename = tool_data[0]
+        else:
+            print(f"{YELLOW}[Skipping] tool_data sin archivo de datos para '{herramienta_name}'.{RESET}")
+            continue
+
+        full_data_path = os.path.join("dbase", current_data_filename)
+        if not os.path.exists(full_data_path):
+            print(f"{YELLOW}[Skipping] Archivo de datos no encontrado: {current_data_filename}{RESET}")
+            continue
+
+        data_filename = current_data_filename
+        print(f"    Procesando con archivo: {data_filename}")
+
+        try:
+            # 1) Initialize (will populate trends_results, filename, unique_folder, etc.)
+            init_variables()
+
+            # 2) Validate data post-initialization, mirroring the original guard
+            trends_data_available = False
+            if 'trends_results' in globals() and trends_results is not None:
+                if 'all_data' in trends_results and not trends_results['all_data'].empty and all_keywords[0] in trends_results['all_data'].columns:
+                    trends_data_available = True
+                elif 'last_20_years_data' in trends_results and not trends_results['last_20_years_data'].empty and all_keywords[0] in trends_results['last_20_years_data'].columns:
+                    trends_data_available = True
+            if not trends_data_available:
+                print(f"      {YELLOW}[Skipping] No se encontraron datos válidos post-inicialización.{RESET}")
+                continue
+
+            # 3) Compute results and charts
+            print(f"      Generando resultados y gráficos ({unique_folder})...")
+            results()
+
+            # 4) AI analysis
+            print("      Generando análisis AI...")
+            ai_analysis()
+
+            # 5) Generate complementary PDF (option 2)
+            print("      Generando reporte PDF (Complementario)...")
+            report_pdf2()
+
+            # 6) Copy and rename
+            original_pdf_path = os.path.join(unique_folder, f"{filename}.pdf")
+            if not os.path.exists(original_pdf_path):
+                print(f"      {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
+                continue
+
+            nro_val = row.get('Nro.', 'XXX')
+            cod_val = row.get('Cód', 'XX')
+
+            new_filename = f"Informe_{str(cod_val).strip()}.pdf"
+            new_pdf_path = os.path.join(informes_folder, new_filename)
+
+            try:
+                shutil.copy2(original_pdf_path, new_pdf_path)
+                print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
+                processed_count += 1
+
+                # 7) Update README
+                titulo_prefix = row.get('Título', 'Título No Encontrado')
+                herramienta_title = row.get('Herramienta', herramienta_name)
+                full_titulo = f"{str(titulo_prefix).strip()} {str(herramienta_title).strip()}"
+
+                report_readme_info = {
+                    'nro': str(nro_val).strip(),
+                    'informe_code': str(cod_val).strip(),
+                    'titulo': full_titulo,
+                    'pdf_filename': new_filename,
+                }
+                update_readme(report_readme_info)
+            except Exception as copy_e:
+                print(f"      {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
+
+        except Exception as e:
+            print(f"    {RED}[Error General] Procesando IC para '{herramienta_name}': {e}{RESET}")
+            traceback.print_exc()
+
+        print("=" * 60)
+
+    print("\n" + "=" * 60)
+    print(f" Generación de Informes Complementarios (Batch) Completada: {processed_count} informes generados")
+    print("=" * 60 + "\n")
+    
+# <<< End of generate_all_reports2 function >>>
 
 if __name__ == "__main__":
     main()
