@@ -8031,7 +8031,8 @@ def top_level_menu():
         2: "Comparar Herramienta de Gestión entre Fuentes de Datos",
         # Change option 3 text
         3: "Generar TODOS los Informes Individuales (Batch)",
-        4: "Salir"
+        4: "Generar TODOS los Informes Suplementarios (Batch)",
+        5: "Salir"
     }
     for index, option in enumerate(options.values(), 1):
         print(f"{index}. {option}")
@@ -8896,7 +8897,7 @@ def main():
         
         top_choice = top_level_menu()
         
-        if top_choice == 4:  # Exit option
+        if top_choice == 5:  # Exit option
             print("\nGracias por usar el programa.\nSuerte en tu investigación, ¡Hasta luego!\n")
             break
             
@@ -9027,7 +9028,15 @@ def main():
             # --- Call the new batch function --- 
             generate_all_reports() 
             # ------------------------------------
+
+
+        elif top_choice == 4:
+            # --- Call the new batch function --- 
+            top_choice = 2
+            generate_all_reports() 
+            # ------------------------------------
             
+                        
     # Cerrar el archivo null y restaurar stderr al finalizar
     null.close()
     sys.stderr = stderr
@@ -9149,7 +9158,10 @@ def generate_all_reports():
     RESET = "\033[0m"
     
     print("\n" + "="*60)
-    print(" Iniciando Generación de Todos los Informes Individuales (Batch)")
+    if top_choice == 2:
+        print(" Iniciando Generación de Todos los Informes Complementarios (Batch)")
+    else:
+        print(" Iniciando Generación de Todos los Informes Individuales (Batch)")
     print(" (Iterando por Herramienta -> Fuente de Datos)")
     print("="*60 + "\n")
 
@@ -9159,7 +9171,8 @@ def generate_all_reports():
         2: {"name": "Google Books Ngrams", "code": "GB", "opt": "GB"},
         3: {"name": "Bain - Usability", "code": "BU", "opt": "BR"},
         4: {"name": "Crossref.org", "code": "CR", "opt": "CR"},
-        5: {"name": "Bain - Satisfaction", "code": "BS", "opt": "BS"}
+        5: {"name": "Bain - Satisfaction", "code": "BS", "opt": "BS"},
+        6: {"name": "Informe Complementario", "code": "IC", "opt": "IC"}
     }
 
     # Create the 'Informes' directory if it doesn't exist
