@@ -9343,17 +9343,18 @@ def generate_all_reports():
 
 def generate_all_reports2() -> None:
     """
-    Generates all Informes Complementarios (option 2) strictly from the IC-Portada.csv list.
-    For each 'Herramienta' listed in pub-assets/IC-Portada.csv:
-      - Fixes the menu to 'Informe Complementario' (IC) and top_choice=2
-      - Initializes variables and runs the standard pipeline
-      - Produces the complementary PDF via report_pdf2()
-      - Copies/renames into 'Informes/Informe_{Cód}.pdf'
-      - Updates README using portada metadata when available
+    Genera TODOS los Informes Complementarios (opción 2) usando EXCLUSIVAMENTE
+    la lista de herramientas definida en 'pub-assets/IC-Portada.csv', columna 'Herramienta'.
+    Fuerza top_choice=2 y menu=6 (IC), y produce PDFs vía report_pdf2().
     """
-    # Globals used by the standard pipeline
+    # Globals usados por el pipeline existente
     global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
     global tool_file_dic, trends_results, data_filename
+
+    import os
+    import shutil
+    import traceback
+    import pandas as pd
 
     GREEN = "\033[92m"
     YELLOW = "\033[93m"
@@ -9365,14 +9366,14 @@ def generate_all_reports2() -> None:
     print(" (Listado controlado por 'IC-Portada.csv')")
     print("=" * 60 + "\n")
 
-    # Ensure output directory exists
+    # Asegurar carpeta de salida
     informes_folder = "Informes"
     if not os.path.exists(informes_folder):
         os.makedirs(informes_folder)
         os.chmod(informes_folder, 0o777)
         print(f"[Info] Carpeta '{informes_folder}' creada.")
 
-    # Load IC portada once
+    # Cargar IC-Portada.csv
     ic_portada_path = "pub-assets/IC-Portada.csv"
     if not os.path.exists(ic_portada_path):
         print(f"{RED}[Error] No se encontró {ic_portada_path}. Abortando generación IC.{RESET}")
@@ -9389,11 +9390,13 @@ def generate_all_reports2() -> None:
         print(f"{RED}[Error] No se pudo cargar {ic_portada_path}: {e}{RESET}")
         return
 
-    # Helper: map herramienta name to tool entry in tool_file_dic
+    # Nombre base del archivo para evitar confusiones (p. ej. 'IC-Portada' no es herramienta)
+    file_stem = os.path.splitext(os.path.basename(ic_portada_path))[0].strip().lower()
+
+    # Helper: localizar entrada en tool_file_dic por nombre de herramienta (coincide con keywords)
     def find_tool_entry_for_herramienta(herramienta: str):
         herramienta_norm = str(herramienta).strip().lower()
         for tool_code, tool_data in tool_file_dic.items():
-            # tool_data[1] is expected to be the keywords list
             keywords = [str(k).strip().lower() for k in tool_data[1]] if len(tool_data) > 1 else []
             if herramienta_norm in keywords:
                 return tool_code, tool_data
@@ -9401,34 +9404,43 @@ def generate_all_reports2() -> None:
 
     processed_count = 0
 
-    # Iterate exactly the tools listed in IC-Portada.csv
+    # Iterar estrictamente por las filas de IC-Portada.csv usando la columna 'Herramienta'
     for _, row in ic_portada_df.iterrows():
         herramienta_name = row.get('Herramienta')
-        if not herramienta_name or str(herramienta_name).strip() == "":
+
+        # Validaciones de la columna 'Herramienta'
+        if herramienta_name is None or str(herramienta_name).strip() == "":
             print(f"{YELLOW}[Skipping] Fila sin 'Herramienta' válida en {ic_portada_path}.{RESET}")
             continue
 
-        tool_code, tool_data = find_tool_entry_for_herramienta(herramienta_name)
-        if tool_data is None:
-            print(f"{YELLOW}[Skipping] Herramienta '{herramienta_name}' no mapeada en tool_file_dic.{RESET}")
+        herramienta_name_str = str(herramienta_name).strip()
+        herramienta_name_norm = herramienta_name_str.lower()
+
+        # Evitar tratar 'IC-Portada' (o similares) como herramienta
+        if herramienta_name_norm == file_stem or herramienta_name_norm in {"ic-portada", "ic portada"}:
+            print(f"{YELLOW}[Skipping] Valor '{herramienta_name_str}' no es una herramienta (nombre de portada).{RESET}")
             continue
 
-        print(f"\n{YELLOW}>>> Procesando IC para Herramienta: {herramienta_name} <<< {RESET}")
+        tool_code, tool_data = find_tool_entry_for_herramienta(herramienta_name_str)
+        if tool_data is None:
+            print(f"{YELLOW}[Skipping] Herramienta '{herramienta_name_str}' no mapeada en tool_file_dic.{RESET}")
+            continue
+
+        print(f"\n{YELLOW}>>> Procesando IC para Herramienta: {herramienta_name_str} <<< {RESET}")
         print("=" * 60)
 
-        # Fix IC-specific globals
+        # Forzar contexto IC
         menu = 6
         actual_menu = "Informe Complementario"
         actual_opt = "IC"
-        all_keywords = tool_data[1]  # keywords for this tool
-        top_choice = 2               # force second option
+        all_keywords = tool_data[1]
+        top_choice = 2
 
-        # Choose a data file for init_variables; default to index 0 as in original flow
-        # (IC does not define a distinct data file index)
+        # Seleccionar archivo de datos (por convención, índice 0 como en el flujo original)
         if len(tool_data) > 0:
             current_data_filename = tool_data[0]
         else:
-            print(f"{YELLOW}[Skipping] tool_data sin archivo de datos para '{herramienta_name}'.{RESET}")
+            print(f"{YELLOW}[Skipping] tool_data sin archivo de datos para '{herramienta_name_str}'.{RESET}")
             continue
 
         full_data_path = os.path.join("dbase", current_data_filename)
@@ -9440,10 +9452,10 @@ def generate_all_reports2() -> None:
         print(f"    Procesando con archivo: {data_filename}")
 
         try:
-            # 1) Initialize (will populate trends_results, filename, unique_folder, etc.)
+            # 1) Inicializar
             init_variables()
 
-            # 2) Validate data post-initialization, mirroring the original guard
+            # 2) Validación post-init
             trends_data_available = False
             if 'trends_results' in globals() and trends_results is not None:
                 if 'all_data' in trends_results and not trends_results['all_data'].empty and all_keywords[0] in trends_results['all_data'].columns:
@@ -9454,19 +9466,19 @@ def generate_all_reports2() -> None:
                 print(f"      {YELLOW}[Skipping] No se encontraron datos válidos post-inicialización.{RESET}")
                 continue
 
-            # 3) Compute results and charts
+            # 3) Resultados y gráficos
             print(f"      Generando resultados y gráficos ({unique_folder})...")
             results()
 
-            # 4) AI analysis
+            # 4) Análisis AI
             print("      Generando análisis AI...")
             ai_analysis()
 
-            # 5) Generate complementary PDF (option 2)
+            # 5) PDF complementario
             print("      Generando reporte PDF (Complementario)...")
             report_pdf2()
 
-            # 6) Copy and rename
+            # 6) Copiar y renombrar
             original_pdf_path = os.path.join(unique_folder, f"{filename}.pdf")
             if not os.path.exists(original_pdf_path):
                 print(f"      {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
@@ -9483,9 +9495,9 @@ def generate_all_reports2() -> None:
                 print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
                 processed_count += 1
 
-                # 7) Update README
+                # 7) Actualizar README
                 titulo_prefix = row.get('Título', 'Título No Encontrado')
-                herramienta_title = row.get('Herramienta', herramienta_name)
+                herramienta_title = herramienta_name_str
                 full_titulo = f"{str(titulo_prefix).strip()} {str(herramienta_title).strip()}"
 
                 report_readme_info = {
@@ -9499,16 +9511,14 @@ def generate_all_reports2() -> None:
                 print(f"      {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
 
         except Exception as e:
-            print(f"    {RED}[Error General] Procesando IC para '{herramienta_name}': {e}{RESET}")
+            print(f"    {RED}[Error General] Procesando IC para '{herramienta_name_str}': {e}{RESET}")
             traceback.print_exc()
 
         print("=" * 60)
 
     print("\n" + "=" * 60)
     print(f" Generación de Informes Complementarios (Batch) Completada: {processed_count} informes generados")
-    print("=" * 60 + "\n")
-    
-# <<< End of generate_all_reports2 function >>>
+    print("=" * 60 + "\n")# <<< End of generate_all_reports2 function >>>
 
 if __name__ == "__main__":
     main()
