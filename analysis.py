@@ -9518,7 +9518,6 @@ def generate_all_reports2() -> None:
 
     print("\n" + "=" * 60)
     print(f" Generación de Informes Complementarios (Batch) Completada: {processed_count} informes generados")
-    print("=" * 60 + "\n")# <<< End of generate_all_reports2 function >>>
-
+    print("=" * 60 + "\n")
 if __name__ == "__main__":
     main()
