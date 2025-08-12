@@ -88,7 +88,9 @@ from tools import tool_file_dic
 
 # Change the plt.ion() line to plt.ioff() to disable interactive mode
 plt.ioff()
-plt.style.use('ggplot')    
+plt.style.use('ggplot')
+
+load_dotenv()  # relies on current working directory    
     
 # *************************************************************************************
 #   Global Variables
@@ -5525,20 +5527,20 @@ def ai_analysis():
         else:
             csv_corr_for_prompt = csv_correlation
             
-        # Optimize the combined dataset if it's too large
-        if len(csv_combined_dataset) > 50000:
-            # Already handled in the next section, use the same approach
-            csv_lines = csv_combined_dataset.split('\n')
-            header = csv_lines[0]
-            data_lines = csv_lines[1:]
-            subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
-            first_chunk = data_lines[:subset_size//2]
-            last_chunk = data_lines[-(subset_size//2):]
-            truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
-            csv_data_for_prompt = truncated_csv
-        else:
-            csv_data_for_prompt = csv_combined_dataset
-            csv_regression_for_prompt = csv_regression.to_string()
+        # # Optimize the combined dataset if it's too large
+        # if len(csv_combined_dataset) > 50000:
+        #     # Already handled in the next section, use the same approach
+        #     csv_lines = csv_combined_dataset.split('\n')
+        #     header = csv_lines[0]
+        #     data_lines = csv_lines[1:]
+        #     subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+        #     first_chunk = data_lines[:subset_size//2]
+        #     last_chunk = data_lines[-(subset_size//2):]
+        #     truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
+        #     csv_data_for_prompt = truncated_csv
+        # else:
+        csv_data_for_prompt = csv_combined_dataset
+        csv_regression_for_prompt = csv_regression.to_string()
             
         p_2 = cross_relationship_prompt_2.format(dbs=sel_sources, all_kw=all_kw, 
                                                csv_corr_matrix=csv_correlation, 
@@ -5715,19 +5717,19 @@ def ai_analysis():
           csv_fourier_for_prompt = csv_fourier
         
       # Reuse the optimized combined dataset from earlier if available
-      if 'csv_data_for_prompt' not in locals():
-        # If not already optimized, check if it needs optimization
-        if len(csv_combined_data) > 50000:
-            csv_lines = csv_combined_data.split('\n')
-            header = csv_lines[0]
-            data_lines = csv_lines[1:]
-            subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
-            first_chunk = data_lines[:subset_size//2]
-            last_chunk = data_lines[-(subset_size//2):]
-            truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
-            csv_data_for_prompt = truncated_csv
-        else:
-            csv_data_for_prompt = csv_combined_data
+    #   if 'csv_data_for_prompt' not in locals():
+    #     # If not already optimized, check if it needs optimization
+    #     if len(csv_combined_data) > 50000:
+    #         csv_lines = csv_combined_data.split('\n')
+    #         header = csv_lines[0]
+    #         data_lines = csv_lines[1:]
+    #         subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
+    #         first_chunk = data_lines[:subset_size//2]
+    #         last_chunk = data_lines[-(subset_size//2):]
+    #         truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
+    #         csv_data_for_prompt = truncated_csv
+    #     else:
+    #         csv_data_for_prompt = csv_combined_data
     
       p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, \
                                     selected_sources=sel_sources, \
