@@ -5446,16 +5446,16 @@ def ai_analysis():
 
     banner_msg(' Part 7 - Análisis con IA ', color2=GREEN)
 
-    gem_temporal_trends_sp = "Análisis Temporal Comparativo de la Planificación Estratégica a través de Múltiples Fuentes de Datos: Patrones, Convergencias y Divergencias"
-    gem_cross_keyword_sp = "Análisis de Correlación y Regresión Inter-Fuentes para Planificación Estratégica: Convergencias, Divergencias, Dinámicas de Influencia y Capacidad Predictiva entre Dominios"
-    gem_industry_specific_sp = "Análisis de Componentes Principales para Planificación Estratégica: Desvelando las Dinámicas Subyacentes a Través de Múltiples Fuentes de Datos"
-    gem_arima_sp = "Análisis de Modelos ARIMA para Planificación Estratégica: Evaluando la Capacidad de Predicción y la Estabilidad de las Tendencias"
-    gem_seasonal_sp = "Análisis Estacional para Planificación Estratégica: Identificando Patrones Estacionales y sus Impactos en las Tendencias"
-    gem_fourier_sp = "Análisis de Fourier para Planificación Estratégica: Descomposición de Series Temporales para Identificar Componentes Estacionales y Cíclicos"
-    gem_conclusions_sp = "Síntesis de Conclusiones Integradas para Planificación Estratégica a partir de Análisis PCA, de Correlaciones Cruzadas y Temporales Comparativos"
-    gem_summary_sp = "RESUMEN"
+    gem_temporal_trends_sp = "" #"Análisis Temporal Comparativo de la Planificación Estratégica a través de Múltiples Fuentes de Datos: Patrones, Convergencias y Divergencias"
+    gem_cross_keyword_sp = "" #"Análisis de Correlación y Regresión Inter-Fuentes para Planificación Estratégica: Convergencias, Divergencias, Dinámicas de Influencia y Capacidad Predictiva entre Dominios"
+    gem_industry_specific_sp = "" #"Análisis de Componentes Principales para Planificación Estratégica: Desvelando las Dinámicas Subyacentes a Través de Múltiples Fuentes de Datos"
+    gem_arima_sp = "" #"Análisis de Modelos ARIMA para Planificación Estratégica: Evaluando la Capacidad de Predicción y la Estabilidad de las Tendencias"
+    gem_seasonal_sp = "" #"Análisis Estacional para Planificación Estratégica: Identificando Patrones Estacionales y sus Impactos en las Tendencias"
+    gem_fourier_sp = "" #"Análisis de Fourier para Planificación Estratégica: Descomposición de Series Temporales para Identificar Componentes Estacionales y Cíclicos"
+    gem_conclusions_sp = "" #"Síntesis de Conclusiones Integradas para Planificación Estratégica a partir de Análisis PCA, de Correlaciones Cruzadas y Temporales Comparativos"
+    gem_summary_sp = "" #"RESUMEN"
 
-'''
+
     if top_choice == 1 or top_choice == 3:
         f_system_prompt = system_prompt_1.format(dbs=actual_menu)
     elif top_choice == 2:
@@ -5797,8 +5797,6 @@ def ai_analysis():
         
     #display(Markdown(gem_conclusions_sp))
     print(gem_summary_sp)    
-'''
-
 
 def csv2table(csv_data, header_line=0):
     csv_lines = csv_data.strip().split('\n')
@@ -6986,7 +6984,7 @@ def report_pdf2():
     # import os
     
     # Path to the CSV file
-    csv_path = 'pub-assets/portada-combined2.csv'
+    csv_path = 'pub-assets/portada-combined.csv'
     
     # Read the CSV file
     if os.path.exists(csv_path):
@@ -9345,11 +9343,19 @@ def generate_all_reports2() -> None:
     """
     Genera TODOS los Informes Complementarios (opción 2) usando EXCLUSIVAMENTE
     la lista de herramientas definida en 'pub-assets/IC-Portada.csv', columna 'Herramienta'.
-    Fuerza top_choice=2 y menu=6 (IC), y produce PDFs vía report_pdf2().
+    Ejecuta el pipeline equivalente a la Opción 2 (comparar fuentes):
+      - Fuerza top_choice=2 y contexto IC (menu=6, actual_opt='IC')
+      - Fija selected_keyword a cada 'Herramienta' del CSV y all_keywords=[selected_keyword]
+      - Selecciona fuentes no interactivamente (1..5) filtradas por disponibilidad de archivos
+      - Carga datos con get_file_data2(...) y combina con create_combined_dataset2(...)
+      - Ejecuta results(), ai_analysis() y report_pdf2()
+      - Copia/renombra PDF a 'Informes/Informe_{Cód}.pdf' y actualiza README
     """
     # Globals usados por el pipeline existente
     global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
-    global tool_file_dic, trends_results, data_filename
+    global selected_keyword, selected_sources, dbase_options, data_folder
+    # IMPORTANTES para results()/report_pdf2() en opción 2:
+    global combined_dataset, csv_combined_dataset, wider, one_keyword, all_kw
 
     import os
     import shutil
@@ -9390,95 +9396,91 @@ def generate_all_reports2() -> None:
         print(f"{RED}[Error] No se pudo cargar {ic_portada_path}: {e}{RESET}")
         return
 
-    # Nombre base del archivo para evitar confusiones (p. ej. 'IC-Portada' no es herramienta)
-    file_stem = os.path.splitext(os.path.basename(ic_portada_path))[0].strip().lower()
-
-    # Helper: localizar entrada en tool_file_dic por nombre de herramienta (coincide con keywords)
-    def find_tool_entry_for_herramienta(herramienta: str):
-        herramienta_norm = str(herramienta).strip().lower()
-        for tool_code, tool_data in tool_file_dic.items():
-            keywords = [str(k).strip().lower() for k in tool_data[1]] if len(tool_data) > 1 else []
-            if herramienta_norm in keywords:
-                return tool_code, tool_data
-        return None, None
+    # Palabras clave disponibles (para validar herramientas del CSV)
+    try:
+        available_keywords = set(k.strip().lower() for k in get_all_keywords())
+    except Exception as e:
+        print(f"{RED}[Error] No se pudieron obtener las keywords disponibles: {e}{RESET}")
+        return
 
     processed_count = 0
+    csv_stem = os.path.splitext(os.path.basename(ic_portada_path))[0].strip().lower()
 
-    # Iterar estrictamente por las filas de IC-Portada.csv usando la columna 'Herramienta'
+    # Iterar por las filas de IC-Portada.csv usando la columna 'Herramienta'
     for _, row in ic_portada_df.iterrows():
-        herramienta_name = row.get('Herramienta')
-
-        # Validaciones de la columna 'Herramienta'
-        if herramienta_name is None or str(herramienta_name).strip() == "":
+        herramienta_val = row.get('Herramienta')
+        if not herramienta_val or str(herramienta_val).strip() == "":
             print(f"{YELLOW}[Skipping] Fila sin 'Herramienta' válida en {ic_portada_path}.{RESET}")
             continue
 
-        herramienta_name_str = str(herramienta_name).strip()
-        herramienta_name_norm = herramienta_name_str.lower()
-
-        # Evitar tratar 'IC-Portada' (o similares) como herramienta
-        if herramienta_name_norm == file_stem or herramienta_name_norm in {"ic-portada", "ic portada"}:
-            print(f"{YELLOW}[Skipping] Valor '{herramienta_name_str}' no es una herramienta (nombre de portada).{RESET}")
+        herramienta_name = str(herramienta_val).strip()
+        # Evitar tratar el nombre del archivo portada como herramienta
+        if herramienta_name.lower() == csv_stem or herramienta_name.lower() in {"ic-portada", "ic portada"}:
+            print(f"{YELLOW}[Skipping] Valor '{herramienta_name}' no es una herramienta (nombre de portada).{RESET}")
             continue
 
-        tool_code, tool_data = find_tool_entry_for_herramienta(herramienta_name_str)
-        if tool_data is None:
-            print(f"{YELLOW}[Skipping] Herramienta '{herramienta_name_str}' no mapeada en tool_file_dic.{RESET}")
+        # Validar que la herramienta exista entre las keywords disponibles
+        if herramienta_name.lower() not in available_keywords:
+            print(f"{YELLOW}[Skipping] Herramienta '{herramienta_name}' no encontrada en keywords disponibles.{RESET}")
             continue
 
-        print(f"\n{YELLOW}>>> Procesando IC para Herramienta: {herramienta_name_str} <<< {RESET}")
+        print(f"\n{YELLOW}>>> Procesando IC para Herramienta: {herramienta_name} <<< {RESET}")
         print("=" * 60)
 
-        # Forzar contexto IC
-        menu = 6
-        actual_menu = "Informe Complementario"
-        actual_opt = "IC"
-        all_keywords = tool_data[1]
-        top_choice = 2
-
-        # Seleccionar archivo de datos (por convención, índice 0 como en el flujo original)
-        if len(tool_data) > 0:
-            current_data_filename = tool_data[0]
-        else:
-            print(f"{YELLOW}[Skipping] tool_data sin archivo de datos para '{herramienta_name_str}'.{RESET}")
-            continue
-
-        full_data_path = os.path.join("dbase", current_data_filename)
-        if not os.path.exists(full_data_path):
-            print(f"{YELLOW}[Skipping] Archivo de datos no encontrado: {current_data_filename}{RESET}")
-            continue
-
-        data_filename = current_data_filename
-        print(f"    Procesando con archivo: {data_filename}")
-
         try:
-            # 1) Inicializar
+            # Reiniciar estado general por iteración
             init_variables()
 
-            # 2) Validación post-init
-            trends_data_available = False
-            if 'trends_results' in globals() and trends_results is not None:
-                if 'all_data' in trends_results and not trends_results['all_data'].empty and all_keywords[0] in trends_results['all_data'].columns:
-                    trends_data_available = True
-                elif 'last_20_years_data' in trends_results and not trends_results['last_20_years_data'].empty and all_keywords[0] in trends_results['last_20_years_data'].columns:
-                    trends_data_available = True
-            if not trends_data_available:
-                print(f"      {YELLOW}[Skipping] No se encontraron datos válidos post-inicialización.{RESET}")
+            # Contexto IC (equivalente a Opción 2)
+            top_choice = 2
+            menu = 6
+            actual_menu = "Informe Complementario"
+            actual_opt = "IC"
+            selected_keyword = herramienta_name
+            all_keywords = [selected_keyword]
+
+            # Layout flags de opción 2
+            wider = True
+            one_keyword = True
+            all_kw = selected_keyword
+
+            # Seleccionar fuentes no interactivamente: 1..5 (excluir IC/6), filtrar por disponibilidad
+            candidate_sources = [1, 2, 3, 4, 5]
+            filenames_map = get_filenames_for_keyword(selected_keyword, candidate_sources)
+            selected_sources = [s for s in candidate_sources if filenames_map.get(s)]
+            if not selected_sources:
+                print(f"{YELLOW}[Skipping] Sin fuentes disponibles para '{herramienta_name}'.{RESET}")
                 continue
 
-            # 3) Resultados y gráficos
-            print(f"      Generando resultados y gráficos ({unique_folder})...")
+            # Preparar carpeta/filename como en opción 2
+            filename = create_unique_filename(all_keywords, top_choice)
+            unique_folder = os.path.join(data_folder, filename)
+            if not os.path.exists(unique_folder):
+                os.makedirs(unique_folder)
+                os.chmod(unique_folder, 0o777)
+
+            # Cargar y normalizar datasets por fuente (opción 2)
+            datasets_norm, selected_sources_list = get_file_data2(selected_keyword, selected_sources)
+            if not selected_sources_list or datasets_norm is None or not datasets_norm:
+                print(f"{YELLOW}[Skipping] No se encontraron datos para '{herramienta_name}'.{RESET}")
+                continue
+
+            # Combinar todas las fechas entre fuentes
+            combined_dataset_local = create_combined_dataset2(datasets_norm, selected_sources, dbase_options)
+
+            # CRÍTICO: publicar en globales que usa results()/report_pdf2()
+            combined_dataset = combined_dataset_local
+            try:
+                csv_combined_dataset = combined_dataset.to_csv(index=True)
+            except Exception:
+                csv_combined_dataset = None
+
+            # Ejecutar análisis y PDF complementario
             results()
-
-            # 4) Análisis AI
-            print("      Generando análisis AI...")
             ai_analysis()
-
-            # 5) PDF complementario
-            print("      Generando reporte PDF (Complementario)...")
             report_pdf2()
 
-            # 6) Copiar y renombrar
+            # Copiar y renombrar PDF
             original_pdf_path = os.path.join(unique_folder, f"{filename}.pdf")
             if not os.path.exists(original_pdf_path):
                 print(f"      {RED}[Error] Reporte PDF no encontrado en: {original_pdf_path}{RESET}")
@@ -9486,7 +9488,6 @@ def generate_all_reports2() -> None:
 
             nro_val = row.get('Nro.', 'XXX')
             cod_val = row.get('Cód', 'XX')
-
             new_filename = f"Informe_{str(cod_val).strip()}.pdf"
             new_pdf_path = os.path.join(informes_folder, new_filename)
 
@@ -9495,23 +9496,20 @@ def generate_all_reports2() -> None:
                 print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
                 processed_count += 1
 
-                # 7) Actualizar README
+                # Actualizar README con metadatos de IC-Portada
                 titulo_prefix = row.get('Título', 'Título No Encontrado')
-                herramienta_title = herramienta_name_str
-                full_titulo = f"{str(titulo_prefix).strip()} {str(herramienta_title).strip()}"
-
-                report_readme_info = {
+                full_titulo = f"{str(titulo_prefix).strip()} {herramienta_name}"
+                update_readme({
                     'nro': str(nro_val).strip(),
                     'informe_code': str(cod_val).strip(),
                     'titulo': full_titulo,
                     'pdf_filename': new_filename,
-                }
-                update_readme(report_readme_info)
+                })
             except Exception as copy_e:
                 print(f"      {RED}[Error] No se pudo copiar el reporte a '{new_pdf_path}': {copy_e}{RESET}")
 
         except Exception as e:
-            print(f"    {RED}[Error General] Procesando IC para '{herramienta_name_str}': {e}{RESET}")
+            print(f"    {RED}[Error General] Procesando IC para '{herramienta_name}': {e}{RESET}")
             traceback.print_exc()
 
         print("=" * 60)
@@ -9519,5 +9517,6 @@ def generate_all_reports2() -> None:
     print("\n" + "=" * 60)
     print(f" Generación de Informes Complementarios (Batch) Completada: {processed_count} informes generados")
     print("=" * 60 + "\n")
+    
 if __name__ == "__main__":
     main()
