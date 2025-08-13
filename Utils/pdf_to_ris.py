@@ -7,7 +7,7 @@ import urllib.parse
 # --- Configuration ---
 INFORMES_DIR = "../Informes"  # Relative path from utils script to Informes
 README_FILENAME = "README.md"
-OUTPUT_RIS_FILE = "catalog.ris"  # Output file in the same directory as the script
+OUTPUT_RIS_FILE = "catalog.ris"  # Output file in the Informes directory
 LOG_FILE = "pdf_to_ris.log" # Log file in the same directory as the script
 
 # --- Hardcoded Values ---
@@ -28,17 +28,18 @@ logging.basicConfig(level=logging.INFO,
 # --- Helper Functions ---
 
 def parse_readme_links(readme_path):
-    """Parses a README.md file containing a Markdown table to extract Nro, Informe, Título, and Link, keyed by filename.
+    """Parses a README.md file containing a Markdown table to extract Nro, Informe, Título, Link, and optional DOI, keyed by filename.
 
     Assumes a table structure like:
-    | Nro | Informe | Título | Enlace |
-    |---|---|---|---|
-    | 1   | 01-XX   | Title  | [Filename.pdf](URL) |
+    | Nro | Informe | Título | Enlace | DOI? |
+    |---|---|---|---|---|
+    | 1   | 01-XX   | Title  | [Filename.pdf](URL) | 10.1234/abc or https://doi.org/10.1234/abc |
 
-    Returns a dictionary: { "Filename.pdf": {"nro": "1", "informe": "01-XX", "title": "...", "link": "..."} }
+    Returns a dictionary: { "Filename.pdf": {"nro": "1", "informe": "01-XX", "title": "...", "link": "...", "doi": "10.xxxx/..."} }
     """
     link_data = {}
     link_pattern = re.compile(r'\[([^\]]+)\]\(([^)]+)\)')
+    doi_pattern = re.compile(r"\b10\.\d{4,9}/\S+\b")
 
     try:
         with open(readme_path, 'r', encoding='utf-8') as f:
@@ -63,6 +64,7 @@ def parse_readme_links(readme_path):
                 informe_cell = cells[1]
                 title_cell = cells[2]
                 link_cell = cells[3]
+                doi_cell = cells[4] if len(cells) >= 5 else ""
 
                 match = link_pattern.search(link_cell)
                 if match:
@@ -76,11 +78,25 @@ def parse_readme_links(readme_path):
                         filename = filename_from_link_text
                         if filename in link_data:
                             logging.warning(f"Duplicate filename found in README table: {filename}. Overwriting entry.")
+                        # Extract DOI if present in the optional column
+                        doi_value = ""
+                        if doi_cell:
+                            # Try direct DOI pattern first
+                            doi_match = doi_pattern.search(doi_cell)
+                            if doi_match:
+                                doi_value = doi_match.group(0).strip().rstrip('.')
+                            else:
+                                # Try to extract from a URL containing doi.org
+                                doi_org_match = re.search(r"doi\.org/([^\s)\]]+)", doi_cell, flags=re.IGNORECASE)
+                                if doi_org_match:
+                                    doi_value = doi_org_match.group(1).strip().rstrip('.')
+
                         link_data[filename] = {
                             "nro": nro_val,
                             "informe": informe_val,
                             "title": actual_title,
-                            "link": url
+                            "link": url,
+                            "doi": doi_value
                         }
                     else:
                         logging.debug(f"Skipping row, filename in link text is not a PDF: {filename_from_link_text} in line: {line}")
@@ -104,16 +120,18 @@ def parse_readme_links(readme_path):
 # Removed extract_text_from_pdf function
 # Removed guess_bibliographic_info function
 
-def format_ris_record(title, link, pdf_filename, nro='000', informe='XX-XX'):
-    """Formats the RIS record using hardcoded/README data, including dynamic publisher."""
+def format_ris_record(title, link, pdf_filename, nro='000', informe='XX-XX', doi: str = ""):
+    """Formats the RIS record using hardcoded/README data, including dynamic publisher, and optional DOI."""
     ris_record = []
     # ris_record.append("TY  - GEN") # Old Type
     # ris_record.append("TY  - RPRT") # Old Type
     # ris_record.append("TY  - EBOOK") # Old Type
-    ris_record.append("TY  - DATA") # Final Type: Dataset
+    ris_record.append("TY  - BOOK") # Final Type: Book
     ris_record.append(f"TI  - {title}")
     for author in HARDCODED_AUTHORS: # Using updated format
         ris_record.append(f"AU  - {author}")
+    # Language
+    ris_record.append("LA  - es")
 
     # Format Nro with zero padding
     try:
@@ -127,6 +145,8 @@ def format_ris_record(title, link, pdf_filename, nro='000', informe='XX-XX'):
     ris_record.append(f"PB  - {publisher_str}") # Dynamic Publisher
 
     ris_record.append(f"PY  - {HARDCODED_YEAR}")
+    if doi:
+        ris_record.append(f"DO  - {doi}")
     if link:
         ris_record.append(f"UR  - {link}")
     else:
@@ -144,7 +164,7 @@ def format_ris_record(title, link, pdf_filename, nro='000', informe='XX-XX'):
 
 # --- Main Script Logic ---
 def main():
-    logging.info("Starting PDF to RIS conversion process using README.md for metadata.")
+    logging.info("Starting RIS generation using README.md metadata only (no PDF scanning).")
     script_dir = os.path.dirname(os.path.abspath(__file__))
     informes_abs_path = os.path.abspath(os.path.join(script_dir, INFORMES_DIR))
     readme_path = os.path.join(informes_abs_path, README_FILENAME)
@@ -158,62 +178,41 @@ def main():
         print("Error: Could not process README.md. Please check the log file.")
         return
     elif not readme_data:
-        logging.warning("README.md parsed, but no valid table rows with PDF links found. Output may be incomplete.")
+        logging.warning("README.md parsed, but no valid table rows with PDF links found. Output will be empty.")
 
-    logging.info(f"Scanning directory for PDF files: {informes_abs_path}")
-    if not os.path.isdir(informes_abs_path):
-        logging.error(f"Directory not found: {informes_abs_path}")
-        print(f"Error: Directory not found: {informes_abs_path}")
-        return
-
-    pdf_files = [f for f in os.listdir(informes_abs_path) if f.lower().endswith('.pdf')]
-    logging.info(f"Found {len(pdf_files)} PDF files in the directory.")
-
+    # Build RIS exclusively from README rows
     all_ris_records = []
     processed_count = 0
-    missing_readme_entry = []
 
-    for pdf_filename in pdf_files:
-        logging.info(f"Processing file: {pdf_filename}")
-        # Default values if not found in README
-        title = f"{pdf_filename} - Title Not Found in README"
-        link = ""
-        nro = '000'  # Default Nro
-        informe = 'XX-XX' # Default Informe code
+    # Optionally sort by numeric Nro to ensure deterministic order
+    def _nro_key(item):
+        filename, data = item
+        try:
+            return int(data.get('nro', '0'))
+        except ValueError:
+            return 0
 
-        if pdf_filename in readme_data:
-            entry = readme_data[pdf_filename]
-            title = entry['title']
-            link = entry['link']
-            nro = entry['nro'] # Get Nro from parsed data
-            informe = entry['informe'] # Get Informe from parsed data
-            logging.info(f"  -> Found in README: Nro='{nro}', Informe='{informe}', Title='{title}', Link='{link}'")
-        else:
-            logging.warning(f"  -> Entry for {pdf_filename} not found in {README_FILENAME}. Using placeholders.")
-            missing_readme_entry.append(pdf_filename)
+    for pdf_filename, entry in sorted(readme_data.items(), key=_nro_key):
+        title = entry.get('title', pdf_filename)
+        link = entry.get('link', '')
+        nro = entry.get('nro', '000')
+        informe = entry.get('informe', 'XX-XX')
+        doi = entry.get('doi', '')
+        logging.info(f"Processing README entry: file='{pdf_filename}', Nro='{nro}', Informe='{informe}', DOI='{doi}'")
 
-        # Call format_ris_record with all required fields
-        ris_record = format_ris_record(title, link, pdf_filename, nro, informe)
+        ris_record = format_ris_record(title, link, pdf_filename, nro, informe, doi)
         all_ris_records.append(ris_record)
         processed_count += 1
 
-    if all_ris_records:
-        try:
-            with open(output_ris_path, 'w', encoding='utf-8') as f:
-                f.write("\n\n".join(all_ris_records))
-            logging.info(f"Successfully created RIS file: {output_ris_path}")
-            print(f"\nSuccessfully created RIS file: {output_ris_path}")
-            print(f"Processed {processed_count} PDF files found in the directory.")
-            if missing_readme_entry:
-                logging.warning(f"Entries missing in {README_FILENAME} for {len(missing_readme_entry)} PDF files: {', '.join(missing_readme_entry)}")
-                print(f"Warning: {len(missing_readme_entry)} PDF files were found in the directory but had no matching entry in {README_FILENAME}. See log for details.")
-
-        except Exception as e:
-            logging.error(f"Error writing RIS file {output_ris_path}: {e}")
-            print(f"Error: Could not write RIS file: {e}")
-    else:
-        logging.warning("No PDF files found or processed in the directory.")
-        print("No PDF files found in the Informes directory.")
+    try:
+        with open(output_ris_path, 'w', encoding='utf-8') as f:
+            f.write("\n\n".join(all_ris_records))
+        logging.info(f"Successfully created RIS file: {output_ris_path}")
+        print(f"\nSuccessfully created RIS file: {output_ris_path}")
+        print(f"Processed {processed_count} entries from {README_FILENAME}.")
+    except Exception as e:
+        logging.error(f"Error writing RIS file {output_ris_path}: {e}")
+        print(f"Error: Could not write RIS file: {e}")
 
     logging.info("RIS generation process finished.")
 
