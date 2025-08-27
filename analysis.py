@@ -9,6 +9,7 @@ import hashlib
 import seaborn as sns
 import itertools
 import google.generativeai as genai
+from openai import OpenAI
 import statsmodels.api as sm
 import scipy.fftpack as fftpack
 import markdown
@@ -488,7 +489,7 @@ def ai_prompt(
                 print(f"{CYAN}╚══════════════════════════════════════╝{RESET}")
                 
                 # Save to CSV file
-                save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output, total_cost)
+                save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output, total_cost, m)
                 
             except AttributeError as e:
                 print(f"{YELLOW}Warning: Could not extract token usage information: {e}{RESET}")
@@ -534,16 +535,194 @@ def ai_prompt(
     return "[API Error] Unknown state reached after retry loop."
 
 
-def save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output, total_cost):
+def ai_prompt2(
+    system_prompt: str,
+    prompt: str,
+    m: str = 'gpt-oss',
+    max_retries: int = 5,
+    initial_backoff: int = 2,
+    temperature: float = 0.7,
+    max_tokens: int = 8192,
+    rate_limit_delay: float = 2.0,  # Minimum delay between requests
+    max_context_tokens: int = 25000  # Maximum context window (conservative)
+) -> str:
     """
-    Save token usage and cost information to tokens.csv file.
+    Sends a prompt to Groq API with robust error handling and retries.
+    Tracks token usage (free for all Groq models) and saves to tokens.csv file.
+
+    Args:
+        system_prompt: The system instruction or context for the model.
+        prompt: The main user prompt text.
+        m: The model to use. Options: 'gpt-oss', 'deepseek', 'kimi', 'maverick'
+        max_retries: Maximum number of retry attempts for transient API errors.
+        initial_backoff: The initial time in seconds to wait before retrying.
+        temperature: Controls randomness in responses (0.0 to 2.0)
+        max_tokens: Maximum number of tokens to generate
+        rate_limit_delay: Minimum delay between requests to avoid rate limiting
+        max_context_tokens: Maximum context window size (input tokens)
+
+    Returns:
+        The text response from the model or a descriptive error message.
+    """
+    
+    delay_with_progress()
+    
+    # Add additional delay to respect rate limits
+    if rate_limit_delay > 0:
+        print(f"Rate limit protection: Waiting {rate_limit_delay:.1f} seconds...")
+        time.sleep(rate_limit_delay)
+    
+    # Model mapping for Groq
+    GROQ_MODELS = {
+        'gpt-oss': 'openai/gpt-oss-120b',
+        'deepseek': 'deepseek-r1-distill-llama-70b',
+        'kimi': 'moonshotai/kimi-k2-instruct',
+        'maverick': 'meta-llama/llama-4-maverick-17b-128e-instruct'
+    }
+    
+    # Validate model choice
+    if m not in GROQ_MODELS:
+        available_models = ', '.join(GROQ_MODELS.keys())
+        return f"[Model Error] Invalid model '{m}'. Available models: {available_models}"
+    
+    model_name = GROQ_MODELS[m]
+    
+    # Check context window size (rough token estimation) - INFORMATIONAL ONLY
+    def rough_token_count(text):
+        """Rough estimation: ~4 characters per token"""
+        return len(text) // 4
+    
+    total_input = f"{system_prompt}\n\n{prompt}"
+    estimated_tokens = rough_token_count(total_input)
+    
+    # Just report the size, don't truncate
+    if estimated_tokens > max_context_tokens:
+        print(f"{YELLOW}Info: Estimated input tokens ({estimated_tokens:,}) exceed conservative context window ({max_context_tokens:,}){RESET}")
+        print(f"{YELLOW}Note: Proceeding without truncation - let the API handle context window limits{RESET}")
+    else:
+        print(f"{CYAN}Info: Estimated input tokens: {estimated_tokens:,} (within conservative limit){RESET}")
+    
+    # Get API key from environment
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        return "[Config Error] GROQ_API_KEY environment variable not set."
+
+    # Initialize Groq client
+    try:
+        client = OpenAI(
+            api_key=api_key,
+            base_url="https://api.groq.com/openai/v1"
+        )
+    except Exception as e:
+        return f"[Client Error] Failed to initialize Groq client: {e}"
+
+    # Prepare messages
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": prompt}
+    ]
+
+    # API Call with Retry Logic
+    retries = 0
+    backoff_time = initial_backoff
+    while retries < max_retries:
+        try:
+            print(f"Attempt {retries + 1}/{max_retries}: Sending request to Groq {model_name}...")
+
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens
+            )
+            
+            print(f"{GREEN}Success: Received response from Groq.{RESET}")
+            
+            # Token Usage and Cost Tracking (FREE for Groq)
+            try:
+                tokens_input = response.usage.prompt_tokens
+                tokens_output = response.usage.completion_tokens
+                
+                # Groq pricing - FREE for all models
+                input_rate = 0.0    # $0 per million input tokens
+                output_rate = 0.0   # $0 per million output tokens
+                pricing_tier = "Free (Groq)"
+                
+                # Calculate costs (will always be 0)
+                cost_input = 0.0
+                cost_output = 0.0
+                total_cost = 0.0
+                
+                # Display token information in console
+                print(f"{CYAN}╔══════════════════════════════════════╗{RESET}")
+                print(f"{CYAN}║           TOKEN USAGE REPORT         ║{RESET}")
+                print(f"{CYAN}╠══════════════════════════════════════╣{RESET}")
+                print(f"{CYAN}║ Provider:      {pricing_tier:<17} ║{RESET}")
+                print(f"{CYAN}║ Model:         {m:<17} ║{RESET}")
+                print(f"{CYAN}║ Input Tokens:  {tokens_input:>8,} tokens     ║{RESET}")
+                print(f"{CYAN}║ Output Tokens: {tokens_output:>8,} tokens     ║{RESET}")
+                print(f"{CYAN}║ Input Rate:    ${input_rate:>4.2f}/M tokens     ║{RESET}")
+                print(f"{CYAN}║ Output Rate:   ${output_rate:>4.0f}/M tokens      ║{RESET}")
+                print(f"{CYAN}║ Input Cost:    ${cost_input:>10.6f}       ║{RESET}")
+                print(f"{CYAN}║ Output Cost:   ${cost_output:>10.6f}       ║{RESET}")
+                print(f"{CYAN}║ Total Cost:    ${total_cost:>10.6f}       ║{RESET}")
+                print(f"{CYAN}╚══════════════════════════════════════╝{RESET}")
+                
+                # Save to CSV file with provider info
+                save_token_usage_to_csv_groq(tokens_input, tokens_output, cost_input, cost_output, total_cost, m, model_name)
+                
+            except AttributeError as e:
+                print(f"{YELLOW}Warning: Could not extract token usage information: {e}{RESET}")
+            except Exception as e:
+                print(f"{YELLOW}Warning: Error processing token usage: {e}{RESET}")
+            
+            return response.choices[0].message.content
+
+        # Handle specific Groq/OpenAI API errors
+        except Exception as e:
+            error_type = type(e).__name__
+            error_msg = str(e)
+            
+            # Check for specific error types
+            if "rate_limit" in error_msg.lower():
+                print(f"{RED}API Error: Rate limit exceeded{RESET}")
+                # For rate limits, use longer backoff times
+                backoff_time = max(backoff_time, 60)  # Minimum 1 minute wait for rate limits
+            elif "api_key" in error_msg.lower() or "unauthorized" in error_msg.lower():
+                print(f"{RED}API Error: Invalid API key or unauthorized access{RESET}")
+                return f"[API Error] Invalid API key or unauthorized access. Please check your GROQ_API_KEY."
+            elif "model" in error_msg.lower() and "not found" in error_msg.lower():
+                print(f"{RED}API Error: Model '{model_name}' not available{RESET}")
+                return f"[API Error] Model '{model_name}' is not available on Groq."
+            else:
+                print(f"{RED}API Error: {error_type} - {error_msg}{RESET}")
+
+        # If an exception occurred, proceed with backoff and retry
+        retries += 1
+        if retries < max_retries:
+            print(f"{YELLOW}Retrying in {backoff_time:.1f} seconds...{RESET}")
+            time.sleep(backoff_time)
+            backoff_time *= 1.5  # Increase backoff
+        else:
+            print(f"{RED}Max retries ({max_retries}) reached. Failing request.{RESET}")
+            return f"[API Error] Max retries reached after encountering repeated errors."
+
+    # This line should ideally not be reached
+    return "[API Error] Unknown state reached after retry loop."
+
+
+def save_token_usage_to_csv_groq(tokens_input, tokens_output, cost_input, cost_output, total_cost, model_short, model_full):
+    """
+    Save Groq token usage and cost information to tokens.csv file.
     
     Args:
         tokens_input: Number of input tokens
         tokens_output: Number of output tokens  
-        cost_input: Cost of input tokens
-        cost_output: Cost of output tokens
-        total_cost: Total transaction cost
+        cost_input: Cost of input tokens (always 0 for Groq)
+        cost_output: Cost of output tokens (always 0 for Groq)
+        total_cost: Total transaction cost (always 0 for Groq)
+        model_short: Short model name (e.g., 'gpt-oss')
+        model_full: Full model name (e.g., 'openai/gpt-oss-120b')
     """
     import csv
     from datetime import datetime
@@ -562,7 +741,320 @@ def save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output
     try:
         # Open file in append mode
         with open(csv_file, 'a', newline='', encoding='utf-8') as file:
-            fieldnames = ['Fecha', 'Hora', 'Tokens_Input', 'Tokens_Output', 
+            fieldnames = ['Fecha', 'Hora', 'Provider', 'Model_Short', 'Model_Full', 'Tokens_Input', 'Tokens_Output', 
+                         'Total_Input', 'Total_Output', 'Total_Transaction']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            
+            # Write header if file is new
+            if not file_exists:
+                writer.writeheader()
+                print(f"{GREEN}Created new tokens.csv file with provider tracking{RESET}")
+            
+            # Write token usage data
+            writer.writerow({
+                'Fecha': fecha,
+                'Hora': hora,
+                'Provider': 'Groq',
+                'Model_Short': model_short,
+                'Model_Full': model_full,
+                'Tokens_Input': tokens_input,
+                'Tokens_Output': tokens_output,
+                'Total_Input': f"{cost_input:.6f}",
+                'Total_Output': f"{cost_output:.6f}",
+                'Total_Transaction': f"{total_cost:.6f}"
+            })
+            
+            print(f"{GREEN}Groq token usage saved to tokens.csv{RESET}")
+            
+    except Exception as e:
+        print(f"{RED}Error saving Groq token usage to CSV: {e}{RESET}")
+
+
+def ai_prompt3(
+    system_prompt: str,
+    prompt: str,
+    m: str = 'qwen',
+    max_retries: int = 5,
+    initial_backoff: int = 2,
+    temperature: float = 0.7,
+    max_tokens: int = 8192,
+    rate_limit_delay: float = 2.0,
+    max_context_tokens: int = 30000  # OpenRouter models generally have larger contexts
+) -> str:
+    """
+    Sends a prompt to OpenRouter API with robust error handling and retries.
+    Tracks token usage (free for all OpenRouter free models) and saves to tokens.csv file.
+
+    Args:
+        system_prompt: The system instruction or context for the model.
+        prompt: The main user prompt text.
+        m: The model to use. Options: 'qwen', 'dolphin-mistral', 'mai-ds', 'deepseek-r1'
+        max_retries: Maximum number of retry attempts for transient API errors.
+        initial_backoff: The initial time in seconds to wait before retrying.
+        temperature: Controls randomness in responses (0.0 to 2.0)
+        max_tokens: Maximum number of tokens to generate
+        rate_limit_delay: Minimum delay between requests to avoid rate limiting
+        max_context_tokens: Maximum context window size (input tokens)
+
+    Returns:
+        The text response from the model or a descriptive error message.
+    """
+    
+    delay_with_progress()
+    
+    # Add additional delay to respect rate limits
+    if rate_limit_delay > 0:
+        print(f"Rate limit protection: Waiting {rate_limit_delay:.1f} seconds...")
+        time.sleep(rate_limit_delay)
+    
+    # Model mapping for OpenRouter
+    OPENROUTER_MODELS = {
+        'qwen': 'qwen/qwen3-235b-a22b:free',
+        'dolphin-mistral': 'cognitivecomputations/dolphin3.0-r1-mistral-24b:free',
+        'mai-ds': 'microsoft/mai-ds-r1:free', 
+        'deepseek-r1': 'deepseek/deepseek-r1-distill-llama-70b:free'
+    }
+    
+    # Context window limits per model (based on research)
+    MODEL_CONTEXT_LIMITS = {
+        'qwen': 32768,          # Qwen3 supports up to 32K tokens natively
+        'dolphin-mistral': 8192, # Mistral 24B typically 8K
+        'mai-ds': 16384,        # Microsoft model, estimated
+        'deepseek-r1': 8192     # Similar to other DeepSeek models
+    }
+    
+    # Validate model choice
+    if m not in OPENROUTER_MODELS:
+        available_models = ', '.join(OPENROUTER_MODELS.keys())
+        return f"[Model Error] Invalid model '{m}'. Available models: {available_models}"
+    
+    model_name = OPENROUTER_MODELS[m]
+    model_context_limit = MODEL_CONTEXT_LIMITS.get(m, max_context_tokens)
+    
+    # Use the smaller of user-specified and model-specific limits
+    effective_context_limit = min(max_context_tokens, model_context_limit)
+    
+    # Check context window size (rough token estimation)
+    def rough_token_count(text):
+        """Rough estimation: ~4 characters per token"""
+        return len(text) // 4
+    
+    total_input = f"{system_prompt}\n\n{prompt}"
+    estimated_tokens = rough_token_count(total_input)
+    
+    # Just report the size, don't truncate
+    if estimated_tokens > effective_context_limit:
+        print(f"{YELLOW}Info: Estimated input tokens ({estimated_tokens:,}) exceed conservative context window ({effective_context_limit:,}){RESET}")
+        print(f"{YELLOW}Note: Proceeding without truncation - let the API handle context window limits{RESET}")
+    else:
+        print(f"{CYAN}Info: Estimated input tokens: {estimated_tokens:,} (within conservative limit){RESET}")
+    
+    # Get API key from environment
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key:
+        return "[Config Error] OPENROUTER_API_KEY environment variable not set."
+
+    # Initialize OpenRouter client
+    try:
+        client = OpenAI(
+            api_key=api_key,
+            base_url="https://openrouter.ai/api/v1"
+        )
+    except Exception as e:
+        return f"[Client Error] Failed to initialize OpenRouter client: {e}"
+
+    # Prepare messages
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": prompt}
+    ]
+
+    # API Call with Retry Logic
+    retries = 0
+    backoff_time = initial_backoff
+    while retries < max_retries:
+        try:
+            print(f"Attempt {retries + 1}/{max_retries}: Sending request to OpenRouter {model_name}...")
+
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens
+            )
+            
+            print(f"{GREEN}Success: Received response from OpenRouter.{RESET}")
+            
+            # Token Usage and Cost Tracking (FREE for OpenRouter free models)
+            try:
+                tokens_input = response.usage.prompt_tokens
+                tokens_output = response.usage.completion_tokens
+                
+                # OpenRouter free tier pricing - FREE for all models
+                input_rate = 0.0    # $0 per million input tokens
+                output_rate = 0.0   # $0 per million output tokens
+                pricing_tier = "Free (OpenRouter)"
+                
+                # Calculate costs (will always be 0)
+                cost_input = 0.0
+                cost_output = 0.0
+                total_cost = 0.0
+                
+                # Display token information in console
+                print(f"{CYAN}╔══════════════════════════════════════╗{RESET}")
+                print(f"{CYAN}║           TOKEN USAGE REPORT         ║{RESET}")
+                print(f"{CYAN}╠══════════════════════════════════════╣{RESET}")
+                print(f"{CYAN}║ Provider:      {pricing_tier:<17} ║{RESET}")
+                print(f"{CYAN}║ Model:         {m:<17} ║{RESET}")
+                print(f"{CYAN}║ Input Tokens:  {tokens_input:>8,} tokens     ║{RESET}")
+                print(f"{CYAN}║ Output Tokens: {tokens_output:>8,} tokens     ║{RESET}")
+                print(f"{CYAN}║ Input Rate:    ${input_rate:>4.2f}/M tokens     ║{RESET}")
+                print(f"{CYAN}║ Output Rate:   ${output_rate:>4.0f}/M tokens      ║{RESET}")
+                print(f"{CYAN}║ Input Cost:    ${cost_input:>10.6f}       ║{RESET}")
+                print(f"{CYAN}║ Output Cost:   ${cost_output:>10.6f}       ║{RESET}")
+                print(f"{CYAN}║ Total Cost:    ${total_cost:>10.6f}       ║{RESET}")
+                print(f"{CYAN}╚══════════════════════════════════════╝{RESET}")
+                
+                # Save to CSV file with provider info
+                save_token_usage_to_csv_openrouter(tokens_input, tokens_output, cost_input, cost_output, total_cost, m, model_name)
+                
+            except AttributeError as e:
+                print(f"{YELLOW}Warning: Could not extract token usage information: {e}{RESET}")
+            except Exception as e:
+                print(f"{YELLOW}Warning: Error processing token usage: {e}{RESET}")
+            
+            return response.choices[0].message.content
+
+        # Handle specific OpenRouter/OpenAI API errors
+        except Exception as e:
+            error_type = type(e).__name__
+            error_msg = str(e)
+            
+            # Check for specific error types
+            if "rate_limit" in error_msg.lower():
+                print(f"{RED}API Error: Rate limit exceeded{RESET}")
+                # For rate limits, use longer backoff times
+                backoff_time = max(backoff_time, 60)  # Minimum 1 minute wait for rate limits
+            elif "api_key" in error_msg.lower() or "unauthorized" in error_msg.lower():
+                print(f"{RED}API Error: Invalid API key or unauthorized access{RESET}")
+                return f"[API Error] Invalid API key or unauthorized access. Please check your OPENROUTER_API_KEY."
+            elif "model" in error_msg.lower() and "not found" in error_msg.lower():
+                print(f"{RED}API Error: Model '{model_name}' not available{RESET}")
+                return f"[API Error] Model '{model_name}' is not available on OpenRouter."
+            else:
+                print(f"{RED}API Error: {error_type} - {error_msg}{RESET}")
+
+        # If an exception occurred, proceed with backoff and retry
+        retries += 1
+        if retries < max_retries:
+            print(f"{YELLOW}Retrying in {backoff_time:.1f} seconds...{RESET}")
+            time.sleep(backoff_time)
+            backoff_time *= 1.5  # Increase backoff
+        else:
+            print(f"{RED}Max retries ({max_retries}) reached. Failing request.{RESET}")
+            return f"[API Error] Max retries reached after encountering repeated errors."
+
+    # This line should ideally not be reached
+    return "[API Error] Unknown state reached after retry loop."
+
+
+def save_token_usage_to_csv_openrouter(tokens_input, tokens_output, cost_input, cost_output, total_cost, model_short, model_full):
+    """
+    Save OpenRouter token usage and cost information to tokens.csv file.
+    
+    Args:
+        tokens_input: Number of input tokens
+        tokens_output: Number of output tokens  
+        cost_input: Cost of input tokens (always 0 for OpenRouter free)
+        cost_output: Cost of output tokens (always 0 for OpenRouter free)
+        total_cost: Total transaction cost (always 0 for OpenRouter free)
+        model_short: Short model name (e.g., 'qwen')
+        model_full: Full model name (e.g., 'qwen/qwen3-235b-a22b:free')
+    """
+    import csv
+    from datetime import datetime
+    
+    # Get current date and time
+    now = datetime.now()
+    fecha = now.strftime("%Y-%m-%d")
+    hora = now.strftime("%H:%M:%S")
+    
+    # CSV file path
+    csv_file = "tokens.csv"
+    
+    # Check if file exists to determine if we need to write headers
+    file_exists = os.path.exists(csv_file)
+    
+    try:
+        # Open file in append mode
+        with open(csv_file, 'a', newline='', encoding='utf-8') as file:
+            fieldnames = ['Fecha', 'Hora', 'Provider', 'Model_Short', 'Model_Full', 'Tokens_Input', 'Tokens_Output', 
+                         'Total_Input', 'Total_Output', 'Total_Transaction']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            
+            # Write header if file is new (shouldn't happen since file exists, but safety check)
+            if not file_exists:
+                writer.writeheader()
+                print(f"{GREEN}Created new tokens.csv file with provider tracking{RESET}")
+            
+            # Write token usage data
+            writer.writerow({
+                'Fecha': fecha,
+                'Hora': hora,
+                'Provider': 'OpenRouter',
+                'Model_Short': model_short,
+                'Model_Full': model_full,
+                'Tokens_Input': tokens_input,
+                'Tokens_Output': tokens_output,
+                'Total_Input': f"{cost_input:.6f}",
+                'Total_Output': f"{cost_output:.6f}",
+                'Total_Transaction': f"{total_cost:.6f}"
+            })
+            
+            print(f"{GREEN}OpenRouter token usage saved to tokens.csv{RESET}")
+            
+    except Exception as e:
+        print(f"{RED}Error saving OpenRouter token usage to CSV: {e}{RESET}")
+
+
+def save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output, total_cost, model_short="2.5-pro"):
+    """
+    Save Gemini token usage and cost information to tokens.csv file with provider info.
+    
+    Args:
+        tokens_input: Number of input tokens
+        tokens_output: Number of output tokens  
+        cost_input: Cost of input tokens
+        cost_output: Cost of output tokens
+        total_cost: Total transaction cost
+        model_short: Short model name for Gemini (default: "2.5-pro")
+    """
+    import csv
+    from datetime import datetime
+    
+    # Get current date and time
+    now = datetime.now()
+    fecha = now.strftime("%Y-%m-%d")
+    hora = now.strftime("%H:%M:%S")
+    
+    # Gemini model mapping
+    gemini_models = {
+        "pro": "gemini-2.0-flash-exp",
+        "2.5-pro": "gemini-1.5-pro-002"
+    }
+    
+    model_full = gemini_models.get(model_short, f"gemini-{model_short}")
+    
+    # CSV file path
+    csv_file = "tokens.csv"
+    
+    # Check if file exists
+    file_exists = os.path.exists(csv_file)
+    
+    try:
+        # Open file in append mode
+        with open(csv_file, 'a', newline='', encoding='utf-8') as file:
+            fieldnames = ['Fecha', 'Hora', 'Provider', 'Model_Short', 'Model_Full', 'Tokens_Input', 'Tokens_Output', 
                          'Total_Input', 'Total_Output', 'Total_Transaction']
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             
@@ -571,10 +1063,13 @@ def save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output
                 writer.writeheader()
                 print(f"{GREEN}Created new tokens.csv file{RESET}")
             
-            # Write token usage data
+            # Write token usage data with provider info
             writer.writerow({
                 'Fecha': fecha,
                 'Hora': hora,
+                'Provider': 'Gemini',
+                'Model_Short': model_short,
+                'Model_Full': model_full,
                 'Tokens_Input': tokens_input,
                 'Tokens_Output': tokens_output,
                 'Total_Input': f"{cost_input:.6f}",
@@ -582,10 +1077,10 @@ def save_token_usage_to_csv(tokens_input, tokens_output, cost_input, cost_output
                 'Total_Transaction': f"{total_cost:.6f}"
             })
             
-            print(f"{GREEN}Token usage saved to tokens.csv{RESET}")
+            print(f"{GREEN}Gemini token usage saved to tokens.csv{RESET}")
             
     except Exception as e:
-        print(f"{RED}Error saving token usage to CSV: {e}{RESET}")
+        print(f"{RED}Error saving Gemini token usage to CSV: {e}{RESET}")
 
 
 def linear_interpolation(df, kw):
@@ -5484,22 +5979,20 @@ def ai_analysis():
     if top_choice == 1:
         p_1 = temporal_analysis_prompt_1.format(dbs=actual_menu, all_kw=all_kw, \
                           csv_all_data=csv_all_data, csv_significance=csv_significance, \
-                          csv_last_20_data=csv_last_20_data, csv_last_15_data=csv_last_15_data, csv_last_10_data=csv_last_10_data, \
-                          csv_last_5_data=csv_last_5_data, csv_last_year_data=csv_last_year_data, \
                           csv_means_trends=csv_means_trends)        
     else:
         p_1 = temporal_analysis_prompt_2.format(selected_sources=sel_sources, all_kw=all_kw, \
                           csv_combined_data=csv_combined_dataset, csv_means_trends=csv_means_trends)
     
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
-    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_temporal_trends=ai_prompt(f_system_prompt,p_1)
+    print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+    gem_temporal_trends=ai_prompt3(f_system_prompt,p_1)
     
     # Only proceed with translation if we got a valid response
     if not gem_temporal_trends.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_temporal_trends}'
         print("Traduciendo respuesta...")
-        gem_temporal_trends_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
+        gem_temporal_trends_sp=ai_prompt3(f_system_prompt,prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_temporal_trends_sp = f"Error en el análisis: {gem_temporal_trends}"
@@ -5547,14 +6040,14 @@ def ai_analysis():
                                                csv_combined_data=csv_combined_dataset, csv_regression=csv_regression_for_prompt)        
         print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
       
-      print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-      gem_cross_keyword=ai_prompt(f_system_prompt,p_2)
+      print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+      gem_cross_keyword=ai_prompt3(f_system_prompt,p_2)
       
       # Only proceed with translation if we got a valid response
       if not gem_cross_keyword.startswith("[API"):
           prompt_spanish=f'{p_sp} {gem_cross_keyword}'
           print("Traduciendo respuesta...")
-          gem_cross_keyword_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
+          gem_cross_keyword_sp=ai_prompt3(f_system_prompt,prompt_spanish)
       else:
           # If there was an API error, don't try to translate the error message
           gem_cross_keyword_sp = f"Error en el análisis: {gem_cross_keyword}"
@@ -5594,14 +6087,17 @@ def ai_analysis():
       print(f'\n\n\n{n}. Investigando patrones de tendencias entre las fuentes de datos...')  
     
     # Use the optimized ai_prompt function with retry logic
-    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_industry_specific=ai_prompt(f_system_prompt, p_3,image_paths=[loadings_plot_filepath, scree_plot_filepath])
+    print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+    if top_choice == 2:
+        gem_industry_specific=ai_prompt(f_system_prompt, p_3,image_paths=[loadings_plot_filepath, scree_plot_filepath])
+    else:
+        gem_industry_specific=ai_prompt3(f_system_prompt, p_3)
     
     # Only proceed with translation if we got a valid response (not an error message)
     if not gem_industry_specific.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_industry_specific}'
         print("Traduciendo respuesta...")
-        gem_industry_specific_sp=ai_prompt(f_system_prompt, prompt_spanish,m='flash')
+        gem_industry_specific_sp=ai_prompt3(f_system_prompt, prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_industry_specific_sp = f"Error en el análisis: {gem_industry_specific}"
@@ -5632,14 +6128,14 @@ def ai_analysis():
             p_4 = arima_analysis_prompt_2.format(selected_sources=sel_sources, selected_keyword=actual_menu, arima_results=csv_arima_for_prompt)        
             print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
 
-        print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-        gem_arima=ai_prompt(f_system_prompt,p_4)
+        print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+        gem_arima=ai_prompt3(f_system_prompt,p_4)
         
         # Only proceed with translation if we got a valid response
         if not gem_arima.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_arima}'
             print("Traduciendo respuesta...")
-            gem_arima_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
+            gem_arima_sp=ai_prompt3(f_system_prompt,prompt_spanish)
         else:
             # If there was an API error, don't try to translate the error message
             gem_arima_sp = f"Error en el análisis: {gem_arima}"
@@ -5678,14 +6174,14 @@ def ai_analysis():
                                                     csv_correlation=csv_corr_for_prompt)        
             print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
 
-        print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-        gem_seasonal=ai_prompt(f_system_prompt,p_5)
+        print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+        gem_seasonal=ai_prompt3(f_system_prompt,p_5)
         
         # Only proceed with translation if we got a valid response
         if not gem_seasonal.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_seasonal}'
             print("Traduciendo respuesta...")
-            gem_seasonal_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
+            gem_seasonal_sp=ai_prompt3(f_system_prompt,prompt_spanish)
         else:
             # If there was an API error, don't try to translate the error message
             gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
@@ -5694,7 +6190,7 @@ def ai_analysis():
         print(gem_seasonal_sp)
 
       n+=1
-      if top_choice == 1:
+      if top_choice == 1 or top_choice == 3:
         if skip_arima[0]==True:
           gem_arima=""
         if skip_seasonal[0]==True:
@@ -5705,45 +6201,21 @@ def ai_analysis():
         print(f'\n\n\n{n}. Analizando patrones cíclicos...')
       else:
         # Optimize Fourier analysis data if it's too large
-        if len(csv_fourier) > 50000:
-          print(f"\x1b[33mWarning: Fourier analysis data is large ({len(csv_fourier)/1024:.1f}KB). Truncating to reduce API timeout risk.\x1b[0m")
-          csv_lines = csv_fourier.split('\n')
-          header = csv_lines[0]
-          data_lines = csv_lines[1:]
-          subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
-          truncated_fourier = header + '\n' + '\n'.join(data_lines[:subset_size])
-          csv_fourier_for_prompt = truncated_fourier
-        else:
-          csv_fourier_for_prompt = csv_fourier
-        
-      # Reuse the optimized combined dataset from earlier if available
-    #   if 'csv_data_for_prompt' not in locals():
-    #     # If not already optimized, check if it needs optimization
-    #     if len(csv_combined_data) > 50000:
-    #         csv_lines = csv_combined_data.split('\n')
-    #         header = csv_lines[0]
-    #         data_lines = csv_lines[1:]
-    #         subset_size = min(len(data_lines), 1000)  # Limit to ~1000 rows
-    #         first_chunk = data_lines[:subset_size//2]
-    #         last_chunk = data_lines[-(subset_size//2):]
-    #         truncated_csv = header + '\n' + '\n'.join(first_chunk) + '\n...[data truncated]...\n' + '\n'.join(last_chunk)
-    #         csv_data_for_prompt = truncated_csv
-    #     else:
-    #         csv_data_for_prompt = csv_combined_data
+        csv_fourier_for_prompt = csv_fourier
     
-      p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, \
+        p_6 = prompt_6_correlation.format(selected_keyword=actual_menu, \
                                     selected_sources=sel_sources, \
                                     csv_fourier=csv_fourier_for_prompt, csv_combined_data=csv_data_for_prompt)        
-      print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
+        print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
-      print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-      gem_fourier=ai_prompt(f_system_prompt,p_6)
+      print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+      gem_fourier=ai_prompt3(f_system_prompt,p_6)
     
       # Only proceed with translation if we got a valid response
       if not gem_fourier.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_fourier}'
         print("Traduciendo respuesta...")
-        gem_fourier_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
+        gem_fourier_sp=ai_prompt3(f_system_prompt,prompt_spanish)
       else:
         # If there was an API error, don't try to translate the error message
         gem_fourier_sp = f"Error en el análisis: {gem_fourier}"
@@ -5761,14 +6233,14 @@ def ai_analysis():
           results_pca_analysis=gem_industry_specific, results_cross_relationship_analysis=gem_cross_keyword, results_comparative_temporal_analysis=gem_temporal_trends)          
     
     print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...')
-    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_conclusions=ai_prompt(f_system_prompt,p_conclusions)
+    print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+    gem_conclusions=ai_prompt3(f_system_prompt,p_conclusions)
     
     # Only proceed with translation if we got a valid response
     if not gem_conclusions.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_conclusions}'
         print("Traduciendo respuesta...")
-        gem_conclusions_sp=ai_prompt(f_system_prompt,prompt_spanish,m='flash')
+        gem_conclusions_sp=ai_prompt3(f_system_prompt,prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_conclusions_sp = f"Error en el análisis: {gem_conclusions}"
@@ -5785,14 +6257,14 @@ def ai_analysis():
           \n {gem_conclusions} \n """ '      
     
     print(f'\n\n\n{n}. Generando Resumén...\n')
-    print("Enviando solicitud a la API de Gemini (esto puede tardar un momento)...")
-    gem_summary=ai_prompt(f_system_prompt,p_summary)
+    print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
+    gem_summary=ai_prompt3(f_system_prompt,p_summary)
     
     # Only proceed with translation if we got a valid response
     if not gem_summary.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_summary}'
         print("Traduciendo respuesta...")
-        gem_summary_sp=ai_prompt("",prompt_spanish,m='flash')
+        gem_summary_sp=ai_prompt3("",prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_summary_sp = f"Error en el análisis: {gem_summary}"
@@ -6487,7 +6959,7 @@ def report_pdf():
             <p>(c) 2024 - {current_year} Diomar Anez & Dimar Anez</p>
             <p>Contacto: <a href="https://www.solidum360.com">SOLIDUM</a> & <a href="https://www.wiseconnex.com">WISE CONNEX</a></p>
             <p>Todas las librerías utilizadas están bajo la debida licencia de sus autores y dueños de los derechos de autor. 
-            Algunas secciones de este reporte fueron generadas con la asistencia de Gemini AI. 
+            Algunas secciones de este reporte fueron generadas con la asistencia AI. 
             Este reporte está licenciado bajo la Licencia MIT. Para obtener más información, consulta <a href="https://opensource.org/licenses/MIT/">https://opensource.org/licenses/MIT/</a></p>
             <p>Reporte generado el {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
         </div>

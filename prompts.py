@@ -1564,12 +1564,7 @@ Contenido esperado que se debe presentar:
 
 1. **Management Tool Data:**
 - For the all years: {csv_all_data}
-- For the last 20 years: {csv_last_20_data}
-- For the last 15 years: {csv_last_15_data}
-- For the last 10 years: {csv_last_10_data}
-- For the last 5 years: {csv_last_5_data}
-- For the last year: {csv_last_year_data}
-  - Date: Monthly data for all data sources but for Google Books Ngram use yearly data.
+  - Date: Monthly data for all data sources.
   - Keywords: Management tool identifiers from {all_kw}
   - Usage Metrics: Relative usage/adoption values
 
@@ -1863,7 +1858,7 @@ Contenido esperado que se debe presentar:
 **Data Requirements:**
 
 1.  **Management Tool Data for {all_kw} (one tool):**
-    Provide data for the management tool "{all_kw}" from each of the following five sources. For each source, provide data for the specified timeframes. Data should generally be monthly, except for Google Books Ngram (yearly). Metrics should be relative usage/adoption values as appropriate for each source.
+    Provide data for the management tool "{all_kw}" from each of the following five sources. For each source, provide data for the specified timeframes. Data should generally be monthly. Metrics should be relative usage/adoption values as appropriate for each source.
 
     *   **Data Sources:**
         *   Combined data from all sources: {csv_combined_data}
