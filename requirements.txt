@@ -193,3 +193,5 @@ zope.interface==7.2
 zopfli==0.2.3.post1
 kaleido==0.2.1
 openai==1.95.1  # Used for both OpenAI and Groq API (compatible)
+sympy==1.12  # For advanced LaTeX mathematical expression parsing
+latex2mathml==3.76.0  # For LaTeX to MathML conversion

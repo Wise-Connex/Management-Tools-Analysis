@@ -10,6 +10,60 @@ import seaborn as sns
 import itertools
 import google.generativeai as genai
 from openai import OpenAI
+
+# ================================
+# AI MODEL SMART WRAPPER SYSTEM
+# ================================
+
+# Global model selection configuration
+SELECTED_AI_MODEL = {
+    'provider': 'gemini',      # Default to Gemini 2.5 Pro
+    'model': 'pro-2.5'         # Default model within provider
+}
+
+# Available AI models and their configurations
+AI_MODELS = {
+    'gemini': {
+        'name': 'Google Gemini',
+        'function': 'ai_prompt',
+        'models': {
+            'pro': 'gemini-1.5-pro-002',
+            'flash': 'gemini-2.0-flash-exp',
+            'pro-2.5': 'gemini-2.5-pro'
+        },
+        'supports_images': True,
+        'cost': 'Paid',
+        'icon': '🤖'
+    },
+    'groq': {
+        'name': 'Groq',
+        'function': 'ai_prompt2', 
+        'models': {
+            'gpt-oss': 'openai/gpt-oss-120b',
+            'deepseek': 'deepseek-r1-distill-llama-70b',
+            'kimi': 'moonshotai/kimi-k2-instruct',
+            'maverick': 'meta-llama/llama-4-maverick-17b-128e-instruct'
+        },
+        'supports_images': False,
+        'cost': 'Free',
+        'icon': '⚡'
+    },
+    'openrouter': {
+        'name': 'OpenRouter',
+        'function': 'ai_prompt3',
+        'models': {
+            'qwen': 'qwen/qwen3-235b-a22b:free',
+            'dolphin-mistral': 'cognitivecomputations/dolphin3.0-r1-mistral-24b:free',
+            'mai-ds': 'microsoft/mai-ds-r1:free',
+            'deepseek-r1': 'deepseek/deepseek-r1-distill-llama-70b:free',
+            'gpt-oss-20b': 'openai/gpt-oss-20b:free',
+            'mistral-nemo': 'mistralai/mistral-nemo:free'
+        },
+        'supports_images': False,
+        'cost': 'Free', 
+        'icon': '🌐'
+    }
+}
 import statsmodels.api as sm
 import scipy.fftpack as fftpack
 import markdown
@@ -73,6 +127,174 @@ from sklearn.impute import SimpleImputer # Or KNNImputer, IterativeImputer
 from sklearn.decomposition import PCA
 import re
 import PIL.Image
+
+# LaTeX to HTML Converter for Mathematical Expressions
+class LaTeXToHTMLConverter:
+    """
+    Converts LaTeX mathematical expressions to HTML/CSS that can be rendered by WeasyPrint.
+    Handles fractions, superscripts, subscripts, Greek letters, and mathematical operators.
+    """
+    
+    def __init__(self):
+        self.symbol_map = {
+            # Greek letters (lowercase)
+            r'\\alpha': 'α', r'\\beta': 'β', r'\\gamma': 'γ', r'\\delta': 'δ',
+            r'\\epsilon': 'ε', r'\\zeta': 'ζ', r'\\eta': 'η', r'\\theta': 'θ',
+            r'\\iota': 'ι', r'\\kappa': 'κ', r'\\lambda': 'λ', r'\\mu': 'μ',
+            r'\\nu': 'ν', r'\\xi': 'ξ', r'\\pi': 'π', r'\\rho': 'ρ',
+            r'\\sigma': 'σ', r'\\tau': 'τ', r'\\upsilon': 'υ', r'\\phi': 'φ',
+            r'\\chi': 'χ', r'\\psi': 'ψ', r'\\omega': 'ω',
+            
+            # Greek letters (uppercase)
+            r'\\Alpha': 'Α', r'\\Beta': 'Β', r'\\Gamma': 'Γ', r'\\Delta': 'Δ',
+            r'\\Epsilon': 'Ε', r'\\Zeta': 'Ζ', r'\\Eta': 'Η', r'\\Theta': 'Θ',
+            r'\\Iota': 'Ι', r'\\Kappa': 'Κ', r'\\Lambda': 'Λ', r'\\Mu': 'Μ',
+            r'\\Nu': 'Ν', r'\\Xi': 'Ξ', r'\\Pi': 'Π', r'\\Rho': 'Ρ',
+            r'\\Sigma': 'Σ', r'\\Tau': 'Τ', r'\\Upsilon': 'Υ', r'\\Phi': 'Φ',
+            r'\\Chi': 'Χ', r'\\Psi': 'Ψ', r'\\Omega': 'Ω',
+            
+            # Mathematical operators
+            r'\\sum': '∑', r'\\prod': '∏', r'\\int': '∫',
+            r'\\infty': '∞', r'\\pm': '±', r'\\mp': '∓',
+            r'\\leq': '≤', r'\\geq': '≥', r'\\neq': '≠',
+            r'\\approx': '≈', r'\\equiv': '≡', r'\\times': '×',
+            r'\\div': '÷', r'\\cdot': '·', r'\\ldots': '…',
+            
+            # Statistical and mathematical symbols
+            r'\\sqrt': '√', r'\\partial': '∂', r'\\nabla': '∇',
+            r'\\in': '∈', r'\\notin': '∉', r'\\subset': '⊂',
+            r'\\supset': '⊃', r'\\cap': '∩', r'\\cup': '∪',
+            r'\\emptyset': '∅', r'\\forall': '∀', r'\\exists': '∃',
+        }
+    
+    def convert_fractions(self, text):
+        """Convert LaTeX fractions to HTML with proper styling"""
+        # Pattern: \frac{numerator}{denominator}
+        # Handle nested braces by matching balanced braces
+        frac_pattern = r'\\frac\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}'
+        
+        def frac_replacer(match):
+            numerator = self.process_content(match.group(1))
+            denominator = self.process_content(match.group(2))
+            
+            return f'<span class="math-fraction"><span class="math-numerator">{numerator}</span><span class="math-denominator">{denominator}</span></span>'
+        
+        return re.sub(frac_pattern, frac_replacer, text)
+    
+    def convert_superscripts(self, text):
+        """Convert LaTeX superscripts to HTML"""
+        # Pattern: ^{content} or ^single_char
+        super_pattern = r'\^\{([^}]+)\}|\^(.)'
+        
+        def super_replacer(match):
+            content = match.group(1) if match.group(1) else match.group(2)
+            processed_content = self.process_content(content)
+            return f'<sup class="math-superscript">{processed_content}</sup>'
+        
+        return re.sub(super_pattern, super_replacer, text)
+    
+    def convert_subscripts(self, text):
+        """Convert LaTeX subscripts to HTML"""
+        # Pattern: _{content} or _single_char
+        sub_pattern = r'_\{([^}]+)\}|_(.)'
+        
+        def sub_replacer(match):
+            content = match.group(1) if match.group(1) else match.group(2)
+            processed_content = self.process_content(content)
+            return f'<sub class="math-subscript">{processed_content}</sub>'
+        
+        return re.sub(sub_pattern, sub_replacer, text)
+    
+    def convert_sqrt(self, text):
+        """Convert LaTeX square roots to HTML"""
+        sqrt_pattern = r'\\sqrt\{([^}]+)\}'
+        
+        def sqrt_replacer(match):
+            content = self.process_content(match.group(1))
+            return f'<span class="math-sqrt">√<span class="math-sqrt-content">{content}</span></span>'
+        
+        return re.sub(sqrt_pattern, sqrt_replacer, text)
+    
+    def convert_summation(self, text):
+        """Convert complex summation notation"""
+        # Pattern: \sum_{lower}^{upper}
+        sum_pattern = r'\\sum_\{([^}]+)\}\^\{([^}]+)\}'
+        
+        def sum_replacer(match):
+            lower = self.process_content(match.group(1))
+            upper = self.process_content(match.group(2))
+            
+            return f'<span class="math-summation"><span class="math-sum-upper">{upper}</span><span class="math-sum-symbol">∑</span><span class="math-sum-lower">{lower}</span></span>'
+        
+        return re.sub(sum_pattern, sum_replacer, text)
+    
+    def convert_special_notation(self, text):
+        """Convert special mathematical notation like hat, bar, etc."""
+        # Pattern for \hat{x}, \bar{x}, etc.
+        hat_pattern = r'\\hat\{([^}]+)\}'
+        bar_pattern = r'\\bar\{([^}]+)\}'
+        
+        def hat_replacer(match):
+            content = self.process_content(match.group(1))
+            return f'<span class="math-hat">{content}</span>'
+        
+        def bar_replacer(match):
+            content = self.process_content(match.group(1))
+            return f'<span class="math-overline">{content}</span>'
+        
+        text = re.sub(hat_pattern, hat_replacer, text)
+        text = re.sub(bar_pattern, bar_replacer, text)
+        
+        return text
+    
+    def process_content(self, text):
+        """Process nested LaTeX content recursively"""
+        if not text:
+            return text
+            
+        # Apply conversions in order (fractions first, then super/subscripts)
+        text = self.convert_fractions(text)
+        text = self.convert_summation(text)
+        text = self.convert_sqrt(text)
+        text = self.convert_special_notation(text)
+        text = self.convert_superscripts(text)
+        text = self.convert_subscripts(text)
+        
+        # Apply symbol replacements
+        for latex_symbol, html_symbol in self.symbol_map.items():
+            text = re.sub(latex_symbol, html_symbol, text)
+        
+        return text
+    
+    def convert_latex_math(self, markdown_text):
+        """Main conversion function for processing markdown with LaTeX"""
+        if not markdown_text:
+            return markdown_text
+            
+        # Convert display math $$...$$ first (to avoid conflicts with inline)
+        display_pattern = r'\$\$([^$]+)\$\$'
+        
+        def display_replacer(match):
+            latex_content = match.group(1).strip()
+            html_content = self.process_content(latex_content)
+            return f'<div class="math-display">{html_content}</div>'
+        
+        # Convert inline math $...$
+        inline_pattern = r'\$([^$]+)\$'
+        
+        def inline_replacer(match):
+            latex_content = match.group(1).strip()
+            html_content = self.process_content(latex_content)
+            return f'<span class="math-inline">{html_content}</span>'
+        
+        # Apply conversions (display math first to avoid interference)
+        markdown_text = re.sub(display_pattern, display_replacer, markdown_text)
+        markdown_text = re.sub(inline_pattern, inline_replacer, markdown_text)
+        
+        return markdown_text
+
+# Create global instance of the converter
+latex_converter = LaTeXToHTMLConverter()
 from IPython.display import display, Markdown, HTML
 from openai import OpenAI
 from openai import APIConnectionError, RateLimitError, APIStatusError, APIError
@@ -370,7 +592,7 @@ def ai_prompt(
     system_prompt: str,
     prompt: str,
     image_paths: list[str] | None = None,
-    m: str = 'pro',
+    m: str = 'pro-2.5',
     max_retries: int = 5,
     initial_backoff: int = 2
 ) -> str:
@@ -499,7 +721,7 @@ def ai_prompt(
             return response.text
 
         # Specific exception for blocked prompts (more reliable than parsing text)
-        except genai.types.generation_types.BlockedPromptError as e:
+        except genai.types.generation_types.BlockedPromptException as e:
             print(f"{RED}API Error: Prompt was blocked.{RESET}")
             # This is a final state, no point in retrying.
             return f"[API Blocked] The prompt was blocked by safety filters. Details: {e}"
@@ -509,11 +731,53 @@ def ai_prompt(
              print(f"{RED}API Error: Invalid response - likely blocked or empty. {e}{RESET}")
              # This can sometimes be transient, so we retry.
              
-        # Standard transient network/server errors
+        # Handle API overload with intelligent retry delays
+        except google.api_core.exceptions.ServiceUnavailable as e:
+            if "overloaded" in str(e).lower():
+                # API overload - use longer delays
+                if retries == 0:
+                    wait_time = 300  # 5 minutes for first retry
+                elif retries == 1:
+                    wait_time = 600  # 10 minutes for second retry
+                else:
+                    wait_time = 900  # 15 minutes for third+ retry
+                
+                print(f"{YELLOW}⚠️  API Overloaded: Google's servers are busy. Waiting {wait_time/60:.0f} minutes before retry {retries+2}/{max_retries}...{RESET}")
+                countdown_timer(wait_time)
+                retries += 1
+                if retries < max_retries:
+                    continue  # Skip the normal backoff, we already waited
+                else:
+                    print(f"{RED}Max retries reached due to persistent API overload.{RESET}")
+                    return "[API Error] Service persistently overloaded - please try again later."
+            else:
+                print(f"{RED}API Error: Service unavailable - {e}{RESET}")
+        
+        except google.api_core.exceptions.RetryError as e:
+            if "overloaded" in str(e).lower():
+                # Timeout due to overload - use longer delays
+                if retries == 0:
+                    wait_time = 300  # 5 minutes for first retry
+                elif retries == 1:
+                    wait_time = 600  # 10 minutes for second retry
+                else:
+                    wait_time = 900  # 15 minutes for third+ retry
+                
+                print(f"{YELLOW}⚠️  API Timeout: Request timed out due to server overload. Waiting {wait_time/60:.0f} minutes before retry {retries+2}/{max_retries}...{RESET}")
+                countdown_timer(wait_time)
+                retries += 1
+                if retries < max_retries:
+                    continue  # Skip the normal backoff, we already waited
+                else:
+                    print(f"{RED}Max retries reached due to persistent API timeouts.{RESET}")
+                    return "[API Error] Service persistently overloaded - please try again later."
+            else:
+                print(f"{RED}API Error: Request timeout - {e}{RESET}")
+
+        # Standard transient network/server errors  
         except (google.api_core.exceptions.ResourceExhausted,
                 google.api_core.exceptions.DeadlineExceeded,
-                google.api_core.exceptions.InternalServerError,
-                google.api_core.exceptions.ServiceUnavailable) as e:
+                google.api_core.exceptions.InternalServerError) as e:
             print(f"{RED}API Error: {type(e).__name__} - {e}{RESET}")
 
         except Exception as e:
@@ -711,6 +975,117 @@ def ai_prompt2(
     return "[API Error] Unknown state reached after retry loop."
 
 
+def ai_prompt_smart(
+    system_prompt: str,
+    prompt: str,
+    image_paths: list[str] | None = None,
+    override_model: str | None = None,
+    **kwargs
+) -> str:
+    """
+    Smart AI prompt wrapper that routes to the appropriate AI function based on global model selection.
+    Automatically handles model selection, image support, and intelligent fallbacks.
+    
+    Args:
+        system_prompt: The system instruction or context for the model.
+        prompt: The main user prompt text.
+        image_paths: Optional list of image paths (auto-switches to Gemini if provided).
+        override_model: Optional override for the model selection (format: 'provider' or 'provider:model').
+        **kwargs: Additional parameters passed to the underlying AI function.
+    
+    Returns:
+        The text response from the selected AI model or a descriptive error message.
+    """
+    global SELECTED_AI_MODEL, AI_MODELS
+    
+    # Determine which provider and model to use
+    if override_model:
+        if ':' in override_model:
+            provider, model = override_model.split(':', 1)
+        else:
+            provider = override_model
+            model = list(AI_MODELS[provider]['models'].keys())[0]  # First model as default
+    else:
+        provider = SELECTED_AI_MODEL['provider']
+        model = SELECTED_AI_MODEL['model']
+    
+    # Check if images are provided and handle auto-fallback
+    if image_paths and not AI_MODELS[provider]['supports_images']:
+        print(f"{YELLOW}Info: Images detected - Auto-switching to Gemini for image analysis{RESET}")
+        provider = 'gemini'
+        model = 'pro'  # Use pro model for images
+    
+    # Get provider configuration
+    provider_config = AI_MODELS[provider]
+    function_name = provider_config['function']
+    
+    # Display current model info
+    icon = provider_config['icon']
+    cost_info = provider_config['cost']
+    model_full = provider_config['models'][model]
+    print(f"{CYAN}Using: {provider_config['name']} ({model}) {icon} {cost_info}{RESET}")
+    
+    # Route to appropriate function
+    if function_name == 'ai_prompt':
+        # Gemini function signature - filter out incompatible parameters
+        gemini_kwargs = {}
+        for key, value in kwargs.items():
+            if key in ['max_retries', 'initial_backoff']:
+                gemini_kwargs[key] = value
+        
+        return ai_prompt(
+            system_prompt=system_prompt,
+            prompt=prompt,
+            image_paths=image_paths,
+            m=model,
+            **gemini_kwargs
+        )
+    elif function_name == 'ai_prompt2':
+        # Groq function signature (no image support)
+        if image_paths:
+            return "[Error] Groq models do not support image analysis. Use Gemini instead."
+        return ai_prompt2(
+            system_prompt=system_prompt,
+            prompt=prompt,
+            m=model,
+            **kwargs
+        )
+    elif function_name == 'ai_prompt3':
+        # OpenRouter function signature (no image support)
+        if image_paths:
+            return "[Error] OpenRouter models do not support image analysis. Use Gemini instead."
+        return ai_prompt3(
+            system_prompt=system_prompt,
+            prompt=prompt,
+            m=model,
+            **kwargs
+        )
+    else:
+        return f"[Config Error] Unknown function '{function_name}' for provider '{provider}'"
+
+
+def countdown_timer(wait_seconds):
+    """
+    Display a countdown timer with user-friendly formatting.
+    Shows remaining time and allows for Ctrl+C interruption.
+    """
+    print(f"{YELLOW}📅 You can press Ctrl+C to stop the batch, or wait for automatic resume.{RESET}")
+    try:
+        for remaining in range(wait_seconds, 0, -60):  # Count down by minutes
+            minutes_left = remaining // 60
+            if minutes_left > 0:
+                print(f"\r⏰ Resuming in {minutes_left} minute(s)...", end="", flush=True)
+                time.sleep(60)
+            else:
+                # Handle remaining seconds
+                for sec in range(remaining, 0, -1):
+                    print(f"\r⏰ Resuming in {sec} second(s)...", end="", flush=True)
+                    time.sleep(1)
+        print(f"\n{GREEN}✅ Wait complete! Resuming operation...{RESET}")
+    except KeyboardInterrupt:
+        print(f"\n{YELLOW}⚠️  User interrupted wait. Continuing with next operation...{RESET}")
+
+
 def save_token_usage_to_csv_groq(tokens_input, tokens_output, cost_input, cost_output, total_cost, model_short, model_full):
     """
     Save Groq token usage and cost information to tokens.csv file.
@@ -812,7 +1187,9 @@ def ai_prompt3(
         'qwen': 'qwen/qwen3-235b-a22b:free',
         'dolphin-mistral': 'cognitivecomputations/dolphin3.0-r1-mistral-24b:free',
         'mai-ds': 'microsoft/mai-ds-r1:free', 
-        'deepseek-r1': 'deepseek/deepseek-r1-distill-llama-70b:free'
+        'deepseek-r1': 'deepseek/deepseek-r1-distill-llama-70b:free',
+        'gpt-oss-20b': 'openai/gpt-oss-20b:free',
+        'mistral-nemo': 'mistralai/mistral-nemo:free'
     }
     
     # Context window limits per model (based on research)
@@ -820,7 +1197,9 @@ def ai_prompt3(
         'qwen': 32768,          # Qwen3 supports up to 32K tokens natively
         'dolphin-mistral': 8192, # Mistral 24B typically 8K
         'mai-ds': 16384,        # Microsoft model, estimated
-        'deepseek-r1': 8192     # Similar to other DeepSeek models
+        'deepseek-r1': 8192,    # Similar to other DeepSeek models
+        'gpt-oss-20b': 8192,    # GPT-OSS 20B estimated 8K context
+        'mistral-nemo': 128000  # Mistral Nemo supports 128K context window
     }
     
     # Validate model choice
@@ -5986,13 +6365,13 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Analizando tendencias temporales...')
     print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
-    gem_temporal_trends=ai_prompt3(f_system_prompt,p_1)
+    gem_temporal_trends=ai_prompt_smart(f_system_prompt,p_1)
     
     # Only proceed with translation if we got a valid response
     if not gem_temporal_trends.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_temporal_trends}'
         print("Traduciendo respuesta...")
-        gem_temporal_trends_sp=ai_prompt3(f_system_prompt,prompt_spanish)
+        gem_temporal_trends_sp=ai_prompt_smart(f_system_prompt,prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_temporal_trends_sp = f"Error en el análisis: {gem_temporal_trends}"
@@ -6041,13 +6420,13 @@ def ai_analysis():
         print(f'\n\n\n{n}. Analizando relaciones entre fuentes de datos...')  
       
       print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
-      gem_cross_keyword=ai_prompt3(f_system_prompt,p_2)
+      gem_cross_keyword=ai_prompt_smart(f_system_prompt,p_2)
       
       # Only proceed with translation if we got a valid response
       if not gem_cross_keyword.startswith("[API"):
           prompt_spanish=f'{p_sp} {gem_cross_keyword}'
           print("Traduciendo respuesta...")
-          gem_cross_keyword_sp=ai_prompt3(f_system_prompt,prompt_spanish)
+          gem_cross_keyword_sp=ai_prompt_smart(f_system_prompt,prompt_spanish)
       else:
           # If there was an API error, don't try to translate the error message
           gem_cross_keyword_sp = f"Error en el análisis: {gem_cross_keyword}"
@@ -6091,13 +6470,13 @@ def ai_analysis():
     if top_choice == 2:
         gem_industry_specific=ai_prompt(f_system_prompt, p_3,image_paths=[loadings_plot_filepath, scree_plot_filepath])
     else:
-        gem_industry_specific=ai_prompt3(f_system_prompt, p_3)
+        gem_industry_specific=ai_prompt_smart(f_system_prompt, p_3)
     
     # Only proceed with translation if we got a valid response (not an error message)
     if not gem_industry_specific.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_industry_specific}'
         print("Traduciendo respuesta...")
-        gem_industry_specific_sp=ai_prompt3(f_system_prompt, prompt_spanish)
+        gem_industry_specific_sp=ai_prompt_smart(f_system_prompt, prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_industry_specific_sp = f"Error en el análisis: {gem_industry_specific}"
@@ -6129,13 +6508,13 @@ def ai_analysis():
             print(f'\n\n\n{n}. Analizando el rendimiento del modelo ARIMA entre las fuentes de datos...')     
 
         print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
-        gem_arima=ai_prompt3(f_system_prompt,p_4)
+        gem_arima=ai_prompt_smart(f_system_prompt,p_4)
         
         # Only proceed with translation if we got a valid response
         if not gem_arima.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_arima}'
             print("Traduciendo respuesta...")
-            gem_arima_sp=ai_prompt3(f_system_prompt,prompt_spanish)
+            gem_arima_sp=ai_prompt_smart(f_system_prompt,prompt_spanish)
         else:
             # If there was an API error, don't try to translate the error message
             gem_arima_sp = f"Error en el análisis: {gem_arima}"
@@ -6175,13 +6554,13 @@ def ai_analysis():
             print(f'\n\n\n{n}. Interpretando patrones estacionales entre las fuentes de datos...')
 
         print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
-        gem_seasonal=ai_prompt3(f_system_prompt,p_5)
+        gem_seasonal=ai_prompt_smart(f_system_prompt,p_5)
         
         # Only proceed with translation if we got a valid response
         if not gem_seasonal.startswith("[API"):
             prompt_spanish=f'{p_sp} {gem_seasonal}'
             print("Traduciendo respuesta...")
-            gem_seasonal_sp=ai_prompt3(f_system_prompt,prompt_spanish)
+            gem_seasonal_sp=ai_prompt_smart(f_system_prompt,prompt_spanish)
         else:
             # If there was an API error, don't try to translate the error message
             gem_seasonal_sp = f"Error en el análisis: {gem_seasonal}"
@@ -6209,13 +6588,13 @@ def ai_analysis():
         print(f'\n\n\n{n}. Analizando patrones cíclicos entre las fuentes de datos...')
     
       print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
-      gem_fourier=ai_prompt3(f_system_prompt,p_6)
+      gem_fourier=ai_prompt_smart(f_system_prompt,p_6)
     
       # Only proceed with translation if we got a valid response
       if not gem_fourier.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_fourier}'
         print("Traduciendo respuesta...")
-        gem_fourier_sp=ai_prompt3(f_system_prompt,prompt_spanish)
+        gem_fourier_sp=ai_prompt_smart(f_system_prompt,prompt_spanish)
       else:
         # If there was an API error, don't try to translate the error message
         gem_fourier_sp = f"Error en el análisis: {gem_fourier}"
@@ -6234,13 +6613,13 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Sintetizando hallazgos y sacando conclusiones...')
     print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
-    gem_conclusions=ai_prompt3(f_system_prompt,p_conclusions)
+    gem_conclusions=ai_prompt_smart(f_system_prompt,p_conclusions)
     
     # Only proceed with translation if we got a valid response
     if not gem_conclusions.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_conclusions}'
         print("Traduciendo respuesta...")
-        gem_conclusions_sp=ai_prompt3(f_system_prompt,prompt_spanish)
+        gem_conclusions_sp=ai_prompt_smart(f_system_prompt,prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_conclusions_sp = f"Error en el análisis: {gem_conclusions}"
@@ -6258,13 +6637,13 @@ def ai_analysis():
     
     print(f'\n\n\n{n}. Generando Resumén...\n')
     print("Enviando solicitud a la API del LLM (esto puede tardar un momento)...")
-    gem_summary=ai_prompt3(f_system_prompt,p_summary)
+    gem_summary=ai_prompt_smart(f_system_prompt,p_summary)
     
     # Only proceed with translation if we got a valid response
     if not gem_summary.startswith("[API"):
         prompt_spanish=f'{p_sp} {gem_summary}'
         print("Traduciendo respuesta...")
-        gem_summary_sp=ai_prompt3("",prompt_spanish)
+        gem_summary_sp=ai_prompt_smart("",prompt_spanish)
     else:
         # If there was an API error, don't try to translate the error message
         gem_summary_sp = f"Error en el análisis: {gem_summary}"
@@ -6273,6 +6652,9 @@ def ai_analysis():
     print(gem_summary_sp)    
 
 def csv2table(csv_data, header_line=0):
+    # Handle None or empty csv_data gracefully
+    if csv_data is None or csv_data == "":
+        return "<p><em>No data available</em></p>"
     csv_lines = csv_data.strip().split('\n')
     if not csv_lines:
         return ""
@@ -6686,6 +7068,138 @@ def report_pdf():
                 counter-increment: page 0;  /* Ensure it stays at 6 */
             }}
 
+            /* Mathematical Expressions Styling for LaTeX Rendering */
+            
+            /* Basic mathematical styling */
+            .math-inline {{
+                font-family: 'Cambria Math', 'Times New Roman', serif;
+                font-style: italic;
+                display: inline;
+            }}
+
+            .math-display {{
+                text-align: center;
+                margin: 1.5em 0;
+                font-family: 'Cambria Math', 'Times New Roman', serif;
+                font-style: italic;
+                font-size: 1.1em;
+                display: block;
+            }}
+
+            /* Fractions */
+            .math-fraction {{
+                display: inline-block;
+                vertical-align: middle;
+                text-align: center;
+                margin: 0 3px;
+                font-style: normal;
+            }}
+
+            .math-numerator {{
+                display: block;
+                border-bottom: 1px solid black;
+                padding: 2px 4px;
+                font-size: 0.9em;
+                line-height: 1.1;
+                text-align: center;
+            }}
+
+            .math-denominator {{
+                display: block;
+                padding: 2px 4px;
+                font-size: 0.9em;
+                line-height: 1.1;
+                text-align: center;
+            }}
+
+            /* Superscripts and subscripts */
+            .math-superscript {{
+                font-size: 0.75em;
+                vertical-align: super;
+                line-height: 0;
+            }}
+
+            .math-subscript {{
+                font-size: 0.75em;
+                vertical-align: sub;
+                line-height: 0;
+            }}
+
+            /* Square roots */
+            .math-sqrt {{
+                position: relative;
+                display: inline-block;
+                font-style: normal;
+            }}
+
+            .math-sqrt-content {{
+                border-top: 1px solid black;
+                padding-top: 2px;
+                margin-left: 2px;
+                display: inline-block;
+            }}
+
+            /* Summation notation */
+            .math-summation {{
+                display: inline-block;
+                position: relative;
+                margin: 0 5px;
+                vertical-align: middle;
+                font-style: normal;
+            }}
+
+            .math-sum-symbol {{
+                font-size: 1.5em;
+                display: block;
+                text-align: center;
+                line-height: 1;
+            }}
+
+            .math-sum-upper {{
+                position: absolute;
+                top: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.7em;
+                white-space: nowrap;
+            }}
+
+            .math-sum-lower {{
+                position: absolute;
+                bottom: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.7em;
+                white-space: nowrap;
+            }}
+
+            /* Overlines and hats for statistical notation */
+            .math-overline {{
+                text-decoration: overline;
+                text-decoration-thickness: 1px;
+                text-decoration-color: black;
+            }}
+
+            .math-hat {{
+                position: relative;
+                display: inline-block;
+            }}
+
+            .math-hat::after {{
+                content: "^";
+                position: absolute;
+                top: -8px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.8em;
+                font-weight: normal;
+            }}
+
+            /* Ensure mathematical expressions don't break across lines inappropriately */
+            .math-fraction, .math-summation, .math-sqrt {{
+                white-space: nowrap;
+            }}
+
             /* Tables */
             table {{
                 border-collapse: collapse;
@@ -6877,13 +7391,13 @@ def report_pdf():
         <div class="main-content">
             <div id="resumen-ejecutivo" style="counter-reset: page 32;">
                 <h1>Resumen Ejecutivo</h1>
-                {markdown.markdown(gem_summary_sp, extensions=["tables"])}
+                {markdown.markdown(latex_converter.convert_latex_math(gem_summary_sp), extensions=["tables"])}
             </div>
             <div class="page-break"></div>
             
             <div id="tendencias-temporales">
                 <h1>Tendencias Temporales</h1>
-                {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
+                {markdown.markdown(latex_converter.convert_latex_math(gem_temporal_trends_sp), extensions=["tables"])}
             </div>
             <div class="page-break"></div>
             """
@@ -6892,7 +7406,7 @@ def report_pdf():
         html_content += f"""
         <div id="analisis-cruzado-de-palabras-clave">
             <h1>Análisis Cruzado de Palabras Clave</h1>
-            {markdown.markdown(gem_cross_keyword_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_cross_keyword_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         """
@@ -6900,7 +7414,7 @@ def report_pdf():
     html_content += f"""
         <div id="tendencias-generales-y-contextuales">
             <h1>Tendencias Generales y Contextuales</h1>
-            {markdown.markdown(gem_industry_specific_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_industry_specific_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         """
@@ -6909,7 +7423,7 @@ def report_pdf():
         html_content += f"""
         <div id="analisis-arima">
             <h1>Análisis ARIMA</h1>
-            {markdown.markdown(gem_arima_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_arima_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         """
@@ -6918,7 +7432,7 @@ def report_pdf():
         html_content += f"""
         <div id="analisis-estacional">
             <h1>Análisis Estacional</h1>
-            {markdown.markdown(gem_seasonal_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_seasonal_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         """
@@ -6926,13 +7440,13 @@ def report_pdf():
     html_content += f"""            
         <div id="analisis-de-fourier">
             <h1>Análisis de Fourier</h1>
-            {markdown.markdown(gem_fourier_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_fourier_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         
         <div id="conclusiones">
             <h1>Conclusiones</h1>
-            {markdown.markdown(gem_conclusions_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_conclusions_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         
@@ -7785,6 +8299,138 @@ def report_pdf2():
                 counter-increment: page 0;  /* Ensure it stays at 6 */
             }}
 
+            /* Mathematical Expressions Styling for LaTeX Rendering */
+            
+            /* Basic mathematical styling */
+            .math-inline {{
+                font-family: 'Cambria Math', 'Times New Roman', serif;
+                font-style: italic;
+                display: inline;
+            }}
+
+            .math-display {{
+                text-align: center;
+                margin: 1.5em 0;
+                font-family: 'Cambria Math', 'Times New Roman', serif;
+                font-style: italic;
+                font-size: 1.1em;
+                display: block;
+            }}
+
+            /* Fractions */
+            .math-fraction {{
+                display: inline-block;
+                vertical-align: middle;
+                text-align: center;
+                margin: 0 3px;
+                font-style: normal;
+            }}
+
+            .math-numerator {{
+                display: block;
+                border-bottom: 1px solid black;
+                padding: 2px 4px;
+                font-size: 0.9em;
+                line-height: 1.1;
+                text-align: center;
+            }}
+
+            .math-denominator {{
+                display: block;
+                padding: 2px 4px;
+                font-size: 0.9em;
+                line-height: 1.1;
+                text-align: center;
+            }}
+
+            /* Superscripts and subscripts */
+            .math-superscript {{
+                font-size: 0.75em;
+                vertical-align: super;
+                line-height: 0;
+            }}
+
+            .math-subscript {{
+                font-size: 0.75em;
+                vertical-align: sub;
+                line-height: 0;
+            }}
+
+            /* Square roots */
+            .math-sqrt {{
+                position: relative;
+                display: inline-block;
+                font-style: normal;
+            }}
+
+            .math-sqrt-content {{
+                border-top: 1px solid black;
+                padding-top: 2px;
+                margin-left: 2px;
+                display: inline-block;
+            }}
+
+            /* Summation notation */
+            .math-summation {{
+                display: inline-block;
+                position: relative;
+                margin: 0 5px;
+                vertical-align: middle;
+                font-style: normal;
+            }}
+
+            .math-sum-symbol {{
+                font-size: 1.5em;
+                display: block;
+                text-align: center;
+                line-height: 1;
+            }}
+
+            .math-sum-upper {{
+                position: absolute;
+                top: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.7em;
+                white-space: nowrap;
+            }}
+
+            .math-sum-lower {{
+                position: absolute;
+                bottom: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.7em;
+                white-space: nowrap;
+            }}
+
+            /* Overlines and hats for statistical notation */
+            .math-overline {{
+                text-decoration: overline;
+                text-decoration-thickness: 1px;
+                text-decoration-color: black;
+            }}
+
+            .math-hat {{
+                position: relative;
+                display: inline-block;
+            }}
+
+            .math-hat::after {{
+                content: "^";
+                position: absolute;
+                top: -8px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.8em;
+                font-weight: normal;
+            }}
+
+            /* Ensure mathematical expressions don't break across lines inappropriately */
+            .math-fraction, .math-summation, .math-sqrt {{
+                white-space: nowrap;
+            }}
+
             /* Tables */
             table {{
                 border-collapse: collapse;
@@ -7975,13 +8621,13 @@ def report_pdf2():
         <div class="main-content">
             <div id="resumen-ejecutivo" style="counter-reset: page 32;">
                 <h1>Resumen Ejecutivo</h1>
-                {markdown.markdown(gem_summary_sp, extensions=["tables"])}
+                {markdown.markdown(latex_converter.convert_latex_math(gem_summary_sp), extensions=["tables"])}
             </div>
             <div class="page-break"></div>
             
             <div id="analisis-temporal-comparativo">
                 <h1>Análisis Temporal Comparativo</h1>
-                {markdown.markdown(gem_temporal_trends_sp, extensions=["tables"])}
+                {markdown.markdown(latex_converter.convert_latex_math(gem_temporal_trends_sp), extensions=["tables"])}
             </div>
             <div class="page-break"></div>
             """
@@ -7990,7 +8636,7 @@ def report_pdf2():
     html_content += f"""
     <div id="analisis-de-correlacion-y-regresion">
         <h1>Análisis de Correlación y Regresión Inter-Fuentes</h1>
-        {markdown.markdown(gem_cross_keyword_sp, extensions=["tables"])}
+        {markdown.markdown(latex_converter.convert_latex_math(gem_cross_keyword_sp), extensions=["tables"])}
     </div>
     <div class="page-break"></div>
     """
@@ -7998,7 +8644,7 @@ def report_pdf2():
     html_content += f"""
         <div id="analisis-de-componentes-principales">
             <h1>Análisis de Componentes Principales</h1>
-            {markdown.markdown(gem_industry_specific_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_industry_specific_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         """
@@ -8007,7 +8653,7 @@ def report_pdf2():
     #     html_content += f"""
     #     <div id="analisis-arima">
     #         <h1>Análisis ARIMA</h1>
-    #         {markdown.markdown(gem_arima_sp, extensions=["tables"])}
+    #         {markdown.markdown(latex_converter.convert_latex_math(gem_arima_sp), extensions=["tables"])}
     #     </div>
     #     <div class="page-break"></div>
     #     """
@@ -8016,7 +8662,7 @@ def report_pdf2():
     #     html_content += f"""
     #     <div id="analisis-estacional">
     #         <h1>Análisis Estacional</h1>
-    #         {markdown.markdown(gem_seasonal_sp, extensions=["tables"])}
+    #         {markdown.markdown(latex_converter.convert_latex_math(gem_seasonal_sp), extensions=["tables"])}
     #     </div>
     #     <div class="page-break"></div>
     #     """
@@ -8024,14 +8670,14 @@ def report_pdf2():
     # html_content += f"""            
     #     <div id="analisis-de-fourier">
     #         <h1>Análisis de Fourier</h1>
-    #         {markdown.markdown(gem_fourier_sp, extensions=["tables"])}
+    #         {markdown.markdown(latex_converter.convert_latex_math(gem_fourier_sp), extensions=["tables"])}
     #     </div>
     #     <div class="page-break"></div>
     
     html_content += f"""    
         <div id="conclusiones">
             <h1>Conclusiones</h1>
-            {markdown.markdown(gem_conclusions_sp, extensions=["tables"])}
+            {markdown.markdown(latex_converter.convert_latex_math(gem_conclusions_sp), extensions=["tables"])}
         </div>
         <div class="page-break"></div>
         
@@ -8493,21 +9139,135 @@ def report_pdf2():
     qty=len(title)
     print(f'\x1b[33m\n\n{char*qty}\n{title}\n{char*qty}\x1b[0m')
 
+def configure_ai_model():
+    """
+    Configuration menu for selecting AI model provider and specific model.
+    Updates the global SELECTED_AI_MODEL variable.
+    """
+    global SELECTED_AI_MODEL, AI_MODELS
+    
+    while True:
+        print("\n" * 3)
+        banner_msg(" Configuración de Modelo IA ", YELLOW, WHITE)
+        
+        # Display current selection
+        current_provider = SELECTED_AI_MODEL['provider']
+        current_model = SELECTED_AI_MODEL['model']
+        current_config = AI_MODELS[current_provider]
+        current_icon = current_config['icon']
+        current_cost = current_config['cost']
+        current_model_full = current_config['models'][current_model]
+        
+        print(f"\n{CYAN}Modelo actual: {current_config['name']} ({current_model}) {current_icon} {current_cost}{RESET}")
+        print(f"{GRAY}Modelo completo: {current_model_full}{RESET}")
+        
+        print(f"\n{YELLOW}Seleccione proveedor:{RESET}")
+        
+        # Display provider options
+        providers = list(AI_MODELS.keys())
+        for i, provider_key in enumerate(providers, 1):
+            provider_info = AI_MODELS[provider_key]
+            icon = provider_info['icon']
+            cost = provider_info['cost']
+            name = provider_info['name']
+            image_support = " - Soporta imágenes" if provider_info['supports_images'] else " - Solo texto"
+            
+            # Highlight current selection
+            if provider_key == current_provider:
+                print(f"{GREEN}{i}. {icon} {name} ({cost}){image_support} [ACTUAL]{RESET}")
+            else:
+                print(f"{i}. {icon} {name} ({cost}){image_support}")
+        
+        print(f"{len(providers) + 1}. ← Volver al menú principal")
+        
+        try:
+            choice = int(input(f"\n{YELLOW}Ingrese su opción: {RESET}"))
+            
+            if choice == len(providers) + 1:
+                return  # Go back to main menu
+            elif 1 <= choice <= len(providers):
+                selected_provider = providers[choice - 1]
+                
+                # Show model selection for the chosen provider
+                models = list(AI_MODELS[selected_provider]['models'].keys())
+                
+                print(f"\n{YELLOW}Modelos disponibles - {AI_MODELS[selected_provider]['name']}:{RESET}")
+                
+                for i, model_key in enumerate(models, 1):
+                    model_full = AI_MODELS[selected_provider]['models'][model_key]
+                    
+                    # Highlight current selection if same provider
+                    if selected_provider == current_provider and model_key == current_model:
+                        print(f"{GREEN}{i}. {model_key} ({model_full}) [ACTUAL]{RESET}")
+                    else:
+                        print(f"{i}. {model_key} ({model_full})")
+                
+                print(f"{len(models) + 1}. ← Volver")
+                
+                try:
+                    model_choice = int(input(f"\n{YELLOW}Seleccione modelo: {RESET}"))
+                    
+                    if model_choice == len(models) + 1:
+                        continue  # Go back to provider selection
+                    elif 1 <= model_choice <= len(models):
+                        selected_model = models[model_choice - 1]
+                        
+                        # Update global selection
+                        SELECTED_AI_MODEL['provider'] = selected_provider
+                        SELECTED_AI_MODEL['model'] = selected_model
+                        
+                        # Confirmation message
+                        new_config = AI_MODELS[selected_provider]
+                        new_icon = new_config['icon']
+                        new_cost = new_config['cost']
+                        new_model_full = new_config['models'][selected_model]
+                        
+                        print(f"\n{GREEN}✅ Modelo actualizado:{RESET}")
+                        print(f"{CYAN}   {new_config['name']} ({selected_model}) {new_icon} {new_cost}{RESET}")
+                        print(f"{GRAY}   {new_model_full}{RESET}")
+                        
+                        input(f"\n{YELLOW}Presione Enter para continuar...{RESET}")
+                        return
+                    else:
+                        print(f"{RED}Opción inválida.{RESET}")
+                        
+                except ValueError:
+                    print(f"{RED}Por favor, ingrese un número válido.{RESET}")
+                    
+            else:
+                print(f"{RED}Opción inválida.{RESET}")
+                
+        except ValueError:
+            print(f"{RED}Por favor, ingrese un número válido.{RESET}")
+
+
 def top_level_menu():
     print("\n\n\n\n\n\n\n\n")
     banner_msg(" Análisis de Herramientas Gerenciales ", YELLOW, GREEN, char = '-', margin = 24)
     print('\n')
     banner_msg(" Menú Principal ", YELLOW, WHITE)
+    # Get current AI model info for display
+    current_provider = SELECTED_AI_MODEL['provider']
+    current_model = SELECTED_AI_MODEL['model'] 
+    current_config = AI_MODELS[current_provider]
+    current_icon = current_config['icon']
+    model_display = f"{current_config['name']} ({current_model}) {current_icon}"
+    
     options = {
-        1: "Generar Informe Individual",
-        2: "Comparar Herramienta de Gestión entre Fuentes de Datos",
+        1: "📄 Generar Informe Individual",
+        2: "⚖️  Comparar Herramienta de Gestión entre Fuentes de Datos",
         # Change option 3 text
-        3: "Generar TODOS los Informes Individuales (Batch)",
-        4: "Generar TODOS los Informes Suplementarios (Batch)",
-        5: "Salir"
+        3: "📚 Generar TODOS los Informes Individuales (Batch)",
+        4: "🗃️  Generar TODOS los Informes Suplementarios (Batch)",
+        5: "⚙️  Configuración de Modelo IA",
+        6: "🚪 Salir"
     }
     for index, option in enumerate(options.values(), 1):
         print(f"{index}. {option}")
+    
+    # Display current AI model selection
+    print(f"\n{GRAY}Modelo IA actual: {model_display}{RESET}")
+    
     while True:
         selection = input("\nIngrese el número de la opción a seleccionar: ")
         try:
@@ -9369,7 +10129,11 @@ def main():
         
         top_choice = top_level_menu()
         
-        if top_choice == 5:  # Exit option
+        if top_choice == 5:  # AI Model Configuration
+            configure_ai_model()
+            continue  # Go back to main menu after configuration
+            
+        elif top_choice == 6:  # Exit option
             print("\nGracias por usar el programa.\nSuerte en tu investigación, ¡Hasta luego!\n")
             break
             
@@ -9619,9 +10383,12 @@ def generate_all_reports():
     Generates individual reports for all tools across all data sources.
     Iterates TOOL first, then SOURCE.
     Saves a copy of each report to the 'Informes' folder with Nro-Cod-DataSource naming.
+    Includes resume functionality - skips reports that already exist.
     """
     global menu, actual_menu, actual_opt, all_keywords, filename, unique_folder, top_choice
     global tool_file_dic, trends_results, data_filename # Ensure required globals are declared
+    global all_kw, wider, one_keyword # Variables needed by ai_analysis() and other functions
+    global csv_all_data, csv_last_20_data, csv_last_15_data, csv_last_10_data, csv_last_5_data, csv_last_year_data # CSV data for PDF generation
 
     # Colors (ensure these are defined globally elsewhere or define them here)
     GREEN = "\033[92m"
@@ -9629,12 +10396,20 @@ def generate_all_reports():
     RED = "\033[91m"
     RESET = "\033[0m"
     
+    # Track statistics for final summary
+    total_reports_generated = 0
+    total_reports_skipped = 0
+    
     print("\n" + "="*60)
     if top_choice == 2:
         print(" Iniciando Generación de Todos los Informes Complementarios (Batch)")
     else:
         print(" Iniciando Generación de Todos los Informes Individuales (Batch)")
     print(" (Iterando por Herramienta -> Fuente de Datos)")
+    print(f" {GREEN}✨ Enhanced with Resume & API Resilience Features ✨{RESET}")
+    print(f" {CYAN}• Skips existing reports automatically{RESET}")
+    print(f" {CYAN}• Intelligent retry with 5-15 min delays for API overload{RESET}")
+    print(f" {CYAN}• Press Ctrl+C during waits to skip current operation{RESET}")
     print("="*60 + "\n")
 
     # Define data source mapping (menu index to details)
@@ -9685,6 +10460,21 @@ def generate_all_reports():
                 portada_df = None
             # ------------------------------------------
 
+            # --- Check if final report already exists (Resume Logic) ---
+            tool_name_for_lookup = current_tool_keywords[0]  # Use first keyword for lookup
+            if portada_df is not None:
+                match = portada_df[portada_df['Herramienta'] == tool_name_for_lookup]
+                if not match.empty:
+                    cod_val = match.iloc[0].get('Cód', 'XX')
+                    final_pdf_name = f"Informe_{str(cod_val).strip()}.pdf"
+                    final_pdf_path = os.path.join(informes_folder, final_pdf_name)
+                    
+                    if os.path.exists(final_pdf_path):
+                        print(f"      {GREEN}[Skip] Reporte ya existe: {final_pdf_name}{RESET}")
+                        processed_sources_for_tool += 1  # Count as processed
+                        total_reports_skipped += 1  # Track for summary
+                        continue  # Skip to next source
+
             # --- Set variables for this specific Tool/Source combo --- 
             menu = source_menu_index
             actual_menu = source_info['name']
@@ -9721,6 +10511,35 @@ def generate_all_reports():
                 # 1. Initialize variables 
                 init_variables()
 
+                # --- Setup filename and folder (copied from Option 1 workflow) ---
+                wider = True if len(all_keywords) <= 2 else False
+                one_keyword = True if len(all_keywords) < 2 else False
+                all_kw = ", ".join(all_keywords)
+
+                filename = create_unique_filename(all_keywords, top_choice)
+                unique_folder = os.path.join(data_folder, filename)
+                if not os.path.exists(unique_folder):
+                    os.makedirs(unique_folder)
+                    os.chmod(unique_folder, 0o777)
+
+                # --- Load and process data (the missing step!) ---
+                trends_results = process_file_data(all_keywords, data_filename)
+                if trends_results:
+                    # Save CSV data only if processing was successful
+                    total_years = trends_results.get('total_years', 0)
+                    if total_years > 20:
+                        csv_all_data = trends_results['all_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                    else:
+                        csv_all_data = None
+                    csv_last_20_data = trends_results['last_20_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                    csv_last_15_data = trends_results['last_15_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                    csv_last_10_data = trends_results['last_10_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                    csv_last_5_data = trends_results['last_5_years_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                    csv_last_year_data = trends_results['last_year_data'].to_csv(index_label='date', float_format='%.2f', na_rep='N/A')
+                else:
+                    print(f"      {RED}[Error] process_file_data falló para {data_filename}. Saltando.{RESET}")
+                    continue
+
                 # 2. Check data availability after init
                 trends_data_available = False
                 if 'trends_results' in globals() and trends_results is not None:
@@ -9736,9 +10555,22 @@ def generate_all_reports():
                 print(f"      Generando resultados y gráficos ({unique_folder})...")
                 results()
 
-                # 4. Run AI Analysis
+                # 4. Run AI Analysis with batch-level error recovery
                 print("      Generando análisis AI...")
-                ai_analysis()
+                try:
+                    ai_analysis()
+                except Exception as e:
+                    # Check if this is an API overload that wasn't handled at the individual level
+                    error_msg = str(e).lower()
+                    if any(keyword in error_msg for keyword in ["overloaded", "unavailable", "timeout", "retry"]):
+                        print(f"{YELLOW}🔄 Batch-level recovery: AI analysis failed due to API issues. Waiting 20 minutes before continuing with next tool...{RESET}")
+                        print(f"Error details: {e}")
+                        countdown_timer(1200)  # 20 minutes
+                        print(f"{YELLOW}⏭️  Skipping current tool-source combination and continuing with next...{RESET}")
+                        continue  # Skip to next source for this tool
+                    else:
+                        # Re-raise non-API errors
+                        raise
 
                 # 5. Generate PDF Report
                 print("      Generando reporte PDF...")
@@ -9772,6 +10604,7 @@ def generate_all_reports():
                         shutil.copy2(original_pdf_path, new_pdf_path) # copy2 preserves metadata
                         print(f"      {GREEN}Reporte copiado y renombrado a: {new_pdf_path}{RESET}")
                         processed_sources_for_tool += 1
+                        total_reports_generated += 1  # Track for summary
 
                         # --- Call README Update --- 
                         if portada_df is not None and not match.empty:
@@ -9809,6 +10642,7 @@ def generate_all_reports():
     # --- End Outer Loop (Tools) ---
     print("\n" + "="*60)
     print(" Generación de Todos los Informes (Batch) Completada")
+    print(f" Resumen: {GREEN}{total_reports_generated} informes generados{RESET}, {YELLOW}{total_reports_skipped} saltados (ya existían){RESET}")
     print("="*60 + "\n")
     
 # <<< End of generate_all_reports function >>>

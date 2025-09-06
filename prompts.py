@@ -650,6 +650,9 @@ Comparar *activamente* y *de forma detallada* los patrones observados con:
   *	Formatear correctamente valores estadísticos y ecuaciones.
 *	Usar "herramienta de gestión" como terminología estándar y consistente.
 *	El estilo de redacción debe ser fluido, natural y atractivo, evitando la repetición, las frases cliché y la voz pasiva innecesaria.
+*	Start your response immediately with the translated content
+*	Do not add any wrapper text or explanations
+* For all Markdown tables, format the header separator line without spaces between the pipes and the alignment colons, like |:---| or |---|, not | :--- |
 
 ## **X. NOTAS (Recordatorios Finales)**
 
@@ -1320,6 +1323,9 @@ Comparar *activamente* y *de forma detallada* los patrones observados **en la s�
   *	Formatear correctamente valores estadísticos y ecuaciones.
 *	Usar "herramienta de gestión" como terminología estándar y consistente.
 *	El estilo de redacción debe ser fluido, natural y atractivo, evitando la repetición, las frases cliché y la voz pasiva innecesaria.
+*	Start your response immediately with the translated content
+*	Do not add any wrapper text or explanations
+* For all Markdown tables, format the header separator line without spaces between the pipes and the alignment colons, like |:---| or |---|, not | :--- |
 
 ## **X. NOTAS (Recordatorios Finales)**
 
@@ -3719,16 +3725,46 @@ Notes:
 
 prompt_sp = """
 Translate the following Markdown text to Spanish, adhering to these guidelines:
+
+CRITICAL: Your response must contain ONLY the translated text. Do not include:
+- Any thinking process, reasoning, or explanations
+- XML tags like <think>, <reasoning>, or similar
+- Introductory phrases like "Here is the translation:" or "The translation is:"
+- Concluding remarks or confirmations
+- Chain of thought or step-by-step analysis
+- Meta-commentary about the translation process
+
+TRANSLATION REQUIREMENTS:
 1. Use formal academic Spanish suitable for business reports
 2. Maintain technical and management terminology appropriate for enterprise contexts
-4. Preserve all numerical values, dates, and data references
-5. Maintain all Markdown formatting
-6. Do not include any explanatory comments or suggestions
-7. Provide only the direct translation without additional markup or annotations
-8. Ensure consistent terminology throughout the translation
-9. Maintain the hierarchical structure of headings and subheadings
-11. Do *not* include comments like: Okay, here is the Spanish translation following all guidelines
-12. Do not include blocks of markdown code.
+3. Preserve all numerical values, dates, and data references exactly as shown
+4. Ensure consistent terminology throughout the translation
+5. Keep acronyms like TQM, NADT, MAST unchanged after first definition
+6. Translate "Total Quality Management" as "Gestión de la Calidad Total (TQM)" on first mention, then use "TQM"
+
+CRITICAL FORMATTING PRESERVATION:
+- **Markdown Structure**: Maintain ALL Markdown formatting exactly as in original:
+  - Headers: #, ##, ###, #### (preserve exact hierarchy)
+  - Bold: **text** and *italics*
+  - Lists: - bullet points and numbered lists
+  - Tables: preserve | column | structure |
+  - Links: [text](url) format
+  - Code blocks: ```language and ``` format
+- **LaTeX Expressions**: Preserve ALL mathematical formulas and LaTeX syntax exactly:
+  - Inline math: $formula$ 
+  - Block math: $$formula$$
+  - All LaTeX commands: \alpha, \beta, \sum, \int, etc.
+  - Mathematical symbols and Greek letters
+  - Equation numbering and references
+- **Spacing and Indentation**: Maintain original spacing, indentation, and line breaks
+- **Special Characters**: Preserve all technical symbols, percentages, currency symbols
+
+FORMATTING RULES:
+- Start your response immediately with the translated content
+- Do not add any wrapper text or explanations
+- Do not include markdown code blocks around the entire translation
+- Preserve original spacing, bullet points, and list formatting
+- Never alter or remove any Markdown syntax or LaTeX formulas
 
 Text to translate:
 """
