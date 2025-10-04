@@ -35,6 +35,63 @@ def get_all_keywords():
                 all_keywords.append(keyword)
     return all_keywords
 
+def interpolate_gb_to_monthly(gb_df, cr_df):
+    """Interpolate annual GB data to monthly using Crossref monthly patterns"""
+    if gb_df.empty or cr_df.empty:
+        return gb_df
+
+    # Get the column name (should be the same for both)
+    gb_col = gb_df.columns[0]
+    cr_col = cr_df.columns[0]
+
+    # Create monthly index for all years in GB data
+    gb_years = gb_df.index.year.unique()
+    monthly_index = pd.date_range(start=f'{gb_years.min()}-01-01',
+                                  end=f'{gb_years.max()}-12-31',
+                                  freq='MS')
+
+    # Initialize monthly data
+    monthly_data = []
+
+    for year in gb_years:
+        annual_value = gb_df.loc[gb_df.index.year == year, gb_col].iloc[0] if not gb_df.loc[gb_df.index.year == year].empty else 0
+
+        # Get Crossref monthly pattern for this year
+        year_mask = (cr_df.index.year == year)
+        if year_mask.any():
+            # Use actual Crossref monthly pattern for this year
+            cr_yearly = cr_df[year_mask]
+            if len(cr_yearly) == 12:  # Full year data
+                # Normalize the pattern to sum to 1, then scale by annual GB value
+                pattern = cr_yearly[cr_col].values
+                pattern_sum = pattern.sum()
+                if pattern_sum > 0:
+                    monthly_values = (pattern / pattern_sum) * annual_value
+                else:
+                    # If all zeros, distribute evenly
+                    monthly_values = np.full(12, annual_value / 12)
+            else:
+                # Partial year data - distribute evenly
+                monthly_values = np.full(12, annual_value / 12)
+        else:
+            # No Crossref data for this year - distribute evenly
+            monthly_values = np.full(12, annual_value / 12)
+
+        # Add monthly values for this year
+        year_start = pd.Timestamp(f'{year}-01-01')
+        for month in range(12):
+            monthly_data.append({
+                'date': year_start + pd.DateOffset(months=month),
+                gb_col: monthly_values[month]
+            })
+
+    # Create DataFrame with monthly data
+    result_df = pd.DataFrame(monthly_data)
+    result_df = result_df.set_index('date')
+    result_df.index.name = gb_df.index.name
+
+    return result_df
+
 def get_file_data2(selected_keyword, selected_sources):
     """Simplified data loading function without heavy dependencies"""
     # Map source IDs to file indices
@@ -67,7 +124,7 @@ def get_file_data2(selected_keyword, selected_sources):
             df.index = df.index.str.strip()
 
             # Convert index to datetime based on source type
-            if source == 2:  # Google Books Ngrams
+            if source == 2:  # Google Books Ngrams - keep as annual for now
                 df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
             else:  # Other sources
                 df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
@@ -77,17 +134,18 @@ def get_file_data2(selected_keyword, selected_sources):
             print(f"Error loading data for source {source}: {e}")
             continue
 
-    # Process datasets (simplified - just trim to common date range)
+    # Special processing for GB data: interpolate to monthly using CR patterns
+    if 2 in selected_sources and 4 in selected_sources:  # GB and CR both selected
+        if 2 in all_raw_datasets and 4 in all_raw_datasets:
+            gb_df = all_raw_datasets[2]
+            cr_df = all_raw_datasets[4]
+            # Interpolate GB to monthly using CR patterns
+            all_raw_datasets[2] = interpolate_gb_to_monthly(gb_df, cr_df)
+
+    # Process datasets (preserve individual date ranges)
     for source in selected_sources:
         if source in all_raw_datasets:
             df = all_raw_datasets[source]
-
-            # Find common date range across all datasets
-            if len(all_raw_datasets) > 1:
-                earliest_date = max(df.index.min() for df in all_raw_datasets.values())
-                latest_date = min(df.index.max() for df in all_raw_datasets.values())
-                df = df.loc[earliest_date:latest_date]
-
             datasets[source] = df
 
     # Normalize datasets to 0-100 scale
@@ -341,19 +399,11 @@ def update_main_content(*args):
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
 
-        # Handle Bain/Crossref alignment
-        bain_sources = [3, 5]
-        has_bain = any(src_id in selected_sources for src_id in bain_sources)
-        has_crossref = 4 in selected_sources
+        # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
-        if has_bain and has_crossref:
-            bain_columns = [dbase_options[src_id] for src_id in bain_sources if src_id in selected_sources]
-            bain_start_date = combined_dataset[combined_dataset[bain_columns].notna().any(axis=1)]['Fecha'].min()
-            combined_dataset = combined_dataset[combined_dataset['Fecha'] >= bain_start_date]
-
-        # Filter NaN values
+        # Filter out rows where ALL selected sources are NaN (preserve partial data)
         data_columns = [dbase_options[src_id] for src_id in selected_sources]
-        combined_dataset = combined_dataset.dropna(subset=data_columns)
+        combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
 
         selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
 
@@ -559,7 +609,23 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
                 line=dict(color=color_map.get(source, '#000000'))
             ))
 
-    # Update layout with legend at bottom and monthly ticks
+    # Calculate dynamic tick spacing based on date range
+    date_range_days = (filtered_data['Fecha'].max() - filtered_data['Fecha'].min()).days
+
+    if date_range_days <= 365:  # Less than 1 year
+        dtick = "M1"  # Monthly ticks
+        tickformat = "%Y-%m"
+    elif date_range_days <= 365 * 3:  # 1-3 years
+        dtick = "M3"  # Quarterly ticks
+        tickformat = "%Y-%m"
+    elif date_range_days <= 365 * 5:  # 3-5 years
+        dtick = "M6"  # Biannual ticks
+        tickformat = "%Y-%m"
+    else:  # More than 5 years
+        dtick = "M12"  # Annual ticks
+        tickformat = "%Y"
+
+    # Update layout with legend at bottom and dynamic ticks
     fig.update_layout(
         title="Análisis Temporal 2D",
         xaxis_title="Fecha",
@@ -568,13 +634,13 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
         legend=dict(
             orientation="h",
             yanchor="bottom",
-            y=-0.3,
+            y=-0.5,
             xanchor="center",
             x=0.5
         ),
         xaxis=dict(
-            tickformat="%Y-%m",  # Show year-month format
-            dtick="M1",  # Monthly ticks
+            tickformat=tickformat,
+            dtick=dtick,
             tickangle=45
         )
     )
@@ -690,19 +756,11 @@ def update_temporal_2d_analysis(slider_values, all_clicks, y20_clicks, y15_click
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
 
-        # Handle Bain/Crossref alignment
-        bain_sources = [3, 5]
-        has_bain = any(src_id in selected_sources for src_id in bain_sources)
-        has_crossref = 4 in selected_sources
+        # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
-        if has_bain and has_crossref:
-            bain_columns = [dbase_options[src_id] for src_id in bain_sources if src_id in selected_sources]
-            bain_start_date = combined_dataset[combined_dataset[bain_columns].notna().any(axis=1)]['Fecha'].min()
-            combined_dataset = combined_dataset[combined_dataset['Fecha'] >= bain_start_date]
-
-        # Filter NaN values
+        # Filter out rows where ALL selected sources are NaN (preserve partial data)
         data_columns = [dbase_options[src_id] for src_id in selected_sources]
-        combined_dataset = combined_dataset.dropna(subset=data_columns)
+        combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
 
         selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
 
@@ -715,68 +773,52 @@ def update_temporal_2d_analysis(slider_values, all_clicks, y20_clicks, y15_click
         if ctx.triggered:
             trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
-            if trigger_id == 'temporal-2d-all':
-                start_date = combined_dataset['Fecha'].min().date()
-                end_date = combined_dataset['Fecha'].max().date()
-                # Update slider to full range
-                slider_value = [0, len(combined_dataset) - 1]
-            elif trigger_id == 'temporal-2d-20y':
-                end_date = combined_dataset['Fecha'].max().date()
-                start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=20)).date()
-                # Find indices for the date range
-                start_idx = combined_dataset[combined_dataset['Fecha'].dt.date >= start_date].index[0]
-                end_idx = len(combined_dataset) - 1
-                slider_value = [start_idx, end_idx]
-            elif trigger_id == 'temporal-2d-15y':
-                end_date = combined_dataset['Fecha'].max().date()
-                start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=15)).date()
-                start_idx = combined_dataset[combined_dataset['Fecha'].dt.date >= start_date].index[0]
-                end_idx = len(combined_dataset) - 1
-                slider_value = [start_idx, end_idx]
-            elif trigger_id == 'temporal-2d-10y':
-                end_date = combined_dataset['Fecha'].max().date()
-                start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=10)).date()
-                start_idx = combined_dataset[combined_dataset['Fecha'].dt.date >= start_date].index[0]
-                end_idx = len(combined_dataset) - 1
-                slider_value = [start_idx, end_idx]
-            elif trigger_id == 'temporal-2d-5y':
-                end_date = combined_dataset['Fecha'].max().date()
-                start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=5)).date()
-                start_idx = combined_dataset[combined_dataset['Fecha'].dt.date >= start_date].index[0]
-                end_idx = len(combined_dataset) - 1
-                slider_value = [start_idx, end_idx]
+            if trigger_id in ['temporal-2d-all', 'temporal-2d-20y', 'temporal-2d-15y', 'temporal-2d-10y', 'temporal-2d-5y']:
+                # Button was clicked - calculate new date range and slider position
+                if trigger_id == 'temporal-2d-all':
+                    start_date = combined_dataset['Fecha'].min().date()
+                    end_date = combined_dataset['Fecha'].max().date()
+                    slider_value = [0, len(combined_dataset) - 1]
+                else:
+                    # Calculate years back from end
+                    years_back = int(trigger_id.split('-')[-1].replace('y', ''))
+                    end_date = combined_dataset['Fecha'].max().date()
+                    start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=years_back)).date()
+
+                    # Find the closest indices for the date range
+                    start_idx = (combined_dataset['Fecha'] - pd.to_datetime(start_date)).abs().idxmin()
+                    end_idx = len(combined_dataset) - 1
+                    slider_value = [start_idx, end_idx]
             elif trigger_id == 'temporal-2d-date-range':
-                # Slider values are indices, convert to dates
+                # Slider was moved - convert indices to dates
                 start_idx, end_idx = slider_values
                 start_date = combined_dataset['Fecha'].iloc[start_idx].date()
                 end_date = combined_dataset['Fecha'].iloc[end_idx].date()
                 slider_value = slider_values  # Keep the slider value as is
 
-        # If no specific trigger, use slider values
-        if start_date is None and end_date is None and slider_values:
-            start_idx, end_idx = slider_values
-            start_date = combined_dataset['Fecha'].iloc[start_idx].date()
-            end_date = combined_dataset['Fecha'].iloc[end_idx].date()
-            slider_value = slider_values
+        # If no trigger or initial load, default to full date range
+        if start_date is None and end_date is None:
+            start_date = combined_dataset['Fecha'].min().date()
+            end_date = combined_dataset['Fecha'].max().date()
+            slider_value = [0, len(combined_dataset) - 1]
 
         return create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date), slider_value
     except Exception as e:
         return {}
 
-# Callback to update the slider when data changes
+# Callback to update the slider properties when data changes (only min, max, marks)
 @app.callback(
     Output('temporal-2d-date-range', 'min'),
     Output('temporal-2d-date-range', 'max'),
-    Output('temporal-2d-date-range', 'value'),
     Output('temporal-2d-date-range', 'marks'),
     [Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
-def update_temporal_slider(selected_keyword, *button_states):
+def update_temporal_slider_properties(selected_keyword, *button_states):
     selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
 
     if not selected_keyword or not selected_sources:
-        return 0, 100, [0, 100], {}
+        return 0, 100, {}
 
     try:
         datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
@@ -787,19 +829,11 @@ def update_temporal_slider(selected_keyword, *button_states):
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
 
-        # Handle Bain/Crossref alignment
-        bain_sources = [3, 5]
-        has_bain = any(src_id in selected_sources for src_id in bain_sources)
-        has_crossref = 4 in selected_sources
+        # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
-        if has_bain and has_crossref:
-            bain_columns = [dbase_options[src_id] for src_id in bain_sources if src_id in selected_sources]
-            bain_start_date = combined_dataset[combined_dataset[bain_columns].notna().any(axis=1)]['Fecha'].min()
-            combined_dataset = combined_dataset[combined_dataset['Fecha'] >= bain_start_date]
-
-        # Filter NaN values
+        # Filter out rows where ALL selected sources are NaN (preserve partial data)
         data_columns = [dbase_options[src_id] for src_id in selected_sources]
-        combined_dataset = combined_dataset.dropna(subset=data_columns)
+        combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
 
         # Create marks for the slider
         n_marks = min(5, len(combined_dataset))  # Limit to 5 marks
@@ -809,9 +843,9 @@ def update_temporal_slider(selected_keyword, *button_states):
             for idx in mark_indices
         }
 
-        return 0, len(combined_dataset) - 1, [0, len(combined_dataset) - 1], marks
+        return 0, len(combined_dataset) - 1, marks
     except Exception as e:
-        return 0, 100, [0, 100], {}
+        return 0, 100, {}
 
 # Additional callbacks for specific analyses
 @app.callback(
