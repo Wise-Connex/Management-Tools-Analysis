@@ -13,6 +13,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import make_pipeline
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import r2_score
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.seasonal import seasonal_decompose
 from scipy.fft import fft, fftfreq
@@ -610,7 +611,15 @@ def update_main_content(*args):
 
         # 1. Temporal Analysis 2D
         content.append(html.Div([
-            html.H6("1. Análisis Temporal 2D", style={'fontSize': '16px', 'marginTop': '20px'}),
+            html.Div([
+                html.H6("1. Análisis Temporal 2D", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+            ], style={
+                'backgroundColor': '#007bff',
+                'padding': '12px 20px',
+                'borderRadius': '8px',
+                'marginBottom': '20px',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
             html.Div([
                 html.Label("Rango de Fechas:", style={'marginRight': '12px', 'fontSize': '14px'}),
                 dbc.ButtonGroup([
@@ -644,7 +653,15 @@ def update_main_content(*args):
 
         # 2. Mean Analysis
         content.append(html.Div([
-            html.H6("2. Análisis de Medias", style={'fontSize': '16px', 'marginTop': '20px'}),
+            html.Div([
+                html.H6("2. Análisis de Medias", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+            ], style={
+                'backgroundColor': '#28a745',
+                'padding': '12px 20px',
+                'borderRadius': '8px',
+                'marginBottom': '20px',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
             dcc.Graph(
                 id='mean-analysis-graph',
                 figure=create_mean_analysis_figure(combined_dataset, selected_source_names),
@@ -656,7 +673,15 @@ def update_main_content(*args):
         # 3. Temporal Analysis 3D (if 2+ sources)
         if len(selected_sources) >= 2:
             content.append(html.Div([
-                html.H6("3. Análisis Temporal 3D", style={'fontSize': '16px', 'marginTop': '20px'}),
+                html.Div([
+                    html.H6("3. Análisis Temporal 3D", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                ], style={
+                    'backgroundColor': '#dc3545',
+                    'padding': '12px 20px',
+                    'borderRadius': '8px',
+                    'marginBottom': '20px',
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+                }),
                 html.Div([
                     html.Label("Frecuencia de Datos:", style={'marginRight': '12px', 'fontSize': '14px'}),
                     dbc.ButtonGroup([
@@ -689,7 +714,15 @@ def update_main_content(*args):
 
         # 4. Seasonal Analysis
         content.append(html.Div([
-            html.H6("4. Análisis Estacional", style={'fontSize': '16px', 'marginTop': '20px'}),
+            html.Div([
+                html.H6("4. Análisis Estacional", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+            ], style={
+                'backgroundColor': '#ffc107',
+                'padding': '12px 20px',
+                'borderRadius': '8px',
+                'marginBottom': '20px',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
             html.Div([
                 dcc.Dropdown(
                     id='seasonal-source-select',
@@ -708,7 +741,15 @@ def update_main_content(*args):
 
         # 5. Fourier Analysis
         content.append(html.Div([
-            html.H6("5. Análisis de Fourier (Periodograma)", style={'fontSize': '16px', 'marginTop': '20px'}),
+            html.Div([
+                html.H6("5. Análisis de Fourier (Periodograma)", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+            ], style={
+                'backgroundColor': '#6f42c1',
+                'padding': '12px 20px',
+                'borderRadius': '8px',
+                'marginBottom': '20px',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
             html.Div([
                 dcc.Dropdown(
                     id='fourier-source-select',
@@ -719,7 +760,7 @@ def update_main_content(*args):
                 ),
                 dcc.Graph(
                     id='fourier-analysis-graph',
-                    style={'height': '400px'},
+                    style={'height': '500px'},
                     config={'displaylogo': False, 'responsive': True}
                 )
             ])
@@ -728,7 +769,15 @@ def update_main_content(*args):
         # 6. Correlation Heatmap
         if len(selected_sources) >= 2:
             content.append(html.Div([
-                html.H6("6. Mapa de Calor (Correlación)", style={'fontSize': '16px', 'marginTop': '20px'}),
+                html.Div([
+                    html.H6("6. Mapa de Calor (Correlación)", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                ], style={
+                    'backgroundColor': '#17a2b8',
+                    'padding': '12px 20px',
+                    'borderRadius': '8px',
+                    'marginBottom': '20px',
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+                }),
                 dcc.Graph(
                     id='correlation-heatmap',
                     figure=create_correlation_heatmap(combined_dataset, selected_source_names),
@@ -740,19 +789,57 @@ def update_main_content(*args):
         # 7. Regression Analysis (clickable from heatmap)
         if len(selected_sources) >= 2:
             content.append(html.Div([
-                html.H6("7. Análisis de Regresión", style={'fontSize': '16px', 'marginTop': '20px'}),
-                html.P("Haga clic en el mapa de calor para seleccionar variables para regresión", style={'fontSize': '12px'}),
-                dcc.Graph(
-                    id='regression-graph',
-                    style={'height': '400px'},
-                    config={'displaylogo': False, 'responsive': True}
-                )
+                html.Div([
+                    html.H6("7. Análisis de Regresión", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                ], style={
+                    'backgroundColor': '#fd7e14',
+                    'padding': '12px 20px',
+                    'borderRadius': '8px',
+                    'marginBottom': '20px',
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+                }),
+                html.Div([
+                    html.P("Haga clic en el mapa de calor para seleccionar variables para regresión", style={'fontSize': '12px'}),
+                    html.Div([
+                        dcc.Graph(
+                            id='regression-graph',
+                            style={'height': '700px', 'flex': '1'},
+                            config={'displaylogo': False, 'responsive': True}
+                        ),
+                        html.Div(
+                            html.P("Haga clic en el mapa de calor para ver las ecuaciones de regresión"),
+                            id='regression-equations',
+                            style={
+                                'padding': '8px',
+                                'backgroundColor': '#f8f9fa',
+                                'border': '1px solid #007bff',
+                                'borderRadius': '6px',
+                                'fontSize': '11px',
+                                'fontFamily': 'monospace',
+                                'minHeight': '50px',
+                                'width': 'auto',
+                                'maxWidth': '300px',
+                                'marginLeft': '20px',
+                                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)',
+                                'alignSelf': 'center'
+                            }
+                        )
+                    ], style={'display': 'flex', 'alignItems': 'flex-start'})
+                ])
             ], id='section-regression', className='section-anchor'))
 
         # 8. PCA Analysis
         if len(selected_sources) >= 2:
             content.append(html.Div([
-                html.H6("8. Análisis PCA (Cargas y Componentes)", style={'fontSize': '16px', 'marginTop': '20px'}),
+                html.Div([
+                    html.H6("8. Análisis PCA (Cargas y Componentes)", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                ], style={
+                    'backgroundColor': '#20c997',
+                    'padding': '12px 20px',
+                    'borderRadius': '8px',
+                    'marginBottom': '20px',
+                    'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+                }),
                 dcc.Graph(
                     id='pca-analysis-graph',
                     figure=create_pca_figure(combined_dataset, selected_source_names),
@@ -763,9 +850,17 @@ def update_main_content(*args):
 
         # Data table
         content.append(html.Div([
-            html.H6("Tabla de Datos", style={'fontSize': '16px', 'marginTop': '20px'}),
+            html.Div([
+                html.H6("Tabla de Datos", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+            ], style={
+                'backgroundColor': '#6c757d',
+                'padding': '12px 20px',
+                'borderRadius': '8px',
+                'marginBottom': '20px',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
             dbc.Button(
-                "Mostrar/Ocultar Tabla",
+                "Ocultar Tabla",
                 id="toggle-table-button",
                 color="primary",
                 size="sm",
@@ -780,11 +875,11 @@ def update_main_content(*args):
                         style_table={'overflowX': 'auto', 'overflowY': 'auto', 'height': '400px'},
                         style_cell={'textAlign': 'left', 'padding': '5px', 'minWidth': '100px', 'width': '120px', 'maxWidth': '150px'},
                         style_header={'backgroundColor': 'rgb(230, 230, 230)', 'fontWeight': 'bold'},
-                        page_size=20
+                        page_size=12
                     )
                 ]),
                 id="collapse-table",
-                is_open=False
+                is_open=True
             )
         ], id='section-data-table', className='section-anchor'))
 
@@ -1342,7 +1437,16 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
         )
         return fig
     except Exception as e:
-        return {}
+        print(f"Error in regression analysis: {e}")
+        # Return empty figure instead of empty dict
+        fig = go.Figure()
+        fig.update_layout(
+            title="Error en el análisis de regresión",
+            xaxis_title="",
+            yaxis_title="",
+            height=500
+        )
+        return fig
 
 @app.callback(
     Output('seasonal-analysis-graph', 'figure'),
@@ -1390,59 +1494,10 @@ def update_seasonal_analysis(selected_source, selected_keyword, *button_states):
     except Exception as e:
         return {}
 
-@app.callback(
-    Output('fourier-analysis-graph', 'figure'),
-    [Input('fourier-source-select', 'value'),
-     Input('keyword-dropdown', 'value')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
-)
-def update_fourier_analysis(selected_source, selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
-
-    if not all([selected_source, selected_keyword]) or not selected_sources:
-        return {}
-
-    try:
-        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
-        combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
-
-        combined_dataset = combined_dataset.reset_index()
-        date_column = combined_dataset.columns[0]
-        combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
-        combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
-
-        if selected_source not in combined_dataset.columns:
-            return {}
-
-        ts_data = combined_dataset[selected_source].dropna()
-        if len(ts_data) < 24:
-            return {}
-
-        yf = fft(ts_data.values)
-        N = len(ts_data)
-        xf = fftfreq(N)[:N//2]
-        power = 2.0/N * np.abs(yf[1:N//2])
-
-        fig = go.Figure()
-        fig.add_trace(go.Bar(
-            x=xf[1:],
-            y=power,
-            name='Espectro de Potencia',
-            marker_color=color_map.get(selected_source, '#000000')
-        ))
-
-        fig.update_layout(
-            title=f'Análisis de Fourier: {selected_source}',
-            xaxis_title='Frecuencia',
-            yaxis_title='Potencia',
-            height=400
-        )
-        return fig
-    except Exception as e:
-        return {}
 
 @app.callback(
-    Output('regression-graph', 'figure'),
+    [Output('regression-graph', 'figure'),
+     Output('regression-equations', 'children')],
     [Input('correlation-heatmap', 'clickData'),
      Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
@@ -1451,7 +1506,15 @@ def update_regression_analysis(click_data, selected_keyword, *button_states):
     selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
 
     if not selected_keyword or len(selected_sources) < 2 or not click_data:
-        return {}
+        # Return empty figure and empty equations
+        fig = go.Figure()
+        fig.update_layout(
+            title="Haga clic en el mapa de calor para ver el análisis de regresión",
+            xaxis_title="",
+            yaxis_title="",
+            height=400
+        )
+        return fig, ""
 
     try:
         datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
@@ -1465,61 +1528,224 @@ def update_regression_analysis(click_data, selected_keyword, *button_states):
         selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
 
         # Get clicked variables from heatmap
+        if 'points' not in click_data or len(click_data['points']) == 0:
+            return {}
+
         x_var = click_data['points'][0]['x']
         y_var = click_data['points'][0]['y']
 
-        if x_var not in combined_dataset.columns or y_var not in combined_dataset.columns:
-            return {}
+        # Debug: print available columns and clicked variables
+        print(f"Available columns: {list(combined_dataset.columns)}")
+        print(f"Clicked variables: x='{x_var}', y='{y_var}'")
 
-        # Perform regression
+        if x_var not in combined_dataset.columns or y_var not in combined_dataset.columns:
+            print(f"Variables not found in dataset: x='{x_var}', y='{y_var}'")
+            # Return empty figure instead of empty dict
+            fig = go.Figure()
+            fig.update_layout(
+                title=f"Variables no encontradas: {x_var} vs {y_var}",
+                xaxis_title="",
+                yaxis_title="",
+                height=500
+            )
+            return fig
+
+        # Perform regression analysis with multiple polynomial degrees
         valid_data = combined_dataset[[x_var, y_var]].dropna()
         if len(valid_data) < 2:
             return {}
 
-        X = valid_data[[x_var]]
-        y = valid_data[y_var]
+        X = valid_data[x_var].values.reshape(-1, 1)
+        y = valid_data[y_var].values
 
-        model = LinearRegression()
-        model.fit(X, y)
-
-        y_pred = model.predict(X)
+        # Colors for different polynomial degrees
+        poly_colors = ['red', 'blue', 'green', 'orange']
+        degree_names = ['Lineal', 'Cuadrática', 'Cúbica', 'Cuártica']
 
         fig = go.Figure()
+
+        # Add scatter plot of original data
         fig.add_trace(go.Scatter(
             x=valid_data[x_var],
             y=valid_data[y_var],
             mode='markers',
             name='Datos',
-            marker=dict(color=color_map.get(x_var, '#000000'))
+            marker=dict(color='gray', size=6, opacity=0.7)
         ))
 
-        fig.add_trace(go.Scatter(
-            x=valid_data[x_var],
-            y=y_pred,
-            mode='lines',
-            name='Regresión',
-            line=dict(color='red', width=2)
-        ))
+        # Sort X for smooth polynomial curves
+        X_sorted = np.sort(X.flatten())
+        X_sorted_reshaped = X_sorted.reshape(-1, 1)
 
+        # Annotations for formulas and R-squared
+        annotations = []
+
+        for degree in range(1, 5):  # Degrees 1, 2, 3, 4
+            try:
+                # Ensure data is numeric and properly shaped
+                X_clean = X.astype(float)
+                y_clean = y.astype(float)
+
+                # Fit polynomial regression
+                poly_features = PolynomialFeatures(degree=degree)
+                X_poly = poly_features.fit_transform(X_clean)
+
+                model = LinearRegression()
+                model.fit(X_poly, y_clean)
+
+                # Predict on sorted X values for smooth curve
+                X_poly_sorted = poly_features.transform(X_sorted_reshaped)
+                y_pred_sorted = model.predict(X_poly_sorted)
+
+                # Calculate R-squared
+                y_pred = model.predict(X_poly)
+                r_squared = r2_score(y_clean, y_pred)
+
+                # Create polynomial formula string with proper mathematical formatting
+                coefs = model.coef_
+                intercept = model.intercept_
+
+                if degree == 1:
+                    # Linear: y = mx + b
+                    formula = f"y = {coefs[1]:.3f}x {'+' if intercept >= 0 else ''}{intercept:.3f}"
+                else:
+                    # Polynomial: y = a + bx + cx² + dx³ + ...
+                    terms = []
+                    # Intercept term
+                    if abs(intercept) > 0.001:
+                        terms.append(f"{intercept:.3f}")
+
+                    # Polynomial terms
+                    for i in range(1, len(coefs)):
+                        if abs(coefs[i]) > 0.001:  # Only show significant coefficients
+                            coef_str = f"{coefs[i]:+.3f}"
+                            if i == 1:
+                                terms.append(f"{coef_str}x")
+                            else:
+                                terms.append(f"{coef_str}x<sup>{i}</sup>")
+
+                    # Join terms with proper spacing
+                    formula = f"y = {' '.join(terms)}"
+
+                # Add regression line
+                fig.add_trace(go.Scatter(
+                    x=X_sorted,
+                    y=y_pred_sorted,
+                    mode='lines',
+                    name=f'{degree_names[degree-1]} (R² = {r_squared:.3f})',
+                    line=dict(color=poly_colors[degree-1], width=2)
+                ))
+
+                # Add annotation for this degree
+                annotations.append(
+                    f"<b>{degree_names[degree-1]}:</b><br>"
+                    f"{formula}<br>"
+                    f"R² = {r_squared:.3f}"
+                )
+            except Exception as poly_e:
+                print(f"Error fitting degree {degree} polynomial: {poly_e}")
+                # Add error annotation for this degree
+                annotations.append(
+                    f"<b>{degree_names[degree-1]}:</b><br>"
+                    f"Error fitting polynomial<br>"
+                    f"R² = N/A"
+                )
+
+        # Update layout with increased height for legend and equations
         fig.update_layout(
-            title=f'Regresión: {y_var} vs {x_var}',
+            title={
+                'text': f'Análisis de Regresión Polinomial: {y_var} vs {x_var}',
+                'y': 0.95,
+                'x': 0.5,
+                'xanchor': 'center',
+                'yanchor': 'top'
+            },
             xaxis_title=x_var,
             yaxis_title=y_var,
+            height=600,  # Increased height to accommodate legend and equations
+            showlegend=True,
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=-0.2,  # Moved 2 lines below the graph
+                xanchor="center",
+                x=0.5
+            )
+        )
+
+        # Store annotation text for later use
+        annotation_text = "<br><br>".join(annotations)
+        print(f"Annotation text preview: {annotation_text[:200]}...")
+
+        print(f"Returning regression figure with {len(fig.data)} traces")
+        print(f"Equations content length: {len(annotation_text)}")
+
+        # Create proper Dash components for HTML rendering
+        if annotation_text:
+            # Parse the annotation text and create proper components
+            components = []
+            for block in annotation_text.split('<br><br>'):
+                if block.strip():
+                    lines = block.split('<br>')
+                    for i, line in enumerate(lines):
+                        if i == 0:  # First line with bold text
+                            if '<b>' in line and '</b>' in line:
+                                # Extract bold text
+                                bold_text = line.replace('<b>', '').replace('</b>', '')
+                                components.append(html.P([
+                                    html.Strong(bold_text)
+                                ], style={'margin': '2px 0', 'lineHeight': '1.3'}))
+                            else:
+                                components.append(html.P(line, style={'margin': '2px 0', 'lineHeight': '1.3'}))
+                        else:  # Other lines
+                            # Handle superscript tags
+                            if '<sup>' in line and '</sup>' in line:
+                                # Split by superscript
+                                parts = line.split('<sup>')
+                                processed_parts = []
+                                for j, part in enumerate(parts):
+                                    if j == 0:
+                                        processed_parts.append(part)
+                                    else:
+                                        if '</sup>' in part:
+                                            sup_text, remaining = part.split('</sup>', 1)
+                                            processed_parts.append(html.Sup(sup_text))
+                                            processed_parts.append(remaining)
+                                components.append(html.P(processed_parts, style={'margin': '2px 0', 'lineHeight': '1.3'}))
+                            else:
+                                components.append(html.P(line, style={'margin': '2px 0', 'lineHeight': '1.3'}))
+
+            equations_content = html.Div(components, style={'textAlign': 'left'})
+        else:
+            equations_content = html.P("Haga clic en el mapa de calor para ver las ecuaciones de regresión", style={'textAlign': 'left'})
+
+        return fig, equations_content
+    except Exception as e:
+        print(f"Error in regression analysis: {e}")
+        import traceback
+        traceback.print_exc()
+        # Return empty figure and empty equations
+        fig = go.Figure()
+        fig.update_layout(
+            title="Error en el análisis de regresión",
+            xaxis_title="",
+            yaxis_title="",
             height=400
         )
-        return fig
-    except Exception as e:
-        return {}
+        return fig, ""
 
 @app.callback(
     Output('collapse-table', 'is_open'),
+    Output('toggle-table-button', 'children'),
     [Input('toggle-table-button', 'n_clicks')],
     [State('collapse-table', 'is_open')]
 )
 def toggle_table(n_clicks, is_open):
     if n_clicks:
-        return not is_open
-    return is_open
+        new_state = not is_open
+        button_text = "Ocultar Tabla" if new_state else "Mostrar Tabla"
+        return new_state, button_text
+    return is_open, "Ocultar Tabla"
 # Callback to toggle individual source buttons
 for source_id in dbase_options.keys():
     @app.callback(
@@ -1593,21 +1819,39 @@ def update_navigation_visibility(selected_keyword, *button_states):
         return [
             html.Hr(),
             html.Div([
-                html.Label("Navegación Rápida:", style={'fontSize': '10px', 'fontWeight': 'bold', 'marginBottom': '10px'}),
+                html.Label("Navegación Rápida:", style={'fontSize': '10px', 'fontWeight': 'bold', 'marginBottom': '10px', 'color': 'white'}),
                 html.Div([
-                    html.A("1. Temporal 2D", href="#section-temporal-2d", className="nav-link"),
-                    html.A("2. Análisis Medias", href="#section-mean-analysis", className="nav-link"),
-                    html.A("3. Temporal 3D", href="#section-temporal-3d", className="nav-link"),
-                    html.A("4. Estacional", href="#section-seasonal", className="nav-link"),
-                    html.A("5. Fourier", href="#section-fourier", className="nav-link"),
-                    html.A("6. Correlación", href="#section-correlation", className="nav-link"),
-                    html.A("7. Regresión", href="#section-regression", className="nav-link"),
-                    html.A("8. PCA", href="#section-pca", className="nav-link"),
-                    html.A("Tabla Datos", href="#section-data-table", className="nav-link"),
+                    html.Div([
+                        html.A("1. Temporal 2D", href="#section-temporal-2d", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#007bff', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("2. Análisis Medias", href="#section-mean-analysis", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#28a745', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("3. Temporal 3D", href="#section-temporal-3d", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#dc3545', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("4. Estacional", href="#section-seasonal", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#ffc107', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("5. Fourier", href="#section-fourier", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#6f42c1', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("6. Correlación", href="#section-correlation", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#17a2b8', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("7. Regresión", href="#section-regression", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#fd7e14', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("8. PCA", href="#section-pca", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#20c997', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("Tabla Datos", href="#section-data-table", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#6c757d', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
                 ], style={'marginBottom': '15px'}),
             ], style={
-                'backgroundColor': '#fff3cd',
-                'border': '2px solid #ffc107',
+                'backgroundColor': '#343a40',
+                'border': '2px solid #495057',
                 'borderRadius': '10px',
                 'padding': '15px',
                 'marginTop': '10px',
@@ -1619,6 +1863,248 @@ def update_navigation_visibility(selected_keyword, *button_states):
         # Hide navigation menu
         return [], {'display': 'none'}
 
+
+# Fourier Analysis callback
+@app.callback(
+    Output('fourier-analysis-graph', 'figure'),
+    Input('fourier-source-select', 'value'),
+    Input('keyword-dropdown', 'value'),
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_fourier_analysis(selected_source, selected_keyword, *button_states):
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+
+    if not selected_keyword or not selected_sources:
+        return go.Figure()
+
+    if not selected_source:
+        fig = go.Figure()
+        fig.add_annotation(
+            text="Seleccione una fuente de datos para ver el análisis de Fourier",
+            xref="paper", yref="paper",
+            x=0.5, y=0.5,
+            showarrow=False,
+            font=dict(size=14)
+        )
+        fig.update_layout(
+            title="Análisis de Fourier - Periodograma",
+            xaxis=dict(showticklabels=False),
+            yaxis=dict(showticklabels=False)
+        )
+        return fig
+
+    # Map display name back to numeric key
+    source_key = None
+    for key, name in dbase_options.items():
+        if name == selected_source:
+            source_key = key
+            break
+
+    if source_key is None:
+        print(f"Fourier: Could not map display name '{selected_source}' to numeric key")
+        return go.Figure()
+
+    try:
+        # Get data for the selected source
+        datasets_norm, _ = get_file_data2(selected_keyword, selected_sources)
+
+        if source_key not in datasets_norm:
+            return go.Figure()
+        # Get the data series
+        data = datasets_norm[source_key]
+        if data.empty:
+            print(f"Fourier: Data for source key {source_key} is empty")
+            return go.Figure()
+
+        # Extract values and remove NaN
+        values = data.iloc[:, 0].dropna().values
+        if len(values) < 10:  # Need minimum data points
+            return go.Figure()
+
+        # Perform Fourier transform
+        from scipy.fft import fft, fftfreq
+        import numpy as np
+
+        # Apply FFT
+        fft_values = fft(values)
+        freqs = fftfreq(len(values))
+
+        # Get magnitude (only positive frequencies)
+        n = len(values)
+        magnitude = np.abs(fft_values[:n//2])
+        frequencies = freqs[:n//2]
+
+        # Perform Fourier transform
+        from scipy.fft import fft, fftfreq
+        import numpy as np
+
+        # Apply FFT
+        fft_values = fft(values)
+        freqs = fftfreq(len(values))
+
+        # Get magnitude (only positive frequencies)
+        n = len(values)
+        magnitude = np.abs(fft_values[:n//2])
+        frequencies = freqs[:n//2]
+
+        # Convert frequencies to periods (cycles per unit time)
+        # For monthly data, frequency represents cycles per month
+        periods = 1 / frequencies[1:]  # Skip DC component (freq=0)
+        magnitude = magnitude[1:]      # Skip DC component
+
+        # Calculate statistical significance
+        # Use 95% confidence threshold based on chi-squared distribution
+        significance_threshold = 0.95
+
+        # Calculate statistical significance
+        # Use 95% confidence threshold for chi-squared distribution
+        from scipy.stats import chi2
+        df = 2  # Degrees of freedom for complex FFT
+        chi_squared_threshold = chi2.ppf(0.95, df)
+
+        # Scale threshold by mean magnitude
+        mean_magnitude = np.mean(magnitude)
+        scaled_threshold = chi_squared_threshold * (mean_magnitude / df)
+
+        # Create figure
+        fig = go.Figure()
+
+        # Determine significant components
+        significant_mask = magnitude >= scaled_threshold
+
+        # Create stem lines more efficiently using vectorized operations
+        # Separate significant and non-significant for better performance
+        sig_periods = periods[significant_mask]
+        sig_magnitude = magnitude[significant_mask]
+        non_sig_periods = periods[~significant_mask]
+        non_sig_magnitude = magnitude[~significant_mask]
+        
+        # Add stems for significant components (red)
+        if len(sig_periods) > 0:
+            for i in range(len(sig_periods)):
+                fig.add_shape(
+                    type="line",
+                    x0=sig_periods[i], y0=0, x1=sig_periods[i], y1=sig_magnitude[i],
+                    line=dict(color="red", width=2),
+                    layer='below'
+                )
+        
+        # Add stems for non-significant components (grey)
+        if len(non_sig_periods) > 0:
+            for i in range(len(non_sig_periods)):
+                fig.add_shape(
+                    type="line",
+                    x0=non_sig_periods[i], y0=0, x1=non_sig_periods[i], y1=non_sig_magnitude[i],
+                    line=dict(color="grey", width=1),
+                    layer='below'
+                )
+
+        # Add markers for all components (lollipop heads)
+        fig.add_trace(go.Scatter(
+            x=periods,
+            y=magnitude,
+            mode='markers',
+            marker=dict(
+                color=['red' if sig else 'grey' for sig in significant_mask],
+                size=[8 if sig else 5 for sig in significant_mask],
+                symbol='circle'
+            ),
+            name='Componentes',
+            showlegend=True
+        ))
+
+        # Add labels for significant components using text mode
+        if np.any(significant_mask):
+            fig.add_trace(go.Scatter(
+                x=periods[significant_mask],
+                y=magnitude[significant_mask] + max(magnitude) * 0.08,  # Position above markers
+                mode='text',
+                text=[f"{p:.1f}m" for p in periods[significant_mask]],
+                textfont=dict(color='red', size=10, weight='bold'),
+                showlegend=False
+            ))
+
+        # Add significance threshold line
+        fig.add_trace(go.Scatter(
+            x=[periods.min(), periods.max()],
+            y=[scaled_threshold, scaled_threshold],
+            mode='lines',
+            name='Umbral Significancia (95%)',
+            line=dict(color='purple', width=2, dash='dot'),
+            showlegend=True
+        ))
+
+        # Add vertical reference lines for Trimestral, Semestral, Anual
+        v_lines = [3, 6, 12]
+        v_line_names = ['Trimestral (3m)', 'Semestral (6m)', 'Anual (12m)']
+        for val, name in zip(v_lines, v_line_names):
+            fig.add_vline(
+                x=val, line_width=1, line_dash="dash", line_color="blue",
+            )
+            fig.add_annotation(
+                x=val,
+                y=max(magnitude) * 0.85,
+                text=name,
+                showarrow=False,
+                xshift=10,
+                font=dict(color='blue', size=9)
+            )
+
+        # Add dummy traces for legend (legendonly mode)
+        fig.add_trace(go.Scatter(
+            x=[None], y=[None], mode='markers',
+            marker=dict(color='red', size=8),
+            name='Componente Significativo',
+            showlegend=True
+        ))
+        fig.add_trace(go.Scatter(
+            x=[None], y=[None], mode='markers',
+            marker=dict(color='grey', size=5),
+            name='Componente no Significativo',
+            showlegend=True
+        ))
+        fig.add_trace(go.Scatter(
+            x=[None], y=[None], mode='lines',
+            line=dict(color='blue', dash='dash'),
+            name='Referencias',
+            showlegend=True
+        ))
+
+
+        # Update layout
+        fig.update_layout(
+            title={
+                'text': f'Análisis de Fourier - Periodograma: {selected_source}',
+                'y': 0.95,
+                'x': 0.5,
+                'xanchor': 'center',
+                'yanchor': 'top'
+            },
+            xaxis_title='Período (meses)',
+            yaxis_title='Magnitud',
+            height=500,
+            showlegend=True,
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=-0.3,  # Moved up 20 lines from -0.5
+                xanchor="center",
+                x=0.5
+            ),
+            xaxis=dict(
+                type='log',
+                range=[np.log10(max(1, periods.min())), np.log10(periods.max())],
+                tickformat=".0f"
+            ),
+            yaxis=dict(
+                autorange=True
+            )
+        )
+        
+        return fig
+
+    except Exception as e:
+        return go.Figure()
 
 # Note: Time range filtering buttons are displayed but their callbacks are disabled
 # to avoid Dash callback reference errors. The full date range is used by default.
