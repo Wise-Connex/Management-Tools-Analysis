@@ -35,6 +35,131 @@ def get_all_keywords():
                 all_keywords.append(keyword)
     return all_keywords
 
+# Global cache for interpolated data
+_interpolation_cache = {}
+
+def cubic_interpolation(df, kw):
+    """Optimized cubic interpolation for Bain data with caching and min/max clipping"""
+    # Create cache key based on data content
+    cache_key = f"{kw}_{hash(str(df[kw].values.tobytes()) if hasattr(df[kw].values, 'tobytes') else str(df[kw].values))}_{df.index.min()}_{df.index.max()}"
+
+    # Check cache first
+    if cache_key in _interpolation_cache:
+        return _interpolation_cache[cache_key].copy()
+
+    # Extract actual data points (non-NaN values)
+    actual_data = df[~df[kw].isna()]
+
+    if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
+        result = linear_interpolation(df, kw)
+        _interpolation_cache[cache_key] = result.copy()
+        return result
+
+    # Get the min and max values from original data for STRICT clipping
+    original_min = actual_data[kw].min()
+    original_max = actual_data[kw].max()
+    # NO MARGIN - Clip strictly to original data range
+    clip_min = original_min
+    clip_max = original_max
+
+    # Ensure index is sorted AND has correct type (datetime64[ns])
+    actual_data = actual_data.sort_index()
+    actual_data.index = pd.to_datetime(actual_data.index)
+
+    # Convert dates to numerical values (days since epoch)
+    x = (actual_data.index - pd.Timestamp('1970-01-01')).days.values.astype(float)
+    y = actual_data[kw].values
+
+    # Create Cubic Spline
+    from scipy.interpolate import CubicSpline
+    cs = CubicSpline(x, y, bc_type='natural')
+
+    # --- Optimized: Interpolate directly at MONTHLY frequency instead of daily ---
+    monthly_date_range = pd.date_range(
+        start=actual_data.index.min(),
+        end=actual_data.index.max(),
+        freq='MS'  # Monthly start frequency
+    )
+
+    if monthly_date_range.empty and not actual_data.empty:
+        monthly_date_range = pd.date_range(start=actual_data.index.min(), periods=1, freq='MS')
+    if monthly_date_range.empty:
+        empty_result = pd.DataFrame(columns=[kw], index=pd.to_datetime([]))
+        _interpolation_cache[cache_key] = empty_result.copy()
+        return empty_result
+
+    x_interp_monthly = (monthly_date_range - pd.Timestamp('1970-01-01')).days.values.astype(float)
+    y_interp_monthly = cs(x_interp_monthly)
+
+    # --- Clip monthly values STRICTLY ---
+    y_interp_monthly_clipped = np.clip(y_interp_monthly, clip_min, clip_max)
+    df_monthly = pd.DataFrame(y_interp_monthly_clipped, index=monthly_date_range, columns=[kw])
+
+    # --- Force original points into MONTHLY data ---
+    for idx, val in actual_data[kw].items():
+        idx_ts = pd.Timestamp(idx).normalize()
+
+        # Force original value into monthly data
+        if idx_ts in df_monthly.index:
+            df_monthly.loc[idx_ts, kw] = val
+        else:
+            df_monthly.loc[idx_ts] = val
+
+    df_monthly = df_monthly.sort_index()
+
+    # Cache the result
+    _interpolation_cache[cache_key] = df_monthly.copy()
+
+    return df_monthly
+
+def linear_interpolation(df, kw):
+    """Linear interpolation for sparse data with caching"""
+    # Create cache key
+    cache_key = f"linear_{kw}_{hash(str(df[kw].values.tobytes()) if hasattr(df[kw].values, 'tobytes') else str(df[kw].values))}_{df.index.min()}_{df.index.max()}"
+
+    # Check cache first
+    if cache_key in _interpolation_cache:
+        return _interpolation_cache[cache_key].copy()
+
+    # Extract actual data points (non-NaN values)
+    actual_data = df[~df[kw].isna()]
+
+    if actual_data.empty:
+        result = df.copy()  # Return original if no actual data
+        _interpolation_cache[cache_key] = result.copy()
+        return result
+
+    x = actual_data.index  # Keep index as DatetimeIndex for actual points only
+    y = actual_data[kw].values
+
+    # Use numpy.interp for linear interpolation, but only within the range of actual data
+    # Create date range only between first and last actual data points
+    x_interp = pd.date_range(actual_data.index.min().date(), actual_data.index.max().date(), freq='MS')
+    y_interp = np.interp(x_interp, x, y)
+
+    # Create a new DataFrame with the interpolated values
+    df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
+
+    # Preserve original values at actual data points to ensure accuracy
+    for idx in actual_data.index:
+        if idx in df_interpolated.index:
+            df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
+
+    # Cache the result
+    _interpolation_cache[cache_key] = df_interpolated.copy()
+
+    return df_interpolated
+
+def manage_cache_size(max_size=50):
+    """Limit cache size to prevent memory issues"""
+    global _interpolation_cache
+    if len(_interpolation_cache) > max_size:
+        # Remove oldest entries (simple FIFO)
+        items_to_remove = len(_interpolation_cache) - max_size
+        keys_to_remove = list(_interpolation_cache.keys())[:items_to_remove]
+        for key in keys_to_remove:
+            del _interpolation_cache[key]
+
 def interpolate_gb_to_monthly(gb_df, cr_df):
     """Interpolate annual GB data to monthly using Crossref monthly patterns"""
     if gb_df.empty or cr_df.empty:
@@ -92,8 +217,13 @@ def interpolate_gb_to_monthly(gb_df, cr_df):
 
     return result_df
 
+def clear_interpolation_cache():
+    """Clear the interpolation cache to free memory"""
+    global _interpolation_cache
+    _interpolation_cache.clear()
+
 def get_file_data2(selected_keyword, selected_sources):
-    """Simplified data loading function without heavy dependencies"""
+    """Optimized data loading function with caching and progress indication"""
     # Map source IDs to file indices
     source_index_map = {1: 0, 2: 2, 3: 3, 4: 4, 5: 5}
 
@@ -129,6 +259,19 @@ def get_file_data2(selected_keyword, selected_sources):
             else:  # Other sources
                 df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
 
+            # Apply cubic interpolation for Bain data (sources 3 and 5) - now cached
+            if source == 3 or source == 5:
+                print(f"Applying interpolation for Bain source {source}...")
+                interpolated_data = pd.DataFrame()
+                for column in df.columns:
+                    interpolated = cubic_interpolation(df, column)
+                    interpolated_data[column] = interpolated[column]
+
+                # Set the index to datetime format
+                interpolated_data.index = pd.to_datetime(interpolated_data.index)
+
+                df = interpolated_data
+
             all_raw_datasets[source] = df
         except Exception as e:
             print(f"Error loading data for source {source}: {e}")
@@ -137,6 +280,7 @@ def get_file_data2(selected_keyword, selected_sources):
     # Special processing for GB data: interpolate to monthly using CR patterns
     if 2 in selected_sources and 4 in selected_sources:  # GB and CR both selected
         if 2 in all_raw_datasets and 4 in all_raw_datasets:
+            print("Interpolating Google Books data using Crossref patterns...")
             gb_df = all_raw_datasets[2]
             cr_df = all_raw_datasets[4]
             # Interpolate GB to monthly using CR patterns
@@ -160,6 +304,9 @@ def get_file_data2(selected_keyword, selected_sources):
             else:
                 df_norm[col] = 50  # Default value if no variation
         datasets_norm[source] = df_norm
+
+    # Manage cache size to prevent memory issues
+    manage_cache_size()
 
     return datasets_norm, selected_sources
 
@@ -208,6 +355,44 @@ app = dash.Dash(
     suppress_callback_exceptions=True,
     title='Management Tools Analysis Dashboard'
 )
+
+# Add custom CSS for navigation
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+        <style>
+            .nav-link:hover {
+                background-color: #e9ecef !important;
+                color: #0056b3 !important;
+                text-decoration: none !important;
+            }
+            .nav-link {
+                transition: all 0.2s ease;
+                font-size: 10px !important;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            .section-anchor {
+                scroll-margin-top: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>
+'''
 
 # Define database options
 dbase_options = {
@@ -288,7 +473,7 @@ sidebar = html.Div([
             ], id='source-buttons-container'),
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
-        html.Hr(),
+        html.Div(id='navigation-section', style={'display': 'none'}),
         html.Div([
             html.P([
                 "Dashboard de Análisis de ",
@@ -357,12 +542,19 @@ app.layout = dbc.Container([
                 'fontSize': '18px',
                 'marginBottom': '10px'
             }),
-            html.Div(id='main-content', className="w-100", style={
-                'height': 'calc(100vh - 200px)',
-                'overflowY': 'auto',
-                'overflowX': 'hidden',
-                'paddingRight': '10px'
-            })
+            dcc.Loading(
+                id="loading-main-content",
+                type="circle",
+                children=[
+                    html.Div(id='main-content', className="w-100", style={
+                        'height': 'calc(100vh - 200px)',
+                        'overflowY': 'auto',
+                        'overflowX': 'hidden',
+                        'paddingRight': '10px'
+                    })
+                ],
+                style={'height': 'calc(100vh - 200px)'}
+            )
         ], width=10, className="px-4", style={
             'height': '100vh',
             'overflow': 'hidden'
@@ -410,6 +602,12 @@ def update_main_content(*args):
         # Create content sections
         content = []
 
+        # Create content sections
+        content = []
+
+        # Create content sections
+        content = []
+
         # 1. Temporal Analysis 2D
         content.append(html.Div([
             html.H6("1. Análisis Temporal 2D", style={'fontSize': '16px', 'marginTop': '20px'}),
@@ -442,7 +640,7 @@ def update_main_content(*args):
                 config={'displaylogo': False, 'responsive': True}
             ),
             html.Div(id='temporal-2d-slider-container', style={'display': 'none'})  # Hidden container for slider updates
-        ]))
+        ], id='section-temporal-2d', className='section-anchor'))
 
         # 2. Mean Analysis
         content.append(html.Div([
@@ -453,12 +651,19 @@ def update_main_content(*args):
                 style={'height': '300px'},
                 config={'displaylogo': False, 'responsive': True}
             )
-        ]))
+        ], id='section-mean-analysis', className='section-anchor'))
 
         # 3. Temporal Analysis 3D (if 2+ sources)
         if len(selected_sources) >= 2:
             content.append(html.Div([
                 html.H6("3. Análisis Temporal 3D", style={'fontSize': '16px', 'marginTop': '20px'}),
+                html.Div([
+                    html.Label("Frecuencia de Datos:", style={'marginRight': '12px', 'fontSize': '14px'}),
+                    dbc.ButtonGroup([
+                        dbc.Button("Mensual", id="temporal-3d-monthly", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                        dbc.Button("Anual", id="temporal-3d-annual", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    ], className="mb-3")
+                ], style={'marginBottom': '10px'}),
                 html.Div([
                     dcc.Dropdown(
                         id='y-axis-3d',
@@ -477,10 +682,10 @@ def update_main_content(*args):
                 ], style={'marginBottom': '10px'}),
                 dcc.Graph(
                     id='temporal-3d-graph',
-                    style={'height': '500px'},
+                    style={'height': '500px', 'width': '80%'},
                     config={'displaylogo': False, 'responsive': True}
                 )
-            ]))
+            ], id='section-temporal-3d', className='section-anchor'))
 
         # 4. Seasonal Analysis
         content.append(html.Div([
@@ -499,7 +704,7 @@ def update_main_content(*args):
                     config={'displaylogo': False, 'responsive': True}
                 )
             ])
-        ]))
+        ], id='section-seasonal', className='section-anchor'))
 
         # 5. Fourier Analysis
         content.append(html.Div([
@@ -518,43 +723,43 @@ def update_main_content(*args):
                     config={'displaylogo': False, 'responsive': True}
                 )
             ])
-        ]))
+        ], id='section-fourier', className='section-anchor'))
 
-        # 6. PCA Analysis
+        # 6. Correlation Heatmap
         if len(selected_sources) >= 2:
             content.append(html.Div([
-                html.H6("6. Análisis PCA (Cargas y Componentes)", style={'fontSize': '16px', 'marginTop': '20px'}),
-                dcc.Graph(
-                    id='pca-analysis-graph',
-                    figure=create_pca_figure(combined_dataset, selected_source_names),
-                    style={'height': '500px'},
-                    config={'displaylogo': False, 'responsive': True}
-                )
-            ]))
-
-        # 7. Correlation Heatmap
-        if len(selected_sources) >= 2:
-            content.append(html.Div([
-                html.H6("7. Mapa de Calor (Correlación)", style={'fontSize': '16px', 'marginTop': '20px'}),
+                html.H6("6. Mapa de Calor (Correlación)", style={'fontSize': '16px', 'marginTop': '20px'}),
                 dcc.Graph(
                     id='correlation-heatmap',
                     figure=create_correlation_heatmap(combined_dataset, selected_source_names),
                     style={'height': '400px'},
                     config={'displaylogo': False, 'responsive': True}
                 )
-            ]))
+            ], id='section-correlation', className='section-anchor'))
 
-        # 8. Regression Analysis (clickable from heatmap)
+        # 7. Regression Analysis (clickable from heatmap)
         if len(selected_sources) >= 2:
             content.append(html.Div([
-                html.H6("8. Análisis de Regresión", style={'fontSize': '16px', 'marginTop': '20px'}),
+                html.H6("7. Análisis de Regresión", style={'fontSize': '16px', 'marginTop': '20px'}),
                 html.P("Haga clic en el mapa de calor para seleccionar variables para regresión", style={'fontSize': '12px'}),
                 dcc.Graph(
                     id='regression-graph',
                     style={'height': '400px'},
                     config={'displaylogo': False, 'responsive': True}
                 )
-            ]))
+            ], id='section-regression', className='section-anchor'))
+
+        # 8. PCA Analysis
+        if len(selected_sources) >= 2:
+            content.append(html.Div([
+                html.H6("8. Análisis PCA (Cargas y Componentes)", style={'fontSize': '16px', 'marginTop': '20px'}),
+                dcc.Graph(
+                    id='pca-analysis-graph',
+                    figure=create_pca_figure(combined_dataset, selected_source_names),
+                    style={'height': '500px'},
+                    config={'displaylogo': False, 'responsive': True}
+                )
+            ], id='section-pca', className='section-anchor'))
 
         # Data table
         content.append(html.Div([
@@ -581,7 +786,7 @@ def update_main_content(*args):
                 id="collapse-table",
                 is_open=False
             )
-        ]))
+        ], id='section-data-table', className='section-anchor'))
 
         return html.Div(content)
 
@@ -647,20 +852,125 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
     return fig
 
 def create_mean_analysis_figure(data, sources):
-    means = data[sources].mean()
-    fig = go.Figure(data=[
-        go.Bar(
-            x=list(means.index),
-            y=means.values,
-            marker_color=[color_map.get(src, '#000000') for src in means.index]
+    """Create 100% stacked bar chart showing relative contribution of each source"""
+    # Calculate total years in dataset for "Todo" range
+    total_years = (data['Fecha'].max() - data['Fecha'].min()).days / 365.25
+
+    # Define time ranges with actual year counts
+    time_ranges = [
+        ("Todo", None, total_years),  # Full range - actual total years
+        ("20 años", 20, 20),
+        ("15 años", 15, 15),
+        ("10 años", 10, 10),
+        ("5 años", 5, 5)
+    ]
+
+    # Calculate means for each source and time range
+    results = []
+    for source in sources:
+        if source in data.columns:
+            for range_name, years_back, actual_years in time_ranges:
+                if years_back is None:
+                    # Full range
+                    mean_val = data[source].mean()
+                else:
+                    # Calculate date range
+                    end_date = data['Fecha'].max()
+                    start_date = end_date - pd.DateOffset(years=years_back)
+                    mask = (data['Fecha'] >= start_date) & (data['Fecha'] <= end_date)
+                    filtered_data = data[mask][source]
+                    mean_val = filtered_data.mean() if not filtered_data.empty else 0
+
+                results.append({
+                    'Source': source,
+                    'Time_Range': range_name,
+                    'Mean': mean_val,
+                    'Years': actual_years
+                })
+
+    # Create DataFrame for plotting
+    results_df = pd.DataFrame(results)
+
+    # Find the maximum mean value across all sources and time ranges for 100% reference
+    max_mean_value = results_df['Mean'].max()
+
+    # Create single figure with 100% stacked bars
+    fig = go.Figure()
+
+    # Calculate width scale based on years
+    max_years = max(r[2] for r in time_ranges)
+    width_scale = 1.2 / max_years  # Increased max width to 1.2 for wider bars
+
+    # Add stacked bars for each time range (no legend entries)
+    for range_name, _, actual_years in time_ranges:
+        range_data = results_df[results_df['Time_Range'] == range_name]
+        bar_width = actual_years * width_scale
+
+        # Calculate percentages relative to max value
+        for _, row in range_data.iterrows():
+            percentage = (row['Mean'] / max_mean_value) * 100 if max_mean_value > 0 else 0
+
+            fig.add_trace(
+                go.Bar(
+                    x=[range_name],
+                    y=[percentage],
+                    name=row['Source'],  # Same name as lines for unified legend
+                    width=bar_width,  # Proportional width based on years
+                    marker_color=color_map.get(row['Source'], '#000000'),
+                    showlegend=False,  # Don't show bars in legend
+                    opacity=0.7  # Make bars slightly transparent for line visibility
+                )
+            )
+
+    # Add line traces for actual values (secondary y-axis) - these will show in legend
+    for source in sources:
+        source_data = results_df[results_df['Source'] == source]
+        x_values = source_data['Time_Range']
+        y_values = source_data['Mean']
+
+        fig.add_trace(
+            go.Scatter(
+                x=x_values,
+                y=y_values,
+                mode='lines+markers',
+                name=source,  # Clean source name for legend
+                line=dict(
+                    color=color_map.get(source, '#000000'),
+                    width=3
+                ),
+                marker=dict(size=8),
+                yaxis='y2',  # Use secondary y-axis
+                showlegend=True  # Only lines show in legend
+            )
         )
-    ])
+
+    # Update layout for combo chart
     fig.update_layout(
-        title="Análisis de Medias",
-        xaxis_title="Fuente",
-        yaxis_title="Media",
-        height=300
+        title=f"Análisis de Medias: Relativo (100% = {max_mean_value:.2f}) + Absoluto",
+        xaxis_title="Rango Temporal",
+        yaxis_title="Contribución Relativa (%)",
+        yaxis2=dict(
+            title="Valor Absoluto",
+            overlaying='y',
+            side='right',
+            showgrid=False
+        ),
+        height=600,
+        barmode='stack',  # Stack bars to 100%
+        legend_title="Fuentes de Datos",
+        legend=dict(
+            orientation="h",  # Horizontal legend
+            yanchor="bottom",
+            y=-0.6,  # Lower position (3 lines below)
+            xanchor="center",
+            x=0.5
+        ),
+        showlegend=True
     )
+
+    # Set primary y-axis to 0-100%
+    fig.update_yaxes(range=[0, 100])
+
     return fig
 
 def create_pca_figure(data, sources):
@@ -684,33 +994,131 @@ def create_pca_figure(data, sources):
         specs=[[{"type": "scatter"}, {"type": "bar"}]]
     )
 
-    # Loadings plot
+    # Loadings plot with arrows from origin
     for i, source in enumerate(sources):
+        # Add arrow line from origin to point
         fig.add_trace(
             go.Scatter(
-                x=pca.components_[0],
-                y=pca.components_[1],
-                mode='markers+text',
-                text=[source],
-                textposition="top center",
-                name=f'PC1-PC2: {source}',
-                marker=dict(color=color_map.get(source, '#000000'))
+                x=[0, pca.components_[0, i]],  # From origin to loading
+                y=[0, pca.components_[1, i]],  # From origin to loading
+                mode='lines',
+                line=dict(color=color_map.get(source, '#000000'), width=2),
+                showlegend=False
             ),
             row=1, col=1
         )
 
-    # Explained variance
+        # Add point with label
+        fig.add_trace(
+            go.Scatter(
+                x=[pca.components_[0, i]],
+                y=[pca.components_[1, i]],
+                mode='markers+text',
+                text=[source],
+                textposition="top center",
+                name=source,
+                marker=dict(color=color_map.get(source, '#000000'), size=8)
+            ),
+            row=1, col=1
+        )
+
+    # Explained variance with both cumulative and inverse lines
     explained_var = pca.explained_variance_ratio_ * 100
+    pc_labels = [f'PC{i+1}' for i in range(len(explained_var))]
+    cumulative_var = explained_var.cumsum()  # Cumulative sum
+
+    # Add bars
     fig.add_trace(
         go.Bar(
-            x=[f'PC{i+1}' for i in range(len(explained_var))],
+            x=pc_labels,
             y=explained_var,
-            name='Varianza Explicada (%)'
+            name='Varianza Explicada (%)',
+            marker_color='lightblue',
+            showlegend=True
         ),
         row=1, col=2
     )
 
-    fig.update_layout(height=500, showlegend=False)
+    # Add cumulative line (secondary y-axis)
+    fig.add_trace(
+        go.Scatter(
+            x=pc_labels,
+            y=cumulative_var,
+            mode='lines+markers',
+            name='Varianza Acumulativa (%)',
+            line=dict(color='orange', width=3),
+            marker=dict(color='orange', size=8),
+            yaxis='y2'  # Use secondary y-axis
+        ),
+        row=1, col=2
+    )
+
+    # Add inverse line (tertiary y-axis) - not normalized
+    if len(explained_var) > 1:
+        max_var = explained_var.max()
+        inverse_values = max_var / explained_var  # Higher variance = lower inverse value
+
+        fig.add_trace(
+            go.Scatter(
+                x=pc_labels,
+                y=inverse_values,
+                mode='lines+markers',
+                name='Relación Inversa',
+                line=dict(color='red', width=2, dash='dash'),
+                marker=dict(color='red', size=6),
+                yaxis='y3'  # Use tertiary y-axis for inverse
+            ),
+            row=1, col=2
+        )
+
+    # Update layout with multiple y-axes
+    fig.update_layout(
+        height=500,
+        showlegend=True,
+        yaxis2=dict(
+            title="Varianza Acumulativa (%)",
+            overlaying='y',
+            side='right',
+            range=[0, 100],
+            showgrid=False
+        ),
+        yaxis3=dict(
+            title="Relación Inversa",
+            overlaying='y',
+            side='right',
+            position=0.85,  # Position further right
+            showgrid=False,
+            anchor='free'
+        )
+    )
+
+    # Set legend at bottom for each subplot
+    fig.update_layout(
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.3,
+            xanchor="center",
+            x=0.5
+        )
+    )
+
+    # Add origin lines to loadings plot
+    fig.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.5, row=1, col=1)
+    fig.add_vline(x=0, line_dash="dash", line_color="gray", opacity=0.5, row=1, col=1)
+
+    # Update legend for loadings plot (left subplot)
+    fig.update_layout(
+        legend2=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.3,
+            xanchor="center",
+            x=0.25,  # Center on left subplot
+            xref="paper"
+        )
+    )
+
     return fig
 
 def create_correlation_heatmap(data, sources):
@@ -848,18 +1256,50 @@ def update_temporal_slider_properties(selected_keyword, *button_states):
         return 0, 100, {}
 
 # Additional callbacks for specific analyses
+def aggregate_data_for_3d(data, frequency, source_name):
+    """Aggregate data based on frequency and source type"""
+    if frequency == 'monthly':
+        return data  # Return as-is for monthly
+
+    # Annual aggregation with different methods per source
+    if 'Google Trends' in source_name:
+        # GT: Average
+        return data.resample('Y').mean()
+    elif 'Crossref' in source_name:
+        # CR: Sum
+        return data.resample('Y').sum()
+    elif 'Google Books' in source_name:
+        # GB: Sum
+        return data.resample('Y').sum()
+    else:
+        # Bain (BU/BS): Average
+        return data.resample('Y').mean()
+
 @app.callback(
     Output('temporal-3d-graph', 'figure'),
     [Input('y-axis-3d', 'value'),
      Input('z-axis-3d', 'value'),
+     Input('temporal-3d-monthly', 'n_clicks'),
+     Input('temporal-3d-annual', 'n_clicks'),
      Input('keyword-dropdown', 'value')] +
     [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
 )
-def update_3d_plot(y_axis, z_axis, selected_keyword, *button_states):
+def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keyword, *button_states):
     selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
 
     if not all([y_axis, z_axis, selected_keyword]) or len(selected_sources) < 2:
         return {}
+
+    # Determine frequency based on button clicks
+    ctx = dash.callback_context
+    frequency = 'monthly'  # Default
+
+    if ctx.triggered:
+        trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        if trigger_id == 'temporal-3d-annual':
+            frequency = 'annual'
+        elif trigger_id == 'temporal-3d-monthly':
+            frequency = 'monthly'
 
     try:
         datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
@@ -869,20 +1309,30 @@ def update_3d_plot(y_axis, z_axis, selected_keyword, *button_states):
         date_column = combined_dataset.columns[0]
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
+        combined_dataset = combined_dataset.set_index('Fecha')
+
+        # Apply aggregation based on frequency and source type
+        y_data = aggregate_data_for_3d(combined_dataset[y_axis], frequency, y_axis)
+        z_data = aggregate_data_for_3d(combined_dataset[z_axis], frequency, z_axis)
+
+        # Align the data (they might have different date ranges after aggregation)
+        common_index = y_data.index.intersection(z_data.index)
+        y_data = y_data.loc[common_index]
+        z_data = z_data.loc[common_index]
 
         fig = go.Figure(data=[
             go.Scatter3d(
-                x=combined_dataset['Fecha'],
-                y=combined_dataset[y_axis],
-                z=combined_dataset[z_axis],
+                x=common_index,
+                y=y_data.values,
+                z=z_data.values,
                 mode='lines',
-                line=dict(color=color_map.get(y_axis, '#000000'), width=2),
-                name=f'{y_axis} vs {z_axis}'
+                line=dict(color=color_map.get(y_axis, '#000000'), width=3),
+                name=f'{y_axis} vs {z_axis} ({frequency})'
             )
         ])
 
         fig.update_layout(
-            title=f'Análisis Temporal 3D: {y_axis} vs {z_axis}',
+            title=f'Análisis Temporal 3D: {y_axis} vs {z_axis} ({frequency.capitalize()})',
             scene=dict(
                 xaxis_title='Fecha',
                 yaxis_title=y_axis,
@@ -1113,7 +1563,7 @@ for source_id in dbase_options.keys():
 def select_all_sources(n_clicks):
     if n_clicks is None:
         return [dash.no_update] * (len(dbase_options) * 2)
-    
+
     # Set all buttons to selected (outline=False)
     outlines = [False] * len(dbase_options)
     styles = [
@@ -1125,8 +1575,49 @@ def select_all_sources(n_clicks):
         }
         for id in dbase_options.keys()
     ]
-    
+
     return outlines + styles
+
+# Callback to show/hide navigation menu
+@app.callback(
+    Output('navigation-section', 'children'),
+    Output('navigation-section', 'style'),
+    [Input('keyword-dropdown', 'value')] +
+    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+)
+def update_navigation_visibility(selected_keyword, *button_states):
+    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+
+    if selected_keyword and selected_sources:
+        # Show navigation menu
+        return [
+            html.Hr(),
+            html.Div([
+                html.Label("Navegación Rápida:", style={'fontSize': '10px', 'fontWeight': 'bold', 'marginBottom': '10px'}),
+                html.Div([
+                    html.A("1. Temporal 2D", href="#section-temporal-2d", className="nav-link"),
+                    html.A("2. Análisis Medias", href="#section-mean-analysis", className="nav-link"),
+                    html.A("3. Temporal 3D", href="#section-temporal-3d", className="nav-link"),
+                    html.A("4. Estacional", href="#section-seasonal", className="nav-link"),
+                    html.A("5. Fourier", href="#section-fourier", className="nav-link"),
+                    html.A("6. Correlación", href="#section-correlation", className="nav-link"),
+                    html.A("7. Regresión", href="#section-regression", className="nav-link"),
+                    html.A("8. PCA", href="#section-pca", className="nav-link"),
+                    html.A("Tabla Datos", href="#section-data-table", className="nav-link"),
+                ], style={'marginBottom': '15px'}),
+            ], style={
+                'backgroundColor': '#fff3cd',
+                'border': '2px solid #ffc107',
+                'borderRadius': '10px',
+                'padding': '15px',
+                'marginTop': '10px',
+                'marginBottom': '10px',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            })
+        ], {}
+    else:
+        # Hide navigation menu
+        return [], {'display': 'none'}
 
 
 # Note: Time range filtering buttons are displayed but their callbacks are disabled
