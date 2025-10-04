@@ -478,10 +478,10 @@ sidebar = html.Div([
             html.P([
                 "Dashboard de Análisis de ",
                 html.B("Herramientas Gerenciales")
-            ], style={'marginBottom': '2px', 'fontSize': '10px', 'textAlign': 'center'}),
+            ], style={'marginBottom': '2px', 'fontSize': '8px', 'textAlign': 'center'}),
             html.P([
                 "Desarrollado con Python, Plotly y Dash"
-            ], style={'fontSize': '10px', 'textAlign': 'center', 'marginTop': '0px'})
+            ], style={'fontSize': '8px', 'textAlign': 'center', 'marginTop': '0px'})
         ], style={
             'position': 'absolute',
             'bottom': 0,
