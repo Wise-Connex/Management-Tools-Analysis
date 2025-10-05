@@ -36,8 +36,10 @@ def get_all_keywords():
                 all_keywords.append(keyword)
     return all_keywords
 
-# Global cache for interpolated data
-_interpolation_cache = {}
+# Global caches for performance optimization
+_raw_data_cache = {}  # Cache for loaded CSV data
+_pattern_cache = {}   # Cache for CSV pattern files
+_interpolation_cache = {}  # Cache for interpolation results
 
 def cubic_interpolation(df, kw):
     """Optimized cubic interpolation for Bain data with caching and min/max clipping"""
@@ -192,8 +194,35 @@ def get_csv_filename_for_keyword(keyword):
 
     return keyword_to_csv.get(keyword)
 
+def load_pattern_file(csv_filename):
+    """Load and cache CSV pattern files for performance"""
+    global _pattern_cache
+
+    if csv_filename in _pattern_cache:
+        return _pattern_cache[csv_filename]
+
+    pattern_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                               'interpolation_profiles',
+                               csv_filename)
+
+    if os.path.exists(pattern_file):
+        try:
+            pattern_df = pd.read_csv(pattern_file)
+            if 'PercentageDistribution' in pattern_df.columns and len(pattern_df) >= 12:
+                # Extract and normalize monthly percentages
+                monthly_percentages = pattern_df['PercentageDistribution'].values[:12]
+                monthly_percentages = monthly_percentages / monthly_percentages.sum() * 100
+
+                # Cache the result
+                _pattern_cache[csv_filename] = monthly_percentages
+                return monthly_percentages
+        except Exception as e:
+            print(f"Warning: Could not load pattern file {csv_filename}: {e}")
+
+    return None
+
 def interpolate_gb_to_monthly(gb_df, keyword):
-    """Interpolate annual GB data to monthly using keyword-specific CSV patterns"""
+    """Interpolate annual GB data to monthly using keyword-specific CSV patterns (with caching)"""
     if gb_df.empty:
         return gb_df
 
@@ -211,24 +240,12 @@ def interpolate_gb_to_monthly(gb_df, keyword):
 
     monthly_percentages = None
     if csv_filename:
-        pattern_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                                   'interpolation_profiles',
-                                   csv_filename)
-
-        if os.path.exists(pattern_file):
-            try:
-                pattern_df = pd.read_csv(pattern_file)
-                if 'PercentageDistribution' in pattern_df.columns and len(pattern_df) >= 12:
-                    # Extract monthly percentages and normalize to sum to 100%
-                    monthly_percentages = pattern_df['PercentageDistribution'].values[:12]
-                    monthly_percentages = monthly_percentages / monthly_percentages.sum() * 100
-                    print(f"Using CSV pattern for keyword '{keyword}' from {csv_filename}")
-                else:
-                    print(f"Warning: Invalid pattern file structure for {keyword} in {csv_filename}")
-            except Exception as e:
-                print(f"Warning: Could not load pattern file for {keyword}: {e}")
+        # Use cached pattern loading
+        monthly_percentages = load_pattern_file(csv_filename)
+        if monthly_percentages is not None:
+            print(f"Using cached CSV pattern for keyword '{keyword}' from {csv_filename}")
         else:
-            print(f"Warning: Pattern file not found: {pattern_file}")
+            print(f"Warning: No valid pattern found for keyword '{keyword}' in {csv_filename}")
     else:
         print(f"Warning: No CSV mapping found for keyword '{keyword}'")
 
@@ -299,13 +316,89 @@ def interpolate_gb_to_monthly_even(gb_df):
 
     return result_df
 
+def clear_all_caches():
+    """Clear all caches to free memory"""
+    global _raw_data_cache, _pattern_cache, _interpolation_cache
+    _raw_data_cache.clear()
+    _pattern_cache.clear()
+    _interpolation_cache.clear()
+    print("All caches cleared")
+
+def get_cache_stats():
+    """Get cache statistics for performance monitoring"""
+    global _raw_data_cache, _pattern_cache, _interpolation_cache
+    return {
+        'raw_data_cache': len(_raw_data_cache),
+        'pattern_cache': len(_pattern_cache),
+        'interpolation_cache': len(_interpolation_cache),
+        'total_cached_items': len(_raw_data_cache) + len(_pattern_cache) + len(_interpolation_cache)
+    }
+
+def manage_all_cache_sizes():
+    """Manage all cache sizes to prevent memory issues"""
+    global _raw_data_cache, _pattern_cache, _interpolation_cache
+
+    # Raw data cache: keep max 20 items
+    while len(_raw_data_cache) > 20:
+        oldest_key = next(iter(_raw_data_cache))
+        del _raw_data_cache[oldest_key]
+
+    # Pattern cache: keep max 25 items (all patterns)
+    while len(_pattern_cache) > 25:
+        oldest_key = next(iter(_pattern_cache))
+        del _pattern_cache[oldest_key]
+
+    # Interpolation cache: keep max 50 items
+    while len(_interpolation_cache) > 50:
+        oldest_key = next(iter(_interpolation_cache))
+        del _interpolation_cache[oldest_key]
+
+# Backward compatibility
 def clear_interpolation_cache():
-    """Clear the interpolation cache to free memory"""
+    """Clear the interpolation cache to free memory (backward compatibility)"""
     global _interpolation_cache
     _interpolation_cache.clear()
 
+def load_raw_data(source, filename):
+    """Load and cache raw CSV data for a specific source"""
+    global _raw_data_cache
+
+    cache_key = f"{source}_{filename}"
+    if cache_key in _raw_data_cache:
+        return _raw_data_cache[cache_key].copy()
+
+    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dbase", filename)
+
+    if not os.path.exists(file_path):
+        print(f"Warning: File not found: {file_path}")
+        return None
+
+    try:
+        # Read CSV file
+        df = pd.read_csv(file_path, index_col=0)
+        df.index = df.index.str.strip()
+
+        # Convert index to datetime based on source type
+        if source == 2:  # Google Books Ngrams - keep as annual for now
+            df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
+        else:  # Other sources
+            df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
+
+        # Cache the raw data
+        _raw_data_cache[cache_key] = df.copy()
+
+        # Limit cache size
+        if len(_raw_data_cache) > 20:  # Keep only 20 most recent raw data files
+            oldest_key = next(iter(_raw_data_cache))
+            del _raw_data_cache[oldest_key]
+
+        return df
+    except Exception as e:
+        print(f"Error loading data for source {source}: {e}")
+        return None
+
 def get_file_data2(selected_keyword, selected_sources):
-    """Optimized data loading function with caching and progress indication"""
+    """Optimized data loading function with lazy loading and caching"""
     # Map source IDs to file indices
     source_index_map = {1: 0, 2: 2, 3: 3, 4: 4, 5: 5}
 
@@ -321,43 +414,29 @@ def get_file_data2(selected_keyword, selected_sources):
     datasets = {}
     all_raw_datasets = {}
 
-    # Load data for each source
+    # Load data for each selected source (lazy loading)
     for source in selected_sources:
         filename = filenames.get(source, 'Archivo no encontrado')
-        file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dbase", filename)
 
-        if not os.path.exists(file_path):
-            print(f"Warning: File not found: {file_path}")
+        # Load raw data with caching
+        df = load_raw_data(source, filename)
+        if df is None:
             continue
 
-        try:
-            # Read CSV file
-            df = pd.read_csv(file_path, index_col=0)
-            df.index = df.index.str.strip()
+        # Apply cubic interpolation for Bain data (sources 3 and 5) - now cached
+        if source == 3 or source == 5:
+            print(f"Applying interpolation for Bain source {source}...")
+            interpolated_data = pd.DataFrame()
+            for column in df.columns:
+                interpolated = cubic_interpolation(df, column)
+                interpolated_data[column] = interpolated[column]
 
-            # Convert index to datetime based on source type
-            if source == 2:  # Google Books Ngrams - keep as annual for now
-                df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
-            else:  # Other sources
-                df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
+            # Set the index to datetime format
+            interpolated_data.index = pd.to_datetime(interpolated_data.index)
 
-            # Apply cubic interpolation for Bain data (sources 3 and 5) - now cached
-            if source == 3 or source == 5:
-                print(f"Applying interpolation for Bain source {source}...")
-                interpolated_data = pd.DataFrame()
-                for column in df.columns:
-                    interpolated = cubic_interpolation(df, column)
-                    interpolated_data[column] = interpolated[column]
+            df = interpolated_data
 
-                # Set the index to datetime format
-                interpolated_data.index = pd.to_datetime(interpolated_data.index)
-
-                df = interpolated_data
-
-            all_raw_datasets[source] = df
-        except Exception as e:
-            print(f"Error loading data for source {source}: {e}")
-            continue
+        all_raw_datasets[source] = df
 
     # Special processing for GB data: ALWAYS interpolate to monthly using CSV patterns
     if 2 in selected_sources and 2 in all_raw_datasets:  # GB selected
@@ -395,8 +474,8 @@ def get_file_data2(selected_keyword, selected_sources):
                 df_norm[col] = 50  # Default value if no variation
         datasets_norm[source] = df_norm
 
-    # Manage cache size to prevent memory issues
-    manage_cache_size()
+    # Manage all cache sizes to prevent memory issues
+    manage_all_cache_sizes()
 
     return datasets_norm, selected_sources
 
@@ -509,15 +588,19 @@ color_map = {
 # Sidebar layout
 sidebar = html.Div([
     html.Div([
-        html.Img(
-            src='assets/Management-Tools-Analysis-logo.png',
-            style={
-                'width': '80%',
-                'marginBottom': '20px',
-                'display': 'block',
-                'marginLeft': 'auto',
-                'marginRight': 'auto'
-            }
+        html.A(
+            html.Img(
+                src='assets/logo-ulac.png',
+                style={
+                    'width': '80%',
+                    'marginBottom': '20px',
+                    'display': 'block',
+                    'marginLeft': 'auto',
+                    'marginRight': 'auto'
+                }
+            ),
+            href='https://ulac.edu.ve/',
+            target='_blank'
         ),
         html.Hr(),
         html.Div([
@@ -571,7 +654,11 @@ sidebar = html.Div([
             ], style={'marginBottom': '2px', 'fontSize': '8px', 'textAlign': 'center'}),
             html.P([
                 "Desarrollado con Python, Plotly y Dash"
-            ], style={'fontSize': '8px', 'textAlign': 'center', 'marginTop': '0px'})
+            ], style={'fontSize': '8px', 'textAlign': 'center', 'marginTop': '0px', 'marginBottom': '2px'}),
+            html.P([
+                "por: ",
+                html.A("Dimar Anez", href="https://wiseconnex.com", target="_blank", style={'color': '#6c757d', 'textDecoration': 'none'})
+            ], style={'fontSize': '7px', 'textAlign': 'center', 'marginTop': '0px', 'color': '#6c757d'})
         ], style={
             'position': 'absolute',
             'bottom': 0,
@@ -605,7 +692,7 @@ sidebar = html.Div([
 header = html.Div([
     html.H4("Análisis Estadístico Correlacional: Técnicas y Herramientas Gerenciales", className="mb-0"),
     html.P([
-        "Tesista: ", html.B("Diomar Anez"), " | Python Dev: ", html.B("Dimar Anez")
+        "Tesista: ", html.B("Diomar Anez")
     ], className="mb-0"),
 ], style={
     'position': 'sticky',
@@ -751,13 +838,13 @@ def update_main_content(*args):
                 'backgroundColor': '#28a745',
                 'padding': '12px 20px',
                 'borderRadius': '8px',
-                'marginBottom': '20px',
+                'marginBottom': '35px',
                 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
             }),
             dcc.Graph(
                 id='mean-analysis-graph',
                 figure=create_mean_analysis_figure(combined_dataset, selected_source_names),
-                style={'height': '300px'},
+                style={'height': '300px', 'marginBottom': '20px'},
                 config={'displaylogo': False, 'responsive': True}
             )
         ], id='section-mean-analysis', className='section-anchor'))
@@ -771,7 +858,8 @@ def update_main_content(*args):
                     'backgroundColor': '#dc3545',
                     'padding': '12px 20px',
                     'borderRadius': '8px',
-                    'marginBottom': '20px',
+                    'marginBottom': '30px',
+                    'marginTop': '50px',
                     'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
                 }),
                 html.Div([
@@ -974,6 +1062,34 @@ def update_main_content(*args):
                 is_open=True
             )
         ], id='section-data-table', className='section-anchor'))
+
+        # Performance Monitoring Section
+        cache_stats = get_cache_stats()
+        content.append(html.Div([
+            html.Div([
+                html.H6("Monitor de Rendimiento", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+            ], style={
+                'backgroundColor': '#17a2b8',
+                'padding': '12px 20px',
+                'borderRadius': '8px',
+                'marginBottom': '20px',
+                'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
+            }),
+            html.Div([
+                html.P(f"📊 Datos crudos en caché: {cache_stats['raw_data_cache']} archivos", style={'margin': '5px 0', 'fontSize': '12px'}),
+                html.P(f"📈 Patrones en caché: {cache_stats['pattern_cache']} archivos CSV", style={'margin': '5px 0', 'fontSize': '12px'}),
+                html.P(f"🔢 Interpolaciones en caché: {cache_stats['interpolation_cache']} cálculos", style={'margin': '5px 0', 'fontSize': '12px'}),
+                html.P(f"💾 Total elementos en caché: {cache_stats['total_cached_items']}", style={'margin': '5px 0', 'fontSize': '12px', 'fontWeight': 'bold'}),
+                html.Hr(style={'margin': '10px 0'}),
+                html.P("💡 Optimizaciones activas:", style={'margin': '5px 0', 'fontSize': '11px', 'fontWeight': 'bold'}),
+                html.Ul([
+                    html.Li("Carga diferida de datos (solo fuentes seleccionadas)", style={'fontSize': '10px'}),
+                    html.Li("Caché de patrones CSV para interpolación GB", style={'fontSize': '10px'}),
+                    html.Li("Caché de resultados de interpolación compleja", style={'fontSize': '10px'}),
+                    html.Li("Gestión automática de memoria caché", style={'fontSize': '10px'})
+                ], style={'paddingLeft': '20px', 'margin': '5px 0'})
+            ], style={'padding': '10px', 'backgroundColor': '#f8f9fa', 'borderRadius': '5px'})
+        ], id='section-performance', className='section-anchor'))
 
         return html.Div(content)
 
@@ -1992,6 +2108,9 @@ def update_navigation_visibility(selected_keyword, *button_states):
                     html.Div([
                         html.A("8. PCA", href="#section-pca", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
                     ], style={'backgroundColor': '#20c997', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
+                    html.Div([
+                        html.A("Perf", href="#section-performance", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
+                    ], style={'backgroundColor': '#17a2b8', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
                     html.Div([
                         html.A("Tabla Datos", href="#section-data-table", className="nav-link", style={'color': 'white', 'textDecoration': 'none', 'fontSize': '9px'})
                     ], style={'backgroundColor': '#6c757d', 'padding': '4px 8px', 'borderRadius': '4px', 'margin': '2px', 'display': 'inline-block'}),
