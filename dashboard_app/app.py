@@ -161,14 +161,113 @@ def manage_cache_size(max_size=50):
         for key in keys_to_remove:
             del _interpolation_cache[key]
 
-def interpolate_gb_to_monthly(gb_df, cr_df):
-    """Interpolate annual GB data to monthly using Crossref monthly patterns"""
-    if gb_df.empty or cr_df.empty:
+def get_csv_filename_for_keyword(keyword):
+    """Map keyword names to their corresponding CSV pattern filenames"""
+    # Create mapping from keyword to CSV filename
+    keyword_to_csv = {
+        'Alianzas y Capital de Riesgo': 'CR_AlianzasyCapitaldeRiesgo_monthly_relative.csv',
+        'Benchmarking': 'CR_Benchmarking_monthly_relative.csv',
+        'Calidad Total': 'CR_CalidadTotal_monthly_relative.csv',
+        'Competencias Centrales': 'CR_CompetenciasCentrales_monthly_relative.csv',
+        'Cuadro de Mando Integral': 'CR_CuadrodeMandoIntegral_monthly_relative.csv',
+        'Estrategias de Crecimiento': 'CR_EstrategiasdeCrecimiento_monthly_relative.csv',
+        'Experiencia del Cliente': 'CR_ExperienciadelCliente_monthly_relative.csv',
+        'Fusiones y Adquisiciones': 'CR_FusionesyAdquisiciones_monthly_relative.csv',
+        'Gestión de Costos': 'CR_GestióndeCostos_monthly_relative.csv',
+        'Gestión de la Cadena de Suministro': 'CR_GestióndelaCadenadeSuministro_monthly_relative.csv',
+        'Gestión del Cambio': 'CR_GestióndelCambio_monthly_relative.csv',
+        'Gestión del Conocimiento': 'CR_GestióndelConocimiento_monthly_relative.csv',
+        'Innovación Colaborativa': 'CR_InnovaciónColaborativa_monthly_relative.csv',
+        'Lealtad del Cliente': 'CR_LealtaddelCliente_monthly_relative.csv',
+        'Optimización de Precios': 'CR_OptimizacióndePrecios_monthly_relative.csv',
+        'Outsourcing': 'CR_Outsourcing_monthly_relative.csv',
+        'Planificación Estratégica': 'CR_PlanificaciónEstratégica_monthly_relative.csv',
+        'Planificación de Escenarios': 'CR_PlanificacióndeEscenarios_monthly_relative.csv',
+        'Presupuesto Base Cero': 'CR_PresupuestoBaseCero_monthly_relative.csv',
+        'Propósito y Visión': 'CR_PropósitoyVisión_monthly_relative.csv',
+        'Reingeniería de Procesos': 'CR_ReingenieríadeProcesos_monthly_relative.csv',
+        'Segmentación de Clientes': 'CR_SegmentacióndeClientes_monthly_relative.csv',
+        'Talento y Compromiso': 'CR_TalentoyCompromiso_monthly_relative.csv'
+    }
+
+    return keyword_to_csv.get(keyword)
+
+def interpolate_gb_to_monthly(gb_df, keyword):
+    """Interpolate annual GB data to monthly using keyword-specific CSV patterns"""
+    if gb_df.empty:
         return gb_df
 
-    # Get the column name (should be the same for both)
+    # Get the column name
     gb_col = gb_df.columns[0]
-    cr_col = cr_df.columns[0]
+
+    # Create monthly index for all years in GB data
+    gb_years = gb_df.index.year.unique()
+    monthly_index = pd.date_range(start=f'{gb_years.min()}-01-01',
+                                  end=f'{gb_years.max()}-12-31',
+                                  freq='MS')
+
+    # Get the correct CSV filename for this keyword
+    csv_filename = get_csv_filename_for_keyword(keyword)
+
+    monthly_percentages = None
+    if csv_filename:
+        pattern_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                   'interpolation_profiles',
+                                   csv_filename)
+
+        if os.path.exists(pattern_file):
+            try:
+                pattern_df = pd.read_csv(pattern_file)
+                if 'PercentageDistribution' in pattern_df.columns and len(pattern_df) >= 12:
+                    # Extract monthly percentages and normalize to sum to 100%
+                    monthly_percentages = pattern_df['PercentageDistribution'].values[:12]
+                    monthly_percentages = monthly_percentages / monthly_percentages.sum() * 100
+                    print(f"Using CSV pattern for keyword '{keyword}' from {csv_filename}")
+                else:
+                    print(f"Warning: Invalid pattern file structure for {keyword} in {csv_filename}")
+            except Exception as e:
+                print(f"Warning: Could not load pattern file for {keyword}: {e}")
+        else:
+            print(f"Warning: Pattern file not found: {pattern_file}")
+    else:
+        print(f"Warning: No CSV mapping found for keyword '{keyword}'")
+
+    # If no valid pattern found, use even distribution
+    if monthly_percentages is None:
+        monthly_percentages = np.full(12, 100/12)  # Even distribution
+        print(f"Using even distribution for keyword '{keyword}' (no valid pattern found)")
+
+    # Initialize monthly data
+    monthly_data = []
+
+    for year in gb_years:
+        annual_value = gb_df.loc[gb_df.index.year == year, gb_col].iloc[0] if not gb_df.loc[gb_df.index.year == year].empty else 0
+
+        # Apply monthly percentages to annual value
+        monthly_values = (monthly_percentages / 100) * annual_value
+
+        # Add monthly values for this year
+        year_start = pd.Timestamp(f'{year}-01-01')
+        for month in range(12):
+            monthly_data.append({
+                'date': year_start + pd.DateOffset(months=month),
+                gb_col: monthly_values[month]
+            })
+
+    # Create DataFrame with monthly data
+    result_df = pd.DataFrame(monthly_data)
+    result_df = result_df.set_index('date')
+    result_df.index.name = gb_df.index.name
+
+    return result_df
+
+def interpolate_gb_to_monthly_even(gb_df):
+    """Interpolate annual GB data to monthly by distributing evenly across 12 months"""
+    if gb_df.empty:
+        return gb_df
+
+    # Get the column name
+    gb_col = gb_df.columns[0]
 
     # Create monthly index for all years in GB data
     gb_years = gb_df.index.year.unique()
@@ -182,33 +281,15 @@ def interpolate_gb_to_monthly(gb_df, cr_df):
     for year in gb_years:
         annual_value = gb_df.loc[gb_df.index.year == year, gb_col].iloc[0] if not gb_df.loc[gb_df.index.year == year].empty else 0
 
-        # Get Crossref monthly pattern for this year
-        year_mask = (cr_df.index.year == year)
-        if year_mask.any():
-            # Use actual Crossref monthly pattern for this year
-            cr_yearly = cr_df[year_mask]
-            if len(cr_yearly) == 12:  # Full year data
-                # Normalize the pattern to sum to 1, then scale by annual GB value
-                pattern = cr_yearly[cr_col].values
-                pattern_sum = pattern.sum()
-                if pattern_sum > 0:
-                    monthly_values = (pattern / pattern_sum) * annual_value
-                else:
-                    # If all zeros, distribute evenly
-                    monthly_values = np.full(12, annual_value / 12)
-            else:
-                # Partial year data - distribute evenly
-                monthly_values = np.full(12, annual_value / 12)
-        else:
-            # No Crossref data for this year - distribute evenly
-            monthly_values = np.full(12, annual_value / 12)
+        # Distribute annual value evenly across 12 months
+        monthly_value = annual_value / 12
 
         # Add monthly values for this year
         year_start = pd.Timestamp(f'{year}-01-01')
         for month in range(12):
             monthly_data.append({
                 'date': year_start + pd.DateOffset(months=month),
-                gb_col: monthly_values[month]
+                gb_col: monthly_value
             })
 
     # Create DataFrame with monthly data
@@ -278,14 +359,22 @@ def get_file_data2(selected_keyword, selected_sources):
             print(f"Error loading data for source {source}: {e}")
             continue
 
-    # Special processing for GB data: interpolate to monthly using CR patterns
-    if 2 in selected_sources and 4 in selected_sources:  # GB and CR both selected
-        if 2 in all_raw_datasets and 4 in all_raw_datasets:
-            print("Interpolating Google Books data using Crossref patterns...")
-            gb_df = all_raw_datasets[2]
-            cr_df = all_raw_datasets[4]
-            # Interpolate GB to monthly using CR patterns
-            all_raw_datasets[2] = interpolate_gb_to_monthly(gb_df, cr_df)
+    # Special processing for GB data: ALWAYS interpolate to monthly using CSV patterns
+    if 2 in selected_sources and 2 in all_raw_datasets:  # GB selected
+        gb_df = all_raw_datasets[2]
+        # Find the keyword for this GB data
+        keyword = None
+        for key, value in tool_file_dic.items():
+            if selected_keyword in value[1]:  # Check if selected_keyword is in the keywords list
+                keyword = key
+                break
+
+        if keyword:
+            print(f"Interpolating Google Books data to monthly using patterns for '{keyword}'...")
+            all_raw_datasets[2] = interpolate_gb_to_monthly(gb_df, keyword)
+        else:
+            print(f"Warning: Could not find keyword mapping for '{selected_keyword}', using even distribution")
+            all_raw_datasets[2] = interpolate_gb_to_monthly_even(gb_df)
 
     # Process datasets (preserve individual date ranges)
     for source in selected_sources:
@@ -902,15 +991,36 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
         ]
 
     fig = go.Figure()
-    for source in sources:
+
+    # Add traces with solid lines and decreasing opacity for layering visibility
+    opacities = [1.0, 0.9, 0.8, 0.7, 0.6]  # Decreasing opacity for layering
+
+    for i, source in enumerate(sources):
         if source in filtered_data.columns:
-            fig.add_trace(go.Scatter(
-                x=filtered_data['Fecha'],
-                y=filtered_data[source],
-                mode='lines',
-                name=source,
-                line=dict(color=color_map.get(source, '#000000'))
-            ))
+            # Use solid lines with decreasing opacity to ensure visibility
+            opacity = opacities[i % len(opacities)]
+
+            # Create mask for non-NaN values to ensure all data points are plotted
+            source_data = filtered_data[source]
+            valid_mask = ~source_data.isna()
+
+            if valid_mask.any():
+                fig.add_trace(go.Scatter(
+                    x=filtered_data['Fecha'][valid_mask],
+                    y=source_data[valid_mask],
+                    mode='lines+markers',
+                    name=source,
+                    line=dict(
+                        color=color_map.get(source, '#000000'),
+                        width=2
+                    ),
+                    marker=dict(
+                        size=3,
+                        opacity=opacity
+                    ),
+                    opacity=opacity,
+                    connectgaps=False  # Don't connect across NaN gaps
+                ))
 
     # Calculate dynamic tick spacing based on date range
     date_range_days = (filtered_data['Fecha'].max() - filtered_data['Fecha'].min()).days
