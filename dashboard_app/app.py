@@ -522,10 +522,23 @@ app = dash.Dash(
     __name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     suppress_callback_exceptions=True,
-    title='Management Tools Analysis Dashboard'
+    title='Management Tools Analysis Dashboard',
+    update_title=None  # Suppress title updates to reduce console noise
 )
 
-# Add custom CSS for navigation
+# Suppress React warnings in development mode
+try:
+    if app.config.get('DEBUG', False):
+        import logging
+        logging.getLogger('werkzeug').setLevel(logging.WARNING)
+        # Suppress some React warnings by setting environment variable
+        import os
+        os.environ['REACT_DISABLE_STRICT_MODE_WARNINGS'] = 'true'
+except KeyError:
+    # Fallback if DEBUG key doesn't exist
+    pass
+
+# Add custom CSS to suppress some browser console warnings
 app.index_string = '''
 <!DOCTYPE html>
 <html>
@@ -550,7 +563,74 @@ app.index_string = '''
             .section-anchor {
                 scroll-margin-top: 100px;
             }
+            /* Suppress some Plotly canvas warnings */
+            canvas {
+                will-change: auto !important;
+            }
+            /* Responsive section spacing to prevent overlaps */
+            .section-anchor {
+                margin-bottom: 20px;
+                clear: both;
+            }
+            #section-mean-analysis {
+                min-height: 700px;
+                margin-bottom: 60px !important;
+            }
+            #section-temporal-3d {
+                margin-top: 80px !important;
+                min-height: 600px;
+            }
+            /* Responsive adjustments for different screen sizes */
+            @media (max-width: 1200px) {
+                #section-mean-analysis {
+                    min-height: 650px;
+                    margin-bottom: 50px !important;
+                }
+                #section-temporal-3d {
+                    margin-top: 60px !important;
+                    min-height: 550px;
+                }
+            }
+            @media (max-width: 768px) {
+                #section-mean-analysis {
+                    min-height: 600px;
+                    margin-bottom: 40px !important;
+                }
+                #section-temporal-3d {
+                    margin-top: 50px !important;
+                    min-height: 500px;
+                }
+            }
+            /* Ensure graphs maintain their heights */
+            .js-plotly-plot {
+                min-height: inherit !important;
+            }
+            /* Prevent margin collapse and ensure section separation */
+            .section-anchor + .section-anchor {
+                margin-top: 20px;
+            }
+            /* Force section separation */
+            #section-mean-analysis + #section-temporal-3d {
+                margin-top: 80px !important;
+            }
+            /* Ensure content flows properly */
+            .w-100 {
+                box-sizing: border-box;
+            }
         </style>
+        <script>
+            // Suppress React warnings in console
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' &&
+                    (args[0].includes('componentWillMount') ||
+                     args[0].includes('componentWillReceiveProps') ||
+                     args[0].includes('findDOMNode'))) {
+                    return; // Suppress these specific warnings
+                }
+                originalWarn.apply(console, args);
+            };
+        </script>
     </head>
     <body>
         {%app_entry%}
@@ -562,6 +642,7 @@ app.index_string = '''
     </body>
 </html>
 '''
+
 
 # Define database options
 dbase_options = {
@@ -727,7 +808,8 @@ app.layout = dbc.Container([
                         'height': 'calc(100vh - 200px)',
                         'overflowY': 'auto',
                         'overflowX': 'hidden',
-                        'paddingRight': '10px'
+                        'paddingRight': '10px',
+                        'scrollBehavior': 'smooth'
                     })
                 ],
                 style={'height': 'calc(100vh - 200px)'}
@@ -838,16 +920,16 @@ def update_main_content(*args):
                 'backgroundColor': '#28a745',
                 'padding': '12px 20px',
                 'borderRadius': '8px',
-                'marginBottom': '35px',
+                'marginBottom': '20px',
                 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
             }),
             dcc.Graph(
                 id='mean-analysis-graph',
                 figure=create_mean_analysis_figure(combined_dataset, selected_source_names),
-                style={'height': '300px', 'marginBottom': '20px'},
+                style={'height': '600px', 'marginBottom': '30px', 'minHeight': '600px'},
                 config={'displaylogo': False, 'responsive': True}
             )
-        ], id='section-mean-analysis', className='section-anchor'))
+        ], id='section-mean-analysis', className='section-anchor', style={'marginBottom': '40px'}))
 
         # 3. Temporal Analysis 3D (if 2+ sources)
         if len(selected_sources) >= 2:
@@ -859,7 +941,7 @@ def update_main_content(*args):
                     'padding': '12px 20px',
                     'borderRadius': '8px',
                     'marginBottom': '30px',
-                    'marginTop': '50px',
+                    'marginTop': '60px',
                     'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
                 }),
                 html.Div([
@@ -1279,7 +1361,7 @@ def create_mean_analysis_figure(data, sources):
             side='right',
             showgrid=False
         ),
-        height=600,
+        height=600,  # Fixed height to prevent dynamic resizing
         barmode='stack',  # Stack bars to 100%
         legend_title="Fuentes de Datos",
         legend=dict(
@@ -1289,7 +1371,8 @@ def create_mean_analysis_figure(data, sources):
             xanchor="center",
             x=0.5
         ),
-        showlegend=True
+        showlegend=True,
+        margin=dict(l=50, r=50, t=80, b=150)  # Consistent margins
     )
 
     # Set primary y-axis to 0-100%
