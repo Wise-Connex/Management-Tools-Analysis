@@ -591,6 +591,9 @@ def update_main_content(*args):
         date_column = combined_dataset.columns[0]
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
+        # Keep Fecha as datetime for calculations, format only for display in table
+        combined_dataset_fecha_formatted = combined_dataset.copy()
+        combined_dataset_fecha_formatted['Fecha'] = combined_dataset_fecha_formatted['Fecha'].dt.strftime('%Y-%m-%d')
 
         # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
@@ -870,8 +873,8 @@ def update_main_content(*args):
             dbc.Collapse(
                 html.Div([
                     dash_table.DataTable(
-                        data=combined_dataset.to_dict('records'),
-                        columns=[{"name": str(col), "id": str(col)} for col in combined_dataset.columns],
+                        data=combined_dataset_fecha_formatted.to_dict('records'),
+                        columns=[{"name": str(col), "id": str(col)} for col in combined_dataset_fecha_formatted.columns],
                         style_table={'overflowX': 'auto', 'overflowY': 'auto', 'height': '400px'},
                         style_cell={'textAlign': 'left', 'padding': '5px', 'minWidth': '100px', 'width': '120px', 'maxWidth': '150px'},
                         style_header={'backgroundColor': 'rgb(230, 230, 230)', 'fontWeight': 'bold'},
@@ -1218,17 +1221,51 @@ def create_pca_figure(data, sources):
 
 def create_correlation_heatmap(data, sources):
     corr_data = data[sources].corr()
+
+    # Create custom annotations with better contrast
+    annotations = []
+    for i, row in enumerate(corr_data.values):
+        for j, val in enumerate(row):
+            # Determine text color based on background intensity
+            # For RdBu colorscale: negative values are blue, positive are red, zero is white
+            if abs(val) < 0.3:
+                # Light background - use dark text
+                text_color = 'black'
+            else:
+                # Dark background - use white text
+                text_color = 'white'
+
+            annotations.append(
+                dict(
+                    x=sources[j],
+                    y=sources[i],
+                    text=f"{val:.2f}",
+                    showarrow=False,
+                    font=dict(
+                        color=text_color,
+                        size=12,
+                        weight='bold'
+                    )
+                )
+            )
+
     fig = ff.create_annotated_heatmap(
         z=corr_data.values,
         x=sources,
         y=sources,
         colorscale='RdBu',
-        zmin=-1, zmax=1
+        zmin=-1, zmax=1,
+        annotation_text=[[f"{val:.2f}" for val in row] for row in corr_data.values],
+        showscale=True
     )
+
+    # Update annotations with better contrast
     fig.update_layout(
         title="Mapa de Calor de Correlación",
-        height=400
+        height=400,
+        annotations=annotations
     )
+
     return fig
 
 # Callback for Temporal Analysis 2D with date range filtering
