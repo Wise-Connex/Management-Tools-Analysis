@@ -21,12 +21,17 @@ import warnings
 import os
 import sys
 
+# Add parent directory to path for database imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 warnings.filterwarnings('ignore')
 
-# Import tools dictionary
+# Import tools dictionary and database manager
 from tools import tool_file_dic
+from database import get_database_manager
 
-# Standalone helper functions (simplified versions without heavy dependencies)
+# Get database manager instance
+db_manager = get_database_manager()
 def get_all_keywords():
     """Extract all keywords from tool_file_dic"""
     all_keywords = []
@@ -36,448 +41,34 @@ def get_all_keywords():
                 all_keywords.append(keyword)
     return all_keywords
 
-# Global caches for performance optimization
-_raw_data_cache = {}  # Cache for loaded CSV data
-_pattern_cache = {}   # Cache for CSV pattern files
-_interpolation_cache = {}  # Cache for interpolation results
-
-def cubic_interpolation(df, kw):
-    """Optimized cubic interpolation for Bain data with caching and min/max clipping"""
-    # Create cache key based on data content
-    cache_key = f"{kw}_{hash(str(df[kw].values.tobytes()) if hasattr(df[kw].values, 'tobytes') else str(df[kw].values))}_{df.index.min()}_{df.index.max()}"
-
-    # Check cache first
-    if cache_key in _interpolation_cache:
-        return _interpolation_cache[cache_key].copy()
-
-    # Extract actual data points (non-NaN values)
-    actual_data = df[~df[kw].isna()]
-
-    if actual_data.empty or len(actual_data) < 4:  # Cubic spline requires at least 4 points
-        result = linear_interpolation(df, kw)
-        _interpolation_cache[cache_key] = result.copy()
-        return result
-
-    # Get the min and max values from original data for STRICT clipping
-    original_min = actual_data[kw].min()
-    original_max = actual_data[kw].max()
-    # NO MARGIN - Clip strictly to original data range
-    clip_min = original_min
-    clip_max = original_max
-
-    # Ensure index is sorted AND has correct type (datetime64[ns])
-    actual_data = actual_data.sort_index()
-    actual_data.index = pd.to_datetime(actual_data.index)
-
-    # Convert dates to numerical values (days since epoch)
-    x = (actual_data.index - pd.Timestamp('1970-01-01')).days.values.astype(float)
-    y = actual_data[kw].values
-
-    # Create Cubic Spline
-    from scipy.interpolate import CubicSpline
-    cs = CubicSpline(x, y, bc_type='natural')
-
-    # --- Optimized: Interpolate directly at MONTHLY frequency instead of daily ---
-    monthly_date_range = pd.date_range(
-        start=actual_data.index.min(),
-        end=actual_data.index.max(),
-        freq='MS'  # Monthly start frequency
-    )
-
-    if monthly_date_range.empty and not actual_data.empty:
-        monthly_date_range = pd.date_range(start=actual_data.index.min(), periods=1, freq='MS')
-    if monthly_date_range.empty:
-        empty_result = pd.DataFrame(columns=[kw], index=pd.to_datetime([]))
-        _interpolation_cache[cache_key] = empty_result.copy()
-        return empty_result
-
-    x_interp_monthly = (monthly_date_range - pd.Timestamp('1970-01-01')).days.values.astype(float)
-    y_interp_monthly = cs(x_interp_monthly)
-
-    # --- Clip monthly values STRICTLY ---
-    y_interp_monthly_clipped = np.clip(y_interp_monthly, clip_min, clip_max)
-    df_monthly = pd.DataFrame(y_interp_monthly_clipped, index=monthly_date_range, columns=[kw])
-
-    # --- Force original points into MONTHLY data ---
-    for idx, val in actual_data[kw].items():
-        idx_ts = pd.Timestamp(idx).normalize()
-
-        # Force original value into monthly data
-        if idx_ts in df_monthly.index:
-            df_monthly.loc[idx_ts, kw] = val
-        else:
-            df_monthly.loc[idx_ts] = val
-
-    df_monthly = df_monthly.sort_index()
-
-    # Cache the result
-    _interpolation_cache[cache_key] = df_monthly.copy()
-
-    return df_monthly
-
-def linear_interpolation(df, kw):
-    """Linear interpolation for sparse data with caching"""
-    # Create cache key
-    cache_key = f"linear_{kw}_{hash(str(df[kw].values.tobytes()) if hasattr(df[kw].values, 'tobytes') else str(df[kw].values))}_{df.index.min()}_{df.index.max()}"
-
-    # Check cache first
-    if cache_key in _interpolation_cache:
-        return _interpolation_cache[cache_key].copy()
-
-    # Extract actual data points (non-NaN values)
-    actual_data = df[~df[kw].isna()]
-
-    if actual_data.empty:
-        result = df.copy()  # Return original if no actual data
-        _interpolation_cache[cache_key] = result.copy()
-        return result
-
-    x = actual_data.index  # Keep index as DatetimeIndex for actual points only
-    y = actual_data[kw].values
-
-    # Use numpy.interp for linear interpolation, but only within the range of actual data
-    # Create date range only between first and last actual data points
-    x_interp = pd.date_range(actual_data.index.min().date(), actual_data.index.max().date(), freq='MS')
-    y_interp = np.interp(x_interp, x, y)
-
-    # Create a new DataFrame with the interpolated values
-    df_interpolated = pd.DataFrame(y_interp, index=x_interp, columns=[kw])
-
-    # Preserve original values at actual data points to ensure accuracy
-    for idx in actual_data.index:
-        if idx in df_interpolated.index:
-            df_interpolated.loc[idx, kw] = actual_data.loc[idx, kw]
-
-    # Cache the result
-    _interpolation_cache[cache_key] = df_interpolated.copy()
-
-    return df_interpolated
-
-def manage_cache_size(max_size=50):
-    """Limit cache size to prevent memory issues"""
-    global _interpolation_cache
-    if len(_interpolation_cache) > max_size:
-        # Remove oldest entries (simple FIFO)
-        items_to_remove = len(_interpolation_cache) - max_size
-        keys_to_remove = list(_interpolation_cache.keys())[:items_to_remove]
-        for key in keys_to_remove:
-            del _interpolation_cache[key]
-
-def get_csv_filename_for_keyword(keyword):
-    """Map keyword names to their corresponding CSV pattern filenames"""
-    # Create mapping from keyword to CSV filename
-    keyword_to_csv = {
-        'Alianzas y Capital de Riesgo': 'CR_AlianzasyCapitaldeRiesgo_monthly_relative.csv',
-        'Benchmarking': 'CR_Benchmarking_monthly_relative.csv',
-        'Calidad Total': 'CR_CalidadTotal_monthly_relative.csv',
-        'Competencias Centrales': 'CR_CompetenciasCentrales_monthly_relative.csv',
-        'Cuadro de Mando Integral': 'CR_CuadrodeMandoIntegral_monthly_relative.csv',
-        'Estrategias de Crecimiento': 'CR_EstrategiasdeCrecimiento_monthly_relative.csv',
-        'Experiencia del Cliente': 'CR_ExperienciadelCliente_monthly_relative.csv',
-        'Fusiones y Adquisiciones': 'CR_FusionesyAdquisiciones_monthly_relative.csv',
-        'Gestión de Costos': 'CR_GestióndeCostos_monthly_relative.csv',
-        'Gestión de la Cadena de Suministro': 'CR_GestióndelaCadenadeSuministro_monthly_relative.csv',
-        'Gestión del Cambio': 'CR_GestióndelCambio_monthly_relative.csv',
-        'Gestión del Conocimiento': 'CR_GestióndelConocimiento_monthly_relative.csv',
-        'Innovación Colaborativa': 'CR_InnovaciónColaborativa_monthly_relative.csv',
-        'Lealtad del Cliente': 'CR_LealtaddelCliente_monthly_relative.csv',
-        'Optimización de Precios': 'CR_OptimizacióndePrecios_monthly_relative.csv',
-        'Outsourcing': 'CR_Outsourcing_monthly_relative.csv',
-        'Planificación Estratégica': 'CR_PlanificaciónEstratégica_monthly_relative.csv',
-        'Planificación de Escenarios': 'CR_PlanificacióndeEscenarios_monthly_relative.csv',
-        'Presupuesto Base Cero': 'CR_PresupuestoBaseCero_monthly_relative.csv',
-        'Propósito y Visión': 'CR_PropósitoyVisión_monthly_relative.csv',
-        'Reingeniería de Procesos': 'CR_ReingenieríadeProcesos_monthly_relative.csv',
-        'Segmentación de Clientes': 'CR_SegmentacióndeClientes_monthly_relative.csv',
-        'Talento y Compromiso': 'CR_TalentoyCompromiso_monthly_relative.csv'
-    }
-
-    return keyword_to_csv.get(keyword)
-
-def load_pattern_file(csv_filename):
-    """Load and cache CSV pattern files for performance"""
-    global _pattern_cache
-
-    if csv_filename in _pattern_cache:
-        return _pattern_cache[csv_filename]
-
-    pattern_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                               'interpolation_profiles',
-                               csv_filename)
-
-    if os.path.exists(pattern_file):
-        try:
-            pattern_df = pd.read_csv(pattern_file)
-            if 'PercentageDistribution' in pattern_df.columns and len(pattern_df) >= 12:
-                # Extract and normalize monthly percentages
-                monthly_percentages = pattern_df['PercentageDistribution'].values[:12]
-                monthly_percentages = monthly_percentages / monthly_percentages.sum() * 100
-
-                # Cache the result
-                _pattern_cache[csv_filename] = monthly_percentages
-                return monthly_percentages
-        except Exception as e:
-            print(f"Warning: Could not load pattern file {csv_filename}: {e}")
-
-    return None
-
-def interpolate_gb_to_monthly(gb_df, keyword):
-    """Interpolate annual GB data to monthly using keyword-specific CSV patterns (with caching)"""
-    if gb_df.empty:
-        return gb_df
-
-    # Get the column name
-    gb_col = gb_df.columns[0]
-
-    # Create monthly index for all years in GB data
-    gb_years = gb_df.index.year.unique()
-    monthly_index = pd.date_range(start=f'{gb_years.min()}-01-01',
-                                  end=f'{gb_years.max()}-12-31',
-                                  freq='MS')
-
-    # Get the correct CSV filename for this keyword
-    csv_filename = get_csv_filename_for_keyword(keyword)
-
-    monthly_percentages = None
-    if csv_filename:
-        # Use cached pattern loading
-        monthly_percentages = load_pattern_file(csv_filename)
-        if monthly_percentages is not None:
-            print(f"Using cached CSV pattern for keyword '{keyword}' from {csv_filename}")
-        else:
-            print(f"Warning: No valid pattern found for keyword '{keyword}' in {csv_filename}")
-    else:
-        print(f"Warning: No CSV mapping found for keyword '{keyword}'")
-
-    # If no valid pattern found, use even distribution
-    if monthly_percentages is None:
-        monthly_percentages = np.full(12, 100/12)  # Even distribution
-        print(f"Using even distribution for keyword '{keyword}' (no valid pattern found)")
-
-    # Initialize monthly data
-    monthly_data = []
-
-    for year in gb_years:
-        annual_value = gb_df.loc[gb_df.index.year == year, gb_col].iloc[0] if not gb_df.loc[gb_df.index.year == year].empty else 0
-
-        # Apply monthly percentages to annual value
-        monthly_values = (monthly_percentages / 100) * annual_value
-
-        # Add monthly values for this year
-        year_start = pd.Timestamp(f'{year}-01-01')
-        for month in range(12):
-            monthly_data.append({
-                'date': year_start + pd.DateOffset(months=month),
-                gb_col: monthly_values[month]
-            })
-
-    # Create DataFrame with monthly data
-    result_df = pd.DataFrame(monthly_data)
-    result_df = result_df.set_index('date')
-    result_df.index.name = gb_df.index.name
-
-    return result_df
-
-def interpolate_gb_to_monthly_even(gb_df):
-    """Interpolate annual GB data to monthly by distributing evenly across 12 months"""
-    if gb_df.empty:
-        return gb_df
-
-    # Get the column name
-    gb_col = gb_df.columns[0]
-
-    # Create monthly index for all years in GB data
-    gb_years = gb_df.index.year.unique()
-    monthly_index = pd.date_range(start=f'{gb_years.min()}-01-01',
-                                  end=f'{gb_years.max()}-12-31',
-                                  freq='MS')
-
-    # Initialize monthly data
-    monthly_data = []
-
-    for year in gb_years:
-        annual_value = gb_df.loc[gb_df.index.year == year, gb_col].iloc[0] if not gb_df.loc[gb_df.index.year == year].empty else 0
-
-        # Distribute annual value evenly across 12 months
-        monthly_value = annual_value / 12
-
-        # Add monthly values for this year
-        year_start = pd.Timestamp(f'{year}-01-01')
-        for month in range(12):
-            monthly_data.append({
-                'date': year_start + pd.DateOffset(months=month),
-                gb_col: monthly_value
-            })
-
-    # Create DataFrame with monthly data
-    result_df = pd.DataFrame(monthly_data)
-    result_df = result_df.set_index('date')
-    result_df.index.name = gb_df.index.name
-
-    return result_df
-
-def clear_all_caches():
-    """Clear all caches to free memory"""
-    global _raw_data_cache, _pattern_cache, _interpolation_cache
-    _raw_data_cache.clear()
-    _pattern_cache.clear()
-    _interpolation_cache.clear()
-    print("All caches cleared")
-
 def get_cache_stats():
-    """Get cache statistics for performance monitoring"""
-    global _raw_data_cache, _pattern_cache, _interpolation_cache
-    return {
-        'raw_data_cache': len(_raw_data_cache),
-        'pattern_cache': len(_pattern_cache),
-        'interpolation_cache': len(_interpolation_cache),
-        'total_cached_items': len(_raw_data_cache) + len(_pattern_cache) + len(_interpolation_cache)
-    }
-
-def manage_all_cache_sizes():
-    """Manage all cache sizes to prevent memory issues"""
-    global _raw_data_cache, _pattern_cache, _interpolation_cache
-
-    # Raw data cache: keep max 20 items
-    while len(_raw_data_cache) > 20:
-        oldest_key = next(iter(_raw_data_cache))
-        del _raw_data_cache[oldest_key]
-
-    # Pattern cache: keep max 25 items (all patterns)
-    while len(_pattern_cache) > 25:
-        oldest_key = next(iter(_pattern_cache))
-        del _pattern_cache[oldest_key]
-
-    # Interpolation cache: keep max 50 items
-    while len(_interpolation_cache) > 50:
-        oldest_key = next(iter(_interpolation_cache))
-        del _interpolation_cache[oldest_key]
-
-# Backward compatibility
-def clear_interpolation_cache():
-    """Clear the interpolation cache to free memory (backward compatibility)"""
-    global _interpolation_cache
-    _interpolation_cache.clear()
-
-def load_raw_data(source, filename):
-    """Load and cache raw CSV data for a specific source"""
-    global _raw_data_cache
-
-    cache_key = f"{source}_{filename}"
-    if cache_key in _raw_data_cache:
-        return _raw_data_cache[cache_key].copy()
-
-    file_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "dbase", filename)
-
-    if not os.path.exists(file_path):
-        print(f"Warning: File not found: {file_path}")
-        return None
-
+    """Get database statistics for performance monitoring"""
     try:
-        # Read CSV file
-        df = pd.read_csv(file_path, index_col=0)
-        df.index = df.index.str.strip()
-
-        # Convert index to datetime based on source type
-        if source == 2:  # Google Books Ngrams - keep as annual for now
-            df.index = pd.to_datetime(df.index.str.split('-').str[0], format='%Y')
-        else:  # Other sources
-            df.index = pd.to_datetime(df.index + '-01', format='%Y-%m-%d')
-
-        # Cache the raw data
-        _raw_data_cache[cache_key] = df.copy()
-
-        # Limit cache size
-        if len(_raw_data_cache) > 20:  # Keep only 20 most recent raw data files
-            oldest_key = next(iter(_raw_data_cache))
-            del _raw_data_cache[oldest_key]
-
-        return df
+        table_stats = db_manager.get_table_stats()
+        total_records = sum(stats.get('row_count', 0) for stats in table_stats.values() if 'error' not in stats)
+        total_keywords = sum(stats.get('keyword_count', 0) for stats in table_stats.values() if 'error' not in stats)
+        
+        return {
+            'raw_data_cache': 0,  # No longer using file caching
+            'pattern_cache': 0,   # No longer using pattern caching
+            'interpolation_cache': 0,  # No longer using interpolation caching
+            'total_cached_items': 0,
+            'database_records': total_records,
+            'database_keywords': total_keywords,
+            'database_size_mb': round(db_manager.get_database_size() / 1024 / 1024, 2)
+        }
     except Exception as e:
-        print(f"Error loading data for source {source}: {e}")
-        return None
+        print(f"Error getting cache stats: {e}")
+        return {
+            'raw_data_cache': 0,
+            'pattern_cache': 0,
+            'interpolation_cache': 0,
+            'total_cached_items': 0,
+            'database_records': 0,
+            'database_keywords': 0,
+            'database_size_mb': 0
+        }
 
-def get_file_data2(selected_keyword, selected_sources):
-    """Optimized data loading function with lazy loading and caching"""
-    # Map source IDs to file indices
-    source_index_map = {1: 0, 2: 2, 3: 3, 4: 4, 5: 5}
-
-    # Get filenames for the selected keyword and sources
-    filenames = {}
-    for source in selected_sources:
-        index = source_index_map[source]
-        for key, value in tool_file_dic.items():
-            if selected_keyword in value[1]:
-                filenames[source] = value[index]
-                break
-
-    datasets = {}
-    all_raw_datasets = {}
-
-    # Load data for each selected source (lazy loading)
-    for source in selected_sources:
-        filename = filenames.get(source, 'Archivo no encontrado')
-
-        # Load raw data with caching
-        df = load_raw_data(source, filename)
-        if df is None:
-            continue
-
-        # Apply cubic interpolation for Bain data (sources 3 and 5) - now cached
-        if source == 3 or source == 5:
-            print(f"Applying interpolation for Bain source {source}...")
-            interpolated_data = pd.DataFrame()
-            for column in df.columns:
-                interpolated = cubic_interpolation(df, column)
-                interpolated_data[column] = interpolated[column]
-
-            # Set the index to datetime format
-            interpolated_data.index = pd.to_datetime(interpolated_data.index)
-
-            df = interpolated_data
-
-        all_raw_datasets[source] = df
-
-    # Special processing for GB data: ALWAYS interpolate to monthly using CSV patterns
-    if 2 in selected_sources and 2 in all_raw_datasets:  # GB selected
-        gb_df = all_raw_datasets[2]
-        # Find the keyword for this GB data
-        keyword = None
-        for key, value in tool_file_dic.items():
-            if selected_keyword in value[1]:  # Check if selected_keyword is in the keywords list
-                keyword = key
-                break
-
-        if keyword:
-            print(f"Interpolating Google Books data to monthly using patterns for '{keyword}'...")
-            all_raw_datasets[2] = interpolate_gb_to_monthly(gb_df, keyword)
-        else:
-            print(f"Warning: Could not find keyword mapping for '{selected_keyword}', using even distribution")
-            all_raw_datasets[2] = interpolate_gb_to_monthly_even(gb_df)
-
-    # Process datasets (preserve individual date ranges)
-    for source in selected_sources:
-        if source in all_raw_datasets:
-            df = all_raw_datasets[source]
-            datasets[source] = df
-
-    # Normalize datasets to 0-100 scale
-    datasets_norm = {}
-    for source, df in datasets.items():
-        df_norm = df.copy()
-        for col in df_norm.columns:
-            min_val = df_norm[col].min()
-            max_val = df_norm[col].max()
-            if max_val != min_val:
-                df_norm[col] = 100 * (df_norm[col] - min_val) / (max_val - min_val)
-            else:
-                df_norm[col] = 50  # Default value if no variation
-        datasets_norm[source] = df_norm
-
-    # Manage all cache sizes to prevent memory issues
-    manage_all_cache_sizes()
-
-    return datasets_norm, selected_sources
 
 def create_combined_dataset(datasets_norm, selected_sources, dbase_options):
     """Create combined dataset with common date range"""
@@ -840,8 +431,8 @@ def update_main_content(*args):
         return html.Div("Por favor, seleccione una Herramienta y al menos una Fuente de Datos.")
 
     try:
-        # Get data
-        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        # Get data from database
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         # Process data
@@ -1146,7 +737,7 @@ def update_main_content(*args):
         ], id='section-data-table', className='section-anchor'))
 
         # Performance Monitoring Section
-        cache_stats = get_cache_stats()
+        db_stats = get_cache_stats()
         content.append(html.Div([
             html.Div([
                 html.H6("Monitor de Rendimiento", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
@@ -1158,17 +749,16 @@ def update_main_content(*args):
                 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'
             }),
             html.Div([
-                html.P(f"📊 Datos crudos en caché: {cache_stats['raw_data_cache']} archivos", style={'margin': '5px 0', 'fontSize': '12px'}),
-                html.P(f"📈 Patrones en caché: {cache_stats['pattern_cache']} archivos CSV", style={'margin': '5px 0', 'fontSize': '12px'}),
-                html.P(f"🔢 Interpolaciones en caché: {cache_stats['interpolation_cache']} cálculos", style={'margin': '5px 0', 'fontSize': '12px'}),
-                html.P(f"💾 Total elementos en caché: {cache_stats['total_cached_items']}", style={'margin': '5px 0', 'fontSize': '12px', 'fontWeight': 'bold'}),
+                html.P(f"💾 Base de datos: {db_stats['database_size_mb']} MB", style={'margin': '5px 0', 'fontSize': '12px', 'fontWeight': 'bold'}),
+                html.P(f"📊 Registros totales: {db_stats['database_records']:,}", style={'margin': '5px 0', 'fontSize': '12px'}),
+                html.P(f"🔑 Palabras clave: {db_stats['database_keywords']}", style={'margin': '5px 0', 'fontSize': '12px'}),
                 html.Hr(style={'margin': '10px 0'}),
-                html.P("💡 Optimizaciones activas:", style={'margin': '5px 0', 'fontSize': '11px', 'fontWeight': 'bold'}),
+                html.P("⚡ Optimizaciones activas:", style={'margin': '5px 0', 'fontSize': '11px', 'fontWeight': 'bold'}),
                 html.Ul([
-                    html.Li("Carga diferida de datos (solo fuentes seleccionadas)", style={'fontSize': '10px'}),
-                    html.Li("Caché de patrones CSV para interpolación GB", style={'fontSize': '10px'}),
-                    html.Li("Caché de resultados de interpolación compleja", style={'fontSize': '10px'}),
-                    html.Li("Gestión automática de memoria caché", style={'fontSize': '10px'})
+                    html.Li("Datos pre-interpolados en base de datos SQLite", style={'fontSize': '10px'}),
+                    html.Li("Consultas optimizadas con índices", style={'fontSize': '10px'}),
+                    html.Li("Modo WAL para acceso concurrente", style={'fontSize': '10px'}),
+                    html.Li("Carga instantánea sin procesamiento en tiempo real", style={'fontSize': '10px'})
                 ], style={'paddingLeft': '20px', 'margin': '5px 0'})
             ], style={'padding': '10px', 'backgroundColor': '#f8f9fa', 'borderRadius': '5px'})
         ], id='section-performance', className='section-anchor'))
@@ -1597,7 +1187,7 @@ def update_temporal_2d_analysis(slider_values, all_clicks, y20_clicks, y15_click
         return {}
 
     try:
-        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1670,7 +1260,7 @@ def update_temporal_slider_properties(selected_keyword, *button_states):
         return 0, 100, {}
 
     try:
-        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1743,7 +1333,7 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
             frequency = 'monthly'
 
     try:
-        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1807,7 +1397,7 @@ def update_seasonal_analysis(selected_source, selected_keyword, *button_states):
         return {}
 
     try:
-        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1863,7 +1453,7 @@ def update_regression_analysis(click_data, selected_keyword, *button_states):
         return fig, ""
 
     try:
-        datasets_norm, sl_sc = get_file_data2(selected_keyword=selected_keyword, selected_sources=selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -2255,7 +1845,7 @@ def update_fourier_analysis(selected_source, selected_keyword, *button_states):
 
     try:
         # Get data for the selected source
-        datasets_norm, _ = get_file_data2(selected_keyword, selected_sources)
+        datasets_norm, _ = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
 
         if source_key not in datasets_norm:
             return go.Figure()

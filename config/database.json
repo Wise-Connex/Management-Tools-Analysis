@@ -1,0 +1,23 @@
+{
+  "path": "dashboard_app/data.db",
+  "schema_version": "1.0",
+  "tables": {
+    "google_trends": "google_trends",
+    "crossref": "crossref",
+    "google_books": "google_books",
+    "bain_usability": "bain_usability",
+    "bain_satisfaction": "bain_satisfaction",
+    "metadata": "metadata"
+  },
+  "indexes": [
+    "CREATE INDEX IF NOT EXISTS idx_google_trends_date_keyword ON google_trends(date, keyword)",
+    "CREATE INDEX IF NOT EXISTS idx_crossref_date_keyword ON crossref(date, keyword)",
+    "CREATE INDEX IF NOT EXISTS idx_google_books_date_keyword ON google_books(date, keyword)",
+    "CREATE INDEX IF NOT EXISTS idx_bain_usability_date_keyword ON bain_usability(date, keyword)",
+    "CREATE INDEX IF NOT EXISTS idx_bain_satisfaction_date_keyword ON bain_satisfaction(date, keyword)"
+  ],
+  "connection_pool": {
+    "max_connections": 10,
+    "timeout": 30.0
+  }
+}

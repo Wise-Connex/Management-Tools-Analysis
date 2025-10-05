@@ -1,0 +1,25 @@
+{
+  "data_sources": "dbase",
+  "interpolation_profiles": "interpolation_profiles",
+  "assets": "dashboard_app/assets",
+  "logs": "logs",
+  "temp": "temp",
+  "backups": "backups",
+  "cache": "cache",
+  "project_root": ".",
+  "dashboard_app": "dashboard_app",
+  "config_dir": "config",
+  "scripts_dir": "scripts",
+  "relative_paths": {
+    "database_from_project_root": "dashboard_app/data.db",
+    "database_from_dashboard_app": "data.db",
+    "logs_from_project_root": "logs",
+    "assets_from_dashboard_app": "assets"
+  },
+  "permissions": {
+    "database_file": "644",
+    "log_files": "644",
+    "config_files": "644",
+    "script_files": "755"
+  }
+}
