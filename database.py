@@ -73,12 +73,32 @@ class DatabaseManager:
             for statement in schema_sql:
                 conn.execute(statement)
 
-            # Create indexes
-            for index_sql in self.config.database_config.get("indexes", []):
+            # Create indexes for better query performance
+            indexes = [
+                "CREATE INDEX IF NOT EXISTS idx_google_trends_keyword_date ON google_trends(keyword, date)",
+                "CREATE INDEX IF NOT EXISTS idx_crossref_keyword_date ON crossref(keyword, date)",
+                "CREATE INDEX IF NOT EXISTS idx_google_books_keyword_date ON google_books(keyword, date)",
+                "CREATE INDEX IF NOT EXISTS idx_bain_usability_keyword_date ON bain_usability(keyword, date)",
+                "CREATE INDEX IF NOT EXISTS idx_bain_satisfaction_keyword_date ON bain_satisfaction(keyword, date)",
+                "CREATE INDEX IF NOT EXISTS idx_google_trends_keyword ON google_trends(keyword)",
+                "CREATE INDEX IF NOT EXISTS idx_crossref_keyword ON crossref(keyword)",
+                "CREATE INDEX IF NOT EXISTS idx_google_books_keyword ON google_books(keyword)",
+                "CREATE INDEX IF NOT EXISTS idx_bain_usability_keyword ON bain_usability(keyword)",
+                "CREATE INDEX IF NOT EXISTS idx_bain_satisfaction_keyword ON bain_satisfaction(keyword)"
+            ]
+
+            for index_sql in indexes:
                 try:
                     conn.execute(index_sql)
                 except sqlite3.OperationalError as e:
                     print(f"Warning: Could not create index: {e}")
+
+            # Create additional indexes from config if any
+            for index_sql in self.config.database_config.get("indexes", []):
+                try:
+                    conn.execute(index_sql)
+                except sqlite3.OperationalError as e:
+                    print(f"Warning: Could not create config index: {e}")
 
             # Insert schema version
             conn.execute("""
