@@ -1002,8 +1002,13 @@ def update_main_content(selected_sources, selected_keyword):
 
         # 1. Temporal Analysis 2D
         try:
+            print(f"DEBUG: Creating initial temporal 2D figure for main content")
             temporal_2d_fig = create_temporal_2d_figure(combined_dataset, selected_source_names)
+            print(f"DEBUG: Initial temporal 2D figure created with {len(temporal_2d_fig.data) if hasattr(temporal_2d_fig, 'data') else 0} traces")
         except Exception as e:
+            print(f"DEBUG: Error creating initial temporal 2D figure: {e}")
+            import traceback
+            traceback.print_exc()
             temporal_2d_fig = go.Figure()
             temporal_2d_fig.add_annotation(text=f"Error creating temporal 2D graph: {str(e)}", showarrow=False)
 
@@ -1152,7 +1157,7 @@ def update_main_content(selected_sources, selected_keyword):
                 dcc.Dropdown(
                     id='seasonal-source-select',
                     options=[{'label': src, 'value': src} for src in selected_source_names],
-                    value=None,
+                    value=selected_source_names[0] if selected_source_names else None,
                     placeholder="Seleccione fuente para cargar análisis",
                     clearable=True,
                     style={'width': '100%', 'marginBottom': '10px'}
@@ -1187,7 +1192,7 @@ def update_main_content(selected_sources, selected_keyword):
                 dcc.Dropdown(
                     id='fourier-source-select',
                     options=[{'label': src, 'value': src} for src in selected_source_names],
-                    value=None,
+                    value=selected_source_names[0] if selected_source_names else None,
                     placeholder="Seleccione fuente para cargar análisis",
                     clearable=True,
                     style={'width': '100%', 'marginBottom': '10px'}
@@ -1451,6 +1456,11 @@ def update_main_content(selected_sources, selected_keyword):
 
 # Helper functions for creating figures
 def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
+    print(f"DEBUG: create_temporal_2d_figure called")
+    print(f"DEBUG: data shape: {data.shape}")
+    print(f"DEBUG: sources: {sources}")
+    print(f"DEBUG: start_date: {start_date}, end_date: {end_date}")
+    
     # Filter data by date range if provided
     filtered_data = data.copy()
     if start_date and end_date:
@@ -1458,18 +1468,23 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
             (filtered_data['Fecha'] >= pd.to_datetime(start_date)) &
             (filtered_data['Fecha'] <= pd.to_datetime(end_date))
         ]
+        print(f"DEBUG: Filtered data shape: {filtered_data.shape}")
 
     fig = go.Figure()
+    trace_count = 0
 
     # Optimize: Use fewer markers and simpler rendering for better performance
     for i, source in enumerate(sources):
+        print(f"DEBUG: Processing source: {source}")
         if source in filtered_data.columns:
             source_data = filtered_data[source]
             valid_mask = ~source_data.isna()
+            print(f"DEBUG: Source {source} has {valid_mask.sum()} valid points out of {len(source_data)}")
 
             if valid_mask.any():
                 # Use lines only for better performance, add markers only for sparse data
                 mode = 'lines+markers' if valid_mask.sum() < 50 else 'lines'
+                print(f"DEBUG: Using mode: {mode}")
 
                 fig.add_trace(go.Scatter(
                     x=filtered_data['Fecha'][valid_mask],
@@ -1484,9 +1499,17 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
                     connectgaps=False,
                     hovertemplate=f'{source}: %{{y:.2f}}<br>%{{x|%Y-%m-%d}}<extra></extra>'
                 ))
+                trace_count += 1
+                print(f"DEBUG: Added trace for {source}")
+        else:
+            print(f"DEBUG: Source {source} not found in filtered_data columns")
+
+    print(f"DEBUG: Total traces added: {trace_count}")
+    print(f"DEBUG: Figure has {len(fig.data)} traces after creation")
 
     # Simplified tick calculation for better performance
     date_range_days = (filtered_data['Fecha'].max() - filtered_data['Fecha'].min()).days
+    print(f"DEBUG: Date range in days: {date_range_days}")
 
     if date_range_days <= 365:
         tickformat = "%Y-%m"
@@ -1524,6 +1547,7 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
             hoverinfo='skip'  # Reduce hover computation for large datasets
         )
 
+    print(f"DEBUG: Final figure has {len(fig.data)} traces")
     return fig
 
 def create_mean_analysis_figure(data, sources):
@@ -1798,7 +1822,9 @@ def create_pca_figure(data, sources):
     return fig
 
 def create_correlation_heatmap(data, sources):
+    print(f"DEBUG: create_correlation_heatmap called with sources: {sources}")
     corr_data = data[sources].corr()
+    print(f"DEBUG: Correlation data shape: {corr_data.shape}")
 
     # Create custom annotations with better contrast
     annotations = []
@@ -1827,21 +1853,26 @@ def create_correlation_heatmap(data, sources):
                 )
             )
 
-    fig = ff.create_annotated_heatmap(
+    # Create heatmap using go.Heatmap for proper click event support
+    fig = go.Figure(data=go.Heatmap(
         z=corr_data.values,
         x=sources,
         y=sources,
         colorscale='RdBu',
-        zmin=-1, zmax=1,
-        annotation_text=[[f"{val:.2f}" for val in row] for row in corr_data.values],
+        zmin=-1,
+        zmax=1,
+        hovertemplate='%{x} vs %{y}<br>Correlación: %{z:.3f}<extra></extra>',
         showscale=True
-    )
+    ))
 
-    # Update annotations with better contrast
+    # Update layout with annotations and enable click events
     fig.update_layout(
         title="Mapa de Calor de Correlación",
         height=400,
-        annotations=annotations
+        annotations=annotations,
+        xaxis=dict(side='bottom'),
+        yaxis=dict(side='left'),
+        clickmode='event+select'  # Enable click events
     )
 
     return fig
@@ -1859,18 +1890,32 @@ def create_correlation_heatmap(data, sources):
      Input('data-sources-store-v2', 'data')]
 )
 def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, y5_clicks, slider_values, selected_keyword, selected_sources):
+    print(f"DEBUG: update_temporal_2d_analysis called")
+    print(f"DEBUG: selected_keyword={selected_keyword}")
+    print(f"DEBUG: selected_sources={selected_sources}")
+    print(f"DEBUG: slider_values={slider_values}")
+    
     if selected_sources is None:
         selected_sources = []
 
     # Map display names to source IDs
     selected_source_ids = map_display_names_to_source_ids(selected_sources)
+    print(f"DEBUG: mapped to source IDs: {selected_source_ids}")
 
     if not selected_keyword or not selected_sources:
+        print(f"DEBUG: Returning empty figure - missing keyword or sources")
         return go.Figure()
 
     try:
         datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
+        print(f"DEBUG: Retrieved datasets_norm keys: {list(datasets_norm.keys()) if datasets_norm else 'None'}")
+        
+        if not datasets_norm:
+            print(f"DEBUG: No data retrieved from database")
+            return go.Figure()
+            
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+        print(f"DEBUG: Combined dataset shape: {combined_dataset.shape if not combined_dataset.empty else 'Empty'}")
 
         combined_dataset = combined_dataset.reset_index()
         date_column = combined_dataset.columns[0]
@@ -1883,40 +1928,52 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
         # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
         # Filter out rows where ALL selected sources are NaN (preserve partial data)
-        data_columns = [dbase_options[src_id] for src_id in selected_sources]
+        data_columns = [dbase_options[src_id] for src_id in selected_source_ids]
         combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
 
-        selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
+        selected_source_names = [dbase_options[src_id] for src_id in selected_source_ids]
+        print(f"DEBUG: Selected source names: {selected_source_names}")
 
         # Default to full date range
         start_date = combined_dataset['Fecha'].min().date()
         end_date = combined_dataset['Fecha'].max().date()
+        print(f"DEBUG: Default date range: {start_date} to {end_date}")
 
         # Check if any button was clicked or slider moved
-        ctx = dash.callback_context
-        if ctx.triggered and len(ctx.triggered) > 0:
-            trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        try:
+            ctx = dash.callback_context
+            if ctx.triggered and len(ctx.triggered) > 0:
+                trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
+                print(f"DEBUG: Triggered by: {trigger_id}")
 
-            if trigger_id in ['temporal-2d-all', 'temporal-2d-20y', 'temporal-2d-15y', 'temporal-2d-10y', 'temporal-2d-5y']:
-                # Button was clicked - calculate new date range
-                if trigger_id == 'temporal-2d-all':
-                    start_date = combined_dataset['Fecha'].min().date()
-                    end_date = combined_dataset['Fecha'].max().date()
-                else:
-                    # Calculate years back from end
-                    years_back = int(trigger_id.split('-')[-1].replace('y', ''))
-                    end_date = combined_dataset['Fecha'].max().date()
-                    start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=years_back)).date()
+                if trigger_id in ['temporal-2d-all', 'temporal-2d-20y', 'temporal-2d-15y', 'temporal-2d-10y', 'temporal-2d-5y']:
+                    # Button was clicked - calculate new date range
+                    if trigger_id == 'temporal-2d-all':
+                        start_date = combined_dataset['Fecha'].min().date()
+                        end_date = combined_dataset['Fecha'].max().date()
+                    else:
+                        # Calculate years back from end
+                        years_back = int(trigger_id.split('-')[-1].replace('y', ''))
+                        end_date = combined_dataset['Fecha'].max().date()
+                        start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=years_back)).date()
+                    print(f"DEBUG: Updated date range from button: {start_date} to {end_date}")
 
-            elif trigger_id == 'temporal-2d-date-range':
-                # Slider was moved - convert indices to dates
-                if slider_values is not None and len(slider_values) == 2:
-                    start_idx, end_idx = slider_values
-                    if start_idx < len(combined_dataset) and end_idx < len(combined_dataset):
-                        start_date = combined_dataset['Fecha'].iloc[start_idx].date()
-                        end_date = combined_dataset['Fecha'].iloc[end_idx].date()
+                elif trigger_id == 'temporal-2d-date-range':
+                    # Slider was moved - convert indices to dates
+                    if slider_values is not None and len(slider_values) == 2:
+                        start_idx, end_idx = slider_values
+                        if start_idx < len(combined_dataset) and end_idx < len(combined_dataset):
+                            start_date = combined_dataset['Fecha'].iloc[start_idx].date()
+                            end_date = combined_dataset['Fecha'].iloc[end_idx].date()
+                            print(f"DEBUG: Updated date range from slider: {start_date} to {end_date}")
+        except Exception as e:
+            # Handle case when callback context is not available (e.g., during testing)
+            print(f"DEBUG: No callback context available, using default date range: {e}")
+            # Keep default date range (full range)
 
+        print(f"DEBUG: Creating temporal 2D figure...")
         figure = create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date)
+        print(f"DEBUG: Figure created with {len(figure.data) if hasattr(figure, 'data') else 0} traces")
         return figure
     except Exception as e:
         print(f"Error in temporal 2D analysis: {e}")
@@ -1934,17 +1991,30 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
     Input('data-sources-store-v2', 'data')
 )
 def update_temporal_slider_properties(selected_keyword, selected_sources):
+    print(f"DEBUG: update_temporal_slider_properties called")
+    print(f"DEBUG: selected_keyword={selected_keyword}")
+    print(f"DEBUG: selected_sources={selected_sources}")
+    
     if selected_sources is None:
         selected_sources = []
 
     selected_source_ids = map_display_names_to_source_ids(selected_sources)
+    print(f"DEBUG: mapped to source IDs: {selected_source_ids}")
 
     if not selected_keyword or not selected_sources:
-        return 0, 100, {}
+        print(f"DEBUG: Returning default slider values - missing keyword or sources")
+        return 0, 100, {}, [0, 100]
 
     try:
         datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
+        print(f"DEBUG: Retrieved datasets_norm keys: {list(datasets_norm.keys()) if datasets_norm else 'None'}")
+        
+        if not datasets_norm:
+            print(f"DEBUG: No data retrieved from database")
+            return 0, 100, {}, [0, 100]
+            
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+        print(f"DEBUG: Combined dataset shape: {combined_dataset.shape if not combined_dataset.empty else 'Empty'}")
 
         combined_dataset = combined_dataset.reset_index()
         date_column = combined_dataset.columns[0]
@@ -1954,8 +2024,11 @@ def update_temporal_slider_properties(selected_keyword, selected_sources):
         # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
         # Filter out rows where ALL selected sources are NaN (preserve partial data)
-        data_columns = [dbase_options[src_id] for src_id in selected_sources]
+        data_columns = [dbase_options[src_id] for src_id in selected_source_ids]
         combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
+
+        print(f"DEBUG: Processed dataset shape: {combined_dataset.shape}")
+        print(f"DEBUG: Date range: {combined_dataset['Fecha'].min()} to {combined_dataset['Fecha'].max()}")
 
         # Create marks for the slider
         n_marks = min(5, len(combined_dataset))  # Limit to 5 marks
@@ -1964,9 +2037,13 @@ def update_temporal_slider_properties(selected_keyword, selected_sources):
             idx: combined_dataset['Fecha'].iloc[idx].strftime('%Y-%m')
             for idx in mark_indices
         }
+        print(f"DEBUG: Created {len(marks)} slider marks")
 
         return 0, len(combined_dataset) - 1, marks, [0, len(combined_dataset) - 1]
     except Exception as e:
+        print(f"DEBUG: Error in update_temporal_slider_properties: {e}")
+        import traceback
+        traceback.print_exc()
         return 0, 100, {}, [0, 100]
 
     # Additional callbacks for specific analyses
@@ -2125,15 +2202,23 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
      Output('regression-equations', 'children')],
     [Input('correlation-heatmap', 'clickData'),
      Input('keyword-dropdown', 'value'),
-     Input('data-sources-store-v2', 'data')]
+     Input('data-sources-store-v2', 'data')],
+    prevent_initial_call=False
 )
 def update_regression_analysis(click_data, selected_keyword, selected_sources):
+    print(f"DEBUG: update_regression_analysis called")
+    print(f"DEBUG: click_data={click_data}")
+    print(f"DEBUG: selected_keyword={selected_keyword}")
+    print(f"DEBUG: selected_sources={selected_sources}")
+    
     if selected_sources is None:
         selected_sources = []
 
     selected_source_ids = map_display_names_to_source_ids(selected_sources)
+    print(f"DEBUG: selected_source_ids={selected_source_ids}")
 
     if not selected_keyword or len(selected_sources) < 2 or not click_data:
+        print(f"DEBUG: Returning empty figure - missing keyword, sources, or click_data")
         # Return empty figure and empty equations
         fig = go.Figure()
         fig.update_layout(
@@ -2153,11 +2238,21 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources):
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
 
-        selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
+        # Get display names from the actual data columns, not from dbase_options
+        # The combined_dataset already has the correct column names
+        selected_source_names = list(combined_dataset.columns[1:])  # Skip 'Fecha' column
 
         # Get clicked variables from heatmap
         if 'points' not in click_data or len(click_data['points']) == 0:
-            return {}
+            # Return empty figure and empty equations
+            fig = go.Figure()
+            fig.update_layout(
+                title="Error: No se recibieron datos del clic",
+                xaxis_title="",
+                yaxis_title="",
+                height=400
+            )
+            return fig, ""
 
         x_var = click_data['points'][0]['x']
         y_var = click_data['points'][0]['y']
@@ -2431,16 +2526,14 @@ def update_navigation_visibility(selected_keyword, selected_sources):
 
             # Require 2+ sources (multi-source analysis)
             {"id": 3, "text": "3. Temporal 3D", "href": "#section-temporal-3d", "color": "#fef5e7", "border": "#fbd38d", "min_sources": 2},
+            {"id": 4, "text": "4. Estacional", "href": "#section-seasonal", "color": "#f0fff4", "border": "#9ae6b4", "min_sources": 1},
+            {"id": 5, "text": "5. Fourier", "href": "#section-fourier", "color": "#faf5ff", "border": "#d6bcfa", "min_sources": 1},
             {"id": 6, "text": "6. Correlación", "href": "#section-correlation", "color": "#e6fffa", "border": "#81e6d9", "min_sources": 2},
             {"id": 7, "text": "7. Regresión", "href": "#section-regression", "color": "#fffaf0", "border": "#fce5cd", "min_sources": 2},
             {"id": 8, "text": "8. PCA", "href": "#section-pca", "color": "#f0f9ff", "border": "#bee3f8", "min_sources": 2},
 
-            # Always visible (single source analysis)
-            {"id": 4, "text": "4. Estacional", "href": "#section-seasonal", "color": "#f0fff4", "border": "#9ae6b4", "min_sources": 1},
-            {"id": 5, "text": "5. Fourier", "href": "#section-fourier", "color": "#faf5ff", "border": "#d6bcfa", "min_sources": 1},
-
-            # Always visible (utility sections)
-            {"id": 9, "text": "Tabla Datos", "href": "#section-data-table", "color": "#f8f9fa", "border": "#dee2e6", "min_sources": 1},
+            # Always visible (utility sections) - placed at the end
+            {"id": 9, "text": "Tabla de Datos", "href": "#section-data-table", "color": "#f8f9fa", "border": "#dee2e6", "min_sources": 1},
             {"id": 10, "text": "Rendimiento", "href": "#section-performance", "color": "#f7fafc", "border": "#e2e8f0", "min_sources": 1},
         ]
 
