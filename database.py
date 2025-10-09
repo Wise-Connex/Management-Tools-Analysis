@@ -9,10 +9,13 @@ from contextlib import contextmanager
 from typing import Dict, List, Any, Optional, Tuple
 from pathlib import Path
 import time
+import logging
 from datetime import datetime
 
 from config import get_config
 
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class DatabaseManager:
     """
@@ -213,16 +216,21 @@ class DatabaseManager:
         datasets_norm = {}
         valid_sources = []
 
+        logging.info(f"Getting data for keyword='{keyword}', sources={sources}")
+        
         with self.get_connection() as conn:
             for source_id in sources:
                 table_name = source_to_table.get(source_id)
                 if not table_name:
+                    logging.warning(f"No table name for source_id={source_id}")
                     continue
 
+                logging.info(f"Querying table '{table_name}' for keyword='{keyword}'")
                 try:
                     # Query data for this source and keyword
+                    query = f"SELECT date, value FROM {table_name} WHERE keyword = ? ORDER BY date"
                     df = pd.read_sql_query(
-                        f"SELECT date, value FROM {table_name} WHERE keyword = ? ORDER BY date",
+                        query,
                         conn,
                         params=[keyword],
                         index_col="date",
@@ -234,9 +242,13 @@ class DatabaseManager:
                         df_norm = df.copy()
                         datasets_norm[source_id] = df_norm
                         valid_sources.append(source_id)
+                    else:
+                        logging.info(f"No data found in {table_name} for keyword='{keyword}'")
 
                 except Exception as e:
-                    print(f"Warning: Could not retrieve data for source {source_id} ({table_name}): {e}")
+                    logging.error(f"Could not retrieve data for source {source_id} ({table_name}): {e}")
+                    import traceback
+                    traceback.print_exc()
                     continue
 
         return datasets_norm, valid_sources
@@ -421,6 +433,51 @@ class DatabaseManager:
             return self.db_path.stat().st_size
         return 0
 
+    def get_tool_notes_and_doi(self, tool_name: str, source_name: Optional[str] = None) -> List[Dict[str, Any]]:
+        """
+        Get DOI links and notes for a specific tool and optionally filtered by source.
+
+        Args:
+            tool_name: Spanish name of the management tool
+            source_name: Optional source name to filter (Google_Trends, Google_Books, IC, BAIN_Ind_Usabilidad, BAIN_Ind_Satisfacción, Crossref)
+
+        Returns:
+            List of dictionaries containing DOI, notes, links, and keywords for each matching record
+        """
+        notes_db_path = self.config.database_path.parent / "notes_and_doi.db"
+
+        if not notes_db_path.exists():
+            print(f"Warning: Notes database not found at {notes_db_path}")
+            return []
+
+        try:
+            with sqlite3.connect(str(notes_db_path)) as conn:
+                query = "SELECT DOI, Source, Notes, Links, Keywords FROM tool_notes WHERE Herramienta = ?"
+                params = [tool_name]
+
+                if source_name:
+                    query += " AND Source = ?"
+                    params.append(source_name)
+
+                cursor = conn.execute(query, params)
+                results = []
+
+                for row in cursor.fetchall():
+                    doi, source, notes, links, keywords = row
+                    results.append({
+                        'doi': doi,
+                        'source': source,
+                        'notes': notes,
+                        'links': links,
+                        'keywords': keywords
+                    })
+
+                return results
+
+        except Exception as e:
+            print(f"Error retrieving tool notes: {e}")
+            return []
+
     def __str__(self) -> str:
         """String representation of the database manager."""
         exists = "exists" if self.database_exists() else "does not exist"
@@ -435,6 +492,7 @@ class DatabaseManager:
 # Global database manager instance
 _db_manager_instance = None
 
+
 def get_database_manager() -> DatabaseManager:
     """
     Get the global database manager instance (singleton pattern).
@@ -446,6 +504,7 @@ def get_database_manager() -> DatabaseManager:
     if _db_manager_instance is None:
         _db_manager_instance = DatabaseManager()
     return _db_manager_instance
+
 
 def reset_database_manager():
     """

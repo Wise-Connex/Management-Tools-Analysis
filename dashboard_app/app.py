@@ -1,7 +1,7 @@
 import dash
 from dash import html, dcc, dash_table
 import dash_bootstrap_components as dbc
-from dash.dependencies import Input, Output, State
+from dash.dependencies import Input, Output, State, ALL
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
@@ -20,6 +20,8 @@ from scipy.fft import fft, fftfreq
 import warnings
 import os
 import sys
+import re
+import time
 
 # Add parent directory to path for database imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -29,9 +31,40 @@ warnings.filterwarnings('ignore')
 # Import tools dictionary and database manager
 from tools import tool_file_dic
 from database import get_database_manager
+# Import centralized source mapping
+from fix_source_mapping import (
+    map_display_names_to_source_ids,
+    DBASE_OPTIONS as dbase_options,
+    DISPLAY_NAMES
+)
 
 # Get database manager instance
 db_manager = get_database_manager()
+
+# Notes and DOI data is now loaded from the database
+
+def parse_text_with_links(text):
+    """Parse text and return plain text without URLs or link information"""
+    if not text:
+        return [html.P("No hay notas disponibles", style={'fontSize': '12px'})]
+
+    # Remove source link information that starts with "Fuente:" or similar patterns
+    # Look for patterns like "Fuente: http" or "Source: http" and remove everything from there
+    import re
+
+    # Pattern to match "Fuente:" or "Source:" followed by URL-like content
+    link_pattern = r'\s*(?:Fuente|Source)\s*:\s*https?://[^\s]+.*$'
+
+    # Remove the link information from the end of the text
+    cleaned_text = re.sub(link_pattern, '', text, flags=re.IGNORECASE | re.MULTILINE)
+
+    # Also remove any remaining "Fuente:" or "Source:" at the end if not followed by URL
+    cleaned_text = re.sub(r'\s*(?:Fuente|Source)\s*:\s*$', '', cleaned_text, flags=re.IGNORECASE)
+
+    # Clean up any trailing whitespace or punctuation
+    cleaned_text = cleaned_text.rstrip('.,;:- \t\n')
+
+    return [html.P(cleaned_text, style={'fontSize': '12px'})]
 
 # Global cache for processed datasets
 _processed_data_cache = {}
@@ -136,7 +169,7 @@ app = dash.Dash(
     __name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     suppress_callback_exceptions=True,
-    title='Management Tools Analysis Dashboard',
+    title='Management Tools Analysis Dashboard - ' + str(time.time()),
     update_title=None  # Suppress title updates to reduce console noise
 )
 
@@ -262,14 +295,7 @@ app.index_string = '''
 '''
 
 
-# Define database options
-dbase_options = {
-    1: "Google Trends",
-    4: "Crossref.org",
-    2: "Google Books Ngrams",
-    3: "Bain - Usabilidad",
-    5: "Bain - Satisfacción"
-}
+# Database options are now imported from fix_source_mapping module
 
 # Define color palette
 colors = [
@@ -307,15 +333,15 @@ sidebar = html.Div([
                 ],
                 value=None,
                 placeholder="Seleccione una Herramienta Gerencial",
-                className="mb-4",
+                className="mb-2",
                 style={'fontSize': '12px'}
             ),
-            html.Div(id='keyword-validation', className="text-danger", style={'fontSize': '12px'})
+            html.Div(id='keyword-validation', className="text-danger", style={'fontSize': '12px'}),
+            html.Div(id='doi-display', style={'marginTop': '10px', 'marginBottom': '10px'})
         ]),
         html.Div([
             html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
             dbc.Button(
-                "Seleccionar Todo",
                 id="select-all-button",
                 color="secondary",
                 outline=True,
@@ -323,21 +349,7 @@ sidebar = html.Div([
                 className="mb-2 w-100",
                 style={'fontSize': '12px'}
             ),
-            html.Div([
-                dbc.Button(
-                    source,
-                    id=f"toggle-source-{id}",
-                    color="primary",
-                    outline=True,
-                    size="sm",
-                    className="me-2 mb-2",
-                    style={
-                        'fontSize': '12px',
-                        'borderColor': color_map[source],
-                        'color': color_map[source],
-                    }
-                ) for id, source in dbase_options.items()
-            ], id='source-buttons-container'),
+            html.Div(id='data-sources-container'),
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
         html.Div(id='navigation-section', style={'display': 'none'})
@@ -564,6 +576,20 @@ header = html.Div([
     'alignItems': 'center'
 })
 
+# Notes modal
+notes_modal = dbc.Modal(
+    [
+        dbc.ModalHeader(dbc.ModalTitle("Notas de la Fuente", style={'fontSize': '16px'})),
+        dbc.ModalBody(id="notes-content"),
+        dbc.ModalFooter(
+            dbc.Button("Cerrar", id="close-notes-modal", className="ml-auto")
+        ),
+    ],
+    id="notes-modal",
+    size="lg",
+    centered=True,  # Position modal in vertical center of screen
+)
+
 # Main layout
 app.layout = dbc.Container([
     dbc.Row([
@@ -574,6 +600,7 @@ app.layout = dbc.Container([
                 'fontSize': '18px',
                 'marginBottom': '10px'
             }),
+            dcc.Store(id='data-sources-store-v2', data=[]),
             dcc.Loading(
                 id="loading-main-content",
                 type="circle",
@@ -592,27 +619,329 @@ app.layout = dbc.Container([
             'height': '100vh',
             'overflow': 'hidden'
         })
-    ], style={'height': '100vh'})
+    ], style={'height': '100vh'}),
+    notes_modal
 ], fluid=True, className="px-0", style={'height': '100vh'})
 
 # Callbacks
+
+# Callback to reset source selections when keyword changes
+@app.callback(
+    Output('data-sources-store-v2', 'data', allow_duplicate=True),
+    Input('keyword-dropdown', 'value'),
+    prevent_initial_call=True
+)
+def reset_sources_on_keyword_change(selected_tool):
+    """Reset source selections when a new keyword is selected"""
+    return []
+
+# Callback to initialize select all button text
+@app.callback(
+    Output('select-all-button', 'children', allow_duplicate=True),
+    Input('keyword-dropdown', 'value'),
+    prevent_initial_call=True
+)
+def initialize_select_all_button_text(selected_tool):
+    """Initialize the select all button text when a tool is selected"""
+    return "Seleccionar Todo"
+
+# Callback to update data sources container
+@app.callback(
+    Output('data-sources-container', 'children'),
+    Input('keyword-dropdown', 'value'),
+    Input('data-sources-store-v2', 'data')
+)
+def update_data_sources_container(selected_tool, selected_sources):
+    if not selected_tool:
+        return html.Div("Seleccione una herramienta para ver las fuentes disponibles")
+
+    if selected_sources is None:
+        selected_sources = []
+
+    sources = DISPLAY_NAMES
+
+    components = []
+
+    # Define colors for each source
+    source_colors = {
+        'Google Trends': '#1f77b4',
+        'Google Books': '#ff7f0e',
+        'IC': '#2ca02c',
+        'Bain Usability': '#d62728',
+        'Bain Satisfaction': '#9467bd',
+        'Crossref': '#8c564b'
+    }
+
+    # Map display names to the correct source names for buttons
+    display_to_source = {
+        'Google Trends': 'Google Trends',
+        'Google Books': 'Google Books',
+        'Bain Usability': 'Bain Usability',
+        'Bain Satisfaction': 'Bain Satisfaction',
+        'Crossref': 'Crossref'
+    }
+
+    for source in sources:
+        # Use display name for button text
+        display_name = source
+        if source in display_to_source:
+            display_name = display_to_source[source]
+
+        # Determine button style based on selection state
+        base_color = source_colors.get(source, '#6c757d')
+        
+        # IMPORTANT: Check if source is in the CURRENT selected_sources list
+        is_selected = source in selected_sources
+
+        if is_selected:
+            # Selected style - brighter/darker
+            button_style = {
+                'backgroundColor': base_color,
+                'borderColor': base_color,
+                'color': 'white',
+                'fontSize': '12px',
+                'minWidth': '120px',
+                'boxShadow': '0 0 0 2px rgba(0,123,255,0.5)',
+                'fontWeight': 'bold'
+            }
+        else:
+            # Unselected style - outline
+            button_style = {
+                'backgroundColor': 'transparent',
+                'borderColor': base_color,
+                'color': base_color,
+                'fontSize': '12px',
+                'minWidth': '120px',
+                'fontWeight': 'normal'
+            }
+
+        # Create button with appropriate style
+        button = dbc.Button(
+            display_name,
+            id={'type': 'data-source-button', 'index': display_name},
+            color="outline-primary",
+            size="sm",
+            className="me-2 mb-2",
+            style=button_style
+        )
+
+        # Info icon beside the button
+        icon = html.I(
+            className="fas fa-info-circle",
+            id={'type': 'info-icon', 'index': source},
+            style={
+                'cursor': 'pointer',
+                'marginLeft': '10px',
+                'color': '#007bff',
+                'fontSize': '16px',
+                'verticalAlign': 'middle'
+            }
+        )
+
+        row = html.Div([button, icon], style={'display': 'flex', 'alignItems': 'center', 'marginBottom': '5px'})
+        components.append(row)
+
+    return components
+
+# Callback to update DOI display
+@app.callback(
+    Output('doi-display', 'children'),
+    Input('keyword-dropdown', 'value')
+)
+def update_doi_display(selected_tool):
+    if not selected_tool:
+        return html.Div()
+
+    # Get the IC report DOI from the IC source (Complementary Report)
+    tool_notes = db_manager.get_tool_notes_and_doi(selected_tool, 'IC')
+    
+    if tool_notes and len(tool_notes) > 0:
+        doi = tool_notes[0].get('doi', '')
+        if doi:
+            return html.Div([
+                html.Strong("DOI del Informe IC: ", style={'fontSize': '12px'}),
+                html.A(doi, href=f"https://doi.org/{doi}", target="_blank",
+                        style={'color': '#007bff', 'fontSize': '12px', 'textDecoration': 'none'})
+            ], style={'padding': '8px', 'backgroundColor': '#f8f9fa', 'borderRadius': '4px', 'border': '1px solid #dee2e6'})
+    
+    return html.Div("No hay DOI disponible para esta herramienta", style={'fontSize': '11px', 'color': '#6c757d', 'fontStyle': 'italic'})
+
+# Callback to update selected sources store
+@app.callback(
+    Output('data-sources-store-v2', 'data'),
+    Input({'type': 'data-source-button', 'index': ALL}, 'n_clicks'),
+    Input({'type': 'data-source-button', 'index': ALL}, 'id'),
+    Input('select-all-button', 'n_clicks'),
+    State('data-sources-store-v2', 'data')
+)
+def update_selected_sources(n_clicks, ids, select_all_clicks, current_selected):
+    if current_selected is None:
+        current_selected = []
+
+    # Find which button was clicked
+    ctx = dash.callback_context
+
+    if ctx.triggered:
+        trigger_id = ctx.triggered[0]['prop_id']
+
+        # IMPORTANT: Ignore triggers from initial component creation
+        if trigger_id.endswith('.n_clicks') and ctx.triggered[0]['value'] is None:
+            return current_selected
+
+        # Check if "Seleccionar Todo" button was clicked
+        if 'select-all-button' in trigger_id:
+            # Get all available sources
+            all_sources = DISPLAY_NAMES
+
+            # If all sources are already selected, deselect all
+            if set(current_selected) == set(all_sources):
+                current_selected = []
+            else:
+                # Select all sources
+                current_selected = all_sources.copy()
+
+        elif 'data-source-button' in trigger_id:
+            # Extract the source name from the triggered button
+            button_id = eval(trigger_id.split('.')[0])  # Convert string back to dict
+            source = button_id['index']
+
+            # Toggle selection
+            if source in current_selected:
+                current_selected.remove(source)
+            else:
+                current_selected.append(source)
+
+    return current_selected
+
+
+# Callback for notes modal
+@app.callback(
+    Output("notes-modal", "is_open"),
+    Output("notes-content", "children"),
+    Input({'type': 'info-icon', 'index': ALL}, 'n_clicks'),
+    Input("close-notes-modal", "n_clicks"),
+    State("notes-modal", "is_open"),
+    State('keyword-dropdown', 'value'),
+    State({'type': 'info-icon', 'index': ALL}, 'id'),
+)
+def toggle_notes_modal(icon_clicks, close_click, is_open, selected_tool, icon_ids):
+    if not selected_tool:
+        return False, ""
+
+    ctx = dash.callback_context
+    if not ctx.triggered:
+        return is_open, ""
+
+    trigger_id = ctx.triggered[0]['prop_id']
+    if 'close-notes-modal' in trigger_id:
+        return False, ""
+    
+    # Only proceed if an info-icon was actually clicked
+    # Check if the trigger_id contains 'info-icon' and it's not from the dropdown
+    if 'info-icon' not in trigger_id or 'keyword-dropdown' in trigger_id:
+        return is_open, ""
+    
+    # Also check if any icon was actually clicked (has click count > 0)
+    if not any(clicks and clicks > 0 for clicks in icon_clicks):
+        return is_open, ""
+
+    # Debug: Print all the information to understand what's happening
+    print(f"Debug: icon_clicks={icon_clicks}")
+    print(f"Debug: icon_ids={icon_ids}")
+    print(f"Debug: trigger_id={trigger_id}")
+
+    # Find which icon was clicked by matching the trigger_id with the specific icon
+    clicked_source = None
+    
+    # Parse the trigger_id to extract the index that was clicked
+    # trigger_id format: {"index":"Google Trends","type":"info-icon"}.n_clicks
+    try:
+        import json
+        # Extract the JSON part from the trigger_id
+        json_part = trigger_id.split('.n_clicks')[0]
+        trigger_data = json.loads(json_part)
+        clicked_index = trigger_data['index']
+        
+        # Find the corresponding icon_id
+        for i, icon_id in enumerate(icon_ids):
+            if icon_id['index'] == clicked_index:
+                clicked_source = icon_id['index']
+                print(f"Debug: Found clicked icon at index {i}: {clicked_source}")
+                break
+    except (json.JSONDecodeError, KeyError, IndexError) as e:
+        print(f"Debug: Error parsing trigger_id: {e}")
+        # Fallback to original logic
+        for i, icon_id in enumerate(icon_ids):
+            if icon_clicks[i] and icon_clicks[i] > 0:
+                clicked_source = icon_id['index']
+                print(f"Debug: Fallback - Found clicked icon at index {i}: {clicked_source}")
+                break
+    
+    if clicked_source:
+        # Map source to the key in database
+        source_map = {
+            'Google Trends': 'Google_Trends',
+            'Google Books': 'Google_Books',
+            'IC': 'IC',
+            'Bain Usability': 'BAIN_Ind_Usabilidad',
+            'Bain Satisfaction': 'BAIN_Ind_Satisfacción',
+            'Crossref': 'Crossref'
+        }
+        mapped_source = source_map.get(clicked_source, clicked_source)
+
+        # Debug print to check mapping
+        print(f"Debug: source='{clicked_source}', mapped_source='{mapped_source}', selected_tool='{selected_tool}'")
+
+        # Get notes from the new database
+        tool_notes = db_manager.get_tool_notes_and_doi(selected_tool, mapped_source)
+        print(f"Debug: tool_notes={tool_notes}")
+        print(f"Debug: Query parameters - tool='{selected_tool}', source='{mapped_source}'")
+        
+        if tool_notes and len(tool_notes) > 0:
+            notes = tool_notes[0].get('notes', 'No hay notas disponibles')
+            links = tool_notes[0].get('links', '')
+            doi = tool_notes[0].get('doi', '')
+            print(f"Debug: Found notes='{notes[:50]}...', links='{links}', doi='{doi}'")
+        else:
+            notes = 'No hay notas disponibles'
+            links = ''
+            doi = ''
+            print(f"Debug: No notes found for {selected_tool} - {mapped_source}")
+            
+            # Let's check what's actually in the database for this tool
+            all_tool_notes = db_manager.get_tool_notes_and_doi(selected_tool, None)
+            print(f"Debug: All notes for {selected_tool}: {all_tool_notes}")
+
+        # Parse notes with clickable links
+        notes_components = parse_text_with_links(notes)
+
+        content = html.Div([
+            html.Div(notes_components, style={'marginBottom': '10px'}),
+            html.Span("Fuente: ", style={'fontSize': '12px'}),
+            html.A(clicked_source, href=links, target="_blank", style={'fontSize': '12px'}) if links else html.Span(clicked_source, style={'fontSize': '12px'}),
+            html.Br() if (links and doi) or (not links and doi) else "",
+            html.A(f"DOI: {doi}", href=f"https://doi.org/{doi}", target="_blank", style={'fontSize': '12px'}) if doi else ""
+        ])
+        return True, content
+
+    return is_open, ""
 
 # Main content update callback
 @app.callback(
     [Output('main-content', 'children'),
      Output('credits-collapse', 'is_open')],
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()],
+    Input('data-sources-store-v2', 'data'),
     Input('keyword-dropdown', 'value')
 )
-def update_main_content(*args):
-    button_states = args[:-1]
-    selected_keyword = args[-1]
+def update_main_content(selected_sources, selected_keyword):
+    if selected_sources is None:
+        selected_sources = []
 
-    # Convert button states to selected sources
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+    # Use centralized mapping function
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     # Auto-collapse credits when both keyword and sources are selected
-    credits_open = not (selected_keyword and selected_sources)
+    credits_open = not (selected_keyword and selected_source_ids)
 
     if not selected_keyword or not selected_sources:
         return html.Div("Por favor, seleccione una Herramienta y al menos una Fuente de Datos."), credits_open
@@ -624,9 +953,22 @@ def update_main_content(*args):
         if cached_data:
             combined_dataset, combined_dataset_fecha_formatted, selected_source_names = cached_data
         else:
-            # Get data from database
-            datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
+            # Map display names to source IDs
+            selected_source_ids = map_display_names_to_source_ids(selected_sources)
+            
+            print(f"DEBUG: Getting data for keyword='{selected_keyword}', sources={selected_sources}")
+            print(f"DEBUG: Converted to source IDs: {selected_source_ids}")
+            
+            datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
+            print(f"DEBUG: Retrieved datasets_norm keys: {list(datasets_norm.keys()) if datasets_norm else 'None'}")
+            print(f"DEBUG: Retrieved sl_sc: {sl_sc}")
+            
+            if not datasets_norm:
+                print(f"DEBUG: No data retrieved for keyword='{selected_keyword}'")
+                return html.Div(f"No hay datos disponibles para la herramienta '{selected_keyword}' con las fuentes seleccionadas."), credits_open
+                
             combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+            print(f"DEBUG: Combined dataset shape: {combined_dataset.shape if not combined_dataset.empty else 'Empty'}")
 
             # Process data
             combined_dataset = combined_dataset.reset_index()
@@ -640,10 +982,10 @@ def update_main_content(*args):
             # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
             # Filter out rows where ALL selected sources are NaN (preserve partial data)
-            data_columns = [dbase_options[src_id] for src_id in selected_sources]
+            data_columns = [dbase_options[src_id] for src_id in selected_source_ids]
             combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
 
-            selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
+            selected_source_names = [dbase_options[src_id] for src_id in selected_source_ids]
 
             # Cache the processed data
             cache_processed_data(selected_keyword, selected_sources,
@@ -659,6 +1001,12 @@ def update_main_content(*args):
         content = []
 
         # 1. Temporal Analysis 2D
+        try:
+            temporal_2d_fig = create_temporal_2d_figure(combined_dataset, selected_source_names)
+        except Exception as e:
+            temporal_2d_fig = go.Figure()
+            temporal_2d_fig.add_annotation(text=f"Error creating temporal 2D graph: {str(e)}", showarrow=False)
+
         content.append(html.Div([
             html.Div([
                 html.H6("1. Análisis Temporal 2D", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
@@ -695,6 +1043,7 @@ def update_main_content(*args):
             ], style={'marginBottom': '15px'}),
             dcc.Graph(
                 id='temporal-2d-graph',
+                figure=temporal_2d_fig,
                 style={'height': '400px'},
                 config={'displaylogo': False, 'responsive': True}
             ),
@@ -702,6 +1051,17 @@ def update_main_content(*args):
         ], id='section-temporal-2d', className='section-anchor'))
 
         # 2. Mean Analysis
+        try:
+            mean_fig = create_mean_analysis_figure(combined_dataset, selected_source_names)
+            print(f"DEBUG: Created mean analysis figure with {len(mean_fig.data) if hasattr(mean_fig, 'data') else 0} traces")
+            print(f"DEBUG: Mean figure data: {mean_fig.data[:2] if hasattr(mean_fig, 'data') and len(mean_fig.data) > 0 else 'No data'}")
+        except Exception as e:
+            print(f"ERROR: Failed to create mean analysis figure: {e}")
+            import traceback
+            traceback.print_exc()
+            mean_fig = go.Figure()
+            mean_fig.add_annotation(text=f"Error creating mean analysis graph: {str(e)}", showarrow=False)
+
         content.append(html.Div([
             html.Div([
                 html.H6("2. Análisis de Medias", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
@@ -715,7 +1075,7 @@ def update_main_content(*args):
             }),
             dcc.Graph(
                 id='mean-analysis-graph',
-                figure=create_mean_analysis_figure(combined_dataset, selected_source_names),
+                figure=mean_fig,
                 style={'height': '600px', 'marginBottom': '30px', 'minHeight': '600px'},
                 config={'displaylogo': False, 'responsive': True}
             )
@@ -792,8 +1152,9 @@ def update_main_content(*args):
                 dcc.Dropdown(
                     id='seasonal-source-select',
                     options=[{'label': src, 'value': src} for src in selected_source_names],
-                    value=selected_source_names[0] if selected_source_names else None,  # Auto-select first source
+                    value=None,
                     placeholder="Seleccione fuente para cargar análisis",
+                    clearable=True,
                     style={'width': '100%', 'marginBottom': '10px'}
                 ),
                 dcc.Loading(
@@ -826,8 +1187,9 @@ def update_main_content(*args):
                 dcc.Dropdown(
                     id='fourier-source-select',
                     options=[{'label': src, 'value': src} for src in selected_source_names],
-                    value=selected_source_names[0] if selected_source_names else None,  # Auto-select first source
+                    value=None,
                     placeholder="Seleccione fuente para cargar análisis",
+                    clearable=True,
                     style={'width': '100%', 'marginBottom': '10px'}
                 ),
                 dcc.Loading(
@@ -1488,23 +1850,28 @@ def create_correlation_heatmap(data, sources):
 @app.callback(
     [Output('temporal-2d-graph', 'figure'),
      Output('temporal-2d-date-range', 'value')],
-    [Input('temporal-2d-date-range', 'value'),
-     Input('temporal-2d-all', 'n_clicks'),
+    [Input('temporal-2d-all', 'n_clicks'),
      Input('temporal-2d-20y', 'n_clicks'),
      Input('temporal-2d-15y', 'n_clicks'),
      Input('temporal-2d-10y', 'n_clicks'),
      Input('temporal-2d-5y', 'n_clicks'),
-     Input('keyword-dropdown', 'value')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+     Input('keyword-dropdown', 'value'),
+     Input('data-sources-store-v2', 'data')],
+    [State('temporal-2d-date-range', 'value')],
+    prevent_initial_call=True
 )
-def update_temporal_2d_analysis(slider_values, all_clicks, y20_clicks, y15_clicks, y10_clicks, y5_clicks, selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, y5_clicks, selected_keyword, selected_sources, slider_values):
+    if selected_sources is None:
+        selected_sources = []
+
+    # Map display names to source IDs
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if not selected_keyword or not selected_sources:
-        return {}
+        return go.Figure(), slider_values
 
     try:
-        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1560,24 +1927,27 @@ def update_temporal_2d_analysis(slider_values, all_clicks, y20_clicks, y15_click
 
         return create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date), slider_value
     except Exception as e:
-        return {}
+        return go.Figure(), slider_values
 
 # Callback to update the slider properties when data changes (only min, max, marks)
 @app.callback(
     Output('temporal-2d-date-range', 'min'),
     Output('temporal-2d-date-range', 'max'),
     Output('temporal-2d-date-range', 'marks'),
-    [Input('keyword-dropdown', 'value')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+    Input('keyword-dropdown', 'value'),
+    Input('data-sources-store-v2', 'data')
 )
-def update_temporal_slider_properties(selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+def update_temporal_slider_properties(selected_keyword, selected_sources):
+    if selected_sources is None:
+        selected_sources = []
+
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if not selected_keyword or not selected_sources:
         return 0, 100, {}
 
     try:
-        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1602,8 +1972,49 @@ def update_temporal_slider_properties(selected_keyword, *button_states):
         return 0, len(combined_dataset) - 1, marks
     except Exception as e:
         return 0, 100, {}
-
-# Additional callbacks for specific analyses
+    
+    # Callback for slider-only updates (when user manually moves slider)
+    @app.callback(
+        Output('temporal-2d-graph', 'figure'),
+        [Input('temporal-2d-date-range', 'value'),
+         Input('keyword-dropdown', 'value'),
+         Input('data-sources-store-v2', 'data')],
+        prevent_initial_call=True
+    )
+    def update_temporal_2d_from_slider(slider_values, selected_keyword, selected_sources):
+        if selected_sources is None:
+            selected_sources = []
+    
+        selected_source_ids = map_display_names_to_source_ids(selected_sources)
+    
+        if not selected_keyword or not selected_sources or slider_values is None:
+            return go.Figure()
+    
+        try:
+            datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
+            combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+    
+            combined_dataset = combined_dataset.reset_index()
+            date_column = combined_dataset.columns[0]
+            combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
+            combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
+    
+            # Filter out rows where ALL selected sources are NaN (preserve partial data)
+            data_columns = [dbase_options[src_id] for src_id in selected_source_ids]
+            combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
+    
+            selected_source_names = [dbase_options[src_id] for src_id in selected_source_ids]
+    
+            # Convert slider indices to dates
+            start_idx, end_idx = slider_values
+            start_date = combined_dataset['Fecha'].iloc[start_idx].date()
+            end_date = combined_dataset['Fecha'].iloc[end_idx].date()
+    
+            return create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date)
+        except Exception as e:
+            return go.Figure()
+    
+    # Additional callbacks for specific analyses
 def aggregate_data_for_3d(data, frequency, source_name):
     """Aggregate data based on frequency and source type"""
     if frequency == 'monthly':
@@ -1629,11 +2040,14 @@ def aggregate_data_for_3d(data, frequency, source_name):
      Input('z-axis-3d', 'value'),
      Input('temporal-3d-monthly', 'n_clicks'),
      Input('temporal-3d-annual', 'n_clicks'),
-     Input('keyword-dropdown', 'value')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+     Input('keyword-dropdown', 'value'),
+     Input('data-sources-store-v2', 'data')]
 )
-def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keyword, selected_sources):
+    if selected_sources is None:
+        selected_sources = []
+
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if not all([y_axis, z_axis, selected_keyword]) or len(selected_sources) < 2:
         return {}
@@ -1650,7 +2064,7 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
             frequency = 'monthly'
 
     try:
-        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1704,17 +2118,20 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
 @app.callback(
     Output('seasonal-analysis-graph', 'figure'),
     [Input('seasonal-source-select', 'value'),
-     Input('keyword-dropdown', 'value')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+     Input('keyword-dropdown', 'value'),
+     Input('data-sources-store-v2', 'data')]
 )
-def update_seasonal_analysis(selected_source, selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+def update_seasonal_analysis(selected_source, selected_keyword, selected_sources):
+    if selected_sources is None:
+        selected_sources = []
+
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if not all([selected_source, selected_keyword]) or not selected_sources:
         return {}
 
     try:
-        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -1752,11 +2169,14 @@ def update_seasonal_analysis(selected_source, selected_keyword, *button_states):
     [Output('regression-graph', 'figure'),
      Output('regression-equations', 'children')],
     [Input('correlation-heatmap', 'clickData'),
-     Input('keyword-dropdown', 'value')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+     Input('keyword-dropdown', 'value'),
+     Input('data-sources-store-v2', 'data')]
 )
-def update_regression_analysis(click_data, selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+def update_regression_analysis(click_data, selected_keyword, selected_sources):
+    if selected_sources is None:
+        selected_sources = []
+
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if not selected_keyword or len(selected_sources) < 2 or not click_data:
         # Return empty figure and empty equations
@@ -1770,7 +2190,7 @@ def update_regression_analysis(click_data, selected_keyword, *button_states):
         return fig, ""
 
     try:
-        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
         combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
 
         combined_dataset = combined_dataset.reset_index()
@@ -2018,63 +2438,6 @@ def toggle_table(n_clicks, is_open):
         button_text = "Ocultar Tabla" if new_state else "Mostrar Tabla"
         return new_state, button_text
     return is_open, "Ocultar Tabla"
-# Callback to toggle individual source buttons
-for source_id in dbase_options.keys():
-    @app.callback(
-        Output(f'toggle-source-{source_id}', 'outline'),
-        Output(f'toggle-source-{source_id}', 'style'),
-        [Input(f'toggle-source-{source_id}', 'n_clicks')],
-        [State(f'toggle-source-{source_id}', 'outline')]
-    )
-    def toggle_source_button(n_clicks, current_outline, source_id=source_id):
-        if n_clicks is None:
-            return True, {
-                'fontSize': '12px',
-                'borderColor': color_map[dbase_options[source_id]],
-                'color': color_map[dbase_options[source_id]],
-            }
-        
-        new_outline = not current_outline
-        if new_outline:
-            # Outlined (not selected)
-            return True, {
-                'fontSize': '12px',
-                'borderColor': color_map[dbase_options[source_id]],
-                'color': color_map[dbase_options[source_id]],
-            }
-        else:
-            # Filled (selected)
-            return False, {
-                'fontSize': '12px',
-                'borderColor': color_map[dbase_options[source_id]],
-                'backgroundColor': color_map[dbase_options[source_id]],
-                'color': 'white',
-            }
-
-# Callback for "Select All" button
-@app.callback(
-    [Output(f'toggle-source-{id}', 'outline', allow_duplicate=True) for id in dbase_options.keys()] +
-    [Output(f'toggle-source-{id}', 'style', allow_duplicate=True) for id in dbase_options.keys()],
-    [Input('select-all-button', 'n_clicks')],
-    prevent_initial_call=True
-)
-def select_all_sources(n_clicks):
-    if n_clicks is None:
-        return [dash.no_update] * (len(dbase_options) * 2)
-
-    # Set all buttons to selected (outline=False)
-    outlines = [False] * len(dbase_options)
-    styles = [
-        {
-            'fontSize': '12px',
-            'borderColor': color_map[dbase_options[id]],
-            'backgroundColor': color_map[dbase_options[id]],
-            'color': 'white',
-        }
-        for id in dbase_options.keys()
-    ]
-
-    return outlines + styles
 
 # Callback for credits toggle - allows manual override
 @app.callback(
@@ -2095,11 +2458,14 @@ def toggle_credits_manually(n_clicks, is_open):
 @app.callback(
     Output('navigation-section', 'children'),
     Output('navigation-section', 'style'),
-    [Input('keyword-dropdown', 'value')] +
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+    Input('keyword-dropdown', 'value'),
+    Input('data-sources-store-v2', 'data')
 )
-def update_navigation_visibility(selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+def update_navigation_visibility(selected_keyword, selected_sources):
+    if selected_sources is None:
+        selected_sources = []
+
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if selected_keyword and selected_sources:
         # Define navigation buttons with their requirements
@@ -2169,10 +2535,13 @@ def update_navigation_visibility(selected_keyword, *button_states):
     Output('fourier-analysis-graph', 'figure'),
     Input('fourier-source-select', 'value'),
     Input('keyword-dropdown', 'value'),
-    [Input(f"toggle-source-{id}", "outline") for id in dbase_options.keys()]
+    Input('data-sources-store-v2', 'data')
 )
-def update_fourier_analysis(selected_source, selected_keyword, *button_states):
-    selected_sources = [id for id, outline in zip(dbase_options.keys(), button_states) if not outline]
+def update_fourier_analysis(selected_source, selected_keyword, selected_sources):
+    if selected_sources is None:
+        selected_sources = []
+
+    selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if not selected_keyword or not selected_sources:
         return go.Figure()
@@ -2206,7 +2575,7 @@ def update_fourier_analysis(selected_source, selected_keyword, *button_states):
 
     try:
         # Get data for the selected source
-        datasets_norm, _ = db_manager.get_data_for_keyword(selected_keyword, selected_sources)
+        datasets_norm, _ = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
 
         if source_key not in datasets_norm:
             return go.Figure()
