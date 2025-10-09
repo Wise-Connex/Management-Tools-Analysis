@@ -297,14 +297,33 @@ app.index_string = '''
 
 # Database options are now imported from fix_source_mapping module
 
-# Define color palette
+# Define color palette for consistent use across buttons and graphs
 colors = [
     '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
     '#8c564b', '#e377c2', '#7f7f7f'
 ]
 
+# Define consistent colors for each source by display name (used in buttons)
+source_colors_by_display = {
+    'Google Trends': '#1f77b4',
+    'Google Books': '#ff7f0e',
+    'Bain Usability': '#d62728',
+    'Bain Satisfaction': '#9467bd',
+    'Crossref': '#2ca02c'  # Changed from brown to green
+}
+
+# Define consistent colors for each source by database name (used in graphs)
+source_colors_by_db = {
+    "Google Trends": '#1f77b4',
+    "Google Books Ngrams": '#ff7f0e',
+    "Bain - Usabilidad": '#d62728',
+    "Bain - Satisfacción": '#9467bd',
+    "Crossref.org": '#2ca02c'  # Changed from brown to green
+}
+
+# Create color_map using the database name colors
 color_map = {
-    dbase_options[key]: colors[i % len(colors)]
+    dbase_options[key]: source_colors_by_db.get(dbase_options[key], colors[i % len(colors)])
     for i, key in enumerate(dbase_options.keys())
 }
 
@@ -662,16 +681,6 @@ def update_data_sources_container(selected_tool, selected_sources):
 
     components = []
 
-    # Define colors for each source
-    source_colors = {
-        'Google Trends': '#1f77b4',
-        'Google Books': '#ff7f0e',
-        'IC': '#2ca02c',
-        'Bain Usability': '#d62728',
-        'Bain Satisfaction': '#9467bd',
-        'Crossref': '#8c564b'
-    }
-
     # Map display names to the correct source names for buttons
     display_to_source = {
         'Google Trends': 'Google Trends',
@@ -688,7 +697,7 @@ def update_data_sources_container(selected_tool, selected_sources):
             display_name = display_to_source[source]
 
         # Determine button style based on selection state
-        base_color = source_colors.get(source, '#6c757d')
+        base_color = source_colors_by_display.get(source, '#6c757d')
         
         # IMPORTANT: Check if source is in the CURRENT selected_sources list
         is_selected = source in selected_sources
