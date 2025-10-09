@@ -207,6 +207,87 @@ app = dash.Dash(
     title='Management Tools Analysis Dashboard - ' + str(time.time()),
     update_title=None  # Suppress title updates to reduce console noise
 )
+# ============================================================================
+# Production: Expose Flask server and add health check endpoint
+# ============================================================================
+
+# Get the underlying Flask server for production deployment
+server = app.server
+
+# Add health check endpoint for Dokploy monitoring
+@server.route('/health')
+def health_check():
+    """
+    Health check endpoint for container orchestration and monitoring.
+    Returns JSON with service status, timestamp, and version info.
+    Used by Docker HEALTHCHECK and Dokploy platform.
+    """
+    from datetime import datetime
+    import json
+    
+    try:
+        # Check if database manager is available
+        db_status = 'connected' if db_manager else 'unavailable'
+        
+        # Try to get database stats to verify it's actually working
+        if db_manager:
+            try:
+                stats = db_manager.get_table_stats()
+                db_status = 'connected' if stats else 'error'
+            except Exception as db_error:
+                print(f"Health check - database error: {db_error}")
+                db_status = 'error'
+        
+        health_status = {
+            'status': 'healthy',
+            'timestamp': datetime.utcnow().isoformat() + 'Z',
+            'version': os.getenv('APP_VERSION', '1.0.0'),
+            'service': 'management-tools-dashboard',
+            'database': db_status,
+            'cache_size': len(_processed_data_cache),
+            'environment': os.getenv('FLASK_ENV', 'production')
+        }
+        
+        return json.dumps(health_status), 200, {'Content-Type': 'application/json'}
+    
+    except Exception as e:
+        # If health check itself fails, return error status
+        error_status = {
+            'status': 'unhealthy',
+            'timestamp': datetime.utcnow().isoformat() + 'Z',
+            'error': str(e)
+        }
+        return json.dumps(error_status), 500, {'Content-Type': 'application/json'}
+
+# Add basic security headers for production
+@server.after_request
+def add_security_headers(response):
+    """
+    Add security headers to all responses.
+    Configured for Dash/Plotly compatibility.
+    """
+    # CORS - allow all origins for public research dashboard
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    
+    # Content Security Policy - allow Dash/Plotly CDNs
+    response.headers['Content-Security-Policy'] = (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.plot.ly https://cdnjs.cloudflare.com; "
+        "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
+        "img-src 'self' data: https:; "
+        "font-src 'self' data: https://cdnjs.cloudflare.com; "
+        "connect-src 'self';"
+    )
+    
+    # Basic security headers
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'  # Allow embedding if needed
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    
+    return response
+
 
 # Suppress React warnings in development mode
 try:
@@ -2840,8 +2921,9 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources)
 # to avoid Dash callback reference errors. The full date range is used by default.
 
 if __name__ == '__main__':
+    # Production-ready configuration with environment variables
     app.run(
-        debug=True,
+        debug=os.getenv('FLASK_ENV', 'production') == 'development',
         host='0.0.0.0',
-        port=8050
+        port=int(os.getenv('PORT', 8050))
     )
