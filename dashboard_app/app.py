@@ -1848,19 +1848,17 @@ def create_correlation_heatmap(data, sources):
 
 # Callback for Temporal Analysis 2D with date range filtering
 @app.callback(
-    [Output('temporal-2d-graph', 'figure'),
-     Output('temporal-2d-date-range', 'value')],
+    Output('temporal-2d-graph', 'figure'),
     [Input('temporal-2d-all', 'n_clicks'),
      Input('temporal-2d-20y', 'n_clicks'),
      Input('temporal-2d-15y', 'n_clicks'),
      Input('temporal-2d-10y', 'n_clicks'),
      Input('temporal-2d-5y', 'n_clicks'),
+     Input('temporal-2d-date-range', 'value'),
      Input('keyword-dropdown', 'value'),
-     Input('data-sources-store-v2', 'data')],
-    [State('temporal-2d-date-range', 'value')],
-    prevent_initial_call=True
+     Input('data-sources-store-v2', 'data')]
 )
-def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, y5_clicks, selected_keyword, selected_sources, slider_values):
+def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, y5_clicks, slider_values, selected_keyword, selected_sources):
     if selected_sources is None:
         selected_sources = []
 
@@ -1868,7 +1866,7 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
     selected_source_ids = map_display_names_to_source_ids(selected_sources)
 
     if not selected_keyword or not selected_sources:
-        return go.Figure(), slider_values
+        return go.Figure()
 
     try:
         datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
@@ -1879,6 +1877,9 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
 
+        # Sort by date to ensure chronological order for slider indices
+        combined_dataset = combined_dataset.sort_values('Fecha').reset_index(drop=True)
+
         # No longer need Bain/Crossref alignment since we preserve individual date ranges
 
         # Filter out rows where ALL selected sources are NaN (preserve partial data)
@@ -1887,53 +1888,48 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
 
         selected_source_names = [dbase_options[src_id] for src_id in selected_sources]
 
-        # Determine date range based on button clicks or slider values
-        ctx = dash.callback_context
-        start_date = None
-        end_date = None
-        slider_value = slider_values  # Default to current slider value
+        # Default to full date range
+        start_date = combined_dataset['Fecha'].min().date()
+        end_date = combined_dataset['Fecha'].max().date()
 
-        if ctx.triggered:
+        # Check if any button was clicked or slider moved
+        ctx = dash.callback_context
+        if ctx.triggered and len(ctx.triggered) > 0:
             trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
             if trigger_id in ['temporal-2d-all', 'temporal-2d-20y', 'temporal-2d-15y', 'temporal-2d-10y', 'temporal-2d-5y']:
-                # Button was clicked - calculate new date range and slider position
+                # Button was clicked - calculate new date range
                 if trigger_id == 'temporal-2d-all':
                     start_date = combined_dataset['Fecha'].min().date()
                     end_date = combined_dataset['Fecha'].max().date()
-                    slider_value = [0, len(combined_dataset) - 1]
                 else:
                     # Calculate years back from end
                     years_back = int(trigger_id.split('-')[-1].replace('y', ''))
                     end_date = combined_dataset['Fecha'].max().date()
                     start_date = (pd.to_datetime(end_date) - pd.DateOffset(years=years_back)).date()
 
-                    # Find the closest indices for the date range
-                    start_idx = (combined_dataset['Fecha'] - pd.to_datetime(start_date)).abs().idxmin()
-                    end_idx = len(combined_dataset) - 1
-                    slider_value = [start_idx, end_idx]
             elif trigger_id == 'temporal-2d-date-range':
                 # Slider was moved - convert indices to dates
-                start_idx, end_idx = slider_values
-                start_date = combined_dataset['Fecha'].iloc[start_idx].date()
-                end_date = combined_dataset['Fecha'].iloc[end_idx].date()
-                slider_value = slider_values  # Keep the slider value as is
+                if slider_values is not None and len(slider_values) == 2:
+                    start_idx, end_idx = slider_values
+                    if start_idx < len(combined_dataset) and end_idx < len(combined_dataset):
+                        start_date = combined_dataset['Fecha'].iloc[start_idx].date()
+                        end_date = combined_dataset['Fecha'].iloc[end_idx].date()
 
-        # If no trigger or initial load, default to full date range
-        if start_date is None and end_date is None:
-            start_date = combined_dataset['Fecha'].min().date()
-            end_date = combined_dataset['Fecha'].max().date()
-            slider_value = [0, len(combined_dataset) - 1]
-
-        return create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date), slider_value
+        figure = create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date)
+        return figure
     except Exception as e:
-        return go.Figure(), slider_values
+        print(f"Error in temporal 2D analysis: {e}")
+        import traceback
+        traceback.print_exc()
+        return go.Figure()
 
 # Callback to update the slider properties when data changes (only min, max, marks)
 @app.callback(
     Output('temporal-2d-date-range', 'min'),
     Output('temporal-2d-date-range', 'max'),
     Output('temporal-2d-date-range', 'marks'),
+    Output('temporal-2d-date-range', 'value'),
     Input('keyword-dropdown', 'value'),
     Input('data-sources-store-v2', 'data')
 )
@@ -1969,51 +1965,10 @@ def update_temporal_slider_properties(selected_keyword, selected_sources):
             for idx in mark_indices
         }
 
-        return 0, len(combined_dataset) - 1, marks
+        return 0, len(combined_dataset) - 1, marks, [0, len(combined_dataset) - 1]
     except Exception as e:
-        return 0, 100, {}
-    
-    # Callback for slider-only updates (when user manually moves slider)
-    @app.callback(
-        Output('temporal-2d-graph', 'figure'),
-        [Input('temporal-2d-date-range', 'value'),
-         Input('keyword-dropdown', 'value'),
-         Input('data-sources-store-v2', 'data')],
-        prevent_initial_call=True
-    )
-    def update_temporal_2d_from_slider(slider_values, selected_keyword, selected_sources):
-        if selected_sources is None:
-            selected_sources = []
-    
-        selected_source_ids = map_display_names_to_source_ids(selected_sources)
-    
-        if not selected_keyword or not selected_sources or slider_values is None:
-            return go.Figure()
-    
-        try:
-            datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
-            combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
-    
-            combined_dataset = combined_dataset.reset_index()
-            date_column = combined_dataset.columns[0]
-            combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
-            combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
-    
-            # Filter out rows where ALL selected sources are NaN (preserve partial data)
-            data_columns = [dbase_options[src_id] for src_id in selected_source_ids]
-            combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
-    
-            selected_source_names = [dbase_options[src_id] for src_id in selected_source_ids]
-    
-            # Convert slider indices to dates
-            start_idx, end_idx = slider_values
-            start_date = combined_dataset['Fecha'].iloc[start_idx].date()
-            end_date = combined_dataset['Fecha'].iloc[end_idx].date()
-    
-            return create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date)
-        except Exception as e:
-            return go.Figure()
-    
+        return 0, 100, {}, [0, 100]
+
     # Additional callbacks for specific analyses
 def aggregate_data_for_3d(data, frequency, source_name):
     """Aggregate data based on frequency and source type"""
