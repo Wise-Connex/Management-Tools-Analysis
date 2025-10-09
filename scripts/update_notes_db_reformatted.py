@@ -10,8 +10,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 def update_notes_database_with_reformatted():
     """Update the database with reformatted notes from the CSV file"""
 
-    # Read the original CSV file
-    csv_path = 'pub-assets/notes_and_doi_spanish.csv'
+    # Read the reformatted CSV file
+    csv_path = 'pub-assets/notes_and_doi_reformatted.csv'
     df = pd.read_csv(csv_path)
 
     print(f"Loaded {len(df)} records from {csv_path}")

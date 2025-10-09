@@ -4,64 +4,42 @@ import re
 def reformat_notes(notes_text, tool_name, doi, source, links):
     """Reformat the notes text according to the specified format."""
 
-    # Extract sections from the notes text using regex
-    sections = {
-        'Descriptores logicos': '',
-        'Parametros de Busqueda': '',
-        'Indice Relativo': '',
-        'Metodologia': '',
-        'Perfil de Usuarios': '',
-        'Limitaciones': ''
-    }
-
-    # Use regex to find each section
-    import re
-
-    for section in sections.keys():
-        # Look for the section header followed by content until the next section or end
-        pattern = rf'{re.escape(section)}:\s*(.*?)(?=\. \w+:|Fuente:|$)'
-        match = re.search(pattern, notes_text, re.DOTALL)
-        if match:
-            content = match.group(1).strip()
-            # Clean up the content
-            content = re.sub(r'\s+', ' ', content)  # Replace multiple whitespace with single space
-            sections[section] = content
-
-    # Build the reformatted text
-    reformatted = f"{tool_name.upper()}\n\n"
-
-    # Map to display names with accents
-    display_names = {
-        'Descriptores logicos': 'Descriptores lógicos',
-        'Parametros de Busqueda': 'Parámetros de búsqueda',
-        'Indice Relativo': 'Índice Relativo',
-        'Metodologia': 'Metodología',
-        'Perfil de Usuarios': 'Perfil de Usuarios',
-        'Limitaciones': 'Limitaciones'
-    }
-
-    for section, content in sections.items():
-        if content:  # Only include sections that have content
-            display_name = display_names.get(section, section)
-            reformatted += f"**{display_name}:** {content}\n\n"
-
-    # Add Fuente y DOI at the end
-    if source.startswith('BAIN'):
-        # For BAIN sources, extract the "Fuente:" section from the notes
-        fuente_match = re.search(r'Fuente:\s*(.*?)(?:\s*$)', notes_text, re.DOTALL)
-        if fuente_match:
-            fuente_content = fuente_match.group(1).strip()
-            # Add BAIN type prefix
-            bain_type = "Satisfaccion" if "Satisfacción" in source else "Usabilidad"
-            reformatted += f"Fuente: Bain {bain_type}. {fuente_content} {doi}"
-        else:
-            reformatted += f"Fuente y DOI: {doi}"
+    # Extract the tool name from the beginning if present
+    if ':' in notes_text and not notes_text.startswith('http'):
+        tool_part, content = notes_text.split(':', 1)
+        content = content.strip()
     else:
-        # For other sources, use the Links column
-        if links and links.strip():
-            reformatted += f"Fuente y DOI: {links.strip()} {doi}"
-        else:
-            reformatted += f"Fuente y DOI: {doi}"
+        content = notes_text
+
+    # Format source name properly (replace underscores with spaces)
+    source_display = source.replace('_', ' ')
+    
+    # Build the reformatted text with bold larger title (using ** for bold, +3px handled in CSS)
+    reformatted = f"**{tool_name.upper()} - {source_display}**\n\n"
+
+    # Find all sections using regex with specific headers
+    section_pattern = r'(Descriptores lógicos|Parámetros de búsqueda|Índice Relativo|Índice|Metodología|Perfil de Usuarios|Limitaciones):\s*(.*?)(?=(?:Descriptores lógicos|Parámetros de búsqueda|Índice Relativo|Índice|Metodología|Perfil de Usuarios|Limitaciones|Fuente):|$)'
+    sections = re.findall(section_pattern, content, re.DOTALL)
+
+    for section_name, section_content in sections:
+        section_content = section_content.strip()
+        # Clean up the content
+        section_content = re.sub(r'\s+', ' ', section_content)
+        if section_content:
+            reformatted += f"**{section_name}:** {section_content}\n\n"
+
+    # Handle Fuente section - extract but don't add to body
+    # The fuente will be displayed separately in the modal footer
+    # For BAIN sources, keep the citation references
+    fuente_match = re.search(r'Fuente:\s*(.*)', content, re.DOTALL)
+    if fuente_match:
+        fuente_content = fuente_match.group(1).strip()
+        # Check if this is a BAIN source (contains Rigby citations)
+        if 'Rigby' in fuente_content:
+            # BAIN source - add the citation as "Fuente:" in the body
+            reformatted += f"**Fuente:** {fuente_content}"
+        # For non-BAIN sources, don't add anything to the body
+        # The URL and DOI will be shown in the modal footer by app.py
 
     return reformatted
 
