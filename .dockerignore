@@ -198,9 +198,9 @@ reformat_*.py
 notas.py
 
 # ============================================================================
-# Configuration (Development)
+# Configuration (Development - but keep for production)
 # ============================================================================
-config/
+# config/  # Commented out - needed for production deployment
 .cursorrules
 .kilocode/
 

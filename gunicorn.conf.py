@@ -21,9 +21,11 @@ backlog = 2048
 # ============================================================================
 
 # Number of worker processes
-# Formula: (2 x CPU cores) + 1
+# Formula: (2 x CPU cores) + 1, but cap at 8 for container environments
 # Can be overridden with MAX_WORKERS environment variable
-workers = int(os.getenv('MAX_WORKERS', multiprocessing.cpu_count() * 2 + 1))
+cpu_count = multiprocessing.cpu_count()
+default_workers = min(cpu_count * 2 + 1, 8)  # Cap at 8 workers
+workers = int(os.getenv('MAX_WORKERS', default_workers))
 
 # Worker class - use 'sync' for Dash (gevent can cause issues with callbacks)
 # For CPU-intensive Dash apps, sync workers are more reliable

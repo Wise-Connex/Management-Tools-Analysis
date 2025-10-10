@@ -44,62 +44,28 @@ db_manager = get_database_manager()
 # Notes and DOI data is now loaded from the database
 
 def parse_text_with_links(text):
-    """Parse text and return formatted HTML components with markdown support"""
+    """Parse text and return formatted components"""
     if not text:
-        return [html.P("No hay notas disponibles", style={'fontSize': '12px'})]
+        return [html.Div("No hay notas disponibles", style={'fontSize': '12px'})]
 
-    # For BAIN sources, preserve the structured "Fuente: Bain..." sections
-    if "Fuente: Rigby" in text or "**Fuente:**" in text:
-        # BAIN source - keep the structured "Fuente:" section intact
-        cleaned_text = text
-    else:
-        # Non-BAIN source - remove URL-based fuente patterns but preserve structured content
-        import re
+    # Remove source link information that starts with "Fuente:" or similar patterns
+    # Look for patterns like "Fuente: http" or "Source: http" and remove everything from there
+    import re
 
-        # Pattern to match "Fuente y DOI:" followed by URL and DOI
-        link_pattern = r'\s*(?:Fuente y DOI|Fuente|Source)\s*:\s*https?://[^\s]+.*?(?:10\.\d{4,}/[^\s]+)?.*$'
+    # Pattern to match "Fuente:" or "Source:" followed by URL-like content
+    link_pattern = r'\s*(?:Fuente|Source)\s*:\s*https?://[^\s]+.*$'
 
-        # Remove the link information from the end of the text
-        cleaned_text = re.sub(link_pattern, '', text, flags=re.IGNORECASE | re.MULTILINE)
+    # Remove the link information from the end of the text
+    cleaned_text = re.sub(link_pattern, '', text, flags=re.IGNORECASE | re.MULTILINE)
 
-        # Also remove any remaining "Fuente:" or "Source:" at the end if not followed by URL
-        cleaned_text = re.sub(r'\s*(?:Fuente y DOI|Fuente|Source)\s*:\s*$', '', cleaned_text, flags=re.IGNORECASE)
+    # Also remove any remaining "Fuente:" or "Source:" at the end if not followed by URL
+    cleaned_text = re.sub(r'\s*(?:Fuente|Source)\s*:\s*$', '', cleaned_text, flags=re.IGNORECASE)
 
     # Clean up any trailing whitespace or punctuation
     cleaned_text = cleaned_text.rstrip('.,;:- \t\n')
 
-    # Parse markdown formatting and create HTML components
-    components = []
-    lines = cleaned_text.split('\n')
-    is_first_line = True
-
-    for line in lines:
-        line = line.strip()
-        if not line:
-            continue
-
-        # Handle bold text (**text**)
-        if '**' in line:
-            # Split by ** and create components
-            parts = line.split('**')
-            line_components = []
-
-            for i, part in enumerate(parts):
-                if i % 2 == 1:  # Odd indices are bold text
-                    line_components.append(html.Strong(part))
-                else:
-                    line_components.append(part)
-
-            # First line (title) should be 3px bigger (15px instead of 12px)
-            if is_first_line:
-                components.append(html.P(line_components, style={'fontSize': '15px', 'margin': '4px 0', 'fontWeight': 'bold'}))
-                is_first_line = False
-            else:
-                components.append(html.P(line_components, style={'fontSize': '12px', 'margin': '4px 0'}))
-        else:
-            components.append(html.P(line, style={'fontSize': '12px', 'margin': '4px 0'}))
-
-    return components
+    # Use dcc.Markdown to render the markdown formatting
+    return [dcc.Markdown(cleaned_text, style={'fontSize': '12px'})]
 
 # Global cache for processed datasets
 _processed_data_cache = {}
@@ -207,87 +173,6 @@ app = dash.Dash(
     title='Management Tools Analysis Dashboard - ' + str(time.time()),
     update_title=None  # Suppress title updates to reduce console noise
 )
-# ============================================================================
-# Production: Expose Flask server and add health check endpoint
-# ============================================================================
-
-# Get the underlying Flask server for production deployment
-server = app.server
-
-# Add health check endpoint for Dokploy monitoring
-@server.route('/health')
-def health_check():
-    """
-    Health check endpoint for container orchestration and monitoring.
-    Returns JSON with service status, timestamp, and version info.
-    Used by Docker HEALTHCHECK and Dokploy platform.
-    """
-    from datetime import datetime
-    import json
-    
-    try:
-        # Check if database manager is available
-        db_status = 'connected' if db_manager else 'unavailable'
-        
-        # Try to get database stats to verify it's actually working
-        if db_manager:
-            try:
-                stats = db_manager.get_table_stats()
-                db_status = 'connected' if stats else 'error'
-            except Exception as db_error:
-                print(f"Health check - database error: {db_error}")
-                db_status = 'error'
-        
-        health_status = {
-            'status': 'healthy',
-            'timestamp': datetime.utcnow().isoformat() + 'Z',
-            'version': os.getenv('APP_VERSION', '1.0.0'),
-            'service': 'management-tools-dashboard',
-            'database': db_status,
-            'cache_size': len(_processed_data_cache),
-            'environment': os.getenv('FLASK_ENV', 'production')
-        }
-        
-        return json.dumps(health_status), 200, {'Content-Type': 'application/json'}
-    
-    except Exception as e:
-        # If health check itself fails, return error status
-        error_status = {
-            'status': 'unhealthy',
-            'timestamp': datetime.utcnow().isoformat() + 'Z',
-            'error': str(e)
-        }
-        return json.dumps(error_status), 500, {'Content-Type': 'application/json'}
-
-# Add basic security headers for production
-@server.after_request
-def add_security_headers(response):
-    """
-    Add security headers to all responses.
-    Configured for Dash/Plotly compatibility.
-    """
-    # CORS - allow all origins for public research dashboard
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
-    
-    # Content Security Policy - allow Dash/Plotly CDNs
-    response.headers['Content-Security-Policy'] = (
-        "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.plot.ly https://cdnjs.cloudflare.com; "
-        "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
-        "img-src 'self' data: https:; "
-        "font-src 'self' data: https://cdnjs.cloudflare.com; "
-        "connect-src 'self';"
-    )
-    
-    # Basic security headers
-    response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['X-Frame-Options'] = 'SAMEORIGIN'  # Allow embedding if needed
-    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
-    
-    return response
-
 
 # Suppress React warnings in development mode
 try:
@@ -300,6 +185,43 @@ try:
 except KeyError:
     # Fallback if DEBUG key doesn't exist
     pass
+
+# ============================================================================
+# Production: Expose Flask server and add health check endpoint
+# ============================================================================
+
+# Get the underlying Flask server for production deployment
+server = app.server
+
+# Add health check endpoint for Dokploy monitoring
+@server.route('/health')
+def health_check():
+    """Health check endpoint for container orchestration and monitoring"""
+    from datetime import datetime
+    import json
+
+    try:
+        db_status = 'connected' if db_manager else 'unavailable'
+        health_status = {
+            'status': 'healthy',
+            'timestamp': datetime.utcnow().isoformat() + 'Z',
+            'version': os.getenv('APP_VERSION', '1.0.0'),
+            'service': 'management-tools-dashboard',
+            'database': db_status
+        }
+        return json.dumps(health_status), 200, {'Content-Type': 'application/json'}
+    except Exception as e:
+        error_status = {'status': 'unhealthy', 'error': str(e)}
+        return json.dumps(error_status), 500, {'Content-Type': 'application/json'}
+
+# Add basic security headers for production
+@server.after_request
+def add_security_headers(response):
+    """Add security headers configured for Dash/Plotly compatibility"""
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    return response
 
 # Add custom CSS to suppress some browser console warnings
 app.index_string = '''
@@ -1040,17 +962,12 @@ def toggle_notes_modal(icon_clicks, close_click, is_open, selected_tool, icon_id
         # Parse notes with clickable links
         notes_components = parse_text_with_links(notes)
 
-        # For BAIN sources, the structured notes already contain the source/DOI information
-        # For other sources, show separate source and DOI links
-        is_bain_source = "Fuente: Bain" in notes
-
         content = html.Div([
             html.Div(notes_components, style={'marginBottom': '10px'}),
-            # Only show separate source/DOI for non-BAIN sources
-            None if is_bain_source else html.Span("Fuente: ", style={'fontSize': '12px'}),
-            None if is_bain_source else (html.A(clicked_source, href=links, target="_blank", style={'fontSize': '12px'}) if links else html.Span(clicked_source, style={'fontSize': '12px'})),
-            None if is_bain_source else (html.Br() if (links and doi) or (not links and doi) else ""),
-            None if is_bain_source else (html.A(f"DOI: {doi}", href=f"https://doi.org/{doi}", target="_blank", style={'fontSize': '12px'}) if doi else "")
+            html.Span("Fuente: ", style={'fontSize': '12px'}),
+            html.A(clicked_source, href=links, target="_blank", style={'fontSize': '12px'}) if links else html.Span(clicked_source, style={'fontSize': '12px'}),
+            html.Br() if (links and doi) or (not links and doi) else "",
+            html.A(f"DOI: {doi}", href=f"https://doi.org/{doi}", target="_blank", style={'fontSize': '12px'}) if doi else ""
         ])
         return True, content
 
@@ -2921,9 +2838,8 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources)
 # to avoid Dash callback reference errors. The full date range is used by default.
 
 if __name__ == '__main__':
-    # Production-ready configuration with environment variables
     app.run(
-        debug=os.getenv('FLASK_ENV', 'production') == 'development',
+        debug=True,
         host='0.0.0.0',
-        port=int(os.getenv('PORT', 8050))
+        port=8050
     )

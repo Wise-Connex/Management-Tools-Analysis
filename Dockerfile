@@ -11,7 +11,7 @@ LABEL description="Build stage for compiling Python dependencies"
 
 WORKDIR /build
 
-# Install build dependencies
+# Install build dependencies including BLAS/LAPACK and cmake for scipy
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
@@ -20,6 +20,8 @@ RUN apt-get update && \
     gfortran \
     libopenblas-dev \
     liblapack-dev \
+    pkg-config \
+    cmake \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements file
@@ -37,12 +39,13 @@ LABEL maintainer="Dimar Añez <contact@wiseconnex.com>"
 LABEL description="Management Tools Analysis Dashboard - Production"
 LABEL version="1.0.0"
 
-# Install runtime dependencies only
+# Install runtime dependencies including OpenMP for scikit-learn
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     curl \
     libopenblas0 \
     liblapack3 \
+    libgomp1 \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
@@ -68,11 +71,15 @@ COPY --chown=dashuser:dashuser dashboard_app/ ./dashboard_app/
 COPY --chown=dashuser:dashuser assets/ ./assets/
 COPY --chown=dashuser:dashuser database.py ./
 COPY --chown=dashuser:dashuser tools.py ./
+COPY --chown=dashuser:dashuser config.py ./
+COPY --chown=dashuser:dashuser dashboard_app/fix_source_mapping.py ./
 
 # Copy configuration and scripts
+COPY --chown=dashuser:dashuser config/ ./config/
 COPY --chown=dashuser:dashuser gunicorn.conf.py ./
 COPY --chown=dashuser:dashuser healthcheck.sh ./
 COPY --chown=dashuser:dashuser entrypoint.sh ./
+COPY --chown=dashuser:dashuser wsgi.py ./
 
 # Make scripts executable
 RUN chmod +x healthcheck.sh entrypoint.sh
@@ -99,5 +106,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
 # Use entrypoint script for initialization
 ENTRYPOINT ["./entrypoint.sh"]
 
-# Default command: run with gunicorn
-CMD ["gunicorn", "-c", "gunicorn.conf.py", "dashboard_app.app:server"]
+# Default command: run with gunicorn using WSGI entry point
+CMD ["gunicorn", "-c", "gunicorn.conf.py", "wsgi:application"]
