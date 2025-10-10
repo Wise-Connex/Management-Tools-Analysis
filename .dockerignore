@@ -112,14 +112,14 @@ build/
 # ============================================================================
 # Data Directories (Large, not needed in image)
 # ============================================================================
-# Uncomment if you want to exclude large data directories
-# dbase-non-indexed/
-# crData/
-# rawData/
-# output/
-# visualizations/
-# Informes/
-# processed_data/
+# Exclude large data directories not needed for dashboard deployment
+dbase-non-indexed/
+crData/
+rawData/
+output/
+visualizations/
+Informes/
+processed_data/
 
 # ============================================================================
 # Development Files
