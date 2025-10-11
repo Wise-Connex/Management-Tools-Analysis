@@ -29,7 +29,8 @@ workers = int(os.getenv('MAX_WORKERS', default_workers))
 
 # Worker class - use 'sync' for Dash (gevent can cause issues with callbacks)
 # For CPU-intensive Dash apps, sync workers are more reliable
-worker_class = os.getenv('WORKER_CLASS', 'sync')
+# Explicitly set to 'sync' as Dash works best with sync workers
+worker_class = 'sync'  # os.getenv('WORKER_CLASS', 'sync')
 
 # Maximum number of simultaneous clients (for gevent/eventlet workers)
 worker_connections = 1000

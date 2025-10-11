@@ -12,6 +12,8 @@
 #       "Bain_Satisfaction_file.csv"   # Index 5: Bain Satisfaction (BS)
 #   ]
 
+from translations import get_tool_name
+
 tool_file_dic = {   'Alianzas y Capital de Riesgo': [   'GT_Alianzas_y_Capital_de_Riesgo_0589.csv',
                                         ['Alianzas y Capital de Riesgo'],
                                         'GB_Alianzas_y_Capital_de_Riesgo_6982.csv',
@@ -150,3 +152,27 @@ tool_file_dic = {   'Alianzas y Capital de Riesgo': [   'GT_Alianzas_y_Capital_d
                                 'BU_Talento_y_Compromiso_8832.csv',
                                 'CR_TalentoyCompromiso_monthly_relative.csv',
                                 'BS_Talento_y_Compromiso_3961.csv']}
+
+def get_all_keywords_translated(language='es'):
+   """Extract all keywords from tool_file_dic with translation support"""
+   all_keywords = []
+   for tool_key in tool_file_dic.keys():
+       translated_tool = get_tool_name(tool_key, language)
+       if translated_tool not in all_keywords:
+           all_keywords.append(translated_tool)
+   return all_keywords
+
+def get_tool_options(language='es'):
+   """Get tool options for dropdown with translations"""
+   return [{'label': get_tool_name(tool, language), 'value': tool} for tool in tool_file_dic.keys()]
+
+def translate_tool_key(display_name, language='es'):
+   """Convert translated display name back to original tool key"""
+   if language == 'es':
+       return display_name  # Spanish names are the keys
+
+   # For English, find the key that translates to this display name
+   for key in tool_file_dic.keys():
+       if get_tool_name(key, 'en') == display_name:
+           return key
+   return display_name  # Fallback

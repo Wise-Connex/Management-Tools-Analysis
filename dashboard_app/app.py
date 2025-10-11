@@ -29,7 +29,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 warnings.filterwarnings('ignore')
 
 # Import tools dictionary and database manager
-from tools import tool_file_dic
+import sys
+import os
+sys.path.insert(0, os.path.dirname(__file__))
+from tools import tool_file_dic, get_tool_options, translate_tool_key, get_tool_name
 from database import get_database_manager
 # Import centralized source mapping
 from fix_source_mapping import (
@@ -37,6 +40,8 @@ from fix_source_mapping import (
     DBASE_OPTIONS as dbase_options,
     DISPLAY_NAMES
 )
+# Import translation system
+from translations import get_text, get_available_languages, get_language_name, translate_database_content, translate_source_name
 
 # Get database manager instance
 db_manager = get_database_manager()
@@ -317,6 +322,43 @@ app.index_string = '''
                 originalWarn.apply(console, args);
             };
 
+            // Language detection and persistence
+            function getBrowserLanguage() {
+                const lang = navigator.language || navigator.userLanguage;
+                return lang.startsWith('es') ? 'es' : 'en';
+            }
+
+            function getStoredLanguage() {
+                return localStorage.getItem('dashboard-language');
+            }
+
+            function setStoredLanguage(lang) {
+                localStorage.setItem('dashboard-language', lang);
+            }
+
+            // Initialize language on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                let initialLang = getStoredLanguage() || getBrowserLanguage();
+                // Trigger language change if not Spanish
+                if (initialLang !== 'es') {
+                    // Small delay to ensure Dash is ready
+                    setTimeout(() => {
+                        const languageSelector = document.querySelector('[id*="language-selector"]');
+                        if (languageSelector) {
+                            languageSelector.value = initialLang;
+                            languageSelector.dispatchEvent(new Event('change', { bubbles: true }));
+                        }
+                    }, 100);
+                }
+            });
+
+            // Listen for language changes and store them
+            document.addEventListener('change', function(e) {
+                if (e.target.matches('[id*="language-selector"]')) {
+                    setStoredLanguage(e.target.value);
+                }
+            });
+
             // Simple manual control for credits - auto-collapse handled by Dash callback
             // when both keyword and sources are selected
         </script>
@@ -371,25 +413,15 @@ color_map = {
 sidebar = html.Div([
     # Bloque Superior Izquierdo (Afiliación Académica)
     html.Div([
-        html.Div([
-            html.P("Universidad Latinoamericana y del Caribe (ULAC)",
-                     style={'margin': '2px 0', 'fontSize': '12px', 'fontWeight': 'normal', 'textAlign': 'center'}),
-            html.P("Coordinación General de Postgrado",
-                     style={'margin': '2px 0', 'fontSize': '11px', 'fontWeight': 'normal', 'textAlign': 'center'}),
-            html.P("Doctorado en Ciencias Gerenciales",
-                     style={'margin': '2px 0', 'fontSize': '13px', 'fontWeight': 'bold', 'textAlign': 'center'}),
-        ], style={'marginBottom': '15px'}),
+        html.Div(id='sidebar-affiliations'),
         html.Hr(),
         html.Div([
-            html.Label("Seleccione una Herramienta:", style={'fontSize': '12px'}),
+            html.Label(id='tool-label', style={'fontSize': '12px'}),
             dcc.Dropdown(
                 id='keyword-dropdown',
-                options=[
-                    {'label': keyword, 'value': keyword}
-                    for keyword in get_all_keywords()
-                ],
+                options=[],  # Will be set by callback
                 value=None,
-                placeholder="Seleccione una Herramienta Gerencial",
+                placeholder="",  # Will be set by callback
                 className="mb-2",
                 style={'fontSize': '12px'}
             ),
@@ -397,7 +429,7 @@ sidebar = html.Div([
             html.Div(id='doi-display', style={'marginTop': '10px', 'marginBottom': '10px'})
         ]),
         html.Div([
-            html.Label("Seleccione las Fuentes de Datos: ", className="form-label", style={'fontSize': '12px'}),
+            html.Label(id='sources-label', className="form-label", style={'fontSize': '12px'}),
             dbc.Button(
                 id="select-all-button",
                 color="secondary",
@@ -422,7 +454,7 @@ sidebar = html.Div([
         html.Hr(style={'margin': '5px 0'}),
         dbc.Button(
             [
-                html.Span("Créditos ", style={'fontSize': '10px', 'fontWeight': 'bold'}),
+                html.Span(id='credits-button-text', style={'fontSize': '10px', 'fontWeight': 'bold'}),
                 html.I(id='credits-chevron', className="fas fa-chevron-down", style={'fontSize': '8px', 'marginLeft': '5px'})
             ],
             id='credits-toggle',
@@ -441,77 +473,7 @@ sidebar = html.Div([
             }
         ),
         dbc.Collapse(
-            html.Div([
-                html.P([
-                    "Dashboard de Análisis de ",
-                    html.B("Herramientas Gerenciales")
-                ], style={'marginBottom': '2px', 'fontSize': '9px', 'textAlign': 'left'}),
-                html.P([
-                    "Desarrollado con Python, Plotly y Dash"
-                ], style={'fontSize': '9px', 'textAlign': 'left', 'marginTop': '0px', 'marginBottom': '2px'}),
-                html.P([
-                    "por: ",
-                    html.A([
-                        html.Img(src='assets/orcid.logo.icon.svg', style={'height': '13px', 'verticalAlign': 'middle', 'marginRight': '2px'}),
-                        html.B("Dimar Anez")
-                    ], href="https://orcid.org/0009-0001-5386-2689", target="_blank", title="ORCID",
-                       style={'color': '#6c757d', 'textDecoration': 'none', 'fontSize': '9px'}),
-                    " - ",
-                    html.A("Wise Connex", href="https://wiseconnex.com/", target="_blank", title="wiseconnex.com",
-                           style={'color': '#6c757d', 'textDecoration': 'none', 'fontSize': '9px'})
-                ], style={'fontSize': '9px', 'textAlign': 'left', 'marginTop': '0px', 'marginBottom': '5px'}),
-
-                # Horizontal rule above logos
-                html.Hr(style={'margin': '8px 0 5px 0'}),
-
-                # Logos section - side by side below author credit, above copyright
-                html.Div([
-                    html.A(
-                        html.Img(
-                            src='assets/LogoSolidumBUSINESS.png',
-                            style={
-                                'height': '34px',
-                                'width': 'auto',
-                                'marginRight': '8px',
-                                'verticalAlign': 'middle'
-                            }
-                        ),
-                        href="https://solidum360.com",
-                        target="_blank",
-                        title="Solidum Consulting"
-                    ),
-                    html.A(
-                        html.Img(
-                            src='assets/WC-Logo-SQ.png',
-                            style={
-                                'height': '34px',
-                                'width': 'auto',
-                                'verticalAlign': 'middle'
-                            }
-                        ),
-                        href="https://wiseconnex.com",
-                        target="_blank",
-                        title="Wise Connex"
-                    )
-                ], style={
-                    'textAlign': 'left',
-                    'marginBottom': '5px',
-                    'marginTop': '3px'
-                }),
-
-                html.Hr(style={'margin': '8px 0 5px 0'}),
-                html.P("© 2024-2025 Diomar Añez - Dimar Añez. Licencia Dashboard: CC BY-NC 4.0",
-                       style={'margin': '2px 0', 'fontSize': '9px', 'textAlign': 'left', 'lineHeight': '1.3'}),
-                html.Div([
-                    html.Div([
-                        html.A("Harvard Dataverse: Data de la Investigación", href="https://dataverse.harvard.edu/dataverse/management-fads", target="_blank", title="Datos en el prestigioso repositorio de la Universidad de Harvard", style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
-                        html.A("Publicación en la National Library of Medicine", href="https://datasetcatalog.nlm.nih.gov/searchResults?filters=agent%3AAnez%252C%2520Diomar&sort=rel&page=1&size=10", target="_blank", title="Datos en la Biblioteca Nacional de Medicina de EE.UU.", style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
-                        html.A("Publicación en el Repositorio CERN - Zenodo", href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Anez%2C%20Diomar%22&l=list&p=1&s=10&sort=bestmatch", target="_blank", title="138 Informes Técnicos en el Repositorio Europeo Zenodo, del Conseil Européen pour la Recherche Nucléaire.", style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
-                        html.A("Visibilidad Europea en OpenAire", href="https://explore.openaire.eu/search/advanced/research-outcomes?f0=resultauthor&fv0=Diomar%2520Anez", target="_blank", title="Informes y Datos indexados en el Portal Europeo de Ciencia Abierta OpenAire", style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
-                        html.A("Informes y Documentación Técnica en GitHub", href="https://github.com/Wise-Connex/Management-Tools-Analysis/tree/main/Informes", target="_blank", title="Documentación técnica y científica de herramientas gerenciales en GitHub", style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'})
-                    ], style={'margin': '3px 0', 'padding': '0', 'lineHeight': '1'})
-                ], style={'marginTop': '5px'})
-            ], style={
+            html.Div(id='credits-content', style={
                 'backgroundColor': '#f8f9fa',
                 'padding': '8px 2px 12px 2px',  # 2px margins on sides
                 'borderTop': '1px solid #dee2e6',
@@ -566,13 +528,35 @@ header = html.Div([
         'flexShrink': 0
     }),
 
+    # Language selector in top-right corner (flags with language codes)
+    html.Div([
+        dcc.Dropdown(
+            id='language-selector',
+            options=[
+                {'label': html.Div([
+                    html.Span('🇪🇸', style={'fontSize': '16px', 'marginRight': '4px'}),
+                    html.Span('ES', style={'fontSize': '12px', 'fontWeight': 'bold'})
+                ], style={'display': 'flex', 'alignItems': 'center'}), 'value': 'es'},
+                {'label': html.Div([
+                    html.Span('🇺🇸', style={'fontSize': '16px', 'marginRight': '4px'}),
+                    html.Span('EN', style={'fontSize': '12px', 'fontWeight': 'bold'})
+                ], style={'display': 'flex', 'alignItems': 'center'}), 'value': 'en'}
+            ],
+            value='es',
+            clearable=False,
+            style={'width': '70px', 'fontSize': '12px'}
+        )
+    ], style={
+        'position': 'absolute',
+        'top': '10px',
+        'right': '20px',
+        'zIndex': 1001
+    }),
+
     # Text content on the right
     html.Div([
         # Línea 1 (Subtítulo): Base analítica para la Investigación Doctoral
-        html.P([
-            "Base analítica para la Investigación Doctoral: ",
-            html.I("«Dicotomía ontológica en las \"Modas Gerenciales\"»")
-        ], style={
+        html.P(id='header-subtitle', style={
             'margin': '5px 0',
             'fontSize': '14px',
             'fontStyle': 'italic',
@@ -581,35 +565,17 @@ header = html.Div([
         }),
 
         # Línea 2 (Título Principal): Herramientas gerenciales...
-        html.H3("Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales",
-                style={
-                    'margin': '8px 0',
-                    'fontSize': '18px',
-                    'fontWeight': 'bold',
-                    'textAlign': 'center',
-                    'color': '#212529',
-                    'lineHeight': '1.3'
-                }),
+        html.H3(id='header-title', style={
+            'margin': '8px 0',
+            'fontSize': '18px',
+            'fontWeight': 'bold',
+            'textAlign': 'center',
+            'color': '#212529',
+            'lineHeight': '1.3'
+        }),
 
         # Línea 3 (Créditos): Investigador Principal...
-        html.P([
-            "Investigador Principal: ",
-            html.A([
-                html.Img(src='assets/orcid.logo.icon.svg', style={'height': '18px', 'verticalAlign': 'middle', 'marginRight': '3px'}),
-                html.B("Diomar Añez")
-            ], href="https://orcid.org/0000-0002-7925-5078", target="_blank",
-               style={'color': '#495057', 'textDecoration': 'none'}),
-            " (",
-            html.A("Solidum Consulting", href="https://solidum360.com", target="_blank",
-                   style={'color': '#495057', 'textDecoration': 'none'}),
-            ") | Tutora Académica: ",
-            html.A([
-                html.Img(src='assets/orcid.logo.icon.svg', style={'height': '18px', 'verticalAlign': 'middle', 'marginRight': '3px'}),
-                html.B("Dra. Elizabeth Pereira")
-            ], href="https://orcid.org/0000-0002-8264-7080", target="_blank",
-               style={'color': '#495057', 'textDecoration': 'none'}),
-            " (ULAC)"
-        ], style={
+        html.P(id='header-credits', style={
             'margin': '5px 0',
             'fontSize': '13px',
             'textAlign': 'center',
@@ -636,10 +602,10 @@ header = html.Div([
 # Notes modal
 notes_modal = dbc.Modal(
     [
-        dbc.ModalHeader(dbc.ModalTitle("Notas de la Fuente", style={'fontSize': '16px'})),
+        dbc.ModalHeader(dbc.ModalTitle(id="notes-modal-title", style={'fontSize': '16px'})),
         dbc.ModalBody(id="notes-content"),
         dbc.ModalFooter(
-            dbc.Button("Cerrar", id="close-notes-modal", className="ml-auto")
+            dbc.Button(id="close-notes-modal", className="ml-auto")
         ),
     ],
     id="notes-modal",
@@ -658,6 +624,7 @@ app.layout = dbc.Container([
                 'marginBottom': '10px'
             }),
             dcc.Store(id='data-sources-store-v2', data=[]),
+            dcc.Store(id='language-store', data='es'),  # Default to Spanish
             dcc.Loading(
                 id="loading-main-content",
                 type="circle",
@@ -682,6 +649,16 @@ app.layout = dbc.Container([
 
 # Callbacks
 
+# Language management callback
+@app.callback(
+    Output('language-store', 'data'),
+    Input('language-selector', 'value'),
+    prevent_initial_call=True
+)
+def update_language_store(selected_language):
+    """Update language store when language selector changes"""
+    return selected_language
+
 # Callback to reset source selections when keyword changes
 @app.callback(
     Output('data-sources-store-v2', 'data', allow_duplicate=True),
@@ -696,21 +673,58 @@ def reset_sources_on_keyword_change(selected_tool):
 @app.callback(
     Output('select-all-button', 'children', allow_duplicate=True),
     Input('keyword-dropdown', 'value'),
+    Input('language-store', 'data'),
     prevent_initial_call=True
 )
-def initialize_select_all_button_text(selected_tool):
+def initialize_select_all_button_text(selected_tool, language):
     """Initialize the select all button text when a tool is selected"""
-    return "Seleccionar Todo"
+    return get_text('select_all', language)
+
+# Callback to update keyword dropdown options based on language
+@app.callback(
+    Output('keyword-dropdown', 'options'),
+    Output('keyword-dropdown', 'placeholder'),
+    Input('language-store', 'data')
+)
+def update_keyword_dropdown_options(language):
+    """Update keyword dropdown options and placeholder based on language"""
+    options = get_tool_options(language)
+    placeholder = get_text('select_management_tool', language)
+    return options, placeholder
+
+# Callback to update sidebar labels and affiliations based on language
+@app.callback(
+    Output('tool-label', 'children'),
+    Output('sources-label', 'children'),
+    Output('sidebar-affiliations', 'children'),
+    Input('language-store', 'data')
+)
+def update_sidebar_labels(language):
+    """Update sidebar labels and affiliations based on language"""
+    tool_label = get_text('select_tool', language)
+    sources_label = get_text('select_sources', language)
+
+    affiliations = html.Div([
+        html.P(get_text('university', language),
+                  style={'margin': '2px 0', 'fontSize': '12px', 'fontWeight': 'normal', 'textAlign': 'center'}),
+        html.P(get_text('postgraduate_coordination', language),
+                  style={'margin': '2px 0', 'fontSize': '11px', 'fontWeight': 'normal', 'textAlign': 'center'}),
+        html.P(get_text('doctoral_program', language),
+                  style={'margin': '2px 0', 'fontSize': '13px', 'fontWeight': 'bold', 'textAlign': 'center'}),
+    ], style={'marginBottom': '15px'})
+
+    return tool_label, sources_label, affiliations
 
 # Callback to update data sources container
 @app.callback(
     Output('data-sources-container', 'children'),
     Input('keyword-dropdown', 'value'),
-    Input('data-sources-store-v2', 'data')
+    Input('data-sources-store-v2', 'data'),
+    Input('language-store', 'data')
 )
-def update_data_sources_container(selected_tool, selected_sources):
+def update_data_sources_container(selected_tool, selected_sources, language):
     if not selected_tool:
-        return html.Div("Seleccione una herramienta para ver las fuentes disponibles")
+        return html.Div(get_text('no_sources_selected', language))
 
     if selected_sources is None:
         selected_sources = []
@@ -793,9 +807,10 @@ def update_data_sources_container(selected_tool, selected_sources):
 # Callback to update DOI display
 @app.callback(
     Output('doi-display', 'children'),
-    Input('keyword-dropdown', 'value')
+    Input('keyword-dropdown', 'value'),
+    Input('language-store', 'data')
 )
-def update_doi_display(selected_tool):
+def update_doi_display(selected_tool, language):
     if not selected_tool:
         return html.Div()
 
@@ -806,12 +821,12 @@ def update_doi_display(selected_tool):
         doi = tool_notes[0].get('doi', '')
         if doi:
             return html.Div([
-                html.Strong("DOI del Informe IC: ", style={'fontSize': '12px'}),
+                html.Strong(get_text('ic_report_doi', language) + ": ", style={'fontSize': '12px'}),
                 html.A(doi, href=f"https://doi.org/{doi}", target="_blank",
-                        style={'color': '#007bff', 'fontSize': '12px', 'textDecoration': 'none'})
+                         style={'color': '#007bff', 'fontSize': '12px', 'textDecoration': 'none'})
             ], style={'padding': '8px', 'backgroundColor': '#f8f9fa', 'borderRadius': '4px', 'border': '1px solid #dee2e6'})
     
-    return html.Div("No hay DOI disponible para esta herramienta", style={'fontSize': '11px', 'color': '#6c757d', 'fontStyle': 'italic'})
+        return html.Div(get_text('no_doi_available', language), style={'fontSize': '11px', 'color': '#6c757d', 'fontStyle': 'italic'})
 
 # Callback to update selected sources store
 @app.callback(
@@ -861,6 +876,159 @@ def update_selected_sources(n_clicks, ids, select_all_clicks, current_selected):
     return current_selected
 
 
+# Callback to update toggle table button text and handle collapse
+@app.callback(
+    Output('collapse-table', 'is_open'),
+    Output('toggle-table-button', 'children'),
+    Input('language-store', 'data'),
+    Input('toggle-table-button', 'n_clicks'),
+    State('collapse-table', 'is_open')
+)
+def update_toggle_table_button(language, n_clicks, is_open):
+    """Update toggle table button text and handle collapse based on language and state"""
+    if n_clicks:
+        new_state = not is_open
+        button_text = get_text('show_table', language) if new_state else get_text('hide_table', language)
+        return new_state, button_text
+    else:
+        button_text = get_text('hide_table', language) if is_open else get_text('show_table', language)
+        return is_open, button_text
+
+# Callback to update modal labels
+@app.callback(
+    Output('notes-modal-title', 'children'),
+    Output('close-notes-modal', 'children'),
+    Input('language-store', 'data')
+)
+def update_modal_labels(language):
+    """Update modal title and close button text based on language"""
+    return get_text('source_notes', language), get_text('close', language)
+
+# Callback to update credits button text
+@app.callback(
+    Output('credits-button-text', 'children'),
+    Input('language-store', 'data')
+)
+def update_credits_button_text(language):
+    """Update credits button text based on language"""
+    return get_text('credits', language) + " "
+
+# Callback to update credits content based on language
+@app.callback(
+    Output('credits-content', 'children'),
+    Input('language-store', 'data')
+)
+def update_credits_content(language):
+    """Update credits content based on language"""
+    return [
+        html.P([
+            get_text('dashboard_analysis', language) + " ",
+            html.B(get_text('management_tools_lower', language))
+        ], style={'marginBottom': '2px', 'fontSize': '9px', 'textAlign': 'left'}),
+        html.P([
+            get_text('developed_with', language)
+        ], style={'fontSize': '9px', 'textAlign': 'left', 'marginTop': '0px', 'marginBottom': '2px'}),
+        html.P([
+            get_text('by', language) + ": ",
+            html.A([
+                html.Img(src='assets/orcid.logo.icon.svg', style={'height': '13px', 'verticalAlign': 'middle', 'marginRight': '2px'}),
+                html.B("Dimar Anez")
+            ], href="https://orcid.org/0009-0001-5386-2689", target="_blank", title="ORCID",
+               style={'color': '#6c757d', 'textDecoration': 'none', 'fontSize': '9px'}),
+            " - ",
+            html.A("Wise Connex", href="https://wiseconnex.com/", target="_blank", title="wiseconnex.com",
+                   style={'color': '#6c757d', 'textDecoration': 'none', 'fontSize': '9px'})
+        ], style={'fontSize': '9px', 'textAlign': 'left', 'marginTop': '0px', 'marginBottom': '5px'}),
+
+        # Horizontal rule above logos
+        html.Hr(style={'margin': '8px 0 5px 0'}),
+
+        # Logos section - side by side below author credit, above copyright
+        html.Div([
+            html.A(
+                html.Img(
+                    src='assets/LogoSolidumBUSINESS.png',
+                    style={
+                        'height': '34px',
+                        'width': 'auto',
+                        'marginRight': '8px',
+                        'verticalAlign': 'middle'
+                    }
+                ),
+                href="https://solidum360.com",
+                target="_blank",
+                title="Solidum Consulting"
+            ),
+            html.A(
+                html.Img(
+                    src='assets/WC-Logo-SQ.png',
+                    style={
+                        'height': '34px',
+                        'width': 'auto',
+                        'verticalAlign': 'middle'
+                    }
+                ),
+                href="https://wiseconnex.com",
+                target="_blank",
+                title="Wise Connex"
+            )
+        ], style={
+            'textAlign': 'left',
+            'marginBottom': '5px',
+            'marginTop': '3px'
+        }),
+
+        html.Hr(style={'margin': '8px 0 5px 0'}),
+        html.P("© 2024-2025 Diomar Añez - Dimar Añez. " + get_text('license', language),
+                style={'margin': '2px 0', 'fontSize': '9px', 'textAlign': 'left', 'lineHeight': '1.3'}),
+        html.Div([
+            html.Div([
+                html.A(get_text('harvard_dataverse', language), href="https://dataverse.harvard.edu/dataverse/management-fads", target="_blank", title=get_text('harvard_title', language), style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
+                html.A(get_text('nlm_publication', language), href="https://datasetcatalog.nlm.nih.gov/searchResults?filters=agent%3AAnez%252C%2520Diomar&sort=rel&page=1&size=10", target="_blank", title=get_text('nlm_title', language), style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
+                html.A(get_text('zenodo_publication', language), href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Anez%2C%20Diomar%22&l=list&p=1&s=10&sort=bestmatch", target="_blank", title=get_text('zenodo_title', language), style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
+                html.A(get_text('openaire_visibility', language), href="https://explore.openaire.eu/search/advanced/research-outcomes?f0=resultauthor&fv0=Diomar%2520Anez", target="_blank", title=get_text('openaire_title', language), style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'}),
+                html.A(get_text('github_reports', language), href="https://github.com/Wise-Connex/Management-Tools-Analysis/tree/main/Informes", target="_blank", title=get_text('github_title', language), style={'color': '#993300', 'textDecoration': 'none', 'fontSize': '9px', 'display': 'block', 'margin': '3px 0', 'padding': '0', 'lineHeight': '1'})
+            ], style={'margin': '3px 0', 'padding': '0', 'lineHeight': '1'})
+        ], style={'marginTop': '5px'})
+    ]
+
+# Callback to update header content based on language
+@app.callback(
+    Output('header-subtitle', 'children'),
+    Output('header-title', 'children'),
+    Output('header-credits', 'children'),
+    Input('language-store', 'data')
+)
+def update_header_content(language):
+    """Update header content based on language"""
+    subtitle = [
+        get_text('doctoral_research_focus', language) + ": ",
+        html.I("«" + get_text('ontological_dichotomy', language) + "»")
+    ]
+
+    title = get_text('management_tools', language)
+
+    credits_content = [
+        get_text('principal_investigator', language) + ": ",
+        html.A([
+            html.Img(src='assets/orcid.logo.icon.svg', style={'height': '18px', 'verticalAlign': 'middle', 'marginRight': '3px'}),
+            html.B("Diomar Añez")
+        ], href="https://orcid.org/0000-0002-7925-5078", target="_blank",
+           style={'color': '#495057', 'textDecoration': 'none'}),
+        " (",
+        html.A(get_text('solidum_consulting', language), href="https://solidum360.com", target="_blank",
+               style={'color': '#495057', 'textDecoration': 'none'}),
+        ") | " + get_text('academic_tutor', language) + ": ",
+        html.A([
+            html.Img(src='assets/orcid.logo.icon.svg', style={'height': '18px', 'verticalAlign': 'middle', 'marginRight': '3px'}),
+            html.B("Dra. Elizabeth Pereira")
+        ], href="https://orcid.org/0000-0002-8264-7080", target="_blank",
+           style={'color': '#495057', 'textDecoration': 'none'}),
+        " (" + get_text('ulac', language) + ")"
+    ]
+
+    return subtitle, title, credits_content
+
 # Callback for notes modal
 @app.callback(
     Output("notes-modal", "is_open"),
@@ -870,8 +1038,9 @@ def update_selected_sources(n_clicks, ids, select_all_clicks, current_selected):
     State("notes-modal", "is_open"),
     State('keyword-dropdown', 'value'),
     State({'type': 'info-icon', 'index': ALL}, 'id'),
+    State('language-store', 'data')
 )
-def toggle_notes_modal(icon_clicks, close_click, is_open, selected_tool, icon_ids):
+def toggle_notes_modal(icon_clicks, close_click, is_open, selected_tool, icon_ids, language):
     if not selected_tool:
         return False, ""
 
@@ -945,12 +1114,15 @@ def toggle_notes_modal(icon_clicks, close_click, is_open, selected_tool, icon_id
         print(f"Debug: Query parameters - tool='{selected_tool}', source='{mapped_source}'")
         
         if tool_notes and len(tool_notes) > 0:
-            notes = tool_notes[0].get('notes', 'No hay notas disponibles')
+            notes = tool_notes[0].get('notes', get_text('no_notes', language))
             links = tool_notes[0].get('links', '')
             doi = tool_notes[0].get('doi', '')
+            # Translate database content if not in Spanish
+            if language != 'es':
+                notes = translate_database_content(notes, language)
             print(f"Debug: Found notes='{notes[:50]}...', links='{links}', doi='{doi}'")
         else:
-            notes = 'No hay notas disponibles'
+            notes = get_text('no_notes', language)
             links = ''
             doi = ''
             print(f"Debug: No notes found for {selected_tool} - {mapped_source}")
@@ -964,10 +1136,10 @@ def toggle_notes_modal(icon_clicks, close_click, is_open, selected_tool, icon_id
 
         content = html.Div([
             html.Div(notes_components, style={'marginBottom': '10px'}),
-            html.Span("Fuente: ", style={'fontSize': '12px'}),
+            html.Span(get_text('source', language) + " ", style={'fontSize': '12px'}),
             html.A(clicked_source, href=links, target="_blank", style={'fontSize': '12px'}) if links else html.Span(clicked_source, style={'fontSize': '12px'}),
             html.Br() if (links and doi) or (not links and doi) else "",
-            html.A(f"DOI: {doi}", href=f"https://doi.org/{doi}", target="_blank", style={'fontSize': '12px'}) if doi else ""
+            html.A(f"{get_text('doi', language)} {doi}", href=f"https://doi.org/{doi}", target="_blank", style={'fontSize': '12px'}) if doi else ""
         ])
         return True, content
 
@@ -978,9 +1150,10 @@ def toggle_notes_modal(icon_clicks, close_click, is_open, selected_tool, icon_id
     [Output('main-content', 'children'),
      Output('credits-collapse', 'is_open')],
     Input('data-sources-store-v2', 'data'),
-    Input('keyword-dropdown', 'value')
+    Input('keyword-dropdown', 'value'),
+    Input('language-store', 'data')
 )
-def update_main_content(selected_sources, selected_keyword):
+def update_main_content(selected_sources, selected_keyword, language):
     if selected_sources is None:
         selected_sources = []
 
@@ -991,8 +1164,9 @@ def update_main_content(selected_sources, selected_keyword):
     credits_open = not (selected_keyword and selected_source_ids)
 
     if not selected_keyword or not selected_sources:
-        return html.Div("Por favor, seleccione una Herramienta y al menos una Fuente de Datos."), credits_open
+        return html.Div(get_text('please_select_tool_and_sources', language)), credits_open
 
+    datasets_norm = None  # Initialize to avoid scoping issues
     try:
         # Check cache first
         cached_data = get_cached_processed_data(selected_keyword, selected_sources)
@@ -1002,17 +1176,18 @@ def update_main_content(selected_sources, selected_keyword):
         else:
             # Map display names to source IDs
             selected_source_ids = map_display_names_to_source_ids(selected_sources)
-            
+
             print(f"DEBUG: Getting data for keyword='{selected_keyword}', sources={selected_sources}")
             print(f"DEBUG: Converted to source IDs: {selected_source_ids}")
-            
+
             datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
             print(f"DEBUG: Retrieved datasets_norm keys: {list(datasets_norm.keys()) if datasets_norm else 'None'}")
             print(f"DEBUG: Retrieved sl_sc: {sl_sc}")
             
             if not datasets_norm:
                 print(f"DEBUG: No data retrieved for keyword='{selected_keyword}'")
-                return html.Div(f"No hay datos disponibles para la herramienta '{selected_keyword}' con las fuentes seleccionadas."), credits_open
+                translated_tool = get_tool_name(selected_keyword, language)
+                return html.Div(get_text('no_data_available', language, keyword=translated_tool)), credits_open
                 
             combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
             print(f"DEBUG: Combined dataset shape: {combined_dataset.shape if not combined_dataset.empty else 'Empty'}")
@@ -1032,7 +1207,7 @@ def update_main_content(selected_sources, selected_keyword):
             data_columns = [dbase_options[src_id] for src_id in selected_source_ids]
             combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
 
-            selected_source_names = [dbase_options[src_id] for src_id in selected_source_ids]
+            selected_source_names = [translate_source_name(dbase_options[src_id], language) for src_id in selected_source_ids]
 
             # Cache the processed data
             cache_processed_data(selected_keyword, selected_sources,
@@ -1050,7 +1225,7 @@ def update_main_content(selected_sources, selected_keyword):
         # 1. Temporal Analysis 2D
         try:
             print(f"DEBUG: Creating initial temporal 2D figure for main content")
-            temporal_2d_fig = create_temporal_2d_figure(combined_dataset, selected_source_names)
+            temporal_2d_fig = create_temporal_2d_figure(combined_dataset, selected_source_names, language)
             print(f"DEBUG: Initial temporal 2D figure created with {len(temporal_2d_fig.data) if hasattr(temporal_2d_fig, 'data') else 0} traces")
         except Exception as e:
             print(f"DEBUG: Error creating initial temporal 2D figure: {e}")
@@ -1061,7 +1236,7 @@ def update_main_content(selected_sources, selected_keyword):
 
         content.append(html.Div([
             html.Div([
-                html.H6("1. Análisis Temporal 2D", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                html.H6(get_text('temporal_analysis_2d', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
             ], style={
                 'backgroundColor': '#2c3e50',
                 'padding': '12px 20px',
@@ -1071,17 +1246,17 @@ def update_main_content(selected_sources, selected_keyword):
                 'border': '1px solid #34495e'
             }),
             html.Div([
-                html.Label("Rango de Fechas:", style={'marginRight': '12px', 'fontSize': '14px'}),
+                html.Label(get_text('date_range', language), style={'marginRight': '12px', 'fontSize': '14px'}),
                 dbc.ButtonGroup([
-                    dbc.Button("Todo", id="temporal-2d-all", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("20 años", id="temporal-2d-20y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("15 años", id="temporal-2d-15y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("10 años", id="temporal-2d-10y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
-                    dbc.Button("5 años", id="temporal-2d-5y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button(get_text('all', language), id="temporal-2d-all", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button(get_text('20_years', language), id="temporal-2d-20y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button(get_text('15_years', language), id="temporal-2d-15y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button(get_text('10_years', language), id="temporal-2d-10y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
+                    dbc.Button(get_text('5_years', language), id="temporal-2d-5y", size="sm", className="me-1", n_clicks=0, style={'fontSize': '11px'}),
                 ], className="mb-3")
             ], style={'marginBottom': '10px'}),
             html.Div([
-                html.Label("Rango Personalizado:", style={'marginRight': '12px', 'fontSize': '12px'}),
+                html.Label(get_text('custom_range', language), style={'marginRight': '12px', 'fontSize': '12px'}),
                 dcc.RangeSlider(
                     id='temporal-2d-date-range',
                     min=0,
@@ -1104,7 +1279,7 @@ def update_main_content(selected_sources, selected_keyword):
 
         # 2. Mean Analysis
         try:
-            mean_fig = create_mean_analysis_figure(combined_dataset, selected_source_names)
+            mean_fig = create_mean_analysis_figure(combined_dataset, selected_source_names, language)
             print(f"DEBUG: Created mean analysis figure with {len(mean_fig.data) if hasattr(mean_fig, 'data') else 0} traces")
             print(f"DEBUG: Mean figure data: {mean_fig.data[:2] if hasattr(mean_fig, 'data') and len(mean_fig.data) > 0 else 'No data'}")
         except Exception as e:
@@ -1116,7 +1291,7 @@ def update_main_content(selected_sources, selected_keyword):
 
         content.append(html.Div([
             html.Div([
-                html.H6("2. Análisis de Medias", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                html.H6(get_text('mean_analysis', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
             ], style={
                 'backgroundColor': '#2c3e50',
                 'padding': '12px 20px',
@@ -1137,7 +1312,7 @@ def update_main_content(selected_sources, selected_keyword):
         if len(selected_sources) >= 2:
             content.append(html.Div([
                 html.Div([
-                    html.H6("3. Análisis Temporal 3D", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                    html.H6(get_text('temporal_analysis_3d', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
                 ], style={
                     'backgroundColor': '#2c3e50',
                     'padding': '12px 20px',
@@ -1160,27 +1335,27 @@ def update_main_content(selected_sources, selected_keyword):
                     # Right side: Controls
                     html.Div([
                         html.Div([
-                            html.Label("Frecuencia de Datos:", style={'marginBottom': '8px', 'fontSize': '14px', 'fontWeight': 'bold'}),
+                            html.Label(get_text('data_frequency', language), style={'marginBottom': '8px', 'fontSize': '14px', 'fontWeight': 'bold'}),
                             dbc.ButtonGroup([
-                                dbc.Button("Mensual", id="temporal-3d-monthly", size="sm", className="me-2", n_clicks=0, style={'fontSize': '11px'}),
-                                dbc.Button("Anual", id="temporal-3d-annual", size="sm", n_clicks=0, style={'fontSize': '11px'}),
+                                dbc.Button(get_text('monthly', language), id="temporal-3d-monthly", size="sm", className="me-2", n_clicks=0, style={'fontSize': '11px'}),
+                                dbc.Button(get_text('annual', language), id="temporal-3d-annual", size="sm", n_clicks=0, style={'fontSize': '11px'}),
                             ], className="mb-3", style={'display': 'flex', 'gap': '8px'})
                         ], style={'marginBottom': '20px'}),
 
                         html.Div([
-                            html.Label("Ejes del Gráfico:", style={'marginBottom': '8px', 'fontSize': '14px', 'fontWeight': 'bold'}),
+                            html.Label(get_text('chart_axes', language), style={'marginBottom': '8px', 'fontSize': '14px', 'fontWeight': 'bold'}),
                             dcc.Dropdown(
                                 id='y-axis-3d',
                                 options=[{'label': src, 'value': src} for src in selected_source_names],
                                 value=selected_source_names[0] if selected_source_names else None,
-                                placeholder="Eje Y",
+                                placeholder=get_text('y_axis', language),
                                 style={'width': '100%', 'marginBottom': '10px'}
                             ),
                             dcc.Dropdown(
                                 id='z-axis-3d',
                                 options=[{'label': src, 'value': src} for src in selected_source_names],
                                 value=selected_source_names[1] if len(selected_source_names) > 1 else None,
-                                placeholder="Eje Z",
+                                placeholder=get_text('z_axis', language),
                                 style={'width': '100%'}
                             )
                         ])
@@ -1191,7 +1366,7 @@ def update_main_content(selected_sources, selected_keyword):
         # 4. Seasonal Analysis (Lazy loaded)
         content.append(html.Div([
             html.Div([
-                html.H6("4. Análisis Estacional", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                html.H6(get_text('seasonal_analysis', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
             ], style={
                 'backgroundColor': '#2c3e50',
                 'padding': '12px 20px',
@@ -1205,7 +1380,7 @@ def update_main_content(selected_sources, selected_keyword):
                     id='seasonal-source-select',
                     options=[{'label': src, 'value': src} for src in selected_source_names],
                     value=selected_source_names[0] if selected_source_names else None,
-                    placeholder="Seleccione fuente para cargar análisis",
+                    placeholder=get_text('select_source_for_analysis', language),
                     clearable=True,
                     style={'width': '100%', 'marginBottom': '10px'}
                 ),
@@ -1226,7 +1401,7 @@ def update_main_content(selected_sources, selected_keyword):
         # 5. Fourier Analysis (Lazy loaded)
         content.append(html.Div([
             html.Div([
-                html.H6("5. Análisis de Fourier (Periodograma)", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                html.H6(get_text('fourier_analysis', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
             ], style={
                 'backgroundColor': '#2c3e50',
                 'padding': '12px 20px',
@@ -1240,7 +1415,7 @@ def update_main_content(selected_sources, selected_keyword):
                     id='fourier-source-select',
                     options=[{'label': src, 'value': src} for src in selected_source_names],
                     value=selected_source_names[0] if selected_source_names else None,
-                    placeholder="Seleccione fuente para cargar análisis",
+                    placeholder=get_text('select_source_for_analysis', language),
                     clearable=True,
                     style={'width': '100%', 'marginBottom': '10px'}
                 ),
@@ -1262,7 +1437,7 @@ def update_main_content(selected_sources, selected_keyword):
         if len(selected_sources) >= 2:
             content.append(html.Div([
                 html.Div([
-                    html.H6("6. Mapa de Calor (Correlación)", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                    html.H6(get_text('correlation_heatmap', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
                 ], style={
                     'backgroundColor': '#2c3e50',
                     'padding': '12px 20px',
@@ -1273,7 +1448,7 @@ def update_main_content(selected_sources, selected_keyword):
                 }),
                 dcc.Graph(
                     id='correlation-heatmap',
-                    figure=create_correlation_heatmap(combined_dataset, selected_source_names),
+                    figure=create_correlation_heatmap(combined_dataset, selected_source_names, language),
                     style={'height': '400px'},
                     config={'displaylogo': False, 'responsive': True}
                 )
@@ -1283,7 +1458,7 @@ def update_main_content(selected_sources, selected_keyword):
         if len(selected_sources) >= 2:
             content.append(html.Div([
                 html.Div([
-                    html.H6("7. Análisis de Regresión", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                    html.H6(get_text('regression_analysis', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
                 ], style={
                     'backgroundColor': '#2c3e50',
                     'padding': '12px 20px',
@@ -1293,7 +1468,7 @@ def update_main_content(selected_sources, selected_keyword):
                     'border': '1px solid #34495e'
                 }),
                 html.Div([
-                    html.P("Haga clic en el mapa de calor para seleccionar variables para regresión", style={'fontSize': '12px'}),
+                    html.P(get_text('click_heatmap', language), style={'fontSize': '12px'}),
                     html.Div([
                         dcc.Graph(
                             id='regression-graph',
@@ -1301,7 +1476,7 @@ def update_main_content(selected_sources, selected_keyword):
                             config={'displaylogo': False, 'responsive': True}
                         ),
                         html.Div(
-                            html.P("Haga clic en el mapa de calor para ver las ecuaciones de regresión"),
+                            html.P(get_text('regression_equations', language)),
                             id='regression-equations',
                             style={
                                 'padding': '8px',
@@ -1326,7 +1501,7 @@ def update_main_content(selected_sources, selected_keyword):
         if len(selected_sources) >= 2:
             content.append(html.Div([
                 html.Div([
-                    html.H6("8. Análisis PCA (Cargas y Componentes)", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                    html.H6(get_text('pca_analysis', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
                 ], style={
                     'backgroundColor': '#2c3e50',
                     'padding': '12px 20px',
@@ -1337,7 +1512,7 @@ def update_main_content(selected_sources, selected_keyword):
                 }),
                 dcc.Graph(
                     id='pca-analysis-graph',
-                    figure=create_pca_figure(combined_dataset, selected_source_names),
+                    figure=create_pca_figure(combined_dataset, selected_source_names, language),
                     style={'height': '500px'},
                     config={'displaylogo': False, 'responsive': True}
                 )
@@ -1346,7 +1521,7 @@ def update_main_content(selected_sources, selected_keyword):
         # Data table
         content.append(html.Div([
             html.Div([
-                html.H6("Tabla de Datos", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                html.H6(get_text('data_table', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
             ], style={
                 'backgroundColor': '#2c3e50',
                 'padding': '12px 20px',
@@ -1356,7 +1531,6 @@ def update_main_content(selected_sources, selected_keyword):
                 'border': '1px solid #34495e'
             }),
             dbc.Button(
-                "Ocultar Tabla",
                 id="toggle-table-button",
                 color="primary",
                 size="sm",
@@ -1403,7 +1577,7 @@ def update_main_content(selected_sources, selected_keyword):
         db_stats = get_cache_stats()
         content.append(html.Div([
             html.Div([
-                html.H6("📊 Monitor de Rendimiento del Sistema", style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
+                html.H6("📊 " + get_text('performance_monitor', language), style={'fontSize': '16px', 'marginBottom': '15px', 'color': 'white'})
             ], style={
                 'backgroundColor': '#2c3e50',
                 'padding': '12px 20px',
@@ -1415,79 +1589,79 @@ def update_main_content(selected_sources, selected_keyword):
             html.Div([
                 # Database Information
                 html.Div([
-                    html.H6("💾 Información de Base de Datos", style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
+                    html.H6("💾 " + get_text('database_info', language), style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
                     html.Div([
                         html.Div([
-                            html.Strong("Total de Registros:"),
+                            html.Strong(get_text('total_records', language)),
                             html.Span(f"{db_stats['database_records']:,}", style={'marginLeft': '5px', 'color': '#28a745', 'fontWeight': 'bold'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Palabras Clave Únicas:"),
+                            html.Strong(get_text('unique_keywords', language)),
                             html.Span(f"{db_stats['database_keywords']}", style={'marginLeft': '5px', 'color': '#007bff', 'fontWeight': 'bold'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Fuentes de Datos:"),
-                            html.Span("5 disponibles", style={'marginLeft': '5px'})
+                            html.Strong(get_text('data_sources_count', language)),
+                            html.Span(f"5 {get_text('available', language)}", style={'marginLeft': '5px'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'})
                     ], style={'backgroundColor': 'white', 'padding': '10px', 'borderRadius': '5px', 'marginBottom': '15px'})
                 ]),
 
                 # Current Query Information
                 html.Div([
-                    html.H6("🔍 Consulta Actual", style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
+                    html.H6("🔍 " + get_text('current_query', language), style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
                     html.Div([
                         html.Div([
-                            html.Strong("Registros en Uso:"),
+                            html.Strong(get_text('records_in_use', language)),
                             html.Span(f"{current_query_records:,}", style={'marginLeft': '5px', 'color': '#e74c3c', 'fontWeight': 'bold'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Fuentes Seleccionadas:"),
+                            html.Strong(get_text('selected_sources', language)),
                             html.Span(f"{current_query_sources}", style={'marginLeft': '5px', 'color': '#f39c12', 'fontWeight': 'bold'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Rango Temporal:"),
+                            html.Strong(get_text('temporal_range', language)),
                             html.Span(current_query_date_range, style={'marginLeft': '5px', 'color': '#9b59b6', 'fontWeight': 'bold'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Herramienta:"),
-                            html.Span(selected_keyword if selected_keyword else "Ninguna", style={'marginLeft': '5px', 'color': '#1abc9c', 'fontWeight': 'bold'})
+                            html.Strong(get_text('tool', language)),
+                            html.Span(get_tool_name(selected_keyword, language) if selected_keyword else get_text('none', language), style={'marginLeft': '5px', 'color': '#1abc9c', 'fontWeight': 'bold'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'})
                     ], style={'backgroundColor': 'white', 'padding': '10px', 'borderRadius': '5px', 'marginBottom': '15px'})
                 ]),
 
                 # Performance Metrics
                 html.Div([
-                    html.H6("⚡ Métricas de Rendimiento", style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
+                    html.H6("⚡ " + get_text('performance_metrics', language), style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
                     html.Div([
                         html.Div([
-                            html.Strong("Tiempo de Carga:"),
-                            html.Span("< 0.5 segundos", style={'marginLeft': '5px', 'color': '#28a745'})
+                            html.Strong(get_text('load_time', language)),
+                            html.Span(get_text('less_than_half_second', language), style={'marginLeft': '5px', 'color': '#28a745'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Eficiencia de Consultas:"),
-                            html.Span("Alta", style={'marginLeft': '5px', 'color': '#28a745'})
+                            html.Strong(get_text('query_efficiency', language)),
+                            html.Span(get_text('high', language), style={'marginLeft': '5px', 'color': '#28a745'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Uso de Memoria:"),
-                            html.Span("Optimizado", style={'marginLeft': '5px', 'color': '#28a745'})
+                            html.Strong(get_text('memory_usage', language)),
+                            html.Span(get_text('optimized', language), style={'marginLeft': '5px', 'color': '#28a745'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'}),
                         html.Div([
-                            html.Strong("Compresión:"),
-                            html.Span("85% promedio", style={'marginLeft': '5px', 'color': '#28a745'})
+                            html.Strong(get_text('compression', language)),
+                            html.Span(get_text('average_compression', language), style={'marginLeft': '5px', 'color': '#28a745'})
                         ], style={'margin': '3px 0', 'fontSize': '12px'})
                     ], style={'backgroundColor': 'white', 'padding': '10px', 'borderRadius': '5px', 'marginBottom': '15px'})
                 ]),
 
                 # Active Optimizations
                 html.Div([
-                    html.H6("🔧 Optimizaciones Activas", style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
+                    html.H6("🔧 " + get_text('active_optimizations', language), style={'marginBottom': '10px', 'color': '#2c3e50', 'fontSize': '14px'}),
                     html.Div([
                         html.Ul([
-                            html.Li("✅ Datos pre-procesados en base de datos", style={'fontSize': '11px', 'margin': '2px 0'}),
-                            html.Li("✅ Índices optimizados para velocidad", style={'fontSize': '11px', 'margin': '2px 0'}),
-                            html.Li("✅ Caché inteligente de resultados", style={'fontSize': '11px', 'margin': '2px 0'}),
-                            html.Li("✅ Lazy loading para análisis complejos", style={'fontSize': '11px', 'margin': '2px 0'}),
-                            html.Li("✅ Optimización automática de gráficos", style={'fontSize': '11px', 'margin': '2px 0'})
+                            html.Li(get_text('preprocessed_data', language), style={'fontSize': '11px', 'margin': '2px 0'}),
+                            html.Li(get_text('optimized_indexes', language), style={'fontSize': '11px', 'margin': '2px 0'}),
+                            html.Li(get_text('smart_cache', language), style={'fontSize': '11px', 'margin': '2px 0'}),
+                            html.Li(get_text('lazy_loading', language), style={'fontSize': '11px', 'margin': '2px 0'}),
+                            html.Li(get_text('auto_graph_optimization', language), style={'fontSize': '11px', 'margin': '2px 0'})
                         ], style={'paddingLeft': '20px', 'margin': '0'})
                     ], style={'backgroundColor': 'white', 'padding': '10px', 'borderRadius': '5px'})
                 ])
@@ -1502,7 +1676,7 @@ def update_main_content(selected_sources, selected_keyword):
         return html.Div(f"Error: {str(e)}"), credits_open
 
 # Helper functions for creating figures
-def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
+def create_temporal_2d_figure(data, sources, language='es', start_date=None, end_date=None):
     print(f"DEBUG: create_temporal_2d_figure called")
     print(f"DEBUG: data shape: {data.shape}")
     print(f"DEBUG: sources: {sources}")
@@ -1567,9 +1741,9 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
 
     # Optimized layout with performance settings
     fig.update_layout(
-        title="Análisis Temporal 2D",
-        xaxis_title="Fecha",
-        yaxis_title="Valor",
+        title=get_text('temporal_analysis_2d', language),
+        xaxis_title=get_text('date', language),
+        yaxis_title=get_text('value', language),
         height=400,
         legend=dict(
             orientation="h",
@@ -1597,7 +1771,7 @@ def create_temporal_2d_figure(data, sources, start_date=None, end_date=None):
     print(f"DEBUG: Final figure has {len(fig.data)} traces")
     return fig
 
-def create_mean_analysis_figure(data, sources):
+def create_mean_analysis_figure(data, sources, language='es'):
     """Create 100% stacked bar chart showing relative contribution of each source"""
     # Calculate total years in dataset for "Todo" range
     total_years = (data['Fecha'].max() - data['Fecha'].min()).days / 365.25
@@ -1692,18 +1866,18 @@ def create_mean_analysis_figure(data, sources):
 
     # Update layout for combo chart
     fig.update_layout(
-        title=f"Análisis de Medias: Relativo (100% = {max_mean_value:.2f}) + Absoluto",
-        xaxis_title="Rango Temporal",
-        yaxis_title="Contribución Relativa (%)",
+        title=get_text('relative_absolute', language, max_value=max_mean_value),
+        xaxis_title=get_text('temporal_range', language),
+        yaxis_title=get_text('contribution_relative', language),
         yaxis2=dict(
-            title="Valor Absoluto",
+            title=get_text('absolute_value', language),
             overlaying='y',
             side='right',
             showgrid=False
         ),
         height=600,  # Fixed height to prevent dynamic resizing
         barmode='stack',  # Stack bars to 100%
-        legend_title="Fuentes de Datos",
+        legend_title=get_text('data_sources', language),
         legend=dict(
             orientation="h",  # Horizontal legend
             yanchor="bottom",
@@ -1720,7 +1894,7 @@ def create_mean_analysis_figure(data, sources):
 
     return fig
 
-def create_pca_figure(data, sources):
+def create_pca_figure(data, sources, language='es'):
     # Prepare data for PCA
     pca_data = data[sources].dropna()
     if len(pca_data) < 2:
@@ -1737,7 +1911,7 @@ def create_pca_figure(data, sources):
     # Create subplot
     fig = make_subplots(
         rows=1, cols=2,
-        subplot_titles=('Cargas de Componentes', 'Varianza Explicada'),
+        subplot_titles=(get_text('loadings', language), get_text('explained_variance', language)),
         specs=[[{"type": "scatter"}, {"type": "bar"}]]
     )
 
@@ -1820,17 +1994,18 @@ def create_pca_figure(data, sources):
 
     # Update layout with multiple y-axes
     fig.update_layout(
+        title=get_text('pca_title', language),
         height=500,
         showlegend=True,
         yaxis2=dict(
-            title="Varianza Acumulativa (%)",
+            title=get_text('cumulative_variance', language),
             overlaying='y',
             side='right',
             range=[0, 100],
             showgrid=False
         ),
         yaxis3=dict(
-            title="Relación Inversa",
+            title=get_text('inverse_relationship', language),
             overlaying='y',
             side='right',
             position=0.85,  # Position further right
@@ -1868,7 +2043,7 @@ def create_pca_figure(data, sources):
 
     return fig
 
-def create_correlation_heatmap(data, sources):
+def create_correlation_heatmap(data, sources, language='es'):
     print(f"DEBUG: create_correlation_heatmap called with sources: {sources}")
     corr_data = data[sources].corr()
     print(f"DEBUG: Correlation data shape: {corr_data.shape}")
@@ -1914,7 +2089,7 @@ def create_correlation_heatmap(data, sources):
 
     # Update layout with annotations and enable click events
     fig.update_layout(
-        title="Mapa de Calor de Correlación",
+        title=get_text('correlation_heatmap_title', language),
         height=400,
         annotations=annotations,
         xaxis=dict(side='bottom'),
@@ -1934,9 +2109,10 @@ def create_correlation_heatmap(data, sources):
      Input('temporal-2d-5y', 'n_clicks'),
      Input('temporal-2d-date-range', 'value'),
      Input('keyword-dropdown', 'value'),
-     Input('data-sources-store-v2', 'data')]
+     Input('data-sources-store-v2', 'data'),
+     Input('language-store', 'data')]
 )
-def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, y5_clicks, slider_values, selected_keyword, selected_sources):
+def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, y5_clicks, slider_values, selected_keyword, selected_sources, language):
     print(f"DEBUG: update_temporal_2d_analysis called")
     print(f"DEBUG: selected_keyword={selected_keyword}")
     print(f"DEBUG: selected_sources={selected_sources}")
@@ -1978,7 +2154,7 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
         data_columns = [dbase_options[src_id] for src_id in selected_source_ids]
         combined_dataset = combined_dataset.dropna(subset=data_columns, how='all')
 
-        selected_source_names = [dbase_options[src_id] for src_id in selected_source_ids]
+        selected_source_names = [translate_source_name(dbase_options[src_id], language) for src_id in selected_source_ids]
         print(f"DEBUG: Selected source names: {selected_source_names}")
 
         # Default to full date range
@@ -2019,7 +2195,7 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
             # Keep default date range (full range)
 
         print(f"DEBUG: Creating temporal 2D figure...")
-        figure = create_temporal_2d_figure(combined_dataset, selected_source_names, start_date, end_date)
+        figure = create_temporal_2d_figure(combined_dataset, selected_source_names, language, start_date, end_date)
         print(f"DEBUG: Figure created with {len(figure.data) if hasattr(figure, 'data') else 0} traces")
         return figure
     except Exception as e:
@@ -2120,9 +2296,10 @@ def aggregate_data_for_3d(data, frequency, source_name):
      Input('temporal-3d-monthly', 'n_clicks'),
      Input('temporal-3d-annual', 'n_clicks'),
      Input('keyword-dropdown', 'value'),
-     Input('data-sources-store-v2', 'data')]
+     Input('data-sources-store-v2', 'data'),
+     Input('language-store', 'data')]
 )
-def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keyword, selected_sources):
+def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keyword, selected_sources, language):
     if selected_sources is None:
         selected_sources = []
 
@@ -2173,9 +2350,9 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
         ])
 
         fig.update_layout(
-            title=f'Análisis Temporal 3D: {y_axis} vs {z_axis} ({frequency.capitalize()})',
+            title=get_text('temporal_3d_title', language, y_axis=y_axis, z_axis=z_axis, frequency=frequency.capitalize()),
             scene=dict(
-                xaxis_title='Fecha',
+                xaxis_title=get_text('date', language),
                 yaxis_title=y_axis,
                 zaxis_title=z_axis
             ),
@@ -2198,9 +2375,10 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
     Output('seasonal-analysis-graph', 'figure'),
     [Input('seasonal-source-select', 'value'),
      Input('keyword-dropdown', 'value'),
-     Input('data-sources-store-v2', 'data')]
+     Input('data-sources-store-v2', 'data'),
+     Input('language-store', 'data')]
 )
-def update_seasonal_analysis(selected_source, selected_keyword, selected_sources):
+def update_seasonal_analysis(selected_source, selected_keyword, selected_sources, language):
     if selected_sources is None:
         selected_sources = []
 
@@ -2229,7 +2407,7 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
 
         fig = make_subplots(
             rows=4, cols=1,
-            subplot_titles=['Serie Original', 'Tendencia', 'Estacional', 'Residuos'],
+            subplot_titles=[get_text('original_series', language), get_text('trend', language), get_text('seasonal', language), get_text('residuals', language)],
             vertical_spacing=0.1
         )
 
@@ -2238,7 +2416,7 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
         fig.add_trace(go.Scatter(x=combined_dataset['Fecha'], y=decomposition.seasonal, name='Estacional'), row=3, col=1)
         fig.add_trace(go.Scatter(x=combined_dataset['Fecha'], y=decomposition.resid, name='Residuos'), row=4, col=1)
 
-        fig.update_layout(height=600, title=f'Análisis Estacional: {selected_source}', showlegend=False)
+        fig.update_layout(height=600, title=get_text('seasonal_title', language, source=selected_source), showlegend=False)
         return fig
     except Exception as e:
         return {}
@@ -2249,10 +2427,11 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
      Output('regression-equations', 'children')],
     [Input('correlation-heatmap', 'clickData'),
      Input('keyword-dropdown', 'value'),
-     Input('data-sources-store-v2', 'data')],
+     Input('data-sources-store-v2', 'data'),
+     Input('language-store', 'data')],
     prevent_initial_call=False
 )
-def update_regression_analysis(click_data, selected_keyword, selected_sources):
+def update_regression_analysis(click_data, selected_keyword, selected_sources, language):
     print(f"DEBUG: update_regression_analysis called")
     print(f"DEBUG: click_data={click_data}")
     print(f"DEBUG: selected_keyword={selected_keyword}")
@@ -2264,74 +2443,116 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources):
     selected_source_ids = map_display_names_to_source_ids(selected_sources)
     print(f"DEBUG: selected_source_ids={selected_source_ids}")
 
+    # Proper validation of click_data structure before accessing it
     if not selected_keyword or len(selected_sources) < 2 or not click_data:
         print(f"DEBUG: Returning empty figure - missing keyword, sources, or click_data")
-        # Return empty figure and empty equations
         fig = go.Figure()
         fig.update_layout(
-            title="Haga clic en el mapa de calor para ver el análisis de regresión",
+            title=get_text('click_heatmap', language),
             xaxis_title="",
             yaxis_title="",
             height=400
         )
         return fig, ""
 
+    # Validate click_data structure before accessing it
     try:
-        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
-        combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
-
-        combined_dataset = combined_dataset.reset_index()
-        date_column = combined_dataset.columns[0]
-        combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
-        combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
-
-        # Get display names from the actual data columns, not from dbase_options
-        # The combined_dataset already has the correct column names
-        selected_source_names = list(combined_dataset.columns[1:])  # Skip 'Fecha' column
-
-        # Get clicked variables from heatmap
-        if 'points' not in click_data or len(click_data['points']) == 0:
-            # Return empty figure and empty equations
+        if not isinstance(click_data, dict) or 'points' not in click_data or not click_data['points']:
+            print(f"DEBUG: Invalid click_data structure")
             fig = go.Figure()
             fig.update_layout(
-                title="Error: No se recibieron datos del clic",
+                title="Error: Invalid click data structure",
                 xaxis_title="",
                 yaxis_title="",
                 height=400
             )
             return fig, ""
+            
+        # Safely extract x and y variables with error handling
+        point = click_data['points'][0]
+        if not isinstance(point, dict) or 'x' not in point or 'y' not in point:
+            print(f"DEBUG: Invalid point structure in click_data")
+            fig = go.Figure()
+            fig.update_layout(
+                title="Error: Invalid point data structure",
+                xaxis_title="",
+                yaxis_title="",
+                height=400
+            )
+            return fig, ""
+            
+        x_var = point['x']
+        y_var = point['y']
+        
+    except (KeyError, IndexError, TypeError) as e:
+        print(f"DEBUG: Error extracting variables from click_data: {e}")
+        fig = go.Figure()
+        fig.update_layout(
+            title=f"Error extracting click data: {str(e)}",
+            xaxis_title="",
+            yaxis_title="",
+            height=400
+        )
+        return fig, ""
 
-        x_var = click_data['points'][0]['x']
-        y_var = click_data['points'][0]['y']
-
+    # Get the data for regression analysis
+    try:
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
+        combined_dataset = create_combined_dataset2(datasets_norm=datasets_norm, selected_sources=sl_sc, dbase_options=dbase_options)
+        
+        combined_dataset = combined_dataset.reset_index()
+        date_column = combined_dataset.columns[0]
+        combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
+        combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
+        
+        # Filter out rows where ALL selected sources are NaN (preserve partial data)
+        # Use the actual column names from the combined dataset
+        actual_columns = [col for col in combined_dataset.columns if col != 'Fecha']
+        if actual_columns:
+            combined_dataset = combined_dataset.dropna(subset=actual_columns, how='all')
+        
+        selected_source_names = [translate_source_name(dbase_options[src_id], language) for src_id in selected_source_ids]
+        
+        # Create mapping between translated names and original column names
+        translated_to_original = {}
+        for src_id in selected_source_ids:
+            original_name = dbase_options.get(src_id, "NOT FOUND")
+            translated_name = translate_source_name(original_name, language)
+            translated_to_original[translated_name] = original_name
+        
         # Debug: print available columns and clicked variables
         print(f"Available columns: {list(combined_dataset.columns)}")
         print(f"Clicked variables: x='{x_var}', y='{y_var}'")
+        print(f"Translation mapping: {translated_to_original}")
 
         # Check if variables are the same (diagonal click on heatmap)
         if x_var == y_var:
             fig = go.Figure()
             fig.add_annotation(
-                text=f"No se puede hacer regresión de {x_var} contra sí mismo.<br>Seleccione dos variables diferentes en el mapa de calor.",
+                text=get_text('cannot_regress_same', language, var=x_var) + "<br>" + get_text('select_different_vars', language),
                 xref="paper", yref="paper",
                 x=0.5, y=0.5,
                 showarrow=False,
                 font=dict(size=14, color="red")
             )
             fig.update_layout(
-                title="Selección Inválida",
+                title=get_text('invalid_selection', language),
                 xaxis=dict(showticklabels=False),
                 yaxis=dict(showticklabels=False),
                 height=400
             )
-            return fig, "Seleccione dos variables diferentes para el análisis de regresión."
+            return fig, get_text('invalid_selection', language)
 
-        if x_var not in combined_dataset.columns or y_var not in combined_dataset.columns:
-            print(f"Variables not found in dataset: x='{x_var}', y='{y_var}'")
+        # Convert translated names back to original column names for DataFrame access
+        x_var_original = translated_to_original.get(x_var, x_var)
+        y_var_original = translated_to_original.get(y_var, y_var)
+        
+        if x_var_original not in combined_dataset.columns or y_var_original not in combined_dataset.columns:
+            print(f"Variables not found in dataset: x='{x_var_original}', y='{y_var_original}'")
             # Return empty figure instead of empty dict
             fig = go.Figure()
             fig.update_layout(
-                title=f"Variables no encontradas: {x_var} vs {y_var}",
+                title=get_text('variables_not_found', language, x_var=x_var, y_var=y_var),
                 xaxis_title="",
                 yaxis_title="",
                 height=500
@@ -2339,16 +2560,24 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources):
             return fig, ""
 
         # Perform regression analysis with multiple polynomial degrees
-        valid_data = combined_dataset[[x_var, y_var]].dropna()
+        valid_data = combined_dataset[[x_var_original, y_var_original]].dropna()
         if len(valid_data) < 2:
-            return {}
+            fig = go.Figure()
+            fig.update_layout(
+                title="Insufficient data for regression analysis",
+                xaxis_title="",
+                yaxis_title="",
+                height=400
+            )
+            return fig, ""
 
-        X = valid_data[x_var].values.reshape(-1, 1)
-        y = valid_data[y_var].values
+        X = valid_data[x_var_original].values.reshape(-1, 1)
+        y = valid_data[y_var_original].values
 
         # Colors for different polynomial degrees
         poly_colors = ['red', 'blue', 'green', 'orange']
-        degree_names = ['Lineal', 'Cuadrática', 'Cúbica', 'Cuártica']
+        degree_names = [get_text('linear', language), get_text('quadratic', language),
+                      get_text('cubic', language), get_text('quartic', language)]
 
         fig = go.Figure()
 
@@ -2357,7 +2586,7 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources):
             x=valid_data[x_var],
             y=valid_data[y_var],
             mode='markers',
-            name='Datos',
+            name=get_text('data_points', language),
             marker=dict(color='gray', size=6, opacity=0.7)
         ))
 
@@ -2443,7 +2672,7 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources):
         # Update layout with increased height for legend and equations
         fig.update_layout(
             title={
-                'text': f'Análisis de Regresión Polinomial: {y_var} vs {x_var}',
+                'text': get_text('regression_title', language, y_var=y_var, x_var=x_var),
                 'y': 0.95,
                 'x': 0.5,
                 'xanchor': 'center',
@@ -2506,7 +2735,7 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources):
 
             equations_content = html.Div(components, style={'textAlign': 'left'})
         else:
-            equations_content = html.P("Haga clic en el mapa de calor para ver las ecuaciones de regresión", style={'textAlign': 'left'})
+            equations_content = html.P(get_text('regression_equations', language), style={'textAlign': 'left'})
 
         return fig, equations_content
     except Exception as e:
@@ -2516,25 +2745,13 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources):
         # Return empty figure and empty equations
         fig = go.Figure()
         fig.update_layout(
-            title="Error en el análisis de regresión",
+            title=get_text('regression_error', language),
             xaxis_title="",
             yaxis_title="",
             height=400
         )
         return fig, ""
 
-@app.callback(
-    Output('collapse-table', 'is_open'),
-    Output('toggle-table-button', 'children'),
-    [Input('toggle-table-button', 'n_clicks')],
-    [State('collapse-table', 'is_open')]
-)
-def toggle_table(n_clicks, is_open):
-    if n_clicks:
-        new_state = not is_open
-        button_text = "Ocultar Tabla" if new_state else "Mostrar Tabla"
-        return new_state, button_text
-    return is_open, "Ocultar Tabla"
 
 # Callback for credits toggle - allows manual override
 @app.callback(
@@ -2556,9 +2773,10 @@ def toggle_credits_manually(n_clicks, is_open):
     Output('navigation-section', 'children'),
     Output('navigation-section', 'style'),
     Input('keyword-dropdown', 'value'),
-    Input('data-sources-store-v2', 'data')
+    Input('data-sources-store-v2', 'data'),
+    Input('language-store', 'data')
 )
-def update_navigation_visibility(selected_keyword, selected_sources):
+def update_navigation_visibility(selected_keyword, selected_sources, language):
     if selected_sources is None:
         selected_sources = []
 
@@ -2568,20 +2786,20 @@ def update_navigation_visibility(selected_keyword, selected_sources):
         # Define navigation buttons with their requirements
         nav_buttons = [
             # Always visible (basic analysis)
-            {"id": 1, "text": "1. Temporal 2D", "href": "#section-temporal-2d", "color": "#e8f4fd", "border": "#b8daff", "min_sources": 1},
-            {"id": 2, "text": "2. Análisis Medias", "href": "#section-mean-analysis", "color": "#f0f9ff", "border": "#bee3f8", "min_sources": 1},
+            {"id": 1, "text": get_text('temporal_2d_nav', language), "href": "#section-temporal-2d", "color": "#e8f4fd", "border": "#b8daff", "min_sources": 1},
+            {"id": 2, "text": get_text('mean_analysis_nav', language), "href": "#section-mean-analysis", "color": "#f0f9ff", "border": "#bee3f8", "min_sources": 1},
 
             # Require 2+ sources (multi-source analysis)
-            {"id": 3, "text": "3. Temporal 3D", "href": "#section-temporal-3d", "color": "#fef5e7", "border": "#fbd38d", "min_sources": 2},
-            {"id": 4, "text": "4. Estacional", "href": "#section-seasonal", "color": "#f0fff4", "border": "#9ae6b4", "min_sources": 1},
-            {"id": 5, "text": "5. Fourier", "href": "#section-fourier", "color": "#faf5ff", "border": "#d6bcfa", "min_sources": 1},
-            {"id": 6, "text": "6. Correlación", "href": "#section-correlation", "color": "#e6fffa", "border": "#81e6d9", "min_sources": 2},
-            {"id": 7, "text": "7. Regresión", "href": "#section-regression", "color": "#fffaf0", "border": "#fce5cd", "min_sources": 2},
-            {"id": 8, "text": "8. PCA", "href": "#section-pca", "color": "#f0f9ff", "border": "#bee3f8", "min_sources": 2},
+            {"id": 3, "text": get_text('temporal_3d_nav', language), "href": "#section-temporal-3d", "color": "#fef5e7", "border": "#fbd38d", "min_sources": 2},
+            {"id": 4, "text": get_text('seasonal_nav', language), "href": "#section-seasonal", "color": "#f0fff4", "border": "#9ae6b4", "min_sources": 1},
+            {"id": 5, "text": get_text('fourier_nav', language), "href": "#section-fourier", "color": "#faf5ff", "border": "#d6bcfa", "min_sources": 1},
+            {"id": 6, "text": get_text('correlation_nav', language), "href": "#section-correlation", "color": "#e6fffa", "border": "#81e6d9", "min_sources": 2},
+            {"id": 7, "text": get_text('regression_nav', language), "href": "#section-regression", "color": "#fffaf0", "border": "#fce5cd", "min_sources": 2},
+            {"id": 8, "text": get_text('pca_nav', language), "href": "#section-pca", "color": "#f0f9ff", "border": "#bee3f8", "min_sources": 2},
 
             # Always visible (utility sections) - placed at the end
-            {"id": 9, "text": "Tabla de Datos", "href": "#section-data-table", "color": "#f8f9fa", "border": "#dee2e6", "min_sources": 1},
-            {"id": 10, "text": "Rendimiento", "href": "#section-performance", "color": "#f7fafc", "border": "#e2e8f0", "min_sources": 1},
+            {"id": 9, "text": get_text('data_table_nav', language), "href": "#section-data-table", "color": "#f8f9fa", "border": "#dee2e6", "min_sources": 1},
+            {"id": 10, "text": get_text('performance_nav', language), "href": "#section-performance", "color": "#f7fafc", "border": "#e2e8f0", "min_sources": 1},
         ]
 
         # Filter buttons based on number of selected sources
@@ -2628,11 +2846,12 @@ def update_navigation_visibility(selected_keyword, selected_sources):
 # Fourier Analysis callback
 @app.callback(
     Output('fourier-analysis-graph', 'figure'),
-    Input('fourier-source-select', 'value'),
-    Input('keyword-dropdown', 'value'),
-    Input('data-sources-store-v2', 'data')
+    [Input('fourier-source-select', 'value'),
+     Input('keyword-dropdown', 'value'),
+     Input('data-sources-store-v2', 'data'),
+     Input('language-store', 'data')]
 )
-def update_fourier_analysis(selected_source, selected_keyword, selected_sources):
+def update_fourier_analysis(selected_source, selected_keyword, selected_sources, language):
     if selected_sources is None:
         selected_sources = []
 
@@ -2644,14 +2863,14 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources)
     if not selected_source:
         fig = go.Figure()
         fig.add_annotation(
-            text="Seleccione una fuente de datos para ver el análisis de Fourier",
+            text=get_text('select_source_fourier', language),
             xref="paper", yref="paper",
             x=0.5, y=0.5,
             showarrow=False,
             font=dict(size=14)
         )
         fig.update_layout(
-            title="Análisis de Fourier - Periodograma",
+            title=get_text('fourier_analysis_periodogram', language),
             xaxis=dict(showticklabels=False),
             yaxis=dict(showticklabels=False)
         )
@@ -2735,7 +2954,7 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources)
             fig.add_trace(go.Bar(
                 x=sig_periods,
                 y=sig_magnitude,
-                name='Componentes Significativos',
+                name=get_text('significant_components', language),
                 marker_color='red',
                 marker_line_width=2,
                 marker_line_color='red',
@@ -2749,7 +2968,7 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources)
             fig.add_trace(go.Bar(
                 x=non_sig_periods,
                 y=non_sig_magnitude,
-                name='Componentes No Significativos',
+                name=get_text('non_significant_components', language),
                 marker_color='grey',
                 marker_line_width=1,
                 marker_line_color='grey',
@@ -2774,14 +2993,14 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources)
             x=[periods.min(), periods.max()],
             y=[scaled_threshold, scaled_threshold],
             mode='lines',
-            name='Umbral Significancia (95%)',
+            name=get_text('significance_threshold', language),
             line=dict(color='purple', width=2, dash='dot'),
             showlegend=True
         ))
 
         # Add vertical reference lines for Trimestral, Semestral, Anual
         v_lines = [3, 6, 12]
-        v_line_names = ['Trimestral (3m)', 'Semestral (6m)', 'Anual (12m)']
+        v_line_names = [get_text('quarterly', language), get_text('semiannual', language), get_text('annual', language)]
         for val, name in zip(v_lines, v_line_names):
             fig.add_vline(
                 x=val, line_width=1, line_dash="dash", line_color="blue",
@@ -2802,14 +3021,14 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources)
         # Update layout
         fig.update_layout(
             title={
-                'text': f'Análisis de Fourier - Periodograma: {selected_source}',
+                'text': get_text('fourier_title', language, source=selected_source),
                 'y': 0.95,
                 'x': 0.5,
                 'xanchor': 'center',
                 'yanchor': 'top'
             },
-            xaxis_title='Período (meses)',
-            yaxis_title='Magnitud',
+            xaxis_title=get_text('period_months', language),
+            yaxis_title=get_text('magnitude', language),
             height=500,
             showlegend=True,
             legend=dict(

@@ -1,17 +1,13 @@
-# Multi-stage Dockerfile for Dash Dashboard Production Deployment
+# Single-stage Dockerfile for Dash Dashboard Production Deployment
 # Optimized for Dokploy platform
 
-# ============================================================================
-# Stage 1: Builder - Compile dependencies and create wheels
-# ============================================================================
-FROM python:3.11-slim as builder
+FROM python:3.11-slim
 
-LABEL stage=builder
-LABEL description="Build stage for compiling Python dependencies"
+LABEL maintainer="Dimar Añez <contact@wiseconnex.com>"
+LABEL description="Management Tools Analysis Dashboard - Production"
+LABEL version="1.0.0"
 
-WORKDIR /build
-
-# Install build dependencies including BLAS/LAPACK and cmake for scipy
+# Install both build and runtime dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
@@ -22,26 +18,6 @@ RUN apt-get update && \
     liblapack-dev \
     pkg-config \
     cmake \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements file
-COPY dashboard_app/requirements.txt .
-
-# Build wheels for all dependencies (faster installation in runtime stage)
-RUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
-
-# ============================================================================
-# Stage 2: Runtime - Minimal production image
-# ============================================================================
-FROM python:3.11-slim
-
-LABEL maintainer="Dimar Añez <contact@wiseconnex.com>"
-LABEL description="Management Tools Analysis Dashboard - Production"
-LABEL version="1.0.0"
-
-# Install runtime dependencies including OpenMP for scikit-learn
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
     curl \
     libopenblas0 \
     liblapack3 \
@@ -55,13 +31,14 @@ RUN useradd -m -u 1000 -s /bin/bash dashuser
 # Set working directory
 WORKDIR /app
 
-# Copy wheels from builder stage
-COPY --from=builder /wheels /wheels
+# Install UV for faster dependency management
+RUN pip install --no-cache-dir uv
 
-# Install dependencies from pre-built wheels
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir /wheels/* && \
-    rm -rf /wheels
+# Copy requirements file
+COPY dashboard_app/requirements.txt .
+
+# Install dependencies using UV with system flag
+RUN uv pip install --no-cache-dir --system -r requirements.txt
 
 # Install gunicorn for production serving
 RUN pip install --no-cache-dir gunicorn==21.2.0 gevent==23.9.1
@@ -72,7 +49,7 @@ COPY --chown=dashuser:dashuser assets/ ./assets/
 COPY --chown=dashuser:dashuser database.py ./
 COPY --chown=dashuser:dashuser tools.py ./
 COPY --chown=dashuser:dashuser config.py ./
-COPY --chown=dashuser:dashuser dashboard_app/fix_source_mapping.py ./
+COPY --chown=dashuser:dashuser dashboard_app/fix_source_mapping.py ./dashboard_app/
 
 # Copy configuration and scripts
 COPY --chown=dashuser:dashuser config/ ./config/

@@ -38,6 +38,10 @@ log_info "Starting Dash Dashboard initialization..."
 PYTHON_VERSION=$(python --version 2>&1)
 log_info "Python version: $PYTHON_VERSION"
 
+# Check if UV is available
+UV_VERSION=$(uv --version 2>&1 || echo "UV not installed")
+log_info "UV version: $UV_VERSION"
+
 # Check if running as correct user
 CURRENT_USER=$(whoami)
 log_info "Running as user: $CURRENT_USER"

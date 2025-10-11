@@ -207,11 +207,15 @@ notas.py
 # ============================================================================
 # Keep These Files (Explicitly NOT Ignored)
 # ============================================================================
-# !dashboard_app/
-# !assets/
-# !database.py
-# !tools.py
-# !gunicorn.conf.py
-# !healthcheck.sh
-# !entrypoint.sh
-# !requirements.txt
+!dashboard_app/
+!assets/
+!database.py
+!tools.py
+!config.py
+!gunicorn.conf.py
+!healthcheck.sh
+!entrypoint.sh
+!wsgi.py
+!dashboard_app/requirements.txt
+!dashboard_app/pyproject.toml
+!dashboard_app/uv.lock
