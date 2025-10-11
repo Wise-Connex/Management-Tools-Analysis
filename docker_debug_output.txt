@@ -1,0 +1,105 @@
+[0;34m[INFO][0m Starting Dash Dashboard initialization...
+[0;34m[INFO][0m Python version: Python 3.11.14
+[0;34m[INFO][0m UV version: ./entrypoint.sh: line 42: uv: command not found
+UV not installed
+[0;34m[INFO][0m Running as user: dashuser
+[0;34m[INFO][0m Setting up directories...
+[0;32m[SUCCESS][0m Created logs directory
+[0;32m[SUCCESS][0m Logs directory is writable
+[0;34m[INFO][0m Verifying database files...
+[0;32m[SUCCESS][0m Found data.db (Size: 7.6M)
+[0;32m[SUCCESS][0m Found notes_and_doi.db (Size: 432K)
+[0;34m[INFO][0m Environment configuration:
+[0;34m[INFO][0m   PORT: 8050
+[0;34m[INFO][0m   FLASK_ENV: production
+[0;34m[INFO][0m   LOG_LEVEL: info
+[0;34m[INFO][0m   MAX_WORKERS: auto
+[0;34m[INFO][0m   WORKER_TIMEOUT: 120
+[0;34m[INFO][0m Verifying application files...
+[0;32m[SUCCESS][0m Found dashboard_app/app.py
+[0;32m[SUCCESS][0m Found tools.py
+[0;32m[SUCCESS][0m Found database.py
+[0;32m[SUCCESS][0m Found assets directory (10 files)
+[0;32m[SUCCESS][0m Pre-flight checks completed successfully
+[0;34m[INFO][0m Starting Dash Dashboard with command: python
+[0;34m[INFO][0m Dashboard will be available at http://0.0.0.0:8050
+[0;34m[INFO][0m Health check endpoint: http://0.0.0.0:8050/health
+DOCKER TRANSLATION ISSUE DEBUG SCRIPT
+Running at: 2025-10-11 19:51:11.382216
+
+============================================================
+ENVIRONMENT DIFFERENCES CHECK
+============================================================
+Python version: 3.11.14 (main, Oct  9 2025, 22:39:13) [GCC 14.2.0]
+Current working directory: /app
+Python path: ['/app/dashboard_app', '/app', '/usr/local/lib/python311.zip']...
+DASHBOARD_DATABASE_PATH: None
+PYTHONPATH: None
+LANG: C.UTF-8
+LC_ALL: None
+Running inside Docker container
+============================================================
+DATABASE STRUCTURE ANALYSIS
+============================================================
+Found database at: dashboard_app/data.db
+Tables in database: ['google_trends', 'crossref', 'google_books', 'bain_usability', 'bain_satisfaction', 'metadata']
+Bain-related tables: ['bain_usability', 'bain_satisfaction']
+
+Schema for bain_usability:
+  (0, 'date', 'TEXT', 1, None, 1)
+  (1, 'keyword', 'TEXT', 1, None, 2)
+  (2, 'value', 'REAL', 1, None, 0)
+  Total records: 5567
+  Sample keywords: ['Alianzas y Capital de Riesgo', 'Benchmarking', 'Calidad Total', 'Competencias Centrales', 'Experiencia del Cliente']
+
+Schema for bain_satisfaction:
+  (0, 'date', 'TEXT', 1, None, 1)
+  (1, 'keyword', 'TEXT', 1, None, 2)
+  (2, 'value', 'REAL', 1, None, 0)
+  Total records: 5495
+  Sample keywords: ['Alianzas y Capital de Riesgo', 'Benchmarking', 'Calidad Total', 'Competencias Centrales', 'Experiencia del Cliente']
+
+============================================================
+SOURCE MAPPING ANALYSIS
+============================================================
+Display Names: ['Google Trends', 'Google Books', 'Bain Usability', 'Bain Satisfaction', 'Crossref']
+Display to DB Name Mapping: {'Google Trends': 'Google Trends', 'Google Books': 'Google Books Ngrams', 'Bain Usability': 'Bain - Usabilidad', 'Bain Satisfaction': 'Bain - Satisfacción', 'Crossref': 'Crossref.org'}
+DBASE_OPTIONS: {1: 'Google Trends', 4: 'Crossref.org', 2: 'Google Books Ngrams', 3: 'Bain - Usabilidad', 5: 'Bain - Satisfacción'}
+
+Bain entries in mappings:
+  Bain Usability -> Bain - Usabilidad
+    Found in DBASE_OPTIONS with ID 3
+  Bain Satisfaction -> Bain - Satisfacción
+    Found in DBASE_OPTIONS with ID 5
+
+============================================================
+TRANSLATION SYSTEM ANALYSIS
+============================================================
+Testing translate_source_name function:
+  'Bain - Usabilidad' (es) -> 'Bain - Usability' (en)
+  'Bain - Satisfacción' (es) -> 'Bain - Satisfaction' (en)
+  'Bain - Usability' (en) -> 'Bain - Usability' (es)
+  'Bain - Satisfaction' (en) -> 'Bain - Satisfaction' (es)
+
+Checking for English Bain translations in TRANSLATIONS dict:
+  Bain-related keys in English translations: []
+
+============================================================
+DATA RETRIEVAL SIMULATION
+============================================================
+Testing with English sources: ['Bain - Usability', 'Bain - Satisfaction']
+Mapped to source IDs: []
+Attempting to retrieve data for keyword: Benchmarking
+2025-10-11 19:51:11,437 - INFO - Getting data for keyword='Benchmarking', sources=[]
+Retrieved datasets for sources: []
+Valid sources: []
+
+============================================================
+DEBUGGING COMPLETE
+============================================================
+
+SUMMARY:
+1. Check if Bain tables exist in the database
+2. Verify source mapping is correct for English names
+3. Confirm translation system works as expected
+4. Identify any missing data or mapping issues

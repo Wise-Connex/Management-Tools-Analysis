@@ -1,5 +1,5 @@
-# Single-stage Dockerfile for Dash Dashboard Production Deployment
-# Optimized for Dokploy platform
+# Traditional Dockerfile for Dash Dashboard Production Deployment
+# Using pip for dependency management (more reliable)
 
 FROM python:3.11-slim
 
@@ -31,17 +31,17 @@ RUN useradd -m -u 1000 -s /bin/bash dashuser
 # Set working directory
 WORKDIR /app
 
-# Install UV for faster dependency management
-RUN pip install --no-cache-dir uv
+# Upgrade pip and install wheel for faster builds
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
 # Copy requirements file
 COPY dashboard_app/requirements.txt .
 
-# Install dependencies using UV with system flag
-RUN uv pip install --no-cache-dir --system -r requirements.txt
+# Install dependencies using pip
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Install gunicorn for production serving
-RUN pip install --no-cache-dir gunicorn==21.2.0 gevent==23.9.1
+RUN pip install --no-cache-dir gunicorn==21.2.0
 
 # Copy application code with proper ownership
 COPY --chown=dashuser:dashuser dashboard_app/ ./dashboard_app/

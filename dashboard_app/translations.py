@@ -644,3 +644,45 @@ def translate_source_name(source_name, language='es'):
     }
 
     return source_translations.get(source_name, source_name)
+
+# DOCKER_FIX: Enhanced translation for Docker environment
+def enhanced_translate_source_name(source_name, language='es'):
+    """
+    Enhanced translation function that handles more variations and provides fallbacks.
+    This addresses Docker-specific issues with source name translation.
+    
+    Args:
+        source_name: Source name to translate
+        language: Target language ('es' or 'en')
+        
+    Returns:
+        Translated source name
+    """
+    # Try the standard translation first
+    try:
+        return translate_source_name(source_name, language)
+    except:
+        pass
+    
+    # Fallback translations for Docker environment
+    if language == 'es':
+        # English to Spanish
+        fallback_translations = {
+            'Bain - Usability': 'Bain - Usabilidad',
+            'Bain Usability': 'Bain - Usabilidad',
+            'Bain - Satisfaction': 'Bain - Satisfacción',
+            'Bain Satisfaction': 'Bain - Satisfacción',
+            'Google Books': 'Google Books Ngrams',
+            'Crossref': 'Crossref.org'
+        }
+    else:
+        # Spanish to English
+        fallback_translations = {
+            'Bain - Usabilidad': 'Bain - Usability',
+            'Bain - Satisfacción': 'Bain - Satisfaction',
+            'Google Books Ngrams': 'Google Books',
+            'Crossref.org': 'Crossref'
+        }
+    
+    return fallback_translations.get(source_name, source_name)
+

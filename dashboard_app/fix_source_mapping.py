@@ -70,5 +70,60 @@ def ids_to_display_names(ids):
     db_to_display = {v: k for k, v in DISPLAY_TO_DB_NAME.items()}
     return [db_to_display.get(name, name) for name in db_names]
 
+
+# DOCKER_FIX: Enhanced source mapping for English names
+# This ensures proper mapping from English display names to database IDs
+
+def enhanced_display_names_to_ids(display_names):
+    """
+    Enhanced function to handle English display names in Docker environment.
+    Provides fallback mappings for common translation issues.
+    
+    Args:
+        display_names: List of display names (can be English or Spanish)
+        
+    Returns:
+        List of numeric source IDs
+    """
+    if not display_names:
+        return []
+    
+    # Enhanced mapping for both English and Spanish names
+    name_to_id_fallbacks = {
+        # English names
+        'Bain - Usability': 3,      # Maps to bain_usability table
+        'Bain Usability': 3,       # Alternative without dash
+        'Bain - Satisfaction': 5,  # Maps to bain_satisfaction table
+        'Bain Satisfaction': 5,    # Alternative without dash
+        'Google Books': 2,         # Maps to google_books table
+        'Google Trends': 1,        # Maps to google_trends table
+        'Crossref': 4,             # Maps to crossref table
+        
+        # Spanish names
+        'Bain - Usabilidad': 3,    # Maps to bain_usability table
+        'Bain Usabilidad': 3,     # Alternative without dash
+        'Bain - Satisfacción': 5,  # Maps to bain_satisfaction table
+        'Bain Satisfacción': 5,   # Alternative without dash
+        'Google Books Ngrams': 2,  # Maps to google_books table
+        'Crossref.org': 4          # Maps to crossref table
+    }
+    
+    # Apply fallbacks for all names
+    result_ids = []
+    for name in display_names:
+        if name in name_to_id_fallbacks:
+            result_ids.append(name_to_id_fallbacks[name])
+            if name not in ['Bain - Usabilidad', 'Bain - Satisfacción', 'Google Books Ngrams', 'Crossref.org']:
+                print(f"Applied mapping: '{name}' -> ID {name_to_id_fallbacks[name]}")
+        else:
+            print(f"WARNING: No mapping found for '{name}'")
+    
+    return result_ids
+
+# Replace the standard function for Docker compatibility
+map_display_names_to_source_ids = enhanced_display_names_to_ids
+
+
 # Export the main conversion function for backward compatibility
-map_display_names_to_source_ids = display_names_to_ids
+# Note: This is now handled by the enhanced function above
+# map_display_names_to_source_ids = display_names_to_ids
