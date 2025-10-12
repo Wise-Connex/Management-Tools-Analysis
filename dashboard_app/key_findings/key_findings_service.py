@@ -18,6 +18,7 @@ from .database_manager import KeyFindingsDBManager
 from .ai_service import OpenRouterService, get_openrouter_service
 from .data_aggregator import DataAggregator
 from .prompt_engineer import PromptEngineer
+from .modal_component import KeyFindingsModal
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -54,6 +55,9 @@ class KeyFindingsService:
         # Initialize prompt engineer
         self.prompt_engineer = PromptEngineer()
         
+        # Initialize modal component (will be set later with app instance)
+        self.modal_component = None
+        
         # Configuration
         self.config = {
             'cache_ttl': config.get('cache_ttl', 86400) if config else 86400,  # 24 hours
@@ -70,6 +74,25 @@ class KeyFindingsService:
             'avg_response_time_ms': 0,
             'error_count': 0
         }
+    
+    def set_modal_component(self, app, language_store):
+        """
+        Set the modal component for this service.
+        
+        Args:
+            app: Dash application instance
+            language_store: Language state store
+        """
+        self.modal_component = KeyFindingsModal(app, language_store)
+    
+    def get_modal_component(self):
+        """
+        Get the modal component instance.
+        
+        Returns:
+            KeyFindingsModal instance or None
+        """
+        return self.modal_component
 
     async def generate_key_findings(self, tool_name: str, selected_sources: List[str], 
                                   language: str = 'es', force_refresh: bool = False) -> Dict[str, Any]:
@@ -89,7 +112,7 @@ class KeyFindingsService:
         self.performance_metrics['total_requests'] += 1
         
         try:
-            # Generate scenario hash for caching
+            # Generate scenario hash for caching - use display names for consistency
             scenario_hash = self.kf_db_manager.generate_scenario_hash(
                 tool_name, selected_sources, language=language
             )
@@ -119,10 +142,17 @@ class KeyFindingsService:
             self.performance_metrics['cache_misses'] += 1
             logging.info(f"Cache miss for scenario {scenario_hash[:8]}... Generating new analysis")
             
-            # Collect analysis data
+            # Collect analysis data - convert display names to source IDs
+            from fix_source_mapping import map_display_names_to_source_ids
+            selected_source_ids = map_display_names_to_source_ids(selected_sources)
+            
             analysis_data = self.data_aggregator.collect_analysis_data(
-                tool_name, selected_sources, language
+                tool_name, selected_source_ids, language
             )
+            
+            # Update analysis data with original display names for consistency
+            if 'error' not in analysis_data:
+                analysis_data['selected_sources'] = selected_sources
             
             if 'error' in analysis_data:
                 raise Exception(f"Data collection failed: {analysis_data['error']}")
@@ -252,8 +282,15 @@ class KeyFindingsService:
             if pca_insights and not pca_insights.get('error'):
                 # Check for variance explanation
                 variance = pca_insights.get('variance_explained', 0)
-                if variance > 0:
+                if isinstance(variance, (int, float)) and variance > 0:
                     confidence_factors.append(min(variance / 100, 1.0))
+                elif isinstance(variance, str):
+                    # Handle string variance like "73%"
+                    try:
+                        variance_num = float(variance.replace('%', ''))
+                        confidence_factors.append(min(variance_num / 100, 1.0))
+                    except ValueError:
+                        pass
             
             # Executive summary quality
             executive_summary = ai_content.get('executive_summary', '')

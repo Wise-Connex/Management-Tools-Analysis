@@ -162,7 +162,11 @@ class DataAggregator:
                 
                 # Find sources with highest loadings
                 top_sources_idx = np.argsort(np.abs(component_loadings))[-3:][::-1]
-                top_sources = [selected_sources[idx] for idx in top_sources_idx]
+                # Handle both string and integer indices
+                if all(isinstance(idx, (int, np.integer)) for idx in top_sources_idx):
+                    top_sources = [selected_sources[int(idx)] for idx in top_sources_idx]
+                else:
+                    top_sources = [str(idx) for idx in top_sources_idx]
                 top_loadings = [component_loadings[idx] for idx in top_sources_idx]
                 
                 dominant_patterns.append({
@@ -170,8 +174,8 @@ class DataAggregator:
                     'variance_explained': float(explained_variance[i]),
                     'cumulative_variance': float(cumulative_variance[i]),
                     'dominant_sources': top_sources,
-                    'loadings': dict(zip(selected_sources, component_loadings.tolist())),
-                    'interpretation': self._interpret_component(component_loadings, selected_sources, i+1)
+                    'loadings': dict(zip(list(data.columns), component_loadings.tolist())),
+                    'interpretation': self._interpret_component(component_loadings, list(data.columns), i+1)
                 })
             
             return {
@@ -485,7 +489,7 @@ class DataAggregator:
             'date_range': {
                 'start': data.index.min().strftime('%Y-%m-%d'),
                 'end': data.index.max().strftime('%Y-%m-%d'),
-                'total_days': (data.index.max() - data.index.min()).days
+                'total_days': (data.index.max() - data.index.min()).days if hasattr(data.index.max() - data.index.min(), 'days') else 0
             },
             'basic_statistics': {}
         }

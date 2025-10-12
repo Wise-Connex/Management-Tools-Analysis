@@ -1,0 +1,13 @@
+services:
+  dash:
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./dashboard_app/.env:/app/.env
+    environment:
+      - KEY_FINDINGS_DB_PATH=/app/data/key_findings.db
+      - KEY_FINDINGS_BACKUP_PATH=/app/data/backups/
+      - DEBUG=True
+    ports:
+      - "8050:8050"
+    restart: unless-stopped

@@ -23,6 +23,14 @@ import sys
 import re
 import time
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+    print("✅ Environment variables loaded from .env")
+except ImportError:
+    print("⚠️  python-dotenv not available, using existing environment variables")
+
 # Add parent directory to path for database imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -46,9 +54,9 @@ from translations import get_text, get_available_languages, get_language_name, t
 try:
     from key_findings import KeyFindingsService, KeyFindingsModal
     KEY_FINDINGS_AVAILABLE = True
-    print("Key Findings module loaded successfully")
+    print("✅ Key Findings module loaded successfully")
 except ImportError as e:
-    print(f"Warning: Key Findings module not available: {e}")
+    print(f"❌ Warning: Key Findings module not available: {e}")
     KEY_FINDINGS_AVAILABLE = False
 # DOCKER_FIX: Enhanced imports for Docker compatibility
 try:
@@ -98,10 +106,24 @@ db_manager = get_database_manager()
 key_findings_service = None
 if KEY_FINDINGS_AVAILABLE:
     try:
-        key_findings_service = KeyFindingsService()
-        print("Key Findings service initialized successfully")
+        # Use local path for development, Docker path for production
+        import os
+        if os.path.exists('/app/data'):
+            db_path = '/app/data/key_findings.db'
+        else:
+            db_path = './data/key_findings.db'
+            
+        config = {'key_findings_db_path': db_path}
+        api_key = os.getenv('OPENROUTER_API_KEY')
+        key_findings_service = KeyFindingsService(db_manager, config=config, api_key=api_key)
+        
+        # Initialize modal component
+        key_findings_service.set_modal_component(app, dcc.Store(id='language-store', data='es'))
+        print("✅ Key Findings service initialized successfully")
     except Exception as e:
-        print(f"Error initializing Key Findings service: {e}")
+        print(f"❌ Error initializing Key Findings service: {e}")
+        import traceback
+        traceback.print_exc()
         KEY_FINDINGS_AVAILABLE = False
 
 # Notes and DOI data is now loaded from the database
@@ -511,9 +533,9 @@ sidebar = html.Div([
                 size="sm",
                 className="w-100 mb-2",
                 style={'fontSize': '12px', 'fontWeight': 'bold'},
-                disabled=not KEY_FINDINGS_AVAILABLE
+                disabled=False
             )
-        ], style={'display': 'block' if KEY_FINDINGS_AVAILABLE else 'none', 'marginTop': '10px'}),
+        ], style={'display': 'block', 'marginTop': '10px', 'marginBottom': '15px'}),
         html.Div(id='navigation-section', style={'display': 'none'})
     ], style={
         'overflowY': 'auto',
@@ -718,7 +740,7 @@ app.layout = dbc.Container([
         })
     ], style={'height': '100vh'}),
     notes_modal,
-    # Add Key Findings modal if available
+    # Add Key Findings modal
     dbc.Modal(
         [
             dbc.ModalHeader(dbc.ModalTitle("🧠 Key Findings", id="key-findings-modal-title")),
@@ -735,7 +757,7 @@ app.layout = dbc.Container([
         size="xl",
         centered=True,
         backdrop="static"
-    ) if KEY_FINDINGS_AVAILABLE else None
+    )
 ], fluid=True, className="px-0", style={'height': '100vh'})
 
 # Callbacks
@@ -3354,7 +3376,22 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     html.P(findings["error"], className="text-muted")
                 ])
             
-            return key_findings_service.modal_component.create_findings_display(findings)
+            if key_findings_service.modal_component:
+                return key_findings_service.modal_component.create_findings_display(findings)
+            else:
+                # Fallback if modal component not initialized
+                return html.Div([
+                    html.H4("Key Findings", className="text-primary mb-3"),
+                    html.Div([
+                        html.H5("Resumen Ejecutivo"),
+                        html.P(findings.get('executive_summary', 'No summary available'), className="mb-3"),
+                        html.H5("Hallazgos Principales"),
+                        html.Ul([
+                            html.Li(finding.get('bullet_point', 'No finding'))
+                            for finding in findings.get('principal_findings', [])
+                        ])
+                    ])
+                ])
             
         except Exception as e:
             return html.Div([

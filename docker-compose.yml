@@ -1,8 +1,6 @@
 # Docker Compose Configuration for Local Development and Testing
 # This file is optional - Dokploy handles orchestration in production
 
-version: "3.8"
-
 services:
   # ============================================================================
   # Dash Dashboard Application
