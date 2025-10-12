@@ -59,7 +59,7 @@ chmod +x setup_key_findings_fork.sh
 cp dashboard_app/.env.example dashboard_app/.env
 
 # Edit with your API key
-OPENROUTER_API_KEY=your_api_key_here
+OPENROUTER_API_KEY=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
 ```
 
 ### 4. Implement the Code
