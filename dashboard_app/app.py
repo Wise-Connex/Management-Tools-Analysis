@@ -42,6 +42,14 @@ from fix_source_mapping import (
 )
 # Import translation system
 from translations import get_text, get_available_languages, get_language_name, translate_database_content, translate_source_name
+# Import Key Findings module
+try:
+    from key_findings import KeyFindingsService, KeyFindingsModal
+    KEY_FINDINGS_AVAILABLE = True
+    print("Key Findings module loaded successfully")
+except ImportError as e:
+    print(f"Warning: Key Findings module not available: {e}")
+    KEY_FINDINGS_AVAILABLE = False
 # DOCKER_FIX: Enhanced imports for Docker compatibility
 try:
     from translations import enhanced_translate_source_name
@@ -85,6 +93,16 @@ except ImportError as e:
 
 # Get database manager instance
 db_manager = get_database_manager()
+
+# Initialize Key Findings service if available
+key_findings_service = None
+if KEY_FINDINGS_AVAILABLE:
+    try:
+        key_findings_service = KeyFindingsService()
+        print("Key Findings service initialized successfully")
+    except Exception as e:
+        print(f"Error initializing Key Findings service: {e}")
+        KEY_FINDINGS_AVAILABLE = False
 
 # Notes and DOI data is now loaded from the database
 
@@ -481,6 +499,21 @@ sidebar = html.Div([
             html.Div(id='data-sources-container'),
             html.Div(id='datasources-validation', className="text-danger", style={'fontSize': '12px'})
         ]),
+        # Key Findings button (only show if module is available)
+        html.Div([
+            dbc.Button(
+                [
+                    html.I(className="fas fa-brain", style={'marginRight': '8px'}),
+                    "Generar Key Findings"
+                ],
+                id="generate-key-findings-btn",
+                color="info",
+                size="sm",
+                className="w-100 mb-2",
+                style={'fontSize': '12px', 'fontWeight': 'bold'},
+                disabled=not KEY_FINDINGS_AVAILABLE
+            )
+        ], style={'display': 'block' if KEY_FINDINGS_AVAILABLE else 'none', 'marginTop': '10px'}),
         html.Div(id='navigation-section', style={'display': 'none'})
     ], style={
         'overflowY': 'auto',
@@ -684,7 +717,25 @@ app.layout = dbc.Container([
             'overflow': 'hidden'
         })
     ], style={'height': '100vh'}),
-    notes_modal
+    notes_modal,
+    # Add Key Findings modal if available
+    dbc.Modal(
+        [
+            dbc.ModalHeader(dbc.ModalTitle("🧠 Key Findings", id="key-findings-modal-title")),
+            dbc.ModalBody(id="key-findings-modal-body"),
+            dbc.ModalFooter(
+                [
+                    dbc.Button("Cerrar", id="close-key-findings-modal", color="secondary", className="me-2"),
+                    dbc.Button("Regenerar", id="regenerate-key-findings", color="primary", className="me-2"),
+                    dbc.Button("Guardar", id="save-key-findings", color="success")
+                ]
+            ),
+        ],
+        id="key-findings-modal",
+        size="xl",
+        centered=True,
+        backdrop="static"
+    ) if KEY_FINDINGS_AVAILABLE else None
 ], fluid=True, className="px-0", style={'height': '100vh'})
 
 # Callbacks
@@ -3204,6 +3255,131 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources,
 
 # Note: Time range filtering buttons are displayed but their callbacks are disabled
 # to avoid Dash callback reference errors. The full date range is used by default.
+
+# Key Findings callbacks (only if module is available)
+if KEY_FINDINGS_AVAILABLE and key_findings_service:
+
+    @app.callback(
+        Output("key-findings-modal", "is_open"),
+        Output("key-findings-modal-body", "children"),
+        Input("generate-key-findings-btn", "n_clicks"),
+        Input("close-key-findings-modal", "n_clicks"),
+        State("keyword-dropdown", "value"),
+        State("data-sources-store-v2", "data"),
+        State("language-store", "data"),
+        prevent_initial_call=True
+    )
+    def toggle_key_findings_modal(generate_clicks, close_clicks, selected_tool, selected_sources, language):
+        """Handle Key Findings modal toggle and generation"""
+        ctx = dash.callback_context
+        
+        if not ctx.triggered:
+            return False, ""
+        
+        trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
+        
+        if trigger_id == "close-key-findings-modal":
+            return False, ""
+        
+        if trigger_id == "generate-key-findings-btn":
+            if not selected_tool or not selected_sources:
+                return True, html.Div([
+                    html.H4("Error", className="text-danger"),
+                    html.P("Por favor seleccione una herramienta y al menos una fuente de datos.",
+                           className="text-muted")
+                ])
+            
+            try:
+                # Generate Key Findings
+                import asyncio
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                
+                findings = loop.run_until_complete(
+                    key_findings_service.generate_key_findings(
+                        tool_name=selected_tool,
+                        selected_sources=selected_sources,
+                        language=language
+                    )
+                )
+                
+                if findings.get("error"):
+                    return True, html.Div([
+                        html.H4("Error", className="text-danger"),
+                        html.P(findings["error"], className="text-muted")
+                    ])
+                
+                # Create modal content using the modal component
+                modal_content = key_findings_service.modal_component.create_findings_display(findings)
+                return True, modal_content
+                
+            except Exception as e:
+                return True, html.Div([
+                    html.H4("Error", className="text-danger"),
+                    html.P(f"Error generando Key Findings: {str(e)}", className="text-muted")
+                ])
+        
+        return False, ""
+
+    @app.callback(
+        Output("key-findings-modal-body", "children", allow_duplicate=True),
+        Input("regenerate-key-findings", "n_clicks"),
+        State("keyword-dropdown", "value"),
+        State("data-sources-store-v2", "data"),
+        State("language-store", "data"),
+        prevent_initial_call=True
+    )
+    def regenerate_key_findings(regenerate_clicks, selected_tool, selected_sources, language):
+        """Regenerate Key Findings with force refresh"""
+        if not regenerate_clicks:
+            return dash.no_update
+        
+        try:
+            import asyncio
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            
+            findings = loop.run_until_complete(
+                key_findings_service.generate_key_findings(
+                    tool_name=selected_tool,
+                    selected_sources=selected_sources,
+                    language=language,
+                    force_refresh=True
+                )
+            )
+            
+            if findings.get("error"):
+                return html.Div([
+                    html.H4("Error", className="text-danger"),
+                    html.P(findings["error"], className="text-muted")
+                ])
+            
+            return key_findings_service.modal_component.create_findings_display(findings)
+            
+        except Exception as e:
+            return html.Div([
+                html.H4("Error", className="text-danger"),
+                html.P(f"Error regenerando Key Findings: {str(e)}", className="text-muted")
+            ])
+
+    @app.callback(
+        Output("save-key-findings", "children"),
+        Input("save-key-findings", "n_clicks"),
+        State("keyword-dropdown", "value"),
+        State("data-sources-store-v2", "data"),
+        prevent_initial_call=True
+    )
+    def save_key_findings(save_clicks, selected_tool, selected_sources):
+        """Handle Key Findings save functionality"""
+        if not save_clicks:
+            return "Guardar"
+        
+        try:
+            # Here you could implement export functionality
+            # For now, just show confirmation
+            return "✓ Guardado"
+        except Exception as e:
+            return "Error al guardar"
 
 if __name__ == '__main__':
     app.run(
