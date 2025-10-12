@@ -46,6 +46,7 @@ from translations import get_text, get_available_languages, get_language_name, t
 try:
     from translations import enhanced_translate_source_name
     from fix_source_mapping import enhanced_display_names_to_ids
+    from fix_dataframe_indexing import create_translation_mapping, get_original_column_name, safe_dataframe_column_access
     
     # Replace functions with enhanced versions
     translate_source_name = enhanced_translate_source_name
@@ -53,6 +54,32 @@ try:
     print("Loaded enhanced translation functions for Docker environment")
 except ImportError as e:
     print(f"Warning: Could not load enhanced functions: {e}")
+    # Fallback functions for non-Docker environments
+    def create_translation_mapping(selected_source_ids, language):
+        """Fallback implementation of create_translation_mapping"""
+        translation_mapping = {}
+        for src_id in selected_source_ids:
+            original_name = dbase_options.get(src_id, "NOT FOUND")
+            translated_name = translate_source_name(original_name, language)
+            translation_mapping[translated_name] = original_name
+            translated_name_simple = translated_name.replace(' - ', ' ')
+            translation_mapping[translated_name_simple] = original_name
+        return translation_mapping
+    
+    def get_original_column_name(display_name, translation_mapping):
+        """Fallback implementation of get_original_column_name"""
+        return translation_mapping.get(display_name, display_name)
+    
+    def safe_dataframe_column_access(data, translated_name, translation_mapping):
+        """Fallback implementation of safe_dataframe_column_access"""
+        original_name = get_original_column_name(translated_name, translation_mapping)
+        if original_name in data.columns:
+            return data[original_name]
+        elif translated_name in data.columns:
+            return data[translated_name]
+        else:
+            print(f"WARNING: Column '{translated_name}' (original: '{original_name}') not found in DataFrame")
+            return None
 
 
 
@@ -1694,6 +1721,7 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
     print(f"DEBUG: data shape: {data.shape}")
     print(f"DEBUG: sources: {sources}")
     print(f"DEBUG: start_date: {start_date}, end_date: {end_date}")
+    print(f"DEBUG: Available columns in data: {list(data.columns)}")
     
     # Filter data by date range if provided
     filtered_data = data.copy()
@@ -1707,11 +1735,20 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
     fig = go.Figure()
     trace_count = 0
 
+    # DATAFRAME_INDEXING_FIX: Create proper translation mapping
+    # Get source IDs from display names
+    selected_source_ids = map_display_names_to_source_ids(sources)
+    translation_mapping = create_translation_mapping(selected_source_ids, language)
+    print(f"DEBUG: Translation mapping: {translation_mapping}")
+
     # Optimize: Use fewer markers and simpler rendering for better performance
     for i, source in enumerate(sources):
         print(f"DEBUG: Processing source: {source}")
-        if source in filtered_data.columns:
-            source_data = filtered_data[source]
+        
+        # DATAFRAME_INDEXING_FIX: Use safe column access
+        source_data = safe_dataframe_column_access(filtered_data, source, translation_mapping)
+        
+        if source_data is not None:
             valid_mask = ~source_data.isna()
             print(f"DEBUG: Source {source} has {valid_mask.sum()} valid points out of {len(source_data)}")
 
@@ -1724,7 +1761,7 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
                     x=filtered_data['Fecha'][valid_mask],
                     y=source_data[valid_mask],
                     mode=mode,
-                    name=source,
+                    name=source,  # Keep the translated name for display
                     line=dict(
                         color=color_map.get(source, '#000000'),
                         width=2
@@ -1736,7 +1773,7 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
                 trace_count += 1
                 print(f"DEBUG: Added trace for {source}")
         else:
-            print(f"DEBUG: Source {source} not found in filtered_data columns")
+            print(f"DEBUG: Source {source} not found in filtered_data columns.")
 
     print(f"DEBUG: Total traces added: {trace_count}")
     print(f"DEBUG: Figure has {len(fig.data)} traces after creation")
@@ -1789,6 +1826,10 @@ def create_mean_analysis_figure(data, sources, language='es'):
     # Calculate total years in dataset for "Todo" range
     total_years = (data['Fecha'].max() - data['Fecha'].min()).days / 365.25
 
+    # DATAFRAME_INDEXING_FIX: Create proper translation mapping
+    selected_source_ids = map_display_names_to_source_ids(sources)
+    translation_mapping = create_translation_mapping(selected_source_ids, language)
+
     # Define time ranges with actual year counts
     time_ranges = [
         ("Todo", None, total_years),  # Full range - actual total years
@@ -1801,17 +1842,20 @@ def create_mean_analysis_figure(data, sources, language='es'):
     # Calculate means for each source and time range
     results = []
     for source in sources:
-        if source in data.columns:
+        # DATAFRAME_INDEXING_FIX: Use safe column access
+        source_data = safe_dataframe_column_access(data, source, translation_mapping)
+        
+        if source_data is not None:
             for range_name, years_back, actual_years in time_ranges:
                 if years_back is None:
                     # Full range
-                    mean_val = data[source].mean()
+                    mean_val = source_data.mean()
                 else:
                     # Calculate date range
                     end_date = data['Fecha'].max()
                     start_date = end_date - pd.DateOffset(years=years_back)
                     mask = (data['Fecha'] >= start_date) & (data['Fecha'] <= end_date)
-                    filtered_data = data[mask][source]
+                    filtered_data = source_data[mask]
                     mean_val = filtered_data.mean() if not filtered_data.empty else 0
 
                 results.append({
@@ -1908,10 +1952,27 @@ def create_mean_analysis_figure(data, sources, language='es'):
     return fig
 
 def create_pca_figure(data, sources, language='es'):
-    # Prepare data for PCA
-    pca_data = data[sources].dropna()
+    # DATAFRAME_INDEXING_FIX: Create proper translation mapping
+    selected_source_ids = map_display_names_to_source_ids(sources)
+    translation_mapping = create_translation_mapping(selected_source_ids, language)
+    
+    # Prepare data for PCA - use original column names
+    original_columns = []
+    for source in sources:
+        original_name = get_original_column_name(source, translation_mapping)
+        if original_name in data.columns:
+            original_columns.append(original_name)
+    
+    if not original_columns:
+        print(f"DEBUG: No valid columns found for PCA analysis")
+        return go.Figure()
+    
+    pca_data = data[original_columns].dropna()
     if len(pca_data) < 2:
         return go.Figure()
+    
+    # Create mapping from original column names back to display names for labeling
+    original_to_display = {v: k for k, v in translation_mapping.items()}
 
     # Standardize data
     scaler = StandardScaler()
@@ -1930,13 +1991,16 @@ def create_pca_figure(data, sources, language='es'):
 
     # Loadings plot with arrows from origin
     for i, source in enumerate(sources):
+        # Use display name for labels
+        display_name = source
+        
         # Add arrow line from origin to point
         fig.add_trace(
             go.Scatter(
                 x=[0, pca.components_[0, i]],  # From origin to loading
                 y=[0, pca.components_[1, i]],  # From origin to loading
                 mode='lines',
-                line=dict(color=color_map.get(source, '#000000'), width=2),
+                line=dict(color=color_map.get(display_name, '#000000'), width=2),
                 showlegend=False
             ),
             row=1, col=1
@@ -1948,10 +2012,10 @@ def create_pca_figure(data, sources, language='es'):
                 x=[pca.components_[0, i]],
                 y=[pca.components_[1, i]],
                 mode='markers+text',
-                text=[source],
+                text=[display_name],
                 textposition="top center",
-                name=source,
-                marker=dict(color=color_map.get(source, '#000000'), size=8)
+                name=display_name,
+                marker=dict(color=color_map.get(display_name, '#000000'), size=8)
             ),
             row=1, col=1
         )
@@ -2058,8 +2122,30 @@ def create_pca_figure(data, sources, language='es'):
 
 def create_correlation_heatmap(data, sources, language='es'):
     print(f"DEBUG: create_correlation_heatmap called with sources: {sources}")
-    corr_data = data[sources].corr()
+    
+    # DATAFRAME_INDEXING_FIX: Create proper translation mapping
+    selected_source_ids = map_display_names_to_source_ids(sources)
+    translation_mapping = create_translation_mapping(selected_source_ids, language)
+    
+    # Use original column names for correlation calculation
+    original_columns = []
+    for source in sources:
+        original_name = get_original_column_name(source, translation_mapping)
+        if original_name in data.columns:
+            original_columns.append(original_name)
+    
+    if not original_columns:
+        print(f"DEBUG: No valid columns found for correlation heatmap")
+        return go.Figure()
+    
+    corr_data = data[original_columns].corr()
     print(f"DEBUG: Correlation data shape: {corr_data.shape}")
+    
+    # Create mapping from original column names back to display names for labeling
+    original_to_display = {v: k for k, v in translation_mapping.items()}
+    
+    # Update sources list to use display names for labeling
+    display_sources = [original_to_display.get(col, col) for col in corr_data.columns]
 
     # Create custom annotations with better contrast
     annotations = []
@@ -2076,8 +2162,8 @@ def create_correlation_heatmap(data, sources, language='es'):
 
             annotations.append(
                 dict(
-                    x=sources[j],
-                    y=sources[i],
+                    x=display_sources[j],
+                    y=display_sources[i],
                     text=f"{val:.2f}",
                     showarrow=False,
                     font=dict(
@@ -2091,8 +2177,8 @@ def create_correlation_heatmap(data, sources, language='es'):
     # Create heatmap using go.Heatmap for proper click event support
     fig = go.Figure(data=go.Heatmap(
         z=corr_data.values,
-        x=sources,
-        y=sources,
+        x=display_sources,
+        y=display_sources,
         colorscale='RdBu',
         zmin=-1,
         zmax=1,
@@ -2342,9 +2428,20 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
         combined_dataset = combined_dataset.set_index('Fecha')
 
+        # DATAFRAME_INDEXING_FIX: Create proper translation mapping
+        translation_mapping = create_translation_mapping(selected_source_ids, language)
+        
+        # DATAFRAME_INDEXING_FIX: Use safe column access for y_axis
+        y_data_column = safe_dataframe_column_access(combined_dataset, y_axis, translation_mapping)
+        z_data_column = safe_dataframe_column_access(combined_dataset, z_axis, translation_mapping)
+        
+        if y_data_column is None or z_data_column is None:
+            print(f"ERROR: Could not find columns for 3D plot: y_axis={y_axis}, z_axis={z_axis}")
+            return {}
+        
         # Apply aggregation based on frequency and source type
-        y_data = aggregate_data_for_3d(combined_dataset[y_axis], frequency, y_axis)
-        z_data = aggregate_data_for_3d(combined_dataset[z_axis], frequency, z_axis)
+        y_data = aggregate_data_for_3d(y_data_column, frequency, y_axis)
+        z_data = aggregate_data_for_3d(z_data_column, frequency, z_axis)
 
         # Align the data (they might have different date ranges after aggregation)
         common_index = y_data.index.intersection(z_data.index)
@@ -2409,10 +2506,15 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
         combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
         combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
 
-        if selected_source not in combined_dataset.columns:
+        # DATAFRAME_INDEXING_FIX: Create proper translation mapping
+        translation_mapping = create_translation_mapping(selected_source_ids, language)
+        
+        # DATAFRAME_INDEXING_FIX: Use safe column access
+        ts_data_column = safe_dataframe_column_access(combined_dataset, selected_source, translation_mapping)
+        if ts_data_column is None:
             return {}
-
-        ts_data = combined_dataset[selected_source].dropna()
+        
+        ts_data = ts_data_column.dropna()
         if len(ts_data) < 24:
             return {}
 
@@ -2526,17 +2628,14 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
         
         selected_source_names = [translate_source_name(dbase_options[src_id], language) for src_id in selected_source_ids]
         
-        # Create mapping between translated names and original column names
-        translated_to_original = {}
-        for src_id in selected_source_ids:
-            original_name = dbase_options.get(src_id, "NOT FOUND")
-            translated_name = translate_source_name(original_name, language)
-            translated_to_original[translated_name] = original_name
+        # DATAFRAME_INDEXING_FIX: Use the proper translation mapping functions
+        # Create translation mapping for proper column name resolution
+        translation_mapping = create_translation_mapping(selected_source_ids, language)
         
         # Debug: print available columns and clicked variables
         print(f"Available columns: {list(combined_dataset.columns)}")
         print(f"Clicked variables: x='{x_var}', y='{y_var}'")
-        print(f"Translation mapping: {translated_to_original}")
+        print(f"Translation mapping: {translation_mapping}")
 
         # Check if variables are the same (diagonal click on heatmap)
         if x_var == y_var:
@@ -2556,9 +2655,11 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
             )
             return fig, get_text('invalid_selection', language)
 
-        # Convert translated names back to original column names for DataFrame access
-        x_var_original = translated_to_original.get(x_var, x_var)
-        y_var_original = translated_to_original.get(y_var, y_var)
+        # DATAFRAME_INDEXING_FIX: Use the proper column name resolution
+        x_var_original = get_original_column_name(x_var, translation_mapping)
+        y_var_original = get_original_column_name(y_var, translation_mapping)
+        
+        print(f"Mapped variables: x='{x_var}' -> '{x_var_original}', y='{y_var}' -> '{y_var_original}'")
         
         if x_var_original not in combined_dataset.columns or y_var_original not in combined_dataset.columns:
             print(f"Variables not found in dataset: x='{x_var_original}', y='{y_var_original}'")
@@ -2572,8 +2673,29 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
             )
             return fig, ""
 
-        # Perform regression analysis with multiple polynomial degrees
-        valid_data = combined_dataset[[x_var_original, y_var_original]].dropna()
+        # DATAFRAME_INDEXING_FIX: Use safe column access to get the data
+        x_data_column = safe_dataframe_column_access(combined_dataset, x_var, translation_mapping)
+        y_data_column = safe_dataframe_column_access(combined_dataset, y_var, translation_mapping)
+        
+        if x_data_column is None or y_data_column is None:
+            print(f"ERROR: Could not access columns for regression: x='{x_var}' -> {x_data_column}, y='{y_var}' -> {y_data_column}")
+            fig = go.Figure()
+            fig.update_layout(
+                title=get_text('variables_not_found', language, x_var=x_var, y_var=y_var),
+                xaxis_title="",
+                yaxis_title="",
+                height=500
+            )
+            return fig, ""
+        
+        # Create a dataframe with the two series for regression
+        regression_df = pd.DataFrame({
+            x_var: x_data_column,
+            y_var: y_data_column
+        })
+        
+        # Drop NaN values
+        valid_data = regression_df.dropna()
         if len(valid_data) < 2:
             fig = go.Figure()
             fig.update_layout(
@@ -2584,8 +2706,8 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
             )
             return fig, ""
 
-        X = valid_data[x_var_original].values.reshape(-1, 1)
-        y = valid_data[y_var_original].values
+        X = valid_data[x_var].values.reshape(-1, 1)
+        y = valid_data[y_var].values
 
         # Colors for different polynomial degrees
         poly_colors = ['red', 'blue', 'green', 'orange']
@@ -2904,8 +3026,22 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources,
         # Get data for the selected source
         datasets_norm, _ = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
 
-        if source_key not in datasets_norm:
+        # DATAFRAME_INDEXING_FIX: Get the source key from display name
+        # Create translation mapping to find the correct source ID
+        translation_mapping = create_translation_mapping(selected_source_ids, language)
+        original_name = get_original_column_name(selected_source, translation_mapping)
+        
+        # Find the source key that matches the original name
+        source_key = None
+        for key, name in dbase_options.items():
+            if name == original_name:
+                source_key = key
+                break
+        
+        if source_key is None or source_key not in datasets_norm:
+            print(f"Fourier: Could not find data for source '{selected_source}' (original: '{original_name}')")
             return go.Figure()
+            
         # Get the data series
         data = datasets_norm[source_key]
         if data.empty:

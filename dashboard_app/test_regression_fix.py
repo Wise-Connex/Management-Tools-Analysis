@@ -1,247 +1,203 @@
 #!/usr/bin/env python3
 """
-Test script to verify the regression analysis fix works correctly.
-This script simulates various click_data scenarios to ensure the fix handles them properly.
+Test script to reproduce and fix the regression analysis issue for Bain sources
 """
 
 import sys
 import os
-
-# Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.dirname(__file__))
 
-from regression_fix import update_regression_analysis
+import pandas as pd
+import numpy as np
+from database import get_database_manager
+from fix_source_mapping import map_display_names_to_source_ids, enhanced_display_names_to_ids
+from fix_dataframe_indexing import create_translation_mapping, get_original_column_name
+from translations import translate_source_name
 
-# Mock dependencies for testing
-class MockDbManager:
-    def get_data_for_keyword(self, keyword, sources):
-        # Return mock data for testing
-        import pandas as pd
-        import numpy as np
+def test_regression_mapping():
+    """Test the mapping logic used in regression analysis"""
+    
+    # Test in both languages
+    for language in ['es', 'en']:
+        print(f"\n=== Testing in {language.upper()} ===")
         
-        # Create mock dataset
-        dates = pd.date_range('2020-01-01', periods=100, freq='M')
-        data = {
-            'Google Trends': np.random.normal(50, 10, 100),
-            'Google Books': np.random.normal(30, 5, 100),
-            'Bain Usability': np.random.normal(40, 8, 100),
-            'Bain Satisfaction': np.random.normal(35, 7, 100),
-            'Crossref': np.random.normal(25, 4, 100)
+        # Test sources containing Bain
+        test_sources = ['Bain Usabilidad', 'Bain Satisfaction', 'Google Trends', 'Crossref']
+        
+        # Map display names to source IDs
+        selected_source_ids = enhanced_display_names_to_ids(test_sources)
+        print(f"Source IDs: {selected_source_ids}")
+        
+        # Database options (from app.py)
+        dbase_options = {
+            1: "Google Trends",
+            2: "Google Books Ngrams", 
+            3: "Bain - Usabilidad",
+            4: "Bain - Satisfacción",
+            5: "Crossref.org"
         }
         
-        df = pd.DataFrame(data, index=dates)
-        df.reset_index(inplace=True)
-        df.rename(columns={'index': 'Fecha'}, inplace=True)
+        # Create translation mapping
+        translation_mapping = create_translation_mapping(selected_source_ids, language)
+        print(f"Translation mapping: {translation_mapping}")
         
-        # Return mock datasets_norm and sl_sc
-        datasets_norm = {}
-        for source in sources:
-            if source in ['Google_Trends', 'Google_Books', 'BAIN_Ind_Usabilidad', 'BAIN_Ind_Satisfacción', 'Crossref']:
-                source_name = source.replace('_Trends', ' Trends').replace('_Books', ' Books').replace('BAIN_Ind_', 'Bain ')
-                datasets_norm[source] = df[['Fecha', source_name]].set_index('Fecha')
+        # Test mapping for regression analysis (mimicking the callback logic)
+        selected_source_names = [translate_source_name(dbase_options[src_id], language) for src_id in selected_source_ids]
+        print(f"Selected source names: {selected_source_names}")
         
-        return datasets_norm, sources
+        # Create mapping between translated names and original column names (from callback)
+        translated_to_original = {}
+        for src_id in selected_source_ids:
+            original_name = dbase_options.get(src_id, "NOT FOUND")
+            translated_name = translate_source_name(original_name, language)
+            translated_to_original[translated_name] = original_name
+        
+        print(f"Translated to original mapping: {translated_to_original}")
+        
+        # Test specific pairs that would be clicked in the heatmap
+        test_pairs = [
+            ('Bain Usabilidad', 'Google Trends'),
+            ('Bain Satisfaction', 'Crossref'),
+            ('Bain Usabilidad', 'Bain Satisfaction')
+        ]
+        
+        for x_var, y_var in test_pairs:
+            print(f"\n--- Testing pair: {x_var} vs {y_var} ---")
+            
+            # Convert translated names back to original column names (from callback)
+            x_var_original = translated_to_original.get(x_var, x_var)
+            y_var_original = translated_to_original.get(y_var, y_var)
+            
+            print(f"  x_var: {x_var} -> {x_var_original}")
+            print(f"  y_var: {y_var} -> {y_var_original}")
+            
+            # Check if the mapping is correct
+            if x_var_original in dbase_options.values() and y_var_original in dbase_options.values():
+                print(f"  ✓ Both variables found in database options")
+            else:
+                print(f"  ✗ Variables not found in database options")
+                
+            # Test using the dataframe indexing fix functions
+            x_var_original_fix = get_original_column_name(x_var, translation_mapping)
+            y_var_original_fix = get_original_column_name(y_var, translation_mapping)
+            
+            print(f"  Using fix_dataframe_indexing:")
+            print(f"    x_var: {x_var} -> {x_var_original_fix}")
+            print(f"    y_var: {y_var} -> {y_var_original_fix}")
 
-def mock_get_text(key, language, **kwargs):
-    """Mock translation function"""
-    translations = {
-        'click_heatmap': 'Click on the heatmap to see regression analysis',
-        'regression_title': f'Regression Analysis: {kwargs.get("y_var", "")} vs {kwargs.get("x_var", "")}',
-        'cannot_regress_same': f'Cannot regress {kwargs.get("var", "")} against itself',
-        'select_different_vars': 'Please select different variables',
-        'invalid_selection': 'Invalid Selection',
-        'variables_not_found': f'Variables not found: {kwargs.get("x_var", "")}, {kwargs.get("y_var", "")}',
-        'regression_error': 'Error in regression analysis',
-        'regression_equations': 'Regression Equations'
-    }
-    return translations.get(key, key)
-
-def mock_map_display_names_to_source_ids(display_names):
-    """Mock mapping function"""
-    mapping = {
-        'Google Trends': 'Google_Trends',
-        'Google Books': 'Google_Books',
-        'Bain Usability': 'BAIN_Ind_Usabilidad',
-        'Bain Satisfaction': 'BAIN_Ind_Satisfacción',
-        'Crossref': 'Crossref'
-    }
-    return [mapping.get(name, name) for name in display_names]
-
-def mock_create_combined_dataset2(datasets_norm, selected_sources, dbase_options):
-    """Mock dataset creation function"""
-    import pandas as pd
+def test_with_actual_data():
+    """Test with actual data from the database"""
     
-    # Create a simple combined dataset
-    all_data = {}
+    print("\n=== Testing with actual data ===")
+    
+    # Get database manager
+    db_manager = get_database_manager()
+    
+    # Test keyword
+    selected_keyword = "BSC"  # Using a keyword that should have data
+    selected_sources = ['Bain Usabilidad', 'Bain Satisfaction', 'Google Trends']
+    
+    # Map display names to source IDs
+    selected_source_ids = enhanced_display_names_to_ids(selected_sources)
+    
+    # Get data
+    try:
+        datasets_norm, sl_sc = db_manager.get_data_for_keyword(selected_keyword, selected_source_ids)
+        
+        if not datasets_norm:
+            print("No data retrieved for keyword BSC")
+            return
+            
+        # Create combined dataset (mimicking app.py logic)
+        dbase_options = {
+            1: "Google Trends",
+            2: "Google Books Ngrams", 
+            3: "Bain - Usabilidad",
+            4: "Bain - Satisfacción",
+            5: "Crossref.org"
+        }
+        
+        combined_dataset = create_combined_dataset2(datasets_norm, sl_sc, dbase_options)
+        
+        combined_dataset = combined_dataset.reset_index()
+        date_column = combined_dataset.columns[0]
+        combined_dataset[date_column] = pd.to_datetime(combined_dataset[date_column])
+        combined_dataset = combined_dataset.rename(columns={date_column: 'Fecha'})
+        
+        print(f"Combined dataset columns: {list(combined_dataset.columns)}")
+        
+        # Test regression analysis mapping
+        language = 'en'
+        translation_mapping = create_translation_mapping(selected_source_ids, language)
+        
+        # Test pairs
+        test_pairs = [
+            ('Bain Usabilidad', 'Google Trends'),
+            ('Bain Satisfaction', 'Google Trends'),
+            ('Bain Usabilidad', 'Bain Satisfaction')
+        ]
+        
+        for x_var, y_var in test_pairs:
+            print(f"\n--- Testing pair with actual data: {x_var} vs {y_var} ---")
+            
+            # Using the fix_dataframe_indexing functions
+            x_var_original = get_original_column_name(x_var, translation_mapping)
+            y_var_original = get_original_column_name(y_var, translation_mapping)
+            
+            print(f"  Mapped to: {x_var_original} vs {y_var_original}")
+            
+            # Check if columns exist
+            if x_var_original in combined_dataset.columns and y_var_original in combined_dataset.columns:
+                print(f"  ✓ Both columns exist in dataset")
+                
+                # Check if we have valid data
+                valid_data = combined_dataset[[x_var_original, y_var_original]].dropna()
+                print(f"  Valid data points: {len(valid_data)}")
+                
+                if len(valid_data) >= 2:
+                    print(f"  ✓ Sufficient data for regression")
+                else:
+                    print(f"  ✗ Insufficient data for regression")
+            else:
+                print(f"  ✗ Columns not found in dataset")
+                print(f"    Available columns: {[col for col in combined_dataset.columns if col != 'Fecha']}")
+                
+    except Exception as e:
+        print(f"Error testing with actual data: {e}")
+        import traceback
+        traceback.print_exc()
+
+def create_combined_dataset2(datasets_norm, selected_sources, dbase_options):
+    """Create combined dataset with all dates from all sources (from app.py)"""
+    combined_dataset2 = pd.DataFrame()
+
+    # Get all unique dates from all datasets
+    all_dates = set()
     for source in selected_sources:
-        if source in datasets_norm:
-            all_data[source] = datasets_norm[source].iloc[:, 0]
-    
-    combined_df = pd.DataFrame(all_data)
-    combined_df.reset_index(inplace=True)
-    return combined_df
+        if source in datasets_norm and not datasets_norm[source].empty:
+            all_dates.update(datasets_norm[source].index)
 
-# Mock color map
-mock_color_map = {
-    'Google Trends': '#1f77b4',
-    'Google Books': '#ff7f0e',
-    'Bain Usability': '#d62728',
-    'Bain Satisfaction': '#9467bd',
-    'Crossref': '#2ca02c'
-}
+    # Sort dates
+    all_dates = sorted(list(all_dates))
 
-def test_regression_fix():
-    """Test the regression analysis fix with various scenarios"""
-    
-    print("Testing Regression Analysis Fix")
-    print("=" * 50)
-    
-    # Test case 1: Valid click_data
-    print("\n1. Testing with valid click_data...")
-    valid_click_data = {
-        'points': [
-            {
-                'x': 'Google Trends',
-                'y': 'Google Books',
-                'customdata': None
-            }
-        ]
-    }
-    
-    try:
-        fig, equations = update_regression_analysis(
-            valid_click_data,
-            'Calidad Total',
-            ['Google Trends', 'Google Books'],
-            'es',
-            MockDbManager(),
-            {},
-            mock_get_text,
-            mock_map_display_names_to_source_ids,
-            mock_create_combined_dataset2,
-            mock_color_map
-        )
-        print("✅ Valid click_data test passed - No crash occurred")
-    except Exception as e:
-        print(f"❌ Valid click_data test failed: {e}")
-    
-    # Test case 2: Empty click_data
-    print("\n2. Testing with empty click_data...")
-    empty_click_data = {}
-    
-    try:
-        fig, equations = update_regression_analysis(
-            empty_click_data,
-            'Calidad Total',
-            ['Google Trends', 'Google Books'],
-            'es',
-            MockDbManager(),
-            {},
-            mock_get_text,
-            mock_map_display_names_to_source_ids,
-            mock_create_combined_dataset2,
-            mock_color_map
-        )
-        print("✅ Empty click_data test passed - Handled gracefully")
-    except Exception as e:
-        print(f"❌ Empty click_data test failed: {e}")
-    
-    # Test case 3: Invalid click_data structure (missing points)
-    print("\n3. Testing with invalid click_data structure (missing points)...")
-    invalid_click_data = {
-        'other_data': 'some_value'
-    }
-    
-    try:
-        fig, equations = update_regression_analysis(
-            invalid_click_data,
-            'Calidad Total',
-            ['Google Trends', 'Google Books'],
-            'es',
-            MockDbManager(),
-            {},
-            mock_get_text,
-            mock_map_display_names_to_source_ids,
-            mock_create_combined_dataset2,
-            mock_color_map
-        )
-        print("✅ Invalid click_data structure test passed - Handled gracefully")
-    except Exception as e:
-        print(f"❌ Invalid click_data structure test failed: {e}")
-    
-    # Test case 4: Invalid point structure (missing x/y)
-    print("\n4. Testing with invalid point structure (missing x/y)...")
-    invalid_point_data = {
-        'points': [
-            {
-                'z': 'some_value'
-            }
-        ]
-    }
-    
-    try:
-        fig, equations = update_regression_analysis(
-            invalid_point_data,
-            'Calidad Total',
-            ['Google Trends', 'Google Books'],
-            'es',
-            MockDbManager(),
-            {},
-            mock_get_text,
-            mock_map_display_names_to_source_ids,
-            mock_create_combined_dataset2,
-            mock_color_map
-        )
-        print("✅ Invalid point structure test passed - Handled gracefully")
-    except Exception as e:
-        print(f"❌ Invalid point structure test failed: {e}")
-    
-    # Test case 5: None click_data
-    print("\n5. Testing with None click_data...")
-    
-    try:
-        fig, equations = update_regression_analysis(
-            None,
-            'Calidad Total',
-            ['Google Trends', 'Google Books'],
-            'es',
-            MockDbManager(),
-            {},
-            mock_get_text,
-            mock_map_display_names_to_source_ids,
-            mock_create_combined_dataset2,
-            mock_color_map
-        )
-        print("✅ None click_data test passed - Handled gracefully")
-    except Exception as e:
-        print(f"❌ None click_data test failed: {e}")
-    
-    # Test case 6: Empty points list
-    print("\n6. Testing with empty points list...")
-    empty_points_data = {
-        'points': []
-    }
-    
-    try:
-        fig, equations = update_regression_analysis(
-            empty_points_data,
-            'Calidad Total',
-            ['Google Trends', 'Google Books'],
-            'es',
-            MockDbManager(),
-            {},
-            mock_get_text,
-            mock_map_display_names_to_source_ids,
-            mock_create_combined_dataset2,
-            mock_color_map
-        )
-        print("✅ Empty points list test passed - Handled gracefully")
-    except Exception as e:
-        print(f"❌ Empty points list test failed: {e}")
-    
-    print("\n" + "=" * 50)
-    print("Regression Analysis Fix Testing Complete!")
-    print("The fix properly handles various click_data scenarios without crashing.")
+    # Create DataFrame with all dates
+    combined_dataset2 = pd.DataFrame(index=all_dates)
+
+    # Add data from each source - use source name directly as column name
+    for source in selected_sources:
+        if source in datasets_norm and not datasets_norm[source].empty:
+            source_name = dbase_options.get(source, source)
+            source_data = datasets_norm[source].reindex(all_dates)
+            # Use just the source name as the column name (not source_name_col)
+            combined_dataset2[source_name] = source_data.iloc[:, 0]
+
+    return combined_dataset2
 
 if __name__ == "__main__":
-    test_regression_fix()
+    print("Testing regression analysis mapping for Bain sources...")
+    
+    test_regression_mapping()
+    test_with_actual_data()
+    
+    print("\n=== Test completed ===")
