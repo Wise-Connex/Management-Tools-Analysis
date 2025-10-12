@@ -1,37 +1,65 @@
-# Management Tools Lifecycle Analysis
+# Management Tools Analysis Dashboard
 
-How do management tools evolve in contemporary organizations? This project conducts longitudinal statistical analyses using Python to examine the life cycle of prominent management tools. The methodology enables the tracking and forecasting of adoption patterns by integrating data from multiple heterogeneous sources to generate a rigorous and reliable quantitative assessment.
-
-*   **Principal Investigator:** Diomar Añez
-*   **Python Programming:** Dimar Añez
-
-This analytical system constitutes an essential component of the research corpus for Diomar Añez's doctoral dissertation, titled *Ontological Dichotomy in "Management Fads"* (© 2023-2025), conducted under the academic supervision of **Dr. Elizabeth Pereira.**
-
-The research undertakes a critical analysis of the temporal dynamics of management tools, problematizing the practical and discursive phenomenon of "management fads." It empirically examines their life cycle—emergence, diffusion, and eventual persistence or obsolescence—and evaluates their implications for the strategic and structural configuration of contemporary organizations. The study aims to contribute to theoretical development by providing a profound understanding of the interaction between administrative innovations and the organizational context.
-
-The analysis results are relevant to:
-*   **Executives and Managers (Public, private, and NGO organizations):** Informing strategic decisions regarding the selection, implementation, and evaluation of management tools.
-*   **Academics and Researchers (Graduate programs and business schools):** Providing a robust empirical basis for studies on organizational dynamics, diffusion of practices, and strategic management theory.
-*   **Consultants and Advisors (Strategic management and organizational transformation):** Offering contextual and trend-based insights into the life cycle and relevance of management tools, supporting their professional praxis and strategic recommendations.
-
-## Overview
-
-This project analyzes management tool adoption trends using data from:
-
-- Google Trends
-- Crossref.org academic publications
-- Google Books Ngrams
-- Bain & Company Usability Data
-- Bain & Company Satisfaction Ratings
+A comprehensive bilingual analytics dashboard for analyzing management tools adoption and trends across multiple data sources. Built with Dash, Plotly, and Python.
 
 ## Features
 
-- **Time Series Analysis:** Track adoption patterns over time
-- **Cross-Source Validation:** Compare trends across different data sources
-- **Pattern Recognition:** Identify significant patterns in tool adoption
-- **Trend Forecasting:** Predict future trends using ARIMA models
-- **Multilingual Reporting:** Generate analysis reports in multiple languages
-- **Interactive Dashboard:** Visualize and explore data through a web interface
+- **Bilingual Support**: Full Spanish and English language support with automatic browser language detection
+- **Multi-Source Data Analysis**: Integrates data from Google Trends, Google Books Ngrams, Crossref, and Bain surveys
+- **Temporal Analysis**: 2D and 3D temporal visualizations with customizable time ranges
+- **Statistical Analysis**: Correlation heatmaps, regression analysis, PCA, and Fourier analysis
+- **Interactive Visualizations**: Dynamic charts with drill-down capabilities
+- **Performance Monitoring**: Built-in system performance and database statistics
+- **Responsive Design**: Optimized for desktop and mobile devices
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.11+
+- UV package manager (recommended)
+- Git
+
+### Local Development
+
+```bash
+# Clone repository
+git clone https://github.com/Wise-Connex/Management-Tools-Analysis.git
+cd Management-Tools-Analysis
+
+# Create virtual environment and install dependencies
+cd dashboard_app
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -r requirements.txt
+
+# Run the application
+python app.py
+
+# Access the dashboard
+open http://localhost:8050
+```
+
+### Bilingual Features
+
+The dashboard automatically detects your browser language:
+
+- 🇪🇸 Spanish users see the interface in Spanish
+- 🇬🇧/🇺🇸 English users see the interface in English
+- Language can be manually switched using the selector in the sidebar
+- Language preference is saved and persists across sessions
+
+## Research Context
+
+This analytical system constitutes an essential component of the research corpus for Diomar Añez's doctoral dissertation, titled _Ontological Dichotomy in "Management Fads"_ (© 2023-2025), conducted under the academic supervision of **Dr. Elizabeth Pereira.**
+
+The research undertakes a critical analysis of the temporal dynamics of management tools, problematizing the practical and discursive phenomenon of "management fads." It empirically examines their life cycle—emergence, diffusion, and eventual persistence or obsolescence—and evaluates their implications for the strategic and structural configuration of contemporary organizations.
+
+The analysis results are relevant to:
+
+- **Executives and Managers**: Informing strategic decisions regarding management tools
+- **Academics and Researchers**: Providing empirical basis for organizational dynamics studies
+- **Consultants and Advisors**: Offering insights into management tool life cycles
 
 ## Tech Stack
 
@@ -61,159 +89,49 @@ This project analyzes management tool adoption trends using data from:
 
 - Google Gemini API
 
-## Installation
-
-1.Clone the repository:
-
-```bash
-git clone https://github.com/Wise-Connex/Management-Tools-Analysis.git
-cd management-tools-analysis
-```
-
-2.Create and activate virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3.Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Project Structure
-```text
-├── analisis.py # Core analysis functions
-├── dashboard.py # Web dashboard implementation
-├── tools.py # Tool definitions and mappings
-├── mtalib.py # Utility library
-├── data/ # Data storage
-│ ├── sources/ # Raw data sources
-│ └── processed/ # Processed data
-├── prompts/ # AI analysis prompts
-└── venv/ # Virtual environment
+
 ```
-## Databases
-
-- dbase: This folder contains the CSV files with the data of the toll from the different sources databases.
-- Each csv use two letter at the beginning to identified the data source:
-  - GT: Google Trends
-  - GB: Google Books Ngram Viewer
-  - CR: Crossref.org
-  - BR: Bain Research
-
-## Usage
-
-1.Start the dashboard:
-
-```bash
-python dashboard.py
+├── dashboard_app/
+│   ├── app.py              # Main dashboard application
+│   ├── translations.py      # Bilingual translation system
+│   ├── tools.py            # Tool definitions and mappings
+│   ├── requirements.txt      # Python dependencies
+│   └── data.db            # SQLite database
+├── database.py              # Database management
+├── Dockerfile              # Container configuration
+├── docker-compose.yml       # Local development
+├── gunicorn.conf.py        # Production server config
+├── DEPLOYMENT.md          # Deployment guide
+└── README.md              # This file
 ```
-
-2.Run analysis:
-
-```bash
-python analisis.py
-```
-
-The dashboard will be available at `http://localhost:8050`
-
-## Key Components
-
-### Analysis Module (analisis.py)
-
-- Data preprocessing and normalization
-- Statistical analysis implementation
-- Time series forecasting
-- AI-assisted interpretation
-- Report generation
-
-### Dashboard (dashboard.py)
-
-- Interactive data visualization
-- Source selection interface
-- Real-time analysis updates
-- Responsive design
-- Notes and documentation system
-
-### Data Processing
-
-- Multiple interpolation methods
-- Cross-source data alignment
-- Automated validation
-- Caching system
 
 ## Environment Variables
 
 Create a `.env` file with:
 
+```bash
 GOOGLE_API_KEY=your_api_key
+```
+
+For production deployment, see [DEPLOYMENT.md](DEPLOYMENT.md) for complete configuration options.
 
 ## Development
 
 ### Running Tests
 
 ```bash
-python -m pytest tests/
+cd dashboard_app
+python -m pytest
 ```
 
 ### Code Style
 
 Follow PEP 8 guidelines. Use provided .gitignore and .cursorrules.
 
-## Analysis Features
+## Deployment
 
-1. **Temporal Analysis**
-
-   - Trend detection
-   - Pattern recognition
-   - Seasonality analysis
-
-2. **Cross-Source Validation**
-
-   - Correlation analysis
-   - Data consistency checks
-   - Source reliability metrics
-
-3. **Forecasting**
-
-   - ARIMA modeling
-   - Confidence intervals
-   - Trend projections
-
-4. **Visualization**
-
-   - Time series plots
-   - Correlation heatmaps
-   - Forecast charts
-   - Seasonal decomposition
-
-## Dashboard Features
-
-1. **Data Source Selection**
-
-   - Multiple source selection
-   - Date range filtering
-   - Tool selection
-
-2. **Interactive Visualizations**
-
-   - Real-time updates
-   - Custom view options
-   - Export capabilities
-
-3. **Analysis Tools**
-
-   - Statistical summaries
-   - Trend analysis
-   - Pattern detection
-
-4. **Documentation**
-   - Source notes
-   - Methodology explanations
-   - Analysis interpretations
+For production deployment to Dokploy, see [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
 
 ## Contributing
 

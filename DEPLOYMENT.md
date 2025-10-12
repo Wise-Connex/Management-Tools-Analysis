@@ -223,6 +223,11 @@ APP_VERSION=1.0.0
 MAX_WORKERS=4
 WORKER_TIMEOUT=120
 WORKER_CLASS=sync
+
+# Bilingual Configuration (NEW)
+DEFAULT_LANGUAGE=es
+ENABLE_BROWSER_LANGUAGE_DETECTION=true
+LANGUAGE_PERSISTENCE=localStorage
 ```
 
 ### Step 5: Configure Health Check
@@ -283,15 +288,18 @@ open https://your-domain.com
 
 ### Environment Variables Reference
 
-| Variable         | Required | Default    | Description                              |
-| ---------------- | -------- | ---------- | ---------------------------------------- |
-| `PORT`           | No       | 8050       | Application port                         |
-| `FLASK_ENV`      | No       | production | Environment (development/production)     |
-| `LOG_LEVEL`      | No       | INFO       | Logging level (DEBUG/INFO/WARNING/ERROR) |
-| `APP_VERSION`    | No       | 1.0.0      | Application version for tracking         |
-| `MAX_WORKERS`    | No       | auto       | Gunicorn worker count (CPU \* 2 + 1)     |
-| `WORKER_TIMEOUT` | No       | 120        | Worker timeout in seconds                |
-| `WORKER_CLASS`   | No       | sync       | Worker class (sync/gevent)               |
+| Variable                            | Required | Default      | Description                              |
+| ----------------------------------- | -------- | ------------ | ---------------------------------------- |
+| `PORT`                              | No       | 8050         | Application port                         |
+| `FLASK_ENV`                         | No       | production   | Environment (development/production)     |
+| `LOG_LEVEL`                         | No       | INFO         | Logging level (DEBUG/INFO/WARNING/ERROR) |
+| `APP_VERSION`                       | No       | 1.0.0        | Application version for tracking         |
+| `MAX_WORKERS`                       | No       | auto         | Gunicorn worker count (CPU \* 2 + 1)     |
+| `WORKER_TIMEOUT`                    | No       | 120          | Worker timeout in seconds                |
+| `WORKER_CLASS`                      | No       | sync         | Worker class (sync/gevent)               |
+| `DEFAULT_LANGUAGE`                  | No       | es           | Default language (es/en)                 |
+| `ENABLE_BROWSER_LANGUAGE_DETECTION` | No       | true         | Auto-detect browser language             |
+| `LANGUAGE_PERSISTENCE`              | No       | localStorage | Where to store language preference       |
 
 ### Setting Environment Variables in Dokploy
 
@@ -1018,6 +1026,79 @@ Production deployment files:
 
 ---
 
-**Document Version:** 1.0.0  
-**Last Updated:** 2025-01-09  
-**Status:** ✅ Ready for Production Deployment
+## Bilingual Features
+
+### Language Support
+
+The dashboard now supports bilingual functionality with Spanish (es) and English (en) languages:
+
+#### Features
+
+- **Automatic Language Detection**: Detects browser language on first visit
+- **Manual Language Selection**: Language selector in the sidebar
+- **Persistent Language Choice**: Remembers user's language preference
+- **Complete Translation**: All UI elements, charts, and messages translated
+- **Dynamic Content**: Database content and tool names translated
+
+#### Configuration
+
+Configure bilingual behavior with these environment variables:
+
+```bash
+# Default language for new users
+DEFAULT_LANGUAGE=es
+
+# Enable automatic browser language detection
+ENABLE_BROWSER_LANGUAGE_DETECTION=true
+
+# Where to store language preference (localStorage or session)
+LANGUAGE_PERSISTENCE=localStorage
+```
+
+#### Language Files
+
+- [`dashboard_app/translations.py`](dashboard_app/translations.py) - Complete translation system
+- Supports 688 translation keys
+- Tool name translations for 23 management tools
+- Database content translation patterns
+
+#### Browser Language Detection
+
+The dashboard automatically detects user's browser language:
+
+- Spanish-speaking users see Spanish by default
+- English-speaking users see English by default
+- Users can manually override the language selection
+
+#### Testing Bilingual Features
+
+1. **Test Language Switching**
+
+   ```bash
+   # Access dashboard
+   open http://localhost:8050
+
+   # Switch language using selector
+   # Verify all UI elements translate
+   ```
+
+2. **Test Persistence**
+
+   ```bash
+   # Select different language
+   # Refresh page
+   # Verify language preference is maintained
+   ```
+
+3. **Test Charts and Data**
+   ```bash
+   # Select tool and data sources
+   # Verify chart titles and labels translate
+   # Verify data tables show correct language
+   ```
+
+---
+
+**Document Version:** 1.1.0
+**Last Updated:** 2025-01-12
+**Status:** ✅ Ready for Production Deployment (Bilingual)
