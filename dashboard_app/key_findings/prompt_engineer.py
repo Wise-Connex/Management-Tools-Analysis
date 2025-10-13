@@ -192,46 +192,95 @@ providing a comprehensive view of the management tool's behavior over time.
 """
 
     def _build_pca_section(self, pca_insights: Dict[str, Any]) -> str:
-        """Build PCA emphasis section."""
+        """Build PCA emphasis section with unified narrative prompt."""
         if not pca_insights or pca_insights.get('error'):
             return ""
-        
+
         components = pca_insights.get('dominant_patterns', [])
         variance_explained = pca_insights.get('total_variance_explained', 0)
-        
+        tool_name = pca_insights.get('tool_name', 'Unknown Tool')
+
+        # Extract variable relationships for narrative
+        variable_relationships = self._extract_variable_relationships(pca_insights)
+
         if self.language == 'es':
             section = f"""
-### ÉNFASIS EN ANÁLISIS DE COMPONENTES PRINCIPALES (PCA)
+### ANÁLISIS DE COMPONENTES PRINCIPALES (PCA) - NARRATIVA UNIFICADA
 
-**Varianza Total Explicada:** {variance_explained:.1f}%
+**Datos PCA Adjuntos:**
+- Herramienta de Gestión Analizada: {tool_name}
+- Varianza Total Explicada: {variance_explained:.1f}%
+- Componentes Principales Identificados: {len(components)}
+
+**INSTRUCCIONES PARA ANÁLISIS PCA:**
+
+Proporciona una sola narrativa unificada que fusione insights desde una perspectiva [estratégica empresarial] con una perspectiva [académica/organizacional].
+
+Tu análisis debe enfocarse en la historia central que los datos cuentan, especialmente las relaciones clave y tensiones entre factores como {variable_relationships}.
+
+Asegúrate de fundamentar todas las conclusiones incorporando datos numéricos específicos de las gráficas, tales como cargas de componentes y el porcentaje de varianza explicada.
+
+**Ejemplo de Estructura Narrativa:**
+- Comienza con el poder del PCA (componentes que capturan X% de varianza)
+- Identifica dinámicas clave (ej: "dinámica de adopción" con correlaciones específicas)
+- Muestra relaciones inversas que crean "trampas" (cargas negativas específicas)
+- Revela cómo diferentes discursos operan en ejes distintos
+- Conecta con brechas teoría-práctica usando datos numéricos
 
 **Patrones Dominantes Identificados:**
 """
         else:
             section = f"""
-### PRINCIPAL COMPONENT ANALYSIS (PCA) EMPHASIS
+### PRINCIPAL COMPONENT ANALYSIS (PCA) - UNIFIED NARRATIVE
 
-**Total Variance Explained:** {variance_explained:.1f}%
+**Attached PCA Data:**
+- Management Tool Analyzed: {tool_name}
+- Total Variance Explained: {variance_explained:.1f}%
+- Principal Components Identified: {len(components)}
+
+**PCA ANALYSIS INSTRUCTIONS:**
+
+Provide a single, unified narrative that fuses insights from a [strategic business] viewpoint with a [academic/organizational culture] viewpoint.
+
+Your analysis should focus on the core story the data tells, especially the key relationships and tensions between factors like {variable_relationships}.
+
+Be sure to ground all conclusions by incorporating specific numerical data from the graphs, such as component loadings and the percentage of variance explained.
+
+**Narrative Structure Example:**
+- Start with PCA power (components capturing X% of variance)
+- Identify key dynamics (e.g., "adoption dynamic" with specific correlations)
+- Show inverse relationships creating "traps" (specific negative loadings)
+- Reveal how different discourses operate on different axes
+- Connect to theory-practice gaps using numerical data
 
 **Dominant Patterns Identified:**
 """
-        
+
         for i, component in enumerate(components[:3]):
             comp_num = i + 1
             interpretation = component.get('interpretation', f'Component {comp_num}')
             variance = component.get('variance_explained', 0)
-            
+            loadings = component.get('loadings', {})
+
             if self.language == 'es':
                 section += f"""
 **Componente {comp_num}** ({variance:.1f}% varianza explicada):
 {interpretation}
 """
+                if loadings:
+                    section += "**Cargas principales:**\n"
+                    for var, loading in loadings.items():
+                        section += f"- {var}: {loading:.3f}\n"
             else:
                 section += f"""
 **Component {comp_num}** ({variance:.1f}% variance explained):
 {interpretation}
 """
-        
+                if loadings:
+                    section += "**Principal loadings:**\n"
+                    for var, loading in loadings.items():
+                        section += f"- {var}: {loading:.3f}\n"
+
         return section
 
     def _build_statistics_section(self, stats_summary: Dict[str, Any]) -> str:
@@ -749,6 +798,35 @@ For principal component analysis, focus SPECIFICALLY on:
 
 Connect these findings with temporal trends to explain the evolution of these patterns.
 """
+
+    def _extract_variable_relationships(self, pca_insights: Dict[str, Any]) -> str:
+        """Extract key variable relationships for narrative prompt."""
+        components = pca_insights.get('dominant_patterns', [])
+        tool_name = pca_insights.get('tool_name', 'Unknown Tool')
+
+        # Default relationships based on common management tools analysis
+        default_vars = {
+            'es': "'popularidad pública', 'complejidad de implementación', 'efectividad reportada'",
+            'en': "'public popularity', 'implementation complexity', 'reported effectiveness'"
+        }
+
+        # Try to extract from actual PCA data
+        variables = []
+        for component in components[:2]:  # Focus on first two components
+            loadings = component.get('loadings', {})
+            if loadings:
+                # Get variables with highest absolute loadings
+                sorted_vars = sorted(loadings.items(), key=lambda x: abs(x[1]), reverse=True)
+                variables.extend([var for var, _ in sorted_vars[:2]])  # Top 2 per component
+
+        if variables:
+            unique_vars = list(set(variables))[:3]  # Limit to 3 unique variables
+            if self.language == 'es':
+                return ', '.join([f"'{var}'" for var in unique_vars])
+            else:
+                return ', '.join([f"'{var}'" for var in unique_vars])
+
+        return default_vars[self.language]
 
     def _load_templates(self) -> Dict[str, Dict[str, str]]:
         """Load bilingual prompt templates."""
