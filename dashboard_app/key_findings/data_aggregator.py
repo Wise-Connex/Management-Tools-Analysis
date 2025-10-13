@@ -7,6 +7,7 @@ with emphasis on Principal Component Analysis for doctoral-level insights.
 
 import pandas as pd
 import numpy as np
+import time
 from typing import Dict, List, Any, Optional, Tuple
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -37,25 +38,83 @@ class DataAggregator:
         self.db_manager = db_manager
         self.cache_manager = cache_manager
 
-    def collect_analysis_data(self, tool_name: str, selected_sources: List[str], 
-                           language: str = 'es') -> Dict[str, Any]:
+    def collect_analysis_data(self, tool_name: str, selected_sources: List[str],
+                            language: str = 'es') -> Dict[str, Any]:
         """
         Collect all relevant data for AI analysis.
-        
+
         Args:
             tool_name: Selected management tool
             selected_sources: List of selected data sources
             language: Analysis language
-            
+
         Returns:
             Dictionary containing all analysis data
         """
-        logging.info(f"Collecting analysis data for tool='{tool_name}', sources={selected_sources}")
+        start_time = time.time()
+        logging.info(f"🚀 Starting data collection for tool='{tool_name}', sources={selected_sources}, language={language}")
         
-        # Get raw data from database
-        datasets_norm, sl_sc = self.db_manager.get_data_for_keyword(tool_name, selected_sources)
-        
+        # Get raw data from database with timeout protection
+        db_start_time = time.time()
+        logging.info(f"📊 Querying database for tool='{tool_name}' with {len(selected_sources)} sources...")
+        logging.info(f"🔍 Source list: {selected_sources}")
+
+        # First check if tool exists in database
+        try:
+            logging.info(f"🔍 Checking if tool '{tool_name}' exists in database...")
+            # Try to get a small sample first to validate the tool exists
+            test_datasets, test_sl_sc = self.db_manager.get_data_for_keyword(tool_name, selected_sources[:1] if selected_sources else [])
+            if not test_datasets:
+                logging.warning(f"⚠️ Tool '{tool_name}' not found in database or no data available")
+                available_tools = []
+                try:
+                    # Try to get a list of available tools from the database
+                    cursor = self.db_manager.connection.execute("SELECT DISTINCT keyword FROM data_table LIMIT 10")
+                    available_tools = [row[0] for row in cursor.fetchall()]
+                    logging.info(f"📋 Available tools in database: {available_tools}")
+                except Exception as e:
+                    logging.error(f"❌ Could not retrieve available tools: {e}")
+
+                raise Exception(f"Tool '{tool_name}' not found in database. Available tools: {available_tools[:5]}...")
+        except Exception as e:
+            if "not found in database" in str(e):
+                raise e
+            logging.info(f"✅ Tool exists, proceeding with full query...")
+
+        try:
+            # Add timeout protection for database queries
+            import asyncio
+            import concurrent.futures
+
+            def db_query_with_timeout():
+                return self.db_manager.get_data_for_keyword(tool_name, selected_sources)
+
+            # Run database query with 30 second timeout
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+                future = executor.submit(db_query_with_timeout)
+                try:
+                    datasets_norm, sl_sc = future.result(timeout=30)  # 30 second timeout
+                    db_time = time.time() - db_start_time
+                    logging.info(f"✅ Database query completed in {db_time:.2f}s - retrieved {len(datasets_norm)} datasets")
+                    logging.info(f"📋 Dataset keys: {list(datasets_norm.keys()) if datasets_norm else 'None'}")
+                    logging.info(f"📋 Source list: {sl_sc}")
+                except concurrent.futures.TimeoutError:
+                    db_time = time.time() - db_start_time
+                    logging.error(f"⏰ Database query timed out after {db_time:.2f}s")
+                    raise Exception(f"Database query timed out after {db_time:.2f}s. The query may be hanging.")
+
+        except Exception as e:
+            db_time = time.time() - db_start_time
+            if "timeout" in str(e).lower():
+                logging.error(f"⏰ Database query timed out after {db_time:.2f}s")
+            else:
+                logging.error(f"❌ Database query failed after {db_time:.2f}s: {e}")
+            import traceback
+            traceback.print_exc()
+            raise
+
         if not datasets_norm:
+            logging.warning(f"⚠️ No data available for tool '{tool_name}' with selected sources")
             return {
                 'error': f"No data available for tool '{tool_name}' with selected sources",
                 'tool_name': tool_name,
@@ -66,9 +125,14 @@ class DataAggregator:
             }
         
         # Create combined dataset
+        combine_start_time = time.time()
+        logging.info(f"🔄 Creating combined dataset from {len(datasets_norm)} sources...")
         combined_dataset = self._create_combined_dataset(datasets_norm, sl_sc)
-        
+        combine_time = time.time() - combine_start_time
+        logging.info(f"✅ Combined dataset created in {combine_time:.2f}s - shape: {combined_dataset.shape}")
+
         if combined_dataset.empty:
+            logging.warning(f"⚠️ Combined dataset is empty for tool '{tool_name}'")
             return {
                 'error': f"No combined data available for tool '{tool_name}'",
                 'tool_name': tool_name,
@@ -79,21 +143,55 @@ class DataAggregator:
             }
         
         # Extract PCA insights
+        pca_start_time = time.time()
+        logging.info(f"🧮 Starting PCA analysis on {len(combined_dataset)} data points with {len(selected_sources)} sources...")
         pca_insights = self.extract_pca_insights(combined_dataset, selected_sources)
+        pca_time = time.time() - pca_start_time
+        pca_variance = pca_insights.get('total_variance_explained', 0) if 'error' not in pca_insights else 0
+        logging.info(f"✅ PCA analysis completed in {pca_time:.2f}s - variance explained: {pca_variance:.1f}%")
         
         # Calculate statistical summaries
+        stats_start_time = time.time()
+        logging.info(f"📊 Starting statistical analysis...")
         statistical_summary = self.calculate_statistical_summaries(combined_dataset, selected_sources)
-        
+        stats_time = time.time() - stats_start_time
+        logging.info(f"✅ Statistical analysis completed in {stats_time:.2f}s")
+
         # Identify trends and anomalies
+        trends_start_time = time.time()
+        logging.info(f"📈 Starting trends and anomalies analysis...")
         trends_analysis = self.identify_trends_and_anomalies(combined_dataset, selected_sources)
-        
+        trends_time = time.time() - trends_start_time
+        logging.info(f"✅ Trends analysis completed in {trends_time:.2f}s")
+
         # Calculate data quality metrics
+        quality_start_time = time.time()
+        logging.info(f"🔍 Starting data quality assessment...")
         data_quality = self.assess_data_quality(combined_dataset, selected_sources)
+        quality_time = time.time() - quality_start_time
+        logging.info(f"✅ Data quality assessment completed in {quality_time:.2f}s")
         
         # Anonymize sensitive data
+        anonymize_start_time = time.time()
+        logging.info(f"🔒 Starting data anonymization...")
         anonymized_data = self.anonymize_sensitive_data(combined_dataset)
-        
-        return {
+        anonymize_time = time.time() - anonymize_start_time
+        logging.info(f"✅ Data anonymization completed in {anonymize_time:.2f}s")
+
+        # Calculate total time
+        total_time = time.time() - start_time
+
+        # Log performance summary
+        logging.info(f"📋 Data collection completed in {total_time:.2f}s total:")
+        logging.info(f"   ├── Database query: {db_time:.2f}s")
+        logging.info(f"   ├── Data combination: {combine_time:.2f}s")
+        logging.info(f"   ├── PCA analysis: {pca_time:.2f}s")
+        logging.info(f"   ├── Statistical analysis: {stats_time:.2f}s")
+        logging.info(f"   ├── Trends analysis: {trends_time:.2f}s")
+        logging.info(f"   ├── Data quality: {quality_time:.2f}s")
+        logging.info(f"   └── Data anonymization: {anonymize_time:.2f}s")
+
+        result = {
             'tool_name': tool_name,
             'selected_sources': selected_sources,
             'language': language,
@@ -106,8 +204,21 @@ class DataAggregator:
             'trends_analysis': trends_analysis,
             'data_quality': data_quality,
             'anonymized_data_summary': self._create_data_summary(anonymized_data),
-            'analysis_timestamp': datetime.now().isoformat()
+            'analysis_timestamp': datetime.now().isoformat(),
+            'performance_metrics': {
+                'total_time_seconds': total_time,
+                'database_query_time': db_time,
+                'data_combination_time': combine_time,
+                'pca_analysis_time': pca_time,
+                'statistical_analysis_time': stats_time,
+                'trends_analysis_time': trends_time,
+                'data_quality_time': quality_time,
+                'anonymization_time': anonymize_time
+            }
         }
+
+        logging.info(f"🎉 Data collection process completed successfully in {total_time:.2f}s")
+        return result
 
     def extract_pca_insights(self, data: pd.DataFrame, selected_sources: List[str]) -> Dict[str, Any]:
         """
@@ -169,13 +280,21 @@ class DataAggregator:
                     top_sources = [str(idx) for idx in top_sources_idx]
                 top_loadings = [component_loadings[idx] for idx in top_sources_idx]
                 
+                # Enhanced component analysis with detailed loadings interpretation
+                component_analysis = self._analyze_component_detailed(
+                    component_loadings, list(data.columns), i+1, explained_variance[i]
+                )
+
                 dominant_patterns.append({
                     'component': f'PC{i+1}',
                     'variance_explained': float(explained_variance[i]),
                     'cumulative_variance': float(cumulative_variance[i]),
                     'dominant_sources': top_sources,
                     'loadings': dict(zip(list(data.columns), component_loadings.tolist())),
-                    'interpretation': self._interpret_component(component_loadings, list(data.columns), i+1)
+                    'interpretation': component_analysis['interpretation'],
+                    'loadings_analysis': component_analysis['loadings_analysis'],
+                    'source_contributions': component_analysis['source_contributions'],
+                    'pattern_type': component_analysis['pattern_type']
                 })
             
             return {
@@ -512,13 +631,13 @@ class DataAggregator:
         top_indices = np.argsort(np.abs(loadings))[-3:][::-1]
         top_sources = [sources[i] for i in top_indices]
         top_loadings = [loadings[i] for i in top_indices]
-        
+
         # Determine interpretation based on loading signs and magnitudes
         positive_sources = [sources[i] for i, loading in enumerate(loadings) if loading > 0.3]
         negative_sources = [sources[i] for i, loading in enumerate(loadings) if loading < -0.3]
-        
+
         interpretation = f"Component {component_num} represents "
-        
+
         if positive_sources and negative_sources:
             interpretation += f"a contrast between {', '.join(positive_sources)} (positive) and {', '.join(negative_sources)} (negative)"
         elif positive_sources:
@@ -527,8 +646,83 @@ class DataAggregator:
             interpretation += f"inverse relationship of {', '.join(negative_sources)}"
         else:
             interpretation += "a balanced combination of all sources"
-        
+
         return interpretation
+
+    def _analyze_component_detailed(self, loadings: np.ndarray, sources: List[str], component_num: int, variance_explained: float) -> Dict[str, Any]:
+        """Provide detailed analysis of a PCA component with focus on loadings and source differences."""
+        # Classify sources by loading magnitude
+        source_contributions = []
+        for i, (source, loading) in enumerate(zip(sources, loadings)):
+            abs_loading = abs(loading)
+
+            if abs_loading >= 0.6:
+                contribution_level = "high"
+                role = "dominant driver"
+            elif abs_loading >= 0.3:
+                contribution_level = "medium"
+                role = "significant contributor"
+            else:
+                contribution_level = "low"
+                role = "minor contributor"
+
+            source_contributions.append({
+                'source': source,
+                'loading': float(loading),
+                'abs_loading': float(abs_loading),
+                'contribution_level': contribution_level,
+                'role': role,
+                'direction': 'positive' if loading > 0 else 'negative' if loading < 0 else 'neutral'
+            })
+
+        # Sort by absolute loading (most important first)
+        source_contributions.sort(key=lambda x: x['abs_loading'], reverse=True)
+
+        # Determine component pattern type
+        positive_loadings = [loading for loading in loadings if loading > 0.3]
+        negative_loadings = [loading for loading in loadings if loading < -0.3]
+
+        if len(positive_loadings) > 1 and len(negative_loadings) > 1:
+            pattern_type = "contrast_pattern"
+            interpretation = f"Component {component_num} reveals contrasting patterns between different source types"
+        elif len(positive_loadings) >= 2:
+            pattern_type = "alignment_pattern"
+            interpretation = f"Component {component_num} shows alignment and synergy between multiple sources"
+        elif len(negative_loadings) >= 2:
+            pattern_type = "inverse_pattern"
+            interpretation = f"Component {component_num} demonstrates inverse relationships between sources"
+        else:
+            pattern_type = "mixed_pattern"
+            interpretation = f"Component {component_num} represents a complex interaction pattern between sources"
+
+        # Create detailed loadings analysis
+        loadings_analysis = {
+            'component_magnitude': float(variance_explained),
+            'dominant_sources': [contrib for contrib in source_contributions if contrib['contribution_level'] == 'high'],
+            'supporting_sources': [contrib for contrib in source_contributions if contrib['contribution_level'] == 'medium'],
+            'minor_sources': [contrib for contrib in source_contributions if contrib['contribution_level'] == 'low'],
+            'positive_contributors': [contrib for contrib in source_contributions if contrib['direction'] == 'positive'],
+            'negative_contributors': [contrib for contrib in source_contributions if contrib['direction'] == 'negative']
+        }
+
+        # Generate business interpretation
+        if pattern_type == "contrast_pattern":
+            pos_sources = [contrib['source'] for contrib in loadings_analysis['positive_contributors']]
+            neg_sources = [contrib['source'] for contrib in loadings_analysis['negative_contributors']]
+            interpretation += f", where {', '.join(pos_sources)} show positive correlation while {', '.join(neg_sources)} show inverse correlation with the main pattern"
+        elif pattern_type == "alignment_pattern":
+            dom_sources = [contrib['source'] for contrib in loadings_analysis['dominant_sources'][:2]]
+            interpretation += f", with {', '.join(dom_sources)} working in synergy to define this pattern"
+        elif pattern_type == "inverse_pattern":
+            neg_sources = [contrib['source'] for contrib in loadings_analysis['negative_contributors']]
+            interpretation += f", characterized by inverse relationships among {', '.join(neg_sources)}"
+
+        return {
+            'interpretation': interpretation,
+            'loadings_analysis': loadings_analysis,
+            'source_contributions': source_contributions,
+            'pattern_type': pattern_type
+        }
 
     def _interpret_correlation_strength(self, correlation: float) -> str:
         """Interpret correlation strength."""

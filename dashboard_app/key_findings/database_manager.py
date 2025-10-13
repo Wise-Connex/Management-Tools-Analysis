@@ -134,7 +134,7 @@ class KeyFindingsDBManager:
                 -- Performance Metrics
                 data_points_analyzed INTEGER,
                 sources_count INTEGER,
-                analysis_depth TEXT  -- 'basic', 'comprehensive', 'doctoral'
+                analysis_depth TEXT  -- 'basic', 'comprehensive', 'advanced'
             )
             """,
             
@@ -261,7 +261,7 @@ class KeyFindingsDBManager:
                 report_data.get('confidence_score'),
                 report_data.get('data_points_analyzed'),
                 report_data.get('sources_count'),
-                report_data.get('analysis_depth', 'doctoral')
+                report_data.get('analysis_depth', 'comprehensive')
             ))
             
             report_id = cursor.lastrowid

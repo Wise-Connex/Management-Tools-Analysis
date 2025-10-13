@@ -17,6 +17,7 @@ from sklearn.metrics import r2_score
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.seasonal import seasonal_decompose
 from scipy.fft import fft, fftfreq
+from typing import Dict, List, Any
 import warnings
 import os
 import sys
@@ -102,29 +103,104 @@ except ImportError as e:
 # Get database manager instance
 db_manager = get_database_manager()
 
-# Initialize Key Findings service if available
+# Initialize Key Findings service if available (will be initialized after app is created)
 key_findings_service = None
-if KEY_FINDINGS_AVAILABLE:
-    try:
-        # Use local path for development, Docker path for production
-        import os
-        if os.path.exists('/app/data'):
-            db_path = '/app/data/key_findings.db'
-        else:
-            db_path = './data/key_findings.db'
-            
-        config = {'key_findings_db_path': db_path}
-        api_key = os.getenv('OPENROUTER_API_KEY')
-        key_findings_service = KeyFindingsService(db_manager, config=config, api_key=api_key)
-        
-        # Initialize modal component
-        key_findings_service.set_modal_component(app, dcc.Store(id='language-store', data='es'))
-        print("✅ Key Findings service initialized successfully")
-    except Exception as e:
-        print(f"❌ Error initializing Key Findings service: {e}")
-        import traceback
-        traceback.print_exc()
-        KEY_FINDINGS_AVAILABLE = False
+def initialize_key_findings_service():
+    """Initialize Key Findings service after app is created"""
+    global key_findings_service, KEY_FINDINGS_AVAILABLE
+    if KEY_FINDINGS_AVAILABLE and key_findings_service is None:
+        try:
+            print("🔍 DEBUG: Starting Key Findings service initialization...")
+
+            # Use local path for development, Docker path for production
+            import os
+            if os.path.exists('/app/data'):
+                db_path = '/app/data/key_findings.db'
+                print(f"🔍 DEBUG: Using Docker database path: {db_path}")
+            else:
+                db_path = './data/key_findings.db'
+                print(f"🔍 DEBUG: Using local database path: {db_path}")
+
+            # Check if database file exists
+            if os.path.exists(db_path):
+                print(f"🔍 DEBUG: Database file exists at {db_path}")
+            else:
+                print(f"🔍 DEBUG: Database file does NOT exist at {db_path}")
+
+            config = {'key_findings_db_path': db_path}
+            api_key = os.getenv('OPENROUTER_API_KEY')
+            print(f"🔍 DEBUG: API key loaded: {bool(api_key)}")
+
+            # Initialize service without modal component to avoid callback conflicts
+            print("🔍 DEBUG: Importing Key Findings components...")
+            from key_findings.key_findings_service import KeyFindingsService
+            from key_findings.database_manager import KeyFindingsDBManager
+            from key_findings.ai_service import get_openrouter_service
+            from key_findings.data_aggregator import DataAggregator
+            from key_findings.prompt_engineer import PromptEngineer
+
+            print("🔍 DEBUG: Creating Key Findings service instance...")
+            key_findings_service = KeyFindingsService.__new__(KeyFindingsService)
+            key_findings_service.db_manager = db_manager
+
+            print("🔍 DEBUG: Initializing Key Findings database manager...")
+            key_findings_service.kf_db_manager = KeyFindingsDBManager(db_path)
+
+            # Initialize AI service
+            print("🔍 DEBUG: Initializing AI service...")
+            api_key = os.getenv('OPENROUTER_API_KEY')
+            key_findings_service.ai_service = get_openrouter_service(api_key, config)
+
+            # Initialize data aggregator
+            print("🔍 DEBUG: Initializing data aggregator...")
+            key_findings_service.data_aggregator = DataAggregator(db_manager, key_findings_service.kf_db_manager)
+
+            # Initialize prompt engineer
+            print("🔍 DEBUG: Initializing prompt engineer...")
+            key_findings_service.prompt_engineer = PromptEngineer()
+
+            key_findings_service.modal_component = None
+            key_findings_service.config = {
+                'cache_ttl': 86400,
+                'max_retries': 3,
+                'enable_pca_emphasis': True,
+                'confidence_threshold': 0.7
+            }
+            key_findings_service.performance_metrics = {
+                'total_requests': 0,
+                'cache_hits': 0,
+                'cache_misses': 0,
+                'avg_response_time_ms': 0,
+                'error_count': 0
+            }
+
+            print("✅ Key Findings service initialized successfully")
+
+            # Test model availability
+            try:
+                print("🔍 Testing model availability...")
+                import asyncio
+                loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(loop)
+                availability = loop.run_until_complete(key_findings_service.ai_service.test_model_availability())
+                loop.close()
+
+                available_models = [model for model, available in availability.items() if available]
+                unavailable_models = [model for model, available in availability.items() if not available]
+
+                if available_models:
+                    print(f"✅ Available models: {', '.join(available_models)}")
+                if unavailable_models:
+                    print(f"⚠️  Unavailable models: {', '.join(unavailable_models)}")
+
+            except Exception as e:
+                print(f"⚠️  Could not test model availability: {e}")
+
+        except Exception as e:
+            print(f"❌ Error initializing Key Findings service: {e}")
+            import traceback
+            traceback.print_exc()
+            KEY_FINDINGS_AVAILABLE = False
 
 # Notes and DOI data is now loaded from the database
 
@@ -184,6 +260,47 @@ def get_all_keywords():
             if keyword not in all_keywords:
                 all_keywords.append(keyword)
     return all_keywords
+
+def _generate_pca_insights(pattern: Dict[str, Any]) -> List[str]:
+    """Generate specific insights from PCA pattern analysis."""
+    insights = []
+
+    # Pattern type insights
+    pattern_type = pattern.get('pattern_type', '')
+    if pattern_type == 'contrast_pattern':
+        pos_sources = [contrib['source'] for contrib in pattern.get('source_contributions', [])
+                      if contrib.get('direction') == 'positive' and contrib.get('abs_loading', 0) > 0.3]
+        neg_sources = [contrib['source'] for contrib in pattern.get('source_contributions', [])
+                      if contrib.get('direction') == 'negative' and contrib.get('abs_loading', 0) > 0.3]
+
+        if pos_sources and neg_sources:
+            insights.append(f"Contraste entre {', '.join(pos_sources)} (positivas) vs {', '.join(neg_sources)} (negativas)")
+
+    elif pattern_type == 'alignment_pattern':
+        dom_sources = [contrib['source'] for contrib in pattern.get('source_contributions', [])
+                      if contrib.get('contribution_level') == 'high']
+        if dom_sources:
+            insights.append(f"Sinergia entre {', '.join(dom_sources[:2])} define este patrón")
+
+    # Loadings-based insights
+    high_contributors = [contrib for contrib in pattern.get('source_contributions', [])
+                       if contrib.get('contribution_level') == 'high']
+    if high_contributors:
+        main_source = high_contributors[0]
+        insights.append(f"Fuente dominante: {main_source.get('source', '')} con carga {main_source.get('loading', 0):.3f}")
+
+    # Direction insights
+    positive_count = len([contrib for contrib in pattern.get('source_contributions', [])
+                        if contrib.get('direction') == 'positive'])
+    negative_count = len([contrib for contrib in pattern.get('source_contributions', [])
+                        if contrib.get('direction') == 'negative'])
+
+    if positive_count > negative_count:
+        insights.append("Patrón predominantemente positivo entre fuentes")
+    elif negative_count > positive_count:
+        insights.append("Relaciones inversas dominan este componente")
+
+    return insights if insights else ["Análisis detallado de cargas revela patrones únicos entre fuentes"]
 
 def get_cache_stats():
     """Get database and cache statistics for performance monitoring"""
@@ -743,7 +860,7 @@ app.layout = dbc.Container([
     # Add Key Findings modal
     dbc.Modal(
         [
-            dbc.ModalHeader(dbc.ModalTitle("🧠 Key Findings", id="key-findings-modal-title")),
+            dbc.ModalHeader(dbc.ModalTitle("🧠 Key Findings - Análisis", id="key-findings-modal-title")),
             dbc.ModalBody(id="key-findings-modal-body"),
             dbc.ModalFooter(
                 [
@@ -759,6 +876,9 @@ app.layout = dbc.Container([
         backdrop="static"
     )
 ], fluid=True, className="px-0", style={'height': '100vh'})
+
+# Initialize Key Findings service after app is created
+initialize_key_findings_service()
 
 # Callbacks
 
@@ -3293,53 +3413,307 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
     )
     def toggle_key_findings_modal(generate_clicks, close_clicks, selected_tool, selected_sources, language):
         """Handle Key Findings modal toggle and generation"""
+        print(f"🔍 Key Findings callback triggered! generate_clicks: {generate_clicks}, selected_tool: {selected_tool}, selected_sources: {len(selected_sources) if selected_sources else 0}")
+
         ctx = dash.callback_context
-        
+        print(f"🔍 Callback context: {ctx}")
+
         if not ctx.triggered:
+            print("🔍 No triggered context, returning default")
             return False, ""
-        
+
         trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
-        
+        print(f"🔍 Trigger ID: {trigger_id}")
+
         if trigger_id == "close-key-findings-modal":
+            print("🔍 Closing modal")
             return False, ""
-        
+
         if trigger_id == "generate-key-findings-btn":
+            print("🔍 Generate button clicked")
             if not selected_tool or not selected_sources:
+                print("❌ Missing tool or sources")
                 return True, html.Div([
                     html.H4("Error", className="text-danger"),
                     html.P("Por favor seleccione una herramienta y al menos una fuente de datos.",
-                           className="text-muted")
+                          className="text-muted")
                 ])
-            
+
             try:
-                # Generate Key Findings
-                import asyncio
-                loop = asyncio.new_event_loop()
-                asyncio.set_event_loop(loop)
-                
-                findings = loop.run_until_complete(
-                    key_findings_service.generate_key_findings(
+                print("🚀 Starting Key Findings generation...")
+                print(f"📋 Parameters: tool='{selected_tool}', sources={selected_sources}, language={language}")
+
+                # Check if key_findings_service is available
+                print(f"🔍 Checking key_findings_service: {key_findings_service}")
+                if key_findings_service is None:
+                    print("❌ key_findings_service is None")
+                    return True, html.Div([
+                        html.H4("Error", className="text-danger"),
+                        html.P("Key Findings service not initialized.", className="text-muted")
+                    ])
+
+                print("✅ Key Findings service is available")
+
+                # Show loading state
+                loading_content = html.Div([
+                    html.H4("🧠 Key Findings - Análisis", className="text-primary mb-3"),
+                    html.Div([
+                        html.H5("Generando Análisis...", className="text-info mb-3"),
+                        html.P("Procesando datos multi-fuente y generando insights...",
+                              className="text-muted mb-3"),
+                        dbc.Spinner(size="sm", color="primary"),
+                        html.P("Esto puede tomar unos momentos...", className="text-muted mt-2")
+                    ], style={'textAlign': 'center', 'padding': '40px'})
+                ])
+
+                # Return loading state immediately
+                print("🔄 Returning loading state to user")
+
+                # Since signal doesn't work in Dash threads, use a simple time-based approach
+                print("⏰ TESTING: Starting data collection with manual timeout check...")
+                data_collection_start = time.time()
+
+                try:
+                    print("📊 Starting data collection...")
+                    # Start the data collection
+                    analysis_data = key_findings_service.data_aggregator.collect_analysis_data(
                         tool_name=selected_tool,
                         selected_sources=selected_sources,
                         language=language
                     )
-                )
-                
-                if findings.get("error"):
+
+                    data_collection_time = time.time() - data_collection_start
+                    print(f"✅ Data collection completed in {data_collection_time:.2f}s")
+
+                except Exception as e:
+                    data_collection_time = time.time() - data_collection_start
+                    print(f"❌ Data collection failed after {data_collection_time:.2f}s: {e}")
+
+                    # Check if it's a "tool not found" error
+                    if "not found in database" in str(e):
+                        print("🎯 TOOL NOT FOUND ERROR!")
+                        print("💡 This is the root cause - tool name mapping issue between UI and Key Findings")
+                        print("🔍 The tool exists in the main database but Key Findings can't find it")
+
+                        # Return specific error modal for tool mapping issue
+                        error_content = html.Div([
+                            html.H4("🔍 Tool Mapping Issue", className="text-danger"),
+                            html.P(f"Tool '{selected_tool}' not found in Key Findings database.", className="text-muted"),
+                            html.P("The tool exists in the main database but Key Findings uses different naming.", className="text-muted"),
+                            html.P("This needs to be fixed in the tool name mapping configuration.", className="text-muted")
+                        ])
+                        print("🔄 Returning tool mapping error modal")
+                        return True, error_content
+                    # Check if it took more than 3 seconds (indicating hanging)
+                    elif data_collection_time > 3.0:
+                        print("⏰ LONG EXECUTION TIME DETECTED!")
+                        print("🎯 This suggests the data collection is hanging!")
+                        print("💡 The database query is taking too long - likely due to tool name mapping issues")
+
+                        # Return error modal immediately
+                        error_content = html.Div([
+                            html.H4("⏰ Long Execution Detected", className="text-warning"),
+                            html.P(f"Data collection took {data_collection_time:.1f} seconds.", className="text-muted"),
+                            html.P("This indicates the database query is hanging or slow.", className="text-muted"),
+                            html.P("The tool name mapping between UI and database needs to be fixed.", className="text-muted")
+                        ])
+                        print("🔄 Returning long execution error modal")
+                        return True, error_content
+                    else:
+                        print(f"❌ Data collection failed quickly after {data_collection_time:.2f}s: {e}")
+                        import traceback
+                        traceback.print_exc()
+                        raise
+
+                if 'error' in analysis_data:
+                    print(f"❌ Error collecting data: {analysis_data['error']}")
                     return True, html.Div([
-                        html.H4("Error", className="text-danger"),
-                        html.P(findings["error"], className="text-muted")
+                        html.H4("Error de Datos", className="text-danger"),
+                        html.P(analysis_data['error'], className="text-muted")
                     ])
-                
-                # Create modal content using the modal component
-                modal_content = key_findings_service.modal_component.create_findings_display(findings)
-                return True, modal_content
-                
-            except Exception as e:
-                return True, html.Div([
-                    html.H4("Error", className="text-danger"),
-                    html.P(f"Error generando Key Findings: {str(e)}", className="text-muted")
+
+                data_points = analysis_data.get('data_points_analyzed', 0)
+                pca_variance = analysis_data.get('pca_insights', {}).get('total_variance_explained', 0)
+                print(f"✅ Collected analysis data: {data_points} points, PCA variance: {pca_variance:.1f}%")
+
+                # Generate comprehensive prompt
+                print("📝 Generating analysis prompt...")
+                prompt_start = time.time()
+                prompt = key_findings_service.prompt_engineer.create_analysis_prompt(analysis_data, {})
+                prompt_time = time.time() - prompt_start
+                print(f"✅ Prompt generated in {prompt_time:.2f}s ({len(prompt)} characters)")
+
+                # Show prompt preview
+                prompt_preview = prompt[:300] + "..." if len(prompt) > 300 else prompt
+                print(f"📋 Prompt preview: {prompt_preview}")
+
+                # Call AI service
+                print("🤖 Calling AI service for analysis...")
+                ai_start = time.time()
+                ai_response = key_findings_service.ai_service.generate_analysis(
+                    prompt=prompt,
+                    language=language
+                )
+                ai_time = time.time() - ai_start
+                print(f"✅ AI analysis completed in {ai_time:.2f}s")
+
+                if not ai_response.get('success', False):
+                    print(f"❌ AI service failed: {ai_response}")
+                    return True, html.Div([
+                        html.H4("Error de IA", className="text-danger"),
+                        html.P("El servicio de IA no pudo generar el análisis. Intente nuevamente.",
+                              className="text-muted")
+                    ])
+
+                response_time_ms = ai_response.get('response_time_ms', 0)
+                model_used = ai_response.get('model_used', 'unknown')
+                token_count = ai_response.get('token_count', 0)
+                print(f"✅ AI analysis completed in {response_time_ms}ms using {model_used} ({token_count} tokens)")
+
+                # Parse AI response
+                ai_content = ai_response.get('content', {})
+                print(f"📄 AI response parsed - findings: {len(ai_content.get('principal_findings', []))}, "
+                      f"executive summary length: {len(ai_content.get('executive_summary', ''))}")
+
+                # Create comprehensive modal content
+                modal_content = html.Div([
+                    html.H4("🧠 Key Findings - Análisis", className="text-primary mb-3"),
+
+                    # Model info
+                    html.Div([
+                        html.Small(f"Generado por: {model_used} | Tiempo: {ai_response.get('response_time_ms', 0)}ms",
+                                 className="text-muted")
+                    ], style={'marginBottom': '20px'}),
+
+                    # Executive Summary
+                    html.Div([
+                        html.H5("📋 Resumen Ejecutivo", className="text-info mb-2"),
+                        html.P(ai_content.get('executive_summary', 'No summary available'), className="mb-4")
+                    ]),
+
+                    # Principal Findings
+                    html.Div([
+                        html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
+                        html.Ul([
+                            html.Li([
+                                html.Strong(finding.get('bullet_point', 'No finding')),
+                                html.Br(),
+                                html.Small(finding.get('reasoning', ''), className="text-muted"),
+                                html.Br(),
+                                html.Small(f"Fuentes: {', '.join(finding.get('data_source', []))} | "
+                                         f"Confianza: {finding.get('confidence', 'unknown')}",
+                                         className="text-muted")
+                            ])
+                            for finding in ai_content.get('principal_findings', [])
+                        ])
+                    ]),
+
+                    # Enhanced PCA Insights with Loadings Analysis
+                    html.Div([
+                        html.H5("📊 Análisis PCA - Cargas y Componentes", className="text-info mb-2"),
+                        html.P(f"Varianza total explicada: {analysis_data.get('pca_insights', {}).get('total_variance_explained', 0):.1f}%"),
+
+                        # Component Analysis
+                        html.Div([
+                            html.H6(f"Componentes Principales:", className="text-primary mb-2"),
+                            html.Div([
+                                html.Div([
+                                    html.Div([
+                                        html.Strong(f"{pattern.get('component', 'PC?')}", className="text-success"),
+                                        f": {pattern.get('variance_explained', 0):.1f}% varianza explicada",
+                                    ], className="mb-1"),
+                                    html.Div([
+                                        html.Strong("Interpretación: "),
+                                        html.Small(pattern.get('interpretation', ''), className="text-muted")
+                                    ], className="mb-2"),
+                                    html.Div([
+                                        html.Strong("Tipo de Patrón: "),
+                                        html.Small(pattern.get('pattern_type', ''), className="text-muted")
+                                    ], className="mb-2"),
+
+                                    # Loadings Analysis
+                                    html.Div([
+                                        html.Strong("Análisis de Cargas:", className="text-info"),
+                                        html.Ul([
+                                            html.Li([
+                                                html.Small(f"{contrib.get('source', '')}: ", className="fw-bold"),
+                                                html.Small(f"carga {contrib.get('loading', 0):.3f} ", className="text-muted"),
+                                                html.Small(f"({contrib.get('contribution_level', '')} - {contrib.get('role', '')})", className="text-muted")
+                                            ]) for contrib in pattern.get('source_contributions', [])[:3]  # Top 3 contributors
+                                        ], className="mb-0")
+                                    ], className="mb-2", style={'fontSize': '11px'}),
+
+                                    # Pattern Insights
+                                    html.Div([
+                                        html.Strong("Insights del Patrón:", className="text-info"),
+                                        html.Ul([
+                                            html.Li(html.Small(insight, className="text-muted"))
+                                            for insight in self._generate_pca_insights(pattern)
+                                        ], className="mb-0")
+                                    ], className="mb-2", style={'fontSize': '11px'})
+
+                                ], style={'border': '1px solid #dee2e6', 'borderRadius': '5px', 'padding': '10px', 'marginBottom': '10px'})
+                                for pattern in analysis_data.get('pca_insights', {}).get('dominant_patterns', [])
+                            ])
+                        ]),
+
+                        # Overall PCA Summary
+                        html.Div([
+                            html.H6("Resumen PCA General:", className="text-primary mb-2"),
+                            html.Div([
+                                html.Small(f"• {analysis_data.get('pca_insights', {}).get('components_analyzed', 0)} componentes analizados", className="text-muted"),
+                                html.Br(),
+                                html.Small(f"• {analysis_data.get('pca_insights', {}).get('data_points_used', 0)} puntos de datos utilizados", className="text-muted"),
+                                html.Br(),
+                                html.Small("• Análisis enfocado en diferencias entre fuentes de datos", className="text-muted")
+                            ], style={'fontSize': '11px', 'backgroundColor': '#f8f9fa', 'padding': '8px', 'borderRadius': '4px'})
+                        ], className="mt-3")
+
+                    ]),
+
+                    # Statistical Summary
+                    html.Div([
+                        html.H5("📈 Resumen Estadístico", className="text-info mb-2"),
+                        html.Div([
+                            html.Small(f"Datos analizados: {analysis_data.get('data_points_analyzed', 0):,} puntos | "
+                                     f"Rango temporal: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
+                                     className="text-muted")
+                        ], style={'marginBottom': '15px'})
+                    ]),
+
+                    # Data Quality
+                    html.Div([
+                        html.H6("Calidad de Datos", className="text-muted mb-2"),
+                        html.Small(f"Puntuación general: {analysis_data.get('data_quality', {}).get('overall_score', 0):.1f}/100",
+                                 className="text-muted")
+                    ])
                 ])
+
+                total_generation_time = time.time() - data_collection_start
+                print("✅ Key Findings generated successfully!")
+                print(f"⏱️ Total generation time: {total_generation_time:.2f}s")
+                print(f"📊 Performance breakdown:")
+                print(f"   ├── Data collection: {data_collection_time:.2f}s")
+                print(f"   ├── Prompt generation: {prompt_time:.2f}s")
+                print(f"   ├── AI analysis: {ai_time:.2f}s")
+                print(f"   └── Modal creation: {time.time() - ai_start:.2f}s")
+                print("🔄 Returning success modal content")
+                return True, modal_content
+
+            except Exception as e:
+                total_error_time = time.time() - data_collection_start
+                print(f"❌ Error generating Key Findings after {total_error_time:.2f}s: {e}")
+                import traceback
+                traceback.print_exc()
+
+                # Return error modal content
+                error_content = html.Div([
+                    html.H4("Error", className="text-danger"),
+                    html.P(f"Error generando Key Findings: {str(e)}", className="text-muted"),
+                    html.P(f"Time elapsed: {total_error_time:.2f}s", className="text-muted small")
+                ])
+                print("🔄 Returning error modal content")
+                return True, error_content
         
         return False, ""
 
@@ -3355,45 +3729,136 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
         """Regenerate Key Findings with force refresh"""
         if not regenerate_clicks:
             return dash.no_update
-        
+
         try:
-            import asyncio
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            
-            findings = loop.run_until_complete(
-                key_findings_service.generate_key_findings(
-                    tool_name=selected_tool,
-                    selected_sources=selected_sources,
-                    language=language,
-                    force_refresh=True
-                )
+            print("🔄 Regenerating Key Findings with force refresh...")
+
+            # Show loading state
+            loading_content = html.Div([
+                html.H5("🔄 Regenerando Análisis...", className="text-warning mb-3"),
+                html.P("Procesando datos con actualización forzada...", className="text-muted mb-3"),
+                dbc.Spinner(size="sm", color="warning"),
+                html.P("Esto puede tomar unos momentos...", className="text-muted mt-2")
+            ], style={'textAlign': 'center', 'padding': '40px'})
+
+            # Return loading state immediately
+            return loading_content
+
+            # Collect comprehensive analysis data with force refresh
+            print(f"📊 Collecting fresh data for {selected_tool} with {len(selected_sources)} sources")
+            analysis_data = key_findings_service.data_aggregator.collect_analysis_data(
+                tool_name=selected_tool,
+                selected_sources=selected_sources,
+                language=language
             )
-            
-            if findings.get("error"):
+
+            if 'error' in analysis_data:
+                print(f"❌ Error collecting data: {analysis_data['error']}")
                 return html.Div([
-                    html.H4("Error", className="text-danger"),
-                    html.P(findings["error"], className="text-muted")
+                    html.H4("Error de Datos", className="text-danger"),
+                    html.P(analysis_data['error'], className="text-muted")
                 ])
-            
-            if key_findings_service.modal_component:
-                return key_findings_service.modal_component.create_findings_display(findings)
-            else:
-                # Fallback if modal component not initialized
+
+            print(f"✅ Collected fresh analysis data: {analysis_data.get('data_points_analyzed', 0)} points")
+
+            # Generate comprehensive prompt
+            prompt = key_findings_service.prompt_engineer.create_analysis_prompt(analysis_data, {})
+
+            print(f"📝 Generated regeneration prompt with {len(prompt)} characters")
+
+            # Call AI service with force refresh
+            print("🤖 Calling AI service for fresh analysis...")
+            ai_response = key_findings_service.ai_service.generate_analysis(
+                prompt=prompt,
+                language=language
+            )
+
+            if not ai_response.get('success', False):
+                print(f"❌ AI service failed: {ai_response}")
                 return html.Div([
-                    html.H4("Key Findings", className="text-primary mb-3"),
-                    html.Div([
-                        html.H5("Resumen Ejecutivo"),
-                        html.P(findings.get('executive_summary', 'No summary available'), className="mb-3"),
-                        html.H5("Hallazgos Principales"),
-                        html.Ul([
-                            html.Li(finding.get('bullet_point', 'No finding'))
-                            for finding in findings.get('principal_findings', [])
+                    html.H4("Error de IA", className="text-danger"),
+                    html.P("El servicio de IA no pudo generar el análisis. Intente nuevamente.",
+                          className="text-muted")
+                ])
+
+            print(f"✅ Fresh AI analysis completed in {ai_response.get('response_time_ms', 0)}ms")
+
+            # Parse AI response
+            ai_content = ai_response.get('content', {})
+            model_used = ai_response.get('model_used', 'unknown')
+
+            # Create comprehensive modal content (same as generate)
+            modal_content = html.Div([
+                html.H4("🧠 Key Findings - Análisis (Regenerado)", className="text-primary mb-3"),
+
+                # Model info
+                html.Div([
+                    html.Small(f"Regenerado por: {model_used} | Tiempo: {ai_response.get('response_time_ms', 0)}ms",
+                             className="text-muted")
+                ], style={'marginBottom': '20px'}),
+
+                # Executive Summary
+                html.Div([
+                    html.H5("📋 Resumen Ejecutivo", className="text-info mb-2"),
+                    html.P(ai_content.get('executive_summary', 'No summary available'), className="mb-4")
+                ]),
+
+                # Principal Findings
+                html.Div([
+                    html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
+                    html.Ul([
+                        html.Li([
+                            html.Strong(finding.get('bullet_point', 'No finding')),
+                            html.Br(),
+                            html.Small(finding.get('reasoning', ''), className="text-muted"),
+                            html.Br(),
+                            html.Small(f"Fuentes: {', '.join(finding.get('data_source', []))} | "
+                                     f"Confianza: {finding.get('confidence', 'unknown')}",
+                                     className="text-muted")
                         ])
+                        for finding in ai_content.get('principal_findings', [])
                     ])
+                ]),
+
+                # PCA Insights
+                html.Div([
+                    html.H5("📊 Análisis de Componentes Principales", className="text-info mb-2"),
+                    html.P(f"Varianza total explicada: {analysis_data.get('pca_insights', {}).get('total_variance_explained', 0):.1f}%"),
+                    html.Ul([
+                        html.Li([
+                            html.Strong(f"{pattern.get('component', 'PC?')}: {pattern.get('variance_explained', 0):.1f}% varianza explicada"),
+                            html.Br(),
+                            html.Small(pattern.get('interpretation', ''), className="text-muted")
+                        ])
+                        for pattern in analysis_data.get('pca_insights', {}).get('dominant_patterns', [])
+                    ])
+                ]),
+
+                # Statistical Summary
+                html.Div([
+                    html.H5("📈 Resumen Estadístico", className="text-info mb-2"),
+                    html.Div([
+                        html.Small(f"Datos analizados: {analysis_data.get('data_points_analyzed', 0):,} puntos | "
+                                 f"Rango temporal: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
+                                 className="text-muted")
+                    ], style={'marginBottom': '15px'})
+                ]),
+
+                # Data Quality
+                html.Div([
+                    html.H6("Calidad de Datos", className="text-muted mb-2"),
+                    html.Small(f"Puntuación general: {analysis_data.get('data_quality', {}).get('overall_score', 0):.1f}/100",
+                             className="text-muted")
                 ])
-            
+            ])
+
+            print("✅ Key Findings regenerated successfully!")
+            return modal_content
+
         except Exception as e:
+            print(f"❌ Error regenerating Key Findings: {e}")
+            import traceback
+            traceback.print_exc()
             return html.Div([
                 html.H4("Error", className="text-danger"),
                 html.P(f"Error regenerando Key Findings: {str(e)}", className="text-muted")

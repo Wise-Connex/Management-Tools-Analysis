@@ -30,14 +30,18 @@ class PromptEngineer:
     def create_analysis_prompt(self, data: Dict[str, Any], context: Dict[str, Any]) -> str:
         """
         Create comprehensive analysis prompt.
-        
+
         Args:
             data: Aggregated analysis data
             context: Additional context for analysis
-            
+
         Returns:
             Complete analysis prompt string
         """
+        import time
+        start_time = time.time()
+        logging.info(f"📝 Starting prompt generation for tool '{data.get('tool_name', 'Unknown')}' in {self.language}")
+
         template = self.prompt_templates['comprehensive_analysis'][self.language]
         
         # Extract key information
@@ -72,10 +76,16 @@ class PromptEngineer:
         # Output format
         sections.append(self._build_output_format_section())
         
-        return template.format(
+        prompt = template.format(
             analysis_date=datetime.now().strftime('%Y-%m-%d'),
             context='\n\n'.join(sections)
         )
+
+        generation_time = time.time() - start_time
+        logging.info(f"✅ Prompt generation completed in {generation_time:.2f}s - prompt length: {len(prompt)} characters")
+        logging.info(f"📊 Prompt sections created: {len(sections)} sections")
+
+        return prompt
 
     def create_pca_focused_prompt(self, pca_data: Dict[str, Any], context: Dict[str, Any]) -> str:
         """
@@ -685,34 +695,58 @@ Each recommendation should be:
 """
 
     def _build_pca_requirements(self) -> str:
-        """Build PCA-specific requirements."""
+        """Build PCA-specific requirements with emphasis on loadings."""
         if self.language == 'es':
             return """
-### REQUISITOS ESPECÍFICOS DE PCA
+### REQUISITOS ESPECÍFICOS DE PCA - ANÁLISIS DE CARGAS Y COMPONENTES
 
-Para el análisis de componentes principales, enfocate en:
+Para el análisis de componentes principales, enfócate ESPECÍFICAMENTE en:
 
-1. **Interpretación de Componentes**: Explique qué representa cada componente en términos de negocio
-2. **Varianza Explicada**: Cuantifique qué porcentaje de variabilidad captura cada componente
-3. **Patrones de Carga**: Identifique qué fuentes contribuyen más a cada componente
-4. **Insights de Negocio**: Traduzca hallazgos técnicos a implicaciones de negocio accionables
-5. **Visualización de Patrones**: Describa cómo los datos se organizan en el espacio de componentes
+1. **Análisis de Cargas (Loadings)**: Examine las cargas de cada fuente en cada componente para entender su contribución
+2. **Interpretación de Componentes**: Cada componente representa una combinación única de fuentes - explica qué patrones subyacentes revela
+3. **Diferencias entre Fuentes**: Usa las cargas para identificar cómo se diferencian las fuentes y qué información única aporta cada una
+4. **Relaciones Ocultas**: Identifica correlaciones y relaciones no obvias entre fuentes reveladas por las cargas
+5. **Patrones de Contribución**: Clasifica las fuentes según su peso en cada componente (alta, media, baja contribución)
 
-Conecte los hallazgos de PCA con las tendencias temporales y estadísticas para una visión integral.
+**Análisis Detallado de Cargas:**
+- **Cargas Altas (>0.6)**: Fuentes que dominan el componente
+- **Cargas Moderadas (0.3-0.6)**: Fuentes con influencia significativa
+- **Cargas Bajas (<0.3)**: Fuentes con contribución mínima
+- **Signos de Cargas**: Interpretar si las relaciones son positivas o negativas
+
+**Insights Específicos:**
+- ¿Qué componente representa el "patrón institucional" vs "patrón de innovación"?
+- ¿Cómo se diferencian las fuentes académicas (Crossref) de las comerciales (Bain)?
+- ¿Qué fuentes están más correlacionadas entre sí según las cargas?
+- ¿Qué información única aporta cada fuente al análisis general?
+
+Conecta estos hallazgos con las tendencias temporales para explicar la evolución de estos patrones.
 """
         else:
             return """
-### PCA-SPECIFIC REQUIREMENTS
+### PCA-SPECIFIC REQUIREMENTS - LOADINGS AND COMPONENTS ANALYSIS
 
-For principal component analysis, focus on:
+For principal component analysis, focus SPECIFICALLY on:
 
-1. **Component Interpretation**: Explain what each component represents in business terms
-2. **Explained Variance**: Quantify what percentage of variability each component captures
-3. **Loading Patterns**: Identify which sources contribute most to each component
-4. **Business Insights**: Translate technical findings to actionable business implications
-5. **Pattern Visualization**: Describe how data organizes in component space
+1. **Loadings Analysis**: Examine each source's loading on each component to understand its contribution
+2. **Component Interpretation**: Each component represents a unique combination of sources - explain what underlying patterns it reveals
+3. **Source Differences**: Use loadings to identify how sources differ and what unique information each provides
+4. **Hidden Relationships**: Identify correlations and non-obvious relationships between sources revealed by loadings
+5. **Contribution Patterns**: Classify sources by their weight in each component (high, medium, low contribution)
 
-Connect PCA findings with temporal trends and statistics for an integrated view.
+**Detailed Loadings Analysis:**
+- **High Loadings (>0.6)**: Sources that dominate the component
+- **Moderate Loadings (0.3-0.6)**: Sources with significant influence
+- **Low Loadings (<0.3)**: Sources with minimal contribution
+- **Loading Signs**: Interpret whether relationships are positive or negative
+
+**Specific Insights:**
+- Which component represents "institutional pattern" vs "innovation pattern"?
+- How do academic sources (Crossref) differ from commercial sources (Bain)?
+- Which sources are most correlated according to loadings?
+- What unique information does each source contribute to the overall analysis?
+
+Connect these findings with temporal trends to explain the evolution of these patterns.
 """
 
     def _load_templates(self) -> Dict[str, Dict[str, str]]:

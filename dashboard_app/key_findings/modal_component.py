@@ -73,7 +73,7 @@ class KeyFindingsModal:
         return dbc.Modal(
             [
                 dbc.ModalHeader(
-                    dbc.ModalTitle("🧠 Key Findings - Análisis Doctoral", id="key-findings-modal-title"),
+                    dbc.ModalTitle("🧠 Key Findings - Análisis", id="key-findings-modal-title"),
                     close_button=True,
                     className="bg-primary text-white"
                 ),
@@ -85,7 +85,7 @@ class KeyFindingsModal:
                             children=[
                                 html.Div([
                                     dbc.Spinner(color="primary", size="lg"),
-                                    html.P("Generando análisis doctoral...", className="mt-3 text-center"),
+                                    html.P("Generando análisis...", className="mt-3 text-center"),
                                     html.P("Esto puede tomar hasta 30 segundos...", className="text-muted text-center")
                                 ], className="text-center py-5")
                             ],
@@ -271,7 +271,7 @@ class KeyFindingsModal:
         return html.Div([
             html.Div([
                 dbc.Spinner(color="primary", size="lg", type="grow"),
-                html.H4("Generando Análisis Doctoral", className="mt-4 mb-3"),
+                html.H4("Generando Análisis", className="mt-4 mb-3"),
                 html.P("Analizando datos multi-fuente con énfasis en PCA...", className="text-muted mb-2"),
                 html.P("Tiempo estimado: 15-30 segundos", className="text-muted"),
                 
@@ -469,7 +469,7 @@ class KeyFindingsModal:
                     ]),
                     html.P([
                         html.Strong("Profundidad: "),
-                        metadata.get('analysis_depth', 'doctoral')
+                        metadata.get('analysis_depth', 'comprehensive')
                     ])
                 ], width=6)
             ])
@@ -513,7 +513,7 @@ class KeyFindingsModal:
             'data_points_analyzed': report_data.get('data_points_analyzed', 0),
             'generation_timestamp': report_data.get('generation_timestamp', 'N/A'),
             'access_count': report_data.get('access_count', 0),
-            'analysis_depth': report_data.get('analysis_depth', 'doctoral'),
+            'analysis_depth': report_data.get('analysis_depth', 'comprehensive'),
             'sources_count': report_data.get('sources_count', 0)
         }
 

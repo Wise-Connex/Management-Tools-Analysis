@@ -176,7 +176,7 @@ class KeyFindingsService:
                 'confidence_score': self._calculate_confidence_score(ai_result['content']),
                 'data_points_analyzed': analysis_data.get('data_points_analyzed', 0),
                 'sources_count': len(selected_sources),
-                'analysis_depth': 'doctoral'
+                'analysis_depth': 'comprehensive'
             }
             
             # Cache the report

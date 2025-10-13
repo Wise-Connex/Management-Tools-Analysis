@@ -45,44 +45,60 @@ class OpenRouterService:
         self.api_key = api_key
         self.base_url = "https://openrouter.ai/api/v1"
         
-        # Default configuration
+        # Default configuration - only available models, optimized for speed
         default_config = {
             'models': [
-                'openai/gpt-4o-mini',
-                'nvidia/llama-3.1-nemotron-70b-instruct',
-                'meta-llama/llama-3.1-8b-instruct:free'
+                'nvidia/nemotron-nano-9b-v2:free',
+                'openai/gpt-oss-20b:free',
+                'mistralai/mistral-small-3.2-24b-instruct:free',
+                'cognitivecomputations/dolphin-mistral-24b-venice-edition:free',
+                'google/gemma-3-27b-it:free'
             ],
-            'timeout': 30,
-            'max_retries': 3,
-            'retry_delay': 1.0,
-            'max_tokens': 4000,
+            'timeout': 8,  # Aggressive timeout for faster responses
+            'max_retries': 1,  # Minimal retries for speed
+            'retry_delay': 0.1,  # Very fast retries
+            'max_tokens': 1500,  # Reduced for faster generation
             'temperature': 0.7
         }
         
         # Merge with provided config
         self.config = {**default_config, **(config or {})}
         
-        # Model configurations
+        # Model configurations - only available models, optimized for speed
         self.model_configs = {
-            'openai/gpt-4o-mini': AIModelConfig(
-                name='openai/gpt-4o-mini',
-                max_tokens=4000,
+            'nvidia/nemotron-nano-9b-v2:free': AIModelConfig(
+                name='nvidia/nemotron-nano-9b-v2:free',
+                max_tokens=2000,
                 temperature=0.7,
-                timeout=30,
-                cost_per_1k_tokens=0.00015
+                timeout=6,  # Very fast timeout
+                cost_per_1k_tokens=0.0
             ),
-            'nvidia/llama-3.1-nemotron-70b-instruct': AIModelConfig(
-                name='nvidia/llama-3.1-nemotron-70b-instruct',
-                max_tokens=4000,
+            'openai/gpt-oss-20b:free': AIModelConfig(
+                name='openai/gpt-oss-20b:free',
+                max_tokens=2000,
                 temperature=0.7,
-                timeout=45,
-                cost_per_1k_tokens=0.0009
+                timeout=8,
+                cost_per_1k_tokens=0.0
             ),
-            'meta-llama/llama-3.1-8b-instruct:free': AIModelConfig(
-                name='meta-llama/llama-3.1-8b-instruct:free',
-                max_tokens=4000,
+            'mistralai/mistral-small-3.2-24b-instruct:free': AIModelConfig(
+                name='mistralai/mistral-small-3.2-24b-instruct:free',
+                max_tokens=2000,
                 temperature=0.7,
-                timeout=30,
+                timeout=8,  # Good balance of speed and capability
+                cost_per_1k_tokens=0.0
+            ),
+            'cognitivecomputations/dolphin-mistral-24b-venice-edition:free': AIModelConfig(
+                name='cognitivecomputations/dolphin-mistral-24b-venice-edition:free',
+                max_tokens=2000,
+                temperature=0.7,
+                timeout=10,
+                cost_per_1k_tokens=0.0
+            ),
+            'google/gemma-3-27b-it:free': AIModelConfig(
+                name='google/gemma-3-27b-it:free',
+                max_tokens=2000,
+                temperature=0.7,
+                timeout=12,  # Largest model, slightly longer timeout
                 cost_per_1k_tokens=0.0
             )
         }
@@ -90,20 +106,21 @@ class OpenRouterService:
         # Performance tracking
         self.performance_stats = {}
 
-    async def generate_analysis(self, prompt: str, model: str = None, 
-                              language: str = 'es') -> Dict[str, Any]:
+    async def generate_analysis(self, prompt: str, model: str = None,
+                               language: str = 'es') -> Dict[str, Any]:
         """
         Generate AI analysis with fallback models.
-        
+
         Args:
             prompt: Analysis prompt for the AI
             model: Specific model to use (optional)
             language: Analysis language ('es' or 'en')
-            
+
         Returns:
             Dictionary containing analysis results and metadata
         """
         start_time = time.time()
+        logging.info(f"🚀 Starting AI analysis generation - prompt length: {len(prompt)} characters")
         
         # Determine model order
         if model and model in self.config['models']:
@@ -116,22 +133,38 @@ class OpenRouterService:
         response_content = None
         token_count = 0
         
+        # Show prompt details before starting
+        prompt_preview = prompt[:200] + "..." if len(prompt) > 200 else prompt
+        logging.info(f"📝 Prompt preview: {prompt_preview}")
+
         # Try each model in order
-        for attempt_model in models_to_try:
+        for i, attempt_model in enumerate(models_to_try):
+            model_start_time = time.time()
+            logging.info(f"🔄 Attempting analysis with model: {attempt_model} (attempt {i+1}/{len(models_to_try)})")
+
             try:
-                logging.info(f"Attempting analysis with model: {attempt_model}")
-                
+                logging.info(f"📡 Sending request to {attempt_model}...")
                 result = await self._call_model(prompt, attempt_model, language)
-                
+
                 if result and 'choices' in result and len(result['choices']) > 0:
                     response_content = result['choices'][0]['message']['content']
                     token_count = result.get('usage', {}).get('total_tokens', 0)
                     successful_model = attempt_model
+                    model_time = time.time() - model_start_time
+
+                    # Show response preview
+                    response_preview = response_content[:100] + "..." if len(response_content) > 100 else response_content
+                    logging.info(f"✅ Model {attempt_model} succeeded in {model_time:.2f}s with {token_count} tokens")
+                    logging.info(f"📥 Response preview: {response_preview}")
                     break
-                    
+                else:
+                    model_time = time.time() - model_start_time
+                    logging.warning(f"⚠️ Model {attempt_model} returned invalid response after {model_time:.2f}s")
+
             except Exception as e:
+                model_time = time.time() - model_start_time
                 last_error = e
-                logging.warning(f"Model {attempt_model} failed: {e}")
+                logging.warning(f"❌ Model {attempt_model} failed after {model_time:.2f}s: {e}")
                 continue
         
         # Calculate performance metrics
@@ -146,10 +179,12 @@ class OpenRouterService:
             raise Exception(f"All models failed. Last error: {last_error}")
         
         # Parse and validate response
+        logging.info(f"🔍 Parsing AI response from {successful_model} ({len(response_content)} characters)")
         try:
             parsed_response = self._parse_ai_response(response_content)
+            logging.info(f"✅ Response parsed successfully - findings: {len(parsed_response.get('principal_findings', []))}")
         except Exception as e:
-            logging.error(f"Failed to parse AI response: {e}")
+            logging.error(f"❌ Failed to parse AI response: {e}")
             # Return raw response if parsing fails
             parsed_response = {
                 'principal_findings': [{
@@ -174,16 +209,17 @@ class OpenRouterService:
     async def _call_model(self, prompt: str, model: str, language: str) -> Dict[str, Any]:
         """
         Call specific AI model with retry logic.
-        
+
         Args:
             prompt: Analysis prompt
             model: Model name
             language: Analysis language
-            
+
         Returns:
             Raw API response
         """
         model_config = self.model_configs.get(model, self.model_configs[self.config['models'][0]])
+        logging.info(f"📡 Calling model {model} with timeout {model_config.timeout}s and {model_config.max_tokens} max tokens")
         
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -206,42 +242,57 @@ class OpenRouterService:
             ],
             "max_tokens": model_config.max_tokens,
             "temperature": model_config.temperature,
-            "top_p": 0.9,
-            "frequency_penalty": 0.1,
-            "presence_penalty": 0.1
+            "top_p": 0.9
+            # Removed frequency_penalty and presence_penalty for faster processing
         }
         
-        # Retry logic
+        # Show request details
+        logging.info(f"📤 API Request: {model} -> {self.base_url}/chat/completions")
+        logging.info(f"📊 Payload: model={payload['model']}, max_tokens={payload['max_tokens']}, temp={payload['temperature']}")
+
+        # Optimized retry logic for faster responses
         for attempt in range(self.config['max_retries']):
+            request_start = time.time()
             try:
                 timeout = aiohttp.ClientTimeout(total=model_config.timeout)
-                
+                logging.info(f"⏱️ Attempt {attempt + 1}/{self.config['max_retries']} for {model} (timeout: {model_config.timeout}s)")
+
                 async with aiohttp.ClientSession(timeout=timeout) as session:
                     async with session.post(
                         f"{self.base_url}/chat/completions",
                         headers=headers,
                         json=payload
                     ) as response:
-                        
+                        request_time = time.time() - request_start
+                        logging.info(f"🌐 HTTP {response.status} in {request_time:.2f}s for {model}")
+
                         if response.status == 200:
-                            return await response.json()
+                            response_start = time.time()
+                            result = await response.json()
+                            response_time = time.time() - response_start
+                            logging.info(f"📥 JSON parsed in {response_time:.2f}s for {model}")
+                            return result
                         elif response.status == 429:
-                            # Rate limited - wait and retry
-                            retry_after = int(response.headers.get('Retry-After', self.config['retry_delay']))
-                            await asyncio.sleep(retry_after)
+                            # Rate limited - minimal wait and retry
+                            logging.warning(f"🚦 Rate limited for {model}, waiting {self.config['retry_delay']}s")
+                            await asyncio.sleep(self.config['retry_delay'])
                             continue
                         else:
                             error_text = await response.text()
+                            logging.error(f"❌ API error {response.status} for {model}: {error_text}")
                             raise Exception(f"API error {response.status}: {error_text}")
-                            
+
             except asyncio.TimeoutError:
-                logging.warning(f"Timeout for model {model}, attempt {attempt + 1}")
+                request_time = time.time() - request_start
+                logging.warning(f"⏰ Timeout for model {model} after {request_time:.2f}s (attempt {attempt + 1})")
                 if attempt < self.config['max_retries'] - 1:
                     await asyncio.sleep(self.config['retry_delay'])
                     continue
                 else:
                     raise
             except Exception as e:
+                request_time = time.time() - request_start
+                logging.error(f"💥 Exception for {model} after {request_time:.2f}s (attempt {attempt + 1}): {e}")
                 if attempt < self.config['max_retries'] - 1:
                     await asyncio.sleep(self.config['retry_delay'])
                     continue
@@ -355,21 +406,22 @@ Always respond in structured JSON format with:
     async def test_model_availability(self) -> Dict[str, bool]:
         """
         Test which models are currently available.
-        
+
         Returns:
             Dictionary mapping model names to availability status
         """
         availability = {}
         test_prompt = "Respond with 'OK' to confirm availability."
-        
+
         for model in self.config['models']:
             try:
                 result = await self._call_model(test_prompt, model, 'en')
                 availability[model] = True
+                logging.info(f"✅ Model {model} is available and working")
             except Exception as e:
-                logging.warning(f"Model {model} unavailable: {e}")
+                logging.warning(f"❌ Model {model} unavailable: {e}")
                 availability[model] = False
-        
+
         return availability
 
     def calculate_cost(self, tokens: int, model: str) -> float:

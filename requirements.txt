@@ -196,3 +196,4 @@ openai==1.95.1  # Used for both OpenAI and Groq API (compatible)
 openpyxl==3.1.5  # For reading Excel files
 sympy==1.12  # For advanced LaTeX mathematical expression parsing
 latex2mathml==3.76.0  # For LaTeX to MathML conversion
+aiohttp==3.10.0  # For async HTTP requests in Key Findings module
