@@ -6,6 +6,7 @@ management tools data with emphasis on PCA insights and bilingual support.
 """
 
 import json
+import logging
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 
