@@ -3952,81 +3952,19 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     # Principal Findings
                     html.Div([
                         html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
-                        html.Ul([
-                            html.Li([
-                                html.Strong(finding.get('bullet_point', 'No finding')),
-                                html.Br(),
-                                html.Small(finding.get('reasoning', ''), className="text-muted"),
-                                html.Br(),
-                                html.Small(f"Fuentes: {', '.join(finding.get('data_source', []))} | "
-                                         f"Confianza: {finding.get('confidence', 'unknown')}",
-                                         className="text-muted")
-                            ])
-                            for finding in ai_content.get('principal_findings', [])
+                        html.Div([
+                            html.P(ai_content.get('principal_findings', 'No findings available'),
+                                  className="text-muted mb-4")
                         ])
                     ]),
 
-                    # Enhanced PCA Insights with Loadings Analysis
+                    # PCA Analysis
                     html.Div([
-                        html.H5("📊 Análisis PCA - Cargas y Componentes", className="text-info mb-2"),
-                        html.P(f"Varianza total explicada: {analysis_data.get('pca_insights', {}).get('total_variance_explained', 0):.1f}%"),
-
-                        # Component Analysis
+                        html.H5("📊 Análisis PCA", className="text-info mb-2"),
                         html.Div([
-                            html.H6(f"Componentes Principales:", className="text-primary mb-2"),
-                            html.Div([
-                                html.Div([
-                                    html.Div([
-                                        html.Strong(f"{pattern.get('component', 'PC?')}", className="text-success"),
-                                        f": {pattern.get('variance_explained', 0):.1f}% varianza explicada",
-                                    ], className="mb-1"),
-                                    html.Div([
-                                        html.Strong("Interpretación: "),
-                                        html.Small(pattern.get('interpretation', ''), className="text-muted")
-                                    ], className="mb-2"),
-                                    html.Div([
-                                        html.Strong("Tipo de Patrón: "),
-                                        html.Small(pattern.get('pattern_type', ''), className="text-muted")
-                                    ], className="mb-2"),
-
-                                    # Loadings Analysis
-                                    html.Div([
-                                        html.Strong("Análisis de Cargas:", className="text-info"),
-                                        html.Ul([
-                                            html.Li([
-                                                html.Small(f"{contrib.get('source', '')}: ", className="fw-bold"),
-                                                html.Small(f"carga {contrib.get('loading', 0):.3f} ", className="text-muted"),
-                                                html.Small(f"({contrib.get('contribution_level', '')} - {contrib.get('role', '')})", className="text-muted")
-                                            ]) for contrib in pattern.get('source_contributions', [])[:3]  # Top 3 contributors
-                                        ], className="mb-0")
-                                    ], className="mb-2", style={'fontSize': '11px'}),
-
-                                    # Pattern Insights
-                                    html.Div([
-                                        html.Strong("Insights del Patrón:", className="text-info"),
-                                        html.Ul([
-                                            html.Li(html.Small(insight, className="text-muted"))
-                                            for insight in _generate_pca_insights(pattern)
-                                        ], className="mb-0")
-                                    ], className="mb-2", style={'fontSize': '11px'})
-
-                                ], style={'border': '1px solid #dee2e6', 'borderRadius': '5px', 'padding': '10px', 'marginBottom': '10px'})
-                                for pattern in analysis_data.get('pca_insights', {}).get('dominant_patterns', [])
-                            ])
-                        ]),
-
-                        # Overall PCA Summary
-                        html.Div([
-                            html.H6("Resumen PCA General:", className="text-primary mb-2"),
-                            html.Div([
-                                html.Small(f"• {analysis_data.get('pca_insights', {}).get('components_analyzed', 0)} componentes analizados", className="text-muted"),
-                                html.Br(),
-                                html.Small(f"• {analysis_data.get('pca_insights', {}).get('data_points_used', 0)} puntos de datos utilizados", className="text-muted"),
-                                html.Br(),
-                                html.Small("• Análisis enfocado en diferencias entre fuentes de datos", className="text-muted")
-                            ], style={'fontSize': '11px', 'backgroundColor': '#f8f9fa', 'padding': '8px', 'borderRadius': '4px'})
-                        ], className="mt-3")
-
+                            html.P(ai_content.get('pca_analysis', 'No PCA analysis available'),
+                                  className="text-muted mb-4")
+                        ])
                     ]),
 
                     # Statistical Summary
@@ -4170,31 +4108,18 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 # Principal Findings
                 html.Div([
                     html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
-                    html.Ul([
-                        html.Li([
-                            html.Strong(finding.get('bullet_point', 'No finding')),
-                            html.Br(),
-                            html.Small(finding.get('reasoning', ''), className="text-muted"),
-                            html.Br(),
-                            html.Small(f"Fuentes: {', '.join(finding.get('data_source', []))} | "
-                                     f"Confianza: {finding.get('confidence', 'unknown')}",
-                                     className="text-muted")
-                        ])
-                        for finding in ai_content.get('principal_findings', [])
+                    html.Div([
+                        html.P(ai_content.get('principal_findings', 'No findings available'),
+                              className="text-muted mb-4")
                     ])
                 ]),
 
-                # PCA Insights
+                # PCA Analysis
                 html.Div([
-                    html.H5("📊 Análisis de Componentes Principales", className="text-info mb-2"),
-                    html.P(f"Varianza total explicada: {analysis_data.get('pca_insights', {}).get('total_variance_explained', 0):.1f}%"),
-                    html.Ul([
-                        html.Li([
-                            html.Strong(f"{pattern.get('component', 'PC?')}: {pattern.get('variance_explained', 0):.1f}% varianza explicada"),
-                            html.Br(),
-                            html.Small(pattern.get('interpretation', ''), className="text-muted")
-                        ])
-                        for pattern in analysis_data.get('pca_insights', {}).get('dominant_patterns', [])
+                    html.H5("📊 Análisis PCA", className="text-info mb-2"),
+                    html.Div([
+                        html.P(ai_content.get('pca_analysis', 'No PCA analysis available'),
+                              className="text-muted mb-4")
                     ])
                 ]),
 

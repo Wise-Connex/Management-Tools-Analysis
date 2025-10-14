@@ -388,7 +388,7 @@ Finally, the analysis shows that the rigorous academic discourse on {tool_name} 
         return section
 
     def _build_trends_section(self, trends: Dict[str, Any]) -> str:
-        """Build trends and patterns section."""
+        """Build trends and patterns section with emphasis on integration."""
         if not trends:
             return ""
         
@@ -398,62 +398,90 @@ Finally, the analysis shows that the rigorous academic discourse on {tool_name} 
         
         if self.language == 'es':
             section = """
-### ANÁLISIS DE TENDENCIAS Y PATRONES TEMPORALES
+### ANÁLISIS TEMPORAL INTEGRADO PARA HALLAZGOS PRINCIPALES
 
-**Tendencias Identificadas:**
+**Datos Temporales para Integrar en Hallazgos Principales:**
+
+**INSTRUCCIÓN ESPECÍFICA:** Estos datos temporales DEBEN ser integrados en la sección "Hallazgos Principales" como narrativa fluida, NO como viñetas. Conecte los patrones temporales con los hallazgos de PCA.
+
+**Tendencias Temporales Clave:**
 """
         else:
             section = """
-### TEMPORAL TRENDS AND PATTERNS ANALYSIS
+### INTEGRATED TEMPORAL ANALYSIS FOR PRINCIPAL FINDINGS
 
-**Identified Trends:**
+**Temporal Data to Integrate into Principal Findings:**
+
+**SPECIFIC INSTRUCTION:** This temporal data MUST be integrated into the "Principal Findings" section as fluid narrative, NOT as bullet points. Connect temporal patterns with PCA findings.
+
+**Key Temporal Trends:**
 """
         
-        # Add trend information
+        # Add trend information with integration guidance
         for source, trend_info in trend_data.items():
             direction = trend_info.get('trend_direction', 'stable')
             momentum = trend_info.get('momentum', 0)
+            volatility = trend_info.get('volatility', 0)
             
             if self.language == 'es':
                 section += f"""
-**{source}:**
-- Dirección de Tendencia: {direction}
-- Momento Reciente: {momentum:.3f}
-- Volatilidad: {trend_info.get('volatility', 0):.3f}
+**{source}:** tendencia {direction} con momento de {momentum:.3f} y volatilidad de {volatility:.3f}
 """
+                # Add integration guidance
+                if direction in ['strong_upward', 'moderate_upward']:
+                    section += f"→ Integrar este crecimiento con cargas PCA positivas de {source}\n"
+                elif direction in ['strong_downward', 'moderate_downward']:
+                    section += f"→ Conectar esta disminución con posibles cargas PCA negativas\n"
+                else:
+                    section += f"→ Analizar estabilidad de {source} en contexto multivariado\n"
             else:
                 section += f"""
-**{source}:**
-- Trend Direction: {direction}
-- Recent Momentum: {momentum:.3f}
-- Volatility: {trend_info.get('volatility', 0):.3f}
+**{source}:** {direction} trend with momentum of {momentum:.3f} and volatility of {volatility:.3f}
 """
+                # Add integration guidance
+                if direction in ['strong_upward', 'moderate_upward']:
+                    section += f"→ Integrate this growth with positive PCA loadings of {source}\n"
+                elif direction in ['strong_downward', 'moderate_downward']:
+                    section += f"→ Connect this decline with possible negative PCA loadings\n"
+                else:
+                    section += f"→ Analyze stability of {source} in multivariate context\n"
         
-        # Add anomalies
+        # Add anomalies with integration guidance
         if anomalies:
             if self.language == 'es':
-                section += "\n**Anomalías Detectadas:**\n"
+                section += "\n**Anomalías Temporales para Análisis:**\n"
+                section += "**INSTRUCCIÓN:** Conecte estas anomalías con patrones PCA inesperados\n\n"
             else:
-                section += "\n**Detected Anomalies:**\n"
+                section += "\n**Temporal Anomalies for Analysis:**\n"
+                section += "**INSTRUCTION:** Connect these anomalies with unexpected PCA patterns\n\n"
             
             for source, anomaly_info in anomalies.items():
                 count = anomaly_info.get('count', 0)
                 percentage = anomaly_info.get('percentage', 0)
+                max_z = anomaly_info.get('max_z_score', 0)
                 
                 if self.language == 'es':
-                    section += f"- {source}: {count} anomalías ({percentage:.1f}% de los datos)\n"
+                    section += f"- {source}: {count} anomalías ({percentage:.1f}%), Z-score máximo: {max_z:.2f}\n"
+                    section += f"  → Analizar cómo estas anomalías afectan las relaciones PCA\n"
                 else:
-                    section += f"- {source}: {count} anomalies ({percentage:.1f}% of data)\n"
+                    section += f"- {source}: {count} anomalies ({percentage:.1f}%), Max Z-score: {max_z:.2f}\n"
+                    section += f"  → Analyze how these anomalies affect PCA relationships\n"
         
-        # Add overall patterns
+        # Add overall patterns with integration guidance
         if patterns:
             if self.language == 'es':
-                section += "\n**Patrones Generales:**\n"
+                section += "\n**Patrones Temporales Generales para Integración:**\n"
+                section += "**INSTRUCCIÓN:** Use estos patrones para enriquecer la narrativa de Hallazgos Principales\n\n"
             else:
-                section += "\n**Overall Patterns:**\n"
+                section += "\n**Overall Temporal Patterns for Integration:**\n"
+                section += "**INSTRUCTION:** Use these patterns to enrich the Principal Findings narrative\n\n"
             
             for pattern in patterns:
                 section += f"- {pattern}\n"
+                if self.language == 'es':
+                    section += f"  → Conectar este patrón con la dinámica de componentes principales\n"
+                else:
+                    section += f"  → Connect this pattern with principal component dynamics\n"
         
         return section
 
@@ -524,30 +552,42 @@ Finally, the analysis shows that the rigorous academic discourse on {tool_name} 
 
 Por favor, proporciona un análisis doctoral-level que:
 
-1. **Sintetice Información Multi-fuente**: Integre insights de todas las fuentes de datos
-2. **Énfasis en PCA**: Destaque insights de componentes principales con explicaciones claras
-3. **Identifique Patrones Temporales**: Detecte tendencias, ciclos y anomalías significativas
+1. **Sintetice Información Multi-fuente**: Integre insights de todas las fuentes de datos incluyendo análisis temporal, de heatmap y PCA
+2. **Énfasis en PCA**: Destaque insights de componentes principales con explicaciones claras integradas en una narrativa fluida
+3. **Identifique Patrones Temporales**: Detecte tendencias, ciclos y anomalías significativas e integrelas en los hallazgos principales
 4. **Genere Conclusiones Ejecutivas**: Proporcione insights accionables para tomadores de decisiones
 5. **Mantenga Rigor Académico**: Use terminología apropiada y metodología sistemática
+
+**ESTRUCTURA REQUERIDA DEL ANÁLISIS:**
+
+Genera un análisis doctoral con las siguientes tres secciones principales:
+
+**1. Resumen Ejecutivo:**
+- Un párrafo conciso que capture los insights más críticos
+- Enfoque en el "gap teoría-práctica" y sus implicaciones estratégicas
+- Mencione específicamente el porcentaje de varianza explicada por los primeros dos componentes
+
+**2. Hallazgos Principales:**
+- Una narrativa fluida tipo ensayo doctoral (NO viñetas)
+- Integre insights de PCA, análisis temporal, y heatmap
+- Conecte los patrones temporales con los hallazgos de PCA
+- Mencione fuentes específicas y datos cuantitativos
+- Use un lenguaje académico pero accesible
+
+**3. Análisis PCA:**
+- Un ensayo analítico detallado (NO datos estadísticos)
+- Interprete las cargas específicas con valores numéricos exactos
+- Explique las relaciones de oposición entre fuentes
+- Conecte con conceptos académicos como "brecha teoría-práctica"
+- Use el porcentaje de varianza explicada
 
 **Formato de Salida Requerido:**
 Responde únicamente en formato JSON con la siguiente estructura:
 ```json
 {
-  "principal_findings": [
-    {
-      "bullet_point": "Insight principal con datos específicos",
-      "reasoning": "Explicación detallada del porqué este insight es importante",
-      "data_source": ["Fuentes que soportan este finding"],
-      "confidence": "high|medium|low"
-    }
-  ],
-  "pca_insights": {
-    "dominant_components": "Descripción de componentes principales",
-    "variance_explained": "Porcentaje de varianza explicada",
-    "key_patterns": ["Patrones clave identificados"]
-  },
-  "executive_summary": "Resumen ejecutivo conciso y accionable (2-3 frases)"
+  "executive_summary": "Resumen ejecutivo conciso y accionable como párrafo fluido",
+  "principal_findings": "Narrativa fluida tipo ensayo doctoral integrando PCA, temporal y heatmap insights",
+  "pca_analysis": "Ensayo analítico detallado sobre PCA con interpretación de cargas y relaciones"
 }
 ```
 """
@@ -557,30 +597,42 @@ Responde únicamente en formato JSON con la siguiente estructura:
 
 Please provide a doctoral-level analysis that:
 
-1. **Synthesizes Multi-source Information**: Integrate insights from all data sources
-2. **Emphasizes PCA**: Highlight principal component insights with clear explanations
-3. **Identifies Temporal Patterns**: Detect significant trends, cycles, and anomalies
+1. **Synthesizes Multi-source Information**: Integrate insights from all data sources including temporal, heatmap, and PCA analysis
+2. **Emphasizes PCA**: Highlight principal component insights with clear explanations integrated into fluent narrative
+3. **Identifies Temporal Patterns**: Detect significant trends, cycles, and anomalies and integrate them into main findings
 4. **Generates Executive Conclusions**: Provide actionable insights for decision makers
 5. **Maintains Academic Rigor**: Use appropriate terminology and systematic methodology
+
+**REQUIRED ANALYSIS STRUCTURE:**
+
+Generate a doctoral analysis with the following three main sections:
+
+**1. Executive Summary:**
+- A concise paragraph capturing the most critical insights
+- Focus on the "theory-practice gap" and its strategic implications
+- Specifically mention the variance percentage explained by the first two components
+
+**2. Principal Findings:**
+- A fluent narrative doctoral essay style (NO bullet points)
+- Integrate insights from PCA, temporal analysis, and heatmap
+- Connect temporal patterns with PCA findings
+- Mention specific sources and quantitative data
+- Use academic but accessible language
+
+**3. PCA Analysis:**
+- A detailed analytical essay (NO statistical data)
+- Interpret specific loadings with exact numerical values
+- Explain opposition relationships between sources
+- Connect with academic concepts like "theory-practice gap"
+- Use the explained variance percentage
 
 **Required Output Format:**
 Respond only in JSON format with the following structure:
 ```json
 {
-  "principal_findings": [
-    {
-      "bullet_point": "Principal insight with specific data",
-      "reasoning": "Detailed explanation of why this insight is important",
-      "data_source": ["Sources supporting this finding"],
-      "confidence": "high|medium|low"
-    }
-  ],
-  "pca_insights": {
-    "dominant_components": "Description of principal components",
-    "variance_explained": "Percentage of variance explained",
-    "key_patterns": ["Key patterns identified"]
-  },
-  "executive_summary": "Concise, actionable executive summary (2-3 sentences)"
+  "executive_summary": "Concise actionable executive summary as a fluid paragraph",
+  "principal_findings": "Fluent doctoral essay narrative integrating PCA, temporal and heatmap insights",
+  "pca_analysis": "Detailed analytical essay about PCA with loading interpretations and relationships"
 }
 ```
 """
@@ -591,37 +643,45 @@ Respond only in JSON format with the following structure:
             return """
 ### FORMATO DE SALIDA
 
-**IMPORTANTE**: Responde ÚNICAMENTE con el objeto JSON. No incluyas explicaciones, 
+**IMPORTANTE**: Responde ÚNICAMENTE con el objeto JSON. No incluyas explicaciones,
 introducciones, o texto fuera del JSON.
 
 El JSON debe contener exactamente:
-- `principal_findings`: Array de objetos con insights principales
-- `pca_insights`: Objeto con análisis de componentes principales
-- `executive_summary`: Resumen ejecutivo conciso
+- `executive_summary`: Párrafo fluido con resumen ejecutivo
+- `principal_findings`: Ensayo doctoral narrativo integrando todos los análisis
+- `pca_analysis`: Ensayo analítico detallado sobre componentes principales
 
-Cada finding debe incluir:
-- `bullet_point`: Insight específico y medible
-- `reasoning`: Justificación basada en datos
-- `data_source`: Fuentes que validan el finding
-- `confidence`: Nivel de confianza (high/medium/low)
+**Instrucciones Específicas:**
+1. **NO USE viñetas o bullets** - genere texto narrativo fluido
+2. **Integre análisis temporal** en los hallazgos principales
+3. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
+4. **Conecte los patrones temporales con los hallazgos PCA**
+5. **Use lenguaje académico pero accesible**
+
+**Ejemplo del estilo esperado:**
+"El análisis PCA revela una tensión fundamental entre la adopción popular y la satisfacción real, con Google Trends mostrando una carga positiva de +0.387 mientras que Bain Satisfaction presenta una carga negativa de -0.380, sugiriendo una brecha crítica entre teoría y práctica..."
 """
         else:
             return """
 ### OUTPUT FORMAT
 
-**IMPORTANT**: Respond ONLY with the JSON object. Do not include explanations, 
+**IMPORTANT**: Respond ONLY with the JSON object. Do not include explanations,
 introductions, or text outside the JSON.
 
 The JSON must contain exactly:
-- `principal_findings`: Array of objects with principal insights
-- `pca_insights`: Object with principal component analysis
-- `executive_summary`: Concise executive summary
+- `executive_summary`: Fluid paragraph with executive summary
+- `principal_findings`: Narrative doctoral essay integrating all analyses
+- `pca_analysis`: Detailed analytical essay about principal components
 
-Each finding must include:
-- `bullet_point`: Specific, measurable insight
-- `reasoning`: Data-based justification
-- `data_source`: Sources validating the finding
-- `confidence`: Confidence level (high/medium/low)
+**Specific Instructions:**
+1. **DO NOT USE bullet points** - generate fluid narrative text
+2. **Integrate temporal analysis** into principal findings
+3. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
+4. **Connect temporal patterns with PCA findings**
+5. **Use academic but accessible language**
+
+**Example of expected style:**
+"The PCA analysis reveals a fundamental tension between popular adoption and real satisfaction, with Google Trends showing a positive loading of +0.387 while Bain Satisfaction presents a negative loading of -0.380, suggesting a critical gap between theory and practice..."
 """
 
     def _build_component_analysis(self, component: Dict[str, Any], comp_num: int) -> str:

@@ -163,14 +163,14 @@ class KeyFindingsService:
             if not ai_result['success']:
                 raise Exception(f"AI analysis failed: {ai_result.get('error', 'Unknown error')}")
             
-            # Prepare report data for caching
+            # Prepare report data for caching with new structure
             report_data = {
                 'tool_name': tool_name,
                 'selected_sources': selected_sources,
                 'language': language,
-                'principal_findings': ai_result['content'].get('principal_findings', []),
-                'pca_insights': ai_result['content'].get('pca_insights', {}),
                 'executive_summary': ai_result['content'].get('executive_summary', ''),
+                'principal_findings': ai_result['content'].get('principal_findings', ''),
+                'pca_analysis': ai_result['content'].get('pca_analysis', ''),
                 'model_used': ai_result['model_used'],
                 'api_latency_ms': ai_result['response_time_ms'],
                 'confidence_score': self._calculate_confidence_score(ai_result['content']),
@@ -269,34 +269,37 @@ class KeyFindingsService:
             # Base confidence on content quality indicators
             confidence_factors = []
             
-            # Principal findings quality
-            principal_findings = ai_content.get('principal_findings', [])
+            # Principal findings quality (now narrative text)
+            principal_findings = ai_content.get('principal_findings', '')
             if principal_findings:
-                # Check for detailed reasoning
-                detailed_findings = sum(1 for f in principal_findings 
-                                      if len(f.get('reasoning', '')) > 50)
-                confidence_factors.append(min(detailed_findings / len(principal_findings), 1.0))
+                # Check for detailed narrative content
+                findings_quality = min(len(principal_findings) / 500, 1.0)  # Target 500+ chars for narrative
+                confidence_factors.append(findings_quality)
+                
+                # Check for academic language indicators
+                academic_terms = ['análisis', 'componente', 'varianza', 'carga', 'patrón', 'tendencia']
+                academic_count = sum(1 for term in academic_terms if term.lower() in principal_findings.lower())
+                if academic_count >= 2:
+                    confidence_factors.append(0.8)  # Bonus for academic language
             
-            # PCA insights quality
-            pca_insights = ai_content.get('pca_insights', {})
-            if pca_insights and not pca_insights.get('error'):
-                # Check for variance explanation
-                variance = pca_insights.get('variance_explained', 0)
-                if isinstance(variance, (int, float)) and variance > 0:
-                    confidence_factors.append(min(variance / 100, 1.0))
-                elif isinstance(variance, str):
-                    # Handle string variance like "73%"
-                    try:
-                        variance_num = float(variance.replace('%', ''))
-                        confidence_factors.append(min(variance_num / 100, 1.0))
-                    except ValueError:
-                        pass
+            # PCA analysis quality (now narrative text)
+            pca_analysis = ai_content.get('pca_analysis', '')
+            if pca_analysis:
+                # Check for detailed PCA analysis
+                pca_quality = min(len(pca_analysis) / 400, 1.0)  # Target 400+ chars for PCA analysis
+                confidence_factors.append(pca_quality)
+                
+                # Check for specific numerical values
+                import re
+                numerical_values = re.findall(r'[+-]?\d+\.?\d*', pca_analysis)
+                if len(numerical_values) >= 3:  # Should have multiple numerical references
+                    confidence_factors.append(0.7)  # Bonus for quantitative analysis
             
             # Executive summary quality
             executive_summary = ai_content.get('executive_summary', '')
             if executive_summary:
                 # Check length and completeness
-                summary_quality = min(len(executive_summary) / 200, 1.0)  # Target 200+ chars
+                summary_quality = min(len(executive_summary) / 150, 1.0)  # Target 150+ chars
                 confidence_factors.append(summary_quality)
             
             # Calculate overall confidence

@@ -185,21 +185,21 @@ class KeyFindingsModal:
         if not report_data:
             return self._create_empty_state()
         
-        # Extract data
-        principal_findings = report_data.get('principal_findings', [])
-        pca_insights = report_data.get('pca_insights', {})
+        # Extract data with new structure
         executive_summary = report_data.get('executive_summary', '')
+        principal_findings = report_data.get('principal_findings', '')
+        pca_analysis = report_data.get('pca_analysis', '')
         metadata = self._extract_metadata(report_data)
         
         return html.Div([
             # Executive Summary Section
             self._create_executive_summary_section(executive_summary),
             
-            # Principal Findings Section
-            self._create_principal_findings_section(principal_findings),
+            # Principal Findings Section (now narrative)
+            self._create_principal_findings_narrative_section(principal_findings),
             
-            # PCA Insights Section
-            self._create_pca_insights_section(pca_insights),
+            # PCA Analysis Section (now narrative essay)
+            self._create_pca_analysis_section(pca_analysis),
             
             # Metadata Section
             self._create_metadata_section(metadata)
@@ -318,120 +318,70 @@ class KeyFindingsModal:
     def _create_executive_summary_section(self, summary: str) -> html.Div:
         """Create executive summary section."""
         return html.Div([
-            html.Div([
-                html.H4([
-                    html.I(className="fas fa-lightbulb text-warning me-2"),
-                    "Resumen Ejecutivo"
-                ], className="mb-3"),
-                html.Div([
-                    html.P(summary, className="lead text-justify")
-                ], className="alert alert-info")
-            ], className="mb-4")
-        ])
-
-    def _create_principal_findings_section(self, findings: List[Dict[str, Any]]) -> html.Div:
-        """Create principal findings section."""
-        if not findings:
-            return html.Div()
-        
-        findings_cards = []
-        for i, finding in enumerate(findings[:5]):  # Top 5 findings
-            confidence = finding.get('confidence', 'medium')
-            confidence_color = {
-                'high': 'success',
-                'medium': 'warning',
-                'low': 'danger'
-            }.get(confidence, 'secondary')
-            
-            confidence_icon = {
-                'high': 'fas fa-check-circle',
-                'medium': 'fas fa-exclamation-triangle',
-                'low': 'fas fa-times-circle'
-            }.get(confidence, 'fas fa-question-circle')
-            
-            card = dbc.Card([
+            html.H4([
+                html.I(className="fas fa-lightbulb text-warning me-2"),
+                "Resumen Ejecutivo"
+            ], className="mb-3"),
+            dbc.Card([
                 dbc.CardBody([
-                    html.Div([
-                        html.Span([
-                            html.I(className=confidence_icon),
-                            f" {confidence.upper()}"
-                        ], className=f"badge bg-{confidence_color} mb-2"),
-                        html.H6(f"Finding {i+1}", className="card-title")
-                    ]),
-                    html.P(finding.get('bullet_point', ''), className="card-text"),
-                    html.Details([
-                        html.Summary("Ver más detalles"),
-                        html.Div([
-                            html.P([
-                                html.Strong("Razonamiento: "),
-                                finding.get('reasoning', '')
-                            ], className="mb-2"),
-                            html.P([
-                                html.Strong("Fuentes: "),
-                                ", ".join(finding.get('data_source', []))
-                            ])
-                        ])
-                    ])
+                    html.P(summary, className="lead text-justify mb-0",
+                           style={"lineHeight": "1.7", "fontSize": "1.2rem"}),
                 ])
-            ], className="mb-3")
-            findings_cards.append(card)
+            ], className="border-primary bg-primary text-white")
+        ], className="mb-4")
+
+    def _create_principal_findings_narrative_section(self, findings_text: str) -> html.Div:
+        """Create principal findings section as narrative text."""
+        if not findings_text:
+            return html.Div()
         
         return html.Div([
             html.H4([
                 html.I(className="fas fa-search text-primary me-2"),
                 "Hallazgos Principales"
             ], className="mb-3"),
-            html.Div(findings_cards)
+            dbc.Card([
+                dbc.CardBody([
+                    html.Div([
+                        html.P(findings_text, className="lead text-justify",
+                               style={"lineHeight": "1.6", "fontSize": "1.1rem"}),
+                        # Add a subtle indicator that this integrates multiple analyses
+                        html.Div([
+                            html.Small([
+                                html.I(className="fas fa-info-circle text-info me-1"),
+                                "Esta sección integra análisis de componentes principales, patrones temporales y correlaciones"
+                            ], className="text-muted")
+                        ], className="mt-3 text-end")
+                    ])
+                ])
+            ], className="border-0 bg-light shadow-sm")
         ], className="mb-4")
 
-    def _create_pca_insights_section(self, pca_insights: Dict[str, Any]) -> html.Div:
-        """Create PCA insights section."""
-        if not pca_insights or pca_insights.get('error'):
+    def _create_pca_analysis_section(self, pca_analysis_text: str) -> html.Div:
+        """Create PCA analysis section as narrative essay."""
+        if not pca_analysis_text:
             return html.Div()
-        
-        dominant_patterns = pca_insights.get('dominant_patterns', [])
-        variance_explained = pca_insights.get('total_variance_explained', 0)
-        
-        # Create PCA visualization
-        pca_chart = self._create_pca_chart(dominant_patterns)
-        
-        # Create pattern cards
-        pattern_cards = []
-        for i, pattern in enumerate(dominant_patterns[:3]):  # Top 3 components
-            component = pattern.get('component', f'PC{i+1}')
-            variance = pattern.get('variance_explained', 0)
-            interpretation = pattern.get('interpretation', '')
-            
-            card = dbc.Card([
-                dbc.CardBody([
-                    html.H6([
-                        html.Span(component, className="badge bg-primary me-2"),
-                        f"{variance:.1f}% varianza explicada"
-                    ], className="card-title"),
-                    html.P(interpretation, className="card-text small")
-                ])
-            ], className="mb-2")
-            pattern_cards.append(card)
         
         return html.Div([
             html.H4([
                 html.I(className="fas fa-chart-line text-info me-2"),
-                "Análisis de Componentes Principales"
+                "Análisis PCA"
             ], className="mb-3"),
-            
-            # Overall variance
-            html.Div([
-                html.P([
-                    html.Strong("Varianza Total Explicada: "),
-                    f"{variance_explained:.1f}%"
-                ], className="mb-3")
-            ]),
-            
-            # PCA chart
-            html.Div([pca_chart], className="mb-4"),
-            
-            # Pattern interpretations
-            html.Div(pattern_cards)
+            dbc.Card([
+                dbc.CardBody([
+                    html.Div([
+                        html.P(pca_analysis_text, className="text-justify",
+                               style={"lineHeight": "1.6", "fontSize": "1rem"}),
+                        # Add a subtle indicator that this is detailed PCA analysis
+                        html.Div([
+                            html.Small([
+                                html.I(className="fas fa-calculator text-info me-1"),
+                                "Análisis detallado de componentes principales con interpretación de cargas"
+                            ], className="text-muted")
+                        ], className="mt-3 text-end")
+                    ])
+                ])
+            ], className="border-0 bg-light shadow-sm")
         ], className="mb-4")
 
     def _create_metadata_section(self, metadata: Dict[str, Any]) -> html.Div:
@@ -476,34 +426,9 @@ class KeyFindingsModal:
         ], className="mb-4")
 
     def _create_pca_chart(self, dominant_patterns: List[Dict[str, Any]]) -> dcc.Graph:
-        """Create PCA visualization chart."""
-        if not dominant_patterns:
-            return dcc.Graph()
-        
-        # Extract data for chart
-        components = [p.get('component', f'PC{i+1}') for i, p in enumerate(dominant_patterns)]
-        variances = [p.get('variance_explained', 0) for p in dominant_patterns]
-        
-        # Create bar chart
-        fig = go.Figure(data=[
-            go.Bar(
-                x=components,
-                y=variances,
-                marker_color=['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'][:len(components)],
-                text=[f"{v:.1f}%" for v in variances],
-                textposition='auto',
-            )
-        ])
-        
-        fig.update_layout(
-            title="Varianza Explicada por Componente",
-            xaxis_title="Componente Principal",
-            yaxis_title="Varianza Explicada (%)",
-            height=300,
-            margin=dict(l=50, r=50, t=50, b=50)
-        )
-        
-        return dcc.Graph(figure=fig, config={'displayModeBar': False})
+        """Create PCA visualization chart (kept for compatibility but not used in new structure)."""
+        # This method is kept for backward compatibility but not used in the new narrative structure
+        return dcc.Graph()
 
     def _extract_metadata(self, report_data: Dict[str, Any]) -> Dict[str, Any]:
         """Extract metadata from report data."""
