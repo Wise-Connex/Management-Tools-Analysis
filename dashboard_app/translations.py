@@ -12,6 +12,7 @@ TRANSLATIONS = {
         'credits': 'Créditos',
         'data_table': 'Tabla de Datos',
         'performance_monitor': 'Monitor de Rendimiento del Sistema',
+        'key_findings': 'Hallazgos Principales',
 
         # Placeholders
         'select_management_tool': 'Seleccione una Herramienta Gerencial',
@@ -236,6 +237,7 @@ TRANSLATIONS = {
         'credits': 'Credits',
         'data_table': 'Data Table',
         'performance_monitor': 'System Performance Monitor',
+        'key_findings': 'Key Findings',
 
         # Placeholders
         'select_management_tool': 'Select a Management Tool',

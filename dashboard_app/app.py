@@ -644,7 +644,7 @@ sidebar = html.Div([
             dbc.Button(
                 [
                     html.I(className="fas fa-brain", style={'marginRight': '8px'}),
-                    "Generar Key Findings"
+                    html.Span(id="key-findings-button-text")
                 ],
                 id="generate-key-findings-btn",
                 color="info",
@@ -1211,6 +1211,15 @@ def update_modal_labels(language):
 def update_credits_button_text(language):
     """Update credits button text based on language"""
     return get_text('credits', language) + " "
+
+# Callback to update Key Findings button text based on language
+@app.callback(
+    Output('key-findings-button-text', 'children'),
+    Input('language-store', 'data')
+)
+def update_key_findings_button_text(language):
+    """Update Key Findings button text based on language"""
+    return get_text('key_findings', language)
 
 # Callback to update credits content based on language
 @app.callback(
@@ -3928,8 +3937,6 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
                 # Create comprehensive modal content
                 modal_content = html.Div([
-                    html.H4("🧠 Key Findings - Análisis", className="text-primary mb-3"),
-
                     # Model info
                     html.Div([
                         html.Small(f"Generado por: {model_used} | Tiempo: {ai_response.get('response_time_ms', 0)}ms",
@@ -4148,8 +4155,6 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
             # Create comprehensive modal content (same as generate)
             modal_content = html.Div([
-                html.H4("🧠 Key Findings - Análisis (Regenerado)", className="text-primary mb-3"),
-
                 # Model info
                 html.Div([
                     html.Small(f"Regenerado por: {model_used} | Tiempo: {ai_response.get('response_time_ms', 0)}ms",
