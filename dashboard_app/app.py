@@ -23,6 +23,7 @@ import os
 import sys
 import re
 import time
+import asyncio
 
 # Load environment variables from .env file
 try:
@@ -879,6 +880,71 @@ app.layout = dbc.Container([
 
 # Initialize Key Findings service after app is created
 initialize_key_findings_service()
+
+def run_async_in_sync_context(async_func, *args, **kwargs):
+    """
+    Run an async function in a synchronous context with proper error handling.
+    
+    This function handles the common case where async functions need to be called
+    from synchronous Dash callbacks without causing event loop conflicts.
+    
+    Args:
+        async_func: The async function to call
+        *args: Positional arguments to pass to the async function
+        **kwargs: Keyword arguments to pass to the async function
+        
+    Returns:
+        The result of the async function, or an error response if execution fails
+    """
+    try:
+        # Check if we're already in an event loop
+        try:
+            loop = asyncio.get_running_loop()
+            print("🔍 Detected running event loop, using create_task")
+            # If we're in a running loop, we need to use a different approach
+            # This is a complex case - for now, we'll use a simple workaround
+            # by creating a new thread to run the async function
+            import concurrent.futures
+            import threading
+            
+            def run_in_thread():
+                # Create a new event loop in the thread
+                new_loop = asyncio.new_event_loop()
+                asyncio.set_event_loop(new_loop)
+                try:
+                    return new_loop.run_until_complete(async_func(*args, **kwargs))
+                finally:
+                    new_loop.close()
+            
+            # Run in a separate thread to avoid event loop conflicts
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(run_in_thread)
+                return future.result(timeout=30)  # 30 second timeout
+                
+        except RuntimeError:
+            # No running loop, we can use run_until_complete
+            print("🔍 No running event loop, using run_until_complete")
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            try:
+                return loop.run_until_complete(async_func(*args, **kwargs))
+            finally:
+                loop.close()
+                
+    except Exception as e:
+        print(f"❌ Error running async function in sync context: {e}")
+        import traceback
+        traceback.print_exc()
+        
+        # Return a standardized error response
+        return {
+            'success': False,
+            'error': f'Async execution failed: {str(e)}',
+            'content': {},
+            'model_used': 'error',
+            'response_time_ms': 0,
+            'token_count': 0
+        }
 
 # Callbacks
 
@@ -3831,10 +3897,11 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 prompt_preview = prompt[:300] + "..." if len(prompt) > 300 else prompt
                 print(f"📋 Prompt preview: {prompt_preview}")
 
-                # Call AI service
+                # Call AI service with proper async handling
                 print("🤖 Calling AI service for analysis...")
                 ai_start = time.time()
-                ai_response = key_findings_service.ai_service.generate_analysis(
+                ai_response = run_async_in_sync_context(
+                    key_findings_service.ai_service.generate_analysis,
                     prompt=prompt,
                     language=language
                 )
@@ -4057,9 +4124,10 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
             print(f"📝 Generated regeneration prompt with {len(prompt)} characters")
 
-            # Call AI service with force refresh
+            # Call AI service with force refresh and proper async handling
             print("🤖 Calling AI service for fresh analysis...")
-            ai_response = key_findings_service.ai_service.generate_analysis(
+            ai_response = run_async_in_sync_context(
+                key_findings_service.ai_service.generate_analysis,
                 prompt=prompt,
                 language=language
             )
