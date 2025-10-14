@@ -557,6 +557,7 @@ Por favor, proporciona un análisis doctoral-level que:
 3. **Identifique Patrones Temporales**: Detecte tendencias, ciclos y anomalías significativas e integrelas en los hallazgos principales
 4. **Genere Conclusiones Ejecutivas**: Proporcione insights accionables para tomadores de decisiones
 5. **Mantenga Rigor Académico**: Use terminología apropiada y metodología sistemática
+6. **Mencione la Herramienta Específica**: Incluya el nombre de la herramienta de gestión analizada en todos los hallazgos para personalizar el análisis
 
 **ESTRUCTURA REQUERIDA DEL ANÁLISIS:**
 
@@ -603,6 +604,7 @@ Please provide a doctoral-level analysis that:
 3. **Identifies Temporal Patterns**: Detect significant trends, cycles, and anomalies and integrate them into main findings
 4. **Generates Executive Conclusions**: Provide actionable insights for decision makers
 5. **Maintains Academic Rigor**: Use appropriate terminology and systematic methodology
+6. **Mention the Specific Tool**: Include the name of the management tool being analyzed in all findings to personalize the analysis
 
 **REQUIRED ANALYSIS STRUCTURE:**
 
@@ -661,6 +663,7 @@ El JSON debe contener exactamente:
 5. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
 6. **Conecte los patrones temporales con los hallazgos PCA**
 7. **Use lenguaje académico pero accesible**
+8. **Mencione el nombre de la herramienta** - incluya "Alianzas y Capital de Riesgo" (o la herramienta específica) en su análisis
 
 **Ejemplo del estilo esperado:**
 "El análisis PCA revela una tensión fundamental entre la adopción popular y la satisfacción real, con Google Trends mostrando una carga positiva de +0.387 mientras que Bain Satisfaction presenta una carga negativa de -0.380, sugiriendo una brecha crítica entre teoría y práctica..."
@@ -685,6 +688,7 @@ The JSON must contain exactly:
 5. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
 6. **Connect temporal patterns with PCA findings**
 7. **Use academic but accessible language**
+8. **Mention the tool name** - include the specific management tool name in your analysis
 
 **Example of expected style:**
 "The PCA analysis reveals a fundamental tension between popular adoption and real satisfaction, with Google Trends showing a positive loading of +0.387 while Bain Satisfaction presents a negative loading of -0.380, suggesting a critical gap between theory and practice..."

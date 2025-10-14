@@ -3758,6 +3758,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
     @app.callback(
         Output("key-findings-modal", "is_open"),
         Output("key-findings-modal-body", "children"),
+        Output("key-findings-modal-title", "children"),
         Input("generate-key-findings-btn", "n_clicks"),
         Input("close-key-findings-modal", "n_clicks"),
         State("keyword-dropdown", "value"),
@@ -3774,24 +3775,32 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
         if not ctx.triggered:
             print("🔍 No triggered context, returning default")
-            return False, ""
+            return False, "", "🧠 Key Findings - Análisis"
 
         trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
         print(f"🔍 Trigger ID: {trigger_id}")
 
         if trigger_id == "close-key-findings-modal":
             print("🔍 Closing modal")
-            return False, ""
+            # Generate title even when closing to maintain consistency
+            tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
+            sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
+            dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
+            return False, "", dynamic_title
 
         if trigger_id == "generate-key-findings-btn":
             print("🔍 Generate button clicked")
             if not selected_tool or not selected_sources:
                 print("❌ Missing tool or sources")
+                # Generate title even for error case
+                tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
+                sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
+                dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
                 return True, html.Div([
                     html.H4("Error", className="text-danger"),
                     html.P("Por favor seleccione una herramienta y al menos una fuente de datos.",
                           className="text-muted")
-                ])
+                ]), dynamic_title
 
             try:
                 print("🚀 Starting Key Findings generation...")
@@ -3801,10 +3810,14 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 print(f"🔍 Checking key_findings_service: {key_findings_service}")
                 if key_findings_service is None:
                     print("❌ key_findings_service is None")
+                    # Generate title even for error case
+                    tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
+                    sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
+                    dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
                     return True, html.Div([
                         html.H4("Error", className="text-danger"),
                         html.P("Key Findings service not initialized.", className="text-muted")
-                    ])
+                    ]), dynamic_title
 
                 print("✅ Key Findings service is available")
 
@@ -3820,6 +3833,11 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     ], style={'textAlign': 'center', 'padding': '40px'})
                 ])
 
+                # Create dynamic title with tool name and sources
+                tool_display_name = get_tool_name(selected_tool, language)
+                sources_str = ", ".join(selected_sources)
+                dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
+                
                 # Return loading state immediately
                 print("🔄 Returning loading state to user")
 
@@ -3864,7 +3882,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                             html.P("This needs to be fixed in the tool name mapping configuration.", className="text-muted")
                         ])
                         print("🔄 Returning tool mapping error modal")
-                        return True, error_content
+                        return True, error_content, dynamic_title
                     # Check if it took more than 3 seconds (indicating hanging)
                     elif data_collection_time > 3.0:
                         print("⏰ LONG EXECUTION TIME DETECTED!")
@@ -3879,7 +3897,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                             html.P("The tool name mapping between UI and database needs to be fixed.", className="text-muted")
                         ])
                         print("🔄 Returning long execution error modal")
-                        return True, error_content
+                        return True, error_content, dynamic_title
                     else:
                         print(f"❌ Data collection failed quickly after {data_collection_time:.2f}s: {e}")
                         import traceback
@@ -3891,7 +3909,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     return True, html.Div([
                         html.H4("Error de Datos", className="text-danger"),
                         html.P(analysis_data['error'], className="text-muted")
-                    ])
+                    ]), dynamic_title
 
                 data_points = analysis_data.get('data_points_analyzed', 0)
                 pca_variance = analysis_data.get('pca_insights', {}).get('total_variance_explained', 0)
@@ -3925,7 +3943,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                         html.H4("Error de IA", className="text-danger"),
                         html.P("El servicio de IA no pudo generar el análisis. Intente nuevamente.",
                               className="text-muted")
-                    ])
+                    ]), dynamic_title
 
                 response_time_ms = ai_response.get('response_time_ms', 0)
                 model_used = ai_response.get('model_used', 'unknown')
@@ -3995,7 +4013,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 print(f"   ├── AI analysis: {ai_time:.2f}s")
                 print(f"   └── Modal creation: {time.time() - ai_start:.2f}s")
                 print("🔄 Returning success modal content")
-                return True, modal_content
+                return True, modal_content, dynamic_title
 
             except Exception as e:
                 total_error_time = time.time() - data_collection_start
@@ -4010,9 +4028,13 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     html.P(f"Time elapsed: {total_error_time:.2f}s", className="text-muted small")
                 ])
                 print("🔄 Returning error modal content")
-                return True, error_content
+                return True, error_content, dynamic_title
         
-        return False, ""
+        # Default return case - generate title for consistency
+        tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
+        sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
+        dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
+        return False, "", dynamic_title
 
     @app.callback(
         Output("key-findings-modal-body", "children", allow_duplicate=True),

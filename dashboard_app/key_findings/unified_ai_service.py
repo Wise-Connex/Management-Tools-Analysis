@@ -72,12 +72,13 @@ class UnifiedAIService:
         # Merge with provided config
         self.config = {**default_config, **(config or {})}
         
-        # Groq models (primary)
+        # Groq models (primary) - optimized based on comparison test results
+        # Order: fastest + highest quality → slower alternatives
         self.groq_models = [
-            'openai/gpt-oss-120b',
-            'meta-llama/llama-4-scout-17b-16e-instruct',
-            'llama-3.3-70b-versatile',
-            'moonshotai/kimi-k2-instruct'
+            'meta-llama/llama-4-scout-17b-16e-instruct',  # Fastest (1.6s) + highest quality (0.97)
+            'llama-3.3-70b-versatile',                  # Good speed (2.9s) + highest quality (0.97)
+            'moonshotai/kimi-k2-instruct',              # Good quality (0.97) + moderate speed (3.5s)
+            'openai/gpt-oss-120b'                       # Slowest (4.7s) + good quality (0.94)
         ]
         
         # OpenRouter models (fallback)
@@ -416,9 +417,12 @@ class UnifiedAIService:
         """
         if language == 'es':
             return """
-Eres un analista de investigación doctoral especializado en herramientas de gestión empresarial. 
-Tu tarea es analizar datos multi-fuente y generar insights de nivel ejecutivo con énfasis en 
+Eres un analista de investigación doctoral especializado en herramientas de gestión empresarial.
+Tu tarea es analizar datos multi-fuente y generar insights de nivel ejecutivo con énfasis en
 análisis de componentes principales (PCA).
+
+INSTRUCCIÓN IMPORTANTE: Menciona explícitamente el nombre de la herramienta de gestión analizada en tu respuesta.
+Usa el nombre de la herramienta proporcionado en el contexto del análisis para personalizar tus hallazgos.
 
 Proporciona análisis que:
 1. Sinteticen información de múltiples fuentes de datos
@@ -426,6 +430,7 @@ Proporciona análisis que:
 3. Destaquen insights de PCA con explicaciones claras
 4. Generen conclusiones ejecutivas accionables
 5. Mantengan rigor académico doctoral
+6. Mencionen específicamente el nombre de la herramienta de gestión en el análisis
 
 Responde siempre en formato JSON estructurado con:
 - principal_findings: array de objetos con bullet_point, reasoning, data_source, confidence
@@ -434,9 +439,12 @@ Responde siempre en formato JSON estructurado con:
 """
         else:
             return """
-You are a doctoral-level research analyst specializing in business management tools. 
-Your task is to analyze multi-source data and generate executive-level insights with 
+You are a doctoral-level research analyst specializing in business management tools.
+Your task is to analyze multi-source data and generate executive-level insights with
 emphasis on Principal Component Analysis (PCA).
+
+IMPORTANT INSTRUCTION: Explicitly mention the name of the management tool being analyzed in your response.
+Use the tool name provided in the analysis context to personalize your findings.
 
 Provide analysis that:
 1. Synthesizes information from multiple data sources
@@ -444,6 +452,7 @@ Provide analysis that:
 3. Highlights PCA insights with clear explanations
 4. Generates actionable executive conclusions
 5. Maintains doctoral academic rigor
+6. Specifically mentions the management tool name in the analysis
 
 Always respond in structured JSON format with:
 - principal_findings: array of objects with bullet_point, reasoning, data_source, confidence
