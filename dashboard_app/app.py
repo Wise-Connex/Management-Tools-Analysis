@@ -4109,7 +4109,10 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     html.Div([
                         html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
                         html.Div([
-                            html.P(finding.strip(), className="mb-2", style={'marginLeft': '20px', 'textIndent': '-15px'})
+                            html.P([
+                                html.Strong("• ", style={'color': '#2c3e50'}),
+                                finding.strip().lstrip('•').lstrip('-').strip()
+                            ], className="mb-2", style={'marginLeft': '10px'})
                             for finding in principal_findings.split('\n') if finding.strip()
                         ], className="mb-4")
                     ]),
