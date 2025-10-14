@@ -324,8 +324,8 @@ class KeyFindingsModal:
             ], className="mb-3"),
             dbc.Card([
                 dbc.CardBody([
-                    html.P(summary, className="lead text-justify mb-0",
-                           style={"lineHeight": "1.7", "fontSize": "1.2rem"}),
+                    html.P(summary, className="lead text-justify mb-0 executive-summary-text",
+                           style={"lineHeight": "1.7"}),
                 ])
             ], className="border-primary bg-primary text-white")
         ], className="mb-4")
@@ -343,8 +343,8 @@ class KeyFindingsModal:
             dbc.Card([
                 dbc.CardBody([
                     html.Div([
-                        html.P(findings_text, className="lead text-justify",
-                               style={"lineHeight": "1.6", "fontSize": "1.1rem"}),
+                        html.P(findings_text, className="lead text-justify principal-findings-text",
+                               style={"lineHeight": "1.6"}),
                         # Add a subtle indicator that this integrates multiple analyses
                         html.Div([
                             html.Small([
@@ -370,8 +370,8 @@ class KeyFindingsModal:
             dbc.Card([
                 dbc.CardBody([
                     html.Div([
-                        html.P(pca_analysis_text, className="text-justify",
-                               style={"lineHeight": "1.6", "fontSize": "1rem"}),
+                        html.P(pca_analysis_text, className="text-justify pca-analysis-text",
+                               style={"lineHeight": "1.6"}),
                         # Add a subtle indicator that this is detailed PCA analysis
                         html.Div([
                             html.Small([

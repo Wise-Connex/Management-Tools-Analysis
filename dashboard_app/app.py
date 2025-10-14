@@ -508,6 +508,23 @@ app.index_string = '''
             .w-100 {
                 box-sizing: border-box;
             }
+            /* Key Findings modal font size overrides */
+            .executive-summary-text {
+                font-size: 12px !important;
+                line-height: 1.7 !important;
+            }
+            .principal-findings-text {
+                font-size: 10px !important;
+                line-height: 1.6 !important;
+            }
+            .pca-analysis-text {
+                font-size: 10px !important;
+                line-height: 1.6 !important;
+            }
+            /* Key Findings modal title font size */
+            .modal-title {
+                font-size: 18px !important;
+            }
         </style>
         <script>
             // Suppress React warnings in console
@@ -652,10 +669,9 @@ sidebar = html.Div([
                 color="info",
                 size="sm",
                 className="w-100 mb-2",
-                style={'fontSize': '12px', 'fontWeight': 'bold'},
-                disabled=False
+                style={'fontSize': '12px', 'fontWeight': 'bold'}
             )
-        ], style={'display': 'block', 'marginTop': '10px', 'marginBottom': '15px'}),
+        ], id="key-findings-button-container", style={'display': 'none', 'marginTop': '10px', 'marginBottom': '15px'}),
         html.Div(id='navigation-section', style={'display': 'none'})
     ], style={
         'overflowY': 'auto',
@@ -1222,6 +1238,20 @@ def update_credits_button_text(language):
 def update_key_findings_button_text(language):
     """Update Key Findings button text based on language"""
     return get_text('key_findings', language)
+
+# Callback to control Key Findings button visibility
+@app.callback(
+    Output('key-findings-button-container', 'style'),
+    Input('keyword-dropdown', 'value'),
+    Input('data-sources-store-v2', 'data')
+)
+def update_key_findings_button_visibility(selected_tool, selected_sources):
+    """Update Key Findings button visibility based on tool and data source selection"""
+    # Show button only when both tool and at least one data source are selected
+    if selected_tool and selected_sources and len(selected_sources) > 0:
+        return {'display': 'block', 'marginTop': '10px', 'marginBottom': '15px'}  # Show button
+    else:
+        return {'display': 'none', 'marginTop': '10px', 'marginBottom': '15px'}   # Hide button
 
 # Callback to update credits content based on language
 @app.callback(
