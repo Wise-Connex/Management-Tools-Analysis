@@ -3952,7 +3952,13 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     # Principal Findings
                     html.Div([
                         html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
-                        html.Div([
+                        html.Ul([
+                            html.Li(
+                                finding.get('bullet_point', str(finding)) if isinstance(finding, dict) else finding,
+                                className="text-muted"
+                            )
+                            for finding in ai_content.get('principal_findings', [])
+                        ]) if isinstance(ai_content.get('principal_findings'), list) else html.Div([
                             html.P(ai_content.get('principal_findings', 'No findings available'),
                                   className="text-muted mb-4")
                         ])
@@ -4108,7 +4114,13 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 # Principal Findings
                 html.Div([
                     html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
-                    html.Div([
+                    html.Ul([
+                        html.Li(
+                            finding.get('bullet_point', str(finding)) if isinstance(finding, dict) else finding,
+                            className="text-muted"
+                        )
+                        for finding in ai_content.get('principal_findings', [])
+                    ]) if isinstance(ai_content.get('principal_findings'), list) else html.Div([
                         html.P(ai_content.get('principal_findings', 'No findings available'),
                               className="text-muted mb-4")
                     ])

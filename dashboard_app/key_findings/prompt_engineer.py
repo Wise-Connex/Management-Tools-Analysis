@@ -568,11 +568,12 @@ Genera un análisis doctoral con las siguientes tres secciones principales:
 - Mencione específicamente el porcentaje de varianza explicada por los primeros dos componentes
 
 **2. Hallazgos Principales:**
-- Una narrativa fluida tipo ensayo doctoral (NO viñetas)
-- Integre insights de PCA, análisis temporal, y heatmap
-- Conecte los patrones temporales con los hallazgos de PCA
-- Mencione fuentes específicas y datos cuantitativos
-- Use un lenguaje académico pero accesible
+- MÚLTIPLES viñetas concisas y accionables (3-5 viñetas diferentes)
+- Cada viñeta debe ser un hallazgo específico y diferente con datos cuantitativos
+- Integre insights de PCA, análisis temporal, y heatmap en cada viñeta
+- Conecte los patrones temporales con los hallazgos de PCA en diferentes viñetas
+- Mencione fuentes específicas y valores numéricos exactos en cada viñeta
+- NO genere un solo párrafo grande, genere varias viñetas distintas
 
 **3. Análisis PCA:**
 - Un ensayo analítico detallado (NO datos estadísticos)
@@ -586,7 +587,7 @@ Responde únicamente en formato JSON con la siguiente estructura:
 ```json
 {
   "executive_summary": "Resumen ejecutivo conciso y accionable como párrafo fluido",
-  "principal_findings": "Narrativa fluida tipo ensayo doctoral integrando PCA, temporal y heatmap insights",
+  "principal_findings": ["Viñeta 1 con hallazgo específico y datos cuantitativos", "Viñeta 2 con otro hallazgo específico", "Viñeta 3 con insight integrado", "Viñeta 4 con patrón temporal", "Viñeta 5 con conclusión cuantitativa"],
   "pca_analysis": "Ensayo analítico detallado sobre PCA con interpretación de cargas y relaciones"
 }
 ```
@@ -613,11 +614,12 @@ Generate a doctoral analysis with the following three main sections:
 - Specifically mention the variance percentage explained by the first two components
 
 **2. Principal Findings:**
-- A fluent narrative doctoral essay style (NO bullet points)
-- Integrate insights from PCA, temporal analysis, and heatmap
-- Connect temporal patterns with PCA findings
-- Mention specific sources and quantitative data
-- Use academic but accessible language
+- MULTIPLE concise actionable bullet points (3-5 different bullets)
+- Each bullet should be a specific and different finding with quantitative data
+- Integrate insights from PCA, temporal analysis, and heatmap in each bullet
+- Connect temporal patterns with PCA findings in different bullets
+- Mention specific sources and exact numerical values in each bullet
+- DO NOT generate one large paragraph, generate several distinct bullets
 
 **3. PCA Analysis:**
 - A detailed analytical essay (NO statistical data)
@@ -631,7 +633,7 @@ Respond only in JSON format with the following structure:
 ```json
 {
   "executive_summary": "Concise actionable executive summary as a fluid paragraph",
-  "principal_findings": "Fluent doctoral essay narrative integrating PCA, temporal and heatmap insights",
+  "principal_findings": ["Bullet 1 with specific finding and quantitative data", "Bullet 2 with another specific finding", "Bullet 3 with integrated insight", "Bullet 4 with temporal pattern", "Bullet 5 with quantitative conclusion"],
   "pca_analysis": "Detailed analytical essay about PCA with loading interpretations and relationships"
 }
 ```
@@ -652,11 +654,13 @@ El JSON debe contener exactamente:
 - `pca_analysis`: Ensayo analítico detallado sobre componentes principales
 
 **Instrucciones Específicas:**
-1. **NO USE viñetas o bullets** - genere texto narrativo fluido
-2. **Integre análisis temporal** en los hallazgos principales
-3. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
-4. **Conecte los patrones temporales con los hallazgos PCA**
-5. **Use lenguaje académico pero accesible**
+1. **PRINCIPAL FINDINGS SÍ USE viñetas MÚLTIPLES** - genere lista de 3-5 hallazgos específicos y diferentes
+2. **Resumen Ejecutivo y PCA NO USE viñetas** - genere texto narrativo fluido
+3. **Cada viñeta debe ser diferente** - no repita el mismo contenido en viñetas múltiples
+4. **Integre análisis temporal** en los hallazgos principales
+5. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
+6. **Conecte los patrones temporales con los hallazgos PCA**
+7. **Use lenguaje académico pero accesible**
 
 **Ejemplo del estilo esperado:**
 "El análisis PCA revela una tensión fundamental entre la adopción popular y la satisfacción real, con Google Trends mostrando una carga positiva de +0.387 mientras que Bain Satisfaction presenta una carga negativa de -0.380, sugiriendo una brecha crítica entre teoría y práctica..."
@@ -674,11 +678,13 @@ The JSON must contain exactly:
 - `pca_analysis`: Detailed analytical essay about principal components
 
 **Specific Instructions:**
-1. **DO NOT USE bullet points** - generate fluid narrative text
-2. **Integrate temporal analysis** into principal findings
-3. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
-4. **Connect temporal patterns with PCA findings**
-5. **Use academic but accessible language**
+1. **PRINCIPAL FINDINGS YES USE MULTIPLE bullet points** - generate list of 3-5 specific and different findings
+2. **Executive Summary and PCA DO NOT USE bullet points** - generate fluid narrative text
+3. **Each bullet must be different** - do not repeat the same content in multiple bullets
+4. **Integrate temporal analysis** into principal findings
+5. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
+6. **Connect temporal patterns with PCA findings**
+7. **Use academic but accessible language**
 
 **Example of expected style:**
 "The PCA analysis reveals a fundamental tension between popular adoption and real satisfaction, with Google Trends showing a positive loading of +0.387 while Bain Satisfaction presents a negative loading of -0.380, suggesting a critical gap between theory and practice..."
