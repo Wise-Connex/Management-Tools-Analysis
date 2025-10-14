@@ -147,7 +147,7 @@ class KeyFindingsService:
             selected_source_ids = map_display_names_to_source_ids(selected_sources)
             
             analysis_data = self.data_aggregator.collect_analysis_data(
-                tool_name, selected_source_ids, language
+                tool_name, selected_source_ids, language, selected_sources
             )
             
             # Update analysis data with original display names for consistency

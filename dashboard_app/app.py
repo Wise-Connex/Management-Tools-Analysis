@@ -3758,11 +3758,12 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     selected_source_ids = map_display_names_to_source_ids(selected_sources)
                     print(f"🔍 DEBUG: Selected sources after mapping to IDs: {selected_source_ids}")
                     
-                    # Start the data collection with source IDs instead of display names
+                    # Start the data collection with source IDs and display names
                     analysis_data = key_findings_service.data_aggregator.collect_analysis_data(
                         tool_name=selected_tool,
                         selected_sources=selected_source_ids,
-                        language=language
+                        language=language,
+                        source_display_names=selected_sources
                     )
 
                     data_collection_time = time.time() - data_collection_start
@@ -4038,7 +4039,8 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             analysis_data = key_findings_service.data_aggregator.collect_analysis_data(
                 tool_name=selected_tool,
                 selected_sources=selected_source_ids,
-                language=language
+                language=language,
+                source_display_names=selected_sources
             )
 
             if 'error' in analysis_data:

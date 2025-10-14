@@ -38,15 +38,16 @@ class DataAggregator:
         self.db_manager = db_manager
         self.cache_manager = cache_manager
 
-    def collect_analysis_data(self, tool_name: str, selected_sources: List[str],
-                            language: str = 'es') -> Dict[str, Any]:
+    def collect_analysis_data(self, tool_name: str, selected_sources: List[Any],
+                            language: str = 'es', source_display_names: List[str] = None) -> Dict[str, Any]:
         """
         Collect all relevant data for AI analysis.
 
         Args:
             tool_name: Selected management tool
-            selected_sources: List of selected data sources
+            selected_sources: List of selected data source IDs (integers)
             language: Analysis language
+            source_display_names: Optional list of source display names (strings) for prompts
 
         Returns:
             Dictionary containing all analysis data
@@ -221,9 +222,13 @@ class DataAggregator:
         logging.info(f"   ├── Data quality: {quality_time:.2f}s")
         logging.info(f"   └── Data anonymization: {anonymize_time:.2f}s")
 
+        # Use display names for prompts if provided, otherwise use source IDs
+        sources_for_prompts = source_display_names if source_display_names else selected_sources
+        
         result = {
             'tool_name': tool_name,
-            'selected_sources': selected_sources,
+            'selected_sources': sources_for_prompts,  # Use display names for prompts
+            'selected_source_ids': selected_sources,  # Keep original IDs for reference
             'language': language,
             'data_points_analyzed': len(combined_dataset),
             'sources_count': len(selected_sources),
