@@ -185,10 +185,10 @@ class KeyFindingsModal:
         if not report_data:
             return self._create_empty_state()
         
-        # Extract data with new structure
-        executive_summary = report_data.get('executive_summary', '')
-        principal_findings = report_data.get('principal_findings', '')
-        pca_analysis = report_data.get('pca_analysis', '')
+        # Extract data with proper JSON parsing if needed
+        executive_summary = self._extract_text_content(report_data.get('executive_summary', ''))
+        principal_findings = self._extract_text_content(report_data.get('principal_findings', ''))
+        pca_analysis = self._extract_text_content(report_data.get('pca_analysis', ''))
         metadata = self._extract_metadata(report_data)
         
         return html.Div([
@@ -358,9 +358,12 @@ class KeyFindingsModal:
         ], className="mb-4")
 
     def _create_pca_analysis_section(self, pca_analysis_text: str) -> html.Div:
-        """Create PCA analysis section as narrative essay."""
+        """Create PCA analysis section as narrative essay with proper paragraph formatting."""
         if not pca_analysis_text:
             return html.Div()
+        
+        # Split text into paragraphs and create separate P elements for each
+        paragraphs = [p.strip() for p in pca_analysis_text.split('\n\n') if p.strip()]
         
         return html.Div([
             html.H4([
@@ -370,13 +373,17 @@ class KeyFindingsModal:
             dbc.Card([
                 dbc.CardBody([
                     html.Div([
-                        html.P(pca_analysis_text, className="text-justify pca-analysis-text",
-                               style={"lineHeight": "1.6"}),
+                        # Create separate P elements for each paragraph
+                        html.Div([
+                            html.P(p, className="text-justify pca-analysis-text mb-3",
+                                   style={"lineHeight": "1.6"})
+                            for p in paragraphs
+                        ]),
                         # Add a subtle indicator that this is detailed PCA analysis
                         html.Div([
                             html.Small([
                                 html.I(className="fas fa-calculator text-info me-1"),
-                                "Análisis detallado de componentes principales con interpretación de cargas"
+                                f"Análisis detallado de componentes principales ({len(paragraphs)} párrafos)"
                             ], className="text-muted")
                         ], className="mt-3 text-end")
                     ])
@@ -441,6 +448,47 @@ class KeyFindingsModal:
             'analysis_depth': report_data.get('analysis_depth', 'comprehensive'),
             'sources_count': report_data.get('sources_count', 0)
         }
+    
+    def _extract_text_content(self, content: Any) -> str:
+        """
+        Extract text content from various data types.
+        
+        Args:
+            content: Content that might be string, dict, or other types
+            
+        Returns:
+            Extracted text content as string
+        """
+        if isinstance(content, str):
+            # Check if it's JSON formatted
+            if content.strip().startswith('{') and content.strip().endswith('}'):
+                try:
+                    # Try to parse as JSON and extract text
+                    json_data = json.loads(content)
+                    if isinstance(json_data, dict):
+                        # Look for common text fields
+                        for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+                            if field in json_data and isinstance(json_data[field], str):
+                                return json_data[field]
+                except:
+                    pass
+            return content
+        elif isinstance(content, dict):
+            # Extract from dictionary
+            for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+                if field in content and isinstance(content[field], str):
+                    return content[field]
+        elif isinstance(content, list) and content:
+            # Extract from list
+            first_item = content[0]
+            if isinstance(first_item, dict):
+                for field in ['bullet_point', 'text', 'content']:
+                    if field in first_item and isinstance(first_item[field], str):
+                        return first_item[field]
+            elif isinstance(first_item, str):
+                return first_item
+        
+        return str(content) if content else ''
 
     def _register_callbacks(self):
         """Register all modal callbacks."""

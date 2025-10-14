@@ -523,7 +523,7 @@ app.index_string = '''
             }
             /* Key Findings modal title font size */
             .modal-title {
-                font-size: 18px !important;
+                font-size: 20px !important;
             }
         </style>
         <script>
@@ -3985,6 +3985,112 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 print(f"📄 AI response parsed - findings: {len(ai_content.get('principal_findings', []))}, "
                       f"executive summary length: {len(ai_content.get('executive_summary', ''))}")
 
+                # Helper function to extract text content from AI response
+                def extract_text_content(content):
+                    """Extract text content from various data types (same as modal component)."""
+                    if isinstance(content, str):
+                        # Check if it's JSON formatted
+                        if content.strip().startswith('{') and content.strip().endswith('}'):
+                            try:
+                                # Try to parse as JSON and extract text
+                                import json
+                                json_data = json.loads(content)
+                                if isinstance(json_data, dict):
+                                    # Look for common text fields
+                                    for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+                                        if field in json_data and isinstance(json_data[field], str):
+                                            return json_data[field]
+                            except:
+                                pass
+                        return content
+                    elif isinstance(content, dict):
+                        # Extract from dictionary
+                        for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+                            if field in content and isinstance(content[field], str):
+                                return content[field]
+                    elif isinstance(content, list) and content:
+                        # Extract from list
+                        first_item = content[0]
+                        if isinstance(first_item, dict):
+                            for field in ['bullet_point', 'text', 'content']:
+                                if field in first_item and isinstance(first_item[field], str):
+                                    return first_item[field]
+                        elif isinstance(first_item, str):
+                            return first_item
+                    
+                    return str(content) if content else ''
+
+                # Extract text content from AI response
+                executive_summary = extract_text_content(ai_content.get('executive_summary', 'No summary available'))
+                principal_findings_raw = ai_content.get('principal_findings', 'No findings available')
+                pca_analysis_raw = ai_content.get('pca_analysis', 'No PCA analysis available')
+                
+                # Handle principal findings - extract text if it's a list of dicts, or use as-is if string
+                if isinstance(principal_findings_raw, list):
+                    principal_findings = []
+                    for finding in principal_findings_raw:
+                        if isinstance(finding, dict):
+                            principal_findings.append(finding.get('bullet_point', str(finding)))
+                        else:
+                            principal_findings.append(str(finding))
+                    principal_findings = '\n'.join(principal_findings)
+                else:
+                    principal_findings = extract_text_content(principal_findings_raw)
+                
+                # Extract PCA analysis text and split into paragraphs
+                pca_analysis_text = extract_text_content(pca_analysis_raw)
+                
+                # Debug: Print the raw PCA analysis text to understand its structure
+                print(f"🔍 DEBUG: Raw PCA analysis text: {pca_analysis_text[:200]}...")
+                
+                # Try different splitting methods to get exactly 3 paragraphs
+                if '\n\n' in pca_analysis_text:
+                    pca_paragraphs = [p.strip() for p in pca_analysis_text.split('\n\n') if p.strip()]
+                elif '\n' in pca_analysis_text:
+                    # If no double newlines, try single newlines
+                    potential_paragraphs = [p.strip() for p in pca_analysis_text.split('\n') if p.strip()]
+                    # Try to group into 3 logical paragraphs
+                    if len(potential_paragraphs) >= 3:
+                        # Split into 3 roughly equal parts
+                        third = len(potential_paragraphs) // 3
+                        pca_paragraphs = [
+                            '\n'.join(potential_paragraphs[:third]),
+                            '\n'.join(potential_paragraphs[third:2*third]),
+                            '\n'.join(potential_paragraphs[2*third:])
+                        ]
+                    else:
+                        pca_paragraphs = potential_paragraphs
+                else:
+                    # If no newlines, split by sentences or create 3 paragraphs
+                    sentences = [s.strip() + '.' for s in pca_analysis_text.split('.') if s.strip()]
+                    if len(sentences) >= 3:
+                        third = len(sentences) // 3
+                        pca_paragraphs = [
+                            ' '.join(sentences[:third]),
+                            ' '.join(sentences[third:2*third]),
+                            ' '.join(sentences[2*third:])
+                        ]
+                    else:
+                        # Fallback: split the text into 3 parts
+                        text_length = len(pca_analysis_text)
+                        third = text_length // 3
+                        pca_paragraphs = [
+                            pca_analysis_text[:third].strip(),
+                            pca_analysis_text[third:2*third].strip(),
+                            pca_analysis_text[2*third:].strip()
+                        ]
+                
+                # Ensure we have exactly 3 paragraphs
+                while len(pca_paragraphs) < 3:
+                    pca_paragraphs.append("Análisis adicional no disponible.")
+                
+                pca_paragraphs = pca_paragraphs[:3]  # Limit to exactly 3 paragraphs
+                
+                # Debug: Print the final paragraphs
+                print(f"🔍 DEBUG: Final PCA paragraphs count: {len(pca_paragraphs)}")
+                for i, p in enumerate(pca_paragraphs):
+                    print(f"🔍 DEBUG: Paragraph {i+1}: {p[:100]}...")
+
                 # Create comprehensive modal content
                 modal_content = html.Div([
                     # Model info
@@ -3996,31 +4102,27 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     # Executive Summary
                     html.Div([
                         html.H5("📋 Resumen Ejecutivo", className="text-info mb-2"),
-                        html.P(ai_content.get('executive_summary', 'No summary available'), className="mb-4")
+                        html.P(executive_summary, className="mb-4")
                     ]),
 
                     # Principal Findings
                     html.Div([
                         html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
-                        html.Ul([
-                            html.Li(
-                                finding.get('bullet_point', str(finding)) if isinstance(finding, dict) else finding,
-                                className="text-muted"
-                            )
-                            for finding in ai_content.get('principal_findings', [])
-                        ]) if isinstance(ai_content.get('principal_findings'), list) else html.Div([
-                            html.P(ai_content.get('principal_findings', 'No findings available'),
-                                  className="text-muted mb-4")
-                        ])
+                        html.Div([
+                            html.P(finding.strip(), className="mb-2", style={'marginLeft': '20px', 'textIndent': '-15px'})
+                            for finding in principal_findings.split('\n') if finding.strip()
+                        ], className="mb-4")
                     ]),
 
-                    # PCA Analysis
+                    # PCA Analysis - split into separate paragraphs
                     html.Div([
                         html.H5("📊 Análisis PCA", className="text-info mb-2"),
                         html.Div([
-                            html.P(ai_content.get('pca_analysis', 'No PCA analysis available'),
-                                  className="text-muted mb-4")
-                        ])
+                            # Display each paragraph with proper styling
+                            html.Div([
+                                html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
+                            ]) for i, p in enumerate(pca_paragraphs)
+                        ]),
                     ]),
 
                     # Statistical Summary
@@ -4144,6 +4246,112 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             ai_content = ai_response.get('content', {})
             model_used = ai_response.get('model_used', 'unknown')
 
+            # Helper function to extract text content from AI response (same as generate)
+            def extract_text_content(content):
+                """Extract text content from various data types (same as modal component)."""
+                if isinstance(content, str):
+                    # Check if it's JSON formatted
+                    if content.strip().startswith('{') and content.strip().endswith('}'):
+                        try:
+                            # Try to parse as JSON and extract text
+                            import json
+                            json_data = json.loads(content)
+                            if isinstance(json_data, dict):
+                                # Look for common text fields
+                                for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+                                    if field in json_data and isinstance(json_data[field], str):
+                                        return json_data[field]
+                        except:
+                            pass
+                    return content
+                elif isinstance(content, dict):
+                    # Extract from dictionary
+                    for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+                        if field in content and isinstance(content[field], str):
+                            return content[field]
+                elif isinstance(content, list) and content:
+                    # Extract from list
+                    first_item = content[0]
+                    if isinstance(first_item, dict):
+                        for field in ['bullet_point', 'text', 'content']:
+                            if field in first_item and isinstance(first_item[field], str):
+                                return first_item[field]
+                    elif isinstance(first_item, str):
+                        return first_item
+                
+                return str(content) if content else ''
+
+            # Extract text content from AI response
+            executive_summary = extract_text_content(ai_content.get('executive_summary', 'No summary available'))
+            principal_findings_raw = ai_content.get('principal_findings', 'No findings available')
+            pca_analysis_raw = ai_content.get('pca_analysis', 'No PCA analysis available')
+            
+            # Handle principal findings - extract text if it's a list of dicts, or use as-is if string
+            if isinstance(principal_findings_raw, list):
+                principal_findings = []
+                for finding in principal_findings_raw:
+                    if isinstance(finding, dict):
+                        principal_findings.append(finding.get('bullet_point', str(finding)))
+                    else:
+                        principal_findings.append(str(finding))
+                principal_findings = '\n'.join(principal_findings)
+            else:
+                principal_findings = extract_text_content(principal_findings_raw)
+            
+            # Extract PCA analysis text and split into paragraphs
+            pca_analysis_text = extract_text_content(pca_analysis_raw)
+            
+            # Debug: Print the raw PCA analysis text to understand its structure
+            print(f"🔍 DEBUG: Regenerate - Raw PCA analysis text: {pca_analysis_text[:200]}...")
+            
+            # Try different splitting methods to get exactly 3 paragraphs
+            if '\n\n' in pca_analysis_text:
+                pca_paragraphs = [p.strip() for p in pca_analysis_text.split('\n\n') if p.strip()]
+            elif '\n' in pca_analysis_text:
+                # If no double newlines, try single newlines
+                potential_paragraphs = [p.strip() for p in pca_analysis_text.split('\n') if p.strip()]
+                # Try to group into 3 logical paragraphs
+                if len(potential_paragraphs) >= 3:
+                    # Split into 3 roughly equal parts
+                    third = len(potential_paragraphs) // 3
+                    pca_paragraphs = [
+                        '\n'.join(potential_paragraphs[:third]),
+                        '\n'.join(potential_paragraphs[third:2*third]),
+                        '\n'.join(potential_paragraphs[2*third:])
+                    ]
+                else:
+                    pca_paragraphs = potential_paragraphs
+            else:
+                # If no newlines, split by sentences or create 3 paragraphs
+                sentences = [s.strip() + '.' for s in pca_analysis_text.split('.') if s.strip()]
+                if len(sentences) >= 3:
+                    third = len(sentences) // 3
+                    pca_paragraphs = [
+                        ' '.join(sentences[:third]),
+                        ' '.join(sentences[third:2*third]),
+                        ' '.join(sentences[2*third:])
+                    ]
+                else:
+                    # Fallback: split the text into 3 parts
+                    text_length = len(pca_analysis_text)
+                    third = text_length // 3
+                    pca_paragraphs = [
+                        pca_analysis_text[:third].strip(),
+                        pca_analysis_text[third:2*third].strip(),
+                        pca_analysis_text[2*third:].strip()
+                    ]
+            
+            # Ensure we have exactly 3 paragraphs
+            while len(pca_paragraphs) < 3:
+                pca_paragraphs.append("Análisis adicional no disponible.")
+            
+            pca_paragraphs = pca_paragraphs[:3]  # Limit to exactly 3 paragraphs
+            
+            # Debug: Print the final paragraphs
+            print(f"🔍 DEBUG: Regenerate - Final PCA paragraphs count: {len(pca_paragraphs)}")
+            for i, p in enumerate(pca_paragraphs):
+                print(f"🔍 DEBUG: Regenerate - Paragraph {i+1}: {p[:100]}...")
+
             # Create comprehensive modal content (same as generate)
             modal_content = html.Div([
                 # Model info
@@ -4155,31 +4363,24 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 # Executive Summary
                 html.Div([
                     html.H5("📋 Resumen Ejecutivo", className="text-info mb-2"),
-                    html.P(ai_content.get('executive_summary', 'No summary available'), className="mb-4")
+                    html.P(executive_summary, className="mb-4")
                 ]),
 
                 # Principal Findings
                 html.Div([
                     html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
-                    html.Ul([
-                        html.Li(
-                            finding.get('bullet_point', str(finding)) if isinstance(finding, dict) else finding,
-                            className="text-muted"
-                        )
-                        for finding in ai_content.get('principal_findings', [])
-                    ]) if isinstance(ai_content.get('principal_findings'), list) else html.Div([
-                        html.P(ai_content.get('principal_findings', 'No findings available'),
-                              className="text-muted mb-4")
-                    ])
+                    html.P(principal_findings, className="mb-4")
                 ]),
 
-                # PCA Analysis
+                # PCA Analysis - split into separate paragraphs
                 html.Div([
                     html.H5("📊 Análisis PCA", className="text-info mb-2"),
                     html.Div([
-                        html.P(ai_content.get('pca_analysis', 'No PCA analysis available'),
-                              className="text-muted mb-4")
-                    ])
+                        # Display each paragraph with proper styling
+                        html.Div([
+                            html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
+                        ]) for i, p in enumerate(pca_paragraphs)
+                    ]),
                 ]),
 
                 # Statistical Summary

@@ -165,19 +165,31 @@ class KeyFindingsService:
                 raise Exception(f"AI analysis failed: {ai_result.get('error', 'Unknown error')}")
             
             # Prepare report data for caching with new structure
+            # Handle both old and new JSON structures
+            content = ai_result['content']
+            
+            # Extract PCA Analysis from appropriate field
+            pca_analysis = ''
+            if 'pca_analysis' in content:
+                pca_analysis = content['pca_analysis']
+            elif 'pca_insights' in content and isinstance(content['pca_insights'], dict):
+                if 'analysis' in content['pca_insights']:
+                    pca_analysis = content['pca_insights']['analysis']
+            
             report_data = {
                 'tool_name': tool_name,
                 'selected_sources': selected_sources,
                 'language': language,
-                'executive_summary': ai_result['content'].get('executive_summary', ''),
-                'principal_findings': ai_result['content'].get('principal_findings', ''),
-                'pca_analysis': ai_result['content'].get('pca_analysis', ''),
+                'executive_summary': content.get('executive_summary', ''),
+                'principal_findings': content.get('principal_findings', ''),
+                'pca_analysis': pca_analysis,
                 'model_used': ai_result['model_used'],
                 'api_latency_ms': ai_result['response_time_ms'],
-                'confidence_score': self._calculate_confidence_score(ai_result['content']),
+                'confidence_score': self._calculate_confidence_score(content),
                 'data_points_analyzed': analysis_data.get('data_points_analyzed', 0),
                 'sources_count': len(selected_sources),
-                'analysis_depth': 'comprehensive'
+                'analysis_depth': 'comprehensive',
+                'json_structure': content.get('original_structure', 'unknown')
             }
             
             # Cache the report
@@ -284,11 +296,26 @@ class KeyFindingsService:
                     confidence_factors.append(0.8)  # Bonus for academic language
             
             # PCA analysis quality (now narrative text)
-            pca_analysis = ai_content.get('pca_analysis', '')
+            pca_analysis = ''
+            
+            # Extract PCA Analysis from appropriate field (handle both structures)
+            if 'pca_analysis' in ai_content:
+                pca_analysis = ai_content['pca_analysis']
+            elif 'pca_insights' in ai_content and isinstance(ai_content['pca_insights'], dict):
+                if 'analysis' in ai_content['pca_insights']:
+                    pca_analysis = ai_content['pca_insights']['analysis']
+            
             if pca_analysis:
                 # Check for detailed PCA analysis
                 pca_quality = min(len(pca_analysis) / 400, 1.0)  # Target 400+ chars for PCA analysis
                 confidence_factors.append(pca_quality)
+                
+                # Check for paragraph structure (should have 3 paragraphs)
+                paragraph_count = len([p.strip() for p in pca_analysis.split('\n\n') if p.strip()])
+                if paragraph_count >= 3:
+                    confidence_factors.append(0.8)  # Bonus for proper paragraph structure
+                elif paragraph_count >= 2:
+                    confidence_factors.append(0.4)  # Partial bonus for some paragraph structure
                 
                 # Check for specific numerical values
                 import re

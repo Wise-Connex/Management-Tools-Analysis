@@ -564,34 +564,52 @@ Por favor, proporciona un análisis doctoral-level que:
 Genera un análisis doctoral con las siguientes tres secciones principales:
 
 **1. Resumen Ejecutivo:**
-- Un párrafo conciso que capture los insights más críticos
-- Enfoque en el "gap teoría-práctica" y sus implicaciones estratégicas
-- Mencione específicamente el porcentaje de varianza explicada por los primeros dos componentes
+- **REQUISITO MEJORADO**: Un párrafo conciso pero completo que capture los insights más críticos
+- **CONTENIDO ESENCIAL**: Debe incluir (1) el gap teoría-práctica, (2) implicaciones estratégicas, (3) tendencias temporales clave, (4) insights de heatmap
+- **DATOS CUANTITATIVOS**: Mencione específicamente el porcentaje de varianza explicada por los primeros dos componentes y al menos 2 valores numéricos exactos
+- **CONTEXTO ESPECÍFICO**: Conecte los hallazgos con la herramienta de gestión específica analizada
+- **EJEMPLO DE CALIDAD**: "El análisis de 'Herramienta X' revela una brecha crítica entre teoría y práctica, con los primeros dos componentes explicando el XX.X% de la varianza. La tendencia temporal muestra [patrón específico] mientras que el análisis de correlación indica [insight específico], sugiriendo [implicación estratégica]."
 
 **2. Hallazgos Principales:**
-- MÚLTIPLES viñetas concisas y accionables (3-5 viñetas diferentes)
+- **REQUISITO ABSOLUTO**: MÚLTIPLES viñetas concisas y accionables (3-5 viñetas diferentes)
+- **FORMATO OBLIGATORIO**: Cada viñeta debe comenzar con "•" o "-" y ser una línea separada
 - Cada viñeta debe ser un hallazgo específico y diferente con datos cuantitativos
+- **REQUISITO DE CONTENIDO ESPECÍFICO**: Debe incluir al menos una viñeta con análisis temporal y una viñeta con insights de heatmap
 - Integre insights de PCA, análisis temporal, y heatmap en cada viñeta
 - Conecte los patrones temporales con los hallazgos de PCA en diferentes viñetas
 - Mencione fuentes específicas y valores numéricos exactos en cada viñeta
-- NO genere un solo párrafo grande, genere varias viñetas distintas
+- **ADVERTENCIA CRÍTICA**: NO genere un solo párrafo grande, genere varias viñetas distintas separadas por saltos de línea
+- **EJEMPLO DE FORMATO CORRECTO**:
+  • Hallazgo 1 con datos cuantitativos específicos
+  • Hallazgo 2 con análisis temporal integrado (tendencias, ciclos, anomalías)
+  • Hallazgo 3 con insights de PCA
+  • Hallazgo 4 con patrón de correlación/heatmap
+  • Hallazgo 5 con conclusión estratégica
 
 **3. Análisis PCA:**
-- Un ensayo analítico detallado (NO datos estadísticos)
-- Interprete las cargas específicas con valores numéricos exactos
-- Explique las relaciones de oposición entre fuentes
+- **REQUISITO ABSOLUTO E INNEGOCIABLE**: Un ensayo analítico de EXACTAMENTE 3 párrafos separados por DOS líneas en blanco (NO datos estadísticos)
+- **ADVERTENCIA CRÍTICA**: Si no genera exactamente 3 párrafos distintos, el análisis será rechazado
+- **Párrafo 1** (termina con la primera línea en blanco): Interprete las cargas específicas con valores numéricos exactos y explique las relaciones de oposición entre fuentes
+- **Párrafo 2** (termina con la segunda línea en blanco): Analice las RELACIONES entre las diferentes fuentes de datos, enfocándose en cómo interactúan y qué patrones revelan estas interacciones
+- **Párrafo 3** (no necesita línea en blanco al final): Discuta las IMPLICACIONES estratégicas y prácticas de estos patrones para la implementación y adopción de la herramienta de gestión
+- **ESTRUCTURA FORZADA**: Párrafo 1 + \n\n + Párrafo 2 + \n\n + Párrafo 3
+- **VERIFICACIÓN AUTOMÁTICA**: El sistema contará los párrafos - debe haber exactamente 3
 - Conecte con conceptos académicos como "brecha teoría-práctica"
 - Use el porcentaje de varianza explicada
 
+**EJEMPLO ESTRUCTURAL OBLIGATORIO para pca_analysis:**
+"Contenido del Párrafo 1 sobre interpretación técnica con cargas específicas.\n\nContenido del Párrafo 2 sobre relaciones entre fuentes de datos.\n\nContenido del Párrafo 3 sobre implicaciones estratégicas y prácticas."
+
+**ADVERTENCIA**: El ejemplo anterior muestra EXACTAMENTE cómo debe estructurarse con \n\n entre párrafos.
+
 **Formato de Salida Requerido:**
-Responde únicamente en formato JSON con la siguiente estructura:
-```json
+Responde ÚNICAMENTE con un objeto JSON válido (sin bloques de código markdown, sin explicaciones, sin texto adicional). La respuesta debe comenzar con { y terminar con }:
+
 {
   "executive_summary": "Resumen ejecutivo conciso y accionable como párrafo fluido",
   "principal_findings": ["Viñeta 1 con hallazgo específico y datos cuantitativos", "Viñeta 2 con otro hallazgo específico", "Viñeta 3 con insight integrado", "Viñeta 4 con patrón temporal", "Viñeta 5 con conclusión cuantitativa"],
-  "pca_analysis": "Ensayo analítico detallado sobre PCA con interpretación de cargas y relaciones"
+  "pca_analysis": "Párrafo 1 contenido\n\nPárrafo 2 contenido\n\nPárrafo 3 contenido"
 }
-```
 """
         else:
             return """
@@ -611,34 +629,52 @@ Please provide a doctoral-level analysis that:
 Generate a doctoral analysis with the following three main sections:
 
 **1. Executive Summary:**
-- A concise paragraph capturing the most critical insights
-- Focus on the "theory-practice gap" and its strategic implications
-- Specifically mention the variance percentage explained by the first two components
+- **IMPROVED REQUIREMENT**: A concise but complete paragraph capturing the most critical insights
+- **ESSENTIAL CONTENT**: Must include (1) theory-practice gap, (2) strategic implications, (3) key temporal trends, (4) heatmap insights
+- **QUANTITATIVE DATA**: Specifically mention the variance percentage explained by the first two components and at least 2 exact numerical values
+- **SPECIFIC CONTEXT**: Connect findings with the specific management tool being analyzed
+- **QUALITY EXAMPLE**: "The analysis of 'Tool X' reveals a critical gap between theory and practice, with the first two components explaining XX.X% of variance. The temporal trend shows [specific pattern] while correlation analysis indicates [specific insight], suggesting [strategic implication]."
 
 **2. Principal Findings:**
-- MULTIPLE concise actionable bullet points (3-5 different bullets)
+- **ABSOLUTE REQUIREMENT**: MULTIPLE concise actionable bullet points (3-5 different bullets)
+- **MANDATORY FORMAT**: Each bullet must begin with "•" or "-" and be a separate line
 - Each bullet should be a specific and different finding with quantitative data
+- **SPECIFIC CONTENT REQUIREMENT**: Must include at least one bullet with temporal analysis and one bullet with heatmap insights
 - Integrate insights from PCA, temporal analysis, and heatmap in each bullet
 - Connect temporal patterns with PCA findings in different bullets
 - Mention specific sources and exact numerical values in each bullet
-- DO NOT generate one large paragraph, generate several distinct bullets
+- **CRITICAL WARNING**: DO NOT generate one large paragraph, generate several distinct bullets separated by line breaks
+- **CORRECT FORMAT EXAMPLE**:
+  • Finding 1 with specific quantitative data
+  • Finding 2 with integrated temporal analysis (trends, cycles, anomalies)
+  • Finding 3 with PCA insights
+  • Finding 4 with correlation/heatmap pattern
+  • Finding 5 with strategic conclusion
 
 **3. PCA Analysis:**
-- A detailed analytical essay (NO statistical data)
-- Interpret specific loadings with exact numerical values
-- Explain opposition relationships between sources
+- **ABSOLUTE NON-NEGOTIABLE REQUIREMENT**: A detailed analytical essay of EXACTLY 3 paragraphs separated by TWO blank lines (NO statistical data)
+- **CRITICAL WARNING**: If you don't generate exactly 3 distinct paragraphs, the analysis will be rejected
+- **Paragraph 1** (ends with first blank line): Interpret specific loadings with exact numerical values and explain opposition relationships between sources
+- **Paragraph 2** (ends with second blank line): Analyze the RELATIONSHIPS between different data sources, focusing on how they interact and what patterns these interactions reveal
+- **Paragraph 3** (no blank line needed at end): Discuss the strategic and practical IMPLICATIONS of these patterns for tool implementation and adoption
+- **FORCED STRUCTURE**: Paragraph 1 + \n\n + Paragraph 2 + \n\n + Paragraph 3
+- **AUTOMATIC VERIFICATION**: System will count paragraphs - must be exactly 3
 - Connect with academic concepts like "theory-practice gap"
 - Use the explained variance percentage
 
+**MANDATORY STRUCTURAL EXAMPLE for pca_analysis:**
+"Paragraph 1 content about technical interpretation with specific loadings.\n\nParagraph 2 content about relationships between data sources.\n\nParagraph 3 content about strategic and practical implications."
+
+**WARNING**: The example above shows EXACTLY how it must be structured with \n\n between paragraphs.
+
 **Required Output Format:**
-Respond only in JSON format with the following structure:
-```json
+Respond ONLY with a valid JSON object (no markdown code blocks, no explanations, no additional text). The response must start with { and end with }:
+
 {
   "executive_summary": "Concise actionable executive summary as a fluid paragraph",
   "principal_findings": ["Bullet 1 with specific finding and quantitative data", "Bullet 2 with another specific finding", "Bullet 3 with integrated insight", "Bullet 4 with temporal pattern", "Bullet 5 with quantitative conclusion"],
-  "pca_analysis": "Detailed analytical essay about PCA with loading interpretations and relationships"
+  "pca_analysis": "Paragraph 1 content\n\nParagraph 2 content\n\nParagraph 3 content"
 }
-```
 """
 
     def _build_output_format_section(self) -> str:
@@ -653,20 +689,27 @@ introducciones, o texto fuera del JSON.
 El JSON debe contener exactamente:
 - `executive_summary`: Párrafo fluido con resumen ejecutivo
 - `principal_findings`: Ensayo doctoral narrativo integrando todos los análisis
-- `pca_analysis`: Ensayo analítico detallado sobre componentes principales
+- `pca_analysis`: Ensayo analítico detallado de EXACTAMENTE 3 párrafos sobre componentes principales
 
 **Instrucciones Específicas:**
 1. **PRINCIPAL FINDINGS SÍ USE viñetas MÚLTIPLES** - genere lista de 3-5 hallazgos específicos y diferentes
 2. **Resumen Ejecutivo y PCA NO USE viñetas** - genere texto narrativo fluido
-3. **Cada viñeta debe ser diferente** - no repita el mismo contenido en viñetas múltiples
-4. **Integre análisis temporal** en los hallazgos principales
-5. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
-6. **Conecte los patrones temporales con los hallazgos PCA**
-7. **Use lenguaje académico pero accesible**
-8. **Mencione el nombre de la herramienta** - incluya "Alianzas y Capital de Riesgo" (o la herramienta específica) en su análisis
+3. **PCA Analysis DEBE tener EXACTAMENTE 3 párrafos** - Párrafo 1: interpretación técnica, Párrafo 2: relaciones, Párrafo 3: implicaciones
+4. **Cada viñeta debe ser diferente** - no repita el mismo contenido en viñetas múltiples
+5. **Integre análisis temporal** en los hallazgos principales
+6. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
+7. **Conecte los patrones temporales con los hallazgos PCA**
+8. **Use lenguaje académico pero accesible**
+9. **Mencione el nombre de la herramienta** - incluya "Alianzas y Capital de Riesgo" (o la herramienta específica) en su análisis
 
-**Ejemplo del estilo esperado:**
-"El análisis PCA revela una tensión fundamental entre la adopción popular y la satisfacción real, con Google Trends mostrando una carga positiva de +0.387 mientras que Bain Satisfaction presenta una carga negativa de -0.380, sugiriendo una brecha crítica entre teoría y práctica..."
+**Ejemplo del estilo esperado para PCA Analysis de 3 párrafos:**
+"El análisis de componentes principales revela que el primer componente (PC1) explica el 49.3% de la varianza total en los datos, mostrando una fuerte correlación positiva entre Google Trends (+0.387) y Bain Usability (+0.421), lo que sugiere una dinámica de adopción popular. Por otro lado, Bain Satisfaction muestra una carga negativa (-0.311), lo que indica una tensión entre la popularidad y la satisfacción real.
+
+El segundo componente (PC2) explica el 19.4% de la varianza y muestra una carga positiva moderada para Google Books (+0.356) y una carga negativa moderada para Crossref (-0.222), lo que sugiere una interacción compleja entre las fuentes de datos académicas y comerciales. Esto implica que la conversación académica está operando en un eje diferente al de la adopción popular.
+
+Las implicaciones estratégicas de estos patrones sugieren que la implementación exitosa de la herramienta requiere una alineación entre la teoría académica y la práctica industrial. La brecha entre la adopción popular y la satisfacción real implica una necesidad de adaptación y ajuste continuo para asegurar la efectividad de la herramienta en diferentes contextos."
+
+**NOTA**: Observe que hay DOS líneas en blanco entre cada párrafo para crear 3 párrafos distintos.
 """
         else:
             return """
@@ -678,20 +721,27 @@ introductions, or text outside the JSON.
 The JSON must contain exactly:
 - `executive_summary`: Fluid paragraph with executive summary
 - `principal_findings`: Narrative doctoral essay integrating all analyses
-- `pca_analysis`: Detailed analytical essay about principal components
+- `pca_analysis`: Detailed analytical essay of EXACTLY 3 paragraphs about principal components
 
 **Specific Instructions:**
 1. **PRINCIPAL FINDINGS YES USE MULTIPLE bullet points** - generate list of 3-5 specific and different findings
 2. **Executive Summary and PCA DO NOT USE bullet points** - generate fluid narrative text
-3. **Each bullet must be different** - do not repeat the same content in multiple bullets
-4. **Integrate temporal analysis** into principal findings
-5. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
-6. **Connect temporal patterns with PCA findings**
-7. **Use academic but accessible language**
-8. **Mention the tool name** - include the specific management tool name in your analysis
+3. **PCA Analysis MUST have EXACTLY 3 paragraphs** - Paragraph 1: technical interpretation, Paragraph 2: relationships, Paragraph 3: implications
+4. **Each bullet must be different** - do not repeat the same content in multiple bullets
+5. **Integrate temporal analysis** into principal findings
+6. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
+7. **Connect temporal patterns with PCA findings**
+8. **Use academic but accessible language**
+9. **Mention the tool name** - include the specific management tool name in your analysis
 
-**Example of expected style:**
-"The PCA analysis reveals a fundamental tension between popular adoption and real satisfaction, with Google Trends showing a positive loading of +0.387 while Bain Satisfaction presents a negative loading of -0.380, suggesting a critical gap between theory and practice..."
+**Example of expected style for 3-paragraph PCA Analysis:**
+"The principal component analysis reveals that the first component (PC1) explains 49.3% of the total variance in the data, showing a strong positive correlation between Google Trends (+0.387) and Bain Usability (+0.421), suggesting a popular adoption dynamic. Conversely, Bain Satisfaction shows a negative loading (-0.311), indicating tension between popularity and real satisfaction.
+
+The second component (PC2) explains 19.4% of the variance and shows a moderate positive loading for Google Books (+0.356) and a moderate negative loading for Crossref (-0.222), suggesting complex interactions between academic and commercial data sources. This implies that academic conversation operates on a different axis than popular adoption.
+
+The strategic implications of these patterns suggest that successful tool implementation requires alignment between academic theory and industrial practice. The gap between popular adoption and real satisfaction implies a need for continuous adaptation and adjustment to ensure tool effectiveness in different contexts."
+
+**NOTE**: Observe the TWO blank lines between each paragraph to create 3 distinct paragraphs.
 """
 
     def _build_component_analysis(self, component: Dict[str, Any], comp_num: int) -> str:
