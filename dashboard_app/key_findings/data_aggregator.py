@@ -54,6 +54,36 @@ class DataAggregator:
         start_time = time.time()
         logging.info(f"🚀 Starting data collection for tool='{tool_name}', sources={selected_sources}, language={language}")
         
+        # Handle bilingual tool name mapping - convert display name to database name
+        # Import the necessary functions for tool name mapping
+        try:
+            from tools import get_tool_name
+            from translations import TOOL_TRANSLATIONS
+            
+            logging.info(f"🔍 Original tool_name: '{tool_name}' (language: {language})")
+            
+            # If we're in English and the tool name is in English, translate it to Spanish for database query
+            if language == 'en':
+                # Find the Spanish key for this English value
+                spanish_tool_name = None
+                for spanish_name, english_name in TOOL_TRANSLATIONS['en'].items():
+                    if english_name == tool_name:
+                        spanish_tool_name = spanish_name
+                        break
+                
+                if spanish_tool_name:
+                    logging.info(f"🔄 Translated tool name from English to Spanish: '{tool_name}' -> '{spanish_tool_name}'")
+                    tool_name = spanish_tool_name
+                else:
+                    logging.warning(f"⚠️ Could not find Spanish translation for tool '{tool_name}'")
+            
+            logging.info(f"🔍 Final tool_name for database query: '{tool_name}'")
+            
+        except ImportError as e:
+            logging.warning(f"⚠️ Could not import translation functions: {e}")
+        except Exception as e:
+            logging.error(f"❌ Error in tool name translation: {e}")
+        
         # Get raw data from database with timeout protection
         db_start_time = time.time()
         logging.info(f"📊 Querying database for tool='{tool_name}' with {len(selected_sources)} sources...")

@@ -3752,10 +3752,16 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
                 try:
                     print("📊 Starting data collection...")
-                    # Start the data collection
+                    print(f"🔍 DEBUG: Selected sources before mapping: {selected_sources}")
+                    
+                    # Convert display names to source IDs for Key Findings
+                    selected_source_ids = map_display_names_to_source_ids(selected_sources)
+                    print(f"🔍 DEBUG: Selected sources after mapping to IDs: {selected_source_ids}")
+                    
+                    # Start the data collection with source IDs instead of display names
                     analysis_data = key_findings_service.data_aggregator.collect_analysis_data(
                         tool_name=selected_tool,
-                        selected_sources=selected_sources,
+                        selected_sources=selected_source_ids,
                         language=language
                     )
 
@@ -4023,9 +4029,15 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
             # Collect comprehensive analysis data with force refresh
             print(f"📊 Collecting fresh data for {selected_tool} with {len(selected_sources)} sources")
+            print(f"🔍 DEBUG: Regenerate - Selected sources before mapping: {selected_sources}")
+            
+            # Convert display names to source IDs for Key Findings
+            selected_source_ids = map_display_names_to_source_ids(selected_sources)
+            print(f"🔍 DEBUG: Regenerate - Selected sources after mapping to IDs: {selected_source_ids}")
+            
             analysis_data = key_findings_service.data_aggregator.collect_analysis_data(
                 tool_name=selected_tool,
-                selected_sources=selected_sources,
+                selected_sources=selected_source_ids,
                 language=language
             )
 
