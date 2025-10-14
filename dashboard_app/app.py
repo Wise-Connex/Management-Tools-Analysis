@@ -3999,7 +3999,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                                         html.Strong("Insights del Patrón:", className="text-info"),
                                         html.Ul([
                                             html.Li(html.Small(insight, className="text-muted"))
-                                            for insight in self._generate_pca_insights(pattern)
+                                            for insight in _generate_pca_insights(pattern)
                                         ], className="mb-0")
                                     ], className="mb-2", style={'fontSize': '11px'})
 
