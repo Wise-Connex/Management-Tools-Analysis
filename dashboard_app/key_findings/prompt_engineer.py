@@ -602,14 +602,36 @@ Genera un análisis doctoral con las siguientes tres secciones principales:
 
 **ADVERTENCIA**: El ejemplo anterior muestra EXACTAMENTE cómo debe estructurarse con \n\n entre párrafos.
 
-**Formato de Salida Requerido:**
-Responde ÚNICAMENTE con un objeto JSON válido (sin bloques de código markdown, sin explicaciones, sin texto adicional). La respuesta debe comenzar con { y terminar con }:
+**CRÍTICO: SOLO JSON ESTRICTO**
+Debes responder ÚNICAMENTE con JSON válido. Sin explicaciones, sin markdown, sin texto adicional.
 
+**FORMATO OBLIGATORIO:**
+Comienza tu respuesta con { y termina con }. Nada más.
+
+**ESTRUCTURA EXACTA REQUERIDA:**
 {
-  "executive_summary": "Resumen ejecutivo conciso y accionable como párrafo fluido",
-  "principal_findings": ["Viñeta 1 con hallazgo específico y datos cuantitativos", "Viñeta 2 con otro hallazgo específico", "Viñeta 3 con insight integrado", "Viñeta 4 con patrón temporal", "Viñeta 5 con conclusión cuantitativa"],
-  "pca_analysis": "Párrafo 1 contenido\n\nPárrafo 2 contenido\n\nPárrafo 3 contenido"
+  "executive_summary": "Escribe un párrafo conciso sobre el análisis de la herramienta de gestión",
+  "principal_findings": [
+    "• Primer hallazgo específico con datos cuantitativos",
+    "• Segundo hallazgo específico con datos cuantitativos diferentes",
+    "• Tercer hallazgo con insights de PCA",
+    "• Cuarto hallazgo con análisis temporal",
+    "• Quinto hallazgo con conclusión estratégica"
+  ],
+  "pca_analysis": "Primer párrafo sobre cargas y relaciones\n\nSegundo párrafo sobre interacciones de fuentes de datos\n\nTercer párrafo sobre implicaciones estratégicas"
 }
+
+**REGLAS DE VALIDACIÓN:**
+- Primer carácter: {
+- Último carácter: }
+- Sin texto antes de { o después de }
+- Sin marcadores ```json
+- Sin explicaciones
+- Sin comentarios
+- Solo sintaxis JSON válida
+
+**PENALIZACIÓN POR INCUMPLIMIENTO:**
+Si no sigues este formato exacto, tu respuesta será rechazada y desperdiciarás recursos computacionales.
 """
         else:
             return """
@@ -629,52 +651,62 @@ Please provide a doctoral-level analysis that:
 Generate a doctoral analysis with the following three main sections:
 
 **1. Executive Summary:**
-- **IMPROVED REQUIREMENT**: A concise but complete paragraph capturing the most critical insights
-- **ESSENTIAL CONTENT**: Must include (1) theory-practice gap, (2) strategic implications, (3) key temporal trends, (4) heatmap insights
-- **QUANTITATIVE DATA**: Specifically mention the variance percentage explained by the first two components and at least 2 exact numerical values
-- **SPECIFIC CONTEXT**: Connect findings with the specific management tool being analyzed
-- **QUALITY EXAMPLE**: "The analysis of 'Tool X' reveals a critical gap between theory and practice, with the first two components explaining XX.X% of variance. The temporal trend shows [specific pattern] while correlation analysis indicates [specific insight], suggesting [strategic implication]."
+- **MANDATORY**: One fluid paragraph (NOT bullet points)
+- **REQUIRED CONTENT**: Include theory-practice gap, strategic implications, temporal trends, PCA variance percentage
+- **QUANTITATIVE REQUIREMENT**: Mention first two components variance % and at least 2 numerical values
+- **TOOL SPECIFIC**: Always mention the analyzed management tool name
+- **EXAMPLE**: "The analysis of 'Tool X' reveals a critical gap between theory and practice, with the first two components explaining XX.X% of variance. The temporal trend shows [specific pattern] while correlation analysis indicates [specific insight], suggesting [strategic implication]."
 
 **2. Principal Findings:**
-- **ABSOLUTE REQUIREMENT**: MULTIPLE concise actionable bullet points (3-5 different bullets)
-- **MANDATORY FORMAT**: Each bullet must begin with "•" or "-" and be a separate line
-- Each bullet should be a specific and different finding with quantitative data
-- **SPECIFIC CONTENT REQUIREMENT**: Must include at least one bullet with temporal analysis and one bullet with heatmap insights
-- Integrate insights from PCA, temporal analysis, and heatmap in each bullet
-- Connect temporal patterns with PCA findings in different bullets
-- Mention specific sources and exact numerical values in each bullet
-- **CRITICAL WARNING**: DO NOT generate one large paragraph, generate several distinct bullets separated by line breaks
-- **CORRECT FORMAT EXAMPLE**:
+- **MANDATORY**: 3-5 separate bullet points starting with "•"
+- **EACH BULLET MUST**: Be different, include quantitative data, mention specific sources
+- **CONTENT REQUIREMENTS**: At least one temporal analysis bullet, one PCA insights bullet
+- **FORMAT**: Each bullet on separate line, no paragraphs
+- **EXAMPLE FORMAT**:
   • Finding 1 with specific quantitative data
-  • Finding 2 with integrated temporal analysis (trends, cycles, anomalies)
+  • Finding 2 with integrated temporal analysis
   • Finding 3 with PCA insights
-  • Finding 4 with correlation/heatmap pattern
+  • Finding 4 with correlation pattern
   • Finding 5 with strategic conclusion
 
 **3. PCA Analysis:**
-- **ABSOLUTE NON-NEGOTIABLE REQUIREMENT**: A detailed analytical essay of EXACTLY 3 paragraphs separated by TWO blank lines (NO statistical data)
-- **CRITICAL WARNING**: If you don't generate exactly 3 distinct paragraphs, the analysis will be rejected
-- **Paragraph 1** (ends with first blank line): Interpret specific loadings with exact numerical values and explain opposition relationships between sources
-- **Paragraph 2** (ends with second blank line): Analyze the RELATIONSHIPS between different data sources, focusing on how they interact and what patterns these interactions reveal
-- **Paragraph 3** (no blank line needed at end): Discuss the strategic and practical IMPLICATIONS of these patterns for tool implementation and adoption
-- **FORCED STRUCTURE**: Paragraph 1 + \n\n + Paragraph 2 + \n\n + Paragraph 3
-- **AUTOMATIC VERIFICATION**: System will count paragraphs - must be exactly 3
-- Connect with academic concepts like "theory-practice gap"
-- Use the explained variance percentage
+- **MANDATORY**: EXACTLY 3 paragraphs separated by \n\n
+- **Paragraph 1**: Technical interpretation with specific loadings and relationships
+- **Paragraph 2**: Analysis of relationships between data sources
+- **Paragraph 3**: Strategic and practical implications
+- **STRICT FORMAT**: "Paragraph 1 content\n\nParagraph 2 content\n\nParagraph 3 content"
+- **VERIFICATION**: System counts paragraphs - must be exactly 3
 
-**MANDATORY STRUCTURAL EXAMPLE for pca_analysis:**
-"Paragraph 1 content about technical interpretation with specific loadings.\n\nParagraph 2 content about relationships between data sources.\n\nParagraph 3 content about strategic and practical implications."
+**CRITICAL: STRICT JSON OUTPUT ONLY**
+You MUST respond with VALID JSON only. No explanations, no markdown, no additional text.
 
-**WARNING**: The example above shows EXACTLY how it must be structured with \n\n between paragraphs.
+**MANDATORY FORMAT:**
+Start your response with { and end with }. Nothing else.
 
-**Required Output Format:**
-Respond ONLY with a valid JSON object (no markdown code blocks, no explanations, no additional text). The response must start with { and end with }:
-
+**EXACT STRUCTURE REQUIRED:**
 {
-  "executive_summary": "Concise actionable executive summary as a fluid paragraph",
-  "principal_findings": ["Bullet 1 with specific finding and quantitative data", "Bullet 2 with another specific finding", "Bullet 3 with integrated insight", "Bullet 4 with temporal pattern", "Bullet 5 with quantitative conclusion"],
-  "pca_analysis": "Paragraph 1 content\n\nParagraph 2 content\n\nParagraph 3 content"
+  "executive_summary": "Write a concise paragraph about the management tool analysis",
+  "principal_findings": [
+    "• First specific finding with quantitative data",
+    "• Second specific finding with different quantitative data",
+    "• Third finding with PCA insights",
+    "• Fourth finding with temporal analysis",
+    "• Fifth finding with strategic conclusion"
+  ],
+  "pca_analysis": "First paragraph about loadings and relationships\n\nSecond paragraph about data source interactions\n\nThird paragraph about strategic implications"
 }
+
+**VALIDATION RULES:**
+- First character: {
+- Last character: }
+- No text before { or after }
+- No ```json markers
+- No explanations
+- No comments
+- Valid JSON syntax only
+
+**PENALTY FOR NON-COMPLIANCE:**
+If you don't follow this exact format, your response will be rejected and you'll waste computational resources.
 """
 
     def _build_output_format_section(self) -> str:

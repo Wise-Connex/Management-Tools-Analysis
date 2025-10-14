@@ -179,25 +179,8 @@ def initialize_key_findings_service():
 
             print("✅ Key Findings service initialized successfully")
 
-            # Test model availability
-            try:
-                print("🔍 Testing model availability...")
-                import asyncio
-                loop = asyncio.new_event_loop()
-                asyncio.set_event_loop(loop)
-                availability = loop.run_until_complete(key_findings_service.ai_service.test_model_availability())
-                loop.close()
-
-                available_models = [model for model, available in availability.items() if available]
-                unavailable_models = [model for model, available in availability.items() if not available]
-
-                if available_models:
-                    print(f"✅ Available models: {', '.join(available_models)}")
-                if unavailable_models:
-                    print(f"⚠️  Unavailable models: {', '.join(unavailable_models)}")
-
-            except Exception as e:
-                print(f"⚠️  Could not test model availability: {e}")
+            # Skip model availability testing to avoid quota usage
+            print("ℹ️  Skipping model availability testing to preserve API quota")
 
         except Exception as e:
             print(f"❌ Error initializing Key Findings service: {e}")
@@ -3985,24 +3968,71 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 print(f"📄 AI response parsed - findings: {len(ai_content.get('principal_findings', []))}, "
                       f"executive summary length: {len(ai_content.get('executive_summary', ''))}")
 
-                # Helper function to extract text content from AI response
+                # Helper function to extract text content from AI response with robust parsing
                 def extract_text_content(content):
-                    """Extract text content from various data types (same as modal component)."""
+                    """Extract text content from various data types with robust malformed JSON handling."""
                     if isinstance(content, str):
-                        # Check if it's JSON formatted
-                        if content.strip().startswith('{') and content.strip().endswith('}'):
+                        # First, try to parse as pure JSON
+                        cleaned_content = content.strip()
+
+                        # Remove markdown code blocks if present
+                        if cleaned_content.startswith('```json'):
+                            cleaned_content = cleaned_content[7:]  # Remove ```json
+                        if cleaned_content.startswith('```'):
+                            cleaned_content = cleaned_content[3:]  # Remove ```
+                        if cleaned_content.endswith('```'):
+                            cleaned_content = cleaned_content[:-3]  # Remove trailing ```
+
+                        cleaned_content = cleaned_content.strip()
+
+                        # Try direct JSON parsing first
+                        if cleaned_content.startswith('{') and cleaned_content.endswith('}'):
                             try:
-                                # Try to parse as JSON and extract text
                                 import json
-                                json_data = json.loads(content)
-                                if isinstance(json_data, dict):
-                                    # Look for common text fields
+                                parsed = json.loads(cleaned_content)
+                                # Extract from parsed JSON
+                                if isinstance(parsed, dict):
                                     for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
-                                        if field in json_data and isinstance(json_data[field], str):
-                                            return json_data[field]
-                            except:
+                                        if field in parsed and isinstance(parsed[field], str):
+                                            return parsed[field]
+                            except json.JSONDecodeError:
                                 pass
+
+                        # Handle specific malformed patterns from the key findings report
+                        # Pattern 1: JSON that gets cut off mid-principal_findings array
+                        if cleaned_content.startswith('{"executive_summary":') and '"principal_findings":' in cleaned_content:
+                            # Extract executive summary
+                            import re
+                            exec_summary_match = re.search(r'"executive_summary":\s*"([^"]*(?:\\.[^"]*)*)"', cleaned_content)
+                            if exec_summary_match:
+                                return exec_summary_match.group(1).replace('\\"', '"')
+
+                        # Pattern 2: Bullet point containing JSON fragment
+                        if cleaned_content.strip().startswith('•') and '"executive_summary":' in cleaned_content:
+                            # Remove bullet point and extract JSON
+                            json_part = cleaned_content.strip()[1:].strip()
+                            if json_part.startswith('"'):
+                                json_part = json_part[1:]
+                            if json_part.endswith('"'):
+                                json_part = json_part[:-1]
+
+                            import re
+                            exec_summary_match = re.search(r'"executive_summary":\s*"(.*?)"', json_part, re.DOTALL)
+                            if exec_summary_match:
+                                return exec_summary_match.group(1).replace('\\"', '"')
+
+                        # If direct parsing fails, try to extract from markdown sections
+                        sections = extract_markdown_sections_from_content(cleaned_content)
+
+                        if sections and 'executive_summary' in sections:
+                            section_content = sections['executive_summary']
+                            # Try to extract JSON from section
+                            json_content = extract_json_from_section_content(section_content)
+                            if json_content and 'executive_summary' in json_content:
+                                return json_content['executive_summary']
+
                         return content
+
                     elif isinstance(content, dict):
                         # Extract from dictionary
                         for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
@@ -4017,8 +4047,81 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                                     return first_item[field]
                         elif isinstance(first_item, str):
                             return first_item
-                    
+
                     return str(content) if content else ''
+
+                def extract_markdown_sections_from_content(content):
+                    """Extract content from markdown sections with emoji headers."""
+                    sections = {}
+
+                    section_patterns = {
+                        'executive_summary': ['📋 Resumen Ejecutivo', '📋 Executive Summary'],
+                        'principal_findings': ['🔍 Hallazgos Principales', '🔍 Principal Findings'],
+                        'pca_analysis': ['📊 Análisis PCA', '📊 PCA Analysis']
+                    }
+
+                    lines = content.split('\n')
+                    current_section = None
+                    section_content = []
+
+                    for line in lines:
+                        line = line.strip()
+
+                        # Check if this line starts a new section
+                        section_started = False
+                        for section_key, patterns in section_patterns.items():
+                            if any(pattern in line for pattern in patterns):
+                                # Save previous section if exists
+                                if current_section and section_content:
+                                    sections[current_section] = '\n'.join(section_content).strip()
+                                    section_content = []
+
+                                current_section = section_key
+                                section_content = []
+                                section_started = True
+                                break
+
+                        if not section_started and current_section:
+                            # Continue accumulating content for current section
+                            section_content.append(line)
+
+                    # Save the last section
+                    if current_section and section_content:
+                        sections[current_section] = '\n'.join(section_content).strip()
+
+                    return sections
+
+                def extract_json_from_section_content(section_content):
+                    """Extract JSON object from section content."""
+                    # First, try to extract from markdown code blocks
+                    if '```json' in section_content:
+                        start_marker = section_content.find('```json')
+                        if start_marker != -1:
+                            start_json = section_content.find('{', start_marker)
+                            end_marker = section_content.find('```', start_marker + 7)
+                            if end_marker != -1:
+                                end_json = section_content.rfind('}', start_marker, end_marker) + 1
+                                if start_json != -1 and end_json > start_json:
+                                    json_str = section_content[start_json:end_json]
+                                    try:
+                                        import json
+                                        return json.loads(json_str)
+                                    except json.JSONDecodeError:
+                                        pass
+
+                    # Fallback: Find JSON boundaries directly
+                    start_idx = section_content.find('{')
+                    end_idx = section_content.rfind('}') + 1
+
+                    if start_idx != -1 and end_idx > start_idx:
+                        json_str = section_content[start_idx:end_idx]
+                        try:
+                            import json
+                            return json.loads(json_str)
+                        except json.JSONDecodeError:
+                            pass
+
+                    return None
 
                 # Extract text content from AI response
                 executive_summary = extract_text_content(ai_content.get('executive_summary', 'No summary available'))
@@ -4030,19 +4133,44 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     principal_findings = []
                     for finding in principal_findings_raw:
                         if isinstance(finding, dict):
-                            principal_findings.append(finding.get('bullet_point', str(finding)))
+                            bullet_point = finding.get('bullet_point', str(finding))
+                            # Clean up bullet point if it contains JSON fragments
+                            if bullet_point.startswith('•') and '"executive_summary":' in bullet_point:
+                                # This is a bullet point containing JSON - extract just the finding part
+                                import re
+                                # Look for the actual finding text after the bullet point
+                                finding_match = re.search(r'•\s*(.+)', bullet_point)
+                                if finding_match:
+                                    bullet_point = finding_match.group(1).strip()
+                            principal_findings.append(bullet_point)
                         else:
-                            principal_findings.append(str(finding))
+                            finding_text = str(finding)
+                            # Clean up if it contains JSON fragments
+                            if finding_text.startswith('•') and '"executive_summary":' in finding_text:
+                                import re
+                                finding_match = re.search(r'•\s*(.+)', finding_text)
+                                if finding_match:
+                                    finding_text = finding_match.group(1).strip()
+                            principal_findings.append(finding_text)
                     principal_findings = '\n'.join(principal_findings)
                 else:
                     principal_findings = extract_text_content(principal_findings_raw)
                 
                 # Extract PCA analysis text and split into paragraphs
                 pca_analysis_text = extract_text_content(pca_analysis_raw)
-                
+
                 # Debug: Print the raw PCA analysis text to understand its structure
                 print(f"🔍 DEBUG: Raw PCA analysis text: {pca_analysis_text[:200]}...")
-                
+
+                # Clean up PCA text - remove repeated executive summary content
+                if '"executive_summary":' in pca_analysis_text:
+                    # Remove JSON-like content that might be repeated from executive summary
+                    import re
+                    # Remove any JSON object that contains executive_summary
+                    pca_analysis_text = re.sub(r'{"executive_summary":\s*"[^"]*(?:\\.[^"]*)*".*?}', '', pca_analysis_text, flags=re.DOTALL)
+                    # Remove standalone executive_summary fields
+                    pca_analysis_text = re.sub(r'"executive_summary":\s*"[^"]*(?:\\.[^"]*)*"', '', pca_analysis_text)
+
                 # Try different splitting methods to get exactly 3 paragraphs
                 if '\n\n' in pca_analysis_text:
                     pca_paragraphs = [p.strip() for p in pca_analysis_text.split('\n\n') if p.strip()]
@@ -4079,13 +4207,13 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                             pca_analysis_text[third:2*third].strip(),
                             pca_analysis_text[2*third:].strip()
                         ]
-                
+
                 # Ensure we have exactly 3 paragraphs
                 while len(pca_paragraphs) < 3:
                     pca_paragraphs.append("Análisis adicional no disponible.")
-                
+
                 pca_paragraphs = pca_paragraphs[:3]  # Limit to exactly 3 paragraphs
-                
+
                 # Debug: Print the final paragraphs
                 print(f"🔍 DEBUG: Final PCA paragraphs count: {len(pca_paragraphs)}")
                 for i, p in enumerate(pca_paragraphs):
@@ -4249,24 +4377,71 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             ai_content = ai_response.get('content', {})
             model_used = ai_response.get('model_used', 'unknown')
 
-            # Helper function to extract text content from AI response (same as generate)
+            # Helper function to extract text content from AI response with robust parsing (same as generate)
             def extract_text_content(content):
-                """Extract text content from various data types (same as modal component)."""
+                """Extract text content from various data types with robust malformed JSON handling."""
                 if isinstance(content, str):
-                    # Check if it's JSON formatted
-                    if content.strip().startswith('{') and content.strip().endswith('}'):
+                    # First, try to parse as pure JSON
+                    cleaned_content = content.strip()
+
+                    # Remove markdown code blocks if present
+                    if cleaned_content.startswith('```json'):
+                        cleaned_content = cleaned_content[7:]  # Remove ```json
+                    if cleaned_content.startswith('```'):
+                        cleaned_content = cleaned_content[3:]  # Remove ```
+                    if cleaned_content.endswith('```'):
+                        cleaned_content = cleaned_content[:-3]  # Remove trailing ```
+
+                    cleaned_content = cleaned_content.strip()
+
+                    # Try direct JSON parsing first
+                    if cleaned_content.startswith('{') and cleaned_content.endswith('}'):
                         try:
-                            # Try to parse as JSON and extract text
                             import json
-                            json_data = json.loads(content)
-                            if isinstance(json_data, dict):
-                                # Look for common text fields
+                            parsed = json.loads(cleaned_content)
+                            # Extract from parsed JSON
+                            if isinstance(parsed, dict):
                                 for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
-                                    if field in json_data and isinstance(json_data[field], str):
-                                        return json_data[field]
-                        except:
+                                    if field in parsed and isinstance(parsed[field], str):
+                                        return parsed[field]
+                        except json.JSONDecodeError:
                             pass
+
+                    # Handle specific malformed patterns from the key findings report
+                    # Pattern 1: JSON that gets cut off mid-principal_findings array
+                    if cleaned_content.startswith('{"executive_summary":') and '"principal_findings":' in cleaned_content:
+                        # Extract executive summary
+                        import re
+                        exec_summary_match = re.search(r'"executive_summary":\s*"([^"]*(?:\\.[^"]*)*)"', cleaned_content)
+                        if exec_summary_match:
+                            return exec_summary_match.group(1).replace('\\"', '"')
+
+                    # Pattern 2: Bullet point containing JSON fragment
+                    if cleaned_content.strip().startswith('•') and '"executive_summary":' in cleaned_content:
+                        # Remove bullet point and extract JSON
+                        json_part = cleaned_content.strip()[1:].strip()
+                        if json_part.startswith('"'):
+                            json_part = json_part[1:]
+                        if json_part.endswith('"'):
+                            json_part = json_part[:-1]
+
+                        import re
+                        exec_summary_match = re.search(r'"executive_summary":\s*"(.*?)"', json_part, re.DOTALL)
+                        if exec_summary_match:
+                            return exec_summary_match.group(1).replace('\\"', '"')
+
+                    # If direct parsing fails, try to extract from markdown sections
+                    sections = extract_markdown_sections_from_content(cleaned_content)
+
+                    if sections and 'executive_summary' in sections:
+                        section_content = sections['executive_summary']
+                        # Try to extract JSON from section
+                        json_content = extract_json_from_section_content(section_content)
+                        if json_content and 'executive_summary' in json_content:
+                            return json_content['executive_summary']
+
                     return content
+
                 elif isinstance(content, dict):
                     # Extract from dictionary
                     for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
@@ -4281,8 +4456,81 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                                 return first_item[field]
                     elif isinstance(first_item, str):
                         return first_item
-                
+
                 return str(content) if content else ''
+
+            def extract_markdown_sections_from_content(content):
+                """Extract content from markdown sections with emoji headers."""
+                sections = {}
+
+                section_patterns = {
+                    'executive_summary': ['📋 Resumen Ejecutivo', '📋 Executive Summary'],
+                    'principal_findings': ['🔍 Hallazgos Principales', '🔍 Principal Findings'],
+                    'pca_analysis': ['📊 Análisis PCA', '📊 PCA Analysis']
+                }
+
+                lines = content.split('\n')
+                current_section = None
+                section_content = []
+
+                for line in lines:
+                    line = line.strip()
+
+                    # Check if this line starts a new section
+                    section_started = False
+                    for section_key, patterns in section_patterns.items():
+                        if any(pattern in line for pattern in patterns):
+                            # Save previous section if exists
+                            if current_section and section_content:
+                                sections[current_section] = '\n'.join(section_content).strip()
+                                section_content = []
+
+                            current_section = section_key
+                            section_content = []
+                            section_started = True
+                            break
+
+                    if not section_started and current_section:
+                        # Continue accumulating content for current section
+                        section_content.append(line)
+
+                # Save the last section
+                if current_section and section_content:
+                    sections[current_section] = '\n'.join(section_content).strip()
+
+                return sections
+
+            def extract_json_from_section_content(section_content):
+                """Extract JSON object from section content."""
+                # First, try to extract from markdown code blocks
+                if '```json' in section_content:
+                    start_marker = section_content.find('```json')
+                    if start_marker != -1:
+                        start_json = section_content.find('{', start_marker)
+                        end_marker = section_content.find('```', start_marker + 7)
+                        if end_marker != -1:
+                            end_json = section_content.rfind('}', start_marker, end_marker) + 1
+                            if start_json != -1 and end_json > start_json:
+                                json_str = section_content[start_json:end_json]
+                                try:
+                                    import json
+                                    return json.loads(json_str)
+                                except json.JSONDecodeError:
+                                    pass
+
+                # Fallback: Find JSON boundaries directly
+                start_idx = section_content.find('{')
+                end_idx = section_content.rfind('}') + 1
+
+                if start_idx != -1 and end_idx > start_idx:
+                    json_str = section_content[start_idx:end_idx]
+                    try:
+                        import json
+                        return json.loads(json_str)
+                    except json.JSONDecodeError:
+                        pass
+
+                return None
 
             # Extract text content from AI response
             executive_summary = extract_text_content(ai_content.get('executive_summary', 'No summary available'))
@@ -4294,19 +4542,44 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 principal_findings = []
                 for finding in principal_findings_raw:
                     if isinstance(finding, dict):
-                        principal_findings.append(finding.get('bullet_point', str(finding)))
+                        bullet_point = finding.get('bullet_point', str(finding))
+                        # Clean up bullet point if it contains JSON fragments
+                        if bullet_point.startswith('•') and '"executive_summary":' in bullet_point:
+                            # This is a bullet point containing JSON - extract just the finding part
+                            import re
+                            # Look for the actual finding text after the bullet point
+                            finding_match = re.search(r'•\s*(.+)', bullet_point)
+                            if finding_match:
+                                bullet_point = finding_match.group(1).strip()
+                        principal_findings.append(bullet_point)
                     else:
-                        principal_findings.append(str(finding))
+                        finding_text = str(finding)
+                        # Clean up if it contains JSON fragments
+                        if finding_text.startswith('•') and '"executive_summary":' in finding_text:
+                            import re
+                            finding_match = re.search(r'•\s*(.+)', finding_text)
+                            if finding_match:
+                                finding_text = finding_match.group(1).strip()
+                        principal_findings.append(finding_text)
                 principal_findings = '\n'.join(principal_findings)
             else:
                 principal_findings = extract_text_content(principal_findings_raw)
             
             # Extract PCA analysis text and split into paragraphs
             pca_analysis_text = extract_text_content(pca_analysis_raw)
-            
+
             # Debug: Print the raw PCA analysis text to understand its structure
             print(f"🔍 DEBUG: Regenerate - Raw PCA analysis text: {pca_analysis_text[:200]}...")
-            
+
+            # Clean up PCA text - remove repeated executive summary content
+            if '"executive_summary":' in pca_analysis_text:
+                # Remove JSON-like content that might be repeated from executive summary
+                import re
+                # Remove any JSON object that contains executive_summary
+                pca_analysis_text = re.sub(r'{"executive_summary":\s*"[^"]*(?:\\.[^"]*)*".*?}', '', pca_analysis_text, flags=re.DOTALL)
+                # Remove standalone executive_summary fields
+                pca_analysis_text = re.sub(r'"executive_summary":\s*"[^"]*(?:\\.[^"]*)*"', '', pca_analysis_text)
+
             # Try different splitting methods to get exactly 3 paragraphs
             if '\n\n' in pca_analysis_text:
                 pca_paragraphs = [p.strip() for p in pca_analysis_text.split('\n\n') if p.strip()]
@@ -4343,13 +4616,13 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                         pca_analysis_text[third:2*third].strip(),
                         pca_analysis_text[2*third:].strip()
                     ]
-            
+
             # Ensure we have exactly 3 paragraphs
             while len(pca_paragraphs) < 3:
                 pca_paragraphs.append("Análisis adicional no disponible.")
-            
+
             pca_paragraphs = pca_paragraphs[:3]  # Limit to exactly 3 paragraphs
-            
+
             # Debug: Print the final paragraphs
             print(f"🔍 DEBUG: Regenerate - Final PCA paragraphs count: {len(pca_paragraphs)}")
             for i, p in enumerate(pca_paragraphs):
