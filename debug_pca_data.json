@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-10-13T21:58:28.238503",
+  "tool_name": "Alianzas y Capital de Riesgo",
+  "selected_sources": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "source_display_names": [
+    "GT_Talento_y_Compromiso_9324.csv",
+    "Source_2",
+    "Source_3",
+    "Source_4",
+    "Source_5"
+  ],
+  "combined_dataset_info": {
+    "shape": [
+      888,
+      5
+    ],
+    "columns": [
+      "Google Trends",
+      "Google Books",
+      "Bain Usability",
+      "Crossref",
+      "Bain Satisfaction"
+    ],
+    "date_range": {
+      "start": "1950-01-01",
+      "end": "2023-12-01"
+    },
+    "sample_data": {
+      "Google Trends": {
+        

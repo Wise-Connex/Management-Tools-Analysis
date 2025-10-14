@@ -202,6 +202,13 @@ providing a comprehensive view of the management tool's behavior over time.
 
         # Extract variable relationships for narrative
         variable_relationships = self._extract_variable_relationships(pca_insights)
+        
+        # Check for data quality issues
+        sources_count = len(components[0].get('loadings', {})) if components else 0
+        has_quality_issues = variance_explained < 10 or sources_count < 2
+
+        # Build detailed PCA analysis with specific numerical insights
+        detailed_pca_analysis = self._build_detailed_pca_narrative(components, tool_name, variance_explained)
 
         if self.language == 'es':
             section = f"""
@@ -211,23 +218,29 @@ providing a comprehensive view of the management tool's behavior over time.
 - Herramienta de Gestión Analizada: {tool_name}
 - Varianza Total Explicada: {variance_explained:.1f}%
 - Componentes Principales Identificados: {len(components)}
+- Fuentes de Datos Disponibles: {sources_count}
 
-**INSTRUCCIONES PARA ANÁLISIS PCA:**
+{detailed_pca_analysis}
 
-Proporciona una sola narrativa unificada que fusione insights desde una perspectiva [estratégica empresarial] con una perspectiva [académica/organizacional].
+**INSTRUCCIONES ESPECÍFICAS PARA ANÁLISIS PCA DETALLADO:**
 
-Tu análisis debe enfocarse en la historia central que los datos cuentan, especialmente las relaciones clave y tensiones entre factores como {variable_relationships}.
+Basado en los datos numéricos anteriores, genera una narrativa unificada que:
 
-Asegúrate de fundamentar todas las conclusiones incorporando datos numéricos específicos de las gráficas, tales como cargas de componentes y el porcentaje de varianza explicada.
+1. **Interprete las cargas específicas**: Usa los valores numéricos exactos (ej: "Google Trends con carga de +0.45")
+2. **Explique las relaciones de oposición**: Cuando una fuente tiene carga positiva y otra negativa, explica esta tensión
+3. **Conecte con la teoría de gestión**: Relaciona los patrones con conceptos académicos como "brecha teoría-práctica"
+4. **Use el porcentaje de varianza**: Menciona específicamente "los primeros dos componentes explican el XX.X% de la varianza"
+5. **Genere insights ejecutivos**: Traduce los hallazgos técnicos implicaciones prácticas para negocios
 
-**Ejemplo de Estructura Narrativa:**
-- Comienza con el poder del PCA (componentes que capturan X% de varianza)
-- Identifica dinámicas clave (ej: "dinámica de adopción" con correlaciones específicas)
-- Muestra relaciones inversas que crean "trampas" (cargas negativas específicas)
-- Revela cómo diferentes discursos operan en ejes distintos
-- Conecta con brechas teoría-práctica usando datos numéricos
+**Ejemplo del Formato Esperado:**
+"Este PCA es particularmente poderoso porque sus primeros dos componentes (los ejes horizontal y vertical) capturan y explican un XX.X% combinado de la varianza total en los datos. Esto proporciona una narrativa clara y unificada sobre el viaje peligroso que una metodología de gestión como {tool_name} toma desde la teoría académica hasta la práctica industrial, destacando la brecha crítica entre teoría y práctica.
 
-**Patrones Dominantes Identificados:**
+El análisis primero revela una 'dinámica de adopción'. El interés público en {tool_name} (Google Trends) y la facilidad de uso percibida de sus herramientas (Bain - Usabilidad) están estrechamente correlacionados, ambos mostrando fuerte influencia positiva a lo largo de los ejes de componentes principales. Por ejemplo, Google Trends tiene una carga positiva fuerte de aproximadamente +0.XX en el eje horizontal principal (PC1). Esto confirma numéricamente que a medida que {tool_name} se empaqueta en marcos accesibles, gana tracción en el mundo empresarial, un patrón clásico descrito en modelos académicos de difusión de innovación.
+
+Sin embargo, esta popularidad crea una trampa. El PCA revela una relación inversa poderosa: Bain - Satisfacción aparece en oposición directa a esta tendencia de crecimiento, con una carga negativa fuerte de aproximadamente -0.XX en PC1. Este contraste numérico stark visualiza un modo de falla crítico. A medida que el impulso por herramientas simplificadas y populares impulsa la dinámica en una dirección (positiva en PC1), la satisfacción se jala en la dirección completamente opuesta. Desde una perspectiva académica, esto es un fracaso de fidelidad de implementación; para líderes industriales, es una advertencia respaldada por datos de que adoptar los aspectos superficiales de {tool_name} lleva a un fracaso predecible.
+
+Finalmente, el análisis muestra que el discurso académico riguroso sobre {tool_name} (Crossref.org) opera en un eje de influencia completamente diferente. Tiene la carga individual más alta en el eje vertical (+0.XX en PC2) mientras está negativamente asociado con el eje de tendencia principal (-0.XX en PC1). Esta posición perpendicular confirma numéricamente que la conversación académica está desconectada del ciclo de hype de practicantes. El verdadero éxito, sugiere el gráfico, radica en conectar estos mundos—usando principios rigurosos para informar la práctica en lugar de simplemente seguir una tendencia popular que lleva a la insatisfacción."
+
 """
         else:
             section = f"""
@@ -237,23 +250,57 @@ Asegúrate de fundamentar todas las conclusiones incorporando datos numéricos e
 - Management Tool Analyzed: {tool_name}
 - Total Variance Explained: {variance_explained:.1f}%
 - Principal Components Identified: {len(components)}
+- Data Sources Available: {sources_count}
 
-**PCA ANALYSIS INSTRUCTIONS:**
+"""
+            
+            # Add specific guidance for low-quality data scenarios
+            if has_quality_issues:
+                section += f"""
+**⚠️ IMPORTANT NOTE: LIMITED DATA QUALITY**
 
-Provide a single, unified narrative that fuses insights from a [strategic business] viewpoint with a [academic/organizational culture] viewpoint.
+The current analysis shows significant limitations:
+- Very low variance explained ({variance_explained:.1f}%)
+- {sources_count} data source(s) available
 
-Your analysis should focus on the core story the data tells, especially the key relationships and tensions between factors like {variable_relationships}.
+**Specific Instructions for This Scenario:**
+1. **Focus on identifying data problems** rather than patterns
+2. **Suggest specific improvements** for data quality
+3. **Recommend additional sources** that could enrich the analysis
+4. **Provide strategic insights** based on current limitations
+5. **Be honest about limitations** but provide executive value
 
-Be sure to ground all conclusions by incorporating specific numerical data from the graphs, such as component loadings and the percentage of variance explained.
+**Example of Expected Analysis:**
+"The current PCA analysis is limited by {sources_count} data source(s), explaining only {variance_explained:.1f}% of variance. This suggests the need to incorporate additional sources like [suggest specific sources] for a more comprehensive view. Meanwhile, available data indicates [extract any possible insight]..."
 
-**Narrative Structure Example:**
-- Start with PCA power (components capturing X% of variance)
-- Identify key dynamics (e.g., "adoption dynamic" with specific correlations)
-- Show inverse relationships creating "traps" (specific negative loadings)
-- Reveal how different discourses operate on different axes
-- Connect to theory-practice gaps using numerical data
+"""
+            
+            # Build detailed PCA analysis with specific numerical insights
+            detailed_pca_analysis = self._build_detailed_pca_narrative(components, tool_name, variance_explained)
+            
+            # Continue with regular PCA instructions
+            section += f"""
+{detailed_pca_analysis}
 
-**Dominant Patterns Identified:**
+**SPECIFIC INSTRUCTIONS FOR DETAILED PCA ANALYSIS:**
+
+Based on the numerical data above, generate a unified narrative that:
+
+1. **Interprets specific loadings**: Use exact numerical values (e.g., "Google Trends with loading of +0.45")
+2. **Explains opposition relationships**: When one source has positive and another negative loading, explain this tension
+3. **Connects with management theory**: Relate patterns to academic concepts like "theory-practice gap"
+4. **Uses variance percentage**: Specifically mention "the first two components explain XX.X% of variance"
+5. **Generates executive insights**: Translate technical findings into practical business implications
+
+**Expected Format Example:**
+"This PCA is particularly powerful because its first two components (the horizontal and vertical axes) capture and explain a combined XX.X% of the total variance in the data. This provides a clear, unified narrative about the perilous journey a management methodology like {tool_name} takes from academic theory to industry practice, highlighting the critical theory-practice gap.
+
+The analysis first reveals an 'adoption dynamic.' The public interest in {tool_name} (Google Trends) and the perceived ease-of-use of its tools (Bain - Usabilidad) are closely correlated, both showing strong positive influence along the principal component axes. For instance, Google Trends has a strong positive loading of approximately +0.XX on the main horizontal axis (PC1). This numerically confirms that as {tool_name} is packaged into accessible frameworks, it gains traction in the business world, a classic pattern described in academic models of innovation diffusion.
+
+However, this popularity creates a trap. The PCA reveals a powerful inverse relationship: Bain - Satisfacción appears in direct opposition to this growth trend, with a strong negative loading of approximately -0.XX on PC1. This stark numerical contrast visualizes a critical failure mode. As the push for simplified, popular tools drives the dynamic in one direction (positive on PC1), satisfaction is pulled in the complete opposite direction. From an academic view, this is a failure of implementation fidelity; for industry leaders, it's a data-backed warning that adopting the superficial aspects of {tool_name} leads to predictable failure.
+
+Finally, the analysis shows that the rigorous academic discourse on {tool_name} (Crossref.org) operates on an entirely different axis of influence. It has the single highest loading on the vertical axis (+0.XX on PC2) while being negatively associated with the main trend axis (-0.XX on PC1). This perpendicular position numerically confirms that the academic conversation is disconnected from the practitioner hype cycle. True success, the chart suggests, lies in bridging these worlds—using rigorous principles to inform practice rather than simply following a popular trend that leads to dissatisfaction."
+
 """
 
         for i, component in enumerate(components[:3]):
@@ -827,6 +874,96 @@ Connect these findings with temporal trends to explain the evolution of these pa
                 return ', '.join([f"'{var}'" for var in unique_vars])
 
         return default_vars[self.language]
+
+    def _build_detailed_pca_narrative(self, components: List[Dict[str, Any]], tool_name: str, variance_explained: float) -> str:
+        """Build detailed PCA narrative with specific numerical insights."""
+        if not components:
+            return ""
+        
+        narrative = f"""
+**ANÁLISIS NUMÉRICO DETALLADO DE COMPONENTES:**
+
+"""
+        
+        # Analyze first two components in detail
+        for i, component in enumerate(components[:2]):
+            comp_num = i + 1
+            variance = component.get('variance_explained', 0)
+            interpretation = component.get('interpretation', '')
+            loadings = component.get('loadings', {})
+            
+            narrative += f"""
+**Componente {comp_num} ({variance:.1f}% varianza explicada):**
+{interpretation}
+
+**Cargas Específicas:**
+"""
+            
+            # Sort loadings by absolute value for emphasis
+            sorted_loadings = sorted(loadings.items(), key=lambda x: abs(x[1]), reverse=True)
+            
+            for source, loading in sorted_loadings:
+                direction = "positiva" if loading > 0 else "negativa" if loading < 0 else "neutral"
+                strength = "fuerte" if abs(loading) >= 0.4 else "moderada" if abs(loading) >= 0.2 else "débil"
+                narrative += f"- {source}: carga {direction} {strength} de {loading:.3f}\n"
+            
+            # Add specific insights for this component
+            if i == 0:  # PC1
+                positive_sources = [src for src, loading in loadings.items() if loading > 0.2]
+                negative_sources = [src for src, loading in loadings.items() if loading < -0.2]
+                
+                if positive_sources and negative_sources:
+                    narrative += f"""
+**Relación de Oposición en PC1:**
+- Fuentes con influencia positiva: {', '.join(positive_sources)}
+- Fuentes con influencia negativa: {', '.join(negative_sources)}
+- Esto sugiere una tensión entre popularidad/acceso y satisfacción/efectividad
+"""
+                elif len(positive_sources) >= 2:
+                    narrative += f"""
+**Patrón de Alineación en PC1:**
+- Fuentes trabajando en sinergia: {', '.join(positive_sources)}
+- Indica un patrón coherente de adopción o interés
+"""
+            
+            elif i == 1:  # PC2
+                # Identify perpendicular/independent factors
+                independent_sources = [src for src, loading in loadings.items() if abs(loading) >= 0.2]
+                if independent_sources:
+                    narrative += f"""
+**Factores Independientes en PC2:**
+- Fuentes con influencia única: {', '.join(independent_sources)}
+- Representa dimensiones ortogonales al patrón principal
+"""
+        
+        # Add combined variance analysis
+        if len(components) >= 2:
+            combined_variance = components[0].get('variance_explained', 0) + components[1].get('variance_explained', 0)
+            narrative += f"""
+**ANÁLISIS COMBINADO DE PRIMEROS DOS COMPONENTES:**
+- Varianza combinada explicada: {combined_variance:.1f}%
+- """
+            
+            if combined_variance >= 70:
+                narrative += "Poder explicativo excelente para análisis robusto"
+            elif combined_variance >= 50:
+                narrative += "Poder explicativo bueno para insights significativos"
+            else:
+                narrative += "Poder explicativo moderado, requiere interpretación cuidadosa"
+        
+        # Add specific guidance for narrative construction
+        narrative += f"""
+
+**GUÍA PARA CONSTRUIR LA NARRATIVA:**
+1. Usa los valores numéricos exactos de cargas (ej: +0.387, -0.380)
+2. Explica la tensión entre fuentes con cargas opuestas
+3. Conecta PC1 con "dinámicas de adopción popular" vs "satisfacción real"
+4. Conecta PC2 con "factores académicos/independientes" vs "factores comerciales"
+5. Menciona específicamente el {combined_variance if len(components) >= 2 else variance_explained:.1f}% de varianza explicada
+6. Relaciona con la brecha teoría-práctica en gestión organizacional
+"""
+        
+        return narrative
 
     def _load_templates(self) -> Dict[str, Dict[str, str]]:
         """Load bilingual prompt templates."""

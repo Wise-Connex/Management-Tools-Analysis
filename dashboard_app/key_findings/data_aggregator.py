@@ -155,10 +155,10 @@ class DataAggregator:
                 'sources_count': len(selected_sources)
             }
         
-        # Create combined dataset
+        # Create combined dataset with Key Findings specific method
         combine_start_time = time.time()
-        logging.info(f"🔄 Creating combined dataset from {len(datasets_norm)} sources...")
-        combined_dataset = self._create_combined_dataset(datasets_norm, sl_sc)
+        logging.info(f"🔄 Creating Key Findings combined dataset from {len(datasets_norm)} sources...")
+        combined_dataset = self._create_combined_dataset(datasets_norm, sl_sc, tool_name)
         combine_time = time.time() - combine_start_time
         logging.info(f"✅ Combined dataset created in {combine_time:.2f}s - shape: {combined_dataset.shape}")
 
@@ -171,6 +171,21 @@ class DataAggregator:
                 'language': language,
                 'data_points_analyzed': 0,
                 'sources_count': len(selected_sources)
+            }
+        
+        # Key Findings specific validation
+        if len(combined_dataset.columns) < 2:
+            available_sources = list(combined_dataset.columns)
+            logging.warning(f"⚠️ Key Findings: Insufficient data sources for '{tool_name}'. Got {len(combined_dataset.columns)}, expected 2+")
+            return {
+                'error': f"Key Findings requires at least 2 data sources for meaningful PCA analysis. Tool '{tool_name}' has {len(combined_dataset.columns)} source(s): {available_sources}",
+                'tool_name': tool_name,
+                'selected_sources': selected_sources,
+                'language': language,
+                'data_points_analyzed': len(combined_dataset),
+                'sources_count': len(combined_dataset.columns),
+                'available_sources': available_sources,
+                'recommendation': "Verify that data exists for this tool across multiple sources in the database"
             }
         
         # Extract PCA insights
@@ -322,8 +337,8 @@ class DataAggregator:
 
                 dominant_patterns.append({
                     'component': f'PC{i+1}',
-                    'variance_explained': float(explained_variance[i]),
-                    'cumulative_variance': float(cumulative_variance[i]),
+                    'variance_explained': float(explained_variance[i] * 100),
+                    'cumulative_variance': float(cumulative_variance[i] * 100),
                     'dominant_sources': top_sources,
                     'loadings': dict(zip(list(data.columns), component_loadings.tolist())),
                     'interpretation': component_analysis['interpretation'],
@@ -334,7 +349,7 @@ class DataAggregator:
             
             return {
                 'components_analyzed': n_components,
-                'total_variance_explained': float(np.sum(explained_variance)),
+                'total_variance_explained': float(np.sum(explained_variance) * 100),
                 'variance_by_component': explained_variance.tolist(),
                 'cumulative_variance': cumulative_variance.tolist(),
                 'dominant_patterns': dominant_patterns,
@@ -593,9 +608,14 @@ class DataAggregator:
         
         return anonymized
 
-    def _create_combined_dataset(self, datasets_norm: Dict[int, pd.DataFrame], 
-                              sl_sc: List[int]) -> pd.DataFrame:
+    def _create_combined_dataset(self, datasets_norm: Dict[int, pd.DataFrame],
+                              sl_sc: List[int], tool_name: str = None) -> pd.DataFrame:
         """Create combined dataset from normalized data."""
+        # Use Key Findings specific method if tool_name is provided
+        if tool_name:
+            return self._create_combined_dataset_key_findings(datasets_norm, sl_sc, tool_name)
+        
+        # Original method for other components
         combined_data = pd.DataFrame()
         
         # Get all unique dates from all datasets
@@ -631,6 +651,116 @@ class DataAggregator:
                 combined_data[source_name] = aligned_data.iloc[:, 0] if len(aligned_data.columns) > 0 else aligned_data
         
         return combined_data.dropna(how='all')  # Remove rows where all sources are NaN
+
+    def _create_combined_dataset_key_findings(self, datasets_norm: Dict[int, pd.DataFrame],
+                                          sl_sc: List[int], tool_name: str) -> pd.DataFrame:
+        """Create combined dataset specifically for Key Findings with correct database mapping."""
+        
+        logging.info(f"🔍 Key Findings - Creating dataset for tool '{tool_name}' with sources {sl_sc}")
+        
+        # Map source IDs to table names and display names
+        source_to_table = {
+            1: ("google_trends", "Google Trends"),
+            2: ("google_books", "Google Books"),
+            3: ("bain_usability", "Bain Usability"),
+            4: ("crossref", "Crossref"),
+            5: ("bain_satisfaction", "Bain Satisfaction")
+        }
+        
+        # Create combined dataset with proper source names
+        combined_data = pd.DataFrame()
+        
+        # Get all unique dates from all datasets
+        all_dates = set()
+        for source_data in datasets_norm.values():
+            if source_data is not None and not source_data.empty:
+                all_dates.update(source_data.index)
+        
+        if not all_dates:
+            logging.warning(f"⚠️ Key Findings - No dates found for tool '{tool_name}'")
+            return pd.DataFrame()
+        
+        # Sort dates
+        all_dates = sorted(list(all_dates))
+        
+        # Create DataFrame with all dates
+        combined_data = pd.DataFrame(index=all_dates)
+        
+        # Add data from each source with correct names
+        sources_found = []
+        for source_id in sl_sc:
+            if source_id in datasets_norm and source_id in source_to_table:
+                table_name, display_name = source_to_table[source_id]
+                source_data = datasets_norm[source_id]
+                
+                # Reindex to match all dates
+                aligned_data = source_data.reindex(all_dates)
+                combined_data[display_name] = aligned_data.iloc[:, 0] if len(aligned_data.columns) > 0 else aligned_data
+                sources_found.append(display_name)
+                logging.info(f"✅ Key Findings - Added source '{display_name}' (table: {table_name}) for tool '{tool_name}'")
+        
+        result = combined_data.dropna(how='all')
+        logging.info(f"🎉 Key Findings - Created dataset for '{tool_name}': shape {result.shape}, sources: {sources_found}")
+        
+        # Validate data quality
+        if len(result.columns) < 2:
+            logging.warning(f"⚠️ Key Findings - Only {len(result.columns)} source(s) available for '{tool_name}': {list(result.columns)}")
+        
+        # Check for data mismatches
+        if len(result.columns) > 0 and self._is_data_mismatch(tool_name, str(result.columns[0])):
+            logging.warning(f"⚠️ Key Findings - Data mismatch detected: tool '{tool_name}' -> data '{list(result.columns)[0]}'")
+        
+        return result
+
+    def _is_data_mismatch(self, tool_name: str, data_source_name: str) -> bool:
+        """Check if the loaded data matches the requested tool (multilingual support)."""
+        
+        # Common mismatch patterns in multiple languages
+        tool_keywords = {
+            'Capital': {
+                'es': ['capital', 'inversión', 'financiamiento', 'riesgo', 'inversion'],
+                'en': ['capital', 'investment', 'financing', 'risk', 'venture']
+            },
+            'Alianzas': {
+                'es': ['alianza', 'sociedad', 'colaboración', 'asociación', 'partnership'],
+                'en': ['alliance', 'partnership', 'collaboration', 'association', 'joint venture']
+            },
+            'Talento': {
+                'es': ['talento', 'compromiso', 'empleados', 'rrhh', 'personal'],
+                'en': ['talent', 'commitment', 'employees', 'hr', 'personnel']
+            },
+            'Calidad': {
+                'es': ['calidad', 'mejora', 'excelencia', 'seis sigma', 'six sigma'],
+                'en': ['quality', 'improvement', 'excellence', 'six sigma']
+            },
+            'Procesos': {
+                'es': ['proceso', 'reingeniería', 'optimización', 'flujo', 'procesos'],
+                'en': ['process', 'reengineering', 'optimization', 'flow', 'processes']
+            },
+            'Benchmarking': {
+                'es': ['benchmark', 'comparación', 'referencia', 'benchmarking'],
+                'en': ['benchmark', 'comparison', 'reference', 'benchmarking']
+            },
+            'Gestión': {
+                'es': ['gestión', 'administración', 'manejo', 'management'],
+                'en': ['management', 'administration', 'handling']
+            },
+            'Innovación': {
+                'es': ['innovación', 'creatividad', 'nuevas ideas', 'innovación'],
+                'en': ['innovation', 'creativity', 'new ideas', 'innovation']
+            }
+        }
+        
+        # Check if tool name keywords don't match data source name
+        for category, lang_keywords in tool_keywords.items():
+            # Check in both Spanish and English
+            for lang, keywords in lang_keywords.items():
+                if any(keyword.lower() in tool_name.lower() for keyword in [category.lower()] + keywords):
+                    # Tool belongs to this category, check if data matches
+                    if not any(keyword.lower() in data_source_name.lower() for keyword in keywords):
+                        return True
+        
+        return False
 
     def _create_data_summary(self, data: pd.DataFrame) -> Dict[str, Any]:
         """Create summary of anonymized data for AI analysis."""
