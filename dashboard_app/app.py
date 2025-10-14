@@ -136,7 +136,7 @@ def initialize_key_findings_service():
             print("🔍 DEBUG: Importing Key Findings components...")
             from key_findings.key_findings_service import KeyFindingsService
             from key_findings.database_manager import KeyFindingsDBManager
-            from key_findings.ai_service import get_openrouter_service
+            from key_findings.unified_ai_service import get_unified_ai_service
             from key_findings.data_aggregator import DataAggregator
             from key_findings.prompt_engineer import PromptEngineer
 
@@ -147,10 +147,12 @@ def initialize_key_findings_service():
             print("🔍 DEBUG: Initializing Key Findings database manager...")
             key_findings_service.kf_db_manager = KeyFindingsDBManager(db_path)
 
-            # Initialize AI service
-            print("🔍 DEBUG: Initializing AI service...")
-            api_key = os.getenv('OPENROUTER_API_KEY')
-            key_findings_service.ai_service = get_openrouter_service(api_key, config)
+            # Initialize Unified AI service (Groq primary, OpenRouter fallback)
+            print("🔍 DEBUG: Initializing Unified AI service...")
+            groq_api_key = os.getenv('GROQ_API_KEY')
+            openrouter_api_key = os.getenv('OPENROUTER_API_KEY')
+            from key_findings.unified_ai_service import get_unified_ai_service
+            key_findings_service.ai_service = get_unified_ai_service(groq_api_key, openrouter_api_key, config)
 
             # Initialize data aggregator
             print("🔍 DEBUG: Initializing data aggregator...")
@@ -3981,13 +3983,6 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                                      f"Rango temporal: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
                                      className="text-muted")
                         ], style={'marginBottom': '15px'})
-                    ]),
-
-                    # Data Quality
-                    html.Div([
-                        html.H6("Calidad de Datos", className="text-muted mb-2"),
-                        html.Small(f"Puntuación general: {analysis_data.get('data_quality', {}).get('overall_score', 0):.1f}/100",
-                                 className="text-muted")
                     ])
                 ])
 
@@ -4143,13 +4138,6 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                                  f"Rango temporal: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
                                  className="text-muted")
                     ], style={'marginBottom': '15px'})
-                ]),
-
-                # Data Quality
-                html.Div([
-                    html.H6("Calidad de Datos", className="text-muted mb-2"),
-                    html.Small(f"Puntuación general: {analysis_data.get('data_quality', {}).get('overall_score', 0):.1f}/100",
-                             className="text-muted")
                 ])
             ])
 

@@ -15,7 +15,7 @@ from pathlib import Path
 
 # Import Key Findings components
 from .database_manager import KeyFindingsDBManager
-from .ai_service import OpenRouterService, get_openrouter_service
+from .unified_ai_service import UnifiedAIService, get_unified_ai_service
 from .data_aggregator import DataAggregator
 from .prompt_engineer import PromptEngineer
 from .modal_component import KeyFindingsModal
@@ -31,13 +31,14 @@ class KeyFindingsService:
     to provide doctoral-level insights with optimal performance.
     """
 
-    def __init__(self, db_manager, api_key: str = None, config: Dict[str, Any] = None):
+    def __init__(self, db_manager, groq_api_key: str = None, openrouter_api_key: str = None, config: Dict[str, Any] = None):
         """
         Initialize Key Findings service.
         
         Args:
             db_manager: Main database manager instance
-            api_key: OpenRouter API key (optional)
+            groq_api_key: Groq API key (optional)
+            openrouter_api_key: OpenRouter API key (optional)
             config: Configuration dictionary
         """
         self.db_manager = db_manager
@@ -46,8 +47,8 @@ class KeyFindingsService:
         db_path = config.get('key_findings_db_path', '/app/data/key_findings.db') if config else '/app/data/key_findings.db'
         self.kf_db_manager = KeyFindingsDBManager(db_path)
         
-        # Initialize AI service
-        self.ai_service = get_openrouter_service(api_key, config)
+        # Initialize Unified AI service (Groq primary, OpenRouter fallback)
+        self.ai_service = get_unified_ai_service(groq_api_key, openrouter_api_key, config)
         
         # Initialize data aggregator
         self.data_aggregator = DataAggregator(db_manager, self.kf_db_manager)
