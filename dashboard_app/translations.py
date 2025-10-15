@@ -25,7 +25,7 @@ TRANSLATIONS = {
         'fourier_analysis': '5. Análisis de Fourier (Periodograma)',
         'correlation_heatmap': '6. Mapa de Calor (Correlación)',
         'regression_analysis': '7. Análisis de Regresión',
-        'pca_analysis': '8. Análisis PCA (Cargas y Componentes)',
+        'pca_analysis': 'Análisis PCA (Cargas y Componentes)',
 
         # Time Range Buttons
         'all': 'Todo',
@@ -284,7 +284,7 @@ TRANSLATIONS = {
         'fourier_analysis': '5. Fourier Analysis (Periodogram)',
         'correlation_heatmap': '6. Correlation Heatmap',
         'regression_analysis': '7. Regression Analysis',
-        'pca_analysis': '8. PCA Analysis (Loadings and Components)',
+        'pca_analysis': 'PCA Analysis (Loadings and Components)',
 
         # Time Range Buttons
         'all': 'All',
@@ -513,6 +513,8 @@ TRANSLATIONS = {
         'generation_date': 'Generation Date:',
         'previous_accesses': 'Previous Accesses:',
         'depth': 'Depth:',
+        'executive_summary': 'Executive Summary',
+        'principal_findings': 'Key Findings',
     }
 }
 
