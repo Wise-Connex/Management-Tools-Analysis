@@ -3218,6 +3218,25 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
         else:
             title_text = base_title
 
+        # Create source annotation with current URL
+        url_to_show = "https://management-tools-analysis.com"  # Default URL for now
+        source_text = get_text('source', language) + " " + url_to_show
+        source_annotation = dict(
+            text=source_text,
+            xref="paper",
+            yref="paper",
+            x=0.02,  # Bottom left corner
+            y=0.02,
+            showarrow=False,
+            font=dict(
+                size=8,  # Very small font
+                color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+                family="Arial, sans-serif"
+            ),
+            xanchor="left",
+            yanchor="bottom"
+        )
+
         fig.update_layout(
             title=title_text,
             scene=dict(
@@ -3225,7 +3244,8 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
                 yaxis_title=y_axis,
                 zaxis_title=z_axis
             ),
-            height=600
+            height=600,
+            annotations=[source_annotation]
         )
         return fig
     except Exception as e:
@@ -3298,7 +3318,26 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
         else:
             title_text = base_title
 
-        fig.update_layout(height=600, title=title_text, showlegend=False)
+        # Create source annotation with current URL
+        url_to_show = "https://management-tools-analysis.com"  # Default URL for now
+        source_text = get_text('source', language) + " " + url_to_show
+        source_annotation = dict(
+            text=source_text,
+            xref="paper",
+            yref="paper",
+            x=0.02,  # Bottom left corner
+            y=0.02,
+            showarrow=False,
+            font=dict(
+                size=8,  # Very small font
+                color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+                family="Arial, sans-serif"
+            ),
+            xanchor="left",
+            yanchor="bottom"
+        )
+
+        fig.update_layout(height=600, title=title_text, showlegend=False, annotations=[source_annotation])
         return fig
     except Exception as e:
         return {}
@@ -3579,6 +3618,25 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
         else:
             title_text = base_title
 
+        # Create source annotation with current URL
+        url_to_show = "https://management-tools-analysis.com"  # Default URL for now
+        source_text = get_text('source', language) + " " + url_to_show
+        source_annotation = dict(
+            text=source_text,
+            xref="paper",
+            yref="paper",
+            x=0.02,  # Bottom left corner
+            y=0.02,
+            showarrow=False,
+            font=dict(
+                size=8,  # Very small font
+                color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+                family="Arial, sans-serif"
+            ),
+            xanchor="left",
+            yanchor="bottom"
+        )
+
         # Update layout with increased height for legend and equations
         fig.update_layout(
             title={
@@ -3598,7 +3656,8 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
                 y=-0.2,  # Moved 2 lines below the graph
                 xanchor="center",
                 x=0.5
-            )
+            ),
+            annotations=[source_annotation]
         )
 
         # Store annotation text for later use
@@ -3950,6 +4009,25 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources,
         else:
             title_text = base_title
 
+        # Create source annotation with current URL
+        url_to_show = "https://management-tools-analysis.com"  # Default URL for now
+        source_text = get_text('source', language) + " " + url_to_show
+        source_annotation = dict(
+            text=source_text,
+            xref="paper",
+            yref="paper",
+            x=0.02,  # Bottom left corner
+            y=0.02,
+            showarrow=False,
+            font=dict(
+                size=8,  # Very small font
+                color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+                family="Arial, sans-serif"
+            ),
+            xanchor="left",
+            yanchor="bottom"
+        )
+
         # Update layout
         fig.update_layout(
             title={
@@ -3977,7 +4055,8 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources,
             ),
             yaxis=dict(
                 autorange=True
-            )
+            ),
+            annotations=[source_annotation]
         )
         
         return fig
