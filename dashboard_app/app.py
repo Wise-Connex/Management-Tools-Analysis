@@ -652,7 +652,8 @@ sidebar = html.Div([
                 color="info",
                 size="sm",
                 className="w-100 mb-2",
-                style={'fontSize': '12px', 'fontWeight': 'bold'}
+                style={'fontSize': '12px', 'fontWeight': 'bold'},
+                disabled=False
             )
         ], id="key-findings-button-container", style={'display': 'none', 'marginTop': '10px', 'marginBottom': '15px'}),
         html.Div(id='navigation-section', style={'display': 'none'})
@@ -839,6 +840,7 @@ app.layout = dbc.Container([
             }),
             dcc.Store(id='data-sources-store-v2', data=[]),
             dcc.Store(id='language-store', data='es'),  # Default to Spanish
+            dcc.Store(id='key-findings-button-state', data='idle'),
             dcc.Loading(
                 id="loading-main-content",
                 type="circle",
@@ -862,7 +864,7 @@ app.layout = dbc.Container([
     # Add Key Findings modal
     dbc.Modal(
         [
-            dbc.ModalHeader(dbc.ModalTitle("🧠 Key Findings - Análisis", id="key-findings-modal-title")),
+            dbc.ModalHeader(dbc.ModalTitle(get_text('key_findings_modal_title', 'es'), id="key-findings-modal-title")),
             dbc.ModalBody(id="key-findings-modal-body"),
             dbc.ModalFooter(
                 [
@@ -1213,14 +1215,49 @@ def update_credits_button_text(language):
     """Update credits button text based on language"""
     return get_text('credits', language) + " "
 
-# Callback to update Key Findings button text based on language
+# Callback to update Key Findings button text based on language and state
 @app.callback(
     Output('key-findings-button-text', 'children'),
-    Input('language-store', 'data')
+    Output('generate-key-findings-btn', 'disabled'),
+    Output('generate-key-findings-btn', 'style'),
+    Output('key-findings-button-state', 'data'),
+    Input('language-store', 'data'),
+    Input('generate-key-findings-btn', 'n_clicks'),
+    Input('close-key-findings-modal', 'n_clicks'),
+    State('key-findings-button-state', 'data')
 )
-def update_key_findings_button_text(language):
-    """Update Key Findings button text based on language"""
-    return get_text('key_findings', language)
+def update_key_findings_button_text_and_state(language, button_clicks, modal_close, current_state):
+    """Update Key Findings button text based on language and processing state"""
+    ctx = dash.callback_context
+
+    # Default state
+    is_disabled = False
+    button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+    button_text = get_text('key_findings', language)
+    current_state = current_state or 'idle'
+
+    # Check if button was clicked or modal was closed
+    if ctx.triggered:
+        trigger_id = ctx.triggered[0]['prop_id']
+
+        if 'generate-key-findings-btn.n_clicks' in trigger_id:
+            # Button was clicked - show processing state
+            is_disabled = True
+            button_style = {
+                'backgroundColor': '#f8f9fa',
+                'color': '#8b0000',
+                'border': '1px solid #8b0000'
+            }
+            button_text = '⏳ Procesando...'
+            current_state = 'processing'
+        elif 'close-key-findings-modal.n_clicks' in trigger_id:
+            # Modal was closed - reset to normal
+            is_disabled = False
+            button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+            button_text = get_text('key_findings', language)
+            current_state = 'idle'
+
+    return button_text, is_disabled, button_style, current_state
 
 # Callback to control Key Findings button visibility
 @app.callback(
@@ -3768,6 +3805,7 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources,
 # Key Findings callbacks (only if module is available)
 if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
+
     @app.callback(
         Output("key-findings-modal", "is_open"),
         Output("key-findings-modal-body", "children"),
@@ -4223,19 +4261,19 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 modal_content = html.Div([
                     # Model info
                     html.Div([
-                        html.Small(f"Generado por: {model_used} | Tiempo: {ai_response.get('response_time_ms', 0)}ms",
-                                 className="text-muted")
+                        html.Small(f"{get_text('generated_by', language)}: {model_used} | {get_text('time', language)}: {ai_response.get('response_time_ms', 0)}ms",
+                                  className="text-muted")
                     ], style={'marginBottom': '20px'}),
 
                     # Executive Summary
                     html.Div([
-                        html.H5("📋 Resumen Ejecutivo", className="text-info mb-2"),
+                        html.H5("📋 " + get_text('executive_summary', language), className="text-info mb-2"),
                         html.P(executive_summary, className="mb-4")
                     ]),
 
                     # Principal Findings
                     html.Div([
-                        html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
+                        html.H5("🔍 " + get_text('principal_findings', language), className="text-info mb-2"),
                         html.Div([
                             html.P([
                                 html.Strong("• ", style={'color': '#2c3e50'}),
@@ -4258,11 +4296,11 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
                     # Statistical Summary
                     html.Div([
-                        html.H5("📈 Resumen Estadístico", className="text-info mb-2"),
+                        html.H5("📈 " + get_text('statistical_summary', language), className="text-info mb-2"),
                         html.Div([
-                            html.Small(f"Datos analizados: {analysis_data.get('data_points_analyzed', 0):,} puntos | "
-                                     f"Rango temporal: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
-                                     className="text-muted")
+                            html.Small(f"{get_text('data_analyzed', language)}: {analysis_data.get('data_points_analyzed', 0):,} {get_text('data_points', language)} | "
+                                      f"{get_text('time_range', language)}: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
+                                      className="text-muted")
                         ], style={'marginBottom': '15px'})
                     ])
                 ])
@@ -4632,25 +4670,25 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             modal_content = html.Div([
                 # Model info
                 html.Div([
-                    html.Small(f"Regenerado por: {model_used} | Tiempo: {ai_response.get('response_time_ms', 0)}ms",
-                             className="text-muted")
+                    html.Small(f"{get_text('generated_by', language)}: {model_used} | {get_text('time', language)}: {ai_response.get('response_time_ms', 0)}ms",
+                              className="text-muted")
                 ], style={'marginBottom': '20px'}),
 
                 # Executive Summary
                 html.Div([
-                    html.H5("📋 Resumen Ejecutivo", className="text-info mb-2"),
+                    html.H5("📋 " + get_text('executive_summary', language), className="text-info mb-2"),
                     html.P(executive_summary, className="mb-4")
                 ]),
 
                 # Principal Findings
                 html.Div([
-                    html.H5("🔍 Hallazgos Principales", className="text-info mb-2"),
+                    html.H5("🔍 " + get_text('principal_findings', language), className="text-info mb-2"),
                     html.P(principal_findings, className="mb-4")
                 ]),
 
                 # PCA Analysis - split into separate paragraphs
                 html.Div([
-                    html.H5("📊 Análisis PCA", className="text-info mb-2"),
+                    html.H5("📊 " + get_text('pca_analysis', language), className="text-info mb-2"),
                     html.Div([
                         # Display each paragraph with proper styling
                         html.Div([
@@ -4661,11 +4699,11 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
                 # Statistical Summary
                 html.Div([
-                    html.H5("📈 Resumen Estadístico", className="text-info mb-2"),
+                    html.H5("📈 " + get_text('statistical_summary', language), className="text-info mb-2"),
                     html.Div([
-                        html.Small(f"Datos analizados: {analysis_data.get('data_points_analyzed', 0):,} puntos | "
-                                 f"Rango temporal: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
-                                 className="text-muted")
+                        html.Small(f"{get_text('data_analyzed', language)}: {analysis_data.get('data_points_analyzed', 0):,} {get_text('data_points', language)} | "
+                                  f"{get_text('time_range', language)}: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
+                                  className="text-muted")
                     ], style={'marginBottom': '15px'})
                 ])
             ])

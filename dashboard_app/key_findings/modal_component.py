@@ -17,6 +17,14 @@ from typing import Dict, List, Any, Optional
 from datetime import datetime
 import logging
 
+# Import translation system
+try:
+    from translations import get_text
+except ImportError:
+    # Fallback if translation module not available
+    def get_text(key, language='es', **kwargs):
+        return key
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -63,6 +71,23 @@ class KeyFindingsModal:
         # Register callbacks
         self._register_callbacks()
 
+    def _get_translated_text(self, key: str, **kwargs) -> str:
+        """
+        Get translated text using the current language.
+
+        Args:
+            key: Translation key
+            **kwargs: Additional format arguments
+
+        Returns:
+            Translated text
+        """
+        try:
+            # Default to Spanish for now - language will be handled by callbacks
+            return get_text(key, 'es', **kwargs)
+        except:
+            return get_text(key, 'es', **kwargs)
+
     def create_modal_layout(self) -> dbc.Modal:
         """
         Create the modal layout with all sections.
@@ -73,7 +98,7 @@ class KeyFindingsModal:
         return dbc.Modal(
             [
                 dbc.ModalHeader(
-                    dbc.ModalTitle("🧠 Key Findings - Análisis", id="key-findings-modal-title"),
+                    dbc.ModalTitle(self._get_translated_text("key_findings_modal_title"), id="key-findings-modal-title"),
                     close_button=True,
                     className="bg-primary text-white"
                 ),
@@ -85,8 +110,8 @@ class KeyFindingsModal:
                             children=[
                                 html.Div([
                                     dbc.Spinner(color="primary", size="lg"),
-                                    html.P("Generando análisis...", className="mt-3 text-center"),
-                                    html.P("Esto puede tomar hasta 30 segundos...", className="text-muted text-center")
+                                    html.P(self._get_translated_text("generating_analysis"), className="mt-3 text-center"),
+                                    html.P(self._get_translated_text("may_take_30_seconds"), className="text-muted text-center")
                                 ], className="text-center py-5")
                             ],
                             style={"display": "none"}
@@ -271,27 +296,27 @@ class KeyFindingsModal:
         return html.Div([
             html.Div([
                 dbc.Spinner(color="primary", size="lg", type="grow"),
-                html.H4("Generando Análisis", className="mt-4 mb-3"),
-                html.P("Analizando datos multi-fuente con énfasis en PCA...", className="text-muted mb-2"),
-                html.P("Tiempo estimado: 15-30 segundos", className="text-muted"),
+                html.H4(self._get_translated_text("generating_analysis"), className="mt-4 mb-3"),
+                html.P(self._get_translated_text("analyzing_multisource_data"), className="text-muted mb-2"),
+                html.P(self._get_translated_text("estimated_time_15_30_seconds"), className="text-muted"),
                 
                 # Progress indicators
                 html.Div([
                     html.Div([
                         html.I(className="fas fa-check-circle text-success me-2"),
-                        "Datos recopilados"
+                        self._get_translated_text("data_collected")
                     ], className="mb-2"),
                     html.Div([
                         html.I(className="fas fa-spinner fa-spin text-primary me-2"),
-                        "Análisis PCA en progreso..."
+                        self._get_translated_text("pca_analysis_in_progress")
                     ], className="mb-2"),
                     html.Div([
                         html.I(className="far fa-circle text-muted me-2"),
-                        "Generando insights con IA"
+                        self._get_translated_text("generating_ai_insights")
                     ], className="mb-2"),
                     html.Div([
                         html.I(className="far fa-circle text-muted me-2"),
-                        "Creando resumen ejecutivo"
+                        self._get_translated_text("creating_executive_summary")
                     ])
                 ], className="text-start mt-4")
             ], className="text-center py-5")
@@ -302,15 +327,15 @@ class KeyFindingsModal:
         return html.Div([
             html.Div([
                 html.I(className="fas fa-brain fa-3x text-muted mb-3"),
-                html.H4("Análisis No Disponible", className="mb-3"),
-                html.P("Seleccione una herramienta y fuentes de datos para generar Key Findings.", 
+                html.H4(self._get_translated_text("analysis_not_available"), className="mb-3"),
+                html.P(self._get_translated_text("select_tool_and_sources"),
                        className="text-muted"),
-                html.P("El análisis doctoral proporcionará insights basados en:", className="mt-3"),
+                html.P(self._get_translated_text("doctoral_analysis_will_provide"), className="mt-3"),
                 html.Ul([
-                    html.Li("Análisis de Componentes Principales (PCA)"),
-                    html.Li("Tendencias temporales y patrones"),
-                    html.Li("Correlaciones entre fuentes de datos"),
-                    html.Li("Insights ejecutivos accionables")
+                    html.Li(self._get_translated_text("principal_component_analysis")),
+                    html.Li(self._get_translated_text("temporal_trends_patterns")),
+                    html.Li(self._get_translated_text("correlations_between_sources")),
+                    html.Li(self._get_translated_text("actionable_executive_insights"))
                 ], className="text-start")
             ], className="text-center py-5")
         ])
@@ -320,7 +345,7 @@ class KeyFindingsModal:
         return html.Div([
             html.H4([
                 html.I(className="fas fa-lightbulb text-warning me-2"),
-                "Resumen Ejecutivo"
+                self._get_translated_text("executive_summary")
             ], className="mb-3"),
             dbc.Card([
                 dbc.CardBody([
@@ -338,7 +363,7 @@ class KeyFindingsModal:
         return html.Div([
             html.H4([
                 html.I(className="fas fa-search text-primary me-2"),
-                "Hallazgos Principales"
+                self._get_translated_text("principal_findings")
             ], className="mb-3"),
             dbc.Card([
                 dbc.CardBody([
@@ -368,7 +393,7 @@ class KeyFindingsModal:
         return html.Div([
             html.H4([
                 html.I(className="fas fa-chart-line text-info me-2"),
-                "Análisis PCA"
+                self._get_translated_text("pca_analysis")
             ], className="mb-3"),
             dbc.Card([
                 dbc.CardBody([
@@ -396,36 +421,36 @@ class KeyFindingsModal:
         return html.Div([
             html.H4([
                 html.I(className="fas fa-info-circle text-secondary me-2"),
-                "Información del Análisis"
+                self._get_translated_text("analysis_information")
             ], className="mb-3"),
             
             dbc.Row([
                 dbc.Col([
                     html.P([
-                        html.Strong("Modelo IA: "),
+                        html.Strong(self._get_translated_text("ai_model") + " "),
                         metadata.get('model_used', 'N/A')
                     ]),
                     html.P([
-                        html.Strong("Tiempo de Respuesta: "),
+                        html.Strong(self._get_translated_text("response_time") + " "),
                         f"{metadata.get('response_time_ms', 0)} ms"
                     ]),
                     html.P([
-                        html.Strong("Puntos de Datos: "),
+                        html.Strong(self._get_translated_text("data_points") + " "),
                         f"{metadata.get('data_points_analyzed', 0):,}"
                     ])
                 ], width=6),
                 
                 dbc.Col([
                     html.P([
-                        html.Strong("Fecha de Generación: "),
+                        html.Strong(self._get_translated_text("generation_date") + " "),
                         metadata.get('generation_timestamp', 'N/A')
                     ]),
                     html.P([
-                        html.Strong("Accesos Previos: "),
+                        html.Strong(self._get_translated_text("previous_accesses") + " "),
                         metadata.get('access_count', 0)
                     ]),
                     html.P([
-                        html.Strong("Profundidad: "),
+                        html.Strong(self._get_translated_text("depth") + " "),
                         metadata.get('analysis_depth', 'comprehensive')
                     ])
                 ], width=6)
