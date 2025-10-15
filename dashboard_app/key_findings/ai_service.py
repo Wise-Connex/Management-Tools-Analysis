@@ -332,9 +332,16 @@ Responde siempre en formato JSON estructurado con:
 """
         else:
             return """
-You are a doctoral-level research analyst specializing in business management tools. 
-Your task is to analyze multi-source data and generate executive-level insights with 
+You are a doctoral-level research analyst specializing in business management tools.
+Your task is to analyze multi-source data and generate executive-level insights with
 emphasis on Principal Component Analysis (PCA).
+
+🚨 CRITICAL LANGUAGE REQUIREMENT 🚨
+YOU MUST RESPOND IN ENGLISH ONLY!
+DO NOT USE SPANISH, PORTUGUESE, OR ANY OTHER LANGUAGE!
+ALL CONTENT MUST BE IN ENGLISH!
+RESPONDE SOLO EN INGLÉS!
+NO USE ESPAÑOL EN NINGUNA PARTE DE LA RESPUESTA!
 
 Provide analysis that:
 1. Synthesizes information from multiple data sources
@@ -347,6 +354,10 @@ Always respond in structured JSON format with:
 - principal_findings: array of objects with bullet_point, reasoning, data_source, confidence
 - pca_insights: object with principal component analysis
 - executive_summary: concise executive summary
+
+⚠️ FINAL WARNING ⚠️
+Your entire response must be in ENGLISH. No Spanish text allowed anywhere in the response.
+If you respond in Spanish, the analysis will be rejected.
 """
 
     def _parse_ai_response(self, response_content: str) -> Dict[str, Any]:

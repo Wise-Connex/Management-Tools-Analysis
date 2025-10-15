@@ -4089,6 +4089,135 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     return str(content) if content else ''
 
                 def extract_markdown_sections_from_content(content):
+                    """Extract content from markdown sections with emoji headers and translate headers."""
+                    sections = {}
+
+                    # Define section patterns (Spanish and English) with emoji headers
+                    section_patterns = {
+                        'executive_summary': [
+                            '📋 Resumen Ejecutivo',
+                            '📋 Executive Summary',
+                            'Resumen Ejecutivo',
+                            'Executive Summary'
+                        ],
+                        'principal_findings': [
+                            '🔍 Hallazgos Principales',
+                            '🔍 Principal Findings',
+                            'Hallazgos Principales',
+                            'Principal Findings'
+                        ],
+                        'pca_analysis': [
+                            '📊 Análisis PCA',
+                            '📊 PCA Analysis',
+                            'Análisis PCA',
+                            'PCA Analysis'
+                        ]
+                    }
+
+                    lines = content.split('\n')
+                    current_section = None
+                    section_content = []
+
+                    for line in lines:
+                        line = line.strip()
+
+                        # Check if this line starts a new section
+                        section_started = False
+                        for section_key, patterns in section_patterns.items():
+                            if any(pattern in line for pattern in patterns):
+                                # Save previous section if exists
+                                if current_section and section_content:
+                                    sections[current_section] = '\n'.join(section_content).strip()
+                                    section_content = []
+
+                                current_section = section_key
+                                section_content = []
+                                section_started = True
+                                break
+
+                        if not section_started and current_section:
+                            # Continue accumulating content for current section
+                            section_content.append(line)
+
+                    # Save the last section
+                    if current_section and section_content:
+                        sections[current_section] = '\n'.join(section_content).strip()
+
+                    return sections
+
+                def extract_json_from_section_content(section_content):
+                    """Extract JSON object from section content."""
+                    # First, try to extract from markdown code blocks
+                    if '```json' in section_content:
+                        start_marker = section_content.find('```json')
+                        if start_marker != -1:
+                            start_json = section_content.find('{', start_marker)
+                            end_marker = section_content.find('```', start_marker + 7)
+                            if end_marker != -1:
+                                end_json = section_content.rfind('}', start_marker, end_marker) + 1
+                                if start_json != -1 and end_json > start_json:
+                                    json_str = section_content[start_json:end_json]
+                                    try:
+                                        import json
+                                        return json.loads(json_str)
+                                    except json.JSONDecodeError:
+                                        pass
+
+                    # Fallback: Find JSON boundaries directly
+                    start_idx = section_content.find('{')
+                    end_idx = section_content.rfind('}') + 1
+
+                    if start_idx != -1 and end_idx > start_idx:
+                        json_str = section_content[start_idx:end_idx]
+                        try:
+                            import json
+                            return json.loads(json_str)
+                        except json.JSONDecodeError:
+                            pass
+
+                    return None
+
+                def clean_section_headers(content, language):
+                    """Clean up section headers in AI content to match the selected language."""
+                    if not content or not isinstance(content, str):
+                        return content
+
+                    # Define section header mappings
+                    header_mappings = {
+                        'en': {
+                            '📋 Resumen Ejecutivo': '📋 Executive Summary',
+                            '📋 Executive Summary': '📋 Executive Summary',
+                            '🔍 Hallazgos Principales': '🔍 Principal Findings',
+                            '🔍 Principal Findings': '🔍 Principal Findings',
+                            '📊 Análisis PCA': '📊 PCA Analysis',
+                            '📊 PCA Analysis': '📊 PCA Analysis',
+                            'Resumen Ejecutivo': 'Executive Summary',
+                            'Hallazgos Principales': 'Principal Findings',
+                            'Análisis PCA': 'PCA Analysis'
+                        },
+                        'es': {
+                            '📋 Executive Summary': '📋 Resumen Ejecutivo',
+                            '📋 Resumen Ejecutivo': '📋 Resumen Ejecutivo',
+                            '🔍 Principal Findings': '🔍 Hallazgos Principales',
+                            '🔍 Hallazgos Principales': '🔍 Hallazgos Principales',
+                            '📊 PCA Analysis': '📊 Análisis PCA',
+                            '📊 Análisis PCA': '📊 Análisis PCA',
+                            'Executive Summary': 'Resumen Ejecutivo',
+                            'Principal Findings': 'Hallazgos Principales',
+                            'PCA Analysis': 'Análisis PCA'
+                        }
+                    }
+
+                    # Apply the appropriate mappings
+                    mappings = header_mappings.get(language, header_mappings['en'])
+                    cleaned_content = content
+
+                    for original, replacement in mappings.items():
+                        cleaned_content = cleaned_content.replace(original, replacement)
+
+                    return cleaned_content
+
+                def extract_markdown_sections_from_content(content):
                     """Extract content from markdown sections with emoji headers."""
                     sections = {}
 
@@ -4165,6 +4294,16 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 executive_summary = extract_text_content(ai_content.get('executive_summary', 'No summary available'))
                 principal_findings_raw = ai_content.get('principal_findings', 'No findings available')
                 pca_analysis_raw = ai_content.get('pca_analysis', 'No PCA analysis available')
+    
+                # Clean up section headers in the content to ensure proper English display
+                executive_summary = clean_section_headers(executive_summary, language)
+                principal_findings_raw = clean_section_headers(principal_findings_raw, language)
+                pca_analysis_raw = clean_section_headers(pca_analysis_raw, language)
+
+                # Clean up section headers in the content to ensure proper English display
+                executive_summary = clean_section_headers(executive_summary, language)
+                principal_findings_raw = clean_section_headers(principal_findings_raw, language)
+                pca_analysis_raw = clean_section_headers(pca_analysis_raw, language)
                 
                 # Handle principal findings - extract text if it's a list of dicts, or use as-is if string
                 if isinstance(principal_findings_raw, list):
@@ -4285,7 +4424,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
                     # PCA Analysis - split into separate paragraphs
                     html.Div([
-                        html.H5("📊 Análisis PCA", className="text-info mb-2"),
+                        html.H5("📊 " + get_text('pca_analysis', language), className="text-info mb-2"),
                         html.Div([
                             # Display each paragraph with proper styling
                             html.Div([

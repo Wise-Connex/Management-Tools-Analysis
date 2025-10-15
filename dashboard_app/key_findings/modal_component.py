@@ -71,34 +71,37 @@ class KeyFindingsModal:
         # Register callbacks
         self._register_callbacks()
 
-    def _get_translated_text(self, key: str, **kwargs) -> str:
+    def _get_translated_text(self, key: str, language: str = 'es', **kwargs) -> str:
         """
-        Get translated text using the current language.
+        Get translated text using the specified language.
 
         Args:
             key: Translation key
+            language: Language code ('es' or 'en')
             **kwargs: Additional format arguments
 
         Returns:
             Translated text
         """
         try:
-            # Default to Spanish for now - language will be handled by callbacks
-            return get_text(key, 'es', **kwargs)
+            return get_text(key, language, **kwargs)
         except:
             return get_text(key, 'es', **kwargs)
 
-    def create_modal_layout(self) -> dbc.Modal:
+    def create_modal_layout(self, language: str = 'es') -> dbc.Modal:
         """
         Create the modal layout with all sections.
-        
+
+        Args:
+            language: Language code ('es' or 'en')
+
         Returns:
             Complete modal layout
         """
         return dbc.Modal(
             [
                 dbc.ModalHeader(
-                    dbc.ModalTitle(self._get_translated_text("key_findings_modal_title"), id="key-findings-modal-title"),
+                    dbc.ModalTitle(self._get_translated_text("key_findings_modal_title", language), id="key-findings-modal-title"),
                     close_button=True,
                     className="bg-primary text-white"
                 ),
@@ -197,37 +200,38 @@ class KeyFindingsModal:
             className="key-findings-modal"
         )
 
-    def create_findings_display(self, report_data: Dict[str, Any]) -> html.Div:
+    def create_findings_display(self, report_data: Dict[str, Any], language: str = 'es') -> html.Div:
         """
         Create formatted display of AI findings.
-        
+
         Args:
             report_data: Report data from database or AI
-            
+            language: Language code ('es' or 'en')
+
         Returns:
             Formatted findings display
         """
         if not report_data:
-            return self._create_empty_state()
-        
+            return self._create_empty_state(language)
+
         # Extract data with proper JSON parsing if needed
         executive_summary = self._extract_text_content(report_data.get('executive_summary', ''))
         principal_findings = self._extract_text_content(report_data.get('principal_findings', ''))
         pca_analysis = self._extract_text_content(report_data.get('pca_analysis', ''))
         metadata = self._extract_metadata(report_data)
-        
+
         return html.Div([
             # Executive Summary Section
-            self._create_executive_summary_section(executive_summary),
-            
+            self._create_executive_summary_section(executive_summary, language),
+
             # Principal Findings Section (now narrative)
-            self._create_principal_findings_narrative_section(principal_findings),
-            
+            self._create_principal_findings_narrative_section(principal_findings, language),
+
             # PCA Analysis Section (now narrative essay)
-            self._create_pca_analysis_section(pca_analysis),
-            
+            self._create_pca_analysis_section(pca_analysis, language),
+
             # Metadata Section
-            self._create_metadata_section(metadata)
+            self._create_metadata_section(metadata, language)
         ])
 
     def create_interaction_controls(self) -> html.Div:
@@ -286,95 +290,98 @@ class KeyFindingsModal:
             ])
         ])
 
-    def create_loading_state(self) -> html.Div:
+    def create_loading_state(self, language: str = 'es') -> html.Div:
         """
         Create loading animation during AI processing.
-        
+
+        Args:
+            language: Language code ('es' or 'en')
+
         Returns:
             Loading state component
         """
         return html.Div([
             html.Div([
                 dbc.Spinner(color="primary", size="lg", type="grow"),
-                html.H4(self._get_translated_text("generating_analysis"), className="mt-4 mb-3"),
-                html.P(self._get_translated_text("analyzing_multisource_data"), className="text-muted mb-2"),
-                html.P(self._get_translated_text("estimated_time_15_30_seconds"), className="text-muted"),
-                
+                html.H4(self._get_translated_text("generating_analysis", language), className="mt-4 mb-3"),
+                html.P(self._get_translated_text("analyzing_multisource_data", language), className="text-muted mb-2"),
+                html.P(self._get_translated_text("estimated_time_15_30_seconds", language), className="text-muted"),
+
                 # Progress indicators
                 html.Div([
                     html.Div([
                         html.I(className="fas fa-check-circle text-success me-2"),
-                        self._get_translated_text("data_collected")
+                        self._get_translated_text("data_collected", language)
                     ], className="mb-2"),
                     html.Div([
                         html.I(className="fas fa-spinner fa-spin text-primary me-2"),
-                        self._get_translated_text("pca_analysis_in_progress")
+                        self._get_translated_text("pca_analysis_in_progress", language)
                     ], className="mb-2"),
                     html.Div([
                         html.I(className="far fa-circle text-muted me-2"),
-                        self._get_translated_text("generating_ai_insights")
+                        self._get_translated_text("generating_ai_insights", language)
                     ], className="mb-2"),
                     html.Div([
                         html.I(className="far fa-circle text-muted me-2"),
-                        self._get_translated_text("creating_executive_summary")
+                        self._get_translated_text("creating_executive_summary", language)
                     ])
                 ], className="text-start mt-4")
             ], className="text-center py-5")
         ])
 
-    def _create_empty_state(self) -> html.Div:
+    def _create_empty_state(self, language: str = 'es') -> html.Div:
         """Create empty state when no data available."""
         return html.Div([
             html.Div([
                 html.I(className="fas fa-brain fa-3x text-muted mb-3"),
-                html.H4(self._get_translated_text("analysis_not_available"), className="mb-3"),
-                html.P(self._get_translated_text("select_tool_and_sources"),
+                html.H4(self._get_translated_text("analysis_not_available", language), className="mb-3"),
+                html.P(self._get_translated_text("select_tool_and_sources", language),
                        className="text-muted"),
-                html.P(self._get_translated_text("doctoral_analysis_will_provide"), className="mt-3"),
+                html.P(self._get_translated_text("doctoral_analysis_will_provide", language), className="mt-3"),
                 html.Ul([
-                    html.Li(self._get_translated_text("principal_component_analysis")),
-                    html.Li(self._get_translated_text("temporal_trends_patterns")),
-                    html.Li(self._get_translated_text("correlations_between_sources")),
-                    html.Li(self._get_translated_text("actionable_executive_insights"))
+                    html.Li(self._get_translated_text("principal_component_analysis", language)),
+                    html.Li(self._get_translated_text("temporal_trends_patterns", language)),
+                    html.Li(self._get_translated_text("correlations_between_sources", language)),
+                    html.Li(self._get_translated_text("actionable_executive_insights", language))
                 ], className="text-start")
             ], className="text-center py-5")
         ])
 
-    def _create_executive_summary_section(self, summary: str) -> html.Div:
+    def _create_executive_summary_section(self, summary: str, language: str = 'es') -> html.Div:
         """Create executive summary section."""
         return html.Div([
             html.H4([
                 html.I(className="fas fa-lightbulb text-warning me-2"),
-                self._get_translated_text("executive_summary")
+                self._get_translated_text("executive_summary", language)
             ], className="mb-3"),
             dbc.Card([
                 dbc.CardBody([
                     html.P(summary, className="lead text-justify mb-0 executive-summary-text",
-                           style={"lineHeight": "1.7"}),
+                            style={"lineHeight": "1.7"}),
                 ])
             ], className="border-primary bg-primary text-white")
         ], className="mb-4")
 
-    def _create_principal_findings_narrative_section(self, findings_text: str) -> html.Div:
+    def _create_principal_findings_narrative_section(self, findings_text: str, language: str = 'es') -> html.Div:
         """Create principal findings section as narrative text."""
         if not findings_text:
             return html.Div()
-        
+
         return html.Div([
             html.H4([
                 html.I(className="fas fa-search text-primary me-2"),
-                self._get_translated_text("principal_findings")
+                self._get_translated_text("principal_findings", language)
             ], className="mb-3"),
             dbc.Card([
                 dbc.CardBody([
                     html.Div([
                         html.P(findings_text, className="lead text-justify principal-findings-text",
-                               style={"lineHeight": "1.6"}),
+                                style={"lineHeight": "1.6"}),
                         # Add a subtle indicator that this integrates multiple analyses
                         html.Div([
                             html.Small([
                                 html.I(className="fas fa-info-circle text-info me-1"),
-                                "Esta sección integra análisis de componentes principales, patrones temporales y correlaciones"
+                                self._get_translated_text("section_integrates_analyses", language)
                             ], className="text-muted")
                         ], className="mt-3 text-end")
                     ])
@@ -382,18 +389,18 @@ class KeyFindingsModal:
             ], className="border-0 bg-light shadow-sm")
         ], className="mb-4")
 
-    def _create_pca_analysis_section(self, pca_analysis_text: str) -> html.Div:
+    def _create_pca_analysis_section(self, pca_analysis_text: str, language: str = 'es') -> html.Div:
         """Create PCA analysis section as narrative essay with proper paragraph formatting."""
         if not pca_analysis_text:
             return html.Div()
-        
+
         # Split text into paragraphs and create separate P elements for each
         paragraphs = [p.strip() for p in pca_analysis_text.split('\n\n') if p.strip()]
-        
+
         return html.Div([
             html.H4([
                 html.I(className="fas fa-chart-line text-info me-2"),
-                self._get_translated_text("pca_analysis")
+                self._get_translated_text("pca_analysis", language)
             ], className="mb-3"),
             dbc.Card([
                 dbc.CardBody([
@@ -401,14 +408,14 @@ class KeyFindingsModal:
                         # Create separate P elements for each paragraph
                         html.Div([
                             html.P(p, className="text-justify pca-analysis-text mb-3",
-                                   style={"lineHeight": "1.6"})
+                                    style={"lineHeight": "1.6"})
                             for p in paragraphs
                         ]),
                         # Add a subtle indicator that this is detailed PCA analysis
                         html.Div([
                             html.Small([
                                 html.I(className="fas fa-calculator text-info me-1"),
-                                f"Análisis detallado de componentes principales ({len(paragraphs)} párrafos)"
+                                f"{self._get_translated_text('detailed_pca_analysis', language)} ({len(paragraphs)} {self._get_translated_text('paragraphs', language)})"
                             ], className="text-muted")
                         ], className="mt-3 text-end")
                     ])
@@ -416,41 +423,41 @@ class KeyFindingsModal:
             ], className="border-0 bg-light shadow-sm")
         ], className="mb-4")
 
-    def _create_metadata_section(self, metadata: Dict[str, Any]) -> html.Div:
+    def _create_metadata_section(self, metadata: Dict[str, Any], language: str = 'es') -> html.Div:
         """Create metadata section."""
         return html.Div([
             html.H4([
                 html.I(className="fas fa-info-circle text-secondary me-2"),
-                self._get_translated_text("analysis_information")
+                self._get_translated_text("analysis_information", language)
             ], className="mb-3"),
-            
+
             dbc.Row([
                 dbc.Col([
                     html.P([
-                        html.Strong(self._get_translated_text("ai_model") + " "),
+                        html.Strong(self._get_translated_text("ai_model", language) + " "),
                         metadata.get('model_used', 'N/A')
                     ]),
                     html.P([
-                        html.Strong(self._get_translated_text("response_time") + " "),
+                        html.Strong(self._get_translated_text("response_time", language) + " "),
                         f"{metadata.get('response_time_ms', 0)} ms"
                     ]),
                     html.P([
-                        html.Strong(self._get_translated_text("data_points") + " "),
+                        html.Strong(self._get_translated_text("data_points", language) + " "),
                         f"{metadata.get('data_points_analyzed', 0):,}"
                     ])
                 ], width=6),
-                
+
                 dbc.Col([
                     html.P([
-                        html.Strong(self._get_translated_text("generation_date") + " "),
+                        html.Strong(self._get_translated_text("generation_date", language) + " "),
                         metadata.get('generation_timestamp', 'N/A')
                     ]),
                     html.P([
-                        html.Strong(self._get_translated_text("previous_accesses") + " "),
+                        html.Strong(self._get_translated_text("previous_accesses", language) + " "),
                         metadata.get('access_count', 0)
                     ]),
                     html.P([
-                        html.Strong(self._get_translated_text("depth") + " "),
+                        html.Strong(self._get_translated_text("depth", language) + " "),
                         metadata.get('analysis_depth', 'comprehensive')
                     ])
                 ], width=6)
@@ -531,40 +538,41 @@ class KeyFindingsModal:
              State("selected-sources", "value"),
              State("language-store", "data")]
         )
-        def toggle_modal(trigger_clicks, close_clicks, regenerate_clicks, 
-                       is_open, selected_tool, selected_sources, language):
+        def toggle_modal(trigger_clicks, close_clicks, regenerate_clicks,
+                        is_open, selected_tool, selected_sources, language):
             """Handle modal open/close and content loading."""
-            
+
             # Determine which button was clicked
             ctx = dash.callback_context
             if not ctx.triggered:
-                return False, {"display": "none"}, self._create_empty_state()
-            
+                return False, {"display": "none"}, self._create_empty_state(language or 'es')
+
             trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
-            
+
             if trigger_id == "key-findings-close":
-                return False, {"display": "none"}, self._create_empty_state()
-            
+                return False, {"display": "none"}, self._create_empty_state(language or 'es')
+
             if trigger_id in ["key-findings-trigger", self.regenerate_btn_id]:
                 if not selected_tool or not selected_sources:
-                    return True, {"display": "none"}, self._create_empty_state()
-                
+                    return True, {"display": "none"}, self._create_empty_state(language or 'es')
+
                 # Show loading state
-                return True, {"display": "block"}, self._create_empty_state()
-            
-            return is_open, {"display": "none"}, self._create_empty_state()
+                return True, {"display": "block"}, self._create_empty_state(language or 'es')
+
+            return is_open, {"display": "none"}, self._create_empty_state(language or 'es')
         
         # Update modal content (this would be connected to the actual analysis service)
         @self.app.callback(
             Output(self.content_id, "children", allow_duplicate=True),
-            [Input("key-findings-data-ready", "data")]
+            [Input("key-findings-data-ready", "data"),
+             Input("language-store", "data")]
         )
-        def update_content(analysis_data):
+        def update_content(analysis_data, language):
             """Update modal content with analysis results."""
             if not analysis_data:
-                return self._create_empty_state()
-            
-            return self.create_findings_display(analysis_data)
+                return self._create_empty_state(language or 'es')
+
+            return self.create_findings_display(analysis_data, language or 'es')
         
         # Handle user interactions
         @self.app.callback(
