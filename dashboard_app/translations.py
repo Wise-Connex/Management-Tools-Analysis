@@ -185,6 +185,7 @@ TRANSLATIONS = {
         # Source Notes Modal
         'source': 'Fuente:',
         'doi': 'DOI:',
+        'dashboard_url': 'https://management-tools-analysis.com',
 
         # DOI and Links
         'ic_report_doi': 'DOI del Informe IC:',
@@ -444,6 +445,7 @@ TRANSLATIONS = {
         # Source Notes Modal
         'source': 'Source:',
         'doi': 'DOI:',
+        'dashboard_url': 'https://management-tools-analysis.com',
 
         # DOI and Links
         'ic_report_doi': 'IC Report DOI:',

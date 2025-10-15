@@ -559,6 +559,29 @@ app.index_string = '''
                 }
             });
 
+            // Function to get current URL and update the store
+            function updateCurrentURL() {
+                const currentURL = window.location.href;
+                // Use Dash's clientside callback to update the store
+                if (window.dash_clientside) {
+                    // Trigger a custom event that Dash can listen to
+                    const urlEvent = new CustomEvent('urlChanged', {
+                        detail: { url: currentURL }
+                    });
+                    document.dispatchEvent(urlEvent);
+                }
+            }
+
+            // Update URL on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                updateCurrentURL();
+            });
+
+            // Update URL on navigation (for SPAs)
+            window.addEventListener('popstate', function() {
+                updateCurrentURL();
+            });
+
             // Simple manual control for credits - auto-collapse handled by Dash callback
             // when both keyword and sources are selected
         </script>
@@ -841,6 +864,7 @@ app.layout = dbc.Container([
             dcc.Store(id='data-sources-store-v2', data=[]),
             dcc.Store(id='language-store', data='es'),  # Default to Spanish
             dcc.Store(id='key-findings-button-state', data='idle'),
+            dcc.Store(id='current-url-store', data=''),  # Store for current page URL
             dcc.Loading(
                 id="loading-main-content",
                 type="circle",
@@ -960,6 +984,18 @@ def run_async_in_sync_context(async_func, *args, **kwargs):
 def update_language_store(selected_language):
     """Update language store when language selector changes"""
     return selected_language
+
+# Current URL management callback
+@app.callback(
+    Output('current-url-store', 'data'),
+    Input('language-selector', 'value'),  # Trigger on any change to ensure URL is updated
+    prevent_initial_call=False
+)
+def update_current_url_store(selected_language):
+    """Update current URL store - this will be called on page load and language changes"""
+    # For now, use a default URL since we can't easily get the browser URL in server-side callbacks
+    # In a real implementation, this would use clientside callbacks or JavaScript
+    return "https://management-tools-analysis.com"
 
 # Callback to reset source selections when keyword changes
 @app.callback(
@@ -1585,7 +1621,9 @@ def update_main_content(selected_sources, selected_keyword, language):
         # 1. Temporal Analysis 2D
         try:
             print(f"DEBUG: Creating initial temporal 2D figure for main content")
-            temporal_2d_fig = create_temporal_2d_figure(combined_dataset, selected_source_names, language)
+            tool_display_name = get_tool_name(selected_keyword, language) if selected_keyword else None
+            current_url = "https://management-tools-analysis.com"  # Default URL for now
+            temporal_2d_fig = create_temporal_2d_figure(combined_dataset, selected_source_names, language, tool_name=tool_display_name, current_url=current_url)
             print(f"DEBUG: Initial temporal 2D figure created with {len(temporal_2d_fig.data) if hasattr(temporal_2d_fig, 'data') else 0} traces")
         except Exception as e:
             print(f"DEBUG: Error creating initial temporal 2D figure: {e}")
@@ -1639,7 +1677,9 @@ def update_main_content(selected_sources, selected_keyword, language):
 
         # 2. Mean Analysis
         try:
-            mean_fig = create_mean_analysis_figure(combined_dataset, selected_source_names, language)
+            tool_display_name = get_tool_name(selected_keyword, language) if selected_keyword else None
+            current_url = "https://management-tools-analysis.com"  # Default URL for now
+            mean_fig = create_mean_analysis_figure(combined_dataset, selected_source_names, language, tool_name=tool_display_name, current_url=current_url)
             print(f"DEBUG: Created mean analysis figure with {len(mean_fig.data) if hasattr(mean_fig, 'data') else 0} traces")
             print(f"DEBUG: Mean figure data: {mean_fig.data[:2] if hasattr(mean_fig, 'data') and len(mean_fig.data) > 0 else 'No data'}")
         except Exception as e:
@@ -1808,7 +1848,7 @@ def update_main_content(selected_sources, selected_keyword, language):
                 }),
                 dcc.Graph(
                     id='correlation-heatmap',
-                    figure=create_correlation_heatmap(combined_dataset, selected_source_names, language),
+                    figure=create_correlation_heatmap(combined_dataset, selected_source_names, language, tool_name=tool_display_name, current_url=current_url),
                     style={'height': '400px'},
                     config={'displaylogo': False, 'responsive': True}
                 )
@@ -1875,7 +1915,7 @@ def update_main_content(selected_sources, selected_keyword, language):
                 }),
                 dcc.Graph(
                     id='pca-analysis-graph',
-                    figure=create_pca_figure(combined_dataset, selected_source_names, language),
+                    figure=create_pca_figure(combined_dataset, selected_source_names, language, tool_name=tool_display_name, current_url=current_url),
                     style={'height': '500px'},
                     config={'displaylogo': False, 'responsive': True}
                 )
@@ -2039,13 +2079,14 @@ def update_main_content(selected_sources, selected_keyword, language):
         return html.Div(f"Error: {str(e)}"), credits_open
 
 # Helper functions for creating figures
-def create_temporal_2d_figure(data, sources, language='es', start_date=None, end_date=None):
+def create_temporal_2d_figure(data, sources, language='es', start_date=None, end_date=None, tool_name=None, current_url=None):
     print(f"DEBUG: create_temporal_2d_figure called")
     print(f"DEBUG: data shape: {data.shape}")
     print(f"DEBUG: sources: {sources}")
     print(f"DEBUG: start_date: {start_date}, end_date: {end_date}")
+    print(f"DEBUG: tool_name: {tool_name}")
     print(f"DEBUG: Available columns in data: {list(data.columns)}")
-    
+
     # Filter data by date range if provided
     filtered_data = data.copy()
     if start_date and end_date:
@@ -2067,10 +2108,10 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
     # Optimize: Use fewer markers and simpler rendering for better performance
     for i, source in enumerate(sources):
         print(f"DEBUG: Processing source: {source}")
-        
+
         # DATAFRAME_INDEXING_FIX: Use safe column access
         source_data = safe_dataframe_column_access(filtered_data, source, translation_mapping)
-        
+
         if source_data is not None:
             valid_mask = ~source_data.isna()
             print(f"DEBUG: Source {source} has {valid_mask.sum()} valid points out of {len(source_data)}")
@@ -2112,9 +2153,35 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
     else:
         tickformat = "%Y"
 
+    # Create title with tool name if provided
+    base_title = get_text('temporal_analysis_2d', language)
+    if tool_name:
+        title_text = f"{base_title} - {tool_name}"
+    else:
+        title_text = base_title
+
+    # Create source annotation with current URL
+    url_to_show = current_url if current_url else get_text('dashboard_url', language)
+    source_text = get_text('source', language) + " " + url_to_show
+    source_annotation = dict(
+        text=source_text,
+        xref="paper",
+        yref="paper",
+        x=0.02,  # Bottom left corner
+        y=0.02,
+        showarrow=False,
+        font=dict(
+            size=8,  # Very small font
+            color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+            family="Arial, sans-serif"
+        ),
+        xanchor="left",
+        yanchor="bottom"
+    )
+
     # Optimized layout with performance settings
     fig.update_layout(
-        title=get_text('temporal_analysis_2d', language),
+        title=title_text,
         xaxis_title=get_text('date', language),
         yaxis_title=get_text('value', language),
         height=400,
@@ -2132,7 +2199,9 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
         ),
         # Performance optimizations
         hovermode='x unified',
-        showlegend=True
+        showlegend=True,
+        # Add source annotation
+        annotations=[source_annotation]
     )
 
     # Reduce data points for very large datasets
@@ -2144,7 +2213,7 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
     print(f"DEBUG: Final figure has {len(fig.data)} traces")
     return fig
 
-def create_mean_analysis_figure(data, sources, language='es'):
+def create_mean_analysis_figure(data, sources, language='es', tool_name=None, current_url=None):
     """Create 100% stacked bar chart showing relative contribution of each source"""
     # Calculate total years in dataset for "Todo" range
     total_years = (data['Fecha'].max() - data['Fecha'].min()).days / 365.25
@@ -2167,7 +2236,7 @@ def create_mean_analysis_figure(data, sources, language='es'):
     for source in sources:
         # DATAFRAME_INDEXING_FIX: Use safe column access
         source_data = safe_dataframe_column_access(data, source, translation_mapping)
-        
+
         if source_data is not None:
             for range_name, years_back, actual_years in time_ranges:
                 if years_back is None:
@@ -2244,9 +2313,35 @@ def create_mean_analysis_figure(data, sources, language='es'):
             )
         )
 
+    # Create title with tool name if provided
+    base_title = get_text('relative_absolute', language, max_value=max_mean_value)
+    if tool_name:
+        title_text = f"{base_title} - {tool_name}"
+    else:
+        title_text = base_title
+
+    # Create source annotation with current URL
+    url_to_show = current_url if current_url else get_text('dashboard_url', language)
+    source_text = get_text('source', language) + " " + url_to_show
+    source_annotation = dict(
+        text=source_text,
+        xref="paper",
+        yref="paper",
+        x=0.02,  # Bottom left corner
+        y=0.02,
+        showarrow=False,
+        font=dict(
+            size=8,  # Very small font
+            color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+            family="Arial, sans-serif"
+        ),
+        xanchor="left",
+        yanchor="bottom"
+    )
+
     # Update layout for combo chart
     fig.update_layout(
-        title=get_text('relative_absolute', language, max_value=max_mean_value),
+        title=title_text,
         xaxis_title=get_text('temporal_range', language),
         yaxis_title=get_text('contribution_relative', language),
         yaxis2=dict(
@@ -2266,7 +2361,8 @@ def create_mean_analysis_figure(data, sources, language='es'):
             x=0.5
         ),
         showlegend=True,
-        margin=dict(l=50, r=50, t=80, b=150)  # Consistent margins
+        margin=dict(l=50, r=50, t=80, b=150),  # Consistent margins
+        annotations=[source_annotation]
     )
 
     # Set primary y-axis to 0-100%
@@ -2548,7 +2644,7 @@ def perform_comprehensive_pca_analysis(data, sources, language='es'):
     return pca_analysis_data
 
 
-def create_pca_figure(data, sources, language='es'):
+def create_pca_figure(data, sources, language='es', tool_name=None, current_url=None):
     # DATAFRAME_INDEXING_FIX: Create proper translation mapping
     selected_source_ids = map_display_names_to_source_ids(sources)
     translation_mapping = create_translation_mapping(selected_source_ids, language)
@@ -2666,9 +2762,35 @@ def create_pca_figure(data, sources, language='es'):
             row=1, col=2
         )
 
+    # Create title with tool name if provided
+    base_title = get_text('pca_title', language)
+    if tool_name:
+        title_text = f"{base_title} - {tool_name}"
+    else:
+        title_text = base_title
+
+    # Create source annotation with current URL
+    url_to_show = current_url if current_url else get_text('dashboard_url', language)
+    source_text = get_text('source', language) + " " + url_to_show
+    source_annotation = dict(
+        text=source_text,
+        xref="paper",
+        yref="paper",
+        x=0.02,  # Bottom left corner
+        y=0.02,
+        showarrow=False,
+        font=dict(
+            size=8,  # Very small font
+            color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+            family="Arial, sans-serif"
+        ),
+        xanchor="left",
+        yanchor="bottom"
+    )
+
     # Update layout with multiple y-axes
     fig.update_layout(
-        title=get_text('pca_title', language),
+        title=title_text,
         height=500,
         showlegend=True,
         yaxis2=dict(
@@ -2685,7 +2807,8 @@ def create_pca_figure(data, sources, language='es'):
             position=0.85,  # Position further right
             showgrid=False,
             anchor='free'
-        )
+        ),
+        annotations=[source_annotation]
     )
 
     # Set legend at bottom for each subplot
@@ -2717,30 +2840,30 @@ def create_pca_figure(data, sources, language='es'):
 
     return fig
 
-def create_correlation_heatmap(data, sources, language='es'):
+def create_correlation_heatmap(data, sources, language='es', tool_name=None, current_url=None):
     print(f"DEBUG: create_correlation_heatmap called with sources: {sources}")
-    
+
     # DATAFRAME_INDEXING_FIX: Create proper translation mapping
     selected_source_ids = map_display_names_to_source_ids(sources)
     translation_mapping = create_translation_mapping(selected_source_ids, language)
-    
+
     # Use original column names for correlation calculation
     original_columns = []
     for source in sources:
         original_name = get_original_column_name(source, translation_mapping)
         if original_name in data.columns:
             original_columns.append(original_name)
-    
+
     if not original_columns:
         print(f"DEBUG: No valid columns found for correlation heatmap")
         return go.Figure()
-    
+
     corr_data = data[original_columns].corr()
     print(f"DEBUG: Correlation data shape: {corr_data.shape}")
-    
+
     # Create mapping from original column names back to display names for labeling
     original_to_display = {v: k for k, v in translation_mapping.items()}
-    
+
     # Update sources list to use display names for labeling
     display_sources = [original_to_display.get(col, col) for col in corr_data.columns]
 
@@ -2783,11 +2906,40 @@ def create_correlation_heatmap(data, sources, language='es'):
         showscale=True
     ))
 
+    # Create title with tool name if provided
+    base_title = get_text('correlation_heatmap_title', language)
+    if tool_name:
+        title_text = f"{base_title} - {tool_name}"
+    else:
+        title_text = base_title
+
+    # Create source annotation with current URL
+    url_to_show = current_url if current_url else get_text('dashboard_url', language)
+    source_text = get_text('source', language) + " " + url_to_show
+    source_annotation = dict(
+        text=source_text,
+        xref="paper",
+        yref="paper",
+        x=0.02,  # Bottom left corner
+        y=0.02,
+        showarrow=False,
+        font=dict(
+            size=8,  # Very small font
+            color="rgba(128, 128, 128, 0.7)",  # Gray color with transparency
+            family="Arial, sans-serif"
+        ),
+        xanchor="left",
+        yanchor="bottom"
+    )
+
+    # Combine existing annotations with source annotation
+    all_annotations = annotations + [source_annotation]
+
     # Update layout with annotations and enable click events
     fig.update_layout(
-        title=get_text('correlation_heatmap_title', language),
+        title=title_text,
         height=400,
-        annotations=annotations,
+        annotations=all_annotations,
         xaxis=dict(side='bottom'),
         yaxis=dict(side='left'),
         clickmode='event+select'  # Enable click events
@@ -2891,7 +3043,9 @@ def update_temporal_2d_analysis(all_clicks, y20_clicks, y15_clicks, y10_clicks, 
             # Keep default date range (full range)
 
         print(f"DEBUG: Creating temporal 2D figure...")
-        figure = create_temporal_2d_figure(combined_dataset, selected_source_names, language, start_date, end_date)
+        tool_display_name = get_tool_name(selected_keyword, language) if selected_keyword else None
+        current_url = "https://management-tools-analysis.com"  # Default URL for now
+        figure = create_temporal_2d_figure(combined_dataset, selected_source_names, language, start_date, end_date, tool_name=tool_display_name, current_url=current_url)
         print(f"DEBUG: Figure created with {len(figure.data) if hasattr(figure, 'data') else 0} traces")
         return figure
     except Exception as e:
@@ -3056,8 +3210,16 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
             )
         ])
 
+        # Create title with tool name if provided
+        base_title = get_text('temporal_3d_title', language, y_axis=y_axis, z_axis=z_axis, frequency=frequency.capitalize())
+        tool_display_name = get_tool_name(selected_keyword, language) if selected_keyword else None
+        if tool_display_name:
+            title_text = f"{base_title} - {tool_display_name}"
+        else:
+            title_text = base_title
+
         fig.update_layout(
-            title=get_text('temporal_3d_title', language, y_axis=y_axis, z_axis=z_axis, frequency=frequency.capitalize()),
+            title=title_text,
             scene=dict(
                 xaxis_title=get_text('date', language),
                 yaxis_title=y_axis,
@@ -3128,7 +3290,15 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
         fig.add_trace(go.Scatter(x=combined_dataset['Fecha'], y=decomposition.seasonal, name='Estacional'), row=3, col=1)
         fig.add_trace(go.Scatter(x=combined_dataset['Fecha'], y=decomposition.resid, name='Residuos'), row=4, col=1)
 
-        fig.update_layout(height=600, title=get_text('seasonal_title', language, source=selected_source), showlegend=False)
+        # Create title with tool name if provided
+        base_title = get_text('seasonal_title', language, source=selected_source)
+        tool_display_name = get_tool_name(selected_keyword, language) if selected_keyword else None
+        if tool_display_name:
+            title_text = f"{base_title} - {tool_display_name}"
+        else:
+            title_text = base_title
+
+        fig.update_layout(height=600, title=title_text, showlegend=False)
         return fig
     except Exception as e:
         return {}
@@ -3401,10 +3571,18 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
                     f"R² = N/A"
                 )
 
+        # Create title with tool name if provided
+        base_title = get_text('regression_title', language, y_var=y_var, x_var=x_var)
+        tool_display_name = get_tool_name(selected_keyword, language) if selected_keyword else None
+        if tool_display_name:
+            title_text = f"{base_title} - {tool_display_name}"
+        else:
+            title_text = base_title
+
         # Update layout with increased height for legend and equations
         fig.update_layout(
             title={
-                'text': get_text('regression_title', language, y_var=y_var, x_var=x_var),
+                'text': title_text,
                 'y': 0.95,
                 'x': 0.5,
                 'xanchor': 'center',
@@ -3764,10 +3942,18 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources,
         # No need for additional dummy traces
 
 
+        # Create title with tool name if provided
+        base_title = get_text('fourier_title', language, source=selected_source)
+        tool_display_name = get_tool_name(selected_keyword, language) if selected_keyword else None
+        if tool_display_name:
+            title_text = f"{base_title} - {tool_display_name}"
+        else:
+            title_text = base_title
+
         # Update layout
         fig.update_layout(
             title={
-                'text': get_text('fourier_title', language, source=selected_source),
+                'text': title_text,
                 'y': 0.95,
                 'x': 0.5,
                 'xanchor': 'center',
