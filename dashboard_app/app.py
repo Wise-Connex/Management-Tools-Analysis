@@ -559,32 +559,37 @@ app.index_string = '''
                 }
             });
 
-            // Function to get current URL and trigger Dash callback
-            function updateCurrentURL() {
-                const currentURL = window.location.href;
-                // Find the language selector and trigger change event to update URL store
-                const languageSelector = document.querySelector('[id*="language-selector"]');
-                if (languageSelector) {
-                    // Trigger change event to activate the clientside callback
-                    const event = new Event('change', { bubbles: true });
-                    languageSelector.dispatchEvent(event);
+            // Function to get current URL for fuente/source attribution
+            function getCurrentUrl() {
+                return window.location.href;
+            }
+
+            // Update URL store with current URL
+            function updateCurrentURLStore() {
+                const currentUrl = getCurrentUrl();
+                // Find the hidden URL store element and update it directly
+                const urlStore = document.querySelector('[id*="current-url-store"]');
+                if (urlStore) {
+                    // Create a custom event to trigger the clientside callback
+                    const event = new CustomEvent('urlUpdate', { detail: currentUrl });
+                    urlStore.dispatchEvent(event);
                 }
             }
 
             // Update URL on page load
             document.addEventListener('DOMContentLoaded', function() {
                 // Small delay to ensure Dash is ready
-                setTimeout(updateCurrentURL, 100);
+                setTimeout(updateCurrentURLStore, 100);
             });
 
             // Update URL on navigation (for SPAs)
             window.addEventListener('popstate', function() {
-                setTimeout(updateCurrentURL, 100);
+                setTimeout(updateCurrentURLStore, 100);
             });
 
             // Also update URL periodically (every 30 seconds) in case of direct navigation
             setInterval(function() {
-                updateCurrentURL();
+                updateCurrentURLStore();
             }, 30000);
 
             // Simple manual control for credits - auto-collapse handled by Dash callback
@@ -996,8 +1001,8 @@ def update_language_store(selected_language):
 app.clientside_callback(
     """
     function getCurrentURL(value) {
-        // Get current URL from browser window object
-        return window.location.href;
+        // Use the dedicated function to get current URL
+        return getCurrentUrl();
     }
     """,
     Output('current-url-store', 'data'),
@@ -1008,59 +1013,43 @@ app.clientside_callback(
 # Callback to update source attribution text for all graphs
 @app.callback(
     Output('temporal-2d-source', 'children'),
-    Input('current-url-store', 'data'),
     Input('language-store', 'data'),
     prevent_initial_call=False
 )
-def update_temporal_2d_source(current_url, language):
-    """Update temporal 2D source attribution text with dynamic URL"""
-    if current_url and current_url != "null" and current_url != "undefined":
-        source_text = get_text('source', language) + " " + current_url
-        return source_text
-    # Fallback to a more generic URL if dynamic detection fails
-    return get_text('source', language) + " " + get_text('dashboard_url', language)
+def update_temporal_2d_source(language):
+    """Update temporal 2D source attribution text with static URL"""
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    return source_text
 
 @app.callback(
     Output('mean-analysis-source', 'children'),
-    Input('current-url-store', 'data'),
     Input('language-store', 'data'),
     prevent_initial_call=False
 )
-def update_mean_analysis_source(current_url, language):
-    """Update mean analysis source attribution text with dynamic URL"""
-    if current_url and current_url != "null" and current_url != "undefined":
-        source_text = get_text('source', language) + " " + current_url
-        return source_text
-    # Fallback to a more generic URL if dynamic detection fails
-    return get_text('source', language) + " " + get_text('dashboard_url', language)
+def update_mean_analysis_source(language):
+    """Update mean analysis source attribution text with static URL"""
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    return source_text
 
 @app.callback(
     Output('correlation-heatmap-source', 'children'),
-    Input('current-url-store', 'data'),
     Input('language-store', 'data'),
     prevent_initial_call=False
 )
-def update_correlation_heatmap_source(current_url, language):
-    """Update correlation heatmap source attribution text with dynamic URL"""
-    if current_url and current_url != "null" and current_url != "undefined":
-        source_text = get_text('source', language) + " " + current_url
-        return source_text
-    # Fallback to a more generic URL if dynamic detection fails
-    return get_text('source', language) + " " + get_text('dashboard_url', language)
+def update_correlation_heatmap_source(language):
+    """Update correlation heatmap source attribution text with static URL"""
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    return source_text
 
 @app.callback(
     Output('pca-analysis-source', 'children'),
-    Input('current-url-store', 'data'),
     Input('language-store', 'data'),
     prevent_initial_call=False
 )
-def update_pca_analysis_source(current_url, language):
-    """Update PCA analysis source attribution text with dynamic URL"""
-    if current_url and current_url != "null" and current_url != "undefined":
-        source_text = get_text('source', language) + " " + current_url
-        return source_text
-    # Fallback to a more generic URL if dynamic detection fails
-    return get_text('source', language) + " " + get_text('dashboard_url', language)
+def update_pca_analysis_source(language):
+    """Update PCA analysis source attribution text with static URL"""
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    return source_text
 
 # Note: Clientside callback removed due to duplicate callback restrictions
 # Dynamic URL detection will use server-side fallback for now
@@ -1328,9 +1317,10 @@ def update_credits_button_text(language):
     Input('language-store', 'data'),
     Input('generate-key-findings-btn', 'n_clicks'),
     Input('close-key-findings-modal', 'n_clicks'),
+    Input('key-findings-modal', 'is_open'),  # Listen for modal state changes
     State('key-findings-button-state', 'data')
 )
-def update_key_findings_button_text_and_state(language, button_clicks, modal_close, current_state):
+def update_key_findings_button_text_and_state(language, button_clicks, modal_close, modal_is_open, current_state):
     """Update Key Findings button text based on language and processing state"""
     ctx = dash.callback_context
 
@@ -1355,7 +1345,14 @@ def update_key_findings_button_text_and_state(language, button_clicks, modal_clo
             button_text = '⏳ Procesando...'
             current_state = 'processing'
         elif 'close-key-findings-modal.n_clicks' in trigger_id:
-            # Modal was closed - reset to normal
+            # Modal was closed via Cerrar button - reset to normal
+            is_disabled = False
+            button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+            button_text = get_text('key_findings', language)
+            current_state = 'idle'
+        elif 'key-findings-modal.is_open' in trigger_id and not modal_is_open:
+            # Modal was closed via header close button (x) - reset to normal
+            print("🔄 Header close button detected - resetting button state")
             is_disabled = False
             button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
             button_text = get_text('key_findings', language)
@@ -4044,14 +4041,15 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
         Output("key-findings-modal-title", "children"),
         Input("generate-key-findings-btn", "n_clicks"),
         Input("close-key-findings-modal", "n_clicks"),
+        Input("key-findings-modal", "is_open"),  # Listen for modal state changes
         State("keyword-dropdown", "value"),
         State("data-sources-store-v2", "data"),
         State("language-store", "data"),
         prevent_initial_call=True
     )
-    def toggle_key_findings_modal(generate_clicks, close_clicks, selected_tool, selected_sources, language):
+    def toggle_key_findings_modal(generate_clicks, close_clicks, modal_is_open, selected_tool, selected_sources, language):
         """Handle Key Findings modal toggle and generation"""
-        print(f"🔍 Key Findings callback triggered! generate_clicks: {generate_clicks}, selected_tool: {selected_tool}, selected_sources: {len(selected_sources) if selected_sources else 0}")
+        print(f"🔍 Key Findings callback triggered! generate_clicks: {generate_clicks}, close_clicks: {close_clicks}, modal_is_open: {modal_is_open}")
 
         ctx = dash.callback_context
         print(f"🔍 Callback context: {ctx}")
@@ -4063,8 +4061,18 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
         trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
         print(f"🔍 Trigger ID: {trigger_id}")
 
+        # Handle modal header close button (the "x" in top right corner)
+        if trigger_id == "key-findings-modal" and not modal_is_open:
+            print("🔍 Modal header close button clicked - restoring key findings")
+            # Generate title even when closing to maintain consistency
+            tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
+            sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
+            dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
+            # Return empty content to clear modal and restore key findings
+            return False, "", dynamic_title
+
         if trigger_id == "close-key-findings-modal":
-            print("🔍 Closing modal")
+            print("🔍 Closing modal via Cerrar button")
             # Generate title even when closing to maintain consistency
             tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
             sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
