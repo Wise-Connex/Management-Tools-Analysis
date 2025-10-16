@@ -1010,46 +1010,7 @@ app.clientside_callback(
     prevent_initial_call=True
 )
 
-# Callback to update source attribution text for all graphs
-@app.callback(
-    Output('temporal-2d-source', 'children'),
-    Input('language-store', 'data'),
-    prevent_initial_call=False
-)
-def update_temporal_2d_source(language):
-    """Update temporal 2D source attribution text with static URL"""
-    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
-    return source_text
-
-@app.callback(
-    Output('mean-analysis-source', 'children'),
-    Input('language-store', 'data'),
-    prevent_initial_call=False
-)
-def update_mean_analysis_source(language):
-    """Update mean analysis source attribution text with static URL"""
-    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
-    return source_text
-
-@app.callback(
-    Output('correlation-heatmap-source', 'children'),
-    Input('language-store', 'data'),
-    prevent_initial_call=False
-)
-def update_correlation_heatmap_source(language):
-    """Update correlation heatmap source attribution text with static URL"""
-    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
-    return source_text
-
-@app.callback(
-    Output('pca-analysis-source', 'children'),
-    Input('language-store', 'data'),
-    prevent_initial_call=False
-)
-def update_pca_analysis_source(language):
-    """Update PCA analysis source attribution text with static URL"""
-    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
-    return source_text
+# Source attribution callbacks removed - source URLs now integrated inside graphs
 
 # Note: Clientside callback removed due to duplicate callback restrictions
 # Dynamic URL detection will use server-side fallback for now
@@ -1722,7 +1683,7 @@ def update_main_content(selected_sources, selected_keyword, language):
                     step=1,
                     allowCross=False,
                     tooltip={"placement": "bottom", "always_visible": True}
-                )
+                ),
             ], style={'marginBottom': '15px'}),
             dcc.Graph(
                 id='temporal-2d-graph',
@@ -1730,19 +1691,6 @@ def update_main_content(selected_sources, selected_keyword, language):
                 style={'height': '400px'},
                 config={'displaylogo': False, 'responsive': True}
             ),
-            # Source attribution outside the graph
-            html.Div([
-                html.Small(
-                    id='temporal-2d-source',
-                    style={
-                        'fontSize': '10px',
-                        'color': '#6c757d',
-                        'textAlign': 'right',
-                        'display': 'block',
-                        'marginTop': '5px'
-                    }
-                )
-            ], style={'textAlign': 'right'}),
             html.Div(id='temporal-2d-slider-container', style={'display': 'none'})  # Hidden container for slider updates
         ], id='section-temporal-2d', className='section-anchor'))
 
@@ -1775,20 +1723,7 @@ def update_main_content(selected_sources, selected_keyword, language):
                 figure=mean_fig,
                 style={'height': '600px', 'marginBottom': '30px', 'minHeight': '600px'},
                 config={'displaylogo': False, 'responsive': True}
-            ),
-            # Source attribution outside the graph
-            html.Div([
-                html.Small(
-                    id='mean-analysis-source',
-                    style={
-                        'fontSize': '10px',
-                        'color': '#6c757d',
-                        'textAlign': 'right',
-                        'display': 'block',
-                        'marginTop': '5px'
-                    }
-                )
-            ], style={'textAlign': 'right'}),
+            )
         ], id='section-mean-analysis', className='section-anchor', style={'marginBottom': '40px'}))
 
         # 3. Temporal Analysis 3D (if 2+ sources)
@@ -1934,20 +1869,7 @@ def update_main_content(selected_sources, selected_keyword, language):
                     figure=create_correlation_heatmap(combined_dataset, selected_source_names, language, tool_name=tool_display_name),
                     style={'height': '400px'},
                     config={'displaylogo': False, 'responsive': True}
-                ),
-                # Source attribution outside the graph
-                html.Div([
-                    html.Small(
-                        id='correlation-heatmap-source',
-                        style={
-                            'fontSize': '10px',
-                            'color': '#6c757d',
-                            'textAlign': 'right',
-                            'display': 'block',
-                            'marginTop': '5px'
-                        }
-                    )
-                ], style={'textAlign': 'right'}),
+                )
             ], id='section-correlation', className='section-anchor'))
 
         # 7. Regression Analysis (clickable from heatmap)
@@ -2014,20 +1936,7 @@ def update_main_content(selected_sources, selected_keyword, language):
                     figure=create_pca_figure(combined_dataset, selected_source_names, language, tool_name=tool_display_name),
                     style={'height': '500px'},
                     config={'displaylogo': False, 'responsive': True}
-                ),
-                # Source attribution outside the graph
-                html.Div([
-                    html.Small(
-                        id='pca-analysis-source',
-                        style={
-                            'fontSize': '10px',
-                            'color': '#6c757d',
-                            'textAlign': 'right',
-                            'display': 'block',
-                            'marginTop': '5px'
-                        }
-                    )
-                ], style={'textAlign': 'right'}),
+                )
             ], id='section-pca', className='section-anchor'))
 
         # Data table
@@ -2235,13 +2144,18 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
                 valid_values = source_data[valid_mask]
 
                 if len(valid_dates) > 0 and len(valid_values) > 0:
+                    # Fix color lookup: use original database name for color mapping, not translated name
+                    original_source_name = get_original_column_name(source, translation_mapping)
+                    source_color = color_map.get(original_source_name, '#000000')
+                    print(f"DEBUG: Source {source} -> Original: {original_source_name} -> Color: {source_color}")
+
                     fig.add_trace(go.Scatter(
                         x=valid_dates,
                         y=valid_values,
                         mode=mode,
                         name=source,  # Keep the translated name for display
                         line=dict(
-                            color=color_map.get(source, '#000000'),
+                            color=source_color,
                             width=2
                         ),
                         marker=dict(size=4) if mode == 'lines+markers' else None,
@@ -2297,6 +2211,17 @@ def create_temporal_2d_figure(data, sources, language='es', start_date=None, end
         # Performance optimizations
         hovermode='x unified',
         showlegend=True
+    )
+
+    # Add source URL annotation as legend-style outside the graph
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    fig.add_annotation(
+        xref="paper", yref="paper",
+        x=1, y=1.1,  # Position relative to plot
+        text=source_text,
+        showarrow=False,
+        font=dict(size=12),
+        align="left"
     )
 
     # Reduce data points for very large datasets
@@ -2374,13 +2299,18 @@ def create_mean_analysis_figure(data, sources, language='es', tool_name=None):
         for _, row in range_data.iterrows():
             percentage = (row['Mean'] / max_mean_value) * 100 if max_mean_value > 0 else 0
 
+            # Fix color lookup for bars: use original database name for color mapping
+            original_source_name = get_original_column_name(row['Source'], translation_mapping)
+            bar_color = color_map.get(original_source_name, '#000000')
+            print(f"DEBUG: Bar color for {row['Source']} -> Original: {original_source_name} -> Color: {bar_color}")
+
             fig.add_trace(
                 go.Bar(
                     x=[range_name],
                     y=[percentage],
                     name=row['Source'],  # Same name as lines for unified legend
                     width=bar_width,  # Proportional width based on years
-                    marker_color=color_map.get(row['Source'], '#000000'),
+                    marker_color=bar_color,
                     showlegend=False,  # Don't show bars in legend
                     opacity=0.7  # Make bars slightly transparent for line visibility
                 )
@@ -2392,6 +2322,11 @@ def create_mean_analysis_figure(data, sources, language='es', tool_name=None):
         x_values = source_data['Time_Range']
         y_values = source_data['Mean']
 
+        # Fix color lookup for lines: use original database name for color mapping
+        original_source_name = get_original_column_name(source, translation_mapping)
+        line_color = color_map.get(original_source_name, '#000000')
+        print(f"DEBUG: Line color for {source} -> Original: {original_source_name} -> Color: {line_color}")
+
         fig.add_trace(
             go.Scatter(
                 x=x_values,
@@ -2399,7 +2334,7 @@ def create_mean_analysis_figure(data, sources, language='es', tool_name=None):
                 mode='lines+markers',
                 name=source,  # Clean source name for legend
                 line=dict(
-                    color=color_map.get(source, '#000000'),
+                    color=line_color,
                     width=3
                 ),
                 marker=dict(size=8),
@@ -2438,6 +2373,17 @@ def create_mean_analysis_figure(data, sources, language='es', tool_name=None):
         ),
         showlegend=True,
         margin=dict(l=50, r=50, t=80, b=150)  # Consistent margins
+    )
+
+    # Add source URL annotation as legend-style outside the graph
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    fig.add_annotation(
+        xref="paper", yref="paper",
+        x=1, y=1.1,  # Position relative to plot
+        text=source_text,
+        showarrow=False,
+        font=dict(size=12),
+        align="left"
     )
 
     # Set primary y-axis to 0-100%
@@ -2764,17 +2710,27 @@ def create_pca_figure(data, sources, language='es', tool_name=None):
         # Use display name for labels
         display_name = source
 
+        # Fix color lookup for PCA arrows: use original database name for color mapping
+        original_source_name = get_original_column_name(display_name, translation_mapping)
+        arrow_color = color_map.get(original_source_name, '#000000')
+        print(f"DEBUG: PCA arrow color for {display_name} -> Original: {original_source_name} -> Color: {arrow_color}")
+
         # Add arrow line from origin to point
         fig.add_trace(
             go.Scatter(
                 x=[0, pca.components_[0, i]],  # From origin to loading
                 y=[0, pca.components_[1, i]],  # From origin to loading
                 mode='lines',
-                line=dict(color=color_map.get(display_name, '#000000'), width=2),
+                line=dict(color=arrow_color, width=2),
                 showlegend=False
             ),
             row=1, col=1
         )
+
+        # Fix color lookup for PCA markers: use original database name for color mapping
+        original_source_name = get_original_column_name(display_name, translation_mapping)
+        marker_color = color_map.get(original_source_name, '#000000')
+        print(f"DEBUG: PCA marker color for {display_name} -> Original: {original_source_name} -> Color: {marker_color}")
 
         # Add point with label
         fig.add_trace(
@@ -2785,7 +2741,7 @@ def create_pca_figure(data, sources, language='es', tool_name=None):
                 text=[display_name],
                 textposition="top center",
                 name=display_name,
-                marker=dict(color=color_map.get(display_name, '#000000'), size=8)
+                marker=dict(color=marker_color, size=8)
             ),
             row=1, col=1
         )
@@ -2867,6 +2823,17 @@ def create_pca_figure(data, sources, language='es', tool_name=None):
             showgrid=False,
             anchor='free'
         )
+    )
+
+    # Add source URL annotation as legend-style outside the graph
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    fig.add_annotation(
+        xref="paper", yref="paper",
+        x=1, y=1.2,  # Position relative to plot (higher for PCA Analysis)
+        text=source_text,
+        showarrow=False,
+        font=dict(size=12),
+        align="left"
     )
 
     # Set legend at bottom for each subplot
@@ -2987,6 +2954,17 @@ def create_correlation_heatmap(data, sources, language='es', tool_name=None):
         xaxis=dict(side='bottom'),
         yaxis=dict(side='left'),
         clickmode='event+select'  # Enable click events
+    )
+
+    # Add source URL annotation as legend-style outside the graph
+    source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+    fig.add_annotation(
+        xref="paper", yref="paper",
+        x=1, y=1.1,  # Position relative to plot
+        text=source_text,
+        showarrow=False,
+        font=dict(size=12),
+        align="left"
     )
 
     return fig
@@ -3242,13 +3220,18 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
         y_data = y_data.loc[common_index]
         z_data = z_data.loc[common_index]
 
+        # Fix color lookup for 3D plot: use original database name for color mapping
+        original_y_name = get_original_column_name(y_axis, translation_mapping)
+        plot_color = color_map.get(original_y_name, '#000000')
+        print(f"DEBUG: 3D plot color for {y_axis} -> Original: {original_y_name} -> Color: {plot_color}")
+
         fig = go.Figure(data=[
             go.Scatter3d(
                 x=common_index,
                 y=y_data.values,
                 z=z_data.values,
                 mode='lines',
-                line=dict(color=color_map.get(y_axis, '#000000'), width=3),
+                line=dict(color=plot_color, width=3),
                 name=f'{y_axis} vs {z_axis} ({frequency})'
             )
         ])
@@ -3269,6 +3252,17 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
                 zaxis_title=z_axis
             ),
             height=600
+        )
+
+        # Add source URL annotation as legend-style outside the graph
+        source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+        fig.add_annotation(
+            xref="paper", yref="paper",
+            x=1, y=1.08,  # Position relative to plot (adjusted for 3D Temporal Analysis)
+            text=source_text,
+            showarrow=False,
+            font=dict(size=12),
+            align="left"
         )
         return fig
     except Exception as e:
@@ -3342,6 +3336,17 @@ def update_seasonal_analysis(selected_source, selected_keyword, selected_sources
             title_text = base_title
 
         fig.update_layout(height=600, title=title_text, showlegend=False)
+
+        # Add source URL annotation as legend-style outside the graph
+        source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+        fig.add_annotation(
+            xref="paper", yref="paper",
+            x=1, y=1.1,  # Position relative to plot
+            text=source_text,
+            showarrow=False,
+            font=dict(size=12),
+            align="left"
+        )
         return fig
     except Exception as e:
         return {}
@@ -3642,6 +3647,17 @@ def update_regression_analysis(click_data, selected_keyword, selected_sources, l
                 xanchor="center",
                 x=0.5
             )
+        )
+
+        # Add source URL annotation as legend-style outside the graph
+        source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+        fig.add_annotation(
+            xref="paper", yref="paper",
+            x=1, y=1.1,  # Position relative to plot
+            text=source_text,
+            showarrow=False,
+            font=dict(size=12),
+            align="left"
         )
 
         # Store annotation text for later use
@@ -4021,6 +4037,17 @@ def update_fourier_analysis(selected_source, selected_keyword, selected_sources,
             yaxis=dict(
                 autorange=True
             )
+        )
+
+        # Add source URL annotation as legend-style outside the graph
+        source_text = get_text('source', language) + " https://dashboard.solidum360.com/"
+        fig.add_annotation(
+            xref="paper", yref="paper",
+            x=1, y=1.1,  # Position relative to plot
+            text=source_text,
+            showarrow=False,
+            font=dict(size=12),
+            align="left"
         )
         
         return fig
