@@ -3244,8 +3244,25 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
         else:
             title_text = base_title
 
+        # Create a two-line title with the tool name
+        title_line1 = get_text('temporal_3d_title', language, y_axis=y_axis, z_axis=z_axis, frequency=frequency.capitalize())
+        title_line2 = get_tool_name(selected_keyword, language) if selected_keyword else None
+        
+        # Combine into two lines if tool name is available
+        if title_line2:
+            full_title = f"{title_line1}<br>{title_line2}"
+        else:
+            full_title = title_line1
+            
         fig.update_layout(
-            title=title_text,
+            title={
+                'text': full_title,
+                'x': 0.5,
+                'xanchor': 'center',
+                'y': 0.95,
+                'yanchor': 'top',
+                'font': {'size': 14}
+            },
             scene=dict(
                 xaxis_title=get_text('date', language),
                 yaxis_title=y_axis,
@@ -3266,11 +3283,11 @@ def update_3d_plot(y_axis, z_axis, monthly_clicks, annual_clicks, selected_keywo
         )
         return fig
     except Exception as e:
-        print(f"Error in regression analysis: {e}")
+        print(f"Error in 3D temporal analysis: {e}")
         # Return empty figure instead of empty dict
         fig = go.Figure()
         fig.update_layout(
-            title="Error en el análisis de regresión",
+            title=get_text('temporal_3d_error', language),
             xaxis_title="",
             yaxis_title="",
             height=500

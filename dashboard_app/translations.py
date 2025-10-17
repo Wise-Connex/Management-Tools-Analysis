@@ -18,13 +18,13 @@ TRANSLATIONS = {
         'select_management_tool': 'Seleccione una Herramienta Gerencial',
 
         # Section Headers
-        'temporal_analysis_2d': '1. Análisis Temporal 2D',
-        'mean_analysis': '2. Análisis de Medias',
-        'temporal_analysis_3d': '3. Análisis Temporal 3D',
-        'seasonal_analysis': '4. Análisis Estacional',
-        'fourier_analysis': '5. Análisis de Fourier (Periodograma)',
-        'correlation_heatmap': '6. Mapa de Calor (Correlación)',
-        'regression_analysis': '7. Análisis de Regresión',
+        'temporal_analysis_2d': 'Análisis Temporal 2D',
+        'mean_analysis': 'Análisis de Medias',
+        'temporal_analysis_3d': 'Análisis Temporal 3D',
+        'seasonal_analysis': 'Análisis Estacional',
+        'fourier_analysis': 'Análisis de Fourier (Periodograma)',
+        'correlation_heatmap': 'Mapa de Calor (Correlación)',
+        'regression_analysis': 'Análisis de Regresión',
         'pca_analysis': 'Análisis PCA (Cargas y Componentes)',
 
         # Time Range Buttons
@@ -88,6 +88,7 @@ TRANSLATIONS = {
         'select_different_vars': 'Seleccione dos variables diferentes en el mapa de calor.',
         'correlation_heatmap_title': 'Mapa de Calor de Correlación',
         'temporal_3d_title': 'Análisis Temporal 3D: {y_axis} vs {z_axis} ({frequency})',
+        'temporal_3d_error': 'Error en el análisis temporal 3D',
         'seasonal_title': 'Análisis Estacional: {source}',
         'fourier_title': 'Análisis de Fourier - Periodograma: {source}',
         'regression_title': 'Análisis de Regresión Polinomial: {y_var} vs {x_var}',
@@ -139,14 +140,14 @@ TRANSLATIONS = {
         'annual': 'Anual (12m)',
 
         # Navigation
-        'temporal_2d_nav': '1. Temporal 2D',
-        'mean_analysis_nav': '2. Análisis Medias',
-        'temporal_3d_nav': '3. Temporal 3D',
-        'seasonal_nav': '4. Estacional',
-        'fourier_nav': '5. Fourier',
-        'correlation_nav': '6. Correlación',
-        'regression_nav': '7. Regresión',
-        'pca_nav': '8. PCA',
+        'temporal_2d_nav': 'Temporal 2D',
+        'mean_analysis_nav': 'Análisis Medias',
+        'temporal_3d_nav': 'Temporal 3D',
+        'seasonal_nav': 'Estacional',
+        'fourier_nav': 'Fourier',
+        'correlation_nav': 'Correlación',
+        'regression_nav': 'Regresión',
+        'pca_nav': 'PCA',
         'data_table_nav': 'Tabla de Datos',
         'performance_nav': 'Rendimiento',
 
@@ -278,13 +279,13 @@ TRANSLATIONS = {
         'select_management_tool': 'Select a Management Tool',
 
         # Section Headers
-        'temporal_analysis_2d': '1. Temporal Analysis 2D',
-        'mean_analysis': '2. Mean Analysis',
-        'temporal_analysis_3d': '3. Temporal Analysis 3D',
-        'seasonal_analysis': '4. Seasonal Analysis',
-        'fourier_analysis': '5. Fourier Analysis (Periodogram)',
-        'correlation_heatmap': '6. Correlation Heatmap',
-        'regression_analysis': '7. Regression Analysis',
+        'temporal_analysis_2d': 'Temporal Analysis 2D',
+        'mean_analysis': 'Mean Analysis',
+        'temporal_analysis_3d': 'Temporal Analysis 3D',
+        'seasonal_analysis': 'Seasonal Analysis',
+        'fourier_analysis': 'Fourier Analysis (Periodogram)',
+        'correlation_heatmap': 'Correlation Heatmap',
+        'regression_analysis': 'Regression Analysis',
         'pca_analysis': 'PCA Analysis (Loadings and Components)',
 
         # Time Range Buttons
@@ -348,6 +349,7 @@ TRANSLATIONS = {
         'select_different_vars': 'Select two different variables on the heatmap.',
         'correlation_heatmap_title': 'Correlation Heatmap',
         'temporal_3d_title': 'Temporal 3D Analysis: {y_axis} vs {z_axis} ({frequency})',
+        'temporal_3d_error': 'Error in 3D temporal analysis',
         'seasonal_title': 'Seasonal Analysis: {source}',
         'fourier_title': 'Fourier Analysis - Periodogram: {source}',
         'regression_title': 'Polynomial Regression Analysis: {y_var} vs {x_var}',
@@ -399,14 +401,14 @@ TRANSLATIONS = {
         'annual': 'Annual (12m)',
 
         # Navigation
-        'temporal_2d_nav': '1. Temporal 2D',
-        'mean_analysis_nav': '2. Mean Analysis',
-        'temporal_3d_nav': '3. Temporal 3D',
-        'seasonal_nav': '4. Seasonal',
-        'fourier_nav': '5. Fourier',
-        'correlation_nav': '6. Correlation',
-        'regression_nav': '7. Regression',
-        'pca_nav': '8. PCA',
+        'temporal_2d_nav': 'Temporal 2D',
+        'mean_analysis_nav': 'Mean Analysis',
+        'temporal_3d_nav': 'Temporal 3D',
+        'seasonal_nav': 'Seasonal',
+        'fourier_nav': 'Fourier',
+        'correlation_nav': 'Correlation',
+        'regression_nav': 'Regression',
+        'pca_nav': 'PCA',
         'data_table_nav': 'Data Table',
         'performance_nav': 'Performance',
 
