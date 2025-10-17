@@ -649,6 +649,7 @@ def translate_database_content(text, language='es'):
         # Source notes patterns
         'Descriptores lógicos:': 'Logical Descriptors:',
         'Parámetros de búsqueda:': 'Search Parameters:',
+        'Parámetros de Insumos:': 'Input Parameters:',
         'cobertura global': 'global coverage',
         'marco temporal': 'temporal framework',
         'categorización amplia': 'broad categorization',
@@ -683,6 +684,67 @@ def translate_database_content(text, language='es'):
         'La evolución terminológica puede afectar': 'Terminological evolution may affect',
         'la coherencia longitudinal': 'longitudinal coherence',
 
+        # Bain Survey specific translations
+        'Extracción de datos:': 'Data Extraction:',
+        'Encuesta de Herramientas Gerenciales de Bain & Company (Darrell Rigby)': 'Bain & Company Management Tools Survey (Darrell Rigby)',
+        'perfil de encuestados:': 'respondent profile:',
+        'CEOs (Directores Ejecutivos)': 'CEOs (Chief Executive Officers)',
+        'CFOs (Directores Financieros)': 'CFOs (Chief Financial Officers)',
+        'COOs (Directores de Operaciones)': 'COOs (Chief Operating Officers)',
+        'y otros líderes senior': 'and other senior leaders',
+        'Encuesta online': 'Online survey',
+        'cuestionarios estructurados': 'structured questionnaires',
+        'muestreo probabilístico y estratificado': 'probabilistic and stratified sampling',
+        'análisis estadístico': 'statistical analysis',
+        'Año/#Encuestados:': 'Year/#Respondents:',
+        'Índice de Satisfacción:': 'Satisfaction Index:',
+        'La métrica se calcula como:': 'The metric is calculated as:',
+        'Índice de Satisfacción = Promedio de las puntuaciones de satisfacción reportadas por ejecutivos (escala 0-5)': 'Satisfaction Index = Average of satisfaction scores reported by executives (scale 0-5)',
+        'Refleja la percepción promedio de los ejecutivos sobre la utilidad e impacto de la herramienta en su ecosistema gerencial': 'Reflects the average perception of executives about the utility and impact of the tool in their management ecosystem',
+        'donde una puntuación más alta indica mayor satisfacción': 'where a higher score indicates greater satisfaction',
+        'Directivos de alto nivel': 'Senior executives',
+        'consultores estratégicos': 'strategic consultants',
+        'profesionales de la gestión': 'management professionals',
+        'interesados en la implementación y adopción de': 'interested in the implementation and adoption of',
+        'metodologías de gestión': 'management methodologies',
+        'con un enfoque en la practicidad y el uso real en el campo empresarial': 'with a focus on practicality and real use in the business field',
+        'buscando insights sobre las tendencias de la práctica gerencial': 'seeking insights on management practice trends',
+        'Además,': 'Additionally,',
+        'especialistas en': 'specialists in',
+        'que buscan': 'who seek',
+        'El índice de satisfacción es subjetivo': 'The satisfaction index is subjective',
+        'y puede estar influenciado por el sesgo de deseabilidad social y autoinforme': 'and may be influenced by social desirability bias and self-report',
+        'la interpretación puede variar entre los encuestados': 'interpretation may vary among respondents',
+        'la terminología puede haber evolucionado y afectar la consistencia longitudinal': 'terminology may have evolved and affect longitudinal consistency',
+        'y la métrica no mide resultados objetivos ni impacto real': 'and the metric does not measure objective results or real impact',
+        'Fuente:': 'Source:',
+
+        # Bain Usability specific translations
+        'Indicador de Usabilidad:': 'Usability Indicator:',
+        'Indicador de Usabilidad = (Número de ejecutivos que reportan uso de la herramienta en el año de la encuesta / Número total de ejecutivos encuestados en ese año) × 100': 'Usability Indicator = (Number of executives reporting use of the tool in the survey year / Total number of executives surveyed in that year) × 100',
+        'Refleja el porcentaje de ejecutivos que indicaron haber utilizado la herramienta de gestión en su organización durante el periodo previo al año de la encuesta': 'Reflects the percentage of executives who indicated having used the management tool in their organization during the period prior to the survey year',
+        'La variabilidad en el tamaño de la muestra entre los años puede afectar la comparabilidad': 'Variability in sample size between years may affect comparability',
+        'el sesgo de selección y autoinforme puede influir en las respuestas': 'selection and self-report bias may influence responses',
+        'y la medición del uso es un indicador relativo, no absoluto, de la efectividad': 'and usage measurement is a relative, not absolute, indicator of effectiveness',
+
+        # Crossref specific translations
+        'campos de búsqueda:': 'search fields:',
+        '"Título" y "Resumen (Abstract)"': '"Title" and "Abstract"',
+        'La métrica es el número de resultados que coinciden con los descriptores en los metadatos de CrossRef': 'The metric is the number of results matching the descriptors in CrossRef metadata',
+        'Refleja el volumen de publicaciones académicas (artículos, libros, conferencias, etc.) indexadas': 'Reflects the volume of indexed academic publications (articles, books, conferences, etc.)',
+        'La búsqueda en metadatos de CrossRef usa operadores booleanos': 'CrossRef metadata search uses Boolean operators',
+        'Interpretación centrada en el volumen de publicaciones': 'Interpretation focused on publication volume',
+        'Proporciona una medida cuantitativa del interés académico y las investigaciones publicadas': 'Provides a quantitative measure of academic interest and published research',
+        'Refleja el interés académico a través de publicaciones revisadas por pares y arbitradas, e indexadas': 'Reflects academic interest through peer-reviewed and arbitrated indexed publications',
+        'Usuarios típicos:': 'Typical users:',
+        'estudiantes': 'students',
+        'Dependencia de la exhaustividad y precisión de la indexación de CrossRef': 'Dependence on the completeness and accuracy of CrossRef indexing',
+        'Solo refleja volumen, no calidad, relevancia, impacto o citaciones': 'Only reflects volume, not quality, relevance, impact or citations',
+        'Descriptores lógicos pueden introducir sesgos': 'Logical descriptors may introduce biases',
+        'Cobertura limitada: no incluye todas las publicaciones académicas, solo su indexado': 'Limited coverage: does not include all academic publications, only their indexing',
+        'Proporciona DOI (Digital Object Identifier) y metadatos básicos': 'Provides DOI (Digital Object Identifier) and basic metadata',
+        'excluyendo datos bibliométricos adicionales': 'excluding additional bibliometric data',
+
         # General patterns
         'benchmarking': 'benchmarking',
         '+': '+',
@@ -690,6 +752,7 @@ def translate_database_content(text, language='es'):
         '01/2004-01/2025': '01/2004-01/2025',
         '2004': '2004',
         '2025': '2025',
+        '1950': '1950',
         '95%': '95%',
         'N/A': 'N/A',
 
@@ -698,8 +761,108 @@ def translate_database_content(text, language='es'):
         'bain_satisfacción_translated': 'Bain - Satisfaction'
     }
 
+    # First apply general translations
     translated_text = text
     for spanish, english in translations.items():
+        translated_text = translated_text.replace(spanish, english)
+    
+    # Then apply management tool specific translations
+    translated_text = translate_management_tool_notes(translated_text, language)
+
+    return translated_text
+
+def translate_management_tool_notes(text, language='es'):
+    """
+    Translate management tool specific notes that contain Spanish text.
+    This handles tool-specific terminology found in the database notes.
+
+    Args:
+        text (str): The text from database to translate
+        language (str): Target language code
+
+    Returns:
+        str: Translated text
+    """
+    if not text or language == 'es':
+        return text
+
+    # Management tool specific translations
+    tool_translations = {
+        # Tool names
+        'Reingeniería de Procesos': 'Business Process Reengineering',
+        'Gestión de la Cadena de Suministro': 'Supply Chain Management',
+        'Planificación de Escenarios': 'Scenario Planning',
+        'Planificación Estratégica': 'Strategic Planning',
+        'Experiencia del Cliente': 'Customer Experience Management',
+        'Calidad Total': 'Total Quality Management',
+        'Propósito y Visión': 'Mission and Vision',
+        'Benchmarking': 'Benchmarking',
+        'Competencias Centrales': 'Core Competencies',
+        'Cuadro de Mando Integral': 'Balanced Scorecard',
+        'Alianzas y Capital de Riesgo': 'Strategic Alliances and Venture Capital',
+        'Outsourcing': 'Outsourcing',
+        'Segmentación de Clientes': 'Customer Segmentation',
+        'Fusiones y Adquisiciones': 'Mergers and Acquisitions',
+        'Gestión de Costos': 'Cost Management',
+        'Presupuesto Base Cero': 'Zero-Based Budgeting',
+        'Estrategias de Crecimiento': 'Growth Strategies',
+        'Gestión del Conocimiento': 'Knowledge Management',
+        'Gestión del Cambio': 'Change Management',
+        'Optimización de Precios': 'Price Optimization',
+        'Lealtad del Cliente': 'Customer Loyalty',
+        'Innovación Colaborativa': 'Collaborative Innovation',
+        'Talento y Compromiso': 'Talent and Engagement',
+
+        # Common phrases in tool descriptions
+        'REINGENIERÍA DE PROCESOS:': 'BUSINESS PROCESS REENGINEERING:',
+        'GESTIÓN DE LA CADENA DE SUMINISTRO:': 'SUPPLY CHAIN MANAGEMENT:',
+        'PLANIFICACIÓN DE ESCENARIOS:': 'SCENARIO PLANNING:',
+        'PLANIFICACIÓN ESTRATÉGICA DINÁMICA:': 'DYNAMIC STRATEGIC PLANNING:',
+        'GESTIÓN DE LA EXPERIENCIA DEL CLIENTE:': 'CUSTOMER EXPERIENCE MANAGEMENT:',
+        'GESTIÓN DE LA CALIDAD TOTAL:': 'TOTAL QUALITY MANAGEMENT:',
+        'PROPÓSITO, MISIÓN Y VISIÓN:': 'PURPOSE, MISSION AND VISION:',
+        'BENCHMARKING:': 'BENCHMARKING:',
+        'COMPETENCIAS CENTRALES:': 'CORE COMPETENCIES:',
+        'CUADRO DE MANDO INTEGRAL:': 'BALANCED SCORECARD:',
+        'ALIANZA ESTRATÉGICA Y CAPITAL DE RIESGO:': 'STRATEGIC ALLIANCE AND VENTURE CAPITAL:',
+        'OUTSOURCING:': 'OUTSOURCING:',
+        'SEGMENTACIÓN DE CLIENTES:': 'CUSTOMER SEGMENTATION:',
+        'FUSIONES Y ADQUISICIONES:': 'MERGERS AND ACQUISITIONS:',
+        'ASIGNACIÓN Y GESTIÓN DE COSTOS:': 'COST ALLOCATION AND MANAGEMENT:',
+        'PRESUPUESTO BASE CERO:': 'ZERO-BASED BUDGETING:',
+        'ESTRATEGIAS DE CRECIMIENTO:': 'GROWTH STRATEGIES:',
+        'GESTIÓN DEL CONOCIMIENTO:': 'KNOWLEDGE MANAGEMENT:',
+        'GESTIÓN DEL CAMBIO:': 'CHANGE MANAGEMENT:',
+        'OPTIMIZACIÓN DE PRECIOS:': 'PRICE OPTIMIZATION:',
+        'GESTIÓN DE LA LEALTAD DEL CLIENTE:': 'CUSTOMER LOYALTY MANAGEMENT:',
+        'GESTIÓN DE LA INNOVACIÓN COLABORATIVA:': 'COLLABORATIVE INNOVATION MANAGEMENT:',
+        'GESTIÓN DEL TALENTO Y COMPROMISO DE EMPLEADOS:': 'TALENT AND EMPLOYEE ENGAGEMENT MANAGEMENT:',
+
+        # Specialized terms
+        'herramientas de planificación logística': 'logistics planning tools',
+        'herramientas de análisis estratégico': 'strategic analysis tools',
+        'sistemas de gestión de calidad': 'quality management systems',
+        'herramientas de direccionamiento estratégico': 'strategic direction tools',
+        'herramientas de análisis comparativo': 'comparative analysis tools',
+        'herramientas de desarrollo estratégico': 'strategic development tools',
+        'sistemas de gestión del rendimiento': 'performance management systems',
+        'herramientas para la expansión y diversificación': 'expansion and diversification tools',
+        'herramientas para optimizar operaciones y reducir costos': 'tools to optimize operations and reduce costs',
+        'herramientas de análisis de mercado': 'market analysis tools',
+        'herramientas para la expansión y crecimiento corporativo': 'corporate expansion and growth tools',
+        'herramientas para gestionar y asignar costos': 'tools to manage and allocate costs',
+        'herramientas de gestión de presupuesto': 'budget management tools',
+        'herramientas para la expansión del negocio': 'business expansion tools',
+        'herramientas para compartir información y gestionar el conocimiento': 'tools to share information and manage knowledge',
+        'herramientas para facilitar la adopción de cambios': 'tools to facilitate change adoption',
+        'herramientas para mejorar la definición de precios y tarifas': 'tools to improve price and rate definition',
+        'herramientas para mejorar la retención y la fidelización de clientes': 'tools to improve customer retention and loyalty',
+        'metodologías de gestión de innovación': 'innovation management methodologies',
+        'herramientas para el desarrollo y compromiso de los empleados': 'tools for employee development and engagement'
+    }
+
+    translated_text = text
+    for spanish, english in tool_translations.items():
         translated_text = translated_text.replace(spanish, english)
 
     return translated_text
