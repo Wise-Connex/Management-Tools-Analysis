@@ -284,6 +284,8 @@ TRANSLATIONS = {
         'generation_date': 'Fecha de Generación:',
         'previous_accesses': 'Accesos Previos:',
         'depth': 'Profundidad:',
+        'executive_summary': 'Resumen Ejecutivo',
+        'principal_findings': 'Hallazgos Principales',        
     },
     'en': {
         # UI Labels and Buttons

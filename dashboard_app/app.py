@@ -1414,11 +1414,15 @@ def update_credits_button_text(language):
     Input('generate-key-findings-btn', 'n_clicks'),
     Input('close-key-findings-modal', 'n_clicks'),
     Input('key-findings-modal', 'is_open'),  # Listen for modal state changes
-    State('key-findings-button-state', 'data')
+    State('key-findings-button-state', 'data'),
+    prevent_initial_call=False  # Allow initial call to set default state
 )
 def update_key_findings_button_text_and_state(language, button_clicks, modal_close, modal_is_open, current_state):
     """Update Key Findings button text based on language and processing state"""
+    print(f"🔍 DEBUG: Button callback triggered - button_clicks={button_clicks}, modal_close={modal_close}, modal_is_open={modal_is_open}, current_state={current_state}")
+
     ctx = dash.callback_context
+    print(f"🔍 DEBUG: Callback context triggered: {ctx.triggered if ctx.triggered else 'None'}")
 
     # Default state
     is_disabled = False
@@ -1427,11 +1431,14 @@ def update_key_findings_button_text_and_state(language, button_clicks, modal_clo
     current_state = current_state or 'idle'
 
     # Check if button was clicked or modal was closed
-    if ctx.triggered:
+    if ctx.triggered and len(ctx.triggered) > 0:
         trigger_id = ctx.triggered[0]['prop_id']
+        trigger_value = ctx.triggered[0]['value']
+        print(f"🔍 DEBUG: Trigger ID: {trigger_id}, Value: {trigger_value}")
 
-        if 'generate-key-findings-btn.n_clicks' in trigger_id:
-            # Button was clicked - show processing state
+        if 'generate-key-findings-btn.n_clicks' in trigger_id and trigger_value:
+            # Button was clicked - show processing state immediately
+            print("🔍 DEBUG: Button clicked - setting processing state immediately")
             is_disabled = True
             button_style = {
                 'backgroundColor': '#f8f9fa',
@@ -1440,20 +1447,22 @@ def update_key_findings_button_text_and_state(language, button_clicks, modal_clo
             }
             button_text = '⏳ Procesando...'
             current_state = 'processing'
-        elif 'close-key-findings-modal.n_clicks' in trigger_id:
+        elif 'close-key-findings-modal.n_clicks' in trigger_id and trigger_value:
             # Modal was closed via Cerrar button - reset to normal
+            print("🔍 DEBUG: Modal close button clicked - resetting to normal")
             is_disabled = False
             button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
             button_text = get_text('key_findings', language)
             current_state = 'idle'
         elif 'key-findings-modal.is_open' in trigger_id and not modal_is_open:
             # Modal was closed via header close button (x) - reset to normal
-            print("🔄 Header close button detected - resetting button state")
+            print("🔄 DEBUG: Header close button detected - resetting button state")
             is_disabled = False
             button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
             button_text = get_text('key_findings', language)
             current_state = 'idle'
 
+    print(f"🔄 DEBUG: Final button state - disabled={is_disabled}, text='{button_text}', state='{current_state}', style={button_style}")
     return button_text, is_disabled, button_style, current_state
 
 # Callback to control Key Findings button visibility
@@ -4228,17 +4237,17 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
     )
     def toggle_key_findings_modal(generate_clicks, close_clicks, modal_is_open, selected_tool, selected_sources, language):
         """Handle Key Findings modal toggle and generation"""
-        print(f"🔍 Key Findings callback triggered! generate_clicks: {generate_clicks}, close_clicks: {close_clicks}, modal_is_open: {modal_is_open}")
-
+        print(f"🔍 MODAL CALLBACK: generate_clicks: {generate_clicks}, close_clicks: {close_clicks}, modal_is_open: {modal_is_open}")
+    
         ctx = dash.callback_context
-        print(f"🔍 Callback context: {ctx}")
-
+        print(f"🔍 MODAL CALLBACK: Callback context: {ctx}")
+    
         if not ctx.triggered:
-            print("🔍 No triggered context, returning default")
+            print("🔍 MODAL CALLBACK: No triggered context, returning default")
             return False, "", "🧠 Key Findings - Análisis"
-
+    
         trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
-        print(f"🔍 Trigger ID: {trigger_id}")
+        print(f"🔍 MODAL CALLBACK: Trigger ID: {trigger_id}")
 
         # Handle modal header close button (the "x" in top right corner)
         if trigger_id == "key-findings-modal" and not modal_is_open:
