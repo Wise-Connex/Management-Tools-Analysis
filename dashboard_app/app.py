@@ -24,6 +24,7 @@ import sys
 import re
 import time
 import asyncio
+from datetime import datetime
 
 # Load environment variables from .env file
 try:
@@ -988,14 +989,16 @@ app.layout = dbc.Container([
             dbc.ModalFooter(
                 [
                     dbc.Button(id="close-citation-modal", color="secondary", className="me-2"),
-                    dbc.Button(
+                    html.A(
                         [
                             html.I(className="fas fa-download", style={'marginRight': '5px'}),
                             html.Span(id="download-current-ris-text")
                         ],
                         id="download-current-ris",
-                        color="success",
-                        size="sm"
+                        href="",
+                        download="dashboard_citation.ris",  # This will be updated dynamically
+                        className="btn btn-success btn-sm",
+                        style={"textDecoration": "none"}
                     )
                 ]
             ),
@@ -1023,6 +1026,55 @@ app.layout = dbc.Container([
 
 # Initialize Key Findings service after app is created
 initialize_key_findings_service()
+
+def get_current_date_for_citation(language='es'):
+    """
+    Get the current date formatted for citation styles.
+
+    Args:
+        language (str): Language code ('es' or 'en')
+
+    Returns:
+        dict: Dictionary with date formats for different citation styles
+    """
+    now = datetime.now()
+
+    if language == 'es':
+        # Spanish formats
+        day = now.day
+        month_names = [
+            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+        ]
+        month_name = month_names[now.month - 1]
+        year = now.year
+
+        return {
+            'chicago': f'{day} de {month_name} de {year}',
+            'oscola': f'{day} de {month_name} de {year}',
+            'vancouver': f'{day} de {month_name} de {year}',
+            'apa': f'{day} de {month_name} de {year}',
+            'mla': f'{day} {month_name} {year}',
+            'ieee': f'{day} {month_name} {year}'
+        }
+    else:
+        # English formats
+        month_names = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ]
+        month_name = month_names[now.month - 1]
+        day = now.day
+        year = now.year
+
+        return {
+            'chicago': f'{month_name} {day}, {year}',
+            'oscola': f'{day} {month_name} {year}',
+            'vancouver': f'{year} {month_name} {day}',
+            'apa': f'{month_name} {day}, {year}',
+            'mla': f'{day} {month_name} {year}',
+            'ieee': f'{month_name} {day}, {year}'
+        }
 
 def run_async_in_sync_context(async_func, *args, **kwargs):
     """
@@ -5332,53 +5384,55 @@ def toggle_citation_modal(citation_clicks, close_clicks, language):
     # Open modal if citation button is clicked
     if trigger_id == "citation-modal-toggle":
         # Generate citation content based on current language
+        current_date = get_current_date_for_citation(language)
+
         if language == "es":
             # Spanish citations
             citation_content = html.Div([
                 html.H6(get_text('how_to_cite', language), className="mb-3"),
-                
+
                 html.H6("APA 7 (Asociación Americana de Psicología)", className="text-primary mt-3"),
                 html.Div([
                     html.P("Añez, D., y Añez, D. (2025). Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales [Dashboard de análisis de datos]. Solidum Consulting / Wise Connex. https://dashboard.solidum360.com/",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copiar", id={"type": "copy-button", "index": "apa"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("Chicago (17.ª ed., autor-fecha)", className="text-primary"),
                 html.Div([
-                    html.P("Añez, Diomar, y Dimar Añez. 2025. \"Herramientas Gerenciales: Dinámicas Temporales Contingentes y Antinomias Policontextuales\". Dashboard de Análisis. Solidum Consulting / Wise Connex. Consultado el 12 de octubre de 2025. https://dashboard.solidum360.com/.",
+                    html.P(f"Añez, Diomar, y Dimar Añez. 2025. \"Herramientas Gerenciales: Dinámicas Temporales Contingentes y Antinomias Policontextuales\". Dashboard de Análisis. Solidum Consulting / Wise Connex. Consultado el {current_date['chicago']}. https://dashboard.solidum360.com/.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copiar", id={"type": "copy-button", "index": "chicago"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("MLA (9.ª ed.)", className="text-primary"),
                 html.Div([
                     html.P("Añez, Diomar, y Dimar Añez. Herramientas Gerenciales: Dinámicas Temporales Contingentes y Antinomias Policontextuales. 2025, Solidum Consulting / Wise Connex, dashboard.solidum360.com/.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copiar", id={"type": "copy-button", "index": "mla"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("OSCOLA (Jurídico)", className="text-primary"),
                 html.Div([
-                    html.P("Diomar Añez y Dimar Añez, Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accedido el 12 de octubre de 2025.",
+                    html.P(f"Diomar Añez y Dimar Añez, Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accedido el {current_date['oscola']}.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copiar", id={"type": "copy-button", "index": "oscola"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("Vancouver (Medicina/Salud)", className="text-primary"),
                 html.Div([
-                    html.P("1. Añez D, Añez D. Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales [Internet]. Solidum Consulting / Wise Connex; 2025 [citado el 12 de oct. de 2025]. Disponible en: https://dashboard.solidum360.com/",
+                    html.P(f"1. Añez D, Añez D. Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales [Internet]. Solidum Consulting / Wise Connex; 2025 [citado el {current_date['vancouver']}]. Disponible en: https://dashboard.solidum360.com/",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copiar", id={"type": "copy-button", "index": "vancouver"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("IEEE (Ingeniería/Tecnología)", className="text-primary"),
                 html.Div([
                     html.P("[1] D. Añez y D. Añez, \"Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales\", Solidum Consulting / Wise Connex, 2025. [En línea]. Disponible: https://dashboard.solidum360.com/.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copiar", id={"type": "copy-button", "index": "ieee"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.Hr(),
                 html.P(get_text('download_ris_files', language), className="text-muted mb-2"),
                 html.P(get_text('ris_note', language), className="small text-muted")
@@ -5387,66 +5441,52 @@ def toggle_citation_modal(citation_clicks, close_clicks, language):
             # English citations
             citation_content = html.Div([
                 html.H6(get_text('how_to_cite', language), className="mb-3"),
-                
+
                 html.H6("APA 7 (American Psychological Association)", className="text-primary mt-3"),
                 html.Div([
                     html.P("Añez, D., & Añez, D. (2025). Management tools: Contingent temporal dynamics and policontextual antinomies [Data analysis dashboard]. Solidum Consulting / Wise Connex. https://dashboard.solidum360.com/",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copy", id={"type": "copy-button", "index": "apa"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("Chicago (17th ed., author-date)", className="text-primary"),
                 html.Div([
-                    html.P("Añez, Diomar, and Dimar Añez. 2025. \"Management Tools: Contingent Temporal Dynamics and Policontextual Antinomies.\" Analysis Dashboard. Solidum Consulting / Wise Connex. Accessed October 12, 2025. https://dashboard.solidum360.com/.",
+                    html.P(f"Añez, Diomar, and Dimar Añez. 2025. \"Management Tools: Contingent Temporal Dynamics and Policontextual Antinomies.\" Analysis Dashboard. Solidum Consulting / Wise Connex. Accessed {current_date['chicago']}. https://dashboard.solidum360.com/.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copy", id={"type": "copy-button", "index": "chicago"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("MLA (9th ed.)", className="text-primary"),
                 html.Div([
                     html.P("Añez, Diomar, and Dimar Añez. Management Tools: Contingent Temporal Dynamics and Policontextual Antinomies. 2025, Solidum Consulting / Wise Connex, dashboard.solidum360.com/.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copy", id={"type": "copy-button", "index": "mla"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("OSCOLA (Legal)", className="text-primary"),
                 html.Div([
-                    html.P("Diomar Añez and Dimar Añez, Management tools: Contingent temporal dynamics and policontextual antinomies (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accessed 12 October 2025.",
+                    html.P(f"Diomar Añez and Dimar Añez, Management tools: Contingent temporal dynamics and policontextual antinomies (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accessed {current_date['oscola']}.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copy", id={"type": "copy-button", "index": "oscola"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("Vancouver (Medicine/Health)", className="text-primary"),
                 html.Div([
-                    html.P("1. Añez D, Añez D. Management tools: Contingent temporal dynamics and policontextual antinomies [Internet]. Solidum Consulting / Wise Connex; 2025 [cited 2025 Oct 12]. Available from: https://dashboard.solidum360.com/",
+                    html.P(f"1. Añez D, Añez D. Management tools: Contingent temporal dynamics and policontextual antinomies [Internet]. Solidum Consulting / Wise Connex; 2025 [cited {current_date['vancouver']}]. Available from: https://dashboard.solidum360.com/",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copy", id={"type": "copy-button", "index": "vancouver"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.H6("IEEE (Engineering/Tech)", className="text-primary"),
                 html.Div([
                     html.P("[1] D. Añez and D. Añez, \"Management tools: Contingent temporal dynamics and policontextual antinomies,\" Solidum Consulting / Wise Connex, 2025. [Online]. Available: https://dashboard.solidum360.com/.",
                           className="mb-2", style={"fontSize": "12px"}),
                     dbc.Button("Copy", id={"type": "copy-button", "index": "ieee"}, color="outline-primary", size="sm", className="me-2")
                 ], className="d-flex justify-content-between align-items-center mb-3"),
-                
+
                 html.Hr(),
-                html.Div([
-                    html.P(get_text('download_ris_files', language), className="text-muted mb-2"),
-                    # Show only the download button for the current language
-                    html.Div([
-                        dbc.Button(
-                            [
-                                html.I(className="fas fa-download", style={'marginRight': '5px'}),
-                                html.Span(get_text('download_ris', language))
-                            ],
-                            id="download-current-ris",
-                            color="success" if language == "en" else "info",
-                            size="sm"
-                        )
-                    ], style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}),
-                    html.P(get_text('ris_note', language), className="small text-muted")
-                ])
+                html.P(get_text('download_ris_files', language), className="text-muted mb-2"),
+                html.P(get_text('ris_note', language), className="small text-muted")
             ])
         
         # Set modal title based on language
@@ -5479,9 +5519,9 @@ def copy_citation_to_clipboard(n_clicks, language):
     ctx = dash.callback_context
     if not ctx.triggered or not any(clicks and clicks > 0 for clicks in n_clicks):
         return False, "", ""
-    
+
     trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
-    
+
     # Parse the trigger_id to extract button information
     try:
         import json
@@ -5490,45 +5530,52 @@ def copy_citation_to_clipboard(n_clicks, language):
         button_index = trigger_data.get("index", "")
     except (json.JSONDecodeError, KeyError):
         return False, "", ""
-    
+
+    # Get current date for citations
+    current_date = get_current_date_for_citation(language)
+
     # Define citation texts for each format and language
     if language == "es":
         citations = {
             "apa": "Añez, D., y Añez, D. (2025). Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales [Dashboard de análisis de datos]. Solidum Consulting / Wise Connex. https://dashboard.solidum360.com/",
-            "chicago": "Añez, Diomar, y Dimar Añez. 2025. \"Herramientas Gerenciales: Dinámicas Temporales Contingentes y Antinomias Policontextuales\". Dashboard de Análisis. Solidum Consulting / Wise Connex. Consultado el 12 de octubre de 2025. https://dashboard.solidum360.com/",
+            "chicago": f"Añez, Diomar, y Dimar Añez. 2025. \"Herramientas Gerenciales: Dinámicas Temporales Contingentes y Antinomias Policontextuales\". Dashboard de Análisis. Solidum Consulting / Wise Connex. Consultado el {current_date['chicago']}. https://dashboard.solidum360.com/",
             "mla": "Añez, Diomar, y Dimar Añez. Herramientas Gerenciales: Dinámicas Temporales Contingentes y Antinomias Policontextuales. 2025, Solidum Consulting / Wise Connex, dashboard.solidum360.com/.",
-            "oscola": "Diomar Añez y Dimar Añez, Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accedido el 12 de octubre de 2025.",
-            "vancouver": "1. Añez D, Añez D. Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales [Internet]. Solidum Consulting / Wise Connex; 2025 [citado el 12 de oct. de 2025]. Disponible en: https://dashboard.solidum360.com/",
+            "oscola": f"Diomar Añez y Dimar Añez, Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accedido el {current_date['oscola']}.",
+            "vancouver": f"1. Añez D, Añez D. Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales [Internet]. Solidum Consulting / Wise Connex; 2025 [citado el {current_date['vancouver']}]. Disponible en: https://dashboard.solidum360.com/",
             "ieee": "[1] D. Añez y D. Añez, \"Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales\", Solidum Consulting / Wise Connex, 2025. [En línea]. Disponible: https://dashboard.solidum360.com/."
         }
         success_message = "¡Cita copiada al portapapeles!"
     else:
         citations = {
             "apa": "Añez, D., & Añez, D. (2025). Management tools: Contingent temporal dynamics and policontextual antinomies [Data analysis dashboard]. Solidum Consulting / Wise Connex. https://dashboard.solidum360.com/",
-            "chicago": "Añez, Diomar, and Dimar Añez. 2025. \"Management Tools: Contingent Temporal Dynamics and Policontextual Antinomies.\" Analysis Dashboard. Solidum Consulting / Wise Connex. Accessed October 12, 2025. https://dashboard.solidum360.com/",
+            "chicago": f"Añez, Diomar, and Dimar Añez. 2025. \"Management Tools: Contingent Temporal Dynamics and Policontextual Antinomies.\" Analysis Dashboard. Solidum Consulting / Wise Connex. Accessed {current_date['chicago']}. https://dashboard.solidum360.com/",
             "mla": "Añez, Diomar, and Dimar Añez. Management Tools: Contingent Temporal Dynamics and Policontextual Antinomies. 2025, Solidum Consulting / Wise Connex, dashboard.solidum360.com/.",
-            "oscola": "Diomar Añez and Dimar Añez, Management tools: Contingent temporal dynamics and policontextual antinomies (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accessed 12 October 2025.",
-            "vancouver": "1. Añez D, Añez D. Management tools: Contingent temporal dynamics and policontextual antinomies [Internet]. Solidum Consulting / Wise Connex; 2025 [cited 2025 Oct 12]. Available from: https://dashboard.solidum360.com/",
+            "oscola": f"Diomar Añez and Dimar Añez, Management tools: Contingent temporal dynamics and policontextual antinomies (Solidum Consulting / Wise Connex, 2025) <https://dashboard.solidum360.com/> accessed {current_date['oscola']}.",
+            "vancouver": f"1. Añez D, Añez D. Management tools: Contingent temporal dynamics and policontextual antinomies [Internet]. Solidum Consulting / Wise Connex; 2025 [cited {current_date['vancouver']}]. Available from: https://dashboard.solidum360.com/",
             "ieee": "[1] D. Añez and D. Añez, \"Management tools: Contingent temporal dynamics and policontextual antinomies,\" Solidum Consulting / Wise Connex, 2025. [Online]. Available: https://dashboard.solidum360.com/."
         }
         success_message = "Citation copied to clipboard!"
-    
+
     citation_text = citations.get(button_index, "")
-    
+
     # Store the citation text to be copied by JavaScript
     return True, success_message, citation_text
 
 # Callbacks for downloading RIS files
 @app.callback(
     Output("download-current-ris", "href"),
+    Output("download-current-ris", "download"),
     Input("citation-modal-toggle", "n_clicks"),
     State("language-store", "data"),
     prevent_initial_call=True
 )
 def generate_ris_download_link(n_clicks, language):
     """Generate download link for RIS file based on current language"""
+    print(f"🔍 DEBUG: generate_ris_download_link called with n_clicks={n_clicks}, language={language}")
+    
     if not n_clicks:
-        return ""
+        print("🔍 DEBUG: No clicks detected, returning empty string")
+        return "", ""
     
     # Generate RIS content based on current language
     if language == "es":
@@ -5546,6 +5593,7 @@ KW  - Visualización de Datos
 KW  - Antinomias Policontextuales
 UR  - https://dashboard.solidum360.com/
 ER  -"""
+        filename = "dashboard_citacion_es.ris"
     else:
         # English RIS content
         ris_content = """TY  - WEB
@@ -5561,12 +5609,20 @@ KW  - Data Visualization
 KW  - Policontextual Antinomies
 UR  - https://dashboard.solidum360.com/
 ER  -"""
+        filename = "dashboard_citation_en.ris"
     
-    # Create a data URI for the RIS file
+    print(f"🔍 DEBUG: Generated RIS content for language={language}, length={len(ris_content)}")
+    
+    # Create a data URI for the RIS file with proper filename
     import base64
+    import urllib.parse
     ris_b64 = base64.b64encode(ris_content.encode('utf-8')).decode('utf-8')
     
-    return f"data:text/plain;base64,{ris_b64}"
+    # Create a proper data URI with filename suggestion
+    data_uri = f"data:application/x-research-info-systems;base64,{ris_b64}"
+    print(f"🔍 DEBUG: Generated data URI, length={len(data_uri)}")
+    
+    return data_uri, filename
 
 if __name__ == '__main__':
     app.run(
