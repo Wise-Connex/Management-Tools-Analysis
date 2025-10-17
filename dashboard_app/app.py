@@ -191,7 +191,7 @@ def initialize_key_findings_service():
 # Notes and DOI data is now loaded from the database
 
 def parse_text_with_links(text):
-    """Parse text and return formatted components"""
+    """Parse text and return formatted components with basic markdown support"""
     if not text:
         return [html.Div("No hay notas disponibles", style={'fontSize': '12px'})]
 
@@ -211,8 +211,52 @@ def parse_text_with_links(text):
     # Clean up any trailing whitespace or punctuation
     cleaned_text = cleaned_text.rstrip('.,;:- \t\n')
 
-    # Use dcc.Markdown to render the markdown formatting
-    return [dcc.Markdown(cleaned_text, style={'fontSize': '12px'})]
+    # Split text by newlines and create separate components for each line
+    lines = cleaned_text.split('\n')
+    
+    # Create a list of components for each line
+    components = []
+    
+    for line in lines:
+        if not line.strip():  # Skip empty lines
+            continue
+            
+        # Process each line for markdown formatting
+        # Use regex to find and replace bold text (**text**)
+        parts = []
+        last_end = 0
+        
+        # Find all bold patterns in the line
+        for match in re.finditer(r'\*\*(.*?)\*\*', line):
+            # Add text before the bold part
+            if match.start() > last_end:
+                parts.append(html.Span(line[last_end:match.start()], style={'fontSize': '12px'}))
+            
+            # Add the bold part
+            parts.append(html.Strong(match.group(1), style={'fontSize': '12px'}))
+            last_end = match.end()
+        
+        # Add any remaining text after the last bold part
+        if last_end < len(line):
+            parts.append(html.Span(line[last_end:], style={'fontSize': '12px'}))
+        
+        # If no bold text was found, just use the whole line
+        if not parts:
+            parts = [html.Span(line, style={'fontSize': '12px'})]
+        
+        # Create a div for this line with all its parts
+        components.append(
+            html.Div(
+                parts,
+                style={'fontSize': '12px', 'marginBottom': '5px'}
+            )
+        )
+    
+    # If no lines were added, return a default message
+    if not components:
+        components = [html.Div("No hay notas disponibles", style={'fontSize': '12px'})]
+    
+    return components
 
 # Global cache for processed datasets
 _processed_data_cache = {}
@@ -896,6 +940,8 @@ app.layout = dbc.Container([
             dcc.Store(id='language-store', data='es'),  # Default to Spanish
             dcc.Store(id='key-findings-button-state', data='idle'),
             dcc.Store(id='current-url-store', data=''),  # Store for current page URL
+            dcc.Store(id='copy-store', data=""),  # Store for citation text to be copied
+            dcc.Store(id='copy-success', data=False),  # Store for copy success status
             dcc.Loading(
                 id="loading-main-content",
                 type="circle",
@@ -942,27 +988,15 @@ app.layout = dbc.Container([
             dbc.ModalFooter(
                 [
                     dbc.Button(id="close-citation-modal", color="secondary", className="me-2"),
-                    html.Div([
-                        dbc.Button(
-                            [
-                                html.I(className="fas fa-download", style={'marginRight': '5px'}),
-                                html.Span(id="download-english-ris-text")
-                            ],
-                            id="download-english-ris",
-                            color="success",
-                            size="sm",
-                            className="me-2"
-                        ),
-                        dbc.Button(
-                            [
-                                html.I(className="fas fa-download", style={'marginRight': '5px'}),
-                                html.Span(id="download-spanish-ris-text")
-                            ],
-                            id="download-spanish-ris",
-                            color="info",
-                            size="sm"
-                        )
-                    ], style={'display': 'flex'})
+                    dbc.Button(
+                        [
+                            html.I(className="fas fa-download", style={'marginRight': '5px'}),
+                            html.Span(id="download-current-ris-text")
+                        ],
+                        id="download-current-ris",
+                        color="success",
+                        size="sm"
+                    )
                 ]
             ),
         ],
@@ -982,7 +1016,9 @@ app.layout = dbc.Container([
         dismissable=True,
         is_open=False,
         style={"position": "fixed", "top": "20px", "right": "20px", "zIndex": "9999"}
-    )
+    ),
+    # Hidden store for citation text to be copied by JavaScript
+    dcc.Store(id="copy-store", data="")
 ], fluid=True, className="px-0", style={'height': '100vh'})
 
 # Initialize Key Findings service after app is created
@@ -1077,6 +1113,33 @@ app.clientside_callback(
     """,
     Output('current-url-store', 'data'),
     Input('language-selector', 'value'),
+    prevent_initial_call=True
+)
+
+# Clientside callback to copy citation text to clipboard
+app.clientside_callback(
+    """
+    function copyToClipboard(data) {
+        if (data && data !== "") {
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = data;
+            document.body.appendChild(textarea);
+            
+            // Select and copy the text
+            textarea.select();
+            document.execCommand('copy');
+            
+            // Remove the temporary element
+            document.body.removeChild(textarea);
+            
+            return true;
+        }
+        return false;
+    }
+    """,
+    Output('copy-success', 'data'),
+    Input('copy-store', 'data'),
     prevent_initial_call=True
 )
 
@@ -1324,11 +1387,12 @@ def update_toggle_table_button(language, n_clicks, is_open):
 @app.callback(
     Output('notes-modal-title', 'children'),
     Output('close-notes-modal', 'children'),
+    Output('close-citation-modal', 'children'),
     Input('language-store', 'data')
 )
 def update_modal_labels(language):
     """Update modal title and close button text based on language"""
-    return get_text('source_notes', language), get_text('close', language)
+    return get_text('source_notes', language), get_text('close', language), get_text('close', language)
 
 # Callback to update credits button text
 @app.callback(
@@ -5358,8 +5422,22 @@ def toggle_citation_modal(citation_clicks, close_clicks, language):
                 ], className="d-flex justify-content-between align-items-center mb-3"),
                 
                 html.Hr(),
-                html.P(get_text('download_ris_files', language), className="text-muted mb-2"),
-                html.P(get_text('ris_note', language), className="small text-muted")
+                html.Div([
+                    html.P(get_text('download_ris_files', language), className="text-muted mb-2"),
+                    # Show only the download button for the current language
+                    html.Div([
+                        dbc.Button(
+                            [
+                                html.I(className="fas fa-download", style={'marginRight': '5px'}),
+                                html.Span(get_text('download_ris', language))
+                            ],
+                            id="download-current-ris",
+                            color="success" if language == "en" else "info",
+                            size="sm"
+                        )
+                    ], style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}),
+                    html.P(get_text('ris_note', language), className="small text-muted")
+                ])
             ])
         
         # Set modal title based on language
@@ -5371,18 +5449,18 @@ def toggle_citation_modal(citation_clicks, close_clicks, language):
 
 # Callback to update download button text based on language
 @app.callback(
-    Output("download-english-ris-text", "children"),
-    Output("download-spanish-ris-text", "children"),
+    Output("download-current-ris-text", "children"),
     Input("language-store", "data")
 )
 def update_download_button_text(language):
     """Update download button text based on language"""
-    return get_text('download_english_ris', language), get_text('download_spanish_ris', language)
+    return get_text('download_ris', language)
 
 # Callbacks for copying citations to clipboard
 @app.callback(
     Output("copy-toast", "is_open", allow_duplicate=True),
     Output("copy-toast", "children", allow_duplicate=True),
+    Output("copy-store", "data"),
     Input({"type": "copy-button", "index": ALL}, "n_clicks"),
     State("language-store", "data"),
     prevent_initial_call=True
@@ -5391,7 +5469,7 @@ def copy_citation_to_clipboard(n_clicks, language):
     """Copy citation to clipboard and show toast notification"""
     ctx = dash.callback_context
     if not ctx.triggered or not any(clicks and clicks > 0 for clicks in n_clicks):
-        return False, ""
+        return False, "", ""
     
     trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
     
@@ -5402,7 +5480,7 @@ def copy_citation_to_clipboard(n_clicks, language):
         button_type = trigger_data.get("type", "")
         button_index = trigger_data.get("index", "")
     except (json.JSONDecodeError, KeyError):
-        return False, ""
+        return False, "", ""
     
     # Define citation texts for each format and language
     if language == "es":
@@ -5428,24 +5506,40 @@ def copy_citation_to_clipboard(n_clicks, language):
     
     citation_text = citations.get(button_index, "")
     
-    # In a real implementation, you would use JavaScript to copy to clipboard
-    # For now, we'll just show a toast notification
-    return True, success_message
+    # Store the citation text to be copied by JavaScript
+    return True, success_message, citation_text
 
 # Callbacks for downloading RIS files
 @app.callback(
-    Output("download-english-ris", "href"),
-    Output("download-spanish-ris", "href"),
+    Output("download-current-ris", "href"),
     Input("citation-modal-toggle", "n_clicks"),
+    State("language-store", "data"),
     prevent_initial_call=True
 )
-def generate_ris_download_links(n_clicks):
-    """Generate download links for RIS files"""
+def generate_ris_download_link(n_clicks, language):
+    """Generate download link for RIS file based on current language"""
     if not n_clicks:
-        return "", ""
+        return ""
     
-    # Generate English RIS content
-    english_ris_content = """TY  - WEB
+    # Generate RIS content based on current language
+    if language == "es":
+        # Spanish RIS content
+        ris_content = """TY  - WEB
+AU  - Añez, Diomar
+AU  - Añez, Dimar
+PY  - 2025
+T1  - Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales
+PB  - Solidum Consulting / Wise Connex
+N2  - Este dashboard de análisis de datos sirve como base analítica para el proyecto de investigación doctoral: «Dicotomía ontológica en las "Modas Gerenciales"». Desarrollado con Python, Plotly y Dash.
+KW  - Herramientas Gerenciales
+KW  - Modas Gerenciales
+KW  - Visualización de Datos
+KW  - Antinomias Policontextuales
+UR  - https://dashboard.solidum360.com/
+ER  -"""
+    else:
+        # English RIS content
+        ris_content = """TY  - WEB
 AU  - Añez, Diomar
 AU  - Añez, Dimar
 PY  - 2025
@@ -5459,29 +5553,11 @@ KW  - Policontextual Antinomies
 UR  - https://dashboard.solidum360.com/
 ER  -"""
     
-    # Generate Spanish RIS content
-    spanish_ris_content = """TY  - WEB
-AU  - Añez, Diomar
-AU  - Añez, Dimar
-PY  - 2025
-T1  - Herramientas gerenciales: Dinámicas temporales contingentes y antinomias policontextuales
-PB  - Solidum Consulting / Wise Connex
-N2  - Este dashboard de análisis de datos sirve como base analítica para el proyecto de investigación doctoral: «Dicotomía ontológica en las "Modas Gerenciales"». Desarrollado con Python, Plotly y Dash.
-KW  - Herramientas Gerenciales
-KW  - Modas Gerenciales
-KW  - Visualización de Datos
-KW  - Antinomias Policontextuales
-UR  - https://dashboard.solidum360.com/
-ER  -"""
-    
-    # In a real implementation, you would create actual downloadable files
-    # For now, we'll return data URIs
+    # Create a data URI for the RIS file
     import base64
+    ris_b64 = base64.b64encode(ris_content.encode('utf-8')).decode('utf-8')
     
-    english_ris_b64 = base64.b64encode(english_ris_content.encode('utf-8')).decode('utf-8')
-    spanish_ris_b64 = base64.b64encode(spanish_ris_content.encode('utf-8')).decode('utf-8')
-    
-    return f"data:text/plain;base64,{english_ris_b64}", f"data:text/plain;base64,{spanish_ris_b64}"
+    return f"data:text/plain;base64,{ris_b64}"
 
 if __name__ == '__main__':
     app.run(
