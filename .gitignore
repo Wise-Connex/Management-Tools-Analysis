@@ -63,6 +63,11 @@ share/
 #TO DO
 todo.md
 
+# BMAD Method (ignore to prevent recreation)
+bmad_method/
+examples/
+README_BMAD_METHOD.md
+
 #venv
 pyvenv.cfg
 

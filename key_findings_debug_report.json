@@ -1,0 +1,58 @@
+{
+  "timestamp": "2025-10-17T22:41:24.080172",
+  "tests_run": [
+    {
+      "name": "Import Testing",
+      "status": "passed",
+      "duration": 5.034474849700928,
+      "details": "All imports successful"
+    },
+    {
+      "name": "Configuration Testing",
+      "status": "warning",
+      "duration": 8.988380432128906e-05,
+      "details": "Configuration checked. Missing: ['dashboard_app/management_tools.db', 'dashboard_app/key_findings.db']"
+    },
+    {
+      "name": "AI Service Initialization",
+      "status": "failed",
+      "duration": 0.0035600662231445312,
+      "details": "AI service test failed: No module named 'propcache'"
+    },
+    {
+      "name": "Database Connectivity",
+      "status": "failed",
+      "duration": 1.2159347534179688e-05,
+      "details": "Database test failed: cannot import name 'get_db_connection' from 'database' (/Users/Dimar/Documents/python-code/MTSA/Management-Tools-Analysis/database.py)"
+    },
+    {
+      "name": "Modal Component Testing",
+      "status": "failed",
+      "duration": 0.003545045852661133,
+      "details": "Modal component test failed: No module named 'propcache'"
+    },
+    {
+      "name": "Callback Simulation",
+      "status": "passed",
+      "duration": 2.8133392333984375e-05,
+      "details": "Callback simulation completed"
+    },
+    {
+      "name": "AI Processing Test",
+      "status": "failed",
+      "duration": 0.004328012466430664,
+      "details": "AI processing test failed: No module named 'propcache'"
+    }
+  ],
+  "errors_found": [
+    "Import error - KeyFindingsModal: No module named 'propcache'",
+    "Import error - KeyFindingsService: No module named 'propcache'",
+    "Import error - AI service: No module named 'propcache'",
+    "Import error - DataAggregator: No module named 'propcache'",
+    "Missing configuration: ['dashboard_app/management_tools.db', 'dashboard_app/key_findings.db']",
+    "toggle_key_findings_modal function missing"
+  ],
+  "recommendations": [
+    "Set missing environment variables and ensure database files exist"
+  ]
+}

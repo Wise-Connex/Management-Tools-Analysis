@@ -181,9 +181,21 @@ class OpenRouterService:
         
         # Parse and validate response
         logging.info(f"🔍 Parsing AI response from {successful_model} ({len(response_content)} characters)")
+        logging.info(f"📋 AI response preview: {response_content[:200]}...")
+        
+        # Check if heatmap_analysis is mentioned in the raw response
+        has_heatmap_in_raw = 'heatmap_analysis' in response_content.lower()
+        logging.info(f"🔥 heatmap_analysis in raw response: {has_heatmap_in_raw}")
+        
         try:
             parsed_response = self._parse_ai_response(response_content)
             logging.info(f"✅ Response parsed successfully - findings: {len(parsed_response.get('principal_findings', []))}")
+            
+            # Check if heatmap_analysis is in the parsed response
+            has_heatmap_in_parsed = 'heatmap_analysis' in parsed_response
+            heatmap_value = parsed_response.get('heatmap_analysis', 'NOT_FOUND')[:100]
+            logging.info(f"🔥 heatmap_analysis in parsed response: {has_heatmap_in_parsed}, value: {heatmap_value}...")
+            
         except Exception as e:
             logging.error(f"❌ Failed to parse AI response: {e}")
             # Return raw response if parsing fails
@@ -195,8 +207,14 @@ class OpenRouterService:
                     'confidence': "medium"
                 }],
                 'pca_insights': {},
-                'executive_summary': response_content[:500] + "..." if len(response_content) > 500 else response_content
+                'executive_summary': response_content[:500] + "..." if len(response_content) > 500 else response_content,
+                'heatmap_analysis': 'PARSING_FAILED'  # Add explicit default
             }
+        
+        # CRITICAL FIX: Ensure heatmap_analysis is always present
+        if 'heatmap_analysis' not in parsed_response:
+            logging.warning(f"⚠️ heatmap_analysis missing from parsed response, adding default")
+            parsed_response['heatmap_analysis'] = "Análisis de correlación no disponible en la respuesta de IA."
         
         return {
             'content': parsed_response,
@@ -388,8 +406,13 @@ If you respond in Spanish, the analysis will be rejected.
             if cleaned_content.startswith('{') and cleaned_content.endswith('}'):
                 try:
                     parsed = json.loads(cleaned_content)
+                    logging.info(f"🔍 Direct JSON parsing successful")
+                    logging.info(f"🔍 Available fields in parsed JSON: {list(parsed.keys())}")
+                    has_heatmap = 'heatmap_analysis' in parsed
+                    logging.info(f"🔥 heatmap_analysis in direct JSON: {has_heatmap}")
                     return self._normalize_parsed_response(parsed)
-                except json.JSONDecodeError:
+                except json.JSONDecodeError as e:
+                    logging.warning(f"⚠️ Direct JSON parsing failed: {e}")
                     pass
 
             # Handle specific malformed patterns from the key findings report
@@ -407,21 +430,34 @@ If you respond in Spanish, the analysis will be rejected.
 
             # If direct parsing fails, try to extract from markdown sections
             sections = self._extract_markdown_sections(response_content)
+            logging.info(f"🔍 Extracted sections: {list(sections.keys())}")
+            has_heatmap_section = 'heatmap_analysis' in sections
+            logging.info(f"🔥 heatmap_analysis section found: {has_heatmap_section}")
 
             if sections:
                 # Try to combine sections into a complete response
                 combined_response = self._combine_section_responses(sections)
                 if combined_response:
+                    has_heatmap_in_combined = 'heatmap_analysis' in combined_response
+                    logging.info(f"🔥 heatmap_analysis in combined response: {has_heatmap_in_combined}")
                     return combined_response
 
             # Fallback: extract JSON fragments from the entire response
             json_fragments = self._extract_json_fragments(response_content)
+            logging.info(f"🔍 Extracted {len(json_fragments)} JSON fragments")
             if json_fragments:
+                for i, fragment in enumerate(json_fragments):
+                    has_heatmap = 'heatmap_analysis' in fragment
+                    logging.info(f"🔥 Fragment {i} has heatmap_analysis: {has_heatmap}")
+                
                 combined = self._combine_json_fragments(json_fragments)
                 if combined:
+                    has_heatmap_in_combined = 'heatmap_analysis' in combined
+                    logging.info(f"🔥 heatmap_analysis in combined fragments: {has_heatmap_in_combined}")
                     return combined
 
             # Final fallback: create structured response from text
+            logging.warning(f"⚠️ Using fallback response creation")
             return self._create_fallback_response(response_content)
 
         except Exception as e:
@@ -449,6 +485,11 @@ If you respond in Spanish, the analysis will be rejected.
         if 'pca_analysis' in parsed:
             result['pca_analysis'] = parsed['pca_analysis']
             result['pca_insights'] = {'analysis': parsed['pca_analysis']}
+
+        # Handle heatmap_analysis field - CRITICAL FIX
+        if 'heatmap_analysis' in parsed:
+            result['heatmap_analysis'] = parsed['heatmap_analysis']
+            logging.info(f"✅ Extracted heatmap_analysis field from AI response")
 
         # Ensure principal_findings is in correct format
         if isinstance(result['principal_findings'], list) and result['principal_findings']:
@@ -684,6 +725,12 @@ If you respond in Spanish, the analysis will be rejected.
                 '📊 PCA Analysis',
                 'Análisis PCA',
                 'PCA Analysis'
+            ],
+            'heatmap_analysis': [  # CRITICAL FIX
+                '🔥 Análisis del Mapa de Calor',
+                '🔥 Heatmap Analysis',
+                'Análisis del Mapa de Calor',
+                'Heatmap Analysis'
             ]
         }
 
@@ -830,12 +877,28 @@ If you respond in Spanish, the analysis will be rejected.
                     result['pca_analysis'] = pca_content
                     result['pca_insights'] = {'analysis': pca_content}
 
+        # Fourth pass: handle heatmap analysis - CRITICAL FIX
+        if 'heatmap_analysis' in sections:
+            section_content = sections['heatmap_analysis']
+            json_content = self._extract_json_from_section(section_content)
+            
+            if json_content and 'heatmap_analysis' in json_content:
+                result['heatmap_analysis'] = json_content['heatmap_analysis']
+                logging.info(f"✅ Extracted heatmap_analysis from section JSON")
+            else:
+                # Extract heatmap content directly
+                heatmap_content = self._extract_heatmap_content(section_content)
+                if heatmap_content:
+                    result['heatmap_analysis'] = heatmap_content
+                    logging.info(f"✅ Extracted heatmap_analysis from section content")
+
         # Validate we have the required fields
-        if 'executive_summary' in result or 'principal_findings' in result or 'pca_analysis' in result:
+        if 'executive_summary' in result or 'principal_findings' in result or 'pca_analysis' in result or 'heatmap_analysis' in result:
             # Fill in missing fields with defaults
             result.setdefault('executive_summary', '')
             result.setdefault('principal_findings', [])
             result.setdefault('pca_insights', {})
+            result.setdefault('heatmap_analysis', '')  # CRITICAL FIX
             result['original_structure'] = 'sections_combined'
             return result
 
@@ -923,7 +986,7 @@ If you respond in Spanish, the analysis will be rejected.
 
         for fragment in fragments:
             for key, value in fragment.items():
-                if key in ['executive_summary', 'principal_findings', 'pca_analysis']:
+                if key in ['executive_summary', 'principal_findings', 'pca_analysis', 'heatmap_analysis']:
                     combined[key] = value
 
         if combined:
@@ -931,6 +994,7 @@ If you respond in Spanish, the analysis will be rejected.
             combined.setdefault('executive_summary', '')
             combined.setdefault('principal_findings', [])
             combined.setdefault('pca_insights', {'analysis': combined.get('pca_analysis', '')})
+            combined.setdefault('heatmap_analysis', '')  # CRITICAL FIX
             combined['original_structure'] = 'fragments_combined'
             return combined
 
@@ -975,6 +1039,45 @@ If you respond in Spanish, the analysis will be rejected.
         # Return cleaned text
         return text.replace('\\n', '\n').strip()
 
+    def _extract_heatmap_content(self, text: str) -> str:
+        """
+        Extract heatmap analysis content from text, handling various formats.
+        
+        Args:
+            text: Text containing heatmap analysis
+            
+        Returns:
+            Cleaned heatmap content
+        """
+        # Remove any leading/trailing JSON markers
+        text = text.strip()
+        
+        # If it starts with {, try to extract JSON content
+        if text.startswith('{'):
+            # Try to extract just the content
+            start_content = text.find('"heatmap_analysis":')
+            if start_content != -1:
+                start_quote = text.find('"', start_content + 18)
+                if start_quote != -1:
+                    end_quote = text.find('"', start_quote + 1)
+                    if end_quote != -1:
+                        content = text[start_quote + 1:end_quote]
+                        return content.replace('\\n', '\n').replace('\\"', '"')
+        
+        # If it looks like raw text (contains multiple paragraphs separated by double newlines)
+        if '\n\n' in text:
+            return text.replace('\\n', '\n').strip()
+        
+        # If it contains "Análisis adicional no disponible", clean it up
+        if 'Análisis adicional no disponible' in text:
+            # Extract everything before this marker
+            marker_pos = text.find('Análisis adicional no disponible')
+            if marker_pos > 0:
+                return text[:marker_pos].strip().replace('\\n', '\n')
+        
+        # Return cleaned text
+        return text.replace('\\n', '\n').strip()
+
     def _create_fallback_response(self, response_content: str) -> Dict[str, Any]:
         """
         Create a fallback response when parsing fails.
@@ -995,6 +1098,7 @@ If you respond in Spanish, the analysis will be rejected.
             'pca_insights': {'analysis': response_content[:400] + "..." if len(response_content) > 400 else response_content},
             'executive_summary': response_content[:500] + "..." if len(response_content) > 500 else response_content,
             'pca_analysis': response_content[:400] + "..." if len(response_content) > 400 else response_content,
+            'heatmap_analysis': response_content[:400] + "..." if len(response_content) > 400 else response_content,  # CRITICAL FIX
             'original_structure': 'fallback'
         }
 

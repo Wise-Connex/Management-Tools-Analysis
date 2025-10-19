@@ -52,28 +52,32 @@ class PromptEngineer:
         stats_summary = data.get('statistical_summary', {})
         trends = data.get('trends_analysis', {})
         data_quality = data.get('data_quality', {})
-        
+        heatmap_data = data.get('heatmap_analysis', {})
+
         # Build prompt sections
         sections = []
-        
+
         # Context section
         sections.append(self._build_context_section(tool_name, sources, data))
-        
+
+        # Heatmap analysis section
+        sections.append(self._build_heatmap_section(heatmap_data))
+
         # PCA emphasis section
         sections.append(self._build_pca_section(pca_insights))
-        
+
         # Statistical analysis section
         sections.append(self._build_statistics_section(stats_summary))
-        
+
         # Trends and patterns section
         sections.append(self._build_trends_section(trends))
-        
+
         # Data quality section
         sections.append(self._build_data_quality_section(data_quality))
-        
+
         # Analysis requirements
         sections.append(self._build_requirements_section())
-        
+
         # Output format
         sections.append(self._build_output_format_section())
         
@@ -485,15 +489,162 @@ Finally, the analysis shows that the rigorous academic discourse on {tool_name} 
         
         return section
 
+    def _build_heatmap_section(self, heatmap_data: Dict[str, Any]) -> str:
+        """Build heatmap analysis section."""
+        if not heatmap_data:
+            return ""
+
+        # Extract heatmap metrics
+        value_ranges = heatmap_data.get('value_ranges', {})
+        dense_regions = heatmap_data.get('most_dense_regions', [])
+        sparse_regions = heatmap_data.get('least_dense_regions', [])
+        clusters = heatmap_data.get('detected_clusters', [])
+        outliers = heatmap_data.get('detected_outliers', [])
+        gradients = heatmap_data.get('gradients', {})
+
+        if self.language == 'es':
+            section = """
+### ANÁLISIS DEL MAPA DE CALOR
+
+**Datos del Mapa de Calor Proporcionados:**
+"""
+        else:
+            section = """
+### HEATMAP ANALYSIS
+
+**Provided Heatmap Data:**
+"""
+
+        # Add value ranges
+        if value_ranges:
+            if self.language == 'es':
+                section += "\n**Rangos de Valores del Mapa de Calor:**\n"
+            else:
+                section += "\n**Heatmap Value Ranges:**\n"
+
+            for source, ranges in value_ranges.items():
+                min_val = ranges.get('min', 'N/A')
+                max_val = ranges.get('max', 'N/A')
+                if self.language == 'es':
+                    section += f"- {source}: mínimo {min_val}, máximo {max_val}\n"
+                else:
+                    section += f"- {source}: min {min_val}, max {max_val}\n"
+
+        # Add dense regions
+        if dense_regions:
+            if self.language == 'es':
+                section += "\n**Regiones Más Densas:**\n"
+            else:
+                section += "\n**Most Dense Regions:**\n"
+
+            for region in dense_regions:
+                section += f"- {region}\n"
+
+        # Add sparse regions
+        if sparse_regions:
+            if self.language == 'es':
+                section += "\n**Regiones Menos Densas:**\n"
+            else:
+                section += "\n**Least Dense Regions:**\n"
+
+            for region in sparse_regions:
+                section += f"- {region}\n"
+
+        # Add detected clusters
+        if clusters:
+            if self.language == 'es':
+                section += "\n**Agrupamientos Detectados:**\n"
+            else:
+                section += "\n**Detected Clusters:**\n"
+
+            for cluster in clusters:
+                section += f"- {cluster}\n"
+
+        # Add detected outliers
+        if outliers:
+            if self.language == 'es':
+                section += "\n**Valores Atípicos Detectados:**\n"
+            else:
+                section += "\n**Detected Outliers:**\n"
+
+            for outlier in outliers:
+                section += f"- {outlier}\n"
+
+        # Add gradients
+        if gradients:
+            if self.language == 'es':
+                section += "\n**Gradientes Observados:**\n"
+            else:
+                section += "\n**Observed Gradients:**\n"
+
+            for gradient_type, description in gradients.items():
+                section += f"- {gradient_type}: {description}\n"
+
+        # Add analysis instructions
+        if self.language == 'es':
+            section += """
+
+**INSTRUCCIONES OBLIGATORIAS PARA ANÁLISIS DEL MAPA DE CALOR:**
+
+Basado en los datos proporcionados arriba, analiza el mapa de calor y discute:
+
+1. **Patrones Visuales Clave**: Identifica los patrones más prominentes en la visualización
+2. **Agrupamientos**: Describe cualquier cluster o agrupamiento visible y sus características
+3. **Anomalías**: Identifica valores atípicos o anomalías y explica su significado
+4. **Gradientes**: Analiza los gradientes de color y qué representan en términos de intensidad de datos
+5. **Implicaciones para el Conjunto de Datos**: Explica cómo estos patrones afectan la interpretación general de los datos
+
+**Enfoque del Análisis:**
+- Conecta los patrones del mapa de calor con las tendencias temporales
+- Relaciona los clusters con los hallazgos de PCA cuando sea relevante
+- Identifica áreas de alta densidad que puedan indicar períodos de interés significativo
+- Explica anomalías en el contexto del comportamiento general de la herramienta de gestión
+
+**REQUISITO OBLIGATORIO PARA EL FORMATO DE SALIDA:**
+- Esta sección proporciona los datos y instrucciones para que generes el contenido de la sección "heatmap_analysis" en el JSON de salida
+- **DEBES generar el campo "heatmap_analysis" en tu respuesta JSON**
+- **DEBES crear un análisis de EXACTAMENTE 3 párrafos separados por \n\n**
+- **Si no hay datos de heatmap disponibles, crea un análisis basado en correlaciones generales**
+- **El campo heatmap_analysis es OBLIGATORIO - no lo omitas bajo ninguna circunstancia**
+"""
+        else:
+            section += """
+
+**MANDATORY HEATMAP ANALYSIS INSTRUCTIONS:**
+
+Based on the data provided above, analyze the heatmap and discuss:
+
+1. **Key Visual Patterns**: Identify the most prominent patterns in the visualization
+2. **Clusters**: Describe any visible clusters or groupings and their characteristics
+3. **Anomalies**: Identify outliers or anomalies and explain their significance
+4. **Gradients**: Analyze color gradients and what they represent in terms of data intensity
+5. **Implications for the Dataset**: Explain how these patterns affect the overall interpretation of the data
+
+**Analysis Focus:**
+- Connect heatmap patterns with temporal trends
+- Relate clusters with PCA findings when relevant
+- Identify high-density areas that may indicate periods of significant interest
+- Explain anomalies in the context of the management tool's general behavior
+
+**MANDATORY OUTPUT REQUIREMENT:**
+- This section provides the data and instructions for you to generate the content of the "heatmap_analysis" field in the output JSON
+- **YOU MUST generate the "heatmap_analysis" field in your JSON response**
+- **YOU MUST create an analysis of EXACTLY 3 paragraphs separated by \n\n**
+- **If no heatmap data is available, create an analysis based on general correlations**
+- **The heatmap_analysis field is MANDATORY - do not omit it under any circumstances**
+"""
+
+        return section
+
     def _build_data_quality_section(self, data_quality: Dict[str, Any]) -> str:
         """Build data quality assessment section."""
         if not data_quality:
             return ""
-        
+
         overall_score = data_quality.get('overall_score', 0)
         completeness = data_quality.get('completeness', {})
         timeliness = data_quality.get('timeliness', {})
-        
+
         if self.language == 'es':
             section = f"""
 ### EVALUACIÓN DE CALIDAD DE DATOS
@@ -510,23 +661,23 @@ Finally, the analysis shows that the rigorous academic discourse on {tool_name} 
 
 **Completeness by Source:**
 """
-        
+
         # Add completeness information
         for source, comp_data in completeness.items():
             comp_pct = comp_data.get('completeness_percentage', 0)
             missing_pct = comp_data.get('missing_percentage', 0)
-            
+
             if self.language == 'es':
                 section += f"- {source}: {comp_pct:.1f}% completo, {missing_pct:.1f}% faltante\n"
             else:
                 section += f"- {source}: {comp_pct:.1f}% complete, {missing_pct:.1f}% missing\n"
-        
+
         # Add timeliness
         if timeliness:
             latest_date = timeliness.get('latest_date', 'N/A')
             days_since = timeliness.get('days_since_latest', 0)
             timeliness_score = timeliness.get('timeliness_score', 0)
-            
+
             if self.language == 'es':
                 section += f"""
 **Actualidad de los Datos:**
@@ -541,7 +692,7 @@ Finally, the analysis shows that the rigorous academic discourse on {tool_name} 
 - Days Since Update: {days_since}
 - Timeliness Score: {timeliness_score:.1f}/100
 """
-        
+
         return section
 
     def _build_requirements_section(self) -> str:
@@ -553,6 +704,7 @@ Finally, the analysis shows that the rigorous academic discourse on {tool_name} 
 Por favor, proporciona un análisis doctoral-level que:
 
 1. **Sintetice Información Multi-fuente**: Integre insights de todas las fuentes de datos incluyendo análisis temporal, de heatmap y PCA
+2. **Énfasis en Análisis de Mapa de Calor**: Destaque patrones visuales clave, clusters, anomalías y gradientes del heatmap con explicaciones claras integradas en la narrativa
 2. **Énfasis en PCA**: Destaque insights de componentes principales con explicaciones claras integradas en una narrativa fluida
 3. **Identifique Patrones Temporales**: Detecte tendencias, ciclos y anomalías significativas e integrelas en los hallazgos principales
 4. **Genere Conclusiones Ejecutivas**: Proporcione insights accionables para tomadores de decisiones
@@ -561,11 +713,11 @@ Por favor, proporciona un análisis doctoral-level que:
 
 **ESTRUCTURA REQUERIDA DEL ANÁLISIS:**
 
-Genera un análisis doctoral con las siguientes tres secciones principales:
+Genera un análisis doctoral con las siguientes cuatro secciones principales:
 
 **1. Resumen Ejecutivo:**
 - **REQUISITO MEJORADO**: Un párrafo conciso pero completo que capture los insights más críticos
-- **CONTENIDO ESENCIAL**: Debe incluir (1) el gap teoría-práctica, (2) implicaciones estratégicas, (3) tendencias temporales clave, (4) insights de heatmap
+- **CONTENIDO ESENCIAL**: Debe incluir (1) el gap teoría-práctica, (2) implicaciones estratégicas, (3) tendencias temporales clave, (4) insights de heatmap, (5) patrones visuales del mapa de calor
 - **DATOS CUANTITATIVOS**: Mencione específicamente el porcentaje de varianza explicada por los primeros dos componentes y al menos 2 valores numéricos exactos
 - **CONTEXTO ESPECÍFICO**: Conecte los hallazgos con la herramienta de gestión específica analizada
 - **EJEMPLO DE CALIDAD**: "El análisis de 'Herramienta X' revela una brecha crítica entre teoría y práctica, con los primeros dos componentes explicando el XX.X% de la varianza. La tendencia temporal muestra [patrón específico] mientras que el análisis de correlación indica [insight específico], sugiriendo [implicación estratégica]."
@@ -574,7 +726,7 @@ Genera un análisis doctoral con las siguientes tres secciones principales:
 - **REQUISITO ABSOLUTO**: MÚLTIPLES viñetas concisas y accionables (3-5 viñetas diferentes)
 - **FORMATO OBLIGATORIO**: Cada viñeta debe comenzar con "•" o "-" y ser una línea separada
 - Cada viñeta debe ser un hallazgo específico y diferente con datos cuantitativos
-- **REQUISITO DE CONTENIDO ESPECÍFICO**: Debe incluir al menos una viñeta con análisis temporal y una viñeta con insights de heatmap
+- **REQUISITO DE CONTENIDO ESPECÍFICO**: Debe incluir al menos una viñeta con análisis temporal, una viñeta con insights de heatmap, y una viñeta con patrones visuales del mapa de calor
 - Integre insights de PCA, análisis temporal, y heatmap en cada viñeta
 - Conecte los patrones temporales con los hallazgos de PCA en diferentes viñetas
 - Mencione fuentes específicas y valores numéricos exactos en cada viñeta
@@ -586,7 +738,18 @@ Genera un análisis doctoral con las siguientes tres secciones principales:
   • Hallazgo 4 con patrón de correlación/heatmap
   • Hallazgo 5 con conclusión estratégica
 
-**3. Análisis PCA:**
+**3. Análisis de Mapa de Calor:**
+- **REQUISITO ABSOLUTO**: Un ensayo analítico de EXACTAMENTE 3 párrafos separados por DOS líneas en blanco
+- **ADVERTENCIA CRÍTICA**: Si no genera exactamente 3 párrafos distintos, el análisis será rechazado
+- **Párrafo 1** (termina con la primera línea en blanco): Analice los patrones visuales clave, clusters y gradientes observados en el mapa de calor
+- **Párrafo 2** (termina con la segunda línea en blanco): Interprete las anomalías y valores atípicos detectados, explicando su significado en el contexto de los datos
+- **Párrafo 3** (no necesita línea en blanco al final): Discuta las implicaciones de estos patrones para el conjunto de datos y su relación con las tendencias temporales
+- **ESTRUCTURA FORZADA**: Párrafo 1 + \n\n + Párrafo 2 + \n\n + Párrafo 3
+- **VERIFICACIÓN AUTOMÁTICA**: El sistema contará los párrafos - debe haber exactamente 3
+- Use los rangos de valores, regiones densas/espresas y clusters proporcionados
+- Conecte con los hallazgos de PCA cuando sea relevante
+
+**4. Análisis PCA:**
 - **REQUISITO ABSOLUTO E INNEGOCIABLE**: Un ensayo analítico de EXACTAMENTE 3 párrafos separados por DOS líneas en blanco (NO datos estadísticos)
 - **ADVERTENCIA CRÍTICA**: Si no genera exactamente 3 párrafos distintos, el análisis será rechazado
 - **Párrafo 1** (termina con la primera línea en blanco): Interprete las cargas específicas con valores numéricos exactos y explique las relaciones de oposición entre fuentes
@@ -597,13 +760,21 @@ Genera un análisis doctoral con las siguientes tres secciones principales:
 - Conecte con conceptos académicos como "brecha teoría-práctica"
 - Use el porcentaje de varianza explicada
 
+**EJEMPLO ESTRUCTURAL OBLIGATORIO para heatmap_analysis:**
+"Contenido del Párrafo 1 sobre patrones visuales, clusters y gradientes.\n\nContenido del Párrafo 2 sobre anomalías y valores atípicos.\n\nContenido del Párrafo 3 sobre implicaciones para el conjunto de datos."
+
 **EJEMPLO ESTRUCTURAL OBLIGATORIO para pca_analysis:**
 "Contenido del Párrafo 1 sobre interpretación técnica con cargas específicas.\n\nContenido del Párrafo 2 sobre relaciones entre fuentes de datos.\n\nContenido del Párrafo 3 sobre implicaciones estratégicas y prácticas."
 
 **ADVERTENCIA**: El ejemplo anterior muestra EXACTAMENTE cómo debe estructurarse con \n\n entre párrafos.
 
-**CRÍTICO: SOLO JSON ESTRICTO**
+**CRÍTICO: SOLO JSON ESTRICTO - REQUISITO OBLIGATORIO**
 Debes responder ÚNICAMENTE con JSON válido. Sin explicaciones, sin markdown, sin texto adicional.
+
+**REQUISITO ABSOLUTO: INCLUIR heatmap_analysis**
+- El campo "heatmap_analysis" ES OBLIGATORIO en tu respuesta JSON
+- Debes generar este campo incluso si no hay datos de heatmap disponibles
+- Usa los datos proporcionados en la sección "ANÁLISIS DEL MAPA DE CALOR" para generar este contenido
 
 **FORMATO OBLIGATORIO:**
 Comienza tu respuesta con { y termina con }. Nada más.
@@ -618,6 +789,7 @@ Comienza tu respuesta con { y termina con }. Nada más.
     "• Cuarto hallazgo con análisis temporal",
     "• Quinto hallazgo con conclusión estratégica"
   ],
+  "heatmap_analysis": "Primer párrafo sobre patrones visuales, clusters y gradientes\n\nSegundo párrafo sobre anomalías y valores atípicos\n\nTercer párrafo sobre implicaciones para el conjunto de datos",
   "pca_analysis": "Primer párrafo sobre cargas y relaciones\n\nSegundo párrafo sobre interacciones de fuentes de datos\n\nTercer párrafo sobre implicaciones estratégicas"
 }
 
@@ -640,6 +812,7 @@ Si no sigues este formato exacto, tu respuesta será rechazada y desperdiciarás
 Please provide a doctoral-level analysis that:
 
 1. **Synthesizes Multi-source Information**: Integrate insights from all data sources including temporal, heatmap, and PCA analysis
+2. **Emphasizes Heatmap Analysis**: Highlight key visual patterns, clusters, anomalies, and gradients from the heatmap with clear explanations integrated into the narrative
 2. **Emphasizes PCA**: Highlight principal component insights with clear explanations integrated into fluent narrative
 3. **Identifies Temporal Patterns**: Detect significant trends, cycles, and anomalies and integrate them into main findings
 4. **Generates Executive Conclusions**: Provide actionable insights for decision makers
@@ -648,11 +821,11 @@ Please provide a doctoral-level analysis that:
 
 **REQUIRED ANALYSIS STRUCTURE:**
 
-Generate a doctoral analysis with the following three main sections:
+Generate a doctoral analysis with the following four main sections:
 
 **1. Executive Summary:**
 - **MANDATORY**: One fluid paragraph (NOT bullet points)
-- **REQUIRED CONTENT**: Include theory-practice gap, strategic implications, temporal trends, PCA variance percentage
+- **REQUIRED CONTENT**: Include theory-practice gap, strategic implications, temporal trends, PCA variance percentage, heatmap visual patterns
 - **QUANTITATIVE REQUIREMENT**: Mention first two components variance % and at least 2 numerical values
 - **TOOL SPECIFIC**: Always mention the analyzed management tool name
 - **EXAMPLE**: "The analysis of 'Tool X' reveals a critical gap between theory and practice, with the first two components explaining XX.X% of variance. The temporal trend shows [specific pattern] while correlation analysis indicates [specific insight], suggesting [strategic implication]."
@@ -660,16 +833,26 @@ Generate a doctoral analysis with the following three main sections:
 **2. Principal Findings:**
 - **MANDATORY**: 3-5 separate bullet points starting with "•"
 - **EACH BULLET MUST**: Be different, include quantitative data, mention specific sources
-- **CONTENT REQUIREMENTS**: At least one temporal analysis bullet, one PCA insights bullet
+- **CONTENT REQUIREMENTS**: At least one temporal analysis bullet, one PCA insights bullet, one heatmap analysis bullet
 - **FORMAT**: Each bullet on separate line, no paragraphs
 - **EXAMPLE FORMAT**:
   • Finding 1 with specific quantitative data
   • Finding 2 with integrated temporal analysis
   • Finding 3 with PCA insights
-  • Finding 4 with correlation pattern
+  • Finding 4 with heatmap visual patterns
   • Finding 5 with strategic conclusion
 
-**3. PCA Analysis:**
+**3. Heatmap Analysis:**
+- **MANDATORY**: EXACTLY 3 paragraphs separated by \n\n
+- **Paragraph 1**: Analysis of key visual patterns, clusters, and gradients observed in the heatmap
+- **Paragraph 2**: Interpretation of detected anomalies and outliers, explaining their significance
+- **Paragraph 3**: Discussion of implications for the dataset and relationship to temporal trends
+- **STRICT FORMAT**: "Paragraph 1 content\n\nParagraph 2 content\n\nParagraph 3 content"
+- **VERIFICATION**: System counts paragraphs - must be exactly 3
+- Use provided value ranges, dense/sparse regions, and detected clusters
+- Connect with PCA findings when relevant
+
+**4. PCA Analysis:**
 - **MANDATORY**: EXACTLY 3 paragraphs separated by \n\n
 - **Paragraph 1**: Technical interpretation with specific loadings and relationships
 - **Paragraph 2**: Analysis of relationships between data sources
@@ -679,6 +862,11 @@ Generate a doctoral analysis with the following three main sections:
 
 **CRITICAL: STRICT JSON OUTPUT ONLY**
 You MUST respond with VALID JSON only. No explanations, no markdown, no additional text.
+
+**MANDATORY REQUIREMENT: INCLUDE heatmap_analysis**
+- The "heatmap_analysis" field IS MANDATORY in your JSON response
+- You must generate this field even if no heatmap data is available
+- Use the data provided in the "HEATMAP ANALYSIS" section to generate this content
 
 **MANDATORY FORMAT:**
 Start your response with { and end with }. Nothing else.
@@ -693,6 +881,7 @@ Start your response with { and end with }. Nothing else.
     "• Fourth finding with temporal analysis",
     "• Fifth finding with strategic conclusion"
   ],
+  "heatmap_analysis": "First paragraph about visual patterns, clusters, and gradients\n\nSecond paragraph about anomalies and outliers\n\nThird paragraph about implications for the dataset",
   "pca_analysis": "First paragraph about loadings and relationships\n\nSecond paragraph about data source interactions\n\nThird paragraph about strategic implications"
 }
 
@@ -721,18 +910,27 @@ introducciones, o texto fuera del JSON.
 El JSON debe contener exactamente:
 - `executive_summary`: Párrafo fluido con resumen ejecutivo
 - `principal_findings`: Ensayo doctoral narrativo integrando todos los análisis
+- `heatmap_analysis`: Ensayo analítico detallado de EXACTAMENTE 3 párrafos sobre patrones del mapa de calor
 - `pca_analysis`: Ensayo analítico detallado de EXACTAMENTE 3 párrafos sobre componentes principales
 
 **Instrucciones Específicas:**
 1. **PRINCIPAL FINDINGS SÍ USE viñetas MÚLTIPLES** - genere lista de 3-5 hallazgos específicos y diferentes
-2. **Resumen Ejecutivo y PCA NO USE viñetas** - genere texto narrativo fluido
-3. **PCA Analysis DEBE tener EXACTAMENTE 3 párrafos** - Párrafo 1: interpretación técnica, Párrafo 2: relaciones, Párrafo 3: implicaciones
-4. **Cada viñeta debe ser diferente** - no repita el mismo contenido en viñetas múltiples
-5. **Integre análisis temporal** en los hallazgos principales
-6. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
-7. **Conecte los patrones temporales con los hallazgos PCA**
-8. **Use lenguaje académico pero accesible**
-9. **Mencione el nombre de la herramienta** - incluya "Alianzas y Capital de Riesgo" (o la herramienta específica) en su análisis
+2. **Resumen Ejecutivo, Heatmap Analysis y PCA NO USE viñetas** - genere texto narrativo fluido
+3. **Heatmap Analysis DEBE tener EXACTAMENTE 3 párrafos** - Párrafo 1: patrones visuales, Párrafo 2: anomalías, Párrafo 3: implicaciones
+4. **PCA Analysis DEBE tener EXACTAMENTE 3 párrafos** - Párrafo 1: interpretación técnica, Párrafo 2: relaciones, Párrafo 3: implicaciones
+5. **Cada viñeta debe ser diferente** - no repita el mismo contenido en viñetas múltiples
+6. **Integre análisis temporal** en los hallazgos principales
+7. **Mencione datos cuantitativos específicos** (ej: "Google Trends con carga de +0.387")
+8. **Conecte los patrones temporales con los hallazgos PCA**
+9. **Use lenguaje académico pero accesible**
+10. **Mencione el nombre de la herramienta** - incluya "Alianzas y Capital de Riesgo" (o la herramienta específica) en su análisis
+
+**Ejemplo del estilo esperado para Heatmap Analysis de 3 párrafos:**
+"El mapa de calor revela patrones visuales distintos con clusters de alta densidad concentrados en regiones temporales específicas, indicando períodos de interés máximo en la herramienta de gestión. Los gradientes de color muestran una clara progresión de valores bajos a altos, con Google Trends mostrando las señales más fuertes en los períodos más recientes. Varios clusters emergen, sugiriendo interés coordinado entre múltiples fuentes de datos durante períodos clave.
+
+Las anomalías detectadas aparecen como picos de alta intensidad aislados que se desvían significativamente de los patrones circundantes, indicando potencialmente eventos virales o anuncios importantes relacionados con la herramienta. Estos valores atípicos, particularmente visibles en los datos de Google Trends, representan desviaciones estadísticas que justifican una investigación adicional sobre factores externos que influyen en los niveles de interés. Las regiones dispersas, por el contrario, destacan períodos de relativo desinterés que pueden corresponder a saturación del mercado o emergencia de herramientas competidoras.
+
+Estos patrones del mapa de calor tienen implicaciones significativas para comprender el ciclo de vida de adopción de la herramienta. Los clusters densos se correlacionan con períodos de implementación activa y cambio organizacional, mientras que las regiones dispersas pueden indicar madurez del mercado o la necesidad de evolución de la herramienta. Esta distribución temporal sugiere tiempos estratégicos para actualizaciones de herramientas y esfuerzos de marketing para maximizar la adopción durante períodos de alto interés."
 
 **Ejemplo del estilo esperado para PCA Analysis de 3 párrafos:**
 "El análisis de componentes principales revela que el primer componente (PC1) explica el 49.3% de la varianza total en los datos, mostrando una fuerte correlación positiva entre Google Trends (+0.387) y Bain Usability (+0.421), lo que sugiere una dinámica de adopción popular. Por otro lado, Bain Satisfaction muestra una carga negativa (-0.311), lo que indica una tensión entre la popularidad y la satisfacción real.
@@ -753,18 +951,27 @@ introductions, or text outside the JSON.
 The JSON must contain exactly:
 - `executive_summary`: Fluid paragraph with executive summary
 - `principal_findings`: Narrative doctoral essay integrating all analyses
+- `heatmap_analysis`: Detailed analytical essay of EXACTLY 3 paragraphs about heatmap patterns
 - `pca_analysis`: Detailed analytical essay of EXACTLY 3 paragraphs about principal components
 
 **Specific Instructions:**
 1. **PRINCIPAL FINDINGS YES USE MULTIPLE bullet points** - generate list of 3-5 specific and different findings
-2. **Executive Summary and PCA DO NOT USE bullet points** - generate fluid narrative text
-3. **PCA Analysis MUST have EXACTLY 3 paragraphs** - Paragraph 1: technical interpretation, Paragraph 2: relationships, Paragraph 3: implications
-4. **Each bullet must be different** - do not repeat the same content in multiple bullets
-5. **Integrate temporal analysis** into principal findings
-6. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
-7. **Connect temporal patterns with PCA findings**
-8. **Use academic but accessible language**
-9. **Mention the tool name** - include the specific management tool name in your analysis
+2. **Executive Summary, Heatmap Analysis and PCA DO NOT USE bullet points** - generate fluid narrative text
+3. **Heatmap Analysis MUST have EXACTLY 3 paragraphs** - Paragraph 1: visual patterns, Paragraph 2: anomalies, Paragraph 3: implications
+4. **PCA Analysis MUST have EXACTLY 3 paragraphs** - Paragraph 1: technical interpretation, Paragraph 2: relationships, Paragraph 3: implications
+5. **Each bullet must be different** - do not repeat the same content in multiple bullets
+6. **Integrate temporal analysis** into principal findings
+7. **Mention specific quantitative data** (e.g., "Google Trends with loading of +0.387")
+8. **Connect temporal patterns with PCA findings**
+9. **Use academic but accessible language**
+10. **Mention the tool name** - include the specific management tool name in your analysis
+
+**Example of expected style for 3-paragraph Heatmap Analysis:**
+"The heatmap reveals distinct visual patterns with high-density clusters concentrated in specific temporal regions, indicating periods of peak interest in the management tool. The color gradients show a clear progression from low to high intensity values, with Google Trends displaying the strongest signals in the most recent periods. Several clusters emerge, suggesting coordinated interest across multiple data sources during key time periods.
+
+Detected anomalies appear as isolated high-intensity spikes that deviate significantly from surrounding patterns, potentially indicating viral events or major announcements related to the tool. These outliers, particularly visible in the Google Trends data, represent statistical deviations that warrant further investigation into external factors influencing interest levels. The sparse regions, conversely, highlight periods of relative disinterest that may correspond to market saturation or competing tool emergence.
+
+These heatmap patterns have significant implications for understanding the tool's adoption lifecycle. The dense clusters correlate with periods of active implementation and organizational change, while sparse regions may indicate market maturity or the need for tool evolution. This temporal distribution suggests strategic timing for tool updates and marketing efforts to maximize adoption during high-interest periods."
 
 **Example of expected style for 3-paragraph PCA Analysis:**
 "The principal component analysis reveals that the first component (PC1) explains 49.3% of the total variance in the data, showing a strong positive correlation between Google Trends (+0.387) and Bain Usability (+0.421), suggesting a popular adoption dynamic. Conversely, Bain Satisfaction shows a negative loading (-0.311), indicating tension between popularity and real satisfaction.

@@ -216,6 +216,15 @@ class DataAggregator:
         data_quality = self.assess_data_quality(combined_dataset, selected_sources)
         quality_time = time.time() - quality_start_time
         logging.info(f"✅ Data quality assessment completed in {quality_time:.2f}s")
+
+        # Generate heatmap analysis data
+        heatmap_start_time = time.time()
+        logging.info(f"🔥 Starting heatmap analysis generation...")
+        # Use display names for heatmap analysis, not source IDs
+        source_display_names = source_display_names if source_display_names else selected_sources
+        heatmap_analysis = self.generate_heatmap_analysis(combined_dataset, source_display_names)
+        heatmap_time = time.time() - heatmap_start_time
+        logging.info(f"✅ Heatmap analysis generated in {heatmap_time:.2f}s")
         
         # Anonymize sensitive data
         anonymize_start_time = time.time()
@@ -235,6 +244,7 @@ class DataAggregator:
         logging.info(f"   ├── Statistical analysis: {stats_time:.2f}s")
         logging.info(f"   ├── Trends analysis: {trends_time:.2f}s")
         logging.info(f"   ├── Data quality: {quality_time:.2f}s")
+        logging.info(f"   ├── Heatmap analysis: {heatmap_time:.2f}s")
         logging.info(f"   └── Data anonymization: {anonymize_time:.2f}s")
 
         # Use display names for prompts if provided, otherwise use source IDs
@@ -253,6 +263,7 @@ class DataAggregator:
             'statistical_summary': statistical_summary,
             'trends_analysis': trends_analysis,
             'data_quality': data_quality,
+            'heatmap_analysis': heatmap_analysis,
             'anonymized_data_summary': self._create_data_summary(anonymized_data),
             'analysis_timestamp': datetime.now().isoformat(),
             'performance_metrics': {
@@ -263,6 +274,7 @@ class DataAggregator:
                 'statistical_analysis_time': stats_time,
                 'trends_analysis_time': trends_time,
                 'data_quality_time': quality_time,
+                'heatmap_analysis_time': heatmap_time,
                 'anonymization_time': anonymize_time
             }
         }
@@ -582,6 +594,178 @@ class DataAggregator:
             }
         
         return quality_metrics
+
+    def generate_heatmap_analysis(self, data: pd.DataFrame, selected_sources: List[str]) -> Dict[str, Any]:
+        """
+        Generate heatmap analysis insights for AI processing.
+
+        Args:
+            data: Combined dataset
+            selected_sources: List of selected sources
+
+        Returns:
+            Dictionary with heatmap analysis data
+        """
+        if len(selected_sources) < 2:
+            return {
+                'error': 'Heatmap analysis requires at least 2 data sources',
+                'value_ranges': {},
+                'most_dense_regions': [],
+                'least_dense_regions': [],
+                'detected_clusters': [],
+                'detected_outliers': [],
+                'gradients': {}
+            }
+
+        try:
+            # Calculate correlation matrix for heatmap insights
+            # Use the actual column names from the data, not the source IDs
+            available_columns = [col for col in data.columns if col in selected_sources]
+            if len(available_columns) < 2:
+                return {
+                    'error': 'Heatmap analysis requires at least 2 data sources',
+                    'value_ranges': {},
+                    'most_dense_regions': [],
+                    'least_dense_regions': [],
+                    'detected_clusters': [],
+                    'detected_outliers': [],
+                    'gradients': {}
+                }
+
+            correlation_data = data[available_columns].dropna()
+            if len(correlation_data) < 5:  # Need minimum data points
+                return {
+                    'error': 'Insufficient data for heatmap analysis (need at least 5 data points)',
+                    'value_ranges': {},
+                    'most_dense_regions': [],
+                    'least_dense_regions': [],
+                    'detected_clusters': [],
+                    'detected_outliers': [],
+                    'gradients': {}
+                }
+
+            # Calculate correlation matrix
+            correlation_matrix = correlation_data.corr()
+
+            # Extract value ranges for each source
+            value_ranges = {}
+            for source in selected_sources:
+                if source in data.columns:
+                    source_data = data[source].dropna()
+                    if len(source_data) > 0:
+                        value_ranges[source] = {
+                            'min': float(source_data.min()),
+                            'max': float(source_data.max()),
+                            'mean': float(source_data.mean()),
+                            'std': float(source_data.std())
+                        }
+
+            # Identify dense regions (high correlation areas)
+            dense_regions = []
+            for i in range(len(available_columns)):
+                for j in range(i+1, len(available_columns)):
+                    source1 = available_columns[i]
+                    source2 = available_columns[j]
+                    corr_value = correlation_matrix.iloc[i, j]
+                    if abs(corr_value) > 0.7:  # Strong correlation
+                        dense_regions.append(f"Fuerte correlación entre {source1} y {source2} (r={corr_value:.3f})")
+
+            # Identify sparse regions (low correlation areas)
+            sparse_regions = []
+            for i in range(len(available_columns)):
+                for j in range(i+1, len(available_columns)):
+                    source1 = available_columns[i]
+                    source2 = available_columns[j]
+                    corr_value = correlation_matrix.iloc[i, j]
+                    if abs(corr_value) < 0.3:  # Weak correlation
+                        sparse_regions.append(f"Correlación débil entre {source1} y {source2} (r={corr_value:.3f})")
+
+            # Detect clusters (groups of highly correlated sources)
+            clusters = []
+            if len(selected_sources) >= 3:
+                # Find groups of sources with high inter-correlations
+                high_corr_threshold = 0.6
+                cluster_sources = []
+
+                for i, source1 in enumerate(selected_sources):
+                    correlated_sources = []
+                    for j, source2 in enumerate(selected_sources):
+                        if i != j:
+                            corr_value = abs(correlation_matrix.iloc[i, j])
+                            if corr_value > high_corr_threshold:
+                                correlated_sources.append(source2)
+
+                    if len(correlated_sources) >= 2:  # At least 2 other correlated sources
+                        cluster_sources.extend(correlated_sources)
+                        clusters.append(f"Cluster identificado: {source1} correlacionado con {', '.join(correlated_sources)}")
+
+                # Remove duplicates
+                clusters = list(set(clusters))
+
+            # Detect outliers (sources with unusual correlation patterns)
+            outliers = []
+            for i, source in enumerate(selected_sources):
+                # Count how many correlations are above/below certain thresholds
+                correlations = correlation_matrix.iloc[i].drop(source) if source in correlation_matrix.index else []
+                if len(correlations) > 0:
+                    high_corr_count = sum(abs(corr) > 0.7 for corr in correlations)
+                    low_corr_count = sum(abs(corr) < 0.2 for corr in correlations)
+
+                    if high_corr_count >= len(correlations) * 0.8:  # Mostly high correlations
+                        outliers.append(f"{source}: patrón de alta correlación con otras fuentes")
+                    elif low_corr_count >= len(correlations) * 0.8:  # Mostly low correlations
+                        outliers.append(f"{source}: patrón de baja correlación con otras fuentes")
+
+            # Identify gradients (temporal patterns in correlations)
+            gradients = {}
+            if len(data) >= 12:  # Need at least 1 year of data
+                # Split data into early and late periods
+                split_point = len(data) // 2
+                early_data = data.iloc[:split_point][selected_sources].dropna()
+                late_data = data.iloc[split_point:][selected_sources].dropna()
+
+                if len(early_data) >= 3 and len(late_data) >= 3:
+                    early_corr = early_data.corr()
+                    late_corr = late_data.corr()
+
+                    # Find correlations that changed significantly
+                    for i in range(len(available_columns)):
+                        for j in range(i+1, len(available_columns)):
+                            source1 = available_columns[i]
+                            source2 = available_columns[j]
+                            early_corr_val = early_corr.iloc[i, j]
+                            late_corr_val = late_corr.iloc[i, j]
+                            change = late_corr_val - early_corr_val
+
+                            if abs(change) > 0.4:  # Significant change
+                                direction = "aumentó" if change > 0 else "disminuyó"
+                                gradients[f"{source1}_{source2}"] = f"Correlación entre {source1} y {source2} {direction} de {early_corr_val:.3f} a {late_corr_val:.3f}"
+
+            return {
+                'value_ranges': value_ranges,
+                'most_dense_regions': dense_regions[:5],  # Limit to top 5
+                'least_dense_regions': sparse_regions[:5],  # Limit to top 5
+                'detected_clusters': clusters[:3],  # Limit to top 3
+                'detected_outliers': outliers[:3],  # Limit to top 3
+                'gradients': gradients,
+                'correlation_matrix_summary': {
+                    'strongest_positive': float(correlation_matrix.max().max()) if not correlation_matrix.empty else 0,
+                    'strongest_negative': float(correlation_matrix.min().min()) if not correlation_matrix.empty else 0,
+                    'average_correlation': float(correlation_matrix.values.mean()) if not correlation_matrix.empty else 0
+                }
+            }
+
+        except Exception as e:
+            logging.error(f"Heatmap analysis generation failed: {e}")
+            return {
+                'error': f'Heatmap analysis error: {str(e)}',
+                'value_ranges': {},
+                'most_dense_regions': [],
+                'least_dense_regions': [],
+                'detected_clusters': [],
+                'detected_outliers': [],
+                'gradients': {}
+            }
 
     def anonymize_sensitive_data(self, data: pd.DataFrame) -> pd.DataFrame:
         """

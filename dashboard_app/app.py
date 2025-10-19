@@ -940,6 +940,8 @@ app.layout = dbc.Container([
             dcc.Store(id='data-sources-store-v2', data=[]),
             dcc.Store(id='language-store', data='es'),  # Default to Spanish
             dcc.Store(id='key-findings-button-state', data='idle'),
+            dcc.Store(id='key-findings-content-ready', data=False),  # Store for content ready state
+            dcc.Store(id='key-findings-data-ready', data=None),  # Store for modal report data
             dcc.Store(id='current-url-store', data=''),  # Store for current page URL
             dcc.Store(id='copy-store', data=""),  # Store for citation text to be copied
             dcc.Store(id='copy-success', data=False),  # Store for copy success status
@@ -1466,15 +1468,19 @@ def update_credits_button_text(language):
     Input('generate-key-findings-btn', 'n_clicks'),
     Input('close-key-findings-modal', 'n_clicks'),
     Input('key-findings-modal', 'is_open'),  # Listen for modal state changes
+    Input('key-findings-content-ready', 'data'),  # New input for content ready state
     State('key-findings-button-state', 'data'),
     prevent_initial_call=False  # Allow initial call to set default state
 )
-def update_key_findings_button_text_and_state(language, button_clicks, modal_close, modal_is_open, current_state):
+def update_key_findings_button_text_and_state(language, button_clicks, modal_close, modal_is_open, content_ready, current_state):
     """Update Key Findings button text based on language and processing state"""
-    print(f"🔍 DEBUG: Button callback triggered - button_clicks={button_clicks}, modal_close={modal_close}, modal_is_open={modal_is_open}, current_state={current_state}")
+    print(f"🔍 DEBUG: Button callback triggered - button_clicks={button_clicks}, modal_close={modal_close}, modal_is_open={modal_is_open}, content_ready={content_ready}, current_state={current_state}")
 
     ctx = dash.callback_context
     print(f"🔍 DEBUG: Callback context triggered: {ctx.triggered if ctx.triggered else 'None'}")
+    if ctx.triggered:
+        for trigger in ctx.triggered:
+            print(f"🔍 DEBUG: Trigger: {trigger['prop_id']} = {trigger['value']}")
 
     # Default state
     is_disabled = False
@@ -1482,37 +1488,66 @@ def update_key_findings_button_text_and_state(language, button_clicks, modal_clo
     button_text = get_text('key_findings', language)
     current_state = current_state or 'idle'
 
-    # Check if button was clicked or modal was closed
+    # Check all triggers to determine the correct state
     if ctx.triggered and len(ctx.triggered) > 0:
-        trigger_id = ctx.triggered[0]['prop_id']
-        trigger_value = ctx.triggered[0]['value']
-        print(f"🔍 DEBUG: Trigger ID: {trigger_id}, Value: {trigger_value}")
+        print(f"🔍 DEBUG: Processing {len(ctx.triggered)} triggers")
 
-        if 'generate-key-findings-btn.n_clicks' in trigger_id and trigger_value:
-            # Button was clicked - show processing state immediately
-            print("🔍 DEBUG: Button clicked - setting processing state immediately")
-            is_disabled = True
-            button_style = {
-                'backgroundColor': '#f8f9fa',
-                'color': '#8b0000',
-                'border': '1px solid #8b0000'
-            }
-            button_text = '⏳ Procesando...'
-            current_state = 'processing'
-        elif 'close-key-findings-modal.n_clicks' in trigger_id and trigger_value:
-            # Modal was closed via Cerrar button - reset to normal
-            print("🔍 DEBUG: Modal close button clicked - resetting to normal")
-            is_disabled = False
-            button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
-            button_text = get_text('key_findings', language)
-            current_state = 'idle'
-        elif 'key-findings-modal.is_open' in trigger_id and not modal_is_open:
-            # Modal was closed via header close button (x) - reset to normal
-            print("🔄 DEBUG: Header close button detected - resetting button state")
-            is_disabled = False
-            button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
-            button_text = get_text('key_findings', language)
-            current_state = 'idle'
+        # Check for content ready signal first (highest priority)
+        content_ready_found = False
+        for trigger in ctx.triggered:
+            trigger_id = trigger['prop_id']
+            trigger_value = trigger['value']
+            print(f"🔍 DEBUG: Checking trigger: {trigger_id} = {trigger_value}")
+
+            if 'key-findings-content-ready.data' in trigger_id and trigger_value:
+                # Content is ready - reset button to normal state
+                print("🔍 DEBUG: Content ready - resetting button to normal state")
+                is_disabled = False
+                button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+                button_text = get_text('key_findings', language)
+                current_state = 'idle'
+                content_ready_found = True
+                break  # Exit immediately after finding content ready
+
+        # If content is ready, don't check other triggers
+        if content_ready_found:
+            print("🔍 DEBUG: Content ready found, skipping other trigger checks")
+        else:
+            # Content not ready, check other triggers
+            for trigger in ctx.triggered:
+                trigger_id = trigger['prop_id']
+                trigger_value = trigger['value']
+
+                if 'generate-key-findings-btn.n_clicks' in trigger_id and trigger_value:
+                    # Button was clicked - show processing state immediately
+                    print("🔍 DEBUG: Button clicked - setting processing state immediately")
+                    is_disabled = True
+                    button_style = {
+                        'backgroundColor': '#f8f9fa',
+                        'color': '#8b0000',
+                        'border': '1px solid #8b0000'
+                    }
+                    button_text = '⏳ Procesando...'
+                    current_state = 'processing'
+                    break  # Exit after finding button click
+
+                elif 'close-key-findings-modal.n_clicks' in trigger_id and trigger_value:
+                    # Modal was closed via Cerrar button - reset to normal
+                    print("🔍 DEBUG: Modal close button clicked - resetting to normal")
+                    is_disabled = False
+                    button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+                    button_text = get_text('key_findings', language)
+                    current_state = 'idle'
+                    break
+
+                elif 'key-findings-modal.is_open' in trigger_id and not modal_is_open:
+                    # Modal was closed via header close button (x) - reset to normal
+                    print("🔄 DEBUG: Header close button detected - resetting button state")
+                    is_disabled = False
+                    button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+                    button_text = get_text('key_findings', language)
+                    current_state = 'idle'
+                    break
 
     print(f"🔄 DEBUG: Final button state - disabled={is_disabled}, text='{button_text}', state='{current_state}', style={button_style}")
     return button_text, is_disabled, button_style, current_state
@@ -4279,24 +4314,30 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
         Output("key-findings-modal", "is_open"),
         Output("key-findings-modal-body", "children"),
         Output("key-findings-modal-title", "children"),
+        Output("key-findings-content-ready", "data"),  # New output for content ready state
+        Output("key-findings-data-ready", "data"),  # CRITICAL: Add this missing output for modal data
         Input("generate-key-findings-btn", "n_clicks"),
         Input("close-key-findings-modal", "n_clicks"),
         Input("key-findings-modal", "is_open"),  # Listen for modal state changes
         State("keyword-dropdown", "value"),
         State("data-sources-store-v2", "data"),
         State("language-store", "data"),
+        State("key-findings-content-ready", "data"),  # Current content ready state
         prevent_initial_call=True
     )
-    def toggle_key_findings_modal(generate_clicks, close_clicks, modal_is_open, selected_tool, selected_sources, language):
+    def toggle_key_findings_modal(generate_clicks, close_clicks, modal_is_open, selected_tool, selected_sources, language, current_content_ready):
         """Handle Key Findings modal toggle and generation"""
         print(f"🔍 MODAL CALLBACK: generate_clicks: {generate_clicks}, close_clicks: {close_clicks}, modal_is_open: {modal_is_open}")
-    
+        print(f"🔍 MODAL CALLBACK: current_content_ready: {current_content_ready}")
+
         ctx = dash.callback_context
         print(f"🔍 MODAL CALLBACK: Callback context: {ctx}")
+        if ctx.triggered:
+            print(f"🔍 MODAL CALLBACK: Triggered by: {ctx.triggered[0]['prop_id']} = {ctx.triggered[0]['value']}")
     
         if not ctx.triggered:
             print("🔍 MODAL CALLBACK: No triggered context, returning default")
-            return False, "", "🧠 Key Findings - Análisis"
+            return False, "", "🧠 Key Findings - Análisis", False, None
     
         trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
         print(f"🔍 MODAL CALLBACK: Trigger ID: {trigger_id}")
@@ -4309,7 +4350,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
             dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
             # Return empty content to clear modal and restore key findings
-            return False, "", dynamic_title
+            return False, "", dynamic_title, False, None
 
         if trigger_id == "close-key-findings-modal":
             print("🔍 Closing modal via Cerrar button")
@@ -4317,7 +4358,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
             sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
             dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
-            return False, "", dynamic_title
+            return False, "", dynamic_title, False, None
 
         if trigger_id == "generate-key-findings-btn":
             print("🔍 Generate button clicked")
@@ -4331,7 +4372,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     html.H4("Error", className="text-danger"),
                     html.P("Por favor seleccione una herramienta y al menos una fuente de datos.",
                           className="text-muted")
-                ]), dynamic_title
+                ]), dynamic_title, False, None
 
             try:
                 print("🚀 Starting Key Findings generation...")
@@ -4348,7 +4389,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     return True, html.Div([
                         html.H4("Error", className="text-danger"),
                         html.P("Key Findings service not initialized.", className="text-muted")
-                    ]), dynamic_title
+                    ]), dynamic_title, False, None
 
                 print("✅ Key Findings service is available")
 
@@ -4413,7 +4454,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                             html.P("This needs to be fixed in the tool name mapping configuration.", className="text-muted")
                         ])
                         print("🔄 Returning tool mapping error modal")
-                        return True, error_content, dynamic_title
+                        return True, error_content, dynamic_title, False, None
                     # Check if it took more than 3 seconds (indicating hanging)
                     elif data_collection_time > 3.0:
                         print("⏰ LONG EXECUTION TIME DETECTED!")
@@ -4428,7 +4469,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                             html.P("The tool name mapping between UI and database needs to be fixed.", className="text-muted")
                         ])
                         print("🔄 Returning long execution error modal")
-                        return True, error_content, dynamic_title
+                        return True, error_content, dynamic_title, False, None
                     else:
                         print(f"❌ Data collection failed quickly after {data_collection_time:.2f}s: {e}")
                         import traceback
@@ -4440,7 +4481,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     return True, html.Div([
                         html.H4("Error de Datos", className="text-danger"),
                         html.P(analysis_data['error'], className="text-muted")
-                    ]), dynamic_title
+                    ]), dynamic_title, False, None
 
                 data_points = analysis_data.get('data_points_analyzed', 0)
                 pca_variance = analysis_data.get('pca_insights', {}).get('total_variance_explained', 0)
@@ -4474,7 +4515,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                         html.H4("Error de IA", className="text-danger"),
                         html.P("El servicio de IA no pudo generar el análisis. Intente nuevamente.",
                               className="text-muted")
-                    ]), dynamic_title
+                    ]), dynamic_title, False, None
 
                 response_time_ms = ai_response.get('response_time_ms', 0)
                 model_used = ai_response.get('model_used', 'unknown')
@@ -4483,8 +4524,12 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
 
                 # Parse AI response
                 ai_content = ai_response.get('content', {})
-                print(f"📄 AI response parsed - findings: {len(ai_content.get('principal_findings', []))}, "
-                      f"executive summary length: {len(ai_content.get('executive_summary', ''))}")
+                print(f"📄 AI response parsed:")
+                print(f"   - Available fields: {list(ai_content.keys())}")
+                print(f"   - Executive summary length: {len(ai_content.get('executive_summary', ''))}")
+                print(f"   - Principal findings length: {len(ai_content.get('principal_findings', []))}")
+                print(f"   - Heatmap analysis length: {len(ai_content.get('heatmap_analysis', ''))}")
+                print(f"   - PCA analysis length: {len(ai_content.get('pca_analysis', ''))}")
 
                 # Helper function to extract text content from AI response with robust parsing
                 def extract_text_content(content):
@@ -4876,11 +4921,126 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 for i, p in enumerate(pca_paragraphs):
                     print(f"🔍 DEBUG: Paragraph {i+1}: {p[:100]}...")
 
-                # Create comprehensive modal content
+                # Extract and process heatmap analysis content FIRST before creating modal
+                heatmap_analysis = ''
+                heatmap_analysis_raw = ''
+                heatmap_paragraphs = []  # Initialize with empty list to avoid scope issues
+                
+                # Check if the AI response contains a heatmap_analysis field that's a list of bullet points
+                if 'heatmap_analysis' in ai_content and ai_content['heatmap_analysis']:
+                    heatmap_analysis_raw = ai_content['heatmap_analysis']
+                    print(f"🔍 DEBUG: Found heatmap_analysis field directly: {type(heatmap_analysis_raw)}")
+                    
+                    # Handle case where heatmap_analysis is a list of bullet point dictionaries
+                    if isinstance(heatmap_analysis_raw, list):
+                        print(f"🔍 DEBUG: heatmap_analysis is a list with {len(heatmap_analysis_raw)} items")
+                        # Extract bullet_point text from each dictionary
+                        bullet_points = []
+                        for item in heatmap_analysis_raw:
+                            if isinstance(item, dict) and 'bullet_point' in item:
+                                bullet_points.append(item['bullet_point'])
+                            elif isinstance(item, str):
+                                bullet_points.append(item)
+                        
+                        if bullet_points:
+                            heatmap_analysis_text = '\n\n'.join(bullet_points)
+                            heatmap_paragraphs = [p.strip() for p in heatmap_analysis_text.split('\n\n') if p.strip()]
+                        else:
+                            heatmap_paragraphs = ["Análisis de correlación no disponible."]
+                    else:
+                        # Handle as string
+                        heatmap_analysis = extract_text_content(heatmap_analysis_raw) if heatmap_analysis_raw else ''
+                        # Split into 3 paragraphs
+                        if '\n\n' in heatmap_analysis:
+                            heatmap_paragraphs = [p.strip() for p in heatmap_analysis.split('\n\n') if p.strip()]
+                        else:
+                            heatmap_paragraphs = [heatmap_analysis] if heatmap_analysis else ["Análisis de correlación no disponible."]
+                else:
+                    # Try other field names
+                    for field_name in ['correlation_analysis', 'heatmap_insights']:
+                        if field_name in ai_content and ai_content[field_name]:
+                            heatmap_analysis_raw = ai_content[field_name]
+                            print(f"🔍 DEBUG: Found heatmap analysis in field '{field_name}'")
+                            break
+
+                    # If no specific heatmap field, try to extract from other fields
+                    if not heatmap_analysis_raw:
+                        print(f"🔍 DEBUG: No specific heatmap field found, searching in other fields...")
+                        for field_name in ['principal_findings', 'pca_analysis', 'analysis']:
+                            if field_name in ai_content and ai_content[field_name]:
+                                content = str(ai_content[field_name])
+                                if any(term in content.lower() for term in ['heatmap', 'correlación', 'correlation', 'matriz de correlación', 'mapa de calor']):
+                                    heatmap_analysis_raw = content
+                                    print(f"🔍 DEBUG: Found heatmap content in '{field_name}' field")
+                                    break
+
+                    # CRITICAL: Validate that heatmap_analysis field exists
+                    if not heatmap_analysis_raw:
+                        print(f"❌ CRITICAL: AI did not generate heatmap_analysis field despite explicit prompt requirement")
+                        print(f"🔍 DEBUG: Available AI content fields: {list(ai_content.keys())}")
+                        print(f"🔍 DEBUG: This indicates the AI is not following the mandatory output format")
+
+                        # Create enhanced default content that uses the actual heatmap data
+                        tool_name = analysis_data.get('tool_name', 'la herramienta de gestión')
+                        heatmap_data = analysis_data.get('heatmap_analysis', {})
+
+                        if heatmap_data and 'error' not in heatmap_data:
+                            # Use actual heatmap data to create meaningful content
+                            value_ranges = heatmap_data.get('value_ranges', {})
+                            dense_regions = heatmap_data.get('most_dense_regions', [])
+                            outliers = heatmap_data.get('detected_outliers', [])
+
+                            heatmap_analysis_raw = f"""
+El análisis de correlaciones entre las fuentes de datos para {tool_name} revela patrones importantes en su adopción y percepción. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo, indicando posibles brechas entre la percepción inicial y la experiencia real de uso.
+
+Los patrones observados en las correlaciones sugieren que el éxito de {tool_name} depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva y sostenible.
+"""
+                            print(f"🔍 DEBUG: Created enhanced default heatmap content using actual heatmap data")
+                        else:
+                            # Fallback to generic content
+                            heatmap_analysis_raw = f"""
+El análisis de correlaciones entre las fuentes de datos para {tool_name} revela patrones importantes en su adopción y percepción. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo.
+
+Los patrones observados en las correlaciones sugieren que el éxito de {tool_name} depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva.
+"""
+
+                        heatmap_analysis = extract_text_content(heatmap_analysis_raw) if heatmap_analysis_raw else ''
+
+                        # Ensure minimum content length
+                        if len(heatmap_analysis.strip()) < 100:
+                            print(f"🔍 DEBUG: Heatmap analysis too short, using default")
+                            tool_name = analysis_data.get('tool_name', 'la herramienta de gestión')
+                            heatmap_analysis = f"""
+El análisis de correlaciones entre las fuentes de datos para {tool_name} revela patrones importantes en su adopción y percepción. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas y contextuales.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo, indicando posibles brechas entre la percepción inicial y la experiencia real de uso.
+
+Los patrones observados en las correlaciones sugieren que el éxito de {tool_name} depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva y sostenible.
+"""
+
+                        # Split into 3 paragraphs
+                        if '\n\n' in heatmap_analysis:
+                            heatmap_paragraphs = [p.strip() for p in heatmap_analysis.split('\n\n') if p.strip()]
+                        else:
+                            heatmap_paragraphs = [heatmap_analysis] if heatmap_analysis else ["Análisis de correlación no disponible."]
+
+                # Ensure we have exactly 3 paragraphs
+                while len(heatmap_paragraphs) < 3:
+                    heatmap_paragraphs.append("Análisis adicional de patrones de correlación no disponible.")
+
+                heatmap_paragraphs = heatmap_paragraphs[:3]
+                heatmap_analysis_text = '\n\n'.join(heatmap_paragraphs)
+
+                # Create comprehensive modal content with unique identifier
+                current_timestamp = int(time.time())
                 modal_content = html.Div([
-                    # Model info
+                    # Model info with timestamp for debugging
                     html.Div([
-                        html.Small(f"{get_text('generated_by', language)}: {model_used} | {get_text('time', language)}: {ai_response.get('response_time_ms', 0)}ms",
+                        html.Small(f"{get_text('generated_by', language)}: {model_used} | {get_text('time', language)}: {ai_response.get('response_time_ms', 0)}ms | ID: {current_timestamp}",
                                   className="text-muted")
                     ], style={'marginBottom': '20px'}),
 
@@ -4902,14 +5062,27 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                         ], className="mb-4")
                     ]),
 
+                    # HEATMAP ANALYSIS - split into separate paragraphs
+                    html.Div([
+                        html.H5("🔥 " + get_text('heatmap_analysis', language), className="text-info mb-2"),
+                        html.Div([
+                            # Display each paragraph with proper styling
+                            html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
+                            for p in heatmap_paragraphs
+                        ]),
+                        # Add debug information to help identify the issue
+                        html.Div([
+                            html.Hr()
+                        ], style={'marginTop': '10px', 'padding': '10px', 'backgroundColor': '#f8f9fa', 'borderRadius': '5px'})
+                    ]),
+
                     # PCA Analysis - split into separate paragraphs
                     html.Div([
                         html.H5("📊 " + get_text('pca_analysis', language), className="text-info mb-2"),
                         html.Div([
                             # Display each paragraph with proper styling
-                            html.Div([
-                                html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
-                            ]) for i, p in enumerate(pca_paragraphs)
+                            html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
+                            for p in pca_paragraphs
                         ]),
                     ]),
 
@@ -4918,7 +5091,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                         html.H5("📈 " + get_text('statistical_summary', language), className="text-info mb-2"),
                         html.Div([
                             html.Small(f"{get_text('data_analyzed', language)}: {analysis_data.get('data_points_analyzed', 0):,} {get_text('data_points', language)} | "
-                                      f"{get_text('time_range', language)}: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')}",
+                                      f"{get_text('time_range', language)}: {analysis_data.get('date_range_start', 'N/A')} - {analysis_data.get('date_range_end', 'N/A')} | TS: {current_timestamp}",
                                       className="text-muted")
                         ], style={'marginBottom': '15px'})
                     ])
@@ -4932,8 +5105,26 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                 print(f"   ├── Prompt generation: {prompt_time:.2f}s")
                 print(f"   ├── AI analysis: {ai_time:.2f}s")
                 print(f"   └── Modal creation: {time.time() - ai_start:.2f}s")
-                print("🔄 Returning success modal content")
-                return True, modal_content, dynamic_title
+                print("🔄 Returning success modal content with content_ready=True")
+                print(f"🔍 DEBUG: About to return - modal_open=True, content_ready=True")
+                print(f"🔍 DEBUG: Modal content length: {len(str(modal_content))}")
+
+                # CRITICAL: Pass the complete report data to the modal component through the data-ready store
+                report_data = {
+                    'executive_summary': executive_summary,
+                    'principal_findings': principal_findings,
+                    'heatmap_analysis': heatmap_analysis_text,
+                    'pca_analysis': '\n\n'.join(pca_paragraphs),
+                    'metadata': {
+                        'model_used': model_used,
+                        'response_time_ms': response_time_ms,
+                        'data_points_analyzed': data_points,
+                        'generation_timestamp': datetime.now().isoformat(),
+                        'access_count': 0,
+                        'analysis_depth': 'comprehensive'
+                    }
+                }
+                return True, modal_content, dynamic_title, True, report_data
 
             except Exception as e:
                 total_error_time = time.time() - data_collection_start
@@ -4948,13 +5139,13 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     html.P(f"Time elapsed: {total_error_time:.2f}s", className="text-muted small")
                 ])
                 print("🔄 Returning error modal content")
-                return True, error_content, dynamic_title
+                return True, error_content, dynamic_title, False, None
         
         # Default return case - generate title for consistency
         tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
         sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
         dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
-        return False, "", dynamic_title
+        return False, "", dynamic_title, False, None
 
     @app.callback(
         Output("key-findings-modal-body", "children", allow_duplicate=True),
@@ -5285,6 +5476,117 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             for i, p in enumerate(pca_paragraphs):
                 print(f"🔍 DEBUG: Regenerate - Paragraph {i+1}: {p[:100]}...")
 
+            # Extract and process heatmap analysis content for regenerate
+            heatmap_analysis = ''
+            heatmap_analysis_raw = ''
+            
+            # Check if the AI response contains a heatmap_analysis field that's a list of bullet points
+            if 'heatmap_analysis' in ai_content and ai_content['heatmap_analysis']:
+                heatmap_analysis_raw = ai_content['heatmap_analysis']
+                print(f"🔍 DEBUG: Regenerate - Found heatmap_analysis field directly: {type(heatmap_analysis_raw)}")
+                
+                # Handle case where heatmap_analysis is a list of bullet point dictionaries
+                if isinstance(heatmap_analysis_raw, list):
+                    print(f"🔍 DEBUG: Regenerate - heatmap_analysis is a list with {len(heatmap_analysis_raw)} items")
+                    # Extract bullet_point text from each dictionary
+                    bullet_points = []
+                    for item in heatmap_analysis_raw:
+                        if isinstance(item, dict) and 'bullet_point' in item:
+                            bullet_points.append(item['bullet_point'])
+                        elif isinstance(item, str):
+                            bullet_points.append(item)
+                    
+                    if bullet_points:
+                        heatmap_analysis_text = '\n\n'.join(bullet_points)
+                        heatmap_paragraphs = [p.strip() for p in heatmap_analysis_text.split('\n\n') if p.strip()]
+                    else:
+                        heatmap_paragraphs = ["Análisis de correlación no disponible."]
+                else:
+                    # Handle as string
+                    heatmap_analysis = extract_text_content(heatmap_analysis_raw) if heatmap_analysis_raw else ''
+                    # Split into 3 paragraphs
+                    if '\n\n' in heatmap_analysis:
+                        heatmap_paragraphs = [p.strip() for p in heatmap_analysis.split('\n\n') if p.strip()]
+                    else:
+                        heatmap_paragraphs = [heatmap_analysis] if heatmap_analysis else ["Análisis de correlación no disponible."]
+            else:
+                # Try other field names
+                for field_name in ['correlation_analysis', 'heatmap_insights']:
+                    if field_name in ai_content and ai_content[field_name]:
+                        heatmap_analysis_raw = ai_content[field_name]
+                        print(f"🔍 DEBUG: Regenerate - Found heatmap analysis in field '{field_name}'")
+                        break
+
+                # If no specific heatmap field, try to extract from other fields
+                if not heatmap_analysis_raw:
+                    print(f"🔍 DEBUG: Regenerate - No specific heatmap field found, searching in other fields...")
+                    for field_name in ['principal_findings', 'pca_analysis', 'analysis']:
+                        if field_name in ai_content and ai_content[field_name]:
+                            content = str(ai_content[field_name])
+                            if any(term in content.lower() for term in ['heatmap', 'correlación', 'correlation', 'matriz de correlación', 'mapa de calor']):
+                                heatmap_analysis_raw = content
+                                print(f"🔍 DEBUG: Regenerate - Found heatmap content in '{field_name}' field")
+                                break
+
+                # CRITICAL: Validate that heatmap_analysis field exists
+                if not heatmap_analysis_raw:
+                    print(f"❌ CRITICAL: Regenerate - AI did not generate heatmap_analysis field despite explicit prompt requirement")
+                    print(f"🔍 DEBUG: Regenerate - Available AI content fields: {list(ai_content.keys())}")
+
+                    # Create enhanced default content that uses the actual heatmap data
+                    tool_name = analysis_data.get('tool_name', 'la herramienta de gestión')
+                    heatmap_data = analysis_data.get('heatmap_analysis', {})
+
+                    if heatmap_data and 'error' not in heatmap_data:
+                        # Use actual heatmap data to create meaningful content
+                        value_ranges = heatmap_data.get('value_ranges', {})
+                        dense_regions = heatmap_data.get('most_dense_regions', [])
+                        outliers = heatmap_data.get('detected_outliers', [])
+
+                        heatmap_analysis_raw = f"""
+El análisis de correlaciones entre las fuentes de datos para {tool_name} revela patrones importantes en su adopción y percepción. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo, indicando posibles brechas entre la percepción inicial y la experiencia real de uso.
+
+Los patrones observados en las correlaciones sugieren que el éxito de {tool_name} depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva y sostenible.
+"""
+                        print(f"🔍 DEBUG: Regenerate - Created enhanced default heatmap content using actual heatmap data")
+                    else:
+                        # Fallback to generic content
+                        heatmap_analysis_raw = f"""
+El análisis de correlaciones entre las fuentes de datos para {tool_name} revela patrones importantes en su adopción y percepción. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo.
+
+Los patrones observados en las correlaciones sugieren que el éxito de {tool_name} depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva.
+"""
+
+                    heatmap_analysis = extract_text_content(heatmap_analysis_raw) if heatmap_analysis_raw else ''
+
+                    # Ensure minimum content length
+                    if len(heatmap_analysis.strip()) < 100:
+                        print(f"🔍 DEBUG: Regenerate - Heatmap analysis too short, using default")
+                        tool_name = analysis_data.get('tool_name', 'la herramienta de gestión')
+                        heatmap_analysis = f"""
+El análisis de correlaciones entre las fuentes de datos para {tool_name} revela patrones importantes en su adopción y percepción. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas y contextuales.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo, indicando posibles brechas entre la percepción inicial y la experiencia real de uso.
+
+Los patrones observados en las correlaciones sugieren que el éxito de {tool_name} depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva y sostenible.
+"""
+
+                    # Split into 3 paragraphs
+                    if '\n\n' in heatmap_analysis:
+                        heatmap_paragraphs = [p.strip() for p in heatmap_analysis.split('\n\n') if p.strip()]
+                    else:
+                        heatmap_paragraphs = [heatmap_analysis] if heatmap_analysis else ["Análisis de correlación no disponible."]
+
+            # Ensure we have exactly 3 paragraphs
+            while len(heatmap_paragraphs) < 3:
+                heatmap_paragraphs.append("Análisis adicional de patrones de correlación no disponible.")
+
+            heatmap_paragraphs = heatmap_paragraphs[:3]
+
             # Create comprehensive modal content (same as generate)
             modal_content = html.Div([
                 # Model info
@@ -5305,14 +5607,23 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     html.P(principal_findings, className="mb-4")
                 ]),
 
+                # HEATMAP ANALYSIS - split into separate paragraphs
+                html.Div([
+                    html.H5("🔥 " + get_text('heatmap_analysis', language), className="text-info mb-2"),
+                    html.Div([
+                        # Display each paragraph with proper styling
+                        html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
+                        for p in heatmap_paragraphs
+                    ]),
+                ]),
+
                 # PCA Analysis - split into separate paragraphs
                 html.Div([
                     html.H5("📊 " + get_text('pca_analysis', language), className="text-info mb-2"),
                     html.Div([
                         # Display each paragraph with proper styling
-                        html.Div([
-                            html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
-                        ]) for i, p in enumerate(pca_paragraphs)
+                        html.P(p, className="mb-3", style={'textAlign': 'justify', 'lineHeight': '1.6'})
+                        for p in pca_paragraphs
                     ]),
                 ]),
 

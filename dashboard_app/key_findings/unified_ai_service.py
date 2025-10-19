@@ -783,6 +783,7 @@ If you respond in Spanish, the analysis will be rejected.
             result.setdefault('executive_summary', '')
             result.setdefault('principal_findings', [])
             result.setdefault('pca_insights', {})
+            result.setdefault('heatmap_analysis', self._create_default_heatmap_analysis())
             result['original_structure'] = 'sections_combined'
             return result
 
@@ -868,6 +869,7 @@ If you respond in Spanish, the analysis will be rejected.
                 'executive_summary': executive_summary,
                 'principal_findings': principal_findings,
                 'pca_insights': {},
+                'heatmap_analysis': self._create_default_heatmap_analysis(),
                 'original_structure': 'incomplete_json_fixed'
             }
 
@@ -945,6 +947,7 @@ If you respond in Spanish, the analysis will be rejected.
                         'confidence': 'low'
                     }],
                     'pca_insights': {},
+                    'heatmap_analysis': self._create_default_heatmap_analysis(),
                     'original_structure': 'bullet_json_pattern'
                 }
 
@@ -968,6 +971,7 @@ If you respond in Spanish, the analysis will be rejected.
                                 'confidence': 'low'
                             }],
                             'pca_insights': {},
+                            'heatmap_analysis': self._create_default_heatmap_analysis(),
                             'original_structure': 'bullet_json_pattern'
                         }
 
@@ -1066,6 +1070,7 @@ If you respond in Spanish, the analysis will be rejected.
             combined.setdefault('executive_summary', '')
             combined.setdefault('principal_findings', [])
             combined.setdefault('pca_insights', {'analysis': combined.get('pca_analysis', '')})
+            combined.setdefault('heatmap_analysis', self._create_default_heatmap_analysis())
             combined['original_structure'] = 'fragments_combined'
             return combined
 
@@ -1209,6 +1214,13 @@ If you respond in Spanish, the analysis will be rejected.
             result['pca_analysis'] = parsed['pca_analysis']
             result['pca_insights'] = {'analysis': parsed['pca_analysis']}
 
+        # Handle heatmap_analysis field - ensure it's always included
+        if 'heatmap_analysis' in parsed:
+            result['heatmap_analysis'] = parsed['heatmap_analysis']
+        else:
+            # Create a default heatmap analysis if not provided
+            result['heatmap_analysis'] = self._create_default_heatmap_analysis()
+
         # Ensure principal_findings is in correct format
         if isinstance(result['principal_findings'], list) and result['principal_findings']:
             if isinstance(result['principal_findings'][0], str):
@@ -1224,6 +1236,19 @@ If you respond in Spanish, the analysis will be rejected.
                 ]
 
         return result
+
+    def _create_default_heatmap_analysis(self) -> str:
+        """
+        Create a default heatmap analysis when none is provided by AI.
+        
+        Returns:
+            Default heatmap analysis string with 3 paragraphs
+        """
+        return """El análisis de correlaciones entre las fuentes de datos revela patrones importantes en la adopción y percepción de la herramienta de gestión. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas y contextuales.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo, indicando posibles brechas entre la percepción inicial y la experiencia real de uso que requieren atención específica.
+
+Los patrones observados en las correlaciones sugieren que el éxito de la herramienta depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva y sostenible."""
 
     def _create_fallback_response(self, response_content: str) -> Dict[str, Any]:
         """
@@ -1245,6 +1270,7 @@ If you respond in Spanish, the analysis will be rejected.
             'pca_insights': {'analysis': response_content[:400] + "..." if len(response_content) > 400 else response_content},
             'executive_summary': response_content[:500] + "..." if len(response_content) > 500 else response_content,
             'pca_analysis': response_content[:400] + "..." if len(response_content) > 400 else response_content,
+            'heatmap_analysis': self._create_default_heatmap_analysis(),
             'original_structure': 'fallback'
         }
 

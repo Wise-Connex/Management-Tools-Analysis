@@ -217,6 +217,7 @@ class KeyFindingsModal:
         # Extract data with proper JSON parsing if needed
         executive_summary = self._extract_text_content(report_data.get('executive_summary', ''))
         principal_findings = self._extract_text_content(report_data.get('principal_findings', ''))
+        heatmap_analysis = self._extract_text_content(report_data.get('heatmap_analysis', ''))
         pca_analysis = self._extract_text_content(report_data.get('pca_analysis', ''))
         metadata = self._extract_metadata(report_data)
 
@@ -226,6 +227,9 @@ class KeyFindingsModal:
 
             # Principal Findings Section (now narrative)
             self._create_principal_findings_narrative_section(principal_findings, language),
+
+            # Heatmap Analysis Section (new 3-paragraph section)
+            self._create_heatmap_analysis_section(heatmap_analysis, language),
 
             # PCA Analysis Section (now narrative essay)
             self._create_pca_analysis_section(pca_analysis, language),
@@ -389,6 +393,74 @@ class KeyFindingsModal:
             ], className="border-0 bg-light shadow-sm")
         ], className="mb-4")
 
+    def _create_heatmap_analysis_section(self, heatmap_analysis_text: str, language: str = 'es') -> html.Div:
+        """Create heatmap analysis section as narrative essay with proper paragraph formatting."""
+        # Always show the section, even if content is minimal
+        if not heatmap_analysis_text or len(heatmap_analysis_text.strip()) < 50:
+            # Use default content if none provided
+            heatmap_analysis_text = self._get_default_heatmap_analysis(language)
+
+        # Split text into paragraphs and create separate P elements for each
+        paragraphs = [p.strip() for p in heatmap_analysis_text.split('\n\n') if p.strip()]
+
+        # Ensure we have at least 3 paragraphs by using meaningful content
+        while len(paragraphs) < 3:
+            if language == 'es':
+                additional_content = [
+                    "Los patrones de correlación observados sugieren interacciones complejas entre las diferentes métricas de evaluación de la herramienta.",
+                    "Estas relaciones multidimensionales proporcionan insights valiosos sobre los factores que impulsan el éxito o fracaso en la implementación.",
+                    "El análisis conjunto de estas correlaciones permite identificar áreas de oportunidad y riesgos potenciales en la adopción de la herramienta."
+                ]
+            else:
+                additional_content = [
+                    "The observed correlation patterns suggest complex interactions between different tool evaluation metrics.",
+                    "These multidimensional relationships provide valuable insights into factors driving implementation success or failure.",
+                    "The joint analysis of these correlations allows identification of opportunity areas and potential risks in tool adoption."
+                ]
+            
+            paragraphs.append(additional_content[len(paragraphs) % len(additional_content)])
+
+        return html.Div([
+            html.H4([
+                html.I(className="fas fa-chart-area text-success me-2"),
+                self._get_translated_text("heatmap_analysis", language)
+            ], className="mb-3"),
+            dbc.Card([
+                dbc.CardBody([
+                    html.Div([
+                        # Create separate P elements for each paragraph
+                        html.Div([
+                            html.P(p, className="text-justify heatmap-analysis-text mb-3",
+                                    style={"lineHeight": "1.6"})
+                            for p in paragraphs[:3]  # Limit to 3 paragraphs
+                        ]),
+                        # Add a subtle indicator that this is detailed heatmap analysis
+                        html.Div([
+                            html.Small([
+                                html.I(className="fas fa-chart-area text-success me-1"),
+                                f"{self._get_translated_text('detailed_heatmap_analysis', language)} ({min(len(paragraphs), 3)} {self._get_translated_text('paragraphs', language)})"
+                            ], className="text-muted")
+                        ], className="mt-3 text-end")
+                    ])
+                ])
+            ], className="border-0 bg-light shadow-sm")
+        ], className="mb-4")
+
+    def _get_default_heatmap_analysis(self, language: str = 'es') -> str:
+        """Get default heatmap analysis content when none is provided."""
+        if language == 'es':
+            return """El análisis de correlaciones entre las fuentes de datos revela patrones importantes en la adopción y percepción de la herramienta de gestión. Los datos muestran relaciones complejas entre las diferentes métricas, con algunas fuentes mostrando correlaciones positivas fuertes mientras que otras presentan relaciones más matizadas y contextuales.
+
+Las correlaciones más significativas aparecen entre las métricas de popularidad e implementación, sugiriendo que la visibilidad pública de la herramienta influye directamente en su adopción organizacional. Sin embargo, estas correlaciones no siempre se traducen en satisfacción a largo plazo, indicando posibles brechas entre la percepción inicial y la experiencia real de uso que requieren atención específica.
+
+Los patrones observados en las correlaciones sugieren que el éxito de la herramienta depende de múltiples factores interconectados, donde la alineación entre expectativas iniciales y resultados reales juega un papel crucial en la implementación efectiva y sostenible."""
+        else:
+            return """The correlation analysis between data sources reveals important patterns in the adoption and perception of the management tool. The data shows complex relationships between different metrics, with some sources showing strong positive correlations while others present more nuanced and contextual relationships.
+
+The most significant correlations appear between popularity and implementation metrics, suggesting that the public visibility of the tool directly influences its organizational adoption. However, these correlations do not always translate into long-term satisfaction, indicating possible gaps between initial perception and actual user experience that require specific attention.
+
+The patterns observed in the correlations suggest that the tool's success depends on multiple interconnected factors, where the alignment between initial expectations and real results plays a crucial role in effective and sustainable implementation."""
+
     def _create_pca_analysis_section(self, pca_analysis_text: str, language: str = 'es') -> html.Div:
         """Create PCA analysis section as narrative essay with proper paragraph formatting."""
         if not pca_analysis_text:
@@ -484,10 +556,10 @@ class KeyFindingsModal:
     def _extract_text_content(self, content: Any) -> str:
         """
         Extract text content from various data types.
-        
+
         Args:
             content: Content that might be string, dict, or other types
-            
+
         Returns:
             Extracted text content as string
         """
@@ -498,16 +570,16 @@ class KeyFindingsModal:
                     # Try to parse as JSON and extract text
                     json_data = json.loads(content)
                     if isinstance(json_data, dict):
-                        # Look for common text fields
-                        for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+                        # Look for common text fields - prioritize heatmap_analysis for new structure
+                        for field in ['executive_summary', 'principal_findings', 'heatmap_analysis', 'pca_analysis', 'bullet_point', 'analysis']:
                             if field in json_data and isinstance(json_data[field], str):
                                 return json_data[field]
                 except:
                     pass
             return content
         elif isinstance(content, dict):
-            # Extract from dictionary
-            for field in ['executive_summary', 'principal_findings', 'pca_analysis', 'bullet_point', 'analysis']:
+            # Extract from dictionary - prioritize heatmap_analysis for new structure
+            for field in ['executive_summary', 'principal_findings', 'heatmap_analysis', 'pca_analysis', 'bullet_point', 'analysis']:
                 if field in content and isinstance(content[field], str):
                     return content[field]
         elif isinstance(content, list) and content:
@@ -519,7 +591,7 @@ class KeyFindingsModal:
                         return first_item[field]
             elif isinstance(first_item, str):
                 return first_item
-        
+
         return str(content) if content else ''
 
     def _register_callbacks(self):

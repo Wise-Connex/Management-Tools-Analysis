@@ -182,6 +182,7 @@ class KeyFindingsService:
                 'language': language,
                 'executive_summary': content.get('executive_summary', ''),
                 'principal_findings': content.get('principal_findings', ''),
+                'heatmap_analysis': content.get('heatmap_analysis', ''),
                 'pca_analysis': pca_analysis,
                 'model_used': ai_result['model_used'],
                 'api_latency_ms': ai_result['response_time_ms'],

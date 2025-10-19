@@ -285,7 +285,8 @@ TRANSLATIONS = {
         'previous_accesses': 'Accesos Previos:',
         'depth': 'Profundidad:',
         'executive_summary': 'Resumen Ejecutivo',
-        'principal_findings': 'Hallazgos Principales',        
+        'principal_findings': 'Hallazgos Principales',
+        'heatmap_analysis': 'Análisis del Mapa de Calor',
     },
     'en': {
         # UI Labels and Buttons
@@ -565,6 +566,7 @@ TRANSLATIONS = {
         'depth': 'Depth:',
         'executive_summary': 'Executive Summary',
         'principal_findings': 'Key Findings',
+        'heatmap_analysis': 'Heatmap Analysis',
     }
 }
 
