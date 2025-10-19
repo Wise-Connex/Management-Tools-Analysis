@@ -553,6 +553,47 @@ app.index_string = '''
             .modal-title {
                 font-size: 20px !important;
             }
+            /* Pulse animation for spinner */
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.1);
+                    opacity: 0.7;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+            
+            /* Shake animation for button click feedback */
+            @keyframes shake {
+                0%, 100% {
+                    transform: translateX(0) scale(0.98);
+                }
+                25% {
+                    transform: translateX(-2px) scale(0.98);
+                }
+                75% {
+                    transform: translateX(2px) scale(0.98);
+                }
+            }
+            
+            /* Bounce animation for button reset feedback */
+            @keyframes bounce {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
         </style>
         <script>
             // Suppress React warnings in console
@@ -724,13 +765,16 @@ sidebar = html.Div([
             dbc.Button(
                 [
                     html.I(className="fas fa-brain", style={'marginRight': '8px'}),
-                    html.Span(id="key-findings-button-text")
+                    html.Span(id="key-findings-button-text"),
+                    html.Div(id="key-findings-spinner", className="ms-2", style={'display': 'none'}, children=[
+                        dbc.Spinner(size="sm", color="light", spinner_style={'width': '1rem', 'height': '1rem'})
+                    ])
                 ],
                 id="generate-key-findings-btn",
                 color="info",
                 size="sm",
-                className="w-100 mb-2",
-                style={'fontSize': '12px', 'fontWeight': 'bold'},
+                className="w-100 mb-2 position-relative",
+                style={'fontSize': '12px', 'fontWeight': 'bold', 'transition': 'all 0.2s ease'},
                 disabled=False
             )
         ], id="key-findings-button-container", style={'display': 'none', 'marginTop': '10px', 'marginBottom': '15px'}),
@@ -1197,6 +1241,311 @@ app.clientside_callback(
     prevent_initial_call=True
 )
 
+# Clientside callback for immediate button feedback
+app.clientside_callback(
+    """
+    function showImmediateFeedback(n_clicks) {
+        if (n_clicks && n_clicks > 0) {
+            // Get the button element
+            const button = document.getElementById('generate-key-findings-btn');
+            const spinnerContainer = document.getElementById('key-findings-spinner');
+            const buttonText = document.getElementById('key-findings-button-text');
+            
+            if (button && spinnerContainer && buttonText) {
+                console.log('🔄 CLIENTSIDE: Showing immediate feedback');
+                
+                // Immediately show processing state with enhanced visual feedback
+                button.disabled = true;
+                button.style.backgroundColor = '#f8f9fa';
+                button.style.color = '#8b0000';
+                button.style.border = '2px solid #8b0000';
+                button.style.cursor = 'not-allowed';
+                button.style.opacity = '0.8';
+                button.style.transform = 'scale(0.98)';
+                button.style.boxShadow = '0 0 10px rgba(139, 0, 0, 0.3)';
+
+                // Update text immediately
+                buttonText.textContent = '⏳ Procesando...';
+                
+                // Show spinner with animation
+                spinnerContainer.style.display = 'inline-block';
+                spinnerContainer.style.animation = 'pulse 1.5s infinite';
+                
+                // Store original state for potential restoration
+                if (!button.hasAttribute('data-original-state')) {
+                    button.setAttribute('data-original-state', JSON.stringify({
+                        backgroundColor: button.style.backgroundColor || '#17a2b8',
+                        color: button.style.color || 'white',
+                        border: button.style.border || '1px solid #17a2b8',
+                        cursor: button.style.cursor || 'pointer',
+                        opacity: button.style.opacity || '1',
+                        transform: button.style.transform || 'scale(1)',
+                        boxShadow: button.style.boxShadow || 'none',
+                        disabled: button.disabled,
+                        pointerEvents: button.style.pointerEvents || 'auto'
+                    }));
+                }
+                
+                // Add a subtle shake animation to draw attention
+                button.style.animation = 'shake 0.3s ease-in-out';
+                setTimeout(() => {
+                    if (button && button.style) {
+                        button.style.animation = '';
+                    }
+                }, 300);
+            }
+        }
+        return window.dash_clientside.no_update;
+    }
+    """,
+    Output('key-findings-button-state', 'data', allow_duplicate=True),
+    Input('generate-key-findings-btn', 'n_clicks'),
+    prevent_initial_call=True
+)
+
+# Combined clientside callback to handle all button state changes
+app.clientside_callback(
+    """
+    function handleButtonState(modal_is_open, close_clicks, button_clicks) {
+        const button = document.getElementById('generate-key-findings-btn');
+        const spinnerContainer = document.getElementById('key-findings-spinner');
+        const buttonText = document.getElementById('key-findings-button-text');
+        
+        if (!button || !spinnerContainer || !buttonText) {
+            return window.dash_clientside.no_update;
+        }
+        
+        // Handle modal close (either via X or Cerrar button)
+        if (!modal_is_open || (close_clicks && close_clicks > 0)) {
+            console.log('🔄 CLIENTSIDE: Modal closed - fully resetting button to original state');
+            
+            // Force complete reset to initial state
+            button.disabled = false;
+            button.style.backgroundColor = '#17a2b8';
+            button.style.color = 'white';
+            button.style.border = '1px solid #17a2b8';
+            button.style.cursor = 'pointer';
+            button.style.opacity = '1';
+            button.style.transform = 'scale(1)';
+            button.style.boxShadow = 'none';
+            button.style.transition = 'all 0.2s ease';
+            button.style.pointerEvents = 'auto';  // Ensure button is clickable
+            button.removeAttribute('disabled');
+            
+            // Reset to original text and hide spinner
+            const languageStore = document.getElementById('language-store');
+            const currentLanguage = languageStore ? languageStore.value : 'es';
+            const originalText = currentLanguage === 'es' ? 'Hallazgos principales' : 'Key Findings';
+            buttonText.textContent = originalText;
+            spinnerContainer.style.display = 'none';
+            spinnerContainer.style.animation = 'none';
+            
+            // Add a subtle bounce animation to indicate the button is ready again
+            button.style.animation = 'bounce 0.3s ease-out';
+            setTimeout(() => {
+                if (button && button.style) {
+                    button.style.animation = '';
+                }
+            }, 300);
+            
+            console.log('🔄 CLIENTSIDE: Button state fully reset to original');
+        }
+        // Handle button click
+        else if (button_clicks && button_clicks > 0) {
+            console.log('🔄 CLIENTSIDE: Button clicked - showing processing state');
+            
+            // Show processing state
+            button.disabled = true;
+            button.style.backgroundColor = '#f8f9fa';
+            button.style.color = '#8b0000';
+            button.style.border = '2px solid #8b0000';
+            button.style.cursor = 'not-allowed';
+            button.style.opacity = '0.8';
+            button.style.transform = 'scale(0.98)';
+            button.style.boxShadow = '0 0 10px rgba(139, 0, 0, 0.3)';
+
+            // Update text and show spinner
+            buttonText.textContent = '⏳ Procesando...';
+            spinnerContainer.style.display = 'inline-block';
+            spinnerContainer.style.animation = 'pulse 1.5s infinite';
+            
+            // Add shake animation
+            button.style.animation = 'shake 0.3s ease-in-out';
+            setTimeout(() => {
+                if (button && button.style) {
+                    button.style.animation = '';
+                }
+            }, 300);
+        }
+        
+        return window.dash_clientside.no_update;
+    }
+    """,
+    Output('key-findings-button-state', 'data', allow_duplicate=True),
+    [Input('key-findings-modal', 'is_open'),
+     Input('close-key-findings-modal', 'n_clicks'),
+     Input('generate-key-findings-btn', 'n_clicks')],
+    prevent_initial_call=True
+)
+
+# Additional clientside callback to force reset button state
+app.clientside_callback(
+    """
+    function forceResetButton(trigger) {
+        const button = document.getElementById('generate-key-findings-btn');
+        const spinnerContainer = document.getElementById('key-findings-spinner');
+        const buttonText = document.getElementById('key-findings-button-text');
+        
+        if (!button || !spinnerContainer || !buttonText) {
+            return window.dash_clientside.no_update;
+        }
+        
+        console.log('🔄 CLIENTSIDE: Force resetting button state');
+        
+        // Force complete reset to initial state
+        button.disabled = false;
+        button.style.backgroundColor = '#17a2b8';
+        button.style.color = 'white';
+        button.style.border = '1px solid #17a2b8';
+        button.style.cursor = 'pointer';
+        button.style.opacity = '1';
+        button.style.transform = 'scale(1)';
+        button.style.boxShadow = 'none';
+        button.style.transition = 'all 0.2s ease';
+        button.style.pointerEvents = 'auto';  // Ensure button is clickable
+        button.removeAttribute('disabled');
+        
+        // Reset to original text and hide spinner
+        const languageStore = document.getElementById('language-store');
+        const currentLanguage = languageStore ? languageStore.value : 'es';
+        const originalText = currentLanguage === 'es' ? 'Hallazgos principales' : 'Key Findings';
+        buttonText.textContent = originalText;
+        spinnerContainer.style.display = 'none';
+        spinnerContainer.style.animation = 'none';
+
+        // Add a subtle bounce animation to indicate the button is ready again
+        button.style.animation = 'bounce 0.3s ease-out';
+        setTimeout(() => {
+            if (button && button.style) {
+                button.style.animation = '';
+            }
+        }, 300);
+        
+        console.log('🔄 CLIENTSIDE: Button state force reset complete');
+        return window.dash_clientside.no_update;
+    }
+    """,
+    Output('key-findings-button-state', 'data', allow_duplicate=True),
+    Input('key-findings-content-ready', 'data'),
+    prevent_initial_call=True
+)
+
+# Additional clientside callback to reset button when modal is closed
+app.clientside_callback(
+    """
+    function resetButtonOnModalClose(modal_is_open) {
+        if (!modal_is_open) {
+            const button = document.getElementById('generate-key-findings-btn');
+            const spinnerContainer = document.getElementById('key-findings-spinner');
+            const buttonText = document.getElementById('key-findings-button-text');
+            
+            if (!button || !spinnerContainer || !buttonText) {
+                return window.dash_clientside.no_update;
+            }
+            
+            console.log('🔄 CLIENTSIDE: Modal closed - resetting button state');
+            
+            // Force complete reset to initial state
+            button.disabled = false;
+            button.style.backgroundColor = '#17a2b8';
+            button.style.color = 'white';
+            button.style.border = '1px solid #17a2b8';
+            button.style.cursor = 'pointer';
+            button.style.opacity = '1';
+            button.style.transform = 'scale(1)';
+            button.style.boxShadow = 'none';
+            button.style.transition = 'all 0.2s ease';
+            button.style.pointerEvents = 'auto';  // Ensure button is clickable
+            button.removeAttribute('disabled');
+            
+            // Reset to original text and hide spinner
+            const languageStore = document.getElementById('language-store');
+            const currentLanguage = languageStore ? languageStore.value : 'es';
+            const originalText = currentLanguage === 'es' ? 'Hallazgos principales' : 'Key Findings';
+            buttonText.textContent = originalText;
+            spinnerContainer.style.display = 'none';
+            spinnerContainer.style.animation = 'none';
+            
+            // Add a subtle bounce animation to indicate the button is ready again
+            button.style.animation = 'bounce 0.3s ease-out';
+            setTimeout(() => {
+                if (button && button.style) {
+                    button.style.animation = '';
+                }
+            }, 300);
+            
+            console.log('🔄 CLIENTSIDE: Button state reset complete');
+        }
+        return window.dash_clientside.no_update;
+    }
+    """,
+    Output('key-findings-button-state', 'data', allow_duplicate=True),
+    Input('key-findings-modal', 'is_open'),
+    prevent_initial_call=True
+)
+
+# Additional clientside callback to handle regenerate button clicks
+app.clientside_callback(
+    """
+    function handleRegenerateButtonClick(n_clicks) {
+        if (n_clicks && n_clicks > 0) {
+            const button = document.getElementById('generate-key-findings-btn');
+            const spinnerContainer = document.getElementById('key-findings-spinner');
+            const buttonText = document.getElementById('key-findings-button-text');
+            
+            if (button && spinnerContainer && buttonText) {
+                console.log('🔄 CLIENTSIDE: Regenerate button clicked - resetting button state');
+                
+                // Reset button to clickable state
+                button.disabled = false;
+                button.style.backgroundColor = '#17a2b8';
+                button.style.color = 'white';
+                button.style.border = '1px solid #17a2b8';
+                button.style.cursor = 'pointer';
+                button.style.opacity = '1';
+                button.style.transform = 'scale(1)';
+                button.style.boxShadow = 'none';
+                button.style.transition = 'all 0.2s ease';
+                button.style.pointerEvents = 'auto';  # Ensure button is clickable
+                button.removeAttribute('disabled');
+                
+                // Reset to original text and hide spinner
+                const languageStore = document.getElementById('language-store');
+                const currentLanguage = languageStore ? languageStore.value : 'es';
+                const originalText = currentLanguage === 'es' ? 'Hallazgos principales' : 'Key Findings';
+                buttonText.textContent = originalText;
+                spinnerContainer.style.display = 'none';
+                spinnerContainer.style.animation = 'none';
+                
+                // Add a subtle bounce animation to indicate the button is ready again
+                button.style.animation = 'bounce 0.3s ease-out';
+                setTimeout(() => {
+                    if (button && button.style) {
+                        button.style.animation = '';
+                    }
+                }, 300);
+                
+                console.log('🔄 CLIENTSIDE: Button state reset after regenerate click');
+            }
+        }
+        return window.dash_clientside.no_update;
+    }
+    """,
+    Output('key-findings-button-state', 'data', allow_duplicate=True),
+    Input('regenerate-key-findings', 'n_clicks'),
+    prevent_initial_call=True
+)
+
 # Source attribution callbacks removed - source URLs now integrated inside graphs
 
 # Note: Clientside callback removed due to duplicate callback restrictions
@@ -1464,6 +1813,7 @@ def update_credits_button_text(language):
     Output('generate-key-findings-btn', 'disabled'),
     Output('generate-key-findings-btn', 'style'),
     Output('key-findings-button-state', 'data'),
+    Output('key-findings-spinner', 'style'),
     Input('language-store', 'data'),
     Input('generate-key-findings-btn', 'n_clicks'),
     Input('close-key-findings-modal', 'n_clicks'),
@@ -1482,11 +1832,22 @@ def update_key_findings_button_text_and_state(language, button_clicks, modal_clo
         for trigger in ctx.triggered:
             print(f"🔍 DEBUG: Trigger: {trigger['prop_id']} = {trigger['value']}")
 
-    # Default state
+    # Default state with enhanced styling
     is_disabled = False
-    button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+    button_style = {
+        'backgroundColor': '#17a2b8',
+        'color': 'white',
+        'cursor': 'pointer',
+        'opacity': '1',
+        'border': '1px solid #17a2b8',
+        'transform': 'scale(1)',
+        'boxShadow': 'none',
+        'transition': 'all 0.2s ease',
+        'pointerEvents': 'auto'  # Ensure button is clickable
+    }
     button_text = get_text('key_findings', language)
     current_state = current_state or 'idle'
+    spinner_style = {'display': 'none', 'animation': 'none'}  # Hidden by default
 
     # Check all triggers to determine the correct state
     if ctx.triggered and len(ctx.triggered) > 0:
@@ -1503,9 +1864,20 @@ def update_key_findings_button_text_and_state(language, button_clicks, modal_clo
                 # Content is ready - reset button to normal state
                 print("🔍 DEBUG: Content ready - resetting button to normal state")
                 is_disabled = False
-                button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
+                button_style = {
+                    'backgroundColor': '#17a2b8',
+                    'color': 'white',
+                    'cursor': 'pointer',
+                    'opacity': '1',
+                    'border': '1px solid #17a2b8',
+                    'transform': 'scale(1)',
+                    'boxShadow': 'none',
+                    'transition': 'all 0.2s ease',
+                    'pointerEvents': 'auto'  # Ensure button is clickable
+                }
                 button_text = get_text('key_findings', language)
                 current_state = 'idle'
+                spinner_style = {'display': 'none', 'animation': 'none'}  # Hide spinner
                 content_ready_found = True
                 break  # Exit immediately after finding content ready
 
@@ -1519,38 +1891,47 @@ def update_key_findings_button_text_and_state(language, button_clicks, modal_clo
                 trigger_value = trigger['value']
 
                 if 'generate-key-findings-btn.n_clicks' in trigger_id and trigger_value:
-                    # Button was clicked - show processing state immediately
+                    # Button was clicked - show processing state immediately with enhanced feedback
                     print("🔍 DEBUG: Button clicked - setting processing state immediately")
                     is_disabled = True
                     button_style = {
                         'backgroundColor': '#f8f9fa',
                         'color': '#8b0000',
-                        'border': '1px solid #8b0000'
+                        'border': '2px solid #8b0000',
+                        'cursor': 'not-allowed',
+                        'opacity': '0.8',
+                        'transform': 'scale(0.98)',
+                        'boxShadow': '0 0 10px rgba(139, 0, 0, 0.3)',
+                        'transition': 'all 0.2s ease'
                     }
                     button_text = '⏳ Procesando...'
                     current_state = 'processing'
+                    spinner_style = {'display': 'inline-block', 'animation': 'pulse 1.5s infinite'}  # Show spinner with animation
                     break  # Exit after finding button click
 
-                elif 'close-key-findings-modal.n_clicks' in trigger_id and trigger_value:
-                    # Modal was closed via Cerrar button - reset to normal
-                    print("🔍 DEBUG: Modal close button clicked - resetting to normal")
+                elif ('close-key-findings-modal.n_clicks' in trigger_id and trigger_value) or ('key-findings-modal.is_open' in trigger_id and not modal_is_open):
+                    # Modal was closed via Cerrar button or header close button (x) - fully reset to original state
+                    print("🔍 DEBUG: Modal closed - fully resetting to original state")
                     is_disabled = False
-                    button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
-                    button_text = get_text('key_findings', language)
-                    current_state = 'idle'
-                    break
-
-                elif 'key-findings-modal.is_open' in trigger_id and not modal_is_open:
-                    # Modal was closed via header close button (x) - reset to normal
-                    print("🔄 DEBUG: Header close button detected - resetting button state")
-                    is_disabled = False
-                    button_style = {'backgroundColor': '#17a2b8', 'color': 'white'}
-                    button_text = get_text('key_findings', language)
-                    current_state = 'idle'
+                    button_style = {
+                        'backgroundColor': '#17a2b8',
+                        'color': 'white',
+                        'cursor': 'pointer',
+                        'opacity': '1',
+                        'border': '1px solid #17a2b8',
+                        'transform': 'scale(1)',
+                        'boxShadow': 'none',
+                        'transition': 'all 0.2s ease',
+                        'pointerEvents': 'auto'  # Ensure button is clickable
+                    }
+                    button_text = get_text('key_findings', language)  # Reset to original text
+                    current_state = 'idle'  # Reset to idle state
+                    spinner_style = {'display': 'none', 'animation': 'none'}  # Hide spinner
+                    print("🔍 DEBUG: Button state fully reset via modal close")
                     break
 
     print(f"🔄 DEBUG: Final button state - disabled={is_disabled}, text='{button_text}', state='{current_state}', style={button_style}")
-    return button_text, is_disabled, button_style, current_state
+    return button_text, is_disabled, button_style, current_state, spinner_style
 
 # Callback to control Key Findings button visibility
 @app.callback(
@@ -4350,7 +4731,8 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
             dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
             # Return empty content to clear modal and restore key findings
-            return False, "", dynamic_title, False, None
+            # Also trigger content_ready to reset button state
+            return False, "", dynamic_title, True, None
 
         if trigger_id == "close-key-findings-modal":
             print("🔍 Closing modal via Cerrar button")
@@ -4358,7 +4740,8 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
             tool_display_name = get_tool_name(selected_tool, language) if selected_tool else "Herramienta"
             sources_str = ", ".join(selected_sources) if selected_sources else "Fuentes"
             dynamic_title = f"🧠 Hallazgos para {tool_display_name} ({sources_str})"
-            return False, "", dynamic_title, False, None
+            # Also trigger content_ready to reset button state
+            return False, "", dynamic_title, True, None
 
         if trigger_id == "generate-key-findings-btn":
             print("🔍 Generate button clicked")
@@ -4372,7 +4755,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                     html.H4("Error", className="text-danger"),
                     html.P("Por favor seleccione una herramienta y al menos una fuente de datos.",
                           className="text-muted")
-                ]), dynamic_title, False, None
+                ]), dynamic_title, False, None, "idle"
 
             try:
                 print("🚀 Starting Key Findings generation...")
@@ -4454,7 +4837,7 @@ if KEY_FINDINGS_AVAILABLE and key_findings_service:
                             html.P("This needs to be fixed in the tool name mapping configuration.", className="text-muted")
                         ])
                         print("🔄 Returning tool mapping error modal")
-                        return True, error_content, dynamic_title, False, None
+                        return True, error_content, dynamic_title, False, None, "idle"
                     # Check if it took more than 3 seconds (indicating hanging)
                     elif data_collection_time > 3.0:
                         print("⏰ LONG EXECUTION TIME DETECTED!")
