@@ -51,7 +51,7 @@ The dashboard automatically detects your browser language:
 
 ## Research Context
 
-This analytical system constitutes an essential component of the research corpus for Diomar Añez's doctoral dissertation, titled _Ontological Dichotomy in "Management Fads"_ (© 2023-2025), conducted under the academic supervision of **Dr. Elizabeth Pereira.**
+This analytical system constitutes an essential component of the research corpus for Diomar Añez's doctoral dissertation, titled _Ontological Dichotomy in "Management Fads"_ (© 2023-2025).
 
 The research undertakes a critical analysis of the temporal dynamics of management tools, problematizing the practical and discursive phenomenon of "management fads." It empirically examines their life cycle—emergence, diffusion, and eventual persistence or obsolescence—and evaluates their implications for the strategic and structural configuration of contemporary organizations.
 
